@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta line required for IE-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>single point tester</title>
+    <link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" />
+    <!-- Not necessary as fonts are body fonts set in renderer.css
+    <style type="text/css">
+    body 
+    {
+        font-family: UnitFont, SinglePoint, TacticalGraphics;
+        font-size: 48pt;
+        padding: 25px;
+    }
+    </style> -->
+	<script src="sm-bc.js" type="text/javascript" ></script>
+	    
+    
+    <script type = "text/javascript">
+	function testRender()
+	{
+           
+            var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+            //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
+            //armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+            var preview = document.getElementById("preview");
+            var ctx = preview.getContext('2d');
+            //var image = render2();
+            //SET MODIFIERS/////////////////////////////////////////////////
+            var modifiers = {};
+            //modifiers[msa.PixelSize]=45;//S*G*USAT--*****//OUOPYT----*B***
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Q_DIRECTION_OF_MOVEMENT]=45;
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY]=10;
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.X_ALTITUDE_DEPTH] = "X";
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Y_LOCATION] = "Y";
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
+
+
+            modifiers = populateModifiers();
+            modifiers[msa.PixelSize]=60;
+            modifiers[msa.KeepUnitRatio]=true;
+            modifiers[msa.SymbologyStandard] = 1;
+            //CALL TO RENDER////////////////////////////////////////////////
+            //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("UPPS-----*****",modifiers);
+            //SUGDUSAT--FM***//"SUGDUSAT--MY***"
+            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SUGDUSAT----***",modifiers);
+
+            var showDrawAreas = true;
+
+            //image bounds
+
+
+            if(showDrawAreas)
+            {
+                //draw square behind so we know the size of buffer we created.
+                var imageBounds = ii.getImageBounds();
+                ctx.strokeStyle="#FF0000";
+                imageBounds.stroke(ctx);
+
+                //symbol bounds
+                var symbolBounds = ii.getSymbolBounds();
+                ctx.strokeStyle="#0000FF";
+                symbolBounds.stroke(ctx);
+            }
+
+            //draw symbol
+            ctx.drawImage(ii.getImage(), 0, 0);
+
+            if(showDrawAreas)
+            {
+                //center point
+                var centerPoint = ii.getCenterPoint();
+                ctx.strokeStyle="#FF0000";
+                ctx.fillStyle="#FF0000";
+                ctx.lineWidth=3;
+                centerPoint.stroke(ctx);
+            }
+
+            //image = render3();
+            //G*M*NZ----****X//nuclear detonation
+            //G*GPGPP---****X//action point, has H1
+            //GUGPOPP---****X//point of departure (action point)
+            //G*O*ES------**X//Distress call, has T1
+            //SUPPS-----*****//satellite
+            //
+            //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GFGPGPP---****X",modifiers);
+            //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GFOPES----****X",modifiers);
+            var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GFGPGPP---****X",modifiers);
+            //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GFMPNZ----****X",modifiers);
+            //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("G*M*OFS---****X",modifiers);
+            //
+            //draw image
+            ctx.drawImage(iiTG.getImage(), ii.getImageBounds().getWidth() + 10, 0);
+
+
+            if(showDrawAreas)
+            {
+                //draw square behind so we know the size of buffer we created.
+                ctx.lineWidth=1;
+                var imageBoundsTG = iiTG.getImageBounds();
+                imageBoundsTG.shift(ii.getImageBounds().getWidth() + 10,0);
+                ctx.strokeStyle="#FF0000";
+                imageBoundsTG.stroke(ctx);
+
+                //symbol bounds
+                var symbolBoundsTG = iiTG.getSymbolBounds();
+                symbolBoundsTG.shift(ii.getImageBounds().getWidth() + 10,0);
+                ctx.strokeStyle="#0000FF";
+                symbolBoundsTG.stroke(ctx);
+
+                //center point
+                var centerPointTG = iiTG.getCenterPoint();
+                ctx.strokeStyle="#FF0000";
+                ctx.fillStyle="#FF0000";
+                ctx.lineWidth=3;
+                //shift because we're not drawing image at 0,0
+                centerPointTG.shift(ii.getImageBounds().getWidth() + 10,0);
+                centerPointTG.stroke(ctx);//*/
+            }
+
+
+            //canvas border
+            ctx.strokeStyle="#000000";
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(650,0);
+            ctx.lineTo(650,200);
+            ctx.lineTo(0,200);
+            ctx.lineTo(0,0);
+            ctx.stroke();//*/
+
+            modifiers = new Object(); 
+            modifiers[msa.PixelSize]=60;//S*G*USAT--*****//OUOPYT----*B***}
+            //modifiers[msa.LineColor]="#FFFF00";
+            //WA-DPFCU---L---  //Upper Cold Front (Blue)
+            //"GHGPSLA---****X" // ambush
+            var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("WA-DPFCU---L---",modifiers);
+            //var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPSLA---****X",modifiers);
+
+            ctx.drawImage(iiTGMP.getImage(), ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20, 0);
+
+            if(showDrawAreas)
+            {
+                //symbol bounds
+                var symbolBoundsTGMP = iiTGMP.getSymbolBounds();
+                symbolBoundsTGMP.shift(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20,0);
+                ctx.strokeStyle="#0000FF";
+                ctx.lineWidth=1;
+                symbolBoundsTGMP.stroke(ctx);
+            }
+
+
+            //PERFORMANCE TEST///////////////////////////
+            /*
+            var start = new Date().getTime();
+            modifiers = new Object();
+            modifiers = populateModifiers();
+			//modifiers["RENDER"] = false;//dimensions without labels
+            var apID = "GFGPGPP---****X";//action point
+            var dmID = "SUGDUSAT--MY***";//display modifiers
+            var plainID = "SUGPUSAT----***";//plain symbol
+            for(var i = 0; i < 1000; i++)
+            {//"SUGDUSAT--MY***"
+                armyc2.c2sd.renderer.MilStdIconRenderer.Render(dmID,modifiers);
+            }
+
+            var end = new Date().getTime();
+            var time = end - start;
+            alert('Render 1k symbols: ' + (time/1000));//*/
+			
+ 
+
+
+	}
+	
+        function populateModifiers()
+        {
+            var modifiers = {};
+            
+            
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY]=10;
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H_ADDITIONAL_INFO_1] = "H";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H1_ADDITIONAL_INFO_2] = "H1";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H2_ADDITIONAL_INFO_3] = "H2";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.X_ALTITUDE_DEPTH] = "X";//X
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.K_COMBAT_EFFECTIVENESS] = "K";//K
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] = "45";//Q
+
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W_DTG_1] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W1_DTG_2] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W1
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.J_EVALUATION_RATING] = "J";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.M_HIGHER_FORMATION] = "M";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.N_HOSTILE] = "ENY";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.P_IFF_SIF] = "P";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Y_LOCATION] = "Y";
+            
+            //if(symbol.getSymbolID().startsWith("G"))
+                modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY] = "C";
+            
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
+            //symbol.symbolicon A
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T_UNIQUE_DESIGNATION_1] = "T";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T1_UNIQUE_DESIGNATION_2] = "T1";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
+            //*/
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+            
+            return modifiers;
+        }
+        
+	function preload()
+	{
+            armyc2.c2sd.renderer.MilStdIconRenderer.Init();
+            armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+	}
+</script>
+</head>
+<BODY bgcolor="Cyan" onload="preload();">
+
+<canvas id="preview" width="650" height="200"></canvas>
+<button type='button' onclick='testRender();'>Render</button>
+
+</BODY>
+</html>

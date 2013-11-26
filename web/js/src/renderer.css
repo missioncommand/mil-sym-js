@@ -1,0 +1,27 @@
+@font-face
+{
+    font-family: SinglePoint;
+    src: url('fonts/SinglePoint.eot') format('embedded-opentype'),
+         url('fonts/SinglePoint.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: UnitFont;
+    src: url('fonts/UnitFontJS.eot') format('embedded-opentype'),
+         url('fonts/UnitFontJS.ttf') format('truetype');   
+}
+
+@font-face
+{
+    font-family: TacticalGraphics;
+    src: url('fonts/TacticalGraphics.eot') format('embedded-opentype'),
+         url('fonts/TacticalGraphics.ttf') format('truetype');   
+}
+
+body 
+{
+    font-family: UnitFont, SinglePoint, TacticalGraphics, Arial;
+    font-size: 48pt;
+    padding: 25px;
+}

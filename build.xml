@@ -1,0 +1,561 @@
+<project name="MultiPointRendererClean" default="dist">
+
+    <taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask"
+             classpath="lib-build/jslint4java-2.0.4.jar" />
+    
+    <taskdef name="jsmin" classname="net.matthaynes.jsmin.JSMin_Task" classpath="lib-build/jsmin.0.2.4.jar" />
+    
+    <!-- Target: concat
+    This target performs the concatenation of the following:
+    - B/C XML JS Headers
+    - Single point, multi point, and single/multi point bodies
+    -->
+    <target name="concat">
+        <concat destfile="build/single-b-header.js">
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SinglePointMappingsB.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsB.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/UnitFontMappingsB.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/UnitConstantsB.js" />
+        </concat>
+        
+        <concat destfile="build/single-c-header.js">
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SinglePointMappingsC.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsC.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/UnitFontMappingsC.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/UnitConstantsC.js" />
+        </concat>
+        
+        <concat destfile="build/single-body.js">
+            <!-- Single Point Rendering imports -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/rectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/roundedrectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/ellipse.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/arc.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/bcurve.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/line.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/path.js" />
+        
+            <!-- Rendering Utility imports -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TextInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersUnits.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/singlepointlookupinfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/unitfontlookupinfo.js" />
+        
+            <!-- Rendering & XML lookup imports  -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TacticalGraphicLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SinglePointLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitFontLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDimensions.js" />
+        
+            <!-- Top level Renderer classes -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdIconRenderer.js" />
+            <fileset file="web/js/src/renderer-jquery-plugin.js" />
+        </concat>
+        
+        <concat destfile="build/multi-body.js">
+            <!--Core classes for j2slib-->   
+            <fileset file="web/js/src/j2slib/java/lang/Class.js" />
+            <fileset file="web/js/src/j2slib/java/lang/Double.js" />
+            <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
+            <fileset file="web/js/src/j2slib/java/lang/System.js" />
+        
+            <!--add the android graphics types--> 
+            <fileset file="web/js/src/android/graphics/Bitmap.js" />
+            <fileset file="web/js/src/android/graphics/Paint.js" />
+            <fileset file="web/js/src/android/graphics/Path.js" />
+            <fileset file="web/js/src/android/graphics/PointF.js" />
+            <fileset file="web/js/src/android/graphics/Rect.js" />
+            <fileset file="web/js/src/android/graphics/RectF.js" />
+            <fileset file="web/js/src/android/graphics/Typeface.js" />
+        
+            <fileset file="web/js/src/j2slib/java/proto.js" />
+        
+            <!--add the graphics2D types--> 
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/AffineTransform.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Area.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/BasicStroke.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/BufferedImage.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Font.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FontMetrics.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FontRenderContext.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/GeneralPath.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Graphics2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/ImageIO.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Line2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/PathIterator.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Point2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Polygon.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Rectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Rectangle2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Shape.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Stroke.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/TextLayout.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/TexturePaint.js" />
+            <!--additional graphics2D types for airspaces--> 
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Arc2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/ArcIterator.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/QuadCurve2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/CubicCurve2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FlatteningPathIterator.js" />
+        
+            <!--add JavaLineArray package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/CChannelPoints2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/CELineArray.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/Channels.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/DISMSupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/POINT2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/Shape2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/TacticalLines.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/arraysupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/countsupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/flot.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/lineutility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/ref.js" />
+        
+            <!--add JavaTacticalRenderer package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/Modifier2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/P1.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/TGLight.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsChannelUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsMETOC.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/mdlGeodesic.js" />
+        
+            <!--add renderer.utilities package--> 
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ShapeInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            
+        
+            <!--add JavaRendererServer package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipPolygon2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipQuad.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
+        
+            <!--add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
+            
+            <!-- packages for airspaces -->
+            <!-- org.gavaghan.geodesy -->
+            <fileset file="web/js/src/org/gavaghan/geodesy/Angle.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/Ellipsoid.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticCalculator.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticCurve.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticMeasurement.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GlobalCoordinates.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GlobalPosition.js" />
+            <!-- sec.geo -->
+            <fileset file="web/js/src/sec/geo/GeoArc.js" />
+            <fileset file="web/js/src/sec/geo/GeoBlock.js" />
+            <fileset file="web/js/src/sec/geo/GeoBlock2.js" />
+            <fileset file="web/js/src/sec/geo/GeoEllipse.js" />
+            <fileset file="web/js/src/sec/geo/GeoPath.js" />
+            <fileset file="web/js/src/sec/geo/GeoPoint.js" />
+            <fileset file="web/js/src/sec/geo/ShapeObject.js" />
+            <!-- sec.geo.shape -->
+            <fileset file="web/js/src/sec/geo/shape/AExtObject.js" />
+            <fileset file="web/js/src/sec/geo/shape/Cake.js" />
+            <fileset file="web/js/src/sec/geo/shape/Circle.js" />
+            <fileset file="web/js/src/sec/geo/shape/Line.js" />
+            <fileset file="web/js/src/sec/geo/shape/Orbit.js" />
+            <fileset file="web/js/src/sec/geo/shape/Point.js" />
+            <fileset file="web/js/src/sec/geo/shape/Polygon.js" />
+            <fileset file="web/js/src/sec/geo/shape/Radarc.js" />
+            <fileset file="web/js/src/sec/geo/shape/Polyarc.js" />
+            <fileset file="web/js/src/sec/geo/shape/Route.js" />
+            <fileset file="web/js/src/sec/geo/shape/Track.js" />
+            <!-- sec.geo.utilities -->
+            <fileset file="web/js/src/sec/geo/utilities/StringBuilder.js" />
+            <!-- sec.sun.awt.geom -->
+            <fileset file="web/js/src/sec/sun/awt/geom/Area.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/AreaIterator.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/AreaOp2.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Arrays.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/ChainEnd.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Crossings.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CrossingsObject.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Curve.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CurveObject.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CurveLink.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/EOWindOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/NZWindOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Edge.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Enumeration.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/EvenOdd.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/NonZero.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order0.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order1.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order2.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order3.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/SomeOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Vector.js" />
+            <!-- sec.geo.kml -->
+            <fileset file="web/js/src/sec/geo/kml/KmlOptions.js" />
+            <fileset file="web/js/src/sec/geo/kml/KmlPolygon.js" />
+            <fileset file="web/js/src/sec/geo/kml/KmlRenderer.js" />
+            <fileset file="web/js/src/sec/geo/kml/XsltCoordinateWrapper.js" />
+        
+            <!--add source required by SECWebRenderer--> 
+            <fileset file="web/js/src/sec/web/renderer/utilities/JavaRendererUtilities.js" />
+            <fileset file="web/js/src/sec/web/renderer/PointConverter.js" />
+            <fileset file="web/js/src/sec/web/renderer/SymbolModifiers.js" />
+            <fileset file="web/js/src/sec/web/renderer/GeoPixelConversion.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
+            <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
+            <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
+        </concat>
+        
+        <concat destfile="build/singlemulti-body.js">
+            <!--(Single) Single Point Rendering imports--> 
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/rectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/roundedrectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/ellipse.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/arc.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/bcurve.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/line.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/path.js" />
+        
+            <!--(Multi) Core classes for j2slib-->   
+            <fileset file="web/js/src/j2slib/java/lang/Class.js" />
+            <fileset file="web/js/src/j2slib/java/lang/Double.js" />
+            <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
+            <fileset file="web/js/src/j2slib/java/lang/System.js" />
+        
+            <!--(Multi) add the android graphics types--> 
+            <fileset file="web/js/src/android/graphics/Bitmap.js" />
+            <fileset file="web/js/src/android/graphics/Paint.js" />
+            <fileset file="web/js/src/android/graphics/Path.js" />
+            <fileset file="web/js/src/android/graphics/PointF.js" />
+            <fileset file="web/js/src/android/graphics/Rect.js" />
+            <fileset file="web/js/src/android/graphics/RectF.js" />
+            <fileset file="web/js/src/android/graphics/Typeface.js" />
+        
+            <fileset file="web/js/src/j2slib/java/proto.js" />
+        
+            <!--(Multi) add the graphics2D types--> 
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/AffineTransform.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Area.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/BasicStroke.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/BufferedImage.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Font.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FontMetrics.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FontRenderContext.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/GeneralPath.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Graphics2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/ImageIO.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Line2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/PathIterator.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Point2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Polygon.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Rectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Rectangle2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Shape.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Stroke.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/TextLayout.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/TexturePaint.js" />
+            <!--additional graphics2D types for airspaces--> 
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/Arc2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/ArcIterator.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/QuadCurve2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/CubicCurve2D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/graphics2d/FlatteningPathIterator.js" />
+        
+            <!--(Multi) add JavaLineArray package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/CChannelPoints2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/CELineArray.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/Channels.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/DISMSupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/POINT2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/Shape2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/TacticalLines.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/arraysupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/countsupport.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/flot.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/lineutility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaLineArray/ref.js" />
+        
+            <!--(Multi) add JavaTacticalRenderer package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/Modifier2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/P1.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/TGLight.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsChannelUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsMETOC.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/clsUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaTacticalRenderer/mdlGeodesic.js" />
+        
+            <!--(Multi) add renderer.utilities package--> 
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ShapeInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            
+            <!-- (Airspaces) add packages for airspaces -->
+            <!-- org.gavaghan.geodesy -->
+            <fileset file="web/js/src/org/gavaghan/geodesy/Angle.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/Ellipsoid.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticCalculator.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticCurve.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GeodeticMeasurement.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GlobalCoordinates.js" />
+            <fileset file="web/js/src/org/gavaghan/geodesy/GlobalPosition.js" />
+            <!-- sec.geo -->
+            <fileset file="web/js/src/sec/geo/GeoArc.js" />
+            <fileset file="web/js/src/sec/geo/GeoBlock.js" />
+            <fileset file="web/js/src/sec/geo/GeoBlock2.js" />
+            <fileset file="web/js/src/sec/geo/GeoEllipse.js" />
+            <fileset file="web/js/src/sec/geo/GeoPath.js" />
+            <fileset file="web/js/src/sec/geo/GeoPoint.js" />
+            <fileset file="web/js/src/sec/geo/ShapeObject.js" />
+            <!-- sec.geo.shape -->
+            <fileset file="web/js/src/sec/geo/shape/AExtObject.js" />
+            <fileset file="web/js/src/sec/geo/shape/Cake.js" />
+            <fileset file="web/js/src/sec/geo/shape/Circle.js" />
+            <fileset file="web/js/src/sec/geo/shape/Line.js" />
+            <fileset file="web/js/src/sec/geo/shape/Orbit.js" />
+            <fileset file="web/js/src/sec/geo/shape/Point.js" />
+            <fileset file="web/js/src/sec/geo/shape/Polygon.js" />
+            <fileset file="web/js/src/sec/geo/shape/Radarc.js" />
+            <fileset file="web/js/src/sec/geo/shape/Polyarc.js" />
+            <fileset file="web/js/src/sec/geo/shape/Route.js" />
+            <fileset file="web/js/src/sec/geo/shape/Track.js" />
+            <!-- sec.geo.utilities -->
+            <fileset file="web/js/src/sec/geo/utilities/StringBuilder.js" />
+            <!-- sec.sun.awt.geom -->
+            <fileset file="web/js/src/sec/sun/awt/geom/Area.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/AreaIterator.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/AreaOp2.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Arrays.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/ChainEnd.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Crossings.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CrossingsObject.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Curve.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CurveObject.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/CurveLink.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/EOWindOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/NZWindOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Edge.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Enumeration.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/EvenOdd.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/NonZero.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order0.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order1.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order2.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Order3.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/SomeOp.js" />
+            <fileset file="web/js/src/sec/sun/awt/geom/Vector.js" />
+            <!-- sec.geo.kml -->
+            <fileset file="web/js/src/sec/geo/kml/KmlOptions.js" />
+            <fileset file="web/js/src/sec/geo/kml/KmlPolygon.js" />
+            <fileset file="web/js/src/sec/geo/kml/KmlRenderer.js" />
+            <fileset file="web/js/src/sec/geo/kml/XsltCoordinateWrapper.js" />
+            
+        
+            <!--(Single) Rendering Utility imports (minus multi-point)--> 
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TextInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersUnits.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/singlepointlookupinfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/unitfontlookupinfo.js" />
+        
+            <!--(Single) Rendering & XML lookup imports (minus multi-point)-->  
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TacticalGraphicLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SinglePointLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitFontLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDimensions.js" />
+        
+            <!--(Multi) add JavaRendererServer package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipPolygon2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipQuad.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
+        
+            <!--(Multi) add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
+            
+            <!--(Single) Top level Renderer classes--> 
+            <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdIconRenderer.js" />
+        
+            <!--(Multi) add source required by SECWebRenderer--> 
+            <fileset file="web/js/src/sec/web/renderer/utilities/JavaRendererUtilities.js" />
+            <fileset file="web/js/src/sec/web/renderer/PointConverter.js" />
+            <fileset file="web/js/src/sec/web/renderer/SymbolModifiers.js" />
+            <fileset file="web/js/src/sec/web/renderer/GeoPixelConversion.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
+            <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
+            <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
+        
+        </concat>
+    </target>
+    
+    <!-- Build single point-only, B-only, jQuery renderer-->
+    <target name="s-b">
+        <concat destfile="dist/s-b.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/single-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build single point-only, C-only, jQuery renderer-->
+    <target name="s-c">
+        <concat destfile="dist/s-c.js">
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/single-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build single point-only, B and C, jQuery renderer-->
+    <target name="s-bc">
+        <concat destfile="dist/s-bc.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/single-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build multi point-only, B-only, no jQuery renderer-->
+    <target name="m-b">
+        <concat destfile="dist/m-b.js">
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsB.js" />
+            <fileset file="build/multi-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build multi point-only, C-only, no jQuery renderer-->
+    <target name="m-c">
+        <concat destfile="dist/m-c.js">
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsC.js" />
+            <fileset file="build/multi-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build multi point-only, B and C, no jQuery renderer-->
+    <target name="m-bc">
+        <concat destfile="dist/m-bc.js">
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsB.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SymbolConstantsC.js" />
+            <fileset file="build/multi-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build single and multi point, B-only, no jQuery renderer-->
+    <target name="sm-b">
+        <concat destfile="dist/sm-b.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/singlemulti-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build single and multi point, C-only, no jQuery renderer-->
+    <target name="sm-c">
+        <concat destfile="dist/sm-c.js">
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/singlemulti-body.js" />
+        </concat>
+    </target>
+    
+    <!-- Build single and multi point, B and C, no jQuery renderer-->
+    <target name="sm-bc">
+        <concat destfile="dist/sm-bc.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/singlemulti-body.js" />
+        </concat>
+    </target>
+    
+    <target name="allFlavors">
+        <antcall target="s-b" />
+        <antcall target="s-c" />
+        <antcall target="s-bc" />
+        <antcall target="m-b" />
+        <antcall target="m-c" />
+        <antcall target="m-bc" />
+        <antcall target="sm-b" />
+        <antcall target="sm-c" />
+        <antcall target="sm-bc" />
+    </target>
+    
+    <target name="jslint">
+        <mkdir dir="build" />
+        <jslint haltOnFailure="false" options="white,sloppy,nomen">
+            <formatter type="plain" />
+            <formatter type="checkstyle" destfile="build/checkstyle.xml" />
+            <predef>jQuery</predef>
+            <fileset dir="web/js" includes="**/*.js" />
+        </jslint>
+    </target>
+    
+    <target name="minify">
+        <jsmin destdir="dist" suffix="true">
+            <fileset dir="dist" includes="*.js" />
+        </jsmin>
+    </target>
+    
+    <!--Copy fonts, stylesheet, and samples-->
+    <target name="samples">
+        <copy todir="dist/fonts">
+            <fileset dir="web/js/src/fonts" />
+        </copy>
+        <copy todir="dist">
+            <fileset file="web/js/src/renderer.css" />
+        </copy>
+        <copy todir="dist">
+            <fileset dir="web/samples" />
+        </copy>
+    </target>
+    
+    <target name="clean">
+        <delete dir="jslint" />
+        <delete dir="build" />
+        <delete dir="dist" />
+    </target>
+</project>

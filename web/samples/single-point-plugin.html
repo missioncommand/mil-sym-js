@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Renderer jQuery Plugin Example</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" >
+        <script src="jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="s-b.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(window).bind("load", function() {
+                // Invoke render2525() on jQuery objects that match canvas tags
+                // when symbols on a canvas need to be drawn or re-drawn
+                $("canvas").render2525();
+            });
+        </script>
+    </head>
+    <body>
+        <!--    
+            To display a symbol, canvas elements must contain a valid
+            15-character symbol code in the data-symbol-code attribute.
+
+            The optional data-pixel-size attribute controls the size of
+            the symbol.
+        -->
+        <canvas data-symbol-code="SHAPCF---------" data-pixel-size="64"></canvas>
+    </body>
+</html>
