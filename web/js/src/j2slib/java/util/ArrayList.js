@@ -1,3 +1,4 @@
+//ArrayList implementation
 var java =  java || {};
 java.util = java.util || {};
 java.util.ArrayList =  function()
