@@ -16,8 +16,9 @@ armyc2.c2sd.renderer.so.Point = function (x,y) {
     this.y = y;
 };
     /**
-     * 
-     * @returns {String}
+     * Returns a string representing one of the shape types
+     * from "armyc2.c2sd.renderer.so.ShapeTypes"
+     * @returns {String} 
      */
     armyc2.c2sd.renderer.so.Point.prototype.getShapeType = function(){
         return armyc2.c2sd.renderer.so.ShapeTypes.POINT;
@@ -57,13 +58,14 @@ armyc2.c2sd.renderer.so.Point = function (x,y) {
         this.y += y;
     };
     /**
-     * @returns {String}
+     * @returns {String} like "{x:#,y:#}"
      */
     armyc2.c2sd.renderer.so.Point.prototype.toStringFormatted = function(){
         return "{x:" + this.x + ", y:" + this.y + "}";
     };
     /**
      * Makes a copy of this point object.
+     * @returns {armyc2.c2sd.renderer.so.Point} Copy of original point.
      */
     armyc2.c2sd.renderer.so.Point.prototype.clone = function(){
         return new armyc2.c2sd.renderer.so.Point(this.x,this.y);

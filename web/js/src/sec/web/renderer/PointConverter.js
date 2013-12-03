@@ -3,46 +3,51 @@ var sec = sec || {};
 sec.web = sec.web || {};
 sec.web.renderer = sec.web.renderer || {};
 
+/**
+ * @class
+ * @param {Number} controlLong
+ * @param {Number} controlLat
+ * @param {Number} scale
+ */
 sec.web.renderer.PointConverter = function (controlLong, controlLat, scale) {
 
     //private vars
-    var _controlLat = 0,
-        _controlLong = 0,
-        _scale = 0,
-        _metersPerPixel = 0,
-        GeoPixelConversion = sec.web.renderer.GeoPixelConversion;
+    this._controlLat = 0,
+    this._controlLong = 0,
+    this._scale = 0,
+    this._metersPerPixel = 0,
+    this._GeoPixelConversion = sec.web.renderer.GeoPixelConversion;
     
     
     //constructor code
-    _controlLat=Number(controlLat);
-    _controlLong=Number(controlLong);
-    _scale=Number(scale);
-    _metersPerPixel=sec.web.renderer.GeoPixelConversion.metersPerPixel(scale);
-    
-    //private functions
-    //function privateFunction(){};
-    
-    //public vars/functions
-    //this.publicVar = "I'm a public var";
-    //this.publicFunction = function(){};
-    
-    this.GeoToPixels = function(coord)
-    {
-        var y=GeoPixelConversion.lat2y(coord.getY(), _scale, _controlLat, _metersPerPixel);
-        var x=GeoPixelConversion.long2x(coord.getX(), _scale, _controlLong, coord.getY(), _metersPerPixel);
-        var ptPixels=new armyc2.c2sd.graphics2d.Point2D(x,y);
-        
-        return ptPixels;
-    };
-    
-    this.PixelsToGeo = function(pixel)
-    {
-        var y=GeoPixelConversion.y2lat(pixel.getY(), _scale, _controlLat, _metersPerPixel);
-        var x=GeoPixelConversion.x2long(pixel.getX(), _scale, _controlLong, y, _metersPerPixel);
-        var pt2dGeo=new armyc2.c2sd.graphics2d.Point2D(x,y);
-        
-        return pt2dGeo;
-    };
+    this._controlLat=Number(controlLat);
+    this._controlLong=Number(controlLong);
+    this._scale=Number(scale);
+    this._metersPerPixel=sec.web.renderer.GeoPixelConversion.metersPerPixel(scale);
     
 };
+/**
+ * @param {armyc2.c2sd.graphics2d.Point2D} coord
+ * @returns {armyc2.c2sd.graphics2d.Point2D}
+ */
+sec.web.renderer.PointConverter.prototype.GeoToPixels = function(coord)
+{
+    var y=this._GeoPixelConversion.lat2y(coord.getY(), this._scale, this._controlLat, this._metersPerPixel);
+    var x=this._GeoPixelConversion.long2x(coord.getX(), this._scale, this._controlLong, coord.getY(), this._metersPerPixel);
+    var ptPixels=new armyc2.c2sd.graphics2d.Point2D(x,y);
 
+    return ptPixels;
+};
+/**
+ * @function PixelsToGeo
+ * @param {armyc2.c2sd.graphics2d.Point2D} pixel
+ * @returns {armyc2.c2sd.graphics2d.Point2D}
+ */
+sec.web.renderer.PointConverter.prototype.PixelsToGeo = function(pixel)
+{
+    var y=this._GeoPixelConversion.y2lat(pixel.getY(), this._scale, this._controlLat, this._metersPerPixel);
+    var x=this._GeoPixelConversion.x2long(pixel.getX(), this._scale, this._controlLong, y, this._metersPerPixel);
+    var pt2dGeo=new armyc2.c2sd.graphics2d.Point2D(x,y);
+
+    return pt2dGeo;
+};

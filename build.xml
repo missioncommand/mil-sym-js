@@ -1,4 +1,4 @@
-<project name="MultiPointRendererClean" default="dist">
+<project name="mil-sym-js" default="dist">
 
     <taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask"
              classpath="lib-build/jslint4java-2.0.4.jar" />
