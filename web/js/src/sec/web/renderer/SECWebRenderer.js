@@ -13,6 +13,7 @@ sec.web.renderer.SECWebRenderer = (function () {
         POLYARC = "POLYARC--------",
         CAKE = "CAKE-----------",
         TRACK = "TRACK----------",
+        CURTAIN = "CURTAIN--------",
         ATTRIBUTES = "attributes",
         MIN_ALT = "minalt",
         MAX_ALT = "maxalt",
@@ -305,12 +306,41 @@ return{
             }
 
 
-            //alert();
-            //var renderer=new sec.web.renderer.Shape3DHandler();
-            //alert(renderer);
-            //returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, altitudeMode, controlPoints, modifiers);
+            if(shapeType === CURTAIN)// || shapeType === TRACK)
+            {//CURTAIN is basically a TRACK without the width.
+                shapeType = TRACK;
+                var lenX = attributes.X_ALTITUDE_DEPTH.array.length;
+                var lenAM = attributes.AM_DISTANCE.array.length;
+
+                var pointCount = 0;
+                var coords = controlPoints.split(" ");
+                pointCount = coords.length;
+
+                var i = 0;
+                if(attributes.X_ALTITUDE_DEPTH.size()===0)
+                {
+                    var curtainMinAlt = new Double(1);
+                    var curtainMaxAlt = new Double(10000);
+                    lenX = pointCount * 2;
+                    for(i = 0; i < lenX; i++)
+                    {
+                        if(i%2===0)
+                            attributes.X_ALTITUDE_DEPTH.add(curtainMinAlt);
+                        else
+                            attributes.X_ALTITUDE_DEPTH.add(curtainMaxAlt);
+                    }
+                }
+                
+                attributes.AM_DISTANCE.clear();
+                lenAM = pointCount * 2;
+                var curtainWidth = new Double(1);
+                for(i = 0; i < lenAM; i++)
+                {
+                    attributes.AM_DISTANCE.add(curtainWidth);
+                }   
+            }
+
             returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, altitudeMode, controlPoints, attributes);
-            //returnValue = renderer.render3dSymbol (name, id, shapeType, description, color, altitudeMode, controlPoints, modifierMap);
         } 
         catch (err) 
         {
