@@ -7,16 +7,16 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
             var j = 0;
             var nextSegment = false;
             var p1 =  new armyc2.c2sd.JavaTacticalRenderer.P1 ();
-            if (segments[0] == false) {
+            if (segments[0] === false) {
                 return 0;
-            }if (partitions != null) {
+            }if (partitions !== null) {
                 partitions.clear ();
             } else {
                 return 0;
             }p1.start = 0;
             for (j = 0; j < segments.length - 1; j++) {
                 nextSegment = segments[j + 1];
-                if (nextSegment == false) {
+                if (nextSegment === false) {
                     p1.end_Renamed = j;
                     partitions.add (p1);
                     p1 =  new armyc2.c2sd.JavaTacticalRenderer.P1 ();
@@ -58,19 +58,19 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                     lineType2 = lineType;
                     break;
                 case 22320000:
-                    if (fromSegment == 0) {
+                    if (fromSegment === 0) {
                         lineType2 = 231113002;
                     } else {
                         lineType2 = 231113001;
                     }break;
                 case 22521420:
-                    if (fromSegment == 0) {
+                    if (fromSegment === 0) {
                         lineType2 = 231113002;
                     } else {
                         lineType2 = 231113001;
                     }break;
                 case 22521410:
-                    if (fromSegment == 0) {
+                    if (fromSegment === 0) {
                         lineType2 = 231113002;
                     } else {
                         lineType2 = 231113001;
@@ -85,8 +85,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                     lineType2 = 231113001;
                     break;
             }
-            if (bolLastSegment == true) {
-                if (fromSegment != 0) {
+            if (bolLastSegment === true) {
+                if (fromSegment !== 0) {
                     switch (lineType) {
                         case 22320000:
                             lineType2 = 22320001;
@@ -130,10 +130,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
             channelPixels =  Clazz.newArray (3 * lineCount, 0);
             var pt = null;
             lineCount = armyc2.c2sd.JavaLineArray.CELineArray.CGetChannel2Double (goodUpperPixels, goodLowerPixels, channelPixels, numPoints, numPoints, lineType2, Math.floor (channelWidth / 2), Math.floor (distanceToChannelPoint), shapes, rev);
-            if (shapes == null && channelPixels != null) {
+            if (shapes === null && channelPixels !== null) {
                 for (j = 0; j < Math.floor (channelPixels.length / 3); j++) {
                     pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (channelPixels[3 * j], channelPixels[3 * j + 1], Math.floor (channelPixels[3 * j + 2]));
-                    if (j == Math.floor (channelPixels.length / 3) - 1) {
+                    if (j === Math.floor (channelPixels.length / 3) - 1) {
                         pt.style = 5;
                     }channelPoints.add (pt);
                 }
@@ -198,7 +198,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                 pixels[2 * j + 1] = tg.Pixels.get (j).y;
             }
             var segments =  Clazz.newArray (Math.floor (pixels.length / 2) - 1, false);
-            if (segments.length == 0) return null;
+            if (segments.length === 0) return null;
             var factor = 3;
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetSegments (pixels, segments, factor);
             partitions =  new java.util.ArrayList ();
@@ -233,7 +233,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                 case 22521300:
                 case 22521420:
                     armyc2.c2sd.JavaTacticalRenderer.clsUtility.ReorderPixels (pixels);
-                    if (linetype == 22320000) {
+                    if (linetype === 22320000) {
                         channelWidth = Math.floor (armyc2.c2sd.JavaTacticalRenderer.clsUtility.ChannelWidth (pixels, distanceToChannelPoint) / 2);
                         var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
                         var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
@@ -258,7 +258,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                     break;
                 case 22123000:
                 case 22123001:
-                    if (bolAnimation == true) {
+                    if (bolAnimation === true) {
                         channelWidth = 32;
                     } else {
                         channelWidth = 40;
@@ -274,7 +274,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                 case 231115000:
                 case 231116000:
                     channelWidth = 30;
-                    if (armyc2.c2sd.JavaLineArray.Channels.getShiftLines () == true) channelWidth = 60;
+                    if (armyc2.c2sd.JavaLineArray.Channels.getShiftLines () === true) channelWidth = 60;
                     pixels2 =  Clazz.newArray (pixels.length, 0);
                     for (j = 0; j < pixels.length; j++) {
                         pixels2[j] = pixels[j];
@@ -296,7 +296,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility={
                     break;
             }
             var segments =  Clazz.newArray (Math.floor (pixels2.length / 2) - 1, false);
-            if (segments.length == 0) return ;
+            if (segments.length === 0) return ;
             var factor = 3;
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetSegments (pixels2, segments, factor);
             partitions =  new java.util.ArrayList ();

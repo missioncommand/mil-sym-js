@@ -1,80 +1,62 @@
-var sec=sec || {};
-sec.sun=sec.sun || {};
-sec.sun.awt=sec.sun.awt || {};
-sec.sun.awt.geom=sec.sun.awt.geom || {};
-sec.sun.awt.geom.AreaOp2=function()
+var sec = sec || {};
+sec.sun = sec.sun || {};
+sec.sun.awt = sec.sun.awt || {};
+sec.sun.awt.geom = sec.sun.awt.geom || {};
+sec.sun.awt.geom.AreaOp2 = function()
 {
-    //﻿Clazz.declarePackage ("sec.sun.awt.geom");
-    //Clazz.load (null, "sec.sun.awt.geom.AreaOp2", ["java.lang.InternalError", "sec.sun.awt.geom.Arrays", "$.ChainEnd", "$.CurveLink", "$.CurveObject", "$.EOWindOp", "$.Edge", "$.NZWindOp", "$.Vector"], function () {
-    //c$ = Clazz.decorateAsClass (function () {
     this.eo = null;
     this.nz = null;
-    //Clazz.instantialize (this, arguments);
-    //}, sec.sun.awt.geom, "AreaOp2");
-    //Clazz.makeConstructor (c$, 
-    //function (type) {
     var type;
-    if(arguments.length===1)
+    if (arguments.length === 1)
     {
-        type=arguments[0];
+        type = arguments[0];
         switch (type) {
             case 0:
-                this.eo =  new sec.sun.awt.geom.EOWindOp ();
+                this.eo = new sec.sun.awt.geom.EOWindOp();
                 break;
             case 1:
-                this.nz =  new sec.sun.awt.geom.NZWindOp ();
+                this.nz = new sec.sun.awt.geom.NZWindOp();
                 break;
             default:
                 break;
         }
     }//, "~N");
-    //Clazz.defineMethod (c$, "calculate", 
-    this.calculate=function (left, right) 
+    this.calculate = function(left, right)
     {
-        //alert(left);
-        //alert(right);
-        var edges =  new sec.sun.awt.geom.Vector ();
-        sec.sun.awt.geom.AreaOp2.addEdges (edges, left, 0);
-        //alert(edges);
-        sec.sun.awt.geom.AreaOp2.addEdges (edges, right, 1);
-        //alert(edges);
-        edges = this.pruneEdges (edges);
-        //alert(edges.size());
-        if (false) 
+        var edges = new sec.sun.awt.geom.Vector();
+        sec.sun.awt.geom.AreaOp2.addEdges(edges, left, 0);
+        sec.sun.awt.geom.AreaOp2.addEdges(edges, right, 1);
+        edges = this.pruneEdges(edges);
+        if (false)
         {
-            System.out.println ("result: ");
-            var numcurves = edges.size ();
-            var curvelist = edges.toArray2 ();
+            System.out.println("result: ");
+            var numcurves = edges.size();
+            var curvelist = edges.toArray2();
             for (var i = 0; i < numcurves; i++) {
-                System.out.println ("curvelist[" + i + "] = " + curvelist[i]);
+                System.out.println("curvelist[" + i + "] = " + curvelist[i]);
             }
         }
         return edges;
     };//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
-    //c$.addEdges = Clazz.defineMethod (c$, "addEdges", 
-    //Clazz.defineMethod (c$, "pruneEdges", 
-    this.pruneEdges = function (edges) 
+    this.pruneEdges = function(edges)
     {
-        var eo =  new sec.sun.awt.geom.EOWindOp ();
-        var nz =  new sec.sun.awt.geom.NZWindOp ();
-        var numedges = edges.size ();
+        var eo = new sec.sun.awt.geom.EOWindOp();
+        var nz = new sec.sun.awt.geom.NZWindOp();
+        var numedges = edges.size();
         if (numedges < 2) {
             return edges;
         }
-        var edgelist =  new Array (numedges);
-        //alert(numedges);
-        var _enum = edges.elements ();
+        var edgelist = new Array(numedges);
+        var _enum = edges.elements();
         var k = 0;
-        while (_enum.hasMoreElements ()) {
-            edgelist[k++] = _enum.nextElement ();
+        while (_enum.hasMoreElements()) {
+            edgelist[k++] = _enum.nextElement();
         }
-        //alert(edgelist.length);
         sec.sun.awt.geom.Arrays.sort(edgelist);
-        //alert(edgelist.length);
         if (false) {
-            System.out.println ("pruning: ");
+            System.out.println("pruning: ");
             for (var i = 0; i < numedges; i++) {
-                System.out.println ("edgelist[" + i + "] = " + edgelist[i]);
+                System.out.println("edgelist[" + i + "] = " + edgelist[i]);
             }
         }
         var e;
@@ -82,17 +64,15 @@ sec.sun.awt.geom.AreaOp2=function()
         var right = 0;
         var cur = 0;
         var next = 0;
-        var yrange =  Clazz.newArray (2, 0);
-        var subcurves =  new sec.sun.awt.geom.Vector ();
-        var chains =  new sec.sun.awt.geom.Vector ();
-        var links =  new sec.sun.awt.geom.Vector ();
-        //alert(left);
+        var yrange = Clazz.newArray(2, 0);
+        var subcurves = new sec.sun.awt.geom.Vector();
+        var chains = new sec.sun.awt.geom.Vector();
+        var links = new sec.sun.awt.geom.Vector();
         while (left < numedges) {
-            //alert(left);
             var y = yrange[0];
             for (cur = next = right - 1; cur >= left; cur--) {
                 e = edgelist[cur];
-                if (e.getCurve ().getYBot () > y) {
+                if (e.getCurve().getYBot() > y) {
                     if (next > cur) {
                         edgelist[next] = e;
                     }
@@ -100,61 +80,54 @@ sec.sun.awt.geom.AreaOp2=function()
                 }
             }
             left = next + 1;
-            //alert(left);
             if (left >= right) {
                 if (right >= numedges) {
                     break;
                 }
-                y = edgelist[right].getCurve ().getYTop ();
+                y = edgelist[right].getCurve().getYTop();
                 if (y > yrange[0]) {
-                    sec.sun.awt.geom.AreaOp2.finalizeSubCurves (subcurves, chains);
+                    sec.sun.awt.geom.AreaOp2.finalizeSubCurves(subcurves, chains);
                 }
                 yrange[0] = y;
-            }while (right < numedges) {
+            }
+            while (right < numedges) {
                 e = edgelist[right];
-                if (e.getCurve ().getYTop () > y) {
+                if (e.getCurve().getYTop() > y) {
                     break;
                 }
                 right++;
             }
-            //alert(right);
-            yrange[1] = edgelist[left].getCurve ().getYBot ();
+            yrange[1] = edgelist[left].getCurve().getYBot();
             if (right < numedges) {
-                y = edgelist[right].getCurve ().getYTop ();
+                y = edgelist[right].getCurve().getYTop();
                 if (yrange[1] > y) {
                     yrange[1] = y;
                 }
             }
-            //alert(yrange[0]);
-            //alert(yrange[1]);
             if (false) {
-                System.out.println ("current line: y = [" + yrange[0] + ", " + yrange[1] + "]");
+                System.out.println("current line: y = [" + yrange[0] + ", " + yrange[1] + "]");
                 for (cur = left; cur < right; cur++) {
-                    System.out.println ("  " + edgelist[cur]);
+                    System.out.println("  " + edgelist[cur]);
                 }
             }
             var nexteq = 1;
             for (cur = left; cur < right; cur++) {
                 e = edgelist[cur];
-                e.setEquivalence (0);
-                //alert(e);
+                e.setEquivalence(0);
                 for (next = cur; next > left; next--) {
-                    //alert(next);
                     var prevedge = edgelist[next - 1];
-                    //alert(prevedge);
-                    var ordering = e.compareTo (prevedge, yrange);
-                    //alert(ordering);
+                    var ordering = e.compareTo(prevedge, yrange);
                     if (yrange[1] <= yrange[0]) {
-                        throw  new InternalError ("backstepping to " + yrange[1] + " from " + yrange[0]);
+                        throw  new InternalError("backstepping to " + yrange[1] + " from " + yrange[0]);
                     }
                     if (ordering >= 0) {
-                        if (ordering == 0) {
-                            var eq = prevedge.getEquivalence ();
-                            if (eq == 0) {
+                        if (ordering === 0) {
+                            var eq = prevedge.getEquivalence();
+                            if (eq === 0) {
                                 eq = nexteq++;
-                                prevedge.setEquivalence (eq);
+                                prevedge.setEquivalence(eq);
                             }
-                            e.setEquivalence (eq);
+                            e.setEquivalence(eq);
                         }
                         break;
                     }
@@ -163,239 +136,228 @@ sec.sun.awt.geom.AreaOp2=function()
                 edgelist[next] = e;
             }
             if (false) {
-                System.out.println ("current sorted line: y = [" + yrange[0] + ", " + yrange[1] + "]");
+                System.out.println("current sorted line: y = [" + yrange[0] + ", " + yrange[1] + "]");
                 for (cur = left; cur < right; cur++) {
-                    System.out.println ("  " + edgelist[cur]);
+                    System.out.println("  " + edgelist[cur]);
                 }
             }
-            this.newRow ();
+            this.newRow();
             var ystart = yrange[0];
             var yend = yrange[1];
             for (cur = left; cur < right; cur++) {
                 e = edgelist[cur];
                 var etag;
-                var eq = e.getEquivalence ();
-                if (eq != 0) {
-                    var origstate = this.getState ();
-                    etag = (origstate == 1 ? -1 : 1);
+                var eq = e.getEquivalence();
+                if (eq !== 0) {
+                    var origstate = this.getState();
+                    etag = (origstate === 1 ? -1 : 1);
                     var activematch = null;
                     var longestmatch = e;
                     var furthesty = yend;
                     do {
-                        this.classify (e);
-                        if (activematch == null && e.isActiveFor (ystart, etag)) {
+                        this.classify(e);
+                        if (activematch === null && e.isActiveFor(ystart, etag)) {
                             activematch = e;
                         }
-                        y = e.getCurve ().getYBot ();
+                        y = e.getCurve().getYBot();
                         if (y > furthesty) {
                             longestmatch = e;
                             furthesty = y;
                         }
-                    } while (++cur < right && (e = edgelist[cur]).getEquivalence () == eq);
+                    } while (++cur < right && (e = edgelist[cur]).getEquivalence() === eq);
                     --cur;
-                    if (this.getState () == origstate) {
+                    if (this.getState() === origstate) {
                         etag = 0;
                     } else {
-                        e = (activematch != null ? activematch : longestmatch);
+                        e = (activematch !== null ? activematch : longestmatch);
                     }
                 } else {
-                    etag = this.classify (e);
+                    etag = this.classify(e);
                 }
-                if (etag != 0) {
-                    e.record (yend, etag);
-                    links.add ( new sec.sun.awt.geom.CurveLink (e.getCurve (), ystart, yend, etag));
+                if (etag !== 0) {
+                    e.record(yend, etag);
+                    links.add(new sec.sun.awt.geom.CurveLink(e.getCurve(), ystart, yend, etag));
                 }
             }
-            if (this.getState () != -1) {
-                System.out.println ("Still inside at end of active edge list!");
-                System.out.println ("num curves = " + (right - left));
-                System.out.println ("num links = " + links.size ());
-                System.out.println ("y top = " + yrange[0]);
+            if (this.getState() !== -1) {
+                System.out.println("Still inside at end of active edge list!");
+                System.out.println("num curves = " + (right - left));
+                System.out.println("num links = " + links.size());
+                System.out.println("y top = " + yrange[0]);
                 if (right < numedges) {
-                    System.out.println ("y top of next curve = " + edgelist[right].getCurve ().getYTop ());
+                    System.out.println("y top of next curve = " + edgelist[right].getCurve().getYTop());
                 } else {
-                    System.out.println ("no more curves");
+                    System.out.println("no more curves");
                 }
                 for (cur = left; cur < right; cur++) {
                     e = edgelist[cur];
-                    System.out.println (e);
-                    var eq = e.getEquivalence ();
-                    if (eq != 0) {
-                        System.out.println ("  was equal to " + eq + "...");
+                    System.out.println(e);
+                    var eq = e.getEquivalence();
+                    if (eq !== 0) {
+                        System.out.println("  was equal to " + eq + "...");
                     }
                 }
             }
             if (false) {
-                System.out.println ("new links:");
-                for (var i = 0; i < links.size (); i++) {
-                    var link = links.elementAt (i);
-                    System.out.println ("  " + link.getSubCurve ());
+                System.out.println("new links:");
+                for (var i = 0; i < links.size(); i++) {
+                    var link = links.elementAt(i);
+                    System.out.println("  " + link.getSubCurve());
                 }
             }
-            sec.sun.awt.geom.AreaOp2.resolveLinks (subcurves, chains, links);
-            links.clear ();
+            sec.sun.awt.geom.AreaOp2.resolveLinks(subcurves, chains, links);
+            links.clear();
             yrange[0] = yend;
         }
-        //alert('subcurves');
-        sec.sun.awt.geom.AreaOp2.finalizeSubCurves (subcurves, chains);
-        var ret =  new sec.sun.awt.geom.Vector ();
-        var enum_ = subcurves.elements ();
+        sec.sun.awt.geom.AreaOp2.finalizeSubCurves(subcurves, chains);
+        var ret = new sec.sun.awt.geom.Vector();
+        var enum_ = subcurves.elements();
         //alert(enum_);
         var c = null;
         var obj = null;
-        while (enum_.hasMoreElements ()) {
-            link = enum_.nextElement ();
+        while (enum_.hasMoreElements()) {
+            link = enum_.nextElement();
             //alert(link);
-            ret.add (link.getMoveto ());            
+            ret.add(link.getMoveto());
             var nextlink = link;
-            while ((nextlink = nextlink.getNext ()) != null) {
-                if (!link.absorb (nextlink)) {
-                    obj = link.getSubCurve ();
-                    if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order0)) c = (obj).getParent ();
-                    else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order1)) c = (obj).getParent ();
-                    else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order2)) c = (obj).getParent ();
-                    else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order3)) c = (obj).getParent ();
-                    else if (Clazz.instanceOf (obj, sec.sun.awt.geom.CurveObject)) c = obj;
-                    if (c == null) c =  new sec.sun.awt.geom.CurveObject (obj);
-                    ret.add (c);
+            while ((nextlink = nextlink.getNext()) !== null) {
+                if (!link.absorb(nextlink)) {
+                    obj = link.getSubCurve();
+                    if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order0))
+                        c = (obj).getParent();
+                    else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order1))
+                        c = (obj).getParent();
+                    else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order2))
+                        c = (obj).getParent();
+                    else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order3))
+                        c = (obj).getParent();
+                    else if (Clazz.instanceOf(obj, sec.sun.awt.geom.CurveObject))
+                        c = obj;
+                    if (c === null)
+                        c = new sec.sun.awt.geom.CurveObject(obj);
+                    ret.add(c);
                     link = nextlink;
                 }
             }
-            obj = link.getSubCurve ();
-            if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order0)) c = (obj).getParent ();
-            else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order1)) c = (obj).getParent ();
-            else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order2)) c = (obj).getParent ();
-            else if (Clazz.instanceOf (obj, sec.sun.awt.geom.Order3)) c = (obj).getParent ();
-            else if (Clazz.instanceOf (obj, sec.sun.awt.geom.CurveObject)) c = obj;
-            if (c == null) c =  new sec.sun.awt.geom.CurveObject (obj);
-            ret.add (c);
+            obj = link.getSubCurve();
+            if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order0))
+                c = (obj).getParent();
+            else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order1))
+                c = (obj).getParent();
+            else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order2))
+                c = (obj).getParent();
+            else if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order3))
+                c = (obj).getParent();
+            else if (Clazz.instanceOf(obj, sec.sun.awt.geom.CurveObject))
+                c = obj;
+            if (c === null)
+                c = new sec.sun.awt.geom.CurveObject(obj);
+            ret.add(c);
         }
-        //alert('ret');
-        //alert(ret);
         return ret;
     };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector");
-    //Clazz.defineMethod (c$, "newRow", 
-    this.newRow = function () {
-        if (this.eo != null) this.eo.newRow ();
-        else if (this.nz != null) this.nz.newRow ();
+    this.newRow = function() {
+        if (this.eo !== null)
+            this.eo.newRow();
+        else if (this.nz !== null)
+            this.nz.newRow();
     };//, $fz.isPrivate = true, $fz));
-    //Clazz.defineMethod (c$, "getState", 
-    this.getState = function () {
-        if (this.eo != null) return this.eo.getState ();
-        else if (this.nz != null) return this.nz.getState ();
-        else return -1;
+    this.getState = function() {
+        if (this.eo !== null)
+            return this.eo.getState();
+        else if (this.nz !== null)
+            return this.nz.getState();
+        else
+            return -1;
     };//, $fz.isPrivate = true, $fz));
-    //Clazz.defineMethod (c$, "classify", 
-    this.classify = function (e) {
-        if (this.eo != null) return this.eo.classify (e);
-        else if (this.nz != null) return this.nz.classify (e);
-        else return -1;
+    this.classify = function(e) {
+        if (this.eo !== null)
+            return this.eo.classify(e);
+        else if (this.nz !== null)
+            return this.nz.classify(e);
+        else
+            return -1;
     };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Edge");
-//    Clazz.defineStatics (c$,
-//    "EOWINDOP", 0,
-//    "NZWINDOP", 1,
-//    "CTAG_LEFT", 0,
-//    "CTAG_RIGHT", 1,
-//    "ETAG_IGNORE", 0,
-//    "ETAG_ENTER", 1,
-//    "ETAG_EXIT", -1,
-//    "RSTAG_INSIDE", 1,
-//    "RSTAG_OUTSIDE", -1);
-//    c$.EmptyLinkList = c$.prototype.EmptyLinkList =  new Array (2);
-//    c$.EmptyChainList = c$.prototype.EmptyChainList =  new Array (2);
-//});
 };
 
-sec.sun.awt.geom.AreaOp2.EOWINDOP=0;
-sec.sun.awt.geom.AreaOp2.NZWINDOP=1;
-sec.sun.awt.geom.AreaOp2.CTAG_LEFT=0;
-sec.sun.awt.geom.AreaOp2.CTAG_RIGHT=1;
-sec.sun.awt.geom.AreaOp2.ETAG_IGNORE=0;
-sec.sun.awt.geom.AreaOp2.ETAG_ENTER=1;
-sec.sun.awt.geom.AreaOp2.ETAG_EXIT=-1;
-sec.sun.awt.geom.AreaOp2.RSTAG_INSDE=1;
-sec.sun.awt.geom.AreaOp2.RSTAG_OUTSIDE=-1;
-sec.sun.awt.geom.AreaOp2.EmptyLinkList=new Array (2);
-sec.sun.awt.geom.AreaOp2.EmptyChainList=new Array (2);
+sec.sun.awt.geom.AreaOp2.EOWINDOP = 0;
+sec.sun.awt.geom.AreaOp2.NZWINDOP = 1;
+sec.sun.awt.geom.AreaOp2.CTAG_LEFT = 0;
+sec.sun.awt.geom.AreaOp2.CTAG_RIGHT = 1;
+sec.sun.awt.geom.AreaOp2.ETAG_IGNORE = 0;
+sec.sun.awt.geom.AreaOp2.ETAG_ENTER = 1;
+sec.sun.awt.geom.AreaOp2.ETAG_EXIT = -1;
+sec.sun.awt.geom.AreaOp2.RSTAG_INSDE = 1;
+sec.sun.awt.geom.AreaOp2.RSTAG_OUTSIDE = -1;
+sec.sun.awt.geom.AreaOp2.EmptyLinkList = new Array(2);
+sec.sun.awt.geom.AreaOp2.EmptyChainList = new Array(2);
 
-sec.sun.awt.geom.AreaOp2.addEdges = function (edges, curves, curvetag) {
-    //alert('start addEdges');
-    //alert(curves._vector.size());
-    var enum_ = curves.elements ();
-    //alert(enum_);
+sec.sun.awt.geom.AreaOp2.addEdges = function(edges, curves, curvetag) {
+    var enum_ = curves.elements();
     var c = null;
     var obj = null;
-    //alert('start addEdges');
-    while (enum_.hasMoreElements ()) 
+    while (enum_.hasMoreElements())
     {
-        //alert();
-        obj = enum_.nextElement ();
-        //alert(obj);
-        if (Clazz.instanceOf (obj, sec.sun.awt.geom.CurveObject))
+        obj = enum_.nextElement();
+        if (Clazz.instanceOf(obj, sec.sun.awt.geom.CurveObject))
         {
             c = obj;
         }
-        else 
+        else
         {
-            //alert('co');
-            c =  new sec.sun.awt.geom.CurveObject (obj);
+            c = new sec.sun.awt.geom.CurveObject(obj);
         }
-        //alert(c.getOrder ());
-        if (c.getOrder () > 0) {            
-            edges.add ( new sec.sun.awt.geom.Edge (c, curvetag));
+        if (c.getOrder() > 0) {
+            edges.add(new sec.sun.awt.geom.Edge(c, curvetag));
         }
-        //alert(edges._vector.size());
     }
-    //alert(edges.size());
 };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,~N");
-//c$.finalizeSubCurves = Clazz.defineMethod (c$, "finalizeSubCurves", 
-sec.sun.awt.geom.AreaOp2.finalizeSubCurves=function (subcurves, chains) {
-    var numchains = chains.size ();
-    if (numchains == 0) {
-        return ;
+sec.sun.awt.geom.AreaOp2.finalizeSubCurves = function(subcurves, chains) {
+    var numchains = chains.size();
+    if (numchains === 0) {
+        return;
     }
-    if ((numchains & 1) != 0) {
-        throw  new InternalError ("Odd number of chains!");
+    if ((numchains & 1) !== 0) {
+        throw  new InternalError("Odd number of chains!");
     }
-    var endlist =  new Array (numchains);
-    chains.toArray (endlist);
+    var endlist = new Array(numchains);
+    chains.toArray(endlist);
     for (var i = 1; i < numchains; i += 2) {
         var open = endlist[i - 1];
         var close = endlist[i];
-        var subcurve = open.linkTo (close);
-        if (subcurve != null) {
-            subcurves.add (subcurve);
+        var subcurve = open.linkTo(close);
+        if (subcurve !== null) {
+            subcurves.add(subcurve);
         }
     }
-    chains.clear ();
+    chains.clear();
 };//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
-//c$.resolveLinks = Clazz.defineMethod (c$, "resolveLinks", 
-sec.sun.awt.geom.AreaOp2.resolveLinks=function (subcurves, chains, links) {
-    var numlinks = links.size ();
+sec.sun.awt.geom.AreaOp2.resolveLinks = function(subcurves, chains, links) {
+    var numlinks = links.size();
     var linklist;
-    if (numlinks == 0) {
+    if (numlinks === 0) {
         linklist = sec.sun.awt.geom.AreaOp2.EmptyLinkList;
     } else {
-        if ((numlinks & 1) != 0) {
-            throw  new InternalError ("Odd number of new curves!");
+        if ((numlinks & 1) !== 0) {
+            throw  new InternalError("Odd number of new curves!");
         }
-        linklist =  new Array (numlinks + 2);
-        links.toArray (linklist);
+        linklist = new Array(numlinks + 2);
+        links.toArray(linklist);
     }
-    var numchains = chains.size ();
+    var numchains = chains.size();
     var endlist;
-    if (numchains == 0) {
+    if (numchains === 0) {
         endlist = sec.sun.awt.geom.AreaOp2.EmptyChainList;
     } else {
-        if ((numchains & 1) != 0) {
-            throw  new InternalError ("Odd number of chains!");
+        if ((numchains & 1) !== 0) {
+            throw  new InternalError("Odd number of chains!");
         }
-        endlist =  new Array (numchains + 2);
-        chains.toArray (endlist);
+        endlist = new Array(numchains + 2);
+        chains.toArray(endlist);
     }
     var curchain = 0;
     var curlink = 0;
-    chains.clear ();
+    chains.clear();
     var chain = endlist[0];
     var nextchain = endlist[1];
     var link = linklist[0];
@@ -404,37 +366,37 @@ sec.sun.awt.geom.AreaOp2.resolveLinks=function (subcurves, chains, links) {
         var connectchains = (link == null);
         var connectlinks = (chain == null);
         if (!connectchains && !connectlinks) {
-            connectchains = ((curchain & 1) == 0 && chain.getX () == nextchain.getX ());
-            connectlinks = ((curlink & 1) == 0 && link.getX () == nextlink.getX ());
+            connectchains = ((curchain & 1) == 0 && chain.getX() == nextchain.getX());
+            connectlinks = ((curlink & 1) == 0 && link.getX() == nextlink.getX());
             if (!connectchains && !connectlinks) {
-                var cx = chain.getX ();
-                var lx = link.getX ();
-                connectchains = (nextchain != null && cx < lx && sec.sun.awt.geom.AreaOp2.obstructs (nextchain.getX (), lx, curchain));
-                connectlinks = (nextlink != null && lx < cx && sec.sun.awt.geom.AreaOp2.obstructs (nextlink.getX (), cx, curlink));
+                var cx = chain.getX();
+                var lx = link.getX();
+                connectchains = (nextchain != null && cx < lx && sec.sun.awt.geom.AreaOp2.obstructs(nextchain.getX(), lx, curchain));
+                connectlinks = (nextlink != null && lx < cx && sec.sun.awt.geom.AreaOp2.obstructs(nextlink.getX(), cx, curlink));
             }
         }
         if (connectchains) {
-            var subcurve = chain.linkTo (nextchain);
-            if (subcurve != null) {
-                subcurves.add (subcurve);
+            var subcurve = chain.linkTo(nextchain);
+            if (subcurve !== null) {
+                subcurves.add(subcurve);
             }
             curchain += 2;
             chain = endlist[curchain];
             nextchain = endlist[curchain + 1];
         }
         if (connectlinks) {
-            var openend =  new sec.sun.awt.geom.ChainEnd (link, null);
-            var closeend =  new sec.sun.awt.geom.ChainEnd (nextlink, openend);
-            openend.setOtherEnd (closeend);
-            chains.add (openend);
-            chains.add (closeend);
+            var openend = new sec.sun.awt.geom.ChainEnd(link, null);
+            var closeend = new sec.sun.awt.geom.ChainEnd(nextlink, openend);
+            openend.setOtherEnd(closeend);
+            chains.add(openend);
+            chains.add(closeend);
             curlink += 2;
             link = linklist[curlink];
             nextlink = linklist[curlink + 1];
         }
         if (!connectchains && !connectlinks) {
-            chain.addLink (link);
-            chains.add (chain);
+            chain.addLink(link);
+            chains.add(chain);
             curchain++;
             chain = nextchain;
             nextchain = endlist[curchain + 1];
@@ -443,11 +405,10 @@ sec.sun.awt.geom.AreaOp2.resolveLinks=function (subcurves, chains, links) {
             nextlink = linklist[curlink + 1];
         }
     }
-    if ((chains.size () & 1) != 0) {
-        System.out.println ("Odd number of chains!");
+    if ((chains.size() & 1) !== 0) {
+        System.out.println("Odd number of chains!");
     }
 };//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
-//c$.obstructs = Clazz.defineMethod (c$, "obstructs", 
-sec.sun.awt.geom.AreaOp2.obstructs=function (v1, v2, phase) {
-    return (((phase & 1) == 0) ? (v1 <= v2) : (v1 < v2));
+sec.sun.awt.geom.AreaOp2.obstructs = function(v1, v2, phase) {
+    return (((phase & 1) === 0) ? (v1 <= v2) : (v1 < v2));
 };//, "~N,~N,~N");

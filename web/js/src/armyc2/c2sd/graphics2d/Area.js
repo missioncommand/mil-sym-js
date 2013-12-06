@@ -4,7 +4,7 @@ armyc2.c2sd.graphics2d.Area=function()
 {
     this._path = null;
     this._pathIterator = null;
-    if(arguments.length==1) 
+    if(arguments.length===1) 
     {
         var obj=arguments[0];
         var poly = null;
@@ -19,7 +19,7 @@ armyc2.c2sd.graphics2d.Area=function()
             for (j = 0; j < poly.size (); j++) 
             {
                 pt = poly.getPts ().get (j);
-                if (j == 0) 
+                if (j === 0) 
                 {
                     this._path.moveTo (pt.x, pt.y);
                     this._pathIterator.moveTo (pt.x, pt.y);
@@ -95,7 +95,7 @@ armyc2.c2sd.graphics2d.Area.prototype.intersect=function (area) {
         var j = 0;
         var polygon = area.getPathIterator (null).getPoints ();
         var hatchLines = this.getPathIterator (null).getPoints ();
-        if (polygon.get (0).x != polygon.get (polygon.size () - 1).x || polygon.get (0).y != polygon.get (polygon.size () - 1).y) {
+        if (polygon.get (0).x !== polygon.get (polygon.size () - 1).x || polygon.get (0).y !== polygon.get (polygon.size () - 1).y) {
             polygon.add ( new armyc2.c2sd.JavaLineArray.POINT2 (polygon.get (polygon.size () - 1)));
         }
         var hatchLine = null;
@@ -106,9 +106,9 @@ armyc2.c2sd.graphics2d.Area.prototype.intersect=function (area) {
         for (j = 0; j < hatchLines.size() - 1; j++) {
             hatchLine = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (hatchLines.get (j).x, hatchLines.get (j).y, hatchLines.get (j + 1).x, hatchLines.get (j + 1).y);
             rectHatch = hatchLine.getBounds2D ();
-            if (rectHatch.intersectsRect (rectPoly) == false) continue ;
+            if (rectHatch.intersectsRect (rectPoly) === false) continue ;
             ptsTemp = armyc2.c2sd.graphics2d.Area.getLineIntersectPoints (polygon, hatchLine);
-            if (ptsTemp != null) 
+            if (ptsTemp !== null) 
                 pts.addAll (ptsTemp);
         }
         this.getPathIterator (null).getPoints ().clear ();
@@ -200,7 +200,7 @@ armyc2.c2sd.graphics2d.Area.getMBR=function (polygon) {
     return  new armyc2.c2sd.graphics2d.Rectangle2D (left, top, right - left, bottom - top);
 };
 armyc2.c2sd.graphics2d.Area.isVertical=function (edge) {
-    if (edge.getX1 () == edge.getX2 ()) return true;
+    if (edge.getX1 () === edge.getX2 ()) return true;
     else return false;
 };
 armyc2.c2sd.graphics2d.Area.adjustVerticalLine = function (line) {
@@ -244,7 +244,7 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
             m2 = (pt0.getY () - pt1.getY ()) / (pt0.getX () - pt1.getX ());
             //alert(m1);
             if (hatchLine.intersectsLine (segment)) {
-                if (m1 == m2) {
+                if (m1 === m2) {
                     ptsPath.add (pt0);
                     ptsPath.add (pt1);
                 } else {
@@ -262,7 +262,7 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
         pts =  new java.util.ArrayList ();
         for (k = 0; k < ptsPath.size (); k++) {
             pt = ptsPath.get (k);
-            if (k % 2 == 0) {
+            if (k % 2 === 0) {
                 pts.add ( new armyc2.c2sd.JavaLineArray.POINT2 (pt.getX (), pt.getY (), 0));
             } else {
                 pts.add ( new armyc2.c2sd.JavaLineArray.POINT2 (pt.getX (), pt.getY (), 1));

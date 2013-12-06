@@ -98,7 +98,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             default:
                 break;
         }
-        if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon (linetype) == true) result = true;
+        if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon (linetype) === true) result = true;
         return result;
     },    
     FilterPoints:function (tg) {
@@ -182,7 +182,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             for (j = 1; j < tg.Pixels.size (); j++) {
                 currentPt = tg.Pixels.get (j);
                 currentPtGeo = tg.LatLongs.get (j);
-                if (currentPt.style == -1) {
+                if (currentPt.style === -1) {
                     lastGoodPt = currentPt;
                     pts.add (currentPt);
                     ptsGeo.add (currentPtGeo);
@@ -199,14 +199,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                             ptsGeo.add (currentPtGeo);
                             foundGoodPt = true;
                         } else {
-                            if (j == tg.Pixels.size () - 1) {
+                            if (j === tg.Pixels.size () - 1) {
                                 pts.set (pts.size () - 1, currentPt);
                                 ptsGeo.set (ptsGeo.size () - 1, currentPtGeo);
                             }
                         }
                         break;
                     default:
-                        if (dist > minSpikeDistance || j == tg.Pixels.size () - 1) {
+                        if (dist > minSpikeDistance || j === tg.Pixels.size () - 1) {
                             lastGoodPt = currentPt;
                             pts.add (currentPt);
                             ptsGeo.add (currentPtGeo);
@@ -215,7 +215,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                         break;
                 }
             }
-            if (foundGoodPt == true) {
+            if (foundGoodPt === true) {
                 tg.Pixels = pts;
                 tg.LatLongs = ptsGeo;
             }
@@ -416,7 +416,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                 pts = tg.Pixels;
                 ptsGeo = tg.LatLongs;
             }
-            if (foundGoodPoint == false) {
+            if (foundGoodPoint === false) {
                 for (j = 2; j < tg.Pixels.size () - 1; j++) {
                     ptj = tg.Pixels.get (j);
                     ptjGeo = tg.LatLongs.get (j);
@@ -487,7 +487,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                 case 25221000:
                 case 25222000:
                     var strH = tg.get_H ();
-                    if (strH != null && !strH.isEmpty ()) {
+                    if (strH !== null && !strH.isEmpty ()) {
                         var strs = strH.$plit (",");
                         if (strs.length > 1) return ;
                     }
@@ -502,7 +502,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             for (var j = 1; j < tg.Pixels.size (); j++) {
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j));
-                if (ptCurrent.x == ptLast.x && ptCurrent.y == ptLast.y) {
+                if (ptCurrent.x === ptLast.x && ptCurrent.y === ptLast.y) {
                     if (tg.Pixels.size () > 2) {
                         tg.Pixels.remove (j);
                         tg.LatLongs.remove (j);
@@ -572,10 +572,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                     for (var j = 0; j < shapes.size (); j++) {
                         shape = shapes.get (j);
                         shapeStyle = shape.get_Style ();
-                        if (shapeStyle != 1) {
+                        if (shapeStyle !== 1) {
                             shape.setFillColor (tg.get_FillColor ());
                             shape.set_Fillstyle (tg.get_FillStyle ());
-                        } else if (j == 0 && status.equalsIgnoreCase ("A")) {
+                        } else if (j === 0 && status.equalsIgnoreCase ("A")) {
                             shape.setFillColor (tg.get_FillColor ());
                             shape.set_Fillstyle (tg.get_FillStyle ());
                         }

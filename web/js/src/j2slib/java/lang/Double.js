@@ -1,58 +1,58 @@
 //Clazz.load (["java.lang.Comparable", "$.Number"], "java.lang.Double", null, function () {
-Double = function () {
+Double = function() {
     //Clazz.instantialize (this, arguments);
     //};
     //Clazz.decorateAsType (Double, "Double", Number, Comparable, null, true);
-    this.value=new Number(0);
-    if(arguments.length===1)
+    this.value = new Number(0);
+    if (arguments.length === 1)
     {
-        var t=arguments[0];
-        this.value=new Number(t);
+        var t = arguments[0];
+        this.value = new Number(t);
         //return this.value;
     }
-    this.valueOf=function()
+    this.valueOf = function()
     {
         return this.value;
     };
-    this.doubleValue=function()
+    this.doubleValue = function()
     {
         return this.value;
     };
 };
-Double.isNaN=function(t)
+Double.isNaN = function(t)
 {
     return isNaN(t);
 };
-Double.parseDouble=function()
+Double.parseDouble = function()
 {
-    if (arguments.length===1)
+    if (arguments.length === 1)
     {
-        var t=arguments[0];
-        var n=new Number(t);
+        var t = arguments[0];
+        var n = new Number(t);
         return n;
     }
     return null;
 };
-Double.isInfinite=function()
+Double.isInfinite = function()
 {
-    if (arguments.length===1)
+    if (arguments.length === 1)
     {
-        var t=arguments[0];
-        var n=new Number(t);
-        var b=!isFinite(n);
+        var t = arguments[0];
+        var n = new Number(t);
+        var b = !isFinite(n);
         return b;
     }
     else
         return true;
 };
-Double.toString=function()
+Double.toString = function()
 {
-    if (arguments.length===1)
+    if (arguments.length === 1)
     {
-        var t=arguments[0];
-        var n=new Number(t);
+        var t = arguments[0];
+        var n = new Number(t);
         //var b=!isFinite(n);
-        var s=n.toString();
+        var s = n.toString();
         return s;
     }
     else

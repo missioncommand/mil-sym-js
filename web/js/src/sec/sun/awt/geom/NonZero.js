@@ -4,8 +4,6 @@ sec.sun.awt=sec.sun.awt || {};
 sec.sun.awt.geom=sec.sun.awt.geom || {};
 sec.sun.awt.geom.NonZero=function()
 {
-    //﻿Clazz.declarePackage ("sec.sun.awt.geom");
-    //c$ = Clazz.decorateAsClass (function () {
     this.limit = 0;
     this.yranges = null;
     this.xlo = 0;
@@ -13,13 +11,7 @@ sec.sun.awt.geom.NonZero=function()
     this.xhi = 0;
     this.yhi = 0;
     this.crosscounts = null;
-    //    Clazz.instantialize (this, arguments);
-    //}, sec.sun.awt.geom, "NonZero");
-    //Clazz.prepareFields (c$, function () {
     this.yranges =  Clazz.newArray (10, 0);
-    //});
-    //Clazz.makeConstructor (c$, 
-    //function (xlo, ylo, xhi, yhi) {
     var xlo=arguments[0];
     var ylo=arguments[1];
     var xhi=arguments[2];
@@ -30,8 +22,6 @@ sec.sun.awt.geom.NonZero=function()
     this.xhi = xhi;
     this.yhi = yhi;
     this.crosscounts =  Clazz.newArray (Math.floor (this.yranges.length / 2), 0);
-    //}, "~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "covers", 
     this.covers=function (ystart, yend) {
         var i = 0;
         while (i < this.limit) {
@@ -59,7 +49,6 @@ sec.sun.awt.geom.NonZero=function()
             System.arraycopy (this.crosscounts, Math.floor (cur / 2) + 1, this.crosscounts, Math.floor (cur / 2), Math.floor (rem / 2));
         }
     };//, "~N");
-    //Clazz.defineMethod (c$, "insert", 
     this.insert=function (cur, lo, hi, dir) {
         var rem = this.limit - cur;
         var oldranges = this.yranges;
@@ -79,7 +68,6 @@ sec.sun.awt.geom.NonZero=function()
         this.crosscounts[Math.floor (cur / 2)] = dir;
         this.limit += 2;
     };//, "~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "record", 
     this.record=function (ystart, yend, direction) {
         if (ystart >= yend) {
             return ;
@@ -92,8 +80,8 @@ sec.sun.awt.geom.NonZero=function()
             var rdir = this.crosscounts[Math.floor (cur / 2)];
             var yrlo = this.yranges[cur + 0];
             var yrhi = this.yranges[cur + 1];
-            if (yrhi == ystart && rdir == direction) {
-                if (cur + 2 == this.limit) {
+            if (yrhi === ystart && rdir === direction) {
+                if (cur + 2 === this.limit) {
                     this.yranges[cur + 1] = yend;
                     return ;
                 }
@@ -107,7 +95,7 @@ sec.sun.awt.geom.NonZero=function()
                 this.insert (cur, ystart, yend, direction);
                 return ;
             }
-            if (yend == yrlo && rdir == direction) {
+            if (yend === yrlo && rdir === direction) {
                 this.yranges[cur] = ystart;
                 return ;
             }
@@ -122,7 +110,7 @@ sec.sun.awt.geom.NonZero=function()
             }
             var newdir = rdir + direction;
             var newend = Math.min (yend, yrhi);
-            if (newdir == 0) {
+            if (newdir === 0) {
                 this.remove (cur);
             } else {
                 this.crosscounts[Math.floor (cur / 2)] = newdir;
@@ -138,27 +126,22 @@ sec.sun.awt.geom.NonZero=function()
             this.insert (cur, ystart, yend, direction);
         }
     };//, "~N,~N,~N");
-    //Clazz.defineMethod (c$, "getXLo", 
     this.getXLo=function () {
         return this.xlo;
     };//);
-    //Clazz.defineMethod (c$, "getYLo", 
     this.getYLo=function () {
         return this.ylo;
     };//);
-    //Clazz.defineMethod (c$, "getXHi", 
     this.getXHi=function () {
         return this.xhi;
     };//);
-    //Clazz.defineMethod (c$, "getYHi", 
     this.getYHi=function () {
         return this.yhi;
     };//);
     //Clazz.defineMethod (c$, "isEmpty", 
     this.isEmpty=function () {
-        return (this.limit == 0);
+        return (this.limit === 0);
     };//);
-    //Clazz.defineMethod (c$, "accumulateLine", 
     this.accumulateLine=function (x0, y0, x1, y1) {
         if (y0 <= y1) {
             return this.accumulateLine2 (x0, y0, x1, y1, 1);
@@ -166,7 +149,6 @@ sec.sun.awt.geom.NonZero=function()
             return this.accumulateLine2 (x1, y1, x0, y0, -1);
         }
     };//, "~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "accumulateLine2", 
     this.accumulateLine2=function (x0, y0, x1, y1, direction) {
         if (this.yhi <= y0 || this.ylo >= y1) {
             return false;
@@ -174,7 +156,7 @@ sec.sun.awt.geom.NonZero=function()
         if (x0 >= this.xhi && x1 >= this.xhi) {
             return false;
         }
-        if (y0 == y1) {
+        if (y0 === y1) {
             return (x0 >= this.xlo || x1 >= this.xlo);
         }
         var xstart;
@@ -206,7 +188,5 @@ sec.sun.awt.geom.NonZero=function()
         this.record (ystart, yend, direction);
         return false;
     };//, "~N,~N,~N,~N,~N");
-//Clazz.defineStatics (c$,
-//  "debug", false);
 };
 sec.sun.awt.geom.NonZero.debug=false;

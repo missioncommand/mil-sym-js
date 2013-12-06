@@ -4,23 +4,13 @@ sec.sun.awt=sec.sun.awt || {};
 sec.sun.awt.geom=sec.sun.awt.geom || {};
 sec.sun.awt.geom.EvenOdd=function()
 {
-
-
-    //﻿Clazz.declarePackage ("sec.sun.awt.geom");
-    //c$ = Clazz.decorateAsClass (function () {
     this.limit = 0;
     this.yranges = null;
     this.xlo = 0;
     this.ylo = 0;
     this.xhi = 0;
     this.yhi = 0;
-    //Clazz.instantialize (this, arguments);
-    //}, sec.sun.awt.geom, "EvenOdd");
-    //Clazz.prepareFields (c$, function () {
     this.yranges =  Clazz.newArray (10, 0);
-    //});
-    //Clazz.makeConstructor (c$, 
-    //function (xlo, ylo, xhi, yhi) {
     var xlo=arguments[0];
     var ylo=arguments[1];
     var xhi=arguments[2];
@@ -29,12 +19,9 @@ sec.sun.awt.geom.EvenOdd=function()
     this.ylo = ylo;
     this.xhi = xhi;
     this.yhi = yhi;
-    //}, "~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "covers", 
     this.covers=function (ystart, yend) {
-        return (this.limit == 2 && this.yranges[0] <= ystart && this.yranges[1] >= yend);
+        return (this.limit === 2 && this.yranges[0] <= ystart && this.yranges[1] >= yend);
     };//, "~N,~N");
-    //Clazz.defineMethod (c$, "record", 
     this.record=function (ystart, yend, direction) {
         if (ystart >= yend) {
             return ;
@@ -72,7 +59,7 @@ sec.sun.awt.geom.EvenOdd=function()
                 yhl = yrhi;
                 yhh = yend;
             }
-            if (ylh == yhl) {
+            if (ylh === yhl) {
                 ystart = yll;
                 yend = yhh;
             } else {
@@ -81,7 +68,7 @@ sec.sun.awt.geom.EvenOdd=function()
                     yhl = ylh;
                     ylh = ystart;
                 }
-                if (yll != ylh) {
+                if (yll !== ylh) {
                     this.yranges[to++] = yll;
                     this.yranges[to++] = ylh;
                 }
@@ -107,15 +94,12 @@ sec.sun.awt.geom.EvenOdd=function()
         }
         this.limit = to;
     };//, "~N,~N,~N");
-    //Clazz.defineMethod (c$, "getXLo", 
     this.getXLo=function () {
         return this.xlo;
     };//);
-    //Clazz.defineMethod (c$, "getYLo", 
     this.getYLo=function () {
         return this.ylo;
     };//);
-    //Clazz.defineMethod (c$, "getXHi", 
     this.getXHi=function () {
         return this.xhi;
     };//);
@@ -123,11 +107,9 @@ sec.sun.awt.geom.EvenOdd=function()
     this.getYHi=function () {
         return this.yhi;
     };//);
-    //Clazz.defineMethod (c$, "isEmpty", 
     this.isEmpty=function () {
-        return (this.limit == 0);
+        return (this.limit === 0);
     };//);
-    //Clazz.defineMethod (c$, "accumulateLine", 
     this.accumulateLine=function (x0, y0, x1, y1) {
         if (y0 <= y1) {
             return this.accumulateLine2 (x0, y0, x1, y1, 1);
@@ -135,7 +117,6 @@ sec.sun.awt.geom.EvenOdd=function()
             return this.accumulateLine2 (x1, y1, x0, y0, -1);
         }
     };//, "~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "accumulateLine2", 
     this.accumulateLine2=function (x0, y0, x1, y1, direction) {
         if (this.yhi <= y0 || this.ylo >= y1) {
             return false;
@@ -143,7 +124,7 @@ sec.sun.awt.geom.EvenOdd=function()
         if (x0 >= this.xhi && x1 >= this.xhi) {
             return false;
         }
-        if (y0 == y1) {
+        if (y0 === y1) {
             return (x0 >= this.xlo || x1 >= this.xlo);
         }
         var xstart;
@@ -175,8 +156,5 @@ sec.sun.awt.geom.EvenOdd=function()
         this.record (ystart, yend, direction);
         return false;
     };//, "~N,~N,~N,~N,~N");
-//Clazz.defineStatics (c$,
-//"debug", false);
-
 };
 sec.sun.awt.geom.EvenOdd.debug=false;

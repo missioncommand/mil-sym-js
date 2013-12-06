@@ -4,9 +4,6 @@ sec.sun.awt=sec.sun.awt || {};
 sec.sun.awt.geom=sec.sun.awt.geom || {};
 sec.sun.awt.geom.Order3=function()
 {
-    //﻿Clazz.declarePackage ("sec.sun.awt.geom");
-    //Clazz.load (null, "sec.sun.awt.geom.Order3", ["sec.sun.awt.geom.Curve", "$.Order2"], function () {
-    //c$ = Clazz.decorateAsClass (function () {
     this.x0 = 0;
     this.y0 = 0;
     this.cx0 = 0;
@@ -33,8 +30,6 @@ sec.sun.awt.geom.Order3=function()
     this.TforY3 = 0;
     this.YforT3 = 0;
     this._parent = null;
-    //Clazz.makeConstructor (c$, 
-    //function (x0, y0, cx0, cy0, cx1, cy1, x1, y1, direction) {
     var x0=arguments[0];
     var y0=arguments[1];
     var cx0=arguments[2];
@@ -66,77 +61,58 @@ sec.sun.awt.geom.Order3=function()
     this.ycoeff2 = (cy1 - cy0 - cy0 + y0) * 3.0;
     this.ycoeff3 = y1 - (cy1 - cy0) * 3.0 - y0;
     this.YforT1 = this.YforT2 = this.YforT3 = y0;
-    //}, "~N,~N,~N,~N,~N,~N,~N,~N,~N");
-    //    Clazz.instantialize (this, arguments);
-    //}, sec.sun.awt.geom, "Order3");
-    //Clazz.defineMethod (c$, "getOrder", 
     this.getOrder=function () {
         return 3;
     };//);
-    //Clazz.defineMethod (c$, "getXTop", 
     this.getXTop=function () {
         return this.x0;
     };//);
-    //Clazz.defineMethod (c$, "getYTop", 
     this.getYTop=function () {
         return this.y0;
     };//);
-    //Clazz.defineMethod (c$, "getXBot", 
     this.getXBot=function () {
         return this.x1;
     };//);
-    //Clazz.defineMethod (c$, "getYBot", 
     this.getYBot=function () {
         return this.y1;
     };//);
-    //Clazz.defineMethod (c$, "getXMin", 
     this.getXMin=function () {
         return this.xmin;
     };//);
-    //Clazz.defineMethod (c$, "getXMax", 
     this.getXMax=function () {
         return this.xmax;
     };//);
-    //Clazz.defineMethod (c$, "getX0", 
     this.getX0=function () {
-        return (this.direction == 1) ? this.x0 : this.x1;
+        return (this.direction === 1) ? this.x0 : this.x1;
     };//);
-    //Clazz.defineMethod (c$, "getY0", 
     this.getY0=function () {
-        return (this.direction == 1) ? this.y0 : this.y1;
+        return (this.direction === 1) ? this.y0 : this.y1;
     };//);
-    //Clazz.defineMethod (c$, "getCX0", 
     this.getCX0=function () {
-        return (this.direction == 1) ? this.cx0 : this.cx1;
+        return (this.direction === 1) ? this.cx0 : this.cx1;
     };//);
-    //Clazz.defineMethod (c$, "getCY0", 
     this.getCY0=function () {
-        return (this.direction == 1) ? this.cy0 : this.cy1;
+        return (this.direction === 1) ? this.cy0 : this.cy1;
     };//);
-    //Clazz.defineMethod (c$, "getCX1", 
     this.getCX1=function () {
-        return (this.direction == -1) ? this.cx0 : this.cx1;
+        return (this.direction === -1) ? this.cx0 : this.cx1;
     };//);
-    //Clazz.defineMethod (c$, "getCY1", 
     this.getCY1=function () {
-        return (this.direction == -1) ? this.cy0 : this.cy1;
+        return (this.direction === -1) ? this.cy0 : this.cy1;
     };//);
-    //Clazz.defineMethod (c$, "getX1", 
     this.getX1=function () {
-        return (this.direction == -1) ? this.x0 : this.x1;
+        return (this.direction === -1) ? this.x0 : this.x1;
     };//);
-    //Clazz.defineMethod (c$, "getY1", 
     this.getY1=function () {
-        return (this.direction == -1) ? this.y0 : this.y1;
+        return (this.direction === -1) ? this.y0 : this.y1;
     };//);
-    //Clazz.defineMethod (c$, "TforY", 
     this.TforY=function (y) {
         if (y <= this.y0) return 0;
         if (y >= this.y1) return 1;
-        if (y == this.YforT1) return this.TforY1;
-        if (y == this.YforT2) return this.TforY2;
-        if (y == this.YforT3) return this.TforY3;
-        if (this.ycoeff3 == 0.0) {
+        if (y === this.YforT1) return this.TforY1;
+        if (y === this.YforT2) return this.TforY2;
+        if (y === this.YforT3) return this.TforY3;
+        if (this.ycoeff3 === 0.0) {
             return sec.sun.awt.geom.Order2.TforY (y, this.ycoeff0, this.ycoeff1, this.ycoeff2);
         }
         var a = this.ycoeff2 / this.ycoeff3;
@@ -169,7 +145,7 @@ sec.sun.awt.geom.Order3=function()
             if (!neg) {
                 A = -A;
             }
-            var B = (A == 0.0) ? 0.0 : (Q / A);
+            var B = (A === 0.0) ? 0.0 : (Q / A);
             t = this.refine (a, b, c, y, (A + B) - a_3);
         }
         if (t < 0) {
@@ -177,7 +153,7 @@ sec.sun.awt.geom.Order3=function()
             var t1 = 1;
             while (true) {
                 t = (t0 + t1) / 2;
-                if (t == t0 || t == t1) {
+                if (t === t0 || t === t1) {
                     break;
                 }
                 var yt = this.YforT (t);
@@ -200,7 +176,6 @@ sec.sun.awt.geom.Order3=function()
         }
         return t;
     };//, "~N");
-    //Clazz.defineMethod (c$, "refine", 
     this.refine=function (a, b, c, target, t) {
         if (t < -0.1 || t > 1.1) {
             return -1;
@@ -218,21 +193,21 @@ sec.sun.awt.geom.Order3=function()
         var origt = t;
         var origy = y;
         var useslope = true;
-        while (y != target) {
+        while (y !== target) {
             if (!useslope) {
                 var t2 = (t0 + t1) / 2;
-                if (t2 == t0 || t2 == t1) {
+                if (t2 === t0 || t2 === t1) {
                     break;
                 }
                 t = t2;
             } else {
                 var slope = this.dYforT (t, 1);
-                if (slope == 0) {
+                if (slope === 0) {
                     useslope = false;
                     continue ;
                 }
                 var t2 = t + ((target - y) / slope);
-                if (t2 == t || t2 <= t0 || t2 >= t1) {
+                if (t2 === t || t2 <= t0 || t2 >= t1) {
                     useslope = false;
                     continue ;
                 }
@@ -271,7 +246,6 @@ sec.sun.awt.geom.Order3=function()
         }
         return (t > 1) ? -1 : t;
     };//, "~N,~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "XforY", 
     this.XforY=function (y) {
         if (y <= this.y0) {
             return this.x0;
@@ -281,15 +255,12 @@ sec.sun.awt.geom.Order3=function()
         }
         return this.XforT (this.TforY (y));
     };//, "~N");
-    //Clazz.defineMethod (c$, "XforT", 
     this.XforT=function (t) {
         return (((this.xcoeff3 * t) + this.xcoeff2) * t + this.xcoeff1) * t + this.xcoeff0;
     };//, "~N");
-    //Clazz.defineMethod (c$, "YforT", 
     this.YforT=function (t) {
         return (((this.ycoeff3 * t) + this.ycoeff2) * t + this.ycoeff1) * t + this.ycoeff0;
     };//, "~N");
-    //Clazz.defineMethod (c$, "dXforT", 
     this.dXforT=function (t, deriv) {
         switch (deriv) {
             case 0:
@@ -304,7 +275,6 @@ sec.sun.awt.geom.Order3=function()
                 return 0;
         }
     };//, "~N,~N");
-    //Clazz.defineMethod (c$, "dYforT", 
     this.dYforT=function (t, deriv) {
         switch (deriv) {
             case 0:
@@ -319,7 +289,6 @@ sec.sun.awt.geom.Order3=function()
                 return 0;
         }
     };//, "~N,~N");
-    //Clazz.defineMethod (c$, "nextVertical", 
     this.nextVertical=function (t0, t1) {
         var eqn = [this.xcoeff1, 2 * this.xcoeff2, 3 * this.xcoeff3];
         var numroots = sec.sun.awt.geom.Curve.solveQuadratic (eqn, eqn);
@@ -330,7 +299,6 @@ sec.sun.awt.geom.Order3=function()
         }
         return t1;
     };//, "~N,~N");
-    //Clazz.defineMethod (c$, "enlarge", 
     this.enlarge=function (r) {
         r.add (this.x0, this.y0);
         var eqn = [this.xcoeff1, 2 * this.xcoeff2, 3 * this.xcoeff3];
@@ -343,11 +311,9 @@ sec.sun.awt.geom.Order3=function()
         }
         r.add (this.x1, this.y1);
     };//, "armyc2.c2sd.graphics2d.Rectangle2D");
-    //Clazz.defineMethod (c$, "getWithDirection", 
     this.getWithDirection=function (direction) {
-        return (this.direction == direction ? this : this.getReversedCurve ());
+        return (this.direction === direction ? this : this.getReversedCurve ());
     };//, "~N");
-    //Clazz.defineMethod (c$, "getSubCurve", 
     this.getSubCurve=function (ystart, yend, dir) {
         if (ystart <= this.y0 && yend >= this.y1) {
             return this.getWithDirection (dir);
@@ -382,13 +348,11 @@ sec.sun.awt.geom.Order3=function()
         }
         return  new sec.sun.awt.geom.Order3 (eqn[i + 0], ystart, eqn[i + 2], eqn[i + 3], eqn[i + 4], eqn[i + 5], eqn[i + 6], yend, dir);
     };//, "~N,~N,~N");
-    //Clazz.defineMethod (c$, "getReversedCurve", 
     this.getReversedCurve=function () {
         return  new sec.sun.awt.geom.Order3 (this.x0, this.y0, this.cx0, this.cy0, this.cx1, this.cy1, this.x1, this.y1, -this.direction);
     };//);
-    //Clazz.defineMethod (c$, "getSegment", 
     this.getSegment=function (coords) {
-        if (this.direction == 1) {
+        if (this.direction === 1) {
             coords[0] = this.cx0;
             coords[1] = this.cy0;
             coords[2] = this.cx1;
@@ -405,26 +369,20 @@ sec.sun.awt.geom.Order3=function()
         }
         return 3;
     };//, "~A");
-    //Clazz.defineMethod (c$, "controlPointString", 
     this.controlPointString=function () {
         return (("(" + sec.sun.awt.geom.Curve.round (this.getCX0 ()) + ", " + sec.sun.awt.geom.Curve.round (this.getCY0 ()) + "), ") + ("(" + sec.sun.awt.geom.Curve.round (this.getCX1 ()) + ", " + sec.sun.awt.geom.Curve.round (this.getCY1 ()) + "), "));
     };//);
-    //Clazz.defineMethod (c$, "setParent", 
     this.setParent=function (parent) {
         this._parent = parent;
     };//, "sec.sun.awt.geom.CurveObject");
-    //Clazz.defineMethod (c$, "getParent", 
     this.getParent=function () {
         return this._parent;
     };//);
-//});
-
 };
 
-//c$.insert = Clazz.defineMethod (c$, "insert", 
 sec.sun.awt.geom.Order3.insert=function (curves, tmp, x0, y0, cx0, cy0, cx1, cy1, x1, y1, direction) {
     var numparams = sec.sun.awt.geom.Order3.getHorizontalParams (y0, cy0, cy1, y1, tmp);
-    if (numparams == 0) {
+    if (numparams === 0) {
         sec.sun.awt.geom.Order3.addInstance (curves, x0, y0, cx0, cy0, cx1, cy1, x1, y1, direction);
         return ;
     }
@@ -448,19 +406,18 @@ sec.sun.awt.geom.Order3.insert=function (curves, tmp, x0, y0, cx0, cy0, cx1, cy1
         sec.sun.awt.geom.Order3.split (tmp, 9, t);
     }
     var index = 3;
-    if (direction == -1) {
+    if (direction === -1) {
         index += numparams * 6;
     }while (numparams >= 0) {
         sec.sun.awt.geom.Order3.addInstance (curves, tmp[index + 0], tmp[index + 1], tmp[index + 2], tmp[index + 3], tmp[index + 4], tmp[index + 5], tmp[index + 6], tmp[index + 7], direction);
         numparams--;
-        if (direction == 1) {
+        if (direction === 1) {
             index += 6;
         } else {
             index -= 6;
         }
     }
 };//, "sec.sun.awt.geom.Vector,~A,~N,~N,~N,~N,~N,~N,~N,~N,~N");
-//c$.addInstance = Clazz.defineMethod (c$, "addInstance", 
 sec.sun.awt.geom.Order3.addInstance=  function (curves, x0, y0, cx0, cy0, cx1, cy1, x1, y1, direction) {
     if (y0 > y1) {
         curves.add ( new sec.sun.awt.geom.Order3 (x1, y1, cx1, cy1, cx0, cy0, x0, y0, -direction));
@@ -468,7 +425,6 @@ sec.sun.awt.geom.Order3.addInstance=  function (curves, x0, y0, cx0, cy0, cx1, c
         curves.add ( new sec.sun.awt.geom.Order3 (x0, y0, cx0, cy0, cx1, cy1, x1, y1, direction));
     }
 };//, "sec.sun.awt.geom.Vector,~N,~N,~N,~N,~N,~N,~N,~N,~N");
-//c$.getHorizontalParams = Clazz.defineMethod (c$, "getHorizontalParams", 
 sec.sun.awt.geom.Order3.getHorizontalParams = function (c0, cp0, cp1, c1, ret) 
 {
     if (c0 <= cp0 && cp0 <= cp1 && cp1 <= c1) 
@@ -494,7 +450,6 @@ sec.sun.awt.geom.Order3.getHorizontalParams = function (c0, cp0, cp1, c1, ret)
     }
     return j;
 };//, "~N,~N,~N,~N,~A");
-//c$.split = Clazz.defineMethod (c$, "split", 
 sec.sun.awt.geom.Order3.split = function (coords, pos, t) {
     var x0;
     var y0;

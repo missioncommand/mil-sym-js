@@ -54,8 +54,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.initializeLinetypes (std);
             var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString (symbolId);
             var status = tg.get_Status ();
-            if (status != null && status.equals ("A")) {
-                if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape (lineType) == false) {
+            if (status !== null && status.equals ("A")) {
+                if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape (lineType) === false) {
             }
             }
             tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels (tg.LatLongs, converter);
@@ -77,11 +77,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             modifiers.put ("Y", tg.get_Location ());
             modifiers.put ("N", tg.get_N ());
             milStd =  new armyc2.c2sd.renderer.utilities.MilStdSymbol (symbolId, "1", coords, modifiers);
-            if (lineType == 243112000) {
+            if (lineType === 243112000) {
                 var AM = milStd.getModifiers_AM_AN_X ("AM");
                 var AN = milStd.getModifiers_AM_AN_X ("AN");
                 var X = milStd.getModifiers_AM_AN_X ("XN");
-                if (AM != null) {
+                if (AM !== null) {
                     var numSectors = AM.size () - 1;
                     if (Math.floor (AN.size () / 2) < numSectors) numSectors = Math.floor (AN.size () / 2);
                     var left;
@@ -97,7 +97,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                         max = (AM.get (j + 1)).doubleValue ();
                         strLeftRightMinMax += Double.toString (left) + "," + Double.toString (right) + "," + Double.toString (min) + "," + Double.toString (max);
                         if (j < numSectors - 1) strLeftRightMinMax += ",";
-                        if (X != null && j < X.size ()) {
+                        if (X !== null && j < X.size ()) {
                             strH1 += Double.toString ((X.get (j)).doubleValue ());
                             if (j < numSectors - 1 && j < X.size () - 1) strH1 += ",";
                         }
@@ -117,8 +117,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24322200:
                 case 24322300:
                     X = milStd.getModifiers_AM_AN_X ("XN");
-                    if (X != null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
-                    if (X != null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
+                    if (X !== null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
+                    if (X !== null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
                     break;
                 case 22224000:
                 case 22222000:
@@ -139,7 +139,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     var distPixels = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt0Pixels, pt1Pixels);
                     var pixelsPerMeter = distPixels / dist;
                     AM = milStd.getModifiers_AM_AN_X ("AM");
-                    if (AM != null) {
+                    if (AM !== null) {
                         var H2 = "";
                         for (j = 0; j < AM.size (); j++) {
                             H2 += AM.get (j).toString ();
@@ -151,9 +151,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     var maxWidth = 0;
                     var temp = 0;
                     var maxWidthMeters = 0;
-                    if (tg.get_H2 () != null && tg.get_H2 ().isEmpty () == false) {
+                    if (tg.get_H2 () !== null && tg.get_H2 ().isEmpty () === false) {
                         strRadii = tg.get_H2 ().$plit (",");
-                        if (strRadii != null && strRadii.length > 0) {
+                        if (strRadii !== null && strRadii.length > 0) {
                             for (j = 0; j < strRadii.length; j++) {
                                 if (!Double.isNaN (Double.parseDouble (strRadii[j]))) {
                                     temp = Double.parseDouble (strRadii[j]);
@@ -164,8 +164,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                             maxWidth *= pixelsPerMeter / 2;
                         }
                     }
-                    if (tg.get_H2 () != null && tg.get_H2 ().isEmpty () == false) {
-                        if (strRadii != null && strRadii.length > 0) {
+                    if (tg.get_H2 () !== null && tg.get_H2 ().isEmpty () === false) {
+                        if (strRadii !== null && strRadii.length > 0) {
                             var pixels = 0;
                             for (j = 0; j < tg.Pixels.size (); j++) {
                                 if (tg.Pixels.size () > j) {
@@ -181,8 +181,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     }
                     tg.set_H2 (Double.toString (maxWidthMeters));
                     X = milStd.getModifiers_AM_AN_X ("XN");
-                    if (X != null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
-                    if (X != null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
+                    if (X !== null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
+                    if (X !== null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
                     break;
                 default:
                     break;
@@ -193,7 +193,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X ("XN");
                     strH1 = "";
-                    if (X != null) {
+                    if (X !== null) {
                         strH1 = Double.toString ((X.get (0)).doubleValue ());
                         tg.set_H1 (strH1);
                     }
@@ -201,20 +201,20 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 default:
                     break;
             }
-            if (lineType == 243111000) {
+            if (lineType === 243111000) {
                 AM = milStd.getModifiers_AM_AN_X ("AM");
                 X = milStd.getModifiers_AM_AN_X ("XN");
                 strH2 = "";
                 strH1 = "";
-                if (AM != null) {
+                if (AM !== null) {
                     for (j = 0; j < AM.size (); j++) {
                         strH2 += Double.toString ((AM.get (j)).doubleValue ());
                         if (j < AM.size () - 1) strH2 += ",";
-                        if (X != null && j < X.size ()) {
+                        if (X !== null && j < X.size ()) {
                             strH1 += Double.toString ((X.get (j)).doubleValue ());
                             if (j < X.size () - 1) strH1 += ",";
                         }
-                        if (j == 2) break;
+                        if (j === 2) break;
                     }
                 }
                 tg.set_H2 (strH2);
@@ -257,7 +257,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24352000:
                 case 24362000:
                     AM = milStd.getModifiers_AM_AN_X ("AM");
-                    if (AM != null && AM.size () > 0) {
+                    if (AM !== null && AM.size () > 0) {
                         var strT1 = Double.toString ((AM.get (0)).doubleValue ());
                         tg.set_T1 (strT1);
                     }
@@ -265,10 +265,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 default:
                     break;
             }
-            if (lineType == 24311000) {
+            if (lineType === 24311000) {
                 AM = milStd.getModifiers_AM_AN_X ("AM");
                 AN = milStd.getModifiers_AM_AN_X ("AN");
-                if(AM != null && AM.size () > 1 && AN != null && AN.size () > 0) {
+                if(AM !== null && AM.size () > 1 && AN !== null && AN.size () > 0) {
                     strT1 = Double.toString ((AM.get (0)).doubleValue ());
                     var strH = Double.toString ((AM.get (1)).doubleValue ());
                     tg.set_T1 (strT1);
@@ -303,8 +303,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString (symbolId);
             tg.set_LineType (lineType);
             var status = tg.get_Status ();
-            if (status != null && status.equals ("A")) {
-                if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape (lineType) == false) 
+            if (status !== null && status.equals ("A")) {
+                if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape (lineType) === false) 
                     tg.set_LineStyle (1);
             }
             tg.set_VisibleModifiers (true);
@@ -317,29 +317,29 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             tg.set_TexturePaint (milStd.getFillStyle ());
             tg.set_FontBackColor (armyc2.c2sd.renderer.utilities.Color.WHITE);
             tg.set_TextColor (tg.get_LineColor ());
-            if (milStd.getModifier ("W") != null) {
+            if (milStd.getModifier ("W") !== null) {
                 tg.set_DTG (milStd.getModifier ("W"));
             }
-            if (milStd.getModifier ("W1") != null) {
+            if (milStd.getModifier ("W1") !== null) {
                 tg.set_DTG1 (milStd.getModifier ("W1"));
             }
-            if (milStd.getModifier ("H") != null) tg.set_H (milStd.getModifier ("H"));
-            if (milStd.getModifier ("H1") != null) tg.set_H1 (milStd.getModifier ("H1"));
-            if (milStd.getModifier ("H2") != null) tg.set_H2 (milStd.getModifier ("H2"));
-            if (milStd.getModifier ("T") != null) tg.set_Name (milStd.getModifier ("T"));
-            if (milStd.getModifier ("T1") != null) tg.set_T1 (milStd.getModifier ("T1"));
-            if (milStd.getModifier ("Y") != null) tg.set_Location (milStd.getModifier ("Y"));
-            if (milStd.getModifier ("N") != null) tg.set_N (milStd.getModifier ("N"));
+            if (milStd.getModifier ("H") !== null) tg.set_H (milStd.getModifier ("H"));
+            if (milStd.getModifier ("H1") !== null) tg.set_H1 (milStd.getModifier ("H1"));
+            if (milStd.getModifier ("H2") !== null) tg.set_H2 (milStd.getModifier ("H2"));
+            if (milStd.getModifier ("T") !== null) tg.set_Name (milStd.getModifier ("T"));
+            if (milStd.getModifier ("T1") !== null) tg.set_T1 (milStd.getModifier ("T1"));
+            if (milStd.getModifier ("Y") !== null) tg.set_Location (milStd.getModifier ("Y"));
+            if (milStd.getModifier ("N") !== null) tg.set_N (milStd.getModifier ("N"));
             var isClosedArea = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon (lineType);
             if (isClosedArea) {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon (tg.Pixels);
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon (tg.LatLongs);
             }
-            if (lineType == 243112000) {
+            if (lineType === 243112000) {
                 var AM = milStd.getModifiers_AM_AN_X ("AM");
                 var AN = milStd.getModifiers_AM_AN_X ("AN");
                 var X = milStd.getModifiers_AM_AN_X ("XN");
-                if (AM != null) {
+                if (AM !== null) {
                     var numSectors = AM.length - 1;
                     if (Math.floor (AN.length / 2) < numSectors) numSectors = Math.floor (AN.length / 2);
                     var left;
@@ -356,7 +356,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                         max = AM[j+1];
                         strLeftRightMinMax += Double.toString (left) + "," + Double.toString (right) + "," + Double.toString (min) + "," + Double.toString (max);
                         if (j < numSectors - 1) strLeftRightMinMax += ",";
-                        if (X != null && j < X.length) 
+                        if (X !== null && j < X.length) 
                         {
                             strH1 += X[j];
                             if (j < numSectors - 1 && j < X.length - 1) 
@@ -379,10 +379,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24322200:
                 case 24322300:
                     X = milStd.getModifiers_AM_AN_X ("XN");
-                    //if (X != null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
-                    //if (X != null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
-                    if (X != null && X.length > 0) tg.set_H (X[0]);
-                    if (X != null && X.length > 1) tg.set_H1 (X[1]);
+                    //if (X !== null && X.size () > 0) tg.set_H (Double.toString ((X.get (0)).doubleValue ()));
+                    //if (X !== null && X.size () > 1) tg.set_H1 (Double.toString ((X.get (1)).doubleValue ()));
+                    if (X !== null && X.length > 0) tg.set_H (X[0]);
+                    if (X !== null && X.length > 1) tg.set_H1 (X[1]);
                     break;
                 case 22224000:
                 case 22222000:
@@ -403,7 +403,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     var distPixels = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt0Pixels, pt1Pixels);
                     var pixelsPerMeter = distPixels / dist;
                     AM = milStd.getModifiers_AM_AN_X ("AM");
-                    if (AM != null) {
+                    if (AM !== null) {
                         var H2 = "";
                         for (j = 0; j < AM.length; j++) {
                             //H2 += AM.get (j).toString ();
@@ -416,9 +416,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     var maxWidth = 0;
                     var temp = 0;
                     var maxWidthMeters = 0;
-                    if (tg.get_H2 () != null && tg.get_H2 ().isEmpty () == false) {
+                    if (tg.get_H2 () !== null && tg.get_H2 ().isEmpty () === false) {
                         strRadii = tg.get_H2().$plit (",");
-                        if (strRadii != null && strRadii.length > 0) {
+                        if (strRadii !== null && strRadii.length > 0) {
                             for (j = 0; j < strRadii.length; j++) {
                                 if (!Double.isNaN (Double.parseDouble (strRadii[j]))) {
                                     temp = Double.parseDouble (strRadii[j]);
@@ -429,8 +429,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                             maxWidth *= pixelsPerMeter / 2;
                         }
                     }
-                    if (tg.get_H2 () != null && tg.get_H2 ().isEmpty () == false) {
-                        if (strRadii != null && strRadii.length > 0) {
+                    if (tg.get_H2 () !== null && tg.get_H2 ().isEmpty () === false) {
+                        if (strRadii !== null && strRadii.length > 0) {
                             var pixels = 0;
                             for (j = 0; j < tg.Pixels.size (); j++) {
                                 if (tg.Pixels.size () > j) {
@@ -446,8 +446,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     }
                     tg.set_H2 (Double.toString (maxWidthMeters));
                     X = milStd.getModifiers_AM_AN_X ("XN");
-                    if (X != null && X.length > 0) tg.set_H (X[0]);
-                    if (X != null && X.length > 1) tg.set_H1 (X[1]);
+                    if (X !== null && X.length > 0) tg.set_H (X[0]);
+                    if (X !== null && X.length > 1) tg.set_H1 (X[1]);
                     break;
                 default:
                     break;
@@ -459,7 +459,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X ("XN");
                     strH1 = "";
-                    if (X != null) {
+                    if (X !== null) {
                         //strH1 = Double.toString ((X.get (0)).doubleValue ());
                         strH1 = X[0];
                         tg.set_H1 (strH1);
@@ -468,26 +468,26 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 default:
                     break;
             }
-            if (lineType == 243111000) 
+            if (lineType === 243111000) 
             {
                 AM = milStd.getModifiers_AM_AN_X ("AM");
                 X = milStd.getModifiers_AM_AN_X ("XN");
                 var strH2 = "";
                 strH1 = "";
-                if (AM != null) 
+                if (AM !== null) 
                 {
                     for (j = 0; j < AM.length; j++) 
                     {
                         strH2 += AM[j];
                         if (j < AM.length - 1) 
                             strH2 += ",";
-                        if (X != null && j < X.length) 
+                        if (X !== null && j < X.length) 
                         {
                             strH1 += X[j];
                             if (j < X.length - 1)
                                 strH1 += ",";
                         }
-                        if (j == 2) 
+                        if (j === 2) 
                             break;
                     }
                 }
@@ -531,7 +531,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 case 24352000:
                 case 24362000:
                     AM = milStd.getModifiers_AM_AN_X ("AM");
-                    if (AM != null && AM.length > 0) {
+                    if (AM !== null && AM.length > 0) {
                         var strT1 = AM[0];
                         tg.set_T1 (strT1);
                     }
@@ -539,10 +539,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 default:
                     break;
             }
-            if (lineType == 24311000) {
+            if (lineType === 24311000) {
                 AM = milStd.getModifiers_AM_AN_X ("AM");
                 AN = milStd.getModifiers_AM_AN_X ("AN");
-                if (AM != null && AM.length > 1 && AN != null && AN.length > 0) 
+                if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0) 
                 {
                     strT1 = AM[0];
                     var strH = AM[1];
@@ -623,7 +623,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers (tg, g2d, null);
             var rev = tg.getSymbologyStandard ();
             var hatchShape = null;
-            if (converter == null) armyc2.c2sd.JavaTacticalRenderer.clsUtility.getHatchShape (tg, bi);
+            if (converter === null) armyc2.c2sd.JavaTacticalRenderer.clsUtility.getHatchShape (tg, bi);
             if (tg.Pixels.size () < minPoints2) {
                 lineType = -1;
                 bolChange1 = false;
@@ -642,12 +642,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                     }
                 }
             } else {
-                if (armyc2.c2sd.JavaLineArray.CELineArray.CIsChannel (lineType) == 0) {
-                    if (lineType != 23111001) {
+                if (armyc2.c2sd.JavaLineArray.CELineArray.CIsChannel (lineType) === 0) {
+                    if (lineType !== 23111001) {
                         tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2 (lineType, tg.Pixels, shapes, null, rev);
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes (tg, g2d, shapes);
                     }
-                    if (lineType == 23111001) {
+                    if (lineType === 23111001) {
                         var tempShapes = null;
                         var partitions = armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility.GetPartitions2 (tg);
                         var pixels = null;
@@ -670,9 +670,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             }
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.SetShapeProperties (tg, shapes, bi);
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 (tg);
-            if (hatchShape != null) shapes.add (hatchShape);
+            if (hatchShape !== null) shapes.add (hatchShape);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (shapeInfos, shapes);
-            if (modifierShapeInfos != null) {
+            if (modifierShapeInfos !== null) {
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 (tg, g2d, modifierShapes, false, converter);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (modifierShapeInfos, modifierShapes);
                 bi.flush ();
@@ -696,17 +696,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             si =  new armyc2.c2sd.renderer.utilities.ShapeInfo (s);
             si.setAffineTransform (shape.getAffineTransform ());
             si.setFillColor (shape.getFillColor ());
-            if (shape.getGlyphPosition () != null) si.setGlyphPosition (shape.getGlyphPosition ());
+            if (shape.getGlyphPosition () !== null) si.setGlyphPosition (shape.getGlyphPosition ());
             si.setLineColor (shape.getLineColor ());
             si.setModifierString (shape.getModifierString ());
             si.setModifierStringAngle (shape.getModifierStringAngle ());
-            if (shape.getPolylines () != null) si.setPolylines (shape.getPolylines ());
+            if (shape.getPolylines () !== null) si.setPolylines (shape.getPolylines ());
             si.setShapeType (shape.getShapeType ());
             si.setStroke (shape.getStroke ());
-            if (s == null) {
+            if (s === null) {
                 si.setTextLayout (shape.getTextLayout ());
             }
-            if (s != null) si.setShape (s);
+            if (s !== null) si.setShape (s);
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException ("clsRenderer", "Shape2ToShapeInfo",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed to build ShapeInfo ArrayList", exc));
@@ -720,7 +720,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
         try {
             var j = 0;
             var shape = null;
-            if (shapes == null || shapeInfos == null || shapes.isEmpty ()) return ;
+            if (shapes === null || shapeInfos === null || shapes.isEmpty ()) return ;
             var si = null;
             for (j = 0; j < shapes.size (); j++) {
                 shape = shapes.get (j);
@@ -770,7 +770,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             }
             armyc2.c2sd.JavaLineArray.CELineArray.setMinLength (2.5);
             var clipPoints = null;
-            if (clipArea != null) {
+            if (clipArea !== null) {
                 //                    if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D)) 
                 //                        clipBounds = clipArea;
                 //                    else if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle)) 
@@ -791,7 +791,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 }
             }
             var useClipPoints = false;
-            if (useClipPoints == true && clipBounds != null) {
+            if (useClipPoints === true && clipBounds !== null) {
                 var x = clipBounds.getMinX ();
                 var y = clipBounds.getMinY ();
                 var width = clipBounds.getWidth ();
@@ -804,7 +804,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 clipPoints.add (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D (x, y));
                 clipBounds = null;
             }
-            if (tg.get_Client () == null || tg.get_Client ().isEmpty ()) tg.set_client ("ge");
+            if (tg.get_Client () === null || tg.get_Client ().isEmpty ()) tg.set_client ("ge");
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.RemoveDuplicatePoints (tg);                
             var rev = tg.getSymbologyStandard ();
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.initializeLinetypes (rev);
@@ -819,20 +819,20 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setSplineLinetype (tg);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setHostileLC (tg);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.SegmentGeoPoints (tg, converter);
-            if (clipBounds != null || clipPoints != null) 
+            if (clipBounds !== null || clipPoints !== null) 
             {
-                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg).booleanValue()==true) 
+                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg).booleanValue()===true) 
                 {
-                    if (clipBounds != null) 
+                    if (clipBounds !== null) 
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon (tg, clipBounds);
-                    else if (clipPoints != null) 
+                    else if (clipPoints !== null) 
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg, clipPoints);
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.removeTrailingPoints (tg, clipArea);
                     tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong (tg.Pixels, converter);
                 }
             }
-            if (origPixels != null) {
-                if (tg.Pixels.isEmpty () == true) return ;
+            if (origPixels !== null) {
+                if (tg.Pixels.isEmpty () === true) return ;
                 else {
                     tg.Pixels = origPixels;
                     tg.LatLongs = origLatLongs;
@@ -849,22 +849,22 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.FilterAXADPoints (tg, converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.ClearPixelsStyle (tg);
             var linesWithFillShapes = null;
-            if (clipBounds != null) 
+            if (clipBounds !== null) 
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, clipBounds);
-            else if (clipPoints != null) 
+            else if (clipPoints !== null) 
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.LinesWithFill (tg, clipPoints);
-            else if (clipArea == null) 
+            else if (clipArea === null) 
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, clipBounds);
             var rangeFanFillShapes = null;
             var savefillStyle = tg.get_FillStyle ();
-            if (linetype == 243111000) tg.set_Fillstyle (0);
-            if (clipBounds != null) 
+            if (linetype === 243111000) tg.set_Fillstyle (0);
+            if (clipBounds !== null) 
             {
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg, converter, (isTextFlipped).booleanValue (), clipBounds);
             }
-            else if (clipPoints != null) 
+            else if (clipPoints !== null) 
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg, converter, (isTextFlipped).booleanValue (), clipPoints);
-            else if (clipArea == null) 
+            else if (clipArea === null) 
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg, converter, (isTextFlipped).booleanValue (), clipBounds);
 //            switch (linetype) 
 //            {
@@ -872,14 +872,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
 //                case 243112000:
 //                    var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG (tg);
 //                    tg1.set_Fillstyle (savefillStyle);
-//                    if (clipBounds != null) 
+//                    if (clipBounds !== null) 
 //                        {rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipBounds);}
-//                    else if (clipPoints != null) 
+//                    else if (clipPoints !== null) 
 //                        {rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipPoints);}
-//                    else if (clipArea == null) 
+//                    else if (clipArea === null) 
 //                        {rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipBounds);}
 //
-//                    if (rangeFanFillShapes != null)                         
+//                    if (rangeFanFillShapes !== null)                         
 //                        {shapes.addAll (0, rangeFanFillShapes);}
 //
 //                    break;
@@ -891,20 +891,20 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             {
                 var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG (tg);
                 tg1.set_Fillstyle (savefillStyle);
-                if (clipBounds != null) 
+                if (clipBounds !== null) 
                 {
                     rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipBounds);
                 }
-                else if (clipPoints != null) 
+                else if (clipPoints !== null) 
                 {
                     rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipPoints);
                 }
-                else if (clipArea == null) 
+                else if (clipArea === null) 
                 {
                     rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, (isTextFlipped).booleanValue (), clipBounds);
                 }
                         
-                if (rangeFanFillShapes != null)                         
+                if (rangeFanFillShapes !== null)                         
                 {
                     shapes.addAll (0, rangeFanFillShapes);
                 }
@@ -915,35 +915,35 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             }
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.LinesWithSeparateFill (tg.get_LineType (), shapes);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.addAbatisFill (tg, shapes);
-            if (shapes != null && linesWithFillShapes != null && linesWithFillShapes.size () > 0) 
+            if (shapes !== null && linesWithFillShapes !== null && linesWithFillShapes.size () > 0) 
                 shapes.addAll (0, linesWithFillShapes);
             var bPostClip = false;
             bPostClip = true;
-            if (bPostClip == true) 
+            if (bPostClip === true) 
             {
-                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == false && clipBounds != null) 
+                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === false && clipBounds !== null) 
                 {
                     shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes (tg, shapes, clipBounds);
                 }
-                else if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == false && clipPoints != null) 
+                else if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === false && clipPoints !== null) 
                 {
                     shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes (tg, shapes, clipPoints);
                 }
             }
-            if (modifierShapeInfos != null) {
+            if (modifierShapeInfos !== null) {
                 var textSpecs =  new java.util.ArrayList ();
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 (tg, g2d, textSpecs, (isTextFlipped).booleanValue (), converter);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (modifierShapeInfos, textSpecs);
             }
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFills2 (tg, shapes);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (shapeInfos, shapes);
-            if (clipBounds != null)
+            if (clipBounds !== null)
             {
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.SetShapeInfosPolylines (tg, shapeInfos, clipBounds);
             }
-            else if (clipPoints != null) 
+            else if (clipPoints !== null) 
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.SetShapeInfosPolylines (tg, shapeInfos, clipPoints);
-            else if (clipArea == null) 
+            else if (clipArea === null) 
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.SetShapeInfosPolylines (tg, shapeInfos, clipBounds);
                 
         } catch (exc) {
@@ -962,8 +962,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var j = 0;
             switch (tg.get_LineType ()) {
                 case 22123000:
-                    if (usas1314.booleanValue () == false) break;
-                    if (tg.get_Affiliation () != null && !tg.get_Affiliation ().equals ("H")) break;
+                    if (usas1314.booleanValue () === false) break;
+                    if (tg.get_Affiliation () !== null && !tg.get_Affiliation ().equals ("H")) break;
                     pts = tg.Pixels.clone ();
                     for (j = 0; j < tg.Pixels.size (); j++) tg.Pixels.set (j, pts.get (pts.size () - j - 1));
 
@@ -993,7 +993,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
     getScale: function (tg, converter, clipBounds) {
         var scale = 0;
         try {
-            if (clipBounds == null || converter == null) return 0;
+            if (clipBounds === null || converter === null) return 0;
             var clipRect = null;
             var clipArray = null;
             if (clipBounds.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D)) {
@@ -1020,7 +1020,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             scale = (distanceInPixels / distanceInMeters) * (0.010416666666666666) * (0.025400050800101603);
             scale = 1.0 / scale;
             var lineType = tg.get_LineType ();
-            if (lineType == 23200000 && scale >= 250000) tg.set_LineType (23200001);
+            if (lineType === 23200000 && scale >= 250000) tg.set_LineType (23200001);
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer._className, "getScale",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside getScale", exc));
@@ -1032,7 +1032,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
     },
     setClip : function (clipBounds, clipRect, clipArray) {
         try {
-            if (clipBounds == null) {
+            if (clipBounds === null) {
                 return false;
             } else if (clipBounds.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D)) {
                 clipRect.setRect (clipBounds);
@@ -1094,7 +1094,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var isTextFlipped = false;
             var farLeftPixels =  new java.util.ArrayList ();
             var farRightPixels =  new java.util.ArrayList ();
-            if (isChange1Area == false) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels (tg, converter, farLeftPixels, farRightPixels);
+            if (isChange1Area === false) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels (tg, converter, farLeftPixels, farRightPixels);
             var shapesLeft =  new java.util.ArrayList ();
             var shapesRight =  new java.util.ArrayList ();
             var shapes = null;
@@ -1115,12 +1115,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var textSpecs =  new java.util.ArrayList ();
             if (shapesLeft.isEmpty () || shapesRight.isEmpty ()) {
                 var linesWithFillShapes = null;
-                if (clipArray != null && !clipArray.isEmpty ()) linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.LinesWithFill (tg, clipArray);
-                else if (clipRect != null && clipRect.getWidth () != 0) linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, clipRect);
+                if (clipArray !== null && !clipArray.isEmpty ()) linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.LinesWithFill (tg, clipArray);
+                else if (clipRect !== null && clipRect.getWidth () !== 0) linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, clipRect);
                 else linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, null);
-                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == true && clipBounds != null) {
-                    if (clipArray != null && !clipArray.isEmpty ()) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg, clipArray);
-                    else if (clipRect != null && clipRect.getWidth () != 0) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon (tg, clipRect);
+                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === true && clipBounds !== null) {
+                    if (clipArray !== null && !clipArray.isEmpty ()) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg, clipArray);
+                    else if (clipRect !== null && clipRect.getWidth () !== 0) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon (tg, clipRect);
                     tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong (tg.Pixels, converter);
                 }
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.InterpolatePixels (tg);
@@ -1130,7 +1130,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.ClearPixelsStyle (tg);
                 var rangeFanFillShapes = null;
                 var savefillStyle = tg.get_FillStyle ();
-                if (linetype == 243111000) tg.set_Fillstyle (0);
+                if (linetype === 243111000) tg.set_Fillstyle (0);
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg, converter, isTextFlipped, clipBounds);
                 switch (linetype) {
                     case 243111000:
@@ -1138,7 +1138,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                         var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG (tg);
                         tg1.set_Fillstyle (savefillStyle);
                         rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg1, converter, isTextFlipped, clipBounds);
-                        if (rangeFanFillShapes != null) {
+                        if (rangeFanFillShapes !== null) {
                             shapes.addAll (0, rangeFanFillShapes);
                         }
                         break;
@@ -1147,8 +1147,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
                 }
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.LinesWithSeparateFill (tg.get_LineType (), shapes);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.addAbatisFill (tg, shapes);
-                if (shapes != null && linesWithFillShapes != null && linesWithFillShapes.size () > 0) shapes.addAll (0, linesWithFillShapes);
-                if (shapes != null && shapes.size () > 0) {
+                if (shapes !== null && linesWithFillShapes !== null && linesWithFillShapes.size () > 0) shapes.addAll (0, linesWithFillShapes);
+                if (shapes !== null && shapes.size () > 0) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 (tg, g2d, textSpecs, isTextFlipped, null);
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (modifierShapeInfos, textSpecs);
                     mss.setModifierShapes (modifierShapeInfos);
@@ -1156,12 +1156,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             } else {
                 shapes = shapesLeft;
                 shapes.addAll (shapesRight);
-                if (textSpecs != null) {
+                if (textSpecs !== null) {
                     textSpecs.addAll (textSpecsLeft);
                     textSpecs.addAll (textSpecsRight);
                 }
             }
-            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == false && clipBounds != null) {
+            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === false && clipBounds !== null) {
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes (tg, shapes, clipBounds);
             }
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (shapeInfos, shapes);
@@ -1182,7 +1182,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var isTextFlipped = false;
             var farLeftPixels =  new java.util.ArrayList ();
             var farRightPixels =  new java.util.ArrayList ();
-            if (isChange1Area == false) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels (tg, converter, farLeftPixels, farRightPixels);
+            if (isChange1Area === false) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels (tg, converter, farLeftPixels, farRightPixels);
             var bi =  new armyc2.c2sd.graphics2d.BufferedImage (8, 8, 2);
             var g2d = bi.createGraphics ();
             var shapesLeft =  new java.util.ArrayList ();
@@ -1205,24 +1205,24 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer={
             var textSpecs =  new java.util.ArrayList ();
             if (shapesLeft.isEmpty () || shapesRight.isEmpty ()) {
                 var linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill (tg, clipBounds);
-                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == true && clipBounds != null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon (tg, clipBounds);
+                if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === true && clipBounds !== null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon (tg, clipBounds);
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray (tg, converter, isTextFlipped, clipBounds);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.LinesWithSeparateFill (tg.get_LineType (), shapes);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.addAbatisFill (tg, shapes);
-                if (shapes != null && linesWithFillShapes != null && linesWithFillShapes.size () > 0) shapes.addAll (0, linesWithFillShapes);
-                if (shapes != null && shapes.size () > 0) {
+                if (shapes !== null && linesWithFillShapes !== null && linesWithFillShapes.size () > 0) shapes.addAll (0, linesWithFillShapes);
+                if (shapes !== null && shapes.size () > 0) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 (tg, g2d, textSpecs, isTextFlipped, null);
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (modifierShapeInfos, textSpecs);
                 }
             } else {
                 shapes = shapesLeft;
                 shapes.addAll (shapesRight);
-                if (textSpecs != null) {
+                if (textSpecs !== null) {
                     textSpecs.addAll (textSpecsLeft);
                     textSpecs.addAll (textSpecsRight);
                 }
             }
-            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () == false && clipBounds != null) shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes (tg, shapes, clipBounds);
+            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints (tg).booleanValue () === false && clipBounds !== null) shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes (tg, shapes, clipBounds);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo (shapeInfos, shapes);
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {

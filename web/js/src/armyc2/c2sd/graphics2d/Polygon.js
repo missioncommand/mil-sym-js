@@ -7,7 +7,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
     this.contains=function (x, y) {
         if (this.pts.size () < 3) 
             return false;
-        if ((this.pts.get (0).x != this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y != this.pts.get (this.pts.size () - 1).y)) {
+        if ((this.pts.get (0).x !== this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y !== this.pts.get (this.pts.size () - 1).y)) {
             this.pts.add ( new armyc2.c2sd.JavaLineArray.POINT2 (this.pts.get (0)));
         }
         var lowVal = -100;
@@ -20,10 +20,10 @@ armyc2.c2sd.graphics2d.Polygon=function(){
         for (j = 0; j < this.pts.size () - 1; j++) 
         {
             edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (this.pts.get (j).x, this.pts.get (j).y, this.pts.get (j + 1).x, this.pts.get (j + 1).y);
-            if (ray.intersectsLine (edge) == true) 
+            if (ray.intersectsLine (edge) === true) 
                 intersectCounter++;
         }
-        if (intersectCounter % 2 == 1) return true;
+        if (intersectCounter % 2 === 1) return true;
         return false;
     };
     this.computeBounds = function (rect, exact) 
@@ -51,7 +51,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
 };
     armyc2.c2sd.graphics2d.Polygon.prototype.size=function () 
     {
-        if (this.pts != null) 
+        if (this.pts !== null) 
             return this.pts.size ();
         else return 0;
     };
@@ -62,7 +62,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
     armyc2.c2sd.graphics2d.Polygon.prototype.containsPt2=function (x, y) 
     {
         if (this.pts.size () < 3) return false;
-        if ((this.pts.get (0).x != this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y != this.pts.get (this.pts.size () - 1).y)) {
+        if ((this.pts.get (0).x !== this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y !== this.pts.get (this.pts.size () - 1).y)) {
             this.pts.add ( new armyc2.c2sd.JavaLineArray.POINT2 (this.pts.get (0)));
         }
         var lowVal = -100;
@@ -74,15 +74,15 @@ armyc2.c2sd.graphics2d.Polygon=function(){
         var intersectCounter = 0;
         for (j = 0; j < this.pts.size () - 1; j++) {
             edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (this.pts.get (j).x, this.pts.get (j).y, this.pts.get (j + 1).x, this.pts.get (j + 1).y);
-            if (ray.intersectsLine (edge) == true) intersectCounter++;
+            if (ray.intersectsLine (edge) === true) intersectCounter++;
         }
-        if (intersectCounter % 2 == 1) return true;
+        if (intersectCounter % 2 === 1) return true;
         return false;
     };
     armyc2.c2sd.graphics2d.Polygon.prototype.containsPt3=function (x, y) 
     {
         if (this.pts.size () < 3) return false;
-        if ((this.pts.get (0).x != this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y != this.pts.get (this.pts.size () - 1).y)) 
+        if ((this.pts.get (0).x !== this.pts.get (this.pts.size () - 1).x) || (this.pts.get (0).y !== this.pts.get (this.pts.size () - 1).y)) 
         {
             this.pts.add ( new armyc2.c2sd.JavaLineArray.POINT2 (this.pts.get (0)));
         }
@@ -95,9 +95,9 @@ armyc2.c2sd.graphics2d.Polygon=function(){
         var intersectCounter = 0;
         for (j = 0; j < this.pts.size () - 1; j++) {
             edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (this.pts.get (j).x, this.pts.get (j).y, this.pts.get (j + 1).x, this.pts.get (j + 1).y);
-            if (ray.intersectsLine (edge) == true) intersectCounter++;
+            if (ray.intersectsLine (edge) === true) intersectCounter++;
         }
-        if (intersectCounter % 2 == 1) return true;
+        if (intersectCounter % 2 === 1) return true;
         return false;
     };
     armyc2.c2sd.graphics2d.Polygon.prototype.containsPt=function (pt) {
@@ -105,7 +105,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
     };
     armyc2.c2sd.graphics2d.Polygon.prototype.containsRect2=function (x, y, w, h) 
     {
-        if (this.bounds != null) 
+        if (this.bounds !== null) 
         {
             var fx = x;
             var fy = y;
@@ -130,7 +130,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
         
     armyc2.c2sd.graphics2d.Polygon.prototype.intersectsRect2=function (x, y, w, h) 
     {
-        if (this.bounds != null) {
+        if (this.bounds !== null) {
             var fx = x;
             var fy = y;
             var fw = w;
@@ -151,7 +151,7 @@ armyc2.c2sd.graphics2d.Polygon=function(){
         }
     };
     armyc2.c2sd.graphics2d.Polygon.prototype.intersectsRect=function (r) {
-        if (this.bounds != null) {
+        if (this.bounds !== null) {
             var rectf =  new android.graphics.RectF (this.bounds.x, this.bounds.y, this.bounds.x + this.bounds.width, this.bounds.y + this.bounds.height);
             return android.graphics.RectF.intersects (rectf, r);
         } else {

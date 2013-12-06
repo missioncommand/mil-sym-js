@@ -4,10 +4,7 @@ sec.sun.awt=sec.sun.awt || {};
 sec.sun.awt.geom=sec.sun.awt.geom || {};
 sec.sun.awt.geom.Arrays=function()
 {
-    };
-//﻿Clazz.declarePackage ("sec.sun.awt.geom");
-//c$ = Clazz.declareType (sec.sun.awt.geom, "Arrays");
-//c$.sort = Clazz.defineMethod (c$, "sort", 
+};
 sec.sun.awt.geom.Arrays.sort= function (a) {
     var aux =  new Array(a.length);
     for (var j = 0; j < a.length; j++) 
@@ -15,13 +12,11 @@ sec.sun.awt.geom.Arrays.sort= function (a) {
     
     sec.sun.awt.geom.Arrays.mergeSort (aux, a, 0, a.length, 0);
 };//, "~A");
-//c$.swap = Clazz.defineMethod (c$, "swap", 
 sec.sun.awt.geom.Arrays.swap = function (x, a, b) {
     var t = x[a];
     x[a] = x[b];
     x[b] = t;
 };//, $fz.isPrivate = true, $fz), "~A,~N,~N");
-//c$.compare = Clazz.defineMethod (c$, "compare", 
 sec.sun.awt.geom.Arrays.compare = function (o1, o2) {
     var c1 = (o1).getCurve ();
     var c2 = (o2).getCurve ();
@@ -37,7 +32,6 @@ sec.sun.awt.geom.Arrays.compare = function (o1, o2) {
     }
     return 1;
 };//, $fz.isPrivate = true, $fz), "~O,~O");
-//c$.mergeSort = Clazz.defineMethod (c$, "mergeSort", 
 sec.sun.awt.geom.Arrays.test=2;
 sec.sun.awt.geom.Arrays.mergeSort = function (src, dest, low, high, off) {
     var length = high - low;
@@ -54,19 +48,12 @@ sec.sun.awt.geom.Arrays.mergeSort = function (src, dest, low, high, off) {
     low += off;
     high += off;
     var mid = (low + high) >>> 1;
-    if(mid==45)
+    if(mid===45)
     {
         sec.sun.awt.geom.Arrays.test=3;
     }
     sec.sun.awt.geom.Arrays.mergeSort (dest, src, low, mid, -off);
     sec.sun.awt.geom.Arrays.mergeSort (dest, src, mid, high, -off);
-//    if( sec.sun.awt.geom.Arrays.test==3)
-//    {
-//        alert(low);
-//        alert(destLow);
-//        alert(length);
-//    }
-    
     if (sec.sun.awt.geom.Arrays.compare (src[mid - 1], src[mid]) <= 0) {
         System.arraycopy (src, low, dest, destLow, length);
     }
@@ -75,16 +62,11 @@ sec.sun.awt.geom.Arrays.mergeSort = function (src, dest, low, high, off) {
             dest[i] = src[p++];
         else dest[i] = src[q++];
     }
-    //if( sec.sun.awt.geom.Arrays.test==3)
-        //alert('return');
 };//, $fz.isPrivate = true, $fz), "~A,~A,~N,~N,~N");
-//c$.arraycopy = Clazz.defineMethod (c$, "arraycopy", 
 sec.sun.awt.geom.Arrays.arraycopy = function (src, srcPos, dest, destPos, length) {
     var j = 0;
     for (j = 0; j < length; j++) 
         dest[j + destPos] = src[srcPos + j];
 
 };//, "~A,~N,~A,~N,~N");
-//Clazz.defineStatics (c$,
-//"INSERTIONSORT_THRESHOLD", 7);
 sec.sun.awt.geom.Arrays.INSERTIONSORT_THRESHOLD=7;

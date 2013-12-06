@@ -30,7 +30,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
     var limit;
     var src=arguments[0];
     var flatness=arguments[1];
-    if(arguments.length==2)
+    if(arguments.length===2)
         limit=10;
     if(arguments.length>2)
         limit=arguments[2];
@@ -133,7 +133,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             case 1:
                 this.curx = this.hold[0];
                 this.cury = this.hold[1];
-                if (this.holdType == 0) {
+                if (this.holdType === 0) {
                     this.movx = this.curx;
                     this.movy = this.cury;
                 }
@@ -217,10 +217,10 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             return -1;
         }
         var type = this.holdType;
-        if (type != 4) {
+        if (type !== 4) {
             coords[0] = this.hold[this.holdIndex + 0];
             coords[1] = this.hold[this.holdIndex + 1];
-            if (type != 0) {
+            if (type !== 0) {
                 type = 1;
             }
         }
@@ -233,10 +233,10 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             return -1;
         }
         var type = this.holdType;
-        if (type != 4) {
+        if (type !== 4) {
             coords[0] = this.hold[this.holdIndex + 0];
             coords[1] = this.hold[this.holdIndex + 1];
-            if (type != 0) {
+            if (type !== 0) {
                 type = 1;
             }
         }
@@ -270,7 +270,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator.next2=function(that,doNext)
         case 1:
             that.curx = that.hold[0];
             that.cury = that.hold[1];
-            if (that.holdType == 0) {
+            if (that.holdType === 0) {
                 that.movx = that.curx;
                 that.movy = that.cury;
             }

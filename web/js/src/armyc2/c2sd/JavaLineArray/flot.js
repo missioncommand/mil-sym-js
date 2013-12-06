@@ -18,13 +18,13 @@ armyc2.c2sd.JavaLineArray.flot=
             var dRemainder = 0;
             var dNum = 0;
             var dDen = 0;
-            if (segment == 0 && vbPoints[0] >= vbPoints[2]) {
+            if (segment === 0 && vbPoints[0] >= vbPoints[2]) {
                 bFlip.value[0] = 1;
-            }if (segment == 0 && vbPoints[0] < vbPoints[2]) {
+            }if (segment === 0 && vbPoints[0] < vbPoints[2]) {
                 bFlip.value[0] = 0;
             }dNum = vbPoints[2 * segment + 3] - vbPoints[2 * segment + 1];
             dDen = vbPoints[2 * segment + 2] - vbPoints[2 * segment];
-            if (dDen == 0) {
+            if (dDen === 0) {
                 dAngle = 1.5707963267948966;
             } else {
                 dAngle = Math.abs (Math.atan (dNum / dDen));
@@ -39,7 +39,7 @@ armyc2.c2sd.JavaLineArray.flot=
                 dAngle = 270 + dAngle;
             }dDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistance2 (x1, y1, x2, y2);
             nNumSegs = Math.floor ((dDistance / 20));
-            if (nNumSegs % 2 == 0) {
+            if (nNumSegs % 2 === 0) {
                 nNumSegs -= 1;
             }dRemainder = nNumSegs * 20 - dDistance;
             dDistance = dDistance + dRemainder;
@@ -49,12 +49,12 @@ armyc2.c2sd.JavaLineArray.flot=
             } else {
                 dAngle = dAngle - 90;
                 lDirection.value[0] = 0;
-            }if (segment > 0 && lDirection.value[0] != lLastDirection.value[0]) {
-                if (bFlip.value[0] == 1) {
+            }if (segment > 0 && lDirection.value[0] !== lLastDirection.value[0]) {
+                if (bFlip.value[0] === 1) {
                     bFlip.value[0] = 0;
                 } else {
                     bFlip.value[0] = 1;
-                }}if (bFlip.value[0] == 1) {
+                }}if (bFlip.value[0] === 1) {
                 dAngle = dAngle + 180;
             }for (m = 0; m < nNumSegs; m += 2) {
                 lLocx = Math.floor ((x1 + (m + 0.5) * (x2 - x1) * 20 / dDistance));
@@ -138,7 +138,7 @@ armyc2.c2sd.JavaLineArray.flot=
                 switch (lineType) {
                     case 31132200:
                     case 31132300:
-                        if (lNumSegs == 0) {
+                        if (lNumSegs === 0) {
                             lTotalpts += 2;
                         }break;
                     default:
@@ -244,20 +244,20 @@ armyc2.c2sd.JavaLineArray.flot=
                                 case 31132000:
                                 case 31132200:
                                 case 31132300:
-                                    if ((lFlotCounter + 1) % 10 == 0) {
+                                    if ((lFlotCounter + 1) % 10 === 0) {
                                         vbPoints2[lFlotCounter].style = 10;
                                         if (j < numSegPts - 1) {
                                             style10Points[style10Counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (vbPoints2[lFlotCounter]);
                                             style10Points[style10Counter].style = 0;
                                             style10Counter++;
                                             if (j < numSegPts - 2) {
-                                                if (lineType == 31132200) {
+                                                if (lineType === 31132200) {
                                                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (style10Points[style10Counter - 1]);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 10, 5);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 20, 20);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 30, 0);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 70, 5);
-                                                }if (lineType == 31132300) {
+                                                }if (lineType === 31132300) {
                                                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (style10Points[style10Counter - 1]);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 10, 5);
                                                     style10Points[style10Counter++] = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pt2, pt1, 15, 0);
@@ -374,19 +374,19 @@ armyc2.c2sd.JavaLineArray.flot=
                     break;
             }
             lSegCounter = 0;
-            if (segment == 0 && vbPoints[0] >= vbPoints[2]) {
-                if (lineType != 31134000 && lineType != 31134100 && lineType != 31134200 && lineType != 31134300) {
+            if (segment === 0 && vbPoints[0] >= vbPoints[2]) {
+                if (lineType !== 31134000 && lineType !== 31134100 && lineType !== 31134200 && lineType !== 31134300) {
                     bFlip.value[0] = 1;
                 } else {
                     bFlip.value[0] = 0;
-                }}if (segment == 0 && vbPoints[0] < vbPoints[2]) {
-                if (lineType != 31134000 && lineType != 31134100 && lineType != 31134200 && lineType != 31134300) {
+                }}if (segment === 0 && vbPoints[0] < vbPoints[2]) {
+                if (lineType !== 31134000 && lineType !== 31134100 && lineType !== 31134200 && lineType !== 31134300) {
                     bFlip.value[0] = 0;
                 } else {
                     bFlip.value[0] = 1;
                 }}dNum = vbPoints[2 * segment + 3] - vbPoints[2 * segment + 1];
             dDen = vbPoints[2 * segment + 2] - vbPoints[2 * segment];
-            if (dDen == 0) {
+            if (dDen === 0) {
                 dAngle = 1.5707963267948966;
             } else {
                 dAngle = Math.abs (Math.atan (dNum / dDen));
@@ -409,12 +409,12 @@ armyc2.c2sd.JavaLineArray.flot=
             } else {
                 dAngle = dAngle - 90;
                 lDirection.value[0] = 0;
-            }if (segment > 0 && lDirection.value[0] != lLastDirection.value[0]) {
-                if (bFlip.value[0] == 1) {
+            }if (segment > 0 && lDirection.value[0] !== lLastDirection.value[0]) {
+                if (bFlip.value[0] === 1) {
                     bFlip.value[0] = 0;
                 } else {
                     bFlip.value[0] = 1;
-                }}if (bFlip.value[0] == 1) {
+                }}if (bFlip.value[0] === 1) {
                 dAngle = dAngle + 180;
             }for (m = 0; m < nNumSegs; m++) {
                 lLocx = Math.floor ((vbPoints[2 * segment] + (m + 0.5) * (vbPoints[2 * segment + 2] - vbPoints[2 * segment]) * dIncrement / dDistance));
@@ -446,7 +446,7 @@ armyc2.c2sd.JavaLineArray.flot=
             var dDistance = 0;
             var nFactor = 3;
             var interval = 50;
-            if (lineType == 31133200) {
+            if (lineType === 31133200) {
                 interval = 80;
                 nFactor = 7;
             }for (j = 0; j < numPts - 1; j++) {
@@ -552,7 +552,7 @@ armyc2.c2sd.JavaLineArray.flot=
                         pFlotPoints[nFlotCounter].x = points[k];
                         pFlotPoints[nFlotCounter].y = points[k + 1];
                         pFlotPoints[nFlotCounter].style = 9;
-                        if ((nFlotCounter) % 10 == 0) {
+                        if ((nFlotCounter) % 10 === 0) {
                             d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pFlotPoints[nFlotCounter]);
                             d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pFlotPoints[nFlotCounter]);
                             if (d2 > d1) {
@@ -560,21 +560,21 @@ armyc2.c2sd.JavaLineArray.flot=
                             } else {
                                 pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j], pLinePoints[j + 1], -d2);
                             }pFlotPoints[nFlotCounter].style = 9;
-                            if (lineType == 31133100) {
+                            if (lineType === 31133100) {
                                 pFlotPoints[nFlotCounter].style = 0;
-                            }}if ((nFlotCounter + 1) % 10 == 0) {
-                            if (lineType == 31133000 || lineType == 31133100) {
+                            }}if ((nFlotCounter + 1) % 10 === 0) {
+                            if (lineType === 31133000 || lineType === 31133100) {
                                 d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pFlotPoints[nFlotCounter - 9]);
                                 d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pFlotPoints[nFlotCounter - 9]);
                                 if (d2 > d1) {
                                     pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j + 1], pLinePoints[j], -d1 - 20);
                                 } else {
                                     pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j], pLinePoints[j + 1], -d2 + 20);
-                                }if (lineType == 31133000) {
+                                }if (lineType === 31133000) {
                                     pFlotPoints[nFlotCounter].style = 10;
-                                }if (lineType == 31133100) {
+                                }if (lineType === 31133100) {
                                     pFlotPoints[nFlotCounter].style = 5;
-                                }}if (lineType == 31134000) {
+                                }}if (lineType === 31134000) {
                                 pFlotPoints[nFlotCounter].style = 23;
                             }}k += 3;
                         nFlotCounter++;
@@ -620,8 +620,8 @@ armyc2.c2sd.JavaLineArray.flot=
                         pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j], pSpikePoints[nSpikeCounter - 1], dSpikeSize / 2);
                     } else {
                         pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j + 1], pSpikePoints[nSpikeCounter - 1], -dSpikeSize / 2);
-                    }if (bolTooLong == 0) {
-                        if (bolVertical != 0) {
+                    }if (bolTooLong === 0) {
+                        if (bolVertical !== 0) {
                             if (pLinePoints[j].x < pLinePoints[j + 1].x) {
                                 pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine (pLinePoints[j], pLinePoints[j + 1], pt0, 2, dSpikeSize);
                             } else {
@@ -639,25 +639,25 @@ armyc2.c2sd.JavaLineArray.flot=
                         pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         nSpikeCounter++;
                     }pSpikePoints[nSpikeCounter - 1].style = 9;
-                    if (bolTooLong == 0) {
+                    if (bolTooLong === 0) {
                         d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pSpikePoints[nSpikeCounter - 2]);
                         d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pSpikePoints[nSpikeCounter - 2]);
                         if (d1 > d2) {
                             pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double (pLinePoints[j], pSpikePoints[nSpikeCounter - 2], dSpikeSize, 0);
                         } else {
                             pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double (pLinePoints[j + 1], pSpikePoints[nSpikeCounter - 2], -dSpikeSize, 0);
-                        }if (lineType == 31133000) {
+                        }if (lineType === 31133000) {
                             pSpikePoints[nSpikeCounter].style = 10;
-                        }if (lineType == 31133100) {
+                        }if (lineType === 31133100) {
                             pSpikePoints[nSpikeCounter].style = 5;
-                        }if (lineType == 31134000) {
+                        }if (lineType === 31134000) {
                             pSpikePoints[nSpikeCounter].style = 24;
                         }} else {
                         pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         pSpikePoints[nSpikeCounter].style = 5;
                     }nSpikeCounter++;
                 }
-                if (nSpikeCounter == 0) {
+                if (nSpikeCounter === 0) {
                     pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j]);
                     pSpikePoints[nSpikeCounter].style = 5;
                     nSpikeCounter++;
@@ -820,13 +820,13 @@ armyc2.c2sd.JavaLineArray.flot=
             var dNum = 0;
             var dDen = 0;
             lSegCounter = 0;
-            if (segment == 0 && vbPoints[0] >= vbPoints[2]) {
+            if (segment === 0 && vbPoints[0] >= vbPoints[2]) {
                 bFlip.value[0] = 1;
-            }if (segment == 0 && vbPoints[0] < vbPoints[2]) {
+            }if (segment === 0 && vbPoints[0] < vbPoints[2]) {
                 bFlip.value[0] = 0;
             }dNum = vbPoints[2 * segment + 3] - vbPoints[2 * segment + 1];
             dDen = vbPoints[2 * segment + 2] - vbPoints[2 * segment];
-            if (dDen == 0) {
+            if (dDen === 0) {
                 dAngle = 1.5707963267948966;
             } else {
                 dAngle = Math.abs (Math.atan (dNum / dDen));
@@ -849,18 +849,18 @@ armyc2.c2sd.JavaLineArray.flot=
             } else {
                 dAngle = dAngle - 90;
                 lDirection.value[0] = 0;
-            }if (segment > 0 && lDirection.value[0] != lLastDirection.value[0]) {
-                if (bFlip.value[0] == 1) {
+            }if (segment > 0 && lDirection.value[0] !== lLastDirection.value[0]) {
+                if (bFlip.value[0] === 1) {
                     bFlip.value[0] = 0;
                 } else {
                     bFlip.value[0] = 1;
-                }}if (bFlip.value[0] == 1) {
+                }}if (bFlip.value[0] === 1) {
                 dAngle = dAngle + 180;
             }for (m = 0; m < nNumSegs; m++) {
                 lLocx = Math.floor ((vbPoints[2 * segment] + (m + 0.5) * (vbPoints[2 * segment + 2] - vbPoints[2 * segment]) * 20 / dDistance));
                 lLocy = Math.floor ((vbPoints[2 * segment + 1] + (m + 0.5) * (vbPoints[2 * segment + 3] - vbPoints[2 * segment + 1]) * 20 / dDistance));
                 armyc2.c2sd.JavaLineArray.flot.CalcAnglePoints (lLocx, lLocy, dAngle, arcPoints, dDistance / (nNumSegs * 2));
-                if (points != null) {
+                if (points !== null) {
                     for (j = 0; j < 30; j++) {
                         points[lSegCounter] = arcPoints[j];
                         lSegCounter = lSegCounter + 1;
@@ -1095,7 +1095,7 @@ armyc2.c2sd.JavaLineArray.flot=
                         pFlotPoints[nFlotCounter].x = points[k];
                         pFlotPoints[nFlotCounter].y = points[k + 1];
                         pFlotPoints[nFlotCounter].style = 9;
-                        if ((nFlotCounter) % 10 == 0) {
+                        if ((nFlotCounter) % 10 === 0) {
                             pFlotStart[Math.floor (l / 10)] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotPoints[nFlotCounter]);
                             d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pFlotPoints[nFlotCounter]);
                             d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pFlotPoints[nFlotCounter]);
@@ -1104,8 +1104,8 @@ armyc2.c2sd.JavaLineArray.flot=
                             } else {
                                 pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j], pLinePoints[j + 1], -d2);
                             }pFlotPoints[nFlotCounter].style = 9;
-                        }if ((nFlotCounter + 1) % 10 == 0) {
-                            if (lineType == 31133200) {
+                        }if ((nFlotCounter + 1) % 10 === 0) {
+                            if (lineType === 31133200) {
                                 pFlotEnd[Math.floor (l / 10)] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotPoints[nFlotCounter]);
                                 nFlotEndCounter++;
                                 d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pFlotPoints[nFlotCounter - 9]);
@@ -1142,8 +1142,8 @@ armyc2.c2sd.JavaLineArray.flot=
                     }pSpikePoints[nSpikeCounter].style = 9;
                     nSpikeCounter++;
                     pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pSpikePoints[nSpikeCounter - 1], pLinePoints[j + 1], dSpikeSize / 2);
-                    if (bolTooLong == 0) {
-                        if (bolVertical != 0) {
+                    if (bolTooLong === 0) {
+                        if (bolVertical !== 0) {
                             if (pLinePoints[j].x < pLinePoints[j + 1].x) {
                                 pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine (pLinePoints[j], pLinePoints[j + 1], pt0, 2, dSpikeSize);
                             } else {
@@ -1161,7 +1161,7 @@ armyc2.c2sd.JavaLineArray.flot=
                         pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         nSpikeCounter++;
                     }pSpikePoints[nSpikeCounter - 1].style = 9;
-                    if (bolTooLong == 0) {
+                    if (bolTooLong === 0) {
                         d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pSpikePoints[nSpikeCounter - 2]);
                         d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pSpikePoints[nSpikeCounter - 2]);
                         if (d1 > d2) {
@@ -1170,14 +1170,14 @@ armyc2.c2sd.JavaLineArray.flot=
                             pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double (pLinePoints[j + 1], pSpikePoints[nSpikeCounter - 2], -dSpikeSize, 0);
                         }pSpikeEnd[k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pSpikePoints[nSpikeCounter]);
                         nSpikeEndCounter++;
-                        if (lineType == 31133200) {
+                        if (lineType === 31133200) {
                             pSpikePoints[nSpikeCounter].style = 10;
                         }} else {
                         pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         pSpikePoints[nSpikeCounter].style = 5;
                     }nSpikeCounter++;
                 }
-                if (nSpikeEndCounter == 0 && nFlotEndCounter == 1) {
+                if (nSpikeEndCounter === 0 && nFlotEndCounter === 1) {
                     pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j]);
                     pSegmentPoints[nSegmentCounter++].style = 0;
                     pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotStart[0]);
@@ -1187,12 +1187,12 @@ armyc2.c2sd.JavaLineArray.flot=
                     pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotEnd[0]);
                     pSegmentPoints[nSegmentCounter++].style = 5;
                 }for (l = 0; l < nSpikeEndCounter; l++) {
-                    if (l == 0) {
+                    if (l === 0) {
                         pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j]);
                         pSegmentPoints[nSegmentCounter++].style = 0;
                         pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotStart[0]);
                         pSegmentPoints[nSegmentCounter++].style = 5;
-                    }if (l == nSpikeEndCounter - 1) {
+                    }if (l === nSpikeEndCounter - 1) {
                         pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         pSegmentPoints[nSegmentCounter++].style = 0;
                         pSegmentPoints[nSegmentCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotEnd[l + 1]);
@@ -1209,7 +1209,7 @@ armyc2.c2sd.JavaLineArray.flot=
                     tempPoint = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine (pLinePoints[j], pLinePoints[j + 1], pSegmentPoints[nSegmentCounter - 2], 3, 5, 5);
                     pSegmentPoints[nSegmentCounter++] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tempPoint);
                 }
-                if (nSpikeCounter == 0) {
+                if (nSpikeCounter === 0) {
                     pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j]);
                     pSpikePoints[nSpikeCounter].style = 5;
                     nSpikeCounter++;
@@ -1348,11 +1348,11 @@ armyc2.c2sd.JavaLineArray.flot=
                     for (l = 0; l < lNumFlots * 10; l++) {
                         pFlotPoints[nFlotCounter].x = points[k];
                         pFlotPoints[nFlotCounter].y = points[k + 1];
-                        if (lineType == 31134100) {
+                        if (lineType === 31134100) {
                             pFlotPoints[nFlotCounter].style = 19;
                         } else {
                             pFlotPoints[nFlotCounter].style = 9;
-                        }if ((nFlotCounter) % 10 == 0) {
+                        }if ((nFlotCounter) % 10 === 0) {
                             pFlotStart[Math.floor (l / 10)] = pFlotPoints[nFlotCounter];
                             d1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j], pFlotPoints[nFlotCounter]);
                             d2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pLinePoints[j + 1], pFlotPoints[nFlotCounter]);
@@ -1360,22 +1360,22 @@ armyc2.c2sd.JavaLineArray.flot=
                                 pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j + 1], pLinePoints[j], -d1);
                             } else {
                                 pFlotPoints[nFlotCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pLinePoints[j], pLinePoints[j + 1], -d2);
-                            }if (lineType == 31134100) {
+                            }if (lineType === 31134100) {
                                 pFlotPoints[nFlotCounter].style = 19;
                             } else {
                                 pFlotPoints[nFlotCounter].style = 9;
-                            }}if ((nFlotCounter + 1) % 10 == 0) {
-                            if (lineType == 31134100) {
+                            }}if ((nFlotCounter + 1) % 10 === 0) {
+                            if (lineType === 31134100) {
                                 pFlotPoints[nFlotCounter].style = 5;
                             } else {
                                 pFlotPoints[nFlotCounter].style = 23;
                             }pFlotEnd[Math.floor (l / 10)] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotPoints[nFlotCounter]);
-                        }if (l == 0) {
+                        }if (l === 0) {
                             pSegPoints[nSegCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j]);
                             pSegPoints[nSegCounter++].style = 19;
                             pSegPoints[nSegCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotStart[l]);
                             pSegPoints[nSegCounter++].style = 5;
-                        }if (l == lNumFlots * 10 - 1) {
+                        }if (l === lNumFlots * 10 - 1) {
                             pSegPoints[nSegCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                             pSegPoints[nSegCounter++].style = 19;
                             pSegPoints[nSegCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pFlotStart[Math.floor (l / 10)]);
@@ -1406,14 +1406,14 @@ armyc2.c2sd.JavaLineArray.flot=
                     } else {
                         pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pLinePoints[j + 1]);
                         bolTooLong = 1;
-                    }if (lineType == 31134100) {
+                    }if (lineType === 31134100) {
                         pSpikePoints[nSpikeCounter].style = 25;
                     } else {
                         pSpikePoints[nSpikeCounter].style = 9;
                     }nSpikeCounter++;
                     pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble (pSpikePoints[nSpikeCounter - 1], pLinePoints[j + 1], dSpikeSize / 2);
-                    if (bolTooLong == 0) {
-                        if (bolVertical != 0) {
+                    if (bolTooLong === 0) {
+                        if (bolVertical !== 0) {
                             if (pLinePoints[j].x < pLinePoints[j + 1].x) {
                                 pSpikePoints[nSpikeCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine (pLinePoints[j], pLinePoints[j + 1], pt0, 2, dSpikeSize);
                             } else {

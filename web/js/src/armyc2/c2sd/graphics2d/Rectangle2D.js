@@ -6,7 +6,7 @@ armyc2.c2sd.graphics2d.Rectangle2D=function(){
     this.y = 0;
     this.width = 0;
     this.height = 0;
-    if(arguments.length==4)
+    if(arguments.length===4)
     {
         this.x=arguments[0];
         this.y=arguments[1];
@@ -136,19 +136,19 @@ armyc2.c2sd.graphics2d.Rectangle2D.prototype.containsRect2=function (x, y, width
     return false;
 };
 armyc2.c2sd.graphics2d.Rectangle2D.prototype.isEmpty=function () {
-    if (this.width == 0 && this.height == 0) return true;
+    if (this.width === 0 && this.height === 0) return true;
     else return false;
 };
 armyc2.c2sd.graphics2d.Rectangle2D.prototype.setRect=function()
 {
-    if(arguments.length==4)
+    if(arguments.length===4)
     {
         this.x = arguments[0];
         this.y = arguments[1];           
         this.width = arguments[2];
         this.height = arguments[3];        
     }
-    else if(arguments.length==1)
+    else if(arguments.length===1)
     {
         this.x = arguments[0].getX();
         this.y = arguments[0].getY ();

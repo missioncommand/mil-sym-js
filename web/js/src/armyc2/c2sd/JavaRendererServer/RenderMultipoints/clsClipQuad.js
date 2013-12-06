@@ -29,7 +29,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                 totalY += clipBounds.get (j).getY ();
                 counter++;
             }
-            if (clipBounds.get (0).getX () != clipBounds.get (j).getX () || clipBounds.get (0).getY () != clipBounds.get (j).getY ()) {
+            if (clipBounds.get (0).getX () !== clipBounds.get (j).getX () || clipBounds.get (0).getY () !== clipBounds.get (j).getY ()) {
                 totalX += clipBounds.get (j).getX ();
                 totalY += clipBounds.get (j).getY ();
                 counter++;
@@ -38,7 +38,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
             var avgY = totalY / counter;
             var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (avgX, avgY);
             var ptNear = null;
-            if (clipArray.contains (pt02d.getX (), pt02d.getY ()) == false) {
+            if (clipArray.contains (pt02d.getX (), pt02d.getY ()) === false) {
                 for (j = 0; j < clipBounds.size (); j++) {
                     sidePt.x = clipBounds.get (j).getX ();
                     sidePt.y = clipBounds.get (j).getY ();
@@ -56,7 +56,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
             }
             nearestPt = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D ();
             minDist = 1.7976931348623157E308;
-            if (clipArray.contains (ptLast2d.getX (), ptLast2d.getY ()) == false) {
+            if (clipArray.contains (ptLast2d.getX (), ptLast2d.getY ()) === false) {
                 for (j = 0; j < clipBounds.size (); j++) {
                     sidePt.x = clipBounds.get (j).getX ();
                     sidePt.y = clipBounds.get (j).getY ();
@@ -72,13 +72,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                 polygon.add (nearestPt);
                 addToEnd = new Boolean (true);
             }
-            if (addToFront.booleanValue () == false && addToEnd.booleanValue () == false) {
+            if (addToFront.booleanValue () === false && addToEnd.booleanValue () === false) {
                 result = 0;
-            } else if (addToFront.booleanValue () == true && addToEnd.booleanValue () == false) {
+            } else if (addToFront.booleanValue () === true && addToEnd.booleanValue () === false) {
                 result = 1;
-            } else if (addToFront.booleanValue () == false && addToEnd.booleanValue () == true) {
+            } else if (addToFront.booleanValue () === false && addToEnd.booleanValue () === true) {
                 result = 2;
-            } else if (addToFront.booleanValue () == true && addToEnd.booleanValue () == true) {
+            } else if (addToFront.booleanValue () === true && addToEnd.booleanValue () === true) {
                 result = 3;
             }
         } catch (exc) {
@@ -95,16 +95,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
         try {
             var x = 0;
             var y = 0;
-            if (bolVertical1 == 0 && bolVertical2 == 0) return ptIntersect;
-            if (bolVertical1 == 0 && bolVertical2 == 1) {
+            if (bolVertical1 === 0 && bolVertical2 === 0) return ptIntersect;
+            if (bolVertical1 === 0 && bolVertical2 === 1) {
                 ptIntersect.setLocation (X1, m2 * X1 + b2);
                 return ptIntersect;
             }
-            if (bolVertical1 == 1 && bolVertical2 == 0) {
+            if (bolVertical1 === 1 && bolVertical2 === 0) {
                 ptIntersect.setLocation (X2, m1 * X2 + b1);
                 return ptIntersect;
             }
-            if (m1 != m2) {
+            if (m1 !== m2) {
                 x = (b2 - b1) / (m1 - m2);
                 y = (m1 * x + b1);
                 ptIntersect.setLocation (x, y);
@@ -124,7 +124,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
         try {
             var ll = currentEdge.getP1 ();
             var ul = currentEdge.getP2 ();
-            if (current.getX () == previous.getX ()) current.setLocation (current.getX () + 1, current.getY ());
+            if (current.getX () === previous.getX ()) current.setLocation (current.getX () + 1, current.getY ());
             var m1 = (ul.getY () - ll.getY ()) / (ul.getX () - ll.getX ());
             var m2 = (current.getY () - previous.getY ()) / (current.getX () - previous.getX ());
             var b1 = ul.getY () - m1 * ul.getX ();
@@ -163,18 +163,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
             var intersectPt = null;
             var edge;
             ptsResult =  new java.util.ArrayList ();
-            if (index == 0) {
+            if (index === 0) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D (clipBounds.get (index + 2).getX (), clipBounds.get (index + 2).getY ());
             } else if (index > 1) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D (clipBounds.get (index - 2).getX (), clipBounds.get (index - 2).getY ());
-            } else if (index == 1) {
+            } else if (index === 1) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D (clipBounds.get (0).getX (), clipBounds.get (0).getY ());
             }
-            if (pt2.getX () == pt1.getX ()) pt2.setLocation (pt2.getX () + 1, pt2.getY ());
-            if (pt2.getY () == pt1.getY ()) pt2.setLocation (pt2.getX (), pt2.getY () + 1);
+            if (pt2.getX () === pt1.getX ()) pt2.setLocation (pt2.getX () + 1, pt2.getY ());
+            if (pt2.getY () === pt1.getY ()) pt2.setLocation (pt2.getX (), pt2.getY () + 1);
             for (j = 0; j < pts.size (); j++) {
                 current = pts.get (j);
-                if (j == 0) {
+                if (j === 0) {
                     previous = pts.get (pts.size () - 1);
                 } else {
                     previous = pts.get (j - 1);
@@ -191,21 +191,21 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                 clipBoundsQuadrant = armyc2.c2sd.JavaLineArray.lineutility.GetQuadrantDouble (clipBoundsPoint.getX (), clipBoundsPoint.getY (), ptClipBoundsIntersect.getX (), ptClipBoundsIntersect.getY ());
                 previousQuadrant = armyc2.c2sd.JavaLineArray.lineutility.GetQuadrantDouble (previous.getX (), previous.getY (), ptPreviousIntersect.getX (), ptPreviousIntersect.getY ());
                 currentQuadrant = armyc2.c2sd.JavaLineArray.lineutility.GetQuadrantDouble (current.getX (), current.getY (), ptCurrentIntersect.getX (), ptCurrentIntersect.getY ());
-                if (previousQuadrant == clipBoundsQuadrant && currentQuadrant == clipBoundsQuadrant) ptsResult.add (current);
-                else if (previousQuadrant == clipBoundsQuadrant && currentQuadrant != clipBoundsQuadrant) {
+                if (previousQuadrant === clipBoundsQuadrant && currentQuadrant === clipBoundsQuadrant) ptsResult.add (current);
+                else if (previousQuadrant === clipBoundsQuadrant && currentQuadrant !== clipBoundsQuadrant) {
                     edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (pt1, pt2);
                     intersectPt = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.intersectPoint2 (previous, current, edge);
-                    if (intersectPt != null) {
+                    if (intersectPt !== null) {
                         ptsResult.add (intersectPt);
                     }
-                } else if (previousQuadrant != clipBoundsQuadrant && currentQuadrant == clipBoundsQuadrant) {
+                } else if (previousQuadrant !== clipBoundsQuadrant && currentQuadrant === clipBoundsQuadrant) {
                     edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D (pt1, pt2);
                     intersectPt = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.intersectPoint2 (previous, current, edge);
-                    if (intersectPt != null) {
+                    if (intersectPt !== null) {
                         ptsResult.add (intersectPt);
                     }
                     ptsResult.add (current);
-                } else if (previousQuadrant != clipBoundsQuadrant && currentQuadrant != clipBoundsQuadrant) continue ;
+                } else if (previousQuadrant !== clipBoundsQuadrant && currentQuadrant !== clipBoundsQuadrant) continue ;
             }
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {
@@ -218,7 +218,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
     },
     addAbatisFill:function (tg, shapes) {
         try {
-            if (tg.Pixels == null || tg.Pixels.size () < 2 || tg.get_FillColor () == null || tg.get_FillColor ().getAlpha () < 2 || shapes == null) return ;
+            if (tg.Pixels === null || tg.Pixels.size () < 2 || tg.get_FillColor () === null || tg.get_FillColor ().getAlpha () < 2 || shapes === null) return ;
             var j = 0;
             var n = tg.Pixels.size ();
             var shape = null;
@@ -230,7 +230,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                     var dist2 = 0;
                     shape =  new armyc2.c2sd.JavaLineArray.Shape2 (armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                     shape.setFillColor (tg.get_FillColor ());
-                    if ( new Boolean (tg.Pixels != null & tg.Pixels.size () >= 300).valueOf ()) {
+                    if ( new Boolean (tg.Pixels !== null & tg.Pixels.size () >= 300).valueOf ()) {
                         dist0 = Math.abs (tg.Pixels.get (0).x - tg.Pixels.get (50).x);
                         dist1 = Math.abs (tg.Pixels.get (100).x - tg.Pixels.get (150).x);
                         dist2 = Math.abs (tg.Pixels.get (200).x - tg.Pixels.get (250).x);
@@ -257,7 +257,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                     tg2 =  new armyc2.c2sd.JavaTacticalRenderer.TGLight ();
                     tg2.set_LineType (22131000);
                     tg2.Pixels =  new java.util.ArrayList ();
-                    if (tg.Pixels != null && tg.Pixels.size () > 2) {
+                    if (tg.Pixels !== null && tg.Pixels.size () > 2) {
                         tg2.Pixels.add (tg.Pixels.get (n - 3));
                         tg2.Pixels.add (tg.Pixels.get (n - 2));
                         tg2.Pixels.add (tg.Pixels.get (n - 1));
@@ -270,7 +270,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                 default:
                     return ;
             }
-            if (shapes != null) shapes.add (0, shape);
+            if (shapes !== null) shapes.add (0, shape);
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad._className, "addAbatisFill",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside addAbatisFill", exc));
@@ -283,7 +283,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
     LinesWithFill:function (tg, clipBounds) {
         var shapes = null;
         try {
-            if (tg.get_FillColor () == null || tg.get_FillColor ().getAlpha () <= 1 || tg.Pixels == null || tg.Pixels.isEmpty ()) return shapes;
+            if (tg.get_FillColor () === null || tg.get_FillColor ().getAlpha () <= 1 || tg.Pixels === null || tg.Pixels.isEmpty ()) return shapes;
             switch (tg.get_LineType ()) {
                 case 23120000:
                 case 22521420:
@@ -320,7 +320,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                 default:
                     break;
             }
-            if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.LinesWithFill (tg.get_LineType ()) == false) return shapes;
+            if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.LinesWithFill (tg.get_LineType ()) === false) return shapes;
             shapes =  new java.util.ArrayList ();
             var shape = null;
             var tg2 =  new armyc2.c2sd.JavaTacticalRenderer.TGLight ();
@@ -328,15 +328,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
             tg2.Pixels =  new java.util.ArrayList ();
             tg2.Pixels.addAll (tg.Pixels);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.closeAreaTG (tg2);
-            if (clipBounds != null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg2, clipBounds);
-            if (tg2.Pixels == null || tg2.Pixels.isEmpty ()) return null;
+            if (clipBounds !== null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg2, clipBounds);
+            if (tg2.Pixels === null || tg2.Pixels.isEmpty ()) return null;
             var j = 0;
             shape =  new armyc2.c2sd.JavaLineArray.Shape2 (armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
             shape.setFillColor (tg.get_FillColor ());
             shape.moveTo (tg2.Pixels.get (0));
             for (j = 1; j < tg2.Pixels.size (); j++) shape.lineTo (tg2.Pixels.get (j));
 
-            if (tg.get_FillColor () != null || tg.get_FillColor ().getAlpha () > 1) {
+            if (tg.get_FillColor () !== null || tg.get_FillColor ().getAlpha () > 1) {
                 shapes.add (shape);
             } else return null;
         } catch (exc) {
@@ -350,10 +350,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
     },
     closeAreaTG : function (tg) {
         try {
-            if (tg.Pixels == null || tg.Pixels.isEmpty ()) return ;
+            if (tg.Pixels === null || tg.Pixels.isEmpty ()) return ;
             var pt0 = tg.Pixels.get (0);
             var ptn = tg.Pixels.get (tg.Pixels.size () - 1);
-            if (pt0.x != ptn.x || pt0.y != ptn.y) tg.Pixels.add (pt0);
+            if (pt0.x !== ptn.x || pt0.y !== ptn.y) tg.Pixels.add (pt0);
         } catch (exc) {
             if (Clazz.instanceOf (exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad._className, "closeAreaTG",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside closeAreaTG", exc));
@@ -389,13 +389,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
             tg2.set_LineType (22131000);
             tg2.Pixels =  new java.util.ArrayList ();
             var n = 0;
-            if (tg.LatLongs != null) n = tg.LatLongs.size ();
+            if (tg.LatLongs !== null) n = tg.LatLongs.size ();
             else n = tg.Pixels.size ();
             for (j = 0; j < n; j++) tg2.Pixels.add (tg.Pixels.get (j));
 
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.closeAreaTG (tg2);
-            if (clipBounds != null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg2, clipBounds);
-            if (tg2.Pixels == null || tg2.Pixels.isEmpty ()) return shapes;
+            if (clipBounds !== null) armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.ClipPolygon (tg2, clipBounds);
+            if (tg2.Pixels === null || tg2.Pixels.isEmpty ()) return shapes;
             shape =  new armyc2.c2sd.JavaLineArray.Shape2 (armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
             shape.setFillColor (tg.get_FillColor ());
             shape.moveTo (tg2.Pixels.get (0));
@@ -415,7 +415,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
         var closed = false;
         var pt0 = pts.get (0);
         var ptLast = pts.get (pts.size () - 1);
-        if (pt0.x == ptLast.x && pt0.y == ptLast.y) {
+        if (pt0.x === ptLast.x && pt0.y === ptLast.y) {
             closed = true;
             return true;
         }
@@ -433,17 +433,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
 
             var clipBoundsPtStart = clipBounds.get (0);
             var clipBoundsPtEnd = clipBounds.get (clipBounds.size () - 1);
-            if (clipBoundsPtStart.getX () != clipBoundsPtEnd.getX () || clipBoundsPtStart.getY () != clipBoundsPtEnd.getY ()) clipBounds.add (clipBoundsPtStart);
+            if (clipBoundsPtStart.getX () !== clipBoundsPtEnd.getX () || clipBoundsPtStart.getY () !== clipBoundsPtEnd.getY ()) clipBounds.add (clipBoundsPtStart);
             var addedLinePoints = 0;
-            if (isClosed.booleanValue () == true) polygon.remove (polygon.size () - 1);
+            if (isClosed.booleanValue () === true) polygon.remove (polygon.size () - 1);
             else {
                 addedLinePoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.AddBoundaryPointsForLines (polygon, clipBounds);
             }
             for (j = 0; j < clipBounds.size () - 1; j++) {
-                if (j == 0) poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide (polygon, j, clipBounds);
+                if (j === 0) poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide (polygon, j, clipBounds);
                 else poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide (poly, j, clipBounds);
             }
-            if (isClosed.booleanValue () == true) {
+            if (isClosed.booleanValue () === true) {
                 if (poly.size () > 0) {
                     poly.add (poly.get (0));
                 }
@@ -483,7 +483,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad={
                         break;
                 }
             }
-            if (isClosed.booleanValue () == true) {
+            if (isClosed.booleanValue () === true) {
                 if (poly.size () > 2) {
                     tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Point2DtoPOINT2Mapped (poly, hashMap);
                 } else {

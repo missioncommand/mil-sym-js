@@ -6,7 +6,7 @@ armyc2.c2sd.graphics2d.Rectangle=function(){
     this.y = 0;
     this.width = 0;
     this.height = 0;
-    if(arguments.length==4)
+    if(arguments.length===4)
     {
         this.x = arguments[0];
         this.y = arguments[1];

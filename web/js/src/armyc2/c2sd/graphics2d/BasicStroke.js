@@ -43,7 +43,7 @@ armyc2.c2sd.graphics2d.BasicStroke=function(){
         pts = armyc2.c2sd.graphics2d.BasicStroke.GetInteriorPoints (ptsx, pts.size (), 32214000, this.width);
         for (j = 0; j < pts.size (); j++) {
             pt = pts.get (j);
-            if (j == 0) gp.moveTo (pt.x, pt.y);
+            if (j === 0) gp.moveTo (pt.x, pt.y);
             else gp.lineTo (pt.x, pt.y);
         }
         return gp;
@@ -107,7 +107,7 @@ armyc2.c2sd.graphics2d.BasicStroke=function(){
         var b01 = 0;
         var b12 = 0;
         for (j = 0; j < vblCounter; j++) {
-            if (j == 0 || j == vblCounter - 1) {
+            if (j === 0 || j === vblCounter - 1) {
                 pt0 = pLinePoints[vblCounter - 2];
                 pt1 = pLinePoints[0];
                 pt2 = pLinePoints[1];
@@ -144,7 +144,7 @@ armyc2.c2sd.graphics2d.BasicStroke=function(){
                     break;
             }
             index = j;
-            if (j == vblCounter - 1) {
+            if (j === vblCounter - 1) {
                 index = 0;
             }
             direction = armyc2.c2sd.JavaLineArray.arraysupport.GetInsideOutsideDouble2 (pt1, pt2, pLinePoints, vblCounter, index, lineType);
@@ -166,14 +166,14 @@ armyc2.c2sd.graphics2d.BasicStroke=function(){
                     pt11 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine (pt1, pt2, pt2, 2, dist);
                     break;
             }
-            if (pt0.x == pt1.x && pt1.x == pt2.x) {
+            if (pt0.x === pt1.x && pt1.x === pt2.x) {
                 intersectPt =  new armyc2.c2sd.JavaLineArray.POINT2 (pt01);
                 intersectPoints.add (intersectPt);
                 continue ;
             }
             armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2 (pt00, pt01, m01);
             armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2 (pt10, pt11, m12);
-            if (m01.value[0] == m12.value[0]) {
+            if (m01.value[0] === m12.value[0]) {
                 intersectPt =  new armyc2.c2sd.JavaLineArray.POINT2 (pt01);
                 intersectPoints.add (intersectPt);
                 continue ;

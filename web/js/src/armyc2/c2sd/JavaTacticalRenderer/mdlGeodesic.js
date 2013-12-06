@@ -37,7 +37,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic={
     geodesic_distance:function (c1, c2, a12, a21) {
         var h = 0;
         try {
-            if (a12 != null && a21 != null) {
+            if (a12 !== null && a21 !== null) {
                 a12.value =  Clazz.newArray (1, 0);
                 a21.value =  Clazz.newArray (1, 0);
                 a12.value[0] = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth (c1, c2);
@@ -116,7 +116,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic={
     GetGeodesicArc:function (pPoints) {
         var pPoints2 =  new java.util.ArrayList ();
         try {
-            if (pPoints == null) {
+            if (pPoints === null) {
                 return null;
             }if (pPoints.length < 3) {
                 return null;
@@ -219,7 +219,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic={
             var dLat = lat2 - lat1;
             var dLon = lon2 - lon1;
             var dist12 = 2 * Math.asin (Math.sqrt (Math.sin (dLat / 2) * Math.sin (dLat / 2) + Math.cos (lat1) * Math.cos (lat2) * Math.sin (dLon / 2) * Math.sin (dLon / 2)));
-            if (dist12 == 0) {
+            if (dist12 === 0) {
                 return null;
             }var brngA = Math.acos ((Math.sin (lat2) - Math.sin (lat1) * Math.cos (dist12)) / (Math.sin (dist12) * Math.cos (lat1)));
             if (Double.isNaN (brngA)) {
@@ -235,7 +235,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic={
                 brng21 = brngB;
             }var alpha1 = (brng13 - brng12 + 3.141592653589793) % (6.283185307179586) - 3.141592653589793;
             var alpha2 = (brng21 - brng23 + 3.141592653589793) % (6.283185307179586) - 3.141592653589793;
-            if (Math.sin (alpha1) == 0 && Math.sin (alpha2) == 0) {
+            if (Math.sin (alpha1) === 0 && Math.sin (alpha2) === 0) {
                 return null;
             }if (Math.sin (alpha1) * Math.sin (alpha2) < 0) {
                 return null;

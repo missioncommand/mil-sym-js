@@ -41,7 +41,7 @@ armyc2.c2sd.graphics2d.ArcIterator=function()
         //alert(this.increment);
         this.cv = armyc2.c2sd.graphics2d.ArcIterator.btan (this.increment);
         //alert(this.cv);
-        if (this.cv == 0) {
+        if (this.cv === 0) {
             this.arcSegs = 0;
         }
     }
@@ -79,21 +79,21 @@ armyc2.c2sd.graphics2d.ArcIterator=function()
             return -1;
         }
         var angle = this.angStRad;
-        if (this.index == 0) {
+        if (this.index === 0) {
             coords[0] = (this.x + Math.cos (angle) * this.w);
             coords[1] = (this.y + Math.sin (angle) * this.h);
-            if (this.affine != null) {
+            if (this.affine !== null) {
                 this.affine.transform (coords, 0, coords, 0, 1);
             }
             return 0;
         }
         if (this.index > this.arcSegs) {
-            if (this.index == this.arcSegs + this.lineSegs) {
+            if (this.index === this.arcSegs + this.lineSegs) {
                 return 4;
             }
             coords[0] = this.x;
             coords[1] = this.y;
-            if (this.affine != null) {
+            if (this.affine !== null) {
                 this.affine.transform (coords, 0, coords, 0, 1);
             }
             return 1;
@@ -110,7 +110,7 @@ armyc2.c2sd.graphics2d.ArcIterator=function()
         coords[3] = (this.y + (rely - this.cv * relx) * this.h);
         coords[4] = (this.x + relx * this.w);
         coords[5] = (this.y + rely * this.h);
-        if (this.affine != null) {
+        if (this.affine !== null) {
             this.affine.transform (coords, 0, coords, 0, 3);
         }
         return 3;
@@ -120,21 +120,21 @@ armyc2.c2sd.graphics2d.ArcIterator=function()
         if (this.isDone ()) {
         }
         var angle = this.angStRad;
-        if (this.index == 0) {
+        if (this.index === 0) {
             coords[0] = this.x + Math.cos (angle) * this.w;
             coords[1] = this.y + Math.sin (angle) * this.h;
-            if (this.affine != null) {
+            if (this.affine !== null) {
                 this.affine.transform (coords, 0, coords, 0, 1);
             }
             return 0;
         }
         if (this.index > this.arcSegs) {
-            if (this.index == this.arcSegs + this.lineSegs) {
+            if (this.index === this.arcSegs + this.lineSegs) {
                 return 4;
             }
             coords[0] = this.x;
             coords[1] = this.y;
-            if (this.affine != null) {
+            if (this.affine !== null) {
                 this.affine.transform (coords, 0, coords, 0, 1);
             }
             return 1;
@@ -151,7 +151,7 @@ armyc2.c2sd.graphics2d.ArcIterator=function()
         coords[3] = this.y + (rely - this.cv * relx) * this.h;
         coords[4] = this.x + relx * this.w;
         coords[5] = this.y + rely * this.h;
-        if (this.affine != null) {
+        if (this.affine !== null) {
             this.affine.transform (coords, 0, coords, 0, 3);
         }
         return 3;
