@@ -130,9 +130,7 @@ sec.geo.kml.KmlRenderer = function()
             if (id !== null) {
                 sb.replace(placemarkIdIndex, placemarkIdIndex + placemarkIdLength, id + "_mg");
             }
-            //alert(sb.toString());
             var descriptionIndex = sb.indexOf(this.descriptionField);
-            //alert(sb.toString());
             var descriptionLength = this.descriptionField.length;
             if (description !== null)
                 sb.replace(descriptionIndex, descriptionIndex + descriptionLength, description);
@@ -142,13 +140,11 @@ sec.geo.kml.KmlRenderer = function()
                 sb.replace(colorIndex, colorIndex + colorLength, color);
             } else
                 sb.replace(colorIndex, colorIndex + colorLength, this.colorDefault);
-            //alert(sb.toString());
             var lineColorIndex = sb.indexOf2(this.colorField, colorIndex + colorLength);
             if (color !== null) {
                 sb.replace(lineColorIndex, lineColorIndex + colorLength, color);
             } else
                 sb.replace(lineColorIndex, lineColorIndex + colorLength, this.colorDefault);
-            //alert(sb.toString());
             var nameIndex = sb.indexOf(this.nameField);
             var nameLength = this.nameField.length;
             if (name !== null)
@@ -159,7 +155,6 @@ sec.geo.kml.KmlRenderer = function()
                 sb.append(poly.toString());
             }
             sb.append(this.PLACEMARK_END);
-            //alert(sb.toString ());
             return sb.toString();
         } catch (e) {
             throw e;
@@ -176,7 +171,6 @@ sec.geo.kml.KmlRenderer = function()
 
             //loop for the track elements (routes)
             var elements = aext.getElements();
-            //alert(elements.size());
             var j = 0;
             for (j = 0; j < elements.size(); j++)
             {

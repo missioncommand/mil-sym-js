@@ -24,10 +24,8 @@ sec.geo.kml.KmlPolygon = function()
     {
         var points = arguments[0];
         var altitudeMode = arguments[1];
-        //this.construct ();
         this.points.addAll(points);
         this.altitudeMode = altitudeMode;
-        //alert(points.get(0).getLongitude());
     }
     this.addPoint = function(point) {
         this.points.add(point);
@@ -55,14 +53,12 @@ sec.geo.kml.KmlPolygon = function()
         for (var j = 0; j < orderedPoints.size(); j++)
         {
             point = orderedPoints.get(j);
-            //alert(point.getLongitude ());
             sb.append(new Double(point.getLongitude()));
             sb.append(",");
             sb.append(new Double(point.getLatitude()));
             sb.append(",");
             sb.append(new Double(point.getAltitude()));
             sb.append(" ");
-            //alert(sb.toString());
         }
         point = orderedPoints.get(0);
         if (!point.equals(orderedPoints.get(orderedPoints.size() - 1))) {
@@ -136,7 +132,6 @@ sec.geo.kml.KmlPolygon = function()
 
         return result;
     };//, $fz.isPrivate = true, $fz), "java.util.ArrayList,~N,~N");
-    //Clazz.defineMethod (c$, "reverse", 
     this.reverse = function(al) {
         var j = 0;
         var result = new java.util.ArrayList();

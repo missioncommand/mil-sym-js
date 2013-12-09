@@ -3,7 +3,7 @@ org.gavaghan = org.gavaghan || {};
 org.gavaghan.geodesy = org.gavaghan.geodesy || {};
 org.gavaghan.geodesy.Angle = function()
 {
-}
+};
 org.gavaghan.geodesy.Angle.toRadians = function(degrees) {
     return degrees * 0.017453292519943295;
 };//, "~N");

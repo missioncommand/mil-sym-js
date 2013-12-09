@@ -1,8 +1,4 @@
-//Clazz.load (["java.lang.Comparable", "$.Number"], "java.lang.Double", null, function () {
 Double = function() {
-    //Clazz.instantialize (this, arguments);
-    //};
-    //Clazz.decorateAsType (Double, "Double", Number, Comparable, null, true);
     this.value = new Number(0);
     if (arguments.length === 1)
     {

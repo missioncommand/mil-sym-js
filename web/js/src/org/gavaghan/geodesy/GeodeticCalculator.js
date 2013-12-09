@@ -114,7 +114,7 @@ org.gavaghan.geodesy.GeodeticCalculator = function()
         return  new org.gavaghan.geodesy.GeodeticMeasurement(averageCurve, elev2 - elev1);
     };//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalPosition,org.gavaghan.geodesy.GlobalPosition");
 //});
-}
+};
 org.gavaghan.geodesy.GeodeticCalculator.calculateEndingGlobalCoordinates = function(ellipsoid, start, startBearing, distance, endBearing) {
     var a = ellipsoid.getSemiMajorAxis();
     var b = ellipsoid.getSemiMinorAxis();
