@@ -367,9 +367,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             var clipPoints = null;
             var pt2d = null;
             if (clipArea !== null) {
-                //                    if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D) === true) clipBounds = clipArea;
-                //                    if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle) === true) clipBounds = clipArea;
-                //                    else if (clipArea.getClass ().isAssignableFrom (java.util.ArrayList) === true) clipPoints = clipArea;
                 if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle2D)
                     clipBounds = clipArea;
                 else if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -609,14 +606,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             if (clipArea === null)
                 return;
 
-            //                if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D)) {
-            //                    clipBounds = clipArea;
-            //                } else if (clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle)) {
-            //                    clipBounds = clipArea;
-            //                } else if (clipArea.getClass ().isAssignableFrom (java.util.ArrayList)) {
-            //                    clipPoints = clipArea;
-            //                }
-
             if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle2D)
                 clipBounds = clipArea;
             else if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -653,9 +642,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 pt0 = tg.Pixels.get(j);
                 pt1 = tg.Pixels.get(j + 1);
                 line = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D(pt0.x, pt0.y, pt1.x, pt1.y);
-                //alert(line);
                 intersects = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.lineIntersectsClipArea(line, clipPoints);
-                //alert(intersects);
                 if (intersects === true) {
                     frontIndex = j;
                     break;
@@ -778,12 +765,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     hatch = shape2.get_FillStyle();
                 } else
                     shape = shapes.get(index);
-                //alert(hatch);
                 if (hatch < armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal)
                     continue;
                 if (hatch !== armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_Cross)
                 {
-                    //alert();
                     shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, hatch);
                     shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shape.setLineColor(tg.get_LineColor());

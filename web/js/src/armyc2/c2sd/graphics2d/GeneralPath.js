@@ -104,6 +104,5 @@ armyc2.c2sd.graphics2d.GeneralPath.prototype.getPathIterator = function(tx) {
     this._pathIterator.reset();
     return this._pathIterator;
 };
-//}
 
 

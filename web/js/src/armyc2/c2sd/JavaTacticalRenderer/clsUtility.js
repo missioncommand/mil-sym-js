@@ -630,7 +630,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         if (lineType !== 22123000) {
                             shape.setLineColor(tg.get_LineColor());
                         }
-                        //alert(lineStyle);
                         shape.set_Style(lineStyle);
                         if (hasFill || armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType) || armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(lineType, null)) {
                             if (lineType !== 243111000 && lineType !== 243112000) {
@@ -966,7 +965,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 stroke = armyc2.c2sd.JavaTacticalRenderer.clsUtility.getLineStroke(lineThickness, shape.get_Style(), 1, 1);
                 if (tg.get_Client().equalsIgnoreCase("ge"))
                 {
-                    //diagnostic
                     if (tg.get_LineType() === 22320000 && shape.get_Style() === 2)
                         shape.set_Style(1);
 
@@ -1160,9 +1158,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
         return false;
-    }, //$fz.isPrivate = true, $fz), 
-    //"armyc2.c2sd.JavaLineArray.POINT2,armyc2.c2sd.JavaLineArray.POINT2,armyc2.c2sd.JavaLineArray.POINT2");
-    //c$.InXOrder = Clazz.defineMethod (//c$, "InXOrder", 
+    },
     InXOrder: function(pt0, pt1, pt2) {
         try {
             if (pt0.x <= pt1.x && pt1.x <= pt2.x) {
@@ -1635,7 +1631,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         try {
             if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes !== null || armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs !== null)
                 return;
-            //($t$ = armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes =  new java.util.HashMap (), armyc2.c2sd.JavaTacticalRenderer.clsUtility.prototype.linetypes = armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes, $t$);
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes = new java.util.HashMap();
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_LINE--------", (10000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_AREA--------", (11000000));
@@ -1899,7 +1894,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPACVR--****X", (24339200));
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPACT---****X", (24226000));
             }
-            //($t$ = armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs =  new java.util.HashMap (), armyc2.c2sd.JavaTacticalRenderer.clsUtility.prototype.metocs = armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs, $t$);
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs = new java.util.HashMap();
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DPFC----L---", (31131000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DPFCU---L---", (31131100));
@@ -2435,7 +2429,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     glyphSize = 50;
                     break;
                 default:
-                    //alert('no');
                     return;
             }
             var hmapPixels = new java.util.HashMap();

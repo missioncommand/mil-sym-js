@@ -26,7 +26,6 @@ armyc2.c2sd.graphics2d.Area=function()
                 }
                 else 
                 {
-                    //this.lineTo (pt.x, pt.y);
                     this._path.lineTo (pt.x, pt.y);
                     this._pathIterator.lineTo (pt.x, pt.y);
                 }
@@ -135,7 +134,6 @@ armyc2.c2sd.graphics2d.Area.prototype.intersect=function (area) {
         }
     }
 };
-//}    
 armyc2.c2sd.graphics2d.Area.reorderPointsByDistance = function (hatchLine, pts) {
     try {
         var minDistance = 0;
@@ -231,7 +229,6 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
         var m2 = 0;
         var b1 = 0;
         var b2 = 0;
-        //alert();
         for (j = 0; j < polygon.size () - 1; j++) 
         {
             pt0 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D (polygon.get (j).x, polygon.get (j).y);
@@ -242,7 +239,6 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
             pt1 = segment.getP2 ();
             m1 = (hatchLine.getY1 () - hatchLine.getY2 ()) / (hatchLine.getX1 () - hatchLine.getX2 ());
             m2 = (pt0.getY () - pt1.getY ()) / (pt0.getX () - pt1.getX ());
-            //alert(m1);
             if (hatchLine.intersectsLine (segment)) {
                 if (m1 === m2) {
                     ptsPath.add (pt0);
@@ -269,7 +265,6 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
             }
         }
         ptsPath.clear ();
-    //alert(ptsPath);
     } catch (exc) {
         if (Clazz.instanceOf (exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (this._className, "getLineIntersectPoints",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside getLineIntersectPoints", exc));

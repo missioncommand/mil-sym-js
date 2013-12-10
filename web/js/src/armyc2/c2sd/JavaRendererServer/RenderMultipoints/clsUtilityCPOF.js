@@ -465,7 +465,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 radii = Clazz.newArray(strs.length, 0);
                 for (j = 0; j < strs.length; j++)
                 {
-                    //radii[j] = Double.parseDouble (strs[j]);
                     radii[j] = strs[j];
                 }
             }
@@ -799,8 +798,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             }
         }
         return;
-    }, //"armyc2.c2sd.JavaTacticalRenderer.TGLight");
-    //c$.FilterPoints2 = Clazz.defineMethod (c$, "FilterPoints2", 
+    },
     FilterPoints2: function(tg, converter) {
         try {
             var lineType = tg.get_LineType();
@@ -940,7 +938,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             if (armyc2.c2sd.JavaTacticalRenderer.clsMETOC.IsWeather(symbolId) > 0)
                 return true;
             var linetype = tg.get_LineType();
-            //alert(linetype);
             switch (linetype) {
                 case 2237000:
                 case 23120000:
@@ -1158,20 +1155,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
     },
     Point2DtoPOINT2Mapped: function(pts2d, hashMap) {
         var pts = new java.util.ArrayList();
-        //alert(pts);
         try {
             var pt2d;
             var style = 0;
             for (var j = 0; j < pts2d.size(); j++)
             {
-                //alert(j);
                 pt2d = pts2d.get(j);
                 if (hashMap.containsValue(pt2d))
                     style = 0;
                 else
                     style = -1;
                 pts.add(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts2d.get(j).getX(), pts2d.get(j).getY(), style));
-                //alert(pt2d.getX());
             }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
@@ -1247,12 +1241,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var clipBounds = null;
             var clipPoints = null;
 
-            //                if (clipArea !== null && clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D)) 
-            //                    clipBounds = clipArea;
-            //                else if (clipArea !== null && clipArea.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle)) 
-            //                    clipBounds = clipArea;
-            //                else if (clipArea !== null && clipArea.getClass ().isAssignableFrom (java.util.ArrayList)) 
-            //                    clipPoints = clipArea;
             if (clipArea !== null && clipArea instanceof armyc2.c2sd.graphics2d.Rectangle2D)
                 clipBounds = clipArea;
             else if (clipArea !== null && clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -1324,7 +1312,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         break;
                 }
             }
-            //alert(j);
             if (pts2.size() > 1) {
                 tg = new armyc2.c2sd.JavaTacticalRenderer.TGLight();
                 tg.set_LineType(22124000);
@@ -1368,18 +1355,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 shapeSpecs.add(shapeSpecsArray.get(j));
 
             var pts = new java.util.ArrayList();
-            //alert(pts);
             var shape = null;
             var pt;
             var coords = Clazz.newArray(6, 0);
-            //alert(coords);
             var shapeSpec = null;
             for (j = 0; j < shapeSpecs.size(); j++) {
                 shapeSpec = shapeSpecs.get(j);
                 shape = shapeSpec.getShape();
-                //alert(shape);
                 pts.clear();
-                //alert(pts);
                 for (var i = shape.getPathIterator(null); !i.isDone(); i.next())
                 {
                     var type = i.currentSegment(coords);
@@ -1563,13 +1546,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
     },
     SegmentGeoPoints: function(tg, converter) {
         try {
-            //alert('seg');
             if (tg.get_Client().equals("2D"))
                 return;
             var resultPts = new java.util.ArrayList();
             var lineType = tg.get_LineType();
             var interval = 1000000;
-            //alert(interval);
             switch (lineType) {
                 case 22528000:
                 case 24220000:

@@ -216,8 +216,6 @@ armyc2.c2sd.graphics2d.Line2D.prototype.setLine = function()
         this.y2 = y2;
     }
 };
-//}
-//c$.ptSegDistSq = Clazz.defineMethod (c$, "ptSegDistSq", 
 armyc2.c2sd.graphics2d.Line2D.ptSegDistSq = function(x1, y1, x2, y2, px, py) {
     x2 -= x1;
     y2 -= y1;
@@ -242,4 +240,4 @@ armyc2.c2sd.graphics2d.Line2D.ptSegDistSq = function(x1, y1, x2, y2, px, py) {
         lenSq = 0;
     }
     return lenSq;
-};//, "~N,~N,~N,~N,~N,~N");
+};

@@ -1590,7 +1590,6 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32223000:
                     shape = shapes.get(0);
                     shape.setLineColor(tg.get_LineColor());
-                    //inFile = armyc2.c2sd.JavaTacticalRenderer.clsMETOC.getClassLoader ().getResourceAsStream (fileName);
                     if (inFile !== null) {
                         bi2 = armyc2.c2sd.graphics2d.ImageIO.read(inFile);
                         rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, bi2.getWidth(), bi2.getHeight());

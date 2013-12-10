@@ -321,8 +321,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             }
         }
         return result;
-    }, //$fz.isPrivate = true, $fz), "java.util.ArrayList,armyc2.c2sd.graphics2d.Rectangle2D");
-    //c$.closeAreaTG = Clazz.defineMethod (c$, "closeAreaTG", 
+    },
     closeAreaTG: function(tg) {
         try {
             if (tg.Pixels === null || tg.Pixels.isEmpty())
@@ -464,7 +463,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
     },
     LinesWithFill: function(tg, clipBounds) {
         var shapes = null;
-        //alert();
         try {
             if (tg.get_FillColor() === null || tg.get_FillColor().getAlpha() <= 1 || tg.Pixels === null || tg.Pixels.isEmpty())
             {
@@ -509,14 +507,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.LinesWithFill(tg.get_LineType()) === false)
                 return shapes;
             shapes = new java.util.ArrayList();
-            //alert(shapes);
             var shape = null;
             var tg2 = new armyc2.c2sd.JavaTacticalRenderer.TGLight();
             tg2.set_LineType(22131000);
             tg2.Pixels = new java.util.ArrayList();
             tg2.Pixels.addAll(tg.Pixels);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.closeAreaTG(tg2);
-            //alert(tg2.Pixels.size());
             if (clipBounds !== null)
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tg2, clipBounds);
             if (tg2.Pixels === null || tg2.Pixels.isEmpty())
@@ -614,11 +610,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                     tg.Pixels = new java.util.ArrayList();
                 }
             } else {
-                //alert(poly.size());
                 if (poly.size() > 1)
                 {
                     tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Point2DtoPOINT2Mapped(poly, hashMap);
-                    //alert(tg.Pixels);
                 }
                 else
                 {

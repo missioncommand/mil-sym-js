@@ -111,7 +111,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             var clipRect = null;
             var clipArray = null;
             if (clipBounds !== null) {
-                //if (clipBounds.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle2D) || clipBounds.getClass ().isAssignableFrom (armyc2.c2sd.graphics2d.Rectangle)) {
                 if (clipBounds instanceof armyc2.c2sd.graphics2d.Rectangle2D || clipBounds instanceof armyc2.c2sd.graphics2d.Rectangle) {
                     clipRect = clipBounds;
                     x = clipRect.getMinX() - 50;

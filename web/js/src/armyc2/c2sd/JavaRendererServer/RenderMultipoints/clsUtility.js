@@ -234,7 +234,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
         var ptsGeo =  new java.util.ArrayList ();
         for (j = 0; j < pts.size (); j++) 
         {
-            //alert(j);
             pt = pts.get (j);
             ptGeo = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointPixelsToLatLong (pt, converter);
             ptsGeo.add (ptGeo);
@@ -340,7 +339,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
         var ptsPixels =  new java.util.ArrayList ();
         for (j = 0; j < pts.size (); j++) {
             pt = pts.get (j);
-            //alert();
             ptPixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointLatLongToPixels (pt, converter);
             ptsPixels.add (ptPixels);
         }
@@ -350,10 +348,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
         var pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
         try {
             var pt2d = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.POINT2ToPoint2D (ptLatLong);
-            //alert(converter);
-            //var pt = converter.GeoToPixels3 (pt2d);
             var pt = converter.GeoToPixels (pt2d);
-            //alert(pt.y);
             pt2 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointToPOINT2 (pt);
             pt2.style = ptLatLong.style;
         } catch (e) {
@@ -387,14 +382,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             var pt0 = tg.Pixels.get (0);
             var pt1 = tg.Pixels.get (1);
             var pt =  new armyc2.c2sd.graphics2d.Point (Math.floor (pt1.x), Math.floor (pt1.y));
-            //alert();
             var pt1Geo2d = converter.PixelsToGeo (pt);
             var pt1geo = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pt1Geo2d.getX (), pt1Geo2d.getY ());
             var ptj = null;
             var ptjGeo = null;
             var controlPt = tg.Pixels.get (tg.Pixels.size () - 1);
             var pt0Relative = armyc2.c2sd.JavaLineArray.lineutility.PointRelativeToLine (pt0, pt1, pt0, controlPt);
-            //alert();
             var relativeDist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt0Relative, controlPt);
             relativeDist += 5;
             var pt0pt1dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt0, pt1);
@@ -551,7 +544,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             var pt2d = converter.PixelsToGeo (pt);
             pt2 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.Point2DToPOINT2 (pt2d);
             pt2.style = ptPixels.style;
-        //alert(pt2);
         } 
         catch (exc) {
             if (Clazz.instanceOf (exc)) {

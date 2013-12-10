@@ -2,10 +2,6 @@ var armyc2=armyc2 || {};
 armyc2.c2sd=armyc2.c2sd || {};
 armyc2.c2sd.graphics2d=armyc2.c2sd.graphics2d || {};
 armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
-    //alert(arguments.length);
-    //﻿Clazz.declarePackage ("armyc2.c2sd.graphics2d");
-    //Clazz.load (null, "armyc2.c2sd.graphics2d.FlatteningPathIterator", ["armyc2.c2sd.graphics2d.CubicCurve2D", "$.QuadCurve2D", "java.lang.IllegalArgumentException"], function () {
-    //    c$ = Clazz.decorateAsClass (function () {
     this.src = null;
     this.squareflat = 0;
     this.limit = 0;
@@ -20,13 +16,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
     this.levels = null;
     this.levelIndex = 0;
     this.done = false;
-    //        this.src=arguments[0];
-    //        this.flatness=arguments[1];
-    //        if(arguments.length>2)
-    //            this.limit=arguments[2];
-    //Clazz.instantialize (this, arguments);
-    //var src;
-    //var flatness;
     var limit;
     var src=arguments[0];
     var flatness=arguments[1];
@@ -34,7 +23,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
         limit=10;
     if(arguments.length>2)
         limit=arguments[2];
-    //alert(limit);
     if (flatness < 0.0) {
         throw  new IllegalArgumentException ("flatness must be >= 0");
     }
@@ -45,76 +33,36 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
     this.squareflat = flatness * flatness;
     this.limit = limit;
     this.levels =  Clazz.newArray (limit + 1, 0);
-    //this.levels =  new Array();
-    //this.levels =  {};
-    //this.next2 (false);
-    //alert(this.levels);
     this.hold =  Clazz.newArray (14, 0);
     armyc2.c2sd.graphics2d.FlatteningPathIterator.next2(this, false);
-    //alert('done'); 
-    //}//, armyc2.c2sd.graphics2d, "FlatteningPathIterator");
-    //Clazz.prepareFields (c$, function () {
-    //});
-    //    Clazz.makeConstructor (c$, 
-    //        function (src, flatness) {
-    //            this.construct (src, flatness, 10);
-    //        }, "armyc2.c2sd.graphics2d.ArcIterator,~N");
-    //    Clazz.makeConstructor (c$, 
-    //        function (src, flatness, limit) {
-    //            if (flatness < 0.0) {
-    //                throw  new IllegalArgumentException ("flatness must be >= 0");
-    //            }
-    //            if (limit < 0) {
-    //                throw  new IllegalArgumentException ("limit must be >= 0");
-    //            }
-    //            this.src = src;
-    //            this.squareflat = flatness * flatness;
-    //            this.limit = limit;
-    //            this.levels =  Clazz.newArray (limit + 1, 0);
-    //            this.next2 (false);
-    //        }, "armyc2.c2sd.graphics2d.ArcIterator,~N,~N");
-    //Clazz.defineMethod (c$, "getFlatness", 
     this.getFlatness=function () {
         return Math.sqrt (this.squareflat);
     };
-    //Clazz.defineMethod (c$, "getRecursionLimit", 
     this.getRecursionLimit=function () {
         return this.limit;
     };
-    //Clazz.defineMethod (c$, "getWindingRule", 
     this.getWindingRule=function () {
         return this.src.getWindingRule ();
     };
-    //Clazz.defineMethod (c$, "isDone", 
     this.isDone=function () {
         return this.done;
     };
-    //Clazz.defineMethod (c$, "ensureHoldCapacity", 
     this.ensureHoldCapacity=function (want) {
-        //alert(this.holdIndex);
         if (this.holdIndex - want < 0) {
             var have = this.hold.length - this.holdIndex;
-            //alert(have);
             var newsize = this.hold.length + 24;
             var newhold =  Clazz.newArray (newsize, 0);
-            //alert(newhold);
             System.arraycopy (this.hold, this.holdIndex, newhold, this.holdIndex + 24, have);
             this.hold = newhold;
             this.holdIndex += 24;
             this.holdEnd += 24;
         }
     };//, "~N");
-    //Clazz.defineMethod (c$, "next", 
     this.next=function () {
-        //alert('next');
         this.next2(true);
-        //alert('next');
     };
-    //Clazz.defineMethod (c$, "next2", 
     this.next2 = function (doNext) {
         var level;
-        //alert(this.holdIndex);
-        //alert(this.holdEnd);
         if (this.holdIndex >= this.holdEnd) {
             if (doNext) {
                 this.src.next ();
@@ -127,7 +75,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             this.levelIndex = 0;
             this.levels[0] = 0;
         }
-        //alert(this.holdType);
         switch (this.holdType) {
             case 0:
             case 1:
@@ -174,7 +121,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
                 this.levelIndex--;
                 break;
             case 3:
-                //alert(this.hold);
                 if (this.holdIndex >= this.holdEnd) {
                     this.holdIndex = this.hold.length - 8;
                     this.holdEnd = this.hold.length - 2;
@@ -188,7 +134,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
                     this.hold[this.holdIndex + 7] = this.cury = this.hold[5];
                 }
                 level = this.levels[this.levelIndex];
-                //alert(this.limit);
                 while (level < this.limit) 
                 {
                     if (armyc2.c2sd.graphics2d.CubicCurve2D.getFlatnessSq (this.hold, this.holdIndex) < this.squareflat) 
@@ -205,12 +150,9 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
                 }
                 this.holdIndex += 6;
                 this.levelIndex--;
-                //alert('while');
                 break;
         }
-        //alert('while');
     };//, $fz.isPrivate = true, $fz), "~B");
-    //Clazz.defineMethod (c$, "currentSegmentFlt", 
     this.currentSegmentFlt=function (coords) {
         if (this.isDone ()) {
             System.out.println ("flattening iterator out of bounds");
@@ -226,7 +168,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
         }
         return type;
     };//, "~A");
-    //Clazz.defineMethod (c$, "currentSegment", 
     this.currentSegment=function (coords) {
         if (this.isDone ()) {
             System.out.println ("flattening iterator out of bounds");
@@ -240,16 +181,12 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
                 type = 1;
             }
         }
-        //alert(coords);
         return type;
     };//, "~A");
-//    Clazz.defineStatics (c$,
-//        "GROW_SIZE", 24);
 };
 armyc2.c2sd.graphics2d.FlatteningPathIterator.next2=function(that,doNext)
 {
     var level;
-    //alert(that.src.isDone());
     if (that.holdIndex >= that.holdEnd) {
         if (doNext) {
             that.src.next ();
@@ -258,13 +195,10 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator.next2=function(that,doNext)
             that.done = true;
             return ;
         }
-        //alert(that.hold);
         that.holdType = that.src.currentSegment (that.hold);
         that.levelIndex = 0;
         that.levels[0] = 0;
-        //alert(that.levels);
     }
-    //alert(that.holdType);
     switch (that.holdType) {
         case 0:
         case 1:
@@ -276,7 +210,6 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator.next2=function(that,doNext)
             }
             that.holdIndex = 0;
             that.holdEnd = 0;
-            //alert('brk');
             break;
         case 4:
             that.curx = that.movx;

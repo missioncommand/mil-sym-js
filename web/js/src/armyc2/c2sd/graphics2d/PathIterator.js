@@ -9,11 +9,10 @@ armyc2.c2sd.graphics2d.PathIterator = function() {
         this._currentSeg = 0;
     };
     this.setPathIterator = function(pts) {
-        //this.reset ();    
         this._currentSeg = 0;
         this._pts = pts;
     };
-}
+};
 armyc2.c2sd.graphics2d.PathIterator.prototype.getPoints = function() {
     return this._pts;
 };
@@ -84,7 +83,6 @@ armyc2.c2sd.graphics2d.PathIterator.prototype.getBounds = function() {
     var rect = new armyc2.c2sd.graphics2d.Rectangle2D(left, top, right - left, bottom - top);
     return rect;
 };
-//}
 armyc2.c2sd.graphics2d.PathIterator.SEG_CLOSE = 4;
 armyc2.c2sd.graphics2d.PathIterator.SEG_CUBICTO = 3;
 armyc2.c2sd.graphics2d.PathIterator.SEG_LINETO = 1;

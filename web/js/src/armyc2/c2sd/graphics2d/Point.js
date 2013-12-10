@@ -20,4 +20,4 @@ armyc2.c2sd.graphics2d.Point.prototype.setLocation = function(x1, y1) {
     this.x = Number(x1);
     this.y = Number(y1);
 };
-//}
+

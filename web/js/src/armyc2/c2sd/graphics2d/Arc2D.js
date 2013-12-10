@@ -12,28 +12,17 @@ armyc2.c2sd.graphics2d.Arc2D = function()
     this.type = 0;
     if (arguments.length === 1)
     {
-        //this.setArcType (type);
         var t = arguments[0];
         this.setArcType(t);
     }
-    //    Clazz.makeConstructor (c$, 
-    //        function (x, y, w, h, start, extent, type) {
     else if (arguments.length === 7)
     {
-        //this.x = x;
-        //this.y = y;
-        //this.width = w;
-        //this.height = h;
-        //this.start = start;
-        //this.extent = extent;
-        //this.setArcType (type);
         this.x = arguments[0];
         this.y = arguments[1];
         this.width = arguments[2];
         this.height = arguments[3];
         this.start = arguments[4];
         this.extent = arguments[5];
-        //alert(this.extent);
         armyc2.c2sd.graphics2d.Arc2D.setArcType(this, arguments[6]);
     }
     else if (arguments.length === 4)
@@ -42,7 +31,6 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         var start = arguments[1];
         var extent = arguments[2];
         var type = arguments[3];
-        //this.setArcType (type);
         armyc2.c2sd.graphics2d.Arc2D.setArcType(this, type);
         this.x = ellipseBounds.getX();
         this.y = ellipseBounds.getY();
@@ -50,7 +38,7 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         this.height = ellipseBounds.getHeight();
         this.start = start;
         this.extent = extent;
-    }//, "armyc2.c2sd.graphics2d.Rectangle2D,~N,~N,~N");
+    }
 
     this.getX = function() {
         return this.x;
@@ -91,33 +79,27 @@ armyc2.c2sd.graphics2d.Arc2D = function()
     this.getArcType = function() {
         return this.type;
     };//);
-    //Clazz.defineMethod (c$, "getStartPoint", 
     this.getStartPoint = function() {
         var angle = Math.toRadians(-this.getAngleStart());
         var x = this.getX() + (Math.cos(angle) * 0.5 + 0.5) * this.getWidth();
         var y = this.getY() + (Math.sin(angle) * 0.5 + 0.5) * this.getHeight();
         return  new armyc2.c2sd.graphics2d.Point2D(x, y);
     };//);
-    //Clazz.defineMethod (c$, "getEndPoint", 
     this.getEndPoint = function() {
         var angle = Math.toRadians(-this.getAngleStart() - this.getAngleExtent());
         var x = this.getX() + (Math.cos(angle) * 0.5 + 0.5) * this.getWidth();
         var y = this.getY() + (Math.sin(angle) * 0.5 + 0.5) * this.getHeight();
         return  new armyc2.c2sd.graphics2d.Point2D(x, y);
     };//);
-    //Clazz.defineMethod (c$, "setArc2", 
     this.setArc2 = function(rect, angSt, angExt, closure) {
         this.setArc(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight(), angSt, angExt, closure);
     };//, "armyc2.c2sd.graphics2d.Rectangle2D,~N,~N,~N");
-    //Clazz.defineMethod (c$, "setArc3", 
     this.setArc3 = function(a) {
         this.setArc(a.getX(), a.getY(), a.getWidth(), a.getHeight(), a.getAngleStart(), a.getAngleExtent(), a.type);
     };//, "armyc2.c2sd.graphics2d.Arc2D");
-    //Clazz.defineMethod (c$, "setArcByCenter", 
     this.setArcByCenter = function(x, y, radius, angSt, angExt, closure) {
         this.setArc(x - radius, y - radius, radius * 2.0, radius * 2.0, angSt, angExt, closure);
     };//, "~N,~N,~N,~N,~N,~N");
-    //Clazz.defineMethod (c$, "setArcByTangent", 
     this.setArcByTangent = function(p1, p2, p3, radius) {
         var ang1 = Math.atan2(p1.getY() - p2.getY(), p1.getX() - p2.getX());
         var ang2 = Math.atan2(p3.getY() - p2.getY(), p3.getX() - p2.getX());
@@ -319,14 +301,6 @@ armyc2.c2sd.graphics2d.Arc2D.normalizeDegrees = function(angle) {
     }
     return angle;
 };
-//Clazz.defineStatics (c$,
-//"OPEN", 0,
-//"CHORD", 1,
-//"PIE", 2);
-//});
 armyc2.c2sd.graphics2d.Arc2D.OPEN = 0;
 armyc2.c2sd.graphics2d.Arc2D.CHORD = 1;
 armyc2.c2sd.graphics2d.Arc2D.PIE = 2;
-
-
-//}

@@ -257,19 +257,15 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_SymbolId = function(value
                 this.echelonSymbol = "I";
             else if (this.echelon.equals("D")) {
                 letter = String.fromCharCode(9679);
-                //this.echelonSymbol = String.valueOf (letter) + String.valueOf (letter) + String.valueOf (letter);
                 this.echelonSymbol = (letter) + (letter) + (letter);
             } else if (this.echelon.equals("C")) {
                 letter = String.fromCharCode(9679);
-                //this.echelonSymbol = String.valueOf (letter) + String.valueOf (letter);
                 this.echelonSymbol = (letter) + (letter);
             } else if (this.echelon.equals("B")) {
                 letter = String.fromCharCode(9679);
-                //this.echelonSymbol = String.valueOf (letter);
                 this.echelonSymbol = (letter);
             } else if (this.echelon.equals("A")) {
                 letter = String.fromCharCode(216);
-                //this.echelonSymbol = String.valueOf (letter);
                 this.echelonSymbol = (letter);
             }
         }
@@ -304,12 +300,10 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.setSymbologyStandard = functi
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.getSymbologyStandard = function() {
     return this._SymbologyStandard;
 };
-//Clazz.defineMethod (c$, "get_UseLineInterpolation", 
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_UseLineInterpolation = function() {
     return this._useLineInterpolation;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_UseLineInterpolation = function(value) {
     this._useLineInterpolation = value;
 };
-//}
 armyc2.c2sd.JavaTacticalRenderer.TGLight._className = "TGLight";
