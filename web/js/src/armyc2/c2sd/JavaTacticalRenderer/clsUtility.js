@@ -1114,15 +1114,15 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             var distance = 0;
             var ptIntersect = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(0, 0);
             var bolVertical = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2(lastSegmentPt1, lastSegmentPt2, m);
-            if (bolVertical === true && m.value[0] !== 0) {
+            if (bolVertical == true && m.value[0] != 0) {
                 m1 = -1 / m.value[0];
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.CalcIntersectPt(channelWidthPOINT2, m1, lastSegmentPt2, m.value[0], ptIntersect);
                 distance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(channelWidthPOINT2, ptIntersect);
             }
-            if (bolVertical === true && m.value[0] === 0) {
+            if (bolVertical == true && m.value[0] == 0) {
                 distance = Math.abs(channelWidthPOINT2.y - lastSegmentPt1.y);
             }
-            if (bolVertical === false) {
+            if (bolVertical == false) {
                 distance = Math.abs(channelWidthPOINT2.x - lastSegmentPt1.x);
                 distanceToChannelPOINT2.value = Clazz.newArray(1, 0);
                 distanceToChannelPOINT2.value[0] = distance;
