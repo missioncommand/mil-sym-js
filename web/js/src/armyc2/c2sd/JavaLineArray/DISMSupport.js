@@ -1104,7 +1104,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (pts[0].y + ptCenter.y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1118,7 +1117,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (pts[0].y + ptCenter.y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1133,7 +1131,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1148,7 +1145,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1163,7 +1159,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1182,7 +1177,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1197,7 +1191,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1216,7 +1209,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1231,7 +1223,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     pts[1].y = (ptCenter.y + pts[0].y) / 2;
                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pts[0], pts[1]);
                     if (d > armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
-                        //pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble (pts[1], pts[0], ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.maxLength = armyc2.c2sd.JavaLineArray.DISMSupport.maxLength, $t$));
                         pts[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pts[1], pts[0], -armyc2.c2sd.JavaLineArray.DISMSupport.maxLength);
                     }
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
@@ -1439,12 +1430,10 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[0]);
                     points[counter].style = 0;
                     counter++;
-                    //alert(counter);
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[1]);
                     points[counter].style = 5;
                     counter++;
                     armyc2.c2sd.JavaLineArray.DISMSupport.CalcEndpieceDeltasDouble(savepoints, iDeltaX1, iDeltaY1, armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 6);
-                    //armyc2.c2sd.JavaLineArray.DISMSupport.CalcEndpieceDeltasDouble (savepoints, iDeltaX2, iDeltaY2, ($t$ = - armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI, armyc2.c2sd.JavaLineArray.DISMSupport.prototype.CONST_PI = armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI, $t$) / 6);
                     armyc2.c2sd.JavaLineArray.DISMSupport.CalcEndpieceDeltasDouble(savepoints, iDeltaX2, iDeltaY2, -armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 6);
                     armyc2.c2sd.JavaLineArray.DISMSupport.DrawEndpieceDeltasDouble(ptsArrow[0], iDeltaX1.value[0], iDeltaY1.value[0], iDeltaX2.value[0], iDeltaY2.value[0], deltapoints1);
                     armyc2.c2sd.JavaLineArray.DISMSupport.DrawEndpieceDeltasDouble(ptsArrow[1], iDeltaX1.value[0], iDeltaY1.value[0], iDeltaX2.value[0], iDeltaY2.value[0], deltapoints2);
@@ -2016,7 +2005,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     var iDeltaY = new armyc2.c2sd.JavaLineArray.ref();
                     var bPointsRight = 0;
                     var dMBR = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(points, 3);
-                    //alert(dMBR);
                     if (dMBR > 40 * armyc2.c2sd.JavaLineArray.DISMSupport.maxLength) {
                         dMBR = 40 * armyc2.c2sd.JavaLineArray.DISMSupport.maxLength;
                     }

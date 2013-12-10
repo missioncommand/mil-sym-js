@@ -46,7 +46,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pt = pts.get(j);
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt.x, pt.y, pt.style);
                     }
-                    //alert(points);
                     points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev);
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -1590,7 +1589,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(xPoints);
                     for (j = 0; j < vblCounter - 1; j++) {
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalPoints[j], pOriginalPoints[j + 1]);
-                        //numSegs = Math.floor ((d / 20));
                         numSegs = Math.floor((d / 20));
                         for (k = 0; k < numSegs; k++) {
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(pOriginalPoints[j], pOriginalPoints[j + 1], 20 * k);
@@ -2656,7 +2654,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pLinePoints[j + 1]);
                                 pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pLinePoints[j + 1], -3 * d / 4, 0);
                                 pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pLinePoints[j + 1], -1 * d / 4, 5);
-                                //alert(pt3.style);
                                 if (pLinePoints[j].x < pLinePoints[j + 1].x) {
                                     if (m.value[0] < 1) {
                                         pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt1, pt2, 2, 10);
@@ -2667,7 +2664,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                         pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt1, pt3, 1, 10);
                                     }
                                 }
-                                //alert(pt3.style);
                                 if (pLinePoints[j].x > pLinePoints[j + 1].x) {
                                     if (m.value[0] < 1) {
                                         pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt1, pt2, 3, 10);
@@ -3402,14 +3398,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 break;
                             }
                             armyc2.c2sd.JavaLineArray.lineutility.ReversePointsDouble2(pLinePoints, vblSaveCounter);
-                            //alert();
                             if (dMBR / 10 > armyc2.c2sd.JavaLineArray.arraysupport.maxLength) {
                                 dMBR = 10 * armyc2.c2sd.JavaLineArray.arraysupport.maxLength;
                             }
                             if (dMBR / 10 < armyc2.c2sd.JavaLineArray.arraysupport.minLength) {
                                 dMBR = 10 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
-                            //if (dMBR > 250) dMBR = 250;
                             if (client.startsWith("cpof")) {
                                 if (folspDist < 25)
                                     dMBR = 125;
@@ -3448,7 +3442,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 pLinePoints[vblCounter - k].style = 5;
                             }
                             acCounter = 12;
-                            //alert();
                             break;
                         case 23223000:
                             lLinestyle = 9;
@@ -3497,7 +3490,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 21200000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMBreachDouble(pLinePoints, lineType);
-                            //alert(acCounter);
                             break;
                         case 212210000:
                         case 212220000:
@@ -3554,9 +3546,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMByImpDouble(pLinePoints, lineType);
                             break;
                         case 21500000:
-                            //alert();
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMClearDouble(pLinePoints, lineType);
-                            //alert(acCounter);
                             break;
                         case 23212000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMByDifDouble(pLinePoints, lineType, clipBounds);
@@ -3605,7 +3595,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 22122000:
                             acCounter = armyc2.c2sd.JavaLineArray.flot.GetFlotDouble(pLinePoints, vblSaveCounter);
-                            //alert(acCounter);
                             break;
                         default:
                             acCounter = vblSaveCounter;
@@ -3640,7 +3629,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212300000:
                         case 212300001:
                             armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
-                            //alert(points.size());
                             break;
                         default:
                             if (shapes === null) {
@@ -3649,7 +3637,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             }
                             break;
                     }
-                    //alert(shapes);
                     if (shapes === null)
                         return points;
                     var shape = null;
@@ -4334,7 +4321,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                         shapes.add(shape);
                                 }
                             }
-                            //alert(shapes.size());
                             break;
                     }
                     switch (lineType) {
@@ -4435,14 +4421,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         throw exc;
                     }
                 }
-                //alert(shapes.size());
                 return points;
             },
             maxLength: 100,
             minLength: 5,
             dACP: 0,
             _classname: "arraysupport"
-
         };
 
 

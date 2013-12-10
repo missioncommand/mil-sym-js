@@ -11,7 +11,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     if (pLinePoints.length <= length)
                         return pLinePoints;
                     var j = 0;
-                    //var pt=null;
                     for (j = 0; j < length; j++)
                     {
                         array[j] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
@@ -26,7 +25,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                     else
                     {
-                        //alert(exc);
                         throw exc;
                     }
                 }
@@ -108,11 +106,9 @@ armyc2.c2sd.JavaLineArray.lineutility =
             InitializePOINT2Array: function(pts) {
                 if (pts === null || pts.length === 0)
                     return;
-                //alert(pts.length);
                 for (var j = 0; j < pts.length; j++)
                 {
                     pts[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
-                    //pts[j] = new armyc2.c2sd.JavaLineArray.POINT2();
                 }
             },
             CalcCenterPointDouble: function(pLinePoints, vblCounter) {
@@ -205,7 +201,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
                 return returnValue;
-            }, //, "armyc2.c2sd.JavaLineArray.POINT2,armyc2.c2sd.JavaLineArray.POINT2");
+            },
             CalcTrueSlopeDouble: function(firstLinePoint, lastLinePoint, slope) {
                 var result = 1;
                 try {
@@ -591,7 +587,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt1, pt2);
                     if (dOriginalDistance === 0 || dist === 0)
                     {
-                        //alert();
                         return pt2;
                     }
                     pt3.x = (dOriginalDistance + dist) / dOriginalDistance * (pt2.x - pt1.x) + pt1.x;
@@ -605,22 +600,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-//    ExtendAlongLineDouble: function (pt1, pt2, dist) {
-//        var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
-//        try {
-//            var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt1, pt2);
-//            if (dOriginalDistance === 0 || dist === 0) return pt2;
-//            pt3.x = ((dist / dOriginalDistance) * (pt2.x - pt1.x) + pt1.x);
-//            pt3.y = ((dist / dOriginalDistance) * (pt2.y - pt1.y) + pt1.y);
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "ExtendAlongLineDouble",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside ExtendAlongLineDouble", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return pt3;
-//    },
             ExtendAlongLineDouble2: function(pt1, pt2, dist) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
@@ -638,24 +617,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-//    ExtendAlongLineDouble: function (pt1, pt2, dist, styl) {
-//        var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
-//        try {
-//            var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble (pt1, pt2);
-//            if (dOriginalDistance === 0 || dist === 0) return pt2;
-//            pt3.x = (dist / dOriginalDistance * (pt2.x - pt1.x) + pt1.x);
-//            pt3.y = (dist / dOriginalDistance * (pt2.y - pt1.y) + pt1.y);
-//            if(styl !== undefined)
-//                pt3.style = styl;
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "ExtendAlongLineDouble",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside ExtendAlongLineDouble", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return pt3;
-//    },
             ExtendAlongLineDouble: function() {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
@@ -667,8 +628,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         return pt2;
                     pt3.x = (dist / dOriginalDistance * (pt2.x - pt1.x) + pt1.x);
                     pt3.y = (dist / dOriginalDistance * (pt2.y - pt1.y) + pt1.y);
-                    //if(styl !== undefined)
-                    //pt3.style = styl;
                     if (arguments.length === 4)
                         pt3.style = arguments[3];
                 } catch (exc) {
@@ -799,40 +758,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            //c$.ExtendDirectedLine = Clazz.defineMethod (c$, "ExtendDirectedLine", 
-//    ExtendDirectedLine: function (pt1, pt2, pt0, direction, d) {
-//        var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 ();
-//        try {
-//            var X =  new armyc2.c2sd.JavaLineArray.ref ();
-//            var Y =  new armyc2.c2sd.JavaLineArray.ref ();
-//            ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pt0);
-//            switch (direction) {
-//                case 0:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineLeft (pt1, pt2, pt0, d, X, Y, 0);
-//                    break;
-//                case 1:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineLeft (pt1, pt2, pt0, d, X, Y, 1);
-//                    break;
-//                case 2:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineAbove (pt1, pt2, pt0, d, X, Y, 0);
-//                    break;
-//                case 3:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineAbove (pt1, pt2, pt0, d, X, Y, 1);
-//                    break;
-//                default:
-//                    break;
-//            }
-//            ptResult.x = X.value[0];
-//            ptResult.y = Y.value[0];
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "ExtendDirectedLine",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside ExtendDirectedLine", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return ptResult;
-//    },
             ExtendDirectedLineText: function(pt1, pt2, pt0, direction, d) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
@@ -905,45 +830,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-//    ExtendDirectedLine: function (pt1, pt2, pt0, direction, d, style) {
-//        var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pt0);
-//        try {
-//            var X =  new armyc2.c2sd.JavaLineArray.ref();
-//            var Y =  new armyc2.c2sd.JavaLineArray.ref();
-//            if (pt1.x === pt2.x) {
-//                if (direction === 2) direction = 0;
-//                if (direction === 3) direction = 1;
-//            }if (pt1.y === pt2.y) {
-//                if (direction === 0) direction = 2;
-//                if (direction === 1) direction = 3;
-//            }
-//            switch (direction) {
-//                case 0:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineLeft (pt1, pt2, pt0, d, X, Y, 0);
-//                    break;
-//                case 1:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineLeft (pt1, pt2, pt0, d, X, Y, 1);
-//                    break;
-//                case 2:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineAbove (pt1, pt2, pt0, d, X, Y, 0);
-//                    break;
-//                case 3:
-//                    armyc2.c2sd.JavaLineArray.lineutility.ExtendLineAbove (pt1, pt2, pt0, d, X, Y, 1);
-//                    break;
-//            }
-//            ptResult.x = X.value[0];
-//            ptResult.y = Y.value[0];
-//            if(style !== undefined)
-//                ptResult.style = style;
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "ExtendDirectedLine",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside ExtendDirectedLine", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return ptResult;
-//    },
             ExtendDirectedLine: function() {
                 var pt1 = arguments[0];
                 var pt2 = arguments[1];
@@ -1036,39 +922,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt;
             },
-//    GetQuadrantDouble: function (pt1, pt2) {
-//        var nQuadrant = 1;
-//        try {
-//            if (pt2.x >= pt1.x && pt2.y <= pt1.y) nQuadrant = 1;
-//            if (pt2.x >= pt1.x && pt2.y >= pt1.y) nQuadrant = 2;
-//            if (pt2.x <= pt1.x && pt2.y >= pt1.y) nQuadrant = 3;
-//            if (pt2.x <= pt1.x && pt2.y <= pt1.y) nQuadrant = 4;
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "GetQuadrantDouble",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside GetQuadrantDouble", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return nQuadrant;
-//    },//, "armyc2.c2sd.JavaLineArray.POINT2,armyc2.c2sd.JavaLineArray.POINT2");
-            //c$.GetQuadrantDouble = Clazz.defineMethod (c$, "GetQuadrantDouble", 
-//    GetQuadrantDouble: function (x1, y1, x2, y2) {
-//        var nQuadrant = 1;
-//        try {
-//            if (x2 >= x1 && y2 <= y1) nQuadrant = 1;
-//            if (x2 >= x1 && y2 >= y1) nQuadrant = 2;
-//            if (x2 <= x1 && y2 >= y1) nQuadrant = 3;
-//            if (x2 <= x1 && y2 <= y1) nQuadrant = 4;
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "GetQuadrantDouble",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside GetQuadrantDouble", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return nQuadrant;
-//    },
             GetQuadrantDouble: function() {
                 var nQuadrant = -1;
                 try {
@@ -2256,7 +2109,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         pLinePoints[nSpikeCounter - 1].style = 5;
                     for (j = nSpikeCounter; j < nSpikeCounter + basePoints.size(); j++) {
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(basePoints.get(j - nSpikeCounter));
-                        //if (linetype === 23132000 && pLinePoints[j].style !== 5) pLinePoints[j].style = 0;
                         if (pLinePoints[j].style !== 5)
                             pLinePoints[j].style = 0;
                     }
@@ -2386,38 +2238,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            //c$.PointRelativeToLine = Clazz.defineMethod (c$, "PointRelativeToLine", 
-//    PointRelativeToLine: function (pt0, pt1, ptRelative) {
-//        var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pt0);
-//        try 
-//        {
-//            var bolVertical = 0;
-//            var m =  new armyc2.c2sd.JavaLineArray.ref ();
-//            var midPt = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble (pt0, pt1, 0);
-//            //alert(midPt.x);
-//            var b1 = 0;
-//            var b2 = 0;
-//            bolVertical = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble (pt0, pt1, m);
-//            if (bolVertical === 0) {
-//                ptResult.x = ptRelative.x;
-//                ptResult.y = midPt.y;
-//            }if (bolVertical !== 0 && m.value[0] === 0) {
-//                ptResult.x = midPt.x;
-//                ptResult.y = ptRelative.y;
-//            }if (bolVertical !== 0 && m.value[0] !== 0) {
-//                b1 = midPt.y + (1 / m.value[0]) * midPt.x;
-//                b2 = ptRelative.y - m.value[0] * ptRelative.x;
-//                ptResult = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueIntersectDouble2 (-1 / m.value[0], b1, m.value[0], b2, 1, 1, 0, 0);
-//            }
-//        } catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "PointRelativeToLine",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside PointRelativeToLine", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return ptResult;
-//    },
             adjustCATKBYFIREControlPoint: function(linetype, pLinePoints, dist) {
                 try {
                     if (linetype !== 21710000)
@@ -2442,37 +2262,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            //c$.PointRelativeToLine = Clazz.defineMethod (c$, "PointRelativeToLine", 
-//    PointRelativeToLine: function (pt0, pt1, atPoint, ptRelative) {
-//        var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (pt0);
-//        try 
-//        {
-//            var bolVertical = 0;
-//            var m =  new armyc2.c2sd.JavaLineArray.ref ();
-//            var b1 = 0;
-//            var b2 = 0;
-//            bolVertical = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble (pt0, pt1, m);
-//            if (bolVertical === 0) {
-//                ptResult.x = ptRelative.x;
-//                ptResult.y = atPoint.y;
-//            }if (bolVertical !== 0 && m.value[0] === 0) {
-//                ptResult.x = atPoint.x;
-//                ptResult.y = ptRelative.y;
-//            }if (bolVertical !== 0 && m.value[0] !== 0) {
-//                b1 = atPoint.y + (1 / m.value[0]) * atPoint.x;
-//                b2 = ptRelative.y - m.value[0] * ptRelative.x;
-//                ptResult = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueIntersectDouble2 (-1 / m.value[0], b1, m.value[0], b2, 1, 1, 0, 0);
-//            }
-//        } 
-//        catch (exc) {
-//            if (Clazz.instanceOf (exc)) {
-//                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException (armyc2.c2sd.JavaLineArray.lineutility._className, "PointRelativeToLine",  new armyc2.c2sd.renderer.utilities.RendererException ("Failed inside PointRelativeToLine", exc));
-//            } else {
-//                throw exc;
-//            }
-//        }
-//        return ptResult;
-//    },
             PointRelativeToLine: function() {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
@@ -2718,7 +2507,6 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 pt2.y = 0;
                 pt2.segment = 0;
                 pt2.style = 0;
-                //return pt2;
                 if (arguments.length === 1)
                 {
                     pt2.x = arguments[0].x;

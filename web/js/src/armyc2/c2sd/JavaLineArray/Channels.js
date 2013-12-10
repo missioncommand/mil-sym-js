@@ -7,11 +7,9 @@ armyc2.c2sd.JavaLineArray.Channels =
                 _client = value;
             }, //, "~S");
             setAffiliation: function(value) {
-                //($t$ = armyc2.c2sd.JavaLineArray.Channels._affiliation = value, armyc2.c2sd.JavaLineArray.Channels.prototype._affiliation = armyc2.c2sd.JavaLineArray.Channels._affiliation, $t$);
                 _affiliation = value;
             }, //, "~S");
             setShiftLines: function(value) {
-                //($t$ = armyc2.c2sd.JavaLineArray.Channels._shiftLines = value, armyc2.c2sd.JavaLineArray.Channels.prototype._shiftLines = armyc2.c2sd.JavaLineArray.Channels._shiftLines, $t$);
                 _shiftLines = value;
             }, //, "~B");
             getShiftLines: function() {

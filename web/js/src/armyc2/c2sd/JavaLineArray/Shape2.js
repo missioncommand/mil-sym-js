@@ -58,7 +58,7 @@ armyc2.c2sd.JavaLineArray.Shape2.prototype.getBounds = function() {
         var rect = new armyc2.c2sd.graphics2d.Rectangle(Math.floor(rectf.left), Math.floor(rectf.top), width, height);
         return rect;
     } else
-        return null;//this.getBounds ();
+        return null;
 };
 armyc2.c2sd.JavaLineArray.Shape2.prototype.getShape = function() {
     return this._Shape;
