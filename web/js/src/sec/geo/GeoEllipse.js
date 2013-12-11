@@ -88,6 +88,5 @@ sec.geo.GeoEllipse = function()
     this.limit = limit;
     this.arcTo(pivot, widthMeters, heightMeters, 0, 180);
     this.arcTo(pivot, widthMeters, heightMeters, 180, 0);
-    //end constructor
 };
 sec.geo.GeoEllipse.REFERENCE_ELLIPSOID = org.gavaghan.geodesy.Ellipsoid.WGS84;

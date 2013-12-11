@@ -19,7 +19,6 @@ sec.geo.shape.Cake = function()
         }
         else
         {
-            //alert('illegal');
             throw  new IllegalArgumentException();
         }
     };//, "~O");

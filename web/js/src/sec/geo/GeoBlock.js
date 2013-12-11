@@ -61,7 +61,6 @@ sec.geo.GeoBlock = function()
     this.getToPoints = function() {
         return this.toPoints;
     };//);
-    //Clazz.defineMethod (c$, "closePath", 
     this.closePath = function() {
         if (this.toPoints.size() > 0 && !this.toPoints.get(0).equals(this.toPoints.get(this.toPoints.size() - 1))) {
             this.lineTo(this.toPoints.get(0));

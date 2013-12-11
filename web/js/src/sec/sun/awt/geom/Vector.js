@@ -45,7 +45,6 @@ sec.sun.awt.geom.Vector = function()
     this.add = function(obj)
     {
         this._vector.add(obj);
-        //alert(this._vector.size());
     };//, "~O");
     this.clear = function()
     {

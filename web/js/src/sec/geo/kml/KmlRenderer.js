@@ -36,7 +36,6 @@ sec.geo.kml.KmlRenderer = function()
             "			<name>" + this.nameField + "</name>\n" +
             "			<description>" + this.descriptionField + "</description>\n" +
             "			<ExtendedData>" + this.extendedData + "</ExtendedData>\n" +
-            //			"			<styleUrl>#rollover</styleUrl>\n" +
             "			<MultiGeometry>\n";
 
     this.PLACEMARK_END = "" +

@@ -111,6 +111,5 @@ sec.geo.GeoBlock2=function()
     c = this.geoCalc.calculateEndingGlobalCoordinates (sec.geo.GeoBlock2.REFERENCE_ELLIPSOID, c1, a1 + 90, rightRadius);
     this.lineToLatLong (c.getLongitude (), c.getLatitude ());
     this.closePath ();
-    //end constructor
 };
 sec.geo.GeoBlock2.REFERENCE_ELLIPSOID = org.gavaghan.geodesy.Ellipsoid.WGS84;

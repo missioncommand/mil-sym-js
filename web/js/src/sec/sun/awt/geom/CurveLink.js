@@ -51,7 +51,6 @@ sec.sun.awt.geom.CurveLink = function()
     };//);
     this.getMoveto = function() {
         var order0 = new sec.sun.awt.geom.Order0(this.getXTop(), this.getYTop());
-        //alert(order0);
         return  new sec.sun.awt.geom.CurveObject(order0);
     };//);
     this.getXTop = function() {

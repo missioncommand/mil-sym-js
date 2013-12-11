@@ -212,12 +212,10 @@ sec.sun.awt.geom.AreaOp2 = function()
         sec.sun.awt.geom.AreaOp2.finalizeSubCurves(subcurves, chains);
         var ret = new sec.sun.awt.geom.Vector();
         var enum_ = subcurves.elements();
-        //alert(enum_);
         var c = null;
         var obj = null;
         while (enum_.hasMoreElements()) {
             link = enum_.nextElement();
-            //alert(link);
             ret.add(link.getMoveto());
             var nextlink = link;
             while ((nextlink = nextlink.getNext()) !== null) {

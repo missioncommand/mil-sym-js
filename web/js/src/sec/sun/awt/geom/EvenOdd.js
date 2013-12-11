@@ -103,7 +103,6 @@ sec.sun.awt.geom.EvenOdd=function()
     this.getXHi=function () {
         return this.xhi;
     };//);
-    //Clazz.defineMethod (c$, "getYHi", 
     this.getYHi=function () {
         return this.yhi;
     };//);

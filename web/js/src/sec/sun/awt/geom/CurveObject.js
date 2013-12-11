@@ -316,7 +316,6 @@ sec.sun.awt.geom.CurveObject = function()
     this.toString = function() {
         return ("Curve[" + this.getOrder() + ", " + ("(" + sec.sun.awt.geom.Curve.round(this.getX0()) + ", " + sec.sun.awt.geom.Curve.round(this.getY0()) + "), ") + this.controlPointString() + ("(" + sec.sun.awt.geom.Curve.round(this.getX1()) + ", " + sec.sun.awt.geom.Curve.round(this.getY1()) + "), ") + (this.getDirection() === 1 ? "D" : "U") + "]");
     };//);
-    //Clazz.defineMethod (c$, "crossingsFor", 
     this.crossingsFor = function(x, y) {
         if (y >= this.getYTop() && y < this.getYBot()) {
             if (x < this.getXMax() && (x < this.getXMin() || x < this.XforY(y))) {

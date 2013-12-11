@@ -22,8 +22,8 @@ sec.sun.awt.geom.Arrays.compare = function (o1, o2) {
     var c2 = (o2).getCurve ();
     var v1;
     var v2;
-    if ((v1 = c1.getYTop ()) == (v2 = c2.getYTop ())) {
-        if ((v1 = c1.getXTop ()) == (v2 = c2.getXTop ())) {
+    if ((v1 = c1.getYTop ()) === (v2 = c2.getYTop ())) {
+        if ((v1 = c1.getXTop ()) === (v2 = c2.getXTop ())) {
             return 0;
         }
     }

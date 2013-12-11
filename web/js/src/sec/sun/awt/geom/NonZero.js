@@ -40,7 +40,6 @@ sec.sun.awt.geom.NonZero=function()
         }
         return (ystart >= yend);
     };//, "~N,~N");
-    //Clazz.defineMethod (c$, "remove", 
     this.remove=function (cur) {
         this.limit -= 2;
         var rem = this.limit - cur;
@@ -138,7 +137,6 @@ sec.sun.awt.geom.NonZero=function()
     this.getYHi=function () {
         return this.yhi;
     };//);
-    //Clazz.defineMethod (c$, "isEmpty", 
     this.isEmpty=function () {
         return (this.limit === 0);
     };//);

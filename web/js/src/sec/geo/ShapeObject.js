@@ -74,8 +74,6 @@ sec.geo.ShapeObject = function()
             case 2:
                 return this.geoBlock2.getPathIterator(at, 0);
             case 0:
-                //alert(this.geoArc);
-                //alert(this.geoArc.getPathIterator (at));
                 return this.geoArc.getPathIterator(at);
             default:
                 return null;

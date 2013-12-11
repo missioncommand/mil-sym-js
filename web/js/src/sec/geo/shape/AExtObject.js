@@ -151,7 +151,6 @@ sec.geo.shape.AExtObject = function()
                 this.polygon.setFlatness(flatnessDistanceMeters);
                 break;
             case 8:
-                //this.route.flatnessDistanceMeters = flatnessDistanceMeters;
                 this.route.setFlatness(flatnessDistanceMeters);
                 break;
             default:

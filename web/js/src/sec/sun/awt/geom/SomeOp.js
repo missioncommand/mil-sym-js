@@ -91,7 +91,6 @@ sec.sun.awt.geom.SomeOp = function()
         var cur = 0;
         var next = 0;
         var yrange = Clazz.newArray(2, 0);
-        //alert(yrange);
         var subcurves = new sec.sun.awt.geom.Vector();
         var chains = new sec.sun.awt.geom.Vector();
         var links = new sec.sun.awt.geom.Vector();

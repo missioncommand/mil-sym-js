@@ -96,7 +96,6 @@ sec.sun.awt.geom.Order0=function()
     this.setParent=function (parent) {
         this._parent = parent;
     };//, "sec.sun.awt.geom.CurveObject");
-    //Clazz.defineMethod (c$, "getParent", 
     this.getParent=function () {
         return this._parent;
     };//);

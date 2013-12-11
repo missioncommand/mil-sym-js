@@ -94,7 +94,6 @@ sec.geo.kml.XsltCoordinateWrapper=
     }, //"~A,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N,~N,~N");
     getPolygonKml:  function (points, id, name, description, color, altitudeMode, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        //alert(renderer);
         return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getPolygon (points, altitudeMode, minAltitude, maxAltitude), id, name, description, color);
     }, //"~A,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N");
     getRadarcKml:  function (pivotX, pivotY, id, name, description, color, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
@@ -122,22 +121,18 @@ sec.geo.kml.XsltCoordinateWrapper=
         var renderer =  new sec.geo.kml.KmlRenderer ();
         return renderer.getCoords (sec.geo.kml.XsltCoordinateWrapper.getRoute (points, altitudeMode, leftWidth, rightWidth, minAltitude, maxAltitude));
     }, //"~A,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N,~N,~N");
-    //c$.plotPolygon = Clazz.defineMethod (c$, "plotPolygon", 
     plotPolygon: function (points, altitudeMode, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
         return renderer.getCoords (sec.geo.kml.XsltCoordinateWrapper.getPolygon (points, altitudeMode, minAltitude, maxAltitude));
     }, //"~A,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N");
-    //c$.plotRadarc = Clazz.defineMethod (c$, "plotRadarc", 
     plotRadarc: function (pivotX, pivotY, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
         return renderer.getCoords (sec.geo.kml.XsltCoordinateWrapper.getRadarc (pivotX, pivotY, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude));
     }, //"~N,~N,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N,~N,~N,~N,~N");
-    //c$.plotPolyarc = Clazz.defineMethod (c$, "plotPolyarc", 
     plotPolyarc: function (points, pivotX, pivotY, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
         return renderer.getCoords (sec.geo.kml.XsltCoordinateWrapper.getPolyarc (points, pivotX, pivotY, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude));
     },// "~A,~N,~N,sec.geo.kml.KmlOptions.AltitudeMode,~N,~N,~N,~N,~N");
-
     addPoints : function (points, path) 
     {
         var coords = null;

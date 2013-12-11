@@ -242,7 +242,7 @@ sec.sun.awt.geom.Order2.TforY=function (y, ycoeff0, ycoeff1, ycoeff2) {
     var y0 = ycoeff0;
     var y1 = ycoeff0 + ycoeff1 + ycoeff2;
     return (0 < (y0 + y1) / 2) ? 0.0 : 1.0;
-}//, "~N,~N,~N,~N");
+};//, "~N,~N,~N,~N");
 
 sec.sun.awt.geom.Order2.split=function (coords, pos, t) {
     var x0;

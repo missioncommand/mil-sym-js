@@ -248,7 +248,7 @@ sec.sun.awt.geom.Curve.rectCrossingsforPath = function(pi, rxmin, rymin, rxmax, 
         crossings = sec.sun.awt.geom.Curve.rectCrossingsForLine(crossings, rxmin, rymin, rxmax, rymax, curx, cury, movx, movy);
     }
     return crossings;
-}//, "armyc2.c2sd.graphics2d.PathIterator,~N,~N,~N,~N");
+};//, "armyc2.c2sd.graphics2d.PathIterator,~N,~N,~N,~N");
 sec.sun.awt.geom.Curve.rectCrossingsForLine = function(crossings, rxmin, rymin, rxmax, rymax, x0, y0, x1, y1) {
     if (y0 >= rymax && y1 >= rymax)
         return crossings;
