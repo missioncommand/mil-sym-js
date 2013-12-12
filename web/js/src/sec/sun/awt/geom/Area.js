@@ -1,4 +1,4 @@
-var sec = sec || {};
+
 sec.sun = sec.sun || {};
 sec.sun.awt = sec.sun.awt || {};
 sec.sun.awt.geom = sec.sun.awt.geom || {};
@@ -16,26 +16,26 @@ sec.sun.awt.geom.Area = function()
     this.add = function(rhs) {
         this.curves = new sec.sun.awt.geom.SomeOp(1).calculate(this.curves, rhs.curves);
         this.invalidateBounds();
-    };//, "sec.sun.awt.geom.Area");
+    };
     this.subtract = function(rhs) {
         this.curves = new sec.sun.awt.geom.SomeOp(0).calculate(this.curves, rhs.curves);
         this.invalidateBounds();
-    };//, "sec.sun.awt.geom.Area");
+    };
     this.intersect = function(rhs) {
         this.curves = new sec.sun.awt.geom.SomeOp(2).calculate(this.curves, rhs.curves);
         this.invalidateBounds();
-    };//, "sec.sun.awt.geom.Area");
+    };
     this.exclusiveOr = function(rhs) {
         this.curves = new sec.sun.awt.geom.SomeOp(3).calculate(this.curves, rhs.curves);
         this.invalidateBounds();
-    };//, "sec.sun.awt.geom.Area");
+    };
     this.reset = function() {
         this.curves = new sec.sun.awt.geom.Vector();
         this.invalidateBounds();
-    };//);
+    };
     this.isEmpty = function() {
         return (this.curves.size() === 0);
-    };//);
+    };
     this.isPolygonal = function() {
         var enum_ = this.curves.elements();
         while (enum_.hasMoreElements()) {
@@ -44,7 +44,7 @@ sec.sun.awt.geom.Area = function()
             }
         }
         return true;
-    };//);
+    };
     this.isRectangular = function() {
         var size = this.curves.size();
         if (size === 0) {
@@ -65,7 +65,7 @@ sec.sun.awt.geom.Area = function()
             return false;
         }
         return true;
-    };//);
+    };
     this.isSingular = function() {
         if (this.curves.size() < 3) {
             return true;
@@ -78,10 +78,10 @@ sec.sun.awt.geom.Area = function()
             }
         }
         return true;
-    };//);
+    };
     this.invalidateBounds = function() {
         this.cachedBounds = null;
-    };//, $fz.isPrivate = true, $fz));
+    };
     this.equals = function(other) {
         if (other === this) {
             return true;
@@ -91,10 +91,10 @@ sec.sun.awt.geom.Area = function()
         }
         var c = new sec.sun.awt.geom.SomeOp(3).calculate(this.curves, other.curves);
         return c.isEmpty();
-    };//, "sec.sun.awt.geom.Area");
+    };
     this.getPathIterator = function(at) {
         return  new sec.sun.awt.geom.AreaIterator(this.curves, at);
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
+    };
 };
 
 sec.sun.awt.geom.Area.pathToCurves = function(pi)
@@ -154,4 +154,4 @@ sec.sun.awt.geom.Area.pathToCurves = function(pi)
     }
     var emptyCurves = new sec.sun.awt.geom.Vector();
     return operator2.calculate(curves, emptyCurves);
-};//, $fz.isPrivate = true, $fz), "armyc2.c2sd.graphics2d.PathIterator");
+};

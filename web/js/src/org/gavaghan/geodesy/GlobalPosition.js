@@ -30,10 +30,10 @@ org.gavaghan.geodesy.GlobalPosition = function()
     }
     this.getElevation = function() {
         return this.mElevation;
-    };//);
+    };
     this.setElevation = function(elevation) {
         this.mElevation = elevation;
-    };//, "~N");
+    };
     this.compareTo = function(other) {
         var retval;
         if (this.mLongitude < other.mLongitude)
@@ -53,19 +53,19 @@ org.gavaghan.geodesy.GlobalPosition = function()
                 retval = 1;
         }
         return retval;
-    };//, "org.gavaghan.geodesy.GlobalPosition");
+    };
     this.hashCode = function() {
         var hash = Clazz.superCall(this, org.gavaghan.geodesy.GlobalPosition, "hashCode", []);
         if (this.mElevation !== 0)
             hash *= Math.round(this.mElevation);
         return hash;
-    };//);
+    };
     this.equals = function(obj) {
         if (!(Clazz.instanceOf(obj, org.gavaghan.geodesy.GlobalPosition)))
             return false;
         var other = obj;
         return (this.mElevation === other.mElevation) && (Clazz.superCall(this, org.gavaghan.geodesy.GlobalPosition, "equals", [other]));
-    };//, "~O");
+    };
     this.toString = function() {
         var buffer = "";
         buffer += (Math.abs(this.mLatitude));
@@ -78,7 +78,7 @@ org.gavaghan.geodesy.GlobalPosition = function()
         buffer += (Double.toString(this.mElevation));
         buffer += ("m");
         return buffer;
-    };//);
+    };
     this.canonicalize = function() {
         this.mLatitude = (this.mLatitude + 180) % 360;
         if (this.mLatitude < 0)
@@ -95,13 +95,13 @@ org.gavaghan.geodesy.GlobalPosition = function()
         if (this.mLongitude <= 0)
             this.mLongitude += 360;
         this.mLongitude -= 180;
-    };//, $fz.isPrivate = true, $fz));
+    };
     this.getLatitude = function() {
         return this.mLatitude;
-    };//);
+    };
     this.getLongitude = function() {
         return this.mLongitude;
-    };//);
+    };
 };
 org.gavaghan.geodesy.GlobalPosition.canonicalize = function(obj) {
     obj.mLatitude = (obj.mLatitude + 180) % 360;

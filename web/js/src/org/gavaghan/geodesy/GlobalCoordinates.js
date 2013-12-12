@@ -27,22 +27,22 @@ org.gavaghan.geodesy.GlobalCoordinates = function()
         if (this.mLongitude <= 0)
             this.mLongitude += 360;
         this.mLongitude -= 180;
-    };//, $fz.isPrivate = true, $fz));
+    };
     this.getLatitude = function() {
         return this.mLatitude;
-    };//);
+    };
     this.setLatitude = function(latitude) {
         this.mLatitude = latitude;
-        //this.canonicalize ();
+        
         org.gavaghan.geodesy.GlobalCoordinates.canonicalize(this);
-    };//, "~N");
+    };
     this.getLongitude = function() {
         return this.mLongitude;
-    };//);
+    };
     this.setLongitude = function(longitude) {
         this.mLongitude = longitude;
         org.gavaghan.geodesy.GlobalCoordinates.canonicalize(this);
-    };//, "~N");
+    };
     this.compareTo = function(other) {
         var retval;
         if (this.mLongitude < other.mLongitude)
@@ -56,16 +56,16 @@ org.gavaghan.geodesy.GlobalCoordinates = function()
         else
             retval = 0;
         return retval;
-    };//, "org.gavaghan.geodesy.GlobalCoordinates");
+    };
     this.hashCode = function() {
         return (Math.round((this.mLongitude * this.mLatitude * 1000000 + 1021))) * 1000033;
-    };//);
+    };
     this.equals = function(obj) {
         if (!(Clazz.instanceOf(obj, org.gavaghan.geodesy.GlobalCoordinates)))
             return false;
         var other = obj;
         return (this.mLongitude === other.mLongitude) && (this.mLatitude === other.mLatitude);
-    };//, "~O");
+    };
     this.toString = function() {
         var buffer = "";
         buffer += (Math.abs(this.mLatitude));
@@ -75,7 +75,7 @@ org.gavaghan.geodesy.GlobalCoordinates = function()
         buffer += (((this.mLongitude >= 0) ? 'E' : 'W')).charCodeAt(0);
         buffer += ((';')).charCodeAt(0);
         return buffer;
-    };//);
+    };
 };
 org.gavaghan.geodesy.GlobalCoordinates.canonicalize = function(that)
 {
@@ -94,4 +94,4 @@ org.gavaghan.geodesy.GlobalCoordinates.canonicalize = function(that)
     if (that.mLongitude <= 0)
         that.mLongitude += 360;
     that.mLongitude -= 180;
-};//, $fz.isPrivate = true, $fz));
+};

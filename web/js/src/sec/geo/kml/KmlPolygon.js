@@ -29,10 +29,10 @@ sec.geo.kml.KmlPolygon = function()
     }
     this.addPoint = function(point) {
         this.points.add(point);
-    };//, "sec.geo.shape.Point");
+    };
     this.addPoints = function(points) {
         this.points.addAll(points);
-    };//, "java.util.ArrayList");
+    };
     this.toString = function() {
         var sb = new sec.geo.utilities.StringBuilder();
         sb.append(this.PREFIX);
@@ -43,7 +43,7 @@ sec.geo.kml.KmlPolygon = function()
         if (this.altitudeMode !== null)
             sb.replace(altitudeModeIndex, altitudeModeIndex + altitudeModeLength, this.altitudeMode.toString());
         return sb.toString();
-    };//);
+    };
     this.toCoordString = function() {
         var sb = new sec.geo.utilities.StringBuilder();
         var orderedPoints = this.getPointsCounterClockwise();
@@ -70,13 +70,13 @@ sec.geo.kml.KmlPolygon = function()
             sb.append(" ");
         }
         return sb.toString();
-    };//);
+    };
     this.getAltitudeMode = function() {
         return this.altitudeMode;
-    };//);
+    };
     this.setAltitudeMode = function(altitudeMode) {
         this.altitudeMode = altitudeMode;
-    };//, "sec.geo.kml.KmlOptions.AltitudeMode");
+    };
     this.getPointsClockwise = function() {
         if (this.points === null || this.points.size() < 3)
             return null;
@@ -87,7 +87,7 @@ sec.geo.kml.KmlPolygon = function()
             return result;
         } else
             return result;
-    };//);
+    };
     this.getPointsCounterClockwise = function() {
         if (this.points === null || this.points.size() < 3)
             return null;
@@ -98,7 +98,7 @@ sec.geo.kml.KmlPolygon = function()
             return result;
         } else
             return result;
-    };//);
+    };
     this.getPointOrder = function() {
         if (this.points === null || this.points.size() < 3)
             return 0;
@@ -123,7 +123,7 @@ sec.geo.kml.KmlPolygon = function()
             return 1;
         else
             return 0;
-    };//);
+    };
     this.subList = function(al, fromIndex, toIndex) {
         var result = new java.util.ArrayList();
         var j = 0;
@@ -131,7 +131,7 @@ sec.geo.kml.KmlPolygon = function()
             result.add(al.get(j));
 
         return result;
-    };//, $fz.isPrivate = true, $fz), "java.util.ArrayList,~N,~N");
+    };
     this.reverse = function(al) {
         var j = 0;
         var result = new java.util.ArrayList();
@@ -139,6 +139,6 @@ sec.geo.kml.KmlPolygon = function()
             result.add(al.get(j));
 
         return result;
-    };//, $fz.isPrivate = true, $fz), "java.util.ArrayList");
+    };
 };
 sec.geo.kml.KmlPolygon.REFERENCE_ELLIPSOID = org.gavaghan.geodesy.Ellipsoid.WGS84;

@@ -7,5 +7,5 @@ sec.geo.shape.Track = function()
     this.elements = new java.util.ArrayList();
     this.addRoute = function(route) {
         this.elements.add(route);
-    };//, "sec.geo.shape.Route");
+    };
 };

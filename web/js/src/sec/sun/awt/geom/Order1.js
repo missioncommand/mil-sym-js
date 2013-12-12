@@ -28,40 +28,40 @@ sec.sun.awt.geom.Order1 = function()
     } else {
         this.xmin = x1;
         this.xmax = x0;
-    }//}, "~N,~N,~N,~N,~N");
+    }
     this.getOrder = function() {
         return 1;
-    };//);
+    };
     this.getXTop = function() {
         return this.x0;
-    };//);
+    };
     this.getYTop = function() {
         return this.y0;
-    };//);
+    };
     this.getXBot = function() {
         return this.x1;
-    };//);
+    };
     this.getYBot = function() {
         return this.y1;
-    };//);
+    };
     this.getXMin = function() {
         return this.xmin;
-    };//);
+    };
     this.getXMax = function() {
         return this.xmax;
-    };//);
+    };
     this.getX0 = function() {
         return (this.direction === 1) ? this.x0 : this.x1;
-    };//);
+    };
     this.getY0 = function() {
         return (this.direction === 1) ? this.y0 : this.y1;
-    };//);
+    };
     this.getX1 = function() {
         return (this.direction === -1) ? this.x0 : this.x1;
-    };//);
+    };
     this.getY1 = function() {
         return (this.direction === -1) ? this.y0 : this.y1;
-    };//);
+    };
     this.XforY = function(y) {
         if (this.x0 === this.x1 || y <= this.y0) {
             return this.x0;
@@ -70,7 +70,7 @@ sec.sun.awt.geom.Order1 = function()
             return this.x1;
         }
         return (this.x0 + (y - this.y0) * (this.x1 - this.x0) / (this.y1 - this.y0));
-    };//, "~N");
+    };
     this.TforY = function(y) {
         if (y <= this.y0) {
             return 0;
@@ -79,13 +79,13 @@ sec.sun.awt.geom.Order1 = function()
             return 1;
         }
         return (y - this.y0) / (this.y1 - this.y0);
-    };//, "~N");
+    };
     this.XforT = function(t) {
         return this.x0 + t * (this.x1 - this.x0);
-    };//, "~N");
+    };
     this.YforT = function(t) {
         return this.y0 + t * (this.y1 - this.y0);
-    };//, "~N");
+    };
     this.dXforT = function(t, deriv) {
         switch (deriv) {
             case 0:
@@ -95,7 +95,7 @@ sec.sun.awt.geom.Order1 = function()
             default:
                 return 0;
         }
-    };//, "~N,~N");
+    };
     this.dYforT = function(t, deriv) {
         switch (deriv) {
             case 0:
@@ -105,10 +105,10 @@ sec.sun.awt.geom.Order1 = function()
             default:
                 return 0;
         }
-    };//, "~N,~N");
+    };
     this.nextVertical = function(t0, t1) {
         return t1;
-    };//, "~N,~N");
+    };
     this.accumulateCrossings = function(c) {
         var xlo = c.getXLo();
         var ylo = c.getYLo();
@@ -149,14 +149,14 @@ sec.sun.awt.geom.Order1 = function()
         }
         c.record(ystart, yend, this.direction);
         return false;
-    };//, "sec.sun.awt.geom.Crossings");
+    };
     this.enlarge = function(r) {
         r.add(this.x0, this.y0);
         r.add(this.x1, this.y1);
-    };//, "armyc2.c2sd.graphics2d.Rectangle2D");
+    };
     this.getWithDirection = function(direction) {
         return (this.direction === direction ? this : this.getReversedCurve());
-    };//, "~N");
+    };
     this.getSubCurve = function(ystart, yend, dir)
     {
         if (ystart === this.y0 && yend === this.y1)
@@ -172,10 +172,10 @@ sec.sun.awt.geom.Order1 = function()
         var xstart = (this.x0 + (ystart - this.y0) * num / denom);
         var xend = (this.x0 + (yend - this.y0) * num / denom);
         return  new sec.sun.awt.geom.Order1(xstart, ystart, xend, yend, dir);
-    };//, "~N,~N,~N");
+    };
     this.getReversedCurve = function() {
         return  new sec.sun.awt.geom.Order1(this.x0, this.y0, this.x1, this.y1, -this.direction);
-    };//);
+    };
     this.compareTo = function(other, yrange) {
         var curve = other;
         var c1 = curve.getCurve();
@@ -213,7 +213,7 @@ sec.sun.awt.geom.Order1 = function()
             y = Math.max(this.y0, c1.y0);
         }
         return sec.sun.awt.geom.Curve.orderof(this.XforY(y), c1.XforY(y));
-    };//, "~O,~A");
+    };
     this.getSegment = function(coords) {
         if (this.direction === 1) {
             coords[0] = this.x1;
@@ -223,14 +223,14 @@ sec.sun.awt.geom.Order1 = function()
             coords[1] = this.y0;
         }
         return 1;
-    };//, "~A");
+    };
     this.controlPointString = function() {
         return "";
-    };//);
+    };
     this.setParent = function(parent) {
         this._parent = parent;
-    };//, "sec.sun.awt.geom.CurveObject");
+    };
     this.getParent = function() {
         return this._parent;
-    };//);
+    };
 };

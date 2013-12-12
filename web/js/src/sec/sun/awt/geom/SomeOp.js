@@ -15,7 +15,7 @@ sec.sun.awt.geom.SomeOp = function()
         this.inLeft = false;
         this.inRight = false;
         this.inResult = false;
-    };//);
+    };
     this.classify = function(e)
     {
         if (e.getCurveTag() === 0) {
@@ -29,11 +29,11 @@ sec.sun.awt.geom.SomeOp = function()
         }
         this.inResult = newClass;
         return (newClass ? 1 : -1);
-    };//, "sec.sun.awt.geom.Edge");
+    };
     this.getState = function()
     {
         return (this.inResult ? 1 : -1);
-    };//);
+    };
     this.newClassification = function(inLeft, inRight)
     {
         switch (this._type)
@@ -49,7 +49,7 @@ sec.sun.awt.geom.SomeOp = function()
             default:
                 return false;
         }
-    };//, "~B,~B");
+    };
     this.calculate = function(left, right)
     {
         var edges = new sec.sun.awt.geom.Vector();
@@ -65,7 +65,7 @@ sec.sun.awt.geom.SomeOp = function()
             }
         }
         return edges;
-    };//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+    };
     this.pruneEdges = function(edges)
     {
         var numedges = edges.size();
@@ -294,7 +294,7 @@ sec.sun.awt.geom.SomeOp = function()
             ret.add(c);
         }
         return ret;
-    };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector");
+    };
 };
 
 sec.sun.awt.geom.SomeOp.addEdges = function(edges, curves, curvetag)
@@ -314,7 +314,7 @@ sec.sun.awt.geom.SomeOp.addEdges = function(edges, curves, curvetag)
             edges.add(new sec.sun.awt.geom.Edge(c, curvetag));
         }
     }
-};//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,~N");
+};
 sec.sun.awt.geom.SomeOp.finalizeSubCurves = function(subcurves, chains)
 {
     var numchains = chains.size();
@@ -337,7 +337,7 @@ sec.sun.awt.geom.SomeOp.finalizeSubCurves = function(subcurves, chains)
         }
     }
     chains.clear();
-};//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+};
 sec.sun.awt.geom.SomeOp.resolveLinks = function(subcurves, chains, links)
 {
     var numlinks = links.size();
@@ -415,11 +415,11 @@ sec.sun.awt.geom.SomeOp.resolveLinks = function(subcurves, chains, links)
     if ((chains.size() & 1) !== 0) {
         System.out.println("Odd number of chains!");
     }
-};//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+};
 sec.sun.awt.geom.SomeOp.obstructs = function(v1, v2, phase)
 {
     return (((phase & 1) === 0) ? (v1 <= v2) : (v1 < v2));
-};//, "~N,~N,~N");
+};
 sec.sun.awt.geom.SomeOp.SUBOP = 0;
 sec.sun.awt.geom.SomeOp.ADDOP = 1;
 sec.sun.awt.geom.SomeOp.INTOP = 2;

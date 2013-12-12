@@ -20,7 +20,7 @@ sec.sun.awt.geom.AreaOp2 = function()
             default:
                 break;
         }
-    }//, "~N");
+    }
     this.calculate = function(left, right)
     {
         var edges = new sec.sun.awt.geom.Vector();
@@ -37,7 +37,7 @@ sec.sun.awt.geom.AreaOp2 = function()
             }
         }
         return edges;
-    };//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+    };
     this.pruneEdges = function(edges)
     {
         var eo = new sec.sun.awt.geom.EOWindOp();
@@ -253,13 +253,13 @@ sec.sun.awt.geom.AreaOp2 = function()
             ret.add(c);
         }
         return ret;
-    };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector");
+    };
     this.newRow = function() {
         if (this.eo !== null)
             this.eo.newRow();
         else if (this.nz !== null)
             this.nz.newRow();
-    };//, $fz.isPrivate = true, $fz));
+    };
     this.getState = function() {
         if (this.eo !== null)
             return this.eo.getState();
@@ -267,7 +267,7 @@ sec.sun.awt.geom.AreaOp2 = function()
             return this.nz.getState();
         else
             return -1;
-    };//, $fz.isPrivate = true, $fz));
+    };
     this.classify = function(e) {
         if (this.eo !== null)
             return this.eo.classify(e);
@@ -275,7 +275,7 @@ sec.sun.awt.geom.AreaOp2 = function()
             return this.nz.classify(e);
         else
             return -1;
-    };//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Edge");
+    };
 };
 
 sec.sun.awt.geom.AreaOp2.EOWINDOP = 0;
@@ -309,7 +309,7 @@ sec.sun.awt.geom.AreaOp2.addEdges = function(edges, curves, curvetag) {
             edges.add(new sec.sun.awt.geom.Edge(c, curvetag));
         }
     }
-};//, $fz.isPrivate = true, $fz), "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,~N");
+};
 sec.sun.awt.geom.AreaOp2.finalizeSubCurves = function(subcurves, chains) {
     var numchains = chains.size();
     if (numchains === 0) {
@@ -329,7 +329,7 @@ sec.sun.awt.geom.AreaOp2.finalizeSubCurves = function(subcurves, chains) {
         }
     }
     chains.clear();
-};//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+};
 sec.sun.awt.geom.AreaOp2.resolveLinks = function(subcurves, chains, links) {
     var numlinks = links.size();
     var linklist;
@@ -406,7 +406,7 @@ sec.sun.awt.geom.AreaOp2.resolveLinks = function(subcurves, chains, links) {
     if ((chains.size() & 1) !== 0) {
         System.out.println("Odd number of chains!");
     }
-};//, "sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector,sec.sun.awt.geom.Vector");
+};
 sec.sun.awt.geom.AreaOp2.obstructs = function(v1, v2, phase) {
     return (((phase & 1) === 0) ? (v1 <= v2) : (v1 < v2));
-};//, "~N,~N,~N");
+};

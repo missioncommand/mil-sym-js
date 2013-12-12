@@ -17,27 +17,27 @@ org.gavaghan.geodesy.Ellipsoid = function()
     this.mInverseFlattening = inverseFlattening;
     this.getSemiMajorAxis = function() {
         return this.mSemiMajorAxis;
-    };//);
+    };
     this.getSemiMinorAxis = function() {
         return this.mSemiMinorAxis;
-    };//);
+    };
     this.getFlattening = function() {
         return this.mFlattening;
-    };//);
+    };
     this.getInverseFlattening = function() {
         return this.mInverseFlattening;
-    };//);
+    };
 };
 org.gavaghan.geodesy.Ellipsoid.fromAAndInverseF = function(semiMajor, inverseFlattening) {
     var f = 1.0 / inverseFlattening;
     var b = (1.0 - f) * semiMajor;
     return  new org.gavaghan.geodesy.Ellipsoid(semiMajor, b, f, inverseFlattening);
-};//, "~N,~N");
+};
 org.gavaghan.geodesy.Ellipsoid.fromAAndF = function(semiMajor, flattening) {
     var inverseF = 1.0 / flattening;
     var b = (1.0 - flattening) * semiMajor;
     return  new org.gavaghan.geodesy.Ellipsoid(semiMajor, b, flattening, inverseF);
-};//, "~N,~N");
+};
 
 org.gavaghan.geodesy.Ellipsoid.WGS84 = org.gavaghan.geodesy.Ellipsoid.fromAAndInverseF(6378137.0, 298.257223563);
 org.gavaghan.geodesy.Ellipsoid.GRS80 = org.gavaghan.geodesy.Ellipsoid.fromAAndInverseF(6378137.0, 298.257222101);

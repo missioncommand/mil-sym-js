@@ -13,19 +13,19 @@ sec.geo.GeoPoint=function()
     }
     this.getLatitude=function () {
         return this.y;
-    };//);
+    };
     this.setLatitude=function (latitudeDegrees) {
         this.y = latitudeDegrees;
-    };//, "~N");
+    };
     this.getLongitude=function () {
         return this.x;
-    };//);
+    };
     this.setLongitude=function (longitudeDegrees) {
         this.x = longitudeDegrees;
-    };//, "~N");
+    };
     this.toString=function () {
         return this.x + "," + this.y;
-    };//); 
+    };
     this.equals=function(x1,y1)
     {
         if(x1===this.x && y1===this.y)

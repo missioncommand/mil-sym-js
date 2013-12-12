@@ -14,7 +14,7 @@ armyc2.c2sd.JavaLineArray.POINT2 = function()
         this.y = arguments[0].y;
         this.segment = arguments[0].segment;
         this.style = arguments[0].style;
-        //alert(arguments[0]);
+        
     }
     else if (arguments.length === 2)
     {

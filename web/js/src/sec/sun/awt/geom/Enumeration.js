@@ -13,11 +13,11 @@ sec.sun.awt.geom.Enumeration = function()
             return this._vector.get(this.currentIndex++);
         else
             return null;
-    };//);
+    };
     this.hasMoreElements = function() {
         if (this.currentIndex < this._vector.size())
             return true;
         else
             return false;
-    };//);
+    };
 };

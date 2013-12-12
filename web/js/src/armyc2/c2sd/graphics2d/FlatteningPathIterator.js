@@ -57,7 +57,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             this.holdIndex += 24;
             this.holdEnd += 24;
         }
-    };//, "~N");
+    };
     this.next=function () {
         this.next2(true);
     };
@@ -152,7 +152,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
                 this.levelIndex--;
                 break;
         }
-    };//, $fz.isPrivate = true, $fz), "~B");
+    };
     this.currentSegmentFlt=function (coords) {
         if (this.isDone ()) {
             System.out.println ("flattening iterator out of bounds");
@@ -167,7 +167,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             }
         }
         return type;
-    };//, "~A");
+    };
     this.currentSegment=function (coords) {
         if (this.isDone ()) {
             System.out.println ("flattening iterator out of bounds");
@@ -182,7 +182,7 @@ armyc2.c2sd.graphics2d.FlatteningPathIterator=function(){
             }
         }
         return type;
-    };//, "~A");
+    };
 };
 armyc2.c2sd.graphics2d.FlatteningPathIterator.next2=function(that,doNext)
 {

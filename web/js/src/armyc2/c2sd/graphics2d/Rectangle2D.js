@@ -32,7 +32,7 @@ armyc2.c2sd.graphics2d.Rectangle2D = function() {
             this.width += (x1 - this.x);
         if (y1 > this.y + this.height)
             this.height += (y1 - this.y);
-    };//, "~N,~N");
+    };
 };
 armyc2.c2sd.graphics2d.Rectangle2D.prototype.createIntersection = function(r) {
     if (r.x > this.x + this.width)

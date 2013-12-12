@@ -21,7 +21,7 @@ sec.geo.shape.Cake = function()
         {
             throw  new IllegalArgumentException();
         }
-    };//, "~O");
+    };
     this.setPivot = function(pivot)
     {
         this.pivot = pivot;
@@ -44,9 +44,9 @@ sec.geo.shape.Cake = function()
                 this.elements.add(layer);
             }
         }
-    };//, "sec.geo.GeoPoint");
+    };
     this.getElements = function()
     {
         return this.elements;
-    };//);
+    };
 };

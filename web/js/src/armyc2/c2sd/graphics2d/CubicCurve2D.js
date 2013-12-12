@@ -6,16 +6,16 @@ armyc2.c2sd.graphics2d.CubicCurve2D = function()
 }
 armyc2.c2sd.graphics2d.CubicCurve2D.getFlatnessSq2 = function(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2) {
     return Math.max(armyc2.c2sd.graphics2d.Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx1, ctrly1), armyc2.c2sd.graphics2d.Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx2, ctrly2));
-};//, "~N,~N,~N,~N,~N,~N,~N,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.getFlatness = function(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2) {
     return Math.sqrt(armyc2.c2sd.graphics2d.CubicCurve2D.getFlatnessSq2(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2));
-};//, "~N,~N,~N,~N,~N,~N,~N,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.getFlatnessSq = function(coords, offset) {
     return armyc2.c2sd.graphics2d.CubicCurve2D.getFlatnessSq2(coords[offset + 0], coords[offset + 1], coords[offset + 2], coords[offset + 3], coords[offset + 4], coords[offset + 5], coords[offset + 6], coords[offset + 7]);
-};//, "~A,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.getFlatness2 = function(coords, offset) {
     return armyc2.c2sd.graphics2d.CubicCurve2D.getFlatness(coords[offset + 0], coords[offset + 1], coords[offset + 2], coords[offset + 3], coords[offset + 4], coords[offset + 5], coords[offset + 6], coords[offset + 7]);
-};//, "~A,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.subdivide = function(src, srcoff, left, leftoff, right, rightoff) {
     var x1 = src[srcoff + 0];
     var y1 = src[srcoff + 1];
@@ -61,10 +61,10 @@ armyc2.c2sd.graphics2d.CubicCurve2D.subdivide = function(src, srcoff, left, left
         right[rightoff + 4] = x2;
         right[rightoff + 5] = y2;
     }
-};//, "~A,~N,~A,~N,~A,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.solveCubic = function(eqn) {
     return armyc2.c2sd.graphics2d.CubicCurve2D.solveCubic2(eqn, eqn);
-};//, "~A");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.solveCubic2 = function(eqn, res) {
     var d = eqn[3];
     if (d === 0.0) {
@@ -104,7 +104,7 @@ armyc2.c2sd.graphics2d.CubicCurve2D.solveCubic2 = function(eqn, res) {
         res[roots++] = (A + B) - a;
     }
     return roots;
-};//, "~A,~A");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.fixRoots = function(res, eqn) {
     var EPSILON = 1E-5;
     for (var i = 0; i < 3; i++) {
@@ -115,14 +115,14 @@ armyc2.c2sd.graphics2d.CubicCurve2D.fixRoots = function(res, eqn) {
             res[i] = armyc2.c2sd.graphics2d.CubicCurve2D.findZero(t, 1, eqn);
         }
     }
-};//, $fz.isPrivate = true, $fz), "~A,~A");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.solveEqn = function(eqn, order, t) {
     var v = eqn[order];
     while (--order >= 0) {
         v = v * t + eqn[order];
     }
     return v;
-};//, $fz.isPrivate = true, $fz), "~A,~N,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.findZero = function(t, target, eqn) {
     var slopeqn = [eqn[1], 2 * eqn[2], 3 * eqn[3]];
     var slope;
@@ -164,7 +164,7 @@ armyc2.c2sd.graphics2d.CubicCurve2D.findZero = function(t, target, eqn) {
             t = newt;
         }
     }
-};//, $fz.isPrivate = true, $fz), "~N,~N,~A");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.getTag = function(coord, low, high) {
     if (coord <= low) {
         return (coord < low ? -2 : -1);
@@ -173,7 +173,7 @@ armyc2.c2sd.graphics2d.CubicCurve2D.getTag = function(coord, low, high) {
         return (coord > high ? 2 : 1);
     }
     return 0;
-};//, $fz.isPrivate = true, $fz), "~N,~N,~N");
+};
 armyc2.c2sd.graphics2d.CubicCurve2D.BELOW = -2;
 armyc2.c2sd.graphics2d.CubicCurve2D.LOWEDGE = -1;
 armyc2.c2sd.graphics2d.CubicCurve2D.INSIDE = 0;

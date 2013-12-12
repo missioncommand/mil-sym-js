@@ -36,10 +36,10 @@ org.gavaghan.geodesy.GeodeticMeasurement=function()
     }
     this.getElevationChange=function () {
         return this.mElevationChange;
-    };//);
+    };
     this.getPointToPointDistance=function () {
         return this.mP2P;
-    };//);
+    };
     this.toString=function () {
         var buffer = "";
         buffer += "s=";
@@ -54,5 +54,5 @@ org.gavaghan.geodesy.GeodeticMeasurement=function()
         buffer += (";p2p=");
         buffer += (this.mP2P);
         return buffer;
-    };//);
+    };
 };

@@ -5,16 +5,16 @@ armyc2.c2sd.JavaLineArray.Channels =
         {
             setClient: function(value) {
                 _client = value;
-            }, //, "~S");
+            }, 
             setAffiliation: function(value) {
                 _affiliation = value;
-            }, //, "~S");
+            }, 
             setShiftLines: function(value) {
                 _shiftLines = value;
-            }, //, "~B");
+            }, 
             getShiftLines: function() {
                 return armyc2.c2sd.JavaLineArray.Channels._shiftLines;
-            }, //);
+            }, 
             ConnectArrayTrueDouble: function(nWidth, nCounter, pLinePoints, pResultChannelPoints) {
                 try {
                     var nPointCounter = 0;

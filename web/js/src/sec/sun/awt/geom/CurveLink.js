@@ -22,7 +22,7 @@ sec.sun.awt.geom.CurveLink = function()
     }
     this.absorb = function(link) {
         return this.absorb2(link.curve, link.ytop, link.ybot, link.etag);
-    };//, "sec.sun.awt.geom.CurveLink");
+    };
     this.absorb2 = function(curve, ystart, yend, etag) {
         if (this.curve !== curve || this.etag !== etag || this.ybot < ystart || this.ytop > yend)
         {
@@ -35,46 +35,46 @@ sec.sun.awt.geom.CurveLink = function()
         this.ytop = Math.min(this.ytop, ystart);
         this.ybot = Math.max(this.ybot, yend);
         return true;
-    };//, "sec.sun.awt.geom.CurveObject,~N,~N,~N");
+    };
     this.isEmpty = function() {
         return (this.ytop === this.ybot);
-    };//);
+    };
     this.getCurve = function() {
         return this.curve;
-    };//);
+    };
     this.getSubCurve = function() {
         if (this.ytop === this.curve.getYTop() && this.ybot === this.curve.getYBot())
         {
             return this.curve.getWithDirection(this.etag);
         }
         return this.curve.getSubCurve(this.ytop, this.ybot, this.etag);
-    };//);
+    };
     this.getMoveto = function() {
         var order0 = new sec.sun.awt.geom.Order0(this.getXTop(), this.getYTop());
         return  new sec.sun.awt.geom.CurveObject(order0);
-    };//);
+    };
     this.getXTop = function() {
         return this.curve.XforY(this.ytop);
-    };//);
+    };
     this.getYTop = function() {
         return this.ytop;
-    };//);
+    };
     this.getXBot = function() {
         return this.curve.XforY(this.ybot);
-    };//);
+    };
     this.getYBot = function() {
         return this.ybot;
-    };//);
+    };
     this.getX = function() {
         return this.curve.XforY(this.ytop);
-    };//);
+    };
     this.getEdgeTag = function() {
         return this.etag;
-    };//);
+    };
     this.setNext = function(link) {
         this.next = link;
-    };//, "sec.sun.awt.geom.CurveLink");
+    };
     this.getNext = function() {
         return this.next;
-    };//);
+    };
 };

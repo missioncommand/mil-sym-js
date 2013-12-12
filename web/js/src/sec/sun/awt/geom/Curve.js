@@ -7,7 +7,7 @@ sec.sun.awt.geom.Curve = function()
 };
 sec.sun.awt.geom.Curve.insertMove = function(curves, x, y) {
     curves.add(new sec.sun.awt.geom.Order0(x, y));
-};//, "sec.sun.awt.geom.Vector,~N,~N");
+};
 sec.sun.awt.geom.Curve.insertLine = function(curves, x0, y0, x1, y1) {
     if (y0 === y1)
     {
@@ -21,7 +21,7 @@ sec.sun.awt.geom.Curve.insertLine = function(curves, x0, y0, x1, y1) {
     {
         curves.add(new sec.sun.awt.geom.Order1(x1, y1, x0, y0, -1));
     }
-};//, "sec.sun.awt.geom.Vector,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.insertQuad = function(curves, x0, y0, coords) {
     var y1 = coords[3];
     if (y0 > y1) {
@@ -31,7 +31,7 @@ sec.sun.awt.geom.Curve.insertQuad = function(curves, x0, y0, coords) {
     } else {
         sec.sun.awt.geom.Order2.insert(curves, coords, x0, y0, coords[0], coords[1], coords[2], y1, 1);
     }
-};//, "sec.sun.awt.geom.Vector,~N,~N,~A");
+};
 sec.sun.awt.geom.Curve.insertCubic = function(curves, x0, y0, coords) {
     var y1 = coords[5];
     if (y0 > y1) {
@@ -41,7 +41,7 @@ sec.sun.awt.geom.Curve.insertCubic = function(curves, x0, y0, coords) {
     } else {
         sec.sun.awt.geom.Order3.insert(curves, coords, x0, y0, coords[0], coords[1], coords[2], coords[3], coords[4], y1, 1);
     }
-};//, "sec.sun.awt.geom.Vector,~N,~N,~A");
+};
 sec.sun.awt.geom.Curve.pointCrossingsForPath = function(pi, px, py) {
     if (pi.isDone()) {
         return 0;
@@ -102,7 +102,7 @@ sec.sun.awt.geom.Curve.pointCrossingsForPath = function(pi, px, py) {
         crossings += sec.sun.awt.geom.Curve.pointCrossingsForLine(px, py, curx, cury, movx, movy);
     }
     return crossings;
-};//, "armyc2.c2sd.graphics2d.PathIterator,~N,~N");
+};
 sec.sun.awt.geom.Curve.pointCrossingsForLine = function(px, py, x0, y0, x1, y1) {
     if (py < y0 && py < y1)
         return 0;
@@ -116,7 +116,7 @@ sec.sun.awt.geom.Curve.pointCrossingsForLine = function(px, py, x0, y0, x1, y1) 
     if (px >= xintercept)
         return 0;
     return (y0 < y1) ? 1 : -1;
-};//, "~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.pointCrossingsForQuad = function(px, py, x0, y0, xc, yc, x1, y1, level) {
     if (py < y0 && py < yc && py < y1)
         return 0;
@@ -146,7 +146,7 @@ sec.sun.awt.geom.Curve.pointCrossingsForQuad = function(px, py, x0, y0, xc, yc, 
         return 0;
     }
     return (sec.sun.awt.geom.Curve.pointCrossingsForQuad(px, py, x0, y0, x0c, y0c, xc, yc, level + 1) + sec.sun.awt.geom.Curve.pointCrossingsForQuad(px, py, xc, yc, xc1, yc1, x1, y1, level + 1));
-};//, "~N,~N,~N,~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.pointCrossingsForCubic = function(px, py, x0, y0, xc0, yc0, xc1, yc1, x1, y1, level) {
     if (py < y0 && py < yc0 && py < yc1 && py < y1)
         return 0;
@@ -182,7 +182,7 @@ sec.sun.awt.geom.Curve.pointCrossingsForCubic = function(px, py, x0, y0, xc0, yc
         return 0;
     }
     return (sec.sun.awt.geom.Curve.pointCrossingsForCubic(px, py, x0, y0, xc0, yc0, xc0m, yc0m, xmid, ymid, level + 1) + sec.sun.awt.geom.Curve.pointCrossingsForCubic(px, py, xmid, ymid, xmc1, ymc1, xc1, yc1, x1, y1, level + 1));
-};//, "~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.rectCrossingsforPath = function(pi, rxmin, rymin, rxmax, rymax) {
     if (rxmax <= rxmin || rymax <= rymin) {
         return 0;
@@ -248,7 +248,7 @@ sec.sun.awt.geom.Curve.rectCrossingsforPath = function(pi, rxmin, rymin, rxmax, 
         crossings = sec.sun.awt.geom.Curve.rectCrossingsForLine(crossings, rxmin, rymin, rxmax, rymax, curx, cury, movx, movy);
     }
     return crossings;
-};//, "armyc2.c2sd.graphics2d.PathIterator,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.rectCrossingsForLine = function(crossings, rxmin, rymin, rxmax, rymax, x0, y0, x1, y1) {
     if (y0 >= rymax && y1 >= rymax)
         return crossings;
@@ -302,7 +302,7 @@ sec.sun.awt.geom.Curve.rectCrossingsForLine = function(crossings, rxmin, rymin, 
         return crossings;
     }
     return -2147483648;
-};//, "~N,~N,~N,~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.rectCrossingsForQuad = function(crossings, rxmin, rymin, rxmax, rymax, x0, y0, xc, yc, x1, y1, level) {
     if (y0 >= rymax && yc >= rymax && y1 >= rymax)
         return crossings;
@@ -344,7 +344,7 @@ sec.sun.awt.geom.Curve.rectCrossingsForQuad = function(crossings, rxmin, rymin, 
         crossings = sec.sun.awt.geom.Curve.rectCrossingsForQuad(crossings, rxmin, rymin, rxmax, rymax, xc, yc, xc1, yc1, x1, y1, level + 1);
     }
     return crossings;
-};//, "~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.rectCrossingsForCubic = function(crossings, rxmin, rymin, rxmax, rymax, x0, y0, xc0, yc0, xc1, yc1, x1, y1, level) {
     if (y0 >= rymax && yc0 >= rymax && yc1 >= rymax && y1 >= rymax) {
         return crossings;
@@ -395,11 +395,11 @@ sec.sun.awt.geom.Curve.rectCrossingsForCubic = function(crossings, rxmin, rymin,
         crossings = sec.sun.awt.geom.Curve.rectCrossingsForCubic(crossings, rxmin, rymin, rxmax, rymax, xmid, ymid, xmc1, ymc1, xc1, yc1, x1, y1, level + 1);
     }
     return crossings;
-};//, "~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N");
+};
 sec.sun.awt.geom.Curve.round = function(v) {
     return v;
-};//, "~N");
-//c$.orderof = Clazz.defineMethod (c$, "orderof", 
+};
+
 sec.sun.awt.geom.Curve.orderof = function(x1, x2) {
     if (x1 < x2) {
         return -1;
@@ -408,22 +408,22 @@ sec.sun.awt.geom.Curve.orderof = function(x1, x2) {
         return 1;
     }
     return 0;
-};//, "~N,~N");
+};
 sec.sun.awt.geom.Curve.signeddifbits = function(y1, y2) {
     return (Double.doubleToLongBits(y1) - Double.doubleToLongBits(y2));
-};//, "~N,~N");
+};
 sec.sun.awt.geom.Curve.diffbits = function(y1, y2) {
     return Math.abs(Double.doubleToLongBits(y1) - Double.doubleToLongBits(y2));
-};//, "~N,~N");
+};
 sec.sun.awt.geom.Curve.prev = function(v) {
     return Double.longBitsToDouble(Double.doubleToLongBits(v) - 1);
-};//, "~N");
+};
 sec.sun.awt.geom.Curve.next = function(v) {
     return Double.longBitsToDouble(Double.doubleToLongBits(v) + 1);
-};//, "~N");
+};
 sec.sun.awt.geom.Curve.fairlyClose = function(v1, v2) {
     return (Math.abs(v1 - v2) < Math.max(Math.abs(v1), Math.abs(v2)) * 1E-10);
-};//, "~N,~N");
+};
 sec.sun.awt.geom.Curve.solveQuadratic = function(eqn, res) {
     var a = eqn[2];
     var b = eqn[1];
@@ -450,7 +450,7 @@ sec.sun.awt.geom.Curve.solveQuadratic = function(eqn, res) {
         }
     }
     return roots;
-};//, "~A,~A");
+};
 sec.sun.awt.geom.Curve.INCREASING = 1;
 sec.sun.awt.geom.Curve.DECREASING = -1;
 sec.sun.awt.geom.Curve.RECT_INTERSECTS = 0x80000000;

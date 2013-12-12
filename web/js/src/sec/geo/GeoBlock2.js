@@ -5,10 +5,10 @@ sec.geo.GeoBlock2=function()
     this.moveTo=function (point) {
         this.path.moveTo (point.x, point.y);
         this.toPoints.add (point);
-    };//, "sec.geo.GeoPoint");
+    };
     this.moveToLatLong=function (longitudeDegrees, latitudeDegrees) {
         this.moveTo ( new sec.geo.GeoPoint (longitudeDegrees, latitudeDegrees));
-    };//, "~N,~N");
+    };
     this.lineTo=function (point) {
         var newPath =  new armyc2.c2sd.graphics2d.GeneralPath ();
         var lastPoint =  new sec.geo.GeoPoint ();
@@ -29,27 +29,27 @@ sec.geo.GeoBlock2=function()
         this.path.append (newPath, true);
         this.toPoints.add (point);
         this.simplify ();
-    };//, "sec.geo.GeoPoint");
+    };
     this.lineToLatLong=function (longitudeDegrees, latitudeDegrees) {
         this.lineTo ( new sec.geo.GeoPoint (longitudeDegrees, latitudeDegrees));
-    };//, "~N,~N");
+    };
     this.getToPoints=function () {
         return this.toPoints;
-    };//);
+    };
     this.closePath=function () {
         if (this.toPoints.size () > 0 && !this.toPoints.get (0).equals (this.toPoints.get (this.toPoints.size () - 1))) {
             this.lineTo (this.toPoints.get (0));
         }
-    };//);
+    };
     this.getPathIterator=function (at, flatness) {
         return this.path.getPathIterator (at);
-    };//, "armyc2.c2sd.graphics2d.AffineTransform,~N");
+    };
     this.toString=function () {
         return this.toPoints.toString ();
-    };//);
+    };
     this.toGlobalCoord=function (point) {
         return  new org.gavaghan.geodesy.GlobalCoordinates (point.getLatitude (), point.getLongitude ());
-    };//, "sec.geo.GeoPoint");
+    };
     this.simplify=function () {
         var pi = this.path.getPathIterator (null);
         var pts = pi.getPoints ();
@@ -73,16 +73,16 @@ sec.geo.GeoBlock2=function()
             newPts.add (currentPt);
         }
         pi.setPathIterator (newPts);
-    };//);
-    //begin constructor
+    };
+    
     this.path = null;
     this.toPoints = null;
     this.maxDistanceMeters = 0;
     this.flatnessDistanceMeters = 0;
     this.limit = 0;
     this.geoCalc = null;
-    //Clazz.instantialize (this, arguments);
-    //function (p1, p2, leftWidthMeters, rightWidthMeters, maxDistanceMeters, flatnessDistanceMeters, limit) {
+    
+    
     var p1=arguments[0];
     var p2=arguments[1];
     var leftWidthMeters=arguments[2];

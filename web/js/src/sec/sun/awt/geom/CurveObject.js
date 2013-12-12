@@ -28,7 +28,7 @@ sec.sun.awt.geom.CurveObject = function()
                 break;
         }
         return;
-    }//, $fz.isPrivate = true, $fz));
+    }
     var obj = arguments[0];
     if (Clazz.instanceOf(obj, sec.sun.awt.geom.Order0)) {
         this.order0 = obj;
@@ -57,10 +57,10 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return null;
         }
-    };//);
+    };
     this.getOrder = function() {
         return this.order;
-    };//);
+    };
     this.getXTop = function() {
         switch (this.order) {
             case 0:
@@ -74,7 +74,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getYTop = function() {
         switch (this.order) {
             case 0:
@@ -88,7 +88,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getXBot = function() {
         switch (this.order) {
             case 0:
@@ -102,7 +102,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getYBot = function() {
         switch (this.order) {
             case 0:
@@ -116,7 +116,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getXMin = function() {
         switch (this.order) {
             case 0:
@@ -130,7 +130,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getXMax = function() {
         switch (this.order) {
             case 0:
@@ -144,7 +144,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getDirection = function() {
         switch (this.order) {
             case 0:
@@ -158,7 +158,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.XforY = function(y) {
         switch (this.order) {
             case 0:
@@ -172,7 +172,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~N");
+    };
     this.getReversedCurve = function() {
         switch (this.order) {
             case 0:
@@ -186,7 +186,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return null;
         }
-    };//);
+    };
     this.getX0 = function() {
         switch (this.order) {
             case 0:
@@ -200,7 +200,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getY0 = function() {
         switch (this.order) {
             case 0:
@@ -214,7 +214,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getX1 = function() {
         switch (this.order) {
             case 0:
@@ -228,7 +228,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.getY1 = function() {
         switch (this.order) {
             case 0:
@@ -242,7 +242,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//);
+    };
     this.XforT = function(t) {
         switch (this.order) {
             case 0:
@@ -256,7 +256,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~N");
+    };
     this.YforT = function(t) {
         switch (this.order) {
             case 0:
@@ -270,7 +270,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~N");
+    };
     this.TforY = function(t) {
         switch (this.order) {
             case 0:
@@ -284,7 +284,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~N");
+    };
     this.nextVertical = function(t0, t1) {
         switch (this.order) {
             case 0:
@@ -298,7 +298,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~N,~N");
+    };
     this.controlPointString = function() {
         switch (this.order) {
             case 0:
@@ -312,10 +312,10 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return "";
         }
-    };//);
+    };
     this.toString = function() {
         return ("Curve[" + this.getOrder() + ", " + ("(" + sec.sun.awt.geom.Curve.round(this.getX0()) + ", " + sec.sun.awt.geom.Curve.round(this.getY0()) + "), ") + this.controlPointString() + ("(" + sec.sun.awt.geom.Curve.round(this.getX1()) + ", " + sec.sun.awt.geom.Curve.round(this.getY1()) + "), ") + (this.getDirection() === 1 ? "D" : "U") + "]");
-    };//);
+    };
     this.crossingsFor = function(x, y) {
         if (y >= this.getYTop() && y < this.getYBot()) {
             if (x < this.getXMax() && (x < this.getXMin() || x < this.XforY(y))) {
@@ -323,7 +323,7 @@ sec.sun.awt.geom.CurveObject = function()
             }
         }
         return 0;
-    };//, "~N,~N");
+    };
     this.accumulateCrossings = function(c) {
         var xhi = c.getXHi();
         if (this.getXMin() >= xhi) {
@@ -382,7 +382,7 @@ sec.sun.awt.geom.CurveObject = function()
             c.record(ystart, yend, this.getDirection());
         }
         return false;
-    };//, "sec.sun.awt.geom.CrossingsObject");
+    };
     this.refineTforY = function(t0, yt0, y0) {
         var t1 = 1;
         while (true) {
@@ -400,7 +400,7 @@ sec.sun.awt.geom.CurveObject = function()
                 return t1;
             }
         }
-    };//, "~N,~N,~N");
+    };
     this.findIntersect = function(that, yrange, ymin, slevel, tlevel, s0, xs0, ys0, s1, xs1, ys1, t0, xt0, yt0, t1, xt1, yt1) {
         if (ys0 > yt1 || yt0 > ys1) {
             return false;
@@ -504,7 +504,7 @@ sec.sun.awt.geom.CurveObject = function()
             }
         }
         return false;
-    };//, "sec.sun.awt.geom.CurveObject,~A,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N,~N");
+    };
     this.compareTo = function(that, yrange) {
         if (this.order === 1) {
             return this.order1.compareTo(that, yrange);
@@ -634,7 +634,7 @@ sec.sun.awt.geom.CurveObject = function()
         }
         var ymid = (yrange[0] + yrange[1]) / 2;
         return sec.sun.awt.geom.Curve.orderof(this.XforY(ymid), that.XforY(ymid));
-    };//, "sec.sun.awt.geom.CurveObject,~A");
+    };
     this.getSegment = function(coords) {
         switch (this.order) {
             case 0:
@@ -648,7 +648,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return -7;
         }
-    };//, "~A");
+    };
     this.getSubCurve = function(ystart, yend, dir) {
         switch (this.order) {
             case 0:
@@ -662,7 +662,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return null;
         }
-    };//, "~N,~N,~N");
+    };
     this.enlarge = function(r) {
         switch (this.order) {
             case 0:
@@ -676,7 +676,7 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return;
         }
-    };//, "armyc2.c2sd.graphics2d.Rectangle2D");
+    };
     this.getWithDirection = function(direction) {
         switch (this.order) {
             case 0:
@@ -690,5 +690,5 @@ sec.sun.awt.geom.CurveObject = function()
             default:
                 return null;
         }
-    };//, "~N");
+    };
 };

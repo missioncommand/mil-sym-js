@@ -20,19 +20,19 @@ sec.geo.shape.Route = function()
     this.addPoint = function(point) {
         this.points.add(point);
         this.shapeChanged();
-    };//, "sec.geo.GeoPoint");
+    };
     this.addPoints = function(points) {
         this.points.addAll(points);
         this.shapeChanged();
-    };//, "java.util.ArrayList");
+    };
     this.setLeftWidth = function(widthMeters) {
         this.leftWidthMeters = widthMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.setRightWidth = function(widthMeters) {
         this.rightWidthMeters = widthMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.createShape = function() {
         var route = new sec.sun.awt.geom.Area();
         var previousPoint = null;
@@ -48,46 +48,46 @@ sec.geo.shape.Route = function()
             previousPoint = point;
         }
         return route;
-    };//);
+    };
     this.shapeChanged = function() {
         this.shape = null;
-    };//);
+    };
     this.getShape = function() {
         if (this.shape === null) {
             this.shape = this.createShape();
         }
         return this.shape;
-    };//);
+    };
     this.getMinAltitude = function() {
         return this.minAltitudeMeters;
-    };//);
+    };
     this.setMinAltitude = function(minAltitudeMeters) {
         this.minAltitudeMeters = minAltitudeMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.getMaxAltitude = function() {
         return this.maxAltitudeMeters;
-    };//);
+    };
     this.setMaxAltitude = function(maxAltitudeMeters) {
         this.maxAltitudeMeters = maxAltitudeMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.setMaxDistance = function(maxDistanceMeters) {
         this.maxDistanceMeters = maxDistanceMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.setFlatness = function(flatnessDistanceMeters) {
         this.flatnessDistanceMeters = flatnessDistanceMeters;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.setLimit = function(limit) {
         this.limit = limit;
         this.shapeChanged();
-    };//, "~N");
+    };
     this.getAltitudeMode = function() {
         return this.altitudeMode;
-    };//);
+    };
     this.setAltitudeMode = function(altitudeMode) {
         this.altitudeMode = altitudeMode;
-    };//, "sec.geo.kml.KmlOptions.AltitudeMode");
+    };
 };

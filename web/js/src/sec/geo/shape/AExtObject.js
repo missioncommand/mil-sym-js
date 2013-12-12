@@ -105,7 +105,7 @@ sec.geo.shape.AExtObject = function()
             default:
                 break;
         }
-    };//, "~N");
+    };
     this.addPoint = function(point) {
         switch (this.type) {
             case 1:
@@ -129,7 +129,7 @@ sec.geo.shape.AExtObject = function()
                 break;
         }
         return;
-    };//, "sec.geo.GeoPoint");
+    };
     this.setFlatness = function(flatnessDistanceMeters) {
         switch (this.type) {
             case 1:
@@ -157,7 +157,7 @@ sec.geo.shape.AExtObject = function()
                 break;
         }
         this.shapeChanged();
-    };//, "~N");
+    };
     this.setLimit = function(limit) {
         switch (this.type) {
             case 1:
@@ -185,7 +185,7 @@ sec.geo.shape.AExtObject = function()
                 break;
         }
         this.shapeChanged();
-    };//, "~N");
+    };
     this.getMinAltitude = function() {
         switch (this.type) {
             case 1:
@@ -203,7 +203,7 @@ sec.geo.shape.AExtObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.getMaxAltitude = function() {
         switch (this.type) {
             case 1:
@@ -224,7 +224,7 @@ sec.geo.shape.AExtObject = function()
                 return -1;
         }
         return -1;
-    };//);
+    };
     this.getAltitudeMode = function() {
         switch (this.type) {
             case 1:
@@ -244,7 +244,7 @@ sec.geo.shape.AExtObject = function()
             default:
                 return sec.geo.kml.KmlOptions.AltitudeMode.ABSOLUTE;
         }
-    };//);
+    };
     this.getPathIterator = function(at) {
         switch (this.type) {
             case 1:
@@ -264,7 +264,7 @@ sec.geo.shape.AExtObject = function()
             default:
                 return null;
         }
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
+    };
     this.shapeChanged = function() {
         switch (this.type) {
             case 7:
@@ -285,7 +285,7 @@ sec.geo.shape.AExtObject = function()
             default:
                 break;
         }
-    };//, $fz.isPrivate = true, $fz));
+    };
 };
 sec.geo.shape.AExtObject.CAKE = 0;
 sec.geo.shape.AExtObject.LINE = 1;

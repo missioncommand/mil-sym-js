@@ -21,26 +21,26 @@ sec.sun.awt.geom.Crossings=function()
     this.yhi = yhi;
     this.getXLo=function () {
         return this.xlo;
-    };//);
+    };
     this.getYLo=function () {
         return this.ylo;
-    };//);
+    };
     this.getXHi=function () {
         return this.xhi;
-    };//);
+    };
     this.getYHi=function () {
         return this.yhi;
-    };//);
+    };
     this.isEmpty=function () {
         return (this.limit === 0);
-    };//);
+    };
     this.accumulateLine=function (x0, y0, x1, y1) {
         if (y0 <= y1) {
             return this.accumulateLine2 (x0, y0, x1, y1, 1);
         } else {
             return this.accumulateLine2 (x1, y1, x0, y0, -1);
         }
-    };//, "~N,~N,~N,~N");
+    };
     this.accumulateLine2=function (x0, y0, x1, y1, direction) {
         if (this.yhi <= y0 || this.ylo >= y1) {
             return false;
@@ -79,7 +79,7 @@ sec.sun.awt.geom.Crossings=function()
         }
         this.record (ystart, yend, direction);
         return false;
-    };//, "~N,~N,~N,~N,~N");
+    };
     this.record=function (ystart, yend, direction) {
         if (ystart >= yend) {
             return ;
@@ -151,6 +151,6 @@ sec.sun.awt.geom.Crossings=function()
             this.yranges[to++] = yend;
         }
         this.limit = to;
-    };//, "~N,~N,~N");
+    };
 };
 sec.sun.awt.geom.Crossings.debug=false;

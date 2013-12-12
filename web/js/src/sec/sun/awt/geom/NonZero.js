@@ -39,7 +39,7 @@ sec.sun.awt.geom.NonZero=function()
             ystart = yhi;
         }
         return (ystart >= yend);
-    };//, "~N,~N");
+    };
     this.remove=function (cur) {
         this.limit -= 2;
         var rem = this.limit - cur;
@@ -47,7 +47,7 @@ sec.sun.awt.geom.NonZero=function()
             System.arraycopy (this.yranges, cur + 2, this.yranges, cur, rem);
             System.arraycopy (this.crosscounts, Math.floor (cur / 2) + 1, this.crosscounts, Math.floor (cur / 2), Math.floor (rem / 2));
         }
-    };//, "~N");
+    };
     this.insert=function (cur, lo, hi, dir) {
         var rem = this.limit - cur;
         var oldranges = this.yranges;
@@ -66,7 +66,7 @@ sec.sun.awt.geom.NonZero=function()
         this.yranges[cur + 1] = hi;
         this.crosscounts[Math.floor (cur / 2)] = dir;
         this.limit += 2;
-    };//, "~N,~N,~N,~N");
+    };
     this.record=function (ystart, yend, direction) {
         if (ystart >= yend) {
             return ;
@@ -124,29 +124,29 @@ sec.sun.awt.geom.NonZero=function()
         if (ystart < yend) {
             this.insert (cur, ystart, yend, direction);
         }
-    };//, "~N,~N,~N");
+    };
     this.getXLo=function () {
         return this.xlo;
-    };//);
+    };
     this.getYLo=function () {
         return this.ylo;
-    };//);
+    };
     this.getXHi=function () {
         return this.xhi;
-    };//);
+    };
     this.getYHi=function () {
         return this.yhi;
-    };//);
+    };
     this.isEmpty=function () {
         return (this.limit === 0);
-    };//);
+    };
     this.accumulateLine=function (x0, y0, x1, y1) {
         if (y0 <= y1) {
             return this.accumulateLine2 (x0, y0, x1, y1, 1);
         } else {
             return this.accumulateLine2 (x1, y1, x0, y0, -1);
         }
-    };//, "~N,~N,~N,~N");
+    };
     this.accumulateLine2=function (x0, y0, x1, y1, direction) {
         if (this.yhi <= y0 || this.ylo >= y1) {
             return false;
@@ -185,6 +185,6 @@ sec.sun.awt.geom.NonZero=function()
         }
         this.record (ystart, yend, direction);
         return false;
-    };//, "~N,~N,~N,~N,~N");
+    };
 };
 sec.sun.awt.geom.NonZero.debug=false;

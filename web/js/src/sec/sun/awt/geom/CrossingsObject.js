@@ -51,7 +51,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.getYLo = function() {
         switch (this.type) {
             case 0:
@@ -63,7 +63,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.getXHi = function() {
         switch (this.type) {
             case 0:
@@ -75,7 +75,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.getYHi = function() {
         switch (this.type) {
             case 0:
@@ -87,7 +87,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return -1;
         }
-    };//);
+    };
     this.isEmpty = function() {
         switch (this.type) {
             case 0:
@@ -99,7 +99,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return true;
         }
-    };//);
+    };
     this.record = function(ystart, yend, direction) {
         switch (this.type) {
             case 0:
@@ -111,7 +111,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return;
         }
-    };//, "~N,~N,~N");
+    };
     this.accumulateLine = function(x0, y0, x1, y1) {
         switch (this.type) {
             case 0:
@@ -123,7 +123,7 @@ sec.sun.awt.geom.CrossingsObject = function()
             default:
                 return false;
         }
-    };//, "~N,~N,~N,~N");
+    };
     this.accumulateQuad = function(x0, y0, coords) {
         if (y0 < this.ylo && coords[1] < this.ylo && coords[3] < this.ylo) {
             return false;
@@ -152,7 +152,7 @@ sec.sun.awt.geom.CrossingsObject = function()
         }
         this.tmp.clear();
         return false;
-    };//, "~N,~N,~A");
+    };
     this.accumulateCubic = function(x0, y0, coords) {
         if (y0 < this.ylo && coords[1] < this.ylo && coords[3] < this.ylo && coords[5] < this.ylo) {
             return false;
@@ -181,7 +181,7 @@ sec.sun.awt.geom.CrossingsObject = function()
         }
         this.tmp.clear();
         return false;
-    };//, "~N,~N,~A");
+    };
 };
 sec.sun.awt.geom.CrossingsObject.CROSSINGS = 0;
 sec.sun.awt.geom.CrossingsObject.NONZERO = 1;
@@ -197,4 +197,4 @@ sec.sun.awt.geom.CrossingsObject.findCrossings = function(curves, xlo, ylo, xhi,
         }
     }
     return cross;
-};//, "sec.sun.awt.geom.Vector,~N,~N,~N,~N");
+};

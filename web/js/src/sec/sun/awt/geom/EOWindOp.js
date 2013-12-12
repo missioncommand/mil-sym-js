@@ -7,13 +7,13 @@ sec.sun.awt.geom.EOWindOp = function()
     this.inside = false;
     this.newRow = function() {
         this.inside = false;
-    };//);
+    };
     this.classify = function(e) {
         var newInside = !this.inside;
         this.inside = newInside;
         return (newInside ? 1 : -1);
-    };//, "sec.sun.awt.geom.Edge");
+    };
     this.getState = function() {
         return (this.inside ? 1 : -1);
-    };//);
+    };
 };

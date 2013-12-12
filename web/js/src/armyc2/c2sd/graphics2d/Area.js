@@ -55,7 +55,7 @@ armyc2.c2sd.graphics2d.Area=function()
                 }
             }
         }
-    }//, "~O");
+    }
     this.lineTo = function (x, y) {
         this._path.lineTo (x, y);
         this._pathIterator.lineTo (x, y);

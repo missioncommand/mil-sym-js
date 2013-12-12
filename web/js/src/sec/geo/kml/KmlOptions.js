@@ -5,7 +5,7 @@ sec.geo.kml.KmlOptions = function()
 {
 
     this.mode = "absolute";
-    //I don't believe this ever gets called
+    
     this.fromString = function(a) {
         if (a !== null) {
             for (var am, $am = 0, $$am = sec.geo.kml.KmlOptions.AltitudeMode.values(); $am < $$am.length && ((am = $$am[$am]) || true); $am++) {
@@ -15,13 +15,13 @@ sec.geo.kml.KmlOptions = function()
             }
         }
         throw  new IllegalArgumentException("No AltitudeMode with mode \"" + a + "\" found");
-    };//, "~S");
+    };
     this.toString = function() {
         return this.mode;
-    };//);
+    };
     this.getMode = function() {
         return this.mode;
-    };//);
+    };
 };
 sec.geo.kml.KmlOptions.AltitudeMode =
         {

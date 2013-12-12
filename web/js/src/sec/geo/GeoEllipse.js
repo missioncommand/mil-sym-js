@@ -39,7 +39,7 @@ sec.geo.GeoEllipse = function()
         }
         this.path.append(newPath, true);
         this.toPoints.add(point);
-    };//, "sec.geo.GeoPoint,~N,~N,~N,~N");
+    };
     this.lineTo = function(point) {
         var newPath = new armyc2.c2sd.graphics2d.GeneralPath();
         var lastPoint = new sec.geo.GeoPoint();
@@ -59,14 +59,14 @@ sec.geo.GeoEllipse = function()
         newPath.lineTo(point.x, point.y);
         this.path.append(newPath, true);
         this.toPoints.add(point);
-    };//, "sec.geo.GeoPoint");
+    };
     this.toGlobalCoord = function(point) {
         return  new org.gavaghan.geodesy.GlobalCoordinates(point.getLatitude(), point.getLongitude());
-    };//, "sec.geo.GeoPoint");
+    };
     this.getPathIterator = function(at) {
         return this.path.getPathIterator(at);
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
-    //begin constructor
+    };
+    
     this.path = null;
     this.toPoints = null;
     this.maxDistanceMeters = 0;

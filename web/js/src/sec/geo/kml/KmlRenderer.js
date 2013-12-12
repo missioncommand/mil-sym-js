@@ -19,7 +19,7 @@ sec.geo.kml.KmlRenderer = function()
     this.KML_START = "<Folder id=\"" + this.idField + "\">\n";
     this.PLACEMARK_START = "\t\t<Placemark id=\"" + this.placemarkidField + "\">\n" + "                      <Style>\n" + "                          <PolyStyle>\n" + "                              <color>" + this.colorField + "</color>\n" + "                          </PolyStyle>\n" + "                          <LineStyle>\n" + "                              <color>" + this.colorField + "</color>\n" + "                          </LineStyle>\n" + "                       </Style>\n" + "			<name>" + this.nameField + "</name>\n" + "			<description>" + this.descriptionField + "</description>\n" + "			<ExtendedData>" + this.extendedData + "</ExtendedData>\n" + "			<MultiGeometry>\n";
 
-    //these are from java code
+    
     this.KML_START = "<Folder id=\"" + this.idField + "\">\n";
     this.KML_END = "</Folder>\n";
 
@@ -118,7 +118,7 @@ sec.geo.kml.KmlRenderer = function()
             }
         }
         return polys;
-    };//, "sec.geo.shape.AExtObject");
+    };
     this.getPlacemarkKml = function(ext, id, name, description, color) {
         try {
             var sb = new sec.geo.utilities.StringBuilder();
@@ -158,7 +158,7 @@ sec.geo.kml.KmlRenderer = function()
         } catch (e) {
             throw e;
         }
-    };//, "sec.geo.shape.AExtObject,~S,~S,~S,~S");
+    };
     this.getTrackKml = function(ext, id, name, description, color) {
         try {
             var aext = this.getAExtObject(ext);
@@ -168,7 +168,7 @@ sec.geo.kml.KmlRenderer = function()
             var idLength = this.idField.length;
             sb.replace(idIndex, idIndex + idLength, id);
 
-            //loop for the track elements (routes)
+            
             var elements = aext.getElements();
             var j = 0;
             for (j = 0; j < elements.size(); j++)
@@ -183,7 +183,7 @@ sec.geo.kml.KmlRenderer = function()
         } catch (e) {
             throw e;
         }
-    };//, "~O,~S,~S,~S,~S");
+    };
     this.getKml = function(ext, id, name, description, color) {
         try {
             var aext = this.getAExtObject(ext);
@@ -201,7 +201,7 @@ sec.geo.kml.KmlRenderer = function()
         } catch (e) {
             throw e;
         }
-    };//, "~O,~S,~S,~S,~S");
+    };
     this.getAExtObject = function(obj) {
         var line = null;
         var route = null;
@@ -246,7 +246,7 @@ sec.geo.kml.KmlRenderer = function()
             ext = new sec.geo.shape.AExtObject(point);
         }
         return ext;
-    };//, $fz.isPrivate = true, $fz), "~O");
+    };
     this.getCoords = function(obj) {
         var ext = this.getAExtObject(obj);
         var polys = this.renderPolygons(ext);
@@ -257,7 +257,7 @@ sec.geo.kml.KmlRenderer = function()
             i++;
         }
         return coords;
-    };//, "~O");
+    };
     this.transformPoints = function(points, altitudeMeters) {
         var returnPoints = new java.util.ArrayList();
         for (var j = 0; j < points.size(); j++)
@@ -266,5 +266,5 @@ sec.geo.kml.KmlRenderer = function()
             returnPoints.add(new sec.geo.shape.Point(p.getLongitude(), p.getLatitude(), altitudeMeters));
         }
         return returnPoints;
-    };//, $fz.isPrivate = true, $fz), "java.util.ArrayList,~N");
+    };
 };

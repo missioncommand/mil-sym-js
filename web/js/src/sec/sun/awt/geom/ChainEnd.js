@@ -16,13 +16,13 @@ sec.sun.awt.geom.ChainEnd=function()
     this.etag = first.getEdgeTag ();
     this.getChain=function () {
         return this.head;
-    };//);
+    };
     this.setOtherEnd=function (partner) {
         this.partner = partner;
-    };//, "sec.sun.awt.geom.ChainEnd");
+    };
     this.getPartner=function () {
         return this.partner;
-    };//);
+    };
     this.linkTo=function (that) {
         if (this.etag === 0 || that.etag === 0) {
             throw  new InternalError ("ChainEnd linked more than once!");
@@ -58,7 +58,7 @@ sec.sun.awt.geom.ChainEnd=function()
             otherexit.tail = enter.tail;
         }
         return null;
-    };//, "sec.sun.awt.geom.ChainEnd");
+    };
     this.addLink=function (newlink) {
         if (this.etag === 1) {
             this.tail.setNext (newlink);
@@ -67,12 +67,12 @@ sec.sun.awt.geom.ChainEnd=function()
             newlink.setNext (this.head);
             this.head = newlink;
         }
-    };//, "sec.sun.awt.geom.CurveLink");
+    };
     this.getX=function () {
         if (this.etag === 1) {
             return this.tail.getXBot ();
         } else {
             return this.head.getXBot ();
         }
-    };//);
+    };
 };

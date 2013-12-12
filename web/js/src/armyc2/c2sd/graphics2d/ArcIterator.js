@@ -55,13 +55,13 @@ armyc2.c2sd.graphics2d.ArcIterator = function()
     }
     this.getWindingRule = function() {
         return 1;
-    };//);
+    };
     this.isDone = function() {
         return this.index > this.arcSegs + this.lineSegs;
-    };//);
+    };
     this.next = function() {
         this.index++;
-    };//);
+    };
     this.currentSegmentFlt = function(coords) {
         if (this.isDone()) {
             System.out.println("arc iterator out of bounds");
@@ -103,7 +103,7 @@ armyc2.c2sd.graphics2d.ArcIterator = function()
             this.affine.transform(coords, 0, coords, 0, 3);
         }
         return 3;
-    };//, "~A");
+    };
     this.currentSegment = function(coords) {
         if (this.isDone()) {
         }
@@ -143,7 +143,7 @@ armyc2.c2sd.graphics2d.ArcIterator = function()
             this.affine.transform(coords, 0, coords, 0, 3);
         }
         return 3;
-    };//, "~A");
+    };
 };
 
 armyc2.c2sd.graphics2d.ArcIterator.btan = function(increment) {

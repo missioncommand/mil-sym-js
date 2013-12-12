@@ -14,13 +14,13 @@ org.gavaghan.geodesy.GeodeticCurve = function()
     this.mReverseAzimuth = reverseAzimuth;
     this.getEllipsoidalDistance = function() {
         return this.mEllipsoidalDistance;
-    };//);
+    };
     this.getAzimuth = function() {
         return this.mAzimuth;
-    };//);
+    };
     this.getReverseAzimuth = function() {
         return this.mReverseAzimuth;
-    };//);
+    };
     this.toString = function() {
         var buffer = "";
         buffer += "s=";
@@ -31,5 +31,5 @@ org.gavaghan.geodesy.GeodeticCurve = function()
         buffer += this.mReverseAzimuth;
         buffer += ";";
         return buffer;
-    };//);
+    };
 };

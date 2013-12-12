@@ -47,7 +47,7 @@ sec.geo.ShapeObject = function()
     else if (Clazz.instanceOf(obj, armyc2.c2sd.graphics2d.Area)) {
         this.area = obj;
         this.type = 6;
-    }//}, "~O");
+    }
     this.arcTo = function(pivot, widthMeters, heightMeters, leftAzimuthDegrees, rightAzimuthDegrees) {
         switch (this.type) {
             case 3:
@@ -62,7 +62,7 @@ sec.geo.ShapeObject = function()
             default:
                 break;
         }
-    };//, "sec.geo.GeoPoint,~N,~N,~N,~N");
+    };
     this.getPathIterator = function(at) {
         switch (this.type) {
             case 3:
@@ -78,7 +78,7 @@ sec.geo.ShapeObject = function()
             default:
                 return null;
         }
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
+    };
     this.moveTo = function(point) {
         switch (this.type) {
             case 3:
@@ -100,7 +100,7 @@ sec.geo.ShapeObject = function()
             default:
                 break;
         }
-    };//, "sec.geo.GeoPoint");
+    };
     this.moveToLatLong = function(longitudeDegrees, latitudeDegrees) {
         switch (this.type) {
             case 3:
@@ -122,7 +122,7 @@ sec.geo.ShapeObject = function()
             default:
                 break;
         }
-    };//, "~N,~N");
+    };
     this.lineTo = function(point) {
         switch (this.type) {
             case 3:
@@ -144,10 +144,10 @@ sec.geo.ShapeObject = function()
             default:
                 break;
         }
-    };//, "sec.geo.GeoPoint");
+    };
     this.lineToLatLong = function(longitudeDegrees, latitudeDegrees) {
         this.lineTo(new sec.geo.GeoPoint(longitudeDegrees, latitudeDegrees));
-    };//, "~N,~N");
+    };
     this.closePath = function() {
         switch (this.type) {
             case 0:
@@ -166,7 +166,7 @@ sec.geo.ShapeObject = function()
             default:
                 break;
         }
-    };//);
+    };
 };
 sec.geo.ShapeObject.GEOARC = 0;
 sec.geo.ShapeObject.GEOBLOCK = 1;

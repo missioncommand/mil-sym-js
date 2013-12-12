@@ -42,25 +42,25 @@ armyc2.c2sd.graphics2d.Arc2D = function()
 
     this.getX = function() {
         return this.x;
-    };//);
+    };
     this.getY = function() {
         return this.y;
-    };//);
+    };
     this.getWidth = function() {
         return this.width;
-    };//);
+    };
     this.getHeight = function() {
         return this.height;
-    };//);
+    };
     this.getAngleStart = function() {
         return this.start;
-    };//);
+    };
     this.getAngleExtent = function() {
         return this.extent;
-    };//);
+    };
     this.isEmpty = function() {
         return (this.width <= 0.0 || this.height <= 0.0);
-    };//);
+    };
     this.setArc = function(x, y, w, h, angSt, angExt, closure) {
         this.setArcType(closure);
         this.x = x;
@@ -69,37 +69,37 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         this.height = h;
         this.start = angSt;
         this.extent = angExt;
-    };//, "~N,~N,~N,~N,~N,~N,~N");
+    };
     this.setAngleStart = function(angSt) {
         this.start = angSt;
-    };//, "~N");
+    };
     this.setAngleExtent = function(angExt) {
         this.extent = angExt;
-    };//, "~N");
+    };
     this.getArcType = function() {
         return this.type;
-    };//);
+    };
     this.getStartPoint = function() {
         var angle = Math.toRadians(-this.getAngleStart());
         var x = this.getX() + (Math.cos(angle) * 0.5 + 0.5) * this.getWidth();
         var y = this.getY() + (Math.sin(angle) * 0.5 + 0.5) * this.getHeight();
         return  new armyc2.c2sd.graphics2d.Point2D(x, y);
-    };//);
+    };
     this.getEndPoint = function() {
         var angle = Math.toRadians(-this.getAngleStart() - this.getAngleExtent());
         var x = this.getX() + (Math.cos(angle) * 0.5 + 0.5) * this.getWidth();
         var y = this.getY() + (Math.sin(angle) * 0.5 + 0.5) * this.getHeight();
         return  new armyc2.c2sd.graphics2d.Point2D(x, y);
-    };//);
+    };
     this.setArc2 = function(rect, angSt, angExt, closure) {
         this.setArc(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight(), angSt, angExt, closure);
-    };//, "armyc2.c2sd.graphics2d.Rectangle2D,~N,~N,~N");
+    };
     this.setArc3 = function(a) {
         this.setArc(a.getX(), a.getY(), a.getWidth(), a.getHeight(), a.getAngleStart(), a.getAngleExtent(), a.type);
-    };//, "armyc2.c2sd.graphics2d.Arc2D");
+    };
     this.setArcByCenter = function(x, y, radius, angSt, angExt, closure) {
         this.setArc(x - radius, y - radius, radius * 2.0, radius * 2.0, angSt, angExt, closure);
-    };//, "~N,~N,~N,~N,~N,~N");
+    };
     this.setArcByTangent = function(p1, p2, p3, radius) {
         var ang1 = Math.atan2(p1.getY() - p2.getY(), p1.getX() - p2.getX());
         var ang2 = Math.atan2(p3.getY() - p2.getY(), p3.getX() - p2.getX());
@@ -130,16 +130,16 @@ armyc2.c2sd.graphics2d.Arc2D = function()
             diff -= 360;
         }
         this.setArcByCenter(x, y, radius, ang1, diff, this.type);
-    };//, "armyc2.c2sd.graphics2d.Point2D,armyc2.c2sd.graphics2d.Point2D,armyc2.c2sd.graphics2d.Point2D,~N");
+    };
     this.setArcType = function(type) {
         if (type < 0 || type > 2) {
             throw  new IllegalArgumentException("invalid type for Arc: " + type);
         }
         this.type = type;
-    };//, "~N");
+    };
     this.setFrame = function(x, y, w, h) {
         this.setArc(x, y, w, h, this.getAngleStart(), this.getAngleExtent(), this.type);
-    };//, "~N,~N,~N,~N");
+    };
     this.getBounds2D = function() {
         if (this.isEmpty()) {
             return this.makeBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
@@ -181,10 +181,10 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         x1 = this.getX() + (x1 * 0.5 + 0.5) * w;
         y1 = this.getY() + (y1 * 0.5 + 0.5) * h;
         return this.makeBounds(x1, y1, x2, y2);
-    };//);
+    };
     this.makeBounds = function(x, y, w, h) {
         return null;
-    };//, "~N,~N,~N,~N");
+    };
     this.containsAngle = function(angle) {
         var angExt = this.getAngleExtent();
         var backwards = (angExt < 0.0);
@@ -202,7 +202,7 @@ armyc2.c2sd.graphics2d.Arc2D = function()
             angle += 360.0;
         }
         return (angle >= 0.0) && (angle < angExt);
-    };//, "~N");
+    };
     this.contains = function(x, y) {
         var ellw = this.getWidth();
         if (ellw <= 0.0) {
@@ -243,11 +243,11 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         var y2 = Math.sin(angle);
         var inside = (armyc2.c2sd.graphics2d.Line2D.relativeCCW(x1, y1, x2, y2, 2 * normx, 2 * normy) * armyc2.c2sd.graphics2d.Line2D.relativeCCW(x1, y1, x2, y2, 0, 0) >= 0);
         return inarc ? !inside : inside;
-    };//, "~N,~N");
+    };
     this.getPathIterator = function(at) {
-        //alert(at);
+        
         return  new armyc2.c2sd.graphics2d.ArcIterator(this, at);
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
+    };
     this.hashCode = function() {
         var bits = java.lang.Double.doubleToLongBits(this.getX());
         bits += java.lang.Double.doubleToLongBits(this.getY()) * 37;
@@ -257,7 +257,7 @@ armyc2.c2sd.graphics2d.Arc2D = function()
         bits += java.lang.Double.doubleToLongBits(this.getAngleExtent()) * 59;
         bits += this.getArcType() * 61;
         return ((bits) ^ ((bits >> 32)));
-    };//);
+    };
     this.equals = function(obj) {
         if (obj === this) {
             return true;
@@ -267,7 +267,7 @@ armyc2.c2sd.graphics2d.Arc2D = function()
             return ((this.getX() === a2d.getX()) && (this.getY() === a2d.getY()) && (this.getWidth() === a2d.getWidth()) && (this.getHeight() === a2d.getHeight()) && (this.getAngleStart() === a2d.getAngleStart()) && (this.getAngleExtent() === a2d.getAngleExtent()) && (this.getArcType() === a2d.getArcType()));
         }
         return false;
-    };//, "~O");
+    };
 };
 
 

@@ -6,7 +6,7 @@ org.gavaghan.geodesy.GeodeticCalculator = function()
     this.TwoPi = 6.283185307179586;
     this.calculateEndingGlobalCoordinates = function(ellipsoid, start, startBearing, distance) {
         return org.gavaghan.geodesy.GeodeticCalculator.calculateEndingGlobalCoordinates(ellipsoid, start, startBearing, distance, null);
-    };//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalCoordinates,~N,~N");
+    };
     this.calculateGeodeticCurve = function(ellipsoid, start, end) {
         var a = ellipsoid.getSemiMajorAxis();
         var b = ellipsoid.getSemiMinorAxis();
@@ -96,7 +96,7 @@ org.gavaghan.geodesy.GeodeticCalculator = function()
         if (alpha2 >= 360.0)
             alpha2 -= 360.0;
         return  new org.gavaghan.geodesy.GeodeticCurve(s, alpha1, alpha2);
-    };//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalCoordinates,org.gavaghan.geodesy.GlobalCoordinates");
+    };
     this.calculateGeodeticMeasurement = function(refEllipsoid, start, end) {
         var elev1 = start.getElevation();
         var elev2 = end.getElevation();
@@ -112,8 +112,8 @@ org.gavaghan.geodesy.GeodeticCalculator = function()
         var end1 = new org.gavaghan.geodesy.GlobalCoordinates(end.getLatitude(), end.getLongitude());
         var averageCurve = org.gavaghan.geodesy.GeodeticCalculator.calculateGeodeticCurve(ellipsoid, start1, end1);
         return  new org.gavaghan.geodesy.GeodeticMeasurement(averageCurve, elev2 - elev1);
-    };//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalPosition,org.gavaghan.geodesy.GlobalPosition");
-//});
+    };
+
 };
 org.gavaghan.geodesy.GeodeticCalculator.calculateEndingGlobalCoordinates = function(ellipsoid, start, startBearing, distance, endBearing) {
     var a = ellipsoid.getSemiMajorAxis();
@@ -175,7 +175,7 @@ org.gavaghan.geodesy.GeodeticCalculator.calculateEndingGlobalCoordinates = funct
         endBearing[0] = org.gavaghan.geodesy.Angle.toDegrees(alpha2);
     }
     return  new org.gavaghan.geodesy.GlobalCoordinates(latitude, longitude);
-};//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalCoordinates,~N,~N,~A");
+};
 org.gavaghan.geodesy.GeodeticCalculator.calculateGeodeticCurve = function(ellipsoid, start, end) {
     var a = ellipsoid.getSemiMajorAxis();
     var b = ellipsoid.getSemiMinorAxis();
@@ -265,4 +265,4 @@ org.gavaghan.geodesy.GeodeticCalculator.calculateGeodeticCurve = function(ellips
     if (alpha2 >= 360.0)
         alpha2 -= 360.0;
     return  new org.gavaghan.geodesy.GeodeticCurve(s, alpha1, alpha2);
-};//, "org.gavaghan.geodesy.Ellipsoid,org.gavaghan.geodesy.GlobalCoordinates,org.gavaghan.geodesy.GlobalCoordinates");
+};

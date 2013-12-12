@@ -24,10 +24,10 @@ sec.sun.awt.geom.AreaIterator=function()
     }
     this.getWindingRule=function () {
         return 1;
-    };//);
+    };
     this.isDone=function () {
         return (this.prevcurve === null && this.thiscurve === null);
-    };//);
+    };
     this.next=function () {
         if (this.prevcurve !== null) {
             this.prevcurve = null;
@@ -43,7 +43,7 @@ sec.sun.awt.geom.AreaIterator=function()
                 this.thiscurve = null;
             }
         }
-    };//);
+    };
     this.currentSegmentFlt=function (coords) {
         var dcoords =  Clazz.newArray (6, 0);
         var segtype = this.currentSegment (dcoords);
@@ -52,7 +52,7 @@ sec.sun.awt.geom.AreaIterator=function()
             coords[i] = dcoords[i];
         }
         return segtype;
-    };//, "~A");
+    };
     this.currentSegment=function (coords) {
         var segtype = 0;
         var numpoints = 0;
@@ -76,5 +76,5 @@ sec.sun.awt.geom.AreaIterator=function()
             this.transform.transform (coords, 0, coords, 0, numpoints);
         }
         return segtype;
-    };//, "~A");
+    };
 };

@@ -11,12 +11,12 @@ sec.sun.awt.geom.Arrays.sort= function (a) {
         aux[j] = a[j];
     
     sec.sun.awt.geom.Arrays.mergeSort (aux, a, 0, a.length, 0);
-};//, "~A");
+};
 sec.sun.awt.geom.Arrays.swap = function (x, a, b) {
     var t = x[a];
     x[a] = x[b];
     x[b] = t;
-};//, $fz.isPrivate = true, $fz), "~A,~N,~N");
+};
 sec.sun.awt.geom.Arrays.compare = function (o1, o2) {
     var c1 = (o1).getCurve ();
     var c2 = (o2).getCurve ();
@@ -31,7 +31,7 @@ sec.sun.awt.geom.Arrays.compare = function (o1, o2) {
         return -1;
     }
     return 1;
-};//, $fz.isPrivate = true, $fz), "~O,~O");
+};
 sec.sun.awt.geom.Arrays.test=2;
 sec.sun.awt.geom.Arrays.mergeSort = function (src, dest, low, high, off) {
     var length = high - low;
@@ -62,11 +62,11 @@ sec.sun.awt.geom.Arrays.mergeSort = function (src, dest, low, high, off) {
             dest[i] = src[p++];
         else dest[i] = src[q++];
     }
-};//, $fz.isPrivate = true, $fz), "~A,~A,~N,~N,~N");
+};
 sec.sun.awt.geom.Arrays.arraycopy = function (src, srcPos, dest, destPos, length) {
     var j = 0;
     for (j = 0; j < length; j++) 
         dest[j + destPos] = src[srcPos + j];
 
-};//, "~A,~N,~A,~N,~N");
+};
 sec.sun.awt.geom.Arrays.INSERTIONSORT_THRESHOLD=7;

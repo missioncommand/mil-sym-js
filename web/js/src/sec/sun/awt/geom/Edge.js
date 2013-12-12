@@ -24,22 +24,22 @@ sec.sun.awt.geom.Edge = function()
     this.etag = etag;
     this.getCurve = function() {
         return this.curve;
-    };//);
+    };
     this.getCurveTag = function() {
         return this.ctag;
-    };//);
+    };
     this.getEdgeTag = function() {
         return this.etag;
-    };//);
+    };
     this.setEdgeTag = function(etag) {
         this.etag = etag;
-    };//, "~N");
+    };
     this.getEquivalence = function() {
         return this.equivalence;
-    };//);
+    };
     this.setEquivalence = function(eq) {
         this.equivalence = eq;
-    };//, "~N");
+    };
     this.compareTo = function(other, yrange) {
         if (other === this.lastEdge && yrange[0] < this.lastLimit) {
             if (yrange[1] > this.lastLimit) {
@@ -58,17 +58,17 @@ sec.sun.awt.geom.Edge = function()
         this.lastLimit = yrange[1];
         this.lastResult = ret;
         return ret;
-    };//, "sec.sun.awt.geom.Edge,~A");
+    };
     this.record = function(yend, etag) {
         this.activey = yend;
         this.etag = etag;
-    };//, "~N,~N");
+    };
     this.isActiveFor = function(y, etag) {
         return (this.etag === etag && this.activey >= y);
-    };//, "~N,~N");
+    };
     this.toString = function() {
         return ("Edge[" + this.curve + ", " + (this.ctag === 0 ? "L" : "R") + ", " + (this.etag === 1 ? "I" : (this.etag === -1 ? "O" : "N")) + "]");
-    };//);
+    };
 };
 sec.sun.awt.geom.Edge.INIT_PARTS = 4;
 sec.sun.awt.geom.Edge.GROW_PARTS = 10;

@@ -49,43 +49,43 @@ sec.sun.awt.geom.Order2=function()
     this.ycoeff2 = y0 - cy0 - cy0 + y1;
     this.getOrder=function () {
         return 2;
-    };//);
+    };
     this.getXTop=function () {
         return this.x0;
-    };//);
+    };
     this.getYTop=function () {
         return this.y0;
-    };//);
+    };
     this.getXBot=function () {
         return this.x1;
-    };//);
+    };
     this.getYBot=function () {
         return this.y1;
-    };//);
+    };
     this.getXMin=function () {
         return this.xmin;
-    };//);
+    };
     this.getXMax=function () {
         return this.xmax;
-    };//);
+    };
     this.getX0=function () {
         return (this.direction === 1) ? this.x0 : this.x1;
-    };//);
+    };
     this.getY0=function () {
         return (this.direction === 1) ? this.y0 : this.y1;
-    };//);
+    };
     this.getCX0=function () {
         return this.cx0;
-    };//);
+    };
     this.getCY0=function () {
         return this.cy0;
-    };//);
+    };
     this.getx1=function () {
         return (this.direction === -1) ? this.x0 : this.x1;
-    };//);
+    };
     this.getY1=function () {
         return (this.direction === -1) ? this.y0 : this.y1;
-    };//);
+    };
     this.XforY=function (y) {
         if (y <= this.y0) {
             return this.x0;
@@ -94,7 +94,7 @@ sec.sun.awt.geom.Order2=function()
             return this.x1;
         }
         return this.XforT (this.TforY (y));
-    };//, "~N");
+    };
     this.TforY=function (y) {
         if (y <= this.y0) {
             return 0;
@@ -103,13 +103,13 @@ sec.sun.awt.geom.Order2=function()
             return 1;
         }
         return sec.sun.awt.geom.Order2.TforY (y, this.ycoeff0, this.ycoeff1, this.ycoeff2);
-    };//, "~N");
+    };
     this.XforT=function (t) {
         return (this.xcoeff2 * t + this.xcoeff1) * t + this.xcoeff0;
-    };//, "~N");
+    };
     this.YforT=function (t) {
         return (this.ycoeff2 * t + this.ycoeff1) * t + this.ycoeff0;
-    };//, "~N");
+    };
     this.dXforT=function (t, deriv) {
         switch (deriv) {
             case 0:
@@ -121,7 +121,7 @@ sec.sun.awt.geom.Order2=function()
             default:
                 return 0;
         }
-    };//, "~N,~N");
+    };
     this.dYforT=function (t, deriv) {
         switch (deriv) {
             case 0:
@@ -133,14 +133,14 @@ sec.sun.awt.geom.Order2=function()
             default:
                 return 0;
         }
-    };//, "~N,~N");
+    };
     this.nextVertical=function (t0, t1) {
         var t = -this.xcoeff1 / (2 * this.xcoeff2);
         if (t > t0 && t < t1) {
             return t;
         }
         return t1;
-    };//, "~N,~N");
+    };
     this.enlarge=function (r) {
         r.add (this.x0, this.y0);
         var t = -this.xcoeff1 / (2 * this.xcoeff2);
@@ -148,10 +148,10 @@ sec.sun.awt.geom.Order2=function()
             r.add (this.XforT (t), this.YforT (t));
         }
         r.add (this.x1, this.y1);
-    };//, "armyc2.c2sd.graphics2d.Rectangle2D");
+    };
     this.getWithDirection=function (direction) {
         return (this.direction === direction ? this : this.getReversedCurve ());
-    };//, "~N");
+    };
     this.getSubCurve=function (ystart, yend, dir) {
         var t0;
         var t1;
@@ -186,10 +186,10 @@ sec.sun.awt.geom.Order2=function()
             i = 4;
         }
         return  new sec.sun.awt.geom.Order2 (eqn[i + 0], ystart, eqn[i + 2], eqn[i + 3], eqn[i + 4], yend, dir);
-    };//, "~N,~N,~N");
+    };
     this.getReversedCurve=function () {
         return  new sec.sun.awt.geom.Order2 (this.x0, this.y0, this.cx0, this.cy0, this.x1, this.y1, -this.direction);
-    };//);
+    };
     this.getSegment=function (coords) {
         coords[0] = this.cx0;
         coords[1] = this.cy0;
@@ -201,16 +201,16 @@ sec.sun.awt.geom.Order2=function()
             coords[3] = this.y0;
         }
         return 2;
-    };//, "~A");
+    };
     this.controlPointString=function () {
         return ("(" + sec.sun.awt.geom.Curve.round (this.cx0) + ", " + sec.sun.awt.geom.Curve.round (this.cy0) + "), ");
-    };//);
+    };
     this.setParent=function (parent) {
         this._parent = parent;
-    };//, "sec.sun.awt.geom.CurveObject");
+    };
     this.getParent=function () {
         return this._parent;
-    };//);
+    };
 };
 sec.sun.awt.geom.Order2.TforY=function (y, ycoeff0, ycoeff1, ycoeff2) {
     ycoeff0 -= y;
@@ -242,7 +242,7 @@ sec.sun.awt.geom.Order2.TforY=function (y, ycoeff0, ycoeff1, ycoeff2) {
     var y0 = ycoeff0;
     var y1 = ycoeff0 + ycoeff1 + ycoeff2;
     return (0 < (y0 + y1) / 2) ? 0.0 : 1.0;
-};//, "~N,~N,~N,~N");
+};
 
 sec.sun.awt.geom.Order2.split=function (coords, pos, t) {
     var x0;
@@ -269,7 +269,7 @@ sec.sun.awt.geom.Order2.split=function (coords, pos, t) {
     coords[pos + 5] = cy;
     coords[pos + 6] = x1;
     coords[pos + 7] = y1;
-};//, "~A,~N,~N");
+};
             
 sec.sun.awt.geom.Order2.getHorizontalParams=function (c0, cp, c1, ret) {
     if (c0 <= cp && cp <= c1) {
@@ -287,7 +287,7 @@ sec.sun.awt.geom.Order2.getHorizontalParams=function (c0, cp, c1, ret) {
     }
     ret[0] = t;
     return 1;
-};//, "~N,~N,~N,~A");
+};
             
 sec.sun.awt.geom.Order2.addInstance=function (curves, x0, y0, cx0, cy0, x1, y1, direction) {
     if (y0 > y1) {
@@ -295,7 +295,7 @@ sec.sun.awt.geom.Order2.addInstance=function (curves, x0, y0, cx0, cy0, x1, y1, 
     } else if (y1 > y0) {
         curves.add ( new sec.sun.awt.geom.Order2 (x0, y0, cx0, cy0, x1, y1, direction));
     }
-};//, "sec.sun.awt.geom.Vector,~N,~N,~N,~N,~N,~N,~N");
+};
 
 sec.sun.awt.geom.Order2.insert=function (curves, tmp, x0, y0, cx0, cy0, x1, y1, direction) {
     var numparams = sec.sun.awt.geom.Order2.getHorizontalParams (y0, cy0, y1, tmp);
@@ -315,4 +315,4 @@ sec.sun.awt.geom.Order2.insert=function (curves, tmp, x0, y0, cx0, cy0, x1, y1, 
     var i1 = 4 - i0;
     sec.sun.awt.geom.Order2.addInstance (curves, tmp[i0], tmp[i0 + 1], tmp[i0 + 2], tmp[i0 + 3], tmp[i0 + 4], tmp[i0 + 5], direction);
     sec.sun.awt.geom.Order2.addInstance (curves, tmp[i1], tmp[i1 + 1], tmp[i1 + 2], tmp[i1 + 3], tmp[i1 + 4], tmp[i1 + 5], direction);
-};//, "sec.sun.awt.geom.Vector,~A,~N,~N,~N,~N,~N,~N,~N");
+};

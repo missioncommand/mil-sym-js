@@ -5,10 +5,10 @@ sec.geo.GeoArc = function()
     this.moveTo = function(point) {
         this.path.moveTo(point.x, point.y);
         this.toPoints.add(point);
-    };//, "sec.geo.GeoPoint");
+    };
     this.moveToLatLong = function(longitudeDegrees, latitudeDegrees) {
         this.moveTo(new sec.geo.GeoPoint(longitudeDegrees, latitudeDegrees));
-    };//, "~N,~N");
+    };
     this.lineTo = function(point) {
         var newPath = new armyc2.c2sd.graphics2d.GeneralPath();
         var lastPoint = new sec.geo.GeoPoint();
@@ -28,10 +28,10 @@ sec.geo.GeoArc = function()
         newPath.lineTo(point.x, point.y);
         this.path.append(newPath, true);
         this.toPoints.add(point);
-    };//, "sec.geo.GeoPoint");
+    };
     this.lineToLatLong = function(longitudeDegrees, latitudeDegrees) {
         this.lineTo(new sec.geo.GeoPoint(longitudeDegrees, latitudeDegrees));
-    };//, "~N,~N");
+    };
     this.arcTo = function(pivot, widthMeters, heightMeters, leftAzimuthDegrees, rightAzimuthDegrees) {
         var count = 0;
         var newPath = new armyc2.c2sd.graphics2d.GeneralPath();
@@ -71,24 +71,24 @@ sec.geo.GeoArc = function()
         }
         this.path.append(newPath, true);
         this.toPoints.add(point);
-    };//, "sec.geo.GeoPoint,~N,~N,~N,~N");
+    };
     this.getToPoints = function() {
         return this.toPoints;
-    };//);
+    };
     this.closePath = function() {
         if (this.toPoints.size() > 0 && !this.toPoints.get(0).equals(this.toPoints.get(this.toPoints.size() - 1))) {
             this.lineTo(this.toPoints.get(0));
         }
-    };//);
+    };
     this.getPathIterator = function(at) {
         return this.path.getPathIterator(at);
-    };//, "armyc2.c2sd.graphics2d.AffineTransform");
+    };
     this.toString = function() {
         return this.toPoints.toString();
-    };//);
+    };
     this.toGlobalCoord = function(point) {
         return  new org.gavaghan.geodesy.GlobalCoordinates(point.getLatitude(), point.getLongitude());
-    };//, "sec.geo.GeoPoint");
+    };
     this.path = null;
     this.toPoints = null;
     this.maxDistanceMeters = 0;
@@ -113,5 +113,5 @@ sec.geo.GeoArc = function()
     this.moveTo(pivot);
     this.arcTo(pivot, widthMeters, heightMeters, leftAzimuth, rightAzimuth);
     this.closePath();
-};//end constructor
+};
 sec.geo.GeoArc.REFERENCE_ELLIPSOID = org.gavaghan.geodesy.Ellipsoid.WGS84;
