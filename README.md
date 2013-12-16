@@ -52,26 +52,26 @@ ant concat sm-bc minify samples
 
 "sm-bc" represents what you rendering capabilities you want.
 
-s: singlepoint (jquery plugin for singlepoint rendering only available in singlepoint only builds)
-m: multipoints
-sm: both
+s: singlepoint (jquery plugin for singlepoint rendering only available in singlepoint only builds)  
+m: multipoints  
+sm: both  
 
-b: 2525B support
-c: 2525C support
-bc: both
+b: 2525B support  
+c: 2525C support  
+bc: both  
 
 allFlavors: every variation will be generated
 
-running "ant concat sm-bc minify samples" would result in the following files being placed in the "dist" folder.
-fonts (contains fonts needed for singlepoint rendering)
-renderer.css (to load the font files)
-jquery-[version].min.js
-multiPointTester1.html (renders kml for a couple multipoint symbols)
-multiPointTester2.html (renders kml for a couple multipoint symbols in a loop to test performance)
-singlePointTester.html (renders a couple of singlepoint symbols to the page)
-single-point-plugin.html (show sample usage with jQuery)
-sm-bc.js (concatenated renderer code)
-sm-bc.min.js (concatenated & minified renderer code)
+running "ant concat sm-bc minify samples" would result in the following files being placed in the "dist" folder:  
+- fonts (contains fonts needed for singlepoint rendering)  
+- renderer.css (to load the font files)  
+- jquery-[version].min.js  
+- multiPointTester1.html (renders kml for a couple multipoint symbols)  
+- multiPointTester2.html (renders kml for a couple multipoint symbols in a loop to test performance)  
+- singlePointTester.html (renders a couple of singlepoint symbols to the page)  
+- single-point-plugin.html (show sample usage with jQuery)  
+- sm-bc.js (concatenated renderer code)  
+- sm-bc.min.js (concatenated & minified renderer code)  
 
 License
 ----
