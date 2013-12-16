@@ -39,7 +39,9 @@ Singlepoint rendering does not work on WebKit based browsers (Chrome, Safari, et
 
 Build
 --------------
-This project builds with Ant resulting in two JavaScript files 
+This project builds with Ant resulting in two JavaScript files.  
+One has all of the JS code combined into one file.  
+The other is a minified version of the first file. (i.e. sm-bc.js & sm-bc.min.js)
 
 Open a command prompt to the root folder of the repository on your local machine and enter:
 ```sh
