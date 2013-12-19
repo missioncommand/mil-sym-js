@@ -46,6 +46,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _DrawAffiliationModifierAsLabel = true,
     _SPFontSize = 60,
     _UnitFontSize = 50;
+    _PixelSize = 35;
 
 return{
     
@@ -143,6 +144,23 @@ return{
      */
     getTextOutlineWidth: function (){
         return _TextOutlineWidth;
+    },
+     /**
+     * Sets the default pixel size for symbology.
+     * Default value is 35.
+     * @param {Number} size
+     * @returns {undefined}
+     */
+    setDefaultPixelSize: function (size){
+        _PixelSize = size;
+    },
+    /**
+     * Gets the default pixel size for symbology.
+     * Default value is 35.
+     * @returns {Number}
+     */
+    getDefaultPixelSize: function (){
+        return _PixelSize;
     },
     /**
      * Refers to text color of modifier labels

@@ -4,7 +4,7 @@
 <!-- Meta line required for IE-->
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
 
-<script src="sm-bc.js" type="text/javascript" ></script>
+<script src="sm-bc.min.js" type="text/javascript" ></script>
 
  <script type = "text/javascript">
  
@@ -142,6 +142,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         var scale2 = 50000.0;
 		//modifiers = "{\"modifiers\":{\"uniqueDesignation1\":\"T modifier\"}}";
 		modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
+		modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
 		
 		//format = formatJSON;
 		format = formatKML;
@@ -195,8 +196,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","SECTOR RANGE FAN");
 		//SECTOR RANGE FAN EXAMPLE
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //bug with sector range fan at the moment, duplicate points appear.  shouldn't hurt anything but it's a waste of bandwidth.  
-		//working on a  fix.
+
 		var symbolCode3 = "GFFPAXS---****X"; //sector range fan
 
         var controlPoints3 = "66.26700036208742,30.62755038706961";
@@ -204,7 +204,14 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //var bbox2 = "-180.0,-90.0,180.0,90.0";
         var scale3 = 50000.0;
 		//distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-		modifiers = "{\"modifiers\":{\"distance\":[300,1000],\"azimuth\":[315,45],\"altitudeDepth\":[0]}}";
+
+		var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+		var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+		modifiers = {};
+		modifiers[mtg.AM_DISTANCE] = [300,1000];
+		modifiers[mtg.AN_AZIMUTH] = [315,45];
+		modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+		modifiers[msa.LineWidth]=8;
 		
 		//format = formatJSON;
 		format = formatKML;
@@ -259,8 +266,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","FLOT");
 		//FLOT EXAMPLE
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //bug with sector range fan at the moment, duplicate points appear.  shouldn't hurt anything but it's a waste of bandwidth.  
-		//working on a  fix.
+
 		var symbolCode4 = "GHGPGLF-------X"; //flot
 
         var controlPoints4 = "8.40185525443334,38.95854638813517 15.124217101733166,36.694658205882995 18.49694847529253,40.113591379080155 8.725267851897936,42.44678226078903 8.217048055882143,40.76041657400935";
@@ -269,7 +275,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         var scale4 = 5869879.2;
 		//distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
 		modifiers = "{\"modifiers\":{\"lineColor\":\"ffff0000\"}}";
-		
+		modifiers = {"lineColor":"ffff0000"};
 		//format = formatJSON;
 		format = formatKML;
 		

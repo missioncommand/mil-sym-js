@@ -90,11 +90,10 @@ return{
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY." Not required
      * but can speed up rendering in some cases.
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {String} modifiers A JSON string representing all the possible symbol 
-     * modifiers represented in the MIL-STD-2525C.  Format of the string will be
-     * {"modifiers": {"attributeName":"value"[,"attributeNamen":"valuen"]...}}
-     * The quotes are literal in the above notation.  Example: 
-     * {"modifiers": {"quantity":"4","speed":"300","azimuth":[100,200]}}
+     * @param {Object} An Object representing all the possible symbol 
+     * modifiers represented in the MIL-STD-2525C.  Key values come from
+     * MilStdAttributes, ModifiersTG and ModifiersUnits 
+     * example: {"C":"4","Z":"300","AN":[100,200]}}
      * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
      * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return A JSON string representation of the graphic.
@@ -154,11 +153,10 @@ return{
      * @param {String} bbox The viewable area of the map.  Passed in the format of a
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY."
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {String} modifiers A JSON string representing all the possible symbol
-     * modifiers represented in the MIL-STD-2525C.  Format of the string will be
-     * {"modifiers": {"attributeName":"value"[,"attributeNamen":"valuen"]...}}
-     * The quotes are literal in the above notation.  Example:
-     * {"modifiers": {"quantity":"4","speed":"300","azimuth":[100,200]}}
+     * @param {Object} An Object representing all the possible symbol 
+     * modifiers represented in the MIL-STD-2525C.  Key values come from
+     * MilStdAttributes, ModifiersTG and ModifiersUnits 
+     * example: {"C":"4","Z":"300","AN":[100,200]}}
      * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
      * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return {String} A JSON or KML string representation of the graphic.

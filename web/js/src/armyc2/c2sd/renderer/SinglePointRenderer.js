@@ -113,9 +113,13 @@ return{
             modifiers = {};
         //determine font size necessary to match desired pixel size/////////////
         var pixelSize = -1;
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize] !== undefined)
+        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize])
         {
             pixelSize = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize];
+        }
+        else
+        {
+            pixelSize = RendererSettings.getDefaultPixelSize();
         }
         var keepUnitRatio = false;
         if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio] !== undefined)
@@ -2075,9 +2079,13 @@ return{
         // <editor-fold defaultstate="collapsed" desc="Parse Modifiers">
         //determine font size necessary to match desired pixel size/////////////
         var pixelSize = -1;
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize] !== undefined)
+        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize])
         {
             pixelSize = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize];
+        }
+        else
+        {
+            pixelSize = RendererSettings.getDefaultPixelSize();
         }
         if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio] !== undefined)
         {

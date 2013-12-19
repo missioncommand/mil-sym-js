@@ -6,16 +6,8 @@
 
     <title>single point tester</title>
     <link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" />
-    <!-- Not necessary as fonts are body fonts set in renderer.css
-    <style type="text/css">
-    body 
-    {
-        font-family: UnitFont, SinglePoint, TacticalGraphics;
-        font-size: 48pt;
-        padding: 25px;
-    }
-    </style> -->
-	<script src="sm-bc.js" type="text/javascript" ></script>
+
+	<script src="sm-bc.min.js" type="text/javascript" ></script>
 	    
     
     <script type = "text/javascript">
@@ -171,7 +163,20 @@
             alert('Render 1k symbols: ' + (time/1000));//*/
 			
  
-
+			//render via Data Url
+			modifiers = new Object(); 
+			modifiers[msa.PixelSize]=60;
+			ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",modifiers);
+			var width = ii.getImageBounds().getWidth();
+			var height = ii.getImageBounds().getHeight();
+			
+			//var imageHTML = "<img src=\"" + ii.toDataUrl() + "\" width=\"" + width + "\" height=\"" + height + "\">";
+			//document.getElementById("contentSpan").innerHTML += "Rendered  via  data  url: </br>" + imageHTML;
+			
+			var img = document.getElementById("urlexample");
+			img.src = ii.toDataUrl();
+			img.width = width;
+			img.height = height;
 
 	}
 	
@@ -201,7 +206,7 @@
             
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
             //symbol.symbolicon A
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
@@ -216,15 +221,17 @@
         
 	function preload()
 	{
-            armyc2.c2sd.renderer.MilStdIconRenderer.Init();
             armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 	}
 </script>
 </head>
 <BODY bgcolor="Cyan" onload="preload();">
-
+Rendered via HTML5 Canvas:</br>
 <canvas id="preview" width="650" height="200"></canvas>
 <button type='button' onclick='testRender();'>Render</button>
-
+</br>
+<!-- <span id='contentSpan'/> -->
+Rendered via data URL:
+<img id="urlexample" src="" alt="test" height="35" width="35">
 </BODY>
 </html>

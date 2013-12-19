@@ -22,6 +22,6 @@
 body 
 {
     font-family: UnitFont, SinglePoint, TacticalGraphics, Arial;
-    font-size: 48pt;
-    padding: 25px;
+    //font-size: 48pt;
+    //padding: 25px;
 }

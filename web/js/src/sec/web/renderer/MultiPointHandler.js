@@ -7,6 +7,8 @@ sec.web.renderer.MultiPointHandler = (function () {
     //private vars
     var ErrorLogger = armyc2.c2sd.renderer.utilities.ErrorLogger;
     var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
+    var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
+    var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
     var _appletChecked = false;
     var _appletUrl = null;
     
@@ -354,11 +356,10 @@ return{
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY." Not required
      * but can speed up rendering in some cases.
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {String} symbolModifiers A JSON string representing all the possible symbol 
-     * modifiers represented in the MIL-STD-2525C.  Format of the string will be
-     * {"modifiers": {"attributeName":"value"[,"attributeNamen":"valuen"]...}}
-     * The quotes are literal in the above notation.  Example: 
-     * {"modifiers": {"quantity":"4","speed":"300","azimuth":[100,200]}}
+     * @param {Object} An Object representing all the possible symbol 
+     * modifiers represented in the MIL-STD-2525C.  Key values come from
+     * MilStdAttributes, ModifiersTG and ModifiersUnits 
+     * example: {"C":"4","Z":"300","AN":[100,200]}}
      * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
      * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return A JSON string representation of the graphic.
@@ -658,11 +659,10 @@ return{
      * @param {String} bbox The viewable area of the map.  Passed in the format of a
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY."
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {String} symbolModifiers A JSON string representing all the possible symbol
-     * modifiers represented in the MIL-STD-2525C.  Format of the string will be
-     * {"modifiers": {"attributeName":"value"[,"attributeNamen":"valuen"]...}}
-     * The quotes are literal in the above notation.  Example:
-     * {"modifiers": {"quantity":"4","speed":"300","azimuth":[100,200]}}
+     * @param {Object} An Object representing all the possible symbol 
+     * modifiers represented in the MIL-STD-2525C.  Key values come from
+     * MilStdAttributes, ModifiersTG and ModifiersUnits 
+     * example: {"C":"4","Z":"300","AN":[100,200]}}
      * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
      * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return {String} A JSON or KML string representation of the graphic.
@@ -809,7 +809,13 @@ return{
         return jsonOutput;
     },
             
-    populateModifiers: function(jsonString, symbol)
+    /**
+     * 
+     * @param {String:Object} modifiers json string or an object
+     * @param {type} symbol
+     * @returns {Boolean}
+     */
+    populateModifiers: function(modifiers, symbol)
     {
         var modifierMap = {},//new java.util.HashMap();
             altitudes = null,
@@ -820,108 +826,150 @@ return{
             lineWidth = 0,
             symbolFillIDs = null,
             symbolFillIconSize = null;
+            
         //alert(jsonString);
         try {
-            var obj = JSON.parse(jsonString);
+            if(typeof(modifiers)==='string')
+            {
+                modifiers = JSON.parse(modifiers);
+                
+                if(modifiers.modifiers)
+                    modifiers = modifiers.modifiers;
+            }
 
+            if(modifiers[ModifiersTG.C_QUANTITY])
+                modifierMap[ModifiersTG.C_QUANTITY] = modifiers[ModifiersTG.C_QUANTITY];
+            else if (modifiers.quantity)
+                modifierMap[ModifiersTG.C_QUANTITY] = modifiers.quantity;
 
-            if (obj.modifiers.quantity !== undefined && obj.modifiers.quantity !== null)
-                modifierMap["C"] = obj.modifiers.quantity;
+            if(modifiers[ModifiersTG.H_ADDITIONAL_INFO_1])
+                modifierMap[ModifiersTG.H_ADDITIONAL_INFO_1] = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
+            else if (modifiers.additionalInfo1)
+                modifierMap[ModifiersTG.H_ADDITIONAL_INFO_1] = modifiers.additionalInfo1;
 
-            if (obj.modifiers.additionalInfo1 !== undefined && obj.modifiers.additionalInfo1 !== null)
-                modifierMap["H"]= obj.modifiers.additionalInfo1;
+            if(modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2])
+                modifierMap[ModifiersTG.H1_ADDITIONAL_INFO_2] = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
+            else if (modifiers.additionalInfo2)
+                modifierMap[ModifiersTG.H1_ADDITIONAL_INFO_2] = modifiers.additionalInfo2;
+            
+            if(modifiers[ModifiersTG.H2_ADDITIONAL_INFO_3])
+                modifierMap[ModifiersTG.H2_ADDITIONAL_INFO_3] = modifiers[ModifiersTG.H2_ADDITIONAL_INFO_3];
+            else if (modifiers.additionalInfo3)
+                modifierMap[ModifiersTG.H2_ADDITIONAL_INFO_3] = modifiers.additionalInfo3;
 
-            if (obj.modifiers.additionalInfo2 !== undefined && obj.modifiers.additionalInfo2 !== null)
-                modifierMap["H1"] = obj.modifiers.additionalInfo2;
+            if(modifiers[ModifiersTG.N_HOSTILE])
+                modifierMap[ModifiersTG.N_HOSTILE] = modifiers[ModifiersTG.N_HOSTILE];
+            else if (modifiers.hostile)
+                modifierMap[ModifiersTG.N_HOSTILE] = modifiers.hostile;
 
-            if (obj.modifiers.additionalInfo3 !== undefined && obj.modifiers.additionalInfo3 !== null)
-                modifierMap["H2"] = obj.modifiers.additionalInfo3;
-            if (obj.modifiers.hostile !== undefined && obj.modifiers.hostile !== null)
-                modifierMap["N"] = obj.modifiers.hostile;
+            if(modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1])
+                modifierMap[ModifiersTG.T_UNIQUE_DESIGNATION_1] = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
+            else if (modifiers.uniqueDesignation1)
+                modifierMap[ModifiersTG.T_UNIQUE_DESIGNATION_1] = modifiers.uniqueDesignation1;
 
-            if (obj.modifiers.uniqueDesignation1 !== undefined && obj.modifiers.uniqueDesignation1 !== null)
-                modifierMap["T"] = obj.modifiers.uniqueDesignation1;
+            if(modifiers[ModifiersTG.T1_UNIQUE_DESIGNATION_2])
+                modifierMap[ModifiersTG.T1_UNIQUE_DESIGNATION_2] = modifiers[ModifiersTG.T1_UNIQUE_DESIGNATION_2];
+            else if (modifiers.uniqueDesignation2)
+                modifierMap[ModifiersTG.T1_UNIQUE_DESIGNATION_2] = modifiers.uniqueDesignation2;
 
-            if (obj.modifiers.uniqueDesignation2 !== undefined && obj.modifiers.uniqueDesignation2 !== null)
-                modifierMap["T1"] = obj.modifiers.uniqueDesignation2;
+            if(modifiers[ModifiersTG.W_DTG_1])
+                modifierMap[ModifiersTG.W_DTG_1] = modifiers[ModifiersTG.W_DTG_1];
+            else if (modifiers.dateTimeGroup1)
+                modifierMap[ModifiersTG.W_DTG_1] = modifiers.dateTimeGroup1;
 
-            if (obj.modifiers.dateTimeGroup1 !== undefined && obj.modifiers.dateTimeGroup1 !== null)
-                modifierMap["W"] = obj.modifiers.dateTimeGroup1;
-
-            if (obj.modifiers.dateTimeGroup2 !== undefined && obj.modifiers.dateTimeGroup2 !== null)
-                modifierMap["W1"] = obj.modifiers.dateTimeGroup2;
+            if(modifiers[ModifiersTG.W1_DTG_2])
+                modifierMap[ModifiersTG.W1_DTG_2] = modifiers[ModifiersTG.W1_DTG_2];
+            else if (modifiers.dateTimeGroup2)
+                modifierMap[ModifiersTG.W1_DTG_2] = modifiers.dateTimeGroup2;
 
             var i = 0;
-            if (obj.modifiers.altitudeDepth !== undefined && obj.modifiers.altitudeDepth !== null)
+            
+            if (modifiers[ModifiersTG.X_ALTITUDE_DEPTH])
             {
                 altitudes = new Array();
-                //var ats=JSON.stringify(obj.modifiers.altitudeDepth);
-                for (i = 0; i < obj.modifiers.altitudeDepth.length; i++) {
-                    altitudes.push(obj.modifiers.altitudeDepth[i]);
+                //var ats=JSON.stringify(modifiers.altitudeDepth);
+                for (i = 0; i < modifiers.XN.length; i++) {
+                    altitudes.push(modifiers.XN[i]);
                 }
             }
-            else if (obj.modifiers.XN !== undefined && obj.modifiers.XN !== null)
+            else if (modifiers.altitudeDepth)
             {
                 altitudes = new Array();
-                //var ats=JSON.stringify(obj.modifiers.altitudeDepth);
-                for (i = 0; i < obj.modifiers.XN.length; i++) {
-                    altitudes.push(obj.modifiers.XN[i]);
+                //var ats=JSON.stringify(modifiers.altitudeDepth);
+                for (i = 0; i < modifiers.altitudeDepth.length; i++) {
+                    altitudes.push(modifiers.altitudeDepth[i]);
+                }
+            }
+            else if (modifiers.X)
+            {
+                altitudes = new Array();
+                if(modifiers.X.length)
+                {
+                    for (i = 0; i < modifiers.X.length; i++) {
+                        altitudes.push(modifiers.X[i]);
+                    }
                 }
             }
 
-            if (obj.modifiers.distance !== undefined && obj.modifiers.distance !== null)
+            if (modifiers.distance)
             {
-                //alert(obj.modifiers.distance);
+                //alert(modifiers.distance);
                 distances = new Array();
-                for (i = 0; i < obj.modifiers.distance.length; i++) {
-                    distances.push(obj.modifiers.distance[i]);
+                for (i = 0; i < modifiers.distance.length; i++) {
+                    distances.push(modifiers.distance[i]);
                 }
             }
-            else if (obj.modifiers.AM !== undefined && obj.modifiers.AM !== null)
+            else if (modifiers.AM)
             {
-                //alert(obj.modifiers.distance);
+                //alert(modifiers.distance);
                 distances = new Array();
-                for (i = 0; i < obj.modifiers.AM.length; i++) {
-                    distances.push(obj.modifiers.AM[i]);
+                for (i = 0; i < modifiers.AM.length; i++) {
+                    distances.push(modifiers.AM[i]);
                 }
             }
 
-            if (obj.modifiers.azimuth !== undefined && obj.modifiers.azimuth !== null)
+            if (modifiers.azimuth)
             {
                 azimuths = new Array();
-                for (i = 0; i < obj.modifiers.azimuth.length; i++) {
-                    azimuths.push(obj.modifiers.azimuth[i]);
+                for (i = 0; i < modifiers.azimuth.length; i++) {
+                    azimuths.push(modifiers.azimuth[i]);
                 }
-                //alert(obj.modifiers.azimuth.length);
+                //alert(modifiers.azimuth.length);
             }
-            else if (obj.modifiers.AN !== undefined && obj.modifiers.AN !== null)
+            else if (modifiers.AN)
             {
                 azimuths = new Array();
-                for (i = 0; i < obj.modifiers.AN.length; i++) {
-                    azimuths.push(obj.modifiers.AN[i]);
+                for (i = 0; i < modifiers.AN.length; i++) {
+                    azimuths.push(modifiers.AN[i]);
                 }
-                //alert(obj.modifiers.azimuth.length);
+                //alert(modifiers.azimuth.length);
             }
-            if (obj.modifiers.fillColor !== undefined && obj.modifiers.fillColor !== null)
-                fillColor = obj.modifiers.fillColor;
-            if (obj.modifiers.lineColor !== undefined && obj.modifiers.lineColor !== null)
-            {
-                lineColor = obj.modifiers.lineColor;
-            }
+            
+            if(modifiers[MilStdAttributes.FillColor])
+                fillColor = modifiers[MilStdAttributes.FillColor];
+            else if (modifiers.fillColor)
+                fillColor = modifiers.fillColor;
+            
+            if(modifiers[MilStdAttributes.LineColor])
+                lineColor = modifiers[MilStdAttributes.LineColor];
+            else if (modifiers.lineColor)
+                lineColor = modifiers.lineColor;
 
-            if (obj.modifiers.lineThickness !== undefined && obj.modifiers.lineThickness !== null)
-                lineWidth = obj.modifiers.lineThickness;
+            if(modifiers[MilStdAttributes.LineWidth])
+                lineWidth = modifiers[MilStdAttributes.LineWidth];
+            else if (modifiers.lineThickness)
+                lineWidth = modifiers.lineThickness;
             
             // These are for when we create a area fill that is comprised of symbols//////////
-            if (obj.modifiers.symbolFillIds !== undefined && obj.modifiers.symbolFillIds !== null) 
+            if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null) 
             {
-                modifierMap[this.SYMBOL_FILL_IDS] = obj.modifiers.symbolFillIds;
+                modifierMap[this.SYMBOL_FILL_IDS] = modifiers.symbolFillIds;
             }
-            else if (obj.modifiers.symbolLineIds !== undefined && obj.modifiers.symbolLineIds !== null) {
-                modifierMap[this.SYMBOL_LINE_IDS] = obj.modifiers.symbolLineIds;
+            else if (modifiers.symbolLineIds !== undefined && modifiers.symbolLineIds !== null) {
+                modifierMap[this.SYMBOL_LINE_IDS] = modifiers.symbolLineIds;
             }
-            if (obj.modifiers.symbolFillIconSize !== undefined && obj.modifiers.symbolFillIconSize !== null) {
-                modifierMap[this.SYMBOL_FILL_ICON_SIZE] = obj.modifiers.symbolFillIconSize;
+            if (modifiers.symbolFillIconSize !== undefined && modifiers.symbolFillIconSize !== null) {
+                modifierMap[this.SYMBOL_FILL_ICON_SIZE] = modifiers.symbolFillIconSize;
             }
 
         } 
@@ -950,24 +998,21 @@ return{
                 symbol.setLineWidth(lineWidth);
             }
             if (altitudes !== null) {
-                //alert(altitudes);
-                symbol.setModifiers_AM_AN_X("XN", altitudes);
+                symbol.setModifiers_AM_AN_X(ModifiersTG.X_ALTITUDE_DEPTH, altitudes);
             }
             if (distances !== null) {
-                //alert(distances);
-                symbol.setModifiers_AM_AN_X("AM", distances);
+                symbol.setModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE, distances);
             }
             if (azimuths !== null) {
-                //alert(azimuths);
-                symbol.setModifiers_AM_AN_X("AN", azimuths);
+                symbol.setModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH, azimuths);
             }
             if (armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbol.getSymbolID()) === ("G*F*AXS---****X")) {
-                if (symbol.getModifiers_AM_AN_X("AN") !== null && symbol.getModifiers_AM_AN_X("AM") !== null) {
-                    var anCount = symbol.getModifiers_AM_AN_X("AN").length;
-                    var amCount = symbol.getModifiers_AM_AN_X("AM").length;
+                if (symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH) !== null && symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE) !== null) {
+                    var anCount = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH).length;
+                    var amCount = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE).length;
                     var am = null;
                     if (amCount < ((Math.floor(anCount / 2)) + 1)) {
-                        am = symbol.getModifiers_AM_AN_X("AM");
+                        am = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
                         if (am[0] !== 0) 
                         {
                             am.splice(0,0,0);//insert 0 value into 0 location
@@ -1255,12 +1300,12 @@ return{
                 }
             }
             JSONed += ("]");
-            if (lineColor !== undefined && lineColor !== null) {
+            if (lineColor !== null) {
                 JSONed += (",\"lineColor\":\"");
                 JSONed += (lineColor);
                 JSONed += ("\"");
             }
-            if (fillColor !== undefined && fillColor !== null) {
+            if (fillColor !== null) {
                 JSONed += (",\"fillColor\":\"");
                 JSONed += (fillColor);
                 JSONed += ("\"");

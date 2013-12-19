@@ -7,6 +7,7 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
     
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
         SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
+        RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
         initialized = false;
         
     try
@@ -64,7 +65,7 @@ return{
                 {
                     lineColor = modifiers[MilStdAttributes.LineColor];
                 }
-                var size = 40;
+                var size = RendererSettings.getDefaultPixelSize();//40;
                 if(modifiers[MilStdAttributes.PixelSize] !== undefined )
                 {
                     size = modifiers[MilStdAttributes.PixelSize];
