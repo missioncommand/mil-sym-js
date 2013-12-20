@@ -198,7 +198,16 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //var bbox2 = "-180.0,-90.0,180.0,90.0";
         var scale3 = 50000.0;
 		//distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-		modifiers = "{\"modifiers\":{\"distance\":[300,1000],\"azimuth\":[315,45],\"altitudeDepth\":[0]}}";
+		//old way, still supported for back compat with one of our projects
+		//modifiers = "{\"modifiers\":{\"distance\":[300,1000],\"azimuth\":[315,45],\"altitudeDepth\":[0]}}";
+		//new way
+		var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+		var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+		modifiers = {};
+		modifiers[mtg.AM_DISTANCE] = [300,1000];
+		modifiers[mtg.AN_AZIMUTH] = [315,45];
+		modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+		modifiers[msa.LineWidth]=8;//*/
 		
 		//format = formatJSON;
 		format = formatKML;
