@@ -886,16 +886,15 @@ return{
             
             if (modifiers[ModifiersTG.X_ALTITUDE_DEPTH])
             {
+                var XN = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
                 altitudes = new Array();
-                //var ats=JSON.stringify(modifiers.altitudeDepth);
-                for (i = 0; i < modifiers.XN.length; i++) {
-                    altitudes.push(modifiers.XN[i]);
+                for (i = 0; i < XN.length; i++) {
+                    altitudes.push(XN[i]);
                 }
             }
             else if (modifiers.altitudeDepth)
             {
                 altitudes = new Array();
-                //var ats=JSON.stringify(modifiers.altitudeDepth);
                 for (i = 0; i < modifiers.altitudeDepth.length; i++) {
                     altitudes.push(modifiers.altitudeDepth[i]);
                 }
@@ -911,39 +910,39 @@ return{
                 }
             }
 
-            if (modifiers.distance)
+            if (modifiers[ModifiersTG.AM_DISTANCE])
             {
-                //alert(modifiers.distance);
+                var AM = modifiers[ModifiersTG.AM_DISTANCE];
+                distances = new Array();
+                for (i = 0; i < AM.length; i++) {
+                    distances.push(AM[i]);
+                }
+            }
+            else if (modifiers.distance)
+            {
                 distances = new Array();
                 for (i = 0; i < modifiers.distance.length; i++) {
                     distances.push(modifiers.distance[i]);
                 }
             }
-            else if (modifiers.AM)
+            
+
+            if (modifiers[ModifiersTG.AN_AZIMUTH])
             {
-                //alert(modifiers.distance);
-                distances = new Array();
-                for (i = 0; i < modifiers.AM.length; i++) {
-                    distances.push(modifiers.AM[i]);
+                var AN = modifiers[ModifiersTG.AN_AZIMUTH];
+                azimuths = new Array();
+                for (i = 0; i < AN.length; i++) {
+                    azimuths.push(AN[i]);
                 }
             }
-
-            if (modifiers.azimuth)
+            else if (modifiers.azimuth)
             {
                 azimuths = new Array();
                 for (i = 0; i < modifiers.azimuth.length; i++) {
                     azimuths.push(modifiers.azimuth[i]);
                 }
-                //alert(modifiers.azimuth.length);
             }
-            else if (modifiers.AN)
-            {
-                azimuths = new Array();
-                for (i = 0; i < modifiers.AN.length; i++) {
-                    azimuths.push(modifiers.AN[i]);
-                }
-                //alert(modifiers.azimuth.length);
-            }
+            
             
             if(modifiers[MilStdAttributes.FillColor])
                 fillColor = modifiers[MilStdAttributes.FillColor];
