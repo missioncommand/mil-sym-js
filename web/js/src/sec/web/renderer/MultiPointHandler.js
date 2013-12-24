@@ -1221,6 +1221,16 @@ return{
                     var geoCoord = ipc.PixelsToGeo(coord);
                     var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
                     var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                    
+                    //fix for fill crossing DTL
+                    if(normalize)
+                    {
+                        if(longitude > 0)
+                        {
+                            longitude -= 360;
+                        }
+                    }
+                    
                     kml += (longitude);
                     kml += (",");
                     kml += (latitude);
@@ -1287,6 +1297,16 @@ return{
                 var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
                 var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
                 coord = new armyc2.c2sd.graphics2d.Point2D();
+                
+                //fix for fill crossing DTL
+                if(normalize && fillColor !== null)
+                {
+                    if(longitude > 0)
+                    {
+                        longitude -= 360;
+                    }
+                }
+                    
                 coord.setLocation(longitude, latitude);
                 shape[j] = coord;
                 JSONed += ("[");
