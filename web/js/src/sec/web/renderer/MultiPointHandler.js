@@ -1268,7 +1268,7 @@ return{
                         var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
                         if(lastLongitude!==null)
                         {
-                            if(Math.abs(longitude-lastLongitude>180))
+                            if(Math.abs(longitude-lastLongitude)>180)
                             {
                                 normalize=true;
                                 break;
@@ -1361,13 +1361,13 @@ return{
                 coord = new armyc2.c2sd.graphics2d.Point2D();
                 
                 //fix for fill crossing DTL
-                if(normalize && fillColor !== null)
-                {
-                    if(longitude > 0)
-                    {
-                        longitude -= 360;
-                    }
-                }
+//                if(normalize && fillColor !== null)
+//                {
+//                    if(longitude > 0)
+//                    {
+//                        longitude -= 360;
+//                    }
+//                }
                     
                 coord.setLocation(longitude, latitude);
                 shape[j] = coord;
