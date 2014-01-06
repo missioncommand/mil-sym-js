@@ -103,7 +103,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
             m = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.DegToRad(lat);
             n = Math.sin(m);
             p = Math.atan2(h * f * b, e - d * n);
-            var lon = start.x + armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.RadToDeg(p);
+            var lon = Double.parseDouble(start.x) + armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.RadToDeg(p);                
             pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lon, lat);
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
