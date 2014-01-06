@@ -448,8 +448,38 @@ return{
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
+                
+                
                 ipc = new sec.web.renderer.PointConverter(left, top, scale);
             }
+            
+            //sanity check
+            //when spanning the IDL sometimes they send a bad bbox with 0 width
+            //this check assumes a valid left, top, and valid scale
+            if(left===right)
+            {
+                //try for a theoretical 1000x1000 pixels bounding area
+                //so for metric width or height:
+                //distance in meters=1000 pixels * 1 inch/96 pixels * 1 meter/39.37 inch *scale(meters/meters)
+                var dist=1000.0*(1.0/96.0)*(1.0/39.37)*scale;
+                var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
+                var ptRight=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptLeft,dist,90.0);
+                right=ptRight.x;
+                if(right>180)
+                    right-=360;
+                else
+                    if(right<-180)
+                        right+=360;
+            }
+            if(top===bottom)
+            {
+                dist=1000.0*(1.0/96.0)*(1.0/39.37)*scale;
+                var ptTop=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
+                var ptBottom=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTop,dist,180.0);
+                bottom=ptBottom.y;
+            }
+            //end section
+            
             var pt2d = null;
             if (bboxCoords === undefined || bboxCoords === null) 
             {
