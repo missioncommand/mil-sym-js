@@ -117,10 +117,24 @@ java.util.ArrayList.prototype.removeRange = function(start, end) {
     this.array.splice(start, end - start);
 };
 java.util.ArrayList.prototype.get = function(location) {
-    return this.array[location];
+    if(location < this.array.length)
+    {
+        return this.array[location];
+    }
+    else
+    {
+        throw new Error("java.util.ArrayList.prototype.get - Index out of Bounds");
+    }
 };
 java.util.ArrayList.prototype.set = function(location, obj) {
-    this.array[location] = obj;
+    if(location < this.array.length)
+    {
+        this.array[location] = obj;
+    }
+    else
+    {
+        throw new Error("java.util.ArrayList.prototype.set - Index out of Bounds");
+    }
 };
 java.util.ArrayList.prototype.toArray = function() {
     var j = 0;

@@ -22,24 +22,6 @@ armyc2.c2sd.renderer.utilities.ErrorLogger = (function () {
     }
     
     //private functions
-    function stacktrace()
-    {
-        function st2(f)
-        {
-                return !f ? [] : st2(f.caller).concat([f.toString().split('(')[0].substring(9) + '(' + Array.prototype.slice.call(f.arguments).join(',') + ')']);
-                //return !f ? [] : st2(f.caller).concat([f.toString().split('(')[0].substring(9) + '(' + stack + ')']);
-        }
-        var stack = new String(st2(arguments.callee.caller));
-        //console.log(stack);
-        var temp = stack.split("),");
-        stack = "";
-        for(var i=temp.length-2; i > -1; i--)
-        {
-                        stack += "\tat " + temp[i].trim() + ")\n";
-        }
-        return stack;
-    };
-    
     function getDateString(date)
     {
         var strDate = "";
@@ -221,9 +203,10 @@ return{
      * @param {String} sourceClass
      * @param {String} sourceMethod
      * @param {String} err
+     * @param {Object} param optional, an object to send to the log
      * @param {Number} level optional, default 1000 (SEVERE)
      */
-    LogException: function(sourceClass, sourceMethod, err, level)
+    LogException: function(sourceClass, sourceMethod, err, param, level)
     {
         if(level === undefined || level === null)
             level = 1000;
@@ -236,16 +219,42 @@ return{
 //                var message = "Error: " + sourceClass + "." + sourceMethod + "()\n";
 
                 message += err.name + ": " + err.message;
-                if(err.stack !== undefined && err.stack !== null)
+                
+                //get stack trace
+                var stack = null;
+                if(err.stack)
                 {
-                    message += "\n" + err.stack;
-                }
-                else //for IE 9 and below.
-                {
-                    message += "\n" + stacktrace();
+                    stack = err.stack;
                 }
 
-                console.error(message);
+                //group stack trace if possible so it doesn't take up too
+                //much space in the console log.
+                if(console.groupCollapsed)
+                {
+                    console.error(message);
+                    if(stack !== null)
+                    {
+                        console.groupCollapsed("Stack Trace:");// for: " + err.message);
+                        console.error(err.stack);
+                        if(console.dir && param)
+                        {
+                            console.dir(param);
+                        }
+                        console.groupEnd();
+                    }
+                }
+                else
+                {
+                    if(stack !== null)
+                    {
+                       message += "\n" + stack;
+                    }
+                    console.error(message);
+                    if(console.dir && param)
+                    {
+                        console.info(param);
+                    }
+                }
             }
         }
     }
