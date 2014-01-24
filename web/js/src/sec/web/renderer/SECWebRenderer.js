@@ -207,7 +207,7 @@ return{
      * required will ignore extra points.  Format for numbers is as follows: 
      * <br/><br/>
      * "x,y,z [x,y,z ]..."
-     * @param {String} AttributesArray, A JS array holding the parameters for the 
+     * @param {String} AttributesArray A JS array holding the parameters for the 
      * shape.  Attributes should be of the following format: <br/><br/>
      * <tr><code>[{"<i>attribute1</i>":<i>value</i>,...},{<i>[optional]</i>}]</code></tr>
      * @return {String} A KML string that represents a placemark for the 3D shape

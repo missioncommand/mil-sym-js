@@ -9,6 +9,8 @@ sec.web.renderer.MultiPointHandler = (function () {
     var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
     var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+    var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
+    var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
     var _appletChecked = false;
     var _appletUrl = null;
     
@@ -17,10 +19,89 @@ sec.web.renderer.MultiPointHandler = (function () {
     var _decimalAccuracy = 7;
     
     //constructor code
-    //privateVar = "whatever";
     
     //private functions
-    //function privateFunction(){return "I'm a private function";};
+    /**\
+     * 
+     * @param {String} symbolID
+     * @param {Number} dc draw category
+     * @param {Array} AM contains distance values
+     * @param {Array} AN contains azimuth values
+     * @returns {Object} {hasRequireModifiers:Boolean,message:""} 
+     * message will be set to "" if any required values are present.  
+     * Otherwise, it will be populated with a message explaining what values 
+     * may be missing.
+     */      
+    function hasRequiredModifiers(symbolID, dc, AM, AN)
+    {
+        var message = "";
+                
+        if((dc >= 16 && dc <= 20))
+        {
+            if(dc === SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE)//16
+            {
+                if(AM !== null && AM.length > 0)
+                    return {hasRequiredModifiers:true,message:true};
+                else
+                {
+                    message += symbolID + " requires a modifiers object that has 1 distance/AM value.";
+                    return {hasRequiredModifiers:false,message:message};
+                }
+            }
+            else if(dc === SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE)//17
+            {
+                if(AM !== null && AM.length >= 2 &&
+                    AN !== null && AN.length >= 1)
+                    return {hasRequiredModifiers:true,message:true};
+                else
+                {
+                    message += symbolID + " requires a modifiers object that has 2 distance/AM values and 1 azimuth/AN value.";
+                    return {hasRequiredModifiers:false,message:message};
+                }
+            }
+            else if(dc === SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE)//18
+            {
+                if(AM !== null && AM.length >= 2 &&
+                    AN !== null && AN.length >= 2)
+                    return {hasRequiredModifiers:true,message:true};
+                else
+                {
+                    message += symbolID + " requires a modifiers object that has 2 distance/AM values and 2 azimuth/AN values per sector.  The first sector can have just one AM value although it is recommended to always use 2 values for each sector.";
+                    return {hasRequiredModifiers:false,message:message};
+                }
+            }
+            else if(dc === SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE)//19
+            {
+                if(AM !== null && AM.length > 0)
+                    return {hasRequiredModifiers:true,message:true};
+                else
+                {
+                    message += symbolID + " requires a modifiers object that has at least 1 distance/AM value";
+                    return {hasRequiredModifiers:false,message:message};
+                }
+            }
+            else if(dc === SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE)//20
+            {
+                if(AM !== null && AM.length > 0)
+                    return {hasRequiredModifiers:true,message:true};
+                else
+                {
+                    message += symbolID + " requires a modifiers object that has 1 distance/AM value.";
+                    return {hasRequiredModifiers:false,message:message};
+                }
+            }
+            else
+            {
+                //should never get here
+                return {hasRequiredModifiers:true,message:true};
+            }
+        }
+        else
+        {
+            //no required parameters
+            return {hasRequiredModifiers:true,message:true};
+        }   
+    };
     
 return{    
     //public vars
@@ -356,7 +437,7 @@ return{
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY." Not required
      * but can speed up rendering in some cases.
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {Object} An Object representing all the possible symbol 
+     * @param {Object} symbolModifiers An Object representing all the possible symbol 
      * modifiers represented in the MIL-STD-2525C.  Key values come from
      * MilStdAttributes, ModifiersTG and ModifiersUnits 
      * example: {"C":"4","Z":"300","AN":[100,200]}}
@@ -540,6 +621,10 @@ return{
         if (normalize)
             sec.web.renderer.MultiPointHandler.NormalizeGECoordsToGEExtents(0, 360, geoCoords2);
         
+        //check if symbolID is valid, if not, turn it into something renderable.
+            if(armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode),symStd)===false)
+                symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
+            
         //disable clipping if necessary
         if ((sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === false)
             rect = null;//disable clipping
@@ -557,9 +642,17 @@ return{
             else
                 mSymbol.setFillColor(null);
             
-            //check if symbolID is valid, if not, turn it into something renderable.
-            if(armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode),symStd)===false)
-                symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
+            //check for required points & parameters
+            var symbolIsValid = this.canRenderMultiPoint(mSymbol);
+            if(symbolIsValid.canRender===false)
+            {
+                jsonOutput = "";
+                jsonOutput += ("{\"type\":\"error\",\"error\":\"There was an error creating the MilStdSymbol " + symbolCode + ": " + "- ");
+                jsonOutput += (symbolIsValid.message + " - ");
+                jsonOutput += ("\"}");
+                ErrorLogger.LogWarning("MultiPointHandler","RenderSymbol",symbolIsValid.message);
+                return jsonOutput;
+            }
             
             //Switch arrays to ArrayLists
             mSymbol = sec.web.renderer.utilities.JavaRendererUtilities.MilStdSymbolArraysToArrayLists(mSymbol);
@@ -689,7 +782,7 @@ return{
      * @param {String} bbox The viewable area of the map.  Passed in the format of a
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY."
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {Object} An Object representing all the possible symbol 
+     * @param {Object} symbolModifiers An Object representing all the possible symbol 
      * modifiers represented in the MIL-STD-2525C.  Key values come from
      * MilStdAttributes, ModifiersTG and ModifiersUnits 
      * example: {"C":"4","Z":"300","AN":[100,200]}}
@@ -779,6 +872,17 @@ return{
                 rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
             }
             
+            //check for required points & parameters
+            var symbolIsValid = this.canRenderMultiPoint(mSymbol);
+            if(symbolIsValid.canRender===false)
+            {
+                jsonOutput = "";
+                jsonOutput += ("{\"type\":\"error\",\"error\":\"There was an error creating the MilStdSymbol " + symbolCode + ": " + "- ");
+                jsonOutput += (symbolIsValid.message + " - ");
+                jsonOutput += ("\"}");
+                ErrorLogger.LogWarning("MultiPointHandler","RenderSymbol",symbolIsValid.message);
+                return jsonOutput;
+            }
             
             //Switch arrays to ArrayLists
             mSymbol = sec.web.renderer.utilities.JavaRendererUtilities.MilStdSymbolArraysToArrayLists(mSymbol);
@@ -838,6 +942,57 @@ return{
         }
         return jsonOutput;
     },
+    
+    /**
+     * 
+     * @param {armyc2.c2sd.renderer.utilities.MilStdSymbol} symbol 
+     * @returns {Object} {canRender:Boolean,message:"reason why can't render"}
+     */
+    canRenderMultiPoint: function(symbol)
+    {
+        var symStd = symbol.getSymbologyStandard();
+        var symbolID = symbol.getSymbolID();
+        var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+        var sd = null;
+        var dc = 99;
+        var coordCount = symbol.getCoordinates().length;
+
+        if(SymbolDefTable.hasSymbolDef(basicID,symStd))
+        {
+            sd = SymbolDefTable.getSymbolDef(basicID, symStd);
+        }
+        
+        if(sd !== null)
+        {
+            dc = sd.drawCategory;
+        }
+        else
+        {
+            return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
+        }
+        
+        
+        if(coordCount < sd.minPoints)
+        {
+            return {canRender:false,message:"symbolID: \"" + symbolID  + "\" requires a minimum of " + sd.minPoints + " points. " + coordCount + " are present."};
+        }
+        
+        //now check for required modifiers\
+        var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
+        var AN = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH);
+        var result = hasRequiredModifiers(symbolID, dc, AM, AN);
+
+        if(result.hasRequiredModifiers===false)
+        {
+            return {canRender:false,message:result.message};
+        }
+        else
+        {
+            return {canRender:true,message:""};
+        }
+
+    },
+  
             
     /**
      * 
@@ -1345,12 +1500,55 @@ return{
             
     AdjustModifierPointToCenter: function(modifier)
     {
-        var at = null;
         try {
-            var bounds2 = modifier.getTextLayout().getBounds();
-            var bounds = new armyc2.c2sd.graphics2d.Rectangle2D(bounds2.x, bounds2.y, bounds2.width, bounds2.height);
-            at = modifier.getAffineTransform();
+            /*
+            var degrees = modifier.getModifierStringAngle();
+            var bounds = modifier.getTextLayout().getBounds();
+            
+            //angle in radians
+            var theta = degrees * (Math.PI / 180);
+            //4 corners before rotation
+            var tl = {x:(0),y:(bounds.height)};
+            var bl = {x:0,y:0};
+            var tr = {x:bounds.width,y:bounds.height};
+            var br = {x:bounds.width,y:0};
+            
+            //new bounding box
+            var bb = {};
+            
+            var offsetX = 0;
+            var offsetY = 0;
             //TODO: do some math to adjust the point based on the angle
+            //where x0,y0 is the center around which you are rotating.
+            //x2 = x0+(x-x0)*cos(theta)+(y-y0)*sin(theta)
+            //y2 = y0+(x-x0)*sin(theta)+(y-y0)*cos(theta)
+            var x0 = 0;
+            var y0 = 0;
+            
+            tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) * Math.sin(theta));
+            tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) * Math.cos(theta));
+            
+            tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) * Math.sin(theta));
+            tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) * Math.cos(theta));
+            
+            br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) * Math.sin(theta));
+            br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) * Math.cos(theta));
+            
+            bb.x = Math.min(0,tl.x,tr.x,br.x);
+            bb.y = Math.max(0,tl.y,tr.y,br.y);
+            
+            bb.width = Math.max(0,tl.x,tr.x,br.x) - bb.x;
+            bb.height = bb.y - Math.min(0,tl.y,tr.y,br.y);
+            
+            offsetX += bb.width/2;
+            offsetY += bb.height/2;
+            
+            var point = modifier.getGlyphPosition();//modifier.getModifierStringPosition();
+            point.x += offsetX;
+            point.y += offsetY;
+            modifier.setGlyphPosition(point);//modifier.setModifierStringPosition(point);
+            */
+            
         } catch (err) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","AdjustModifierPointToCenter",err);
         }

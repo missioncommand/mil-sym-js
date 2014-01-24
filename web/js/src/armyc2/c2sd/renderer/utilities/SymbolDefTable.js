@@ -148,7 +148,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
         },
         /**
          * 
-         * @param {type} symbolID.
+         * @param {type} symbolID
          * @param {Number} symStd 2525b=0,2525c=1
          * @returns {SymbolDef} has symbolID, minPoints, maxPoints, 
          * drawCategory, hasWidth, modifiers.  drawCategory is a number, the
