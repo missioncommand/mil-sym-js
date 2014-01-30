@@ -392,6 +392,51 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
             j = 0;
             switch (lineType) {
+                case 15000001:
+                case 15000000:
+                case 15000003:
+                    var H2 = null;
+                    var dist = 0;
+                    var pt0;
+                    var pt1;
+                    var AM = milStd.getModifiers_AM_AN_X("AM");
+                    if (AM !== null && AM.length > 0) {
+                        H2 = AM[0].toString();
+                        tg.set_H2(H2);
+                    }
+                    for (j = 0; j < tg.LatLongs.size(); j++) {
+                        if (tg.LatLongs.size() > j) {
+                            if (!Double.isNaN(Double.parseDouble(H2))) {
+                                if (j === 0) {
+                                    dist = Double.parseDouble(H2);
+                                    pt0 = tg.LatLongs.get(0);
+                                    pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);
+                                    //var pt02d = new java.awt.geom.Point2D.Double(pt0.x, pt0.y);                                                                        
+                                    var pt02d=new armyc2.c2sd.graphics2d.Point2D();
+                                    pt02d.x=pt0.x;
+                                    pt02d.y=pt0.y;
+                                    //var pt12d = new java.awt.geom.Point2D.Double(pt1.x, pt1.y);
+                                    pt12d=new armyc2.c2sd.graphics2d.Point2D();
+                                    pt12d.x=pt1.x;
+                                    pt12d.y=pt1.y;
+                                    pt02d = converter.GeoToPixels(pt02d);
+                                    pt12d = converter.GeoToPixels(pt12d);
+                                    pt0.x = pt02d.getX();
+                                    pt0.y = pt02d.getY();
+                                    pt1.x = pt12d.getX();
+                                    pt1.y = pt12d.getY();
+                                    dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                                }
+                                tg.Pixels.get(j).style = Math.round(dist);
+                            } else
+                                tg.Pixels.get(j).style = 0;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            switch (lineType) {
                 case 22231000:
                 case 22232000:
                 case 22233000:
@@ -557,9 +602,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24363000:
                 case 24352000:
                 case 24362000:
+                case 15000002:
                     AM = milStd.getModifiers_AM_AN_X("AM");
                     if (AM !== null && AM.length > 0) {
                         var strT1 = AM[0];
+                        tg.set_T1(strT1);
+                    }
+                    else if (lineType === 15000002 && tg.LatLongs.size() > 1) {
+                        var dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(tg.LatLongs.get(0), tg.LatLongs.get(1),
+                                null, null);
+                        var strT1 = Double.toString(dist);
                         tg.set_T1(strT1);
                     }
                     break;

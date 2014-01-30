@@ -34,6 +34,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                             count = 4;
                             break;
                         case 14000000:
+                        case 15000003:
                             count = 5;
                             break;
                         case 23200000:
@@ -213,6 +214,9 @@ armyc2.c2sd.JavaLineArray.countsupport =
                         case 231113001:
                         case 231113002:
                         case 231113003:
+                            count = 2 * vblCounter;
+                            break;
+                        case 15000000:
                             count = 2 * vblCounter;
                             break;
                         case 22139000:

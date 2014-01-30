@@ -127,6 +127,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             attitude.value = Clazz.newArray(1, 0);
             length.value = Clazz.newArray(1, 0);
             switch (lineType) {
+                case 15000002:
                 case 24312000:
                 case 24321300:
                 case 24323300:
@@ -338,6 +339,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     tg.Pixels.add(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0).x, tg.Pixels.get(0).y));
                     break;
                 case 24312000:
+                case 15000002:
                 case 24321300:
                 case 24322300:
                 case 24323300:
@@ -776,6 +778,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
     ClearPixelsStyle: function(tg) {
         try {
             switch (tg.get_LineType()) {
+                case 15000001:
+                case 15000000:
+                case 15000003:
                 case 22224000:
                 case 22222000:
                 case 22224001:

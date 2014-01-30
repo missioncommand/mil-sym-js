@@ -446,6 +446,9 @@ armyc2.c2sd.JavaLineArray.Channels =
                         case 231113000:
                             lTotal = 4 * vblCounter + 4 * lTotal;
                             break;
+                        case 15000000:
+                            lTotal = 2 * vblCounter + 1;
+                            break;
                         default:
                             lTotal = 2 * vblCounter;
                             break;
@@ -485,6 +488,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                         case 231112000:
                         case 23111000:
                         case 23111001:
+                        case 15000000:
                             channelWidth = vblChannelWidth;
                             break;
                         default:
@@ -716,6 +720,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                         case 231113001:
                         case 231113002:
                         case 231113003:
+                        case 15000000:
                             pLinePoints = armyc2.c2sd.JavaLineArray.Channels.CoordIL2Double(nPrinter, pLinePoints, nUpperLower, vblCounter, vbiDrawThis, vblChannelWidth);
                             break;
                         default:
@@ -985,7 +990,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                     var temp2LinePoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     var lastPoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     var nextToLastPoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
-                    if (vblChannelWidth < 5) {
+                    if (vblChannelWidth < 5 && vbiDrawThis !== 15000000) {
                         vblChannelWidth = 5;
                     }
                     if (vblLowerCounter < 2 || vblUpperCounter < 2) {
@@ -1078,6 +1083,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                         case 231113001:
                         case 231113002:
                         case 231113003:
+                        case 15000000:
                             vblCounter = armyc2.c2sd.JavaLineArray.Channels.GetTripleCountDouble(pUpperLinePoints, vblUpperCounter, vbiDrawThis);
                             pOriginalLinePoints = new Array(vblUpperCounter);
                             for (k = 0; k < vblUpperCounter; k++) {
@@ -1100,6 +1106,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                                 case 231114000:
                                 case 231113000:
                                 case 231112000:
+                                case 15000000:
                                     pLowerLinePoints = new Array(vblLowerCounter);
                                     for (k = 0; k < vblLowerCounter2; k++) {
                                         pLowerLinePoints[k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[k]);
@@ -1442,7 +1449,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                             }
                             pLinePoints[vblLowerCounter + vblUpperCounter - 1].style = 5;
                             lEllipseCounter = vblLowerCounter + vblUpperCounter;
-                            if (vbiDrawThis !== 231117101 && vbiDrawThis !== 231117201 && vbiDrawThis !== 231117301 && vbiDrawThis !== 231113001 && vbiDrawThis !== 231113003 && vbiDrawThis !== 231113002 && vbiDrawThis !== 22521421 && vbiDrawThis !== 22521411 && vbiDrawThis !== 22320001) {
+                            if (vbiDrawThis !== 231117101 && vbiDrawThis !== 231117201 && vbiDrawThis !== 231117301 && vbiDrawThis !== 231113001 && vbiDrawThis !== 231113003 && vbiDrawThis !== 231113002 && vbiDrawThis !== 22521421 && vbiDrawThis !== 22521411 && vbiDrawThis !== 22320001 && vbiDrawThis !== 15000000 ) {
                                 for (j = 0; j < vblUpperCounter - 1; j++) {
                                     d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                                     lHowManyThisSegment = Math.floor(Math.floor(d) / 10);
@@ -1562,6 +1569,16 @@ armyc2.c2sd.JavaLineArray.Channels =
                                     }
                                 }
                             }
+                            break;
+                        case 15000000:
+                            pLinePoints = new Array(vblLowerCounter + vblUpperCounter + 1);
+                            for (j = 0; j < vblLowerCounter; j++)
+                                pLinePoints[j] = pLowerLinePoints[j];
+
+                            for (j = 0; j < vblUpperCounter; j++)
+                                pLinePoints[j + vblLowerCounter] = pUpperLinePoints[vblUpperCounter - 1 - j];
+
+                            pLinePoints[pLinePoints.length - 1] = pLinePoints[0];
                             break;
                         case 22521420:
                         case 22521421:
@@ -1861,7 +1878,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                                     if (k > 0) {
                                         if (pLinePoints[k].style === 5) {
                                             shape.lineTo(pLinePoints[k]);
-                                            if (shape != null && shape.getShape() !== null) {
+                                            if (shape !== null && shape.getShape() !== null) {
                                                 shapes.add(shape);
                                             }
                                             beginPath = true;
@@ -1875,7 +1892,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                                     shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                                     shape.moveTo(pLinePoints[k]);
                                     shape.set_Style(pLinePoints[k].style);
-                                    if (pLinePoints[k].style == 25)
+                                    if (pLinePoints[k].style === 25)
                                         shape.setLineColor(armyc2.c2sd.renderer.utilities.Color.RED);
                                     beginPath = false;
                                 }
@@ -1984,6 +2001,13 @@ armyc2.c2sd.JavaLineArray.Channels =
                     var shape = null;
                     var n = pLinePoints.length;
                     switch (lineType) {
+                        case 15000000:
+                            shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                            shape.moveTo(pLinePoints[0]);
+                            for (j = 1; j < pLinePoints.length; j++) {
+                                shape.lineTo(pLinePoints[j]);
+                            }
+                            break;
                         case 231113001:
                         case 231113002:
                         case 231113003:

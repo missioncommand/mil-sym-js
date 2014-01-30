@@ -123,6 +123,14 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         return 13000000;
                     if (strLine.equalsIgnoreCase("BS_RECTANGLE---"))
                         return 14000000;
+                    if (strLine.equalsIgnoreCase("BBS_LINE-------"))
+                        return 15000000;
+                    if (strLine.equalsIgnoreCase("BBS_AREA-------"))
+                        return 15000001;
+                    if (strLine.equalsIgnoreCase("BBS_POINT------"))
+                        return 15000002;
+                    if (strLine.equalsIgnoreCase("BBS_RECTANGLE--"))
+                        return 15000003;
                     if (c0.equals("W") && c1.equals("A")) {
                         if (str7.equals("DPXSQ--")) {
                             return 31143000;
@@ -1436,6 +1444,7 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         case 231113001:
                         case 231113002:
                         case 231113003:
+                        case 15000000:
                             lResult = 1;
                             break;
                         default:

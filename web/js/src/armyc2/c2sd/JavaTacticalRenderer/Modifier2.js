@@ -1522,6 +1522,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 21800000:
             case 24226000:
             case 22131001:
+            case 15000000:
+            case 15000001:
                 break;
             default:
                 return;
@@ -1574,6 +1576,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
         var nextIndex = 0;
         var size = tg.Pixels.size();
         switch (linetype) {
+            case 15000000:
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, new Boolean(false));
+                break;
+            case 15000001:
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
+                break;
             case 22131001:
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, 0, middleSegment, middleSegment + 1, new Boolean(true));
                 break;
@@ -2292,6 +2301,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                 break;
             case 24311000:
             case 24312000:
+            case 15000002:
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, pt0, pt0, new Boolean(false));
                 break;
             case 21800000:
@@ -2477,6 +2487,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
                 break;
             case 24311000:
             case 24312000:
+            case 15000002:
                 ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble2(tg.Pixels.toArray(), tg.Pixels.size());
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
                 break;

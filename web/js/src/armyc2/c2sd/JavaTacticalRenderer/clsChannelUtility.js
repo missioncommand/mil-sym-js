@@ -52,6 +52,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
                 case 231114000:
                 case 231115000:
                 case 231116000:
+                case 15000000:
                 case 231117100:
                 case 231117101:
                 case 231117200:
@@ -296,6 +297,13 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
                     channelWidth = 30;
                     if (armyc2.c2sd.JavaLineArray.Channels.getShiftLines() === true)
                         channelWidth = 60;
+                    pixels2 = Clazz.newArray(pixels.length, 0);
+                    for (j = 0; j < pixels.length; j++) {
+                        pixels2[j] = pixels[j];
+                    }
+                    break;
+                case 15000000:
+                    channelWidth = 8 * tg.Pixels.get(0).style;
                     pixels2 = Clazz.newArray(pixels.length, 0);
                     for (j = 0; j < pixels.length; j++) {
                         pixels2[j] = pixels[j];

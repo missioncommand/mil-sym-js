@@ -61,6 +61,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 24311000:
                 result = 1;
                 break;
+            case 15000002:
             case 24312000:
             case 24321300:
             case 24323300:
@@ -276,6 +277,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 12000000:
             case 13000000:
             case 14000000:
+            case 15000001:
+            case 15000000:
+            case 15000002:
+            case 15000003:
                 return true;
             default:
                 return false;
@@ -284,6 +289,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
     isClosedPolygon: function(linetype) {
         var result = false;
         switch (linetype) {
+            case 15000001:
             case 24330000:
             case 23162000:
             case 22135000:
@@ -640,6 +646,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         switch (lineType) {
                             case 13000000:
                             case 14000000:
+                            case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
                                 shape.setFillColor(tg.get_FillColor());
                                 break;
@@ -995,6 +1002,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         minPoints.value[0] = 1;
                     }
                     return false;
+                case 15000002:
                 case 24311000:
                 case 24312000:
                 case 24321300:
@@ -1347,6 +1355,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 231115000:
                 case 231116000:
                 case 231117100:
+                case 15000000:
                 case 231117101:
                 case 231117200:
                 case 231117201:
@@ -1637,6 +1646,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_CROSS-------", (12000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_ELLIPSE-----", (13000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_RECTANGLE---", (14000000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_LINE-------", (15000000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_AREA-------", (15000001));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_POINT------", (15000002));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_RECTANGLE--", (15000003));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*MPOHO---****X", (23200000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*TPB-----****X", (21100000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*TPH-----****X", (21200000));
@@ -2059,7 +2072,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             var strMask = strLine.substring(0, 1) + "*" + strLine.substring(2, 3) + "P" + strLine.substring(4, 10) + "****X";
             if (str.equalsIgnoreCase("GENERIC---****X")) {
                 strMask = str;
-            } else if (str.equalsIgnoreCase("BS_LINE--------")) {
+            } 
+            else if (str.equalsIgnoreCase("BS_LINE--------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BS_AREA--------")) {
                 strMask = str;
@@ -2068,6 +2082,16 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             } else if (str.equalsIgnoreCase("BS_ELLIPSE-----")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BS_RECTANGLE---")) {
+                strMask = str;
+            }
+            else if (str.equalsIgnoreCase("BBS_LINE-------")) {
+                strMask = str;
+            } else if (str.equalsIgnoreCase("BBS_AREA-------")) {
+                strMask = str;
+            } else if (str.equalsIgnoreCase("BBS_POINT------")) {
+                strMask = str;
+            } 
+            else if (str.equalsIgnoreCase("BBS_RECTANGLE--")) {
                 strMask = str;
             }
             var objResult = null;
@@ -2163,6 +2187,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         try {
             var linetype = tg.get_LineType();
             switch (linetype) {
+                case 15000003:
+                case 15000002:
                 case 13000000:
                 case 14000000:
                 case 12000000:
@@ -2417,6 +2443,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 231117200:
                 case 231117300:
                 case 23350000:
+                case 15000000:
                     glyphSize = 30;
                     break;
                 case 231111000:

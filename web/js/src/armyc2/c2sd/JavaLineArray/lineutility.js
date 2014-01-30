@@ -2534,6 +2534,113 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt2;
             },
+            getExteriorPoints: function(pLinePoints, vblCounter, lineType, interior) {
+                var j;
+                var index;
+                var pt0;
+                var pt1;
+                var pt2;
+                var m01 = new armyc2.c2sd.JavaLineArray.ref();
+                var m12 = new armyc2.c2sd.JavaLineArray.ref();
+                var direction;
+                var intersectPt;
+                var intersectPoints = new java.util.ArrayList();
+                var b01;
+                var b12;
+                var dist = pLinePoints[0].style;
+                for (j = 0; j < vblCounter; j++) {
+                    if (j === 0 || j === vblCounter - 1) {
+                        pt0 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[vblCounter - 2]);
+                        pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[0]);
+                        pt2 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[1]);
+                    } else {
+                        pt0 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j - 1]);
+                        pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
+                        pt2 = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j + 1]);
+                    }
+                    if (pt1.style > 0) {
+                        dist = pt1.style;
+                    }
+                    var pt00;
+                    var pt01;
+                    var pt10;
+                    var pt11;
+                    index = j - 1;
+                    if (index < 0) {
+                        index = vblCounter - 1;
+                    }
+                    var pts = new Array(pLinePoints.length);
+                    for (var k = 0; k < pLinePoints.length; k++) {
+                        pts[k] = pLinePoints[k];
+                    }
+                    direction = armyc2.c2sd.JavaLineArray.arraysupport.GetInsideOutsideDouble2(pt0, pt1, pts, vblCounter, index, lineType);
+                    if (interior === true) {
+                        switch (direction) {
+                            case 0:
+                                direction = 1;
+                                break;
+                            case 1:
+                                direction = 0;
+                                break;
+                            case 2:
+                                direction = 3;
+                                break;
+                            case 3:
+                                direction = 2;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    pt00 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt1, pt0, direction, dist);
+                    pt01 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt1, pt1, direction, dist);
+                    index = j;
+                    if (j === vblCounter - 1) {
+                        index = 0;
+                    }
+                    direction = armyc2.c2sd.JavaLineArray.arraysupport.GetInsideOutsideDouble2(pt1, pt2, pts, vblCounter, index, lineType);
+                    if (interior === true) {
+                        switch (direction) {
+                            case 0:
+                                direction = 1;
+                                break;
+                            case 1:
+                                direction = 0;
+                                break;
+                            case 2:
+                                direction = 3;
+                                break;
+                            case 3:
+                                direction = 2;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    pt10 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt2, pt1, direction, dist);
+                    pt11 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt2, pt2, direction, dist);
+                    if (pt0.x === pt1.x && pt1.x === pt2.x) {
+                        intersectPt = new armyc2.c2sd.JavaLineArray.POINT2(pt01);
+                        intersectPoints.add(intersectPt);
+                        continue;
+                    }
+                    armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2(pt00, pt01, m01);
+                    armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2(pt10, pt11, m12);
+                    if (m01.value[0] === m12.value[0]) {
+                        intersectPt = new armyc2.c2sd.JavaLineArray.POINT2(pt01);
+                        intersectPoints.add(intersectPt);
+                        continue;
+                    }
+                    b01 = pt01.y - m01.value[0] * pt01.x;
+                    b12 = pt11.y - m12.value[0] * pt11.x;
+                    intersectPt = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueIntersectDouble2(m01.value[0], b01, m12.value[0], b12, 1, 1, 0, 0);
+                    intersectPoints.add(intersectPt);
+                }
+                for (j = 0; j < intersectPoints.size(); j++) {
+                    pLinePoints[j] = intersectPoints.get(j);
+                }
+                return;
+            },
             extend_left: 0,
             extend_right: 1,
             extend_above: 2,

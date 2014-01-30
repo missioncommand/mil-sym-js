@@ -1904,6 +1904,10 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pOriginalLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j]);
                     }
                     switch (lineType) {
+                        case 15000001:
+                            armyc2.c2sd.JavaLineArray.lineutility.getExteriorPoints(pLinePoints, vblSaveCounter, lineType, false);
+                            acCounter = vblSaveCounter;
+                            break;
                         case 12000000:
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                             pLinePoints[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
@@ -1929,6 +1933,33 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[2] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
                             pLinePoints[3] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt3);
                             pLinePoints[4] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
+                            acCounter = 5;
+                            break;
+                        case 15000003:
+                            var xmax = pLinePoints[0].x;
+                            var xmin = pLinePoints[1].x;
+                            var ymax = pLinePoints[0].y;
+                            var ymin = pLinePoints[1].y;
+                            var buffer = pLinePoints[0].style;
+                            if (pLinePoints[0].x < pLinePoints[1].x) {
+                                xmax = pLinePoints[1].x;
+                                xmin = pLinePoints[0].x;
+                            }
+                            if (pLinePoints[0].y < pLinePoints[1].y) {
+                                ymax = pLinePoints[1].y;
+                                ymin = pLinePoints[0].y;
+                            }
+                            pt0 = new armyc2.c2sd.JavaLineArray.POINT2(xmin - buffer, ymin - buffer);
+                            pt2 = new armyc2.c2sd.JavaLineArray.POINT2(xmax + buffer, ymax + buffer);
+                            pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pt1.y = pt2.y;
+                            pt3 = new armyc2.c2sd.JavaLineArray.POINT2(pt2);
+                            pt3.y = pt0.y;
+                            pLinePoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pLinePoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pt1);
+                            pLinePoints[2] = new armyc2.c2sd.JavaLineArray.POINT2(pt2);
+                            pLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
+                            pLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             acCounter = 5;
                             break;
                         case 13000000:
