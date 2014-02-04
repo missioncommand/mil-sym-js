@@ -123,7 +123,7 @@ java.util.ArrayList.prototype.get = function(location) {
     }
     else
     {
-        throw new Error("java.util.ArrayList.prototype.get - Index out of Bounds");
+        throw new Error("java.util.ArrayList.prototype.get - Index " + location + " out of Bounds");
     }
 };
 java.util.ArrayList.prototype.set = function(location, obj) {
@@ -133,7 +133,7 @@ java.util.ArrayList.prototype.set = function(location, obj) {
     }
     else
     {
-        throw new Error("java.util.ArrayList.prototype.set - Index out of Bounds");
+        throw new Error("java.util.ArrayList.prototype.set - Index " + location + " out of Bounds");
     }
 };
 java.util.ArrayList.prototype.toArray = function() {

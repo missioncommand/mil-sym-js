@@ -717,6 +717,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
         try {
             var lineType = tg.get_LineType();
             var hatch = tg.get_FillStyle();
+            var symbolID = tg.get_SymbolId();
             var j = 0;
             var hatch2 = 0;
             var shape2 = null;
@@ -805,7 +806,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
-                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE._className, "buildHatchFills", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside buildHatcHFills", exc));
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE._className, "buildHatchFills", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside buildHatcHFills on symbol: " + symbolID, exc));
             } else {
                 throw exc;
             }

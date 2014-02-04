@@ -232,6 +232,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
     getAutoshapeFillShape: function(tg, shapes) {
         try {
             var linetype = tg.get_LineType();
+            var symbolID = tg.get_SymbolId();
             var j = 0;
             var shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
             shape.setFillColor(tg.get_FillColor());
@@ -297,7 +298,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
-                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2._className, "getAutoshapeFillShape", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getAutoshapeFillShape", exc));
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2._className, "getAutoshapeFillShape", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getAutoshapeFillShape for " + symbolID + " case: " + linetype, exc));
             } else {
                 throw exc;
             }
