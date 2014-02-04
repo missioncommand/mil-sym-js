@@ -231,6 +231,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
     },
     getAutoshapeFillShape: function(tg, shapes) {
         try {
+            if(shapes===null || shapes.size()===0)
+                return;
+            
             var linetype = tg.get_LineType();
             var symbolID = tg.get_SymbolId();
             var j = 0;
