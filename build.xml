@@ -141,6 +141,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
@@ -320,6 +321,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
