@@ -652,7 +652,7 @@ return{
                 jsonOutput += ("\"}");
                 ErrorLogger.LogWarning("MultiPointHandler","RenderSymbol",symbolIsValid.message);
                 return jsonOutput;
-            }
+            }//*/
             
             //Switch arrays to ArrayLists
             mSymbol = sec.web.renderer.utilities.JavaRendererUtilities.MilStdSymbolArraysToArrayLists(mSymbol);
@@ -703,23 +703,23 @@ return{
         }
         var debug = false;
         if (debug === true) {
-            System.out.println("Symbol Code: " + symbolCode);
-            System.out.println("Scale: " + scale);
-            System.out.println("BBOX: " + bbox);
+            console.info("Symbol Code: " + symbolCode);
+            console.info("Scale: " + scale);
+            console.info("BBOX: " + bbox);
             if (controlPoints !== null) {
-                //System.out.println("Geo Points: " + controlPoints);
+                console.info("Geo Points: " + controlPoints);
             }
             if (tgl !== null && tgl.get_Pixels() !== null) {
-                //System.out.println("Pixel: " + tgl.get_Pixels().toString());
+                console.info("Pixel: " + tgl.get_Pixels().toString());
             }
             if (bbox !== null) {
-                //System.out.println("geo bounds: " + bbox);
+                console.info("geo bounds: " + bbox);
             }
             if (rect !== null) {
-                //System.out.println("pixel bounds: " + rect.toString());
+                console.info("pixel bounds: " + rect.toString());
             }
             if (jsonOutput !== null) {
-                //System.out.println(jsonOutput);
+                console.info(jsonOutput);
             }
         }
         return jsonOutput;
@@ -882,7 +882,7 @@ return{
                 jsonOutput += ("\"}");
                 ErrorLogger.LogWarning("MultiPointHandler","RenderSymbol",symbolIsValid.message);
                 return jsonOutput;
-            }
+            }//*/
             
             //Switch arrays to ArrayLists
             mSymbol = sec.web.renderer.utilities.JavaRendererUtilities.MilStdSymbolArraysToArrayLists(mSymbol);
@@ -922,22 +922,22 @@ return{
         var debug = false;
         if (debug === true) 
         {
-            //System.out.println("Symbol Code: " + symbolCode);
-            //System.out.println("BBOX: " + bbox);
+            console.info("Symbol Code: " + symbolCode);
+            console.info("BBOX: " + bbox);
             if (controlPoints !== null) {
-                //System.out.println("Geo Points: " + controlPoints);
+                console.info("Geo Points: " + controlPoints);
             }
             if (tgl !== null && tgl.get_Pixels() !== null) {
-                //System.out.println("Pixel: " + tgl.get_Pixels().toString());
+                console.info("Pixel: " + tgl.get_Pixels().toString());
             }
             if (bbox !== null) {
-                //System.out.println("geo bounds: " + bbox);
+                console.info("geo bounds: " + bbox);
             }
             if (rect !== null) {
-                //System.out.println("pixel bounds: " + rect.toString());
+                console.info("pixel bounds: " + rect.toString());
             }
             if (jsonOutput !== null) {
-                //System.out.println(jsonOutput);
+                console.info(jsonOutput);
             }
         }
         return jsonOutput;
@@ -968,7 +968,15 @@ return{
         }
         else
         {
-            return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
+            if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 )
+            {
+                //Will need to be updated to do a more thorough check for
+                //basic shapes and buffered basic shapes.
+                //Return true for now.
+                return {canRender:true,message:""};
+            }
+            else
+                return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
         }
         
         
