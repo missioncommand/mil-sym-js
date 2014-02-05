@@ -717,8 +717,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
         try {
             if(shapes===null || shapes.size()===0)
                 return;
-            if(tg.Pixels===null || tg.Pixels.size()===0)
-                return;
             
             var lineType = tg.get_LineType();
             var hatch = tg.get_FillStyle();
