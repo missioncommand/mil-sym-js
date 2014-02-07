@@ -1328,34 +1328,16 @@ return{
     IsOnePointSymbolCode:function(symbolCode)        
     {   
         var symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
-        var linetype=armyc2.c2sd.JavaLineArray.CELineArray.CGetLinetypeFromString(symbolCode,symStd);
-        switch(linetype)
+        var basicCode = SymbolUtilities.getBasicSymbolID(symbolCode);
+        var sd = null;
+        if(SymbolDefTable.hasSymbolDef(basicCode,symStd))
         {
-            case 24323300:  //FFA_CIRCULAR
-            case 24321300:  //FSA_CIRCULAR
-            case 24325300:  //RFA_CIRCULAR
-            case 24326200:  //PAA_CIRCULAR
-            case 24331300:  //ATI_CIRCULAR
-            case 24332300:  //CFFZ_CIRCULAR
-            case 24333300:  //SENSOR_CIRCULAR
-            case 24334300:  //CENSOR_CIRCULAR
-            case 24335300:  //DA_CIRCULAR
-            case 24336300:  //CFZ_CIRCULAR
-            case 24337300:  //ZOR_CIRCULAR
-            case 24338300:  //TBA_CIRCULAR
-            case 24339300:  //TVAR_CIRCULAR
-            case 24322300:  //ACA_CIRCULAR
-            case 24324300:  //NFA_CIRCULAR
-            case 24312000:  //CIRCULAR
-            case 24311000:  //RECTANGULAR
-            case 24353000:  //KILLBOXBLUE_CIRCULAR
-            case 24363000:  //KILLBOXPURPLE_CIRCULAR
-            case 243111000: //RANGE_FAN
-            case 243112000: //SECTOR
+            sd = SymbolDefTable.getSymbolDef(basicCode,symStd);
+            
+            if(symbolCode.charAt(0) === 'G' && sd.maxPoints === 1)
                 return true;
-            default:
-                break;
         }
+        
         //some airspaces affected
         if(symbolCode.equals("CAKE-----------"))
             return true;
@@ -1365,6 +1347,23 @@ return{
             return true;
         
         return false;
+    },
+    normalizePoints:function(shape, ipc)
+    {
+        var geoCoords = new Array();
+        for (var j = 0; j < shape.size (); j++) 
+        {
+            var coord = shape.get (j);
+            var geoCoord = ipc.PixelsToGeo(coord);
+            geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+            var latitude = geoCoord.getY();
+            var longitude = geoCoord.getX();
+            var pt=new armyc2.c2sd.graphics2d.Point2D();
+            pt.setLocation(longitude,latitude);
+            geoCoords[j]=pt;
+        }        
+        var normalize=sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords);
+        return normalize;
     },
     ShapeToKMLString: function(id, name, description, symbolCode, shapeInfo, ipc, geMap, normalize)
     {
@@ -1411,7 +1410,7 @@ return{
         kml += ("<MultiGeometry>");
         for (var i = 0; i < len; i++) {
             var shape = shapesArray.get (i);
-            //var shape = shapesArray[i];
+            normalize=sec.web.renderer.MultiPointHandler.normalizePoints(shape,ipc);
             if (lineColor !== null) {
                 kml += ("<LineString>");
                 kml += ("<tessellate>1</tessellate>");
