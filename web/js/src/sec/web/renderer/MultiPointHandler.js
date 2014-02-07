@@ -965,40 +965,35 @@ return{
         if(sd !== null)
         {
             dc = sd.drawCategory;
-        }
-        else
-        {
-            if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 )
+            if(coordCount < sd.minPoints)
             {
-                //Will need to be updated to do a more thorough check for
-                //basic shapes and buffered basic shapes.
-                //Return true for now.
-                return {canRender:true,message:""};
+                return {canRender:false,message:"symbolID: \"" + symbolID  + "\" requires a minimum of " + sd.minPoints + " points. " + coordCount + " are present."};
+            }
+            //now check for required modifiers\
+            var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
+            var AN = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH);
+            var result = hasRequiredModifiers(symbolID, dc, AM, AN);
+
+            if(result.hasRequiredModifiers===false)
+            {
+                return {canRender:false,message:result.message};
             }
             else
-                return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
+            {
+                return {canRender:true,message:""};
+            }
         }
-        
-        
-        if(coordCount < sd.minPoints)
+        else if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 )
         {
-            return {canRender:false,message:"symbolID: \"" + symbolID  + "\" requires a minimum of " + sd.minPoints + " points. " + coordCount + " are present."};
-        }
-        
-        //now check for required modifiers\
-        var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
-        var AN = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH);
-        var result = hasRequiredModifiers(symbolID, dc, AM, AN);
-
-        if(result.hasRequiredModifiers===false)
-        {
-            return {canRender:false,message:result.message};
+            //Will need to be updated to do a more thorough check for
+            //basic shapes and buffered basic shapes.
+            //Return true for now.
+            return {canRender:true,message:""};
         }
         else
         {
-            return {canRender:true,message:""};
+           return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
         }
-
     },
   
             
@@ -1581,6 +1576,9 @@ return{
         var shapesArray = shapeInfo.getPolylines();
         for (var i = 0; i < shapesArray.size(); i++) {
             var shape = shapesArray.get(i);
+            
+            normalize = this.normalizePoints(shape,ipc);
+            
             if (fillColor !== null) {
                 JSONed += ("{\"polygon\":[");
             } else {
@@ -1590,19 +1588,19 @@ return{
                 var coord = shape.get(j);
                 var geoCoord = ipc.PixelsToGeo(coord);
                 if (normalize)
-                    geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+                    geoCoord = this.NormalizeCoordToGECoord(geoCoord);
                 var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
                 var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
                 coord = new armyc2.c2sd.graphics2d.Point2D();
                 
                 //fix for fill crossing DTL
-//                if(normalize && fillColor !== null)
-//                {
-//                    if(longitude > 0)
-//                    {
-//                        longitude -= 360;
-//                    }
-//                }
+                if(normalize && fillColor !== null)
+                {
+                    if(longitude > 0)
+                    {
+                        longitude -= 360;
+                    }
+                }
                     
                 coord.setLocation(longitude, latitude);
                 shape[j] = coord;
