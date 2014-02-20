@@ -34,7 +34,7 @@ Older versions of FireFox may work but haven't been tested thoroughly.
 IE9 is the absolute minimum for singlepoint rendering.
 IE8 may work for just multipoints but hasn't been tested thoroughly.
 
-Singlepoint rendering does not work on WebKit based browsers (Chrome, Safari, etc...) due to the way they handle fonts.
+Singlepoint rendering should now work across all web browsers that support the HTML5 canvas.
 
 
 Build
