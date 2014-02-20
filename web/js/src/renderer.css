@@ -8,8 +8,8 @@
 @font-face
 {
     font-family: UnitFont;
-    src: url('fonts/UnitFontJS.eot') format('embedded-opentype'),
-         url('fonts/UnitFontJS.ttf') format('truetype');   
+    src: url('fonts/UnitFont.eot') format('embedded-opentype'),
+         url('fonts/UnitFont.ttf') format('truetype');   
 }
 
 @font-face
@@ -22,6 +22,4 @@
 body 
 {
     font-family: UnitFont, SinglePoint, TacticalGraphics, Arial;
-    //font-size: 48pt;
-    //padding: 25px;
 }

@@ -160,12 +160,11 @@ return{
             ratio = Math.min((pixelSize / rect.getHeight()), (pixelSize / rect.getWidth()));
 
             //ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
-            //ctx.font="150pt UnitFontsC"; // * 4 (because font file is 25% of original)
             
             var fontsize = 50;
             //ratio = ratio / 72 * 96;
-            //fontsize = (((fontsize * ratio) ))*4;
-            fontsize = (((fontsize * ratio) / 96) * 72)*4;
+            //fontsize = (((fontsize * ratio) ));
+            fontsize = (((fontsize * ratio) / 96) * 72);
 
             strUnitFont = fontsize + "pt UnitFont";
             //ctx.font= "75pt UnitFontsC";
