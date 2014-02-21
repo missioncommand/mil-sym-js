@@ -905,7 +905,7 @@ return{
             {
 
                 jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, new Boolean(false), normalize);
-                if (mSymbol.getModifierMap().containsKey("symbolFillIds") || mSymbol.getModifierMap().containsKey("symbolLineIds")) 
+                if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"]) 
                 {
                     //do nothing for now, will need rethinking compared to java version
                 }
@@ -1072,7 +1072,7 @@ return{
 
             var i = 0;
             
-            if (modifiers[ModifiersTG.X_ALTITUDE_DEPTH])
+            if (modifiers[ModifiersTG.X_ALTITUDE_DEPTH] && modifiers[ModifiersTG.X_ALTITUDE_DEPTH] instanceof Array)
             {
                 var XN = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
                 altitudes = new Array();
@@ -1080,14 +1080,14 @@ return{
                     altitudes.push(XN[i]);
                 }
             }
-            else if (modifiers.altitudeDepth)
+            else if (modifiers.altitudeDepth && modifiers.altitudeDepth instanceof Array)
             {
                 altitudes = new Array();
                 for (i = 0; i < modifiers.altitudeDepth.length; i++) {
                     altitudes.push(modifiers.altitudeDepth[i]);
                 }
             }
-            else if (modifiers.X)
+            else if (modifiers.X && modifiers.X instanceof Array)
             {
                 altitudes = new Array();
                 if(modifiers.X.length)
@@ -1098,7 +1098,7 @@ return{
                 }
             }
 
-            if (modifiers[ModifiersTG.AM_DISTANCE])
+            if (modifiers[ModifiersTG.AM_DISTANCE] && modifiers[ModifiersTG.AM_DISTANCE] instanceof Array)
             {
                 var AM = modifiers[ModifiersTG.AM_DISTANCE];
                 distances = new Array();
@@ -1106,7 +1106,7 @@ return{
                     distances.push(AM[i]);
                 }
             }
-            else if (modifiers.distance)
+            else if (modifiers.distance && modifiers.distance instanceof Array)
             {
                 distances = new Array();
                 for (i = 0; i < modifiers.distance.length; i++) {
@@ -1115,7 +1115,7 @@ return{
             }
             
 
-            if (modifiers[ModifiersTG.AN_AZIMUTH])
+            if (modifiers[ModifiersTG.AN_AZIMUTH] && modifiers[ModifiersTG.AN_AZIMUTH] instanceof Array)
             {
                 var AN = modifiers[ModifiersTG.AN_AZIMUTH];
                 azimuths = new Array();
@@ -1123,7 +1123,7 @@ return{
                     azimuths.push(AN[i]);
                 }
             }
-            else if (modifiers.azimuth)
+            else if (modifiers.azimuth && modifiers.azimuth instanceof Array)
             {
                 azimuths = new Array();
                 for (i = 0; i < modifiers.azimuth.length; i++) {

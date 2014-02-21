@@ -73,8 +73,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		var pixelHeight = 600;
 		
 		//change this to format JSON to see the different output.
-		var format = formatJSON;
-		//var format = formatKML;
+		//var format = formatJSON;
+		var format = formatKML;
 		
 		
 		//Not meant to be changed on the fly.
@@ -88,7 +88,17 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		//KML is being worked on more due to google earth in bcweb.  We are not actively using JSON for anything.
 		//ID, Name and Description are optional when using JSON format.
 		var start = Date.now();
-        var json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format);
+		var json = null;
+		if(format == formatKML)
+		{
+			//RenderSymbol for 3D Google Earth.  KML format recommended.
+			json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, "clampToGround",scale, bbox, modifiers,format);
+		}
+		else
+		{
+			//RenderSymbol2D for 2D maps, JSON Recommended for simpler output.
+			json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format);
+		}
 		var stop = Date.now();
 		var timeAmbush = (stop-start)/1000;
 		
@@ -116,7 +126,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 			{
 				var formattedKML = "";
 				
-				formattedKML = formatKMLForHTML(json3);
+				formattedKML = formatKMLForHTML(json);
 				
 				document.getElementById("contentSpan").innerHTML += formattedKML;
 				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
@@ -312,10 +322,10 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 			}
 		}
 		
-		document.getElementById("contentSpan").innerHTML += "<br/><br/>Ambush: "+ timeAmbush +"  <br/>";
+		/*document.getElementById("contentSpan").innerHTML += "<br/><br/>Ambush: "+ timeAmbush +"  <br/>";
 		document.getElementById("contentSpan").innerHTML += "Assembly Area: "+ timeAA +"  <br/>";
 		document.getElementById("contentSpan").innerHTML += "Sector Range Fan: "+ timeSRF +"  <br/>";
-		document.getElementById("contentSpan").innerHTML += "FLOT: "+ timeFlot +"  <br/>";
+		document.getElementById("contentSpan").innerHTML += "FLOT: "+ timeFlot +"  <br/>";//*/
 		
 
 		/*

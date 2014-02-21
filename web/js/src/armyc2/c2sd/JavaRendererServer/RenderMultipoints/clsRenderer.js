@@ -306,6 +306,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
     },
     createTGLightFromMilStdSymbol: function(milStd, converter) {
         var tg = new armyc2.c2sd.JavaTacticalRenderer.TGLight();
+        var modifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
         try {
             var symbolId = milStd.getSymbolID();
             var std = milStd.getSymbologyStandard();
@@ -357,9 +358,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
             }
             if (lineType === 243112000) {
-                var AM = milStd.getModifiers_AM_AN_X("AM");
-                var AN = milStd.getModifiers_AM_AN_X("AN");
-                var X = milStd.getModifiers_AM_AN_X("XN");
+                var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
+                var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                var X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                 if (AM !== null) {
                     var numSectors = AM.length - 1;
                     if (Math.floor(AN.length / 2) < numSectors)
@@ -399,7 +400,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     var dist = 0;
                     var pt0;
                     var pt1;
-                    var AM = milStd.getModifiers_AM_AN_X("AM");
+                    var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                     if (AM !== null && AM.length > 0) {
                         H2 = AM[0].toString();
                         tg.set_H2(H2);
@@ -446,7 +447,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24322100:
                 case 24322200:
                 case 24322300:
-                    X = milStd.getModifiers_AM_AN_X("XN");
+                    X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     if (X !== null && X.length > 0)
                         tg.set_H(X[0]);
                     if (X !== null && X.length > 1)
@@ -470,7 +471,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     var pt1Pixels = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2d1Pixels.getX(), pt2d1Pixels.getY());
                     var distPixels = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0Pixels, pt1Pixels);
                     var pixelsPerMeter = distPixels / dist;
-                    AM = milStd.getModifiers_AM_AN_X("AM");
+                    AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                     if (AM !== null) {
                         var H2 = "";
                         for (j = 0; j < AM.length; j++) {
@@ -516,7 +517,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         }
                     }
                     tg.set_H2(Double.toString(maxWidthMeters));
-                    X = milStd.getModifiers_AM_AN_X("XN");
+                    X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     if (X !== null && X.length > 0)
                         tg.set_H(X[0]);
                     if (X !== null && X.length > 1)
@@ -530,7 +531,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24361000:
                 case 24363000:
                 case 24362000:
-                    X = milStd.getModifiers_AM_AN_X("XN");
+                    X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     strH1 = "";
                     if (X !== null) {
                         strH1 = X[0];
@@ -542,8 +543,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
             if (lineType === 243111000)
             {
-                AM = milStd.getModifiers_AM_AN_X("AM");
-                X = milStd.getModifiers_AM_AN_X("XN");
+                AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
+                X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                 var strH2 = "";
                 strH1 = "";
                 if (AM !== null)
@@ -603,7 +604,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24352000:
                 case 24362000:
                 case 15000002:
-                    AM = milStd.getModifiers_AM_AN_X("AM");
+                    AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                     if (AM !== null && AM.length > 0) {
                         var strT1 = AM[0];
                         tg.set_T1(strT1);
@@ -619,8 +620,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     break;
             }
             if (lineType === 24311000) {
-                AM = milStd.getModifiers_AM_AN_X("AM");
-                AN = milStd.getModifiers_AM_AN_X("AN");
+                AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
+                AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)
                 {
                     strT1 = AM[0];
