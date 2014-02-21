@@ -58,9 +58,10 @@ return{
 	//ctx.font="150pt UnitFontsC"; // * 4 (because font file is 25% of original)
         var pixel = null,//point to center symbol on.
             basicID = SymbolUtilities.getBasicSymbolID(symbolID),
-            ufli = UnitFontLookup.getUnitLookup(basicID, RendererSettings.Symbology_2525Bch2_USAS_13_14),
-            strUnitFont = "",
-            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
+            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
+            ufli = UnitFontLookup.getUnitLookup(basicID, symStd),
+            strUnitFont = "";
+            
         
         var intFill = armyc2.c2sd.renderer.utilities.UnitFontLookup.getFillCode(symbolID),
             intFrame = armyc2.c2sd.renderer.utilities.UnitFontLookup.getFrameCode(symbolID, intFill, symStd),
@@ -311,12 +312,7 @@ return{
             ctx = null,
             offsetX = 0,
             offsetY = 0,
-            symStd = RendererSettings.getSymbologyStandard();
-                        
-            if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard] !== undefined)
-            {
-                symStd = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard];
-            }
+            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
@@ -1508,13 +1504,7 @@ return{
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var symStd = RendererSettings.getSymbologyStandard();
-        
-        
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard] !== undefined)
-        {
-            symStd = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard];
-        }
+        var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         
         var affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
         if(affiliationModifier !== null)
@@ -2059,7 +2049,7 @@ return{
         var pixel = null;//point to center symbol on.
         var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
         var strSPFont = "";
-        var symStd = 0;
+        var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         var keepUnitRatio = true;
         var intFill = -1;
         var intFrame = -1;
@@ -2106,7 +2096,7 @@ return{
             outlineOffset = 0;
         // </editor-fold>
         
-        var spli = SinglePointLookup.getSPLookupInfo(symbolID,0);
+        var spli = SinglePointLookup.getSPLookupInfo(symbolID,symStd);
 
         if(spli === null)//default to action point on bad symbolID
         {
@@ -2118,7 +2108,7 @@ return{
 
                 symbolID = "G" + SymbolUtilities.getAffiliation(symbolID) + 
                         "G" + SymbolUtilities.getStatus(symbolID) + "GPP---****X";
-                spli = SinglePointLookup.getSPLookupInfo(symbolID);
+                spli = SinglePointLookup.getSPLookupInfo(symbolID,symStd);
         }
 
         //Check if we need to set 'N' to "ENY"
@@ -2351,7 +2341,7 @@ return{
             y = 0,
             x2 = 0,
             y2 = 0,
-            symStd = RendererSettings.getSymbologyStandard(),
+            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
             labelWidth = 0;
@@ -2397,12 +2387,7 @@ return{
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
         bufferText += outlineOffset;
-        
-        if(modifiers[MilStdAttributes.SymbologyStandard] !== undefined)
-        {
-            symStd = modifiers[MilStdAttributes.SymbologyStandard];
-        }   
-        
+                
         // </editor-fold>
     
         // <editor-fold defaultstate="collapsed" desc="Process Integral Text">
@@ -3004,7 +2989,7 @@ return{
             y = 0,
             x2 = 0,
             y2 = 0,
-            symStd = RendererSettings.getSymbologyStandard(),
+            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
             labelWidth = 0;
@@ -3050,12 +3035,6 @@ return{
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
         bufferText += outlineOffset;
-        
-        if(modifiers[MilStdAttributes.SymbologyStandard] !== undefined)
-        {
-            symStd = modifiers[MilStdAttributes.SymbologyStandard];
-        }
-        
         
         
         // </editor-fold>
@@ -3453,10 +3432,8 @@ return{
         else
         {
             
-            var symStd;
+            var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
             
-            if(modifiers[MilStdAttributes.SymbologyStandard]!== undefined)
-                symStd = modifiers[MilStdAttributes.SymbologyStandard];
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
                 return true;
 

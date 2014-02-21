@@ -15,11 +15,16 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
         if(initialized === false)
         {
             //load in xml files
+            armyc2.c2sd.renderer.utilities.UnitDefTable.init();  
             armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
             armyc2.c2sd.renderer.utilities.SinglePointLookup.init();
-            armyc2.c2sd.renderer.utilities.UnitDefTable.init();  
             armyc2.c2sd.renderer.utilities.UnitFontLookup.init();
             armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.init();
+            
+            if(armyc2.c2sd.renderer.utilities.UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525Bch2_USAS_13_14)===false)
+            {//if 2525B info isn't loaded, make C the rendering default.
+                RendererSettings.setSymbologyStandard(RendererSettings.Symbology_2525C);
+            }
 
             initialized = true;
         }

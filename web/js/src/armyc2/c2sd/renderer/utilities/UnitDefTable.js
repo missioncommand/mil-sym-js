@@ -83,6 +83,26 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
             }
             
         },
+        
+        /**
+         * 
+         * @param {Number} symStd 2525b=0,2525c=1
+         * @returns {Boolean}
+         */
+        hasSymbolMap: function(symStd)
+        {
+            if(symStd === 0 && symbolMapB !== null)//2525B
+            {
+                return true;
+            }
+            else if(symStd === 1 && symbolMapC !== null)//2525C
+            {
+                return true;
+            }
+            else
+                return false;
+        },
+        
         /**
          * 
          * @param {String} symbolID
