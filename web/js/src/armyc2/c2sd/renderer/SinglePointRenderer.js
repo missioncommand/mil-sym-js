@@ -95,7 +95,7 @@ return{
                 case 'S':
                 case 'G':
                 case 'M':
-                    intFrameAssume = intFrame - 1;
+                    intFrameAssume = intFill + 2;
                     break;
             }
             if(intFrameAssume > 0)
@@ -215,16 +215,16 @@ return{
                 ctx.fillText(fill,x,y);
             }
 
-            if(frameAssume !== null && frameAssume !== "")
-            {
-                ctx.fillStyle = "#ffffff";
-                ctx.fillText(frameAssume, x, y);
-            }
-
             if(frame !== null && frame !== "")
             {
                 ctx.fillStyle = lineColor;
                 ctx.fillText(frame, x, y);
+            }
+            
+            if(frameAssume !== null && frameAssume !== "")
+            {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillText(frameAssume, x, y);
             }
 
             if(symbol2 !== null && symbol2 !== "")
@@ -308,6 +308,7 @@ return{
             centerPoint = ii.getCenterPoint(),
             tiEchelon = null,
             echelonBounds = null,
+            amBounds = null,
             buffer = null,
             ctx = null,
             offsetX = 0,
@@ -776,6 +777,52 @@ return{
                 }
             }
             // </editor-fold>
+            
+            // <editor-fold defaultstate="collapsed" desc="Build Affiliation Modifier">
+            //Draw Echelon
+            
+            var affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
+            if(affiliationModifier !== null)
+            {
+
+                var amOffset = 2,
+                    outlineOffset = RendererSettings.getTextOutlineWidth();
+                if(outlineOffset > 2)
+                    outlineOffset = (outlineOffset-1)/2;
+                else
+                    outlineOffset = 0;
+
+                var tiAM = new armyc2.c2sd.renderer.utilities.TextInfo(affiliationModifier,0,0,textInfoContext,"alphabetic");
+                amBounds = tiAM.getTextBounds();
+
+                var x,y;
+                
+                if(echelonBounds !== null && 
+                        ((echelonBounds.getX() + echelonBounds.getWidth() > symbolBounds.getX() + symbolBounds.getWidth())))
+                {
+                    y = Math.round(symbolBounds.getY() - amOffset),
+                    x = echelonBounds.getX() + echelonBounds.getWidth();
+                }
+                else
+                {
+                    y = Math.round(symbolBounds.getY() - amOffset),
+                    x = Math.round(symbolBounds.getX() + symbolBounds.getWidth());
+                }
+                tiAM.setLocation(x,y);
+
+                //There will never be lowercase characters in an echelon so trim that fat.    
+                //Remove the descent from the bounding box.
+                tiAM.getTextBounds().shiftBR(0+outlineOffset,Math.round(-(amBounds.getHeight()*0.3)));                         
+
+
+                //adjust for outline.
+                amBounds = tiAM.getTextOutlineBounds();
+                amBounds.shift(0,-outlineOffset);// - Math.round(echelonOffset/2));
+                tiAM.setLocation(x,y-outlineOffset);
+
+                imageBounds.union(amBounds);
+            }
+            // </editor-fold>
 
             // <editor-fold defaultstate="collapsed" desc="Build Task Force">
             var tfBounds = null,
@@ -1063,6 +1110,10 @@ return{
                 {
                     tiEchelon.setLocation(tiEchelon.getLocation().getX() + shiftX, tiEchelon.getLocation().getY() + shiftY);
                 }
+                if(amBounds)
+                {
+                    tiAM.setLocation(tiAM.getLocation().getX() + shiftX, tiAM.getLocation().getY() + shiftY);
+                }
                 if(tfBounds !== null)
                 {
                     tfRectangle.shift(shiftX, shiftY);
@@ -1203,6 +1254,31 @@ return{
 
                     echelonBounds = null;
                     tiEchelon = null;
+                }   
+                
+                if(amBounds !== null)
+                {
+                    if(ctx.font !== RendererSettings.getModifierFont())
+                        ctx.font = RendererSettings.getModifierFont();
+
+
+                    var textOutlineWidth = RendererSettings.getTextOutlineWidth();
+                    if(textOutlineWidth > 0)
+                    {
+                        ctx.lineWidth = textOutlineWidth;
+                        ctx.strokeStyle = "#FFFFFF";
+                        ctx.strokeText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
+                    }
+
+                    if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] !== undefined)
+                        ctx.style = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor];
+                    else
+                        ctx.style = "#000000";
+
+                    ctx.fillText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
+
+                    amBounds = null;
+                    tiAM = null;
                 }   
 
                 if(fdiBounds !== null)
@@ -1454,7 +1530,8 @@ return{
             imageBoundsOld = ii.getImageBounds().clone();
     
         var echelon = SymbolUtilities.getEchelon(symbolID),
-            echelonText = SymbolUtilities.getEchelonText(echelon);
+            echelonText = SymbolUtilities.getEchelonText(echelon),
+            amText = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
     
     
         //make room for echelon & mobility.
@@ -1466,15 +1543,8 @@ return{
         }
         else //dom exists so we need to change our math
         {
-            if(echelonText !== null)
-            {
-                var tiEch = new armyc2.c2sd.renderer.utilities.TextInfo(echelonText,0,0,textInfoContext);
-                labelBounds = tiEch.getTextBounds();
-                labelWidth = labelBounds.getWidth();
-                x = Math.round((symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5));
-                y = Math.round(symbolBounds.y - bufferY - descent);
-
-                
+            if(echelonText !== null || amText !== null)
+            { 
                 bounds = new SO.Rectangle(imageBounds.getX(), bounds.getY(),
                                             imageBounds.getWidth(), bounds.getHeight());
             }
@@ -1506,11 +1576,12 @@ return{
         
         var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         
+        /*//Affiliation Modifier being drawn as a display modifier
         var affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
         if(affiliationModifier !== null)
         {   //Set affiliation modifier
             modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER] = affiliationModifier;
-        }
+        }//*/
         
         //            int y0 = 0;//W    E/F
         //            int y1 = 0;//X/Y  G
