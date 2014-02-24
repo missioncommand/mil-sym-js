@@ -6,6 +6,9 @@ See SinglePoints in action [here.](http://mil-sym-js.spinelli.cloudbees.net/sing
 
 See sample KML output for multipoints [here.](http://mil-sym-js.spinelli.cloudbees.net/multiPointTester1.html)  
 
+[JS Renderer Developer's Guide Wiki](https://github.com/missioncommand/mil-sym-js/wiki/Developer's-Guide)  
+[JS Renderer Developer's Guide Word Doc](https://github.com/missioncommand/mil-sym-js/blob/master/Mil Symbology Renderer Developer's Guide for JavaScript.docx)  
+
 MIL-STD-2525
 -----------
 The [MIL-STD-2525] standard defines how to visualize military symbology.  This project provides support for the entire MIL-STD-2525B Change II plus USAS 13-14 and MIL-STD-2525C.  
