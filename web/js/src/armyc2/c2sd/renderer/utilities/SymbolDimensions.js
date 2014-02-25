@@ -109,7 +109,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 ratio = fontSize / 50;
                 //I only measured for a font size of 50.  if we get the ratio and multiply the values
                 //by it, we in theory should have a correct adjusted rectangle.
-                rect = new mySO.Rectangle(0,Math.round(rect.y*ratio), Math.round(rect.width*ratio), Math.round(rect.height*ratio));
+                rect = new mySO.Rectangle(0,Math.ceil(rect.y*ratio), Math.ceil(rect.width*ratio), Math.ceil(rect.height*ratio));
         }
 
         return rect;
