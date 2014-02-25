@@ -316,6 +316,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var useLineInterpolation = milStd.getUseLineInterpolation();
             tg.set_UseLineInterpolation(useLineInterpolation);
             var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
+            //overhead wire may be large scale
+            if(lineType===23200000 && converter._scale>=250000)
+                lineType=23200001;
             tg.set_LineType(lineType);
             var status = tg.get_Status();
             if (status !== null && status.equals("A")) {
