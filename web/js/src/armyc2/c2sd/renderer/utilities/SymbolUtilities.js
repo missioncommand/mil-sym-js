@@ -465,17 +465,23 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return "-";
         }
     };
+
     /**
      * 
      * @param {String} symbolID
      * @param {String} modifier from the constants ModifiersUnits or ModifiersTG
+     * @param {int} symStd 0=2525B, 1=2525C.  Constants available in RendererSettings.
      * @returns {Boolean}
      */
-    armyc2.c2sd.renderer.utilities.SymbolUtilities.canHaveModifier = function (symbolID, modifier){
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.hasModifier = function (symbolID, modifier, symStd){
         var returnVal = false;
-        if(this.isTacticalGraphic()===true)
+        if(symStd === undefined)
         {
-            this.canSymbolHaveModifier(symbolID, modifier);
+            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+        }
+        if(this.isTacticalGraphic(symbolID)===true)
+        {
+            this.canSymbolHaveModifier(symbolID, modifier, symStd);
         }
         else
         {
@@ -678,7 +684,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */        
     armyc2.c2sd.renderer.utilities.SymbolUtilities.canSymbolHaveModifier = function(symbolID, tgModifier, symStd){
-        if(symStd!==undefined)
+        if(symStd === undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
@@ -688,21 +694,40 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         
 
         var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
+        var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
         basic = this.getBasicSymbolID(symbolID);
-        sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef(basic, symStd);
+        sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
+            var dc = sd.drawCategory;
             if(tgModifier===(ModifiersTG.AM_DISTANCE))
             {
-                if(hasAMmodifierRadius(symbolID)||
-                        hasAMmodifierWidth(symbolID));
+                switch(dc)
+                {
+                    case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
+                    case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
+                    case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
                         returnVal = true;
+                        break;
+                    case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE:
+                    case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE:
+                        returnVal = true;
+                        break;
+                    default:
+                        returnVal = false;
+                }
             }
-            else if(tgModifier===(ModifiersTG.AN_AZIMUTH) ||
-                    tgModifier===(ModifiersTG.X_ALTITUDE_DEPTH))
+            else if(tgModifier===(ModifiersTG.AN_AZIMUTH))
             {
-                if(sd.modifiers.indexOf(tgModifier)>0)
-                    returnVal = true;
+                switch(dc)
+                {
+                    case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
+                    case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
+                        returnVal = true;
+                        break;
+                    default:
+                        returnVal = false;
+                }
             }
             else
             {
@@ -2119,60 +2144,112 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      };
      /**
       * 
-      * @param {String} strSymbolID
+      * @param {String} symbolID
+      * @param {Number} symStd
       * @returns {Boolean}
       */
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierWidth = function (strSymbolID){
-        var strBasicSymbolID = this.getBasicSymbolID(strSymbolID);
-        var blRetVal = (strBasicSymbolID === ("G*F*ACSR--****X")//FSA
-            || strBasicSymbolID === ("G*F*ATR---****X")//rectangular target
-            || strBasicSymbolID === ("G*F*ACFR--****X")//FFA
-            || strBasicSymbolID === ("G*F*ACAR--****X")//ACA
-            || strBasicSymbolID === ("G*F*ACNR--****X")//NFA
-            || strBasicSymbolID === ("G*F*ACPR--****X")//PAA
-            || strBasicSymbolID === ("G*F*ACRR--****X")//RFA
-            || strBasicSymbolID === ("G*F*AZIR--****X")//ATI
-            || strBasicSymbolID === ("G*F*AZXR--****X")//CFF
-            || strBasicSymbolID === ("G*F*AZSR--****X")//Sensor Zone2525B
-            || strBasicSymbolID === ("G*F*ACER--****X")//2525C
-            || strBasicSymbolID === ("G*F*AZCR--****X")//Censor Zone
-            || strBasicSymbolID === ("G*F*AZDR--****X")//Dead Space Area 2525B
-            || strBasicSymbolID === ("G*F*ACDR--****X")//2525C
-            || strBasicSymbolID === ("G*F*AZFR--****X")//CFZ
-            || strBasicSymbolID === ("G*F*AZZR--****X")//ZOR 2525B
-            || strBasicSymbolID === ("G*F*ACZR--****X")//ZOR 2525C
-            || strBasicSymbolID === ("G*F*AZBR--****X")//TBA 2525B
-            || strBasicSymbolID === ("G*F*ACBR--****X")//TBA 2525C
-            || strBasicSymbolID === ("G*F*ACVR--****X")//TVAR 2525C
-            || strBasicSymbolID === ("G*F*AZVR--****X"));//TVAR 2525B
-
-        return blRetVal;
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierWidth = function (symbolID, symStd){
+        var sd = null,
+            returnVal = false,
+            basic = this.getBasicSymbolID(symbolID);
+            
+        if(symStd === undefined)
+        {
+            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+        }
+        
+        var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
+        basic = this.getBasicSymbolID(symbolID);
+        sd = SymbolDefTable.getSymbolDef(basic, symStd);
+        if(sd !== null)
+        {
+            var dc = sd.drawCategory;
+        
+            switch(dc)
+            {
+                case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE://width
+                case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
+                case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
+                    returnVal = true;
+                    break;
+                default:
+                    returnVal = false;
+            }
+        }
+        
+        return returnVal;
      };
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierRadius = function (strSymbolID){
-        var strBasicSymbolID = this.getBasicSymbolID(strSymbolID);
-        var blRetVal = (strBasicSymbolID === ("G*F*ATC---****X")//circular target
-           || strBasicSymbolID === ("G*F*ACSC--****X")//FSA
-           || strBasicSymbolID === ("G*F*ACAC--****X")//ACA
-           || strBasicSymbolID === ("G*F*ACFC--****X")//FFA
-           || strBasicSymbolID === ("G*F*ACNC--****X")//NFA
-           || strBasicSymbolID === ("G*F*ACRC--****X")//RFA
-           || strBasicSymbolID === ("G*F*ACPC--****X")//PAA
-           || strBasicSymbolID === ("G*F*AZIC--****X")//ATI 2525B
-           || strBasicSymbolID === ("G*F*AZXC--****X")//CFF 2525B
-           || strBasicSymbolID === ("G*F*AZSC--****X")//Sensor Zone 2525B
-           || strBasicSymbolID === ("G*F*ACEC--****X")//2525C
-           || strBasicSymbolID === ("G*F*AZCC--****X")//censor zone 2525B
-           || strBasicSymbolID === ("G*F*AZDC--****X")//Dead Space Area 2525B
-           || strBasicSymbolID === ("G*F*ACDC--****X")//Dead Space Area 2525C
-           || strBasicSymbolID === ("G*F*AZFC--****X")//CFZ 2525B
-           || strBasicSymbolID === ("G*F*AZZC--****X")//ZOR 2525B
-           || strBasicSymbolID === ("G*F*ACZC--****X")//ZOR 2525C
-           || strBasicSymbolID === ("G*F*AZBC--****X")//TBA 2525B
-           || strBasicSymbolID === ("G*F*ACBC--****X")//TBA 2525C
-           || strBasicSymbolID === ("G*F*ACVC--****X")//TVAR 2525C
-           || strBasicSymbolID === ("G*F*AZVC--****X"));//TVAR 2525B
-
-           return blRetVal;
+     /**
+      * 
+      * @param {type} symbolID
+      * @param {type} symStd
+      * @returns {armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierRadius.returnVal|Boolean}
+      */
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierRadius = function (symbolID, symStd){
+        var sd = null,
+            returnVal = false,
+            basic = this.getBasicSymbolID(symbolID);
+            
+        if(symStd === undefined)
+        {
+            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+        }
+        
+        var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
+        basic = this.getBasicSymbolID(symbolID);
+        sd = SymbolDefTable.getSymbolDef(basic, symStd);
+        if(sd !== null)
+        {
+            var dc = sd.drawCategory;
+        
+            switch(dc)
+            {
+                case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE://radius
+                case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE:
+                    returnVal = true;
+                    break;
+                default:
+                    returnVal = false;
+            }
+        }
+        
+        return returnVal;
+     };
+     /**
+      * 
+      * @param {type} symbolID
+      * @param {type} symStd
+      * @returns {armyc2.c2sd.renderer.utilities.SymbolUtilities.hasANmodifier.returnVal|Boolean}
+      */
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasANmodifier = function (symbolID, symStd){
+        var sd = null,
+            returnVal = false,
+            basic = this.getBasicSymbolID(symbolID);
+            
+        if(symStd === undefined)
+        {
+            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+        }
+        
+        var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
+        basic = this.getBasicSymbolID(symbolID);
+        sd = SymbolDefTable.getSymbolDef(basic, symStd);
+        if(sd !== null)
+        {
+            var dc = sd.drawCategory;
+        
+            switch(dc)
+            {
+                case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
+                case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
+                    returnVal = true;
+                    break;
+                default:
+                    returnVal = false;
+            }
+        }
+        
+        return returnVal;
      };
 
   
