@@ -332,7 +332,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		try
 		{
 			armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
-			var foo = armyc2.c2sd.renderer.utilities.SymbolDefTable.isMultiPoint("G*TPB-----****X");
+			var foo = armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint("G*TPB-----****X");
 			
 			document.getElementById("contentSpan").innerHTML += "<br>isMultiPoint: " + foo.toString();
 		}

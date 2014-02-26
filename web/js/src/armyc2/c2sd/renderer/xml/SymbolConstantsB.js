@@ -13,7 +13,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Basic Shapes",
         "HIERARCHY": "0.X",
         "ALPHAHIERARCHY": "BS"
@@ -24,7 +23,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "0.X.1",
@@ -37,7 +35,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "0.X.2",
         "ALPHAHIERARCHY": "BS.AREA",
@@ -49,7 +46,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "0.X.3",
         "ALPHAHIERARCHY": "BS.CROSS",
@@ -61,7 +57,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "0.X.4",
         "ALPHAHIERARCHY": "BS.ELLIPSE",
@@ -73,7 +68,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "0.X.5",
         "ALPHAHIERARCHY": "BS.RECTANGLE",
@@ -85,7 +79,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tactical Graphics",
         "HIERARCHY": "2.X"
       },
@@ -95,7 +88,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tasks",
         "HIERARCHY": "2.X.1",
         "PATH": "Tactical Graphics"
@@ -106,7 +98,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Block Task",
         "HIERARCHY": "2.X.1.1",
         "PATH": "Tactical Graphics/Tasks"
@@ -117,7 +108,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Breach",
         "HIERARCHY": "2.X.1.2",
         "PATH": "Tactical Graphics/Tasks"
@@ -128,7 +118,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bypass",
         "HIERARCHY": "2.X.1.3",
         "PATH": "Tactical Graphics/Tasks"
@@ -139,7 +128,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Canalize",
         "HIERARCHY": "2.X.1.4",
         "PATH": "Tactical Graphics/Tasks"
@@ -150,7 +138,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clear",
         "HIERARCHY": "2.X.1.5",
         "PATH": "Tactical Graphics/Tasks"
@@ -161,7 +148,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Contain",
         "HIERARCHY": "2.X.1.6",
         "PATH": "Tactical Graphics/Tasks"
@@ -172,7 +158,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Counterattack (CATK)",
         "HIERARCHY": "2.X.1.7",
         "PATH": "Tactical Graphics/Tasks"
@@ -183,7 +168,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Counterattack by Fire",
         "HIERARCHY": "2.X.1.7.1",
         "PATH": "Tactical Graphics/Tasks/Counterattack (CATK)"
@@ -194,7 +178,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "W",
         "DESCRIPTION": "Delay",
         "HIERARCHY": "2.X.1.8",
@@ -206,7 +189,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Destroy",
         "HIERARCHY": "2.X.1.9",
         "PATH": "Tactical Graphics/Tasks"
@@ -217,7 +199,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Disrupt Tasks",
         "HIERARCHY": "2.X.1.10",
         "PATH": "Tactical Graphics/Tasks"
@@ -228,7 +209,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix Task",
         "HIERARCHY": "2.X.1.11",
         "PATH": "Tactical Graphics/Tasks"
@@ -239,7 +219,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T",
         "DESCRIPTION": "Follow and Assume",
         "HIERARCHY": "2.X.1.12",
@@ -251,7 +230,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Follow and Support",
         "HIERARCHY": "2.X.1.12.1",
@@ -263,7 +241,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Interdict",
         "HIERARCHY": "2.X.1.13",
         "PATH": "Tactical Graphics/Tasks"
@@ -274,7 +251,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isolate",
         "HIERARCHY": "2.X.1.14",
         "PATH": "Tactical Graphics/Tasks"
@@ -285,7 +261,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Neutralize",
         "HIERARCHY": "2.X.1.15",
         "PATH": "Tactical Graphics/Tasks"
@@ -296,7 +271,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Occupy",
         "HIERARCHY": "2.X.1.16",
         "PATH": "Tactical Graphics/Tasks"
@@ -307,7 +281,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Penetrate",
         "HIERARCHY": "2.X.1.17",
         "PATH": "Tactical Graphics/Tasks"
@@ -318,7 +291,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Relief in Place",
         "HIERARCHY": "2.X.1.18",
         "PATH": "Tactical Graphics/Tasks"
@@ -329,7 +301,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Retain",
         "HIERARCHY": "2.X.1.19",
         "PATH": "Tactical Graphics/Tasks"
@@ -340,7 +311,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Retirement",
         "HIERARCHY": "2.X.1.20",
         "PATH": "Tactical Graphics/Tasks"
@@ -351,7 +321,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Secure",
         "HIERARCHY": "2.X.1.21",
         "PATH": "Tactical Graphics/Tasks"
@@ -362,7 +331,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Security",
         "HIERARCHY": "2.X.1.22",
         "PATH": "Tactical Graphics/Tasks"
@@ -373,7 +341,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Screen",
         "HIERARCHY": "2.X.1.22.1",
@@ -385,7 +352,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Guard",
         "HIERARCHY": "2.X.1.22.2",
@@ -397,7 +363,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Cover",
         "HIERARCHY": "2.X.1.22.3",
@@ -409,7 +374,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Seize",
         "HIERARCHY": "2.X.1.23",
@@ -421,7 +385,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Withdraw",
         "HIERARCHY": "2.X.1.24",
         "PATH": "Tactical Graphics/Tasks"
@@ -432,7 +395,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Withdraw Under Pressure",
         "HIERARCHY": "2.X.1.24.1",
         "PATH": "Tactical Graphics/Tasks/Withdraw"
@@ -443,7 +405,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cordon and Search",
         "HIERARCHY": "2.X.1.25",
         "PATH": "Tactical Graphics/Tasks"
@@ -454,7 +415,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cordon and Knock",
         "HIERARCHY": "2.X.1.26",
         "PATH": "Tactical Graphics/Tasks"
@@ -465,7 +425,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Suppress",
         "HIERARCHY": "2.X.1.27",
         "PATH": "Tactical Graphics/Tasks"
@@ -476,7 +435,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.H.W.W1.N.",
         "DESCRIPTION": "Entry Control Point",
         "HIERARCHY": "2.X.1.28",
@@ -488,7 +446,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Command and Control and General Maneuver",
         "HIERARCHY": "2.X.2",
         "PATH": "Tactical Graphics"
@@ -499,7 +456,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "General",
         "HIERARCHY": "2.X.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -510,7 +466,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.2.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General"
@@ -521,7 +476,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Under Sea Warfare",
         "HIERARCHY": "2.X.2.1.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -532,7 +486,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater",
         "HIERARCHY": "2.X.2.1.1.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare"
@@ -543,7 +496,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater Datum",
         "HIERARCHY": "2.X.2.1.1.1.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Underwater"
@@ -554,7 +506,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater Brief Contact",
         "HIERARCHY": "2.X.2.1.1.1.1.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Underwater"
@@ -565,7 +516,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater Lost Contact",
         "HIERARCHY": "2.X.2.1.1.1.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Underwater"
@@ -576,7 +526,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater Sinker",
         "HIERARCHY": "2.X.2.1.1.1.1.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Underwater"
@@ -587,7 +536,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy",
         "HIERARCHY": "2.X.2.1.1.1.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare"
@@ -598,7 +546,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Pattern Center",
         "HIERARCHY": "2.X.2.1.1.1.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -609,7 +556,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Directional Frequency Analyzing and Recording (DIFAR)",
         "HIERARCHY": "2.X.2.1.1.1.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -620,7 +566,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Low Frequency Analyzing and Recording (LOFAR)",
         "HIERARCHY": "2.X.2.1.1.1.2.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -631,7 +576,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Command Active Sonobuoy System (CASS)",
         "HIERARCHY": "2.X.2.1.1.1.2.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -642,7 +586,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Directional Command Active Sonobuoy System (DICASS)",
         "HIERARCHY": "2.X.2.1.1.1.2.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -653,7 +596,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Bathythermograph Transmitting (BT)",
         "HIERARCHY": "2.X.2.1.1.1.2.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -664,7 +606,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy ANM",
         "HIERARCHY": "2.X.2.1.1.1.2.7",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -675,7 +616,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Vertical Line Array DIFAR (VLAD)",
         "HIERARCHY": "2.X.2.1.1.1.2.8",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -686,7 +626,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy ATAC",
         "HIERARCHY": "2.X.2.1.1.1.2.9",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -697,7 +636,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Range Only (RO)",
         "HIERARCHY": "2.X.2.1.1.1.2.10",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -708,7 +646,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sonobuoy Kingpin",
         "HIERARCHY": "2.X.2.1.1.1.2.11",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Sonobuoy"
@@ -719,7 +656,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Search",
         "HIERARCHY": "2.X.2.1.1.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare"
@@ -730,7 +666,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Search Area",
         "HIERARCHY": "2.X.2.1.1.1.3.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Search"
@@ -741,7 +676,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dip Position",
         "HIERARCHY": "2.X.2.1.1.1.3.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Search"
@@ -752,7 +686,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Search Center",
         "HIERARCHY": "2.X.2.1.1.1.3.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Under Sea Warfare/Search"
@@ -763,7 +696,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Reference Point",
         "HIERARCHY": "2.X.2.1.1.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -774,7 +706,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Special Point",
         "HIERARCHY": "2.X.2.1.1.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
@@ -785,7 +716,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Nav Reference Point",
         "HIERARCHY": "2.X.2.1.1.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
@@ -796,7 +726,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "DLRP",
         "HIERARCHY": "2.X.2.1.1.2.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
@@ -807,7 +736,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Point of Interest",
         "HIERARCHY": "2.X.2.1.1.2.4",
@@ -819,7 +747,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Weapon",
         "HIERARCHY": "2.X.2.1.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -830,7 +757,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Aim Point",
         "HIERARCHY": "2.X.2.1.1.3.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -841,7 +767,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Drop Point",
         "HIERARCHY": "2.X.2.1.1.3.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -852,7 +777,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Entry Point",
         "HIERARCHY": "2.X.2.1.1.3.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -863,7 +787,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ground Zero",
         "HIERARCHY": "2.X.2.1.1.3.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -874,7 +797,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "MSL Detect Point",
         "HIERARCHY": "2.X.2.1.1.3.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -885,7 +807,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Point",
         "HIERARCHY": "2.X.2.1.1.3.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -896,7 +817,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Predicted Impact Point",
         "HIERARCHY": "2.X.2.1.1.3.7",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Weapon"
@@ -907,7 +827,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Formation",
         "HIERARCHY": "2.X.2.1.1.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -918,7 +837,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.",
         "DESCRIPTION": "Harbor General",
         "HIERARCHY": "2.X.2.1.1.5",
@@ -930,7 +848,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Harbor Point Q",
         "HIERARCHY": "2.X.2.1.1.5.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Harbor General"
@@ -941,7 +858,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Harbor Point A",
         "HIERARCHY": "2.X.2.1.1.5.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Harbor General"
@@ -952,7 +868,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Harbor Point Y",
         "HIERARCHY": "2.X.2.1.1.5.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Harbor General"
@@ -963,7 +878,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Harbor Point X",
         "HIERARCHY": "2.X.2.1.1.5.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Harbor General"
@@ -974,7 +888,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route",
         "HIERARCHY": "2.X.2.1.1.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -985,7 +898,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route Rendezvous",
         "HIERARCHY": "2.X.2.1.1.6.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Route"
@@ -996,7 +908,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route Diversions",
         "HIERARCHY": "2.X.2.1.1.6.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Route"
@@ -1007,7 +918,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route Waypoint",
         "HIERARCHY": "2.X.2.1.1.6.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Route"
@@ -1018,7 +928,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route PIM",
         "HIERARCHY": "2.X.2.1.1.6.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Route"
@@ -1029,7 +938,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Route Point R",
         "HIERARCHY": "2.X.2.1.1.6.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Route"
@@ -1040,7 +948,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control",
         "HIERARCHY": "2.X.2.1.1.7",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points"
@@ -1051,7 +958,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Combat Air Patrol (CAP)",
         "HIERARCHY": "2.X.2.1.1.7.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1062,7 +968,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Airborne Early Warning (AEW)",
         "HIERARCHY": "2.X.2.1.1.7.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1073,7 +978,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control TACAN",
         "HIERARCHY": "2.X.2.1.1.7.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1084,7 +988,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Tanking",
         "HIERARCHY": "2.X.2.1.1.7.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1095,7 +998,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Antisubmarine Warfare- Fixed Wing",
         "HIERARCHY": "2.X.2.1.1.7.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1106,7 +1008,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Antisubmarine Warfare- Rotary Wing",
         "HIERARCHY": "2.X.2.1.1.7.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1117,7 +1018,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Tomcat",
         "HIERARCHY": "2.X.2.1.1.7.7",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1128,7 +1028,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Rescue",
         "HIERARCHY": "2.X.2.1.1.7.8",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1139,7 +1038,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Replenish",
         "HIERARCHY": "2.X.2.1.1.7.9",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1150,7 +1048,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Marshall",
         "HIERARCHY": "2.X.2.1.1.7.10",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1161,7 +1058,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Strike IP",
         "HIERARCHY": "2.X.2.1.1.7.11",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1172,7 +1068,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Air Control Corridor TAB",
         "HIERARCHY": "2.X.2.1.1.7.12",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Air Control"
@@ -1183,7 +1078,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.N.",
         "DESCRIPTION": "Action Point",
         "HIERARCHY": "2.X.2.1.1.8",
@@ -1195,7 +1089,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Check Point",
         "HIERARCHY": "2.X.2.1.1.8.1",
@@ -1207,7 +1100,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.N.",
         "DESCRIPTION": "Contact Point",
         "HIERARCHY": "2.X.2.1.1.8.2",
@@ -1219,7 +1111,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Coordination Point",
         "HIERARCHY": "2.X.2.1.1.8.3",
@@ -1231,7 +1122,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.N.",
         "DESCRIPTION": "Decision Point",
         "HIERARCHY": "2.X.2.1.1.8.4",
@@ -1243,7 +1133,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Linkup Point",
         "HIERARCHY": "2.X.2.1.1.8.5",
@@ -1255,7 +1144,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Passage Point",
         "HIERARCHY": "2.X.2.1.1.8.6",
@@ -1267,7 +1155,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Rally Point",
         "HIERARCHY": "2.X.2.1.1.8.7",
@@ -1279,7 +1166,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Release Point (RP)",
         "HIERARCHY": "2.X.2.1.1.8.8",
@@ -1291,7 +1177,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Start Point (SP)",
         "HIERARCHY": "2.X.2.1.1.8.9",
@@ -1303,7 +1188,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.N.",
         "DESCRIPTION": "Waypoint",
         "HIERARCHY": "2.X.2.1.1.8.10",
@@ -1315,7 +1199,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Amnesty Point",
         "HIERARCHY": "2.X.2.1.1.8.11",
@@ -1327,7 +1210,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.2.1.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General"
@@ -1338,7 +1220,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "B.N.T.T1.",
         "DESCRIPTION": "Boundary",
         "HIERARCHY": "2.X.2.1.2.1",
@@ -1350,7 +1231,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Forward Line of Own Troops",
         "HIERARCHY": "2.X.2.1.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Lines"
@@ -1361,7 +1241,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Line of Contact (LC)",
         "HIERARCHY": "2.X.2.1.2.3",
@@ -1373,7 +1252,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Phase Line",
         "HIERARCHY": "2.X.2.1.2.4",
@@ -1385,7 +1263,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Light Line",
         "HIERARCHY": "2.X.2.1.2.5",
@@ -1397,7 +1274,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Areas",
         "HIERARCHY": "2.X.2.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General"
@@ -1408,7 +1284,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "General Area",
         "HIERARCHY": "2.X.2.1.3.1",
@@ -1420,7 +1295,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Assembly Area",
         "HIERARCHY": "2.X.2.1.3.2",
@@ -1432,7 +1306,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Engagement Area (General)",
         "HIERARCHY": "2.X.2.1.3.3",
@@ -1444,7 +1317,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Fortified Area",
         "HIERARCHY": "2.X.2.1.3.4",
@@ -1456,7 +1328,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Drop Zone",
         "HIERARCHY": "2.X.2.1.3.5",
@@ -1468,7 +1339,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Extraction Zone",
         "HIERARCHY": "2.X.2.1.3.6",
@@ -1480,7 +1350,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Landing Zone (LZ)",
         "HIERARCHY": "2.X.2.1.3.7",
@@ -1492,7 +1361,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.T.",
         "DESCRIPTION": "Pickup Zone (PZ)",
         "HIERARCHY": "2.X.2.1.3.8",
@@ -1504,7 +1372,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Search Area/Reconnaissance Area",
         "HIERARCHY": "2.X.2.1.3.9",
@@ -1516,7 +1383,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Limited Access Area",
         "HIERARCHY": "2.X.2.1.3.10",
@@ -1528,7 +1394,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Airfield Zone",
         "HIERARCHY": "2.X.2.1.3.11",
@@ -1540,7 +1405,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Aviation",
         "HIERARCHY": "2.X.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -1551,7 +1415,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.2.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Aviation"
@@ -1562,7 +1425,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Air Control Point (ACP)",
         "HIERARCHY": "2.X.2.2.1.1",
@@ -1574,7 +1436,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Communications Checkpoint (CCP)",
         "HIERARCHY": "2.X.2.2.1.2",
@@ -1586,7 +1447,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pull-Up Point (PUP)",
         "HIERARCHY": "2.X.2.2.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Aviation/Points"
@@ -1597,7 +1457,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Downed Aircrew Pickup Point",
         "HIERARCHY": "2.X.2.2.1.4",
@@ -1609,7 +1468,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.2.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Aviation"
@@ -1620,7 +1478,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.H2.T.T1.W.W1.",
         "DESCRIPTION": "Air Corridor",
         "HIERARCHY": "2.X.2.2.2.1",
@@ -1632,7 +1489,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.H.H1.H2",
         "DESCRIPTION": "Minimum Risk Route (MRR)",
         "HIERARCHY": "2.X.2.2.2.2",
@@ -1644,7 +1500,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.H2.T.",
         "DESCRIPTION": "Standard-Use Army Aircraft Flight Route (SAAFR)",
         "HIERARCHY": "2.X.2.2.2.3",
@@ -1656,7 +1511,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.H.H1.H2",
         "DESCRIPTION": "Unmanned Aerial Vehicle (UAV) Route",
         "HIERARCHY": "2.X.2.2.2.4",
@@ -1668,7 +1522,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.T.H.H1.H2.",
         "DESCRIPTION": "Low Level Transit Route (LLTR)",
         "HIERARCHY": "2.X.2.2.2.5",
@@ -1680,7 +1533,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Areas",
         "HIERARCHY": "2.X.2.2.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Aviation"
@@ -1691,7 +1543,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "Restricted Operations Zone (ROZ)",
         "HIERARCHY": "2.X.2.2.3.1",
@@ -1703,7 +1554,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "Forward Area Air Defense Zone (FAADEZ)",
         "HIERARCHY": "2.X.2.2.3.2",
@@ -1715,7 +1565,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "High Density Airspace Control Zone (HIDACZ)",
         "HIERARCHY": "2.X.2.2.3.3",
@@ -1727,7 +1576,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "Missile Engagement Zone (MEZ)",
         "HIERARCHY": "2.X.2.2.3.4",
@@ -1739,7 +1587,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "Low Altitude MEZ",
         "HIERARCHY": "2.X.2.2.3.4.1",
@@ -1751,7 +1598,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.W.W1.",
         "DESCRIPTION": "High Altitude MEZ",
         "HIERARCHY": "2.X.2.2.3.4.2",
@@ -1763,7 +1609,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Weapons Free Zone",
         "HIERARCHY": "2.X.2.2.3.5",
@@ -1775,7 +1620,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Deception",
         "HIERARCHY": "2.X.2.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -1786,7 +1630,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dummy (Deception/Decoy)",
         "HIERARCHY": "2.X.2.3.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Deception"
@@ -1797,7 +1640,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Axis of Advance for Feint",
         "HIERARCHY": "2.X.2.3.2",
@@ -1809,7 +1651,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "4",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Direction of Attack for Feint",
         "HIERARCHY": "2.X.2.3.3",
@@ -1821,7 +1662,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Decoy Mined Area",
         "HIERARCHY": "2.X.2.3.4",
@@ -1833,7 +1673,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Decoy Mined Area, Fenced",
         "HIERARCHY": "2.X.2.3.5",
@@ -1845,7 +1684,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dummy Minefield - Static",
         "HIERARCHY": "2.X.2.3.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Deception"
@@ -1856,7 +1694,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.N.",
         "DESCRIPTION": "Dummy Minefield - Dynamic",
         "HIERARCHY": "2.X.2.3.7",
@@ -1868,7 +1705,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Defense",
         "HIERARCHY": "2.X.2.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -1879,7 +1715,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.2.4.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense"
@@ -1890,7 +1725,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Target Reference",
         "HIERARCHY": "2.X.2.4.1.1",
@@ -1902,7 +1736,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Observation Post (OP)/Outpost",
         "HIERARCHY": "2.X.2.4.1.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points"
@@ -1913,7 +1746,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Combat Outpost",
         "HIERARCHY": "2.X.2.4.1.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"
@@ -1924,7 +1756,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Observation Post Occupied Dismounted Recon",
         "HIERARCHY": "2.X.2.4.1.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"
@@ -1935,7 +1766,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Forward Observer Position Outpost",
         "HIERARCHY": "2.X.2.4.1.2.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"
@@ -1946,7 +1776,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sensor Outpost/Listening Post (OP/LP)",
         "HIERARCHY": "2.X.2.4.1.2.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"
@@ -1957,7 +1786,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "NBC Observation Post Dismounted",
         "HIERARCHY": "2.X.2.4.1.2.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"
@@ -1968,7 +1796,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.2.4.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense"
@@ -1979,7 +1806,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Forward Edge of Battle Area",
         "HIERARCHY": "2.X.2.4.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Lines"
@@ -1990,7 +1816,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Principal Direction of Fire (PDF)",
         "HIERARCHY": "2.X.2.4.2.2",
@@ -2002,7 +1827,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Areas",
         "HIERARCHY": "2.X.2.4.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense"
@@ -2013,7 +1837,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "B.N.T.",
         "DESCRIPTION": "Battle Position",
         "HIERARCHY": "2.X.2.4.3.1",
@@ -2025,7 +1848,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "B.N.T.",
         "DESCRIPTION": "Battle Position Prepared but not Occupied",
         "HIERARCHY": "2.X.2.4.3.1.1",
@@ -2037,7 +1859,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Engagement Area (Defense)",
         "HIERARCHY": "2.X.2.4.3.2",
@@ -2049,7 +1870,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Offense",
         "HIERARCHY": "2.X.2.5",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -2060,7 +1880,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "MODIFIERS": "0",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.2.5.1",
@@ -2072,7 +1891,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Point of Departure",
         "HIERARCHY": "2.X.2.5.1.1",
@@ -2084,7 +1902,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.2.5.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense"
@@ -2095,7 +1912,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance",
         "HIERARCHY": "2.X.2.5.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines"
@@ -2106,7 +1922,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance Aviation",
         "HIERARCHY": "2.X.2.5.2.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Axis of Advance"
@@ -2117,7 +1932,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "MODIFIERS": "A.",
         "DESCRIPTION": "Axis of Advance Airborne",
         "HIERARCHY": "2.X.2.5.2.1.2",
@@ -2129,7 +1943,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance Attack, Rotary Wing",
         "HIERARCHY": "2.X.2.5.2.1.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Axis of Advance"
@@ -2140,7 +1953,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance Ground",
         "HIERARCHY": "2.X.2.5.2.1.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Axis of Advance"
@@ -2151,7 +1963,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance Ground Main Attack",
         "HIERARCHY": "2.X.2.5.2.1.4.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Axis of Advance/Axis of Advance Ground"
@@ -2162,7 +1973,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "5",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "yes",
         "DESCRIPTION": "Axis of Advance Ground Supporting Attack",
         "HIERARCHY": "2.X.2.5.2.1.4.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Axis of Advance/Axis of Advance Ground"
@@ -2173,7 +1983,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Direction of Attack",
         "HIERARCHY": "2.X.2.5.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines"
@@ -2184,7 +1993,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "4",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Direction of Attack Aviation",
         "HIERARCHY": "2.X.2.5.2.2.1",
@@ -2196,7 +2004,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Direction of Attack Ground",
         "HIERARCHY": "2.X.2.5.2.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Direction of Attack"
@@ -2207,7 +2014,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "4",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Direction of Attack Ground Main Attack",
         "HIERARCHY": "2.X.2.5.2.2.2.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Direction of Attack/Direction of Attack Ground"
@@ -2218,7 +2024,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "4",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Direction of Attack Ground Supporting Attack",
         "HIERARCHY": "2.X.2.5.2.2.2.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Lines/Direction of Attack/Direction of Attack Ground"
@@ -2229,7 +2034,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Final Coordination Line",
         "HIERARCHY": "2.X.2.5.2.3",
@@ -2241,7 +2045,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Infiltration Lane",
         "HIERARCHY": "2.X.2.5.2.4",
@@ -2253,7 +2056,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Limit Of Advance (LOA)",
         "HIERARCHY": "2.X.2.5.2.5",
@@ -2265,7 +2067,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Line of Departure (LD)",
         "HIERARCHY": "2.X.2.5.2.6",
@@ -2277,7 +2078,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Line of Departure/Line of Contact (LD/LC)",
         "HIERARCHY": "2.X.2.5.2.7",
@@ -2289,7 +2089,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Probable Line of Deployment (PLD)",
         "HIERARCHY": "2.X.2.5.2.8",
@@ -2301,7 +2100,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Areas",
         "HIERARCHY": "2.X.2.5.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense"
@@ -2312,7 +2110,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Assault Position",
         "HIERARCHY": "2.X.2.5.3.1",
@@ -2324,7 +2121,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Attack Position",
         "HIERARCHY": "2.X.2.5.3.2",
@@ -2336,7 +2132,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Attack by Fire Position",
         "HIERARCHY": "2.X.2.5.3.3",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Areas"
@@ -2347,7 +2142,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Support by Fire Position",
         "HIERARCHY": "2.X.2.5.3.4",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Areas"
@@ -2358,7 +2152,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Objective",
         "HIERARCHY": "2.X.2.5.3.5",
@@ -2370,7 +2163,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Penetration Box",
         "HIERARCHY": "2.X.2.5.3.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense/Areas"
@@ -2381,7 +2173,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Special",
         "HIERARCHY": "2.X.2.6",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver"
@@ -2392,7 +2183,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Line",
         "HIERARCHY": "2.X.2.6.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Special"
@@ -2403,7 +2193,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ambush",
         "HIERARCHY": "2.X.2.6.1.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Special/Line"
@@ -2414,7 +2203,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Holding Line",
         "HIERARCHY": "2.X.2.6.1.2",
@@ -2426,7 +2214,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Release Line",
         "HIERARCHY": "2.X.2.6.1.3",
@@ -2438,7 +2225,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Bridgehead",
         "HIERARCHY": "2.X.2.6.1.4",
@@ -2450,7 +2236,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Area",
         "HIERARCHY": "2.X.2.6.2",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Special"
@@ -2461,7 +2246,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Area of Operations (AO)",
         "HIERARCHY": "2.X.2.6.2.1",
@@ -2473,7 +2257,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Airhead",
         "HIERARCHY": "2.X.2.6.2.2",
@@ -2485,7 +2268,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Encirclement",
         "HIERARCHY": "2.X.2.6.2.3",
@@ -2497,7 +2279,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Named Area of Interest (NAI)",
         "HIERARCHY": "2.X.2.6.2.4",
@@ -2509,7 +2290,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Targeted Area of Interest (TAI)",
         "HIERARCHY": "2.X.2.6.2.5",
@@ -2521,7 +2301,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mobility/Survivability",
         "HIERARCHY": "2.X.3",
         "PATH": "Tactical Graphics"
@@ -2532,7 +2311,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Obstacles",
         "HIERARCHY": "2.X.3.1",
         "PATH": "Tactical Graphics/Mobility-Survivability"
@@ -2543,7 +2321,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "General (Obstacles)",
         "HIERARCHY": "2.X.3.1.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2554,7 +2331,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.T1.",
         "DESCRIPTION": "Obstacle Belt",
         "HIERARCHY": "2.X.3.1.1.1",
@@ -2566,7 +2342,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Obstacle Line",
         "HIERARCHY": "2.X.3.1.1.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/General"
@@ -2577,7 +2352,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Obstacle Zone",
         "HIERARCHY": "2.X.3.1.1.3",
@@ -2589,7 +2363,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Obstacle Free Area",
         "HIERARCHY": "2.X.3.1.1.4",
@@ -2601,7 +2374,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Obstacle Restricted Area",
         "HIERARCHY": "2.X.3.1.1.5",
@@ -2613,7 +2385,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Abatis",
         "HIERARCHY": "2.X.3.1.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2624,7 +2395,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Obstacles",
         "HIERARCHY": "2.X.3.1.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2635,7 +2405,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Ditch",
         "HIERARCHY": "2.X.3.1.3.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles"
@@ -2646,7 +2415,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Ditch Under Construction",
         "HIERARCHY": "2.X.3.1.3.1.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles/Antitank Ditch"
@@ -2657,7 +2425,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Ditch Complete",
         "HIERARCHY": "2.X.3.1.3.1.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles/Antitank Ditch"
@@ -2668,7 +2435,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Ditch Reinforced with Antitank Mines",
         "HIERARCHY": "2.X.3.1.3.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles"
@@ -2679,7 +2445,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Obstacles, Tetrahedrons, Dragons Teeth, and Other Similar Obstacles",
         "HIERARCHY": "2.X.3.1.3.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles"
@@ -2690,7 +2455,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Obstacles Fixed and Prefabricated",
         "HIERARCHY": "2.X.3.1.3.3.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles/Antitank Obstacles, Tetrahedrons, Dragons Teeth, and Other Similar Obstacles"
@@ -2701,7 +2465,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Obstacles Moveable",
         "HIERARCHY": "2.X.3.1.3.3.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles/Antitank Obstacles, Tetrahedrons, Dragons Teeth, and Other Similar Obstacles"
@@ -2712,7 +2475,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Obstacles Moveable and Prefabricated",
         "HIERARCHY": "2.X.3.1.3.3.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles/Antitank Obstacles, Tetrahedrons, Dragons Teeth, and Other Similar Obstacles"
@@ -2723,7 +2485,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Wall",
         "HIERARCHY": "2.X.3.1.3.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Antitank Obstacles"
@@ -2734,7 +2495,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Booby Trap",
         "HIERARCHY": "2.X.3.1.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2745,7 +2505,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mines",
         "HIERARCHY": "2.X.3.1.5",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2756,7 +2515,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Unspecified Mine",
         "HIERARCHY": "2.X.3.1.5.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2767,7 +2525,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Mine",
         "HIERARCHY": "2.X.3.1.5.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2778,7 +2535,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Mine With Antihandling Device",
         "HIERARCHY": "2.X.3.1.5.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2789,7 +2545,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antitank Mine, Directional",
         "HIERARCHY": "2.X.3.1.5.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2800,7 +2555,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Antipersonnel Mine",
         "HIERARCHY": "2.X.3.1.5.5",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2811,7 +2565,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wide Area Mines",
         "HIERARCHY": "2.X.3.1.5.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2822,7 +2575,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mine Cluster",
         "HIERARCHY": "2.X.3.1.5.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Mines"
@@ -2833,7 +2585,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Minefields",
         "HIERARCHY": "2.X.3.1.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2844,7 +2595,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.N.W.",
         "DESCRIPTION": "Minefield (Static)",
         "HIERARCHY": "2.X.3.1.6.1",
@@ -2856,7 +2606,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.N.W.",
         "DESCRIPTION": "Minefield (Dynamic)",
         "HIERARCHY": "2.X.3.1.6.2",
@@ -2868,7 +2617,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.",
         "DESCRIPTION": "Minefields Gap",
         "HIERARCHY": "2.X.3.1.6.3",
@@ -2880,7 +2628,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "N.",
         "DESCRIPTION": "Mined Area",
         "HIERARCHY": "2.X.3.1.6.4",
@@ -2892,7 +2639,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Obstacle Effect",
         "HIERARCHY": "2.X.3.1.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2903,7 +2649,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Block Obstacle Effect",
         "HIERARCHY": "2.X.3.1.7.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Obstacle Effect"
@@ -2914,7 +2659,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix (Obstacle Effect)",
         "HIERARCHY": "2.X.3.1.7.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Obstacle Effect"
@@ -2925,7 +2669,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Turn",
         "HIERARCHY": "2.X.3.1.7.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Obstacle Effect"
@@ -2936,7 +2679,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Disrupt Obstacle Effect",
         "HIERARCHY": "2.X.3.1.7.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Obstacle Effect"
@@ -2947,7 +2689,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Unexploded Ordnance Area (UXO)",
         "HIERARCHY": "2.X.3.1.8",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2958,7 +2699,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Roadblocks, Craters, and Blown Bridges",
         "HIERARCHY": "2.X.3.1.9",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -2969,7 +2709,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "RCBB Planned",
         "HIERARCHY": "2.X.3.1.9.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Roadblocks, Craters, and Blown Bridges"
@@ -2980,7 +2719,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "RCBB Explosives State of Readiness 1 (Safe)",
         "HIERARCHY": "2.X.3.1.9.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Roadblocks, Craters, and Blown Bridges"
@@ -2991,7 +2729,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "RCBB Explosives State of Readiness 2 (Armed - but Passable)",
         "HIERARCHY": "2.X.3.1.9.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Roadblocks, Craters, and Blown Bridges"
@@ -3002,7 +2739,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "RCBB Roadblock Complete (Executed)",
         "HIERARCHY": "2.X.3.1.9.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Roadblocks, Craters, and Blown Bridges"
@@ -3013,7 +2749,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Trip Wire",
         "HIERARCHY": "2.X.3.1.10",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -3024,7 +2759,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle",
         "HIERARCHY": "2.X.3.1.11",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles"
@@ -3035,7 +2769,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Unspecified",
         "HIERARCHY": "2.X.3.1.11.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3046,7 +2779,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Single Fence",
         "HIERARCHY": "2.X.3.1.11.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3057,7 +2789,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Double Fence",
         "HIERARCHY": "2.X.3.1.11.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3068,7 +2799,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Double Apron Fence",
         "HIERARCHY": "2.X.3.1.11.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3079,7 +2809,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Low Wire Fence",
         "HIERARCHY": "2.X.3.1.11.5",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3090,7 +2819,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle High Wire Fence",
         "HIERARCHY": "2.X.3.1.11.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3101,7 +2829,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Concertina",
         "HIERARCHY": "2.X.3.1.11.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle"
@@ -3112,7 +2839,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Single Concertina",
         "HIERARCHY": "2.X.3.1.11.7.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle/Concertina"
@@ -3123,7 +2849,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Double Strand Concertina",
         "HIERARCHY": "2.X.3.1.11.7.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle/Concertina"
@@ -3134,7 +2859,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wire Obstacle Triple Strand Concertina",
         "HIERARCHY": "2.X.3.1.11.7.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Wire Obstacle/Concertina"
@@ -3145,7 +2869,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Obstacle Bypass",
         "HIERARCHY": "2.X.3.2",
         "PATH": "Tactical Graphics/Mobility-Survivability"
@@ -3156,7 +2879,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Obstacle Bypass Difficulty",
         "HIERARCHY": "2.X.3.2.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass"
@@ -3167,7 +2889,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bypass Easy",
         "HIERARCHY": "2.X.3.2.1.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Obstacle Bypass Difficulty"
@@ -3178,7 +2899,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bypass Difficult",
         "HIERARCHY": "2.X.3.2.1.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Obstacle Bypass Difficulty"
@@ -3189,7 +2909,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bypass Impossible",
         "HIERARCHY": "2.X.3.2.1.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Obstacle Bypass Difficulty"
@@ -3200,7 +2919,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Crossing Site/Water Crossing",
         "HIERARCHY": "2.X.3.2.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass"
@@ -3211,7 +2929,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Assault Crossing Area",
         "HIERARCHY": "2.X.3.2.2.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3222,7 +2939,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bridge or Gap",
         "HIERARCHY": "2.X.3.2.2.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3233,7 +2949,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ferry",
         "HIERARCHY": "2.X.3.2.2.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3244,7 +2959,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ford Easy",
         "HIERARCHY": "2.X.3.2.2.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3255,7 +2969,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ford Difficult",
         "HIERARCHY": "2.X.3.2.2.5",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3266,7 +2979,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lane",
         "HIERARCHY": "2.X.3.2.2.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3277,7 +2989,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Raft Site",
         "HIERARCHY": "2.X.3.2.2.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacle Bypass/Crossing Site-Water Crossing"
@@ -3288,7 +2999,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Engineer Regulating Point",
         "HIERARCHY": "2.X.3.2.2.8",
@@ -3300,7 +3010,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Survivability",
         "HIERARCHY": "2.X.3.3",
         "PATH": "Tactical Graphics/Mobility-Survivability"
@@ -3311,7 +3020,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Earthwork, Small Trench or Fortification",
         "HIERARCHY": "2.X.3.3.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3322,7 +3030,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fort",
         "HIERARCHY": "2.X.3.3.2",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3333,7 +3040,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fortified Line",
         "HIERARCHY": "2.X.3.3.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3344,7 +3050,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foxhole, Emplacement or Weapon Site",
         "HIERARCHY": "2.X.3.3.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3355,7 +3060,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "B.T.",
         "DESCRIPTION": "Strong Point",
         "HIERARCHY": "2.X.3.3.5",
@@ -3367,7 +3071,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Surface Shelter",
         "HIERARCHY": "2.X.3.3.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3378,7 +3081,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underground Shelter",
         "HIERARCHY": "2.X.3.3.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Survivability"
@@ -3389,7 +3091,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Nuclear, Biological, and Chemical",
         "HIERARCHY": "2.X.3.4",
         "PATH": "Tactical Graphics/Mobility-Survivability"
@@ -3400,7 +3101,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "4",
         "MINPOINTS": "4",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Minimum Safe Distance Zones",
         "HIERARCHY": "2.X.3.4.1",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3411,7 +3111,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "C.H.N.Q.T.V.W.Y.",
         "DESCRIPTION": "Nuclear Detonations Ground Zero",
         "HIERARCHY": "2.X.3.4.2",
@@ -3423,7 +3122,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fallout Producing",
         "HIERARCHY": "2.X.3.4.3",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3434,7 +3132,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Radioactive Area",
         "HIERARCHY": "2.X.3.4.4",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3445,7 +3142,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Biologically Contaminated Area",
         "HIERARCHY": "2.X.3.4.5",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3456,7 +3152,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Chemically Contaminated Area",
         "HIERARCHY": "2.X.3.4.6",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3467,7 +3162,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Release Events",
         "HIERARCHY": "2.X.3.4.7",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3478,7 +3172,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.N.Q.T.W.Y.",
         "DESCRIPTION": "Biological Event",
         "HIERARCHY": "2.X.3.4.7.1",
@@ -3490,7 +3183,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.N.Q.T.W.Y.",
         "DESCRIPTION": "Chemical Event",
         "HIERARCHY": "2.X.3.4.7.2",
@@ -3502,7 +3194,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Decontamination (DECON) Points",
         "HIERARCHY": "2.X.3.4.8",
         "PATH": "Tactical Graphics/Mobility-Survivability/Nuclear, Biological, and Chemical"
@@ -3513,7 +3204,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Unspecified",
         "HIERARCHY": "2.X.3.4.8.1",
@@ -3525,7 +3215,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Alternate Decon Site/Point Unspecified",
         "HIERARCHY": "2.X.3.4.8.2",
@@ -3537,7 +3226,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Troops",
         "HIERARCHY": "2.X.3.4.8.3",
@@ -3549,7 +3237,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Equipment",
         "HIERARCHY": "2.X.3.4.8.4",
@@ -3561,7 +3248,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Equipment and Troops",
         "HIERARCHY": "2.X.3.4.8.5",
@@ -3573,7 +3259,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Operational Decontamination",
         "HIERARCHY": "2.X.3.4.8.6",
@@ -3585,7 +3270,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Decon Site/Point Thorough Decontamination",
         "HIERARCHY": "2.X.3.4.8.7",
@@ -3597,7 +3281,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Dose Rate Contour Lines",
         "HIERARCHY": "2.X.3.4.9",
@@ -3609,7 +3292,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fire Support",
         "HIERARCHY": "2.X.4",
         "PATH": "Tactical Graphics"
@@ -3620,7 +3302,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.4.1",
         "PATH": "Tactical Graphics/Fire Support"
@@ -3631,7 +3312,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Target",
         "HIERARCHY": "2.X.4.1.1",
         "PATH": "Tactical Graphics/Fire Support/Points"
@@ -3642,7 +3322,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.T.",
         "DESCRIPTION": "Point/Single Target",
         "HIERARCHY": "2.X.4.1.1.1",
@@ -3654,7 +3333,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Nuclear Target",
         "HIERARCHY": "2.X.4.1.1.2",
@@ -3666,7 +3344,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Command and Control",
         "HIERARCHY": "2.X.4.1.2",
         "PATH": "Tactical Graphics/Fire Support/Points"
@@ -3677,7 +3354,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Fire Support Station",
         "HIERARCHY": "2.X.4.1.2.1",
@@ -3689,7 +3365,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Survey Control Point",
         "HIERARCHY": "2.X.4.1.2.2",
@@ -3701,7 +3376,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Firing Point",
         "HIERARCHY": "2.X.4.1.2.3",
@@ -3713,7 +3387,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Reload Point",
         "HIERARCHY": "2.X.4.1.2.4",
@@ -3725,7 +3398,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Hide Point",
         "HIERARCHY": "2.X.4.1.2.5",
@@ -3737,7 +3409,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Launch Point",
         "HIERARCHY": "2.X.4.1.2.6",
@@ -3749,7 +3420,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.4.2",
         "PATH": "Tactical Graphics/Fire Support"
@@ -3760,7 +3430,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Linear Target",
         "HIERARCHY": "2.X.4.2.1",
@@ -3772,7 +3441,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Linear Smoke Target",
         "HIERARCHY": "2.X.4.2.1.1",
@@ -3784,7 +3452,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.T1.",
         "DESCRIPTION": "Final Protective Fire",
         "HIERARCHY": "2.X.4.2.1.2",
@@ -3796,7 +3463,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Command and Control Lines",
         "HIERARCHY": "2.X.4.2.2",
         "PATH": "Tactical Graphics/Fire Support/Lines"
@@ -3807,7 +3473,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Fire Support Coordination Line",
         "HIERARCHY": "2.X.4.2.2.1",
@@ -3819,7 +3484,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Coordinated Fire Line (CFL)",
         "HIERARCHY": "2.X.4.2.2.2",
@@ -3831,7 +3495,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "No-Fire Line (NFL)",
         "HIERARCHY": "2.X.4.2.2.3",
@@ -3843,7 +3506,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Restrictive Fire Line (RFL)",
         "HIERARCHY": "2.X.4.2.2.4",
@@ -3855,7 +3517,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.",
         "DESCRIPTION": "Munition Flight Path (MFP)",
         "HIERARCHY": "2.X.4.2.2.5",
@@ -3867,7 +3528,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Areas",
         "HIERARCHY": "2.X.4.3",
         "PATH": "Tactical Graphics/Fire Support"
@@ -3878,7 +3538,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Area Target",
         "HIERARCHY": "2.X.4.3.1",
@@ -3890,8 +3549,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "17",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
-        "MODIFIERS": "T.AM.AM1.AN.",
+        "MODIFIERS": "T.AM.AN.",
         "DESCRIPTION": "Rectangular Target",
         "HIERARCHY": "2.X.4.3.1.1",
         "PATH": "Tactical Graphics/Fire Support/Areas/Area Target"
@@ -3902,7 +3560,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.AM.",
         "DESCRIPTION": "Circular Target",
         "HIERARCHY": "2.X.4.3.1.2",
@@ -3914,7 +3571,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Group of Targets",
         "HIERARCHY": "2.X.4.3.1.3",
@@ -3926,7 +3582,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "W.W1.",
         "DESCRIPTION": "Smoke Area",
         "HIERARCHY": "2.X.4.3.1.4",
@@ -3938,7 +3593,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bomb Area",
         "HIERARCHY": "2.X.4.3.1.5",
         "PATH": "Tactical Graphics/Fire Support/Areas/Area Target"
@@ -3949,7 +3603,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Command and Control Areas",
         "HIERARCHY": "2.X.4.3.2",
         "PATH": "Tactical Graphics/Fire Support/Areas"
@@ -3960,7 +3613,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Fire Support Area (FSA)",
         "HIERARCHY": "2.X.4.3.2.1",
@@ -3972,7 +3624,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Fire Support Area (FSA) Irregular",
         "HIERARCHY": "2.X.4.3.2.1.1",
@@ -3984,7 +3635,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.H.AM.",
         "DESCRIPTION": "Fire Support Area (FSA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.1.2",
@@ -3996,7 +3646,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Fire Support Area (FSA) Circular",
         "HIERARCHY": "2.X.4.3.2.1.3",
@@ -4008,7 +3657,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Airspace Coordination Area (ACA)",
         "HIERARCHY": "2.X.4.3.2.2",
         "PATH": "Tactical Graphics/Fire Support/Areas/Command and Control Areas"
@@ -4019,7 +3667,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.H2.T.W.W1.",
         "DESCRIPTION": "Airspace Coordination Area (ACA) Irregular",
         "HIERARCHY": "2.X.4.3.2.2.1",
@@ -4031,7 +3678,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.H.H1.H2.W.W1.AM.",
         "DESCRIPTION": "Airspace Coordination Area (ACA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.2.2",
@@ -4043,7 +3689,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.H.H1.H2.W.W1.AM.",
         "DESCRIPTION": "Airspace Coordination Area (ACA) Circular",
         "HIERARCHY": "2.X.4.3.2.2.3",
@@ -4055,7 +3700,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Free Fire Area (FFA)",
         "HIERARCHY": "2.X.4.3.2.3",
@@ -4067,7 +3711,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Free Fire Area (FFA) Irregular",
         "HIERARCHY": "2.X.4.3.2.3.1",
@@ -4079,7 +3722,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Free Fire Area (FFA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.3.2",
@@ -4091,7 +3733,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Free Fire Area (FFA) Circular",
         "HIERARCHY": "2.X.4.3.2.3.3",
@@ -4103,7 +3744,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "NFA Shapes",
         "HIERARCHY": "2.X.4.3.2.4",
         "PATH": "Tactical Graphics/Fire Support/Areas/Command and Control Areas"
@@ -4114,7 +3754,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "No-Fire Area (NFA) Irregular",
         "HIERARCHY": "2.X.4.3.2.4.1",
@@ -4126,7 +3765,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "No-Fire Area (NFA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.4.2",
@@ -4138,7 +3776,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "No-Fire Area (NFA) Circular",
         "HIERARCHY": "2.X.4.3.2.4.3",
@@ -4150,7 +3787,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "RFA Shapes",
         "HIERARCHY": "2.X.4.3.2.5",
         "PATH": "Tactical Graphics/Fire Support/Areas/Command and Control Areas"
@@ -4161,7 +3797,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Restrictive Fire Area (RFA) Irregular",
         "HIERARCHY": "2.X.4.3.2.5.1",
@@ -4173,7 +3808,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Restrictive Fire Area (RFA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.5.2",
@@ -4185,7 +3819,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Restrictive Fire Area (RFA) Circular",
         "HIERARCHY": "2.X.4.3.2.5.3",
@@ -4197,7 +3830,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Position Area for Artillery (PAA)",
         "HIERARCHY": "2.X.4.3.2.6",
         "PATH": "Tactical Graphics/Fire Support/Areas/Command and Control Areas"
@@ -4208,7 +3840,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "AM.",
         "DESCRIPTION": "Position Area for Artillery (PAA) Rectangular",
         "HIERARCHY": "2.X.4.3.2.6.1",
@@ -4220,7 +3851,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "AM.",
         "DESCRIPTION": "Position Area For Artillery (PAA) Circular",
         "HIERARCHY": "2.X.4.3.2.6.2",
@@ -4232,7 +3862,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Target Acquisition Zones",
         "HIERARCHY": "2.X.4.3.3",
         "PATH": "Tactical Graphics/Fire Support/Areas"
@@ -4243,7 +3872,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "ATI Shapes",
         "HIERARCHY": "2.X.4.3.3.1",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4254,7 +3882,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Artillery Target Intelligence (ATI) Zone Irregular",
         "HIERARCHY": "2.X.4.3.3.1.1",
@@ -4266,7 +3893,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Artillery Target Intelligence (ATI) Zone Rectangular",
         "HIERARCHY": "2.X.4.3.3.1.2",
@@ -4278,7 +3904,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Artillery Target Intelligence (ATI) Zone Circular",
         "HIERARCHY": "2.X.4.3.3.1.3",
@@ -4290,7 +3915,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Call for Fire Zone",
         "HIERARCHY": "2.X.4.3.3.2",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4301,7 +3925,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Call For Fire Zone (CFFZ) Irregular",
         "HIERARCHY": "2.X.4.3.3.2.1",
@@ -4313,7 +3936,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Call For Fire Zone (CFFZ) Rectangular",
         "HIERARCHY": "2.X.4.3.3.2.2",
@@ -4325,7 +3947,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM",
         "DESCRIPTION": "Call For Fire Zone (CFFZ) Circular",
         "HIERARCHY": "2.X.4.3.3.2.3",
@@ -4337,7 +3958,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sensor Shapes",
         "HIERARCHY": "2.X.4.3.3.3",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4348,7 +3968,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Sensor Zone Irregular",
         "HIERARCHY": "2.X.4.3.3.3.1",
@@ -4360,7 +3979,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Sensor Zone Rectangular",
         "HIERARCHY": "2.X.4.3.3.3.2",
@@ -4372,7 +3990,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Sensor Zone Circular",
         "HIERARCHY": "2.X.4.3.3.3.3",
@@ -4384,7 +4001,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Censor Shapes",
         "HIERARCHY": "2.X.4.3.3.4",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4395,7 +4011,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Censor Zone Irregular",
         "HIERARCHY": "2.X.4.3.3.4.1",
@@ -4407,7 +4022,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM",
         "DESCRIPTION": "Censor Zone Rectangular",
         "HIERARCHY": "2.X.4.3.3.4.2",
@@ -4419,7 +4033,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Censor Zone Circular",
         "HIERARCHY": "2.X.4.3.3.4.3",
@@ -4431,7 +4044,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dead Space Area",
         "HIERARCHY": "2.X.4.3.3.5",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4442,7 +4054,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Dead Space Area (DA) Irregular",
         "HIERARCHY": "2.X.4.3.3.5.1",
@@ -4454,7 +4065,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Dead Space Area (DA) Rectangular",
         "HIERARCHY": "2.X.4.3.3.5.2",
@@ -4466,7 +4076,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Dead Space Area (DA) Circular",
         "HIERARCHY": "2.X.4.3.3.5.3",
@@ -4478,7 +4087,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Critical Friendly Zone Shapes",
         "HIERARCHY": "2.X.4.3.3.6",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4489,7 +4097,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Critical Friendly Zone (CFZ) Irregular",
         "HIERARCHY": "2.X.4.3.3.6.1",
@@ -4501,7 +4108,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Critical Friendly Zone (CFZ) Rectangular",
         "HIERARCHY": "2.X.4.3.3.6.2",
@@ -4513,7 +4119,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Critical Friendly Zone (CFZ) Circular",
         "HIERARCHY": "2.X.4.3.3.6.3",
@@ -4525,7 +4130,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Zone of Responsibility",
         "HIERARCHY": "2.X.4.3.3.7",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4536,7 +4140,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Zone Of Responsibility (ZOR) Irregular",
         "HIERARCHY": "2.X.4.3.3.7.1",
@@ -4548,7 +4151,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Zone Of Responsibility (ZOR) Rectangular",
         "HIERARCHY": "2.X.4.3.3.7.2",
@@ -4560,7 +4162,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Zone Of Responsibility (ZOR) Circular",
         "HIERARCHY": "2.X.4.3.3.7.3",
@@ -4572,7 +4173,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Target Build-Up Area (TBA) ",
         "HIERARCHY": "2.X.4.3.3.8",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4583,7 +4183,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Target Build-Up Area (TBA) Irregular",
         "HIERARCHY": "2.X.4.3.3.8.1",
@@ -4595,7 +4194,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Target Build-Up Area (TBA) Rectangular",
         "HIERARCHY": "2.X.4.3.3.8.2",
@@ -4607,7 +4205,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Target Build-Up Area (TBA) Circular",
         "HIERARCHY": "2.X.4.3.3.8.3",
@@ -4619,7 +4216,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Target Value Area (TVAR) ",
         "HIERARCHY": "2.X.4.3.3.9",
         "PATH": "Tactical Graphics/Fire Support/Areas/Target Acquisition Zones"
@@ -4630,7 +4226,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Target Value Area (TVAR) Irregular",
         "HIERARCHY": "2.X.4.3.3.9.1",
@@ -4642,7 +4237,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "20",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Target Value Area (TVAR) Rectangular",
         "HIERARCHY": "2.X.4.3.3.9.2",
@@ -4654,7 +4248,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
         "MODIFIERS": "T.W.W1.AM.",
         "DESCRIPTION": "Target Value Area (TVAR) Circular",
         "HIERARCHY": "2.X.4.3.3.9.3",
@@ -4666,7 +4259,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Radar Range Fans",
         "HIERARCHY": "2.X.4.3.4",
         "PATH": "Tactical Graphics/Fire Support/Areas"
@@ -4677,8 +4269,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "19",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
-        "MODIFIERS": "X.X1.X2.AM.AM1.AM2.",
+        "MODIFIERS": "X.AM.",
         "DESCRIPTION": "Circular Range Fan",
         "HIERARCHY": "2.X.4.3.4.1",
         "PATH": "Tactical Graphics/Fire Support/Areas/Radar Range Fans"
@@ -4689,8 +4280,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "18",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "yes",
-        "MODIFIERS": "X#.AM#.AN#.",
+        "MODIFIERS": "X.AM.AN.",
         "DESCRIPTION": "Sector Range Fan",
         "HIERARCHY": "2.X.4.3.4.2",
         "PATH": "Tactical Graphics/Fire Support/Areas/Radar Range Fans"
@@ -4701,7 +4291,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Combat Service Support",
         "HIERARCHY": "2.X.5",
         "PATH": "Tactical Graphics"
@@ -4712,7 +4301,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.5.1",
         "PATH": "Tactical Graphics/Combat Service Support"
@@ -4723,7 +4311,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.T1.W.W1.N.",
         "DESCRIPTION": "Ambulance Exchange Point",
         "HIERARCHY": "2.X.5.1.1",
@@ -4735,7 +4322,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Cannibalization Point",
         "HIERARCHY": "2.X.5.1.2",
@@ -4747,7 +4333,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Casualty Collection Point",
         "HIERARCHY": "2.X.5.1.3",
@@ -4759,7 +4344,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Civilian Collection Point",
         "HIERARCHY": "2.X.5.1.4",
@@ -4771,7 +4355,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Detainee Collection Point",
         "HIERARCHY": "2.X.5.1.5",
@@ -4783,7 +4366,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Enemy Prisoner of War Collection Point",
         "HIERARCHY": "2.X.5.1.6",
@@ -4795,7 +4377,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Logistics Release Point",
         "HIERARCHY": "2.X.5.1.7",
@@ -4807,7 +4388,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Maintenance Collection Point",
         "HIERARCHY": "2.X.5.1.8",
@@ -4819,7 +4399,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Rearm, Refuel and Resupply Point",
         "HIERARCHY": "2.X.5.1.9",
@@ -4831,7 +4410,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Refuel on the Move Point",
         "HIERARCHY": "2.X.5.1.10",
@@ -4843,7 +4421,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Traffic Control Point (TCP)",
         "HIERARCHY": "2.X.5.1.11",
@@ -4855,7 +4432,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Trailer Transfer Point",
         "HIERARCHY": "2.X.5.1.12",
@@ -4867,7 +4443,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Unit Maintenance Collection Point",
         "HIERARCHY": "2.X.5.1.13",
@@ -4879,7 +4454,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Supply Points",
         "HIERARCHY": "2.X.5.1.14",
         "PATH": "Tactical Graphics/Combat Service Support/Points"
@@ -4890,7 +4464,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point General",
         "HIERARCHY": "2.X.5.1.14.1",
@@ -4902,7 +4475,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class I",
         "HIERARCHY": "2.X.5.1.14.2",
@@ -4914,7 +4486,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class II",
         "HIERARCHY": "2.X.5.1.14.3",
@@ -4926,7 +4497,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class III",
         "HIERARCHY": "2.X.5.1.14.4",
@@ -4938,7 +4508,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class IV",
         "HIERARCHY": "2.X.5.1.14.5",
@@ -4950,7 +4519,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class V",
         "HIERARCHY": "2.X.5.1.14.6",
@@ -4962,7 +4530,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class VI",
         "HIERARCHY": "2.X.5.1.14.7",
@@ -4974,7 +4541,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class VII",
         "HIERARCHY": "2.X.5.1.14.8",
@@ -4986,7 +4552,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class VIII",
         "HIERARCHY": "2.X.5.1.14.9",
@@ -4998,7 +4563,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class IX",
         "HIERARCHY": "2.X.5.1.14.10",
@@ -5010,7 +4574,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Supply Point Class X",
         "HIERARCHY": "2.X.5.1.14.11",
@@ -5022,7 +4585,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ammunition Points",
         "HIERARCHY": "2.X.5.1.15",
         "PATH": "Tactical Graphics/Combat Service Support/Points"
@@ -5033,7 +4595,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Ammunition Supply Point (ASP)",
         "HIERARCHY": "2.X.5.1.15.1",
@@ -5045,7 +4606,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.W.W1.N.",
         "DESCRIPTION": "Ammunition Transfer Point (ATP)",
         "HIERARCHY": "2.X.5.1.15.2",
@@ -5057,7 +4617,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.T.T1.W.W1.",
         "DESCRIPTION": "Medevac Pick-Up Point",
         "HIERARCHY": "2.X.5.1.16",
@@ -5070,7 +4629,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "2.X.5.2",
         "PATH": "Tactical Graphics/Combat Service Support"
@@ -5081,7 +4639,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Convoys",
         "HIERARCHY": "2.X.5.2.1",
         "PATH": "Tactical Graphics/Combat Service Support/Lines"
@@ -5092,7 +4649,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.H.H1.W.W1.",
         "DESCRIPTION": "Moving Convoy",
         "HIERARCHY": "2.X.5.2.1.1",
@@ -5104,7 +4660,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "9",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "A.H.H1.W.W1.",
         "DESCRIPTION": "Halted Convoy",
         "HIERARCHY": "2.X.5.2.1.2",
@@ -5116,7 +4671,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Supply Routes",
         "HIERARCHY": "2.X.5.2.2",
         "PATH": "Tactical Graphics/Combat Service Support/Lines"
@@ -5127,7 +4681,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Main Supply Route",
         "HIERARCHY": "2.X.5.2.2.1",
@@ -5139,7 +4692,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Alternate Supply Route",
         "HIERARCHY": "2.X.5.2.2.2",
@@ -5151,7 +4703,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Supply Route One-Way Traffic",
         "HIERARCHY": "2.X.5.2.2.3",
@@ -5163,7 +4714,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Supply Route Alternating Traffic",
         "HIERARCHY": "2.X.5.2.2.4",
@@ -5175,7 +4725,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Supply Route Two-Way Traffic",
         "HIERARCHY": "2.X.5.2.2.5",
@@ -5187,7 +4736,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Area",
         "HIERARCHY": "2.X.5.3",
         "PATH": "Tactical Graphics/Combat Service Support"
@@ -5198,7 +4746,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Detainee Holding Area",
         "HIERARCHY": "2.X.5.3.1",
@@ -5210,7 +4757,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Enemy Prisoner of War Holding Area",
         "HIERARCHY": "2.X.5.3.2",
@@ -5222,7 +4768,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Forward Arming and Refueling Area",
         "HIERARCHY": "2.X.5.3.3",
@@ -5234,7 +4779,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Refugee Holding Area",
         "HIERARCHY": "2.X.5.3.4",
@@ -5246,7 +4790,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Support Areas",
         "HIERARCHY": "2.X.5.3.5",
         "PATH": "Tactical Graphics/Combat Service Support/Area"
@@ -5257,7 +4800,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Brigade Support Area (BSA)",
         "HIERARCHY": "2.X.5.3.5.1",
@@ -5269,7 +4811,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Division Support Area (DSA)",
         "HIERARCHY": "2.X.5.3.5.2",
@@ -5281,7 +4822,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.",
         "DESCRIPTION": "Regimental Support Area (RSA)",
         "HIERARCHY": "2.X.5.3.5.3",
@@ -5293,7 +4833,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Other",
         "HIERARCHY": "2.X.6",
         "PATH": "Tactical Graphics"
@@ -5304,7 +4843,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Emergency",
         "HIERARCHY": "2.X.6.1",
         "PATH": "Tactical Graphics/Other"
@@ -5315,7 +4853,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ditched Aircraft",
         "HIERARCHY": "2.X.6.1.1",
         "PATH": "Tactical Graphics/Other/Emergency"
@@ -5326,7 +4863,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Person in Water",
         "HIERARCHY": "2.X.6.1.2",
         "PATH": "Tactical Graphics/Other/Emergency"
@@ -5337,7 +4873,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "T.T1.H.W.W1.N.",
         "DESCRIPTION": "Emergency Distress Call",
         "HIERARCHY": "2.X.6.1.4",
@@ -5349,7 +4884,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Distressed Vessel",
         "HIERARCHY": "2.X.6.1.3",
         "PATH": "Tactical Graphics/Other/Emergency"
@@ -5360,7 +4894,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hazard",
         "HIERARCHY": "2.X.6.2",
         "PATH": "Tactical Graphics/Other"
@@ -5371,7 +4904,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sea Mine-Like Hazard",
         "HIERARCHY": "2.X.6.2.1",
         "PATH": "Tactical Graphics/Other/Hazard"
@@ -5382,7 +4914,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Navigational Hazard",
         "HIERARCHY": "2.X.6.2.2",
         "PATH": "Tactical Graphics/Other/Hazard"
@@ -5393,7 +4924,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Iceberg Hazard",
         "HIERARCHY": "2.X.6.2.3",
         "PATH": "Tactical Graphics/Other/Hazard"
@@ -5404,7 +4934,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oil Rig Hazard",
         "HIERARCHY": "2.X.6.2.4",
         "PATH": "Tactical Graphics/Other/Hazard"
@@ -5415,7 +4944,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sea Subsurface Returns",
         "HIERARCHY": "2.X.6.3",
         "PATH": "Tactical Graphics/Other"
@@ -5426,7 +4954,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Return/Nombo",
         "HIERARCHY": "2.X.6.3.1",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns"
@@ -5437,7 +4964,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sea Installation/Manmade",
         "HIERARCHY": "2.X.6.3.1.1",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns/Bottom Return-Nombo"
@@ -5448,7 +4974,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Seabed Rock/Stone Obstacle",
         "HIERARCHY": "2.X.6.3.1.2",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns/Bottom Return-Nombo"
@@ -5459,7 +4984,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wreck, Nondangerous",
         "HIERARCHY": "2.X.6.3.1.3",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns/Bottom Return-Nombo"
@@ -5470,7 +4994,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wreck, Dangerous",
         "HIERARCHY": "2.X.6.3.1.3.1",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns/Bottom Return-Nombo/Wreck"
@@ -5481,7 +5004,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Marine Life",
         "HIERARCHY": "2.X.6.3.2",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns"
@@ -5492,7 +5014,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sea Anomaly",
         "HIERARCHY": "2.X.6.3.3",
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns"
@@ -5503,7 +5024,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bearing Line",
         "HIERARCHY": "2.X.6.4",
         "PATH": "Tactical Graphics/Other"
@@ -5514,7 +5034,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bearing Line Electronic",
         "HIERARCHY": "2.X.6.4.1",
         "PATH": "Tactical Graphics/Other/Bearing Line"
@@ -5525,7 +5044,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bearing Line Acoustic",
         "HIERARCHY": "2.X.6.4.2",
         "PATH": "Tactical Graphics/Other/Bearing Line"
@@ -5536,7 +5054,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bearing Line Torpedo",
         "HIERARCHY": "2.X.6.4.3",
         "PATH": "Tactical Graphics/Other/Bearing Line"
@@ -5547,7 +5064,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "6",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bearing Line Electro-Optical Intercept",
         "HIERARCHY": "2.X.6.4.4",
         "PATH": "Tactical Graphics/Other/Bearing Line"
@@ -5558,7 +5074,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix",
         "HIERARCHY": "2.X.6.5",
         "PATH": "Tactical Graphics/Other"
@@ -5569,7 +5084,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix Acoustic",
         "HIERARCHY": "2.X.6.5.1",
         "PATH": "Tactical Graphics/Other/Fix"
@@ -5580,7 +5094,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix Electro-Magnetic",
         "HIERARCHY": "2.X.6.5.2",
         "PATH": "Tactical Graphics/Other/Fix"
@@ -5591,7 +5104,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fix Electro-Optical",
         "HIERARCHY": "2.X.6.5.3",
         "PATH": "Tactical Graphics/Other/Fix"
@@ -5602,7 +5114,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "METOC",
         "HIERARCHY": "3.X"
       },
@@ -5612,7 +5123,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Atmospheric",
         "HIERARCHY": "3.X.1",
         "PATH": "METOC"
@@ -5623,7 +5133,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pressure Systems",
         "HIERARCHY": "3.X.1.1",
         "PATH": "METOC/Atmospheric"
@@ -5634,7 +5143,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Low Pressure Center",
         "HIERARCHY": "3.X.1.1.1",
         "PATH": "METOC/Atmospheric/Pressure Systems"
@@ -5645,7 +5153,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cyclone Center",
         "HIERARCHY": "3.X.1.1.1.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Low Pressure Center"
@@ -5656,7 +5163,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "X.",
         "DESCRIPTION": "Tropopause Low",
         "HIERARCHY": "3.X.1.1.1.2",
@@ -5668,7 +5174,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "High Pressure Center",
         "HIERARCHY": "3.X.1.1.2",
         "PATH": "METOC/Atmospheric/Pressure Systems"
@@ -5679,7 +5184,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Anticyclone Center",
         "HIERARCHY": "3.X.1.1.2.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/High Pressure Center"
@@ -5690,7 +5194,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "MODIFIERS": "X.",
         "DESCRIPTION": "Tropopause High",
         "HIERARCHY": "3.X.1.1.2.2",
@@ -5702,7 +5205,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Frontal Systems",
         "HIERARCHY": "3.X.1.1.3",
         "PATH": "METOC/Atmospheric/Pressure Systems"
@@ -5713,7 +5215,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cold Front",
         "HIERARCHY": "3.X.1.1.3.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems"
@@ -5724,7 +5225,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Upper Cold Front",
         "HIERARCHY": "3.X.1.1.3.1.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Cold Front"
@@ -5735,7 +5235,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cold Frontogenisis",
         "HIERARCHY": "3.X.1.1.3.1.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Cold Front"
@@ -5746,7 +5245,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cold Frontolysis",
         "HIERARCHY": "3.X.1.1.3.1.3",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Cold Front"
@@ -5757,7 +5255,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Warm Front",
         "HIERARCHY": "3.X.1.1.3.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems"
@@ -5768,7 +5265,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Upper Warm Front",
         "HIERARCHY": "3.X.1.1.3.2.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Warm Front"
@@ -5779,7 +5275,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Warm Frontogenisis",
         "HIERARCHY": "3.X.1.1.3.2.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Warm Front"
@@ -5790,7 +5285,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Warm Frontolysis",
         "HIERARCHY": "3.X.1.1.3.2.3",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Warm Front"
@@ -5801,7 +5295,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Occluded Front",
         "HIERARCHY": "3.X.1.1.3.3",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems"
@@ -5812,7 +5305,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Upper Occluded Front",
         "HIERARCHY": "3.X.1.1.3.3.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Occluded Front"
@@ -5823,7 +5315,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Occluded Frontolysis",
         "HIERARCHY": "3.X.1.1.3.3.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Occluded Front"
@@ -5834,7 +5325,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Stationary Front",
         "HIERARCHY": "3.X.1.1.3.4",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems"
@@ -5845,7 +5335,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Upper Stationary Front",
         "HIERARCHY": "3.X.1.1.3.4.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Stationary Front"
@@ -5856,7 +5345,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Stationary Frontogenesis",
         "HIERARCHY": "3.X.1.1.3.4.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Stationary Front"
@@ -5867,7 +5355,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Stationary Frontolysis",
         "HIERARCHY": "3.X.1.1.3.4.3",
         "PATH": "METOC/Atmospheric/Pressure Systems/Frontal Systems/Stationary Front"
@@ -5878,7 +5365,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lines",
         "HIERARCHY": "3.X.1.1.4",
         "PATH": "METOC/Atmospheric/Pressure Systems"
@@ -5889,7 +5375,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Trough Axis",
         "HIERARCHY": "3.X.1.1.4.1",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5900,7 +5385,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ridge Axis",
         "HIERARCHY": "3.X.1.1.4.2",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5911,7 +5395,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Squall Line",
         "HIERARCHY": "3.X.1.1.4.3",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5922,7 +5405,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Instability Line",
         "HIERARCHY": "3.X.1.1.4.4",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5933,7 +5415,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Shear Line",
         "HIERARCHY": "3.X.1.1.4.5",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5944,7 +5425,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Inter-Tropical Convergance Zone",
         "HIERARCHY": "3.X.1.1.4.6",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5955,7 +5435,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Convergance Line",
         "HIERARCHY": "3.X.1.1.4.7",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5966,7 +5445,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Inter-Tropical Discontinuity",
         "HIERARCHY": "3.X.1.1.4.8",
         "PATH": "METOC/Atmospheric/Pressure Systems/Lines"
@@ -5977,7 +5455,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Turbulence",
         "HIERARCHY": "3.X.1.2",
         "PATH": "METOC/Atmospheric"
@@ -5988,7 +5465,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Turbulence",
         "HIERARCHY": "3.X.1.2.1",
         "PATH": "METOC/Atmospheric/Turbulence"
@@ -5999,7 +5475,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Turbulence",
         "HIERARCHY": "3.X.1.2.2",
         "PATH": "METOC/Atmospheric/Turbulence"
@@ -6010,7 +5485,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Turbulence",
         "HIERARCHY": "3.X.1.2.3",
         "PATH": "METOC/Atmospheric/Turbulence"
@@ -6021,7 +5495,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Extreme Turbulence",
         "HIERARCHY": "3.X.1.2.4",
         "PATH": "METOC/Atmospheric/Turbulence"
@@ -6032,7 +5505,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mountain Waves",
         "HIERARCHY": "3.X.1.2.5",
         "PATH": "METOC/Atmospheric/Turbulence"
@@ -6043,7 +5515,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Icing",
         "HIERARCHY": "3.X.1.3",
         "PATH": "METOC/Atmospheric"
@@ -6054,7 +5525,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clear Icing",
         "HIERARCHY": "3.X.1.3.1",
         "PATH": "METOC/Atmospheric/Icing"
@@ -6065,7 +5535,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Clear Icing",
         "HIERARCHY": "3.X.1.3.1.1",
         "PATH": "METOC/Atmospheric/Icing/Clear Icing"
@@ -6076,7 +5545,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Clear Icing",
         "HIERARCHY": "3.X.1.3.1.2",
         "PATH": "METOC/Atmospheric/Icing/Clear Icing"
@@ -6087,7 +5555,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Clear Icing",
         "HIERARCHY": "3.X.1.3.1.3",
         "PATH": "METOC/Atmospheric/Icing/Clear Icing"
@@ -6098,7 +5565,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rime Icing",
         "HIERARCHY": "3.X.1.3.2",
         "PATH": "METOC/Atmospheric/Icing"
@@ -6109,7 +5575,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Rime Icing",
         "HIERARCHY": "3.X.1.3.2.1",
         "PATH": "METOC/Atmospheric/Icing/Rime Icing"
@@ -6120,7 +5585,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Rime Icing",
         "HIERARCHY": "3.X.1.3.2.2",
         "PATH": "METOC/Atmospheric/Icing/Rime Icing"
@@ -6131,7 +5595,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Rime Icing",
         "HIERARCHY": "3.X.1.3.2.3",
         "PATH": "METOC/Atmospheric/Icing/Rime Icing"
@@ -6142,7 +5605,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mixed Icing",
         "HIERARCHY": "3.X.1.3.3",
         "PATH": "METOC/Atmospheric/Icing"
@@ -6153,7 +5615,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Mixed Icing",
         "HIERARCHY": "3.X.1.3.3.1",
         "PATH": "METOC/Atmospheric/Icing/Mixed Icing"
@@ -6164,7 +5625,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Mixed Icing",
         "HIERARCHY": "3.X.1.3.3.2",
         "PATH": "METOC/Atmospheric/Icing/Mixed Icing"
@@ -6175,7 +5635,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Mixed Icing",
         "HIERARCHY": "3.X.1.3.3.3",
         "PATH": "METOC/Atmospheric/Icing/Mixed Icing"
@@ -6186,7 +5645,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Winds",
         "HIERARCHY": "3.X.1.4",
         "PATH": "METOC/Atmospheric"
@@ -6197,7 +5655,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Calm Winds",
         "HIERARCHY": "3.X.1.4.1",
         "PATH": "METOC/Atmospheric/Winds"
@@ -6208,7 +5665,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Jet Stream",
         "HIERARCHY": "3.X.1.4.3",
         "PATH": "METOC/Atmospheric/Winds"
@@ -6219,7 +5675,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Stream Line",
         "HIERARCHY": "3.X.1.4.4",
         "PATH": "METOC/Atmospheric/Winds"
@@ -6230,7 +5685,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cloud Coverage",
         "HIERARCHY": "3.X.1.5",
         "PATH": "METOC/Atmospheric"
@@ -6241,7 +5695,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cloud Coverage Symbols",
         "HIERARCHY": "3.X.1.5.1",
         "PATH": "METOC/Atmospheric/Cloud Coverage"
@@ -6252,7 +5705,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clear Sky",
         "HIERARCHY": "3.X.1.5.1.1",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6263,7 +5715,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Few Coverage",
         "HIERARCHY": "3.X.1.5.1.2",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6274,7 +5725,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Scattered Coverage",
         "HIERARCHY": "3.X.1.5.1.3",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6285,7 +5735,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Broken Coverage",
         "HIERARCHY": "3.X.1.5.1.4",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6296,7 +5745,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Overcast Coverage",
         "HIERARCHY": "3.X.1.5.1.5",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6307,7 +5755,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sky Totally or Partially Obscured",
         "HIERARCHY": "3.X.1.5.1.6",
         "PATH": "METOC/Atmospheric/Cloud Coverage/Cloud Coverage Symbols"
@@ -6318,7 +5765,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Weather Symbols",
         "HIERARCHY": "3.X.1.6",
         "PATH": "METOC/Atmospheric"
@@ -6329,7 +5775,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rain",
         "HIERARCHY": "3.X.1.6.1",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6340,7 +5785,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Light Rain",
         "HIERARCHY": "3.X.1.6.1.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain"
@@ -6351,7 +5795,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Light Rain",
         "HIERARCHY": "3.X.1.6.1.1.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain/Intermittent Light Rain"
@@ -6362,7 +5805,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Moderate Rain",
         "HIERARCHY": "3.X.1.6.1.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain"
@@ -6373,7 +5815,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Moderate Rain",
         "HIERARCHY": "3.X.1.6.1.2.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain/Intermittent Moderate Rain"
@@ -6384,7 +5825,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Heavy Rain",
         "HIERARCHY": "3.X.1.6.1.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain"
@@ -6395,7 +5835,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Heavy Rain",
         "HIERARCHY": "3.X.1.6.1.3.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain/Intermittent Heavy Rain"
@@ -6406,7 +5845,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Freezing Rain",
         "HIERARCHY": "3.X.1.6.2",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6417,7 +5855,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Freezing Rain",
         "HIERARCHY": "3.X.1.6.2.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Freezing Rain"
@@ -6428,7 +5865,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Heavy Freezing Rain",
         "HIERARCHY": "3.X.1.6.2.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Freezing Rain"
@@ -6439,7 +5875,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rain Showers",
         "HIERARCHY": "3.X.1.6.3",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6450,7 +5885,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Rain Showers",
         "HIERARCHY": "3.X.1.6.3.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain Showers"
@@ -6461,7 +5895,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Heavy Rain Showers",
         "HIERARCHY": "3.X.1.6.3.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain Showers"
@@ -6472,7 +5905,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Torrential Rain Showers",
         "HIERARCHY": "3.X.1.6.3.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain Showers"
@@ -6483,7 +5915,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Drizzle",
         "HIERARCHY": "3.X.1.6.4",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6494,7 +5925,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Light Drizzle",
         "HIERARCHY": "3.X.1.6.4.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle"
@@ -6505,7 +5935,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Light Drizzle",
         "HIERARCHY": "3.X.1.6.4.1.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle/Intermittent Light Drizzle"
@@ -6516,7 +5945,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Moderate Drizzle",
         "HIERARCHY": "3.X.1.6.4.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle"
@@ -6527,7 +5955,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Moderate Drizzle",
         "HIERARCHY": "3.X.1.6.4.2.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle/Intermittent Moderate Drizzle"
@@ -6538,7 +5965,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Heavy Drizzle",
         "HIERARCHY": "3.X.1.6.4.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle"
@@ -6549,7 +5975,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Heavy Drizzle",
         "HIERARCHY": "3.X.1.6.4.3.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Drizzle/Intermittent Heavy Drizzle"
@@ -6560,7 +5985,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Freezing Drizzle",
         "HIERARCHY": "3.X.1.6.5",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6571,7 +5995,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Freezing Drizzle",
         "HIERARCHY": "3.X.1.6.5.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Freezing Drizzle"
@@ -6582,7 +6005,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Heavy Freezing Drizzle",
         "HIERARCHY": "3.X.1.6.5.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Freezing Drizzle"
@@ -6593,7 +6015,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rain and Snow Mixed",
         "HIERARCHY": "3.X.1.6.6",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6604,7 +6025,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Rain or Drizzle and Snow",
         "HIERARCHY": "3.X.1.6.6.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain and Snow Mixed"
@@ -6615,7 +6035,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Heavy Rain or Drizzle and Snow",
         "HIERARCHY": "3.X.1.6.6.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain and Snow Mixed"
@@ -6626,7 +6045,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Rain and Snow Showers",
         "HIERARCHY": "3.X.1.6.6.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain and Snow Mixed"
@@ -6637,7 +6055,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Heavy Rain and Snow Showers",
         "HIERARCHY": "3.X.1.6.6.4",
         "PATH": "METOC/Atmospheric/Weather Symbols/Rain and Snow Mixed"
@@ -6648,7 +6065,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snow",
         "HIERARCHY": "3.X.1.6.7",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6659,7 +6075,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Light Snow",
         "HIERARCHY": "3.X.1.6.7.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow"
@@ -6670,7 +6085,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Light Snow",
         "HIERARCHY": "3.X.1.6.7.1.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow/Intermittent Light Snow"
@@ -6681,7 +6095,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Moderate Snow",
         "HIERARCHY": "3.X.1.6.7.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow"
@@ -6692,7 +6105,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Moderate Snow",
         "HIERARCHY": "3.X.1.6.7.2.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow/Intermittent Moderate Snow"
@@ -6703,7 +6115,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Intermittent Heavy Snow",
         "HIERARCHY": "3.X.1.6.7.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow"
@@ -6714,7 +6125,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Continuous Heavy Snow",
         "HIERARCHY": "3.X.1.6.7.3.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow/Intermittent Heavy Snow"
@@ -6725,7 +6135,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light/Moderate Blowing Snow",
         "HIERARCHY": "3.X.1.6.7.4",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow"
@@ -6736,7 +6145,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Heavy Blowing Snow",
         "HIERARCHY": "3.X.1.6.7.5",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow"
@@ -6747,7 +6155,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snow Grains",
         "HIERARCHY": "3.X.1.6.8",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6758,7 +6165,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snow Showers",
         "HIERARCHY": "3.X.1.6.9",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6769,7 +6175,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Snow Showers",
         "HIERARCHY": "3.X.1.6.9.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow Showers"
@@ -6780,7 +6185,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Heavy Snow Showers",
         "HIERARCHY": "3.X.1.6.9.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Snow Showers"
@@ -6791,7 +6195,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hail",
         "HIERARCHY": "3.X.1.6.10",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6802,7 +6205,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hail - Light not Associated With Thunder",
         "HIERARCHY": "3.X.1.6.10.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Hail"
@@ -6813,7 +6215,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hail - Moderate/Heavy not Associated With Thunder",
         "HIERARCHY": "3.X.1.6.10.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Hail"
@@ -6824,7 +6225,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Crystals",
         "HIERARCHY": "3.X.1.6.11",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6835,7 +6235,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Pellets",
         "HIERARCHY": "3.X.1.6.12",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6846,7 +6245,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Ice Pellets",
         "HIERARCHY": "3.X.1.6.12.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Ice Pellets"
@@ -6857,7 +6255,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate Ice Pellets",
         "HIERARCHY": "3.X.1.6.12.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Ice Pellets"
@@ -6868,7 +6265,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Heavy Ice Pellets",
         "HIERARCHY": "3.X.1.6.12.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Ice Pellets"
@@ -6879,7 +6275,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Storms",
         "HIERARCHY": "3.X.1.6.13",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6890,7 +6285,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thunderstorm - No Precipitation",
         "HIERARCHY": "3.X.1.6.13.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6901,7 +6295,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thunderstorm Light to Moderate With Rain/Snow - No Hail",
         "HIERARCHY": "3.X.1.6.13.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6912,7 +6305,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thunderstorm Heavy With Rain/Snow - No Hail",
         "HIERARCHY": "3.X.1.6.13.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6923,7 +6315,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thunderstorm Light to Moderate - With Hail",
         "HIERARCHY": "3.X.1.6.13.4",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6934,7 +6325,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thunderstorm Heavy - With Hail",
         "HIERARCHY": "3.X.1.6.13.5",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6945,7 +6335,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Funnel Cloud (Tornado/Waterspout)",
         "HIERARCHY": "3.X.1.6.13.6",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6956,7 +6345,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Squall",
         "HIERARCHY": "3.X.1.6.13.7",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6967,7 +6355,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lightning",
         "HIERARCHY": "3.X.1.6.13.8",
         "PATH": "METOC/Atmospheric/Weather Symbols/Storms"
@@ -6978,7 +6365,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog",
         "HIERARCHY": "3.X.1.6.14",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6989,7 +6375,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Shallow Patches",
         "HIERARCHY": "3.X.1.6.14.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7000,7 +6385,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Shallow Continuous",
         "HIERARCHY": "3.X.1.6.14.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7011,7 +6395,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Patchy",
         "HIERARCHY": "3.X.1.6.14.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7022,7 +6405,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Sky Visible",
         "HIERARCHY": "3.X.1.6.14.4",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7033,7 +6415,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Sky Obscured",
         "HIERARCHY": "3.X.1.6.14.5",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7044,7 +6425,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Freezing, Sky Visible",
         "HIERARCHY": "3.X.1.6.14.6",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7055,7 +6435,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fog - Freezing, Sky Not Visible",
         "HIERARCHY": "3.X.1.6.14.7",
         "PATH": "METOC/Atmospheric/Weather Symbols/Fog"
@@ -7066,7 +6445,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mist",
         "HIERARCHY": "3.X.1.6.15",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7077,7 +6455,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Smoke Point",
         "HIERARCHY": "3.X.1.6.16",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7088,7 +6465,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Haze",
         "HIERARCHY": "3.X.1.6.17",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7099,7 +6475,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dust or Sand",
         "HIERARCHY": "3.X.1.6.18",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7110,7 +6485,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light to Moderate Dust/Sand Storm",
         "HIERARCHY": "3.X.1.6.18.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Dust or Sand"
@@ -7121,7 +6495,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Severe Dust/Sand Storm",
         "HIERARCHY": "3.X.1.6.18.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Dust or Sand"
@@ -7132,7 +6505,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dust Devil",
         "HIERARCHY": "3.X.1.6.18.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Dust or Sand"
@@ -7143,7 +6515,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Blowing Dust or Sand",
         "HIERARCHY": "3.X.1.6.18.4",
         "PATH": "METOC/Atmospheric/Weather Symbols/Dust or Sand"
@@ -7154,7 +6525,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tropical Storm Systems",
         "HIERARCHY": "3.X.1.6.19",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7165,7 +6535,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tropical Depression",
         "HIERARCHY": "3.X.1.6.19.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Tropical Storm Systems"
@@ -7176,7 +6545,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tropical Storm",
         "HIERARCHY": "3.X.1.6.19.2",
         "PATH": "METOC/Atmospheric/Weather Symbols/Tropical Storm Systems"
@@ -7187,7 +6555,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hurricane/Typhoon",
         "HIERARCHY": "3.X.1.6.19.3",
         "PATH": "METOC/Atmospheric/Weather Symbols/Tropical Storm Systems"
@@ -7198,7 +6565,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Volcanic Eruption",
         "HIERARCHY": "3.X.1.6.20",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7209,7 +6575,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Volcanic Ash",
         "HIERARCHY": "3.X.1.6.20.1",
         "PATH": "METOC/Atmospheric/Weather Symbols/Volcanic Eruption"
@@ -7220,7 +6585,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tropopause Level",
         "HIERARCHY": "3.X.1.6.21",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7231,7 +6595,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Freezing Level",
         "HIERARCHY": "3.X.1.6.22",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7242,7 +6605,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Precipiation of Unknown Type and Intensity",
         "HIERARCHY": "3.X.1.6.23",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7253,7 +6615,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bounded Areas of Weather",
         "HIERARCHY": "3.X.1.7",
         "PATH": "METOC/Atmospheric"
@@ -7264,7 +6625,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "IFR",
         "HIERARCHY": "3.X.1.7.1",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7275,7 +6635,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "MVFR",
         "HIERARCHY": "3.X.1.7.2",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7286,7 +6645,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Turbulence",
         "HIERARCHY": "3.X.1.7.3",
@@ -7298,7 +6656,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Icing",
         "HIERARCHY": "3.X.1.7.4",
@@ -7310,7 +6667,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Precipiation Non-Convective",
         "HIERARCHY": "3.X.1.7.5",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7321,7 +6677,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Precipitation Convective",
         "HIERARCHY": "3.X.1.7.5.1",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather/Precipiation Non-Convective"
@@ -7332,7 +6687,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Frozen Precipitation",
         "HIERARCHY": "3.X.1.7.6",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7343,7 +6697,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Thunderstorm",
         "HIERARCHY": "3.X.1.7.7",
@@ -7355,7 +6708,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Weather Fog",
         "HIERARCHY": "3.X.1.7.8",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7366,7 +6718,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Weather Sand",
         "HIERARCHY": "3.X.1.7.9",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7377,7 +6728,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Freeform",
         "HIERARCHY": "3.X.1.7.10",
@@ -7389,7 +6739,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isopleths",
         "HIERARCHY": "3.X.1.8",
         "PATH": "METOC/Atmospheric"
@@ -7400,7 +6749,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isobar Surface",
         "HIERARCHY": "3.X.1.8.1",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7411,7 +6759,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Upper Air",
         "HIERARCHY": "3.X.1.8.2",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7422,7 +6769,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isotherm",
         "HIERARCHY": "3.X.1.8.3",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7433,7 +6779,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isotach",
         "HIERARCHY": "3.X.1.8.4",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7444,7 +6789,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isodrosotherm",
         "HIERARCHY": "3.X.1.8.5",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7455,7 +6799,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Isopleths Thickness",
         "HIERARCHY": "3.X.1.8.6",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7466,7 +6809,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Operator Freeform",
         "HIERARCHY": "3.X.1.8.7",
         "PATH": "METOC/Atmospheric/Isopleths"
@@ -7477,7 +6819,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "State of the Ground",
         "HIERARCHY": "3.X.1.9",
         "PATH": "METOC/Atmospheric"
@@ -7488,7 +6829,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Without Snow or Measureable Ice Cover",
         "HIERARCHY": "3.X.1.9.1",
         "PATH": "METOC/Atmospheric/State of the Ground"
@@ -7499,7 +6839,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Loose Sand",
         "HIERARCHY": "3.X.1.9.1.1",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7510,7 +6849,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Surface Moist",
         "HIERARCHY": "3.X.1.9.1.2",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7521,7 +6859,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Surface Wet, Standing Water in Small or Large Pools",
         "HIERARCHY": "3.X.1.9.1.3",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7532,7 +6869,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Surface Flooded",
         "HIERARCHY": "3.X.1.9.1.4",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7543,7 +6879,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Surface Frozen",
         "HIERARCHY": "3.X.1.9.1.5",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7554,7 +6889,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Glaze (Thin Ice) on Ground",
         "HIERARCHY": "3.X.1.9.1.6",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7565,7 +6899,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Loose Dry Dust or Sand not Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.1.7",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7576,7 +6909,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Thin Loose Dry Dust or Sand Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.1.8",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7587,7 +6919,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Moderate/Thick Loose Dry Dust or Sand Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.1.9",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7598,7 +6929,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Extremely Dry With Cracks",
         "HIERARCHY": "3.X.1.9.1.10",
         "PATH": "METOC/Atmospheric/State of the Ground/Without Snow or Measureable Ice Cover"
@@ -7609,7 +6939,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "With Snow or Measureable Ice Cover",
         "HIERARCHY": "3.X.1.9.2",
         "PATH": "METOC/Atmospheric/State of the Ground"
@@ -7620,7 +6949,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Predominately Ice Covered",
         "HIERARCHY": "3.X.1.9.2.1",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7631,7 +6959,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Compact or Wet Snow (With or Without Ice) Covering Less than One-Hald of Ground",
         "HIERARCHY": "3.X.1.9.2.2",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7642,7 +6969,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Compact or Wet Snow Covering At Least One-Half Ground, but Ground not Completely Covered",
         "HIERARCHY": "3.X.1.9.2.3",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7653,7 +6979,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Even Layer of Compact or Wet Snow Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.2.4",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7664,7 +6989,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Uneven Layer of Compact or Wet Snow Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.2.5",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7675,7 +6999,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Loose Dry Snow Covering Less than One-Half of Ground",
         "HIERARCHY": "3.X.1.9.2.6",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7686,7 +7009,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Loose Dry Snow Covering at Least One-Half Ground, but not Completely Covered",
         "HIERARCHY": "3.X.1.9.2.7",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7697,7 +7019,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Even Layer of Loose Dry Snow Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.2.8",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7708,7 +7029,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Uneven Layer of Loose Dry Snow Covering Ground Completely",
         "HIERARCHY": "3.X.1.9.2.9",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7719,7 +7039,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snow Covering Ground Completely, Deep Drifts",
         "HIERARCHY": "3.X.1.9.2.10",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
@@ -7730,7 +7049,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oceanic",
         "HIERARCHY": "3.X.2",
         "PATH": "METOC"
@@ -7741,7 +7059,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Systems",
         "HIERARCHY": "3.X.2.1",
         "PATH": "METOC/Oceanic"
@@ -7752,7 +7069,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Icebergs",
         "HIERARCHY": "3.X.2.1.1",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -7763,7 +7079,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Many Icebergs",
         "HIERARCHY": "3.X.2.1.1.1",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7774,7 +7089,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Belts and Strips",
         "HIERARCHY": "3.X.2.1.1.2",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7785,7 +7099,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Iceberg - General",
         "HIERARCHY": "3.X.2.1.1.3",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7796,7 +7109,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Many Icebergs - General",
         "HIERARCHY": "3.X.2.1.1.4",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7807,7 +7119,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bergy Bit",
         "HIERARCHY": "3.X.2.1.1.5",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7818,7 +7129,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Many Bergy Bits",
         "HIERARCHY": "3.X.2.1.1.6",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7829,7 +7139,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Growler",
         "HIERARCHY": "3.X.2.1.1.7",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7840,7 +7149,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Many Growlers",
         "HIERARCHY": "3.X.2.1.1.8",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7851,7 +7159,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Floeberg",
         "HIERARCHY": "3.X.2.1.1.9",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7862,7 +7169,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Island",
         "HIERARCHY": "3.X.2.1.1.10",
         "PATH": "METOC/Oceanic/Ice Systems/Icebergs"
@@ -7873,7 +7179,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Concentration",
         "HIERARCHY": "3.X.2.1.2",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -7884,7 +7189,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bergy Water",
         "HIERARCHY": "3.X.2.1.2.1",
         "PATH": "METOC/Oceanic/Ice Systems/Ice Concentration"
@@ -7895,7 +7199,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Water With Radar Targets",
         "HIERARCHY": "3.X.2.1.2.2",
         "PATH": "METOC/Oceanic/Ice Systems/Ice Concentration"
@@ -7906,7 +7209,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Free",
         "HIERARCHY": "3.X.2.1.2.3",
         "PATH": "METOC/Oceanic/Ice Systems/Ice Concentration"
@@ -7917,7 +7219,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dynamic Processes",
         "HIERARCHY": "3.X.2.1.3",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -7928,7 +7229,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Convergence",
         "HIERARCHY": "3.X.2.1.3.1",
         "PATH": "METOC/Oceanic/Ice Systems/Dynamic Processes"
@@ -7939,7 +7239,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Divergence",
         "HIERARCHY": "3.X.2.1.3.2",
         "PATH": "METOC/Oceanic/Ice Systems/Dynamic Processes"
@@ -7950,7 +7249,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Shearing or Shear Zone",
         "HIERARCHY": "3.X.2.1.3.3",
         "PATH": "METOC/Oceanic/Ice Systems/Dynamic Processes"
@@ -7961,7 +7259,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Drift (Direction)",
         "HIERARCHY": "3.X.2.1.3.4",
         "PATH": "METOC/Oceanic/Ice Systems/Dynamic Processes"
@@ -7972,7 +7269,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sea Ice",
         "HIERARCHY": "3.X.2.1.4",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -7983,7 +7279,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Thickness (Observed)",
         "HIERARCHY": "3.X.2.1.4.1",
         "PATH": "METOC/Oceanic/Ice Systems/Sea Ice"
@@ -7994,7 +7289,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Thickness (Estimated)",
         "HIERARCHY": "3.X.2.1.4.2",
         "PATH": "METOC/Oceanic/Ice Systems/Sea Ice"
@@ -8005,7 +7299,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Melt Puddles or Flooded Ice",
         "HIERARCHY": "3.X.2.1.4.3",
         "PATH": "METOC/Oceanic/Ice Systems/Sea Ice"
@@ -8016,7 +7309,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Limits",
         "HIERARCHY": "3.X.2.1.5",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -8027,7 +7319,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Limit of Visual Observation",
         "HIERARCHY": "3.X.2.1.5.1",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8038,7 +7329,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Limit of Undercast",
         "HIERARCHY": "3.X.2.1.5.2",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8049,7 +7339,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Limit of Radar Observation",
         "HIERARCHY": "3.X.2.1.5.3",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8060,7 +7349,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Observed Ice Edge",
         "HIERARCHY": "3.X.2.1.5.4",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8071,7 +7359,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Estimated Ice Edge",
         "HIERARCHY": "3.X.2.1.5.5",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8082,7 +7369,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Edge From Radar",
         "HIERARCHY": "3.X.2.1.5.6",
         "PATH": "METOC/Oceanic/Ice Systems/Limits"
@@ -8093,7 +7379,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Openings in the Ice",
         "HIERARCHY": "3.X.2.1.6",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -8104,7 +7389,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cracks",
         "HIERARCHY": "3.X.2.1.6.1",
         "PATH": "METOC/Oceanic/Ice Systems/Openings in the Ice"
@@ -8115,7 +7399,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cracks Specific-Location",
         "HIERARCHY": "3.X.2.1.6.2",
         "PATH": "METOC/Oceanic/Ice Systems/Openings in the Ice"
@@ -8126,7 +7409,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ice Openings-Lead",
         "HIERARCHY": "3.X.2.1.6.3",
         "PATH": "METOC/Oceanic/Ice Systems/Openings in the Ice"
@@ -8137,7 +7419,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Frozen Lead",
         "HIERARCHY": "3.X.2.1.6.4",
         "PATH": "METOC/Oceanic/Ice Systems/Openings in the Ice"
@@ -8148,7 +7429,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snow Cover",
         "HIERARCHY": "3.X.2.1.7",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -8159,7 +7439,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sastrugi",
         "HIERARCHY": "3.X.2.1.7.1",
         "PATH": "METOC/Oceanic/Ice Systems/Snow Cover"
@@ -8170,7 +7449,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Topographical Features",
         "HIERARCHY": "3.X.2.1.8",
         "PATH": "METOC/Oceanic/Ice Systems"
@@ -8181,7 +7459,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ridges or Hummocks",
         "HIERARCHY": "3.X.2.1.8.1",
         "PATH": "METOC/Oceanic/Ice Systems/Topographical Features"
@@ -8192,7 +7469,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rafting",
         "HIERARCHY": "3.X.2.1.8.2",
         "PATH": "METOC/Oceanic/Ice Systems/Topographical Features"
@@ -8203,7 +7479,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Jammed Brash Barrier",
         "HIERARCHY": "3.X.2.1.8.3",
         "PATH": "METOC/Oceanic/Ice Systems/Topographical Features"
@@ -8214,7 +7489,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Hydrography",
         "HIERARCHY": "3.X.2.2",
         "PATH": "METOC/Oceanic"
@@ -8225,7 +7499,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Depth",
         "HIERARCHY": "3.X.2.2.1",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -8236,7 +7509,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Soundings",
         "HIERARCHY": "3.X.2.2.1.1",
         "PATH": "METOC/Oceanic/Hydrography/Depth"
@@ -8247,7 +7519,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Depth Curve",
         "HIERARCHY": "3.X.2.2.1.2",
         "PATH": "METOC/Oceanic/Hydrography/Depth"
@@ -8258,7 +7529,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Depth Contour",
         "HIERARCHY": "3.X.2.2.1.3",
         "PATH": "METOC/Oceanic/Hydrography/Depth"
@@ -8269,7 +7539,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Depth Area",
         "HIERARCHY": "3.X.2.2.1.4",
         "PATH": "METOC/Oceanic/Hydrography/Depth"
@@ -8280,7 +7549,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coastal Hydrography",
         "HIERARCHY": "3.X.2.2.2",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -8291,7 +7559,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coastline",
         "HIERARCHY": "3.X.2.2.2.1",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography"
@@ -8302,7 +7569,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Island",
         "HIERARCHY": "3.X.2.2.2.2",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography"
@@ -8313,7 +7579,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach",
         "HIERARCHY": "3.X.2.2.2.3",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography"
@@ -8324,7 +7589,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Water",
         "HIERARCHY": "3.X.2.2.2.4",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography"
@@ -8335,7 +7599,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foreshore",
         "HIERARCHY": "3.X.2.2.2.5",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography"
@@ -8346,7 +7609,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foreshore Line",
         "HIERARCHY": "3.X.2.2.2.5.1",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography/Foreshore"
@@ -8357,7 +7619,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foreshore Area",
         "HIERARCHY": "3.X.2.2.2.5.2",
         "PATH": "METOC/Oceanic/Hydrography/Coastal Hydrography/Foreshore"
@@ -8368,7 +7629,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ports and Harbors",
         "HIERARCHY": "3.X.2.2.3",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -8379,7 +7639,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ports",
         "HIERARCHY": "3.X.2.2.3.1",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors"
@@ -8390,7 +7649,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Berths (Onshore)",
         "HIERARCHY": "3.X.2.2.3.1.1",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8401,7 +7659,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Berths (Anchor)",
         "HIERARCHY": "3.X.2.2.3.1.2",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8412,7 +7669,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Anchorage",
         "HIERARCHY": "3.X.2.2.3.1.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8423,7 +7679,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Anchorage Line",
         "HIERARCHY": "3.X.2.2.3.1.4",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8434,7 +7689,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Anchorage Area",
         "HIERARCHY": "3.X.2.2.3.1.5",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8445,7 +7699,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Call in Point",
         "HIERARCHY": "3.X.2.2.3.1.6",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8456,7 +7709,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pier",
         "HIERARCHY": "3.X.2.2.3.1.7",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Ports"
@@ -8467,7 +7719,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fishing",
         "HIERARCHY": "3.X.2.2.3.2",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors"
@@ -8478,7 +7729,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fishing Harbor",
         "HIERARCHY": "3.X.2.2.3.2.1",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Fishing"
@@ -8489,7 +7739,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fish Stakes/Traps/Weirs",
         "HIERARCHY": "3.X.2.2.3.2.2",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Fishing"
@@ -8500,7 +7749,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fish Stakes",
         "HIERARCHY": "3.X.2.2.3.2.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Fishing"
@@ -8511,7 +7759,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wiers",
         "HIERARCHY": "3.X.2.2.3.2.4",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Fishing"
@@ -8522,7 +7769,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Facilities",
         "HIERARCHY": "3.X.2.2.3.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors"
@@ -8533,7 +7779,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Drydock",
         "HIERARCHY": "3.X.2.2.3.3.1",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8544,7 +7789,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Landing Place",
         "HIERARCHY": "3.X.2.2.3.3.2",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8555,7 +7799,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Offshore Loading Facility 1",
         "HIERARCHY": "3.X.2.2.3.3.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8566,7 +7809,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Offshore Loading Facility 2",
         "HIERARCHY": "3.X.2.2.3.3.4",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8577,7 +7819,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Offshore Loading Facility Area",
         "HIERARCHY": "3.X.2.2.3.3.5",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8588,7 +7829,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ramp Above Water",
         "HIERARCHY": "3.X.2.2.3.3.6",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8599,7 +7839,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ramp Below Water",
         "HIERARCHY": "3.X.2.2.3.3.7",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8610,7 +7849,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Landing Ring",
         "HIERARCHY": "3.X.2.2.3.3.8",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8621,7 +7859,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ferry Crossing",
         "HIERARCHY": "3.X.2.2.3.3.9",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8632,7 +7869,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cable Ferry Crossing",
         "HIERARCHY": "3.X.2.2.3.3.10",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8643,7 +7879,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dolphin",
         "HIERARCHY": "3.X.2.2.3.3.11",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -8654,7 +7889,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Shoreline Protection",
         "HIERARCHY": "3.X.2.2.3.4",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors"
@@ -8665,7 +7899,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Jetty Above Water",
         "HIERARCHY": "3.X.2.2.3.4.1",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Shoreline Protection"
@@ -8676,7 +7909,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Jetty Below Water",
         "HIERARCHY": "3.X.2.2.3.4.2",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Shoreline Protection"
@@ -8687,7 +7919,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Seawall",
         "HIERARCHY": "3.X.2.2.3.4.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Shoreline Protection"
@@ -8698,7 +7929,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Aids to Navigation",
         "HIERARCHY": "3.X.2.2.4",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -8709,7 +7939,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beacon",
         "HIERARCHY": "3.X.2.2.4.1",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8720,7 +7949,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Buoy Default",
         "HIERARCHY": "3.X.2.2.4.2",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8731,7 +7959,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Marker",
         "HIERARCHY": "3.X.2.2.4.3",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8742,7 +7969,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Perches/Stakes",
         "HIERARCHY": "3.X.2.2.4.4",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8753,7 +7979,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Perches/Stakes",
         "HIERARCHY": "3.X.2.2.4.4.1",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation/Perches-Stakes"
@@ -8764,7 +7989,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Perches",
         "HIERARCHY": "3.X.2.2.4.4.2",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation/Perches-Stakes"
@@ -8775,7 +7999,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light",
         "HIERARCHY": "3.X.2.2.4.5",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8786,7 +8009,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Leading Line",
         "HIERARCHY": "3.X.2.2.4.6",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8797,7 +8019,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Light Vessel/Lightship",
         "HIERARCHY": "3.X.2.2.4.7",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8808,7 +8029,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lighthouse",
         "HIERARCHY": "3.X.2.2.4.8",
         "PATH": "METOC/Oceanic/Hydrography/Aids to Navigation"
@@ -8819,7 +8039,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Dangers/Hazards",
         "HIERARCHY": "3.X.2.2.5",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -8830,7 +8049,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rock Submerged",
         "HIERARCHY": "3.X.2.2.5.1",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8841,7 +8059,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rock Awashed",
         "HIERARCHY": "3.X.2.2.5.2",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8852,7 +8069,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Underwater Hazard",
         "HIERARCHY": "3.X.2.2.5.3",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8863,7 +8079,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foul Ground",
         "HIERARCHY": "3.X.2.2.5.4",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8874,7 +8089,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foul Ground Point",
         "HIERARCHY": "3.X.2.2.5.4.1",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Foul Ground"
@@ -8885,7 +8099,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Foul Ground Area",
         "HIERARCHY": "3.X.2.2.5.4.2",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Foul Ground"
@@ -8896,7 +8109,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Kelp/Seaweed",
         "HIERARCHY": "3.X.2.2.5.5",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8907,7 +8119,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Kelp/Seaweed Point",
         "HIERARCHY": "3.X.2.2.5.5.1",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8918,7 +8129,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Kelp/Seaweed Area",
         "HIERARCHY": "3.X.2.2.5.5.2",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Kelp-Seaweed"
@@ -8929,7 +8139,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mine-Naval",
         "HIERARCHY": "3.X.2.2.5.6",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8940,7 +8149,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mine-Naval (Doubtful)",
         "HIERARCHY": "3.X.2.2.5.6.1",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Mine-Naval"
@@ -8951,7 +8159,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mine-Naval (Definite)",
         "HIERARCHY": "3.X.2.2.5.6.2",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Mine-Naval"
@@ -8962,7 +8169,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Snags/Stumps",
         "HIERARCHY": "3.X.2.2.5.7",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8973,7 +8179,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wreck",
         "HIERARCHY": "3.X.2.2.5.8",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -8984,7 +8189,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wreck (Uncovers)",
         "HIERARCHY": "3.X.2.2.5.8.1",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Wreck"
@@ -8995,7 +8199,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Wreck (Submerged)",
         "HIERARCHY": "3.X.2.2.5.8.2",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards/Wreck"
@@ -9006,7 +8209,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Breaker",
         "HIERARCHY": "3.X.2.2.5.9",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -9017,7 +8219,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Reef",
         "HIERARCHY": "3.X.2.2.5.10",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -9028,7 +8229,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Eddies/Overfalls/Tide Rips",
         "HIERARCHY": "3.X.2.2.5.11",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -9039,7 +8239,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Discolored Water",
         "HIERARCHY": "3.X.2.2.5.12",
         "PATH": "METOC/Oceanic/Hydrography/Dangers-Hazards"
@@ -9050,7 +8249,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Features",
         "HIERARCHY": "3.X.2.2.6",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -9061,7 +8259,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Characteristics",
         "HIERARCHY": "3.X.2.2.6.1",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features"
@@ -9072,7 +8269,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sand",
         "HIERARCHY": "3.X.2.2.6.1.1",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9083,7 +8279,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mud",
         "HIERARCHY": "3.X.2.2.6.1.2",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9094,7 +8289,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clay",
         "HIERARCHY": "3.X.2.2.6.1.3",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9105,7 +8299,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Silt",
         "HIERARCHY": "3.X.2.2.6.1.4",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9116,7 +8309,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Stones",
         "HIERARCHY": "3.X.2.2.6.1.5",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9127,7 +8319,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Gravel",
         "HIERARCHY": "3.X.2.2.6.1.6",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9138,7 +8329,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pebbles",
         "HIERARCHY": "3.X.2.2.6.1.7",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9149,7 +8339,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cobbles",
         "HIERARCHY": "3.X.2.2.6.1.8",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9160,7 +8349,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Rock",
         "HIERARCHY": "3.X.2.2.6.1.9",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9171,7 +8359,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coral",
         "HIERARCHY": "3.X.2.2.6.1.10",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9182,7 +8369,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Shell",
         "HIERARCHY": "3.X.2.2.6.1.11",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Bottom Characteristics"
@@ -9193,7 +8379,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Qualifying Terms",
         "HIERARCHY": "3.X.2.2.6.2",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features"
@@ -9204,7 +8389,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fine",
         "HIERARCHY": "3.X.2.2.6.2.1",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Qualifying Terms"
@@ -9215,7 +8399,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Medium",
         "HIERARCHY": "3.X.2.2.6.2.2",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Qualifying Terms"
@@ -9226,7 +8409,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coarse",
         "HIERARCHY": "3.X.2.2.6.2.3",
         "PATH": "METOC/Oceanic/Hydrography/Bottom Features/Qualifying Terms"
@@ -9237,7 +8419,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tide and Current",
         "HIERARCHY": "3.X.2.2.7",
         "PATH": "METOC/Oceanic/Hydrography"
@@ -9248,7 +8429,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Water Turbulence",
         "HIERARCHY": "3.X.2.2.7.1",
         "PATH": "METOC/Oceanic/Hydrography/Tide and Current"
@@ -9259,7 +8439,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ebb Tide",
         "HIERARCHY": "3.X.2.2.7.2",
         "PATH": "METOC/Oceanic/Hydrography/Tide and Current"
@@ -9270,7 +8449,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Flood Tide",
         "HIERARCHY": "3.X.2.2.7.3",
         "PATH": "METOC/Oceanic/Hydrography/Tide and Current"
@@ -9281,7 +8459,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tide Data Point",
         "HIERARCHY": "3.X.2.2.7.4",
         "PATH": "METOC/Oceanic/Hydrography/Tide and Current"
@@ -9292,7 +8469,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Tide Gauge",
         "HIERARCHY": "3.X.2.2.7.5",
         "PATH": "METOC/Oceanic/Hydrography/Tide and Current"
@@ -9303,7 +8479,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oceanography",
         "HIERARCHY": "3.X.2.3",
         "PATH": "METOC/Oceanic"
@@ -9314,7 +8489,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bioluminescence",
         "HIERARCHY": "3.X.2.3.1",
         "PATH": "METOC/Oceanic/Oceanography"
@@ -9325,7 +8499,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 1-2",
         "HIERARCHY": "3.X.2.3.1.1",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9336,7 +8509,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 2-3",
         "HIERARCHY": "3.X.2.3.1.2",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9347,7 +8519,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 3-4",
         "HIERARCHY": "3.X.2.3.1.3",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9358,7 +8529,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 4-5",
         "HIERARCHY": "3.X.2.3.1.4",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9369,7 +8539,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 5-6",
         "HIERARCHY": "3.X.2.3.1.5",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9380,7 +8549,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 6-7",
         "HIERARCHY": "3.X.2.3.1.6",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9391,7 +8559,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 7-8",
         "HIERARCHY": "3.X.2.3.1.7",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9402,7 +8569,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 8-9",
         "HIERARCHY": "3.X.2.3.1.8",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9413,7 +8579,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "VDR Level 9-10",
         "HIERARCHY": "3.X.2.3.1.9",
         "PATH": "METOC/Oceanic/Oceanography/Bioluminescence"
@@ -9424,7 +8589,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach Slope",
         "HIERARCHY": "3.X.2.3.2",
         "PATH": "METOC/Oceanic/Oceanography"
@@ -9435,7 +8599,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach Slope Flat",
         "HIERARCHY": "3.X.2.3.2.1",
         "PATH": "METOC/Oceanic/Oceanography/Beach Slope"
@@ -9446,7 +8609,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach Slope Gentle",
         "HIERARCHY": "3.X.2.3.2.2",
         "PATH": "METOC/Oceanic/Oceanography/Beach Slope"
@@ -9457,7 +8619,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach Slope Moderate",
         "HIERARCHY": "3.X.2.3.2.3",
         "PATH": "METOC/Oceanic/Oceanography/Beach Slope"
@@ -9468,7 +8629,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Beach Slope Steep",
         "HIERARCHY": "3.X.2.3.2.4",
         "PATH": "METOC/Oceanic/Oceanography/Beach Slope"
@@ -9479,7 +8639,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Geophysics/Acoustics",
         "HIERARCHY": "3.X.2.4",
         "PATH": "METOC/Oceanic"
@@ -9490,7 +8649,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Mine Warefare Bottom Descriptors",
         "HIERARCHY": "3.X.2.4.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics"
@@ -9501,7 +8659,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Miw-Bottom Sediments",
         "HIERARCHY": "3.X.2.4.1.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9512,7 +8669,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Solid Rock",
         "HIERARCHY": "3.X.2.4.1.1.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9523,7 +8679,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clay",
         "HIERARCHY": "3.X.2.4.1.1.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9534,7 +8689,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Very Course Sand",
         "HIERARCHY": "3.X.2.4.1.1.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9545,7 +8699,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coarse Sand",
         "HIERARCHY": "3.X.2.4.1.1.4",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9556,7 +8709,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Medium Sand",
         "HIERARCHY": "3.X.2.4.1.1.5",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9567,7 +8719,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fine Sand",
         "HIERARCHY": "3.X.2.4.1.1.6",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9578,7 +8729,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Very Fine Sand",
         "HIERARCHY": "3.X.2.4.1.1.7",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9589,7 +8739,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Very Fine Silt",
         "HIERARCHY": "3.X.2.4.1.1.8",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9600,7 +8749,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Fine Silt",
         "HIERARCHY": "3.X.2.4.1.1.9",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9611,7 +8759,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Medium Silt",
         "HIERARCHY": "3.X.2.4.1.1.10",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9622,7 +8769,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Coarse Silt",
         "HIERARCHY": "3.X.2.4.1.1.11",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9633,7 +8779,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Boulders",
         "HIERARCHY": "3.X.2.4.1.1.12",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9644,7 +8789,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oyster Shells",
         "HIERARCHY": "3.X.2.4.1.1.13",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9655,7 +8799,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pebbles Shells",
         "HIERARCHY": "3.X.2.4.1.1.14",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9666,7 +8809,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Sand and Shells",
         "HIERARCHY": "3.X.2.4.1.1.15",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9677,7 +8819,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Sediments Land 1",
         "HIERARCHY": "3.X.2.4.1.1.16",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9688,7 +8829,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Sediments Land 2",
         "HIERARCHY": "3.X.2.4.1.1.17",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw-Bottom Sediments"
@@ -9699,7 +8839,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Roughness",
         "HIERARCHY": "3.X.2.4.1.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9710,7 +8849,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Roughness Smooth",
         "HIERARCHY": "3.X.2.4.1.2.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Bottom Roughness"
@@ -9721,7 +8859,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Roughness Moderate",
         "HIERARCHY": "3.X.2.4.1.2.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Bottom Roughness"
@@ -9732,7 +8869,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Roughness Rough",
         "HIERARCHY": "3.X.2.4.1.2.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Bottom Roughness"
@@ -9743,7 +8879,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clutter Low",
         "HIERARCHY": "3.X.2.4.1.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9754,7 +8889,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clutter Low",
         "HIERARCHY": "3.X.2.4.1.3.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Clutter Low"
@@ -9765,7 +8899,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clutter Medium",
         "HIERARCHY": "3.X.2.4.1.3.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Clutter Low"
@@ -9776,7 +8909,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Clutter High",
         "HIERARCHY": "3.X.2.4.1.3.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Clutter Low"
@@ -9787,7 +8919,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial",
         "HIERARCHY": "3.X.2.4.1.4",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9798,7 +8929,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial 0",
         "HIERARCHY": "3.X.2.4.1.4.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Impact Burial"
@@ -9809,7 +8939,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial 10",
         "HIERARCHY": "3.X.2.4.1.4.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Impact Burial"
@@ -9820,7 +8949,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial 20",
         "HIERARCHY": "3.X.2.4.1.4.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Impact Burial"
@@ -9831,7 +8959,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial 75",
         "HIERARCHY": "3.X.2.4.1.4.4",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Impact Burial"
@@ -9842,7 +8969,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Impact Burial 100",
         "HIERARCHY": "3.X.2.4.1.4.5",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Impact Burial"
@@ -9853,7 +8979,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Miw Bottom Category",
         "HIERARCHY": "3.X.2.4.1.5",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9864,7 +8989,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Category A",
         "HIERARCHY": "3.X.2.4.1.5.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Category"
@@ -9875,7 +8999,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Category B",
         "HIERARCHY": "3.X.2.4.1.5.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Category"
@@ -9886,7 +9009,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Category C",
         "HIERARCHY": "3.X.2.4.1.5.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Category"
@@ -9897,7 +9019,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Miw Bottom Type",
         "HIERARCHY": "3.X.2.4.1.6",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors"
@@ -9908,7 +9029,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type A1",
         "HIERARCHY": "3.X.2.4.1.6.1",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9919,7 +9039,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type A2",
         "HIERARCHY": "3.X.2.4.1.6.2",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9930,7 +9049,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type A3",
         "HIERARCHY": "3.X.2.4.1.6.3",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9941,7 +9059,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type B1",
         "HIERARCHY": "3.X.2.4.1.6.4",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9952,7 +9069,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type B2",
         "HIERARCHY": "3.X.2.4.1.6.5",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9963,7 +9079,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type B3",
         "HIERARCHY": "3.X.2.4.1.6.6",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9974,7 +9089,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type C1",
         "HIERARCHY": "3.X.2.4.1.6.7",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9985,7 +9099,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type C2",
         "HIERARCHY": "3.X.2.4.1.6.8",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -9996,7 +9109,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Bottom Type C3",
         "HIERARCHY": "3.X.2.4.1.6.9",
         "PATH": "METOC/Oceanic/Geophysics-Acoustics/Mine Warefare Bottom Descriptors/Miw Bottom Type"
@@ -10007,7 +9119,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Limits",
         "HIERARCHY": "3.X.2.5",
         "PATH": "METOC/Oceanic"
@@ -10018,7 +9129,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Maritime Limit",
         "HIERARCHY": "3.X.2.5.1",
         "PATH": "METOC/Oceanic/Limits"
@@ -10029,7 +9139,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Maritime Area",
         "HIERARCHY": "3.X.2.5.2",
         "PATH": "METOC/Oceanic/Limits"
@@ -10040,7 +9149,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Restricted Area",
         "HIERARCHY": "3.X.2.5.3",
         "PATH": "METOC/Oceanic/Limits"
@@ -10051,7 +9159,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Swept Area",
         "HIERARCHY": "3.X.2.5.4",
         "PATH": "METOC/Oceanic/Limits"
@@ -10062,7 +9169,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Training Area",
         "HIERARCHY": "3.X.2.5.5",
         "PATH": "METOC/Oceanic/Limits"
@@ -10073,7 +9179,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Operator Defined",
         "HIERARCHY": "3.X.2.5.6",
         "PATH": "METOC/Oceanic/Limits"
@@ -10084,7 +9189,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Man-Made Structures",
         "HIERARCHY": "3.X.2.6",
         "PATH": "METOC/Oceanic"
@@ -10095,7 +9199,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Cable",
         "HIERARCHY": "3.X.2.6.1",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10106,7 +9209,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Submerged Crib",
         "HIERARCHY": "3.X.2.6.2",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10117,7 +9219,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Canal",
         "HIERARCHY": "3.X.2.6.3",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10128,7 +9229,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Ford",
         "HIERARCHY": "3.X.2.6.4",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10139,7 +9239,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Lock",
         "HIERARCHY": "3.X.2.6.5",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10150,7 +9249,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oil/Gas Rig",
         "HIERARCHY": "3.X.2.6.6",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10161,7 +9259,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Oil Rig Field",
         "HIERARCHY": "3.X.2.6.7",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10172,7 +9269,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pipe",
         "HIERARCHY": "3.X.2.6.8",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10183,7 +9279,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Pile/Piling/Post",
         "HIERARCHY": "3.X.2.6.9",
         "PATH": "METOC/Oceanic/Man-Made Structures"
@@ -10194,7 +9289,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "HASWIDTH": "no",
         "DESCRIPTION": "Space",
         "HIERARCHY": "3.X.3",
         "PATH": "METOC"

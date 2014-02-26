@@ -240,30 +240,6 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
             {
                 return false;
             }
-            
-            
-        },
-        /**
-         * 
-         * @param {String} symbolID
-         * @returns {Boolean}
-         */
-        isMultiPoint: function (symbolID) {
-            if (symbolID.charAt(0) === 'G' || symbolID.charAt(0) === 'W') {
-                var sd = this.getSymbolDef(SymbolUtilities.getBasicSymbolID(symbolID));
-                if (sd !== undefined && sd !== null) {
-                    if (sd.maxPoints > 1 || sd.drawCategory !== this.DRAW_CATEGORY_POINT) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
         }
-
     };
 }());
