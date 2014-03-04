@@ -1,7 +1,7 @@
 @font-face
 {
     font-family: 'SinglePoint';
-	src: url('fonts/SinglePoint.eot') format('embedded-opentype'),
+	src: url('fonts/SinglePoint.eot'),
 		 url('fonts/SinglePoint.woff') format('woff'),
          url('fonts/SinglePoint.ttf') format('truetype');
 }
@@ -9,7 +9,7 @@
 @font-face
 {
     font-family: 'UnitFont';
-	src: url('fonts/UnitFont.eot') format('embedded-opentype'),
+	src: url('fonts/UnitFont.eot'),
 		 url('fonts/UnitFont.woff') format('woff'),
          url('fonts/UnitFont.ttf') format('truetype');
 }
@@ -17,7 +17,7 @@
 @font-face
 {
     font-family: 'TacticalGraphics';
-	src: url('fonts/TacticalGraphics.eot') format('embedded-opentype'),
+	src: url('fonts/TacticalGraphics.eot'),
 		 url('fonts/TacticalGraphics.woff') format('woff'),
          url('fonts/TacticalGraphics.ttf') format('truetype');
 }
