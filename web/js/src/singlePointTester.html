@@ -22,10 +22,12 @@
     <script type = "text/javascript">
 	
 	var fontCheckTimer =  null;
+	var retries = 15;
+	var attempts = 0;
 	
 	function testRender()
 	{
-			armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded();
+			//armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded();
            
             var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
             //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
@@ -469,29 +471,41 @@
 		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
 		{
 			console.log("fonts loaded");
-			document.getElementById("btnRender").disabled = false;
-			document.getElementById("btnRender").value = "Render";
+			var button = document.getElementById("btnRender");
+			button.disabled = false;
+			button.innerHTML = "Render";
+		}
+		else if(attempts < retries)
+		{
+			fontCheckTimer = setTimeout(checkFonts, 1000);
+			console.log("fonts loading...");
+			//sometimes font won't register until after a render attempt
+			armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",{});
 		}
 		else
 		{
-			fontCheckTimer = setTimeout(checkFonts, 100);
+			console.log("fonts didn't load or status couldn't be determined for " + retries + " seconds.")
+			var button = document.getElementById("btnRender");
+			button.disabled = false;
+			button.innerHTML = "Render";
 		}
+
 	}
 	
 	function preload()
 	{
-		console.log("preloading...");
+		//console.log("preloading...");
 		//make sure fonts are loaded.
 		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded()){
 			console.log("fonts loaded fast");
-            document.getElementById("btnRender").disabled = false;
-			document.getElementById("btnRender").innerHTML = "Render";
+            var button = document.getElementById("btnRender");
+			button.disabled = false;
+			button.innerHTML = "Render";
         }
 		else
 		{
-			fontCheckTimer = setTimeout(checkFonts, 100);
-			console.log("fonts loading...");
-		}
+			fontCheckTimer = setTimeout(checkFonts, 1000);
+		}//*/
 		
 		//armyc2.c2sd.renderer.MilStdIconRenderer.Init();
 		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
