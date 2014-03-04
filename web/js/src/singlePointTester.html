@@ -20,8 +20,12 @@
     
     
     <script type = "text/javascript">
+	
+	var fontCheckTimer =  null;
+	
 	function testRender()
 	{
+			armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded();
            
             var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
             //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
@@ -164,17 +168,17 @@
             //foo.unio
 
             //PERFORMANCE TEST///////////////////////////
-            /*
+            
             var start = new Date().getTime();
             modifiers = new Object();
-            modifiers = populateModifiers();
+            //modifiers = populateModifiers();
 			//modifiers["RENDER"] = false;//dimensions without labels
             var apID = "GFGPGPP---****X";//action point
             var dmID = "SUGDUSAT--MY***";//display modifiers
             var plainID = "SUGPUSAT----***";//plain symbol
             for(var i = 0; i < 1000; i++)
             {//"SUGDUSAT--MY***"
-                armyc2.c2sd.renderer.MilStdIconRenderer.Render(dmID,modifiers);
+                armyc2.c2sd.renderer.MilStdIconRenderer.Render(plainID,modifiers);
             }
 
             var end = new Date().getTime();
@@ -460,18 +464,44 @@
             
             return modifiers;
         }
-        
+    function checkFonts()
+	{
+		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
+		{
+			console.log("fonts loaded");
+			document.getElementById("btnRender").disabled = false;
+			document.getElementById("btnRender").value = "Render";
+		}
+		else
+		{
+			fontCheckTimer = setTimeout(checkFonts, 100);
+		}
+	}
+	
 	function preload()
 	{
-            //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
-            armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+		console.log("preloading...");
+		//make sure fonts are loaded.
+		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded()){
+			console.log("fonts loaded fast");
+            document.getElementById("btnRender").disabled = false;
+			document.getElementById("btnRender").innerHTML = "Render";
+        }
+		else
+		{
+			fontCheckTimer = setTimeout(checkFonts, 100);
+			console.log("fonts loading...");
+		}
+		
+		//armyc2.c2sd.renderer.MilStdIconRenderer.Init();
+		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 	}
 </script>
 </head>
 <BODY bgcolor="Cyan" onload="preload();">
 
 <canvas id="preview" width="650" height="200"></canvas>
-<button type='button' onclick='testRender();'>Render</button>
+<button id="btnRender" type='button' onclick='testRender();' disabled>Loading Fonts</button>
 
 </BODY>
 </html>

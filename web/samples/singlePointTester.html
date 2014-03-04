@@ -11,6 +11,11 @@
 	    
     
     <script type = "text/javascript">
+	
+	var fontCheckTimer =  null;
+	var retries = 15;
+	var attempts = 0;
+	
 	function testRender()
 	{
            
@@ -219,17 +224,56 @@
             return modifiers;
         }
         
+    function checkFonts()
+	{
+		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
+		{
+			console.log("fonts loaded");
+			document.getElementById("btnRender").disabled = false;
+			document.getElementById("btnRender").value = "Render";
+		}
+		else if(attempts < retries)
+		{
+			fontCheckTimer = setTimeout(checkFonts, 1000);
+			console.log("fonts loading...");
+			//sometimes font won't register until after a render attempt
+			armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",{});
+		}
+		else
+		{
+			console.log("fonts didn't load or status couldn't be determined.")
+			document.getElementById("btnRender").disabled = false;
+			document.getElementById("btnRender").innerHTML = "Render";
+		}
+
+	}
+	
 	function preload()
 	{
-            armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+		/*console.log("preloading...");
+		//make sure fonts are loaded.
+		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded()){
+			console.log("fonts loaded fast");
+            document.getElementById("btnRender").disabled = false;
+			document.getElementById("btnRender").innerHTML = "Render";
+        }
+		else
+		{
+			fontCheckTimer = setTimeout(checkFonts, 1000);
+		}//*/
+		
+		//armyc2.c2sd.renderer.MilStdIconRenderer.Init();
+		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 	}
 </script>
 </head>
 <BODY bgcolor="Cyan" onload="preload();">
-Rendered via HTML5 Canvas:</br>
+Rendered via HTML5 Canvas:<br/>
 <canvas id="preview" width="650" height="200"></canvas>
-<button type='button' onclick='testRender();'>Render</button>
-</br>
+<!-- <button id="btnRender" type='button' onclick='testRender();' disabled>Loading Fonts</button> -->
+<button id="btnRender" type='button' onclick='testRender();'>Render</button>
+<!-- <button id="btnRender2" type='button' onclick='testRender();'>render anyway</button> -->
+<br/>
 <!-- <span id='contentSpan'/> -->
 Rendered via data URL:
 <img id="urlexample" src="" alt="test" height="35" width="35">

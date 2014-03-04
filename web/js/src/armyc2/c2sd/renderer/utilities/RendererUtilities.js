@@ -152,3 +152,27 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         
     };
     
+    /**
+     * Checks if the fonts required for single point rendering have finished loading.
+     * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded.returnVal|Boolean}
+     */
+    armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded = function(){
+        var returnVal = false;
+        
+        var arialWidth = this.measureText("Arial",12,"normal","A")[0] * 2;
+        var unitWidth = this.measureText("UnitFont",12,"normal","A")[0];
+        var spWidth = this.measureText("SinglePoint",12,"normal","A")[0];
+        var tgWidth = this.measureText("TacticalGraphics",12,"normal","A")[0];
+        
+        //character index 65 (the letter 'A') was modified to be extra wide (3x)
+        //so if the fonts were loaded, their 'A' character should be at least
+        //greater than double the width of the Arial 'A' character.
+        
+        if(unitWidth > arialWidth && spWidth > arialWidth && tgWidth > arialWidth)
+            returnVal = true;
+        
+        //console.log("font 'A' widths: " + unitWidth + ", " + spWidth + ", " + tgWidth + ", " + arialWidth);
+        
+        return returnVal;
+    };
+    
