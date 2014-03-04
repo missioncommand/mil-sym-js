@@ -1,24 +1,24 @@
 @font-face
 {
     font-family: 'SinglePoint';
-	src: url('fonts/SinglePoint.eot'),
-		 url('fonts/SinglePoint.woff') format('woff'),
+	src: url('fonts/SinglePoint.eot'); /* IE 9 */
+	src: url('fonts/SinglePoint.woff') format('woff'),
          url('fonts/SinglePoint.ttf') format('truetype');
 }
 
 @font-face
 {
     font-family: 'UnitFont';
-	src: url('fonts/UnitFont.eot'),
-		 url('fonts/UnitFont.woff') format('woff'),
+	src: url('fonts/UnitFont.eot'); /* IE 9 */
+	src: url('fonts/UnitFont.woff') format('woff'),
          url('fonts/UnitFont.ttf') format('truetype');
 }
 
 @font-face
 {
     font-family: 'TacticalGraphics';
-	src: url('fonts/TacticalGraphics.eot'),
-		 url('fonts/TacticalGraphics.woff') format('woff'),
+	src: url('fonts/TacticalGraphics.eot'); /* IE 9 */
+	src: url('fonts/TacticalGraphics.woff') format('woff'),
          url('fonts/TacticalGraphics.ttf') format('truetype');
 }
 
