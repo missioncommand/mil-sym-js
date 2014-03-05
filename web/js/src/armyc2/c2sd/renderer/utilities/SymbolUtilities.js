@@ -2261,24 +2261,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint = function (symbolID, symStd) {
         
-        if(symStd === undefined)
-        {
-            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
-        }
+        return armyc2.c2sd.renderer.utilities.SymbolDefTable.isMultiPoint(symbolID, symStd);
         
-        var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
-        if (symbolID.charAt(0) === 'G' || symbolID.charAt(0) === 'W') {
-            var sd = SymbolDefTable.getSymbolDef(this.getBasicSymbolID(symbolID));
-            if (sd !== undefined && sd !== null) {
-                if (sd.maxPoints > 1 || sd.drawCategory !== SymbolDefTable.DRAW_CATEGORY_POINT) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     };

@@ -219,6 +219,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
         /**
          * 
          * @param {String} symbolID
+         * @param {type} symStd
          * @returns {Boolean}
          */
         hasSymbolDef: function (symbolID, symStd) {
@@ -238,6 +239,54 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
             }
             else
             {
+                return false;
+            }
+        },
+        
+        /**
+        * Checks if symbol is a multipoint symbol
+        * @param {type} symbolID
+        * @param {type} symStd
+        * @returns {Boolean}
+        */
+        isMultiPoint:function (symbolID, symStd) {
+        
+            if(symStd === undefined)
+            {
+                symStd = RendererSettings.getSymbologyStandard();
+            }
+
+            var codingScheme = symbolID.charAt(0);
+            var returnVal = false;
+            if (codingScheme === 'G' || codingScheme === 'W') {
+                var sd = this.getSymbolDef(SymbolUtilities.getBasicSymbolID(symbolID),symStd);
+                if (sd) 
+                {
+                    if(sd.maxPoints > 1)
+                    {
+                        returnVal = true;
+                    }
+                    else
+                    {
+                        switch(sd.drawCategory)
+                        {
+                            case this.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
+                            case this.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
+                            case this.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
+                            case this.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE:
+                            case this.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE:
+                            case this.DRAW_CATEGORY_ROUTE:
+                                returnVal = true;
+                                break;
+                            default:
+                                returnVal = false;
+                        }
+                    }
+                    return returnVal;
+                } else {
+                    return false;
+                }
+            } else {
                 return false;
             }
         }

@@ -1364,7 +1364,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
       {
         "SYMBOLID": "G*G*GPRS--****X",
         "MAPPINGP": "4003",
-        "MAPPINGA": "4503",
+        "MAPPINGA": "4003",
         "DESCRIPTION": "Special Point",
         "WIDTH": "30",
         "HEIGHT": "30"
@@ -1380,7 +1380,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
       {
         "SYMBOLID": "G*G*GPRN--****X",
         "MAPPINGP": "4004",
-        "MAPPINGA": "4504",
+        "MAPPINGA": "4004",
         "DESCRIPTION": "Nav Reference",
         "WIDTH": "30",
         "HEIGHT": "30"
@@ -1388,7 +1388,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
       {
         "SYMBOLID": "G*G*GPRD--****X",
         "MAPPINGP": "4005",
-        "MAPPINGA": "4505",
+        "MAPPINGA": "4005",
         "DESCRIPTION": "DLRP",
         "WIDTH": "31",
         "HEIGHT": "31"
