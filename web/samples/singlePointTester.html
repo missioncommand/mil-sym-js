@@ -235,6 +235,7 @@
 		}
 		else if(attempts < retries)
 		{
+			attempts++;
 			fontCheckTimer = setTimeout(checkFonts, 1000);
 			console.log("fonts loading...");
 			//sometimes font won't register until after a render attempt
