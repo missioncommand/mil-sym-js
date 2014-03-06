@@ -63,8 +63,8 @@ return{
             strUnitFont = "";
             
         
-        var intFill = armyc2.c2sd.renderer.utilities.UnitFontLookup.getFillCode(symbolID),
-            intFrame = armyc2.c2sd.renderer.utilities.UnitFontLookup.getFrameCode(symbolID, intFill, symStd),
+        var intFill = UnitFontLookup.getFillCode(symbolID),
+            intFrame = UnitFontLookup.getFrameCode(symbolID, intFill, symStd),
             fillColor = SymbolUtilities.getFillColorOfAffiliation(symbolID).toHexString(false),
             lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false),
             fill = String.fromCharCode(intFill),
@@ -114,26 +114,26 @@ return{
             modifiers = {};
         //determine font size necessary to match desired pixel size/////////////
         var pixelSize = -1;
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize])
+        if(modifiers[MilStdAttributes.PixelSize])
         {
-            pixelSize = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize];
+            pixelSize = modifiers[MilStdAttributes.PixelSize];
         }
         else
         {
             pixelSize = RendererSettings.getDefaultPixelSize();
         }
         var keepUnitRatio = false;
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio] !== undefined)
+        if(modifiers[MilStdAttributes.KeepUnitRatio] !== undefined)
         {
-            keepUnitRatio = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio];
+            keepUnitRatio = modifiers[MilStdAttributes.KeepUnitRatio];
         }
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] !== undefined)
+        if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
-            lineColor = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor];
+            lineColor = modifiers[MilStdAttributes.LineColor];
         }
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] !== undefined)
+        if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
-            fillColor = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor];
+            fillColor = modifiers[MilStdAttributes.FillColor];
         }
         
         // </editor-fold>
@@ -1245,8 +1245,8 @@ return{
                         ctx.strokeText(tiEchelon.getText(), tiEchelon.getLocation().getX(), tiEchelon.getLocation().getY());
                     }
 
-                    if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] !== undefined)
-                        ctx.style = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor];
+                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                        ctx.style = modifiers[MilStdAttributes.LineColor];
                     else
                         ctx.style = "#000000";
 
@@ -1270,8 +1270,8 @@ return{
                         ctx.strokeText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
                     }
 
-                    if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] !== undefined)
-                        ctx.style = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor];
+                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                        ctx.style = modifiers[MilStdAttributes.LineColor];
                     else
                         ctx.style = "#000000";
 
@@ -2139,25 +2139,25 @@ return{
         // <editor-fold defaultstate="collapsed" desc="Parse Modifiers">
         //determine font size necessary to match desired pixel size/////////////
         var pixelSize = -1;
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize])
+        if(modifiers[MilStdAttributes.PixelSize])
         {
-            pixelSize = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize];
+            pixelSize = modifiers[MilStdAttributes.PixelSize];
         }
         else
         {
             pixelSize = RendererSettings.getDefaultPixelSize();
         }
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio] !== undefined)
+        if(modifiers[MilStdAttributes.KeepUnitRatio] !== undefined)
         {
-            keepUnitRatio = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio];
+            keepUnitRatio = modifiers[MilStdAttributes.KeepUnitRatio];
         }
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] !== undefined)
+        if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
-            lineColor = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor];
+            lineColor = modifiers[MilStdAttributes.LineColor];
         }
-        if(modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] !== undefined)
+        if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
-            fillColor = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor];
+            fillColor = modifiers[MilStdAttributes.FillColor];
         }
         
         var outlineOffset = RendererSettings.getSinglePointSymbolOutlineWidth();
