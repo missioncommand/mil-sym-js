@@ -60,23 +60,30 @@ armyc2.c2sd.renderer.utilities.ImageInfo = function (image, centerPoint, symbolB
      * @returns {HTML5 canvas} HTML5 canvas
      */
     armyc2.c2sd.renderer.utilities.ImageInfo.prototype.getSquareIcon = function(){
-        var iwidth, iheight;
-        if(this._bounds.getWidth() >= this._bounds.getHeight())
+        var iwidth, iheight, x, y;
+        var width = this._bounds.getWidth();
+        var height = this._bounds.getHeight();
+        if(this._bounds.getWidth() > this._bounds.getHeight())
         {
             iwidth = this._bounds.getWidth();
             iheight = this._bounds.getWidth();
+            x=0;
+            y=(iheight - height)/2;
         }
         else if(this._bounds.getWidth() < this._bounds.getHeight())
         {
             iwidth = this._bounds.getHeight();
             iheight = this._bounds.getHeight();
+            x = (iwidth - width)/2;
+            y = 0;
         }
-
-        var width = this._bounds.getWidth();
-        var height = this._bounds.getHeight();
-
-        var x = (iwidth - width)/2;
-        var y = (iheight - height)/2;
+        else
+        {
+            iwidth = this._bounds.getWidth();
+            iheight = this._bounds.getHeight();
+            x=0;
+            y=0;
+        }
 
         var buffer = document.createElement('canvas');
         buffer.width = iwidth;

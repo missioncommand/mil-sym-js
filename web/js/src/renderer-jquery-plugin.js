@@ -61,7 +61,7 @@
                 //if false, will fill the space. if true, will size with respect to other symbols.
                 if ($(this).data("keep-unit-ratio") === undefined) {
                     // Use 32 as the default size
-                    modifiers[msa.KeepUnitRatio] = true;
+                    modifiers[msa.KeepUnitRatio] = false;
                 }
                 else {
                     modifiers[msa.KeepUnitRatio] = $(this).data("keep-unit-ratio");
@@ -76,6 +76,11 @@
                     }
                     symbolID = sanitize(symbolID, modifiers);   
                 }
+                
+                var square = true;
+                if ($(this).data("square") !== undefined) {   
+                    square = $(this).data("square");
+                }
 
                 ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID, modifiers);
                 if (ii !== undefined)
@@ -85,13 +90,25 @@
                     
                     // Clear the canvas
                     ctx.clearRect(0, 0, canvasObject.width, canvasObject.height);
-                    
-                    // Adjust the size of the canvas to match the size of the symbol
-                    $(canvasObject).attr("width", ii.getImageBounds().width);
-                    $(canvasObject).attr("height", ii.getImageBounds().height);
 
-                    ctx.drawImage(ii.getImage(), Math.round((canvasObject.width - ii.getImageBounds().width) / 2),
+                    var image = null;
+                    if(square === true)
+                    {
+                        image = ii.getSquareIcon();
+                        $(canvasObject).attr("width", image.width);
+                        $(canvasObject).attr("height", image.height);
+                        ctx.drawImage(image, 0,0);
+                    }
+                    else
+                    {
+                        image = ii.getImage();
+                        // Adjust the size of the canvas to match the size of the symbol
+                        $(canvasObject).attr("width", ii.getImageBounds().width);
+                        $(canvasObject).attr("height", ii.getImageBounds().height);
+                        ctx.drawImage(image, Math.round((canvasObject.width - ii.getImageBounds().width) / 2),
                             Math.round((canvasObject.height - ii.getImageBounds().height) / 2));
+                    }
+                    
                 }
             }
         });
