@@ -17,7 +17,9 @@
                     affiliation === "H" ||//hostile
                     affiliation === "U" ||//unknown
                     affiliation === "N" )//neutral
-                return code;
+            {
+                //code = code;
+            }
             else if(affiliation === "S")//suspect
                 code = code.charAt(0) + "H" + code.substring(2, 15);
             else if(affiliation === "L")//exercise neutral
