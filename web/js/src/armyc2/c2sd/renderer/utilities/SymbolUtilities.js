@@ -1072,9 +1072,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             retColor = "#00FF00";//Color.GREEN;// 0x00ff00;	// Green
         }
         else if(symbolID ===("WA-DBAI-----A--") || //BOUNDED AREAS OF WEATHER / ICING
-                symbolID.substring(0,6) === ("WAS-IC") || // Clear Icing
-                symbolID.substring(0,6) === ("WAS-IR")  ||// Rime Icing
-                symbolID.substring(0,6) === ("WAS-IM")) // Mixed Icing
+                symbolID.indexOf("WAS-IC") === 0 || // Clear Icing
+                symbolID.indexOf("WAS-IR") === 0  ||// Rime Icing
+                symbolID.indexOf("WAS-IM") === 0) // Mixed Icing
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#806010");//new Color(128,96,16);
         }
@@ -1134,9 +1134,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF7F00");//new Color(255,127,0);//bright orange
         }
         else if(
-        symbolID.startsWith("WAS-IC") || // clear icing
-        symbolID === ("WAS-IR") || // rime icing
-        symbolID === ("WAS-IM")) // mixed icing
+        symbolID.indexOf("WAS-IC") === 0 || // clear icing
+        symbolID.indexOf("WAS-IR") === 0 || // rime icing
+        symbolID.indexOf("WAS-IM") === 0) // mixed icing
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#806010");//new Color(128,96,16);//mud?
         }
@@ -1372,11 +1372,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isSASO = function (sd){
         var hierarchy = sd.hierarchy;
         if(hierarchy.length >5 &&
-                (hierarchy.startsWith("5.X.10") || //SASOP Individuals
-                hierarchy.startsWith("5.X.11") || //SASOP Organization/groups
-                hierarchy.startsWith("5.X.12") ||//SASOP //replaced by USAS 13-14 update
-                hierarchy.startsWith("5.X.13") || //SASOP Structures
-                hierarchy.startsWith("5.X.14"))) //SASOP Equipment/Weapons
+                (hierarchy.indexOf("5.X.10") === 0 || //SASOP Individuals
+                hierarchy.indexOf("5.X.11") === 0 || //SASOP Organization/groups
+                hierarchy.indexOf("5.X.12") === 0 ||//SASOP //replaced by USAS 13-14 update
+                hierarchy.indexOf("5.X.13") === 0 || //SASOP Structures
+                hierarchy.indexOf("5.X.14") === 0)) //SASOP Equipment/Weapons
          {
              return true;
          }

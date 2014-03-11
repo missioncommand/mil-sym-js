@@ -238,7 +238,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
          * @param {String} SymbolID
          * @returns {Number}
          */
-        getFillCode: function (SymbolID){
+        getFillCode: function (SymbolID, symStd){
             
             var returnVal = -1,
             scheme = "",
@@ -254,6 +254,11 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
               battleDimension = SymbolID.charAt(2);//P,A,G,S,U,F,X,Z
               status = SymbolID.charAt(3);//A,P,C,D,X,F
               grdtrkSubset = SymbolID.charAt(4);
+              
+              if(symStd === undefined)
+                {
+                    symStd = RendererSettings.getSymbologyStandard();
+                }
 
               if(scheme === 'S')//Warfighting symbols
               {
@@ -290,7 +295,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='U')//Subsurface
                       {
-                          returnVal = this.getSubSurfaceFill(SymbolID);
+                          returnVal = this.getSubSurfaceFill(SymbolID,symStd);
                       }
                       else if(battleDimension==='P')//space
                       {
@@ -317,7 +322,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='U')//Subsurface
                       {
-                          returnVal = this.getSubSurfaceFill(SymbolID);
+                          returnVal = this.getSubSurfaceFill(SymbolID,symStd);
                       }
                       else if(battleDimension==='P')//space
                       {
@@ -344,7 +349,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='U')//Subsurface
                       {
-                          returnVal = this.getSubSurfaceFill(SymbolID);
+                          returnVal = this.getSubSurfaceFill(SymbolID,symStd);
                       }
                       else if(battleDimension==='P')//space
                       {
@@ -377,7 +382,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='U')//Subsurface
                       {
-                          returnVal = this.getSubSurfaceFill(SymbolID);
+                          returnVal = this.getSubSurfaceFill(SymbolID,symStd);
                       }
                       else if(battleDimension==='P')//space
                       {
@@ -651,12 +656,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
          * @returns {Number}
          */
         getSeaSurfaceFill: function (SymbolID) {
-            var affiliation = 0,
-            status = 0,
-            returnVal = 0;
+            var affiliation = "U",
     
             affiliation = SymbolID.charAt(1);//F,H,N,U,etc...
-            status = SymbolID.charAt(3);//A,P,C,D,X,F
+            
 
             if(SymbolUtilities.getBasicSymbolID(SymbolID)===("S*S*O-----*****"))
             {
@@ -699,13 +702,17 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
          * @param {String} SymbolID
          * @returns {Number}
          */
-        getSubSurfaceFill: function (SymbolID){
+        getSubSurfaceFill: function (SymbolID, symStd){
     
             var affiliation = 0,
             status = 0,
             returnVal = 831;
             try
             {
+                if(symStd === undefined)
+                {
+                    symStd = RendererSettings.getSymbologyStandard();
+                }
                 affiliation = SymbolID.charAt(1);//F,H,N,U,etc...
                 status = SymbolID.charAt(3);//A,P,C,D,X,F
 
@@ -746,8 +753,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
 
                 //Special check for sea mine graphics
                 //2525C///////////////////////////////////////////////////////////////
-                if(RendererSettings.getSymbologyStandard() === 
-                        RendererSettings.Symbology_2525C)
+                if(symStd === RendererSettings.Symbology_2525C)
                 {
                     if(SymbolID.indexOf("WM")===4 || //Sea Mine
                             SymbolID.indexOf("WDM")===4 ||//Sea Mine Decoy
