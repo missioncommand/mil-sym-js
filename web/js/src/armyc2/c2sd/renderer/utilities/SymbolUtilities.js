@@ -731,7 +731,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             }
             else
             {
-                if(sd.modifiers.indexOf(tgModifier + ".")>0)
+                if(sd.modifiers.indexOf(tgModifier + ".")>-1)
                     returnVal = true;
             }
         }
