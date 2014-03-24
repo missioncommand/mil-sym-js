@@ -17,7 +17,8 @@ Positives results for browsers are based on light testing but with symbols that 
 | FF 12-15 | works | browserstack.com |  
 | FF 4-11 | mostly works | browserstack.com |  
 | FF 3.6-11 | fail | browserstack.com |  
-| Chrome 32+ | works | live test |  
+| Chrome 32 | works | live test |  
+| Chrome 31 | fail | browserstack.com |  
 | Opera 21+ | works | live test |  
 | Opera 12.6+ | fail | browserstack.com |  
 | Safari 5.1 | fail | browserstack.com |  
@@ -61,10 +62,10 @@ Positives results for browsers are based on light testing but with symbols that 
 | Safari | fail | browserstack.com |  
 
 | Windows Phone 8 | Status | Testing Method |  
-| :------------ | :------------: |  
+| :------------ | :------------: | :------------: |   
 | IE | works | live |  
 
 | Windows Phone 7/7.5/7.8 | Status | Testing Method |  
-| :------------ | :------------: |  
+| :------------ | :------------: | :------------: |   
 | IE | fails | live |  
 
