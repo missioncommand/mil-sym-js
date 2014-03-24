@@ -8,7 +8,7 @@ Revision History
 Initial Document	03/24/2014  
 
 Only IE & FireFox on Windows are getting tested regularly.  
-Positives results for browsers are based on light testing but with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com was used for testing other platforms.  At least one inconsistency was found with browserstack vs a live test.  So take the results with a grain of salt.  Live test values will replace browserstack values when available.
+Positives results for browsers are based on light testing but with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com was used for testing other platforms.  
 
 | Windows 7 | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
