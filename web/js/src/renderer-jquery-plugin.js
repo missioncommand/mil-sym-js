@@ -2,6 +2,10 @@
     $.fn.render2525 = function() {
         var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
         
+        var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
+        
+        RS.setSinglePointSymbolOutlineWidth(0);
+        
         /**
          * we only have font lookups for F,H,N,U.  But the shapes match one of these
          * four for the remaining affiliations.  So we convert the string to a base

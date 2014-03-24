@@ -243,6 +243,10 @@ return{
                     {
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius));
                     }
+                    else if(AttributesArray[i].innerRadius !== undefined)
+                    {
+                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].innerRadius));                          
+                    }
                     else if(AttributesArray[i].width !== undefined)
                     {
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].width));
@@ -255,10 +259,6 @@ return{
                     if(AttributesArray[i].radius2 !== undefined)
                     {
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius2));                          
-                    }
-                    else if(AttributesArray[i].innerRadius !== undefined)
-                    {
-                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].innerRadius));                          
                     }
                     else if(AttributesArray[i].rightWidth !== undefined)
                     {
