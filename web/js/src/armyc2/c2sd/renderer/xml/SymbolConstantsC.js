@@ -24,7 +24,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "MODIFIERS": "T.",
-        "DESCRIPTION": "Tactical Graphics",
+        "DESCRIPTION": "Line",
         "HIERARCHY": "0.X.1",
         "ALPHAHIERARCHY": "BS.LINE",
         "PATH": "Basic Shapes"
@@ -35,7 +35,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "DESCRIPTION": "Tactical Graphics",
+        "DESCRIPTION": "Area",
         "HIERARCHY": "0.X.2",
         "ALPHAHIERARCHY": "BS.AREA",
         "PATH": "Basic Shapes"
@@ -46,7 +46,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Tactical Graphics",
+        "DESCRIPTION": "Cross",
         "HIERARCHY": "0.X.3",
         "ALPHAHIERARCHY": "BS.CROSS",
         "PATH": "Basic Shapes"
@@ -57,7 +57,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "DESCRIPTION": "Tactical Graphics",
+        "DESCRIPTION": "Ellipse",
         "HIERARCHY": "0.X.4",
         "ALPHAHIERARCHY": "BS.ELLIPSE",
         "PATH": "Basic Shapes"
@@ -68,10 +68,65 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "2",
         "MAXPOINTS": "2",
         "MINPOINTS": "2",
-        "DESCRIPTION": "Tactical Graphics",
+        "DESCRIPTION": "Rectangle",
         "HIERARCHY": "0.X.5",
         "ALPHAHIERARCHY": "BS.RECTANGLE",
         "PATH": "Basic Shapes"
+      },
+      {
+        "SYMBOLID": "BUFFERED_SHAPES",
+        "GEOMETRY": "point",
+        "DRAWCATEGORY": "0",
+        "MAXPOINTS": "0",
+        "MINPOINTS": "0",
+        "MODIFIERS": "AM.",
+        "DESCRIPTION": "Buffered Basic Shapes",
+        "HIERARCHY": "0.X.6",
+        "ALPHAHIERARCHY": "BS.BBS"
+      },
+      {
+        "SYMBOLID": "BBS_LINE-------",
+        "GEOMETRY": "line",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
+        "MODIFIERS": "AM.",
+        "DESCRIPTION": "Buffered Line",
+        "HIERARCHY": "0.X.6.1",
+        "ALPHAHIERARCHY": "BS.BBS.LINE"
+      },
+      {
+        "SYMBOLID": "BBS_AREA-------",
+        "GEOMETRY": "area",
+        "DRAWCATEGORY": "3",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "3",
+        "MODIFIERS": "AM.",
+        "DESCRIPTION": "Buffered Basic Shapes",
+        "HIERARCHY": "0.X.6.2",
+        "ALPHAHIERARCHY": "BS.BBS.AREA"
+      },
+      {
+        "SYMBOLID": "BBS_POINT------",
+        "GEOMETRY": "area",
+        "DRAWCATEGORY": "16",
+        "MAXPOINTS": "1",
+        "MINPOINTS": "1",
+        "MODIFIERS": "AM.",
+        "DESCRIPTION": "Buffered Basic Shapes",
+        "HIERARCHY": "0.X.6.2",
+        "ALPHAHIERARCHY": "BS.BBS.POINT"
+      },
+      {
+        "SYMBOLID": "BBS_RECTANGLE--",
+        "GEOMETRY": "area",
+        "DRAWCATEGORY": "2",
+        "MAXPOINTS": "2",
+        "MINPOINTS": "2",
+        "MODIFIERS": "AM.",
+        "DESCRIPTION": "Buffered Rectangle",
+        "HIERARCHY": "0.X.6.3",
+        "ALPHAHIERARCHY": "BS.BBS.RECT"
       },
       {
         "SYMBOLID": "G*-*------****X",
