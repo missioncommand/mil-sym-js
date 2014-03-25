@@ -5,9 +5,10 @@ Web Browser Compatibility Chart for Single Point Icon Rendering
 
 
 Revision History  
-Initial Document	03/24/2014  
+Initial Document				03/24/2014  
+Android Compatibility updated	03/25/2014  
 
-Only IE & FireFox on Windows are getting tested regularly.  
+Only IE & Firefox on Windows are getting tested extensively.  
 Positives results for browsers are based on light testing but with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com was used for testing other platforms.  
 
 | Windows 7 | Status | Testing Method |  
@@ -20,7 +21,7 @@ Positives results for browsers are based on light testing but with symbols that 
 | Chrome 32 | works | live test |  
 | Chrome 31 | fail | browserstack.com |  
 | Opera 21+ | works | live test |  
-| Opera 12.6+ | fail | browserstack.com |  
+| Opera 12.6 | fail | browserstack.com |  
 | Safari 5.1 | fail | browserstack.com |  
 
 | Windows XP | Status | Testing Method |  
@@ -40,14 +41,10 @@ Positives results for browsers are based on light testing but with symbols that 
 
 | Android | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
-| Firefox | ? |  |  
-| Safari | ? |  |  
-| Chrome | ? |  |  
-
-| Android Devices | Status | Testing Method |  
-| :------------ | :------------: | :------------: | 
-| Motorola Droid 4 | canvas rendering works, no data Urls | browserstack.com |  
-| LG Optimus 3D | canvas rendering works, no data Urls | browserstack.com |  
+| Android 4.4 Chrome 33 | works | live test (Google Nexus 5 ) |  
+| Android 4.3 Chrome 33 | works | live test (Samsung Galaxy S3 ) |  
+| Android 4.3 Stock Browser | fail | live test (Samsung Galaxy S3 ) |  
+| Android 4.2 Chrome 18 | fail | live test (Nexus 7 ) |  
 
 | IOS 7.1 | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 

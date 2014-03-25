@@ -90,7 +90,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "MODIFIERS": "AM.",
+        "MODIFIERS": "AM.T.",
         "DESCRIPTION": "Buffered Line",
         "HIERARCHY": "0.X.6.1",
         "ALPHAHIERARCHY": "BS.BBS.LINE"
@@ -101,7 +101,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "MODIFIERS": "AM.",
+        "MODIFIERS": "AM.T.",
         "DESCRIPTION": "Buffered Basic Shapes",
         "HIERARCHY": "0.X.6.2",
         "ALPHAHIERARCHY": "BS.BBS.AREA"
@@ -112,7 +112,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "MODIFIERS": "AM.",
+        "MODIFIERS": "AM.T.",
         "DESCRIPTION": "Buffered Basic Shapes",
         "HIERARCHY": "0.X.6.2",
         "ALPHAHIERARCHY": "BS.BBS.POINT"
@@ -5715,6 +5715,18 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "PATH": "METOC/Atmospheric/Winds"
       },
       {
+        "SYMBOLID": "WAS-WP----P----",
+        "GEOMETRY": "point",
+        "DRAWCATEGORY": "0",
+        "MAXPOINTS": "2",
+        "MINPOINTS": "2",
+        "MODIFIERS": "Z.Q.",
+        "DESCRIPTION": "Wind Plot",
+        "HIERARCHY": "3.X.1.4.2",
+        "ALPHAHIERARCHY": "METOC.AMPHC.WND.PLT",
+        "PATH": "METOC/Atmospheric/Winds"
+      },
+      {
         "SYMBOLID": "WA-DWJ-----L---",
         "GEOMETRY": "line",
         "DRAWCATEGORY": "1",
@@ -6640,6 +6652,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
+        "MODIFIERS": "X.",
         "DESCRIPTION": "Tropopause Level",
         "HIERARCHY": "3.X.1.6.21",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -6650,6 +6663,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
+        "MODIFIERS": "X.",
         "DESCRIPTION": "Freezing Level",
         "HIERARCHY": "3.X.1.6.22",
         "PATH": "METOC/Atmospheric/Weather Symbols"
@@ -7564,6 +7578,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
+        "MODIFIERS": "X.",
         "DESCRIPTION": "Soundings",
         "HIERARCHY": "3.X.2.2.1.1",
         "PATH": "METOC/Oceanic/Hydrography/Depth"

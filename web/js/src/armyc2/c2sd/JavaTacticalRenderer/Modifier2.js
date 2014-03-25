@@ -2060,7 +2060,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                 }
                 else
                 {
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers(tg, g2d, Clazz.castNullAs("armyc2.c2sd.graphics2d.Rectangle2D"));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers(tg, g2d, null);
                 }
                 break;
             case 22340000:
