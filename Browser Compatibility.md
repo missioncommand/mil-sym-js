@@ -5,18 +5,17 @@ Web Browser Compatibility Chart for Single Point Icon Rendering
 
 
 Revision History  
-Initial Document				03/24/2014  
-Android Compatibility updated	03/25/2014  
+03/24/2014      Initial Document  
+03/25/2014      Android & Linux Compatibility updated  
 
-Only IE & Firefox on Windows are getting tested extensively.  
-Positives results for browsers are based on light testing but with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com was used for testing other platforms.  
+Only IE & Firefox on Windows are tested on a regular basis.  
+Positive results for browsers are based on rendering of a test page with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com or Browsershots.org was used for testing other platforms with the following url "http://mil-sym-js-test.spinelli.cloudbees.net/singlePointTester.html".  This page will immediately load and render 3 symbols.  Usually at least one of the symbols will render incorrectly if the custom font support of the browser isn't where it needs to be.
 
 | Windows 7 | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
 | IE9+ | works | live test |  
 | FF 16+ | works | live test |  
 | FF 12-15 | works | browserstack.com |  
-| FF 4-11 | mostly works | browserstack.com |  
 | FF 3.6-11 | fail | browserstack.com |  
 | Chrome 32 | works | live test |  
 | Chrome 31 | fail | browserstack.com |  
@@ -38,6 +37,14 @@ Positives results for browsers are based on light testing but with symbols that 
 | OS X Snow Leopard | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
 | Safari 5.1 | works | browserstack.com | 
+
+| Linux | Status | Testing Method |  
+| :------------ | :------------: | :------------: | 
+| Debian 6 Firefox 12+ | works | browsershots.org |  
+| Debian 6 Opera 12+ | works | browsershots.org |  
+| Debian 6 Chrome 6,30,31 | works | browsershots.org |  
+| Debian 6 SeaMonkey 2.23 | works | browsershots.org |  
+| Ubuntu 12.04 LTS Chrome 33 | works | browsershots.org |  
 
 | Android | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
