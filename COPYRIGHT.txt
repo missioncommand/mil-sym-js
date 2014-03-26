@@ -1,0 +1,12 @@
+Mil Symbology JavaScript Renderer (mil-sym-js)
+
+This product further may include software developed by other individuals, entities, or agencies. 
+
+The product further references the following libraries or capabilities which are NOT included as part of this copyright statement, and are hereby listed with their license terms.
+* jslint4java, https://github.com/happygiraffe/jslint4java, https://github.com/happygiraffe/jslint4java/blob/master/LICENSE.txt (based on BSD license)
+* JSMin Ant Task, https://code.google.com/p/jsmin-ant-task/,  Apache License, Version 2.0, http://www.apache.org/licenses/
+* JQuery Ajax/eventing library, http://jquery.com, based on MIT License, https://raw.github.com/jquery/jquery/master/MIT-LICENSE.txt
+
+
+
+
