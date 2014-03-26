@@ -9,7 +9,7 @@ Revision History
 03/25/2014      Android & Linux Compatibility updated  
 
 Only IE & Firefox on Windows are tested on a regular basis.  
-Positive results for browsers are based on rendering of a test page with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com or Browsershots.org was used for testing other platforms with the following url "http://mil-sym-js-test.spinelli.cloudbees.net/singlePointTester.html".  This page will immediately load and render 3 symbols.  Usually at least one of the symbols will render incorrectly if the custom font support of the browser isn't where it needs to be.
+Positive results for browsers are based on rendering of a test page with symbols that would usually cause problems for browsers with sub-par custom font support.  Browserstack.com or Browsershots.org was used for testing other platforms with the following url "http://mil-sym-js-test.spinelli.cloudbees.net/singlePointTester.html".  This page will immediately load and render 3 symbols.  Typically one of the symbols will render incorrectly if the custom font support of the browser isn't where it needs to be.
 
 | Windows 7 | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
@@ -67,9 +67,9 @@ Positive results for browsers are based on rendering of a test page with symbols
 
 | Windows Phone 8 | Status | Testing Method |  
 | :------------ | :------------: | :------------: |   
-| IE | works | live |  
+| IE | works | live test (Lumia Icon) |  
 
-| Windows Phone 7/7.5/7.8 | Status | Testing Method |  
+| Windows Phone 7.* | Status | Testing Method |  
 | :------------ | :------------: | :------------: |   
-| IE | fails | live |  
+| IE | fails | live test (HTC Arrive) |  
 
