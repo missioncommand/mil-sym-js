@@ -65,7 +65,7 @@ Positive results for browsers are based on rendering of a test page with symbols
 | :------------ | :------------: | :------------: |   
 | Safari | fail | browserstack.com |  
 
-| Windows Phone 8 | Status | Testing Method |  
+| Windows Phone 8.0  GDR 3 | Status | Testing Method |  
 | :------------ | :------------: | :------------: |   
 | IE | works | live test (Lumia Icon) |  
 
