@@ -2,7 +2,7 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.graphics2d = armyc2.c2sd.graphics2d || {};
 armyc2.c2sd.graphics2d.Font = function() {
-    var _size = 10;
+    var _size = 12; //was 10
     var _text = "";
     var _type = 0;
     if (arguments.length > 0) {

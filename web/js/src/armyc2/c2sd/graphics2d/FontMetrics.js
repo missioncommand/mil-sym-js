@@ -7,7 +7,8 @@ armyc2.c2sd.graphics2d.FontMetrics = function() {
     if (arguments.length > 0)
         _font = arguments[0];
     this.stringWidth = function(str) {
-        return Math.floor(_font.getSize() / 2) * str.length;
+        //return Math.floor(_font.getSize() / 2) * str.length;
+        return (_font.getSize() / 2) * str.length;
     };
     this.getFontRenderContext = function() {
         return _fontRenderContext;

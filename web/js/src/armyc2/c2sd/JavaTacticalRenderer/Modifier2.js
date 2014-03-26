@@ -3131,7 +3131,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             modifier = tg.modifiers.get(j);
             var lineFactor = modifier.lineFactor;
             if (modifier.type !== 3)
-                lineFactor += 0.5;
+            {    
+                //lineFactor += 0.5;
+                lineFactor += 0.25;
+            }
             if (isTextFlipped === true)
                 lineFactor = -lineFactor;
             s = modifier.text;
@@ -3172,9 +3175,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     }
                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt1, direction, lineFactor * stringHeight);
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
-                    if (pt0.x < pt1.x)
-                        pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt2, pt3, dist + stringWidth);
-                    glyphPosition = new armyc2.c2sd.graphics2d.Point(Math.floor(pt3.x), Math.floor(pt3.y));
+                    //if (pt0.x < pt1.x)                    
+                        //pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt2, pt3, dist + stringWidth);
+                                        
+                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/1.5);
+                    
+                    //glyphPosition = new armyc2.c2sd.graphics2d.Point(Math.floor(pt3.x), Math.floor(pt3.y));
+                    glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);                    
                     break;
                 case 2:
                     if (converter !== null) {
@@ -3211,8 +3218,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     break;
                 case 3:
                     theta = 0;
-                    x = Math.floor(x1) - Math.floor(Math.floor(stringWidth) / 2);
-                    y = Math.floor(y1) + Math.floor((stringHeight / 2)) + Math.floor((1.25 * lineFactor * stringHeight));
+                    //x = Math.floor(x1) - Math.floor(Math.floor(stringWidth) / 2);
+                    //y = Math.floor(y1) + Math.floor((stringHeight / 2)) + Math.floor((1.25 * lineFactor * stringHeight));
+                    x = x1 - stringWidth/4;
+                    y = y1 + stringHeight/2 + 1.5*lineFactor * stringHeight;
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(x, y);
                     break;
                 case 4:
