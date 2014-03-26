@@ -1,0 +1,10 @@
+Mil Symbology JavaScript Renderer (mil-sym-js)
+
+This product further may include software developed by other individuals, entities, or agencies. 
+
+The product further references the following libraries or capabilities which are NOT included as part of this copyright statement, and are hereby listed with their license terms.
+* JQuery Ajax/eventing library, http://jquery.com, based on MIT License, https://raw.github.com/jquery/jquery/master/MIT-LICENSE.txt
+
+
+
+
