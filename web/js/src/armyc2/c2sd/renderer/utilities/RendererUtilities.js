@@ -63,8 +63,8 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         var div = document.createElement('DIV');
             div.innerHTML = text;
             div.style.position = 'absolute';
-            div.style.top = '-100px';
-            div.style.left = '-100px';
+            div.style.top = '-999px';
+            //div.style.left = '-999px';
             div.style.fontFamily = fontName;
             div.style.fontWeight = fontStyle ? 'bold' : 'normal';
             div.style.fontSize = fontSize + 'pt';
@@ -90,15 +90,20 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     };
     
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString = function(fontString){
-        var arrFont = fontString.split(" ");
-        var fontStyle = arrFont[0];//style
-        var fontSize = arrFont[1].replace("pt","");//size
-        var fontName = arrFont[2];//name
+        var arrFont = null,
+            fontStyle = null,
+            fontSize = null,
+            fontName = null;
         
         if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
         {
             return armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString];
         }
+        
+        arrFont = fontString.split(" ");
+        fontStyle = arrFont[0];//style
+        fontSize = arrFont[1].replace("pt","");//size
+        fontName = arrFont[2];//name
         
         var size = this.measureText(fontName, fontSize, fontStyle, "Hj");
         armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
@@ -117,14 +122,18 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     };
     /**
      * 
-     * @param {type} context
-     * @param {type} text
-     * @param {type} location
-     * @returns {unresolved}
+     * @param {HTML5 canvas context} context can be null but runs faster with a context
+     * @param {String} text
+     * @param {armyc2.c2sd.renderer.so.Point} location can be 0,0 if you're only concerned about the width & height
+     * @param {String} font like "bold 10pt Arial".  if undefined, assumes the modifier font
+     * @returns {armyc2.c2sd.renderer.so.Rectangle}
      */
-    armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds = function(context, text, location){
+    armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds = function(context, text, location, font){
 
-        var font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
+        if(font === undefined)
+        {
+            font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
+        }
         
         var height,
             width;
@@ -135,12 +144,21 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
                 context.font = font;
             }
             width = context.measureText(text).width;
+            height = this.measureTextHeightWithFontString(font);
         }       
         else
         {
             width = this.measureTextWidthWithFontString(font, text);
+            var arrFont = font.split(" ");
+            var fontStyle = arrFont[0];//style
+            var fontSize = arrFont[1].replace("pt","");//size
+            var fontName = arrFont[2];//name
+
+            var size = this.measureText(fontName, fontSize, fontStyle,text);
+            width = size[0];
+            height = size[1];
         }
-        height = this.measureTextHeightWithFontString(font);
+        
 
         var bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
                             width, height);       
