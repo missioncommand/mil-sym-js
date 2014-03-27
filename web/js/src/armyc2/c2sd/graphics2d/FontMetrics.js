@@ -22,9 +22,15 @@ armyc2.c2sd.graphics2d.FontMetrics = function() {
     };
     this.stringHeight=function(str)
     {
-        var location=new armyc2.c2sd.renderer.so.Point(0,0);
-        var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, undefined);            
-        var stringHeight=bounds.height;
+        //var location=new armyc2.c2sd.renderer.so.Point(0,0);
+        //var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, undefined);            
+        //var stringHeight=bounds.height;
+        
+        //getTextBounds does 2 calculations.  Limit to what you need and just get height.
+        var font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
+        var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString(font);
+        stringHeight = height;
+        
         return stringHeight;        
     };
     this.getTextBounds=function(str)
