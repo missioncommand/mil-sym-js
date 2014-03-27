@@ -76,8 +76,8 @@ return{
             buffer = null,
             ctx = null;
     
-        var hasDisplayModifiers = this.hasDisplayModifiers(symbolID, modifiers);
-        var hasTextModifiers = this.hasTextModifiers(symbolID, modifiers);
+        var hasDisplayModifiers = false;
+        var hasTextModifiers = false;
         
         var intFrameAssume = -1,
             frameAssume = null;
@@ -123,10 +123,31 @@ return{
             pixelSize = RendererSettings.getDefaultPixelSize();
         }
         var keepUnitRatio = false;
+        
         if(modifiers[MilStdAttributes.KeepUnitRatio] !== undefined)
         {
             keepUnitRatio = modifiers[MilStdAttributes.KeepUnitRatio];
         }
+        
+        var icon = false;
+        if(modifiers[MilStdAttributes.Icon] !== undefined)
+        {
+            icon = modifiers[MilStdAttributes.Icon];
+        }
+        
+        if(icon)//icon won't show modifiers or display icons
+        {
+            keepUnitRatio = false;
+            hasDisplayModifiers = false;
+            hasTextModifiers = false;
+            symbolID = symbolID.substring(0,10) + "-----";
+        }
+        else
+        {
+            hasDisplayModifiers = this.hasDisplayModifiers(symbolID, modifiers);
+            hasTextModifiers = this.hasTextModifiers(symbolID, modifiers);
+        }
+        
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
@@ -285,7 +306,10 @@ return{
         buffer = null;
         // </editor-fold>
         
-        return ii;
+        if(icon)
+            return ii.getSquareImageInfo();
+        else
+            return ii;
     },
     /**
      * 
@@ -780,8 +804,11 @@ return{
             
             // <editor-fold defaultstate="collapsed" desc="Build Affiliation Modifier">
             //Draw Echelon
-            
-            var affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
+            var affiliationModifier = null;
+            if(RendererSettings.getDrawAffiliationModifierAsLabel()===false)
+            {
+                affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
+            }
             if(affiliationModifier !== null)
             {
 
@@ -1576,8 +1603,12 @@ return{
         
         var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         
-        /*//Affiliation Modifier being drawn as a display modifier
-        var affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
+        //Affiliation Modifier being drawn as a display modifier
+        var affiliationModifier = null;
+        if(RendererSettings.getDrawAffiliationModifierAsLabel())
+        {
+            affiliationModifier = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
+        }
         if(affiliationModifier !== null)
         {   //Set affiliation modifier
             modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER] = affiliationModifier;
@@ -2130,8 +2161,9 @@ return{
 	var frame = null;
         var scale = -999;
         
-        var hasDisplayModifiers = this.hasDisplayModifiers(symbolID, modifiers);
-        var hasTextModifiers = this.hasTextModifiers(symbolID, modifiers);
+        var hasDisplayModifiers = false;
+        var hasTextModifiers = false;
+        var symbolOutlineWidth = RendererSettings.getSinglePointSymbolOutlineWidth();
         
         var buffer = null,
             ctx = null;
@@ -2151,6 +2183,26 @@ return{
         {
             keepUnitRatio = modifiers[MilStdAttributes.KeepUnitRatio];
         }
+        
+        var icon = false;
+        if(modifiers[MilStdAttributes.Icon] !== undefined)
+        {
+            icon = modifiers[MilStdAttributes.Icon];
+        }
+        
+        if(icon)//icon won't show modifiers or display icons
+        {
+            keepUnitRatio = false;
+            hasDisplayModifiers = false;
+            hasTextModifiers = false;
+            symbolOutlineWidth = 0;
+        }
+        else
+        {
+            hasDisplayModifiers = this.hasDisplayModifiers(symbolID, modifiers);
+            hasTextModifiers = this.hasTextModifiers(symbolID, modifiers);
+        }
+        
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
@@ -2160,11 +2212,14 @@ return{
             fillColor = modifiers[MilStdAttributes.FillColor];
         }
         
-        var outlineOffset = RendererSettings.getSinglePointSymbolOutlineWidth();
+        var outlineOffset = symbolOutlineWidth;
         if(outlineOffset > 2)
             outlineOffset = (outlineOffset-1)/2;
         else
             outlineOffset = 0;
+
+        
+        
         // </editor-fold>
         
         var spli = SinglePointLookup.getSPLookupInfo(symbolID,symStd);
@@ -2341,7 +2396,7 @@ return{
             {
                 if(outlineOffset > 0)
                 {
-                    ctx.lineWidth = RendererSettings.getSinglePointSymbolOutlineWidth();
+                    ctx.lineWidth = symbolOutlineWidth;
                     ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(lineColor);
                     ctx.strokeText(frame, x, y);
                 }
@@ -2369,17 +2424,20 @@ return{
         
         //Process Modifiers
         var iiNew = null;
-        if(SymbolUtilities.isTGSPWithSpecialModifierLayout(symbolID) || 
-            SymbolUtilities.isTGSPWithIntegralText(symbolID))
+        if(icon === false)
         {
-            iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers);
-        }
-        else
-        {
-            iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers);
+            if(SymbolUtilities.isTGSPWithSpecialModifierLayout(symbolID) || 
+                SymbolUtilities.isTGSPWithIntegralText(symbolID))
+            {
+                iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers);
+            }
+            else
+            {
+                iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers);
+            }
         }
         
-        if(iiNew !== undefined && iiNew !== null)
+        if(iiNew !== null)
             ii = iiNew;
         
         // <editor-fold defaultstate="collapsed" desc="Cleanup">
@@ -2387,7 +2445,10 @@ return{
         buffer = null;
         // </editor-fold>
         
-        return ii;
+        if(icon)
+            return ii.getSquareImageInfo();
+        else
+            return ii;
     },
     /**
      * 
@@ -3171,7 +3232,7 @@ return{
                 
                 x = bounds.x - labelWidth - bufferXL;
                 y = bounds.y + labelHeight - descent;
-                
+                           
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
@@ -3185,7 +3246,7 @@ return{
                 
                 y = ((labelHeight - descent + bufferText) * 2);
                 y = bounds.y + y;
-                
+                                
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }

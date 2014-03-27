@@ -12,4 +12,5 @@ armyc2.c2sd.renderer.utilities.MilStdAttributes.LineWidth = "LINEWIDTH";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.PixelSize = "SIZE";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.KeepUnitRatio = "KEEPUNITRATIO";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard = "SYMSTD";
+armyc2.c2sd.renderer.utilities.MilStdAttributes.Icon = "ICON";
 

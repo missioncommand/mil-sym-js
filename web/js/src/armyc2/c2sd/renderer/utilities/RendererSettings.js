@@ -22,9 +22,9 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _TextOutlineWidth = 3,
     
     //label foreground color, uses line color of symbol if null.
-    _ColorLabelForeground = null;//armyc2.c2sd.renderer.utilities.Color.BLACK;//"000000", //Color.BLACK;
+    _ColorLabelForeground = null,//armyc2.c2sd.renderer.utilities.Color.BLACK;//"000000", //Color.BLACK;
     //label background color, used if TextBackGroundMethod = TextBackgroundMethod_COLORFILL && not null
-    _ColorLabelBackground = null;//armyc2.c2sd.renderer.utilities.Color.BLACK;//null,//"#FFFFFF",
+    _ColorLabelBackground = null,//armyc2.c2sd.renderer.utilities.Color.BLACK;//null,//"#FFFFFF",
        
     _SymbolOutlineWidth = 3,
     
@@ -34,8 +34,6 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
      */
     _CenterOnHQStaff = true,
     
-    _scaleEchelon = false,
-    _DrawAffiliationModifierAsLabel = true,
     
     _ModifierFontName = "Arial",
     _ModifierFontSize = 10,
@@ -45,7 +43,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
     _SPFontSize = 60,
-    _UnitFontSize = 50;
+    _UnitFontSize = 50,
     _PixelSize = 35;
 
 return{
