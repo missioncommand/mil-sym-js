@@ -3141,8 +3141,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             if (s === null || s.equals("")) {
                 continue;
             }
-            stringWidth = metrics.stringWidth(s) + 1;
-            stringHeight = font.getSize();
+            //stringWidth = metrics.stringWidth(s)+1;            
+            //stringHeight = font.getSize();
+            var bounds=metrics.getTextBounds(s);
+            stringWidth=bounds.width;
+            stringHeight=bounds.height;
             var x1 = 0;
             var y1 = 0;
             var x2 = 0;
