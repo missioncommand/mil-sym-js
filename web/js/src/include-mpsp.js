@@ -133,6 +133,10 @@ document.write('<script src="armyc2/c2sd/JavaRendererServer/RenderMultipoints/cl
 document.write('<script src="j2slib/java/util/ArrayList.js" type="text/javascript" ></script>');
 document.write('<script src="j2slib/java/util/HashMap.js" type="text/javascript" ></script>');
 
+//<!-- Top level single point Renderer classes -->
+document.write('<script src="armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/SinglePointRenderer.js" type = "text/javascript"></script>');
+document.write('<script src="armyc2/c2sd/renderer/MilStdIconRenderer.js" type = "text/javascript"></script>');
 
 // add source required by SECWebRenderer 
 document.write('<script src="sec/web/renderer/utilities/JavaRendererUtilities.js" type="text/javascript" ></script>');
@@ -143,7 +147,3 @@ document.write('<script src="sec/web/renderer/GeoPixelConversion.js" type="text/
 document.write('<script src="sec/web/renderer/MultiPointHandler.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SECWebRenderer.js" type="text/javascript" ></script>');
 
-//<!-- Top level single point Renderer classes -->
-document.write('<script src="armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" type="text/javascript" ></script>');
-document.write('<script src="armyc2/c2sd/renderer/SinglePointRenderer.js" type = "text/javascript"></script>');
-document.write('<script src="armyc2/c2sd/renderer/MilStdIconRenderer.js" type = "text/javascript"></script>');

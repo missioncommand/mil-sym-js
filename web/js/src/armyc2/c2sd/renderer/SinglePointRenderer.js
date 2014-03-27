@@ -54,8 +54,7 @@ return{
         
         if(modifiers === undefined || modifiers === null)
             modifiers = {};
-	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
-	//ctx.font="150pt UnitFontsC"; // * 4 (because font file is 25% of original)
+	
         var pixel = null,//point to center symbol on.
             basicID = SymbolUtilities.getBasicSymbolID(symbolID),
             symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
@@ -122,7 +121,8 @@ return{
         {
             pixelSize = RendererSettings.getDefaultPixelSize();
         }
-        var keepUnitRatio = false;
+        
+        var keepUnitRatio = true;
         
         if(modifiers[MilStdAttributes.KeepUnitRatio] !== undefined)
         {

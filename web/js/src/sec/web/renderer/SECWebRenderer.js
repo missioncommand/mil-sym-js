@@ -390,7 +390,7 @@ return{
      * Given a symbol code meant for a single point symbol, returns the
      * anchor point at which to display that image based off the image returned
      * from the URL of the SinglePointServer.
-     * @param batch like {"iconURLs":["SFGP------*****?size=35&T=Hello","SHGPE-----*****?size=50"]}
+     * @param batch like "{"iconURLs":["SFGP------*****?size=35&T=Hello","SHGPE-----*****?size=50"]}"
      * @return like {"singlepoints":[{"x":0,"y":0,"boundsx":0,"boundsy":0,"boundswidth":35,"boundsheight":35,"iconwidth":35,"iconwidth":35}, ... ]}
      */
     getSinglePointInfoBatch: function(batch)
@@ -403,7 +403,7 @@ return{
             {
 
                 //must escape '=' so that JSONObject can parse string
-                batch = batch.replace("=", "%3D");
+                //batch = batch.replace(/=/g, "%3D");
 
                 var data = null;
                 var jsonSPString = JSON.parse(batch);
@@ -421,7 +421,7 @@ return{
                     info = jsa[i];
                     //System.out.println(info);
                     //info = java.net.URLDecoder.decode(info, "UTF-8");
-                    info = info.replace("%3D", "=");
+                    //info = info.replace("%3D", "=");
                     //System.out.println(info);
 
                     var modifiers = JavaRendererUtilities.createParameterMapFromURL(info);
