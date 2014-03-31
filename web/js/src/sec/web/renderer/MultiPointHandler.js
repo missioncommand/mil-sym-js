@@ -14,6 +14,9 @@ sec.web.renderer.MultiPointHandler = (function () {
     var _appletChecked = false;
     var _appletUrl = null;
     
+    var baseURL = "http:" + "//" + location.hostname + ":8080/", //base http url for milstd icon symbology
+        baseSURL = location.protocol + "//" + location.host + "/"; //base https url for milstd icon symbology
+    
     //decimal lat/lon accuracy by decimal place
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
@@ -2152,58 +2155,11 @@ return{
      */
     GetImageServerURL: function()
     {
-        var port = 80;
-        var appletReady = false;
-        if(_appletChecked===false)
-        {
-            // The renderer is not ready until it receives an active from the applet
-            // and the port number has returned from the local image server.
+        _appletUrl = baseURL;
+        //_appletUrl = baseSURL;
+        //_appletUrl = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
+        _appletUrl += "mil-sym-service/renderer/image/";          
 
-            // But first get the dom element for the applet tag.
-            var renderer = document.getElementById("SECRenderApplet");
-
-            if (renderer) 
-            {
-
-                // Try to load the applet for about 10 seconds.  If this fails to load
-                // it is either too big to download and is taking too much time, or
-                // something failed due to java issues.                        
-
-                try 
-                {
-                    appletReady = renderer.isActive();    
-                
-                    // Try to load the single point server after the applet loads.  If
-                    // this takes longer than 5 seconds then there probably is an issue.            
-                    if (appletReady) {
-
-                        port = renderer.GetPortNumber();
-
-                        if (port) 
-                        {
-                           appletReady = true;
-                           _appletUrl = "http://localhost:" + port + "/";
-                        } 
-                        else 
-                        {
-                           appletReady = false;
-                        }   
-                    }
-                } 
-                catch(exc) 
-                {
-                    appletReady = false;
-                }
-            } 
-            //if applet server not available, use the web service.
-            if(_appletUrl === null)
-            {
-                    _appletUrl = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
-                    _appletUrl += "mil-symbology-renderer/renderer/image/";          
-            }
-            _appletChecked = true;
-        }
-        
         return _appletUrl;
     }
             

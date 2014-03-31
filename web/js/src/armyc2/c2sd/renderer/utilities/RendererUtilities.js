@@ -78,22 +78,25 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight = function(fontName, fontSize, fontStyle)
     {
-        var fontString = fontStyle + " " + fontSize + "pt " + fontName;
+        var fontString = null;
+        var size;
         if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
         {
             return armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString];
         }
         
-        var size = this.measureText(fontName, fontSize, fontStyle, "Hj");
+        size = this.measureText(fontName, fontSize, fontStyle, "Hj");
+        fontString = fontStyle + " " + fontSize + "pt " + fontName;
         armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
         return size[1];
     };
     
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString = function(fontString){
-        var arrFont = null,
-            fontStyle = null,
-            fontSize = null,
-            fontName = null;
+        var arrFont,
+            fontStyle,
+            fontSize,
+            fontName,
+            size;
         
         if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
         {
@@ -105,7 +108,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         fontSize = arrFont[1].replace("pt","");//size
         fontName = arrFont[2];//name
         
-        var size = this.measureText(fontName, fontSize, fontStyle, "Hj");
+        size = this.measureText(fontName, fontSize, fontStyle, "Hj");
         armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
         return size[1];
 
@@ -130,13 +133,16 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds = function(context, text, location, font){
 
+        var arrFont, fontStyle, fontSize, fontName, size;
+            
         if(font === undefined)
         {
             font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
         }
         
         var height,
-            width;
+            width,
+            bounds;
         if(context !== null)
         {
             if(context.font !== font)
@@ -149,18 +155,18 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         else
         {
             width = this.measureTextWidthWithFontString(font, text);
-            var arrFont = font.split(" ");
-            var fontStyle = arrFont[0];//style
-            var fontSize = arrFont[1].replace("pt","");//size
-            var fontName = arrFont[2];//name
+            arrFont = font.split(" ");
+            fontStyle = arrFont[0];//style
+            fontSize = arrFont[1].replace("pt","");//size
+            fontName = arrFont[2];//name
 
-            var size = this.measureText(fontName, fontSize, fontStyle,text);
+            size = this.measureText(fontName, fontSize, fontStyle,text);
             width = size[0];
             height = size[1];
         }
         
 
-        var bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
+        bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
                             width, height);       
 
         return bounds;

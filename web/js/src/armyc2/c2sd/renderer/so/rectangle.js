@@ -318,8 +318,31 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         armyc2.c2sd.renderer.so.Rectangle.prototype.clone = function(){
             return new armyc2.c2sd.renderer.so.Rectangle(this.x,this.y,this.width,this.height);
         };
+        
+        armyc2.c2sd.renderer.so.Rectangle.prototype.intersects = function(r){
+            var tw = this.width;
+            var th = this.height;
+            var rw = r.width;
+            var rh = r.height;
+            if (rw <= 0 || rh <= 0 || tw <= 0 || th <= 0) {
+                return false;
+            }
+            var tx = this.x;
+            var ty = this.y;
+            var rx = r.x;
+            var ry = r.y;
+            rw += rx;
+            rh += ry;
+            tw += tx;
+            th += ty;
+            //      overflow || intersect
+            return ((rw < rx || rw > tx) &&
+                    (rh < ry || rh > ty) &&
+                    (tw < tx || tw > rx) &&
+                    (th < ty || th > ry));
+        };//*/
     
-		armyc2.c2sd.renderer.so.Rectangle.prototype.OUT_LEFT = 1;
+        armyc2.c2sd.renderer.so.Rectangle.prototype.OUT_LEFT = 1;
         armyc2.c2sd.renderer.so.Rectangle.prototype.OUT_TOP = 2;
         armyc2.c2sd.renderer.so.Rectangle.prototype.OUT_RIGHT = 4;
         armyc2.c2sd.renderer.so.Rectangle.prototype.OUT_BOTTOM = 8;
