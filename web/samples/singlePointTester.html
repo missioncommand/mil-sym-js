@@ -89,7 +89,7 @@
             //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("G*M*OFS---****X",modifiers);
             //
             //draw image
-            ctx.drawImage(iiTG.getImage(), ii.getImageBounds().getWidth() + 10, 0);
+            ctx.drawImage(iiTG.getImage(), Math.ceil(ii.getImageBounds().getWidth() + 10), 0);
 
 
             if(showDrawAreas)
@@ -136,7 +136,7 @@
             var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("WA-DPFCU---L---",modifiers);
             //var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPSLA---****X",modifiers);
 
-            ctx.drawImage(iiTGMP.getImage(), ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20, 0);
+            ctx.drawImage(iiTGMP.getImage(), Math.ceil(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20), 0);
 
             if(showDrawAreas)
             {
@@ -153,11 +153,11 @@
             /*
             var start = new Date().getTime();
             modifiers = new Object();
-            modifiers = populateModifiers();
+            //modifiers = populateModifiers();//render time increases with the number of modifiers
 			//modifiers["RENDER"] = false;//dimensions without labels
             var apID = "GFGPGPP---****X";//action point
-            var dmID = "SUGDUSAT--MY***";//display modifiers
-            var plainID = "SUGPUSAT----***";//plain symbol
+            var dmID = "SUGDUSAT--MY***";//symbol with display modifiers, will add to render time
+            var plainID = "SUGPUSAT----***";//plain symbol with no display modifiers
             for(var i = 0; i < 1000; i++)
             {//"SUGDUSAT--MY***"
                 armyc2.c2sd.renderer.MilStdIconRenderer.Render(dmID,modifiers);

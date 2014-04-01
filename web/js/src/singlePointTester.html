@@ -15,7 +15,7 @@
         padding: 25px;
     }
     </style> -->
-	<script src="include-sp.js" type="text/javascript" ></script>
+	<script src="include-mpsp.js" type="text/javascript" ></script>
 	<script src="armyc2/c2sd/renderer/utilities/ErrorLogger.js" type="text/javascript" ></script>
     
     
@@ -49,6 +49,7 @@
             modifiers[msa.PixelSize]=60;
             modifiers[msa.KeepUnitRatio]=true;
             modifiers[msa.SymbologyStandard] = 1;
+			//modifiers[msa.Icon]=true;
             //CALL TO RENDER////////////////////////////////////////////////
             //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("UPPS-----*****",modifiers);
             //SUGDUSAT--FM***//"SUGDUSAT--MY***"
@@ -85,6 +86,8 @@
                 centerPoint.stroke(ctx);
             }
 
+			//modifiers[msa.Icon]=true;
+			
             //image = render3();
             //G*M*NZ----****X//nuclear detonation
             //G*GPGPP---****X//action point, has H1
@@ -99,7 +102,7 @@
             //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("G*M*OFS---****X",modifiers);
             //
             //draw image
-            ctx.drawImage(iiTG.getImage(), ii.getImageBounds().getWidth() + 10, 0);
+            ctx.drawImage(iiTG.getImage(), Math.ceil(ii.getImageBounds().getWidth() + 10), 0);
 
 
             if(showDrawAreas)
@@ -146,7 +149,7 @@
             var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("WA-DPFCU---L---",modifiers);
             //var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPSLA---****X",modifiers);
 
-            ctx.drawImage(iiTGMP.getImage(), ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20, 0);
+            ctx.drawImage(iiTGMP.getImage(), Math.ceil(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20), 0);
 
             if(showDrawAreas)
             {
@@ -157,7 +160,16 @@
                 ctx.lineWidth=1;
                 symbolBoundsTGMP.stroke(ctx);
             }
-            
+			/*
+			ctx.strokeStyle="#FFFFFF"
+			ctx.fillStyle="#000000"
+            ctx.font = "bold 10pt Arial";
+			ctx.lineWidth = 3;
+			ctx.strokeText("Clean",100,150);
+			ctx.fillText("Clean",100,150);
+			ctx.strokeText("Fuzzy",150.5,150);
+			ctx.fillText("Fuzzy",150.5,150);//*/
+			
             
             //ImageInfo Tests//////////////////////////////////////////////////////////////
             /*
@@ -183,10 +195,11 @@
             //foo.unio
 
             //PERFORMANCE TEST///////////////////////////
-            
+            /*
             var start = new Date().getTime();
             modifiers = new Object();
             //modifiers = populateModifiers();
+			//modifiers[msa.Icon] = true;
 			//modifiers["RENDER"] = false;//dimensions without labels
             var apID = "GFGPGPP---****X";//action point
             var dmID = "SUGDUSAT--MY***";//display modifiers
@@ -389,6 +402,10 @@
 			alert(myTimeMessage2);
             alert(myTimeMessage3);//*/
 
+			var batch = "{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}";
+			var bdfshg = sec.web.renderer.SECWebRenderer.getSinglePointInfoBatch(batch);
+			console.log(bdfshg);
+			
             //TEST FUNCTIONS/////////////////////////////
             /*
 

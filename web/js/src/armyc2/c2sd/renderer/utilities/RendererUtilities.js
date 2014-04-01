@@ -13,6 +13,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
      * @type {}
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements = {};
+    armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors = {};
 
 
     /**
@@ -22,12 +23,18 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.getIdealOutlineColor = function(color){
         var idealColor = null;
+        
+        if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color])
+        {
+            return armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color];
+        }//*/
+        
         if(color !== null && color !==""){
-		
 			
-			var tempColor = color;
-			if(tempColor.length === 9)
-				tempColor = "#" + tempColor.substring(3);
+            var tempColor = color;
+            
+            if(tempColor.length === 9)
+                    tempColor = "#" + tempColor.substring(3);
             var threshold = armyc2.c2sd.renderer.utilities.RendererSettings.getTextBackgroundAutoColorThreshold();
             
             //hex to rgb
@@ -39,7 +46,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         
             var delta = ((r * 0.299) + (g * 0.587) + (b * 0.114));
             
-            if((255- delta < threshold))
+            if((255 - delta < threshold))
             {
                 idealColor = "#000000";
             }
@@ -48,6 +55,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
                 idealColor = "#FFFFFF";
             }
         }
+        armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color] = idealColor;
         return idealColor;
     };
     /**

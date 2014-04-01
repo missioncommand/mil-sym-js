@@ -44,13 +44,13 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, textBase
 };
 	
     armyc2.c2sd.renderer.utilities.TextInfo.prototype.setLocation = function(x,y){
+       
         var x1 = this.location.getX(),
             y1 = this.location.getY(),
             x2 = x,
             y2 = y;
 
-        this.location = new armyc2.c2sd.renderer.so.Point(x,y);
-
+        this.location.setLocation(x,y);    
 
         var shiftX = 0,
             shiftY = 0;
