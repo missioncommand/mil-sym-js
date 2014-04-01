@@ -194,24 +194,7 @@
             //var foo = new armyc2.c2sd.renderer.utilities.SO.Rectangle(0,0,1,1)
             //foo.unio
 
-            //PERFORMANCE TEST///////////////////////////
-            /*
-            var start = new Date().getTime();
-            modifiers = new Object();
-            //modifiers = populateModifiers();
-			//modifiers[msa.Icon] = true;
-			//modifiers["RENDER"] = false;//dimensions without labels
-            var apID = "GFGPGPP---****X";//action point
-            var dmID = "SUGDUSAT--MY***";//display modifiers
-            var plainID = "SUGPUSAT----***";//plain symbol
-            for(var i = 0; i < 1000; i++)
-            {//"SUGDUSAT--MY***"
-                armyc2.c2sd.renderer.MilStdIconRenderer.Render(plainID,modifiers);
-            }
 
-            var end = new Date().getTime();
-            var time = end - start;
-            alert('Render 1k symbols: ' + (time/1000));//*/
 			
             //namespace speed check//////////////////////////
             /*
@@ -484,7 +467,7 @@
             
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
             //symbol.symbolicon A
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
@@ -522,7 +505,42 @@
 		}
 
 	}
-	
+	function speedTest(type)
+	{
+		//PERFORMANCE TEST///////////////////////////
+		
+		var start = new Date().getTime();
+		var modifiers;
+		//modifiers = populateModifiers();//render time increases with the number of modifiers
+		//modifiers["RENDER"] = false;//dimensions without labels
+		var apID = "GFGPGPP---****X";//action point
+		var dmID = "SUGDUSAT--MY***";//symbol with display modifiers, will add to render time
+		var plainID = "SUGPUSAT----***";//plain symbol with no display modifiers
+		var id;
+		if(type === 1)
+		{
+			id = plainID;
+			modifiers = new Object();
+		}
+		else if(type === 2)
+		{
+			id = dmID;
+			modifiers = new Object();
+		}
+		else if(type === 3)
+		{
+			id = dmID;
+			modifiers = populateModifiers();
+		}
+		for(var i = 0; i < 1000; i++)
+		{
+			armyc2.c2sd.renderer.MilStdIconRenderer.Render(id,modifiers);
+		}
+
+		var end = new Date().getTime();
+		var time = end - start;
+		alert('Render 1k symbols: ' + (time/1000));//*/
+	}
 	function preload()
 	{
 		//console.log("preloading...");
@@ -540,13 +558,30 @@
 		
 		//armyc2.c2sd.renderer.MilStdIconRenderer.Init();
 		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+		
+		var ii1 = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SUGPUSAT----***",{});
+		var img = document.getElementById("iST1");
+		img.src = ii1.toDataUrl();
+		img.width = ii1.getImageBounds().width;
+		img.height = ii1.getImageBounds().height;
+			
+		var ii2 = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SUGDUSAT--MY***",populateModifiers());
+		var img2 = document.getElementById("iST2");
+		img2.src = ii2.toDataUrl();
+		img2.width = ii2.getImageBounds().width;
+		img2.height = ii2.getImageBounds().height;
 	}
 </script>
 </head>
 <BODY bgcolor="Cyan" onload="preload();">
-
+Rendered via HTML5 Canvas:<br/>
 <canvas id="preview" width="650" height="200"></canvas>
-<button id="btnRender" type='button' onclick='testRender();' disabled>Loading Fonts</button>
+<button id="btnRender" type='button' onclick='testRender();' disabled>Loading Page</button>
+<br/>
+<img id="iST1" src="" alt="test" height="35" width="35">
+<button id="btnST1" type='button' onclick='speedTest(1);' >Speed Test</button>
+<img id="iST2" src="" alt="test" height="35" width="35">
+<button id="btnST2" type='button' onclick='speedTest(3);' >Speed Test With Modifiers</button>
 
 </BODY>
 </html>
