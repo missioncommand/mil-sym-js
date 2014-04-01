@@ -1375,7 +1375,10 @@ return{
             lineWidth = 4;
         symbolCode = sec.web.renderer.utilities.JavaRendererUtilities.normalizeSymbolCode(symbolCode);
         kml += ("<Placemark id=\"" + id + "_mg" + "\">");
-        kml += ("<description><b>" + name + "</b><br/>" + "\n" + description + "</description>");
+        if(description)
+        {
+           kml += ("<description>" + description + "</description>");
+        }
         kml += ("<Style id=\"" + lineStyleId + "\">");
         lineColor = shapeInfo.getLineColor();
         if (lineColor !== null) {
