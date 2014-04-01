@@ -1236,12 +1236,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     /**
      * Determines if the symbol is a tactical graphic
      * @param {String} strSymbolID
-     * @returns {Boolean} true if symbol starts with "G", or is a weather graphic, or a bridge graphic
+     * @returns {Boolean} true if symbol starts with "G", or is a weather graphic, or an EMS natural event
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTacticalGraphic = function (strSymbolID){
        
         if(strSymbolID && 
-                ((strSymbolID[0]===('G')) || (this.isWeather(strSymbolID)) 
+                ((strSymbolID[0]===('G')) || (strSymbolID[0]===('W')) 
                 || this.isEMSNaturalEvent(strSymbolID)))
         {
           return true;
@@ -1540,8 +1540,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNBC = function (strSymbolID){
        
-        var temp = this.getBasicSymbolID(strSymbolID),
-        blRetVal = ((this.isTacticalGraphic(strSymbolID)) && (temp.substring(0, 5) === ("G*M*N")));
+        //var temp = this.getBasicSymbolID(strSymbolID),
+        //var blRetVal = (temp.substring(0, 5) === ("G*M*N"));         
+        var blRetVal = ((strSymbolID.charAt(0) === ('G')) && ((strSymbolID.charAt(2) === ('M')) && (strSymbolID.charAt(4) === ('N'))));
         return blRetVal;
 
     };

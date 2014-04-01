@@ -1,3 +1,15 @@
+//Check for IE9 which doesn't have a console object until dev tools are open.
+if(!(window && window.console)){
+    this.console = {
+        log: function(){},
+        debug: function(){},
+        info: function(){},
+        warn: function(){},
+        error: function(){},
+        dir: function(){}
+    };
+}
+
 //Singleton template, unfortunately, cannot be parsed by netbeans//////////////
 var armyc2 = armyc2 || {};
 /** namespace */

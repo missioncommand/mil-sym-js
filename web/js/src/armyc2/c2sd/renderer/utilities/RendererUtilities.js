@@ -86,7 +86,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight = function(fontName, fontSize, fontStyle)
     {
-        var fontString = null;
+        var fontString = fontStyle + " " + fontSize + "pt " + fontName;
         var size;
         if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
         {
@@ -94,7 +94,6 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         }
         
         size = this.measureText(fontName, fontSize, fontStyle, "Hj");
-        fontString = fontStyle + " " + fontSize + "pt " + fontName;
         armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
         return size[1];
     };
