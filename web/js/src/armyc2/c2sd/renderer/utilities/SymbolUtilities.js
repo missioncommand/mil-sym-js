@@ -481,7 +481,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         if(this.isTacticalGraphic(symbolID)===true)
         {
-            this.canSymbolHaveModifier(symbolID, modifier, symStd);
+            returnVal = this.canSymbolHaveModifier(symbolID, modifier, symStd);
         }
         else
         {
