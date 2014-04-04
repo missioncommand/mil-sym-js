@@ -227,7 +227,7 @@ return{
 
             if (AttributesArray === null || attributes === "") {
                 //attributesJSON =  new sec.web.json.utilities.JSONObject ("[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}]");
-                AttributesArray=[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}];
+                AttributesArray=[{innerRadius:50.0,radius:100.0,minAlt:0.0,maxAlt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}];
             }
 
             var attributesArrayLength = AttributesArray.length;
@@ -235,17 +235,14 @@ return{
             if (attributesArrayLength > 0) {
                 for (var i = 0; i < attributesArrayLength; i++) 
                 {
-                    if(AttributesArray[i].radius1 !== undefined)
-                    {
-                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius1));
-                    }
-                    else if(AttributesArray[i].radius !== undefined)
-                    {
-                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius));
-                    }
-                    else if(AttributesArray[i].innerRadius !== undefined)
+                    if(AttributesArray[i].innerRadius !== undefined)
                     {
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].innerRadius));                          
+                    }
+                    
+                    if(AttributesArray[i].radius !== undefined)
+                    {
+                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius));
                     }
                     else if(AttributesArray[i].width !== undefined)
                     {
@@ -256,29 +253,17 @@ return{
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].leftWidth));
                     }
 
-                    if(AttributesArray[i].radius2 !== undefined)
-                    {
-                        attributes.AM_DISTANCE.add(new Double(AttributesArray[i].radius2));                          
-                    }
-                    else if(AttributesArray[i].rightWidth !== undefined)
+                    if(AttributesArray[i].rightWidth !== undefined)
                     {
                         attributes.AM_DISTANCE.add(new Double(AttributesArray[i].rightWidth));                          
                     }
                     
-                    if(AttributesArray[i].minalt !== undefined)
-                    {
-                        attributes.X_ALTITUDE_DEPTH.add(new Double(AttributesArray[i].minalt));                          
-                    }
-                    else if(AttributesArray[i].minAlt !== undefined)
+                    if(AttributesArray[i].minAlt !== undefined)
                     {
                         attributes.X_ALTITUDE_DEPTH.add(new Double(AttributesArray[i].minAlt));
                     }
 
-                    if(AttributesArray[i].maxalt !== undefined)
-                    {
-                        attributes.X_ALTITUDE_DEPTH.add(new Double(AttributesArray[i].maxalt));                          
-                    }
-                    else if(AttributesArray[i].maxAlt !== undefined)
+                    if(AttributesArray[i].maxAlt !== undefined)
                     {
                         attributes.X_ALTITUDE_DEPTH.add(new Double(AttributesArray[i].maxAlt));
                     }

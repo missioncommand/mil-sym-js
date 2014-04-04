@@ -2424,20 +2424,21 @@ return{
         
         //Process Modifiers
         var iiNew = null;
-        if(icon === false)
+        if(icon === false && (hasTextModifiers || hasDisplayModifiers || SymbolUtilities.isTGSPWithIntegralText(symbolID)))
         {
             if(SymbolUtilities.isTGSPWithSpecialModifierLayout(symbolID) || 
                 SymbolUtilities.isTGSPWithIntegralText(symbolID))
             {
                 iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers);
             }
-            else
+            else 
             {
                 iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers);
             }
+
         }
         
-        if(iiNew !== null)
+        if(iiNew)
             ii = iiNew;
         
         // <editor-fold defaultstate="collapsed" desc="Cleanup">
@@ -2476,7 +2477,8 @@ return{
             symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
-            labelWidth = 0;
+            labelWidth = 0,
+            newii = null;
     
         var arrMods = new Array();
         var duplicate = false;
@@ -3083,7 +3085,7 @@ return{
                     ctx.fill();
                 }
             }
-            var newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+            newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
             ctx = null;
@@ -3124,7 +3126,8 @@ return{
             symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
-            labelWidth = 0;
+            labelWidth = 0,
+            newii = null;
     
         var arrMods = new Array();
         var duplicate = false;
@@ -3366,7 +3369,7 @@ return{
 
                 }
             }
-            var newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+            newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
             ctx = null;
