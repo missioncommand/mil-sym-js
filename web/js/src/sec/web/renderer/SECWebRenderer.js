@@ -314,6 +314,36 @@ return{
                     attributes.AM_DISTANCE.add(curtainWidth);
                 }   
             }
+            
+            //Make sure point order is good for POLYARC
+            if(shapeType === POLYARC)
+            {
+                var coords = controlPoints.split(" ");
+                var clockWise = false;
+                if(this.CalculateSignedAreaOfPolygon(coords)<0)
+                {
+                    clockWise = true;
+                }
+                
+                if(clockWise)//we want CCW
+                {
+                    coords = coords.reverse();
+                    controlPoints = "";
+                    var len = coords.length;
+                    
+                    for(var i = 0; i < (len); i++)
+                    {
+                        if(i < len - 1)
+                        {
+                            controlPoints += " " + coords[i];
+                        }
+                        else
+                        {
+                            controlPoints = coords[i] + controlPoints;
+                        }
+                    }
+                }
+            }
 
             returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, altitudeMode, controlPoints, attributes);
         } 
@@ -325,7 +355,43 @@ return{
         }
         return returnValue;
     },     
+        
+    CalculateSignedAreaOfPolygon: function(coords)
+    {
+        //calculating the signed area will tell you which direction the points
+        //are going.  Negative = Clock-wise, Positive = counter clock-wise
+        //A = 1/2 * (x1*y2 - x2*y1 + x2*y3 - x3*y2 + ... + xn*y1 - x1*yn)
+        var x1,y1,x2,y2, coord, signedArea=0, len=0;
+        len = coords.length;
+        for(var i = 0; i < len; i++)
+        {
             
+            
+            if(i < len - 1)
+            {
+                coord = coords[i].split(",");
+                x1 = parseInt(coord[0]);
+                y1 = parseInt(coord[1]);
+                coord = coords[i+1].split(",");
+                x2 = parseInt(coord[0]);
+                y2 = parseInt(coord[1]);
+            }
+            else
+            {
+                coord = coords[i].split(",");
+                x1 = parseInt(coord[0]);
+                y1 = parseInt(coord[1]);
+                coord = coords[0].split(",");
+                x2 = parseInt(coord[0]);
+                y2 = parseInt(coord[1]);
+            }
+            
+            signedArea += (x1*y2 - x2*y1);
+        }
+        
+        return signedArea/2;
+    },
+        
     ShouldClipMultipointSymbol: function(symbolID)
     {
         return sec.web.renderer.MultiPointHandler.ShouldClipSymbol (symbolID);
