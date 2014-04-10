@@ -35,6 +35,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
+        "MODIFIERS": "T.",
         "DESCRIPTION": "Area",
         "HIERARCHY": "0.X.2",
         "ALPHAHIERARCHY": "BS.AREA",
