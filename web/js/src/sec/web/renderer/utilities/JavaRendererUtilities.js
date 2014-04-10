@@ -187,29 +187,32 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
 
                 try 
                 {   
-                    var obj = JSON.parse(modifiers);
-
-                    if(obj !== undefined && obj !== null)
+                    if(modifiers)
                     {
-                        if (obj.modifiers !== undefined && obj.modifiers!== null) 
+                        if(modifiers.modifiers)
                         {
-
-                            // These guys store array values.  Put in appropriate data strucutre
-                            // for MilStdSymbol.
-                            if (obj.modifiers.altitudeDepth !== undefined && 
-                                    obj.modifiers.altitudeDepth !== null) 
-                            {
-                                var jsonAltitudeArray = obj.modifiers.altitudeDepth;
-                                if (jsonAltitudeArray.length < 2)
-                                {
-                                    returnValue = false;                                    
-                                }
-                                else 
-                                {
-                                    returnValue = true;
-                                }
-                            }                    
-                        }//*/
+                            modifiers = modifiers.modifiers;
+                        }
+                    
+                        // These guys store array values.  Put in appropriate data strucutre
+                        // for MilStdSymbol.
+                        var jsonAltitudeArray = null;
+                        if (modifiers.X) 
+                        {
+                            jsonAltitudeArray = modifiers.X;
+                        }        
+                        else if (modifiers.altitudeDepth) 
+                        {
+                            jsonAltitudeArray = modifiers.altitudeDepth;
+                        }  
+                        if (jsonAltitudeArray && jsonAltitudeArray.length >= 2)
+                        {
+                            returnValue = true;                                    
+                        }
+                        else 
+                        {
+                            returnValue = false;
+                        }
                     }
                 } 
                 catch(je) 

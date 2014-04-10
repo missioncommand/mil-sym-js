@@ -14,17 +14,17 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 armyc2.c2sd.renderer.utilities.Color = function (R,G,B,A) {
 
     //private vars
-    this._A = 255;
-    this._R = 0;
-    this._G = 0;
-    this._B = 0;
+    this.A = 255;
+    this.R = 0;
+    this.G = 0;
+    this.B = 0;
     
     //constructor code
-    this._R = R;
-    this._G = G;
-    this._B = B;
+    this.R = R;
+    this.G = G;
+    this.B = B;
     if(A !== undefined)
-        this._A = A;
+        this.A = A;
 };        
         
     
@@ -44,27 +44,27 @@ armyc2.c2sd.renderer.utilities.Color = function (R,G,B,A) {
     
     armyc2.c2sd.renderer.utilities.Color.prototype.getAlpha = function()
     {
-        return this._A;
+        return this.A;
     };
     
     armyc2.c2sd.renderer.utilities.Color.prototype.getRed = function()
     {
-        return this._R;
+        return this.R;
     };
     
     armyc2.c2sd.renderer.utilities.Color.prototype.getGreen = function()
     {
-        return this._G;
+        return this.G;
     };
     
     armyc2.c2sd.renderer.utilities.Color.prototype.getBlue = function()
     {
-        return this._B;
+        return this.B;
     };
     
     armyc2.c2sd.renderer.utilities.Color.prototype.toARGB = function()
     {
-        return (this._A << 24) + ((this._R & 0xFF) << 16) + ((this._G & 0xFF) << 8) + (this._B & 0xFF);
+        return (this.A << 24) + ((this.R & 0xFF) << 16) + ((this.G & 0xFF) << 8) + (this.B & 0xFF);
     };
     /**
      * A hex string in the format of AARRGGBB
@@ -75,16 +75,16 @@ armyc2.c2sd.renderer.utilities.Color = function (R,G,B,A) {
     {
         if(withAlpha === false)
         {
-            return "#" + this.convert(this._R) + 
-                            this.convert(this._G) + 
-                            this.convert(this._B);
+            return "#" + this.convert(this.R) + 
+                            this.convert(this.G) + 
+                            this.convert(this.B);
         }
         else
         {
-            return "#" + this.convert(this._A) + 
-                            this.convert(this._R) + 
-                            this.convert(this._G) + 
-                            this.convert(this._B);
+            return "#" + this.convert(this.A) + 
+                            this.convert(this.R) + 
+                            this.convert(this.G) + 
+                            this.convert(this.B);
         }    
     };
     /**
@@ -93,10 +93,10 @@ armyc2.c2sd.renderer.utilities.Color = function (R,G,B,A) {
     armyc2.c2sd.renderer.utilities.Color.prototype.toKMLHexString = function()
     {
         return "#" + 
-                this.convert(this._A) + 
-                this.convert(this._B) + 
-                this.convert(this._G) + 
-                this.convert(this._R);
+                this.convert(this.A) + 
+                this.convert(this.B) + 
+                this.convert(this.G) + 
+                this.convert(this.R);
     };
     
 

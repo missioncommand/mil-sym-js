@@ -31,7 +31,10 @@ sec.web.renderer.SECWebRenderer = (function () {
         DEFAULT_ATTRIBUTES = "[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}]",
         spsPortNumber = -1,
         ErrorLogger = armyc2.c2sd.renderer.utilities.ErrorLogger,
+        SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
         JavaRendererUtilities = sec.web.renderer.utilities.JavaRendererUtilities,
+        Shape3DHandler = sec.web.renderer.Shape3DHandler,
+        KmlOptions = sec.geo.kml.KmlOptions,
         MilStdIconRenderer = null;
     
     //constructor code
@@ -103,19 +106,22 @@ return{
         var output = "";
         try 
         {
-            /*
+            
             if (JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
             {
-                output = RenderMilStd3dSymbol(name, id, symbolCode, description, altitudeMode, controlPoints,
+                if (!(altitudeMode && altitudeMode.length))
+                    altitudeMode = "relativeToGround";
+                
+                output = this.RenderMilStd3dSymbol(name, id, symbolCode, description, altitudeMode, controlPoints,
                         modifiers);
             
                 //get modifiers/////////////////////////////////////////////////
-                String modifierKML = MultiPointHandler.getModififerKML(id, name, description, symbolCode, controlPoints,
+                var modifierKML = sec.web.renderer.MultiPointHandler.getModififerKML(id, name, description, symbolCode, controlPoints,
                         scale, bbox, modifiers, format,symStd);
 
                 modifierKML += "</Folder>";
 
-                output = output.replaceFirst("</Folder>", modifierKML);
+                output = output.replace("</Folder>", modifierKML);
             
                 // Check the output of the 3D Symbol Drawing.  If this returned an error
                 // it should either be "" or it should be a JSON string starting with "{".
@@ -123,15 +129,15 @@ return{
                 // this bug fix in quick turnaround.  More consistent error handling should
                 // be done through code.
                
-                if (output.equals("") || output.startsWith("{")) {
-                    output = MultiPointHandler.RenderSymbol(id, name, description, symbolCode, controlPoints,
+                if (output ==="") {
+                    output = sec.web.renderer.MultiPointHandler.RenderSymbol(id, name, description, symbolCode, controlPoints,
                         scale, bbox, modifiers, format,symStd);
                 }
             }
-            else*/
-            //{
+            else//*/
+            {
                 output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd);
-            //}
+            }
             return output;
         } 
         catch (err) 
@@ -139,6 +145,7 @@ return{
             output = "{\"type\":'error',error:'There was an error creating the MilStdSymbol - " + err.name + ":" + err.message + "'}";
             ErrorLogger.LogException("SECWebRenderer", "RenderSymbol", err, ErrorLogger.WARNING);
         }
+
         return output;
     },
     /**
@@ -390,6 +397,218 @@ return{
         }
         
         return signedArea/2;
+    },
+    
+         /**
+     * Creates a 3D symbol from the MilStd2525B USAS or MIL-STD-2525C to be 
+     * displayed on a 3D globe surface.  Only certain symbols from the MIL-STD
+     * can be displayed in 3D.   Most of these are graphics that fall under Fire
+     * Support.  Any graphic that has an X modifier (altitude/depth) should
+     * have a 3D representation.  Generates 
+     * Keyhole Markup Language (KML) to return that 
+     * specifies the points and format of 
+     * the rendering.
+     * <br/>
+     * Control points should be of the format of:
+     * <tr><code>"x,y,z [x,y,z]..."</code></tr>
+     * 
+     * 
+     * @param name The user displayed name for the symbol.  Users will use this 
+     * to identify with the symbol.
+     * @param id An internally used unique id that developers can use to 
+     * uniquely distinguish this symbol from others.
+     * @param symbolCode A 15 character ID of the type of symbol to draw.  Only
+     * symbols with an X modifier from the standard will draw.
+     * @param description A brief description of what the symbol represents.  
+     * Generic text that does not require any format.  
+     * @param altitudeMode Indicates whether the symbol should interpret 
+     * altitudes as above sea level or above ground level. Options are 
+     * "relativeToGround" (from surface of earth), "absolute" (sea level), 
+     * "relativeToSeaFloor" (from the bottom of major bodies of water).
+     * @param controlPoints The vertices of the shape.  The number of required
+     * vertices varies based on the shapeType of the symbol.  The simplest shape 
+     * requires at least one point.  Shapes that require more points than 
+     * required will ignore extra points.  Format for numbers is as follows: 
+     * <br/><br/>
+     * "x,y,z [x,y,z ]..."
+     * @modifiers a JSON string containing the attributes of the object.  These
+     * attributes can be in MIL-STD-2525BCh2 USAS 13-14 or MIL-STD-2525C. The 
+     * format of the modifiers are: 
+     * <br/>
+     * {"modifiers":{"<i>attribute1</i>":<i>value</i>}}
+     * @return A KML string that represents a placemark for the 3D shape
+     */
+    RenderMilStd3dSymbol: function(name, id, symbolCode, 
+            description, 
+            altitudeMode,
+            controlPoints,
+            modifiers) {
+               
+        var symbolId = symbolCode.substring(4,10);
+        
+        var attributes = {};//new java.util.HashMap();
+        attributes.AM_DISTANCE=new java.util.ArrayList();
+        attributes.X_ALTITUDE_DEPTH=new java.util.ArrayList();
+        attributes.AN_AZIMUTH=new java.util.ArrayList();
+        
+        var output = "";
+        
+        var convertedAltitudeMode = null;//altitudeMode;//sec.geo.kml.KmlOptions.AltitudeMode.RELATIVE_TO_GROUND;
+
+        // Convert altitude mode to an enum that we understand.  If it does not
+        // understand or is "", then convert to ALTITUDE_RELATIVE_TO_GROUND.
+        if (altitudeMode && altitudeMode.length)
+        {
+            convertedAltitudeMode = altitudeMode;////KmlOptions.AltitudeMode.fromString(altitudeMode);
+        }
+        else
+        {
+            convertedAltitudeMode = "relativeToGround";
+        }
+        
+        try
+        {
+        
+            var modifiersJSON;
+            
+            var altitudeDepthJSON = null;
+            var distanceJSON = null;
+            var azimuthJSON = null;
+            var altitudeDepthLength = 0;
+            var distanceLength = 0;
+            var azimuthLength = 0;
+            var color = "";
+                        
+            if (modifiers)
+            {
+                if(modifiers && modifiers.modifiers)
+                    modifiersJSON = modifiers.modifiers;
+                else
+                    modifiersJSON = modifiers;
+
+                if (modifiersJSON.X)
+                {
+                    altitudeDepthJSON = modifiersJSON.X;
+                    altitudeDepthLength = altitudeDepthJSON.length;
+                }                
+                else if (modifiersJSON.altitudeDepth)
+                {
+                    altitudeDepthJSON = modifiersJSON.altitudeDepth;
+                    altitudeDepthLength = altitudeDepthJSON.length;
+                }                
+
+                if (modifiersJSON.AN)
+                {
+                    azimuthJSON = modifiersJSON.AN;
+                    azimuthLength = azimuthJSON.length;
+                }
+                else if (modifiersJSON.azimuth)
+                {
+                    azimuthJSON = modifiersJSON.azimuth;
+                    azimuthLength = azimuthJSON.length;
+                }
+
+                if (modifiersJSON.AM)
+                {
+                    distanceJSON = modifiersJSON.AM;
+                    distanceLength = distanceJSON.length;
+                } 
+                else if (modifiersJSON.distance)
+                {
+                    distanceJSON = modifiersJSON.distance;
+                    distanceLength = distanceJSON.length;
+                } 
+                
+                if (modifiersJSON.fillColor)
+                {
+                    color = modifiersJSON.fillColor;
+                }
+                else
+                {   
+                    color = SymbolUtilities.getFillColorOfAffiliation(symbolCode);
+                    color.A = 170;
+                    color = color.toHexString().substring(1);
+                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
+                    // ensure that some color is selected.  If no color can be
+                    // found, use black.
+                    if (color === null)
+                    {
+                        color = "AA000000";
+                    }
+                }
+                
+                color = JavaRendererUtilities.ARGBtoABGR(color);
+                                
+                for (var i=0; i < altitudeDepthLength; i++)
+                {
+                    // if it's a killbox, need to set minimum alt to 0.
+                    if (symbolId.substring(0,3)===("AJP"))
+                    {
+                        attributes.X_ALTITUDE_DEPTH.add(new Double(0));
+                        i++;
+                    }                                        
+                    attributes.X_ALTITUDE_DEPTH.add(new Double(altitudeDepthJSON[i]));
+                }
+                for (var i=0; i < distanceLength; i++)
+                {
+                    // If this is a 'track' type graphic, then we need to take the distance
+                    // and divide it by half, than add it twice.  This is due 
+                    // to the TAIS requirement that Tracks must have a left width 
+                    // and a right width. 
+                    if (symbolId.equals("ACAR--") || // ACA - rectangular
+                        symbolId.equals("AKPR--") || // Killbox - rectangular
+                        symbolId.equals("ALC---") || // air corricor
+                        symbolId.equals("ALM---") || // MRR
+                        symbolId.equals("ALS---") || // SAAFR
+                        symbolId.equals("ALU---") || // unmanned aircraft
+                        symbolId.equals("ALL---")) {  // LLTR) {
+                        var width = distanceJSON[i] / 2;
+                        attributes.AM_DISTANCE.add(new Double(width));
+                        attributes.AM_DISTANCE.add(new Double(width));
+                    } else {
+                        attributes.AM_DISTANCE.add(new Double(distanceJSON[i]));
+                    }
+                }  
+
+                if (symbolId.equals("ACAI--") || // ACA - irregular
+                        symbolId.equals("AKPI--") || // Killbox - irregular
+                        symbolId.equals("AAR---") || // ROZ
+                        symbolId.equals("AAF---") || // SHORADEZ
+                        symbolId.equals("AAH---") || // HIDACZ
+                        symbolId.equals("AAM---") || // MEZ
+                        symbolId.equals("AAML--") || // LOMEZ
+                        symbolId.equals("AAMH--")) // HIMEZ
+                {
+                    output = Shape3DHandler.buildPolygon(controlPoints, id, name, 
+                        description, color, convertedAltitudeMode, attributes);
+                }
+                else if (symbolId.equals("ACAR--") || // ACA - rectangular
+                        symbolId.equals("AKPR--") || // Killbox - rectangular
+                        symbolId.equals("ALC---") || // air corricor
+                        symbolId.equals("ALM---") || // MRR
+                        symbolId.equals("ALS---") || // SAAFR
+                        symbolId.equals("ALU---") || // unmanned aircraft
+                        symbolId.equals("ALL---"))   // LLTR
+                {
+                    output = Shape3DHandler.buildTrack(controlPoints, id, name, 
+                        description, color, convertedAltitudeMode, attributes);
+                }
+                else if (symbolId.equals("ACAC--") || // ACA - circular
+                        symbolId.equals("AKPC--"))    // Killbox - circular
+                {
+                    output = Shape3DHandler.buildCylinder(controlPoints, id, name, 
+                        description, color, convertedAltitudeMode, attributes);
+
+                }   
+
+            }
+        }
+        catch (je)
+        {
+            output = "";
+            ErrorLogger.LogException("SECWebRenderer","RenderMilStd3dSymbol",je);
+        } 
+        return output;
     },
         
     ShouldClipMultipointSymbol: function(symbolID)

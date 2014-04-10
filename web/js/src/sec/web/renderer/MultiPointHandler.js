@@ -1750,7 +1750,7 @@ return{
             var maxAlt = 0;
             var minAlt = 0;
             
-            output = RenderSymbol(id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd);
+            output = this.RenderSymbol(id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd);
             var pmiStart = output.indexOf("<Placemark");
             var pmiEnd = 0;
             var curr = 0;
@@ -1760,7 +1760,7 @@ return{
                 if(count > 0)
                 {
                     pmiEnd = output.indexOf("</Placemark>",pmiStart)+12;
-                    placemarks.add(output.substring(pmiStart,pmiEnd));
+                    placemarks.push(output.substring(pmiStart,pmiEnd));
                     //System.out.println(placemarks.get(count));
                     //end, check for more
                     pmiStart = output.indexOf("<Placemark",pmiEnd-2);
@@ -1770,17 +1770,26 @@ return{
             
             //process placemarks if necessary
             var altitudes = null;//List<Double>
-            var JSONObject = JSON.parse(symbolModifiers);
-            if (JSONObject !== undefined && JSONObject.modifiers !== undefined) 
+            var JSONObject = symbolModifiers;
+            if(JSONObject && JSONObject.symbolModifiers)
+                JSONObject = JSONObject.symbolModifiers;
+                
+            if (JSONObject) 
             {
-                if(JSONObject.modifiers.ALTITUDE_DEPTH !== undefined)
-                    altitudes = JSONObject.modifiers.ALTITUDE_DEPTH;//Array()
+                if(JSONObject.X)
+                {
+                    altitudes = JSONObject.X;//Array()
+                }
+                else if(JSONObject.ALTITUDE_DEPTH)
+                {
+                    altitudes = JSONObject.ALTITUDE_DEPTH;//Array()
+                }
             }
             
-            var Xcount = altitudes.size()-1;
+            var Xcount = altitudes.length-1;
             if(Xcount>0)
             {
-                maxAlt = altitudes.get(Xcount);
+                maxAlt = altitudes[Xcount];
                 //cycle through placemarks and add altitude
                 var temp;
                 for(var j = 0; j<placemarks.length;j++)
@@ -1792,9 +1801,9 @@ return{
             }
             
             var sb = "";
-            for(var k = 0; k<placemarks.length;j++)
+            for(var k = 1; k<placemarks.length;k++)
             {
-                sb.append(placemarks[k]);
+                sb += (placemarks[k]);
             }
 //            System.out.println("placemarks: ");
 //            System.out.println(sb.toString());
