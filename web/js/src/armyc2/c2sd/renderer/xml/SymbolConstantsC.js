@@ -3611,8 +3611,8 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       },
       {
         "SYMBOLID": "G*M*OHO---****X",
-        "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
+        "GEOMETRY": "line",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Overhead Wire",
@@ -4945,7 +4945,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "G*F*ACT---****X",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "0",
+        "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "DESCRIPTION": "Terminally Guided Munition Footprint (TGMF)",
