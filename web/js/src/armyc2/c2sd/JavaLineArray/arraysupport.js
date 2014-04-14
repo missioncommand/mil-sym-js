@@ -1939,7 +1939,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             var xmax = pLinePoints[0].x;
                             var xmin = pLinePoints[1].x;
                             var ymax = pLinePoints[0].y;
-                            var ymin = pLinePoints[1].y;
+                            var ymin = pLinePoints[1].y;                            
                             var buffer = pLinePoints[0].style;
                             if (pLinePoints[0].x < pLinePoints[1].x) {
                                 xmax = pLinePoints[1].x;
@@ -1949,6 +1949,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 ymax = pLinePoints[1].y;
                                 ymin = pLinePoints[0].y;
                             }
+                            
+                            if(xmax-xmin>ymax-ymin)                    
+                                ymax=ymin+(xmax-xmin);                    
+                            else                    
+                                xmax=xmin+(ymax-ymin); 
+                            
                             pt0 = new armyc2.c2sd.JavaLineArray.POINT2(xmin - buffer, ymin - buffer);
                             pt2 = new armyc2.c2sd.JavaLineArray.POINT2(xmax + buffer, ymax + buffer);
                             pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
