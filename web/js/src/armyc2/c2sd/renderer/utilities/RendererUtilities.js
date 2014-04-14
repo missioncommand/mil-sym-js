@@ -179,6 +179,20 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         return bounds;
     };
     
+    /**
+     * There is no accurate way for getting the descent in JavaScript currently.
+     * This should be close for renderer's default modifier font.
+     * @param {type} fontName
+     * @param {type} fontSize
+     * @param {type} fontStyle
+     * @param {type} text
+     * @returns {Number}
+     */
+    armyc2.c2sd.renderer.utilities.RendererUtilities.getFontDescent = function(fontName, fontSize, fontStyle, text){
+        //return Math.ceil(fontSize * 0.26074218888888888888888888888889);
+        return (fontSize * 0.26074218888888888888888888888889);
+    };
+    
     armyc2.c2sd.renderer.utilities.RendererUtilities.getTextPlacement = function(textInfo, modifierID, symbolID, symbolBounds, context){
         
     };

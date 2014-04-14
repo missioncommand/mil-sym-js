@@ -34,7 +34,6 @@ sec.web.renderer.SECWebRenderer = (function () {
         SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
         JavaRendererUtilities = sec.web.renderer.utilities.JavaRendererUtilities,
         Shape3DHandler = sec.web.renderer.Shape3DHandler,
-        KmlOptions = sec.geo.kml.KmlOptions,
         MilStdIconRenderer = null;
     
     //constructor code

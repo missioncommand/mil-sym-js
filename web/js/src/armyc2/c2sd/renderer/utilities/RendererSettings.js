@@ -8,8 +8,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
-    var _TextBackgroundMethod = 0,
-    _SymbologyStandard = 0,
+    var _SymbologyStandard = 0,
     _UseLineInterpolation = true,
     /**
      * Value from 0 to 255. The closer to 0 the lighter the text color has to be
@@ -18,8 +17,11 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _TextBackgroundAutoColorThreshold = 160,
 
     //if TextBackgroundMethod_OUTLINE is set, This value determnies the width of that outline.
-    //if you want an outline width of 1 pixel: ((1pixel*2) + 1)
-    _TextOutlineWidth = 3,
+    _TextOutlineWidth = 2,
+    
+    //outline approach.  none, filled rectangle, outline (default),
+    //outline quick (outline should not exceed 1 pixel).
+    _TextBackgroundMethod = 2,
     
     //label foreground color, uses line color of symbol if null.
     _ColorLabelForeground = null,//armyc2.c2sd.renderer.utilities.Color.BLACK;//"000000", //Color.BLACK;
@@ -35,7 +37,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _CenterOnHQStaff = true,
     
     
-    _ModifierFontName = "Arial",
+    _ModifierFontName = "Arial, sans-serif",
     _ModifierFontSize = 10,
     _ModifierFontStyle = "bold",
     _ModifierFont = "bold 10pt Arial",
@@ -51,11 +53,13 @@ return{
     
     /**
      * There will be no background for text
+     * NOTE: not supported
      */
     TextBackgroundMethod_NONE : 0,
 
     /**
      * There will be a colored box behind the text
+     * NOTE: not implemented
      */
     TextBackgroundMethod_COLORFILL : 1,
 
@@ -64,6 +68,12 @@ return{
      * Outline width of 4 is recommended.
      */
     TextBackgroundMethod_OUTLINE : 2,
+    
+     /**
+     * Was quick in Java.  Don't see the same gains in JS.
+     * NOTE: only implemented for Units
+     */
+    TextBackgroundMethod_OUTLINE_QUICK : 3,
 
 
     /**
@@ -74,6 +84,27 @@ return{
      * 2525C, which includes 2525Bch2 & USAS 13/14
      */
     Symbology_2525C : 1,
+    
+    /**
+     * None, outline (default), or filled background.
+     * If set to OUTLINE, TextOutlineWidth changed to default of 4.
+     * If set to OUTLINE_QUICK, TextOutlineWidth changed to default of 2.
+     * Use setTextOutlineWidth if you'd like a different value.
+     * @param textBackgroundMethod like RenderSettings.TextBackgroundMethod_NONE
+     */
+    setTextBackgroundMethod: function(textBackgroundMethod)
+    {
+        _TextBackgroundMethod = textBackgroundMethod;
+    },
+
+    /**
+     * None, outline (default), or filled background.
+     * @return method like RenderSettings.TextBackgroundMethod_NONE
+     */
+    getTextBackgroundMethod: function()
+    {
+        return _TextBackgroundMethod;
+    },
     
     /**
      * Controls what symbols are supported.
@@ -130,10 +161,11 @@ return{
      * @returns {undefined}
      */
     setTextOutlineWidth: function (width){
-        if(width > 0)
+        /*if(width > 0)
             _TextOutlineWidth = (width*2) + 1;
         else
-            _TextOutlineWidth = 0;
+            _TextOutlineWidth = 0;*/
+        _TextOutlineWidth = width;
     },
     /**
      * if RenderSettings.TextBackgroundMethod_OUTLINE is used,
@@ -211,14 +243,6 @@ return{
     getTextBackgroundAutoColorThreshold: function (){
         return _TextBackgroundAutoColorThreshold;
     },
-    setTextBackgroundMethod: function(value)
-    {
-        _TextBackgroundMethod = value;
-    },
-    getTextBackgroundMethod: function()
-    {
-        return _TextBackgroundMethod;
-    },
     /**
      * This applies to Single Point Tactical Graphics.
      * Setting this will determine the default value for milStdSymbols when created.
@@ -281,7 +305,8 @@ return{
     },
     /**
      * 
-     * @param {String} name like "Arial"
+     * @param {String} name like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
      * @param {Number} size like 12
      * @param {String} style like "bold"
      * @returns {undefined}

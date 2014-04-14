@@ -85,10 +85,6 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, textBase
     };
     armyc2.c2sd.renderer.utilities.TextInfo.prototype.getTextOutlineBounds = function(){
         var outlineOffset = armyc2.c2sd.renderer.utilities.RendererSettings.getTextOutlineWidth();
-        if(outlineOffset > 2)
-            outlineOffset = (outlineOffset - 1)/2;
-        else
-            outlineOffset = 0;
 
         if(outlineOffset > 0)
         {//adjust bounds if an outline value is set.
@@ -110,6 +106,27 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, textBase
     };
     armyc2.c2sd.renderer.utilities.TextInfo.prototype.getLocation = function(){
         return this.location;
+    };
+    armyc2.c2sd.renderer.utilities.TextInfo.prototype.outlineText = function(context){
+        var thickness = armyc2.c2sd.renderer.utilities.RendererSettings.getTextOutlineWidth();
+        
+        for(var i = 1; i <= thickness; i++)
+        {
+            if(i%2 !== 0)
+            {
+                context.fillText(this.text,this.location.getX()-i,this.location.getY()-i);
+                context.fillText(this.text,this.location.getX()+i,this.location.getY()-i);
+                context.fillText(this.text,this.location.getX()-i,this.location.getY()+i);
+                context.fillText(this.text,this.location.getX()+i,this.location.getY()+i);
+            }
+            else
+            {
+                context.fillText(this.text,this.location.getX()-i,this.location.getY());
+                context.fillText(this.text,this.location.getX()+i,this.location.getY());
+                context.fillText(this.text,this.location.getX(),this.location.getY()+i);
+                context.fillText(this.text,this.location.getX(),this.location.getY()-i);
+            }
+        }
     };
     armyc2.c2sd.renderer.utilities.TextInfo.prototype.strokeText = function(context){
         context.strokeText(this.text,this.location.getX(),this.location.getY());

@@ -774,10 +774,6 @@ return{
                 {
                     var echelonOffset = 2,
                         outlineOffset = RendererSettings.getTextOutlineWidth();
-                    if(outlineOffset > 2)
-                        outlineOffset = (outlineOffset-1)/2;
-                    else
-                        outlineOffset = 0;
 
                     var tiEchelon = new armyc2.c2sd.renderer.utilities.TextInfo(strEchelon,0,0,textInfoContext,"alphabetic");
                     echelonBounds = tiEchelon.getTextBounds();
@@ -814,10 +810,6 @@ return{
 
                 var amOffset = 2,
                     outlineOffset = RendererSettings.getTextOutlineWidth();
-                if(outlineOffset > 2)
-                    outlineOffset = (outlineOffset-1)/2;
-                else
-                    outlineOffset = 0;
 
                 var tiAM = new armyc2.c2sd.renderer.utilities.TextInfo(affiliationModifier,0,0,textInfoContext,"alphabetic");
                 amBounds = tiAM.getTextBounds();
@@ -1525,7 +1517,7 @@ return{
         cpofNameX = 0,
         newii = null;
         
-        var outlineSize = 0;
+        /*var outlineSize = 0;
         if(RendererSettings.getTextOutlineWidth()>2);
         {
             outlineSize = (RendererSettings.getTextOutlineWidth()-1)/2;
@@ -1537,14 +1529,11 @@ return{
             bufferXR += outlineSize;
             bufferY += outlineSize;
             bufferText += outlineSize;
-        }
+        }//*/
         
         var tiArray = new Array(),
-            textHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
-                RendererSettings.getModifierFontSize(),
-                RendererSettings.getModifierFontStyle()),
         
-            descent = textHeight * 0.3,
+            descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj"),
         
             bounds = null,
             labelBounds = null,
@@ -2088,26 +2077,58 @@ return{
 
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.miterLimit = 5;
-                    ctx.lineWidth = RendererSettings.getTextOutlineWidth();
-                    ctx.fillStyle = "#000000";
-                    if(RendererSettings.getLabelForegroundColor() !== null)
-                            ctx.fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+                    ctx.miterLimit = 3;
+                    /*ctx.lineCap = "round";
+                    ctx.lineJoin = "round";
+                    ctx.miterLimit = 3;*/
+                    
                     ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
                     ctx.font = RendererSettings.getModifierFont();
 
                     var size = tiArray.length;
                     var tempShape = null;
-                    for(var i=0; i<size;i++)
-                    {
-                        tempShape = tiArray[i];
+                    var fillStyle = "#000000";
+                    var outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
+                    if(RendererSettings.getLabelForegroundColor() !== null)
+                            fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+                        
+                    var tbm = RendererSettings.getTextBackgroundMethod();
+                    
+                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+                    {    
+                        //draw text outline
                         if(RendererSettings.getTextOutlineWidth() > 0)
                         {
-                            tempShape.strokeText(ctx);
+                            ctx.lineWidth = RendererSettings.getTextOutlineWidth();
+                            ctx.fillStyle = outlineStyle;
+                            ctx.strokeStyle = outlineStyle;
+                            for(var i=0; i<size;i++)
+                            {
+                                tempShape = tiArray[i];
+                                tempShape.outlineText(ctx);
+                            }
                         }
-                        tempShape.fillText(ctx);
-
+                        //draw text
+                        ctx.fillStyle = fillStyle;
+                        for(var j=0; j<size;j++)
+                        {
+                            tempShape = tiArray[j];
+                            tempShape.fillText(ctx);
+                        }
                     }
+                    else
+                    {
+                        ctx.lineWidth = (RendererSettings.getTextOutlineWidth()*2) + 1;
+                        ctx.fillStyle = fillStyle;
+                        ctx.strokeStyle = outlineStyle;
+                        for(var i=0; i<size;i++)
+                        {
+                            tempShape = tiArray[i];
+                            tempShape.strokeText(ctx);
+                            tempShape.fillText(ctx);
+                        }
+                    }
+                    
                 }
 
                 newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
@@ -2499,7 +2520,7 @@ return{
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var descent = Math.round(labelHeight * 0.3);
+        var descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj");
         var yForY = -1;
         
         var labelBounds1 = null,//text.getPixelBounds(null, 0, 0);
@@ -2517,10 +2538,10 @@ return{
         else
             outlineOffset = 0;
         
-        bufferXL += outlineOffset;
+        /*bufferXL += outlineOffset;
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
-        bufferText += outlineOffset;
+        bufferText += outlineOffset;//*/
                 
         // </editor-fold>
     
@@ -3039,8 +3060,8 @@ return{
 
                 ctx.lineCap = "butt";
                 ctx.lineJoin = "miter";
-                ctx.miterLimit = 5;
-                ctx.lineWidth = RendererSettings.getTextOutlineWidth();
+                ctx.miterLimit = 3;
+                ctx.lineWidth = (RendererSettings.getTextOutlineWidth()*2) + 1;
                             ctx.fillStyle = "#000000";
                 if(RendererSettings.getLabelForegroundColor() !== null)
                                     ctx.fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
@@ -3148,7 +3169,7 @@ return{
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var descent = Math.round(labelHeight * 0.3);
+        var descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj");
         var yForY = -1;
         
         var labelBounds1 = null,//text.getPixelBounds(null, 0, 0);
@@ -3166,10 +3187,10 @@ return{
         else
             outlineOffset = 0;
         
-        bufferXL += outlineOffset;
+        /*bufferXL += outlineOffset;
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
-        bufferText += outlineOffset;
+        bufferText += outlineOffset;*/
         
         
         // </editor-fold>
@@ -3347,8 +3368,8 @@ return{
 
                 ctx.lineCap = "butt";
                 ctx.lineJoin = "miter";
-                ctx.miterLimit = 5;
-                ctx.lineWidth = RendererSettings.getTextOutlineWidth();
+                ctx.miterLimit = 3;
+                ctx.lineWidth = RendererSettings.getTextOutlineWidth()*2+1;
                 ctx.fillStyle = "#000000";
                             if(RendererSettings.getLabelForegroundColor() !== null)
                                     ctx.fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
