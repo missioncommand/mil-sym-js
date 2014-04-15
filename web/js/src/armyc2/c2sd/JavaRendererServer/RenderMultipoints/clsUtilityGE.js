@@ -276,6 +276,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             if (bolMETOC >= 0)
                 return true;
             switch (linetype) {
+                case 15000001:
+                case 15000003:
+                case 21700000:
                 case 21700000:
                 case 21710000:
                 case 22320000:
@@ -338,12 +341,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 {
                     simpleFillShape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.createSimpleFillShape(tg, shapeInfo, polylines);
                 }
+                fillColor = shapeInfo.getFillColor();
                 if (simpleFillShape !== null || fillColor !== null)
                     if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.allowFillForThese(tg) === false)
                         shapeInfo.setFillColor(null);
                 polylines = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.createDashedPolylines(tg, polylines, shapeInfo);
                 shapeInfo.setPolylines(polylines);
-                fillColor = shapeInfo.getFillColor();
+                //fillColor = shapeInfo.getFillColor();
             }
             if (simpleFillShape !== null)
             {

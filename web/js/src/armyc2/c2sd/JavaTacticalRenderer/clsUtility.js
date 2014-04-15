@@ -638,7 +638,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         }
                         shape.set_Style(lineStyle);
                         if (hasFill || armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType) || armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(lineType, null)) {
-                            if (lineType !== 243111000 && lineType !== 243112000) {
+                            if (lineType !== 243111000 && lineType !== 243112000 && lineType !== 15000001) {
                                 shape.set_Fillstyle(tg.get_FillStyle());
                                 shape.setFillColor(tg.get_FillColor());
                             }
@@ -646,9 +646,12 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         switch (lineType) {
                             case 13000000:
                             case 14000000:
-                            case 15000003:
+                            //case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
                                 shape.setFillColor(tg.get_FillColor());
+                                break;
+                            case 15000003:
+                                shape.setFillColor(null);
                                 break;
                             default:
                                 break;

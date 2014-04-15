@@ -1967,6 +1967,19 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
                             pLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             acCounter = 5;
+                            vblSaveCounter=5;
+                            pOriginalLinePoints=new Array(vblSaveCounter);
+                            pt0 = new armyc2.c2sd.JavaLineArray.POINT2(xmin, ymin);
+                            pt2 = new armyc2.c2sd.JavaLineArray.POINT2(xmax, ymax);
+                            pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pt1.y = pt2.y;
+                            pt3 = new armyc2.c2sd.JavaLineArray.POINT2(pt2);
+                            pt3.y = pt0.y;
+                            pOriginalLinePoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pOriginalLinePoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pt1);
+                            pOriginalLinePoints[2] = new armyc2.c2sd.JavaLineArray.POINT2(pt2);
+                            pOriginalLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
+                            pOriginalLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             break;
                         case 13000000:
                             pt0 = pLinePoints[0];
@@ -3693,6 +3706,26 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var beginLine = true;
                     var poly = null;
                     switch (lineType) {
+                        case 15000001:
+                        case 15000003:
+                            //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                            for(j=0;j<vblSaveCounter-1;j++)
+                            {
+                                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                                shape.moveTo(pOriginalLinePoints[j]);
+                                shape.lineTo(pLinePoints[j]);
+                                shape.lineTo(pLinePoints[j+1]);
+                                shape.lineTo(pOriginalLinePoints[j+1]);
+                                shape.lineTo(pOriginalLinePoints[j]);
+                                shapes.add(shape);
+                            }
+                            //shapes.add(shape);
+                            shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                            shape.moveTo(pOriginalLinePoints[0]);
+                            for(j=1;j<vblSaveCounter;j++)
+                                shape.lineTo(pOriginalLinePoints[j]);
+                            shapes.add(shape);
+                            break;
                         case 22522210:
                             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                             shape.moveTo(pLinePoints[0]);
