@@ -342,7 +342,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     simpleFillShape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.createSimpleFillShape(tg, shapeInfo, polylines);
                 }
                 fillColor = shapeInfo.getFillColor();
-                if (simpleFillShape !== null || fillColor !== null)
+                //if (simpleFillShape !== null || fillColor !== null)
+                if (simpleFillShape !== null)
                     if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.allowFillForThese(tg) === false)
                         shapeInfo.setFillColor(null);
                 polylines = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.createDashedPolylines(tg, polylines, shapeInfo);
