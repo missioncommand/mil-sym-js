@@ -1149,6 +1149,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             case 25223000:
             case 25225000:
             case 25224000:
+            case 22222000:
+            case 22222001:
+            case 22224000:
+            case 22224001:
+            case 22221000:
+            case 22223000:
+            case 22225000:
                 var shape = null;
                 if (shapes !== null && shapes.size() > 0) {
                     for (var j = 0; j < shapes.size(); j++) {
