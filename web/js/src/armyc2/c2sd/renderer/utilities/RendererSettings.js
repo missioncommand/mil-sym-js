@@ -40,7 +40,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _ModifierFontName = "Arial, sans-serif",
     _ModifierFontSize = 10,
     _ModifierFontStyle = "bold",
-    _ModifierFont = "bold 10pt Arial",
+    _ModifierFont = "bold 10pt Arial, sans-serif",
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
