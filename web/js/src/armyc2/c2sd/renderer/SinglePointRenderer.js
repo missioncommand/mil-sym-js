@@ -2075,59 +2075,7 @@ return{
                     //draw original icon with potential modifiers.
                     ctx.drawImage(ii.getImage(),imageBoundsOld.getX(),imageBoundsOld.getY());
 
-                    ctx.lineCap = "butt";
-                    ctx.lineJoin = "miter";
-                    ctx.miterLimit = 3;
-                    /*ctx.lineCap = "round";
-                    ctx.lineJoin = "round";
-                    ctx.miterLimit = 3;*/
-                    
-                    ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
-                    ctx.font = RendererSettings.getModifierFont();
-
-                    var size = tiArray.length;
-                    var tempShape = null;
-                    var fillStyle = "#000000";
-                    var outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
-                    if(RendererSettings.getLabelForegroundColor() !== null)
-                            fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
-                        
-                    var tbm = RendererSettings.getTextBackgroundMethod();
-                    
-                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
-                    {    
-                        //draw text outline
-                        if(RendererSettings.getTextOutlineWidth() > 0)
-                        {
-                            ctx.lineWidth = RendererSettings.getTextOutlineWidth();
-                            ctx.fillStyle = outlineStyle;
-                            ctx.strokeStyle = outlineStyle;
-                            for(var i=0; i<size;i++)
-                            {
-                                tempShape = tiArray[i];
-                                tempShape.outlineText(ctx);
-                            }
-                        }
-                        //draw text
-                        ctx.fillStyle = fillStyle;
-                        for(var j=0; j<size;j++)
-                        {
-                            tempShape = tiArray[j];
-                            tempShape.fillText(ctx);
-                        }
-                    }
-                    else
-                    {
-                        ctx.lineWidth = (RendererSettings.getTextOutlineWidth()*2) + 1;
-                        ctx.fillStyle = fillStyle;
-                        ctx.strokeStyle = outlineStyle;
-                        for(var i=0; i<size;i++)
-                        {
-                            tempShape = tiArray[i];
-                            tempShape.strokeText(ctx);
-                            tempShape.fillText(ctx);
-                        }
-                    }
+                    this.renderText(ctx,tiArray);
                     
                 }
 
@@ -3058,29 +3006,7 @@ return{
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
 
-                ctx.lineCap = "butt";
-                ctx.lineJoin = "miter";
-                ctx.miterLimit = 3;
-                ctx.lineWidth = (RendererSettings.getTextOutlineWidth()*2) + 1;
-                            ctx.fillStyle = "#000000";
-                if(RendererSettings.getLabelForegroundColor() !== null)
-                                    ctx.fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
-                ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
-                ctx.font = RendererSettings.getModifierFont();
-
-                //draw modifiers
-                var size = arrMods.length;
-                var tempShape = null;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = arrMods[i];
-                    if(RendererSettings.getTextOutlineWidth() > 0)
-                    {
-                        tempShape.strokeText(ctx);
-                    }
-                    tempShape.fillText(ctx);
-
-                }
+                this.renderText(ctx,arrMods);
 
                 //draw DOM arrow
                 if(domBounds !== null)
@@ -3366,29 +3292,7 @@ return{
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
 
-                ctx.lineCap = "butt";
-                ctx.lineJoin = "miter";
-                ctx.miterLimit = 3;
-                ctx.lineWidth = RendererSettings.getTextOutlineWidth()*2+1;
-                ctx.fillStyle = "#000000";
-                            if(RendererSettings.getLabelForegroundColor() !== null)
-                                    ctx.fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
-                ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
-                ctx.font = RendererSettings.getModifierFont();
-
-                //draw modifiers
-                var size = arrMods.length;
-                var tempShape = null;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = arrMods[i];
-                    if(RendererSettings.getTextOutlineWidth() > 0)
-                    {
-                        tempShape.strokeText(ctx);
-                    }
-                    tempShape.fillText(ctx);
-
-                }
+                this.renderText(ctx,arrMods);
             }
             newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
@@ -3614,6 +3518,75 @@ return{
             }
         }
         return false;
+    },
+    
+    /**
+     * renders modifier text to a canvas
+     * @param {type} ctx html5 canvas context object
+     * @param {type} tiArray array of TextInfo.js objects
+     * @returns {void}
+     */
+    renderText: function(ctx, tiArray)
+    {
+        ctx.lineCap = "butt";
+        ctx.lineJoin = "miter";
+        ctx.miterLimit = 3;
+        /*ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.miterLimit = 3;*/
+
+        ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
+        ctx.font = RendererSettings.getModifierFont();
+
+        var size = tiArray.length,
+            tempShape = null,
+            fillStyle = "#000000",
+            tbm = RendererSettings.getTextBackgroundMethod(),
+            outlineWidth = RendererSettings.getTextOutlineWidth();
+    
+        if(RendererSettings.getLabelForegroundColor() !== null)
+                fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+
+        var outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
+
+        if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+        {    
+            //draw text outline
+            if(outlineWidth > 0)
+            {
+                ctx.lineWidth = RendererSettings.getTextOutlineWidth();
+                ctx.fillStyle = outlineStyle;
+                ctx.strokeStyle = outlineStyle;
+                for(var i=0; i<size;i++)
+                {
+                    tempShape = tiArray[i];
+                    tempShape.outlineText(ctx);
+                }
+            }
+            //draw text
+            ctx.fillStyle = fillStyle;
+            for(var j=0; j<size;j++)
+            {
+                tempShape = tiArray[j];
+                tempShape.fillText(ctx);
+            }
+        }
+        else
+        {
+            if(outlineWidth > 0)
+                ctx.lineWidth = (outlineWidth * 2) + 1;
+            ctx.fillStyle = fillStyle;
+            ctx.strokeStyle = outlineStyle;
+            for(var i=0; i<size;i++)
+            {
+                tempShape = tiArray[i];
+                if(outlineWidth>0)
+                {
+                    tempShape.strokeText(ctx);
+                }
+                tempShape.fillText(ctx);
+            }
+        }     
     }
     
     // </editor-fold>

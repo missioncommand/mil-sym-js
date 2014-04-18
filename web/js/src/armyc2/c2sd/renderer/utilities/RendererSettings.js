@@ -17,7 +17,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _TextBackgroundAutoColorThreshold = 160,
 
     //if TextBackgroundMethod_OUTLINE is set, This value determnies the width of that outline.
-    _TextOutlineWidth = 2,
+    _TextOutlineWidth = 1,
     
     //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline should not exceed 1 pixel).
@@ -70,7 +70,7 @@ return{
     TextBackgroundMethod_OUTLINE : 2,
     
      /**
-     * Was quick in Java.  Don't see the same gains in JS.
+     * Was quick in Java.  Some gains in IE 10+ if outline width is set to 1.
      * NOTE: only implemented for Units
      */
     TextBackgroundMethod_OUTLINE_QUICK : 3,
