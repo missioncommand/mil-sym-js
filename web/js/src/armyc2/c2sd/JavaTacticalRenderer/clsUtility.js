@@ -899,7 +899,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 }
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ResolveModifierShape(tg, shape);
                 if(lineType===221311000)    //AIRFIELD
-                    if(j==1)
+                    if(j===1)
                         shape.setFillColor(null);
                 
                 shapeType = shape.getShapeType();
