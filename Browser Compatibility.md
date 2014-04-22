@@ -48,7 +48,7 @@ Positive results for browsers are based on rendering of a test page with symbols
 
 | Android | Status | Testing Method |  
 | :------------ | :------------: | :------------: | 
-| Android 4.4 Chrome 33 | works | live test (Google Nexus 5 ) |  
+| Android 4.4 Chrome 33 | works | live test (Google Nexus 5, Nexus 7 ) |  
 | Android 4.3 Chrome 33 | works | live test (Samsung Galaxy S3 ) |  
 | Android 4.3 Stock Browser | fail | live test (Samsung Galaxy S3 ) |  
 | Android 4.2 Chrome 18 | fail | live test (Nexus 7 ) |  
