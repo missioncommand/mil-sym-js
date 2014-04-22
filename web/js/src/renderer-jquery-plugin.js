@@ -55,6 +55,8 @@
                 var modifiers = {},
                         ii;
 
+                var symbolID = $(this).data("symbol-code");
+
                 // Determine the pixel size of the icon to draw
                 if ($(this).data("pixel-size") === undefined) {
                     // Use 32 as the default size
@@ -63,33 +65,33 @@
                 else {
                     modifiers[msa.PixelSize] = $(this).data("pixel-size");
                 }
-                
-                //if false, will fill the space. if true, will size with respect to other symbols.
-                if ($(this).data("keep-unit-ratio") === undefined) {
-                    // Use 32 as the default size
-                    modifiers[msa.KeepUnitRatio] = false;
+				
+                modifiers[msa.Icon] = true;
+                if ($(this).data("icon") !== undefined) {
+                    modifiers[msa.Icon] = $(this).data("keep-unit-ratio");
                 }
-                else {
-                    modifiers[msa.KeepUnitRatio] = $(this).data("keep-unit-ratio");
-                }
-
-                var symbolID = $(this).data("symbol-code");
-                
-
-                if ($(this).data("sanitize") === true) {   
-                    if(symbolID.charAt(1) === 'J' || symbolID.charAt(1) === 'K'){
-                        modifiers[msa.FillColor] = "#FF0000";
+				
+                if(modifiers[msa.Icon] !== true)
+                {
+                    //if false, will fill the space. if true, will size with respect to other symbols.
+                    if ($(this).data("keep-unit-ratio") === undefined) {
+                        // Use 32 as the default size
+                        modifiers[msa.KeepUnitRatio] = false;
                     }
-                    symbolID = sanitize(symbolID, modifiers);   
-                }
-                
-                var square = true;
-                if ($(this).data("square") !== undefined) {   
-                    square = $(this).data("square");
+                    else {
+                        modifiers[msa.KeepUnitRatio] = $(this).data("keep-unit-ratio");
+                    }
+
+                    if ($(this).data("sanitize") === true) {   
+                        if(symbolID.charAt(1) === 'J' || symbolID.charAt(1) === 'K'){
+                                modifiers[msa.FillColor] = "#FF0000";
+                        }
+                        symbolID = sanitize(symbolID, modifiers);   
+                    }
                 }
 
                 ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID, modifiers);
-                if (ii !== undefined)
+                if (ii)
                 {
                     var canvasObject = $(this).get(0);
                     var ctx = canvasObject.getContext('2d');
@@ -97,24 +99,13 @@
                     // Clear the canvas
                     ctx.clearRect(0, 0, canvasObject.width, canvasObject.height);
 
-                    var image = null;
-                    if(square === true)
-                    {
-                        image = ii.getSquareIcon();
-                        $(canvasObject).attr("width", image.width);
-                        $(canvasObject).attr("height", image.height);
-                        ctx.drawImage(image, 0,0);
-                    }
-                    else
-                    {
-                        image = ii.getImage();
-                        // Adjust the size of the canvas to match the size of the symbol
-                        $(canvasObject).attr("width", ii.getImageBounds().width);
-                        $(canvasObject).attr("height", ii.getImageBounds().height);
-                        ctx.drawImage(image, Math.round((canvasObject.width - ii.getImageBounds().width) / 2),
+                    var image = ii.getImage();
+                    // Adjust the size of the canvas to match the size of the symbol
+                    $(canvasObject).attr("width", ii.getImageBounds().width);
+                    $(canvasObject).attr("height", ii.getImageBounds().height);
+                    ctx.drawImage(image, Math.round((canvasObject.width - ii.getImageBounds().width) / 2),
                             Math.round((canvasObject.height - ii.getImageBounds().height) / 2));
-                    }
-                    
+
                 }
             }
         });
