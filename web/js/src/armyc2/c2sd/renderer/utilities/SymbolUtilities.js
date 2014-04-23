@@ -22,9 +22,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             if(symbolID && symbolID.length === 15)
             {
                 var scheme = symbolID[0];
-                if (scheme === 'G') {
+                if (scheme === 'G') //tactical graphic
+                {
                     basic = scheme + '*' + basic[2] + '*' + basic.substring(4, 10) + "****X";
-                } else if (scheme !== 'W'){
+                } 
+                else if (scheme !== 'W' && scheme !== 'B')//weather or basic/buffered shape
+                {
                     basic = scheme + '*' + basic[2] + '*' + basic.substring(4, 10) + "*****";
                 }
             }
