@@ -66,9 +66,10 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "BS_RECTANGLE---",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "2",
-        "MAXPOINTS": "2",
+        "DRAWCATEGORY": "15",
+        "MAXPOINTS": "10000",
         "MINPOINTS": "2",
+        "MODIFIERS": "T.",
         "DESCRIPTION": "Rectangle",
         "HIERARCHY": "0.X.5",
         "ALPHAHIERARCHY": "BS.RECTANGLE",
@@ -121,10 +122,10 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "BBS_RECTANGLE--",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "2",
-        "MAXPOINTS": "2",
+        "DRAWCATEGORY": "15",
+        "MAXPOINTS": "10000",
         "MINPOINTS": "2",
-        "MODIFIERS": "AM.",
+        "MODIFIERS": "AM.T.",
         "DESCRIPTION": "Buffered Rectangle",
         "HIERARCHY": "0.X.6.3",
         "ALPHAHIERARCHY": "BS.BBS.RECT"
