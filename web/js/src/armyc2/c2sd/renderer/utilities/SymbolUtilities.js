@@ -2259,6 +2259,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @param {type} symbolID
      * @param {type} symStd
      * @returns {Boolean}
+     * @deprecated use armyc2.c2sd.renderer.utilities.SymbolDefTable.isMultiPoint
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint = function (symbolID, symStd) {
         

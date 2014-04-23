@@ -258,7 +258,8 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
 
             var codingScheme = symbolID.charAt(0);
             var returnVal = false;
-            if (codingScheme === 'G' || codingScheme === 'W') {
+            if (codingScheme === 'G' || codingScheme === 'W') 
+            {
                 var sd = this.getSymbolDef(SymbolUtilities.getBasicSymbolID(symbolID),symStd);
                 if (sd) 
                 {
@@ -286,7 +287,13 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                 } else {
                     return false;
                 }
-            } else {
+            }
+            else if(symbolID.substring(0,3) === "BS_" || symbolID.substring(0,4) === "BBS_")
+            {
+                return true;
+            }
+            else 
+            {
                 return false;
             }
         }
