@@ -3678,6 +3678,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212100000:
                         case 212300000:
                         case 212300001:
+                        //basic shapes-rectangles
+                        case 14000000:
+                        case 15000003:
                             armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         default:

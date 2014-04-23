@@ -2390,6 +2390,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
         var metrics = g2d.getFontMetrics();
         var stringWidth = 0;
         var rfaLines = 0;
+        var pts=null;
         pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0));
         if (tg.Pixels.size() > 1)
             pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(1));
@@ -2398,6 +2399,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath(tg, pt0, pt1, ptLast, ptNextToLast);
         if (tg.getSymbologyStandard() === 1) {
             switch (linetype) {
+                case 14000000:
+                case 15000003:
+                    pts=new Array(4);
+                    for(j=0;j<4;j++)
+                        pts[j]=tg.Pixels.get(j);
+                    ptCenter=armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble2(pts, 4);
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -0.125*csFactor, ptCenter, ptCenter,false);
+                    break;
                 case 21200000:
                 case 21300000:
                 case 21400000:
