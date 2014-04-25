@@ -1972,7 +1972,7 @@ return{
 
             sbUrl += ("AREASYMBOLFILL?");
             sbUrl += ("renderer=AreaSymbolFillRenderer&");
-            sbUrl += (sbCoords.toString());
+            sbUrl += sbCoords;//.toString());
             if(symbolFillIDs !== null)
             {
                 sbUrl += ("&symbolFillIds=");
@@ -2001,6 +2001,13 @@ return{
             sbUrl += parseInt(width);
 
             url = sbUrl;//.toString();
+            
+            if(height < symbolSize || width < symbolSize)
+            {
+                //image not large enough to show symbol
+                //don't bother making image request.
+                url = null;
+            }
 
         }
         catch(exc)
@@ -2038,7 +2045,11 @@ return{
         //TODO: create functoin to generalte symbol line fill url
         var goImageUrl = this.GenerateSymbolLineFillUrl(mSymbol.getModifierMap(), pixelPoints,rect);
         //generate the extra KML needed to insert the image
-        var goKML = this.GenerateGroundOverlayKML(goImageUrl,ipc,rect,normalize);
+        var goKML = "";
+        if(goImageUrl !== null)
+        {
+            goKML = this.GenerateGroundOverlayKML(goImageUrl,ipc,rect,normalize);
+        }
         goKML += "</Folder>";
 
 
