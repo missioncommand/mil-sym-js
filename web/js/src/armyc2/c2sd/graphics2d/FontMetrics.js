@@ -27,8 +27,10 @@ armyc2.c2sd.graphics2d.FontMetrics = function() {
         //var stringHeight=bounds.height;
         
         //getTextBounds does 2 calculations.  Limit to what you need and just get height.
-        var font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
-        var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString(font);
+        var fontName = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFontName();
+        var fontStyle = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFontStyle();
+        var fontSize = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFontSize();
+        var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight(fontName, fontSize, fontStyle);
         stringHeight = height;
         
         return stringHeight;        

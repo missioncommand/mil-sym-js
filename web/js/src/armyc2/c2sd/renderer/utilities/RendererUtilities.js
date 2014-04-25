@@ -98,6 +98,12 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         return size[1];
     };
     
+    /**
+     * 
+     * @param {type} fontString
+     * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements|armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString.size|Array|armyc2.c2sd.renderer.utilities.RendererUtilities.measureText.size|Array{width,height}
+     * @deprecated Use measureTextHeight()
+     */
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString = function(fontString){
         var arrFont,
             fontStyle,
