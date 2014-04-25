@@ -16,9 +16,7 @@
     }
     </style> -->
 	<script src="include-mpsp.js" type="text/javascript" ></script>
-	<script src="armyc2/c2sd/renderer/utilities/ErrorLogger.js" type="text/javascript" ></script>
-    
-    
+	    
     <script type = "text/javascript">
 	
 	var fontCheckTimer =  null;
@@ -27,8 +25,12 @@
 	
 	function testRender()
 	{
+		//armyc2.c2sd.renderer.utilities.RendererSettings.setTextBackgroundMethod(3);
+		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 			//armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded();
            
+		   //armyc2.c2sd.renderer.utilities.RendererSettings.setModifierFont("garamond",9,"bold");
+		   
             var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
             //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
             //armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
@@ -339,7 +341,7 @@
 			alert(myTimeMessage4);
             alert(myTimeMessage5);//*/
 			
-			//charat time tests/////////////////////////
+			//charAt time tests/////////////////////////
 			/*
             var id = "SFGP-----------";
 			var b = false;
@@ -385,11 +387,14 @@
 			alert(myTimeMessage2);
             alert(myTimeMessage3);//*/
 
-			var batch = "{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}";
-			var bdfshg = sec.web.renderer.SECWebRenderer.getSinglePointInfoBatch(batch);
-			console.log(bdfshg);
+
 			
             //TEST FUNCTIONS/////////////////////////////
+			/*var batch = "{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}";
+			var bdfshg = sec.web.renderer.SECWebRenderer.getSinglePointInfoBatch(batch);
+			console.log(bdfshg);*/
+			
+			
             /*
 
             var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef("G*G*SLA---****X");
@@ -556,7 +561,7 @@
 			fontCheckTimer = setTimeout(checkFonts, 1000);
 		}//*/
 		
-		//armyc2.c2sd.renderer.MilStdIconRenderer.Init();
+		
 		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 		
 		var ii1 = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SUGPUSAT----***",{});
@@ -570,6 +575,35 @@
 		img2.src = ii2.toDataUrl();
 		img2.width = ii2.getImageBounds().width;
 		img2.height = ii2.getImageBounds().height;
+		/*
+		armyc2.c2sd.renderer.utilities.RendererSettings.setModifierFont("Arial, sans-serif",9,"bold");//"bold 30pt 'Arial', sans-serif"
+		armyc2.c2sd.renderer.utilities.RendererSettings.setTextBackgroundMethod(2);
+		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+		//var batch = "{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}";
+		var ii3 = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SFGP------*****",{"SIZE":35,"T":"Hello"});
+		var img3 = document.getElementById("batch1");
+		img3.src = ii3.toDataUrl();
+		img3.width = ii3.getImageBounds().width;
+		img3.height = ii3.getImageBounds().height;
+			
+			var mod = {};
+			mod.SIZE = 50;
+			mod.W = "Date";
+			mod.X = "X";
+			mod.V = "35";
+			mod.T = "TFOO is angry";
+			mod.Z = "speed"
+			mod.F = "R";
+			mod.G = "G";
+			mod.H = "<-- is \"silly\"";
+			mod.M = "M";
+			mod.N = "ENY"
+		var ii4 = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHGPE-----*****",mod);
+		var img4 = document.getElementById("batch2");
+		img4.src = ii4.toDataUrl();
+		img4.width = ii4.getImageBounds().width;
+		img4.height = ii4.getImageBounds().height;
+		//*/
 	}
 </script>
 </head>
@@ -582,6 +616,9 @@ Rendered via HTML5 Canvas:<br/>
 <button id="btnST1" type='button' onclick='speedTest(1);' >Speed Test</button>
 <img id="iST2" src="" alt="test" height="35" width="35">
 <button id="btnST2" type='button' onclick='speedTest(3);' >Speed Test With Modifiers</button>
+<!-- <img id="batch1" src="" alt="batch1" height="35" width="35">
+<img id="batch2" src="" alt="batch2" height="35" width="35"> -->
+
 
 </BODY>
 </html>

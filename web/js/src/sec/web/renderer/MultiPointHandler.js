@@ -2178,12 +2178,21 @@ return{
      */
     GetImageServerURL: function()
     {
-        _appletUrl = baseURL;
-        //_appletUrl = baseSURL;
-        //_appletUrl = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
-        _appletUrl += "mil-sym-service/renderer/image/";          
+        if(_appletUrl === null)
+        {
+            _appletUrl = baseURL;
+            //_appletUrl = baseSURL;
+            //_appletUrl = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
+            _appletUrl += "mil-sym-service/renderer/image/";          
+        }
 
         return _appletUrl;
+    },
+    
+    SetImageServerURL: function(hostURL)
+    {
+        _appletUrl = hostURL;
+        _appletUrl += "mil-sym-service/renderer/image/";          
     }
             
   

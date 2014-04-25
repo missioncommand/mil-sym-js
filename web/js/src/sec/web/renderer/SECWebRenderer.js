@@ -92,7 +92,7 @@ return{
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY." Not required
      * but can speed up rendering in some cases.
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {Object} An Object representing all the possible symbol 
+     * @param {Object} modifiers An Object representing all the possible symbol 
      * modifiers represented in the MIL-STD-2525C.  Key values come from
      * MilStdAttributes, ModifiersTG and ModifiersUnits 
      * example: {"C":"4","Z":"300","AN":[100,200]}}
@@ -137,6 +137,7 @@ return{
             {
                 output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd);
             }
+            //console.dir(output);
             return output;
         } 
         catch (err) 
