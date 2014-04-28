@@ -31,8 +31,10 @@ armyc2.c2sd.renderer.SinglePointRenderer = (function () {
 		
                 
     var _statusColorMap = {"C":"#00FF00","D":"#FFFF00","X":"#FF0000","F":"#0000FF"},
-        _unitTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","J":"J","K":"K","L":"L","M":"M","N":"N","P":"P","R2":"R2","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","Z":"Z","AC":"AC","AD":"AD","AE":"AE","AF":"AF","CN":"CN"},
-        _tgTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","N":"N","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","AM":"AM","AN":"AN","Length":"Length","Width":"Width","Radius":"Radius","Angle":"Angle"};
+        //_unitTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","J":"J","K":"K","L":"L","M":"M","N":"N","P":"P","R2":"R2","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","Z":"Z","AC":"AC","AD":"AD","AE":"AE","AF":"AF","CN":"CN"},
+        //_tgTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","N":"N","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","AM":"AM","AN":"AN","Length":"Length","Width":"Width","Radius":"Radius","Angle":"Angle"};
+        _unitTextModifierKeys = ["B","C","F","G","H","H1","H2","J","K","L","M","N","P","R2","T","T1","V","W","W1","X","Y","Z","AC","AD","AE","AF","CN"],
+        _tgTextModifierKeys = ["B","C","F","G","H","H1","H2","N","T","T1","V","W","W1","X","Y","AM","AN","Length","Width","Radius","Angle"];
     
 return{    
     
@@ -1215,7 +1217,10 @@ return{
             {
                 buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
                 ctx = buffer.getContext('2d');
-            
+                if(echelonBounds || amBounds)
+                {
+                    ctx.font = RendererSettings.getModifierFont();
+                }
             
             
             
@@ -1266,9 +1271,6 @@ return{
 
                 if(echelonBounds !== null)
                 {
-                    if(ctx.font !== RendererSettings.getModifierFont())
-                        ctx.font = RendererSettings.getModifierFont();
-
 
                     var textOutlineWidth = RendererSettings.getTextOutlineWidth();
                     if(textOutlineWidth > 0)
@@ -1291,9 +1293,6 @@ return{
                 
                 if(amBounds !== null)
                 {
-                    if(ctx.font !== RendererSettings.getModifierFont())
-                        ctx.font = RendererSettings.getModifierFont();
-
 
                     var textOutlineWidth = RendererSettings.getTextOutlineWidth();
                     if(textOutlineWidth > 0)
@@ -3477,24 +3476,11 @@ return{
             return false;
         if(scheme==="G")
         {
-            if(Object.keys !== undefined)
+            var len = _tgTextModifierKeys.length;
+            for(var i=0; i<len; i++)
             {
-                var keys = Object.keys(modifiers),
-                    len = keys.length;
-                for(var i=0; i<len; i++)
-                {
-                    if(_tgTextModifierKeys[keys[i]]!== undefined)
-                        return true;
-                }
-            }
-            else//IE8,FF3.6
-            {
-                var len = _tgTextModifierKeys.length;
-                for(var i=0; i<len; i++)
-                {
-                    if(modifiers[_tgTextModifierKeys[i]] !== undefined)
-                        return true;
-                }
+                if(modifiers[_tgTextModifierKeys[i]] !== undefined)
+                    return true;
             }
         }
         else
@@ -3505,24 +3491,11 @@ return{
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
                 return true;
 
-            if(Object.keys !== undefined)
+            var len = _unitTextModifierKeys.length;
+            for(var j=0; j<len; j++)
             {
-                var keys = Object.keys(modifiers),
-                    len = keys.length;
-                for(var i=0; i<len; i++)
-                {
-                    if(_unitTextModifierKeys[keys[i]]!== undefined)
-                        return true;
-                }
-            }
-            else//IE8,FF3.6
-            {
-                var len = _unitTextModifierKeys.length;
-                for(var i=0; i<len; i++)
-                {
-                    if(modifiers[_unitTextModifierKeys[i]] !== undefined)
-                        return true;
-                }
+                if(modifiers[_unitTextModifierKeys[j]] !== undefined)
+                    return true;
             }
         }
         return false;
