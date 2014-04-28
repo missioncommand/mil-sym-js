@@ -90,36 +90,35 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
                         modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH)
         {
             var modifiers = null;
-            if(arguments.length === 3)
+            
+            if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE)
             {
-                if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE)
-                {
-                    if(this._AM_Distance === null)
-                        this._AM_Distance = new Array();
-                    modifiers = this._AM_Distance;
-                }
-                else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH)
-                {
-                    if(this._AN_Azimuth === null)
-                        this._AN_Azimuth = new Array();
-                    modifiers = this._AN_Azimuth;
-                }
-                else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH)
-                {
-                    if(this._X_Altitude === null)
-                        this._X_Altitude = new Array();
-                    modifiers = this._X_Altitude;
-                }
-                
-                if(index + 1 > modifiers.length)
-                {
-                    modifiers.push(value);
-                }
-                else
-                {
-                    modifiers[index] = value;
-                }
+                if(this._AM_Distance === null)
+                    this._AM_Distance = new Array();
+                modifiers = this._AM_Distance;
             }
+            else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH)
+            {
+                if(this._AN_Azimuth === null)
+                    this._AN_Azimuth = new Array();
+                modifiers = this._AN_Azimuth;
+            }
+            else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH)
+            {
+                if(this._X_Altitude === null)
+                    this._X_Altitude = new Array();
+                modifiers = this._X_Altitude;
+            }
+
+            if(index + 1 > modifiers.length)
+            {
+                modifiers.push(value);
+            }
+            else
+            {
+                modifiers[index] = value;
+            }
+            
         }
     };
 
@@ -136,7 +135,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
            
         }
  
-        else if(arguments.length === 2)
+        else if(index === undefined)
         {
             index = 0;
         }
@@ -267,9 +266,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getModifier = function(modifier, index)
     {
-        if(arguments.length === 0)
-            return null;
-        else if(arguments.length === 1)
+        if(index === undefined)
         {
             index = 0;
         }

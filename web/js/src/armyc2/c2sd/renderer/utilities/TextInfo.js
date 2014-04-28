@@ -39,6 +39,7 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, textBase
     else// (textBaseline === "alphabetic")//an estimation
     {
         this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.3));
+        //this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.26074218888888888888888888888889));
     }
 
 };
@@ -133,4 +134,13 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, textBase
     };
     armyc2.c2sd.renderer.utilities.TextInfo.prototype.fillText = function(context){
         context.fillText(this.text,this.location.getX(),this.location.getY());
+    };
+    
+    armyc2.c2sd.renderer.utilities.TextInfo.prototype.createBuffer = function(width, height)
+    {
+	var buffer = document.createElement('canvas');
+	buffer.width = width;
+	buffer.height = height;
+	return buffer;
+	
     };

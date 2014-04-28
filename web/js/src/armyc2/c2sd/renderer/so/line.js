@@ -22,16 +22,14 @@ armyc2.c2sd.renderer.so.Line = function (x1,y1,x2,y2) {
     this.pt2 = null;
 
     //contructor
-    if(arguments.length===4)
-    {
-        //this.points.push(new armyc2.c2sd.renderer.so.Point(x1,y1));
-        //this.points.push(new armyc2.c2sd.renderer.so.Point(x2,y2));
-        this.pt1 = new armyc2.c2sd.renderer.so.Point(x1,y1);
-        this.pt2 = new armyc2.c2sd.renderer.so.Point(x2,y2);
+    var so = armyc2.c2sd.renderer.so;
 
-        this.rectangle = new armyc2.c2sd.renderer.so.Rectangle(x1,y1,1,1);
-        this.rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x2,y2));            
-    }
+    this.pt1 = new so.Point(x1,y1);
+    this.pt2 = new so.Point(x2,y2);
+
+    this.rectangle = new so.Rectangle(x1,y1,1,1);
+    this.rectangle.unionPoint(new so.Point(x2,y2));            
+    
 
 };
      

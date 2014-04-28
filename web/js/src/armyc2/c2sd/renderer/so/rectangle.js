@@ -204,16 +204,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
          */
         armyc2.c2sd.renderer.so.Rectangle.prototype.contains = function(x,y,w,h)
         {
-            if(arguments.length === 2)
-            {
-                var x0 = this.getX(),
-                    y0 = this.getY();
-                return (x >= x0 &&
-                    y >= y0 &&
-                    x < x0 + this.getWidth() &&
-                    y < y0 + this.getHeight());
-            }
-            else if(arguments.length === 4)
+            if(x && y && w && h)
             {
                 if (isEmpty() || w <= 0 || h <= 0) {
                     return false;
@@ -224,6 +215,15 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
                         y >= y0 &&
 		(x + w) <= x0 + this.getWidth() &&
 		(y + h) <= y0 + this.getHeight());
+            }
+            else if(x && y)
+            {
+                var x0 = this.getX(),
+                    y0 = this.getY();
+                return (x >= x0 &&
+                    y >= y0 &&
+                    x < x0 + this.getWidth() &&
+                    y < y0 + this.getHeight());
             }
             else
                 return false;

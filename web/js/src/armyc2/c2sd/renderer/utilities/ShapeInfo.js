@@ -25,11 +25,11 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
         _Polylines = null;
 
     //constructor code
-    if(arguments.length === 2)
+    if(shapeType)
     {
         _shapeType = shapeType;
     }
-    if(arguments.length >= 1)
+    if(shape)
     {
         _Shape = shape;
     }
