@@ -10,13 +10,15 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
  */
 armyc2.c2sd.renderer.so.Path = function () {
     
-    this._startPoint=null;
-    this._endPoint=null;
-    this._lastMoveTo = null;
-    this._rectangle = null;
-    this._actions = new Array();
+    this._actions = [];
 	
 };
+
+    armyc2.c2sd.renderer.so.Path.prototype._startPoint=null;
+    armyc2.c2sd.renderer.so.Path.prototype._endPoint=null;
+    armyc2.c2sd.renderer.so.Path.prototype._lastMoveTo = null;
+    armyc2.c2sd.renderer.so.Path.prototype._rectangle = null;
+    
 
     /**
      * @return {SO.ShapeTypes} ShapeTypes.Path
@@ -105,17 +107,18 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @returns {void}
      */
     armyc2.c2sd.renderer.so.Path.prototype.moveTo = function(x,y){
+        var so = armyc2.c2sd.renderer.so;
         if(this._actions.length === 0)
         {
-            this._rectangle = new armyc2.c2sd.renderer.so.Rectangle(x,y,1,1);
-            this._startPoint = new armyc2.c2sd.renderer.so.Point(x,y);
-            this._endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
+            this._rectangle = new so.Rectangle(x,y,1,1);
+            this._startPoint = new so.Point(x,y);
+            this._endPoint = new so.Point(x,y);
             //curr_startPoint = new armyc2.c2sd.renderer.so.Point(x,y);
             //curr_endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
         }
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x,y));
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_MOVE_TO,x,y));
-        this._lastMoveTo = new armyc2.c2sd.renderer.so.Point(x,y);
+        this._rectangle.unionPoint(new so.Point(x,y));
+        this._actions.push(new Array(so.ActionTypes.ACTION_MOVE_TO,x,y));
+        this._lastMoveTo = new so.Point(x,y);
     };
     /**
      * Adds a point to the path by drawing a straight line from the current 
@@ -125,13 +128,14 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @returns {void}
      */
     armyc2.c2sd.renderer.so.Path.prototype.lineTo = function(x,y){
+        var so = armyc2.c2sd.renderer.so;
         if(this._actions.length === 0)
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_LINE_TO,x,y));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x,y));
-        this._endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
+        this._actions.push(new Array(so.ActionTypes.ACTION_LINE_TO,x,y));
+        this._rectangle.unionPoint(new so.Point(x,y));
+        this._endPoint = new so.Point(x,y);
     };
     /**
      * Adds a curved segment, defined by three new points, to the path by 
@@ -147,15 +151,16 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @returns {void}
      */
     armyc2.c2sd.renderer.so.Path.prototype.bezierCurveTo = function(cp1x, cp1y, cp2x, cp2y,x,y){
+        var so = armyc2.c2sd.renderer.so;
         if(this._actions.length === 0)
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_CURVE_TO,cp1x,cp1y,cp2x,cp2y,x,y));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(cp1x,cp1y));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(cp2x,cp2y));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x,y));
-        this._endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
+        this._actions.push(new Array(so.ActionTypes.ACTION_CURVE_TO,cp1x,cp1y,cp2x,cp2y,x,y));
+        this._rectangle.unionPoint(new so.Point(cp1x,cp1y));
+        this._rectangle.unionPoint(new so.Point(cp2x,cp2y));
+        this._rectangle.unionPoint(new so.Point(x,y));
+        this._endPoint = new so.Point(x,y);
     };
     /**
      * Adds a curved segment, defined by two new points, to the path by 
@@ -169,14 +174,15 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @returns {void}
      */
     armyc2.c2sd.renderer.so.Path.prototype.quadraticCurveTo = function(cpx,cpy,x,y){
+        var so = armyc2.c2sd.renderer.so;
         if(this._actions.length === 0)
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_QUAD_TO,cpx,cpy,x,y));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(cpx,cpy));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x,y));
-        this._endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
+        this._actions.push(new Array(so.ActionTypes.ACTION_QUAD_TO,cpx,cpy,x,y));
+        this._rectangle.unionPoint(new so.Point(cpx,cpy));
+        this._rectangle.unionPoint(new so.Point(x,y));
+        this._endPoint = new so.Point(x,y);
     };
     /**
      * The arcTo() method creates an arc/curve between two tangents on the canvas.
@@ -188,14 +194,15 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @returns {void}
      */
     armyc2.c2sd.renderer.so.Path.prototype.arcTo = function(x1,y1,x2,y2,r){
+        var so = armyc2.c2sd.renderer.so;
         if(this._actions.length === 0)
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC_TO,x1,y1,x2,y2));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x1,y1));
-        this._rectangle.unionPoint(new armyc2.c2sd.renderer.so.Point(x2,y2));
-        this._endPoint = new armyc2.c2sd.renderer.so.Point(x2,y2);
+        this._actions.push(new Array(so.ActionTypes.ACTION_ARC_TO,x1,y1,x2,y2));
+        this._rectangle.unionPoint(new so.Point(x1,y1));
+        this._rectangle.unionPoint(new so.Point(x2,y2));
+        this._endPoint = new so.Point(x2,y2);
     };
     /**
      * The arc() method creates an arc/curve 
@@ -213,6 +220,8 @@ armyc2.c2sd.renderer.so.Path = function () {
      */
     armyc2.c2sd.renderer.so.Path.prototype.arc = function(x,y,r,sAngle,eAngle,counterclockwise){
         
+        var so = armyc2.c2sd.renderer.so;
+        
         if(counterclockwise === undefined || counterclockwise === null)
         {
             counterclockwise = false;
@@ -227,24 +236,24 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             var sX = r * Math.cos(sa) + x;
             var sY = r * Math.sin(sa) + y;
-            this._startPoint = new armyc2.c2sd.renderer.so.Point(sX,sY);
-            this._rectangle = new armyc2.c2sd.renderer.so.Rectangle(sX,sY,1,1);
+            this._startPoint = new so.Point(sX,sY);
+            this._rectangle = new so.Rectangle(sX,sY,1,1);
         }
         
 
-        this._actions.push(new Array(armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC,x,y,r,sa,ea,counterclockwise));
-        this._rectangle.union(new armyc2.c2sd.renderer.so.Rectangle(x-r,y-r,r*2,r*2));
+        this._actions.push(new Array(so.ActionTypes.ACTION_ARC,x,y,r,sa,ea,counterclockwise));
+        this._rectangle.union(new so.Rectangle(x-r,y-r,r*2,r*2));
         
         var newX = r * Math.cos(ea) + x;
         var newY = r * Math.sin(ea) + y;
-        this._endPoint = new armyc2.c2sd.renderer.so.Point(newX,newY);
+        this._endPoint = new so.Point(newX,newY);
     };
     /**
      * Closes the current subpath by drawing a straight line back to the coordinates of the last moveTo.
      * @return {void} 
      */
     armyc2.c2sd.renderer.so.Path.prototype.closePath = function(){
-        this.lineTo(this._lastMoveTo.getX(),_lastMoveTo.getY());
+        this.lineTo(this._lastMoveTo.getX(),this._lastMoveTo.getY());
         this._endPoint = this._lastMoveTo.clone();
     };
     /**
@@ -268,6 +277,7 @@ armyc2.c2sd.renderer.so.Path = function () {
      */
     armyc2.c2sd.renderer.so.Path.prototype.setPath = function(context){
 
+        var ActionTypes = armyc2.c2sd.renderer.so.ActionTypes;
         //context.beginPath();
         var size = this._actions.length;
         var temp = null;
@@ -275,30 +285,30 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             temp = this._actions[i];
 			
-			this.pathLookup[temp[0]](context,temp);
+            //this.pathLookup[temp[0]](context,temp);
 			
-			/* 
-            if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_MOVE_TO)
+			
+            if(temp[0]===ActionTypes.ACTION_MOVE_TO)
             {
                 context.moveTo(temp[1],temp[2]);
             }
-            else if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_LINE_TO)
+            else if(temp[0]===ActionTypes.ACTION_LINE_TO)
             {
                 context.lineTo(temp[1],temp[2]);
             }
-            else if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_CURVE_TO)
+            else if(temp[0]===ActionTypes.ACTION_CURVE_TO)
             {
                 context.bezierCurveTo(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6]);
             }
-            else if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_QUAD_TO)
+            else if(temp[0]===ActionTypes.ACTION_QUAD_TO)
             {
                 context.quadraticCurveTo(temp[1],temp[2],temp[3],temp[4]);
             }
-            else if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC_TO)
+            else if(temp[0]===ActionTypes.ACTION_ARC_TO)
             {
                 context.arcTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
             }
-            else if(temp[0]===armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC)
+            else if(temp[0]===ActionTypes.ACTION_ARC)
             {
                 context.arc(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6]);
             }//*/
@@ -324,12 +334,3 @@ armyc2.c2sd.renderer.so.Path = function () {
         this.setPath(context);
         context.fill();
     };
-
-	armyc2.c2sd.renderer.so.Path.prototype.pathLookup = [
-		function(context, temp){context.moveTo(temp[1],temp[2])},
-		function(context, temp){context.lineTo(temp[1],temp[2])},
-		function(context, temp){context.bezierCurveTo(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6])},
-		function(context, temp){context.quadraticCurveTo(temp[1],temp[2],temp[3],temp[4])},
-		function(context, temp){context.arcTo(temp[1],temp[2],temp[3],temp[4],temp[5])},
-		function(context, temp){context.arc(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6])}];
-		

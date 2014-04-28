@@ -28,7 +28,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         // <editor-fold defaultstate="collapsed" desc="Public Property Functions">
 
         armyc2.c2sd.renderer.so.Rectangle.prototype.getShapeType = function(){
-            return armyc2.c2sd.renderer.so.ShapeTypes.RECTANGLE;
+            return "RECTANGLE";//armyc2.c2sd.renderer.so.ShapeTypes.RECTANGLE;
         };
         
         armyc2.c2sd.renderer.so.Rectangle.prototype.getBounds = function(){

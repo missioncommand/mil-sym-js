@@ -77,7 +77,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.width = parseInt(symbol["WIDTH"] || ""); //WIDTH
                         data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
                     } 
-                    if((data.symbolID in symbolMapB)===false)
+                    if((symbolMapB[data.symbolID])===undefined)
                     {
                         symbolMapB[data.symbolID] = data;
                     }
@@ -105,7 +105,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
                     } 
                     
-                    if((data.symbolID in symbolMapC)===false)
+                    if((symbolMapC[data.symbolID])===undefined)
                     {
                         symbolMapC[data.symbolID] = data;
                     }

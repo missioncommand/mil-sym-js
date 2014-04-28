@@ -133,7 +133,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                         data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
                         data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
                     } 
-                    if((data.symbolID in symbolMapB)===false)
+                    if((symbolMapB[data.symbolID])===undefined)
                     {
                         symbolMapB[data.symbolID] = data;
                     }
@@ -159,7 +159,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                         data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
                         data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
                     } 
-                    if((data.symbolID in symbolMapC)===false)
+                    if((symbolMapC[data.symbolID])===undefined)
                     {
                         symbolMapC[data.symbolID] = data;
                     }

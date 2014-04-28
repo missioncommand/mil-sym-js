@@ -92,7 +92,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data.mapping2color = symbol["MAPPING2COLOR"] || ""; //MAPPING2COLOR
 
                     } 
-                    if((data.symbolID in symbolMapB)===false)
+                    if((symbolMapB[data.symbolID])===undefined)
                     {
                         var ufli = new armyc2.c2sd.renderer.utilities.UnitFontLookupInfo(data.symbolID,
                                     data.description,data.mapping1U,data.mapping1F,
@@ -128,7 +128,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data.mapping2color = symbol["MAPPING2COLOR"] || ""; //MAPPING2COLOR
 
                     } 
-                    if((data.symbolID in symbolMapC)===false)
+                    if((symbolMapC[data.symbolID])===undefined)
                     {
                         var ufli = new armyc2.c2sd.renderer.utilities.UnitFontLookupInfo(data.symbolID,
                                     data.description,data.mapping1U,data.mapping1F,

@@ -21,7 +21,7 @@ armyc2.c2sd.renderer.so.Point = function (x,y) {
      * @returns {String} 
      */
     armyc2.c2sd.renderer.so.Point.prototype.getShapeType = function(){
-        return armyc2.c2sd.renderer.so.ShapeTypes.POINT;
+        return "POINT";//armyc2.c2sd.renderer.so.ShapeTypes.POINT;
     };
     /**
      * 

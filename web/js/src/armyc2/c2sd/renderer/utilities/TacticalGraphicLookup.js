@@ -2050,7 +2050,7 @@ return{
                     data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
                     
                 } 
-                if((data.symbolID in symbolMap)===false)
+                if((symbolMap[data.symbolID])===undefined)
                 {
                     symbolMap[data.symbolID] = data;
                 }

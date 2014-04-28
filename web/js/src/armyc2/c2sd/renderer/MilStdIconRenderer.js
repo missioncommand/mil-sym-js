@@ -7,7 +7,11 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
     
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
         SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
+        UnitDefTable = armyc2.c2sd.renderer.utilities.UnitDefTable,
+        SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable,
         RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
+        SinglePointRenderer = armyc2.c2sd.renderer.SinglePointRenderer,
+        TacticalGraphicIconRenderer = armyc2.c2sd.renderer.TacticalGraphicIconRenderer,
         initialized = false;
         
     try
@@ -15,13 +19,13 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
         if(initialized === false)
         {
             //load in xml files
-            armyc2.c2sd.renderer.utilities.UnitDefTable.init();  
-            armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
+            UnitDefTable.init();  
+            SymbolDefTable.init();
             armyc2.c2sd.renderer.utilities.SinglePointLookup.init();
             armyc2.c2sd.renderer.utilities.UnitFontLookup.init();
             armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.init();
             
-            if(armyc2.c2sd.renderer.utilities.UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525Bch2_USAS_13_14)===false)
+            if(UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525Bch2_USAS_13_14)===false)
             {//if 2525B info isn't loaded, make C the rendering default.
                 RendererSettings.setSymbologyStandard(RendererSettings.Symbology_2525C);
             }
@@ -51,15 +55,15 @@ return{
         
         if(SymbolUtilities.isTacticalGraphic(symbolID))
         {
-            var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef(basicID,modifiers[MilStdAttributes.SymbologyStandard]);
+            var sd = SymbolDefTable.getSymbolDef(basicID,modifiers[MilStdAttributes.SymbologyStandard]);
             if(sd === null)
             {
                 symbolID = SymbolUtilities.reconcileSymbolID(symbolID);
                 basicID = SymbolUtilities.getBasicSymbolID(symbolID);
-                sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef(basicID);
+                sd = SymbolDefTable.getSymbolDef(basicID);
             }
             
-            if(sd !== null && sd.drawCategory === armyc2.c2sd.renderer.utilities.SymbolDefTable.DRAW_CATEGORY_POINT)
+            if(sd !== null && sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_POINT)
             {
                 return armyc2.c2sd.renderer.SinglePointRenderer.renderSPTG(symbolID, modifiers);
             }
@@ -76,18 +80,18 @@ return{
                     size = modifiers[MilStdAttributes.PixelSize];
                 }
                 
-                var ii = armyc2.c2sd.renderer.TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor);
+                var ii = TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor);
                 return ii;
                 //call tactical graphics single point renderer
             }
         }
         else
         {
-            if(armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basicID,modifiers[MilStdAttributes.SymbologyStandard])===false)
+            if(UnitDefTable.hasUnitDef(basicID,modifiers[MilStdAttributes.SymbologyStandard])===false)
             {
                 symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
             }
-            return armyc2.c2sd.renderer.SinglePointRenderer.renderUnit(symbolID, modifiers);
+            return SinglePointRenderer.renderUnit(symbolID, modifiers);
         }
     }
 };

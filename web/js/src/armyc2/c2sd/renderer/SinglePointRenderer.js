@@ -10,6 +10,8 @@ armyc2.c2sd.renderer.SinglePointRenderer = (function () {
         RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
         SO = armyc2.c2sd.renderer.so,
         RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities,
+        TextInfo = armyc2.c2sd.renderer.utilities.TextInfo,
+        ImageInfo = armyc2.c2sd.renderer.utilities.ImageInfo,
         MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
         SymbolDimensions = armyc2.c2sd.renderer.utilities.SymbolDimensions,
         ModifiersUnits = armyc2.c2sd.renderer.utilities.ModifiersUnits,
@@ -19,11 +21,13 @@ armyc2.c2sd.renderer.SinglePointRenderer = (function () {
     
     var textInfoBuffer = null,
         textInfoContext = null,
+        textInfoContextFont = null,
         _bufferUnit = null,
         _bufferUnitSize = 150,
         _bufferSymbol = null,
         _bufferSymbolSize = 150,
-        _bufferDisplayModifiers = null;
+        _bufferDisplayModifiers = null,
+        _document = document;
 		
                 
     var _statusColorMap = {"C":"#00FF00","D":"#FFFF00","X":"#FF0000","F":"#0000FF"},
@@ -33,6 +37,19 @@ armyc2.c2sd.renderer.SinglePointRenderer = (function () {
 return{    
     
     
+    checkModifierFont: function()
+    {
+        if(textInfoBuffer===null)
+            textInfoBuffer = this.createBuffer(1,1);
+        if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
+            textInfoContext = textInfoBuffer.getContext('2d');
+        
+        if(textInfoContextFont !== RendererSettings.getModifierFont())
+        {
+            textInfoContextFont = RendererSettings.getModifierFont();
+            textInfoContext.font = textInfoContextFont;
+        }
+    },
     
     // <editor-fold defaultstate="collapsed" desc="Unit Functions">
     /**
@@ -100,11 +117,8 @@ return{
             if(intFrameAssume > 0)
                 frameAssume = String.fromCharCode(intFrameAssume);
         }
-        
-        if(textInfoBuffer===null)
-            textInfoBuffer = this.createBuffer(1,1);
-        if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
-            textInfoContext = textInfoBuffer.getContext('2d');
+            
+        this.checkModifierFont();
         
         // </editor-fold>
         
@@ -272,11 +286,11 @@ return{
         symbolBounds.setLocation(0,0);
         
         
-        var imageBounds = new armyc2.c2sd.renderer.so.Rectangle(0,0,symbolWidth,symbolHeight);
+        var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
         
-        var centerPoint = new armyc2.c2sd.renderer.so.Point(x,y);
+        var centerPoint = new SO.Point(x,y);
         
-        var ii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
+        var ii = new ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
         
         // </editor-fold>
 	
@@ -775,7 +789,7 @@ return{
                     var echelonOffset = 2,
                         outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                    var tiEchelon = new armyc2.c2sd.renderer.utilities.TextInfo(strEchelon,0,0,textInfoContext,"alphabetic");
+                    var tiEchelon = new TextInfo(strEchelon,0,0,textInfoContext,"alphabetic");
                     echelonBounds = tiEchelon.getTextBounds();
 
                     var y = Math.round(symbolBounds.getY() - echelonOffset),
@@ -811,7 +825,7 @@ return{
                 var amOffset = 2,
                     outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                var tiAM = new armyc2.c2sd.renderer.utilities.TextInfo(affiliationModifier,0,0,textInfoContext,"alphabetic");
+                var tiAM = new TextInfo(affiliationModifier,0,0,textInfoContext,"alphabetic");
                 amBounds = tiAM.getTextBounds();
 
                 var x,y;
@@ -1431,7 +1445,7 @@ return{
             }
             // </editor-fold>
             
-            newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
                 shapes = null;
@@ -1573,10 +1587,7 @@ return{
         }
             
             
-        if(textInfoBuffer===null)
-            textInfoBuffer = this.createBuffer(1,1);
-        if(textInfoContext===null)
-            textInfoContext = textInfoBuffer.getContext('2d');
+        this.checkModifierFont();
         
         
         cpofNameX = bounds.x + bounds.width + bufferXR;
@@ -1623,7 +1634,7 @@ return{
         {
             var text = modifiers[ModifiersUnits.C_QUANTITY];
             //bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextOutlineBounds(textInfoContext, text, new SO.Point(0,0));
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(text,0,0,textInfoContext);
+            tiTemp = new TextInfo(text,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             x = Math.round((symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5));
@@ -1652,7 +1663,7 @@ return{
             else if(xm !== null && ym !== null)
                 modifierValue = xm + "  " + ym;
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1680,7 +1691,7 @@ return{
         {
             modifierValue = modifiers.G;
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1712,7 +1723,7 @@ return{
         {
             modifierValue = modifiers.V;
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1732,7 +1743,7 @@ return{
         {
             modifierValue = modifiers.H;
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1754,7 +1765,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.T_UNIQUE_DESIGNATION_1];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1782,7 +1793,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.M_HIGHER_FORMATION];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1810,7 +1821,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1870,7 +1881,7 @@ return{
             if(modifierValue.charAt(0)===" ")
                 modifierValue = modifierValue.substring(1);
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1898,7 +1909,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.W_DTG_1];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1956,7 +1967,7 @@ return{
                     modifierValue = F;
             }
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1988,7 +1999,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -2006,7 +2017,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.CN_CPOF_NAME_LABEL];
             
-            tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -2079,7 +2090,7 @@ return{
                     
                 }
 
-                newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+                newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
                 
             }
             // </editor-fold>
@@ -2289,10 +2300,7 @@ return{
         
         // </editor-fold>
         
-        if(textInfoBuffer===null)
-            textInfoBuffer = this.createBuffer(1,1);
-        if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
-            textInfoContext = textInfoBuffer.getContext('2d');
+        this.checkModifierFont();
         
         // </editor-fold>
         
@@ -2385,11 +2393,11 @@ return{
         }
 
         
-        var imageBounds = new armyc2.c2sd.renderer.so.Rectangle(0,0,symbolWidth,symbolHeight);
+        var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
         
-        //var centerPoint = new armyc2.c2sd.renderer.so.Point(Math.round(symbolWidth/2),Math.round(symbolHeight/2));
+        //var centerPoint = new SO.Point(Math.round(symbolWidth/2),Math.round(symbolHeight/2));
         
-        var ii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
+        var ii = new ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
         
         //Process Modifiers
         var iiNew = null;
@@ -2499,7 +2507,7 @@ return{
 
             strText1 = "D";
             
-            text1 = new armyc2.c2sd.renderer.utilities.TextInfo(strText1,0,0,textInfoContext);
+            text1 = new TextInfo(strText1,0,0,textInfoContext);
             
             labelBounds1 = text1.getTextBounds();
             if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
@@ -2520,7 +2528,7 @@ return{
         else if (basicID===("G*G*APU---****X")) //pull-up point (PUP)
         {
             strText1 = "PUP";
-            text1 = new armyc2.c2sd.renderer.utilities.TextInfo(strText1,0,0,textInfoContext);
+            text1 = new TextInfo(strText1,0,0,textInfoContext);
             
             labelBounds1 = text1.getTextBounds();
             y = symbolBounds.getCenterY() + ((labelBounds1.getHeight() - descent)/2);
@@ -2551,7 +2559,7 @@ return{
             //text1 = new TextLayout(strText1, labelFont, frc);
             var offset = 1;
             strText2 = "BIO";
-            text2 = new armyc2.c2sd.renderer.utilities.TextInfo(strText2,0,0,textInfoContext);
+            text2 = new TextInfo(strText2,0,0,textInfoContext);
 
             labelBounds2 = text2.getTextBounds();
             //y = symbolBounds.getY() + (symbolBounds.getHeight() * 0.9);
@@ -2570,7 +2578,7 @@ return{
             //text1 = new TextLayout(strText1, labelFont, frc);
             var offset = 1;
             strText2 = "CML";
-            text2 = new armyc2.c2sd.renderer.utilities.TextInfo(strText2,0,0,textInfoContext);
+            text2 = new TextInfo(strText2,0,0,textInfoContext);
             
             labelBounds2 = text2.getTextBounds();
             //y = symbolBounds.getY() + (symbolBounds.getHeight() * 0.9);
@@ -2610,7 +2618,7 @@ return{
             if(modifiers.H !== undefined)
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //One modifier symbols and modifier goes in center
                 x = bounds.x + (bounds.width * 0.5);
@@ -2627,7 +2635,7 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //One modifier symbols, top third & center
                 x = bounds.x + (bounds.width * 0.5);
@@ -2645,7 +2653,7 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 //One modifier symbols and modifier goes right of center
                 x = bounds.x + (bounds.width * 0.75);
@@ -2662,7 +2670,7 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 var labelWidth = ti.getTextBounds().getWidth();
                 //One modifier symbols and modifier goes just below of center
                 x = bounds.x + (bounds.width * 0.5);
@@ -2683,7 +2691,7 @@ return{
                     basicID ===("G*F*PTS---****X"))//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 x = bounds.getCenterX() + (bounds.width * 0.15);
                 y = bounds.y + (bounds.height * 0.75);
@@ -2696,7 +2704,7 @@ return{
                     basicID ===("G*F*PTS---****X"))//H1
             {
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.getCenterX() - (bounds.width * 0.15);
                 x = x - (labelWidth);
@@ -2709,7 +2717,7 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
 
                 x = bounds.getCenterX() + (bounds.width * 0.15);
 //                    x = x - (labelBounds.width * 0.5);
@@ -2728,7 +2736,7 @@ return{
             if(modifiers.N !== undefined)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 x = bounds.x + bounds.width + bufferXR;
 
@@ -2748,7 +2756,7 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 x = bounds.x + bounds.width + bufferXR;
                 if(!byLabelHeight)
@@ -2767,7 +2775,7 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 x = bounds.x - labelWidth - bufferXL;
@@ -2787,7 +2795,7 @@ return{
             if(modifiers.V !== undefined && basicID ===("G*M*NZ----****X"))//V
             {
                 strText = modifiers[ModifiersTG.V_EQUIP_TYPE];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 //subset of nbc, just nuclear
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
@@ -2800,7 +2808,7 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.x - labelWidth - bufferXL;
                 if(!byLabelHeight)
@@ -2818,7 +2826,7 @@ return{
             if(modifiers.Y !== undefined)//Y
             {
                 strText = modifiers[ModifiersTG.Y_LOCATION];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //just NBC
                 //x = bounds.getX() + (bounds.getWidth() * 0.5);
@@ -2843,7 +2851,7 @@ return{
             if(modifiers.C !== undefined)//C
             {
                 strText = modifiers[ModifiersTG.C_QUANTITY];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //subset of NBC, just nuclear
                 x = bounds.x + (bounds.width * 0.5);
@@ -2859,7 +2867,7 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.x + (bounds.width * 0.5);
                 x = x - (labelWidth * 0.5);
@@ -2873,7 +2881,7 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.x + (bounds.width * 0.5);
                 x = x - (labelWidth * 0.5);
@@ -2886,8 +2894,8 @@ return{
             if(modifiers.N !== undefined)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
-                var ti2 = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
+                var ti2 = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.x + (bounds.width) + bufferXR;//right
                 //x = x + labelWidth;//- (labelBounds.width * 0.75);
@@ -3032,7 +3040,7 @@ return{
                     ctx.fill();
                 }
             }
-            newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
             ctx = null;
@@ -3128,7 +3136,7 @@ return{
             if(modifiers.N !== undefined)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 x = bounds.x + bounds.width + bufferXR;
 
@@ -3151,7 +3159,7 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 x = bounds.x + (bounds.width * 0.5);
@@ -3164,7 +3172,7 @@ return{
             if(modifiers.H1 !== undefined)//H1
             {//pretty much just for Action Point
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 x = bounds.x + (bounds.width * 0.5);
@@ -3177,7 +3185,7 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 x = bounds.x - labelWidth - bufferXL;
@@ -3189,7 +3197,7 @@ return{
             if(modifiers.W1 !== undefined)//W1
             {
                 strText = modifiers[ModifiersTG.W1_DTG_2];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 x = bounds.x - labelWidth - bufferXL;
@@ -3203,7 +3211,7 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 
                 x = bounds.x + bounds.width + bufferXR;
                 y = bounds.y + labelHeight - descent;
@@ -3217,7 +3225,7 @@ return{
                     basicID===("G*S*PX----****X")))//ambulance exchange point
             {
                 strText = modifiers[ModifiersTG.T1_UNIQUE_DESIGNATION_2];
-                ti = new armyc2.c2sd.renderer.utilities.TextInfo(strText,0,0,textInfoContext);
+                ti = new TextInfo(strText,0,0,textInfoContext);
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 
                 //points
@@ -3294,7 +3302,7 @@ return{
 
                 this.renderText(ctx,arrMods);
             }
-            newii = new armyc2.c2sd.renderer.utilities.ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
+            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
             ctx = null;
@@ -3311,7 +3319,7 @@ return{
     // <editor-fold defaultstate="collapsed" desc="Support functions">
     createBuffer: function(width, height)
     {
-	var buffer = document.createElement('canvas');
+	var buffer = _document.createElement('canvas');
 	buffer.width = width;
 	buffer.height = height;
 	return buffer;

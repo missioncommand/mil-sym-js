@@ -24,9 +24,9 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     armyc2.c2sd.renderer.utilities.RendererUtilities.getIdealOutlineColor = function(color){
         var idealColor = null;
         
-        if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color])
+        if(this.pastIdealOutlineColors[color])
         {
-            return armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color];
+            return this.pastIdealOutlineColors[color];
         }//*/
         
         if(color !== null && color !==""){
@@ -55,20 +55,21 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
                 idealColor = "#FFFFFF";
             }
         }
-        armyc2.c2sd.renderer.utilities.RendererUtilities.pastIdealOutlineColors[color] = idealColor;
+        this.pastIdealOutlineColors[color] = idealColor;
         return idealColor;
     };
     /**
-     * 
-     * @param {String} fontName
-     * @param {Number} fontSize
-     * @param {String} fontStyle
+     * Clients should use getTextBounds
+     * @param {String} fontName like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
+     * @param {Number} fontSize like 12
+     * @param {String} fontStyle like "bold"
      * @param {String} text
-     * @returns {Array{width,height}}
+     * @returns {Array[width,height]}
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureText = function(fontName, fontSize, fontStyle, text){
-                
-        var div = document.createElement('DIV');
+        var doc = document;
+        var div = doc.createElement('DIV');
             div.innerHTML = text;
             div.style.position = 'absolute';
             div.style.top = '-999px';
@@ -76,33 +77,65 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
             div.style.fontFamily = fontName;
             div.style.fontWeight = fontStyle ? 'bold' : 'normal';
             div.style.fontSize = fontSize + 'pt';
-            document.body.appendChild(div);
+            doc.body.appendChild(div);
             var size = [div.offsetWidth, div.offsetHeight];
             
-            document.body.removeChild(div);
+            doc.body.removeChild(div);
             div = null;
             return size;
     };
     
+    /**
+     * Clients should use getTextBounds
+     * @param {String} font like "bold 10pt Arial, sans-serif"
+     * @param {String} text
+     * @returns {Array[width,height]}
+     */
+    armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextWithFontString = function(font, text){
+        var arrFont = font.split(" "),
+            fontStyle = arrFont[0],//style
+            fontSize = arrFont[1].replace("pt",""),//size
+            fontName = arrFont[2],//name
+            backupFonts;
+        
+        if(arrFont.length > 3)
+        {
+            backupFonts = arrFont.slice(3);
+            
+            for(var i = 0; i < backupFonts.length; i++)
+            {
+                fontName += ", " + backupFonts[i];
+            }
+        }
+        return this.measureText(fontName, fontSize, fontStyle, text);
+    };
+    
+    /**
+     * 
+     * @param {String} fontName like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
+     * @param {Number} fontSize like 12
+     * @param {String} fontStyle like "bold"
+     * @returns {Number}
+     */
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight = function(fontName, fontSize, fontStyle)
     {
         var fontString = fontStyle + " " + fontSize + "pt " + fontName;
         var size;
-        if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
+        if(this.pastTextMeasurements[fontString] !== undefined)
         {
-            return armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString];
+            return this.pastTextMeasurements[fontString];
         }
         
         size = this.measureText(fontName, fontSize, fontStyle, "Hj");
-        armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
+        this.pastTextMeasurements[fontString] = size[1];
         return size[1];
     };
     
     /**
      * 
-     * @param {type} fontString
-     * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements|armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString.size|Array|armyc2.c2sd.renderer.utilities.RendererUtilities.measureText.size|Array{width,height}
-     * @deprecated Use measureTextHeight()
+     * @param {type} fontString like "bold 10pt Arial, sans-serif"
+     * @returns {Number}
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeightWithFontString = function(fontString){
         var arrFont,
@@ -111,9 +144,9 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
             fontName,
             size;
         
-        if(armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] !== undefined)
+        if(this.pastTextMeasurements[fontString] !== undefined)
         {
-            return armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString];
+            return this.pastTextMeasurements[fontString];
         }
         
         arrFont = fontString.split(" ");
@@ -121,57 +154,122 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         fontSize = arrFont[1].replace("pt","");//size
         fontName = arrFont[2];//name
         
+        if(arrFont.length > 3)
+        {
+            var backupFonts = arrFont.slice(3);
+            
+            for(var i = 0; i < backupFonts.length; i++)
+            {
+                fontName += ", " + backupFonts[i];
+            }
+        }
+        
         size = this.measureText(fontName, fontSize, fontStyle, "Hj");
-        armyc2.c2sd.renderer.utilities.RendererUtilities.pastTextMeasurements[fontString] = size[1];
+        this.pastTextMeasurements[fontString] = size[1];
         return size[1];
 
     };
 
-    armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextWidthWithFontString = function(fontString,text){
-        var arrFont = fontString.split(" ");
-        var fontStyle = arrFont[0];//style
-        var fontSize = arrFont[1].replace("pt","");//size
-        var fontName = arrFont[2];//name
+    /**
+     * 
+     * @param {String} text
+     * @param {HTML5 canvas context} context optional but faster if one is provided
+     * @param {String} fontString like "bold 10pt Arial, sans-serif"
+     * @returns {Number}
+     */
+    armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextWidthWithFontString = function(text, context,fontString){
+        var arrFont,
+            fontStyle,
+            fontSize,
+            fontName,
+            width;
         
-        return this.measureText(fontName, fontSize, fontStyle,text)[0];
+        if(context !== null)
+        {
+            width = context.measureText(text).width;
+            return width;
+        }
+        else
+        {
+            arrFont = fontString.split(" ");
+            fontStyle = arrFont[0];//style
+            fontSize = arrFont[1].replace("pt","");//size
+            fontName = arrFont[2];
+            if(arrFont.length > 3)
+            {
+                var backupFonts = arrFont.slice(3);
+
+                for(var i = 0; i < backupFonts.length; i++)
+                {
+                    fontName += ", " + backupFonts[i];
+                }
+            }
+            return this.measureText(fontName, fontSize, fontStyle,text)[0];
+        }
+
+    };
+    
+    /**
+     * 
+     * @param {String} text
+     * @param {HTML5 canvas context} context optional but faster if one is provided
+     * @param {String} fontName like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
+     * @param {Number} fontSize like 12
+     * @param {String} fontStyle like "bold"
+     * @returns {Number}
+     */
+    armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextWidth = function(text, context, fontName, fontSize, fontStyle)
+    {
+        var width;
+        if(context !== null)
+        {
+            width = context.measureText(text).width;
+            return width;
+        }
+        else
+        {
+            return this.measureText(fontName, fontSize, fontStyle,text)[0];
+        }
 
     };
     /**
-     * 
+     * Assumes the font set on the passed context
      * @param {HTML5 canvas context} context can be null but runs faster with a context
      * @param {String} text
      * @param {armyc2.c2sd.renderer.so.Point} location can be 0,0 if you're only concerned about the width & height
-     * @param {String} font like "bold 10pt Arial".  if undefined, assumes the modifier font
+     * @param {String} font like "bold 10pt Arial, sans-serif", required if context not set.
      * @returns {armyc2.c2sd.renderer.so.Rectangle}
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds = function(context, text, location, font){
 
         var arrFont, fontStyle, fontSize, fontName, size;
             
-        if(font === undefined)
-        {
-            font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
-        }
-        
         var height,
             width,
             bounds;
         if(context !== null)
         {
-            if(context.font !== font)
-            {
-                context.font = font;
-            }
             width = context.measureText(text).width;
-            height = this.measureTextHeightWithFontString(font);
+            height = this.measureTextHeightWithFontString(context.font);
         }       
         else
         {
-            width = this.measureTextWidthWithFontString(font, text);
+            //width = this.measureTextWidthWithFontString(font, text);
             arrFont = font.split(" ");
             fontStyle = arrFont[0];//style
             fontSize = arrFont[1].replace("pt","");//size
             fontName = arrFont[2];//name
+            
+            if(arrFont.length > 3)
+            {
+                var backupFonts = arrFont.slice(3);
+
+                for(var i = 0; i < backupFonts.length; i++)
+                {
+                    fontName += ", " + backupFonts[i];
+                }
+            }
 
             size = this.measureText(fontName, fontSize, fontStyle,text);
             width = size[0];
@@ -188,9 +286,10 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
     /**
      * There is no accurate way for getting the descent in JavaScript currently.
      * This should be close for renderer's default modifier font.
-     * @param {type} fontName
-     * @param {type} fontSize
-     * @param {type} fontStyle
+     * @param {String} fontName like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
+     * @param {Number} fontSize like 12
+     * @param {String} fontStyle like "bold"
      * @param {type} text
      * @returns {Number}
      */
@@ -199,13 +298,10 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         return (fontSize * 0.26074218888888888888888888888889);
     };
     
-    armyc2.c2sd.renderer.utilities.RendererUtilities.getTextPlacement = function(textInfo, modifierID, symbolID, symbolBounds, context){
-        
-    };
     
     /**
      * Checks if the fonts required for single point rendering have finished loading.
-     * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded.returnVal|Boolean}
+     * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded = function(){
         var returnVal = false;

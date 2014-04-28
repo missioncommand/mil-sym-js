@@ -15,7 +15,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
      * @return {armyc2.c2sd.renderer.so.Rectangle} 
      */
     armyc2.c2sd.renderer.utilities.SymbolDimensions.getUnitBounds = function(charIndex, fontSize){
-        var mySO = armyc2.c2sd.renderer.so,
+        var Rectangle = armyc2.c2sd.renderer.so.Rectangle,
             index = charIndex;
         var rect = null;
 
@@ -24,27 +24,27 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 800://unknown ground
             case 801:
             case 802:
-                    rect = new mySO.Rectangle(0,0,60.8,60.8);
+                    rect = new Rectangle(0,0,60.8,60.8);
                     break;
             case 803://FG
             case 804:
             case 805:
-                    rect = new mySO.Rectangle(0,0,65,47);
+                    rect = new Rectangle(0,0,65,47);
                     break;
             case 806://HG
             case 807:
             case 808:
-                    rect = new mySO.Rectangle(0,0,62.5,62.5);
+                    rect = new Rectangle(0,0,62.5,62.5);
                     break;
             case 809://NG
             case 810:
             case 811:
-                    rect = new mySO.Rectangle(0,0,50.05,50.05);
+                    rect = new Rectangle(0,0,50.05,50.05);
                     break;
             case 812://FE
             case 813:
             case 814:
-                    rect = new mySO.Rectangle(0,0,53.75,53.75);
+                    rect = new Rectangle(0,0,53.75,53.75);
                     break;
             case 816://HA/S
             case 817:
@@ -52,7 +52,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 840:
             case 841:
             case 842:
-                    rect = new mySO.Rectangle(0,8,50.3,53);//
+                    rect = new Rectangle(0,8,50.3,53);//
                     break;
             case 819://FA/S
             case 820:
@@ -60,7 +60,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 843:
             case 844:
             case 845:
-                    rect = new mySO.Rectangle(0,7,46.6,48);//y=7
+                    rect = new Rectangle(0,7,46.6,48);//y=7
                     break;
             case 822://NA/S
             case 823:
@@ -68,7 +68,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 846:
             case 847:
             case 848:
-                    rect = new mySO.Rectangle(0,6,47,48);//y=6
+                    rect = new Rectangle(0,6,47,48);//y=6
                     break;
             case 825://UA/S
             case 826:
@@ -76,30 +76,30 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 849:
             case 850:
             case 851:
-                    rect = new mySO.Rectangle(0,5,64.7,56);//
+                    rect = new Rectangle(0,5,64.7,56);//
                     break;
             case 828://HSub
             case 829:
             case 830:
-                    rect = new mySO.Rectangle(0,-8,50.3,53);//{x : 0, y:-7, width:50.3,height:53}
+                    rect = new Rectangle(0,-8,50.3,53);//{x : 0, y:-7, width:50.3,height:53}
                     break;
             case 831://FSub
             case 832:
             case 833:
-                    rect = new mySO.Rectangle(0,-5,46.6,48);//y=-5
+                    rect = new Rectangle(0,-5,46.6,48);//y=-5
                     break;
             case 834://NSub
             case 835:
             case 836:
-                    rect = new mySO.Rectangle(0,-5,46.5,48);//y=-5
+                    rect = new Rectangle(0,-5,46.5,48);//y=-5
                     break;
             case 837://USub
             case 838:
             case 839:
-                    rect = new mySO.Rectangle(0,-5,64.7,56);//y=-10
+                    rect = new Rectangle(0,-5,64.7,56);//y=-10
                     break;
             default:
-                    rect = new mySO.Rectangle(0,0,65,65);
+                    rect = new Rectangle(0,0,65,65);
                     break;
         }
 
@@ -109,7 +109,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 ratio = fontSize / 50;
                 //I only measured for a font size of 50.  if we get the ratio and multiply the values
                 //by it, we in theory should have a correct adjusted rectangle.
-                rect = new mySO.Rectangle(0,Math.ceil(rect.y*ratio), Math.ceil(rect.width*ratio), Math.ceil(rect.height*ratio));
+                rect = new Rectangle(0,Math.ceil(rect.y*ratio), Math.ceil(rect.width*ratio), Math.ceil(rect.height*ratio));
         }
 
         return rect;
@@ -123,13 +123,15 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
     armyc2.c2sd.renderer.utilities.SymbolDimensions.getSymbolBounds = function (symbolID, fontSize){
         var spli = armyc2.c2sd.renderer.utilities.SinglePointLookup.getSPLookupInfo(symbolID);
 
-        var rect = new armyc2.c2sd.renderer.so.Rectangle(0,0,spli.width, spli.height);//new Rectangle(0,0,spli.width, spli.height);
+        var Rectangle = armyc2.c2sd.renderer.so.Rectangle;
+
+        var rect = new Rectangle(0,0,spli.width, spli.height);//new Rectangle(0,0,spli.width, spli.height);
 
         if(fontSize !== 60)//adjust boundaries ratio if font size is not at the default setting.
         {
                 var ratio = fontSize/60;
                 
-                rect = new armyc2.c2sd.renderer.so.Rectangle(0,0,Math.round(rect.width*ratio), Math.round(rect.height*ratio));
+                rect = new Rectangle(0,0,Math.round(rect.width*ratio), Math.round(rect.height*ratio));
         }
 
         return rect; 
@@ -143,7 +145,8 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolDimensions.getSymbolCenter = function (symbolID, bounds){
         
-        var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID),
+        var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
+        var basicID = SymbolUtilities.getBasicSymbolID(symbolID),
             center = new armyc2.c2sd.renderer.so.Point(bounds.width/2,bounds.height/2);
 
         if(basicID === "G*G*GPUUB-****X" ||
@@ -179,15 +182,15 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 basicID === "G*G*GPPN--****X" || //entry control point
                 basicID === "G*S*PX----****X" || //ambulance exchange point
                 basicID === "G*O*ES----****X" || //emergency distress call
-                armyc2.c2sd.renderer.utilities.SymbolUtilities.isNBC(basicID) ||
-                armyc2.c2sd.renderer.utilities.SymbolUtilities.isDeconPoint(basicID) ||
-                armyc2.c2sd.renderer.utilities.SymbolUtilities.isCheckPoint(basicID))
+                SymbolUtilities.isNBC(basicID) ||
+                SymbolUtilities.isDeconPoint(basicID) ||
+                SymbolUtilities.isCheckPoint(basicID))
         {
                 //center on bottom middle
                 center.x = bounds.width/2;
                 center.y = bounds.height;
         }
-        else if(armyc2.c2sd.renderer.utilities.SymbolUtilities.isSonobuoy(basicID))
+        else if(SymbolUtilities.isSonobuoy(basicID))
         {
                 //bottom third
                 center.x = bounds.width/2;

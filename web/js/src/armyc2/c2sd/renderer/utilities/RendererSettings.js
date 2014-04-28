@@ -322,8 +322,7 @@ return{
         {
             _ModifierFontStyle = 'bold';
         }
-        _ModifierFont = style + " " + 
-                        size + "pt " + name;
+        _ModifierFont = style + " " + size + "pt " + name;
     },
     /**
      * 

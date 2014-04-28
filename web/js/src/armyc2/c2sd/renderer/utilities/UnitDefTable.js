@@ -48,7 +48,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                         //data.path = symbols[i].children[5].textContent; //PATH
 
                     } 
-                    if((data.symbolID in symbolMapB)===false)
+                    if((symbolMapB[data.symbolID])===undefined)
                     {
                         symbolMapB[data.symbolID] = data;
                     }
@@ -75,7 +75,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                         //data.path = symbols[i].children[5].textContent; //PATH
 
                     } 
-                    if((data.symbolID in symbolMapC)===false)
+                    if((symbolMapC[data.symbolID])===undefined)
                     {
                         symbolMapC[data.symbolID] = data;
                     }

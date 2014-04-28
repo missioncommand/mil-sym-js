@@ -142,7 +142,6 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
@@ -151,6 +150,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/rectangle.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ShapeInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
             
@@ -325,12 +325,12 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ShapeInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
             
