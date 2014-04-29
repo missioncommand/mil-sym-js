@@ -504,6 +504,11 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             if (bolMETOC > 0)
                 return;
             switch (tg.get_LineType()) {
+                case 22421000:
+                    shape.setFillColor(null);
+                    shape.set_Style(tg.get_LineStyle());
+                    shape.setLineColor(tg.get_LineColor());                    
+                    break;
                 case 24324100:
                 case 24324300:
                 case 24324200:
