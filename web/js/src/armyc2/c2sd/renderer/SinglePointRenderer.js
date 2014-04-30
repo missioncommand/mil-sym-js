@@ -791,7 +791,7 @@ return{
                     var echelonOffset = 2,
                         outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                    var tiEchelon = new TextInfo(strEchelon,0,0,textInfoContext,"alphabetic");
+                    var tiEchelon = new TextInfo(strEchelon,0,0,textInfoContext,textInfoContextFont);
                     echelonBounds = tiEchelon.getTextBounds();
 
                     var y = Math.round(symbolBounds.getY() - echelonOffset),
@@ -827,7 +827,7 @@ return{
                 var amOffset = 2,
                     outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                var tiAM = new TextInfo(affiliationModifier,0,0,textInfoContext,"alphabetic");
+                var tiAM = new TextInfo(affiliationModifier,0,0,textInfoContext,textInfoContextFont);
                 amBounds = tiAM.getTextBounds();
 
                 var x,y;
@@ -1633,7 +1633,7 @@ return{
         {
             var text = modifiers[ModifiersUnits.C_QUANTITY];
             //bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextOutlineBounds(textInfoContext, text, new SO.Point(0,0));
-            tiTemp = new TextInfo(text,0,0,textInfoContext);
+            tiTemp = new TextInfo(text,0,0,textInfoContext,textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             x = Math.round((symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5));
@@ -1662,7 +1662,7 @@ return{
             else if(xm !== null && ym !== null)
                 modifierValue = xm + "  " + ym;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1690,7 +1690,7 @@ return{
         {
             modifierValue = modifiers.G;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1722,7 +1722,7 @@ return{
         {
             modifierValue = modifiers.V;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1742,7 +1742,7 @@ return{
         {
             modifierValue = modifiers.H;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1764,7 +1764,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.T_UNIQUE_DESIGNATION_1];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1792,7 +1792,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.M_HIGHER_FORMATION];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1820,7 +1820,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1880,7 +1880,7 @@ return{
             if(modifierValue.charAt(0)===" ")
                 modifierValue = modifierValue.substring(1);
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1908,7 +1908,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.W_DTG_1];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1966,7 +1966,7 @@ return{
                     modifierValue = F;
             }
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -1998,7 +1998,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             
@@ -2016,7 +2016,7 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.CN_CPOF_NAME_LABEL];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext);
+            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
             

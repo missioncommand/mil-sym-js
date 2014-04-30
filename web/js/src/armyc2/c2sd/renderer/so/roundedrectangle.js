@@ -26,7 +26,7 @@ armyc2.c2sd.renderer.so.RoundedRectangle = function (x,y,w,h,radius) {
      * 
      */
     armyc2.c2sd.renderer.so.RoundedRectangle.prototype.getShapeType = function(){
-        return armyc2.c2sd.renderer.so.ShapeTypes.ROUNDED_RECTANGLE;
+        return "ROUNDED_RECTANGLE";//armyc2.c2sd.renderer.so.ShapeTypes.ROUNDED_RECTANGLE;
     };
 
     /**

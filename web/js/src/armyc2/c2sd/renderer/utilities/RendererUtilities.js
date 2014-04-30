@@ -104,7 +104,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
             
             for(var i = 0; i < backupFonts.length; i++)
             {
-                fontName += ", " + backupFonts[i];
+                fontName += backupFonts[i];
             }
         }
         return this.measureText(fontName, fontSize, fontStyle, text);
@@ -160,7 +160,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
             
             for(var i = 0; i < backupFonts.length; i++)
             {
-                fontName += ", " + backupFonts[i];
+                fontName += backupFonts[i];
             }
         }
         
@@ -201,7 +201,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
 
                 for(var i = 0; i < backupFonts.length; i++)
                 {
-                    fontName += ", " + backupFonts[i];
+                    fontName +=  backupFonts[i];
                 }
             }
             return this.measureText(fontName, fontSize, fontStyle,text)[0];
@@ -251,7 +251,10 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
         if(context !== null)
         {
             width = context.measureText(text).width;
-            height = this.measureTextHeightWithFontString(context.font);
+            if(font)
+                height = this.measureTextHeightWithFontString(font);
+            else
+                height = this.measureTextHeightWithFontString(context.font);
         }       
         else
         {
@@ -267,7 +270,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = {};
 
                 for(var i = 0; i < backupFonts.length; i++)
                 {
-                    fontName += ", " + backupFonts[i];
+                    fontName += backupFonts[i];
                 }
             }
 

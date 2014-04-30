@@ -95,19 +95,19 @@ armyc2.c2sd.renderer.so.utilities.relativeCCW = function(x1, y1,  x2, y2,  px, p
  */
 armyc2.c2sd.renderer.so.utilities.linesIntersect = function(x1,y1,x2,y2,x3,y3,x4,y4)   
 {
-    var rCCW1 = armyc2.c2sd.renderer.so.utilities.relativeCCW(x1,y1,
+    var rCCW1 = this.relativeCCW(x1,y1,
                 x2,y2,
                 x3,y3),
 
-        rCCW2 = armyc2.c2sd.renderer.so.utilities.relativeCCW(x1,y1,
+        rCCW2 = this.relativeCCW(x1,y1,
                 x2,y2,
                 x4,y4),
 
-        rCCW3 = armyc2.c2sd.renderer.so.utilities.relativeCCW(x3,y3,
+        rCCW3 = this.relativeCCW(x3,y3,
                 x4,y4,
                 x1,y1),
 
-        rCCW4 = armyc2.c2sd.renderer.so.utilities.relativeCCW(x3,y3,
+        rCCW4 = this.relativeCCW(x3,y3,
                 x4,y4,
                 x2,y2);
 

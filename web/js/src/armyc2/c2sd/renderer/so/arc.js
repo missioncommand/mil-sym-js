@@ -17,16 +17,16 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
     */
 armyc2.c2sd.renderer.so.Arc = function (x,y,r,sa,ea) {
 
-    this.x = x;
-    this.y = y;
-    this.r = r;
-    this.sa = sa * (Math.PI / 180);
+    this.x = x,
+    this.y = y,
+    this.r = r,
+    this.sa = sa * (Math.PI / 180),
     this.ea = ea * (Math.PI / 180);
     //not accurate, covers the whole circle, not just the arc.
     this.rectangle = new armyc2.c2sd.renderer.so.Rectangle(x-r,y-r,r*2,r*2);
 };
     armyc2.c2sd.renderer.so.Arc.prototype.getShapeType = function(){
-        return armyc2.c2sd.renderer.so.ShapeTypes.ARC;
+        return "ARC";//armyc2.c2sd.renderer.so.ShapeTypes.ARC;
     };
 
     armyc2.c2sd.renderer.so.Arc.prototype.getBounds = function(){

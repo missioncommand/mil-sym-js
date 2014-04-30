@@ -12,7 +12,7 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
  * @returns {Point}
  */
 armyc2.c2sd.renderer.so.Point = function (x,y) {
-    this.x = x;
+    this.x = x,
     this.y = y;
 };
     /**

@@ -13,11 +13,10 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
  * @returns {Ellipse}
  */
 armyc2.c2sd.renderer.so.Ellipse = function (x,y,w,h) {
-
     this.rectangle = new armyc2.c2sd.renderer.so.Rectangle(x,y,w,h);
 };
     armyc2.c2sd.renderer.so.Ellipse.prototype.getShapeType = function(){
-        return armyc2.c2sd.renderer.so.ShapeTypes.ELLIPSE;
+        return "ELLIPSE";//armyc2.c2sd.renderer.so.ShapeTypes.ELLIPSE;
     };
 
     armyc2.c2sd.renderer.so.Ellipse.prototype.getBounds = function(){

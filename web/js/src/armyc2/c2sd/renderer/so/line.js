@@ -15,12 +15,6 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
  */
 armyc2.c2sd.renderer.so.Line = function (x1,y1,x2,y2) {
 
-    
-    this.rectangle = null;
-    //this.points = new Array();
-    this.pt1 = null;
-    this.pt2 = null;
-
     //contructor
     var so = armyc2.c2sd.renderer.so;
 
@@ -29,13 +23,12 @@ armyc2.c2sd.renderer.so.Line = function (x1,y1,x2,y2) {
 
     this.rectangle = new so.Rectangle(x1,y1,1,1);
     this.rectangle.unionPoint(new so.Point(x2,y2));            
-    
 
 };
      
     // <editor-fold defaultstate="collapsed" desc="Public Functions">
     armyc2.c2sd.renderer.so.Line.prototype.getShapeType = function(){
-        return armyc2.c2sd.renderer.so.ShapeTypes.LINE;
+        return "LINE";//armyc2.c2sd.renderer.so.ShapeTypes.LINE;
     };
 
     armyc2.c2sd.renderer.so.Line.prototype.getBounds = function(){

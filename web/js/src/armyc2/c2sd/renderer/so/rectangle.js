@@ -18,11 +18,11 @@ armyc2.c2sd.renderer.so.Rect = {
  * @returns {Rectangle}
  */
 armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.bottom = y + height;
+        this.x = x,
+        this.y = y,
+        this.width = width,
+        this.height = height,
+        this.bottom = y + height,
         this.right = x + width;
 };      
         // <editor-fold defaultstate="collapsed" desc="Public Property Functions">
@@ -162,7 +162,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
          * @returns {void}
          */
         armyc2.c2sd.renderer.so.Rectangle.prototype.union = function(rect){
-            if(rect !== null)
+            if(rect)
             {
                 if(rect.y < this.y)
                     this.y = rect.y;
@@ -178,7 +178,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
                 
         };
         armyc2.c2sd.renderer.so.Rectangle.prototype.unionPoint = function(point){
-            if(point !== null)
+            if(point)
             {
                 if(point.y < this.y)
                     this.y = point.y;
@@ -246,7 +246,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
 		out |= this.OUT_BOTTOM;
 	    }
 	    return out;
-		};
+        };
         
         /**
         * Tests if the specified line segment intersects the interior of this

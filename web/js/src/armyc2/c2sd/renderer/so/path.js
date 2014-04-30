@@ -10,15 +10,14 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
  */
 armyc2.c2sd.renderer.so.Path = function () {
     
-    this._actions = [];
+    this._actions = [],
+    this._startPoint=null,
+    this._endPoint=null,
+    this._lastMoveTo = null,
+    this._rectangle = null;
 	
 };
 
-    armyc2.c2sd.renderer.so.Path.prototype._startPoint=null;
-    armyc2.c2sd.renderer.so.Path.prototype._endPoint=null;
-    armyc2.c2sd.renderer.so.Path.prototype._lastMoveTo = null;
-    armyc2.c2sd.renderer.so.Path.prototype._rectangle = null;
-    
 
     /**
      * @return {SO.ShapeTypes} ShapeTypes.Path
@@ -222,7 +221,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         
         var so = armyc2.c2sd.renderer.so;
         
-        if(counterclockwise === undefined || counterclockwise === null)
+        if(counterclockwise !== true)
         {
             counterclockwise = false;
         }
@@ -285,9 +284,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             temp = this._actions[i];
 			
-            //this.pathLookup[temp[0]](context,temp);
-			
-			
+
             if(temp[0]===ActionTypes.ACTION_MOVE_TO)
             {
                 context.moveTo(temp[1],temp[2]);
