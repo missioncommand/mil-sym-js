@@ -1940,7 +1940,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                         break;
                     case 31440000:
                     case 31430000:
-                        if (i === 0) {
+                        if (i === 0 && splinePoints.size() > 1) {
                             armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(1), splinePoints.get(0), 10, lineObject);
                         }
                         break;
@@ -1979,7 +1979,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                         break;
                     case 31430001:
                     case 31440001:
-                        if (i === 0) {
+                        if (i === 0 && splinePoints.size()>1) {
                             armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(1), splinePoints.get(0), 10, lineObject);
                         }
                         if (i === array.size() - 2) {
