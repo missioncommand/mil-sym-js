@@ -187,7 +187,7 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
 
                 try 
                 {   
-                    modifiers=JSON.parse(modifiers);
+                    //modifiers=JSON.parse(modifiers);
                     if(modifiers)
                     {
                         if(modifiers.modifiers)
