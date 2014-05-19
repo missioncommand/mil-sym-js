@@ -478,7 +478,7 @@ return{
             var distanceLength = 0;
             var azimuthLength = 0;
             var color = "";
-                        
+            modifiers=JSON.parse(modifiers);          
             if (modifiers)
             {
                 if(modifiers && modifiers.modifiers)

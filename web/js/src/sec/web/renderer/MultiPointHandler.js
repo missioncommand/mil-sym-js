@@ -1755,12 +1755,15 @@ return{
             var pmiEnd = 0;
             var curr = 0;
             var count = 0;
+            var tempPlacemark="";
             while(pmiStart > 0)
             {
                 if(count > 0)
                 {
                     pmiEnd = output.indexOf("</Placemark>",pmiStart)+12;
-                    placemarks.push(output.substring(pmiStart,pmiEnd));
+                    tempPlacemark=output.substring(pmiStart,pmiEnd);
+                    if(tempPlacemark.contains("</Point>"))
+                        placemarks.push(output.substring(pmiStart,pmiEnd));
                     //System.out.println(placemarks.get(count));
                     //end, check for more
                     pmiStart = output.indexOf("<Placemark",pmiEnd-2);
@@ -1769,36 +1772,36 @@ return{
             }
             
             //process placemarks if necessary
-            var altitudes = null;//List<Double>
-            var JSONObject = symbolModifiers;
-            if(JSONObject && JSONObject.symbolModifiers)
-                JSONObject = JSONObject.symbolModifiers;
-                
-            if (JSONObject) 
-            {
-                if(JSONObject.X)
-                {
-                    altitudes = JSONObject.X;//Array()
-                }
-                else if(JSONObject.ALTITUDE_DEPTH)
-                {
-                    altitudes = JSONObject.ALTITUDE_DEPTH;//Array()
-                }
-            }
-            
-            var Xcount = altitudes.length-1;
-            if(Xcount>0)
-            {
-                maxAlt = altitudes[Xcount];
-                //cycle through placemarks and add altitude
-                var temp;
-                for(var j = 0; j<placemarks.length;j++)
-                {
-                    temp = placemarks[j];
-                    temp.replace("</coordinates>", "," + maxAlt + "</coordinates>");
-                    placemarks[j] = temp;
-                }
-            }
+//            var altitudes = null;//List<Double>
+//            var JSONObject = symbolModifiers;
+//            if(JSONObject && JSONObject.symbolModifiers)
+//                JSONObject = JSONObject.symbolModifiers;
+//                
+//            if (JSONObject) 
+//            {
+//                if(JSONObject.X)
+//                {
+//                    altitudes = JSONObject.X;//Array()
+//                }
+//                else if(JSONObject.ALTITUDE_DEPTH)
+//                {
+//                    altitudes = JSONObject.ALTITUDE_DEPTH;//Array()
+//                }
+//            }
+//            
+//            var Xcount = altitudes.length-1;
+//            if(Xcount>0)
+//            {
+//                maxAlt = altitudes[Xcount];
+//                //cycle through placemarks and add altitude
+//                var temp;
+//                for(var j = 0; j<placemarks.length;j++)
+//                {
+//                    temp = placemarks[j];
+//                    temp.replace("</coordinates>", "," + maxAlt + "</coordinates>");
+//                    placemarks[j] = temp;
+//                }
+//            }
             
             var sb = "";
             for(var k = 1; k<placemarks.length;k++)
