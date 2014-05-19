@@ -80,8 +80,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
                 if(this.hasValidBattleDimension(symbolID)===false)
                 {
+                    sb = "S" + sb.substring(1);
                     sb += ('Z');
-                    sb.replace(0, 1, "S");
                 }
                 else
                     sb += (symbolID.charAt(2));
@@ -1072,7 +1072,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WAS-WSSSMHP----") || // Snow Showers - Moderate/Heavy
         symbolID === ("WAS-WSUKP-P----")) // PRECIPITATION OF UNKNOWN TYPE AND INTENSITY
         {
-            retColor = "#00FF00";//Color.GREEN;// 0x00ff00;	// Green
+            //Color.GREEN;// 0x00ff00;	// Green
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#00FF00");
         }
         else if(symbolID ===("WA-DBAI-----A--") || //BOUNDED AREAS OF WEATHER / ICING
                 symbolID.indexOf("WAS-IC") === 0 || // Clear Icing
