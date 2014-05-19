@@ -756,8 +756,8 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2139",
         "MAPPINGA": "3139",
         "DESCRIPTION": "Static Depiction",
-        "WIDTH": "50",
-        "HEIGHT": "28"
+        "WIDTH": "48",
+        "HEIGHT": "26"
       },
       {
         "SYMBOLID": "G*M*OHTL--****X",
