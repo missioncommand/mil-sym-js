@@ -445,7 +445,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                         throw exc;
                     }
                 }
-                return count;
+                return Math.floor(count);
             },
             GetReefCount: function(pLinePoints, vblCounter) {
                 var count = 0;
