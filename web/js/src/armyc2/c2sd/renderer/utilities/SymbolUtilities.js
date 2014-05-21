@@ -2118,35 +2118,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
         return textChar;
      };
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasDirectionOfMovement = function (symbolID, symStd){
-        var temp = null;
-        if(symStd===undefined)
-        {
-            symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
-        }
-        if(isNBC(symbolID))//just 3 NBCs have DOM
-        {
-            temp = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef(this.getBasicSymbolID(symbolID),symStd);
-            if(temp !== null)
-            {
-                if(temp.modifiers.indexOf("Q.") !== -1)
-                    return true;
-                else
-                    return false;
-            }
-            else
-                return false;
-        }
-        else if(isWarfighting(symbolID))//all warfighting has DOM
-        {
-            if(this.isSIGINT(symbolID) === false)
-              return true;
-            else
-              return false;
-        }
-        else
-            return false;
-     };
+ 
      /**
       * 
       * @param {String} symbolID
