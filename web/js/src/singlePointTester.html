@@ -484,30 +484,31 @@
             
             return modifiers;
         }
-    function checkFonts()
+        
+        function checkFonts()
 	{
-		if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
-		{
-			console.log("fonts loaded");
-			var button = document.getElementById("btnRender");
-			button.disabled = false;
-			button.innerHTML = "Render";
-		}
-		else if(attempts < retries)
-		{
-			attempts++;
-			fontCheckTimer = setTimeout(checkFonts, 1000);
-			console.log("fonts loading...");
-			//sometimes font won't register until after a render attempt
-			armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",{});
-		}
-		else
-		{
-			console.log("fonts didn't load or status couldn't be determined for " + retries + " seconds.")
-			var button = document.getElementById("btnRender");
-			button.disabled = false;
-			button.innerHTML = "Render";
-		}
+            if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
+            {
+                console.log("fonts loaded");
+                var button = document.getElementById("btnRender");
+                button.disabled = false;
+                button.innerHTML = "Render";
+            }
+            else if(attempts < retries)
+            {
+                attempts++;
+                fontCheckTimer = setTimeout(checkFonts, 1000);
+                console.log("fonts loading...");
+                //sometimes font won't register until after a render attempt
+                armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",{});
+            }
+            else
+            {
+                console.log("fonts didn't load or status couldn't be determined for " + retries + " seconds.");
+                var button = document.getElementById("btnRender");
+                button.disabled = false;
+                button.innerHTML = "Render";
+            }
 
 	}
 	function speedTest(type)

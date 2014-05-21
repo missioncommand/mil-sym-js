@@ -44,8 +44,12 @@ return{
         if(textInfoBuffer===null)
             textInfoBuffer = this.createBuffer(1,1);
         if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
+        {
             textInfoContext = textInfoBuffer.getContext('2d');
-        
+            textInfoContext.lineCap = "butt";
+            textInfoContext.lineJoin = "miter";
+            textInfoContext.miterLimit = 3;
+        }
         if(textInfoContextFont !== RendererSettings.getModifierFont())
         {
             textInfoContextFont = RendererSettings.getModifierFont();
