@@ -200,6 +200,8 @@ sec.geo.shape.AExtObject = function()
                 return this.polygon.getMinAltitude();
             case 8:
                 return this.route.getMinAltitude();
+            case 5:
+                return this.radarc.getMinAltitude();
             default:
                 return -1;
         }
