@@ -299,11 +299,26 @@ return{
                 pointCount = coords.length;
 
                 var i = 0;
-                if(attributes.X_ALTITUDE_DEPTH.size()===0)
+                if(lenX===2)
+                {
+                    var curtainMinAlt = new Double(attributes.X_ALTITUDE_DEPTH.get(0).value);
+                    var curtainMaxAlt = new Double(attributes.X_ALTITUDE_DEPTH.get(1).value);
+                    lenX = pointCount * 2;
+                    attributes.X_ALTITUDE_DEPTH.clear();
+                    for(i = 0; i < lenX; i++)
+                    {
+                        if(i%2===0)
+                            attributes.X_ALTITUDE_DEPTH.add(curtainMinAlt);
+                        else
+                            attributes.X_ALTITUDE_DEPTH.add(curtainMaxAlt);
+                    }
+                }
+                else
                 {
                     var curtainMinAlt = new Double(1);
                     var curtainMaxAlt = new Double(10000);
                     lenX = pointCount * 2;
+                    attributes.X_ALTITUDE_DEPTH.clear();
                     for(i = 0; i < lenX; i++)
                     {
                         if(i%2===0)
