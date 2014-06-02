@@ -2507,12 +2507,12 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 pt2.y = 0;
                 pt2.segment = 0;
                 pt2.style = 0;
-                var j=0;
-                for(j=0;j<arguments.length;j++)
-                {
-                    if(typeof(arguments[j])==='undefined')                    
-                        return pt2;                                        
-                }
+//                var j=0;
+//                for(j=0;j<arguments.length;j++)
+//                {
+//                    if(typeof(arguments[j])==='undefined')                    
+//                        return pt2;                                        
+//                }
                 if (arguments.length === 1)
                 {
                     pt2.x = arguments[0].x;

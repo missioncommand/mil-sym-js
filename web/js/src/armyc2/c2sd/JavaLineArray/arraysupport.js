@@ -3779,6 +3779,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 else
                                     whiteShape.lineTo(pLinePoints[k]);
                             }
+                            //diagnostic
+                            var pts = poly.getPathIterator(null).getPoints();
+                            if(pts.size()<3)
+                                break;
+                            //end section
                             blueArea = new armyc2.c2sd.graphics2d.Area(poly);
                             blueShape.setShape(blueArea);
                             whiteArea = new armyc2.c2sd.graphics2d.Area(whiteStroke.createStrokedShape(poly));
