@@ -208,6 +208,12 @@ armyc2.c2sd.renderer.utilities.Color.getColorFromHexString = function(hexValue)
     return null;
 };
 
+armyc2.c2sd.renderer.utilities.Color.rgbToHexString = function(r,g,b,a)
+{
+    var temp = armyc2.c2sd.renderer.utilities.Color(r,g,b,a);
+    return temp.toHexString(true);
+};
+
 armyc2.c2sd.renderer.utilities.Color.white =  new armyc2.c2sd.renderer.utilities.Color (255, 255, 255);
 armyc2.c2sd.renderer.utilities.Color.WHITE = armyc2.c2sd.renderer.utilities.Color.white;
 armyc2.c2sd.renderer.utilities.Color.lightGray =  new armyc2.c2sd.renderer.utilities.Color (192, 192, 192);
