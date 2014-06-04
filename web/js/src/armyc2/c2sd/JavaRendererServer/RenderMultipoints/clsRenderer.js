@@ -394,7 +394,33 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.set_H1(strH1);
                 }
             }
-            j = 0;
+            var j = 0;
+            if(lineType===15000003 || lineType===15000004)
+            {
+                var minLat=tg.LatLongs.get(0).y;
+                var maxLat=tg.LatLongs.get(0).y;
+                var minLong=tg.LatLongs.get(0).x;
+                var maxLong=tg.LatLongs.get(0).x;
+                for(j=1;j<tg.LatLongs.size();j++)
+                {
+                    if(tg.LatLongs.get(j).x<minLong)
+                        minLong=tg.LatLongs.get(j).x;
+                    if(tg.LatLongs.get(j).x>maxLong)
+                        maxLong=tg.LatLongs.get(j).x;
+                    if(tg.LatLongs.get(j).y<minLat)
+                        minLat=tg.LatLongs.get(j).y;
+                    if(tg.LatLongs.get(j).y>maxLat)
+                        maxLat=tg.LatLongs.get(j).y;
+                }
+                tg.LatLongs=new java.util.ArrayList();
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,maxLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong,maxLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong,minLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,minLat));
+                if(lineType===15000004)
+                    tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,maxLat));
+                tg.Pixels=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
+            }
             switch (lineType) {
                 case 15000001:
                 case 15000000:

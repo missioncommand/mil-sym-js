@@ -131,6 +131,8 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         return 15000002;
                     if (strLine.equalsIgnoreCase("BBS_RECTANGLE--"))
                         return 15000003;
+                    if (strLine.equalsIgnoreCase("BS_BBOX--------"))
+                        return 15000004;
                     if (c0.equals("W") && c1.equals("A")) {
                         if (str7.equals("DPXSQ--")) {
                             return 31143000;

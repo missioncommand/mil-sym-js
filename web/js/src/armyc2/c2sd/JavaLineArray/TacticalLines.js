@@ -12,6 +12,7 @@ armyc2.c2sd.JavaLineArray.TacticalLines = function()
     this.BBS_AREA = 15000001;
     this.BBS_POINT = 15000002;
     this.BBS_RECTANGLE = 15000003;
+    this.BS_BBOX = 15000004;
     this.PZ = 22138000;
     this.LZ = 22137000;
     this.DZ = 22135000;
