@@ -2131,6 +2131,11 @@ return{
             {
                 topLeft=NormalizeCoordToGECoord(topLeft);
                 bottomRight=NormalizeCoordToGECoord(bottomRight);
+                
+                if(topLeft.getX()>0)
+                {
+                    topLeft.x -= 360;
+                }
             }
 
             var cdataStart = "<![CDATA[";
