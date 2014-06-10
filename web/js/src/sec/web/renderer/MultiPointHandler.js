@@ -757,7 +757,7 @@ return{
                     
                     if(normalize)
                     {
-                        geoCoord = NormalizeCoordToGECoord(geoCoord);
+                        geoCoord = this.NormalizeCoordToGECoord(geoCoord);
                     }
                     
                     latitude = geoCoord.getY();
@@ -1353,7 +1353,7 @@ return{
         {
             var coord = shape.get (j);
             var geoCoord = ipc.PixelsToGeo(coord);
-            geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+            geoCoord = this.NormalizeCoordToGECoord(geoCoord);
             var latitude = geoCoord.getY();
             var longitude = geoCoord.getX();
             var pt=new armyc2.c2sd.graphics2d.Point2D();
@@ -1424,7 +1424,7 @@ return{
                     //var coord = shape[j];
                     var geoCoord = ipc.PixelsToGeo(coord);
                     if (normalize)
-                        geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+                        geoCoord = this.NormalizeCoordToGECoord(geoCoord);
                     var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
                     var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
                     kml += (longitude);
@@ -1648,7 +1648,7 @@ return{
         coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
         var geoCoord = ipc.PixelsToGeo(coord);
         if (normalize)
-            geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+            geoCoord = this.NormalizeCoordToGECoord(geoCoord);
         var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
         var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
         var angle = Math.round(shapeInfo.getModifierStringAngle());
@@ -1691,7 +1691,7 @@ return{
         coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
         var geoCoord = ipc.PixelsToGeo(coord);
         if (normalize)
-            geoCoord = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoord);
+            geoCoord = this.NormalizeCoordToGECoord(geoCoord);
         var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
         var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
         var angle = shapeInfo.getModifierStringAngle();
@@ -2129,8 +2129,8 @@ return{
 
             if(normalize)
             {
-                topLeft=NormalizeCoordToGECoord(topLeft);
-                bottomRight=NormalizeCoordToGECoord(bottomRight);
+                topLeft=this.NormalizeCoordToGECoord(topLeft);
+                bottomRight=this.NormalizeCoordToGECoord(bottomRight);
                 
                 if(topLeft.getX()>0)
                 {
