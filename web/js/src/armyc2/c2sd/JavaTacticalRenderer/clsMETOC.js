@@ -728,8 +728,14 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32255200:
                 case 32323000:
                 case 32324000:
-                case 32223000:
+                //case 32223000:
                     tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(245, 245, 220));
+                    break;
+                case 32223000:
+                    tg.set_LineThickness(5);
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(245, 245, 220));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(255,245,238));
                     break;
                 case 32214000:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.BLUE);
@@ -1648,6 +1654,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                             shape.set_Style(tg.get_LineStyle());
                         }
                         break;
+                    break;
                     default:
                         shape.setLineColor(tg.get_LineColor());
                         shape.set_Style(tg.get_LineStyle());
@@ -1655,6 +1662,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 }
                 if (isClosedPolygon || shapeType === armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL) {
                     switch (tg.get_LineType()) {
+                        case 32223000:
                         case 32225200:
                         case 32224000:
                         case 32222000:
