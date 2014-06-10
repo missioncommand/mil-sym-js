@@ -617,7 +617,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsArc[j]);
                         pLinePoints[j].style = 0;
                     }
-                    armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(d) / 7), pArrowPoints, 0);
+                    if(lineType !== 211600000)
+                        armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(d) / 7), pArrowPoints, 0);
+                    else
+                        armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75*d) / 7), pArrowPoints, 0);
+                        
                     pLinePoints[25].style = 5;
                     switch (lineType) {
                         case 212600000:
@@ -650,7 +654,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 211600000:
                             midPt.x = (pt1.x + ptsArc[25].x) / 2;
                             midPt.y = (pt1.y + ptsArc[25].y) / 2;
-                            armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(midPt, ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(d) / 7), reversepArrowPoints, 0);
+                            armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(midPt, ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75*d) / 7), reversepArrowPoints, 0);
                             for (j = 26; j < 29; j++) {
                                 pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pArrowPoints[j - 26]);
                             }
