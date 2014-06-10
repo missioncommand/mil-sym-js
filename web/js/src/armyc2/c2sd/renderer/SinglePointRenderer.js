@@ -2235,8 +2235,8 @@ return{
 
         if(pixelSize > 0)
         {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, fontSize);
-            rect = SymbolDimensions.getSymbolBounds(symbolID, fontSize);
+            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
+            rect = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
 
             if(keepUnitRatio===true)
             {
@@ -2286,7 +2286,7 @@ return{
         
         if(pixelSize > 0)
         {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, (fontSize));
+            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
 
             fontSize = (((fontSize) / 96) * 72);
           
@@ -2294,7 +2294,7 @@ return{
         }
         else
         {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, fontSize);
+            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
             fontSize = ((fontSize / 96) * 72);
             //ctx.font= "45pt SinglePoint";
             strSPFont = fontSize + "pt SinglePoint";

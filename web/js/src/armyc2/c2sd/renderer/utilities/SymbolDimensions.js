@@ -117,11 +117,12 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
     /**
      * 
      * @param {String} symbolID
+     * @param {Number} symStd 0=2525B,1=2525C
      * @param {Number} fontSize
      * @returns {armyc2.c2sd.renderer.so.Rectangle}
      */
-    armyc2.c2sd.renderer.utilities.SymbolDimensions.getSymbolBounds = function (symbolID, fontSize){
-        var spli = armyc2.c2sd.renderer.utilities.SinglePointLookup.getSPLookupInfo(symbolID);
+    armyc2.c2sd.renderer.utilities.SymbolDimensions.getSymbolBounds = function (symbolID, symStd, fontSize){
+        var spli = armyc2.c2sd.renderer.utilities.SinglePointLookup.getSPLookupInfo(symbolID, symStd);
 
         var Rectangle = armyc2.c2sd.renderer.so.Rectangle;
 

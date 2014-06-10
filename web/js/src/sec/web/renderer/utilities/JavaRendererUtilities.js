@@ -281,6 +281,17 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                     }
                 }
             }
+            var symStd = modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard];
+            if(symStd)
+            {
+                symStd = symStd.toUpperCase();
+                if(symStd === "2525B")
+                    symStd = armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14;
+                else
+                    symStd = armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C;
+                
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard] = symStd;
+            }
         //}
         //catch(exc)
         //{
