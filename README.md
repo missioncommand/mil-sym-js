@@ -2,7 +2,7 @@ mil-sym-js
 =========
 mil-sym-js is a JavaScript port of the java-based mil-std rendering libraries that have been used in US Army Mission Command software for years.  In November 2013 Mission Command was given the approval to release and maintain these libraries as public open source. 
 
-See SinglePoints in action [here.](http://mil-sym-js.spinelli.cloudbees.net/singlePointTester2.html)  
+See SinglePoints in action here: [Old Tester](http://mil-sym-js.spinelli.cloudbees.net/singlePointTester.html), [New Tester](http://mil-sym-js.spinelli.cloudbees.net/singlePointTester2.html)  
 [Single Point Rendering Web Browser Compatibility Tables](https://github.com/missioncommand/mil-sym-js/blob/master/Browser%20Compatibility.md)
 
 See sample KML output for multipoints [here.](http://mil-sym-js.spinelli.cloudbees.net/multiPointTester1.html)  
