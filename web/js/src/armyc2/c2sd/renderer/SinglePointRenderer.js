@@ -72,7 +72,13 @@ return{
             render = modifiers["RENDER"];
         
         if(render && _bufferUnit === null)
+        {
             _bufferUnit = this.createBuffer(_bufferUnitSize,_bufferUnitSize);
+            ctx = _bufferUnit.getContext('2d');
+            ctx.lineCap = "butt";
+            ctx.lineJoin = "miter";
+            ctx.miterLimit = 3;
+        }
         
         
         if(modifiers === undefined || modifiers === null)
@@ -237,6 +243,9 @@ return{
             {//*/
                 buffer = this.createBuffer(symbolWidth,symbolHeight);
                 ctx = buffer.getContext('2d');
+                ctx.lineCap = "butt";
+                ctx.lineJoin = "miter";
+                ctx.miterLimit = 3;
             }
             ctx.font = strUnitFont;
         
@@ -2128,7 +2137,13 @@ return{
             render = modifiers["RENDER"];
         
         if(_bufferSymbol === null)
+        {
             _bufferSymbol = this.createBuffer(_bufferSymbolSize,_bufferSymbolSize);
+            ctx = _bufferSymbol.getContext('2d');
+            ctx.lineCap = "butt";
+            ctx.lineJoin = "miter";
+            ctx.miterLimit = 3;
+        }
 
         var fontSize = 60;
 	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
@@ -2351,6 +2366,9 @@ return{
             {//*/
                 buffer = this.createBuffer(symbolWidth,symbolHeight);
                 ctx = buffer.getContext('2d');
+                ctx.lineCap = "butt";
+                ctx.lineJoin = "miter";
+                ctx.miterLimit = 3;
             }
 
             ctx.font = strSPFont;
@@ -3327,6 +3345,7 @@ return{
 	var buffer = _document.createElement('canvas');
 	buffer.width = width;
 	buffer.height = height;
+        
 	return buffer;
 	
     },
