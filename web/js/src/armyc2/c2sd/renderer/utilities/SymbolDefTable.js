@@ -133,11 +133,12 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
 
                         data = {};
                         data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
+                        //data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
                         data.minPoints = parseInt(symbol["MINPOINTS"] || "", 10); //MINPOINTS
                         data.maxPoints = parseInt(symbol["MAXPOINTS"] || "", 10); //MAXPOINTS
                         data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
                         data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
+                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
                     } 
                     if((symbolMapB[data.symbolID])===undefined)
                     {
@@ -159,11 +160,12 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
 
                         data = {};
                         data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
+                        //data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
                         data.minPoints = parseInt(symbol["MINPOINTS"] || "", 10); //MINPOINTS
                         data.maxPoints = parseInt(symbol["MAXPOINTS"] || "", 10); //MAXPOINTS
                         data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
                         data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
+                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
                     } 
                     if((symbolMapC[data.symbolID])===undefined)
                     {
@@ -191,6 +193,25 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
             }
             else
                 return false;
+        },
+        
+        /**
+         * 
+         * @param {Number} symStd 2525b=0,2525c=1
+         * @returns {Boolean}
+         */
+        getSymbolMap: function(symStd)
+        {
+            if(symStd === 0 && symbolMapB !== null)//2525B
+            {
+                return symbolMapB;
+            }
+            else if(symStd === 1 && symbolMapC !== null)//2525C
+            {
+                return symbolMapC;
+            }
+            else
+                return null;
         },
         
         /**

@@ -83,12 +83,12 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data = {};
                         data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
                         data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.mapping1U = symbol["MAPPING1U"] || ""; //MAPPING1U
-                        data.mapping1F = symbol["MAPPING1F"] || ""; //MAPPING1F
-                        data.mapping1N = symbol["MAPPING1N"] || ""; //MAPPING1N
-                        data.mapping1H = symbol["MAPPING1H"] || ""; //MAPPING1H
+                        data.mapping1U = symbol["MAPPING1U"] || null; //MAPPING1U
+                        data.mapping1F = symbol["MAPPING1F"] || null; //MAPPING1F
+                        data.mapping1N = symbol["MAPPING1N"] || null; //MAPPING1N
+                        data.mapping1H = symbol["MAPPING1H"] || null; //MAPPING1H
                         data.mapping1color = symbol["MAPPING1COLOR"] || ""; //MAPPING1COLOR
-                        data.mapping2 = symbol["MAPPING2"] || ""; //MAPPING2
+                        data.mapping2 = symbol["MAPPING2"] || null; //MAPPING2
                         data.mapping2color = symbol["MAPPING2COLOR"] || ""; //MAPPING2COLOR
 
                     } 
@@ -119,12 +119,12 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data = {};
                         data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
                         data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.mapping1U = symbol["MAPPING1U"] || ""; //MAPPING1U
-                        data.mapping1F = symbol["MAPPING1F"] || ""; //MAPPING1F
-                        data.mapping1N = symbol["MAPPING1N"] || ""; //MAPPING1N
-                        data.mapping1H = symbol["MAPPING1H"] || ""; //MAPPING1H
+                        data.mapping1U = symbol["MAPPING1U"] || null; //MAPPING1U
+                        data.mapping1F = symbol["MAPPING1F"] || null; //MAPPING1F
+                        data.mapping1N = symbol["MAPPING1N"] || null; //MAPPING1N
+                        data.mapping1H = symbol["MAPPING1H"] || null; //MAPPING1H
                         data.mapping1color = symbol["MAPPING1COLOR"] || ""; //MAPPING1COLOR
-                        data.mapping2 = symbol["MAPPING2"] || ""; //MAPPING2
+                        data.mapping2 = symbol["MAPPING2"] || null; //MAPPING2
                         data.mapping2color = symbol["MAPPING2COLOR"] || ""; //MAPPING2COLOR
 
                     } 
