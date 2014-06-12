@@ -210,7 +210,7 @@ armyc2.c2sd.renderer.utilities.Color.getColorFromHexString = function(hexValue)
 
 armyc2.c2sd.renderer.utilities.Color.rgbToHexString = function(r,g,b,a)
 {
-    var temp = armyc2.c2sd.renderer.utilities.Color(r,g,b,a);
+    var temp = new armyc2.c2sd.renderer.utilities.Color(r,g,b,a);
     return temp.toHexString(true);
 };
 
