@@ -77,6 +77,7 @@ running "ant concat sm-bc minify samples" would result in the following files be
 - multiPointTester1.html (renders kml for a couple multipoint symbols)  
 - multiPointTester2.html (renders kml for a couple multipoint symbols in a loop to test performance)  
 - singlePointTester.html (renders a couple of singlepoint symbols to the page)  
+- singlePointTester2.html (Allows you to render any single point symbol and adjust rendering attributes & modifiers)  
 - single-point-plugin.html (show sample usage with jQuery)  
 - sm-bc.js (concatenated renderer code)  
 - sm-bc.min.js (concatenated & minified renderer code)  
