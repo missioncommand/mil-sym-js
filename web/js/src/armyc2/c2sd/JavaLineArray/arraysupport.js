@@ -3739,17 +3739,22 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 15000001:
                         case 15000003:
                             //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
-                            for(j=0;j<vblSaveCounter-1;j++)
-                            {
-                                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
-                                shape.moveTo(pOriginalLinePoints[j]);
+//                            for(j=0;j<vblSaveCounter-1;j++)
+//                            {
+//                                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+//                                shape.moveTo(pOriginalLinePoints[j]);
+//                                shape.lineTo(pLinePoints[j]);
+//                                shape.lineTo(pLinePoints[j+1]);
+//                                shape.lineTo(pOriginalLinePoints[j+1]);
+//                                shape.lineTo(pOriginalLinePoints[j]);
+//                                shapes.add(shape);
+//                            }
+                            shape=new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                            shape.moveTo(pLinePoints[0]);
+                            for(j=0;j<vblSaveCounter;j++)
                                 shape.lineTo(pLinePoints[j]);
-                                shape.lineTo(pLinePoints[j+1]);
-                                shape.lineTo(pOriginalLinePoints[j+1]);
-                                shape.lineTo(pOriginalLinePoints[j]);
-                                shapes.add(shape);
-                            }
-                            //shapes.add(shape);
+                            shapes.add(shape);
+                            
                             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                             shape.moveTo(pOriginalLinePoints[0]);
                             for(j=1;j<vblSaveCounter;j++)

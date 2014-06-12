@@ -1973,6 +1973,19 @@ armyc2.c2sd.JavaLineArray.Channels =
                     var fillShapes = armyc2.c2sd.JavaLineArray.Channels.getAXADFillShapes(vbiDrawThis, pLinePoints);
                     if (fillShapes !== null && fillShapes.size() > 0)
                         shapes.addAll(0, fillShapes);
+                    
+                    //diagnostic
+                    if(vbiDrawThis===15000000)
+                    {
+                        shapes.remove(1);
+                        shape=new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                        shape.moveTo(pOriginalLinePoints[0]);
+                        for(j=1;j<pOriginalLinePoints.length;j++)
+                            shape.lineTo(pOriginalLinePoints[j]);
+                        shapes.add(shape);
+                    }
+                    //end section
+                    
                     lResult = lResultCounter;
                     pLinePoints = null;
                     pLowerLinePoints = null;

@@ -286,6 +286,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 pt1 = tg.LatLongs.get(0);
             }
             var pPoints = null;
+            var ptCenter=this.PointLatLongToPixels(pt0,converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetNumericFields(tg, lineType, radius, width, length, attitude);
             switch (lineType) {
                 case 24326101:
@@ -411,6 +412,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 shapes.addAll(shapesLeft);
                 shapes.addAll(shapesRight);
             }
+            //diagnostic
+            if(lineType===15000002)
+            {
+                var shape=new armyc2.c2sd.JavaLineArray.Shape2(0);
+                shape.moveTo(ptCenter);
+                //ptCenter.x+=1;
+                ptCenter.y+=1;
+                shape.lineTo(ptCenter);
+                shapes.add(shape);
+            }
+            //end section
             return true;
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {

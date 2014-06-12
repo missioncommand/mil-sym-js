@@ -908,7 +908,11 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 if(lineType===221311000)    //AIRFIELD
                     if(j===1)
                         shape.setFillColor(null);
-                
+                //diagnostic
+                if(lineType===15000002)    //BBS_POINT
+                    if(j===0)
+                        shape.setLineColor(null);
+                //end section
                 shapeType = shape.getShapeType();
                 if (lineType === 22123000) {
                     armyc2.c2sd.JavaTacticalRenderer.clsUtility.SetLCColor(tg, shape);
