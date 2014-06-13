@@ -61,7 +61,7 @@
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T1_UNIQUE_DESIGNATION_2] = "T1";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
             //*/
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
             
             return modifiers;
         }
@@ -162,10 +162,8 @@
 	{
             if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
             {
+                setSpeedTestImages();
                 console.log("fonts loaded");
-                var button = document.getElementById("btnRender");
-                button.disabled = false;
-                button.innerHTML = "Render";
             }
             else if(attempts < retries)
             {
@@ -284,6 +282,33 @@
             var y = e.pageY - preview.offsetTop;
             render(_symbolID,x, y,_modifiers);
         }
+        
+        function setSpeedTestImages()
+        {
+            var msi = armyc2.c2sd.renderer.MilStdIconRenderer;
+            
+            //set speed test images
+            var ii1 = msi.Render("SUGPUSAT----***",{});
+            var img = document.getElementById("iST1");
+            img.src = ii1.toDataUrl();
+            img.width = ii1.getImageBounds().width;
+            img.height = ii1.getImageBounds().height;
+
+            var ii2 = msi.Render("SUGDUSAT--MY***",populateModifiers());
+            var img2 = document.getElementById("iST2");
+            img2.src = ii2.toDataUrl();
+            img2.width = ii2.getImageBounds().width;
+            img2.height = ii2.getImageBounds().height;
+            
+            //enable speed test buttons
+            var button = document.getElementById("btnST2");
+            button.disabled = false;
+            button.innerHTML = "Speed Test With Modifiers";
+            var button2 = document.getElementById("btnST1");
+            button2.disabled = false;
+            button2.innerHTML = "Speed Test";
+        }
+        
 	function preload()
 	{
             var msi = armyc2.c2sd.renderer.MilStdIconRenderer;
@@ -296,12 +321,14 @@
             if(lbTG)
             {
                 populateListBox(lbTG,armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolMap(symStd));
+                lbTG.remove(1);
                 lbTG.onselect = renderTG;
                 lbTG.onchange = renderTG;
             }
             if(lbU)
             {
                 populateListBox(lbU,armyc2.c2sd.renderer.utilities.UnitDefTable.getSymbolMap(symStd));
+                lbU.remove(1);
                 lbU.onselect = renderFE;
                 lbU.onchange = renderFE;
             }
@@ -324,6 +351,7 @@
             //make sure fonts are loaded.
             if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded()){
                     console.log("fonts loaded fast");
+                    setSpeedTestImages();
             }
             else
             {
@@ -333,46 +361,6 @@
 
             armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 
-            var ii1 = msi.Render("SUGPUSAT----***",{});
-            var img = document.getElementById("iST1");
-            img.src = ii1.toDataUrl();
-            img.width = ii1.getImageBounds().width;
-            img.height = ii1.getImageBounds().height;
-
-            var ii2 = msi.Render("SUGDUSAT--MY***",populateModifiers());
-            var img2 = document.getElementById("iST2");
-            img2.src = ii2.toDataUrl();
-            img2.width = ii2.getImageBounds().width;
-            img2.height = ii2.getImageBounds().height;
-            /*
-            armyc2.c2sd.renderer.utilities.RendererSettings.setModifierFont("Arial, sans-serif",9,"bold");//"bold 30pt 'Arial', sans-serif"
-            armyc2.c2sd.renderer.utilities.RendererSettings.setTextBackgroundMethod(2);
-            armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
-            //var batch = "{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}";
-            var ii3 = msi.Render("SFGP------*****",{"SIZE":35,"T":"Hello"});
-            var img3 = document.getElementById("batch1");
-            img3.src = ii3.toDataUrl();
-            img3.width = ii3.getImageBounds().width;
-            img3.height = ii3.getImageBounds().height;
-
-                    var mod = {};
-                    mod.SIZE = 50;
-                    mod.W = "Date";
-                    mod.X = "X";
-                    mod.V = "35";
-                    mod.T = "TFOO is angry";
-                    mod.Z = "speed"
-                    mod.F = "R";
-                    mod.G = "G";
-                    mod.H = "<-- is \"silly\"";
-                    mod.M = "M";
-                    mod.N = "ENY"
-            var ii4 = msi.Render("SHGPE-----*****",mod);
-            var img4 = document.getElementById("batch2");
-            img4.src = ii4.toDataUrl();
-            img4.width = ii4.getImageBounds().width;
-            img4.height = ii4.getImageBounds().height;
-            //*/
 	}
 </script>
 </head>
@@ -380,9 +368,11 @@
 <BODY bgcolor="Cyan" onload="preload();">
 <select id="lbTG" size="10">
     <option>Single Point Tactical</option>
+    <option>Populating Values...</option>
 </select>        
 <select id="lbU" size="10">
     <option>Single Point Warfighting</option>
+    <option>Populating Values...</option>
 </select>     
 <br/>
 Rendered via HTML5 Canvas:<br/>
@@ -423,9 +413,9 @@ Labels:  <input id="cbLabels" type="checkbox">
 <!-- <button id="btnRender" type='button' onclick='testRender();' disabled>Loading Page</button>-->
 <br/>
 <img id="iST1" src="" alt="test" height="35" width="35">
-<button id="btnST1" type='button' onclick='speedTest(1);' >Speed Test</button>
+<button id="btnST1" type='button' onclick='speedTest(1);'>Loading Fonts</button><!-- Speed Test -->
 <img id="iST2" src="" alt="test" height="35" width="35">
-<button id="btnST2" type='button' onclick='speedTest(3);' >Speed Test With Modifiers</button>
+<button id="btnST2" type='button' onclick='speedTest(3);'>Loading Fonts</button><!-- Speed Test With Modifiers -->
 <!-- <img id="batch1" src="" alt="batch1" height="35" width="35">
 <img id="batch2" src="" alt="batch2" height="35" width="35"> -->
 
