@@ -111,14 +111,33 @@ sec.sun.awt.geom.Area.pathToCurves = function(pi)
     while (!pi.isDone()) {
         switch (pi.currentSegment(coords)) {
             case 0:
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(movx>0)
+                        movx-=360;
+                    if(curx>0)
+                        curx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertLine(curves, curx, cury, movx, movy);
                 curx = movx = coords[0];
                 cury = movy = coords[1];
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(movx>0)
+                        movx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertMove(curves, movx, movy);
                 break;
             case 1:
                 newx = coords[0];
                 newy = coords[1];
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(newx>0)
+                        newx-=360;
+                    if(curx>0)
+                        curx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertLine(curves, curx, cury, newx, newy);
                 curx = newx;
                 cury = newy;
@@ -126,6 +145,11 @@ sec.sun.awt.geom.Area.pathToCurves = function(pi)
             case 2:
                 newx = coords[2];
                 newy = coords[3];
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(curx>0)
+                        curx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertQuad(curves, curx, cury, coords);
                 curx = newx;
                 cury = newy;
@@ -133,17 +157,36 @@ sec.sun.awt.geom.Area.pathToCurves = function(pi)
             case 3:
                 newx = coords[4];
                 newy = coords[5];
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(curx>0)
+                        curx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertCubic(curves, curx, cury, coords);
                 curx = newx;
                 cury = newy;
                 break;
             case 4:
+                if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+                {
+                    if(movx>0)
+                        movx-=360;
+                    if(curx>0)
+                        curx-=360;
+                }
                 sec.sun.awt.geom.Curve.insertLine(curves, curx, cury, movx, movy);
                 curx = movx;
                 cury = movy;
                 break;
         }
         pi.next();
+    }
+    if(sec.sun.awt.geom.Area.normalizeGeoPoints===true)
+    {
+        if(movx>0)
+            movx-=360;
+        if(curx>0)
+            curx-=360;
     }
     sec.sun.awt.geom.Curve.insertLine(curves, curx, cury, movx, movy);
     var operator2 = null;
@@ -155,3 +198,4 @@ sec.sun.awt.geom.Area.pathToCurves = function(pi)
     var emptyCurves = new sec.sun.awt.geom.Vector();
     return operator2.calculate(curves, emptyCurves);
 };
+sec.sun.awt.geom.Area.normalizeGeoPoints=true;
