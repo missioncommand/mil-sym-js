@@ -353,6 +353,42 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     };
     
     /**
+     * Takes a single character or a string and will test for non-letter characters.
+     * @param {type} str
+     * @returns {armyc2.c2sd.renderer.utilities.SymbolUtilities.isLetter.returnVal|Boolean}
+     */
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isLetter = function (str)
+    {
+        var returnVal = true,
+            len = str.length,
+            code = 0;
+        for(var i = 0; i < len; i++)
+        {
+            code = str.charCodeAt(i);
+            if(!(code >= 65 && code <= 90) || (code>= 97 && code <= 122))
+            {
+                returnVal = false;
+                break;
+            }
+        }
+        return returnVal;
+    };
+    
+    /**
+     * Returns true if the characters in the country code positions of the 
+     * SymbolID are letters.
+     * @param {String} symbolID
+     * @returns {Boolean}
+     */            
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidCountryCode = function (symbolID)
+    {
+        if(this.isLetter(symbolID.substring(12,14)))
+            return true;
+        else
+            return false;
+    };
+    
+    /**
      * converts a Javascript Date object into a properly formated String for
      * W or W1
      * @param {Date} date

@@ -1628,10 +1628,16 @@ return{
             modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER] = affiliationModifier;
         }//*/
         
+        //Check for Valid Country Code
+        if(SymbolUtilities.hasValidCountryCode(symbolID))
+        {
+            modifiers[ModifiersUnits.CC_COUNTRY_CODE] = symbolID.substring(12,14);
+        }
+        
         //            int y0 = 0;//W    E/F
         //            int y1 = 0;//X/Y  G
-        //            int y2 = 0;//V    H
-        //            int y3 = 0;//T    M
+        //            int y2 = 0;//V    H 
+        //            int y3 = 0;//T    M CC
         //            int y4 = 0;//Z    J/K/L/N/P
         //
         //            y0 = bounds.y - 0;
@@ -1756,7 +1762,7 @@ return{
         if(modifiers.H !== undefined)
         {
             modifierValue = modifiers.H;
-            
+
             tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
             labelWidth = labelBounds.getWidth();
@@ -1803,9 +1809,18 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.M !== undefined)
+        if(modifiers.M !== undefined || modifiers.CC !== undefined)
         {
-            modifierValue = modifiers[ModifiersUnits.M_HIGHER_FORMATION];
+            modifierValue = "";
+            
+            if(modifiers[ModifiersUnits.M_HIGHER_FORMATION])
+                modifierValue += modifiers[ModifiersUnits.M_HIGHER_FORMATION];
+            if(modifiers[ModifiersUnits.CC_COUNTRY_CODE])
+            {
+                if(modifiers[ModifiersUnits.M_HIGHER_FORMATION])
+                    modifierValue += " ";
+                modifierValue += modifiers[ModifiersUnits.CC_COUNTRY_CODE];
+            }
             
             tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
@@ -3514,6 +3529,9 @@ return{
             var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
             
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
+                return true;
+            
+            if(SymbolUtilities.hasValidCountryCode(symbolID))
                 return true;
 
             var len = _unitTextModifierKeys.length;

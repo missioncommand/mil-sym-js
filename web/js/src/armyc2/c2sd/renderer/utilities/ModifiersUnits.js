@@ -316,6 +316,14 @@ armyc2.c2sd.renderer.utilities.ModifiersUnits = {
      * Length: G/8
      */
     AO_ENGAGEMENT_BAR : "AO",
+    
+        /**
+     * Used internally by the renderer.  This value is set via the 13th & 14th
+     * characters in the symbol id.  There is no formal definition of how
+     * this should be indicated on the symbol in the MilStd or USAS.  
+     * The renderer will place it to the right of the 'H' label.
+     */
+    CC_COUNTRY_CODE : "CC",
 
     /**
      * A generic name label that goes to the right of the symbol and
