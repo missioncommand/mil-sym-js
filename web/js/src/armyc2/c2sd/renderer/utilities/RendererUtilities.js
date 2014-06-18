@@ -186,7 +186,7 @@ return{
      * available in case 'Arial' is not present.
      * @param {Number} fontSize like 12
      * @param {String} fontStyle like "bold"
-     * @param {String} text, include if you want a width value.
+     * @param {String} text include if you want a width value.
      * @returns {Object} {width:Number,height:Number,descent:Number,fullHeight:Number}
      */
      measureText: function(fontName, fontSize, fontStyle, text,ctx){
@@ -202,7 +202,7 @@ return{
     /**
      * Clients should use getTextBounds
      * @param {String} font like "bold 10pt Arial, sans-serif"
-     * @param {String} text, include if you want a width value
+     * @param {String} text include if you want a width value
      * @param {HTML5 context} ctx
      * @returns {Object} {width:Number,height:Number,descent:Number,fullHeight:Number}
      */
