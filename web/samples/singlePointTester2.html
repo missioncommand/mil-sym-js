@@ -111,18 +111,22 @@
         
         function buildSymbolID(basicID)
         {
-            var affiliation = document.getElementById("lbAffiliation").value;
-            var status = document.getElementById("lbStatus").value;
-            var modifiers = document.getElementById("tbModifiers").value;
+            if(basicID.charAt(0) !== 'W')
+            {
+                var affiliation = document.getElementById("lbAffiliation").value;
+                var status = document.getElementById("lbStatus").value;
+                var modifiers = document.getElementById("tbModifiers").value;
 
-            var symbolID = basicID.substring(0,1);
-            symbolID += affiliation;
-            symbolID += basicID.substring(2,3);
-            symbolID += status;
-            symbolID += basicID.substring(4,10);
-            symbolID += (modifiers.length === 5) ? modifiers : basicID.substring(10,15);
-            
-            return symbolID;
+                var symbolID = basicID.substring(0,1);
+                symbolID += affiliation;
+                symbolID += basicID.substring(2,3);
+                symbolID += status;
+                symbolID += basicID.substring(4,10);
+                symbolID += (modifiers.length === 5) ? modifiers : basicID.substring(10,15);
+                return symbolID;
+            }
+            else
+                return basicID
         }
         
         function renderFE()

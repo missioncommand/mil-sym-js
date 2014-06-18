@@ -1286,29 +1286,15 @@ return{
 
                 if(echelonBounds !== null)
                 {
-
-                    var textOutlineWidth = RendererSettings.getTextOutlineWidth();
-                    if(textOutlineWidth > 0)
-                    {
-                        ctx.lineWidth = textOutlineWidth;
-                        ctx.strokeStyle = "#FFFFFF";
-                        ctx.strokeText(tiEchelon.getText(), tiEchelon.getLocation().getX(), tiEchelon.getLocation().getY());
-                    }
-
-                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
-                        ctx.style = modifiers[MilStdAttributes.LineColor];
-                    else
-                        ctx.style = "#000000";
-
-                    ctx.fillText(tiEchelon.getText(), tiEchelon.getLocation().getX(), tiEchelon.getLocation().getY());
-
+                    this.renderText(ctx,[tiEchelon]);
                     echelonBounds = null;
                     tiEchelon = null;
                 }   
                 
                 if(amBounds !== null)
                 {
-
+                    this.renderText(ctx,[tiAM]);
+                    /*
                     var textOutlineWidth = RendererSettings.getTextOutlineWidth();
                     if(textOutlineWidth > 0)
                     {
@@ -1323,7 +1309,7 @@ return{
                         ctx.style = "#000000";
 
                     ctx.fillText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
-
+                    //*/
                     amBounds = null;
                     tiAM = null;
                 }   
@@ -3215,7 +3201,7 @@ return{
                 
                 x = bounds.x + (bounds.width * 0.5);
                 x = x - (labelWidth * 0.5);
-                y = bounds.y + descent + (bounds.height*0.2);
+                y = bounds.y + labelHeight + (bounds.height*0.2);
                 
                 ti.setLocation(x,y);
                 arrMods.push(ti);
