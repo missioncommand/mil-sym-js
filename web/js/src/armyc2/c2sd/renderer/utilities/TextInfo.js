@@ -14,24 +14,11 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
  * @param {type} fontString optional, like "bold 10pt Arial, sans-serif".  
  * Must be the same string used on context.font.  Not required but faster than 
  * checking the context for the font.
- * @param {type} textBaseline optional, like "alphabetic"(default), top, bottom
  * @returns {undefined}
  */
-armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, font, textBaseline) {
+armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, font) {
     this.text = text;
     this.location = new armyc2.c2sd.renderer.so.Point(x,y);
-    //this.modifierID = modifierID;
-
-    if(textBaseline)
-    {
-        this.textBaseline = textBaseline;
-        
-    }
-    else
-    {
-        textBaseline = "alphabetic";
-        this.textBaseline = "alphabetic";
-    }
     
     if(context === undefined)
     {
@@ -40,20 +27,6 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, font, te
     }
 
     this.bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(context, text, this.location, font);
-    if(textBaseline === "alphabetic")
-    {   //an estimation
-        this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.3));
-        //this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.26074218888888888888888888888889));
-    }
-    else if(textBaseline === "top")
-        this.bounds.setLocation(x,y);
-    else if(textBaseline === "bottom")
-        this.bounds.setLocation(x,y - this.bounds.getHeight());
-    else// (textBaseline === "alphabetic")//an estimation
-    {
-        this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.3));
-        //this.bounds.shift(0,Math.round(this.bounds.getHeight()*0.26074218888888888888888888888889));
-    }
 
 };
 	

@@ -1610,7 +1610,7 @@ return{
         var byLabelHeight = false;
         labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
                                 RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle());
+                                RendererSettings.getModifierFontStyle()).fullHeight;
         var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
@@ -2508,7 +2508,7 @@ return{
         var byLabelHeight = false;
         labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
                                 RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle());
+                                RendererSettings.getModifierFontStyle()).fullHeight;
         labelHeight = Math.round(labelHeight);
         var maxHeight = (symbolBounds.getHeight());
         if((labelHeight * 3) > maxHeight)
@@ -3135,7 +3135,7 @@ return{
         var byLabelHeight = false;
         labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
                                 RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle());
+                                RendererSettings.getModifierFontStyle()).fullHeight;
         labelHeight = Math.round(labelHeight);
         var maxHeight = (symbolBounds.getHeight());
         if((labelHeight * 3) > maxHeight)
@@ -3406,7 +3406,7 @@ return{
             {
                 var yModifierOffset = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
                     RendererSettings.getModifierFontSize(),
-                    RendererSettings.getModifierFontStyle());
+                    RendererSettings.getModifierFontStyle()).fullHeight;
 
                 yModifierOffset += RendererSettings.getTextOutlineWidth();
                 

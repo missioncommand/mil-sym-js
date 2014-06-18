@@ -29,7 +29,7 @@
 		armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
 			//armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded();
            
-		   //armyc2.c2sd.renderer.utilities.RendererSettings.setModifierFont("garamond",9,"bold");
+		   armyc2.c2sd.renderer.utilities.RendererSettings.setModifierFont("arial",9,"bold");
 		   
             var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
             //armyc2.c2sd.renderer.MilStdIconRenderer.Init();
@@ -48,14 +48,14 @@
 
 
             modifiers = populateModifiers();
-            modifiers[msa.PixelSize]=60;
+            modifiers[msa.PixelSize]=35;
             modifiers[msa.KeepUnitRatio]=true;
             modifiers[msa.SymbologyStandard] = 1;
 			//modifiers[msa.Icon]=true;
             //CALL TO RENDER////////////////////////////////////////////////
             //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("UPPS-----*****",modifiers);
             //SUGDUSAT--FM***//"SUGDUSAT--MY***"
-            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SUGDUSAT----***",modifiers);
+            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SFGDUSAT----US*",modifiers);
 
             var showDrawAreas = true;
 
@@ -196,7 +196,27 @@
             //var foo = new armyc2.c2sd.renderer.utilities.SO.Rectangle(0,0,1,1)
             //foo.unio
 
-
+            //Test Font Metrics
+            ctx.font = "bold 10pt Arial";
+            console.log(armyc2.c2sd.renderer.utilities.RendererSettings.getTextOutlineWidth());
+            var ti = new armyc2.c2sd.renderer.utilities.TextInfo("Testing", 30,120, ctx, "bold 10pt Arial");
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "#00FF00";
+            console.log(ti.getTextBounds());
+            var tb = ti.getTextBounds();
+            tb = new armyc2.c2sd.renderer.so.Rectangle(tb.x,tb.y,tb.width,tb.height);
+            tb.stroke(ctx);
+            ctx.strokeStyle = "#FF0000";
+            var tob = ti.getTextOutlineBounds();
+            tob = new armyc2.c2sd.renderer.so.Rectangle(tob.x,tob.y,tob.width,tob.height);
+            tob.stroke(ctx);
+            ctx.fillStyle = "#FFFFFF";
+            ctx.strokeStyle = "#FFFFFF";
+            ctx.globalAlpha = 1.0;
+            //ti.outlineText(ctx);
+            ti.strokeText(ctx);
+            ctx.fillStyle = "#000000";
+            ti.fillText(ctx);
 			
             //namespace speed check//////////////////////////
             /*
@@ -452,7 +472,7 @@
             
             
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY]=10;
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H_ADDITIONAL_INFO_1] = "H";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H_ADDITIONAL_INFO_1] = "Hj";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H1_ADDITIONAL_INFO_2] = "H1";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H2_ADDITIONAL_INFO_3] = "H2";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.X_ALTITUDE_DEPTH] = "X";//X
@@ -462,7 +482,7 @@
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W_DTG_1] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W1_DTG_2] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W1
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.J_EVALUATION_RATING] = "J";
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.M_HIGHER_FORMATION] = "M";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.M_HIGHER_FORMATION] = "Mj";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.N_HOSTILE] = "ENY";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.P_IFF_SIF] = "P";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Y_LOCATION] = "Y";

@@ -30,10 +30,12 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
         //var stringHeight=bounds.height;
         var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
         //getTextBounds does 2 calculations.  Limit to what you need and just get height.
-        var fontName = RendererSettings.getModifierFontName();
-        var fontStyle = RendererSettings.getModifierFontStyle();
-        var fontSize = RendererSettings.getModifierFontSize();
-        var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight(fontName, fontSize, fontStyle);
+        //google earth defaults:
+        //Issue being we can't ask google earth for what font it is using.
+        var fontName = "Arial";//RendererSettings.getModifierFontName();
+        var fontStyle = "normal";//RendererSettings.getModifierFontStyle();
+        var fontSize = 16;//RendererSettings.getModifierFontSize();
+        var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight(fontName, fontSize, fontStyle).fullHeight;
         stringHeight = height;
         
         return stringHeight;        
