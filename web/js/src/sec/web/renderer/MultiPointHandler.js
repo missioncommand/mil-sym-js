@@ -1228,8 +1228,10 @@ return{
         var kml = "";
         var tempModifier = null;
         
+        var cdataStart = "<![CDATA[";
+            var cdataEnd = "]]>";
         kml += ("<Folder id=\"" + id + "\">");
-        kml += ("<name>" + name + "</name>");
+        kml += ("<name>" + cdataStart + name + cdataEnd + "</name>");
         kml += ("<visibility>1</visibility>");
         
         try
@@ -1643,6 +1645,8 @@ return{
             
     LabelToKMLString: function(id, i, shapeInfo, ipc, normalize)
     {
+        var cdataStart = "<![CDATA[";
+        var cdataEnd = "]]>";
         var kml = "";
         var coord = new armyc2.c2sd.graphics2d.Point2D();
         coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
@@ -1655,7 +1659,7 @@ return{
         var text = shapeInfo.getModifierString();
         if (text !== null && text !== ("")) {
             kml += ("<Placemark id=\"" + id + "_lp" + i + "\">");
-            kml += ("<name>" + text + "</name>");
+            kml += ("<name>" + cdataStart + text + cdataEnd + "</name>");
             kml += ("<Style>");
             kml += ("<IconStyle>");
             kml += ("<scale>.7</scale>");
