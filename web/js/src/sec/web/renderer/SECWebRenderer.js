@@ -392,20 +392,20 @@ return{
             if(i < len - 1)
             {
                 coord = coords[i].split(",");
-                x1 = parseInt(coord[0]);
-                y1 = parseInt(coord[1]);
+                x1 = parseFloat(coord[0]);
+                y1 = parseFloat(coord[1]);
                 coord = coords[i+1].split(",");
-                x2 = parseInt(coord[0]);
-                y2 = parseInt(coord[1]);
+                x2 = parseFloat(coord[0]);
+                y2 = parseFloat(coord[1]);
             }
             else
             {
                 coord = coords[i].split(",");
-                x1 = parseInt(coord[0]);
-                y1 = parseInt(coord[1]);
+                x1 = parseFloat(coord[0]);
+                y1 = parseFloat(coord[1]);
                 coord = coords[0].split(",");
-                x2 = parseInt(coord[0]);
-                y2 = parseInt(coord[1]);
+                x2 = parseFloat(coord[0]);
+                y2 = parseFloat(coord[1]);
             }
             
             signedArea += (x1*y2 - x2*y1);
