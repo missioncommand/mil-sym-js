@@ -44,6 +44,13 @@ sec.web.renderer.Shape3DHandler.render3dSymbol = function (name, id, shapeType, 
         sb.append ("TRACK----------");
         //System.out.println (sb.toString ());
     }
+    if(!(description))
+    {
+        if(result.indexOf("<description>undefined</description>\n")>0)
+            result = result.replace("<description>undefined</description>\n", "");
+        else if(result.indexOf("<description>null</description>\n")>0)
+            result = result.replace("<description>null</description>\n", "");
+    }
     return result;
 };//, "~S,~S,~S,~S,~S,~S,~S,sec.web.renderer.SymbolModifiers");
 //c$.buildPolygon = Clazz.defineMethod (c$, "buildPolygon", 
