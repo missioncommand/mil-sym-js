@@ -1375,11 +1375,13 @@ return{
             lineStyleId = "lineColor",
             stroke = null,
             lineWidth = 4;
+        var cdataStart = "<![CDATA[";
+        var cdataEnd = "]]>";
         symbolCode = sec.web.renderer.utilities.JavaRendererUtilities.normalizeSymbolCode(symbolCode);
         kml += ("<Placemark id=\"" + id + "_mg" + "\">");
         if(description)
         {
-           kml += ("<description>" + description + "</description>");
+           kml += ("<description>" + cdataStart + description + cdataEnd + "</description>");
         }
         kml += ("<Style id=\"" + lineStyleId + "\">");
         lineColor = shapeInfo.getLineColor();
