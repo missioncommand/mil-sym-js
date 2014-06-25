@@ -6063,7 +6063,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "PATH": "Tactical Graphics/Other/Sea Subsurface Returns/Bottom Return-Non-Milco"
       },
       {
-        "SYMBOLID": "G*O*SBWD--****X",
+        "SYMBOLID": "G*O*SBX---****X",
         "GEOMETRY": "point",
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",

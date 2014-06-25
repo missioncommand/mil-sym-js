@@ -1049,7 +1049,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "HEIGHT": "24"
       },
       {
-        "SYMBOLID": "G*O*SBWD--****X",
+        "SYMBOLID": "G*O*SBX---****X",
         "MAPPINGP": "2208",
         "MAPPINGA": "2208",
         "DESCRIPTION": "Wreck, Dangerous",
