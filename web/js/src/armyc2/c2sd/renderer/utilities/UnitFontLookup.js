@@ -619,9 +619,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
             else//P, C, D, X, F
                 returnVal = fillCode + 1;
             
+            
             if(symStd === undefined)
                 symStd = RendererSettings.getSymbologyStandard();
-            if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14 &&status !== 'A')
+            if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14 && status === 'A')
             {
                 var affiliation = SymbolID.charAt(1);
                 switch(affiliation)
@@ -631,10 +632,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                     case 'S':
                     case 'G':
                     case 'M':
-                        returnVal++;
+                        returnVal--;
                         break;
                 }
-            }
+            }//*/
             
             if(returnVal === 847)//847 seems to be reserved in FF & IE.
                 returnVal = 852;
