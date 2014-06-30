@@ -39,6 +39,22 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MilStdIconRenderer","Init",err);
     }
     
+    function renderTacticalMultipointIcon(symbolID, modifiers)
+    {
+        var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID);
+        if(modifiers[MilStdAttributes.LineColor] !== undefined )
+        {
+            lineColor = modifiers[MilStdAttributes.LineColor];
+        }
+        var size = RendererSettings.getDefaultPixelSize();//40;
+        if(modifiers[MilStdAttributes.PixelSize] !== undefined )
+        {
+            size = modifiers[MilStdAttributes.PixelSize];
+        }
+
+        var ii = TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor);
+        return ii;
+    }
     
 return{    
 
@@ -69,29 +85,21 @@ return{
             }
             else
             {
-                var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID);
-                if(modifiers[MilStdAttributes.LineColor] !== undefined )
-                {
-                    lineColor = modifiers[MilStdAttributes.LineColor];
-                }
-                var size = RendererSettings.getDefaultPixelSize();//40;
-                if(modifiers[MilStdAttributes.PixelSize] !== undefined )
-                {
-                    size = modifiers[MilStdAttributes.PixelSize];
-                }
-                
-                var ii = TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor);
-                return ii;
-                //call tactical graphics single point renderer
+                return renderTacticalMultipointIcon(symbolID,modifiers);
             }
+        }
+        else if(UnitDefTable.hasUnitDef(basicID,modifiers[MilStdAttributes.SymbologyStandard]))
+        {
+            return SinglePointRenderer.renderUnit(symbolID, modifiers);
+        }
+        else if(SymbolUtilities.is3dAirspace(symbolID))
+        {
+            return renderTacticalMultipointIcon(symbolID, modifiers);
         }
         else
         {
-            if(UnitDefTable.hasUnitDef(basicID,modifiers[MilStdAttributes.SymbologyStandard])===false)
-            {
-                symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
-            }
-            return SinglePointRenderer.renderUnit(symbolID, modifiers);
+            symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
+            return renderTacticalMultipointIcon(symbolID,modifiers);
         }
     }
 };

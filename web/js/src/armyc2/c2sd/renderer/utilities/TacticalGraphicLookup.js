@@ -2016,6 +2016,51 @@ armyc2.c2sd.renderer.utilities.TacticalGraphicLookup = (function () {
         "SYMBOLID": "WO-DMPA----L---",
         "MAPPING": "3109",
         "DESCRIPTION": "Pipe"
+      },
+      {
+        "SYMBOLID": "CYLINDER-------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Cylinder"
+      },
+      {
+        "SYMBOLID": "ORBIT----------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Orbit"
+      },
+      {
+        "SYMBOLID": "ROUTE----------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Route"
+      },
+      {
+        "SYMBOLID": "POLYGON--------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Polygon"
+      },
+      {
+        "SYMBOLID": "RADARC---------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Radarc"
+      },
+      {
+        "SYMBOLID": "POLYARC--------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Polyarc"
+      },
+      {
+        "SYMBOLID": "CAKE-----------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Cake"
+      },
+      {
+        "SYMBOLID": "TRACK----------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Track"
+      },
+      {
+        "SYMBOLID": "CURTAIN--------",
+        "MAPPING": "900",
+        "DESCRIPTION": "Curtain"
       }
     ]
   }
@@ -2062,8 +2107,11 @@ return{
     {
         try
         {
-    
-            var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+            var basicID = symbolID;
+            if(armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dAirspace(symbolID)===false)
+            {
+                basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+            }   
             if(basicID in symbolMap)
             {
                 return symbolMap[basicID].mapping;

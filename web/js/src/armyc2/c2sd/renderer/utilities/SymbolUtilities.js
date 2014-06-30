@@ -1406,6 +1406,30 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     };
     /**
      * 
+     * @param {String} symbolID
+     * @returns {Boolean}
+     */        
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dAirspace = function(symbolID)  {
+
+        if(symbolID===("CYLINDER-------") ||
+            symbolID===("ORBIT----------") ||
+            symbolID===("ROUTE----------") ||
+            symbolID===("POLYGON--------") ||
+            symbolID===("RADARC---------") ||
+            symbolID===("POLYARC--------") ||
+            symbolID===("CAKE-----------") ||
+            symbolID===("TRACK----------") ||
+            symbolID===("CURTAIN--------"))
+        {
+            return true;
+        }
+        else
+        {
+           return false;
+        }
+    };
+    /**
+     * 
      * @param {symbolDef} sd
      * @returns {Boolean}
      */
