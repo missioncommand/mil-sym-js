@@ -62,16 +62,26 @@ return{
         
     },
     Render: function(symbolID, modifiers){
-        if(modifiers === null)
+        if(!(modifiers === null))
         {
             modifiers = {};
+        }
+        var symStd = 0;
+        if(modifiers[MilStdAttributes.SymbologyStandard])
+        {
+            symStd = modifiers[MilStdAttributes.SymbologyStandard];
+        }
+        else
+        {
+            symStd = RendererSettings.getSymbologyStandard();
+            modifiers[MilStdAttributes.SymbologyStandard] = symStd;
         }
         
         var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
         
         if(SymbolUtilities.isTacticalGraphic(symbolID))
         {
-            var sd = SymbolDefTable.getSymbolDef(basicID,modifiers[MilStdAttributes.SymbologyStandard]);
+            var sd = SymbolDefTable.getSymbolDef(basicID,symStd);
             if(sd === null)
             {
                 symbolID = SymbolUtilities.reconcileSymbolID(symbolID);
@@ -88,7 +98,7 @@ return{
                 return renderTacticalMultipointIcon(symbolID,modifiers);
             }
         }
-        else if(UnitDefTable.hasUnitDef(basicID,modifiers[MilStdAttributes.SymbologyStandard]))
+        else if(UnitDefTable.hasUnitDef(basicID,symStd))
         {
             return SinglePointRenderer.renderUnit(symbolID, modifiers);
         }
@@ -99,7 +109,7 @@ return{
         else
         {
             symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
-            return renderTacticalMultipointIcon(symbolID,modifiers);
+            return SinglePointRenderer.renderUnit(symbolID, modifiers);
         }
     }
 };
