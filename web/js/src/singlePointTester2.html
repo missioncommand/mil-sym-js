@@ -140,12 +140,21 @@
             if(id && id !== "")
             {
                 _symbolID = id;
+				var modifiers = document.getElementById("tbModifiers").value;
+				if(id.charAt(10) === 'H' && modifiers.charAt(0) !== 'H')
+				{
+					document.getElementById("tbModifiers").value = "H****";
+				}
+				else if(id.charAt(10) !== 'H' && modifiers.charAt(0) === 'H')
+				{
+					document.getElementById("tbModifiers").value = "*****";
+				}
+				
             }
             else
             {
                 alert("Pick a symbol from the right list first.");
             }
-            
         }
         
         function renderTG()

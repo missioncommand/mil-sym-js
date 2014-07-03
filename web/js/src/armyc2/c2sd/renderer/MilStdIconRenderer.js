@@ -8,6 +8,7 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
         SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
         UnitDefTable = armyc2.c2sd.renderer.utilities.UnitDefTable,
+        UnitFontLookup = armyc2.c2sd.renderer.utilities.UnitFontLookup,
         SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable,
         RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
         SinglePointRenderer = armyc2.c2sd.renderer.SinglePointRenderer,
@@ -98,7 +99,7 @@ return{
                 return renderTacticalMultipointIcon(symbolID,modifiers);
             }
         }
-        else if(UnitDefTable.hasUnitDef(basicID,symStd))
+        else if(UnitFontLookup.hasUnitLookup(basicID,symStd))
         {
             return SinglePointRenderer.renderUnit(symbolID, modifiers);
         }

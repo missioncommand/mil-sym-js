@@ -111,6 +111,7 @@
         
         function buildSymbolID(basicID)
         {
+            
             if(basicID.charAt(0) !== 'W')
             {
                 var affiliation = document.getElementById("lbAffiliation").value;
@@ -127,6 +128,7 @@
             }
             else
                 return basicID
+            
         }
         
         function renderFE()
@@ -138,12 +140,21 @@
             if(id && id !== "")
             {
                 _symbolID = id;
+				var modifiers = document.getElementById("tbModifiers").value;
+				if(id.charAt(10) === 'H' && modifiers.charAt(0) !== 'H')
+				{
+					document.getElementById("tbModifiers").value = "H****";
+				}
+				else if(id.charAt(10) !== 'H' && modifiers.charAt(0) === 'H')
+				{
+					document.getElementById("tbModifiers").value = "*****";
+				}
+				
             }
             else
             {
                 alert("Pick a symbol from the right list first.");
             }
-            
         }
         
         function renderTG()
@@ -364,6 +375,7 @@
 
 
             armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
+			armyc2.c2sd.renderer.utilities.RendererSettings.setSymbologyStandard(1);
 
 	}
 </script>
