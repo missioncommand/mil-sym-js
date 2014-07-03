@@ -62,7 +62,7 @@ return{
         
     },
     Render: function(symbolID, modifiers){
-        if(!(modifiers === null))
+        if(!(modifiers))
         {
             modifiers = {};
         }
