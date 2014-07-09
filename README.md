@@ -9,6 +9,7 @@ See sample KML output for multipoints [here.](http://mil-sym-js.spinelli.cloudbe
 
 [JS Renderer Developer's Guide Wiki](https://github.com/missioncommand/mil-sym-js/wiki/Developer's-Guide)  
 [JS Renderer Developer's Guide Word Doc](https://github.com/missioncommand/mil-sym-js/blob/master/Mil Symbology Renderer Developer's Guide for JavaScript.docx)  
+[Google Group Discussion Forum](https://groups.google.com/forum/#!forum/mission-command-milstd-renderer)  
 
 MIL-STD-2525
 -----------
