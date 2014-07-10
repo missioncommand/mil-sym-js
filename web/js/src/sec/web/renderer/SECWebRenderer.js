@@ -489,6 +489,7 @@ return{
         attributes.AM_DISTANCE=new java.util.ArrayList();
         attributes.X_ALTITUDE_DEPTH=new java.util.ArrayList();
         attributes.AN_AZIMUTH=new java.util.ArrayList();
+        attributes.ALT_MODE=[];
         
         var output = "";
         
@@ -576,6 +577,21 @@ return{
                     }
                 }
                 
+                var coords = controlPoints.split(" ");
+                var pointCount = coords.length;
+                for(var i = 0; i < pointCount; i++)
+                {
+                    if(altitudeMode)
+                    {
+                        attributes.ALT_MODE.push(altitudeMode);
+                    }
+                    else
+                    {
+                        attributes.ALT_MODE.push("absolute");
+                    }
+                    
+                }
+                
                 color = JavaRendererUtilities.ARGBtoABGR(color);
                                 
                 for (var i=0; i < altitudeDepthLength; i++)
@@ -619,7 +635,7 @@ return{
                         symbolId.equals("AAMH--")) // HIMEZ
                 {
                     output = Shape3DHandler.buildPolygon(controlPoints, id, name, 
-                        description, color, convertedAltitudeMode, attributes);
+                        description, color, attributes);
                 }
                 else if (symbolId.equals("ACAR--") || // ACA - rectangular
                         symbolId.equals("AKPR--") || // Killbox - rectangular
@@ -630,13 +646,13 @@ return{
                         symbolId.equals("ALL---"))   // LLTR
                 {
                     output = Shape3DHandler.buildTrack(controlPoints, id, name, 
-                        description, color, convertedAltitudeMode, attributes);
+                        description, color, attributes);
                 }
                 else if (symbolId.equals("ACAC--") || // ACA - circular
                         symbolId.equals("AKPC--"))    // Killbox - circular
                 {
                     output = Shape3DHandler.buildCylinder(controlPoints, id, name, 
-                        description, color, convertedAltitudeMode, attributes);
+                        description, color, attributes);
 
                 }   
 
