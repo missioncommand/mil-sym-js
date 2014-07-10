@@ -581,15 +581,7 @@ return{
                 var pointCount = coords.length;
                 for(var i = 0; i < pointCount; i++)
                 {
-                    if(altitudeMode)
-                    {
-                        attributes.ALT_MODE.push(altitudeMode);
-                    }
-                    else
-                    {
-                        attributes.ALT_MODE.push("absolute");
-                    }
-                    
+                        attributes.ALT_MODE.push(convertedAltitudeMode);
                 }
                 
                 color = JavaRendererUtilities.ARGBtoABGR(color);
