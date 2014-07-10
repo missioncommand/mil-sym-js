@@ -4,31 +4,26 @@ sec.web = sec.web || {};
 sec.web.renderer = sec.web.renderer || {};
 sec.web.renderer.Shape3DHandler=function(){};
 
-sec.web.renderer.Shape3DHandler.render3dSymbol = function (name, id, shapeType, description, color, altitudeMode, controlPoints, attributes) {
+sec.web.renderer.Shape3DHandler.render3dSymbol = function (name, id, shapeType, description, color, controlPoints, attributes) {
     var result = "";
-    //alert();
-    var convertedAltitudeMode = altitudeMode;
-    //alert(convertedAltitudeMode);
-//    if (!altitudeMode.equals ("")) {
-//        convertedAltitudeMode = sec.geo.kml.KmlOptions.AltitudeMode.fromString (altitudeMode);
-//    }
+
     if (shapeType.equals ("CYLINDER-------")) {
-        result = sec.web.renderer.Shape3DHandler.buildCylinder (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildCylinder (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("ORBIT----------")) {
-        result = sec.web.renderer.Shape3DHandler.buildOrbit (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildOrbit (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("RADARC---------")) {
-        result = sec.web.renderer.Shape3DHandler.buildRadarc (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildRadarc (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("POLYARC--------")) {
-        result = sec.web.renderer.Shape3DHandler.buildPolyArc (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildPolyArc (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("ROUTE----------")) {
-        result = sec.web.renderer.Shape3DHandler.buildRoute (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildRoute (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("POLYGON--------")) {
         //alert('p');
-        result = sec.web.renderer.Shape3DHandler.buildPolygon (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildPolygon (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("CAKE-----------")) {
-        result = sec.web.renderer.Shape3DHandler.buildCake (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildCake (controlPoints, id, name, description, color, attributes);
     } else if (shapeType.equals ("TRACK----------")) {
-        result = sec.web.renderer.Shape3DHandler.buildTrack (controlPoints, id, name, description, color, convertedAltitudeMode, attributes);
+        result = sec.web.renderer.Shape3DHandler.buildTrack (controlPoints, id, name, description, color, attributes);
     } else {
         var sb =  new sec.geo.utilities.StringBuilder ();
         sb.append ("Given shape type \"" + shapeType + "\" does not match any of the available shape types.");
@@ -54,7 +49,7 @@ sec.web.renderer.Shape3DHandler.render3dSymbol = function (name, id, shapeType, 
     return result;
 };//, "~S,~S,~S,~S,~S,~S,~S,sec.web.renderer.SymbolModifiers");
 //c$.buildPolygon = Clazz.defineMethod (c$, "buildPolygon", 
-sec.web.renderer.Shape3DHandler.buildPolygon =  function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildPolygon =  function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     try {
@@ -62,7 +57,7 @@ sec.web.renderer.Shape3DHandler.buildPolygon =  function (controlPoints, id, nam
         //alert(latlons);
         if (latlons.length >= 2) {
             //alert();
-            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getPolygonKml (latlons, id, name, description, color, altitudeMode, (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getPolygonKml (latlons, id, name, description, color, attributes.ALT_MODE[0], (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
@@ -72,7 +67,7 @@ sec.web.renderer.Shape3DHandler.buildPolygon =  function (controlPoints, id, nam
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildCylinder = Clazz.defineMethod (c$, "buildCylinder", 
-sec.web.renderer.Shape3DHandler.buildCylinder = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildCylinder = function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     var pivotx = 0.0;
@@ -90,7 +85,7 @@ sec.web.renderer.Shape3DHandler.buildCylinder = function (controlPoints, id, nam
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
-        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getCircleKml (pivotx, pivoty, id, name, description, color, altitudeMode, (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getCircleKml (pivotx, pivoty, id, name, description, color, attributes.ALT_MODE[0], (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
     } catch (e) {
         throw e;
     }
@@ -135,7 +130,7 @@ sec.web.renderer.Shape3DHandler.buildKml = function (coords, id, name, color) {
     return kml.toString ();
 };//, "~A,~S,~S,~S");
 //c$.buildOrbit = Clazz.defineMethod (c$, "buildOrbit", 
-sec.web.renderer.Shape3DHandler.buildOrbit=function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildOrbit=function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     var point1x = 0.0;
@@ -162,14 +157,14 @@ sec.web.renderer.Shape3DHandler.buildOrbit=function (controlPoints, id, name, de
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
-        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getOrbitKml (point1x, point1y, point2x, point2y, id, name, description, color, altitudeMode, (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getOrbitKml (point1x, point1y, point2x, point2y, id, name, description, color, attributes.ALT_MODE[0], (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
     } catch (e) {
        throw e; 
     }
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildRadarc = Clazz.defineMethod (c$, "buildRadarc", 
-sec.web.renderer.Shape3DHandler.buildRadarc = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildRadarc = function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     var pivotx = 0.0;
@@ -187,14 +182,14 @@ sec.web.renderer.Shape3DHandler.buildRadarc = function (controlPoints, id, name,
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
-        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getRadarcKml (pivotx, pivoty, id, name, description, color, altitudeMode, (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.AM_DISTANCE.get (1)).doubleValue (), (attributes.AN_AZIMUTH.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (1)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+        pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getRadarcKml (pivotx, pivoty, id, name, description, color, attributes.ALT_MODE[0], (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.AM_DISTANCE.get (1)).doubleValue (), (attributes.AN_AZIMUTH.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (1)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
     } catch (e) {
             throw e;
     }
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildPolyArc = Clazz.defineMethod (c$, "buildPolyArc", 
-sec.web.renderer.Shape3DHandler.buildPolyArc = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildPolyArc = function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     var pivotx = 0.0;
@@ -213,7 +208,7 @@ sec.web.renderer.Shape3DHandler.buildPolyArc = function (controlPoints, id, name
             var length = latlons.length - 1;
             var points =  new Array (length);
             System.arraycopy (latlons, 1, points, 0, length);
-            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getPolyarcKml (points, pivotx, pivoty, id, name, description, color, altitudeMode, (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (1)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getPolyarcKml (points, pivotx, pivoty, id, name, description, color, attributes.ALT_MODE[0], (attributes.AM_DISTANCE.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (0)).doubleValue (), (attributes.AN_AZIMUTH.get (1)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
@@ -223,7 +218,7 @@ sec.web.renderer.Shape3DHandler.buildPolyArc = function (controlPoints, id, name
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildRoute = Clazz.defineMethod (c$, "buildRoute", 
-sec.web.renderer.Shape3DHandler.buildRoute = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildRoute = function (controlPoints, id, name, description, color, attributes) {
     var pointArrayStringList = "";
     var width;
     var leftWidth;
@@ -234,7 +229,7 @@ sec.web.renderer.Shape3DHandler.buildRoute = function (controlPoints, id, name, 
             width = (attributes.AM_DISTANCE.get (0)).doubleValue ();
             leftWidth = width / 2;
             rightWidth = width / 2;
-            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getRouteKml (latlons, id, name, description, color, altitudeMode, leftWidth, rightWidth, (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
+            pointArrayStringList = sec.geo.kml.XsltCoordinateWrapper.getRouteKml (latlons, id, name, description, color, attributes.ALT_MODE[0], leftWidth, rightWidth, (attributes.X_ALTITUDE_DEPTH.get (0)).doubleValue (), (attributes.X_ALTITUDE_DEPTH.get (1)).doubleValue ());
         } else {
             throw  {message:"Invalid Number of Points", name:"Point Exception", stack:null};
         }
@@ -244,7 +239,7 @@ sec.web.renderer.Shape3DHandler.buildRoute = function (controlPoints, id, name, 
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildCake = Clazz.defineMethod (c$, "buildCake", 
-sec.web.renderer.Shape3DHandler.buildCake = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildCake = function (controlPoints, id, name, description, color, attributes) {
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     var letThemEat =  new sec.geo.shape.Cake ();
@@ -270,7 +265,7 @@ sec.web.renderer.Shape3DHandler.buildCake = function (controlPoints, id, name, d
             for (var i = 0; i < attributesArrayLength; i++) 
             {
                 var layerCake =  new sec.geo.shape.Radarc ();
-                layerCake.setAltitudeMode (altitudeMode);
+                layerCake.setAltitudeMode (attributes.ALT_MODE[i]);
                 layerCake.setPivot ( new sec.geo.GeoPoint (pivotx, pivoty));
                 layerCake.setMinRadius ((attributes.AM_DISTANCE.get (i)).doubleValue ());
                 layerCake.setRadius ((attributes.AM_DISTANCE.get (i + 1)).doubleValue ());
@@ -294,7 +289,7 @@ sec.web.renderer.Shape3DHandler.buildCake = function (controlPoints, id, name, d
     return pointArrayStringList;
 };//, "~S,~S,~S,~S,~S,sec.geo.kml.KmlOptions.AltitudeMode,sec.web.renderer.SymbolModifiers");
 //c$.buildTrack = Clazz.defineMethod (c$, "buildTrack", 
-sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, description, color, altitudeMode, attributes) {
+sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, description, color, attributes) {
     var pointArrayStringList = "";
     var kmlRender =  new sec.geo.kml.KmlRenderer ();
     try {
@@ -304,7 +299,7 @@ sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, 
             var track =  new sec.geo.shape.Track ();
             for (var i = 0; i < numberOfPoints - 1; i++) {
                 var route =  new sec.geo.shape.Route ();
-                route.setAltitudeMode (altitudeMode);
+                route.setAltitudeMode (attributes.ALT_MODE[i]);
                 var point1String = latlons[i].$plit (",");
                 var point2String = latlons[i + 1].$plit (",");
                 var point1lon = 0.0;

@@ -204,10 +204,6 @@ return{
      * @param {String} description A brief description of what the symbol represents.  
      * Generic text that does not require any format.
      * @param {String} color The fill color of the graphic
-     * @param {String} altitudeMode Indicates whether the symbol should interpret 
-     * altitudes as above sea level or above ground level. Options are 
-     * "relativeToGround" (from surface of earth), "absolute" (sea level), 
-     * "relativeToSeaFloor" (from the bottom of major bodies of water).
      * @param {String} controlPoints The vertices of the shape.  The number of required
      * vertices varies based on the shapeType of the symbol.  The simplest shape 
      * requires at least one point.  Shapes that require more points than 
@@ -217,9 +213,13 @@ return{
      * @param {String} AttributesArray A JS array holding the parameters for the 
      * shape.  Attributes should be of the following format: <br/><br/>
      * <tr><code>[{"<i>attribute1</i>":<i>value</i>,...},{<i>[optional]</i>}]</code></tr>
+     * one attribute is "altitudeMode" which indicates whether the symbol should interpret 
+     * altitudes as above sea level or above ground level. Options are 
+     * "relativeToGround" (from surface of earth), "absolute" (sea level), 
+     * "relativeToSeaFloor" (from the bottom of major bodies of water).
      * @return {String} A KML string that represents a placemark for the 3D shape
      */
-    Render3dSymbol:function (name, id, shapeType, description, color, altitudeMode, controlPoints, AttributesArray) 
+    Render3dSymbol:function (name, id, shapeType, description, color, controlPoints, AttributesArray) 
     {
         var returnValue = "";
         try {
@@ -231,6 +231,7 @@ return{
             attributes.AM_DISTANCE=new java.util.ArrayList();
             attributes.X_ALTITUDE_DEPTH=new java.util.ArrayList();
             attributes.AN_AZIMUTH=new java.util.ArrayList();
+            attributes.ALT_MODE=[];
 
             if (AttributesArray === null || attributes === "") {
                 //attributesJSON =  new sec.web.json.utilities.JSONObject ("[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}]");
@@ -284,6 +285,16 @@ return{
                     {
                         attributes.AN_AZIMUTH.add(new Double(AttributesArray[i].rightAzimuth));                          
                     }
+                    
+                    if(AttributesArray[i].altitudeMode !== undefined)
+                    {
+                        //attributes.ALT_MODE.add(AttributesArray[i].altitudeMode);
+                        attributes.ALT_MODE.push(AttributesArray[i].altitudeMode);
+                    }
+                    else
+                    {
+                        attributes.ALT_MODE.push("absolute");
+                    }
                 }
             }
 
@@ -335,6 +346,19 @@ return{
                 {
                     attributes.AM_DISTANCE.add(curtainWidth);
                 }   
+                
+                for(i = 1; i < pointCount; i++)
+                {
+                    if(AttributesArray[0].altitudeMode !== undefined)
+                    {
+                        attributes.ALT_MODE.push(AttributesArray[0].altitudeMode);
+                    }
+                    else
+                    {
+                        attributes.ALT_MODE.push("absolute");
+                    }
+                    
+                }
             }
             
             //Make sure point order is good for POLYARC
@@ -367,7 +391,7 @@ return{
                 }
             }
 
-            returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, altitudeMode, controlPoints, attributes);
+            returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, controlPoints, attributes);
         } 
         catch (err) 
         {
