@@ -3125,6 +3125,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AA----*****",
+        "MAPPINGA": "6000",
         "MAPPINGP": "6000",
         "DESCRIPTION": "Aftershock",
         "WIDTH": "34",
@@ -3132,6 +3133,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AB----*****",
+        "MAPPINGA": "6001",
         "MAPPINGP": "6001",
         "DESCRIPTION": "Avalanche",
         "WIDTH": "30",
@@ -3139,6 +3141,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AC----*****",
+        "MAPPINGA": "6002",
         "MAPPINGP": "6002",
         "DESCRIPTION": "Earthquake Epicenter",
         "WIDTH": "38",
@@ -3146,6 +3149,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AD----*****",
+        "MAPPINGA": "6003",
         "MAPPINGP": "6003",
         "DESCRIPTION": "Landslide",
         "WIDTH": "39",
@@ -3153,6 +3157,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AE----*****",
+        "MAPPINGA": "6004",
         "MAPPINGP": "6004",
         "DESCRIPTION": "Subsidence",
         "WIDTH": "42",
@@ -3160,6 +3165,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*AG----*****",
+        "MAPPINGA": "6006",
         "MAPPINGP": "6006",
         "DESCRIPTION": "Volcanic Threat",
         "WIDTH": "34",
@@ -3167,6 +3173,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*BB----*****",
+        "MAPPINGA": "6007",
         "MAPPINGP": "6007",
         "DESCRIPTION": "Drought",
         "WIDTH": "36",
@@ -3174,6 +3181,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*BC----*****",
+        "MAPPINGA": "6008",
         "MAPPINGP": "6008",
         "DESCRIPTION": "Flood",
         "WIDTH": "32",
@@ -3181,6 +3189,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*BF----*****",
+        "MAPPINGA": "6009",
         "MAPPINGP": "6009",
         "DESCRIPTION": "Inversion",
         "WIDTH": "30",
@@ -3188,6 +3197,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*BM----*****",
+        "MAPPINGA": "6010",
         "MAPPINGP": "6010",
         "DESCRIPTION": "Tsunami",
         "WIDTH": "36",
@@ -3195,6 +3205,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*CA----*****",
+        "MAPPINGA": "6011",
         "MAPPINGP": "6011",
         "DESCRIPTION": "Bird Infestation",
         "WIDTH": "40",
@@ -3202,6 +3213,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*CB----*****",
+        "MAPPINGA": "6012",
         "MAPPINGP": "6012",
         "DESCRIPTION": "Insect Infestation",
         "WIDTH": "44",
@@ -3209,6 +3221,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*CC----*****",
+        "MAPPINGA": "6013",
         "MAPPINGP": "6013",
         "DESCRIPTION": "Microbial Infestation",
         "WIDTH": "40",
@@ -3216,6 +3229,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*CD----*****",
+        "MAPPINGA": "6014",
         "MAPPINGP": "6014",
         "DESCRIPTION": "Reptile Infestation",
         "WIDTH": "36",
@@ -3223,6 +3237,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
       },
       {
         "SYMBOLID": "E*N*CE----*****",
+        "MAPPINGA": "6015",
         "MAPPINGP": "6015",
         "DESCRIPTION": "Rodent Infestation",
         "WIDTH": "38",
