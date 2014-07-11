@@ -1777,40 +1777,9 @@ return{
                 count++;
             }
             
-            //process placemarks if necessary
-//            var altitudes = null;//List<Double>
-//            var JSONObject = symbolModifiers;
-//            if(JSONObject && JSONObject.symbolModifiers)
-//                JSONObject = JSONObject.symbolModifiers;
-//                
-//            if (JSONObject) 
-//            {
-//                if(JSONObject.X)
-//                {
-//                    altitudes = JSONObject.X;//Array()
-//                }
-//                else if(JSONObject.ALTITUDE_DEPTH)
-//                {
-//                    altitudes = JSONObject.ALTITUDE_DEPTH;//Array()
-//                }
-//            }
-//            
-//            var Xcount = altitudes.length-1;
-//            if(Xcount>0)
-//            {
-//                maxAlt = altitudes[Xcount];
-//                //cycle through placemarks and add altitude
-//                var temp;
-//                for(var j = 0; j<placemarks.length;j++)
-//                {
-//                    temp = placemarks[j];
-//                    temp.replace("</coordinates>", "," + maxAlt + "</coordinates>");
-//                    placemarks[j] = temp;
-//                }
-//            }
             
             var sb = "";
-            for(var k = 1; k<placemarks.length;k++)
+            for(var k = 0; k<placemarks.length;k++)
             {
                 sb += (placemarks[k]);
             }
