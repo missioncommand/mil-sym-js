@@ -462,12 +462,11 @@ return{
             jsonContent = "",
             rect = null,
             tgPoints = null,
-            coordinates = controlPoints.split(" "),
+            coordinates = null,
             tgl = new armyc2.c2sd.JavaTacticalRenderer.TGLight(),
             shapes = new Array(),
             modifiers = new Array(),
             geoCoords = new Array(),
-            len = coordinates.length,
             ipc = null,
             left = 0,
             right = 0,
@@ -588,10 +587,13 @@ return{
         }
         
         var tempPt = null;
+        coordinates = controlPoints.trim();
+        coordinates = coordinates.split(" ");
+        var len = coordinates.length;
         for (var i = 0; i < len; i++) {
             var coordPair = coordinates[i].split(",");
-            var latitude = coordPair[1].trim();
-            var longitude = coordPair[0].trim();
+            var latitude = coordPair[1];//.trim();
+            var longitude = coordPair[0];//.trim();
             tempPt = new armyc2.c2sd.graphics2d.Point2D();
             tempPt.setLocation(longitude, latitude);
             geoCoords.push(tempPt);
@@ -802,7 +804,7 @@ return{
             jsonContent = "",
             rect = null,
             tgPoints = null,
-            coordinates = controlPoints.split(" "),
+            coordinates = null,
             tgl = new armyc2.c2sd.JavaTacticalRenderer.TGLight(),
             shapes = new Array(),
             modifiers = new Array(),
@@ -829,14 +831,16 @@ return{
             return "ERROR - Bad bbox value: " + bbox;
         }
         
-        var len = coordinates.length;
         var tempPt = null;
+        coordinates = controlPoints.trim();
+        coordinates = coordinates.split(" ");
+        var len = coordinates.length;
         
         for (var i = 0; i < len; i++) 
         {
             var coordPair = coordinates[i].split(",");
-            var latitude = coordPair[1].trim();
-            var longitude = coordPair[0].trim();
+            var latitude = coordPair[1];//.trim();
+            var longitude = coordPair[0];//.trim();
             tempPt = new armyc2.c2sd.graphics2d.Point2D();
             tempPt.setLocation(longitude, latitude);
             geoCoords.push(tempPt);
