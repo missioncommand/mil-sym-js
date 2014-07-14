@@ -192,7 +192,6 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                 symbolId === ("AAF---") ||
                 symbolId === ("AAH---") ||
                 symbolId === ("AAM---") ||
-                symbolId === ("AAF---") ||
                 symbolId === ("AAML--") ||
                 symbolId === ("AAMH--"))
             {                        
