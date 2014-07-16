@@ -50,6 +50,10 @@ return{
             textInfoContext.lineJoin = "miter";
             textInfoContext.miterLimit = 3;
         }
+        else if(!(textInfoContext))
+        {
+            textInfoContext = {};//for IE8
+        }
         if(textInfoContextFont !== RendererSettings.getModifierFont())
         {
             textInfoContextFont = RendererSettings.getModifierFont();

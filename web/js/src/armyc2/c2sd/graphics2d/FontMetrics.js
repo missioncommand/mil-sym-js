@@ -4,15 +4,30 @@ armyc2.c2sd.graphics2d = armyc2.c2sd.graphics2d || {};
 armyc2.c2sd.graphics2d.FontMetrics = function(font) {
     var _fontRenderContext = null;
     var _font = null;
-    if (font)
+    /*if (font)
         _font = font;
     else
-        _font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
+        _font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();//*/
+    
+    //GE default
+    //_font = "normal 16pt Arial";//
+    _font = "normal 12pt Arial";//12 works well at high scales
+    //_font = "normal 14pt Arial";//14 works better zoomed in close
+    //TODO: perhaps, based on scale, change the font size that we're trying to 
+    //get the metrics for as GE seems to use a smaller font zoomed out and
+    // a slightly larger one at some point when zoomed in.
     
     var textInfoBuffer = document.createElement('canvas');
     textInfoBuffer.width = 1;
     textInfoBuffer.height = 1;
-    this.textInfoContext = textInfoBuffer.getContext('2d');
+    if(textInfoBuffer.getContext)
+    {
+        this.textInfoContext = textInfoBuffer.getContext('2d');
+    }
+    else
+    {
+        this.textInfoContext = {};
+    }
     this.textInfoContext.font = _font;
     this.stringWidth = function(str) 
     {
@@ -34,7 +49,7 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
         //Issue being we can't ask google earth for what font it is using.
         var fontName = "Arial";//RendererSettings.getModifierFontName();
         var fontStyle = "normal";//RendererSettings.getModifierFontStyle();
-        var fontSize = 16;//RendererSettings.getModifierFontSize();
+        var fontSize = 12;//RendererSettings.getModifierFontSize();
         var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight(fontName, fontSize, fontStyle).fullHeight;
         stringHeight = height;
         

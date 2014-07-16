@@ -13,9 +13,25 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
     var _canvas = document.createElement("canvas");
     _canvas.width = 100;
     _canvas.height = 100;
-    
-    var _ctx = _canvas.getContext('2d');
-    _ctx.textBaseline = 'top';
+
+    var _ctx = null;
+    if(_canvas.getContext)
+    {
+        _ctx = _canvas.getContext('2d');
+        _ctx.textBaseline = 'top';
+    }
+    else
+    {
+        //typcial renderer defaults
+        pastTextMeasurements["bold 9pt Arial, sans-serif"] = {width:0,height:10,descent:2,fullHeight:12};
+        pastTextMeasurements["bold 10pt Arial, sans-serif"] = {width:0,height:11,descent:3,fullHeight:14};
+        pastTextMeasurements["bold 12pt Arial, sans-serif"] = {width:0,height:13,descent:3,fullHeight:16};
+        pastTextMeasurements["bold 9pt Arial, serif"] = {width:0,height:10,descent:2,fullHeight:12};
+        pastTextMeasurements["bold 10pt Arial, serif"] = {width:0,height:11,descent:3,fullHeight:14};
+        pastTextMeasurements["bold 12pt Arial, serif"] = {width:0,height:13,descent:3,fullHeight:16};        
+        //GE default font
+        pastTextMeasurements["normal 16pt Arial"] = {width:0,height:16,descent:4,fullHeight:20};        
+    }
     
     //private functions
     function scanForCharTopAndBottom(pixels,width,height,widthLimit)
@@ -59,7 +75,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
     /**
      * 
      * @param {type} font
-     * @param {string} text, include if you want a width value
+     * @param {string} text include if you want a width value
      * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.end|Number|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.row|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.height|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.start}
      */
     function getFontWidthHeightAndDescent(font,text)
@@ -133,6 +149,70 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             return size;//*/
     };
     
+    
+    function measureTextIE8(fontName, fontSize, fontStyle, text){
+        var doc = document;
+        var div = doc.createElement('DIV');
+            div.innerHTML = text;
+            div.style.position = 'absolute';
+            div.style.top = '-999px';
+            //div.style.left = '-999px';
+            div.style.fontFamily = fontName;
+            div.style.fontWeight = fontStyle ? 'bold' : 'normal';
+            div.style.fontSize = fontSize + 'pt';
+            doc.body.appendChild(div);
+            var size = [div.offsetWidth, div.offsetHeight];
+            
+            doc.body.removeChild(div);
+            div = null;
+            
+            var textWidth = size[0],
+                fullHeight = size[1],
+                height = 0,
+                descent =  0;
+        var font = fontStyle + " " + fontSize + "pt " + fontName;
+        if(pastTextMeasurements[font])
+        {
+            fontSize = pastTextMeasurements[font];
+            fullHeight = fontSize.fullHeight;
+            height = fontSize.height;
+            descent = fontSize.descent;
+        }
+        else
+        {
+            fontSize = pastTextMeasurements[font];
+            fullHeight = Math.round(fullHeight * 0.9);
+            height = Math.round(fullHeight * 0.7);
+            descent = Math.round(fullHeight * 0.2);
+        }
+            
+        return {width:textWidth,height:height,descent:descent,fullHeight:fullHeight};
+    };
+    
+    function splitFontString(font)
+    {
+        if(!(font))
+        {
+            font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();
+        }
+        var arrFont = font.split(" "),
+        fontStyle = arrFont[0],//style
+        fontSize = arrFont[1].replace("pt",""),//size
+        fontName = arrFont[2];//name
+
+        if(arrFont.length > 3)
+        {
+            var backupFonts = arrFont.slice(3);
+
+            for(var i = 0; i < backupFonts.length; i++)
+            {
+                fontName += " " + backupFonts[i];
+            }
+        }
+        
+        return {fontName:fontName, fontSize:fontSize, fontStyle:fontStyle};
+    }
+    
 return{    
     
 	/**
@@ -187,6 +267,7 @@ return{
      * @param {Number} fontSize like 12
      * @param {String} fontStyle like "bold"
      * @param {String} text include if you want a width value.
+     * @param {HTML5 context}
      * @returns {Object} {width:Number,height:Number,descent:Number,fullHeight:Number}
      */
      measureText: function(fontName, fontSize, fontStyle, text,ctx){
@@ -208,11 +289,12 @@ return{
      */
      measureTextWithFontString: function(font, text, ctx){
         var size;
+        var objFont;
         if(pastTextMeasurements[font])
         {
             size = pastTextMeasurements[font];
 
-            if(text)
+            if(text && _ctx)
             {
                 if(!(ctx))
                 {
@@ -221,19 +303,34 @@ return{
                     height = 100;
                     canvas.width = width;
                     canvas.height = height;//*/
-                    ctx.font = font;
                     var ctx = canvas.getContext('2d');
+                    ctx.font = font;
+                    
                 }
 
                 size.width = ctx.measureText(text).width;
             }
+            else if(text)
+            {
+                objFont = splitFontString(font);
+                size.width = measureTextIE8(objFont.fontName, objFont.fontSize, objFont.fontStyle, text).width;
+            }
             else
+            {
                 size.width = 0;
-
+            }
         }
         else
         {
-            size = getFontWidthHeightAndDescent(font,text,ctx);
+            if(_ctx)
+            {
+                size = getFontWidthHeightAndDescent(font,text,ctx);
+            }
+            else
+            {
+                objFont = splitFontString(font);
+                size.width = measureTextIE8(objFont.fontName, objFont.fontSize, objFont.fontStyle, text).width;
+            }
             pastTextMeasurements[font] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};
         }
         return size;
@@ -249,10 +346,9 @@ return{
      */
     measureTextHeight: function(fontName, fontSize, fontStyle)
     {
-        var fontString = fontStyle + " " + fontSize + "pt " + fontName;
-        var size = this.measureTextHeightWithFontString(fontString);
-        
-        return size;
+            var fontString = fontStyle + " " + fontSize + "pt " + fontName;
+            var size = this.measureTextHeightWithFontString(fontString);
+            return size;
     },
     
     /**
@@ -268,8 +364,16 @@ return{
             return pastTextMeasurements[fontString];
         }
         
-        size = getFontWidthHeightAndDescent(fontString);
-        pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};
+        if(_ctx)
+        {
+            size = getFontWidthHeightAndDescent(fontString);
+            pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};
+        }
+        else
+        {   var objFont = splitFontString(fontString);
+            size = measureTextIE8(objFont.fontName, objFont.fontSize, objFont.fontStyle, "text");
+            pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};
+        }
         return size;
     },
 
@@ -283,14 +387,22 @@ return{
     measureTextWidthWithFontString: function(text, context,fontString){
         var width;
         
-        if(context !== null)
+        if(_ctx)
         {
-            width = context.measureText(text).width;
+            if(context !== null)
+            {
+                width = context.measureText(text).width;
+            }
+            else
+            {
+                _ctx.font = fontString;
+                width = _ctx.measureText(text).width;
+            }
         }
         else
         {
-            _ctx.font = fontString;
-            width = _ctx.measureText(text).width;
+            var objFont = splitFontString(fontString);
+            width = measureTextIE8(objFont.fontName, objFont.fontSize, objFont.fontStyle, "text").width;
         }
         return width;
     },
@@ -339,23 +451,33 @@ return{
             width,
             bounds;
 
-
-        if(font)
+        if(_ctx)
         {
-            size = this.measureTextWithFontString(font,text,context);
+            if(font)
+            {
+                size = this.measureTextWithFontString(font,text,context);
+            }
+            else
+            {
+                size = this.measureTextWithFontString(context.font,text,context);
+            }
+
+            height = size.height;
+            fullHeight = size.fullHeight;
+            descent = size.descent;
+            width = size.width;
+
+            bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
+                                Math.round(width), fullHeight);  
         }
-        else
+        else // most likely for IE8
         {
-            size = this.measureTextWithFontString(context.font,text,context);
+            var objFont = splitFontString(font);
+            
+            size = measureTextIE8(objFont.fontName, objFont.fontSize, objFont.fontStyle, text);
+            bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - size.height,
+                                size.width, size.fullHeight);  
         }
-
-        height = size.height;
-        fullHeight = size.fullHeight;
-        descent = size.descent;
-        width = size.width;
-
-        bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
-                            Math.round(width), fullHeight);       
 
         return bounds;
     },
@@ -383,7 +505,14 @@ return{
             return pastTextMeasurements[fontString].descent;
         }
         
-        size = this.measureText(fontName, fontSize, fontStyle);
+        if(_ctx)
+        {
+            size = this.measureText(fontName, fontSize, fontStyle);
+        }
+        else
+        {
+            size = measureTextIE8(fontName, fontSize, fontStyle,"");
+        }
         pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};//size[1];
         return size.descent;//size[1];
     },
