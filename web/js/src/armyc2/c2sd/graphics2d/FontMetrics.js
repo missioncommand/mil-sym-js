@@ -10,7 +10,7 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
         _font = armyc2.c2sd.renderer.utilities.RendererSettings.getModifierFont();//*/
     
     //GE default
-    //_font = "normal 16pt Arial";//
+    //_font = "normal 16pt Arial";//this is the default but it seems to change with scale.
     _font = "normal 12pt Arial";//12 works well at high scales
     //_font = "normal 14pt Arial";//14 works better zoomed in close
     //TODO: perhaps, based on scale, change the font size that we're trying to 
