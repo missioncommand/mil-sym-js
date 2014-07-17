@@ -115,7 +115,7 @@ return{
                         modifiers);
             
                 //get modifiers/////////////////////////////////////////////////
-                var modifierKML = sec.web.renderer.MultiPointHandler.getModififerKML(id, name, description, symbolCode, controlPoints,
+                var modifierKML = sec.web.renderer.MultiPointHandler.getModifierKML(id, name, description, symbolCode, controlPoints,
                         scale, bbox, modifiers, format,symStd);
 
                 modifierKML += "</Folder>";

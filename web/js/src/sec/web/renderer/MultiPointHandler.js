@@ -99,6 +99,16 @@ sec.web.renderer.MultiPointHandler = (function () {
                 return {hasRequiredModifiers:true,message:true};
             }
         }
+        /*else if(dc === SymbolDefTable.DRAW_CATEGORY_LINE  && (symbolID.substring(4,6) === ("AL")))
+        {
+            if(AM !== null && AM.length > 0)
+                return {hasRequiredModifiers:true,message:true};
+            else
+            {
+                message += symbolID + " should have, but does not require, a modifiers object that has 1 distance/AM value in meters.";
+                return {hasRequiredModifiers:true,message:message};
+            }
+        }//*/
         else
         {
             //no required parameters
@@ -695,6 +705,16 @@ return{
                 }//*/
                 jsonOutput = jsonContent;
             }
+            else if (format === 2) 
+            {
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize);
+                jsonContent.properties.id = id;
+                jsonContent.properties.name = name;
+                jsonContent.properties.description = description;
+                jsonContent.properties.symbolID = symbolCode;
+                //set id and any other properties
+                jsonOutput = JSON.stringify(jsonContent);
+            }
         } 
         catch (exc) 
         {
@@ -918,6 +938,13 @@ return{
                 }
                 jsonOutput = jsonContent;
             }
+            else if (format === 2) 
+            {
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize);
+                //set id and any other properties
+                jsonOutput = JSON.stringify(jsonContent);
+            }
+            
         } catch (err) {            
             jsonOutput = "";
             jsonOutput += ("{\"type\":\"MultiPointHandler\",\"RenderSymbol2D\":\"There was an error creating the MilStdSymbol " + symbolCode + ": " + "- ");
@@ -1329,6 +1356,38 @@ return{
         }
         return jstr;
     },
+    GeoJSONize: function(shapes, modifiers, ipc, normalize)
+    {
+        var featureCollection = {"type":"FeatureCollection","features":[]};
+        try
+        {
+            var len = shapes.size();
+            for (var i = 0; i < len; i++) 
+            {
+                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToGeoJSONString(shapes.get(i), ipc, normalize);
+                featureCollection.features.push(shapesToAdd);
+            }
+            
+            var tempModifier, len2 = modifiers.size();
+            for (var j = 0; j < len2; j++) {
+                tempModifier = modifiers.get(j);
+
+                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize);
+                
+                
+            }//*/
+            if(labelsToAdd)
+            {
+                featureCollection.properties = {};
+                featureCollection.properties.labels = labelsToAdd;
+            }
+        }
+        catch(err)
+        {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","JSONize",err);
+        }
+        return featureCollection;
+    },
     IsOnePointSymbolCode:function(symbolCode)        
     {   
         var symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
@@ -1648,6 +1707,76 @@ return{
         }
         return JSONed;
     },
+    
+    ShapeToGeoJSONString: function(shapeInfo, ipc, normalize)
+    {
+        var JSONed = "";
+        var fillColor = null;
+        var lineColor = null;
+        
+        var feature = {};
+        feature.type = "Feature";
+        feature.properties = {};
+        var geometry = {};
+        if (shapeInfo.getLineColor() !== null) {
+            lineColor = shapeInfo.getLineColor().toHexString();
+            feature.properties.lineColor = lineColor;
+            geometry["type"] = "MultiLineString";
+        }
+        if (shapeInfo.getFillColor() !== null) {
+            fillColor = shapeInfo.getFillColor().toHexString();
+            feature.properties.fillColor = fillColor;
+            geometry["type"] = "Polygon";
+        }
+        
+        var stroke = null;
+        stroke = shapeInfo.getStroke();
+        var lineWidth = 4;
+        if (stroke !== null) {
+            lineWidth = Math.round(stroke.getLineWidth());
+        }
+        feature.properties.lineWidth = lineWidth;
+        
+        
+        //geometry["coordinates"] = [[x,y],[xn,yn]];
+        var coords = [];
+        var line;
+        var shapesArray = shapeInfo.getPolylines();
+        for (var i = 0; i < shapesArray.size(); i++) 
+        {
+            var shape = shapesArray.get(i);
+            
+            normalize = this.normalizePoints(shape,ipc);
+            
+            line = [];
+            for (var j = 0; j < shape.size(); j++) {
+                var coord = shape.get(j);
+                var geoCoord = ipc.PixelsToGeo(coord);
+                if (normalize)
+                    geoCoord = this.NormalizeCoordToGECoord(geoCoord);
+                var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
+                var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                
+                latitude = parseFloat(latitude);
+                longitude = parseFloat(longitude);
+                
+                //fix for fill crossing DTL
+                if(normalize && fillColor !== null)
+                {
+                    if(longitude > 0)
+                    {
+                        longitude -= 360;
+                    }
+                }
+                
+                line.push([longitude,latitude]);
+            }
+            coords.push(line);
+        }
+        geometry["coordinates"] = coords;
+        feature["geometry"] = geometry;
+        return feature;
+    },
             
     LabelToKMLString: function(id, i, shapeInfo, ipc, normalize)
     {
@@ -1725,7 +1854,30 @@ return{
         }
         return JSONed;
     },
-            
+    LabelToGeoJSONString: function(shapeInfo, ipc, normalize)
+    {
+        var labelInfo = null;
+        var JSONed = ("{\"label\":");
+        var coord = new armyc2.c2sd.graphics2d.Point2D();
+        coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
+        var geoCoord = ipc.PixelsToGeo(coord);
+        if (normalize)
+            geoCoord = this.NormalizeCoordToGECoord(geoCoord);
+        var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
+        var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+        latitude = parseFloat(latitude);
+        longitude = parseFloat(longitude);
+        var angle = shapeInfo.getModifierStringAngle();
+        coord.setLocation(longitude, latitude);
+        shapeInfo.setGlyphPosition(coord);
+        var text = shapeInfo.getModifierString();
+        if (text !== null && text !== ("")) {
+            labelInfo = {"text":text,"angle":angle,"coordinates":[longitude,latitude]};
+        } else {
+            return null;
+        }
+        return labelInfo;
+    },      
     /**
      * Basically renders the symbol with the 2d renderer than pulls out
      * just the label placemarks.  Altitudes are then added so that will place
@@ -1742,7 +1894,7 @@ return{
      * @param symStd Number
      * @return string
      */
-    getModififerKML: function(id,
+    getModifierKML: function(id,
             name,
             description,
             symbolCode,
@@ -1793,7 +1945,7 @@ return{
         }
         catch(err)
         {
-            ErrorLogger.LogException("MultiPointHandler","getModififerKML",err);
+            ErrorLogger.LogException("MultiPointHandler","getModifierKML",err);
         }
         
         return output;
