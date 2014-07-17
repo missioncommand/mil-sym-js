@@ -1929,10 +1929,11 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                         }
                         break;
                     case 32273000:
-                        if (i === array.size() - 2) {
-                            if (splinePoints.size() >= 2)
-                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
-                        } else if (i === 0 && splinePoints.size() > 1) {
+//                        if (i === array.size() - 2) {
+//                            if (splinePoints.size() >= 2)
+//                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
+//                        } 
+                        if (i === 0 && splinePoints.size() > 1) {
                             pt0 = splinePoints.get(0);
                             pt1 = splinePoints.get(1);
                             pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pt0, pt1, 10);
@@ -1945,6 +1946,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                             lineObject.moveTo(pt4.x, pt4.y);
                             lineObject.lineTo(pt6.x, pt6.y);
                         }
+                        if (i === array.size() - 2) {
+                            if (splinePoints.size() >= 2)
+                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
+                        } 
                         break;
                     case 31440000:
                     case 31430000:
@@ -1953,14 +1958,15 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                         }
                         break;
                     case 32273001:
-                        if (i === array.size() - 2) {
-                            lineObject.moveTo(Math.floor(splinePoints2.get(0).x), Math.floor(splinePoints2.get(0).y));
-                            for (j = 1; j < splinePoints2.size (); j++)
-                                lineObject.lineTo(Math.floor(splinePoints2.get(j).x), Math.floor(splinePoints2.get(j).y));
-
-                            if (splinePoints.size() >= 2)
-                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
-                        } else if (i === 0 && splinePoints.size() > 1) {
+//                        if (i === array.size() - 2) {
+//                            lineObject.moveTo(Math.floor(splinePoints2.get(0).x), Math.floor(splinePoints2.get(0).y));
+//                            for (j = 1; j < splinePoints2.size (); j++)
+//                                lineObject.lineTo(Math.floor(splinePoints2.get(j).x), Math.floor(splinePoints2.get(j).y));
+//
+//                            if (splinePoints.size() >= 2)
+//                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
+//                        } 
+                        if (i === 0 && splinePoints.size() > 1) {
                             pt0 = splinePoints.get(0);
                             pt1 = splinePoints.get(1);
                             pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pt0, pt1, 10);
@@ -1973,6 +1979,14 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                             lineObject.moveTo(pt4.x, pt4.y);
                             lineObject.lineTo(pt6.x, pt6.y);
                         }
+                        if (i === array.size() - 2) {
+                            lineObject.moveTo(Math.floor(splinePoints2.get(0).x), Math.floor(splinePoints2.get(0).y));
+                            for (j = 1; j < splinePoints2.size (); j++)
+                                lineObject.lineTo(Math.floor(splinePoints2.get(j).x), Math.floor(splinePoints2.get(j).y));
+
+                            if (splinePoints.size() >= 2)
+                                armyc2.c2sd.JavaTacticalRenderer.clsMETOC.DrawArrow(splinePoints.get(splinePoints.size() - 2), tg.Pixels.get(tg.Pixels.size() - 1), 10, lineObject);
+                        } 
                         break;
                     case 32272001:
                         if (i === array.size() - 2) {
