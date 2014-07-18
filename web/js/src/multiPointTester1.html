@@ -4,7 +4,7 @@
 <!-- Meta line required for IE-->
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
 
-<script src="include-mp.js" type="text/javascript" ></script>
+<script src="include-mpsp.js" type="text/javascript" ></script>
 
 
  <script type = "text/javascript">
@@ -55,7 +55,7 @@ foo.append("ing");
 console.log(foo);
 console.log(foo.toString());*/
 
-        
+        var hold;
 armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","AMBUSH");
         var modifiers = "";
         //AMBUSH EXAMPLE
@@ -67,13 +67,15 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //var bbox = "-180.0,-90.0,180.0,90.0";
         var scale = 50000.0;
 		
+		var formatGeoJSON = 2;
 		var formatJSON = 1;
 		var formatKML = 0;
 		var pixelWidth = 800;
 		var pixelHeight = 600;
 		
 		//change this to format JSON to see the different output.
-		var format = formatJSON;
+		var format = formatGeoJSON;
+		//var format = formatJSON;
 		//var format = formatKML;
 		
 		
@@ -97,13 +99,15 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 
 		document.getElementById("contentSpan").innerHTML = "<br />AMBUSH:   <br/>";
 
-		if(format == formatJSON)
+		if(format == formatJSON || format == formatGeoJSON)
 		{
 			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
 			if (json == null || json == "")
 				document.getElementById("contentSpan").innerHTML += "json empty";
 			else
 				document.getElementById("contentSpan").innerHTML +=  json;
+				
+			hold = json;
 		}
 		else// if formated as KML
 		{
@@ -116,7 +120,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 			{
 				var formattedKML = "";
 				
-				formattedKML = formatKMLForHTML(json3);
+				formattedKML = formatKMLForHTML(json);
 				
 				document.getElementById("contentSpan").innerHTML += formattedKML;
 				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
@@ -144,6 +148,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		
 		//format = formatJSON;
 		format = formatKML;
+		format = formatGeoJSON;
 		var json2;
 		start = Date.now();
 		if(format == formatKML)
@@ -445,7 +450,12 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		document.getElementById("contentSpan").innerHTML += timeC;
                 //*/
         ////////////////////////////////////////////////////////////////////////////////////////
-		
+	//getsinglepointinfo test	
+        var offsets = rendererMP.getSinglePointInfoBatch("{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}");
+        console.log(offsets);
+        console.log(JSON.stringify({"test":123,"test2":456}));
+		console.log(hold);
+                
     } //end if
 }
 

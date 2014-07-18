@@ -2359,6 +2359,8 @@ return{
         var symbolWidth = Math.round(symbolBounds.getWidth()) + (outlineOffset*2),
             symbolHeight = Math.round(symbolBounds.getHeight()) + (outlineOffset*2);
     
+        var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
+    
         if(render === true)
         {
             if(hasDisplayModifiers === true || hasTextModifiers === true)
@@ -2386,12 +2388,13 @@ return{
         x = centerPoint.getX();
         y = centerPoint.getY();
         
+        
         if(outlineOffset>0)
         {
+            centerPoint.shift(outlineOffset,outlineOffset);
             x += outlineOffset;
             y += outlineOffset;
             symbolBounds.shift(outlineOffset,outlineOffset);
-            symbolBounds.grow(outlineOffset);
         }
         
         //do outline first if present
@@ -2420,11 +2423,7 @@ return{
             }
         }
 
-        
-        var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
-        
-        //var centerPoint = new SO.Point(Math.round(symbolWidth/2),Math.round(symbolHeight/2));
-        
+                
         var ii = new ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
         
         //Process Modifiers
