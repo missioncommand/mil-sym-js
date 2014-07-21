@@ -149,7 +149,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         };
         /**
          * Grow the rectangle by this many pixels in every direction
-         * @param {type} pixel
+         * @param {Number} pixel
          * @returns {void}
          */
         armyc2.c2sd.renderer.so.Rectangle.prototype.grow = function (pixel){

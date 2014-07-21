@@ -133,6 +133,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 var ratio = fontSize/60;
                 
                 rect = new Rectangle(0,0,Math.round(rect.width*ratio), Math.round(rect.height*ratio));
+                //rect = new Rectangle(0,0,Math.ceil(rect.width*ratio), Math.ceil(rect.height*ratio));
         }
 
         return rect; 
