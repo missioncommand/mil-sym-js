@@ -2440,11 +2440,11 @@ return{
             if(SymbolUtilities.isTGSPWithSpecialModifierLayout(symbolID) || 
                 SymbolUtilities.isTGSPWithIntegralText(symbolID))
             {
-                iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers);
+                iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers, lineColor);
             }
             else 
             {
-                iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers);
+                iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers, lineColor);
             }
 
         }
@@ -2467,9 +2467,10 @@ return{
      * @param {ImageInfo} ii
      * @param {String} symbolID
      * @param {Object} modifiers
+     * @param {String} overrideColor like "#000000"
      * @returns {ImageInfo}
      */        
-    ProcessTGSPWithSpecialModifierLayout: function(ii,symbolID,modifiers){
+    ProcessTGSPWithSpecialModifierLayout: function(ii,symbolID,modifiers, overrideColor){
     
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
@@ -3048,7 +3049,7 @@ return{
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
 
-                this.renderText(ctx,arrMods);
+                this.renderText(ctx,arrMods, overrideColor);
 
                 //draw DOM arrow
                 if(domBounds !== null)
@@ -3094,9 +3095,10 @@ return{
      * @param {ImageInfo} ii
      * @param {String} symbolID
      * @param {Object} modifiers
+     * @param {String} overrideColor like "#000000"
      * @returns {ImageInfo}
      */        
-    ProcessTGSPModifiers: function(ii,symbolID,modifiers){
+    ProcessTGSPModifiers: function(ii,symbolID,modifiers, overrideColor){
     
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
@@ -3334,7 +3336,7 @@ return{
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
 
-                this.renderText(ctx,arrMods);
+                this.renderText(ctx,arrMods, overrideColor);
             }
             newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
@@ -3483,26 +3485,38 @@ return{
     {
         var scheme = symbolID.charAt(0);
         var status = symbolID.charAt(3);
-        if(scheme !== "G" && scheme !== "W")
+        if(scheme !== "W")
         {
-            switch (status)
+            if(scheme !== "G" && (scheme !== "E" && SymbolUtilities.isEMSNaturalEvent(symbolID) === false))
             {
-                case "C":
-                case "D":
-                case "X":
-                case "F":
+                switch (status)
+                {
+                    case "C":
+                    case "D":
+                    case "X":
+                    case "F":
+                        return true;
+                        break;  
+                }
+
+                if(symbolID.substring(10,12)==="--" || symbolID.substring(10,12)==="**" || modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT])
+                {
                     return true;
-                    break;  
+                }
+            }   
+            else 
+            {
+                if(SymbolUtilities.isNBC(symbolID) === true && modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT])
+                {
+                    return true;
+                }
             }
-        }
-                
-        if((symbolID.substring(10,12)==="--" || symbolID.substring(10,12)==="**" )&& 
-                modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] === undefined)
-        {
+            
             return false;
         }
         else
-            return true;
+            return false;
+        
     },
             
     hasTextModifiers: function(symbolID, modifiers)
@@ -3514,15 +3528,21 @@ return{
         {
             var basic = SymbolUtilities.getBasicSymbolID(symbolID);
             var sd = SymbolDefTable.getSymbolDef(basic);
-            var tgSpecificKeys = sd.modifiers.split(".");//modifiers for this specific symbol
-            var len = _tgTextModifierKeys.length;
-            for(var i=0; i<len; i++)
+            
+            //var len = _tgTextModifierKeys.length;
+            if(sd.modifiers && sd.modifiers !== "")
             {
-                if(modifiers[tgSpecificKeys[i]] !== undefined)
-                    return true;
+                var tgSpecificKeys = sd.modifiers.split(".");//modifiers for this specific symbol
+                var len = tgSpecificKeys.length;
+            
+                for(var i=0; i<len; i++)
+                {
+                    if(modifiers[tgSpecificKeys[i]] !== undefined)
+                        return true;
+                }
             }
         }
-        else
+        else if(SymbolUtilities.isEMSNaturalEvent(symbolID) === false)
         {
             
             var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
@@ -3532,6 +3552,9 @@ return{
             
             if(SymbolUtilities.hasValidCountryCode(symbolID))
                 return true;
+            
+            if(SymbolUtilities.isEMSNaturalEvent(symbolID))
+                return false;
 
             var len = _unitTextModifierKeys.length;
             for(var j=0; j<len; j++)
@@ -3547,9 +3570,10 @@ return{
      * renders modifier text to a canvas
      * @param {type} ctx html5 canvas context object
      * @param {type} tiArray array of TextInfo.js objects
+     * @param {type} color a hex string "#000000"
      * @returns {void}
      */
-    renderText: function(ctx, tiArray)
+    renderText: function(ctx, tiArray, color)
     {
         ctx.lineCap = "butt";
         ctx.lineJoin = "miter";
@@ -3558,7 +3582,7 @@ return{
         ctx.lineJoin = "round";
         ctx.miterLimit = 3;*/
 
-        ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(ctx.fillStyle);
+        
         ctx.font = RendererSettings.getModifierFont();
 
         var size = tiArray.length,
@@ -3567,8 +3591,14 @@ return{
             tbm = RendererSettings.getTextBackgroundMethod(),
             outlineWidth = RendererSettings.getTextOutlineWidth();
     
-        if(RendererSettings.getLabelForegroundColor() !== null)
-                fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+        if(color)
+        {
+            fillStyle = color;
+        }
+        else if(RendererSettings.getLabelForegroundColor() !== null)
+        {
+            fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+        }   
 
         var outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
 
