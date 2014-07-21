@@ -16,7 +16,8 @@ armyc2.c2sd.renderer.SinglePointRenderer = (function () {
         SymbolDimensions = armyc2.c2sd.renderer.utilities.SymbolDimensions,
         ModifiersUnits = armyc2.c2sd.renderer.utilities.ModifiersUnits,
         ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG,
-        SinglePointLookup = armyc2.c2sd.renderer.utilities.SinglePointLookup;
+        SinglePointLookup = armyc2.c2sd.renderer.utilities.SinglePointLookup,
+        SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
     //var UDT = armyc2.c2sd.renderer.utilities.UnitDefTable;
     
     var textInfoBuffer = null,
@@ -75,6 +76,9 @@ return{
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
+        var buffer = null,
+            ctx = null;
+        
         if(render && _bufferUnit === null)
         {
             _bufferUnit = this.createBuffer(_bufferUnitSize,_bufferUnitSize);
@@ -82,6 +86,7 @@ return{
             ctx.lineCap = "butt";
             ctx.lineJoin = "miter";
             ctx.miterLimit = 3;
+            ctx = null;
         }
         
         
@@ -106,9 +111,7 @@ return{
             symbol1 = (mapping1 !==null) ? String.fromCharCode(mapping1) : null,
             symbol2 = (mapping2 !==null) ? String.fromCharCode(mapping2) : null,
             color1 = ufli.getColor1(),
-            color2 = ufli.getColor2(),
-            buffer = null,
-            ctx = null;
+            color2 = ufli.getColor2();
     
         var hasDisplayModifiers = false;
         var hasTextModifiers = false;
@@ -2141,13 +2144,17 @@ return{
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
+        var buffer = null,
+            ctx = null;
+        
         if(_bufferSymbol === null)
         {
             _bufferSymbol = this.createBuffer(_bufferSymbolSize,_bufferSymbolSize);
-            ctx = _bufferSymbol.getContext('2d');
+            var ctx = _bufferSymbol.getContext('2d');
             ctx.lineCap = "butt";
             ctx.lineJoin = "miter";
             ctx.miterLimit = 3;
+            ctx = null;
         }
 
         var fontSize = 60;
@@ -2170,8 +2177,7 @@ return{
         var hasTextModifiers = false;
         var symbolOutlineWidth = RendererSettings.getSinglePointSymbolOutlineWidth();
         
-        var buffer = null,
-            ctx = null;
+        
         
         // <editor-fold defaultstate="collapsed" desc="Parse Modifiers">
         //determine font size necessary to match desired pixel size/////////////
@@ -2395,6 +2401,7 @@ return{
             x += outlineOffset;
             y += outlineOffset;
             symbolBounds.shift(outlineOffset,outlineOffset);
+            symbolBounds.grow(outlineOffset);
         }
         
         //do outline first if present
@@ -3505,10 +3512,13 @@ return{
             return false;
         if(scheme==="G")
         {
+            var basic = SymbolUtilities.getBasicSymbolID(symbolID);
+            var sd = SymbolDefTable.getSymbolDef(basic);
+            var tgSpecificKeys = sd.modifiers.split(".");//modifiers for this specific symbol
             var len = _tgTextModifierKeys.length;
             for(var i=0; i<len; i++)
             {
-                if(modifiers[_tgTextModifierKeys[i]] !== undefined)
+                if(modifiers[tgSpecificKeys[i]] !== undefined)
                     return true;
             }
         }
