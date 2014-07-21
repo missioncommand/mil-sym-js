@@ -692,7 +692,14 @@ return{
             } 
             else if (format === 0) 
             {
-                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, new Boolean(true), normalize);
+                var textColor = null;
+                if(symbolCode.charAt(0) === 'G')
+                {
+                    textColor = mSymbol.getLineColor().toKMLHexString();
+                    if(textColor === "#FF000000")
+                        textColor = "#FFFFFFFF";
+                }
+                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, new Boolean(true), normalize, textColor);
                 
                 //generate image fill kml if we have symbolfillids or symbollineids
                 if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined) 
@@ -1249,7 +1256,7 @@ return{
         return true;
     },
             
-    KMLize: function(id, name, description, symbolCode, shapes, modifiers, ipc, geMap, normalize)
+    KMLize: function(id, name, description, symbolCode, shapes, modifiers, ipc, geMap, normalize, textColor)
     {
         /*
         if(shapes instanceof java.util.ArrayList)
@@ -1279,7 +1286,7 @@ return{
                 tempModifier = modifiers.get(j);
                 if (geMap)
                     sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
-                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(id, j, tempModifier, ipc, normalize);
+                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(id, j, tempModifier, ipc, normalize, textColor);
                 kml += labelsToAdd;
             }
         }
@@ -1778,7 +1785,7 @@ return{
         return feature;
     },
             
-    LabelToKMLString: function(id, i, shapeInfo, ipc, normalize)
+    LabelToKMLString: function(id, i, shapeInfo, ipc, normalize, textColor)
     {
         var cdataStart = "<![CDATA[";
         var cdataEnd = "]]>";
@@ -1804,6 +1811,8 @@ return{
             kml += ("</Icon>");
             kml += ("</IconStyle>");
             kml += ("<LabelStyle>");
+            if(textColor)
+                kml += ("<color>" + textColor + "</color>");
             kml += ("<scale>.8</scale>");
             kml += ("</LabelStyle>");
             kml += ("</Style>");
