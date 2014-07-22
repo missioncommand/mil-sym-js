@@ -2264,10 +2264,10 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UUA---*****",
-        "DESCRIPTION": "Combat Support NBC",
+        "DESCRIPTION": "Combat Support CBRN",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC",
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN",
         "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support"
       },
       {
@@ -2275,112 +2275,112 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "DESCRIPTION": "Combat Support Chemical",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN"
       },
       {
         "SYMBOLID": "S*G*UUACC-*****",
         "DESCRIPTION": "Smoke/Decon",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMKDEC",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMKDEC",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical"
       },
       {
         "SYMBOLID": "S*G*UUACCK*****",
         "DESCRIPTION": "Mechanized Smoke/Decon",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.1.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMKDEC.MECH",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Smoke and Decon"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMKDEC.MECH",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Smoke and Decon"
       },
       {
         "SYMBOLID": "S*G*UUACCM*****",
         "DESCRIPTION": "Motorized Smoke/Decon",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.1.2",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMKDEC.MOT",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Smoke and Decon"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMKDEC.MOT",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Smoke and Decon"
       },
       {
         "SYMBOLID": "S*G*UUACS-*****",
         "DESCRIPTION": "Smoke",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.2",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMK",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMK",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical"
       },
       {
         "SYMBOLID": "S*G*UUACSM*****",
         "DESCRIPTION": "Motorized Smoke",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.2.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMK.MOT",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Smoke"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMK.MOT",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Smoke"
       },
       {
         "SYMBOLID": "S*G*UUACSA*****",
         "DESCRIPTION": "Armor Smoke",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.2.2",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.SMK.ARM",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Smoke"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.SMK.ARM",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Smoke"
       },
       {
         "SYMBOLID": "S*G*UUACR-*****",
         "DESCRIPTION": "Chemical Recon",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.3",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.RECON",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.RECON",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical"
       },
       {
         "SYMBOLID": "S*G*UUACRW*****",
         "DESCRIPTION": "Chemical Wheeled Armored Vehicle",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.3.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.RECON.WARMVH",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Chemical Recon"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.RECON.WARMVH",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Chemical Recon"
       },
       {
         "SYMBOLID": "S*G*UUACRS*****",
         "DESCRIPTION": "Chemical Wheeled Armored Vehicle Reconnaissance Surveillance",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.1.3.2",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.CML.RECON.WAVS",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support Chemical/Chemical Recon"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.CML.RECON.WAVS",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support Chemical/Chemical Recon"
       },
       {
         "SYMBOLID": "S*G*UUAN--*****",
         "DESCRIPTION": "Combat Support NBC Nuclear",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.2",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.NUC",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.NUC",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN"
       },
       {
         "SYMBOLID": "S*G*UUAB--*****",
         "DESCRIPTION": "Combat Support NBC Biological",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.3",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.BIO",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.BIO",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN"
       },
       {
         "SYMBOLID": "S*G*UUABR-*****",
         "DESCRIPTION": "Recon Equipped",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.3.1",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.BIO.RECEQP",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC/Combat Support NBC Biological"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.BIO.RECEQP",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN/Combat Support NBC Biological"
       },
       {
         "SYMBOLID": "S*G*UUAD--*****",
         "DESCRIPTION": "NBC Decontamination",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.4",
-        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.NBC.DECON",
-        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support NBC"
+        "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.DECON",
+        "PATH": "Warfighting Symbology/Ground Track/Unit/Combat Support/Combat Support CBRN"
       },
       {
         "SYMBOLID": "S*G*UUM---*****",
