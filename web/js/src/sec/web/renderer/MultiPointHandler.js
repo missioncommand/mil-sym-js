@@ -1475,7 +1475,10 @@ return{
             kml += ("<color>" + googleFillColor + "</color>");
             kml += ("<colorMode>normal</colorMode>");
             kml += ("<fill>1</fill>");
-            kml += ("<outline>0</outline>");
+            if(lineColor !== null)			
+                kml += ("<outline>1</outline>");
+            else
+                kml += ("<outline>0</outline>");
             kml += ("</PolyStyle>");
         }
         kml += ("</Style>");
@@ -1486,7 +1489,7 @@ return{
         for (var i = 0; i < len; i++) {
             var shape = shapesArray.get (i);
             normalize=sec.web.renderer.MultiPointHandler.normalizePoints(shape,ipc);
-            if (lineColor !== null) {
+            if (lineColor !== null && fillColor === null) {
                 kml += ("<LineString>");
                 kml += ("<tessellate>1</tessellate>");
                 kml += ("<altitudeMode>clampToGround</altitudeMode>");
