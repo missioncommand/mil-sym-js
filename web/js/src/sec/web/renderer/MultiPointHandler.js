@@ -1460,7 +1460,7 @@ return{
             stroke = shapeInfo.getStroke();
             if (stroke !== null) {
                 lineWidth = Math.round(stroke.getLineWidth());
-                lineWidth++;
+                //lineWidth++;
             }
             kml += ("<LineStyle>");
             kml += ("<color>" + googleLineColor + "</color>");
