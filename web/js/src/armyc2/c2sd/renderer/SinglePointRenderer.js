@@ -3499,7 +3499,7 @@ return{
                         break;  
                 }
 
-                if(symbolID.substring(10,12)==="--" || symbolID.substring(10,12)==="**" || modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT])
+                if((symbolID.substring(10,12)!=="--" && symbolID.substring(10,12)!=="**") || modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT])
                 {
                     return true;
                 }
