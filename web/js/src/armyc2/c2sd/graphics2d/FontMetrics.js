@@ -11,8 +11,9 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
     
     //GE default
     //_font = "normal 16pt Arial";//this is the default but it seems to change with scale.
-    _font = "normal 12pt Arial";//12 works well at high scales
+    //_font = "normal 12pt Arial";//12 works well at high scales
     //_font = "normal 14pt Arial";//14 works better zoomed in close
+    _font = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFont();
     //TODO: perhaps, based on scale, change the font size that we're trying to 
     //get the metrics for as GE seems to use a smaller font zoomed out and
     // a slightly larger one at some point when zoomed in.
@@ -47,9 +48,9 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
         //getTextBounds does 2 calculations.  Limit to what you need and just get height.
         //google earth defaults:
         //Issue being we can't ask google earth for what font it is using.
-        var fontName = "Arial";//RendererSettings.getModifierFontName();
-        var fontStyle = "normal";//RendererSettings.getModifierFontStyle();
-        var fontSize = 12;//RendererSettings.getModifierFontSize();
+        var fontName = RendererSettings.getMPModifierFontName();//"Arial";//
+        var fontStyle = RendererSettings.getMPModifierFontStyle();//"normal";//
+        var fontSize = RendererSettings.getMPModifierFontSize();//12;//
         var height = armyc2.c2sd.renderer.utilities.RendererUtilities.measureTextHeight(fontName, fontSize, fontStyle).fullHeight;
         stringHeight = height;
         

@@ -949,6 +949,10 @@ return{
             {
                 jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize);
                 //set id and any other properties
+                jsonContent.properties.id = id;
+                jsonContent.properties.name = name;
+                jsonContent.properties.description = description;
+                jsonContent.properties.symbolID = symbolCode;
                 jsonOutput = JSON.stringify(jsonContent);
             }
             
@@ -1365,7 +1369,7 @@ return{
     },
     GeoJSONize: function(shapes, modifiers, ipc, normalize)
     {
-        var featureCollection = {"type":"FeatureCollection","features":[]};
+        var featureCollection = {"type":"FeatureCollection","features":[],"properties":{}};
         try
         {
             var len = shapes.size();
@@ -1380,14 +1384,12 @@ return{
                 tempModifier = modifiers.get(j);
 
                 var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize);
-                
+                if(labelsToAdd)
+                {
+                    featureCollection.features.push(labelsToAdd);
+                }
                 
             }//*/
-            if(labelsToAdd)
-            {
-                featureCollection.properties = {};
-                featureCollection.properties.labels = labelsToAdd;
-            }
         }
         catch(err)
         {
@@ -1723,19 +1725,33 @@ return{
         var JSONed = "";
         var fillColor = null;
         var lineColor = null;
+        var alpha = 255;
         
         var feature = {};
         feature.type = "Feature";
         feature.properties = {};
+        feature.properties.label = "";
         var geometry = {};
         if (shapeInfo.getLineColor() !== null) {
-            lineColor = shapeInfo.getLineColor().toHexString();
-            feature.properties.lineColor = lineColor;
+            lineColor = shapeInfo.getLineColor();
+            feature.properties.strokeColor = lineColor.toHexString(false);
+            alpha = lineColor.getAlpha();
+            /*if(alpha === 0)
+                feature.properties.lineOpacity = 0;
+            else
+                feature.properties.lineOpacity = alpha / 255;//*/
+            feature.properties.lineOpacity = alpha / 255;
             geometry["type"] = "MultiLineString";
         }
         if (shapeInfo.getFillColor() !== null) {
-            fillColor = shapeInfo.getFillColor().toHexString();
-            feature.properties.fillColor = fillColor;
+            fillColor = shapeInfo.getFillColor();
+            feature.properties.fillColor = fillColor.toHexString(false);
+            alpha = fillColor.getAlpha();
+            /*if(alpha === 0)
+                feature.properties.fillOpacity = 0;
+            else
+                feature.properties.fillOpacity = alpha / 255;//*/
+            feature.properties.fillOpacity = alpha / 255;
             geometry["type"] = "Polygon";
         }
         
@@ -1745,7 +1761,8 @@ return{
         if (stroke !== null) {
             lineWidth = Math.round(stroke.getLineWidth());
         }
-        feature.properties.lineWidth = lineWidth;
+        feature.properties.strokeWidth = lineWidth;
+        feature.properties.strokeWeight = lineWidth;
         
         
         //geometry["coordinates"] = [[x,y],[xn,yn]];
@@ -1868,8 +1885,19 @@ return{
     },
     LabelToGeoJSONString: function(shapeInfo, ipc, normalize)
     {
-        var labelInfo = null;
-        var JSONed = ("{\"label\":");
+        var JSONed = "";
+        var fillColor = null;
+        var lineColor = null;
+        var alpha = 255;
+        
+        
+        var feature = {};
+        feature.type = "Feature";
+        feature.properties = {};
+        var geometry = {};
+        
+        var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
+        var RU = armyc2.c2sd.renderer.utilities.RendererUtilities;
         var coord = new armyc2.c2sd.graphics2d.Point2D();
         coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
         var geoCoord = ipc.PixelsToGeo(coord);
@@ -1884,11 +1912,35 @@ return{
         shapeInfo.setGlyphPosition(coord);
         var text = shapeInfo.getModifierString();
         if (text !== null && text !== ("")) {
-            labelInfo = {"text":text,"angle":angle,"coordinates":[longitude,latitude]};
+            feature = {};
+            feature.type = "Feature";
+            feature.properties = {};
+            geometry = {};
+            //feature.properties.name = "text";//rt,cm,lb
+            feature.properties.label = text;//rt,cm,lb
+            feature.properties.pointRadius = 0;
+            feature.properties.fontColor = shapeInfo.getFillColor().toHexString(false);//"#FFFFFF";
+            feature.properties.fontSize = RS.getModifierFontSize() + "pt";//"12pt";
+            feature.properties.fontFamily = RS.getModifierFontName();//"Arial, sans-serif";
+            feature.properties.fontWeight = RS.getModifierFontStyle();
+            feature.properties.labelAlign ="cb";//rt,cm,lb
+            feature.properties.labelXOffset = 0;
+            feature.properties.labelYOffset = 0;
+            feature.properties.labelOutlineColor = RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
+            feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
+            feature.properties.rotation = angle;//rt,cm
+            feature.properties.angle = angle;//rt,cm
+
+            geometry["type"] = "Point";
+
+
+            geometry["coordinates"] = [longitude,latitude];
+            feature["geometry"] = geometry;
+            
         } else {
             return null;
         }
-        return labelInfo;
+        return feature;
     },      
     /**
      * Basically renders the symbol with the 2d renderer than pulls out

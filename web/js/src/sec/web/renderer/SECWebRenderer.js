@@ -106,7 +106,7 @@ return{
         try 
         {
             
-            if (JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
+            if (format === 0 && JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
             {
                 if (!(altitudeMode && altitudeMode.length))
                     altitudeMode = "relativeToGround";

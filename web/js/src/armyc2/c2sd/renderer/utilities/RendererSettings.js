@@ -41,6 +41,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _ModifierFontSize = 10,
     _ModifierFontStyle = "bold",
     _ModifierFont = "bold 10pt Arial, sans-serif",
+    _MPModifierFont = "bold 12pt Arial, sans-serif",
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
@@ -351,6 +352,56 @@ return{
      */
     getModifierFontStyle: function(){
         return _ModifierFontStyle;
+    },
+    
+        /**
+     * 
+     * @param {String} name like "Arial" or "Arial, sans-serif" so a backup is
+     * available in case 'Arial' is not present.
+     * @param {Number} size like 12
+     * @param {String} style like "bold"
+     * @returns {undefined}
+     */
+    setMPModifierFont: function(name, size, style){
+        _ModifierFontName = name;
+        _ModifierFontSize = size;
+        if(style !== 'bold' || style !== 'normal')
+        {
+            _ModifierFontStyle = style;
+        }
+        else
+        {
+            _ModifierFontStyle = 'bold';
+        }
+        _ModifierFont = style + " " + size + "pt " + name;
+    },
+    /**
+     * 
+     * @returns {String} like "bold 12pt Arial"
+     */
+    getMPModifierFont: function(){
+        return _MPModifierFont;
+    },
+    /**
+     * 
+     * @returns {String}
+     */
+    getMPModifierFontName: function(){
+        return _MPModifierFontName;
+    },
+    /**
+     * 
+     * @returns {Number}
+     */
+    getMPModifierFontSize: function(){
+        return _MPModifierFontSize;
+    },
+    /**
+     * 
+     * @returns {String}
+     */
+    getMPModifierFontStyle: function(){
+        return _MPModifierFontStyle;
     },
 	
     getInstance: function(){
