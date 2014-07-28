@@ -2227,8 +2227,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                 break;
             case 22123000:
                 var shiftFactor = 1;
-                if (shiftLines)
-                    shiftFactor = 0.5;
+                //if (shiftLines)
+                    //shiftFactor = 0.5;
                 if (affiliation !== null && affiliation.equals("H")) {
                     if (pt0.x < pt1.x) {
                         TLineFactor = -shiftFactor;
@@ -3139,9 +3139,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
         for (j = 0; j < tg.modifiers.size(); j++) {
             modifier = tg.modifiers.get(j);
             var lineFactor = modifier.lineFactor;
-            if (modifier.type !== 3)
+            if (modifier.type !== 3 && tg.get_LineType() !==22123000)
             {    
-                //lineFactor += 0.5;
                 lineFactor += 0.25;
             }
             if (isTextFlipped === true)
