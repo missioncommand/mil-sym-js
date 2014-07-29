@@ -1633,20 +1633,31 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 212220000:
                 stringWidth = Math.floor((1.5 * metrics.stringWidth(label)));
                 pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0));
-                pt0.x += 4 * stringWidth;
+                pt0.x += 2 * stringWidth;   //was 4
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0));
-                pt1.x -= 4 * stringWidth;
+                pt1.x -= 2 * stringWidth;   //was 4
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt0, pt0, new Boolean(true));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(true));
                 break;
             case 212210001:
             case 212230001:
             case 212220001:
+//                stringWidth = Math.floor((1.5 * metrics.stringWidth(label)));
+//                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(1));
+//                pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(2));
+//                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(true));
+//                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt2, pt2, new Boolean(true));
+                //diagnostic
                 stringWidth = Math.floor((1.5 * metrics.stringWidth(label)));
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(1));
                 pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(2));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(true));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt2, pt2, new Boolean(true));
+                pt1=armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(pt1,pt2,stringWidth/2);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt1, pt1, new Boolean(true));//was 3
+                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(2));
+                pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(1));
+                pt1=armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(pt1,pt2,stringWidth/2);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt1, pt1, new Boolean(true));//was 3
+                //end section
                 break;
             case 24225000:
                 pt0 = tg.Pixels.get(middleSegment);
@@ -3148,7 +3159,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             s = modifier.text;
             if (s === null || s.equals("")) {
                 continue;
-            }
+            }            
             //stringWidth = metrics.stringWidth(s)+1;            
             //stringHeight = font.getSize();
             var bounds=metrics.getTextBounds(s);
@@ -3174,7 +3185,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x2, y2);
             midPt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2((x1 + x2) / 2, (y1 + y2) / 2);
             switch (modifier.type) {
-                case 1:
+                case 1: //to end
                     dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
                     direction = 2;
                     if (lineFactor >= 0)
@@ -3185,16 +3196,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                         direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
                     }
                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt1, direction, lineFactor * stringHeight);
-                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
-                    //if (pt0.x < pt1.x)                    
-                        //pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt2, pt3, dist + stringWidth);
-                                        
-                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/1.5);
-                    
-                    //glyphPosition = new armyc2.c2sd.graphics2d.Point(Math.floor(pt3.x), Math.floor(pt3.y));
+                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);                                        
+                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/1.5);                    
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);                    
+                    
+                    //diagnostic
+                    theta=0;
+                    pt3.x-=stringWidth/2;
+                    pt3.y-=stringHeight/2;
+                    glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);                                        
+                    //end section
                     break;
-                case 2:
+                case 2: //breach
                     if (converter !== null) {
                         var pt1Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt0.x), Math.floor(pt0.y)));
                         var pt2Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt1.x), Math.floor(pt1.y)));
@@ -3226,14 +3239,23 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     if (x1 === x2 && y1 < y2)
                         pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt2, pt2, 0, Math.abs((lineFactor) * stringHeight));
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(Math.floor(pt3.x), Math.floor(pt3.y));
+                    //diagnostic
+                    theta=0
+                    pt3.x-=stringWidth/2;
+                    pt3.y-=stringHeight/2;
+                    glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);                                        
+                    //end section
                     break;
-                case 3:
+                case 3: //screen, cover, guard, area
                     theta = 0;
-                    //x = Math.floor(x1) - Math.floor(Math.floor(stringWidth) / 2);
-                    //y = Math.floor(y1) + Math.floor((stringHeight / 2)) + Math.floor((1.25 * lineFactor * stringHeight));
                     x = x1 - stringWidth/4;
                     y = y1 + stringHeight/2 + 1.5*lineFactor * stringHeight;
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(x, y);
+                    //diagnostic
+                    x-=stringWidth/2;
+                    y-=stringHeight/2;
+                    glyphPosition = new armyc2.c2sd.graphics2d.Point(x, y);                                        
+                    //end section
                     break;
                 case 4:
                     if (tg.Pixels.size() >= 14) {
