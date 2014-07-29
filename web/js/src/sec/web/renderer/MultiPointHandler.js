@@ -1585,59 +1585,88 @@ return{
         return kml;
     },
             
-    AdjustModifierPointToCenter: function(modifier)
+AdjustModifierPointToCenter: function(modifier)
     {
         try {
-            /*
-            var degrees = modifier.getModifierStringAngle();
-            var bounds = modifier.getTextLayout().getBounds();
             
-            //angle in radians
-            var theta = degrees * (Math.PI / 180);
-            //4 corners before rotation
-            var tl = {x:(0),y:(bounds.height)};
-            var bl = {x:0,y:0};
-            var tr = {x:bounds.width,y:bounds.height};
-            var br = {x:bounds.width,y:0};
-            
-            //new bounding box
-            var bb = {};
+            var degrees = parseFloat(modifier.getModifierStringAngle());
+            var text = modifier.getModifierString();
+            var location = modifier.getGlyphPosition();
+            var font = RendererSettings.getMPModifierFont();
+            //armyc2.c2sd.renderer.so.Point
+            var bounds =
+armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(null, text,
+location, font);
             
             var offsetX = 0;
             var offsetY = 0;
-            //TODO: do some math to adjust the point based on the angle
-            //where x0,y0 is the center around which you are rotating.
-            //x2 = x0+(x-x0)*cos(theta)+(y-y0)*sin(theta)
-            //y2 = y0+(x-x0)*sin(theta)+(y-y0)*cos(theta)
-            var x0 = 0;
-            var y0 = 0;
+                
+            if(degrees !== 0)
+            {
+
+                //angle in radians
+                var theta = degrees * (Math.PI / 180);
+                //4 corners before rotation
+                var tl = {x:(0),y:(bounds.height)};
+                var bl = {x:0,y:0};
+                var tr = {x:bounds.width,y:bounds.height};
+                var br = {x:bounds.width,y:0};
+
+                //new bounding box
+                var bb = {};
+
+                var offsetX = 0;
+                var offsetY = 0;
+                //TODO: do some math to adjust the point based on the angle
+                //where x0,y0 is the center around which you are rotating.
+                //x2 = x0+(x-x0)*cos(theta)+(y-y0)*sin(theta)
+                //y2 = y0+(x-x0)*sin(theta)+(y-y0)*cos(theta)
+                var x0 = 0;
+                var y0 = 0;
+
+                tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) *
+Math.sin(theta));
+                tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) *
+Math.cos(theta));
+
+                tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) *
+Math.sin(theta));
+                tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) *
+Math.cos(theta));
+
+                br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) *
+Math.sin(theta));
+                br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) *
+Math.cos(theta));
+
+                bb.x = Math.min(0,tl.x,tr.x,br.x);
+                bb.y = Math.max(0,tl.y,tr.y,br.y);
+
+                bb.width = Math.max(0,tl.x,tr.x,br.x) - bb.x;
+                bb.height = bb.y - Math.min(0,tl.y,tr.y,br.y);
+
+                offsetX += bb.width/2;
+                offsetY += bb.height/2;
+            }
+            else
+            {
+                offsetX += bounds.width/2;
+                offsetY += bounds.height/2;
+            }
             
-            tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) * Math.sin(theta));
-            tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) * Math.cos(theta));
-            
-            tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) * Math.sin(theta));
-            tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) * Math.cos(theta));
-            
-            br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) * Math.sin(theta));
-            br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) * Math.cos(theta));
-            
-            bb.x = Math.min(0,tl.x,tr.x,br.x);
-            bb.y = Math.max(0,tl.y,tr.y,br.y);
-            
-            bb.width = Math.max(0,tl.x,tr.x,br.x) - bb.x;
-            bb.height = bb.y - Math.min(0,tl.y,tr.y,br.y);
-            
-            offsetX += bb.width/2;
-            offsetY += bb.height/2;
-            
-            var point = modifier.getGlyphPosition();//modifier.getModifierStringPosition();
+            var point =
+modifier.getGlyphPosition();//modifier.getModifierStringPosition();
             point.x += offsetX;
             point.y += offsetY;
-            modifier.setGlyphPosition(point);//modifier.setModifierStringPosition(point);
-            */
+ 
+modifier.setGlyphPosition(point);//modifier.setModifierStringPosition(point)
+;
+            
             
         } catch (err) {
-            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","AdjustModifierPointToCenter",err);
+ 
+armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler",
+"AdjustModifierPointToCenter",err);
         }
     },
             
