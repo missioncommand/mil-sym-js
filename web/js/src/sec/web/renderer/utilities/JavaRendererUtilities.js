@@ -332,44 +332,122 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
         coords = new java.util.ArrayList(coords);
         symbol.setCoordinates(coords);
         
-        /*var am = symbol.getModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE);
-        var aml = new java.util.ArrayList();
-        if(am !== undefined && am !== null)
-        {
-            for(var i = 0; i < am.length; i++)
-            {
-                aml.add(new Double(am[i]));
-            }
-        }
-        symbol.setModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE,aml);
-        
-        var an = symbol.getModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH);
-        var anl = new java.util.ArrayList();
-        if(an !== undefined && an !== null)
-        {
-            for(var j = 0; j < an.length; j++)
-            {
-                anl.add(new Double(an[j]));
-            }
-        }
-        symbol.setModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH,anl);
-        
-        var x = symbol.getModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH);
-        var xl = new java.util.ArrayList();
-        if(x !== undefined && x !== null)
-        {
-            for(var k = 0; k < x.length; k++)
-            {
-                xl.add(new Double(x[k]));
-            }
-        }
-        symbol.setModifiers_AM_AN_X(armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH,xl);//*/
-        
         return symbol;
-        
     };
     
+   
+   /**
+    * 
+    * @param {Number} latitude1
+    * @param {Number} longitude1
+    * @param {Number} latitude2
+    * @param {Number} longitude2
+    * @param {String} unitOfMeasure meters, kilometers, miles, feet, yards, nautical, nautical miles.
+    * @returns {Number}
+    */
+    sec.web.renderer.utilities.JavaRendererUtilities.measureDistance = function (latitude1, longitude1, latitude2, longitude2, unitOfMeasure) 
+    {
+        // latitude1,latitude2 = latitude, longitude1,longitude2 = longitude
+        //Radius is 6378.1 (km), 3963.1 (mi), 3443.9 (nm
 
+        var distance = -1,
+            rad;
+        //if((validateCoordinate(latitude1,longitude1) == true)&&(validateCoordinate(latitude2,longitude2) == true))
+        //{
+
+        switch (unitOfMeasure.toLowerCase()) {
+        case "kilometers":
+            rad = 6378.137;
+            break;
+        case "meters":
+            rad = 6378137;
+            break;
+        case "miles":
+            rad = 3963.1;
+            break;
+        case "feet":
+            rad = 20925524.9;
+            break;
+        case "yards":
+            rad = 6975174.98;
+            break;
+        case "nautical":
+            rad = 3443.9;
+            break;
+        case "nautical miles":
+            rad = 3443.9;
+            break;
+        default:
+            return -1;
+        }
+        latitude1 = latitude1 * (Math.PI / 180);
+        latitude2 = latitude2 * (Math.PI / 180);
+        longitude1 = longitude1 * (Math.PI / 180);
+        longitude2 = longitude2 * (Math.PI / 180);
+        distance = (Math.acos(Math.cos(latitude1) * Math.cos(longitude1) * Math.cos(latitude2) * Math.cos(longitude2) + Math.cos(latitude1) * Math.sin(longitude1) * Math.cos(latitude2) * Math.sin(longitude2) + Math.sin(latitude1) * Math.sin(latitude2)) * rad);
+        
+        return distance;
+    };
+    
+    /**
+     * 
+     * @param {Array} geoCoords
+     * @param {Array} modsAM
+     * @returns {sec.web.renderer.utilities.JavaRendererUtilities.HOSTILE_FILL_COLOR|String}
+     */
+    sec.web.renderer.utilities.JavaRendererUtilities.generateLookAtTag = function(geoCoords, modsAM)
+    {
+                //add <LookAt> tag//////////////////////////////////////////////
+                var doLookAt = true;
+                var controlPointBounds = null;//armyc2.c2sd.renderer.so.Rectangle();
+                var tempPt = null;
+                var LookAtTag = "<LookAt>";
+                if(doLookAt)
+                {
+                    for(var j = 0; j < geoCoords.length; j++)
+                    {
+                        tempPt = geoCoords[j];
+                        if(controlPointBounds)
+                        {
+                            controlPointBounds.unionPoint(tempPt);
+                        }
+                        else
+                        {
+                            controlPointBounds = new armyc2.c2sd.renderer.so.Rectangle(tempPt.getX(),tempPt.getY(),0.00000000000001,0.00000000000001);
+                        }
+                    }
+                    var distance = 0;
+                    //if 1 point circle with width
+                    if(geoCoords.length === 1 && modsAM && modsAM.length > 0)
+                    {
+                        distance = (modsAM[modsAM.length-1] * 2);
+                    }
+                    else
+                    {
+                        distance = this.measureDistance(controlPointBounds.getY(),
+                                                            controlPointBounds.getX(),
+                                                            controlPointBounds.getBottom(),
+                                                            controlPointBounds.getRight(),
+                                                            "meters");
+                    }
+                    distance = distance * 1.1;
+                    
+                    var long = controlPointBounds.getCenterX();
+                    var lat = controlPointBounds.getCenterY();
+                    LookAtTag += "<longitude>" + long + "</longitude>";
+                    LookAtTag += "<latitude>" + lat + "</latitude>";
+                    //LookAtTag += "<altitude>" + number + "</altitude>";
+                    LookAtTag += "<heading>" + 0 + "</heading>";
+                    LookAtTag += "<tilt>" + 0 + "</tilt>";
+                    LookAtTag += "<range>" + distance + "</range>";
+                    LookAtTag += "<altitudeMode>" + "absolute" + "</altitudeMode>";
+                    LookAtTag += "</LookAt>";
+
+                }
+                //add <LookAt> tag//////////////////////////////////////////////
+                return LookAtTag;
+    };
+    
 
 
 sec.web.renderer.utilities.JavaRendererUtilities.HOSTILE_FILL_COLOR = "FFFF8080";

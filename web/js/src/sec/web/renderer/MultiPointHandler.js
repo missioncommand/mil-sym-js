@@ -600,6 +600,7 @@ return{
         coordinates = controlPoints.trim();
         coordinates = coordinates.split(" ");
         var len = coordinates.length;
+        
         for (var i = 0; i < len; i++) {
             var coordPair = coordinates[i].split(",");
             var latitude = coordPair[1];//.trim();
@@ -710,6 +711,22 @@ return{
                         jsonContent = fillKML;
                     }
                 }//*/
+                
+                //add <LookAt> tag//////////////////////////////////////////////
+                
+                var doLookAt = false;
+                var LookAtTag = null;
+                if(symbolModifiers[MilStdAttributes.LookAtTag]===true)//(doLookAt)
+                {
+                    LookAtTag = sec.web.renderer.utilities.JavaRendererUtilities.generateLookAtTag(geoCoords,symbolModifiers["AM"]);
+                    if(LookAtTag)
+                    {
+                        var idx = jsonContent.indexOf("<visibility>");
+                        jsonContent = jsonContent.substring(0,idx) + LookAtTag + jsonContent.substring(idx);
+                    }
+                }
+                //add <LookAt> tag//////////////////////////////////////////////
+                
                 jsonOutput = jsonContent;
             }
             else if (format === 2) 
@@ -1486,6 +1503,7 @@ return{
         kml += ("</Style>");
         var shapesArray = shapeInfo.getPolylines();
         var len = shapesArray.size ();
+        var len2 = 0;
         //var len = shapesArray.length;
         kml += ("<MultiGeometry>");
         for (var i = 0; i < len; i++) {
@@ -1497,6 +1515,7 @@ return{
                 kml += ("<altitudeMode>clampToGround</altitudeMode>");
                 kml += ("<coordinates>");
                 //for (var j = 0; j < shape.length; j++)
+                len2 = shape.size();
                 for (var j = 0; j < shape.size (); j++) 
                 {
                     var coord = shape.get (j);
@@ -1585,7 +1604,7 @@ return{
         return kml;
     },
             
-AdjustModifierPointToCenter: function(modifier)
+    AdjustModifierPointToCenter: function(modifier)
     {
         try {
             
@@ -1594,9 +1613,7 @@ AdjustModifierPointToCenter: function(modifier)
             var location = modifier.getGlyphPosition();
             var font = RendererSettings.getMPModifierFont();
             //armyc2.c2sd.renderer.so.Point
-            var bounds =
-armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(null, text,
-location, font);
+            var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(null, text, location, font);
             
             var offsetX = 0;
             var offsetY = 0;
@@ -1624,20 +1641,14 @@ location, font);
                 var x0 = 0;
                 var y0 = 0;
 
-                tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) *
-Math.sin(theta));
-                tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) *
-Math.cos(theta));
+                tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) * Math.sin(theta));
+                tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) * Math.cos(theta));
 
-                tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) *
-Math.sin(theta));
-                tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) *
-Math.cos(theta));
+                tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) * Math.sin(theta));
+                tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) * Math.cos(theta));
 
-                br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) *
-Math.sin(theta));
-                br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) *
-Math.cos(theta));
+                br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) * Math.sin(theta));
+                br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) * Math.cos(theta));
 
                 bb.x = Math.min(0,tl.x,tr.x,br.x);
                 bb.y = Math.max(0,tl.y,tr.y,br.y);
@@ -1654,20 +1665,15 @@ Math.cos(theta));
                 offsetY += bounds.height/2;
             }
             
-            var point =
-modifier.getGlyphPosition();//modifier.getModifierStringPosition();
+            var point = modifier.getGlyphPosition();//modifier.getModifierStringPosition();
             point.x += offsetX;
             point.y += offsetY;
- 
-modifier.setGlyphPosition(point);//modifier.setModifierStringPosition(point)
-;
+            modifier.setGlyphPosition(point);//modifier.setModifierStringPosition(point);
             
             
         } catch (err) {
- 
-armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler",
-"AdjustModifierPointToCenter",err);
-        }
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","AdjustModifierPointToCenter",err);
+        }//*/
     },
             
     ShapeToJSONString: function(shapeInfo, ipc, geMap, normalize)
