@@ -840,7 +840,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 22613000:
                 case 22623000:
                 case 22623001:
-                case 24230000:
+                case 24223000:
                     minSpikeDistance = 5;
                     segmented = false;
                     break;
@@ -1045,10 +1045,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 24211000:
                 case 24260000:
                 case 24210000:
-                case 24220000:
+                case 24222000:
                 case 23200000:
                 case 23200001:
-                case 24230000:
+                case 24223000:
                 case 24225000:
                 case 24240000:
                 case 24330000:
@@ -1152,8 +1152,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             case 24250000:
             case 24211000:
             case 24210000:
-            case 24220000:
-            case 24230000:
+            case 24222000:
+            case 24223000:
             case 24225000:
             case 24240000:
             case 25221000:
@@ -1581,7 +1581,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var interval = 1000000;
             switch (lineType) {
                 case 22528000:
-                case 24220000:
+                case 24222000:
                 case 231111000:
                 case 22350000:
                 case 231117300:

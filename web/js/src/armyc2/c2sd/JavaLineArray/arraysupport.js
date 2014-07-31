@@ -2827,7 +2827,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             }
                             acCounter = nCounter;
                             break;
-                        case 24220000:
+                        case 24222000:
                             for (j = 0; j < vblCounter; j++)
                                 pLinePoints[j].style = 1;
 

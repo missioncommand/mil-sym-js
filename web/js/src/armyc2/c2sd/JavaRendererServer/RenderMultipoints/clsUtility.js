@@ -48,8 +48,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             case 25211000:
             case 24225000:
             case 24240000:
-            case 24230000:
-            case 24220000:
+            case 24223000:
+            case 24222000:
             case 24210000:
             case 24260000:
             case 24250000:

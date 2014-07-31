@@ -845,7 +845,7 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         return 24240000;
                     }
                     if (str3.equals("LCN") && c0.equals("G") && c2.equals("F")) {
-                        return 24230000;
+                        return 24223000;
                     }
                     if (str3.equals("LCM") && c0.equals("G") && c2.equals("F")) {
                         return 24225000;

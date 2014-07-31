@@ -584,7 +584,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 21710000:
                 case 22528000:
                 case 23191000:
-                case 24220000:
+                case 24222000:
                 case 23224000:
                     if (shape.getShapeType() === armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE) {
                         shape.set_Style(1);
@@ -687,7 +687,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             switch (linetype) {
                 case 10000000:
                 case 24326100:
-                case 24220000:
+                case 24222000:
                 case 22330000:
                 case 22522100:
                 case 22121000:
@@ -729,7 +729,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 24250000:
                 case 24211000:
                 case 24210000:
-                case 24230000:
+                case 24223000:
                 case 24225000:
                 case 24240000:
                 case 25211000:
@@ -1821,8 +1821,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLTS---****X", (24211000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLTF---****X", (24260000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCF---****X", (24210000));
-            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCC---****X", (24220000));
-            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCN---****X", (24230000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCC---****X", (24222000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCN---****X", (24223000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPLCR---****X", (24240000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPAT----****X", (24330000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("G*FPATR---****X", (24311000));
