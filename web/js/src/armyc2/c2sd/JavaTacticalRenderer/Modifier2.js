@@ -246,13 +246,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetCenterLabel = function(tg)
             case 24225000:
                 label = "MFP";
                 break;
-            case 24210000:
+            case 24221000:
                 label = " FSCL";
                 break;
             case 24222000:
                 label = "CFL ";
                 break;
-            case 24240000:
+            case 24224000:
                 label = "RFL ";
                 break;
             case 22621000:
@@ -1487,9 +1487,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 22528000:
             case 24223000:
             case 24225000:
-            case 24210000:
+            case 24221000:
             case 24222000:
-            case 24240000:
+            case 24224000:
             case 22122000:
             case 22123000:
             case 21700000:
@@ -2154,7 +2154,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
 //                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddNameAboveDTG(tg, metrics);
 //                }
 //                break;
-            case 24210000:
+            case 24221000:
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
@@ -2200,7 +2200,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 2, 0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
                 break;
-            case 24240000:
+            case 24224000:
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
