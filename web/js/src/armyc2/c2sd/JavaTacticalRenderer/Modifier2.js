@@ -1361,6 +1361,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
         if (tg.Pixels === null || tg.Pixels.isEmpty())
             return;
         var font = tg.get_Font();
+        var stringHeight=font.getSize();
         var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
         var usas = false;
         var foundSegment = false;
@@ -1940,10 +1941,22 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 22421000:
                 stringWidth = metrics.stringWidth(label);
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
-                pt1.x -= stringWidth + 8;
+                if(pt0.x>ptLast.x)                
+                    pt1.x+=32;
+                else
+                {
+                    pt1.x-=stringWidth-8;
+                    pt1.y-=1.1*stringHeight;
+                }
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(false));
-                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptLast);
-                pt1.x += 40;
+                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptLast);                
+                if(pt0.x>ptLast.x)
+                {
+                    pt1.x-=stringWidth-8;                
+                    pt1.y-=1.1*stringHeight;
+                }
+                else
+                    pt1.x+=32;
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(false));
                 break;
             case 22625000:
