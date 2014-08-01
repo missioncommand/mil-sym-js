@@ -238,6 +238,14 @@ return{
                 {
                     stack = err.stack;
                 }
+                
+                if(!(stack))
+                {
+                    if(err.filename && err.lineno)
+                    {
+                        stack = err.filename + " at line# " + err.lineno;
+                    }
+                }
 
                 //group stack trace if possible so it doesn't take up too
                 //much space in the console log.
@@ -247,7 +255,7 @@ return{
                     if(stack !== null)
                     {
                         console.groupCollapsed("Stack Trace:");// for: " + err.message);
-                        console.error(err.stack);
+                        console.error(stack);
                         if(console.dir && param)
                         {
                             console.dir(param);

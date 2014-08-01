@@ -144,6 +144,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />

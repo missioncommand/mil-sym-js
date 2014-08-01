@@ -1031,7 +1031,7 @@ return{
             {
                 return {canRender:false,message:"symbolID: \"" + symbolID  + "\" requires a minimum of " + sd.minPoints + " points. " + coordCount + " are present."};
             }
-            //now check for required modifiers\
+            //now check for required modifiers
             var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
             var AN = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH);
             var result = hasRequiredModifiers(symbolID, dc, AM, AN);

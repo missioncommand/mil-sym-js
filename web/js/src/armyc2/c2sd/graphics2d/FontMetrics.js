@@ -18,7 +18,15 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
     //get the metrics for as GE seems to use a smaller font zoomed out and
     // a slightly larger one at some point when zoomed in.
     
-    var textInfoBuffer = document.createElement('canvas');
+    var textInfoBuffer = null;
+	if(document.createElement)
+	{
+		textInfoBuffer = document.createElement('canvas');
+	}
+	else
+	{
+		textInfoBuffer = {};
+	}
     textInfoBuffer.width = 1;
     textInfoBuffer.height = 1;
     if(textInfoBuffer.getContext)

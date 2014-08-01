@@ -10,12 +10,16 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
     var pastIdealOutlineColors = {};
     
     //constructor code
-    var _canvas = document.createElement("canvas");
-    _canvas.width = 100;
-    _canvas.height = 100;
+    var _canvas = null;
+    if(document && document.createElement)
+    {
+        _canvas = document.createElement("canvas");
+        _canvas.width = 100;
+        _canvas.height = 100;
+    }
 
     var _ctx = null;
-    if(_canvas.getContext)
+    if(_canvas && _canvas.getContext)
     {
         _ctx = _canvas.getContext('2d');
         _ctx.textBaseline = 'top';
@@ -152,39 +156,64 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
     
     function measureTextIE8(fontName, fontSize, fontStyle, text){
         var doc = document;
-        var div = doc.createElement('DIV');
-            div.innerHTML = text;
-            div.style.position = 'absolute';
-            div.style.top = '-999px';
-            //div.style.left = '-999px';
-            div.style.fontFamily = fontName;
-            div.style.fontWeight = fontStyle ? 'bold' : 'normal';
-            div.style.fontSize = fontSize + 'pt';
-            doc.body.appendChild(div);
-            var size = [div.offsetWidth, div.offsetHeight];
-            
-            doc.body.removeChild(div);
-            div = null;
-            
-            var textWidth = size[0],
-                fullHeight = size[1],
-                height = 0,
-                descent =  0;
+		var div = null;
+		var textWidth = 0;
+		var size = null;
+		
         var font = fontStyle + " " + fontSize + "pt " + fontName;
         if(pastTextMeasurements[font])
         {
-            fontSize = pastTextMeasurements[font];
-            fullHeight = fontSize.fullHeight;
-            height = fontSize.height;
-            descent = fontSize.descent;
+            size = pastTextMeasurements[font];
+            fullHeight = size.fullHeight;
+            height = size.height;
+            descent = size.descent;
+			
+			if(text && _ctx)
+			{
+				textWidth = _ctx.measureText(text).width;
+			}
+			else if (text)//use an approximation
+			{
+			
+				textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
+
+			}
+			
         }
-        else
+        else if(doc.createElement)
         {
-            fontSize = pastTextMeasurements[font];
-            fullHeight = Math.round(fullHeight * 0.9);
-            height = Math.round(fullHeight * 0.7);
-            descent = Math.round(fullHeight * 0.2);
+
+			div = doc.createElement('DIV');
+			div.innerHTML = text;
+			div.style.position = 'absolute';
+			div.style.top = '-999px';
+			//div.style.left = '-999px';
+			div.style.fontFamily = fontName;
+			div.style.fontWeight = fontStyle ? 'bold' : 'normal';
+			div.style.fontSize = fontSize + 'pt';
+			doc.body.appendChild(div);
+			var size = [div.offsetWidth, div.offsetHeight];
+			
+			doc.body.removeChild(div);
+			div = null;
+			
+			var textWidth = size[0],
+				fullHeight = size[1],
+				height = 0,
+				descent =  0;
+				
+			size = pastTextMeasurements[font];
+			fullHeight = Math.round(fullHeight * 0.9);
+			height = Math.round(fullHeight * 0.7);
+			descent = Math.round(fullHeight * 0.2);
         }
+		else// estimate
+		{
+			textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
+			fullHeight = Math.floor(parseFloat(fontSize) * 1.35);
+            height = Math.round(parseFloat(fontSize) + 1);
+            descent = Math.floor(parseFloat(fontSize) / 0.25);
+		}
             
         return {width:textWidth,height:height,descent:descent,fullHeight:fullHeight};
     };
