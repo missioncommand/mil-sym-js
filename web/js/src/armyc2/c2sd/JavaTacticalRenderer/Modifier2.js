@@ -240,19 +240,19 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetCenterLabel = function(tg)
             case 24314000:
                 label = "SMOKE";
                 break;
-            case 24230000:
+            case 24223000:
                 label = "NFL";
                 break;
             case 24225000:
                 label = "MFP";
                 break;
-            case 24210000:
+            case 24221000:
                 label = " FSCL";
                 break;
-            case 24220000:
+            case 24222000:
                 label = "CFL ";
                 break;
-            case 24240000:
+            case 24224000:
                 label = "RFL ";
                 break;
             case 22621000:
@@ -978,7 +978,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function(tg, pt0,
             case 22125000:
             case 22523000:
             case 22528000:
-            case 24230000:
+            case 24223000:
             case 22122000:
             case 22123000:
             case 22612000:
@@ -1361,6 +1361,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
         if (tg.Pixels === null || tg.Pixels.isEmpty())
             return;
         var font = tg.get_Font();
+        var stringHeight=font.getSize();
         var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
         var usas = false;
         var foundSegment = false;
@@ -1484,11 +1485,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 22613000:
             case 22527000:
             case 22528000:
-            case 24230000:
+            case 24223000:
             case 24225000:
-            case 24210000:
-            case 24220000:
-            case 24240000:
+            case 24221000:
+            case 24222000:
+            case 24224000:
             case 22122000:
             case 22123000:
             case 21700000:
@@ -1940,10 +1941,22 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 22421000:
                 stringWidth = metrics.stringWidth(label);
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
-                pt1.x -= stringWidth + 8;
+                if(pt0.x>ptLast.x)                
+                    pt1.x+=32;
+                else
+                {
+                    pt1.x-=stringWidth-8;
+                    pt1.y-=1.1*stringHeight;
+                }
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(false));
-                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptLast);
-                pt1.x += 40;
+                pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptLast);                
+                if(pt0.x>ptLast.x)
+                {
+                    pt1.x-=stringWidth-8;                
+                    pt1.y-=1.1*stringHeight;
+                }
+                else
+                    pt1.x+=32;
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(false));
                 break;
             case 22625000:
@@ -2101,7 +2114,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                     }
                 }
                 break;
-            case 22124000:
+            case 22124000:                
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + tg.get_Name(), 1, T1LineFactor, pt0, pt1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, new Boolean(false));
                 break;
@@ -2114,31 +2127,34 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
                 break;
-            case 22125000:  //Light Line USAS/C change 3-18-14
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt0, pt1, new Boolean(false));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
-                break;
+            case 22125000:
             case 22523000:
             case 22528000:
-                if (usas === false) {
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt0, pt1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
-                } else
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddNameAboveDTG(tg, metrics);
+            case 24223000:
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -1, pt0, pt1, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -1, ptLast, ptNextToLast, new Boolean(false));
                 break;
-            case 24230000:
-                if (usas === false) {
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt0, pt1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
-                } else {
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddNameAboveDTG(tg, metrics);
-                }
-                break;
-            case 24210000:
+//            case 22523000:
+//            case 22528000:
+//                if (usas === false) {
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt0, pt1, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
+//                } else
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddNameAboveDTG(tg, metrics);
+//                break;
+//            case 24223000:
+//                if (usas === false) {
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, pt0, pt1, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, 0, ptLast, ptNextToLast, new Boolean(false));
+//                } else {
+//                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddNameAboveDTG(tg, metrics);
+//                }
+//                break;
+            case 24221000:
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
@@ -2180,11 +2196,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
                     }
                 }
                 break;
-            case 24220000:
+            case 24222000:
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 2, 0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
                 break;
-            case 24240000:
+            case 24224000:
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
@@ -3163,7 +3179,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             //stringWidth = metrics.stringWidth(s)+1;            
             //stringHeight = font.getSize();
             var bounds=metrics.getTextBounds(s);
-            stringWidth=bounds.width;
+            stringWidth=bounds.width/1.5;
             stringHeight=bounds.height;
             var x1 = 0;
             var y1 = 0;
@@ -3197,7 +3213,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     }
                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt1, direction, lineFactor * stringHeight);
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);                                        
-                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/1.5);                    
+                    //pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/1.5);                    
+                    if(pt0.x>pt1.x)
+                        pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth/2);
+                    else
+                        pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt3, pt2, -stringWidth);                    
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);                    
                     
                     //diagnostic

@@ -842,10 +842,10 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         return 24363000;
                     }
                     if (str3.equals("LCR") && c0.equals("G") && c2.equals("F")) {
-                        return 24240000;
+                        return 24224000;
                     }
                     if (str3.equals("LCN") && c0.equals("G") && c2.equals("F")) {
-                        return 24230000;
+                        return 24223000;
                     }
                     if (str3.equals("LCM") && c0.equals("G") && c2.equals("F")) {
                         return 24225000;
@@ -854,7 +854,7 @@ armyc2.c2sd.JavaLineArray.CELineArray =
                         return 24220000;
                     }
                     if (str3.equals("LCF") && c0.equals("G") && c2.equals("F")) {
-                        return 24210000;
+                        return 24221000;
                     }
                     if (str3.equals("LTS") && c0.equals("G") && c2.equals("F")) {
                         return 24211000;
