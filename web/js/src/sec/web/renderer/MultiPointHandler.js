@@ -1958,7 +1958,7 @@ return{
             feature.properties.fontSize = RS.getModifierFontSize() + "pt";//"12pt";
             feature.properties.fontFamily = RS.getModifierFontName();//"Arial, sans-serif";
             feature.properties.fontWeight = RS.getModifierFontStyle();
-            feature.properties.labelAlign ="cb";//rt,cm,lb
+            feature.properties.labelAlign ="lm";//rt,cm,lb
             feature.properties.labelXOffset = 0;
             feature.properties.labelYOffset = 0;
             feature.properties.labelOutlineColor = RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
