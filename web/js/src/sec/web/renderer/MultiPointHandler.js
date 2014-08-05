@@ -687,7 +687,7 @@ return{
             if (format === 1) 
             {
                 jsonOutput = "{\"type\":\"symbol\",";
-                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, new Boolean(true), normalize);
+                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
                 jsonOutput += jsonContent;
                 jsonOutput += "}";
             } 
@@ -700,7 +700,7 @@ return{
                     if(textColor === "#FF000000")
                         textColor = "#FFFFFFFF";
                 }
-                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, new Boolean(true), normalize, textColor);
+                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor);
                 
                 //generate image fill kml if we have symbolfillids or symbollineids
                 if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined) 
@@ -949,17 +949,28 @@ return{
             if (format === 1) 
             {
                 jsonOutput = ("{\"type\":\"symbol\",");
-                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, new Boolean(false), normalize);
+                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
                 jsonOutput += (jsonContent);
                 jsonOutput += ("}");
             } else if (format === 0) 
             {
+                var textColor = null;
+                if(symbolCode.charAt(0) === 'G')
+                {
+                    textColor = mSymbol.getLineColor().toKMLHexString();
+                    if(textColor === "#FF000000")
+                        textColor = "#FFFFFFFF";
+                }
+                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor);
 
-                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, new Boolean(false), normalize);
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"]) 
                 {
-                    //do nothing for now, will need rethinking compared to java version
-                }
+                    var fillKML = this.AddImageFillToKML(tgPoints, jsonContent, mSymbol, ipc, normalize);
+                    if(fillKML !== null && fillKML !== "")
+                    {
+                        jsonContent = fillKML;
+                    }
+                }//*/
                 jsonOutput = jsonContent;
             }
             else if (format === 2) 
@@ -1277,7 +1288,7 @@ return{
         return true;
     },
             
-    KMLize: function(id, name, description, symbolCode, shapes, modifiers, ipc, geMap, normalize, textColor)
+    KMLize: function(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor)
     {
         /*
         if(shapes instanceof java.util.ArrayList)
@@ -1297,7 +1308,7 @@ return{
         {
             var len = shapes.size();
             for (var i = 0; i < len; i++) {
-                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(id, name, description, symbolCode, shapes.get(i), ipc, geMap, normalize);
+                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(id, name, description, symbolCode, shapes.get(i), ipc, normalize);
                 kml += shapesToAdd;
             }
             //var len2 = modifiers.length;
@@ -1305,8 +1316,10 @@ return{
             for (var j = 0; j < len2; j++) {
                 //tempModifier = modifiers[j];
                 tempModifier = modifiers.get(j);
-                if (geMap)
-                    sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
+                
+                //assume kml labels will be centered on coordinate (as per google earth)
+                sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
+                
                 var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(id, j, tempModifier, ipc, normalize, textColor);
                 kml += labelsToAdd;
             }
@@ -1319,7 +1332,7 @@ return{
         return kml;
     },
             
-    JSONize: function(shapes, modifiers, ipc, geMap, normalize)
+    JSONize: function(shapes, modifiers, ipc, normalize)
     {
         /*if(shapes instanceof java.util.ArrayList)
             shapes = shapes.toArray();
@@ -1341,7 +1354,7 @@ return{
                 {
                     jstr += ",";
                 }
-                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToJSONString(shapes.get(i), ipc, geMap, normalize);
+                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToJSONString(shapes.get(i), ipc, normalize);
                 if (shapesToAdd.length > 0) {
                     if (shapesToAdd.substring(2,6)==="line") //(shapesToAdd.startsWith("line", 2)) 
                     {
@@ -1366,8 +1379,7 @@ return{
             labels = "";
             for (var j = 0; j < len2; j++) {
                 tempModifier = modifiers.get(j);
-                if (geMap===true)
-                    sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
+
                 var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToJSONString(tempModifier, ipc, normalize);
                 if (labelsToAdd.length > 0) {
                     if (labels.length > 0) {
@@ -1454,7 +1466,7 @@ return{
         var normalize=sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords);
         return normalize;
     },
-    ShapeToKMLString: function(id, name, description, symbolCode, shapeInfo, ipc, geMap, normalize)
+    ShapeToKMLString: function(id, name, description, symbolCode, shapeInfo, ipc, normalize)
     {
         var kml = "",
             lineColor = null,
@@ -1676,7 +1688,7 @@ return{
         }//*/
     },
             
-    ShapeToJSONString: function(shapeInfo, ipc, geMap, normalize)
+    ShapeToJSONString: function(shapeInfo, ipc, normalize)
     {
         var JSONed = "";
         var fillColor = null;
