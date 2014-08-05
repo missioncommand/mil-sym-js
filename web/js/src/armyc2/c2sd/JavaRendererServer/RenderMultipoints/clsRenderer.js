@@ -979,25 +979,28 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             else if (clipArea === null)
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg, converter, (isTextFlipped).booleanValue(), clipBounds);
             if (linetype === 243111000 || linetype === 243112000)
-            {
-                var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG(tg);
-                tg1.set_Fillstyle(savefillStyle);
-                if (clipBounds !== null)
+            {                
+                if(tg.get_FillColor()!==null && tg.get_FillColor().getAlpha()>1)
                 {
-                    rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipBounds);
-                }
-                else if (clipPoints !== null)
-                {
-                    rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipPoints);
-                }
-                else if (clipArea === null)
-                {
-                    rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipBounds);
-                }
+                    var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG(tg);
+                    tg1.set_Fillstyle(savefillStyle);
+                    if (clipBounds !== null)
+                    {
+                        rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipBounds);
+                    }
+                    else if (clipPoints !== null)
+                    {
+                        rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipPoints);
+                    }
+                    else if (clipArea === null)
+                    {
+                        rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).booleanValue(), clipBounds);
+                    }
 
-                if (rangeFanFillShapes !== null)
-                {
-                    shapes.addAll(0, rangeFanFillShapes);
+                    if (rangeFanFillShapes !== null)
+                    {
+                        shapes.addAll(0, rangeFanFillShapes);
+                    }
                 }
             }
             else
