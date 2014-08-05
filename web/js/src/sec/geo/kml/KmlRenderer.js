@@ -132,7 +132,7 @@ sec.geo.kml.KmlRenderer = function()
             var descriptionIndex = sb.indexOf(this.descriptionField);
             var descriptionLength = this.descriptionField.length;
             if (description !== null)
-                sb.replace(descriptionIndex, descriptionIndex + descriptionLength, description);
+                sb.replace(descriptionIndex, descriptionIndex + descriptionLength, "<![CDATA[" + description + "]]>");
             var colorIndex = sb.indexOf(this.colorField);
             var colorLength = this.colorField.length;
             if (color !== null) {
@@ -147,7 +147,7 @@ sec.geo.kml.KmlRenderer = function()
             var nameIndex = sb.indexOf(this.nameField);
             var nameLength = this.nameField.length;
             if (name !== null)
-                sb.replace(nameIndex, nameIndex + nameLength, name);
+                sb.replace(nameIndex, nameIndex + nameLength, "<![CDATA[" + name + "]]>");
             for (var j = 0; j < polys.size(); j++)
             {
                 var poly = polys.get(j);
