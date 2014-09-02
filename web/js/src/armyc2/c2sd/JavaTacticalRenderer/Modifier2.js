@@ -807,8 +807,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers = function(tg, g
             }
         }
         if (foundSegment.booleanValue() === false) {
-            TLineFactor = -1;
-            T1LineFactor = 1;
+            //TLineFactor = -1;
+            //T1LineFactor = 1;
             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
             pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundaryMiddleSegment(tg, g2d, pt0, pt1);
