@@ -104,7 +104,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                             count = vblCounter;
                             break;
                         case 31143000:
-                            vblCounter = armyc2.c2sd.JavaLineArray.countsupport.GetSquallQty(pLinePoints, 6, 30, vblSaveCounter);
+                            vblCounter = armyc2.c2sd.JavaLineArray.countsupport.GetSquallQty(pLinePoints, 5, 30, vblSaveCounter)+2*vblSaveCounter;
                             count = vblCounter;
                             break;
                         case 31134100:
