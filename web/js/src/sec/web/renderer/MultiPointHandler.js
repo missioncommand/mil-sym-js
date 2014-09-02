@@ -1308,7 +1308,7 @@ return{
         {
             var len = shapes.size();
             for (var i = 0; i < len; i++) {
-                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(id, name, description, symbolCode, shapes.get(i), ipc, normalize);
+                var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(description, symbolCode, shapes.get(i), ipc, normalize);
                 kml += shapesToAdd;
             }
             //var len2 = modifiers.length;
@@ -1320,7 +1320,7 @@ return{
                 //assume kml labels will be centered on coordinate (as per google earth)
                 sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
                 
-                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(id, j, tempModifier, ipc, normalize, textColor);
+                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(tempModifier, ipc, normalize, textColor);
                 kml += labelsToAdd;
             }
         }
@@ -1466,7 +1466,7 @@ return{
         var normalize=sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords);
         return normalize;
     },
-    ShapeToKMLString: function(id, name, description, symbolCode, shapeInfo, ipc, normalize)
+    ShapeToKMLString: function(description, symbolCode, shapeInfo, ipc, normalize)
     {
         var kml = "",
             lineColor = null,
@@ -1479,7 +1479,7 @@ return{
         var cdataStart = "<![CDATA[";
         var cdataEnd = "]]>";
         symbolCode = sec.web.renderer.utilities.JavaRendererUtilities.normalizeSymbolCode(symbolCode);
-        kml += ("<Placemark id=\"" + id + "_mg" + "\">");
+        kml += ("<Placemark>");//("<Placemark id=\"" + id + "_mg" + "\">");
         if(description)
         {
            kml += ("<description>" + cdataStart + description + cdataEnd + "</description>");
@@ -1528,7 +1528,7 @@ return{
                 kml += ("<coordinates>");
                 //for (var j = 0; j < shape.length; j++)
                 len2 = shape.size();
-                for (var j = 0; j < shape.size (); j++) 
+                for (var j = 0; j < len2; j++) 
                 {
                     var coord = shape.get (j);
                     //var coord = shape[j];
@@ -1852,7 +1852,7 @@ return{
         return feature;
     },
             
-    LabelToKMLString: function(id, i, shapeInfo, ipc, normalize, textColor)
+    LabelToKMLString: function(shapeInfo, ipc, normalize, textColor)
     {
         var cdataStart = "<![CDATA[";
         var cdataEnd = "]]>";
@@ -1867,7 +1867,7 @@ return{
         var angle = Math.round(shapeInfo.getModifierStringAngle());
         var text = shapeInfo.getModifierString();
         if (text !== null && text !== ("")) {
-            kml += ("<Placemark id=\"" + id + "_lp" + i + "\">");
+            kml += ("<Placemark>");//("<Placemark id=\"" + id + "_lp" + i + "\">");
             kml += ("<name>" + cdataStart + text + cdataEnd + "</name>");
             kml += ("<Style>");
             kml += ("<IconStyle>");

@@ -1381,21 +1381,31 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     * Just checks the symbolID if it could be rendered in 3D.  Does not check
+     * for needed modifiers.
      * @param {String} symbolID
      * @returns {Boolean}
      */        
     armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dGraphic = function(symbolID)  {
-        var symbolId = symbolID.substring(4, 6);
+        var symbolId = symbolID.substring(4, 10);
 
-        if(symbolId===("ACAI--") ||
-            symbolId===("ACAR--") ||
-            symbolId===("ACAC--") ||
-            symbolId===("AXC---") ||
-            symbolId===("AXS---") ||
-            symbolId===("AKPC--") ||
-            symbolId===("AKPI--") ||
-            symbolId===("AKPR--"))
+        if (symbolId === "ACAI--" || // Airspace Coordination Area Irregular
+            symbolId === "ACAR--" || // Airspace Coordination Area Rectangular
+            symbolId === "ACAC--" || // Airspace Coordination Area Circular
+            symbolId === "AKPC--" || // Kill box circular
+            symbolId === "AKPR--" || // Kill box rectangular
+            symbolId === "AKPI--" || // Kill box irregular
+            symbolId === "ALC---" || // Air corridor
+            symbolId === "ALM---" || // 
+            symbolId === "ALS---" || // SAAFR
+            symbolId === "ALU---" || // UAV
+            symbolId === "ALL---" || // Low level transit route
+            symbolId === "AAR---" ||
+            symbolId === "AAF---" ||
+            symbolId === "AAH---" ||
+            symbolId === "AAM---" || // MEZ
+            symbolId === "AAML--" || // LOMEZ
+            symbolId === "AAMH--")
         {
             return true;
         }

@@ -168,52 +168,52 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             height = size.height;
             descent = size.descent;
 			
-			if(text && _ctx)
-			{
-				textWidth = _ctx.measureText(text).width;
-			}
-			else if (text)//use an approximation
-			{
-			
-				textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
+            if(text && _ctx)
+            {
+                    textWidth = _ctx.measureText(text).width;
+            }
+            else if (text)//use an approximation
+            {
 
-			}
+                    textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
+
+            }
 			
         }
         else if(doc.createElement)
         {
 
-			div = doc.createElement('DIV');
-			div.innerHTML = text;
-			div.style.position = 'absolute';
-			div.style.top = '-999px';
-			//div.style.left = '-999px';
-			div.style.fontFamily = fontName;
-			div.style.fontWeight = fontStyle ? 'bold' : 'normal';
-			div.style.fontSize = fontSize + 'pt';
-			doc.body.appendChild(div);
-			var size = [div.offsetWidth, div.offsetHeight];
-			
-			doc.body.removeChild(div);
-			div = null;
-			
-			var textWidth = size[0],
-				fullHeight = size[1],
-				height = 0,
-				descent =  0;
-				
-			size = pastTextMeasurements[font];
-			fullHeight = Math.round(fullHeight * 0.9);
-			height = Math.round(fullHeight * 0.7);
-			descent = Math.round(fullHeight * 0.2);
+            div = doc.createElement('DIV');
+            div.innerHTML = text;
+            div.style.position = 'absolute';
+            div.style.top = '-999px';
+            //div.style.left = '-999px';
+            div.style.fontFamily = fontName;
+            div.style.fontWeight = fontStyle ? 'bold' : 'normal';
+            div.style.fontSize = fontSize + 'pt';
+            doc.body.appendChild(div);
+            var size = [div.offsetWidth, div.offsetHeight];
+
+            doc.body.removeChild(div);
+            div = null;
+
+            var textWidth = size[0],
+                    fullHeight = size[1],
+                    height = 0,
+                    descent =  0;
+
+            size = pastTextMeasurements[font];
+            fullHeight = Math.round(fullHeight * 0.9);
+            height = Math.round(fullHeight * 0.7);
+            descent = Math.round(fullHeight * 0.2);
         }
-		else// estimate
-		{
-			textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
-			fullHeight = Math.floor(parseFloat(fontSize) * 1.35);
+        else// estimate
+        {
+            textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
+            fullHeight = Math.floor(parseFloat(fontSize) * 1.35);
             height = Math.round(parseFloat(fontSize) + 1);
             descent = Math.floor(parseFloat(fontSize) / 0.25);
-		}
+        }
             
         return {width:textWidth,height:height,descent:descent,fullHeight:fullHeight};
     };
@@ -496,6 +496,8 @@ return{
             descent = size.descent;
             width = size.width;
 
+            
+
             bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
                                 Math.round(width), fullHeight);  
         }
@@ -507,6 +509,16 @@ return{
             bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - size.height,
                                 size.width, size.fullHeight);  
         }
+        
+        /*if(text && 
+                (text.indexOf('g') > -1) || 
+                (text.indexOf('j') > -1) || 
+                (text.indexOf('p') > -1) || 
+                (text.indexOf('q') > -1) || 
+                (text.indexOf('y') > -1))
+        {
+            bounds.shiftBR(0,-descent);
+        }//*/
 
         return bounds;
     },
@@ -521,12 +533,44 @@ return{
      * available in case 'Arial' is not present.
      * @param {Number} fontSize like 12
      * @param {String} fontStyle like "bold"
-     * @param {type} text
      * @returns {Number}
      */
-    getFontDescent: function(fontName, fontSize, fontStyle, text){
+    getFontDescent: function(fontName, fontSize, fontStyle){
         //return Math.ceil(fontSize * 0.26074218888888888888888888888889);
         //return (fontSize * 0.26074218888888888888888888888889);
+        var fontString = fontStyle + " " + fontSize + "pt " + fontName;
+        var size;
+        if(pastTextMeasurements[fontString])
+        {
+            return pastTextMeasurements[fontString].descent;
+        }
+        
+        if(_ctx)
+        {
+            size = this.measureText(fontName, fontSize, fontStyle);
+        }
+        else
+        {
+            size = measureTextIE8(fontName, fontSize, fontStyle,"");
+        }
+        pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};//size[1];
+        return size.descent;//size[1];
+    },
+    
+    /**
+     * 
+     * @param {type} font
+     * @returns {size.descent|Number|pastTextMeasurements.descent}
+     */
+    getFontDescentWithFontString: function(font){
+        //return Math.ceil(fontSize * 0.26074218888888888888888888888889);
+        //return (fontSize * 0.26074218888888888888888888888889);
+        var objFont = splitFontString(font);
+        var fontStyle = objFont.fontStyle,
+            fontName = objFont.fontName,
+            fontSize = objFont.fontSize;
+            
+                
         var fontString = fontStyle + " " + fontSize + "pt " + fontName;
         var size;
         if(pastTextMeasurements[fontString])

@@ -106,10 +106,10 @@ return{
         try 
         {
             
-            if (format === 0 && JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
+            if (altitudeMode !== "clampToGround" && format === 0 && JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
             {
-                if (!(altitudeMode && altitudeMode.length))
-                    altitudeMode = "relativeToGround";
+                if (!(altitudeMode))
+                    altitudeMode = "absolute";
                 
                 output = this.RenderMilStd3dSymbol(name, id, symbolCode, description, altitudeMode, controlPoints,
                         modifiers);
@@ -286,7 +286,7 @@ return{
                         attributes.AN_AZIMUTH.add(new Double(AttributesArray[i].rightAzimuth));                          
                     }
                     
-                    if(AttributesArray[i].altitudeMode !== undefined)
+                    if(AttributesArray[i].altitudeMode !== undefined && AttributesArray[i].altitudeMode !== "clampToGround")
                     {
                         //attributes.ALT_MODE.add(AttributesArray[i].altitudeMode);
                         attributes.ALT_MODE.push(AttributesArray[i].altitudeMode);

@@ -164,7 +164,7 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
     };
             
     /**
-     * TODO: Json parsing incomplete.
+     * Checks symbolID and if the relevant modifiers are present
      * @param {String} symbolCode
      * @param {Object} modifiers
      * @returns {Boolean}
@@ -176,24 +176,23 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
         {
             var symbolId = symbolCode.substring(4, 10);
 
-            if(symbolId === ("ACAI--") ||
-                symbolId === ("ACAR--") ||
-                symbolId === ("ACAC--") ||
-                symbolId === ("AKPC--") ||
-                symbolId === ("AKPI--") ||
-                symbolId === ("AKPR--") ||
-                symbolId === ("AKPI--") ||
-                symbolId === ("ALC---") ||
-                symbolId === ("ALM---") ||
-                symbolId === ("ALS---") ||
-                symbolId === ("ALU---") ||
-                symbolId === ("ALL---") ||
-                symbolId === ("AAR---") ||
-                symbolId === ("AAF---") ||
-                symbolId === ("AAH---") ||
-                symbolId === ("AAM---") ||
-                symbolId === ("AAML--") ||
-                symbolId === ("AAMH--"))
+            if (symbolId === "ACAI--" || // Airspace Coordination Area Irregular
+                symbolId === "ACAR--" || // Airspace Coordination Area Rectangular
+                symbolId === "ACAC--" || // Airspace Coordination Area Circular
+                symbolId === "AKPC--" || // Kill box circular
+                symbolId === "AKPR--" || // Kill box rectangular
+                symbolId === "AKPI--" || // Kill box irregular
+                symbolId === "ALC---" || // Air corridor
+                symbolId === "ALM---" || // 
+                symbolId === "ALS---" || // SAAFR
+                symbolId === "ALU---" || // UAV
+                symbolId === "ALL---" || // Low level transit route
+                symbolId === "AAR---" ||
+                symbolId === "AAF---" ||
+                symbolId === "AAH---" ||
+                symbolId === "AAM---" || // MEZ
+                symbolId === "AAML--" || // LOMEZ
+                symbolId === "AAMH--")  // HIMEZ
             {                        
 
                 try 
@@ -262,14 +261,6 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
             temp = null,
             questionIndex = SymbolInfo.indexOf('?');
         
-        if(this.be === "")
-        {
-            this.be = this.getBrowserEngine();
-        }
-        var be = this.be,
-            tSpace = String.fromCharCode(8196),
-            gSpace = String.fromCharCode(8192);
-
         if(questionIndex === -1)
             symbolID = SymbolInfo;
         else
