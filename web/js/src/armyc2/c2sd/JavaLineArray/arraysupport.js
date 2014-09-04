@@ -742,47 +742,59 @@ armyc2.c2sd.JavaLineArray.arraysupport =
             AreaWithCenterFeatureDouble: function(pLinePoints, vblCounter, lineType) {
                 try {
                     var k = 0;
-                    var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
-                    var d = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblCounter);
+                    var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();                    
+                    var fLength=4;
+                    if(lineType===221311000)
+                        fLength=5;
+                    var d = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblCounter-fLength);
                     if (d > 350)
                         d = 350;
+                    
                     for (k = 0; k < vblCounter; k++) {
                         pLinePoints[k].style = 0;
                     }
                     switch (lineType) {
                         case 2237000:
+                            if(d<20)
+                                d=20;
+                            if(d>60)
+                                d=60;
                             var ul = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                             var lr = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
-                            armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pLinePoints, vblCounter - 3, ul, lr);
+                            armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pLinePoints, vblCounter - 4, ul, lr);
                             var ur = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lr);
                             ur.y = ul.y;
                             pLinePoints[vblCounter - 3] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 3].x -= 25;
-                            pLinePoints[vblCounter - 3].y -= 10;
+                            pLinePoints[vblCounter - 3].x -= d/2;//25;
+                            pLinePoints[vblCounter - 3].y -= d/5;//10;
                             pLinePoints[vblCounter - 2] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 2].y -= 35;
+                            pLinePoints[vblCounter - 2].y -= d*0.7;//35;
                             pLinePoints[vblCounter - 1] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 1].x += 25;
-                            pLinePoints[vblCounter - 1].y -= 10;
+                            pLinePoints[vblCounter - 1].x += d/2;//25;
+                            pLinePoints[vblCounter - 1].y -= d/5;//10;
                             pLinePoints[vblCounter - 4].style = 5;
                             break;
                         case 221311000:
+                            if(d<100)
+                                d=100;
                             pLinePoints[vblCounter - 5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                             pLinePoints[vblCounter - 5].style = 5;
-                            pLinePoints[vblCounter - 4] = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 4);
-                            pLinePoints[vblCounter - 4].x -= d / 20;
+                            pLinePoints[vblCounter - 4] = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 6);
+                            pLinePoints[vblCounter - 4].x -= d / 10;    //was 20
                             pLinePoints[vblCounter - 4].style = 0;
                             pLinePoints[vblCounter - 3] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[vblCounter - 4]);
-                            pLinePoints[vblCounter - 3].x = pLinePoints[vblCounter - 4].x + d / 10;
+                            pLinePoints[vblCounter - 3].x = pLinePoints[vblCounter - 4].x + d / 5;  //was 10
                             pLinePoints[vblCounter - 3].style = 5;
                             pLinePoints[vblCounter - 2] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[vblCounter - 4]);
-                            pLinePoints[vblCounter - 2].y += d / 40;
+                            pLinePoints[vblCounter - 2].y += d / 20;    //was 40
                             pLinePoints[vblCounter - 2].style = 0;
                             pLinePoints[vblCounter - 1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[vblCounter - 3]);
-                            pLinePoints[vblCounter - 1].y -= d / 40;
+                            pLinePoints[vblCounter - 1].y -= d / 20;    //was 40
                             pLinePoints[vblCounter - 1].style = 0;
                             break;
                         case 22340000:
+                            if(d<50)
+                                d=50;
                             if (lineType === 22340000) {
                                 for (k = 0; k < vblCounter - 4; k++) {
                                     pLinePoints[k].style = 14;
@@ -790,7 +802,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             }
                             pLinePoints[vblCounter - 4] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                             pLinePoints[vblCounter - 4].style = 5;
-                            ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 3);
+                            ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 4);
                             pLinePoints[vblCounter - 3].x = ptCenter.x - d / 10;
                             pLinePoints[vblCounter - 3].y = ptCenter.y;
                             pLinePoints[vblCounter - 3].style = 18;
@@ -801,8 +813,10 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[vblCounter - 1].y = ptCenter.y;
                             break;
                         case 22350000:
+                            if(d<50)
+                                d=50;
                             pLinePoints[vblCounter - 4].style = 5;
-                            ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 3);
+                            ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 4);
                             pLinePoints[vblCounter - 3].x = ptCenter.x - d / 10;
                             pLinePoints[vblCounter - 3].y = ptCenter.y;
                             pLinePoints[vblCounter - 3].style = 18;
