@@ -878,6 +878,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 origPixels = tg.Pixels.clone();
                 origLatLongs = tg.LatLongs.clone();
             }
+            var origFillPixels=tg.Pixels.clone();
             var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
             if (shiftLines) {
                 var affiliation = tg.get_Affiliation();
@@ -960,12 +961,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.FilterAXADPoints(tg, converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.ClearPixelsStyle(tg);
             var linesWithFillShapes = null;
+            var savePixels=tg.Pixels;
+            tg.Pixels=origFillPixels;
             if (clipBounds !== null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill(tg, clipBounds);
             else if (clipPoints !== null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.LinesWithFill(tg, clipPoints);
             else if (clipArea === null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill(tg, clipBounds);
+            tg.Pixels=savePixels;
+            
             var rangeFanFillShapes = null;
             var savefillStyle = tg.get_FillStyle();
             if (linetype === 243111000)
