@@ -1072,6 +1072,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
         var pt0 = null;
         var pt1 = null;
         var j = 0;
+        var dist=0;
         middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
         var foundVisibleSegment = new Boolean(false);
         if (clipBounds === null)
@@ -1079,6 +1080,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
         for (j = middleSegment; j < tg.Pixels.size() - 1; j++) {
             pt0 = tg.Pixels.get(j);
             pt1 = tg.Pixels.get(j + 1);
+            dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0,pt1);
+            if(dist===0)
+                continue;
             if (clipBounds.containsPt2(pt0.x, pt0.y) || clipBounds.containsPt2(pt1.x, pt1.y)) {
                 middleSegment = j;
                 foundVisibleSegment = new Boolean(true);
@@ -1089,6 +1093,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
             for (j = middleSegment; j > 0; j--) {
                 pt0 = tg.Pixels.get(j);
                 pt1 = tg.Pixels.get(j - 1);
+                dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0,pt1);
+                if(dist===0)
+                    continue;
                 if (clipBounds.containsPt2(pt0.x, pt0.y) || clipBounds.containsPt2(pt1.x, pt1.y)) {
                     middleSegment = j - 1;
                     foundVisibleSegment = new Boolean(true);
@@ -1097,7 +1104,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
             }
         }
         if (foundVisibleSegment.booleanValue() === false)
-            middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
+        {
+            //this will cause a problem if segment length=0;
+            //middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
+            middleSegment=-1;
+        }
     } catch (exc) {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "getMiddleSegment", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getMiddleSegment", exc));
@@ -1116,6 +1127,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
         var j = 0;
         var x = 0;
         var y = 0;
+        var dist = 0;
         middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
         var foundVisibleSegment = new Boolean(false);
         if (clipBounds === null)
@@ -1128,7 +1140,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
         for (j = middleSegment; j < tg.Pixels.size() - 1; j++) {
             pt0 = tg.Pixels.get(j);
             pt1 = tg.Pixels.get(j + 1);
-            if (clipBoundsPoly.contains(pt0.x, pt0.y) || clipBoundsPoly.contains(pt1.x, pt1.y)) {
+            dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0,pt1);
+            if(dist===0)
+                continue;
+            if (clipBoundsPoly.contains(pt0.x, pt0.y) || clipBoundsPoly.contains(pt1.x, pt1.y)) 
+            {
                 middleSegment = j;
                 foundVisibleSegment = new Boolean(true);
                 break;
@@ -1138,6 +1154,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
             for (j = middleSegment; j > 0; j--) {
                 pt0 = tg.Pixels.get(j);
                 pt1 = tg.Pixels.get(j - 1);
+                dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0,pt1);
+                if(dist===0)
+                    continue;
                 if (clipBoundsPoly.contains(pt0.x, pt0.y) || clipBoundsPoly.contains(pt1.x, pt1.y)) {
                     middleSegment = j - 1;
                     foundVisibleSegment = new Boolean(true);
@@ -1146,7 +1165,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
             }
         }
         if (foundVisibleSegment.booleanValue() === false)
-            middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
+        {
+            //this will cause a problem if the segment length is 0
+            //middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
+            middleSegment=-1;
+        }
     } catch (exc) {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "getMiddleSegment", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getMiddleSegment", exc));
@@ -3228,7 +3251,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     //end section
                     break;
                 case 2: //breach
-                    if (converter !== null) {
+                    dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                    if (converter !== null && dist>100) {
                         var pt1Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt0.x), Math.floor(pt0.y)));
                         var pt2Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt1.x), Math.floor(pt1.y)));
                         var a12 = new armyc2.c2sd.JavaLineArray.ref();

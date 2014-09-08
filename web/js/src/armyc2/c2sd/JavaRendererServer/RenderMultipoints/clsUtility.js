@@ -482,9 +482,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                     var strH = tg.get_H ();
                     if (strH !== null && !strH.isEmpty ()) {
                         var strs = strH.$plit (",");
-                        if (strs.length > 1) return ;
+                        if (strs.length > 1) 
+                            return ;
                     }
-                    return ;
+                    return;
                 default:
                     break;
             }
