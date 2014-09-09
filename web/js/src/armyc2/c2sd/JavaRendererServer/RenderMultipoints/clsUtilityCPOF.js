@@ -772,10 +772,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, orientation);
             pt1F = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.PointLatLongToPixels(pt1, converter);
             dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0F, pt1F);
-            ptBaseF = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0F, pt1F, dist + 10);
-            ptTipF = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0F, pt1F, dist + 20);
-            ptLeftF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 0, 10);
-            ptRightF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 1, 10);
+            //diagnostic
+            var base=10;
+            if(dist<100)
+                base=dist/10;
+            if(base<5)
+                base=5;
+            var basex2=2*base;
+            //end section
+            ptBaseF = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0F, pt1F, dist + base);//was 10
+            ptTipF = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0F, pt1F, dist + basex2);//was 20
+            ptLeftF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 0, base);//was 10
+            ptRightF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 1, base);//was 10
             tg.Pixels.add(pt0F);
             ptTipF.style = 5;
             tg.Pixels.add(ptTipF);
