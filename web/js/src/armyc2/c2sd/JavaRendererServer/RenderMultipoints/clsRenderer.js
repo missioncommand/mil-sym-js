@@ -942,14 +942,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong(tg.Pixels, converter);
                 }
             }
-            if (origPixels !== null) {
-                if (tg.Pixels.isEmpty() === true)
-                    return;
-                else {
+            if(tg.Pixels===null || tg.Pixels.isEmpty())
+                return;
+            if (origPixels !== null) 
+            {
+                //if (tg.Pixels.isEmpty() === true)
+                //    return;
+                //else 
+                //{
                     tg.Pixels = origPixels;
                     tg.LatLongs = origLatLongs;
                     clipArea = null;
-                }
+                //}
             }
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.InterpolatePixels(tg);
             tg.modifiers = new java.util.ArrayList();
