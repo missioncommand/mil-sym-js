@@ -41,9 +41,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DoublesBack = function(pt0,pt1,pt2)
     try
     {
         //theta = Math.atan2(y2 - y1, x2 - x1);
-        var theta1=Math.atan(pt2.y-pt1.y,pt2.x-pt1.x);
-        var theta0=Math.atan(pt1.y-pt0.y,pt1.x-pt0.x);
-        if(Math.abs(theta1+theta0)>0.1)
+        var theta1=Math.atan2(pt2.y-pt1.y,pt2.x-pt1.x);
+        var theta0=Math.atan2(pt0.y-pt1.y,pt0.x-pt1.x);
+        var beta=Math.abs(theta0-theta1);
+        if(beta>0.1)
             result = false;
 
     }

@@ -3,6 +3,55 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.arraysupport =
         {
+            /*
+             * used for Depth Area to determine how sharp the polygon corners are.
+             */
+            getMinBeta:function(pLinePoints)
+            {
+                var minBeta=Math.PI;
+                try
+                {
+                    var j=0;
+                    var n= pLinePoints.length;
+                    var pt0=null,pt1=null,pt2=null;
+                    var theta0=1,theta1=1,beta=1;
+                    for(j=1;j<pLinePoints.length-1;j++)
+                    {
+                        pt0=pLinePoints[j-1];
+                        pt1=pLinePoints[j];
+                        pt2=pLinePoints[j+1];
+                        if(pt0.x===pt1.x && pt0.y===pt1.y)
+                            continue;
+                        if(pt1.x===pt2.x && pt1.y===pt2.y)
+                            continue;
+                        theta0=Math.atan2(pt0.y-pt1.y,pt0.x-pt1.x);
+                        theta1=Math.atan2(pt2.y-pt1.y,pt2.x-pt1.x);
+                        beta=Math.abs(theta1-theta0);     
+                        if(beta<minBeta)
+                            minBeta=beta;
+                    }
+                    pt0=pLinePoints[n-2];
+                    pt1=pLinePoints[0];
+                    pt2=pLinePoints[1];
+                    if(pt0.x===pt1.x && pt0.y===pt1.y)
+                        return minBeta;
+                    if(pt1.x===pt2.x && pt1.y===pt2.y)
+                        return minBeta;
+                    theta0=Math.atan2(pt0.y-pt1.y,pt0.x-pt1.x);
+                    theta1=Math.atan2(pt2.y-pt1.y,pt2.x-pt1.x);
+                    beta=Math.abs(theta1-theta0);     
+                    if(beta<minBeta)
+                        minBeta=beta;
+                }
+                catch (exc) {
+                    if (Clazz.instanceOf(exc)) {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "getMinTheta", new armyc2.c2sd.renderer.utilities.RendererException("getMinTheta " + Integer.toString(lineType), exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+                return minBeta;
+            },
             setMinLength: function(value)
             {
                 minLength = value;
@@ -47,7 +96,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt.x, pt.y, pt.style);
                     }
                     points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev);
-                } catch (exc) {
+                } 
+                catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetLineArray2", new armyc2.c2sd.renderer.utilities.RendererException("GetLineArray2 " + Integer.toString(lineType), exc));
                     } else {
@@ -3794,12 +3844,28 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             shapes.add(shape);
                             break;
                         case 32214000:
+                            //var wideStroke=28,thinStroke=14;
+                            var wideStroke=20,thinStroke=10;
+                            //get mbr distance
+                            dMBR=armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints,pLinePoints.length);
+                            wideStroke=dMBR/8;
+                            if(wideStroke>20)
+                                wideStroke=20;
+                            thinStroke=wideStroke/2;
+                            //get smallest angle
+                            var minBeta=this.getMinBeta(pLinePoints);
+                            //if mbr too small or theta too small use thin stroke
+                            if(minBeta<0.1)
+                            {
+                                wideStroke=6;
+                                thinStroke=3;
+                            }
                             whiteShape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             whiteShape.setFillColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
-                            var whiteStroke = new armyc2.c2sd.graphics2d.BasicStroke(28);
+                            var whiteStroke = new armyc2.c2sd.graphics2d.BasicStroke(wideStroke);
                             blueShape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             blueShape.setFillColor(new armyc2.c2sd.renderer.utilities.Color(30, 144, 255));
-                            paleBlueStroke = new armyc2.c2sd.graphics2d.BasicStroke(14);
+                            paleBlueStroke = new armyc2.c2sd.graphics2d.BasicStroke(thinStroke);
                             paleBlueShape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             paleBlueShape.setFillColor(new armyc2.c2sd.renderer.utilities.Color(153, 204, 255));
                             poly = new armyc2.c2sd.graphics2d.Polygon();
