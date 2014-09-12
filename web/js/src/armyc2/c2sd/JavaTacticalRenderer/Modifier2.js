@@ -3264,6 +3264,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
         var pt3 = null;
         var quadrant = -1;
         var shape2 = null;
+        var lineType=tg.get_LineType();
         font = tg.get_Font();
         if (font === null) {
             font = g2d.getFont();
@@ -3282,7 +3283,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
         for (j = 0; j < tg.modifiers.size(); j++) {
             modifier = tg.modifiers.get(j);
             var lineFactor = modifier.lineFactor;
-            if (modifier.type !== 3 && tg.get_LineType() !==22123000)
+            if (modifier.type !== 3 && lineType !== 22123000)
             {    
                 lineFactor += 0.25;
             }
@@ -3324,7 +3325,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                         direction = 2;
                     else
                         direction = 3;
-                    if (tg.get_LineType() === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {
+                    if (lineType === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {
                         direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
                     }
                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt1, direction, lineFactor * stringHeight);
@@ -3345,7 +3346,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
                     break;
                 case 2: //breach
                     dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
-                    if (converter !== null && dist>100) {
+                    if (converter !== null && dist>100 && lineType !== 22121000) 
+                    {
                         var pt1Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt0.x), Math.floor(pt0.y)));
                         var pt2Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt1.x), Math.floor(pt1.y)));
                         var a12 = new armyc2.c2sd.JavaLineArray.ref();
