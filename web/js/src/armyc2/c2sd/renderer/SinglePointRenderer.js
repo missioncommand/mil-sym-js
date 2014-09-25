@@ -3640,6 +3640,33 @@ return{
                 tempShape.fillText(ctx);
             }
         }     
+    },
+    /**
+     * 
+     * @param {armyc2.c2sd.renderer.utilities.ImageInfo} ii
+     * @param {String} symbolID
+     * @param {object} modifiers
+     * @returns {armyc2.c2sd.renderer.utilities.ImageInfo}
+     */
+    renderImage: function(ii, symbolID, modifiers)
+    {
+        var iinew = null;
+
+        var hasTextModifiers = true;
+        
+        iinew = this.processUnitDisplayModifiers(ii, symbolID, modifiers,hasTextModifiers);
+
+        if(iinew !== null)
+            ii = iinew;
+
+        iinew = null;
+
+        iinew = this.processUnitModifiers(ii,symbolID,modifiers);
+
+        if(iinew !== null)
+                ii = iinew;
+        
+        return ii;
     }
     
     // </editor-fold>

@@ -6,6 +6,8 @@ armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
     
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
+        SO = armyc2.c2sd.renderer.so,
+        ImageInfo = armyc2.c2sd.renderer.utilities.ImageInfo,
         SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
         UnitDefTable = armyc2.c2sd.renderer.utilities.UnitDefTable,
         UnitFontLookup = armyc2.c2sd.renderer.utilities.UnitFontLookup,
@@ -112,6 +114,79 @@ return{
             symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
             return SinglePointRenderer.renderUnit(symbolID, modifiers);
         }
+    },
+    /**
+     * 
+     * @param {armyc2.c2sd.renderer.utilities.ImageInfo} imageInfo
+     * @param {String} symbolID
+     * @param {object} modifiers
+     * @returns {armyc2.c2sd.renderer.utilities.ImageInfo}
+     */
+    RenderImageInfoWithLabels: function(imageInfo, symbolID, modifiers)
+    {
+        var ii = SinglePointRenderer.renderImage(imageInfo, symbolID, modifiers);
+        return ii;
+    },
+    /**
+     * 
+     * @param {HTML5 canvas} canvas
+     * @param {String} symbolID
+     * @param {Object} modifiers
+     * @param {armyc2.c2sd.renderer.so.Point} centerPoint optional, default is center of the image.
+     * @param {armyc2.c2sd.renderer.so.Rectangle} symbolBounds optional, default is size of the entire image.
+     * @returns {armyc2.c2sd.renderer.utilities.ImageInfo}
+     */
+    RenderCanvasWithLabels:  function(canvas, symbolID, modifiers, centerPoint, symbolBounds)
+    {
+        var ib = null,
+            cp = null,
+            sb = null;
+
+        var width = canvas.width;
+        var height = canvas.height;
+
+        ib = new SO.Rectangle(0,0,width,height);//should be the same or larger than symbol bounds
+        if(centerPoint)
+            cp = centerPoint;
+        else
+            cp = cp = new SO.Point(width/2,height/2);//where image should be centered
+        if(symbolBounds)
+            sb = symbolBounds;
+        else
+            sb = new SO.Rectangle(0,0,width,height);//bounds of the core symbol
+            
+        var ii = new ImageInfo(canvas,cp,sb,ib);
+        ii = SinglePointRenderer.renderImage(ii, symbolID, modifiers);
+        return ii;
+        
+    },
+    /**
+     * 
+     * @param {String} url
+     * @param {String} symbolID
+     * @param {Object} modifiers
+     * @param {function} callback that takes an ImageInfo object
+     */
+    RenderImageUrlWithLabels: function(url, symbolID, modifiers, callback)
+    {
+        //load image into canvas
+        var buffer = null;
+        var ctx = null;
+        var image = new Image();
+        var rcwl = this.RenderCanvasWithLabels;
+
+        image.onload = function()
+        {
+            buffer = document.createElement('canvas');
+            ctx = buffer.getContext('2d');
+            buffer.width = image.width;
+            buffer.height = image.height;
+            ctx.drawImage(image,0,0);
+
+            var ii = rcwl(buffer, symbolID, modifiers);
+            callback(ii);
+        };
+        image.src = url;
     }
 };
 }());
