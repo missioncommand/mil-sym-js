@@ -1641,6 +1641,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
             case 22131001:
             case 15000000:
             case 15000001:
+            case 10000000:
+            case 11000000:
                 break;
             default:
                 return;
@@ -1693,10 +1695,12 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
         var nextIndex = 0;
         var size = tg.Pixels.size();
         switch (linetype) {
+            case 10000000:
             case 15000000:
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, new Boolean(false));
                 break;
+            case 11000000:
             case 15000001:
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
                 break;
