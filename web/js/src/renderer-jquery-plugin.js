@@ -89,6 +89,15 @@
                         symbolID = sanitize(symbolID, modifiers);   
                     }
                 }
+                
+                if($(this).data("fill-color") !== undefined)
+                    {modifiers[msa.FillColor] = $(this).data("fill-color");}
+                
+                if($(this).data("line-color") !== undefined)
+                    {modifiers[msa.LineColor] = $(this).data("line-color");}
+                    
+                if($(this).data("sym-std") !== undefined)
+                    {modifiers[msa.SymbologyStandard] = $(this).data("sym-std");}
 
                 ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID, modifiers);
                 if (ii)
