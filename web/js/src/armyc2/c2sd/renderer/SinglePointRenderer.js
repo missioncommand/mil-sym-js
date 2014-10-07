@@ -3521,13 +3521,15 @@ return{
             
     hasTextModifiers: function(symbolID, modifiers)
     {
+        var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         var scheme = symbolID.charAt(0);
         if(scheme==="W")
             return false;
         if(scheme==="G")
         {
             var basic = SymbolUtilities.getBasicSymbolID(symbolID);
-            var sd = SymbolDefTable.getSymbolDef(basic);
+            
+            var sd = SymbolDefTable.getSymbolDef(basic, symStd);
             
             //var len = _tgTextModifierKeys.length;
             if(sd.modifiers && sd.modifiers !== "")
@@ -3544,8 +3546,6 @@ return{
         }
         else if(SymbolUtilities.isEMSNaturalEvent(symbolID) === false)
         {
-            
-            var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
             
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
                 return true;
