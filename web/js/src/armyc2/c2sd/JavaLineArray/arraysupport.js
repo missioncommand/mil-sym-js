@@ -3662,6 +3662,21 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 22139000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMCoverDouble(pLinePoints, lineType);
+                            //reorder pLinePoints
+                            var saraPts=new Array(acCounter);
+                            for(j=0;j<4;j++)                    
+                                saraPts[j]=pLinePoints[j];  //0-3
+
+                            for(j=4;j<8;j++)
+                                saraPts[j]=pLinePoints[j+4];    //8-11
+
+                            for(j=8;j<12;j++)
+                                saraPts[j]=pLinePoints[j-4];    //4-7
+
+                            for(j=12;j<16;j++)
+                                saraPts[j]=pLinePoints[j];  //12-15
+
+                            pLinePoints=saraPts;
                             break;
                         case 211000000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMDisruptDouble(pLinePoints, lineType);
@@ -4601,8 +4616,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 }
                                 if (pLinePoints[k].style === 10) {
                                     shape.lineTo(pLinePoints[k]);
-                                    if (lineType === 22139000)
-                                        shape.lineTo(pLinePoints[k - 2]);
+                                    //if (lineType === 22139000)
+                                      //  shape.lineTo(pLinePoints[k - 2]);
                                     if (shape !== null && shape.getShape() !== null) {
                                         shapes.add(0, shape);
                                     }
