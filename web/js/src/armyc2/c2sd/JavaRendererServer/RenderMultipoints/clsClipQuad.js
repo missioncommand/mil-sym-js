@@ -407,9 +407,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             tg2.set_LineType(22131000);
             tg2.Pixels = new java.util.ArrayList();
             var n = 0;
-            if (tg.LatLongs !== null)
-                n = tg.LatLongs.size();
-            else
+//            if (tg.LatLongs !== null)
+//                n = tg.LatLongs.size();
+//            else
                 n = tg.Pixels.size();
             for (j = 0; j < n; j++)
                 tg2.Pixels.add(tg.Pixels.get(j));
