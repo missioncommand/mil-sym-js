@@ -1697,8 +1697,43 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers = function(tg, g2d, clip
         switch (linetype) {
             case 10000000:
             case 15000000:
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, new Boolean(false));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, new Boolean(false));
+                //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, new Boolean(false));
+                //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, new Boolean(false));
+                if(tg.get_T1()===null || tg.get_T1().isEmpty())
+                {
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, false);
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, false);
+                }
+                else
+                {
+                    if(tg.get_T1().equalsIgnoreCase("1"))
+                    {
+                        for(j=0;j<tg.Pixels.size()-1;j++)                            
+                            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 2, 0, tg.Pixels.get(j), tg.Pixels.get(j+1), false);                                                            
+                    }
+                    else if(tg.get_T1().equalsIgnoreCase("2"))
+                    {
+                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, false);
+                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, false);                            
+                    }
+                    else if(tg.get_T1().equalsIgnoreCase("3"))
+                    {
+                        //either end of the polyline
+                        dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                        stringWidth = metrics.stringWidth(tg.get_Name());
+                        stringWidth /=2;
+                        pt2=armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(pt1, pt0, dist+stringWidth);
+                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, pt2, pt2, false);
+                        dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptNextToLast, ptLast);
+                        pt2=armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(ptNextToLast, ptLast, dist+stringWidth);
+                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, pt2, pt2, false);
+                        //the intermediate points
+                        for(j=1;j<tg.Pixels.size()-1;j++)
+                        {
+                            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, tg.Pixels.get(j), tg.Pixels.get(j), false);
+                        }
+                    }
+                }
                 break;
             case 11000000:
             case 15000001:
