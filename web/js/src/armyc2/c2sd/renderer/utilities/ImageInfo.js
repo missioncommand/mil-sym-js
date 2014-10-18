@@ -27,6 +27,24 @@ armyc2.c2sd.renderer.utilities.ImageInfo = function (image, centerPoint, symbolB
     };
     /**
      * 
+     * @returns {String} An SVG formatted string with the icon embedded as an image in dataURI format
+     */
+    armyc2.c2sd.renderer.utilities.ImageInfo.prototype.toSVG = function(){
+        var width = this.getImageBounds().getWidth();
+        var height = this.getImageBounds().getHeight();
+        var dataUri = this.toDataUrl();
+        var svgTxt = [];
+        // SVG supports embedded raster images.  
+        // Using the png dataURI embedded in the SVG element creates a valid svg text file
+        // This can be embedded on as aDOM element on an html page or saved as a .svg file
+        svgTxt.push('<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '" xmlns:xlink="http://www.w3.org/1999/xlink">');
+        svgTxt.push('<image x="0" y="0" width="' + width + '" height="' + height + '" xlink:href="');
+        svgTxt.push(dataUri);
+        svgTxt.push('" /></svg>');
+        return svgTxt.join("");
+    };
+    /**
+     * 
      * @returns {HTML5 canvas} HTML5 canvas
      */
     armyc2.c2sd.renderer.utilities.ImageInfo.prototype.getImage = function(){
