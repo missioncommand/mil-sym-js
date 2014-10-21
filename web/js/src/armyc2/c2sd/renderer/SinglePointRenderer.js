@@ -2195,6 +2195,12 @@ return{
             keepUnitRatio = modifiers[MilStdAttributes.KeepUnitRatio];
         }
         
+        //Check if we need to set 'N' to "ENY"
+        if(symbolID.charAt(1).toUpperCase()==="H")
+        {
+            modifiers[ModifiersTG.N_HOSTILE] = "ENY";
+        }
+        
         var icon = false;
         if(modifiers[MilStdAttributes.Icon] !== undefined)
         {
@@ -2246,12 +2252,6 @@ return{
                 symbolID = "G" + SymbolUtilities.getAffiliation(symbolID) + 
                         "G" + SymbolUtilities.getStatus(symbolID) + "GPP---****X";
                 spli = SinglePointLookup.getSPLookupInfo(symbolID,symStd);
-        }
-
-        //Check if we need to set 'N' to "ENY"
-        if(symbolID.charAt(1).toUpperCase()==="H")
-        {
-            modifiers[ModifiersTG.N_HOSTILE] = "ENY";
         }
         
         // <editor-fold defaultstate="collapsed" desc="Determine font size">
@@ -3485,6 +3485,7 @@ return{
     {
         var scheme = symbolID.charAt(0);
         var status = symbolID.charAt(3);
+        var affiliation = symbolID.charAt(1);
         if(scheme !== "W")
         {
             if(scheme !== "G" && (scheme !== "E" && SymbolUtilities.isEMSNaturalEvent(symbolID) === false))
