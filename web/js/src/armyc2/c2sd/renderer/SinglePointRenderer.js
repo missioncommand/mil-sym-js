@@ -240,7 +240,8 @@ return{
             symbolHeight = Math.round(symbolBounds.getHeight());
         if(render === true)
         {
-            if(hasDisplayModifiers === true || hasTextModifiers === true)
+            if((hasDisplayModifiers === true || hasTextModifiers === true) &&
+                    symbolWidth < _bufferUnitSize && symbolHeight < _bufferUnitSize)
             {
                 buffer = _bufferUnit;//
                 ctx = buffer.getContext('2d');
@@ -2369,7 +2370,9 @@ return{
     
         if(render === true)
         {
-            if(hasDisplayModifiers === true || hasTextModifiers === true)
+            if((hasDisplayModifiers === true || hasTextModifiers === true) &&
+                    symbolWidth < _bufferSymbolSize && 
+                    symbolHeight < _bufferSymbolSize)
             {
                 buffer = _bufferSymbol;//
                 ctx = buffer.getContext('2d');

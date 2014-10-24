@@ -52,7 +52,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "1905",
         "MAPPINGA": "1905",
         "DESCRIPTION": "Action Points Fill",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -92,7 +92,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2196",
         "MAPPINGA": "3196",
         "DESCRIPTION": "Entry Control Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -132,7 +132,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2165",
         "MAPPINGA": "3165",
         "DESCRIPTION": "Survey Control Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -140,7 +140,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2166",
         "MAPPINGA": "3166",
         "DESCRIPTION": "Firing Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -148,7 +148,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2167",
         "MAPPINGA": "3167",
         "DESCRIPTION": "Reload Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -156,7 +156,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2168",
         "MAPPINGA": "3168",
         "DESCRIPTION": "Hide Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -164,7 +164,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2169",
         "MAPPINGA": "3169",
         "DESCRIPTION": "Launch Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -172,7 +172,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2170",
         "MAPPINGA": "3170",
         "DESCRIPTION": "Ambulance Exchange Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -180,7 +180,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2171",
         "MAPPINGA": "3171",
         "DESCRIPTION": "Cannibalization Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -188,7 +188,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2172",
         "MAPPINGA": "3172",
         "DESCRIPTION": "Casualty Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -196,7 +196,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2173",
         "MAPPINGA": "3173",
         "DESCRIPTION": "Civilian Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -204,7 +204,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2174",
         "MAPPINGA": "3174",
         "DESCRIPTION": "Detainee Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -212,7 +212,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2175",
         "MAPPINGA": "3175",
         "DESCRIPTION": "Enemy Prisoner of War (EPW) Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -220,7 +220,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2176",
         "MAPPINGA": "3176",
         "DESCRIPTION": "Logistics Release Point (LRP)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -228,7 +228,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2177",
         "MAPPINGA": "3177",
         "DESCRIPTION": "Maintenance Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -236,7 +236,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2178",
         "MAPPINGA": "3178",
         "DESCRIPTION": "Refuel and Resupply Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -244,7 +244,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2179",
         "MAPPINGA": "3179",
         "DESCRIPTION": "Refuel on the Move (ROM) Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -252,7 +252,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2180",
         "MAPPINGA": "3180",
         "DESCRIPTION": "Traffic Control Post (TCP)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -260,7 +260,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2181",
         "MAPPINGA": "3181",
         "DESCRIPTION": "Trailer Transfer Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -268,7 +268,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2182",
         "MAPPINGA": "3182",
         "DESCRIPTION": "Unit Maintenance Collection Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -276,7 +276,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2183",
         "MAPPINGA": "3183",
         "DESCRIPTION": "Supply Points_General",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -284,7 +284,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2184",
         "MAPPINGA": "3184",
         "DESCRIPTION": "Supply Points_Class I",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -292,7 +292,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2185",
         "MAPPINGA": "3185",
         "DESCRIPTION": "Supply Points_Class II",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -300,7 +300,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2186",
         "MAPPINGA": "3186",
         "DESCRIPTION": "Supply Points_Class III",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -308,7 +308,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2187",
         "MAPPINGA": "3187",
         "DESCRIPTION": "Supply Points_Class IV",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -316,7 +316,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2188",
         "MAPPINGA": "3188",
         "DESCRIPTION": "Supply Points_Class V",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -324,7 +324,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2189",
         "MAPPINGA": "3189",
         "DESCRIPTION": "Supply Points_Class VI",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -332,7 +332,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2190",
         "MAPPINGA": "3190",
         "DESCRIPTION": "Supply Points_Class VII",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -340,7 +340,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2191",
         "MAPPINGA": "3191",
         "DESCRIPTION": "Supply Points_Class VIII",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -348,7 +348,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2192",
         "MAPPINGA": "3192",
         "DESCRIPTION": "Supply Points_Class IX",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -356,7 +356,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2193",
         "MAPPINGA": "3191",
         "DESCRIPTION": "Supply Points_Class X",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -364,7 +364,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2194",
         "MAPPINGA": "3194",
         "DESCRIPTION": "Ammunition Supply Point (ASP)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -372,7 +372,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2195",
         "MAPPINGA": "3195",
         "DESCRIPTION": "Ammunition Transfer Point (ATP)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -380,7 +380,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2214",
         "MAPPINGA": "3214",
         "DESCRIPTION": "Medevac Pick-Up Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -396,7 +396,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2081",
         "MAPPINGA": "3081",
         "DESCRIPTION": "Checkpoint",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -420,7 +420,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2085",
         "MAPPINGA": "3085",
         "DESCRIPTION": "Link-Up Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -468,7 +468,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2086",
         "MAPPINGA": "3086",
         "DESCRIPTION": "Passage Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -476,7 +476,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2088",
         "MAPPINGA": "3088",
         "DESCRIPTION": "Release Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -484,7 +484,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2089",
         "MAPPINGA": "3089",
         "DESCRIPTION": "Start Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -492,7 +492,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2128",
         "MAPPINGA": "3128",
         "DESCRIPTION": "Point of Departure",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -508,7 +508,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2119",
         "MAPPINGA": "3119",
         "DESCRIPTION": "Downed Aircrew Pickup-Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -516,7 +516,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2080",
         "MAPPINGA": "3080",
         "DESCRIPTION": "Action Points (General)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -532,7 +532,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2087",
         "MAPPINGA": "3087",
         "DESCRIPTION": "Rally Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -564,7 +564,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2151",
         "MAPPINGA": "3151",
         "DESCRIPTION": "DECON Site/Point (Unspecified)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -572,7 +572,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2153",
         "MAPPINGA": "3153",
         "DESCRIPTION": "DECON Site/Point (Troops)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -580,7 +580,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2154",
         "MAPPINGA": "3154",
         "DESCRIPTION": "DECON Site/Point (Equipment)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -588,7 +588,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2155",
         "MAPPINGA": "3155",
         "DESCRIPTION": "DECON Site/Point (Equipment and Troops)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -596,7 +596,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2157",
         "MAPPINGA": "3157",
         "DESCRIPTION": "DECON Site/Point (Thorough Decontamination)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -604,7 +604,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2152",
         "MAPPINGA": "3152",
         "DESCRIPTION": "Alternate DECON Site/Point (Unspecified)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -612,7 +612,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2156",
         "MAPPINGA": "3156",
         "DESCRIPTION": "DECON Site/Point (Operational Decontamination)",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
@@ -780,7 +780,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2142",
         "MAPPINGA": "3142",
         "DESCRIPTION": "Engineer Regulating Point",
-        "WIDTH": "24",
+        "WIDTH": "25",
         "HEIGHT": "45"
       },
       {
