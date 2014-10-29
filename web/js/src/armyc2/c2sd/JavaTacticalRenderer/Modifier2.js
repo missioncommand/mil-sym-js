@@ -687,7 +687,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundaryMiddleSegment = function(t
         if (tg.get_EchelonSymbol() !== null) {
             stringWidthEchelonSymbol = metrics.stringWidth(tg.get_EchelonSymbol());
         }
-        dist = 1.5 * (2 * stringWidthENY + stringWidthEchelonSymbol);
+        //dist = 1.5 * (2 * stringWidthENY + stringWidthEchelonSymbol);
+        dist = stringWidthENY + stringWidthEchelonSymbol;
         ptTemp = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(midpt, tg.Pixels.get(middleSegment), dist / 2);
         pt0.x = ptTemp.x;
         pt0.y = ptTemp.y;
