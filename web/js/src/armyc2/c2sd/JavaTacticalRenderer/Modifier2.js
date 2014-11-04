@@ -2729,6 +2729,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, ptCenter, ptCenter, new Boolean(true));
                         break;
                 }
+                break;
             case 24353000:
             case 24363000:
                 rfaLines = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRFALines(tg);
