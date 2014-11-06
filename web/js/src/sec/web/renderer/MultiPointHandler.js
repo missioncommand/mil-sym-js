@@ -21,6 +21,9 @@ sec.web.renderer.MultiPointHandler = (function () {
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
     
+    var _maxWidthInPixels = 1000;
+    var _minWidthInPixels = 100;
+    
     //constructor code
     
     //private functions
