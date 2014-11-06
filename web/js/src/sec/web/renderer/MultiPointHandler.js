@@ -424,6 +424,39 @@ return{
         else
             return false;
     },
+    getReasonableScale:function(bbox, origScale)
+    {
+        var scale=origScale;
+        try
+        {
+            var bounds = bbox.split(",");
+            var left = bounds[0];
+            var right = bounds[2];
+            var top = bounds[3];
+            var bottom = bounds[1];
+            var ul=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
+            var ur=new armyc2.c2sd.JavaLineArray.POINT2(right,top);
+            //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
+            //POINT2 ll=new POINT2(left,bottom);
+            var widthInMeters=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
+            //double metersHigh=mdlGeodesic.geodesic_distance(ul, ll, null, null);
+            var maxWidthInPixels=_maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
+            var minScale=(maxWidthInPixels/widthInMeters)*(1.0/96.0)*(1.0/39.37);
+            minScale=1.0/minScale;
+            if(origScale<minScale)
+                return maxScale;
+            
+            var minWidthInPixels=_minWidthInPixels; 
+            var maxScale=minWidthInPixels/widthInMeters*(1.0/96.0)*(1.0/39.37);
+            maxScale=1.0/maxScale;
+            if(origScale>maxScale)
+                return minScale;
+        }
+    catch (err) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","getGeoUL",err);
+        }    
+        return scale;
+    },
     
     /**
      * Renders all multi-point symbols, creating KML that can be used to draw
@@ -544,7 +577,7 @@ return{
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
-                
+                scale=sec.web.renderer.MultiPointHandler.getReasonableScale(bbox,scale);                
                 
                 ipc = new sec.web.renderer.PointConverter(left, top, scale);
             }
