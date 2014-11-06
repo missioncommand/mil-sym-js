@@ -42,6 +42,9 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _ModifierFontStyle = "bold",
     _ModifierFont = "bold 10pt Arial, sans-serif",
     _MPModifierFont = "bold 12pt Arial, sans-serif",
+    _MPModifierFontName = "Arial, sans-serif",
+    _MPModifierFontSize = 12,
+    _MPModifierFontStyle = "bold",
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
