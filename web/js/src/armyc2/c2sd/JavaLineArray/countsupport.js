@@ -509,7 +509,8 @@ armyc2.c2sd.JavaLineArray.countsupport =
                     var numThisSegment = 0;
                     for (j = 0; j < vblCounter - 1; j++) {
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
-                        numThisSegment = Math.floor(((d - 10) / 20));
+                        //numThisSegment = Math.floor(((d - 10) / 20));
+                        numThisSegment = Math.ceil(((d - 10) / 20));
                         xCounter += 4 * numThisSegment;
                     }
                 } catch (exc) {
@@ -529,7 +530,8 @@ armyc2.c2sd.JavaLineArray.countsupport =
                     var j = 0;
                     for (j = 0; j < vblCounter - 1; j++) {
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
-                        lHowManyThisSegment = Math.floor(((d - 20) / 20)) + 1;
+                        //lHowManyThisSegment = Math.floor(((d - 20) / 20)) + 1;
+                        lHowManyThisSegment = Math.ceil(((d - 20) / 20)) + 1;
                         lEllipseCounter += lHowManyThisSegment * 37;
                     }
                 } catch (exc) {

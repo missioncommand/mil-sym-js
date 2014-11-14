@@ -2240,7 +2240,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             for (k = 0; k < xCount; k++) {
                                 pLinePoints[k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(xPoints2[k]);
                             }
-                            pLinePoints[xCount - 1].style = 5;
+                            if(xCount>0)
+                                pLinePoints[xCount - 1].style = 5;
                             for (k = 0; k < lvoCount; k++) {
                                 pLinePoints[xCount + k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lvoPoints[k]);
                             }
