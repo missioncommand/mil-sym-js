@@ -417,6 +417,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         if(j<numSectors-1)
                             strLeftRightMinMax+=",";                        
                     }
+                    var len=strLeftRightMinMax.length;
+                    var c=strLeftRightMinMax.substr(len-1,1);
+                    if(c.equalsIgnoreCase(","))
+                        strLeftRightMinMax=strLeftRightMinMax.substr(0,len-1);
                     tg.set_H2(strLeftRightMinMax);
                 }                                                
             }
