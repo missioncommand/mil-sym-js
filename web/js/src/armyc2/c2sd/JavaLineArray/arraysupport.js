@@ -1357,7 +1357,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetXPoints: function(pOriginalLinePoints, XPoints, vblCounter) {
+            GetXPoints: function(linetype, pOriginalLinePoints, XPoints, vblCounter) {
                 var xCounter = 0;
                 try {
                     var j = 0;
@@ -1375,6 +1375,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     for (j = 0; j < vblCounter - 1; j++) {
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         numThisSegment = Math.floor(((d - 20) / 20));
+                        if(linetype===32153000)
+                            numThisSegment = Math.floor(((d - 30) / 30));
                         distInterval = d / numThisSegment;
                         for (k = 0; k < numThisSegment; k++) {
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble2(pOriginalLinePoints[j], pOriginalLinePoints[j + 1], distInterval / 2 + distInterval * k);
@@ -1426,7 +1428,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return pEllipsePoints;
             },
-            GetLVOPoints: function(pOriginalLinePoints, pLinePoints, vblCounter) {
+            GetLVOPoints: function(linetype, pOriginalLinePoints, pLinePoints, vblCounter) {
                 var lEllipseCounter = 0;
                 try {
                     var dAngle = 0;
@@ -1446,6 +1448,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints2);
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         lHowManyThisSegment = Math.floor(((d - 20) / 20));
+                        if(linetype===32153000)
+                            lHowManyThisSegment = Math.floor(((d - 30) / 30));
                         distInterval = d / lHowManyThisSegment;
                         dAngle = armyc2.c2sd.JavaLineArray.lineutility.CalcSegmentAngleDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         dAngle = dAngle + 1.5707963267948966;
@@ -2231,12 +2235,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = armyc2.c2sd.JavaLineArray.arraysupport.GetAnchorageDouble(pLinePoints, vblSaveCounter);
                             break;
                         case 32153000:
-                            var xCount = armyc2.c2sd.JavaLineArray.countsupport.GetXPointsCount(pOriginalLinePoints, vblSaveCounter);
+                            var xCount = armyc2.c2sd.JavaLineArray.countsupport.GetXPointsCount(lineType, pOriginalLinePoints, vblSaveCounter);
                             var xPoints2 = new Array(xCount);
-                            var lvoCount = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(pOriginalLinePoints, vblSaveCounter);
+                            var lvoCount = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(lineType, pOriginalLinePoints, vblSaveCounter);
                             var lvoPoints = new Array(lvoCount);
-                            xCount = armyc2.c2sd.JavaLineArray.arraysupport.GetXPoints(pOriginalLinePoints, xPoints2, vblSaveCounter);
-                            lvoCount = armyc2.c2sd.JavaLineArray.arraysupport.GetLVOPoints(pOriginalLinePoints, lvoPoints, vblSaveCounter);
+                            xCount = armyc2.c2sd.JavaLineArray.arraysupport.GetXPoints(lineType, pOriginalLinePoints, xPoints2, vblSaveCounter);
+                            lvoCount = armyc2.c2sd.JavaLineArray.arraysupport.GetLVOPoints(lineType, pOriginalLinePoints, lvoPoints, vblSaveCounter);
                             for (k = 0; k < xCount; k++) {
                                 pLinePoints[k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(xPoints2[k]);
                             }
@@ -2254,7 +2258,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = lFlotCount;
                             break;
                         case 32151000:
-                            acCounter = armyc2.c2sd.JavaLineArray.arraysupport.GetLVOPoints(pOriginalLinePoints, pLinePoints, vblSaveCounter);
+                            acCounter = armyc2.c2sd.JavaLineArray.arraysupport.GetLVOPoints(lineType, pOriginalLinePoints, pLinePoints, vblSaveCounter);
                             break;
                         case 31740000:
                             vblCounter = armyc2.c2sd.JavaLineArray.arraysupport.GetIcingPointsDouble(pLinePoints, vblSaveCounter);

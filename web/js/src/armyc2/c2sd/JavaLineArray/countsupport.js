@@ -67,12 +67,12 @@ armyc2.c2sd.JavaLineArray.countsupport =
                             count = armyc2.c2sd.JavaLineArray.flot.GetAnchorageCountDouble(pLinePoints, vblCounter);
                             break;
                         case 32153000:
-                            var xCount = armyc2.c2sd.JavaLineArray.countsupport.GetXPointsCount(pLinePoints, vblCounter);
-                            var lvoCount = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(pLinePoints, vblCounter);
+                            var xCount = armyc2.c2sd.JavaLineArray.countsupport.GetXPointsCount(vbiDrawThis, pLinePoints, vblCounter);
+                            var lvoCount = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(vbiDrawThis, pLinePoints, vblCounter);
                             count = xCount + lvoCount;
                             break;
                         case 32151000:
-                            count = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(pLinePoints, vblCounter);
+                            count = armyc2.c2sd.JavaLineArray.countsupport.GetLVOCount(vbiDrawThis, pLinePoints, vblCounter);
                             break;
                         case 31740000:
                             vblCounter = armyc2.c2sd.JavaLineArray.countsupport.GetIcingCount(pLinePoints, vblCounter);
@@ -501,7 +501,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                 }
                 return count;
             },
-            GetXPointsCount: function(pOriginalLinePoints, vblCounter) {
+            GetXPointsCount: function(linetype, pOriginalLinePoints, vblCounter) {
                 var xCounter = 0;
                 try {
                     var j = 0;
@@ -511,6 +511,8 @@ armyc2.c2sd.JavaLineArray.countsupport =
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         //numThisSegment = Math.floor(((d - 10) / 20));
                         numThisSegment = Math.ceil(((d - 10) / 20));
+                        if(linetype===32153000)
+                            numThisSegment = Math.ceil(((d - 15) / 30));
                         xCounter += 4 * numThisSegment;
                     }
                 } catch (exc) {
@@ -522,7 +524,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                 }
                 return xCounter;
             },
-            GetLVOCount: function(pOriginalLinePoints, vblCounter) {
+            GetLVOCount: function(linetype, pOriginalLinePoints, vblCounter) {
                 var lEllipseCounter = 0;
                 try {
                     var d = 0;
@@ -532,6 +534,8 @@ armyc2.c2sd.JavaLineArray.countsupport =
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         //lHowManyThisSegment = Math.floor(((d - 20) / 20)) + 1;
                         lHowManyThisSegment = Math.ceil(((d - 20) / 20)) + 1;
+                        if(linetype===32153000)
+                            lHowManyThisSegment = Math.ceil(((d - 30) / 30)) + 1;
                         lEllipseCounter += lHowManyThisSegment * 37;
                     }
                 } catch (exc) {
