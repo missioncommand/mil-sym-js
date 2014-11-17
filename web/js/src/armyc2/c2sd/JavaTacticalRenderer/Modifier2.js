@@ -2550,45 +2550,26 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     if (linetype !== 243112000) {
         return false;
     }
-    var AM = new java.util.ArrayList();
-    var AN = new java.util.ArrayList();
-    var H2 = tg.get_H2();
+    var AM=new java.util.ArrayList();
+    //var AN=new java.util.ArrayList();
     var H1 = tg.get_H1();
-    var leftRightMinMax = H2.split(",");
+    var T = tg.get_Name();
+    var T1 = tg.get_T1();
+    var az = T.split(",");  //azimuths l,r,l,r,...
+    var am = T1.split(","); //radii
     var altitudes = H1.split(",");
-    var left = 0, right = 0, min = 0, max = 0;
-    var numSectors = leftRightMinMax.length / 4;
+    var min = 0;
+    var numSectors = az.length / 2;
     if (numSectors < 1) {
         return false;
     }
-
-//    if (numSectors * 4 !== Double.parseDouble(leftRightMinMax.length))
-//    {
-//        return false;
-//    }
-    var usemin = true;
-    if (leftRightMinMax[2].equalsIgnoreCase("0"))
-        usemin = false;
     
-    try
-    {
-        for (var k = 0; k < numSectors; k++)
-        {
-            //left = Double.parseDouble(leftRightMinMax[4 * k]);
-            //right = Double.parseDouble(leftRightMinMax[4 * k + 1]);
-            min = Double.parseDouble(leftRightMinMax[4 * k + 2]);
-            max = Double.parseDouble(leftRightMinMax[4 * k + 3]);
-            if (usemin)
-                AM.add(min);
-            else
-                AM.add(max);
-            if (k === numSectors - 1)
-            {
-                if (usemin)
-                    AM.add(max);
-            }
+    try {
+        for (var k = 0; k < am.length; k++) {
+            min = Double.parseDouble(am[k]);
+            AM.add(min);
         }
-    }
+    } 
     catch (exc)
     {
         if (Clazz.instanceOf(exc)) {
@@ -2597,6 +2578,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
             throw exc;
         }
     }
+    
     var n = tg.Pixels.size();
     //pt0 and pt1 are points for the location indicator
     var pt0 = tg.Pixels.get(n - 5);
@@ -2615,8 +2597,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     var locModifier = new java.util.ArrayList();
     var pt22d = null;
     var radius = 0;
-    for (var k = 0; k < AM.size(); k++) {
-        radius = AM.get(k);
+    for (var k = 0; k < numSectors; k++) {
+        if (AM.size() < k + 2) {
+            break;
+        }
+        radius = (AM.get(k) + AM.get(k + 1)) / 2;
         pt2 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, az12);
         //need locModifier in geo pixels                
         pt22d = new armyc2.c2sd.graphics2d.Point2D(pt2.x, pt2.y);

@@ -365,36 +365,28 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 var X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
-//                if (AM !== null) 
-//                {
-//                    var numSectors = AM.length - 1;
-//                    if (Math.floor(AN.length / 2) < numSectors)
-//                        numSectors = Math.floor(AN.length / 2);
-//                    var left;
-//                    var right;
-//                    var min = 0;
-//                    var max = 0;
-//                    var strLeftRightMinMax = "";
-//                    var strH1 = "";
-//                    for (var j = 0; j < numSectors; j++)
-//                    {
-//                        left = AN[2 * j];
-//                        right = AN[2 * j + 1];
-//                        min = AM[j];
-//                        max = AM[j + 1];
-//                        strLeftRightMinMax += Double.toString(left) + "," + Double.toString(right) + "," + Double.toString(min) + "," + Double.toString(max);
-//                        if (j < numSectors - 1)
-//                            strLeftRightMinMax += ",";
-//                        if (X !== null && j < X.length)
-//                        {
-//                            strH1 += X[j];
-//                            if (j < numSectors - 1 && j < X.length - 1)
-//                                strH1 += ",";
-//                        }
-//                    }
-//                    tg.set_H2(strLeftRightMinMax);
-//                    tg.set_H1(strH1);
-//                }
+                if(AM!==null)
+                {
+                    var strT1="";
+                    for(var j=0;j<AM.length;j++)
+                    {
+                        strT1+=Double.toString(AM[j]);
+                        if(j<AM.length-1)
+                            strT1+=",";                        
+                    }
+                    tg.set_T1(strT1);
+                }
+                if(AN!==null)
+                {
+                    var strT="";
+                    for(var j=0;j<AN.length;j++)
+                    {
+                        strT+=AN[j];
+                        if(j<AN.length-1)
+                            strT+=",";                        
+                    }
+                    tg.set_Name(strT);
+                }
                 if(X!==null)
                 {
                     var strH1="";
