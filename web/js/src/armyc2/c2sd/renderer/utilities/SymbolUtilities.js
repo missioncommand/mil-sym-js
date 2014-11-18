@@ -21,14 +21,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             var basic = symbolID;
             if(symbolID && symbolID.length === 15)
             {
-                var scheme = symbolID[0];
+                var scheme = symbolID.charAt(0);
                 if (scheme === 'G') //tactical graphic
                 {
-                    basic = scheme + '*' + basic[2] + '*' + basic.substring(4, 10) + "****X";
+                    basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "****X";
                 } 
                 else if (scheme !== 'W' && scheme !== 'B')//weather or basic/buffered shape
                 {
-                    basic = scheme + '*' + basic[2] + '*' + basic.substring(4, 10) + "*****";
+                    basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
                 }
             }
             return basic;
@@ -1281,7 +1281,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTacticalGraphic = function (strSymbolID){
        
         if(strSymbolID && 
-                ((strSymbolID[0]===('G')) || (strSymbolID[0]===('W')) 
+                ((strSymbolID.charAt(0)===('G')) || (strSymbolID.charAt(0)===('W')) 
                 || this.isEMSNaturalEvent(strSymbolID)))
         {
           return true;
@@ -1300,7 +1300,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
           return false;
         }
-        var scheme = strSymbolID[0];
+        var scheme = strSymbolID.charAt(0);
         if((scheme===('O')) || (scheme===('S')) ||
                 (scheme===('I')) || (scheme===('E') && strSymbolID[2] !== 'N'))
         {
@@ -1316,7 +1316,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isWeather = function (strSymbolID){
 
-        if(strSymbolID[0] === ('W'))
+        if(strSymbolID.charAt(0) === ('W'))
         {
             return true;
         }
@@ -1715,9 +1715,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */        
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isUnit = function (strSymbolID){
         
-          var blRetVal = ((strSymbolID[0] === ('S')) && 
-                                (strSymbolID[2] === ('G')) &&
-                                (strSymbolID[4] === ('U')));
+          var blRetVal = ((strSymbolID.charAt(0) === ('S')) && 
+                                (strSymbolID.charAt(2) === ('G')) &&
+                                (strSymbolID.charAt(4) === ('U')));
           return blRetVal;
         
     };
