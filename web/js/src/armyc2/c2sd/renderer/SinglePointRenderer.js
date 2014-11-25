@@ -824,7 +824,7 @@ return{
 
                     //There will never be lowercase characters in an echelon so trim that fat.    
                     //Remove the descent from the bounding box.
-                    tiEchelon.getTextBounds().shiftBR(0,Math.round(-(echelonBounds.getHeight()*0.3)));                         
+                    //tiEchelon.getTextBounds().shiftBR(0,Math.round(-(echelonBounds.getHeight()*0.3)));                         
 
 
                     //adjust for outline.
@@ -870,7 +870,7 @@ return{
 
                 //There will never be lowercase characters in an echelon so trim that fat.    
                 //Remove the descent from the bounding box.
-                tiAM.getTextBounds().shiftBR(0+outlineOffset,Math.round(-(amBounds.getHeight()*0.3)));                         
+                //tiAM.getTextBounds().shiftBR(0+outlineOffset,Math.round(-(amBounds.getHeight()*0.3)));                         
 
 
                 //adjust for outline.
@@ -892,7 +892,7 @@ return{
                     tfRectangle = new SO.Rectangle(echelonBounds.getX()-1,
                                 echelonBounds.getY()-1,// + outlineOffset,
                                 echelonBounds.getWidth()+3,
-                                echelonBounds.getHeight()+3);
+                                symbolBounds.getY() - (echelonBounds.getY() - 1));//echelonBounds.getHeight()+3);
                     tfBounds = new SO.Rectangle(echelonBounds.getX()-2,
                                 echelonBounds.getY()-2,
                                 echelonBounds.getWidth()+5,
@@ -911,7 +911,7 @@ return{
                     tfBounds = new SO.Rectangle(tfRectangle.getX() + -1,
                     tfRectangle.getY() - 1,
                     tfRectangle.getWidth() + 2,
-                    tfRectangle.getWidth() + 2);
+                    tfRectangle.getHeight() + 2);
 
                 }
                 imageBounds.union(tfBounds);
