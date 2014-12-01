@@ -984,7 +984,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.modifiers = new java.util.ArrayList();
             var bi = new armyc2.c2sd.graphics2d.BufferedImage(8, 8, 2);
             var g2d = bi.createGraphics();
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, clipArea);
+            //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, clipArea);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, clipArea, converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.FilterPoints2(tg, converter);
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.FilterVerticalSegments(tg);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.FilterAXADPoints(tg, converter);

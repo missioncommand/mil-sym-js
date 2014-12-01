@@ -2,13 +2,13 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaTacticalRenderer = armyc2.c2sd.JavaTacticalRenderer || {};
 armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
-    DegToRad: function(deg) {
+    DegToRad: function (deg) {
         return deg / 180.0 * 3.141592653589793;
     },
-    RadToDeg: function(rad) {
+    RadToDeg: function (rad) {
         return rad / 3.141592653589793 * 180.0;
     },
-    GetAzimuth: function(c1, c2) {
+    GetAzimuth: function (c1, c2) {
         var theta = 0;
         try {
             var lat1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.DegToRad(c1.y);
@@ -34,7 +34,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return theta;
     },
-    geodesic_distance: function(c1, c2, a12, a21) {
+    geodesic_distance: function (c1, c2, a12, a21) {
         var h = 0;
         try {
             if (a12 !== null && a21 !== null) {
@@ -71,7 +71,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.sm_a * h;
     },
-    geodesic_coordinate: function(start, distance, azimuth) {
+    geodesic_coordinate: function (start, distance, azimuth) {
         var pt = null;
         try {
             var a = 0;
@@ -103,7 +103,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
             m = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.DegToRad(lat);
             n = Math.sin(m);
             p = Math.atan2(h * f * b, e - d * n);
-            var lon = Double.parseDouble(start.x) + armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.RadToDeg(p);                
+            var lon = Double.parseDouble(start.x) + armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.RadToDeg(p);
             pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lon, lat);
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
@@ -114,7 +114,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return pt;
     },
-    GetGeodesicArc: function(pPoints) {
+    GetGeodesicArc: function (pPoints) {
         var pPoints2 = new java.util.ArrayList();
         try {
             if (pPoints === null) {
@@ -175,7 +175,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return pPoints2;
     },
-    GetGeodesicArc2: function(pPoints, pPoints2) {
+    GetGeodesicArc2: function (pPoints, pPoints2) {
         var circle = false;
         try {
             var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pPoints.get(0));
@@ -222,7 +222,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return circle;
     },
-    IntersectLines: function(p1, brng1, p2, brng2) {
+    IntersectLines: function (p1, brng1, p2, brng2) {
         var ptResult = null;
         try {
             var lat1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.DegToRad(p1.y);
@@ -275,7 +275,7 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return ptResult;
     },
-    SegmentGeoPoints: function(geoPoints, interval, lineType) {
+    SegmentGeoPoints: function (geoPoints, interval, lineType) {
         var resultPts = new java.util.ArrayList();
         try {
             switch (lineType) {
@@ -341,6 +341,126 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
             }
         }
         return resultPts;
+    },
+    normalize_points: function (geoPoints)
+    {
+        var normalizedPts = null;
+        try
+        {
+            if (geoPoints === null || geoPoints.isEmpty())
+                return normalizedPts;
+
+            var j = 0;
+            var minx = geoPoints.get(0).x;
+            var maxx = minx;
+            var spansIDL = false;
+            var pt = null;
+            for (j = 1; j < geoPoints.size(); j++) {
+                pt = geoPoints.get(j);
+                if (pt.x < minx) {
+                    minx = pt.x;
+                }
+                if (pt.x > maxx) {
+                    maxx = pt.x;
+                }
+            }
+            if (maxx - minx > 180) {
+                spansIDL = true;
+            }
+
+            if (!spansIDL) {
+                return geoPoints;
+            }
+
+            normalizedPts = new java.util.ArrayList();
+            for (j = 0; j < geoPoints.size(); j++) {
+                pt = geoPoints.get(j);
+                if (pt.x < 0) {
+                    pt.x += 360;
+                }
+                normalizedPts.add(pt);
+            }
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic._className, "normalize_points", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside normalize_points", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return normalizedPts;
+    },
+    geodesic_mbr:function(geoPoints)
+    {
+        var rect2d=null;
+        try
+        {
+            if (geoPoints === null || geoPoints.isEmpty())
+                return rect2d;
+
+            var normalizedPts=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.normalize_points(geoPoints);
+            var ulx=normalizedPts.get(0).x;
+            var lrx=ulx;
+            var uly=normalizedPts.get(0).y;
+            var lry=uly;
+            var j=0;
+            var pt=null;
+            for(j=1;j<normalizedPts.size();j++)
+            {
+                pt=normalizedPts.get(j);
+                if(pt.x<ulx)
+                    ulx=pt.x;
+                if(pt.x>lrx)
+                    lrx=pt.x;
+            
+                if(pt.y>uly)
+                    uly=pt.y;
+                if(pt.y<lry)
+                    lry=pt.y;
+            }
+            var ul=new armyc2.c2sd.JavaLineArray.POINT2(ulx,uly);
+            var ur=new armyc2.c2sd.JavaLineArray.POINT2(lrx,uly);
+            var lr=new armyc2.c2sd.JavaLineArray.POINT2(lrx,lry);
+            var width=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul,ur,null,null);
+            var height=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ur,lr,null,null);
+            rect2d=new armyc2.c2sd.graphics2d.Rectangle2D(ulx,uly,width,height);            
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic._className, "geodesic_mbr", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside geodesic_mbr", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return rect2d;
+    },
+    geodesic_center:function(geoPoints)
+    {
+        var pt=null;
+        try
+        {
+            if(geoPoints===null || geoPoints.isEmpty())
+                return pt;
+
+            var rect2d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_mbr(geoPoints);
+            var deltax=rect2d.width/2;
+            var deltay=rect2d.height/2;
+            var ul=new armyc2.c2sd.JavaLineArray.POINT2(rect2d.x,rect2d.y);
+            //first walk east by deltax
+            var ptEast=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ul,deltax,90);
+            //next walk south by deltay;
+            pt=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptEast,deltay,180);
+            
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic._className, "geodesic_center", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside geodesic_center", exc));
+            } else {
+                throw exc;
+            }
+            return rect2d;
+        }
+        return pt;
     },
     _className: "mdlGeodesic",
     sm_a: 6378137
