@@ -759,7 +759,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.modifiers = new java.util.ArrayList();
             var bi = new armyc2.c2sd.graphics2d.BufferedImage(8, 8, 2);
             var g2d = bi.createGraphics();
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, null);
+            //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, null);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, null, converter);
             var rev = tg.getSymbologyStandard();
             var hatchShape = null;
             if (converter === null)
@@ -1268,7 +1269,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         }
                         armyc2.c2sd.JavaTacticalRenderer.clsUtility.InterpolatePixels(tg);
                         tg.modifiers = new java.util.ArrayList();
-                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, clipBounds);
+                        //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, clipBounds);
+                        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.FilterPoints2(tg, converter);
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.ClearPixelsStyle(tg);
                         var rangeFanFillShapes = null;
