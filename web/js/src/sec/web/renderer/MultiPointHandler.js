@@ -1447,6 +1447,9 @@ return{
             var tempModifier, len2 = modifiers.size();
             for (var j = 0; j < len2; j++) {
                 tempModifier = modifiers.get(j);
+                
+                //assume kml labels will be centered on coordinate (as per google earth)
+                //sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
 
                 var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize);
                 if(labelsToAdd)
@@ -2003,10 +2006,10 @@ return{
             feature.properties.label = text;//rt,cm,lb
             feature.properties.pointRadius = 0;
             feature.properties.fontColor = shapeInfo.getFillColor().toHexString(false);//"#FFFFFF";
-            feature.properties.fontSize = RS.getModifierFontSize() + "pt";//"12pt";
-            feature.properties.fontFamily = RS.getModifierFontName();//"Arial, sans-serif";
-            feature.properties.fontWeight = RS.getModifierFontStyle();
-            feature.properties.labelAlign ="lm";//rt,cm,lb
+            feature.properties.fontSize = RS.getMPModifierFontSize() + "pt";//"12pt";
+            feature.properties.fontFamily = RS.getMPModifierFontName();//"Arial, sans-serif";
+            feature.properties.fontWeight = RS.getMPModifierFontStyle();
+            feature.properties.labelAlign ="lm";// "cm";//rt,cm,lb
             feature.properties.labelXOffset = 0;
             feature.properties.labelYOffset = 0;
             feature.properties.labelOutlineColor = RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);

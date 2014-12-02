@@ -2313,6 +2313,8 @@ return{
             fontSize = fontSize * ratio;
         }
         
+        //TODO: if else block does the same thing either way.  probably remove
+        /*
         if(pixelSize > 0)
         {
             symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
@@ -2327,7 +2329,10 @@ return{
             fontSize = ((fontSize / 96) * 72);
             //ctx.font= "45pt SinglePoint";
             strSPFont = fontSize + "pt SinglePoint";
-        }
+        }//*/
+        symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
+        fontSize = (((fontSize) / 96) * 72);
+        strSPFont = fontSize + "pt SinglePoint";
         
         
         // </editor-fold>
