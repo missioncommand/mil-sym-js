@@ -1124,7 +1124,8 @@ return{
             lineColor = null,
             lineWidth = 0,
             symbolFillIDs = null,
-            symbolFillIconSize = null;
+            symbolFillIconSize = null,
+            useDashArray = symbol.getUseDashArray();
             
         //alert(jsonString);
         try {
@@ -1258,6 +1259,11 @@ return{
             else if (modifiers.lineThickness)
                 lineWidth = modifiers.lineThickness;
             
+            if(modifiers[MilStdAttributes.UseDashArray])
+                useDashArray = modifiers[MilStdAttributes.UseDashArray];
+            else if(modifiers.useDashArray)
+                useDashArray = modifiers.useDashArray;
+            
             // These are for when we create a area fill that is comprised of symbols//////////
             if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null) 
             {
@@ -1284,6 +1290,7 @@ return{
         }
         try {
             symbol.setModifierMap(modifierMap);
+            symbol.setUseDashArray(useDashArray);
             if (fillColor !== null) {
                 symbol.setFillColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(fillColor));
             } else {

@@ -41,6 +41,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._DrawAffiliationModifierAsLabel = true;      
     this._tp = null;
     this._Tag = null;
+    this._UseDashArray = false;
 
     // </editor-fold>
 
@@ -369,6 +370,15 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getOutlineColor = function()
     {
         return this._OutLineColor;
+    };
+    
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setUseDashArray = function(value)
+    {
+        this._UseDashArray = value;
+    };
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getUseDashArray = function()
+    {
+        return this._UseDashArray;
     };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setTag = function(value)
