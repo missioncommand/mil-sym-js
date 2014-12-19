@@ -120,6 +120,21 @@ armyc2.c2sd.graphics2d.Line2D.prototype.intersectsLine = function(edge) {
         if (edgey1 > this.y1 && edgey2 > this.y1)
             return false;
     }
+    if(this.x1===this.x2)
+    {
+        if(this.x1<edgex1 && this.x1<edgex2)
+            return false;
+        if(this.x1>edgex1 && this.x1>edgex2)
+            return false;
+    }
+    if(this.y1===this.y2)
+    {
+        if(this.y1<edgey1 && this.y1<edgey2)
+            return false;
+        if(this.y1>edgey1 && this.y1>edgey2)
+            return false;
+    }
+    
     var slope = (this.y2 - this.y1) / (this.x2 - this.x1);
     var b1 = this.y2 - slope * this.x2;
     var edgeSlope = (edgey2 - edgey1) / (edgex2 - edgex1);

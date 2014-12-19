@@ -442,15 +442,17 @@ return{
             //double metersHigh=mdlGeodesic.geodesic_distance(ul, ll, null, null);
             var maxWidthInPixels=_maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
             var minScale=(maxWidthInPixels/widthInMeters)*(1.0/96.0)*(1.0/39.37);
-            minScale=1.0/minScale;
-            if(origScale<minScale)
-                return maxScale;
-            
-            var minWidthInPixels=_minWidthInPixels; 
-            var maxScale=minWidthInPixels/widthInMeters*(1.0/96.0)*(1.0/39.37);
-            maxScale=1.0/maxScale;
-            if(origScale>maxScale)
+            minScale = 1.0 / minScale;
+            if (origScale < minScale) {
                 return minScale;
+            }
+
+            var minWidthInPixels = _minWidthInPixels;
+            var maxScale = (minWidthInPixels / widthInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
+            maxScale = 1.0 / maxScale;
+            if (origScale > maxScale) {
+                return maxScale;
+            }
         }
     catch (err) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","getGeoUL",err);
