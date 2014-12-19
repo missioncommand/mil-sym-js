@@ -355,6 +355,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.set_Location(milStd.getModifier("Y"));
             if (milStd.getModifier("N") !== null)
                 tg.set_N(milStd.getModifier("N"));
+            tg.set_UseDashArray(milStd.getUseDashArray());
             var isClosedArea = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType);
             if (isClosedArea) {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);

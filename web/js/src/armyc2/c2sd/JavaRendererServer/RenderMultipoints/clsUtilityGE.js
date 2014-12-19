@@ -99,6 +99,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
     },
     createDashedPolylines: function(tg, polylines, shape) {
         try {
+            if(tg.get_UseDashArray()===true)
+                return polylines;
             if (shape.getLineColor() === null)
                 return polylines;
 

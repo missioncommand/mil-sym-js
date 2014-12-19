@@ -36,6 +36,7 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight = function() {
     this._SymbologyStandard = 0;
     this._useLineInterpolation = false;
     this.fontBackColor = armyc2.c2sd.renderer.utilities.Color.WHITE;
+    this._useDashArray = false;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_LatLongs = function() {
     return this.LatLongs;
@@ -305,5 +306,11 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_UseLineInterpolation = fu
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_UseLineInterpolation = function(value) {
     this._useLineInterpolation = value;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_UseDashArray = function() {
+    return this._useDashArray;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_UseDashArray = function(value) {
+    this._useDashArray = value;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight._className = "TGLight";
