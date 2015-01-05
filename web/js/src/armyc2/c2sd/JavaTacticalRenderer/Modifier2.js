@@ -4480,7 +4480,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
 
                     //diagnostic
-                    theta = 0;
+                    //theta = 0;
                     pt3.x -= stringWidth / 2;
                     pt3.y -= stringHeight / 2;
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
@@ -4521,7 +4521,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                         pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0, pt2, pt2, 0, Math.abs((lineFactor) * stringHeight));
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(Math.floor(pt3.x), Math.floor(pt3.y));
                     //diagnostic
-                    theta = 0
+                    //theta = 0
                     pt3.x -= stringWidth / 2;
                     pt3.y -= stringHeight / 2;
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
