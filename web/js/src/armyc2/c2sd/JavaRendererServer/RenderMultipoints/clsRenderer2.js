@@ -120,7 +120,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                     clipBounds2 = new armyc2.c2sd.graphics2d.Rectangle2D(x, y, width, height);
                 }
                 else if (clipBounds instanceof java.util.ArrayList)
+                {
                     clipArray = clipBounds;
+                    clipBounds2=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.getMBR(clipArray);
+                }
             }
             var lineType = tg.get_LineType();
             var minPoints2 = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetMinPoints(lineType);
