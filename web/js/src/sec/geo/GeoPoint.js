@@ -33,4 +33,11 @@ sec.geo.GeoPoint=function()
         else
             return false;
     };
+    this.equals=function(p)
+    {
+        if(p.x===this.x && p.y===this.y)
+            return true;
+        else
+            return false;
+    };
 };

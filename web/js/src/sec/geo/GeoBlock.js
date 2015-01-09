@@ -95,6 +95,10 @@ sec.geo.GeoBlock = function()
     var a1 = curve.getAzimuth();
     var a2 = curve.getReverseAzimuth();
     var radius = widthMeters / 2;
+    //diagnostic to prevent error in calculate global coords if points are identical
+    if(p1.x.valueOf()===p2.x.valueOf() && p1.x.valueOf()===p2.x.valueOf())
+        return;
+    //end section
     var c = this.geoCalc.calculateEndingGlobalCoordinates(sec.geo.GeoBlock.REFERENCE_ELLIPSOID, c1, a1 - 90, radius);
     this.moveToLatLong(c.getLongitude(), c.getLatitude());
     c = this.geoCalc.calculateEndingGlobalCoordinates(sec.geo.GeoBlock.REFERENCE_ELLIPSOID, c2, a2 + 90, radius);
