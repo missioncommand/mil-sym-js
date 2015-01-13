@@ -491,13 +491,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             }
             var linetype = tg.get_LineType ();
             if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area (linetype, null)) return ;
+            var minSize=2;
+            if(armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(tg.get_LineType())===true)
+                minSize=3;
             var ptCurrent = null;
             var ptLast = null;
             for (var j = 1; j < tg.Pixels.size (); j++) {
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j));
                 if (ptCurrent.x === ptLast.x && ptCurrent.y === ptLast.y) {
-                    if (tg.Pixels.size () > 2) {
+                    //if (tg.Pixels.size () > 2) 
+                    if (tg.Pixels.size () > minSize) 
+                    {
                         tg.Pixels.remove (j);
                         tg.LatLongs.remove (j);
                     }
