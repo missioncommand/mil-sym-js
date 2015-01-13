@@ -448,7 +448,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
     ClipPolygon: function(tg, clipBounds) {
         var poly = new java.util.ArrayList();
         try {
-            var isClosed = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.isClosed(tg.Pixels);
+            //var isClosed = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.isClosed(tg.Pixels);
+            var isClosed = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(tg.get_LineType());
             clipBounds = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.expandPolygon(clipBounds, 20);
             var polygon = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.POINT2toPoint2D(tg.Pixels);
             var j = 0;
