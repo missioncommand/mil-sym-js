@@ -1268,8 +1268,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var w = shapeSpec.getBounds().width;
             var x = shapeSpec.getBounds().x;
             var y = shapeSpec.getBounds().y;
-            if (h === 0 && w === 0)
-                return shapeSpecs2;
+//            if (h === 0 && w === 0)
+//                return shapeSpecs2;
             if (h === 0)
                 h = 1;
             if (w === 0)
