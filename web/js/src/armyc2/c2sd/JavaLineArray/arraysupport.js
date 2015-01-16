@@ -6,42 +6,42 @@ armyc2.c2sd.JavaLineArray.arraysupport =
             /*
              * used for Depth Area to determine how sharp the polygon corners are.
              */
-            getMinBeta:function(pLinePoints)
+            getMinBeta: function (pLinePoints)
             {
-                var minBeta=Math.PI;
+                var minBeta = Math.PI;
                 try
                 {
-                    var j=0;
-                    var n= pLinePoints.length;
-                    var pt0=null,pt1=null,pt2=null;
-                    var theta0=1,theta1=1,beta=1;
-                    for(j=1;j<pLinePoints.length-1;j++)
+                    var j = 0;
+                    var n = pLinePoints.length;
+                    var pt0 = null, pt1 = null, pt2 = null;
+                    var theta0 = 1, theta1 = 1, beta = 1;
+                    for (j = 1; j < pLinePoints.length - 1; j++)
                     {
-                        pt0=pLinePoints[j-1];
-                        pt1=pLinePoints[j];
-                        pt2=pLinePoints[j+1];
-                        if(pt0.x===pt1.x && pt0.y===pt1.y)
+                        pt0 = pLinePoints[j - 1];
+                        pt1 = pLinePoints[j];
+                        pt2 = pLinePoints[j + 1];
+                        if (pt0.x === pt1.x && pt0.y === pt1.y)
                             continue;
-                        if(pt1.x===pt2.x && pt1.y===pt2.y)
+                        if (pt1.x === pt2.x && pt1.y === pt2.y)
                             continue;
-                        theta0=Math.atan2(pt0.y-pt1.y,pt0.x-pt1.x);
-                        theta1=Math.atan2(pt2.y-pt1.y,pt2.x-pt1.x);
-                        beta=Math.abs(theta1-theta0);     
-                        if(beta<minBeta)
-                            minBeta=beta;
+                        theta0 = Math.atan2(pt0.y - pt1.y, pt0.x - pt1.x);
+                        theta1 = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x);
+                        beta = Math.abs(theta1 - theta0);
+                        if (beta < minBeta)
+                            minBeta = beta;
                     }
-                    pt0=pLinePoints[n-2];
-                    pt1=pLinePoints[0];
-                    pt2=pLinePoints[1];
-                    if(pt0.x===pt1.x && pt0.y===pt1.y)
+                    pt0 = pLinePoints[n - 2];
+                    pt1 = pLinePoints[0];
+                    pt2 = pLinePoints[1];
+                    if (pt0.x === pt1.x && pt0.y === pt1.y)
                         return minBeta;
-                    if(pt1.x===pt2.x && pt1.y===pt2.y)
+                    if (pt1.x === pt2.x && pt1.y === pt2.y)
                         return minBeta;
-                    theta0=Math.atan2(pt0.y-pt1.y,pt0.x-pt1.x);
-                    theta1=Math.atan2(pt2.y-pt1.y,pt2.x-pt1.x);
-                    beta=Math.abs(theta1-theta0);     
-                    if(beta<minBeta)
-                        minBeta=beta;
+                    theta0 = Math.atan2(pt0.y - pt1.y, pt0.x - pt1.x);
+                    theta1 = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x);
+                    beta = Math.abs(theta1 - theta0);
+                    if (beta < minBeta)
+                        minBeta = beta;
                 }
                 catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -52,11 +52,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return minBeta;
             },
-            setMinLength: function(value)
+            setMinLength: function (value)
             {
                 minLength = value;
             },
-            FillPoints: function(pLinePoints, counter, points)
+            FillPoints: function (pLinePoints, counter, points)
             {
                 points.clear();
                 for (var j = 0; j < counter; j++)
@@ -64,7 +64,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     points.add(pLinePoints[j]);
                 }
             },
-            GetLineArray2: function(lineType, pts, shapes, clipBounds, rev) {
+            GetLineArray2: function (lineType, pts, shapes, clipBounds, rev) {
                 var points = null;
                 try {
                     var pt = null;
@@ -96,7 +96,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt.x, pt.y, pt.style);
                     }
                     points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev);
-                } 
+                }
                 catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetLineArray2", new armyc2.c2sd.renderer.utilities.RendererException("GetLineArray2 " + Integer.toString(lineType), exc));
@@ -106,7 +106,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return points;
             },
-            GetFORTLPointsDouble: function(pLinePoints, lineType, vblSaveCounter) {
+            GetFORTLPointsDouble: function (pLinePoints, lineType, vblSaveCounter) {
                 var nCounter = 0;
                 try {
                     var j = 0;
@@ -190,7 +190,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nCounter;
             },
-            CoordFEBADouble: function(pLinePoints, vblCounter) {
+            CoordFEBADouble: function (pLinePoints, vblCounter) {
                 try {
                     var j = 0;
                     var pXLinePoints = new Array(Math.floor(4 * vblCounter / 32));
@@ -245,7 +245,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     }
                 }
             },
-            GetATWallPointsDouble2: function(pLinePoints, lineType, vblSaveCounter) {
+            GetATWallPointsDouble2: function (pLinePoints, lineType, vblSaveCounter) {
                 var nCounter = 0;
                 try {
                     var j = 0;
@@ -312,7 +312,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nCounter;
             },
-            GetInsideOutsideDouble2: function(pt0, pt1, pLinePoints, vblCounter, index, lineType) {
+            GetInsideOutsideDouble2: function (pt0, pt1, pLinePoints, vblCounter, index, lineType) {
                 var nDirection = 0;
                 try {
                     var m = new armyc2.c2sd.JavaLineArray.ref();
@@ -432,7 +432,24 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         default:
                             break;
                     }
-                } catch (exc) {
+                    //reverse direction for ICING
+                    switch (lineType)
+                    {
+                        case 31740000:
+                            if (nDirection === extendLeft)
+                                nDirection = extendRight;
+                            else if (nDirection === extendRight)
+                                nDirection = extendLeft;
+                            else if (nDirection === extendAbove)
+                                nDirection = extendBelow;
+                            else if (nDirection === extendBelow)
+                                nDirection = extendAbove;
+                            break;
+                        default:
+                            break;
+                    }
+                } 
+                catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetInsideOutsideDouble2", new armyc2.c2sd.renderer.utilities.RendererException("GetInsideOutsideDouble2", exc));
                     } else {
@@ -441,7 +458,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nDirection;
             },
-            GetZONEPointsDouble2: function(pLinePoints, lineType, vblSaveCounter) {
+            GetZONEPointsDouble2: function (pLinePoints, lineType, vblSaveCounter) {
                 var nCounter = 0;
                 try {
                     var j = 0;
@@ -579,7 +596,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nCounter;
             },
-            IsTurnArcReversed: function(pPoints) {
+            IsTurnArcReversed: function (pPoints) {
                 try {
                     if (pPoints.length < 3) {
                         return false;
@@ -608,7 +625,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return false;
             },
-            GetIsolatePointsDouble: function(pLinePoints, lineType) {
+            GetIsolatePointsDouble: function (pLinePoints, lineType) {
                 try {
                     var reverseTurn = false;
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
@@ -667,11 +684,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsArc[j]);
                         pLinePoints[j].style = 0;
                     }
-                    if(lineType !== 211600000)
+                    if (lineType !== 211600000)
                         armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(d) / 7), pArrowPoints, 0);
                     else
-                        armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75*d) / 7), pArrowPoints, 0);
-                        
+                        armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(ptsArc[24], ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75 * d) / 7), pArrowPoints, 0);
+
                     pLinePoints[25].style = 5;
                     switch (lineType) {
                         case 212600000:
@@ -704,7 +721,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 211600000:
                             midPt.x = (pt1.x + ptsArc[25].x) / 2;
                             midPt.y = (pt1.y + ptsArc[25].y) / 2;
-                            armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(midPt, ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75*d) / 7), reversepArrowPoints, 0);
+                            armyc2.c2sd.JavaLineArray.lineutility.GetArrowHead4Double(midPt, ptsArc[25], Math.floor(Math.floor(d) / 7), Math.floor(Math.floor(1.75 * d) / 7), reversepArrowPoints, 0);
                             for (j = 26; j < 29; j++) {
                                 pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pArrowPoints[j - 26]);
                             }
@@ -789,44 +806,44 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return;
             },
-            AreaWithCenterFeatureDouble: function(pLinePoints, vblCounter, lineType) {
+            AreaWithCenterFeatureDouble: function (pLinePoints, vblCounter, lineType) {
                 try {
                     var k = 0;
-                    var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();                    
-                    var fLength=4;
-                    if(lineType===221311000)
-                        fLength=5;
-                    var d = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblCounter-fLength);
+                    var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var fLength = 4;
+                    if (lineType === 221311000)
+                        fLength = 5;
+                    var d = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblCounter - fLength);
                     if (d > 350)
                         d = 350;
-                    
+
                     for (k = 0; k < vblCounter; k++) {
                         pLinePoints[k].style = 0;
                     }
                     switch (lineType) {
                         case 2237000:
-                            if(d<20)
-                                d=20;
-                            if(d>60)
-                                d=60;
+                            if (d < 20)
+                                d = 20;
+                            if (d > 60)
+                                d = 60;
                             var ul = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                             var lr = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                             armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pLinePoints, vblCounter - 4, ul, lr);
                             var ur = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lr);
                             ur.y = ul.y;
                             pLinePoints[vblCounter - 3] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 3].x -= d/2;//25;
-                            pLinePoints[vblCounter - 3].y -= d/5;//10;
+                            pLinePoints[vblCounter - 3].x -= d / 2;//25;
+                            pLinePoints[vblCounter - 3].y -= d / 5;//10;
                             pLinePoints[vblCounter - 2] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 2].y -= d*0.7;//35;
+                            pLinePoints[vblCounter - 2].y -= d * 0.7;//35;
                             pLinePoints[vblCounter - 1] = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(ur, ul, 0);
-                            pLinePoints[vblCounter - 1].x += d/2;//25;
-                            pLinePoints[vblCounter - 1].y -= d/5;//10;
+                            pLinePoints[vblCounter - 1].x += d / 2;//25;
+                            pLinePoints[vblCounter - 1].y -= d / 5;//10;
                             pLinePoints[vblCounter - 4].style = 5;
                             break;
                         case 221311000:
-                            if(d<100)
-                                d=100;
+                            if (d < 100)
+                                d = 100;
                             pLinePoints[vblCounter - 5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                             pLinePoints[vblCounter - 5].style = 5;
                             pLinePoints[vblCounter - 4] = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 6);
@@ -843,8 +860,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[vblCounter - 1].style = 0;
                             break;
                         case 22340000:
-                            if(d<50)
-                                d=50;
+                            if (d < 50)
+                                d = 50;
                             if (lineType === 22340000) {
                                 for (k = 0; k < vblCounter - 4; k++) {
                                     pLinePoints[k].style = 14;
@@ -863,8 +880,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[vblCounter - 1].y = ptCenter.y;
                             break;
                         case 22350000:
-                            if(d<50)
-                                d=50;
+                            if (d < 50)
+                                d = 50;
                             pLinePoints[vblCounter - 4].style = 5;
                             ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter - 4);
                             pLinePoints[vblCounter - 3].x = ptCenter.x - d / 10;
@@ -889,7 +906,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     }
                 }
             },
-            GetATWallPointsDouble: function(pLinePoints, lineType, vblSaveCounter) {
+            GetATWallPointsDouble: function (pLinePoints, lineType, vblSaveCounter) {
                 var nCounter = 0;
                 try {
                     var j = 0;
@@ -1047,7 +1064,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nCounter;
             },
-            GetRidgePointsDouble: function(pLinePoints, lineType, vblSaveCounter) {
+            GetRidgePointsDouble: function (pLinePoints, lineType, vblSaveCounter) {
                 var nCounter = 0;
                 try {
                     var j = 0;
@@ -1118,7 +1135,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return nCounter;
             },
-            GetSquallDouble: function(pLinePoints, amplitude, quantity, length, numPoints) {
+            GetSquallDouble: function (pLinePoints, amplitude, quantity, length, numPoints) {
                 var counter = 0;
                 try {
                     var j = 0;
@@ -1196,7 +1213,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetSevereSquall: function(pLinePoints, numPoints) {
+            GetSevereSquall: function (pLinePoints, numPoints) {
                 var l = 0;
                 try {
                     var quantity = 5;
@@ -1257,7 +1274,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return l;
             },
-            GetConvergancePointsDouble: function(pLinePoints, vblCounter) {
+            GetConvergancePointsDouble: function (pLinePoints, vblCounter) {
                 var counter = vblCounter;
                 try {
                     var j = 0;
@@ -1302,7 +1319,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetITDPointsDouble: function(pLinePoints, vblCounter) {
+            GetITDPointsDouble: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var j = 0;
@@ -1357,7 +1374,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetXPoints: function(linetype, pOriginalLinePoints, XPoints, vblCounter) {
+            GetXPoints: function (linetype, pOriginalLinePoints, XPoints, vblCounter) {
                 var xCounter = 0;
                 try {
                     var j = 0;
@@ -1375,7 +1392,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     for (j = 0; j < vblCounter - 1; j++) {
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         numThisSegment = Math.floor(((d - 20) / 20));
-                        if(linetype===32153000)
+                        if (linetype === 32153000)
                             numThisSegment = Math.floor(((d - 30) / 30));
                         distInterval = d / numThisSegment;
                         for (k = 0; k < numThisSegment; k++) {
@@ -1403,7 +1420,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return xCounter;
             },
-            getEllipsePoints: function(ptCenter, ptWidth, ptHeight) {
+            getEllipsePoints: function (ptCenter, ptWidth, ptHeight) {
                 var pEllipsePoints = null;
                 try {
                     pEllipsePoints = new Array(37);
@@ -1428,7 +1445,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return pEllipsePoints;
             },
-            GetLVOPoints: function(linetype, pOriginalLinePoints, pLinePoints, vblCounter) {
+            GetLVOPoints: function (linetype, pOriginalLinePoints, pLinePoints, vblCounter) {
                 var lEllipseCounter = 0;
                 try {
                     var dAngle = 0;
@@ -1448,7 +1465,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints2);
                         d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
                         lHowManyThisSegment = Math.floor(((d - 20) / 20));
-                        if(linetype===32153000)
+                        if (linetype === 32153000)
                             lHowManyThisSegment = Math.floor(((d - 30) / 30));
                         distInterval = d / lHowManyThisSegment;
                         dAngle = armyc2.c2sd.JavaLineArray.lineutility.CalcSegmentAngleDouble(pOriginalLinePoints[j], pOriginalLinePoints[j + 1]);
@@ -1495,7 +1512,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return lEllipseCounter;
             },
-            GetIcingPointsDouble: function(pLinePoints, vblCounter) {
+            GetIcingPointsDouble: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var j = 0;
@@ -1541,7 +1558,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetAnchorageDouble: function(vbPoints2, numPts) {
+            GetAnchorageDouble: function (vbPoints2, numPts) {
                 var lFlotCounter = 0;
                 try {
                     var j = 0;
@@ -1642,7 +1659,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return lFlotCounter;
             },
-            GetPipePoints: function(pLinePoints, vblCounter) {
+            GetPipePoints: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var pOriginalPoints = new Array(vblCounter);
@@ -1700,7 +1717,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetReefPoints: function(pLinePoints, vblCounter) {
+            GetReefPoints: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var pOriginalPoints = new Array(vblCounter);
@@ -1753,7 +1770,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetRestrictedAreaPoints: function(pLinePoints, vblCounter) {
+            GetRestrictedAreaPoints: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var pOriginalPoints = new Array(vblCounter);
@@ -1804,7 +1821,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            getOverheadWire: function(pLinePoints, vblCounter) {
+            getOverheadWire: function (pLinePoints, vblCounter) {
                 var counter = 0;
                 try {
                     var j = 0;
@@ -1903,7 +1920,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetLineArray2Double: function(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev) {
+            GetLineArray2Double: function (lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev) {
                 var points = new java.util.ArrayList();
                 try {
                     var client = armyc2.c2sd.JavaLineArray.CELineArray.getClient();
@@ -2001,11 +2018,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                            pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
 //                            pt3.y = pt0.y;
                             armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pLinePoints, pLinePoints.length, pt0, pt2);   //pt0=ul, pt1=lr
-                            pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt0);
-                            pt1.x=pt2.x;
-                            pt3=new armyc2.c2sd.JavaLineArray.POINT2(pt0);
-                            pt3.y=pt2.y;
-                            pLinePoints=new Array(5);
+                            pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pt1.x = pt2.x;
+                            pt3 = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pt3.y = pt2.y;
+                            pLinePoints = new Array(5);
                             pLinePoints[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                             pLinePoints[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt1);
                             pLinePoints[2] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
@@ -2014,13 +2031,13 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = 5;
                             break;
                         case 15000003:
-                            pOriginalLinePoints=new Array(5);
+                            pOriginalLinePoints = new Array(5);
                             pOriginalLinePoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[0]);
                             pOriginalLinePoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[1]);
                             pOriginalLinePoints[2] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[2]);
                             pOriginalLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[3]);
                             pOriginalLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[0]);
-                            
+
                             //pt0 will be ul, pt1 will be lr
                             var buffer = pLinePoints[0].style;
 //                            armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pLinePoints, pLinePoints.length, pt0, pt1);
@@ -2043,26 +2060,26 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                            pLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
 //                            pLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             //clockwise orientation
-                            pt0=pLinePoints[0];
-                            pt0.x-=buffer;
-                            pt0.y-=buffer;
-                            pt1=pLinePoints[1];
-                            pt1.x+=buffer;
-                            pt1.y-=buffer;
-                            pt2=pLinePoints[2];
-                            pt2.x+=buffer;
-                            pt2.y+=buffer;
-                            pt3=pLinePoints[3];
-                            pt3.x-=buffer;
-                            pt3.y+=buffer;
-                            pLinePoints=new Array(5);
-                            pLinePoints[0]=new armyc2.c2sd.JavaLineArray.POINT2(pt0);
-                            pLinePoints[1]=new armyc2.c2sd.JavaLineArray.POINT2(pt1);
-                            pLinePoints[2]=new armyc2.c2sd.JavaLineArray.POINT2(pt2);
-                            pLinePoints[3]=new armyc2.c2sd.JavaLineArray.POINT2(pt3);
-                            pLinePoints[4]=new armyc2.c2sd.JavaLineArray.POINT2(pt0);                            
+                            pt0 = pLinePoints[0];
+                            pt0.x -= buffer;
+                            pt0.y -= buffer;
+                            pt1 = pLinePoints[1];
+                            pt1.x += buffer;
+                            pt1.y -= buffer;
+                            pt2 = pLinePoints[2];
+                            pt2.x += buffer;
+                            pt2.y += buffer;
+                            pt3 = pLinePoints[3];
+                            pt3.x -= buffer;
+                            pt3.y += buffer;
+                            pLinePoints = new Array(5);
+                            pLinePoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                            pLinePoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pt1);
+                            pLinePoints[2] = new armyc2.c2sd.JavaLineArray.POINT2(pt2);
+                            pLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
+                            pLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             acCounter = 5;
-                            vblSaveCounter=5;
+                            vblSaveCounter = 5;
 //                            pOriginalLinePoints=new Array(vblSaveCounter);
 //                            pt0 = new armyc2.c2sd.JavaLineArray.POINT2(xmin, ymin);
 //                            pt2 = new armyc2.c2sd.JavaLineArray.POINT2(xmax, ymax);
@@ -2118,12 +2135,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 32550000:
                             //diagnostic
-                            dMBR=armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblSaveCounter);
-                            d=20;
-                            if(dMBR<60)
-                                d=dMBR/4;
-                            if(d<5)
-                                d=5;
+                            dMBR = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, vblSaveCounter);
+                            d = 20;
+                            if (dMBR < 60)
+                                d = dMBR / 4;
+                            if (d < 5)
+                                d = 5;
                             //end section
                             for (j = 0; j < vblSaveCounter; j++) {
                                 pLinePoints[j].style = 1;
@@ -2136,13 +2153,13 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[j - vblSaveCounter]);
                             }
                             //diagnostic
-                            if(dMBR<50)
+                            if (dMBR < 50)
                             {
                                 //d was used as the circle radius
-                                d*=0.6;
+                                d *= 0.6;
                             }
                             else
-                                d=12;
+                                d = 12;
                             //end section
                             pLinePoints[j - 1].style = 5;
                             pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
@@ -2152,10 +2169,10 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pt2.y += d;//12;
                             pt2.style = 5;
                             pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
-                            pt3.y += d/4;//3;
+                            pt3.y += d / 4;//3;
                             pt3.style = 0;
                             pt4 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt3);
-                            pt4.y += d/4;//3;
+                            pt4.y += d / 4;//3;
                             pLinePoints[j++] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt1);
                             pLinePoints[j++] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
                             pLinePoints[j++] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt3);
@@ -2244,7 +2261,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             for (k = 0; k < xCount; k++) {
                                 pLinePoints[k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(xPoints2[k]);
                             }
-                            if(xCount>0)
+                            if (xCount > 0)
                                 pLinePoints[xCount - 1].style = 5;
                             for (k = 0; k < lvoCount; k++) {
                                 pLinePoints[xCount + k] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lvoPoints[k]);
@@ -3668,20 +3685,20 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 22139000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMCoverDouble(pLinePoints, lineType);
                             //reorder pLinePoints
-                            var saraPts=new Array(acCounter);
-                            for(j=0;j<4;j++)                    
-                                saraPts[j]=pLinePoints[j];  //0-3
+                            var saraPts = new Array(acCounter);
+                            for (j = 0; j < 4; j++)
+                                saraPts[j] = pLinePoints[j];  //0-3
 
-                            for(j=4;j<8;j++)
-                                saraPts[j]=pLinePoints[j+4];    //8-11
+                            for (j = 4; j < 8; j++)
+                                saraPts[j] = pLinePoints[j + 4];    //8-11
 
-                            for(j=8;j<12;j++)
-                                saraPts[j]=pLinePoints[j-4];    //4-7
+                            for (j = 8; j < 12; j++)
+                                saraPts[j] = pLinePoints[j - 4];    //4-7
 
-                            for(j=12;j<16;j++)
-                                saraPts[j]=pLinePoints[j];  //12-15
+                            for (j = 12; j < 16; j++)
+                                saraPts[j] = pLinePoints[j];  //12-15
 
-                            pLinePoints=saraPts;
+                            pLinePoints = saraPts;
                             break;
                         case 211000000:
                             acCounter = armyc2.c2sd.JavaLineArray.DISMSupport.GetDISMDisruptDouble(pLinePoints, lineType);
@@ -3807,7 +3824,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212100000:
                         case 212300000:
                         case 212300001:
-                        //basic shapes-rectangles
+                            //basic shapes-rectangles
                         case 14000000:
                         case 15000003:
                             armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
@@ -3851,15 +3868,15 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                                shape.lineTo(pOriginalLinePoints[j]);
 //                                shapes.add(shape);
 //                            }
-                            shape=new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                            shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             shape.moveTo(pLinePoints[0]);
-                            for(j=0;j<vblSaveCounter;j++)
+                            for (j = 0; j < vblSaveCounter; j++)
                                 shape.lineTo(pLinePoints[j]);
                             shapes.add(shape);
-                            
+
                             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                             shape.moveTo(pOriginalLinePoints[0]);
-                            for(j=1;j<vblSaveCounter;j++)
+                            for (j = 1; j < vblSaveCounter; j++)
                                 shape.lineTo(pOriginalLinePoints[j]);
                             shapes.add(shape);
                             break;
@@ -3883,20 +3900,20 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 32214000:
                             //var wideStroke=28,thinStroke=14;
-                            var wideStroke=20,thinStroke=10;
+                            var wideStroke = 20, thinStroke = 10;
                             //get mbr distance
-                            dMBR=armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints,pLinePoints.length);
-                            wideStroke=dMBR/8;
-                            if(wideStroke>20)
-                                wideStroke=20;
-                            thinStroke=wideStroke/2;
+                            dMBR = armyc2.c2sd.JavaLineArray.lineutility.MBRDistance(pLinePoints, pLinePoints.length);
+                            wideStroke = dMBR / 8;
+                            if (wideStroke > 20)
+                                wideStroke = 20;
+                            thinStroke = wideStroke / 2;
                             //get smallest angle
-                            var minBeta=this.getMinBeta(pLinePoints);
+                            var minBeta = this.getMinBeta(pLinePoints);
                             //if mbr too small or theta too small use thin stroke
-                            if(minBeta<0.1)
+                            if (minBeta < 0.1)
                             {
-                                wideStroke=6;
-                                thinStroke=3;
+                                wideStroke = 6;
+                                thinStroke = 3;
                             }
                             whiteShape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             whiteShape.setFillColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
@@ -3916,7 +3933,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             }
                             //diagnostic
                             var pts = poly.getPathIterator(null).getPoints();
-                            if(pts.size()<3)
+                            if (pts.size() < 3)
                                 break;
                             //end section
                             blueArea = new armyc2.c2sd.graphics2d.Area(poly);
@@ -4622,7 +4639,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 if (pLinePoints[k].style === 10) {
                                     shape.lineTo(pLinePoints[k]);
                                     //if (lineType === 22139000)
-                                      //  shape.lineTo(pLinePoints[k - 2]);
+                                    //  shape.lineTo(pLinePoints[k - 2]);
                                     if (shape !== null && shape.getShape() !== null) {
                                         shapes.add(0, shape);
                                     }
