@@ -11,8 +11,14 @@ sec.web.renderer.MultiPointHandler = (function () {
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
     var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
     var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
+    var RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities;
     var _appletChecked = false;
     var _appletUrl = null;
+    var _buffer = null;
+    
+    var textInfoBuffer = null,
+        textInfoContext = null,
+        textInfoContextFont = null;
     
     var baseURL = "http:" + "//" + location.hostname + ":8080/", //base http url for milstd icon symbology
         baseSURL = location.protocol + "//" + location.host + "/"; //base https url for milstd icon symbology
@@ -777,6 +783,11 @@ return{
                 //set id and any other properties
                 jsonOutput = JSON.stringify(jsonContent);
             }
+            else if (format === 3)//render to canvas
+            {
+                //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize);
+            }
         } 
         catch (exc) 
         {
@@ -984,13 +995,8 @@ return{
             shapes = mSymbol.getSymbolShapes();
             modifiers = mSymbol.getModifierShapes();
             var normalize = false;
-            if (format === 1) 
-            {
-                jsonOutput = ("{\"type\":\"symbol\",");
-                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
-                jsonOutput += (jsonContent);
-                jsonOutput += ("}");
-            } else if (format === 0) 
+            
+            if (format === 0) 
             {
                 var textColor = null;
                 if(symbolCode.charAt(0) === 'G')
@@ -1020,6 +1026,18 @@ return{
                 jsonContent.properties.description = description;
                 jsonContent.properties.symbolID = symbolCode;
                 jsonOutput = JSON.stringify(jsonContent);
+            }
+            else if (format === 3)//render to canvas
+            {
+                //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize);
+            }
+            else if (format === 1) 
+            {
+                jsonOutput = ("{\"type\":\"symbol\",");
+                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
+                jsonOutput += (jsonContent);
+                jsonOutput += ("}");
             }
             
         } catch (err) {            
@@ -1474,6 +1492,249 @@ return{
         }
         return featureCollection;
     },
+    GeoCanvasize: function(shapes, modifiers, ipc, normalize)
+    {
+        if(textInfoBuffer===null)
+        {
+            textInfoBuffer = document.createElement('canvas');
+            textInfoBuffer.width = 1;
+            textInfoBuffer.height = 1;
+        }
+        if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
+        {
+            textInfoContext = textInfoBuffer.getContext('2d');
+            textInfoContext.lineCap = "butt";
+            textInfoContext.lineJoin = "miter";
+            textInfoContext.miterLimit = 3;
+            textInfoContextFont = RendererSettings.getModifierFont();
+            textInfoContext.font = textInfoContextFont;
+        }
+        
+        var height = RendererUtilities.measureTextWithFontString(textInfoContext.font, "Tj",textInfoContext).height;
+        
+        var tempBounds = null;
+        var paths = [];
+        var pathBounds = null;
+        var labels = [];
+        var labelBounds = null;
+        var unionBounds = null;
+        try
+        {
+
+            var len = shapes.size();
+            for (var i = 0; i < len; i++) 
+            {
+                //var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToGeoJSONString(shapes.get(i), ipc, normalize);
+                var pathInfo = sec.web.renderer.MultiPointHandler.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer);
+                tempBounds = pathInfo.path.getBounds();
+                if(pathBounds === null)
+                    pathBounds = tempBounds.clone();
+                else
+                    pathBounds.union(tempBounds);
+                paths.push(pathInfo);
+            }
+            
+            var tempModifier, len2 = modifiers.size();
+            var tiTemp = null;
+            for (var j = 0; j < len2; j++) {
+                tempModifier = modifiers.get(j);
+                
+                var labelInfo = tempModifier;
+                var tempLocation = tempModifier.getGlyphPosition();
+                //multipoint renderer is assuming text is centered vertically 
+                //so we add half height to location as text is drawn cetered at 
+                //the bottom.
+                tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height/2),textInfoContext,null);
+                var bounds = tiTemp.getTextBounds();
+                var degrees = parseFloat(tempModifier.getModifierStringAngle());
+                if(degrees !== 0)
+                {
+                    bounds = this.GetRotatedRectangleBounds(bounds, tiTemp.getLocation(), degrees);
+                    tiTemp.bounds = bounds;
+                    tiTemp.angle = degrees;
+                }
+                
+                if(tiTemp)
+                {
+                    labels.push(tiTemp);
+                    if(labelBounds === null)
+                        labelBounds = tiTemp.getTextOutlineBounds();
+                    else
+                        labelBounds.union(tiTemp.getTextOutlineBounds());
+                }
+                
+                
+            }//*/
+            unionBounds = pathBounds.clone();
+            if(labelBounds)
+            {
+                unionBounds.union(labelBounds);
+            }
+            
+            //get geo bounds for canvas
+            var coordTL = new armyc2.c2sd.graphics2d.Point2D();
+            coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
+            var coordBR = new armyc2.c2sd.graphics2d.Point2D();
+            coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
+            
+            var geoCoordTL = ipc.PixelsToGeo(coordTL);
+            var geoCoordBR = ipc.PixelsToGeo(coordBR);
+            if (normalize)
+            {
+                geoCoordTL = this.NormalizeCoordToGECoord(geoCoordTL);
+                geoCoordBR = this.NormalizeCoordToGECoord(geoCoordBR);
+            }
+            geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy),geoCoordTL.getY().toFixed(_decimalAccuracy));
+            geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy),geoCoordBR.getY().toFixed(_decimalAccuracy));
+        }
+        catch(err)
+        {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","JSONize",err);
+        }
+        //if(renderToCanvas)
+        //{
+            var geoCanvas = this.RenderShapeInfoToCanvas(paths,labels,unionBounds);
+            return geoCanvas;
+        //}
+        //else
+          //  return {paths:paths,textInfos:labels,bounds:unionBounds,geoTL:geoCoordTL,geoBR:geoCoordBR};
+    },
+    RenderShapeInfoToCanvas: function(paths, textInfos, bounds, geoTL, geoBR)
+    {
+        var buffer = document.createElement('canvas');
+			
+        var pathSize = paths.length;
+        var textSize = textInfos.length;
+        var pathInfo = paths;
+        var pi = null;
+        var bounds = bounds;
+        buffer.width = bounds.getWidth();
+        buffer.height = bounds.getHeight();
+        var lineColor = "#000000";
+        var ctx = buffer.getContext('2d');
+        
+        ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
+        for (var i = 0; i < pathSize; i++)
+        {
+            pi = pathInfo[i];
+            if (i === 0)
+            lineColor = pi.lineColor;
+            if (pi.lineWidth)
+            ctx.lineWidth = pi.lineWidth;
+            if (pi.lineColor !== null)
+            {
+                ctx.strokeStyle = pi.lineColor;
+                pi.path.stroke(ctx);
+            }
+            if (pi.fillStyle !== null)
+            {
+                ctx.fillStyle = pi.fillColor;
+                pi.path.stroke(ctx);
+            }
+        }
+        
+        ctx.setTransform(1,0,0,1,0,0);
+        if (textInfos.length > 0)
+        {
+            //apply mpmodfier font
+            //loop and render text
+            var tis = textInfos;
+            var ti = null;
+            var angle = 0;
+            var outlineWidth = RendererSettings.getTextOutlineWidth();
+            var mpFont = RendererSettings.getModifierFont();
+            var outlineStyle = RendererUtilities.getIdealOutlineColor(lineColor);
+            ctx.fillStyle = lineColor;
+            ctx.lineCap = "butt";
+            ctx.lineJoin = "miter";
+            ctx.miterLimit = 3;
+            ctx.font = mpFont;
+            //ctx.textBaseline = "top";
+            ctx.textBaseline = "Alphabetic";
+            //ctx.textBaseline = "middle";
+            //ctx.textAlign="left";
+            if (outlineWidth > 0)
+            ctx.lineWidth = (outlineWidth * 2) + 1;
+            ctx.strokeStyle = outlineStyle;
+            var offsetX = bounds.getX();
+            var offsetY = bounds.getY();
+            var tX = 0;
+            var tY = 0;
+            //362,422
+            var height = RendererUtilities.measureTextWithFontString(mpFont, "Tj",ctx).height;
+            //ctx.fillText("test",10,height + 80);
+            for (var j = 0; j < textSize; j++)
+            {
+                ti = tis[j];
+                
+                //ti.getTextOutlineBounds().stroke(ctx);
+                ////TEST: stroke to see bounds (before transform)
+                //ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
+                angle = ti.angle;
+                
+                tX = ((ti.getLocation().getX())-offsetX);
+                tY = ((ti.getLocation().getY())-offsetY);
+                ctx.translate(tX, tY);
+
+                //TEST
+                ctx.save();
+                ctx.setTransform(1,0,0,1,0,0);
+                
+                ctx.strokeStyle="#00FF00";
+                var tiRect = ti.getTextOutlineBounds();
+                ctx.translate(tiRect.x - offsetX, tiRect.y - offsetY);
+                
+                //TEST: stroke to see bounds
+                //ctx.strokeRect(0,0,tiRect.getWidth(),tiRect.getHeight());
+                
+                ctx.restore();
+                ctx.setTransform(1,0,0,1,0,0);
+                ctx.translate(tX, tY);
+                //*/
+                
+                if (angle !== 0)
+                {
+                    ctx.rotate(angle*Math.PI/180);
+                }
+
+                if (outlineWidth > 0)
+                {
+                    ctx.strokeText(ti.text,0,0);
+                    //ti.strokeText(ctx);
+                }
+                
+                ctx.fillText(ti.text,0,0);
+                
+                //TEST: stroke to see draw point of text
+                //ctx.strokeRect(0,0,1,1);
+                
+                //ti.fillText(ctx);
+                
+                
+                
+                ctx.setTransform(1,0,0,1,0,0);
+            }
+            
+        }
+        //test
+        
+        ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
+        ctx.strokeStyle = "#000000";
+        ctx.strokeRect(bounds.getX(), bounds.getY(),buffer.width,buffer.height);
+        
+        /*ctx.setTransform(1,0,0,1,0,0);
+        ctx.translate((bounds.getX()+100),(bounds.getY() + 100));
+        ctx.rotate(45*Math.PI/180);
+        ctx.fillText("test",0,0);//*/
+        //ctx.fillText("test",362,422);
+        //georeference buffer
+        
+        //return image//
+        buffer.geoTL = geoTL;
+        buffer.geoBR = geoBR;
+        return buffer;
+
+    },
     IsOnePointSymbolCode:function(symbolCode)        
     {   
         var symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
@@ -1687,7 +1948,7 @@ return{
                 var tl = {x:(0),y:(bounds.height)};
                 var bl = {x:0,y:0};
                 var tr = {x:bounds.width,y:bounds.height};
-                var br = {x:bounds.width,y:0};
+                var br = {x:bounds.width,y:0};//*/
 
                 //new bounding box
                 var bb = {};
@@ -1733,6 +1994,121 @@ return{
             
         } catch (err) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","AdjustModifierPointToCenter",err);
+        }//*/
+    },
+    
+    /**
+     * 
+     * @param {armyc2.c2sd.renderer.so.Rectangle} rectangle
+     * @param {armyc2.c2sd.renderer.so.Point} pointOfRotation
+     * @param {Number} angle
+     * @returns {armyc2.c2sd.renderer.so.Rectangle}
+     */
+    GetRotatedRectangleBounds: function(rectangle, pointOfRotation, angle)
+    {
+        try {
+            
+            var degrees = angle;
+            
+            var location = pointOfRotation;
+            
+            //armyc2.c2sd.renderer.so.Point
+            var bounds = rectangle;
+            
+            //slacker math until I get real math working
+            //produces extra large bounds but ensures space is alloted no matter what the text angle.
+            var radius = bounds.width + bounds.height;
+            bounds = new armyc2.c2sd.renderer.so.Rectangle(location.x - radius, location.y - radius, radius * 2, radius * 2);
+            return bounds;//end slacker math
+                
+//            if(degrees !== 0)
+//            {
+//                //NOTE: flipping y sign because 2d drawing positive y goes down instead of up.
+//                //angle in radians
+//                var theta = -(degrees * (Math.PI / 180));
+//                //4 corners before rotation
+//                /*var tl = {x:(bounds.x),y:(bounds.y)};
+//                var bl = {x:bounds.x,y:(bounds.y + bounds.height)};
+//                var tr = {x:(bounds.x + bounds.width),y:bounds.y};
+//                var br = {x:(bounds.x + bounds.width),y:(bounds.y + bounds.height)};//*/
+//                
+//                /*var tl = {x:(bounds.x),y:-(bounds.y)};
+//                var bl = {x:bounds.x,y:-(bounds.y + bounds.height)};
+//                var tr = {x:(bounds.x + bounds.width),y:-bounds.y};
+//                var br = {x:(bounds.x + bounds.width),y:-(bounds.y + bounds.height)};//*/
+//                
+//               var tl = {x:(bounds.x),y:-(bounds.y + bounds.height)};
+//                var bl = {x:bounds.x,y:-(bounds.y)};
+//                var tr = {x:(bounds.x + bounds.width),y:-(bounds.y + bounds.height)};
+//                var br = {x:(bounds.x + bounds.width),y:-(bounds.y)};//*/
+//
+//                //new bounding box
+//                var bb = {};
+//
+//                /*
+//                //TODO: do some math to adjust the point based on the angle
+//                //where x0,y0 is the center around which you are rotating.
+//                //x2 = x0+(x-x0)*cos(theta)+(y-y0)*sin(theta)
+//                //y2 = y0+(x-x0)*sin(theta)+(y-y0)*cos(theta)
+//                var x0 = location.x;
+//                var y0 = location.y;
+//
+//                bl.x = (x0 + (bl.x - x0) * Math.cos(theta) - (bl.y - y0) * Math.sin(theta));
+//                bl.y = (y0 + (bl.x - x0) * Math.sin(theta) + (bl.y - y0) * Math.cos(theta));
+//
+//                tl.x = (x0 + (tl.x - x0) * Math.cos(theta) - (tl.y - y0) * Math.sin(theta));
+//                tl.y = (y0 + (tl.x - x0) * Math.sin(theta) + (tl.y - y0) * Math.cos(theta));
+//
+//                tr.x = (x0 + (tr.x - x0) * Math.cos(theta) - (tr.y - y0) * Math.sin(theta));
+//                tr.y = (y0 + (tr.x - x0) * Math.sin(theta) + (tr.y - y0) * Math.cos(theta));
+//
+//                br.x = (x0 + (br.x - x0) * Math.cos(theta) - (br.y - y0) * Math.sin(theta));
+//                br.y = (y0 + (br.x - x0) * Math.sin(theta) + (br.y - y0) * Math.cos(theta));//*/
+//                
+//                
+//                //TODO: do some math to adjust the point based on the angle
+//                //where x0,y0 is the center around which you are rotating.
+//                //x2 = x0+(x-x0)*cos(theta)+(y-y0)*sin(theta)
+//                //y2 = y0+(x-x0)*sin(theta)+(y-y0)*cos(theta)
+//                var x0 = location.x;
+//                var y0 = location.y;
+//
+//                bl.x = Math.cos(theta) * (bl.x - x0) - Math.sin(theta) * (bl.y - y0) + x0;
+//                bl.y = Math.sin(theta) * (bl.x - x0) + Math.cos(theta) * (bl.y - y0) + y0;
+//
+//                tl.x = Math.cos(theta) * (tl.x - x0) - Math.sin(theta) * (tl.y - y0) + x0;
+//                tl.y = Math.sin(theta) * (tl.x - x0) + Math.cos(theta) * (tl.y - y0) + y0;
+//
+//                tr.x = Math.cos(theta) * (tr.x - x0) - Math.sin(theta) * (tr.y - y0) + x0;
+//                tr.y = Math.sin(theta) * (tr.x - x0) + Math.cos(theta) * (tr.y - y0) + y0;
+//
+//                br.x = Math.cos(theta) * (br.x - x0) - Math.sin(theta) * (br.y - y0) + x0;
+//                br.y = Math.sin(theta) * (br.x - x0) + Math.cos(theta) * (br.y - y0) + y0;//*/
+//                
+//                //new equation
+//                //var rotatedX = Math.cos(angle) * (point.x - center.x) - Math.sin(angle) * (point.y - center.y) + center.y;
+//                //var rotatedy = Math.sin(angle) * (point.x - center.x) + Math.cos(angle) * (point.y - center.y) + center.y;
+//
+//                bb.x = Math.min(bl.x,tl.x,tr.x,br.x);
+//                bb.y = Math.min(bl.y,tl.y,tr.y,br.y);
+//                
+//                bb.width = Math.max(bl.x,tl.x,tr.x,br.x) - bb.x;
+//                bb.height = bb.y - Math.max(bl.y,tl.y,tr.y,br.y);
+//                
+//                //flip y back.
+//                bb.y = -bb.y + bb.height;
+//                bb.height = -bb.height;
+//
+//                return new armyc2.c2sd.renderer.so.Rectangle(bb.x,bb.y,bb.width,bb.height);
+//            }
+//            else
+//            {
+//                return bounds;
+//            }
+            
+        } catch (err) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler","AdjustModifierPointToCenter",err);
+            return null;
         }//*/
     },
             
@@ -1899,6 +2275,73 @@ return{
         feature["geometry"] = geometry;
         return feature;
     },
+    /**
+     * 
+     * @param {type} shapeInfos
+     * @param {type} ipc
+     * @param {type} normalize
+     * @returns {feature} {path, lineColor, fillColor, lineWidth, bounds}
+     */
+    ShapesToGeoCanvas: function(shapeInfo, ipc, normalize)
+    {
+        
+        var pathInfo = null;
+        var path = null;
+        var fillColor = null;
+        var lineColor = null;
+        var lineWidth = null;
+        var alpha = null;
+        var dashArray = null;
+        
+        
+        var feature = {};
+        feature.type = "Feature";
+        feature.properties = {};
+        feature.properties.label = "";
+        var geometry = {};
+        if (shapeInfo.getLineColor() !== null) {
+            lineColor = shapeInfo.getLineColor();
+            alpha = lineColor.getAlpha();
+            lineColor = lineColor.toHexString(false);
+        }
+        if (shapeInfo.getFillColor() !== null) {
+            fillColor = shapeInfo.getFillColor();
+            alpha = fillColor.getAlpha();
+            fillColor = fillColor.toHexString(false);
+        }
+        
+        var stroke = null;
+        stroke = shapeInfo.getStroke();
+        lineWidth = 4;
+        if (stroke !== null) {
+            lineWidth = Math.round(stroke.getLineWidth());
+            dashArray = stroke.getDashArray();
+        }
+      
+        var shapesArray = shapeInfo.getPolylines();
+        path = new armyc2.c2sd.renderer.so.Path();
+        for (var i = 0; i < shapesArray.size(); i++) 
+        {
+            
+            var shape = shapesArray.get(i);
+
+            for (var j = 0; j < shape.size(); j++) {
+                var coord = shape.get(j);
+                if(j === 0)
+                {
+                    path.moveTo(coord.x, coord.y);
+                }
+                else
+                {
+                    path.lineTo(coord.x, coord.y);
+                }
+                
+            }
+            
+        }
+        pathInfo = {path:path, lineWidth:lineWidth, lineColor:lineColor, fillColor:fillColor, dashArray:dashArray};
+        return pathInfo;
+    },
             
     LabelToKMLString: function(shapeInfo, ipc, normalize, textColor)
     {
@@ -2036,7 +2479,7 @@ return{
             return null;
         }
         return feature;
-    },      
+    },
     /**
      * Basically renders the symbol with the 2d renderer than pulls out
      * just the label placemarks.  Altitudes are then added so that will place
