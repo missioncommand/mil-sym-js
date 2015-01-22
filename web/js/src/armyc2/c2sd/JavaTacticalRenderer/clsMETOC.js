@@ -716,6 +716,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32224000:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.GRAY);
                     tg.set_FillColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
+                    tg.set_LineStyle(1);
                     break;
                 case 32232400:
                     tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(245, 245, 220));
