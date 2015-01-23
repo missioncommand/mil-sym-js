@@ -3039,7 +3039,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 23131200:
                             pLinePoints[0].style = 9;
                             acCounter = armyc2.c2sd.JavaLineArray.lineutility.GetDitchSpikeDouble(pLinePoints, vblSaveCounter, 0, lineType);
-                            pLinePoints[vblCounter - 1].style = 10;
+                            //pLinePoints[vblCounter - 1].style = 10;
                             break;
                         case 23132000:
                             armyc2.c2sd.JavaLineArray.lineutility.ReversePointsDouble2(pLinePoints, vblSaveCounter);
