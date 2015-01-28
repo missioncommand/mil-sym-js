@@ -33,6 +33,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 return 22612000;
             if (str3.equals("SLB") && c0.equals("G") && c2.equals("G"))
                 return 22623000;
+            if(c0.equalsIgnoreCase("W")===false)
+                return -1;
             if (c0.equals("W") && c1.equals("A")) {
                 if (str7.equals("DPXSQ--")) {
                     return 31143000;
