@@ -18,7 +18,9 @@ sec.web.renderer.MultiPointHandler = (function () {
     
     var textInfoBuffer = null,
         textInfoContext = null,
-        textInfoContextFont = null;
+        textInfoContextFont = null,
+        tempMPBuffer = null,
+        tempMPContext = null;
     
     var baseURL = "http:" + "//" + location.hostname + ":8080/", //base http url for milstd icon symbology
         baseSURL = location.protocol + "//" + location.host + "/"; //base https url for milstd icon symbology
@@ -783,10 +785,10 @@ return{
                 //set id and any other properties
                 jsonOutput = JSON.stringify(jsonContent);
             }
-            else if (format === 3)//render to canvas
+            else if (format === 3 || format === 4)//render to canvas
             {
                 //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize);
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format);
             }
         } 
         catch (exc) 
@@ -1027,10 +1029,10 @@ return{
                 jsonContent.properties.symbolID = symbolCode;
                 jsonOutput = JSON.stringify(jsonContent);
             }
-            else if (format === 3)//render to canvas
+            else if (format === 3 || format === 4)//render to canvas
             {
                 //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize);
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format);
             }
             else if (format === 1) 
             {
@@ -1492,7 +1494,7 @@ return{
         }
         return featureCollection;
     },
-    GeoCanvasize: function(shapes, modifiers, ipc, normalize)
+    GeoCanvasize: function(shapes, modifiers, ipc, normalize, format)
     {
         if(textInfoBuffer===null)
         {
@@ -1593,15 +1595,43 @@ return{
         }
         //if(renderToCanvas)
         //{
-            var geoCanvas = this.RenderShapeInfoToCanvas(paths,labels,unionBounds);
+            var geoCanvas = this.RenderShapeInfoToCanvas(paths,labels,unionBounds,geoCoordTL, geoCoordBR, format);
             return geoCanvas;
         //}
         //else
           //  return {paths:paths,textInfos:labels,bounds:unionBounds,geoTL:geoCoordTL,geoBR:geoCoordBR};
     },
-    RenderShapeInfoToCanvas: function(paths, textInfos, bounds, geoTL, geoBR)
+    /**
+     * 
+     * @param {type} paths
+     * @param {type} textInfos
+     * @param {type} bounds
+     * @param {type} geoTL
+     * @param {type} geoBR
+     * @param {type} format 3 for canvas, 4 for image as dataurl
+     * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
+     *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
+     */
+    RenderShapeInfoToCanvas: function(paths, textInfos, bounds, geoTL, geoBR, format)
     {
-        var buffer = document.createElement('canvas');
+        var buffer = null;
+        if(format === 4)
+        {
+            if(tempMPBuffer === null)
+            {
+                tempMPBuffer = document.createElement('canvas');
+            }
+            if(tempMPContext === null)
+            {
+                tempMPContext = tempMPBuffer.getContext('2d');
+            }
+            buffer = tempMPBuffer;
+            ctx = tempMPContext;
+        }
+        else
+        {
+            buffer = document.createElement('canvas');
+        }
 			
         var pathSize = paths.length;
         var textSize = textInfos.length;
@@ -1610,6 +1640,12 @@ return{
         var bounds = bounds;
         buffer.width = bounds.getWidth();
         buffer.height = bounds.getHeight();
+        
+        if(format === 4)//recycling buffer so we need to make sure it's clean.
+        {
+            ctx.clearRect(0,0,bounds.getWidth(), bounds.getHeight());
+        }
+        
         var lineColor = "#000000";
         var ctx = buffer.getContext('2d');
         
@@ -1650,8 +1686,8 @@ return{
             ctx.miterLimit = 3;
             ctx.font = mpFont;
             //ctx.textBaseline = "top";
-            ctx.textBaseline = "Alphabetic";
-            //ctx.textBaseline = "middle";
+            //ctx.textBaseline = "Alphabetic";
+            ctx.textBaseline = "middle";
             //ctx.textAlign="left";
             if (outlineWidth > 0)
             ctx.lineWidth = (outlineWidth * 2) + 1;
@@ -1729,10 +1765,26 @@ return{
         //ctx.fillText("test",362,422);
         //georeference buffer
         
-        //return image//
-        buffer.geoTL = geoTL;
-        buffer.geoBR = geoBR;
-        return buffer;
+        if(format === 3)
+        {
+            //return object with canvas and geo points
+            return {image:buffer, geoTL:geoTL, geoBR:geoBR};
+        }
+        else if(format === 4)
+        {
+            //return object with dataurl and geo points
+            return {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR};
+        }
+        else
+        {//should never get here:
+            //just return the canvas
+            buffer.geoTL = geoTL;
+            buffer.geoBR = geoBR;
+            return buffer;
+        }
+        
+        
+        
 
     },
     IsOnePointSymbolCode:function(symbolCode)        

@@ -2278,7 +2278,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "G*G*PC----****X",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "15",
+        "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "MODIFIERS": "H.N.",
