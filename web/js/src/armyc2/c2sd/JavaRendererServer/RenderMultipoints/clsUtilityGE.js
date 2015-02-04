@@ -235,6 +235,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 }
             if (dash === null || dash.length < 2)
                 return null;
+            if(shape.getFillColor()===null)
+                return null;
             var j = 0;
             var k = 0;
             var shape2 = new armyc2.c2sd.renderer.utilities.ShapeInfo(shape.getShape());
