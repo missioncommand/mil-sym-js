@@ -153,7 +153,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     width.value[0] = Double.parseDouble(tg.get_H());
                     //value passed in mils
                     attitude.value[0] = Double.parseDouble(tg.get_H2()) * (0.05625);
-                    var std = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getSymbologyStandard();
+                    //var std = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getSymbologyStandard();
+                    var std = tg.getSymbologyStandard();
                     if(std===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C)//value passed in degrees
                         attitude.value[0] = Double.parseDouble(tg.get_H2());
                     break;
