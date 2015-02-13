@@ -1482,6 +1482,57 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
+            GetSAAFRFillSegment: function(pLinePoints, dMRR) {
+                try {
+                    //var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    //var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var pt4 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var pt5 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
+                    var m = new armyc2.c2sd.JavaLineArray.ref();
+                    var bolVertical = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble(pLinePoints[0], pLinePoints[1], m);
+                    //pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[0], pLinePoints[1], -dMRR, 5);
+                    //pt0 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[1], pLinePoints[0], -dMRR, 0);
+                    if (bolVertical !== 0 && m.value[0] < 1) {
+                        pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[0], 2, dMRR);
+                        //pt2.style = 0;
+                        pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[1], 2, dMRR);
+                        //pt3.style = 5;
+                        pt4 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[0], 3, dMRR);
+                        //pt4.style = 0;
+                        pt5 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[1], 3, dMRR);
+                        //pt5.style = 5;
+                    } else {
+                        pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[0], 0, dMRR);
+                        //pt2.style = 0;
+                        pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[1], 0, dMRR);
+                        //pt3.style = 5;
+                        pt4 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[0], 1, dMRR);
+                        //pt4.style = 0;
+                        pt5 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[0], pLinePoints[1], pLinePoints[1], 1, dMRR);
+                        //pt5.style = 5;
+                    }
+                    //pLinePoints[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
+                    //pLinePoints[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt1);
+                    pLinePoints[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
+                    pLinePoints[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt3);
+                    pLinePoints[2] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt5);
+                    pLinePoints[3] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt4);
+                    //pLinePoints[5].style = 5;
+                    //if (lineType === 22223000)
+                    //    pLinePoints[0].style = 5;
+                    //if (rev === 1)
+                    //    pLinePoints[0].style = 5;
+                } catch (exc) {
+                    if (Clazz.instanceOf(exc)) {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "GetSAAFRFillSegment", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSAAFRFillSegment", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+                return;
+            },
             ArcArrayDouble: function(pResultLinePoints, vblCounter, dRadius, linetype) {
                 try {
                     var startangle = 0;

@@ -4569,6 +4569,26 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                     }
                     switch (lineType) {
+                        case 22221000:
+                        case 22223000:
+                        case 22222000:
+                        case 22222001:
+                        case 22224000:
+                        case 22224001:
+                        case 22225000:
+                            for (j = 0; j < vblSaveCounter - 1; j++) {
+                                dMBR=pOriginalLinePoints[j].style;
+                                acPoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pOriginalLinePoints[j]);
+                                acPoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pOriginalLinePoints[j + 1]);
+                                armyc2.c2sd.JavaLineArray.lineutility.GetSAAFRFillSegment(acPoints, dMBR);//was dMRR
+                                shape =new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                                shape.moveTo(acPoints[0]);
+                                shape.lineTo(acPoints[1]);
+                                shape.lineTo(acPoints[2]);
+                                shape.lineTo(acPoints[3]);
+                                shapes.add(0, shape);
+                            }
+                    break;
                         case 23111001:
                             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             shape.moveTo(pUpperLinePoints[0]);

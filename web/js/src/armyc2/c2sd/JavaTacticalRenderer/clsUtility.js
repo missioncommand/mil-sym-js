@@ -701,8 +701,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 22123000:
                 case 22124000:
                 case 22125000:
-                case 22221000:
-                case 22223000:
+                //case 22221000:
+                //case 22223000:
                 case 22421000:
                 case 22522210:
                 case 22522220:
