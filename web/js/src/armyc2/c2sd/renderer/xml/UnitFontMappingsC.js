@@ -3740,10 +3740,10 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsC = {
       {
         "SYMBOLID": "S*G*USSWT-*****",
         "DESCRIPTION": "Supply Water Theater",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
+        "MAPPING1U": "1657",
+        "MAPPING1F": "1658",
+        "MAPPING1N": "1659",
+        "MAPPING1H": "1660",
         "MAPPING2": "1688",
         "MAPPING2COLOR": "#000000"
       },
@@ -3770,10 +3770,10 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsC = {
       {
         "SYMBOLID": "S*G*USSWPT*****",
         "DESCRIPTION": "Supply Water Purification Theater",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
+        "MAPPING1U": "1657",
+        "MAPPING1F": "1658",
+        "MAPPING1N": "1659",
+        "MAPPING1H": "1660",
         "MAPPING2": "1689",
         "MAPPING2COLOR": "#000000"
       },
