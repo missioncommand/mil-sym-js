@@ -585,17 +585,18 @@ return{
                 }
                 
                 color = JavaRendererUtilities.ARGBtoABGR(color);
-                                
+                    
+				// if it's a killbox, need to set minimum alt to 0.
+				if (symbolId.substring(0,3)===("AKP") && altitudeDepthLength === 1)
+				{
+					attributes.X_ALTITUDE_DEPTH.add(new Double(0));
+				}                                 
                 for (var i=0; i < altitudeDepthLength; i++)
                 {
-                    // if it's a killbox, need to set minimum alt to 0.
-                    if (symbolId.substring(0,3)===("AJP"))
-                    {
-                        attributes.X_ALTITUDE_DEPTH.add(new Double(0));
-                        i++;
-                    }                                        
+                           
                     attributes.X_ALTITUDE_DEPTH.add(new Double(altitudeDepthJSON[i]));
                 }
+				
                 for (var i=0; i < distanceLength; i++)
                 {
                     // If this is a 'track' type graphic, then we need to take the distance

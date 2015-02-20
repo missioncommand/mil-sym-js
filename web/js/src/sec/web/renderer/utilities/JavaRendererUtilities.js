@@ -220,10 +220,16 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                         {
                             returnValue = true;                                    
                         }
-                        else 
+                        else if((jsonAltitudeArray.length == 1) && (symbolId === "AKPC--" || // Kill box circular
+                                                                    symbolId === "AKPR--" || // Kill box rectangular
+                                                                    symbolId === "AKPI--"))
                         {
-                            returnValue = false;
+                            returnValue = true;
                         }
+						else
+						{
+							returnValue = false;
+						}
                     }
                 } 
                 catch(je) 
