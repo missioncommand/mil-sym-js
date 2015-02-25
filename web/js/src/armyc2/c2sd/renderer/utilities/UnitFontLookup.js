@@ -87,13 +87,15 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data.mapping1F = symbol["MAPPING1F"] || null; //MAPPING1F
                         data.mapping1N = symbol["MAPPING1N"] || null; //MAPPING1N
                         data.mapping1H = symbol["MAPPING1H"] || null; //MAPPING1H
-                        data.mapping1color = symbol["MAPPING1COLOR"] || null; //MAPPING1COLOR
+                        data.mapping1color = symbol["MAPPING1COLOR"] || "#000000"; //MAPPING1COLOR
                         data.mapping2 = symbol["MAPPING2"] || null; //MAPPING2
                         data.mapping2color = symbol["MAPPING2COLOR"] || null; //MAPPING2COLOR
                         
-                        if(data.mapping1color.length === 6);
+                        
+                        if(data.mapping1color !== null && data.mapping1color.length === 6)
                             data.mapping1color = "#" + data.mapping1color;
-                        if(data.mapping2color.length === 6);
+                        
+                        if(data.mapping2color !== null && data.mapping2color.length === 6)
                             data.mapping2color = "#" + data.mapping2color;
 
                     } 
@@ -128,13 +130,15 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         data.mapping1F = symbol["MAPPING1F"] || null; //MAPPING1F
                         data.mapping1N = symbol["MAPPING1N"] || null; //MAPPING1N
                         data.mapping1H = symbol["MAPPING1H"] || null; //MAPPING1H
-                        data.mapping1color = symbol["MAPPING1COLOR"] || null; //MAPPING1COLOR
+                        data.mapping1color = symbol["MAPPING1COLOR"] || "#000000"; //MAPPING1COLOR
                         data.mapping2 = symbol["MAPPING2"] || null; //MAPPING2
                         data.mapping2color = symbol["MAPPING2COLOR"] || null; //MAPPING2COLOR
                         
-                        if(data.mapping1color.length === 6);
+                        
+                        if(data.mapping1color !== null && data.mapping1color.length === 6)
                             data.mapping1color = "#" + data.mapping1color;
-                        if(data.mapping2color.length === 6);
+                        
+                        if(data.mapping2color !== null && data.mapping2color.length === 6)
                             data.mapping2color = "#" + data.mapping2color;
 
                     } 
