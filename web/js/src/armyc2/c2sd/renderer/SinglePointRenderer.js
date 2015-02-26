@@ -111,7 +111,8 @@ return{
             symbol1 = (mapping1 !==null) ? String.fromCharCode(mapping1) : null,
             symbol2 = (mapping2 !==null) ? String.fromCharCode(mapping2) : null,
             color1 = ufli.getColor1(),
-            color2 = ufli.getColor2();
+            color2 = ufli.getColor2(),
+            alpha = 1.0;
     
         var hasDisplayModifiers = false;
         var hasTextModifiers = false;
@@ -191,7 +192,10 @@ return{
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
         }
-        
+        if(modifiers[MilStdAttributes.Alpha] !== undefined)
+        {
+            alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+        }        
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="Determine font size">
@@ -246,6 +250,8 @@ return{
                 buffer = _bufferUnit;//
                 ctx = buffer.getContext('2d');
                 ctx.clearRect(0,0,_bufferUnitSize,_bufferUnitSize);
+                if(ctx.globalAlpha < 1.0)
+                    ctx.globalAlpha = 1.0;
             }
             else
             {//*/
@@ -267,6 +273,11 @@ return{
             if(color1 === "")
             {
                 color1 = "#000000";
+            }
+            
+            if(alpha < 1.0)
+            {
+                ctx.globalAlpha = alpha;
             }
 
             if(fill !== null && fill !== "")
@@ -2170,6 +2181,7 @@ return{
         var intFrame = -1;
         var fillColor = null;
         var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
+        var alpha = 1.0;
 	var fill = null;
 	var frame = null;
         var scale = -999;
@@ -2228,6 +2240,10 @@ return{
         if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
+        }
+        if(modifiers[MilStdAttributes.Alpha] !== undefined)
+        {
+            alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
         }
         
         var outlineOffset = symbolOutlineWidth;
@@ -2382,6 +2398,8 @@ return{
                 buffer = _bufferSymbol;//
                 ctx = buffer.getContext('2d');
                 ctx.clearRect(0,0,_bufferSymbolSize,_bufferSymbolSize);
+                if(ctx.globalAlpha < 1.0)
+                    ctx.globalAlpha = 1.0;
             }
             else
             {//*/
@@ -2415,6 +2433,9 @@ return{
         //do outline first if present
         if(render === true)
         {
+            if(alpha < 1.0)
+                ctx.globalAlpha = alpha;
+            
             if(frame !== null && frame !== "")
             {
                 if(outlineOffset > 0)
