@@ -54,8 +54,13 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
         {
             size = modifiers[MilStdAttributes.PixelSize];
         }
+        var alpha = 1.0;
+        if(modifiers[MilStdAttributes.Alpha] !== undefined )
+        {
+            alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+        }
 
-        var ii = TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor);
+        var ii = TacticalGraphicIconRenderer.getIcon(symbolID, size, lineColor, alpha);
         return ii;
     }
     

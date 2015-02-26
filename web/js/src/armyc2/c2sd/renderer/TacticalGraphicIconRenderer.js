@@ -10,7 +10,7 @@ armyc2.c2sd.renderer.TacticalGraphicIconRenderer = (function () {
     
 return{    
     
-    getIcon: function(symbolID, size, color){
+    getIcon: function(symbolID, size, color, alpha){
         
         var id = symbolID;
         if(armyc2.c2sd.renderer.utilities.SymbolUtilities.isWeather(symbolID)===true)
@@ -52,6 +52,8 @@ return{
             ctx.miterLimit = 5;
             ctx.fillStyle = color;
             ctx.font = fontSize + "pt TacticalGraphics";
+            if(alpha < 1.0)
+                ctx.globalAlpha = alpha;
             
             var x = Math.round(size/2),
                 y = Math.round(size/2);
