@@ -41,6 +41,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._DrawAffiliationModifierAsLabel = true;      
     this._tp = null;
     this._Tag = null;
+    this._AltitudeMode = "";
     this._UseDashArray = false;
 
     // </editor-fold>
@@ -370,6 +371,15 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getOutlineColor = function()
     {
         return this._OutLineColor;
+    };
+    
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setAltitudeMode = function(value)
+    {
+        this._AltitudeMode = value;
+    };
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getAltitudeMode = function()
+    {
+        return this._AltitudeMode;
     };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setUseDashArray = function(value)

@@ -162,6 +162,20 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
          
          //*/
     };
+    
+    sec.web.renderer.utilities.JavaRendererUtilities.addAltModeToModifiersString = function(modifiers, altMode)
+    {
+        if(altMode)
+        {
+            if(altMode === "relativeToGround")
+                modifiers["ALTMODE"]="AGL";
+            else if(altMode === "absolute")
+                modifiers["ALTMODE"]="MSL";
+            else
+                modifiers["ALTMODE"]="";
+        }
+        //return modifiers;
+    }
             
     /**
      * Checks symbolID and if the relevant modifiers are present

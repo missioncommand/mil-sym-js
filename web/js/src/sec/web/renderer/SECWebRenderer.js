@@ -105,6 +105,7 @@ return{
         var output = "";
         try 
         {
+            sec.web.renderer.utilities.JavaRendererUtilities.addAltModeToModifiersString(modifiers, altitudeMode);
             
             if (altitudeMode !== "clampToGround" && format === 0 && JavaRendererUtilities.is3dSymbol(symbolCode, modifiers))
             {

@@ -1145,6 +1145,7 @@ return{
             lineWidth = 0,
             symbolFillIDs = null,
             symbolFillIconSize = null,
+            altMode = null;
             useDashArray = symbol.getUseDashArray();
             
         //alert(jsonString);
@@ -1284,6 +1285,9 @@ return{
             else if(modifiers.useDashArray)
                 useDashArray = modifiers.useDashArray;
             
+            if(modifiers[MilStdAttributes.AltitudeMode])
+                altMode = modifiers[MilStdAttributes.AltitudeMode];
+            
             // These are for when we create a area fill that is comprised of symbols//////////
             if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null) 
             {
@@ -1321,6 +1325,9 @@ return{
             }
             if (lineWidth > 0) {
                 symbol.setLineWidth(lineWidth);
+            }
+            if (altMode !== null) {
+                symbol.setAltitudeMode(altMode);
             }
             if (altitudes !== null) {
                 symbol.setModifiers_AM_AN_X(ModifiersTG.X_ALTITUDE_DEPTH, altitudes);
