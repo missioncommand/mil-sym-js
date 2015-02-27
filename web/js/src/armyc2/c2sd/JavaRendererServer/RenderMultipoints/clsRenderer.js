@@ -361,6 +361,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
             }
+            var altitudeLabel=milStd.getAltitudeMode();
+            if(altitudeLabel==null)
+                altitudeLabel="";
+            var x_alt=0;
+            var strXAlt="";
+            
             if (lineType === 243112000) 
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
@@ -393,7 +399,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     var strH1="";
                     for(var j=0;j<X.length;j++)
                     {
-                        strH1+=Double.toString(X[j]);
+                        //strH1+=Double.toString(X[j]);
+                        x_alt = X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        strH1+=strXAlt;
+                        
                         if(j<X.length-1)
                             strH1+=",";                        
                     }
@@ -509,9 +519,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24322300:
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     if (X !== null && X.length > 0)
-                        tg.set_H(X[0]);
+                    {
+                        //tg.set_H(X[0]);
+                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        tg.set_H(strXAlt);
+                    }
                     if (X !== null && X.length > 1)
-                        tg.set_H1(X[1]);
+                    {
+                        //tg.set_H1(X[1]);
+                        x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        tg.set_H1(strXAlt);
+                    }
                     break;
                 case 22224000:
                 case 22222000:
@@ -579,9 +599,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.set_H2(Double.toString(maxWidthMeters));
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     if (X !== null && X.length > 0)
-                        tg.set_H(X[0]);
+                    {
+                        //tg.set_H(X[0]);
+                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        tg.set_H(strXAlt);
+                    }
                     if (X !== null && X.length > 1)
-                        tg.set_H1(X[1]);
+                    {
+                        //tg.set_H1(X[1]);
+                        x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        tg.set_H1(strXAlt);
+                    }
                     break;
                 default:
                     break;
@@ -593,9 +623,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     strH1 = "";
-                    if (X !== null) {
-                        strH1 = X[0];
-                        tg.set_H1(strH1);
+                    if (X !== null) 
+                    {
+                        //strH1 = X[0];
+                        //tg.set_H1(strH1);
+                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        tg.set_H1(strXAlt);
                     }
                     break;
                 default:
@@ -616,7 +650,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                             strH2 += ",";
                         if (X !== null && j < X.length)
                         {
-                            strH1 += X[j];
+                            //strH1 += X[j];
+                            x_alt=X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                            strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                            strH1+=strXAlt;
+                            
                             if (j < X.length - 1)
                                 strH1 += ",";
                         }
@@ -1384,5 +1422,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     }
                 }
             },
-            _className: "clsRenderer"
+            _className: "clsRenderer",
+            feetPerMeter:3.28084
 };
