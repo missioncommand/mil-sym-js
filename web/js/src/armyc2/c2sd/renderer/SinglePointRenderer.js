@@ -2065,6 +2065,37 @@ return{
             tiArray.push(tiTemp);
         }
         
+        if(modifiers.SCC !== undefined)
+        {
+            modifierValue = modifiers[ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE];
+            
+            var scc = 0;
+            if(SymbolUtilities.isNumber(modifierValue) && SymbolUtilities.hasModifier(symbolID, ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
+            {
+                scc = parseInt(modifierValue);
+                if(scc > 0 && scc < 6)
+                {
+                    
+                    var yPosition = this.getYPositionForSCC(symbolID);
+                     
+                    tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
+                    labelBounds = tiTemp.getTextBounds();
+                    labelWidth = labelBounds.getWidth();
+                    
+                    x = (bounds.x + (bounds.width * 0.5)) - (labelWidth * 0.5);
+
+                    y = (bounds.height );//checkpoint, get box above the point
+                    y = ((y * yPosition) + ((labelHeight - descent) * 0.5));
+                    y = bounds.y + y;
+                    
+                    tiTemp.setLocation(x,y);
+                    tiArray.push(tiTemp);
+                    
+                }
+            }
+
+        }
+        
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="Shift Points and Draw">
@@ -3390,6 +3421,87 @@ return{
         
 	return buffer;
 	
+    },
+    getYPositionForSCC: function(symbolID)
+    {
+        var yPosition = 0.32;
+        var temp = symbolID.substring(4, 10);
+        var affiliation = symbolID.charAt(1);
+
+        if(temp === ("WMGC--"))//GROUND (BOTTOM) MILCO
+        {
+            if(affiliation === 'H' || 
+                    affiliation === 'S')//suspect
+                yPosition = 0.29;
+            else if(affiliation === 'N' ||
+                    affiliation === 'L')//exercise neutral
+                yPosition = 0.32;
+            else if(affiliation === 'F' ||
+                    affiliation === 'A' ||//assumed friend
+                    affiliation === 'D' ||//exercise friend
+                    affiliation === 'M' ||//exercise assumed friend
+                    affiliation === 'K' ||//faker
+                    affiliation === 'J')//joker
+                yPosition = 0.32;
+            else
+                yPosition = 0.34;
+        }
+        else if(temp === ("WMMC--"))//MOORED MILCO
+        {
+            if(affiliation === 'H' || 
+                    affiliation === 'S')//suspect
+                yPosition = 0.29;
+            else if(affiliation === 'N' ||
+                    affiliation === 'L')//exercise neutral
+                yPosition = 0.32;
+            else if(affiliation === 'F' ||
+                    affiliation === 'A' ||//assumed friend
+                    affiliation === 'D' ||//exercise friend
+                    affiliation === 'M' ||//exercise assumed friend
+                    affiliation === 'K' ||//faker
+                    affiliation === 'J')//joker
+                yPosition = 0.32;
+            else
+                yPosition = 0.34;
+        }
+        else if(temp === ("WMFC--"))//FLOATING MILCO
+        {
+            if(affiliation === 'H' || 
+                    affiliation === 'S')//suspect
+                yPosition = 0.29;
+            else if(affiliation === 'N' ||
+                    affiliation === 'L')//exercise neutral
+                yPosition = 0.32;
+            else if(affiliation === 'F' ||
+                    affiliation === 'A' ||//assumed friend
+                    affiliation === 'D' ||//exercise friend
+                    affiliation === 'M' ||//exercise assumed friend
+                    affiliation === 'K' ||//faker
+                    affiliation === 'J')//joker
+                yPosition = 0.32;
+            else
+                yPosition = 0.34;
+        }
+        else if(temp === ("WMC---"))//GENERAL MILCO
+        {
+            if(affiliation === 'H' || 
+                    affiliation === 'S')//suspect
+                yPosition = 0.35;
+            else if(affiliation === 'N' ||
+                    affiliation === 'L')//exercise neutral
+                yPosition = 0.39;
+            else if(affiliation === 'F' ||
+                    affiliation === 'A' ||//assumed friend
+                    affiliation === 'D' ||//exercise friend
+                    affiliation === 'M' ||//exercise assumed friend
+                    affiliation === 'K' ||//faker
+                    affiliation === 'J')//joker
+                yPosition = 0.39;
+            else
+                yPosition = 0.39;
+        }
+        
+        return yPosition;
     },
     /**
      * 

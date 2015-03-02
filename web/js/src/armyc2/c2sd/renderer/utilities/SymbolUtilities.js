@@ -708,6 +708,23 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             //they clearly do.
             return true;
         }
+        else if(unitModifier.equals(ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
+        {
+           if(this.isSubSurface(symbolID))
+           {
+               //these symbols only exist in 2525C
+               var temp = symbolID.substring(4, 10);
+               if(temp === ("WMGC--") ||
+                       temp === ("WMMC--") ||
+                       temp === ("WMFC--") ||
+                       temp === ("WMC---"))
+               {
+                   return true;
+               }
+           }
+           
+           return false;
+        }
         else
             return false;
 

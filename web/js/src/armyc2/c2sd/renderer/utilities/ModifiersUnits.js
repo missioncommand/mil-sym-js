@@ -331,7 +331,13 @@ armyc2.c2sd.renderer.utilities.ModifiersUnits = {
      * next to the right side of the symbol.  This is a CPOF label that applies
      * to all force elements.  This IS NOT a MilStd or USAS Label.  
      */
-    CN_CPOF_NAME_LABEL : "CN"
+    CN_CPOF_NAME_LABEL : "CN",
+    
+    /**
+     * Sonar Classification Confidence level. valid values are 1-5.
+     * Only applies to the 4 subsurface MILCO sea mines
+     */
+    SCC_SONAR_CLASSIFICATION_CONFIDENCE : "SCC"
 
     
 };
