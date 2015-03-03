@@ -365,6 +365,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if(altitudeLabel===null || altitudeLabel.isEmpty())
                 altitudeLabel="MSL";
             var x_alt=0;
+            var n_alt=0;
             var strXAlt="";
             
             if (lineType === 243112000) 
@@ -402,7 +403,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //strH1+=Double.toString(X[j]);
                         x_alt = X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         strH1+=strXAlt;
                         
                         if(j<X.length-1)
@@ -524,7 +529,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //tg.set_H(X[0]);
                         x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         tg.set_H(strXAlt);
                     }
                     if (X !== null && X.length > 1)
@@ -532,7 +541,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //tg.set_H1(X[1]);
                         x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
@@ -606,7 +619,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //tg.set_H(X[0]);
                         x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         tg.set_H(strXAlt);
                     }
                     if (X !== null && X.length > 1)
@@ -614,7 +631,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //tg.set_H1(X[1]);
                         x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
@@ -634,7 +655,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         //tg.set_H1(strH1);
                         x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                        x_alt*=10.0;
+                        x_alt=Math.round(x_alt);
+                        n_alt=x_alt;
+                        x_alt=n_alt/10.0;                        
+                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
@@ -659,7 +684,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                             //strH1 += X[j];
                             x_alt=X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                             //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                            strXAlt=Integer.toString(Math.floor(x_alt))+" ft. "+altitudeLabel;
+                            x_alt*=10.0;
+                            x_alt=Math.round(x_alt);
+                            n_alt=x_alt;
+                            x_alt=n_alt/10.0;                        
+                            strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
                             strH1+=strXAlt;
                             
                             if (j < X.length - 1)
