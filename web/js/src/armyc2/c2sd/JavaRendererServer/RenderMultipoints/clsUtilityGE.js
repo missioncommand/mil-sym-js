@@ -982,7 +982,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             var strH = tg.get_H();
             if (strH === null || strH.isEmpty())
                 return false;
-            var strs = strH.$plit(",");
+            var strs = strH.split(",");
             if (strs.length > 1)
                 return true;
         } catch (exc) {

@@ -23,7 +23,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             shape.setStroke(stroke);
             var strH = tg.get_H();
             if (strH != null && !strH.isEmpty()) {
-                var strs = strH.$plit(",");
+                var strs = strH.split(",");
                 if (strs.length < 2) {
                     shape.moveTo(tg.Pixels.get(0));
                     for (j = 1; j < tg.Pixels.size(); j++) {

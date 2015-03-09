@@ -1289,7 +1289,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetSectorRadiiFromPoints(tg);
                 radii = tg.get_H2();
             }
-            strRadius = radii.$plit(",");
+            strRadius = radii.split(",");
             var n = strRadius.length;
             if (n > 0) {
                 radius = Clazz.newArray(n, 0);
@@ -2315,7 +2315,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 default:
                     return null;
             }
-            var colorStrs = tg.get_H().$plit(",");
+            var colorStrs = tg.get_H().split(",");
             var j = 0;
             var numSegs = colorStrs.length;
             var segPlusColor = "";
@@ -2326,7 +2326,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 segPlusColor = colorStrs[j];
                 if (!segPlusColor.contains(":"))
                     continue;
-                seg = segPlusColor.$plit(":");
+                seg = segPlusColor.split(":");
                 color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(seg[1]);
                 index = Integer.parseInt(seg[0]);
                 hMap.put(new Integer(index), color);

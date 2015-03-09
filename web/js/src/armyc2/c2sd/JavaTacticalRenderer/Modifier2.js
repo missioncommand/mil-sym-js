@@ -4013,7 +4013,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                 break;
             case 243111000:
                 if (tg.get_H1() !== null && tg.get_H1().equals("") === false) {
-                    H1 = tg.get_H1().$plit(",");
+                    H1 = tg.get_H1().split(",");
                     for (j = 0; j < H1.length; j++) {
                         if (tg.Pixels.size() > j * 102 + 25) {
                             pt0 = tg.Pixels.get(j * 102 + 25);
@@ -4025,7 +4025,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
             case 243112000:
 //                if (tg.get_H1() !== null && tg.get_H1().equals("") === false) 
 //                {
-//                    H1 = tg.get_H1().$plit(",");
+//                    H1 = tg.get_H1().split(",");
 //                    for (j = 0; j < H1.length; j++) {
 //                        if (tg.Pixels.size() > j * 203 + 151) {
 //                            pt0 = tg.Pixels.get(j * 203 + 151);

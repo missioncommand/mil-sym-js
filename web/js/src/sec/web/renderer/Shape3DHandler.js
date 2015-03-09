@@ -53,7 +53,7 @@ sec.web.renderer.Shape3DHandler.buildPolygon =  function (controlPoints, id, nam
     //var output =  new sec.geo.utilities.StringBuilder ();
     var pointArrayStringList = "";
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         //alert(latlons);
         if (latlons.length >= 2) {
             //alert();
@@ -73,9 +73,9 @@ sec.web.renderer.Shape3DHandler.buildCylinder = function (controlPoints, id, nam
     var pivotx = 0.0;
     var pivoty = 0.0;
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         if (latlons.length > 0) {
-            var pivot = latlons[0].$plit (",");
+            var pivot = latlons[0].split (",");
             if (pivot.length >= 2) {
                 pivotx = Double.parseDouble (pivot[0]);
                 pivoty = Double.parseDouble (pivot[1]);
@@ -138,16 +138,16 @@ sec.web.renderer.Shape3DHandler.buildOrbit=function (controlPoints, id, name, de
     var point2x = 0.0;
     var point2y = 0.0;
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         if (latlons.length > 1) {
-            var point1 = latlons[0].$plit (",");
+            var point1 = latlons[0].split (",");
             if (point1.length >= 2) {
                 point1x = Double.parseDouble (point1[0]);
                 point1y = Double.parseDouble (point1[1]);
             } else {
                 throw  {message:"Number Format Exception", name:"Format Exception", stack:null};
             }
-            var point2 = latlons[1].$plit (",");
+            var point2 = latlons[1].split (",");
             if (point2.length >= 2) {
                 point2x = Double.parseDouble (point2[0]);
                 point2y = Double.parseDouble (point2[1]);
@@ -170,9 +170,9 @@ sec.web.renderer.Shape3DHandler.buildRadarc = function (controlPoints, id, name,
     var pivotx = 0.0;
     var pivoty = 0.0;
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         if (latlons.length > 0) {
-            var pivot = latlons[0].$plit (",");
+            var pivot = latlons[0].split (",");
             if (pivot.length >= 2) {
                 pivotx = Double.parseDouble (pivot[0]);
                 pivoty = Double.parseDouble (pivot[1]);
@@ -196,9 +196,9 @@ sec.web.renderer.Shape3DHandler.buildPolyArc = function (controlPoints, id, name
     var pivoty = 0.0;
     //alert(altitudeMode);
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         if (latlons.length >= 3) {
-            var pivot = latlons[0].$plit (",");
+            var pivot = latlons[0].split (",");
             if (pivot.length >= 2) {
                 pivotx = Double.parseDouble (pivot[0]);
                 pivoty = Double.parseDouble (pivot[1]);
@@ -224,7 +224,7 @@ sec.web.renderer.Shape3DHandler.buildRoute = function (controlPoints, id, name, 
     var leftWidth;
     var rightWidth;
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         if (latlons.length >= 2) {
             width = (attributes.AM_DISTANCE.get (0)).doubleValue ();
             leftWidth = width / 2;
@@ -247,10 +247,10 @@ sec.web.renderer.Shape3DHandler.buildCake = function (controlPoints, id, name, d
     var pivoty = 0.0;
     var kmlRender =  new sec.geo.kml.KmlRenderer ();
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         var numberOfPoints = latlons.length;
         if (numberOfPoints > 0) {
-            var pivotString = latlons[0].$plit (",");
+            var pivotString = latlons[0].split (",");
             if (pivotString.length >= 2) {
                 pivotx = Double.parseDouble (pivotString[0]);
                 pivoty = Double.parseDouble (pivotString[1]);
@@ -293,15 +293,15 @@ sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, 
     var pointArrayStringList = "";
     var kmlRender =  new sec.geo.kml.KmlRenderer ();
     try {
-        var latlons = controlPoints.$plit (" ");
+        var latlons = controlPoints.split (" ");
         var numberOfPoints = latlons.length;
         if (numberOfPoints >= 2) {
             var track =  new sec.geo.shape.Track ();
             for (var i = 0; i < numberOfPoints - 1; i++) {
                 var route =  new sec.geo.shape.Route ();
                 route.setAltitudeMode (attributes.ALT_MODE[i]);
-                var point1String = latlons[i].$plit (",");
-                var point2String = latlons[i + 1].$plit (",");
+                var point1String = latlons[i].split (",");
+                var point2String = latlons[i + 1].split (",");
                 var point1lon = 0.0;
                 var point1lat = 0.0;
                 var point2lon = 0.0;

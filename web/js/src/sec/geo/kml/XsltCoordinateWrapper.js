@@ -137,7 +137,7 @@ sec.geo.kml.XsltCoordinateWrapper=
     {
         var coords = null;
         for (var sPoint, $sPoint = 0, $$sPoint = points; $sPoint < $$sPoint.length && ((sPoint = $$sPoint[$sPoint]) || true); $sPoint++) {
-            coords = sPoint.$plit (",");
+            coords = sPoint.split (",");
             var longitude = Double.parseDouble (coords[0]);
             var latitude = Double.parseDouble (coords[1]);
             path.addPoint ( new sec.geo.GeoPoint (longitude, latitude));

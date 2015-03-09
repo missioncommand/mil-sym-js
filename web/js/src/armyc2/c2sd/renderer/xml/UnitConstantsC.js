@@ -120,7 +120,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFL---*****",
-        "DESCRIPTION": "Fixed Wing VSTOL",
+        "DESCRIPTION": "Fixed Wing V/STOL",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.5",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.VSTOL",
@@ -192,7 +192,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFO---*****",
-        "DESCRIPTION": "Fixed Wing MEDEVAC",
+        "DESCRIPTION": "Fixed Wing Medical Evacuation MEDEVAC",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.9",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.MEDV",
@@ -288,7 +288,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFY---*****",
-        "DESCRIPTION": "Fixed Wing Communications (C3I)",
+        "DESCRIPTION": "Fixed Wing Communications",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.13",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.COMM",
@@ -312,7 +312,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQ---*****",
-        "DESCRIPTION": "Drone (RPV/UAV) Fixed Wing",
+        "DESCRIPTION": "Drone (RPV/UA) Fixed Wing",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN",
@@ -344,7 +344,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQD--*****",
-        "DESCRIPTION": "Drone (RPV/UAV) Airborne Command Post",
+        "DESCRIPTION": "Drone (RPV/UA) Airborne Command Post",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16.4",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN.ABNCP",
@@ -384,7 +384,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQL--*****",
-        "DESCRIPTION": "Drone Vstol",
+        "DESCRIPTION": "Drone V/STOL",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16.9",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN.VSTOL",
@@ -408,7 +408,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQN--*****",
-        "DESCRIPTION": "Drone Anti-Surface Warfare (ASUW)",
+        "DESCRIPTION": "Drone Antisurface Warfare (ASUW)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16.12",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN.ASUW",
@@ -456,7 +456,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQS--*****",
-        "DESCRIPTION": "Drone Anti-Submarine Warfare (ASW)",
+        "DESCRIPTION": "Drone Antisubmarine Warfare (ASW)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16.15",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN.ASBW",
@@ -480,7 +480,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*MFQY--*****",
-        "DESCRIPTION": "Drone Communications (C3I)",
+        "DESCRIPTION": "Drone Communications",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.1.1.16.18",
         "ALPHAHIERARCHY": "WAR.AIRTRK.MIL.FIXD.DRN.COMM",
@@ -728,7 +728,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMSS--*****",
-        "DESCRIPTION": "Surface to Surface Missile (SSM)",
+        "DESCRIPTION": "Surface-to-Surface Missile (SSM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.1.1",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.SLM.SSM",
@@ -736,7 +736,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMSA--*****",
-        "DESCRIPTION": "Surface To Air Missile (SAM)",
+        "DESCRIPTION": "Surface-to-Air Missile (SAM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.1.2",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.SLM.SAM",
@@ -744,7 +744,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMSU--*****",
-        "DESCRIPTION": "Surface to Subsurface Missile",
+        "DESCRIPTION": "Surface-to-Subsurface Missile",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.1.3",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.SLM.SSUM",
@@ -752,7 +752,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMSB--*****",
-        "DESCRIPTION": "Anti-Ballistic Missile (ABM)",
+        "DESCRIPTION": "Antiballistic Missile (ABM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.1.4",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.SLM.ABM",
@@ -768,7 +768,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMAS--*****",
-        "DESCRIPTION": "Air To Surface Missile (ASM)",
+        "DESCRIPTION": "Air-to-Surface Missile (ASM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.2.1",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.ALM.ASM",
@@ -776,7 +776,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMAA--*****",
-        "DESCRIPTION": "Air To Air Missile (AAM)",
+        "DESCRIPTION": "Air-to-Air Missile (AAM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.2.2",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.ALM.AAM",
@@ -784,7 +784,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMAP--*****",
-        "DESCRIPTION": "Air to Space Missile",
+        "DESCRIPTION": "Air-to-Space Missile",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.2.3",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.ALM.ASPC",
@@ -792,7 +792,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*A*WMU---*****",
-        "DESCRIPTION": "Subsurface To Surface Missile (S/SSM)",
+        "DESCRIPTION": "Subsurface-to-Surface Missile (S/SSM)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.2.2.1.3",
         "ALPHAHIERARCHY": "WAR.AIRTRK.WPN.MSLIF.SBSM",
@@ -1416,7 +1416,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCVV--*****",
-        "DESCRIPTION": "Vertical/Short Takeoff And Landing (V/Stol)",
+        "DESCRIPTION": "Vertical and/or Short Takeoff and Landing Aircraft (V/STOL)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.4.5",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.AVN.VSTOL",
@@ -1424,7 +1424,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCVU--*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle",
+        "DESCRIPTION": "Unmanned Aerial",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.4.6",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.AVN.UAV",
@@ -1432,7 +1432,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCVUF-*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle Fixed Wing",
+        "DESCRIPTION": "Unmanned Aerial Fixed Wing",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.4.6.1",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.AVN.UAV.FIXD",
@@ -1440,7 +1440,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCVUR-*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle Rotary Wing",
+        "DESCRIPTION": "Unmanned Aerial Rotary Wing",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.4.6.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.AVN.UAV.ROT",
@@ -1768,7 +1768,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCFRM-*****",
-        "DESCRIPTION": "Multi Rocket Launcher",
+        "DESCRIPTION": "Multiple Rocket Launcher (Field Artillary)",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.7.2.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.FLDART.ROC.MRL",
@@ -1776,7 +1776,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCFRMS*****",
-        "DESCRIPTION": "Multi Rocket Self-Propelled",
+        "DESCRIPTION": "Multiple Rocket Self-Propelled",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.7.2.2.1",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.FLDART.ROC.MRL.MRSPD",
@@ -1784,7 +1784,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCFRMR*****",
-        "DESCRIPTION": "Multi Rocket Truck",
+        "DESCRIPTION": "Multiple Rocket Truck",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.7.2.2.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.FLDART.ROC.MRL.MRTRK",
@@ -1792,7 +1792,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UCFRMT*****",
-        "DESCRIPTION": "Multi Rocket Towed",
+        "DESCRIPTION": "Multiple Rocket Towed",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.1.7.2.2.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CBT.FLDART.ROC.MRL.MRTOW",
@@ -2352,7 +2352,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UUAN--*****",
-        "DESCRIPTION": "Combat Support NBC Nuclear",
+        "DESCRIPTION": "Combat Support CBRN Nuclear",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.NUC",
@@ -2360,7 +2360,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UUAB--*****",
-        "DESCRIPTION": "Combat Support NBC Biological",
+        "DESCRIPTION": "Combat Support CBRN Biological",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.BIO",
@@ -2376,7 +2376,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*UUAD--*****",
-        "DESCRIPTION": "NBC Decontamination",
+        "DESCRIPTION": "CBRN Decontamination",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.1.2.1.4",
         "ALPHAHIERARCHY": "WAR.GRDTRK.UNT.CS.CBRN.DECON",
@@ -4136,7 +4136,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWT---*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher",
+        "DESCRIPTION": "Antitank Rocket Launcher",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.4",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATRL",
@@ -4144,7 +4144,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWTL--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Light",
+        "DESCRIPTION": "Antitank Rocket Launcher Light",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.4.1",
         "ALPHAHIERARCHY": "211SYMBOL UNKNOWN FRIEND NEUTRAL HOSTILEWAR.GRDTRK.EQT.WPN.MRL.HVYWARFIGHTING SYMBOLSGROUND TRACKEQUIPMENTWEAPONMULTIPLE ROCKET LAUNCHERHEAVYHierarchy: 1.X.3.2.1.3.3Framed: FOSUGPEWXH--*****SFGPEWXH--*****SNGPEWXH--*****SHGPEWXH--*****SUGPEWXH--*****SFGPEWXH--*****SNGPEWXH--*****SHGPEWXH--*****WAR.GRDTRK.EQT.WPN.ATRLWARFIGHTING SYMBOLSGROUND TRACKEQUIPMENTWEAPONANTITANK ROCKET LAUNCHERHierarchy: 1.X.3.2.1.4Framed: FOSUGPEWT---*****SFGPEWT---*****SNGPEWT---*****SHGPEWT---*****SUGPEWT---*****SFGPEWT---*****SNGPEWT---*****SHGPEWT---*****WAR.GRDTRK.EQT.WPN.ATRL.LIT",
@@ -4152,7 +4152,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWTM--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Medium",
+        "DESCRIPTION": "Antitank Rocket Launcher Medium",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.4.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATRL.MDM",
@@ -4160,7 +4160,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWTH--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Heavy",
+        "DESCRIPTION": "Antitank Rocket Launcher Heavy",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.4.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATRL.HVY",
@@ -4360,7 +4360,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWG---*****",
-        "DESCRIPTION": "Anti-Tank Gun",
+        "DESCRIPTION": "Antitank Gun",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.9",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATG",
@@ -4368,7 +4368,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWGL--*****",
-        "DESCRIPTION": "Anti-Tank Gun Light",
+        "DESCRIPTION": "Antitank Gun Light",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.9.1",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATG.LIT",
@@ -4376,7 +4376,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWGM--*****",
-        "DESCRIPTION": "Anti-Tank Gun Medium",
+        "DESCRIPTION": "Antitank Gun Medium",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.9.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATG.MDM",
@@ -4384,7 +4384,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWGH--*****",
-        "DESCRIPTION": "Anti-Tank Gun Heavy",
+        "DESCRIPTION": "Antitank Gun Heavy",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.9.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATG.HVY",
@@ -4392,7 +4392,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EWGR--*****",
-        "DESCRIPTION": "Anti-Tank Gun Recoilless",
+        "DESCRIPTION": "Antitank Gun Recoilless",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.9.4",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATG.RECL",
@@ -4928,7 +4928,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EVCM--*****",
-        "DESCRIPTION": "Civilian Multi-Passenger Vehicle",
+        "DESCRIPTION": "Civilian Multiple Passenger Vehicle",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.2.5.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.GRDVEH.CVLVEH.MPV",
@@ -4936,7 +4936,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EVCML-*****",
-        "DESCRIPTION": "Civilian Multi-Passenger Van",
+        "DESCRIPTION": "Civilian Multiple Passenger Van",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.2.5.3.1",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.GRDVEH.CVLVEH.MPV.VAN",
@@ -5184,7 +5184,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*EXN---*****",
-        "DESCRIPTION": "NBC Equipment",
+        "DESCRIPTION": "CBRN Equipment",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.4.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.SPL.NBCEQ",
@@ -5272,7 +5272,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*IRN---H****",
-        "DESCRIPTION": "NBC",
+        "DESCRIPTION": "Production/Storage CBRN",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.3.1.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.INS.RMP.CBRN",
@@ -5280,7 +5280,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*IRNB--H****",
-        "DESCRIPTION": "Production/Storage NBC Biological",
+        "DESCRIPTION": "Production/Storage CBRN Biological",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.3.1.3.1",
         "ALPHAHIERARCHY": "WAR.GRDTRK.INS.RMP.CBRN.BIO",
@@ -5288,7 +5288,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*IRNC--H****",
-        "DESCRIPTION": "Production/Storage NBC Chemical",
+        "DESCRIPTION": "Production/Storage CBRN Chemical",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.3.1.3.2",
         "ALPHAHIERARCHY": "WAR.GRDTRK.INS.RMP.CBRN.CML",
@@ -5296,7 +5296,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*G*IRNN--H****",
-        "DESCRIPTION": "Production/Storage NBC Nuclear",
+        "DESCRIPTION": "Production/Storage CBRN Nuclear",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.3.1.3.3",
         "ALPHAHIERARCHY": "WAR.GRDTRK.INS.RMP.CBRN.NUC",
@@ -5808,7 +5808,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*S*CPSUM-*****",
-        "DESCRIPTION": "Anti-Ship Missile",
+        "DESCRIPTION": "Antisurface Warfare Antiship Missile",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.4.1.4.2.1",
         "ALPHAHIERARCHY": "WAR.SSUF.CBTT.PAT.ASUW.ASMSL",
@@ -5816,7 +5816,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
       },
       {
         "SYMBOLID": "S*S*CPSUT-*****",
-        "DESCRIPTION": "Torpedo(Antisurface Warfare)",
+        "DESCRIPTION": "Antisurface Warfare Torpedo",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.4.1.4.2.2",
         "ALPHAHIERARCHY": "WAR.SSUF.CBTT.PAT.ASUW.TPD",

@@ -158,7 +158,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     var temp = 0;
                     var maxWidthMeters = 0;
                     if (tg.get_H2() !== null && tg.get_H2().isEmpty() === false) {
-                        strRadii = tg.get_H2().$plit(",");
+                        strRadii = tg.get_H2().split(",");
                         if (strRadii !== null && strRadii.length > 0) {
                             for (j = 0; j < strRadii.length; j++) {
                                 if (!Double.isNaN(Double.parseDouble(strRadii[j]))) {
@@ -582,7 +582,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     var temp = 0;
                     var maxWidthMeters = 0;
                     if (tg.get_H2() !== null && tg.get_H2().isEmpty() === false) {
-                        strRadii = tg.get_H2().$plit(",");
+                        strRadii = tg.get_H2().split(",");
                         if (strRadii !== null && strRadii.length > 0) {
                             for (j = 0; j < strRadii.length; j++) {
                                 if (!Double.isNaN(Double.parseDouble(strRadii[j]))) {

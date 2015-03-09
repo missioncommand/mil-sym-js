@@ -835,7 +835,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Nav Reference Point",
+        "DESCRIPTION": "Navigational Reference Point",
         "HIERARCHY": "2.X.2.1.1.2.2",
         "ALPHAHIERARCHY": "TACGRP.C2GM.GNL.PNT.REFPNT.NAVREF",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
@@ -891,7 +891,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Waypoint",
+        "DESCRIPTION": "Waypoint (Refernce Point)",
         "HIERARCHY": "2.X.2.1.1.2.7",
         "ALPHAHIERARCHY": "TACGRP.C2GM.GNL.PNT.REFPNT.WAP",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
@@ -2382,7 +2382,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "NBC Observation Post Dismounted",
+        "DESCRIPTION": "CBRN Observation Post Dismounted",
         "HIERARCHY": "2.X.2.4.1.2.5",
         "ALPHAHIERARCHY": "TACGRP.C2GM.DEF.PNT.OBSPST.CBRNOP",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Defense/Points/Observation Post-Outpost"

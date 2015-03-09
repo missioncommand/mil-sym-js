@@ -480,7 +480,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var radii = null;
             var H2 = tg.get_H2();
             if (tg.LatLongs.size() === 1 && H2 !== null) {
-                var strs = H2.$plit(",");
+                var strs = H2.split(",");
                 radii = Clazz.newArray(strs.length, 0);
                 for (j = 0; j < strs.length; j++)
                 {
@@ -533,7 +533,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var max = 0;
             var maxx = -1.7976931348623157E308;
             var H2 = tg.get_H2();
-            var leftRightMinMax = H2.$plit(",");
+            var leftRightMinMax = H2.split(",");
             var numSectors = Math.floor(leftRightMinMax.length / 4);
             var k = 0;
             var maxIndex = -1;
@@ -591,7 +591,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 tg1.set_H2(strH2);
                 return tg1;
             }
-            var H2 = strH2.$plit(",");
+            var H2 = strH2.split(",");
             var leftRightMinMax = "";
             var j = 0;
             for (j = 0; j < H2.length - 1; j++) {
@@ -636,7 +636,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
             var pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
             var H2 = tg.get_H2();
-            var leftRightMinMax = H2.$plit(",");
+            var leftRightMinMax = H2.split(",");
             var left = 0;
             var right = 0;
             var min = 0;
@@ -738,7 +738,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 orientation = a12.value[0];
             } else {
                 var strLeftRightMinMax = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetMaxSector(tg);
-                var sector = strLeftRightMinMax.$plit(",");
+                var sector = strLeftRightMinMax.split(",");
                 var left = Double.parseDouble(sector[0]);
                 var right = Double.parseDouble(sector[1]);
                 var min = Double.parseDouble(sector[2]);
