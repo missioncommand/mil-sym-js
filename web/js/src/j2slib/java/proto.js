@@ -15,15 +15,19 @@ String.prototype.isEmpty = function() {
     else
         return false;
 };
-Boolean.prototype.booleanValue = function() {
-    return this.valueOf();
-};
 String.prototype.contains = function(exp)
 {
     if (this.match(exp) !== null)
         return true;
     else
         return false;
+};
+Boolean.prototype.booleanValue = function() {
+    return this.valueOf();
+};//*/
+Math.toRadians = function(v)
+{
+    return v * Math.PI / 180.0;
 };
 /*
 String.prototype.startsWith = function(prefix) {
@@ -45,16 +49,6 @@ String.prototype.toCharArray = function() {
     }
     return result;
 };
-
-
-String.prototype.contains = function(exp)
-{
-    if (this.match(exp) !== null)
-        return true;
-    else
-        return false;
-};
-
 
 String.prototype.startsWith_string_number = function(prefix, toffset) {
     var to = toffset;
@@ -122,7 +116,3 @@ String.prototype.doubleValue = function()
 {
     return this.valueOf();
 };//*/
-Math.toRadians = function(v)
-{
-    return v * Math.PI / 180.0;
-};
