@@ -891,7 +891,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Waypoint (Refernce Point)",
+        "DESCRIPTION": "Waypoint (Reference Point)",
         "HIERARCHY": "2.X.2.1.1.2.7",
         "ALPHAHIERARCHY": "TACGRP.C2GM.GNL.PNT.REFPNT.WAP",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/General/Points/Reference Point"
