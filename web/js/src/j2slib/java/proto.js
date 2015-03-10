@@ -1,35 +1,53 @@
 /* 
- * This class adds all the required prototypes from core.z
+ * This class adds functions that exist in Java but not in JavaScript
  */
+if(typeof String.prototype.equalsIgnoreCase !== 'function')
+{
+    String.prototype.equalsIgnoreCase = function(anotherString) {
+        return(anotherString === null) ? false : (this === anotherString
+                || this.toLowerCase() === anotherString.toLowerCase());
+    };
+}
 
-String.prototype.equalsIgnoreCase = function(anotherString) {
-    return(anotherString === null) ? false : (this === anotherString
-            || this.toLowerCase() === anotherString.toLowerCase());
-};
-String.prototype.equals = function(anObject) {
-    return this.valueOf() === anObject;
-};
-String.prototype.isEmpty = function() {
-    if (this.length === 0)
-        return true;
-    else
-        return false;
-};
-String.prototype.contains = function(exp)
+if(typeof String.prototype.equals !== 'function')
 {
-    if (this.match(exp) !== null)
-        return true;
-    else
-        return false;
-};
-//Boolean.prototype.booleanValue = function() {
-//    return this.valueOf();
-//};
-Math.toRadians = function(v)
+    String.prototype.equals = function(anObject) {
+        return this.valueOf() === anObject;
+    };
+}
+
+if(typeof String.prototype.isEmpty !== 'function')
 {
-    return v * Math.PI / 180.0;
-};
+    String.prototype.isEmpty = function() {
+        if (this.length === 0)
+            return true;
+        else
+            return false;
+    };
+}
+
+if(typeof String.prototype.contains !== 'function')
+{
+    String.prototype.contains = function(exp)
+    {
+        if (this.match(exp) !== null)
+            return true;
+        else
+            return false;
+    };
+}
+
+if(typeof Math.toRadians !== 'function')
+{
+    Math.toRadians = function(v)
+    {
+        return v * Math.PI / 180.0;
+    };
+}
 /*
+Boolean.prototype.booleanValue = function() {
+    return this.valueOf();
+};
 String.prototype.startsWith = function(prefix) {
     if (arguments.length === 1) {
         return this.startsWith_string_number(arguments[0], 0);
