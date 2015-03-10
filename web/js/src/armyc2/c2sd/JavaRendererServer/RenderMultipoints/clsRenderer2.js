@@ -140,7 +140,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                 case 22623001:
                     if (tg.Pixels.size() < 2)
                         return null;
-                    if ((usas1314).booleanValue())
+                    if ((usas1314).valueOf())
                         break;
                     pts.add(tg.Pixels.get(0));
                     for (j = 2; j < tg.Pixels.size(); j++) {

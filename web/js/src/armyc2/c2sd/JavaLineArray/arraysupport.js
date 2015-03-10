@@ -3017,7 +3017,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[pointCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                             pLinePoints[pointCounter].style = 0;
                             pointCounter++;
-                            if ((drawJaggies).booleanValue())
+                            if ((drawJaggies).valueOf())
                                 while (dExtendLength < dWidth - 10) {
                                     dExtendLength = n * 5;
                                     pLinePoints[pointCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pt2, pt3, dExtendLength - dWidth, 0);

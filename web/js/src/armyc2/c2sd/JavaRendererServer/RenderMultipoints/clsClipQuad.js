@@ -72,13 +72,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
                 polygon.add(nearestPt);
                 addToEnd = new Boolean(true);
             }
-            if (addToFront.booleanValue() === false && addToEnd.booleanValue() === false) {
+            if (addToFront.valueOf() === false && addToEnd.valueOf() === false) {
                 result = 0;
-            } else if (addToFront.booleanValue() === true && addToEnd.booleanValue() === false) {
+            } else if (addToFront.valueOf() === true && addToEnd.valueOf() === false) {
                 result = 1;
-            } else if (addToFront.booleanValue() === false && addToEnd.booleanValue() === true) {
+            } else if (addToFront.valueOf() === false && addToEnd.valueOf() === true) {
                 result = 2;
-            } else if (addToFront.booleanValue() === true && addToEnd.booleanValue() === true) {
+            } else if (addToFront.valueOf() === true && addToEnd.valueOf() === true) {
                 result = 3;
             }
         } catch (exc) {
@@ -462,7 +462,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             if (clipBoundsPtStart.getX() !== clipBoundsPtEnd.getX() || clipBoundsPtStart.getY() !== clipBoundsPtEnd.getY())
                 clipBounds.add(clipBoundsPtStart);
             var addedLinePoints = 0;
-            if (isClosed.booleanValue() === true)
+            if (isClosed.valueOf() === true)
                 polygon.remove(polygon.size() - 1);
             else {
                 addedLinePoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.AddBoundaryPointsForLines(polygon, clipBounds);
@@ -473,7 +473,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
                 else
                     poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide(poly, j, clipBounds);
             }
-            if (isClosed.booleanValue() === true) {
+            if (isClosed.valueOf() === true) {
                 if (poly.size() > 0) {
                     poly.add(poly.get(0));
                 }
@@ -513,7 +513,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
                         break;
                 }
             }
-            if (isClosed.booleanValue() === true) {
+            if (isClosed.valueOf() === true) {
                 if (poly.size() > 2) {
                     tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Point2DtoPOINT2Mapped(poly, hashMap);
                 } else {

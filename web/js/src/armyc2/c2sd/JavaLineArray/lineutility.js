@@ -1840,7 +1840,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                             right = sidePt0;
                         }
                     }
-                    if ((bolVertical).booleanValue()) {
+                    if ((bolVertical).valueOf()) {
                         dx = upper.x - pt0.x;
                         dy = m * dx;
                         x = upper.x;
@@ -1900,7 +1900,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     if (pt0.x === pt1.x) {
                         bolVertical = new Boolean(true);
                     }
-                    if (bolVertical.booleanValue()) {
+                    if (bolVertical.valueOf()) {
                         line[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                         if (line[0].y < ul.y) {
                             line[0].y = ul.y;
@@ -1952,16 +1952,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     if (armyc2.c2sd.JavaLineArray.lineutility.PointInBounds2(pt1, ul, lr) === 1) {
                         pt1Intersect = pt1;
                     }
-                    if (pt1Intersect === null && side0Intersect.booleanValue() === false) {
+                    if (pt1Intersect === null && side0Intersect.valueOf() === false) {
                         pt1Intersect = armyc2.c2sd.JavaLineArray.lineutility.intersectSegment(pt1, pt0, ll, ul);
                     }
-                    if (pt1Intersect === null && side1Intersect.booleanValue() === false) {
+                    if (pt1Intersect === null && side1Intersect.valueOf() === false) {
                         pt1Intersect = armyc2.c2sd.JavaLineArray.lineutility.intersectSegment(pt1, pt0, ul, ur);
                     }
-                    if (pt1Intersect === null && side2Intersect.booleanValue() === false) {
+                    if (pt1Intersect === null && side2Intersect.valueOf() === false) {
                         pt1Intersect = armyc2.c2sd.JavaLineArray.lineutility.intersectSegment(pt1, pt0, ur, lr);
                     }
-                    if (pt1Intersect === null && side3Intersect.booleanValue() === false) {
+                    if (pt1Intersect === null && side3Intersect.valueOf() === false) {
                         pt1Intersect = armyc2.c2sd.JavaLineArray.lineutility.intersectSegment(pt1, pt0, ll, lr);
                     }
                     if (pt0Intersect !== null && pt1Intersect !== null) {

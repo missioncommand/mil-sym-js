@@ -1310,7 +1310,7 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[1]);
                     points[counter].style = 5;
                     counter++;
-                    if ((drawJaggies).booleanValue())
+                    if ((drawJaggies).valueOf())
                         while (i <= iNumJaggies) {
                             pts[1].x = savepoints[1].x - dDeltaXOut + dDeltaXAlong * i;
                             pts[1].y = savepoints[1].y - dDeltaYOut + dDeltaYAlong * i;
@@ -1845,7 +1845,7 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     points[counter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pts[1]);
                     points[counter].style = 5;
                     counter++;
-                    if ((drawJaggies).booleanValue())
+                    if ((drawJaggies).valueOf())
                         while (i <= iNumJaggies) {
                             pts[1].x = savepoints2[1].x - dDeltaXOut + dDeltaXAlong * i;
                             pts[1].y = savepoints2[1].y - dDeltaYOut + dDeltaYAlong * i;

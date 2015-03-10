@@ -1695,7 +1695,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pUpperLinePoints[vblLowerCounter - 1]);
                                 pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pt1, midPt1, b, 5);
                                 pLinePoints[vblLowerCounter + vblUpperCounter + 18] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt3);
-                                if ((rotaryTooShort).booleanValue()) {
+                                if ((rotaryTooShort).valueOf()) {
                                     for (l = vblLowerCounter + vblUpperCounter + 14; l < vblLowerCounter + vblLowerCounter + 19; l++) {
                                         pLinePoints[l].style = 5;
                                     }

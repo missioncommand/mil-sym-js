@@ -556,7 +556,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier = function (tg, t
         }
         var modifier = new armyc2.c2sd.JavaTacticalRenderer.Modifier2();
         if (isIntegral !== undefined)
-            modifier.set_IsIntegral((isIntegral).booleanValue());
+            modifier.set_IsIntegral((isIntegral).valueOf());
 
         if (text === null || text.equals("")) {
             return;
@@ -614,7 +614,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier = function (t
             return;
         }
         var modifier = new armyc2.c2sd.JavaTacticalRenderer.Modifier2();
-        modifier.set_IsIntegral((isIntegral).booleanValue());
+        modifier.set_IsIntegral((isIntegral).valueOf());
         modifier.text = text;
         if (text === null || text.equals("")) {
             return;
@@ -823,7 +823,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers = function (tg, 
                 T1LineFactor = -1.3;
             }
             lineTooShort = new Boolean(armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j));
-            if (lineTooShort.booleanValue() === false) {
+            if (lineTooShort.valueOf() === false) {
                 foundSegment = new Boolean(true);
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, TLineFactor * csFactor, j, j + 1, new Boolean(true));
                 if (!tg.get_EchelonSymbol().equals(""))
@@ -841,7 +841,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers = function (tg, 
                 }
             }
         }
-        if (foundSegment.booleanValue() === false) {
+        if (foundSegment.valueOf() === false) {
             //TLineFactor = -1;
             //T1LineFactor = 1;
             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -908,7 +908,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers2 = function (tg,
                 T1LineFactor = -1.3;
             }
             lineTooShort = new Boolean(armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j));
-            if (lineTooShort.booleanValue() === false) {
+            if (lineTooShort.valueOf() === false) {
                 foundSegment = new Boolean(true);
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, TLineFactor * csFactor, j, j + 1, new Boolean(true));
                 if (!tg.get_EchelonSymbol().equals("")) {
@@ -925,7 +925,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddBoundaryModifiers2 = function (tg,
                 }
             }
         }
-        if (foundSegment.booleanValue() === false) {
+        if (foundSegment.valueOf() === false) {
             //TLineFactor = -1;
             //T1LineFactor = 1;
             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -1142,7 +1142,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function (t
                 break;
             }
         }
-        if (foundVisibleSegment.booleanValue() === false) {
+        if (foundVisibleSegment.valueOf() === false) {
             for (j = middleSegment; j > 0; j--) {
                 pt0 = tg.Pixels.get(j);
                 pt1 = tg.Pixels.get(j - 1);
@@ -1168,7 +1168,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function (t
                 }
             }
         }
-        if (foundVisibleSegment.booleanValue() === false)
+        if (foundVisibleSegment.valueOf() === false)
         {
             //this will cause a problem if segment length=0;
             middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
@@ -1233,7 +1233,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function (
             }
         }
         lastPt = null;
-        if (foundVisibleSegment.booleanValue() === false) {
+        if (foundVisibleSegment.valueOf() === false) {
             for (j = middleSegment; j > 0; j--) {
                 pt0 = tg.Pixels.get(j);
                 pt1 = tg.Pixels.get(j - 1);
@@ -1259,7 +1259,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function (
                 }
             }
         }
-        if (foundVisibleSegment.booleanValue() === false)
+        if (foundVisibleSegment.valueOf() === false)
         {
             //this will cause a problem if the segment length is 0
             middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;

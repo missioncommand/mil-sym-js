@@ -22,9 +22,9 @@ String.prototype.contains = function(exp)
     else
         return false;
 };
-Boolean.prototype.booleanValue = function() {
-    return this.valueOf();
-};//*/
+//Boolean.prototype.booleanValue = function() {
+//    return this.valueOf();
+//};
 Math.toRadians = function(v)
 {
     return v * Math.PI / 180.0;
