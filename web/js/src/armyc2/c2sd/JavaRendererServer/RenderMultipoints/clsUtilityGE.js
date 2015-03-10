@@ -333,7 +333,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 shapeInfo = shapeInfos.get(j);
                 type = shapeInfo.getShapeType();
                 shape = shapeInfo.getShape();
-                if (isClosed.booleanValue() === false && type !== armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL)
+                if (isClosed.valueOf() === false && type !== armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL)
                 {
                     polylines = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.createRenderablesFromShape(tg, shape, type, clipBounds);
                 }

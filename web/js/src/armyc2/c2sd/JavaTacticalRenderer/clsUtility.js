@@ -756,7 +756,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
     },
     tweakFillColor: function(tg) {
         try {
-            if ((armyc2.c2sd.JavaTacticalRenderer.clsUtility.isSameColor(tg.get_LineColor(), tg.get_FillColor())).booleanValue() === false)
+            if ((armyc2.c2sd.JavaTacticalRenderer.clsUtility.isSameColor(tg.get_LineColor(), tg.get_FillColor())).valueOf() === false)
                 return;
             var fillColor = tg.get_FillColor();
             var r = fillColor.getRed();
