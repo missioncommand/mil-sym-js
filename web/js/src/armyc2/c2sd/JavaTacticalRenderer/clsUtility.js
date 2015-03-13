@@ -2443,8 +2443,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             switch (linetype) {
                 case 23131100:
                 case 23131200:
-                case 23132000:
                     glyphSize = 25;
+                    break;
+                case 23132000:
+                    glyphSize = 50;
                     break;
                 case 22350000:
                     glyphSize = 20;
