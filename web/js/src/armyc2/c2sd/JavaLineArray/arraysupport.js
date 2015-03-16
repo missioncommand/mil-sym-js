@@ -2506,7 +2506,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 2237000:
                             armyc2.c2sd.JavaLineArray.arraysupport.AreaWithCenterFeatureDouble(pLinePoints, vblCounter, lineType);
                             acCounter = vblCounter;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             break;
                         case 22431100:
                             for (j = 0; j < vblCounter; j++)
@@ -2514,7 +2514,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 
                             acCounter = vblCounter;
                             break;
-                        case 22350000:
+                        case 22350000:  //dmaf
                             armyc2.c2sd.JavaLineArray.arraysupport.AreaWithCenterFeatureDouble(pLinePoints, vblCounter, lineType);
                             pLinePoints[vblCounter - 1].style = 5;
                             armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
@@ -2578,7 +2578,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212500000:
                             armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
                             acCounter = 50;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         case 211600000:
                             armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
@@ -2737,8 +2737,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             for (j = 0; j < 100; j++) {
                                 pLinePoints[200 + j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(circlePoints[j]);
                             }
-                            acCounter = 300;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
+                            //acCounter = 300;
+                            acCounter=vblCounter;
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             break;
                         case 25211000:
                             d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
@@ -2788,7 +2789,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 pLinePoints[8] = pLinePoints[0];
                             }
                             acCounter = 9;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         case 25212000:
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
@@ -2818,7 +2819,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints[8].style = 0;
                             pLinePoints[9] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pArrowPoints[1]);
                             acCounter = 10;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         case 25223000:
                         case 25224000:
@@ -3208,7 +3209,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(airPts.get(j));
 
                             acCounter = vblCounter;
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             break;
                         case 22422000:
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[1]);
@@ -3362,7 +3363,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             }
                             pLinePoints[vblCounter - 2].style = 0;
                             pLinePoints[vblCounter - 1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
-                            armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
+                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             acCounter = vblCounter;
                             break;
                         case 23157000:
@@ -3827,6 +3828,18 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             //basic shapes-rectangles
                         case 14000000:
                         case 15000003:
+                            //added these 3/16/15
+                        case 221311000:
+                        case 22340000:
+                        case 2237000:
+                        case 212500000:
+                        case 212600000:
+                        case 23410000:
+                        case 25211000:
+                        case 25212000:
+                        case 23226000:
+                        case 22522100:
+                        case 23120000:
                             armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         default:
