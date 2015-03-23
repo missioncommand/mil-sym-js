@@ -1430,7 +1430,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var b = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
                     for (l = 1; l < 37; l++) {
-                        dFactor = (20.0 * l) * 3.141592653589793 / 180.0;
+                        dFactor = (10.0 * l) * 3.141592653589793 / 180.0;
                         pEllipsePoints[l - 1].x = ptCenter.x + Math.floor((a * Math.cos(dFactor)));
                         pEllipsePoints[l - 1].y = ptCenter.y + Math.floor((b * Math.sin(dFactor)));
                         pEllipsePoints[l - 1].style = 0;
