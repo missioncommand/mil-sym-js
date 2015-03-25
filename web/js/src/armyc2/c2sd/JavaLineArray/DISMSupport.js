@@ -1965,7 +1965,9 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                         d = 5 * armyc2.c2sd.JavaLineArray.DISMSupport.minLength;
                     }
                     var client = armyc2.c2sd.JavaLineArray.CELineArray.getClient();
-                    if (client.matches("cpof3d") || client.matches("cpof2d")) {
+                    //if (client.matches("cpof3d") || client.matches("cpof2d")) 
+                    if (client.equalsIgnoreCase("cpof3d") || client.equalsIgnoreCase("cpof2d")) 
+                    {
                         if (d < 400)
                             d = 400;
                     } else {
