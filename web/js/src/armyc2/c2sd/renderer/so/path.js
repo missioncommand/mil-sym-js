@@ -118,6 +118,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         this._rectangle.unionPoint(new so.Point(x,y));
         this._actions.push(new Array(so.ActionTypes.ACTION_MOVE_TO,x,y));
         this._lastMoveTo = new so.Point(x,y);
+		this._endPoint = new so.Point(x,y);
     };
     /**
      * Adds a point to the path by drawing a straight line from the current 
@@ -136,6 +137,27 @@ armyc2.c2sd.renderer.so.Path = function () {
         this._rectangle.unionPoint(new so.Point(x,y));
         this._endPoint = new so.Point(x,y);
     };
+	
+	/**
+     * Adds a point to the path by drawing a straight line from the current 
+     * coordinates to the new specified coordinates specified
+     * @param {type} x
+     * @param {type} y
+	 * @param {array} pattern 
+     * @returns {void}
+     */
+    armyc2.c2sd.renderer.so.Path.prototype.dashedLineTo = function(x,y,pattern){
+        var so = armyc2.c2sd.renderer.so;
+        if(this._actions.length === 0)
+        {
+            this.moveTo(0,0);
+        }
+		var start = this.getCurrentPoint();
+        this._actions.push(new Array(so.ActionTypes.ACTION_DASHED_LINE_TO,start.getX(),start.getY(), x, y, pattern));
+        this._rectangle.unionPoint(new so.Point(x,y));
+        this._endPoint = new so.Point(x,y);
+    };
+	
     /**
      * Adds a curved segment, defined by three new points, to the path by 
      * drawing a Bézier curve that intersects both the current coordinates 
@@ -292,6 +314,10 @@ armyc2.c2sd.renderer.so.Path = function () {
             else if(temp[0]===ActionTypes.ACTION_LINE_TO)
             {
                 context.lineTo(temp[1],temp[2]);
+            }
+			else if(temp[0]===ActionTypes.ACTION_DASHED_LINE_TO)
+            {
+                context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
             }
             else if(temp[0]===ActionTypes.ACTION_CURVE_TO)
             {

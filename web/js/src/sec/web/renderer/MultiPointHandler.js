@@ -697,6 +697,10 @@ return{
             
             var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
             mSymbol.setSymbologyStandard(symStd);
+			if(format === 3 || format === 4)
+			{
+				symbolModifiers[MilStdAttributes.UseDashArray] = true;
+			}
             if (symbolModifiers !== null && symbolModifiers !== ("")) 
             {
                 sec.web.renderer.MultiPointHandler.populateModifiers(symbolModifiers, mSymbol);
@@ -944,6 +948,10 @@ return{
         try {
             var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
             mSymbol.setSymbologyStandard(symStd);
+			if(format === 3 || format === 4)
+			{
+				symbolModifiers[MilStdAttributes.UseDashArray] = true;
+			}
             if (symbolModifiers !== null && symbolModifiers !== ("")) 
             {
                 sec.web.renderer.MultiPointHandler.populateModifiers(symbolModifiers, mSymbol);
@@ -2390,7 +2398,11 @@ return{
                 {
                     path.moveTo(coord.x, coord.y);
                 }
-                else
+                else if(dashArray)
+				{
+					path.dashedLineTo(coord.x, coord.y, dashArray);
+				}//*/
+				else
                 {
                     path.lineTo(coord.x, coord.y);
                 }

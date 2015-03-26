@@ -25,5 +25,6 @@ armyc2.c2sd.renderer.so.ActionTypes ={};
     armyc2.c2sd.renderer.so.ActionTypes.ACTION_QUAD_TO = 3;//quadratic bezier curve
     armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC_TO = 4;
     armyc2.c2sd.renderer.so.ActionTypes.ACTION_ARC = 5;
+	armyc2.c2sd.renderer.so.ActionTypes.ACTION_DASHED_LINE_TO = 6;
 
    
