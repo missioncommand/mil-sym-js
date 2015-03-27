@@ -234,7 +234,7 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                         {
                             returnValue = true;                                    
                         }
-                        else if((jsonAltitudeArray.length == 1) && (symbolId === "AKPC--" || // Kill box circular
+                        else if((jsonAltitudeArray) && (jsonAltitudeArray.length == 1) && (symbolId === "AKPC--" || // Kill box circular
                                                                     symbolId === "AKPR--" || // Kill box rectangular
                                                                     symbolId === "AKPI--"))
                         {
