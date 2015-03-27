@@ -1544,7 +1544,7 @@ return{
                 //var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToGeoJSONString(shapes.get(i), ipc, normalize);
                 var pathInfo = sec.web.renderer.MultiPointHandler.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer);
                 tempBounds = pathInfo.path.getBounds();
-				tempBounds.grow(Math.round(pathInfo.lineWidth));//adjust for line width so nothing gets clipped.
+				tempBounds.grow(Math.round(pathInfo.lineWidth/2));//adjust for line width so nothing gets clipped.
                 if(pathBounds === null)
                     pathBounds = tempBounds.clone();
                 else
