@@ -77,8 +77,8 @@ console.log(foo.toString());*/
         //var bbox = "-180.0,-90.0,180.0,90.0";
         var scale = 50000.0;
 		
-                var formatSymbolInfo = 5;
-                var formatGeoCanvasDataURL = 4;
+		var formatSymbolInfo = 5;
+		var formatGeoCanvasDataURL = 4;
 		var formatGeoCanvas = 3;
 		var formatGeoJSON = 2;
 		var formatJSON = 1;
@@ -87,7 +87,7 @@ console.log(foo.toString());*/
 		var pixelHeight = 1000;
 		
 		//change this to format JSON to see the different output.
-                //var format = formatGeoCanvasDataURL;
+        //var format = formatGeoCanvasDataURL;
 		var format = formatGeoCanvas;
 		//var format = formatGeoJSON;
 		//var format = formatJSON;
@@ -141,10 +141,10 @@ console.log(foo.toString());*/
 				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
 			}
 		}
-                else if(format === formatSymbolInfo)
-                {
-                    
-                }
+		else if(format === formatSymbolInfo)
+		{
+			
+		}
 		else if(format === formatGeoCanvas)
 		{
                     var geoCanvas = json.image;//sec.web.renderer.MultiPointHandler.RenderShapeInfoToCanvas(json.paths, json.textInfos, json.bounds, json.geoTL, json.geoBR);
@@ -155,14 +155,14 @@ console.log(foo.toString());*/
                     ctx.drawImage(geoCanvas,0,0);
    
 		}
-                else if(format === formatGeoCanvasDataURL)
-		{/*
-                    var geoCanvas = json;//sec.web.renderer.MultiPointHandler.RenderShapeInfoToCanvas(json.paths, json.textInfos, json.bounds, json.geoTL, json.geoBR);
-                    var preview = document.getElementById("preview");
-                    preview.width = geoCanvas.width;
-                    preview.height = geoCanvas.height;
-                    var ctx = preview.getContext('2d');
-                    ctx.drawImage(geoCanvas,0,0);//*/
+		else if(format === formatGeoCanvasDataURL)
+		{
+                    var geoDataURL = json;//sec.web.renderer.MultiPointHandler.RenderShapeInfoToCanvas(json.paths, json.textInfos, json.bounds, json.geoTL, json.geoBR);
+                    var preview2 = document.getElementById("preview2");
+
+					preview2.src = geoDataURL.dataURL;
+					preview2.width = geoDataURL.width;
+					preview2.height = geoDataURL.height;
    
 		}
 
@@ -511,7 +511,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 </head>
 <body>
 Draw To Canvas Test:
-<canvas id="preview" width="650" height="200"></canvas><br>
+<canvas id="preview" width="30" height="30"></canvas><img id="preview2" src="" alt="" height="30" width="30"><br>
 KML/GeoJSON Generation Test:<br>    <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
 	

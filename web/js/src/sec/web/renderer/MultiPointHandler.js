@@ -1544,6 +1544,7 @@ return{
                 //var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToGeoJSONString(shapes.get(i), ipc, normalize);
                 var pathInfo = sec.web.renderer.MultiPointHandler.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer);
                 tempBounds = pathInfo.path.getBounds();
+				tempBounds.grow(Math.round(pathInfo.lineWidth));//adjust for line width so nothing gets clipped.
                 if(pathBounds === null)
                     pathBounds = tempBounds.clone();
                 else
@@ -1769,9 +1770,9 @@ return{
         }
         //test
         
-        ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
+        /*ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
         ctx.strokeStyle = "#000000";
-        ctx.strokeRect(bounds.getX(), bounds.getY(),buffer.width,buffer.height);
+        ctx.strokeRect(bounds.getX(), bounds.getY(),buffer.width,buffer.height);//*/
         
         /*ctx.setTransform(1,0,0,1,0,0);
         ctx.translate((bounds.getX()+100),(bounds.getY() + 100));
@@ -1783,12 +1784,12 @@ return{
         if(format === 3)
         {
             //return object with canvas and geo points
-            return {image:buffer, geoTL:geoTL, geoBR:geoBR};
+            return {image:buffer, geoTL:geoTL, geoBR:geoBR, width:buffer.width, height:buffer.height};
         }
         else if(format === 4)
         {
             //return object with dataurl and geo points
-            return {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR};
+            return {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR, width:buffer.width, height:buffer.height};
         }
         else
         {//should never get here:
