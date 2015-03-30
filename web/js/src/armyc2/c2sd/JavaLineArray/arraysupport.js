@@ -1165,6 +1165,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         } else {
                             continue;
                         }
+                        sign.value[0] = -1;
                         armyc2.c2sd.JavaLineArray.lineutility.GetSquallSegment(StartSegPt, EndSegPt, pSquallSegPts, sign, amplitude, quantity, length);
                         for (k = 0; k < segQty; k++) {
                             pSquallPts[counter].x = pSquallSegPts[k].x;
