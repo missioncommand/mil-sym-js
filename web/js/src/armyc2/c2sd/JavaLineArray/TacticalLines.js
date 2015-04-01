@@ -158,6 +158,7 @@ armyc2.c2sd.JavaLineArray.TacticalLines = function()
     this.AAFNT_STRAIGHT = 22320001;
     this.LC = 22123000;
     this.LC2 = 22123001;
+    this.LC_HOSTILE = 22123002;
     this.IL = 22524000;
     this.LDLC = 22527000;
     this.SPT = 22521420;

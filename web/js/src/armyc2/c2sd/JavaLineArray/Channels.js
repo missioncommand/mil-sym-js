@@ -6,12 +6,12 @@ armyc2.c2sd.JavaLineArray.Channels =
             setClient: function(value) {
                 _client = value;
             }, 
-            setAffiliation: function(value) {
-                _affiliation = value;
-            }, 
-            setShiftLines: function(value) {
-                _shiftLines = value;
-            }, 
+//            setAffiliation: function(value) {
+//                _affiliation = value;
+//            }, 
+//            setShiftLines: function(value) {
+//                _shiftLines = value;
+//            }, 
             getShiftLines: function() {
                 return armyc2.c2sd.JavaLineArray.Channels._shiftLines;
             }, 
@@ -495,7 +495,9 @@ armyc2.c2sd.JavaLineArray.Channels =
                             channelWidth = vblChannelWidth;
                             break;
                     }
-                    if (linetype !== 22123000 && linetype !== 22123001) {
+                    if (linetype !== 22123000 && linetype !== 22123001 &&
+                            linetype!==22123002) 
+                    {
                         channelWidth /= 2;
                     }
                     pChannelPoints = armyc2.c2sd.JavaLineArray.Channels.GetChannel2Double(channelWidth * nPrinter, vblCounter, pNewLinePoints, pChannelPoints);
@@ -696,6 +698,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                         case 231117101:
                         case 22123001:
                         case 22123000:
+                        case 22123002:
                         case 22521200:
                         case 22521300:
                         case 22521100:
@@ -1026,6 +1029,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                     var shiftLines = armyc2.c2sd.JavaLineArray.Channels._shiftLines;
                     switch (vbiDrawThis) {
                         case 22123000:
+                        case 22123002:
                         case 231111000:
                         case 231115000:
                         case 231116000:
@@ -1152,6 +1156,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                             break;
                         case 22123000:
                         case 22123001:
+                        case 22123002:
                             if (shiftLines === true || vbiDrawThis === 22123001) {
                                 pOriginalLinePoints = new Array(vblUpperCounter);
                                 for (k = 0; k < vblUpperCounter; k++) {
@@ -1174,7 +1179,8 @@ armyc2.c2sd.JavaLineArray.Channels =
                             pUpperLinePoints = armyc2.c2sd.JavaLineArray.Channels.GetChannelArray2Double(nPrinter, pUpperLinePoints, 1, vblUpperCounter, vbiDrawThis, vblChannelWidth);
                             pLowerLinePoints = armyc2.c2sd.JavaLineArray.Channels.GetChannelArray2Double(nPrinter, pLowerLinePoints, 0, vblLowerCounter, vbiDrawThis, vblChannelWidth);
                             if (shiftLines) {
-                                if (armyc2.c2sd.JavaLineArray.Channels._affiliation !== null && armyc2.c2sd.JavaLineArray.Channels._affiliation.equalsIgnoreCase("H"))
+                                //if (armyc2.c2sd.JavaLineArray.Channels._affiliation !== null && armyc2.c2sd.JavaLineArray.Channels._affiliation.equalsIgnoreCase("H"))
+                                if (vbiDrawThis===22123002)
                                     pLowerLinePoints = pOriginalLinePoints;
                                 else
                                     pUpperLinePoints = pOriginalLinePoints;
@@ -1267,6 +1273,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                             pLinePoints[k].style = 5;
                             break;
                         case 22123000:
+                        case 22123002:
                             lUpperFlotCount = armyc2.c2sd.JavaLineArray.flot.GetFlotCountDouble(pUpperLinePoints, vblUpperCounter);
                             lLowerFlotCount = armyc2.c2sd.JavaLineArray.flot.GetFlotCountDouble(pLowerLinePoints, vblLowerCounter);
                             if (lUpperFlotCount <= 0 || lLowerFlotCount <= 0) {
@@ -1874,6 +1881,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                             case 22320001:
                                 break;
                             case 22123000:
+                            case 22123002:
                                 if (beginPath === false) {
                                     if (k > 0) {
                                         if (pLinePoints[k].style === 5) {
@@ -2150,7 +2158,7 @@ armyc2.c2sd.JavaLineArray.Channels =
             minLength: 5,
             _className: "Channels",
             _client: "",
-            _affiliation: "",
+            //_affiliation: "",
             _shiftLines: true
         };
 

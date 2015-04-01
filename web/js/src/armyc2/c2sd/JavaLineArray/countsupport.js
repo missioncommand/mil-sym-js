@@ -3,9 +3,9 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.countsupport =
         {
-            setMinLength: function(value) {
-                this.minLength = value;
-            },
+//            setMinLength: function(value) {
+//                this.minLength = value;
+//            },
             GetCountersDouble: function(vbiDrawThis, vblCounter, pLinePoints, clipBounds, rev) {
                 var count = 0;
                 try {
@@ -790,6 +790,6 @@ armyc2.c2sd.JavaLineArray.countsupport =
                 return counter;
             },
             maxLength: 100,
-            minLength: 5,
+            minLength: 2.5, //was 5
             _className: "countsupport"
         };

@@ -46,6 +46,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
                     lineType2 = 23111001;
                 case 22123000:
                 case 22123001:
+                case 22123002:
                 case 231111000:
                 case 231113000:
                 case 231112000:
@@ -189,7 +190,9 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
     },
     DrawChannel: function(pixels, linetype, tg, shapes, channelPoints, rev) {
         try {
-            armyc2.c2sd.JavaLineArray.lineutility.adjustCATKBYFIREControlPoint(linetype, pixels, 45);
+            armyc2.c2sd.JavaLineArray.lineutility.adjustCATKBYFIREControlPoint(linetype, pixels, 45);            
+            if(tg.get_LineType()===22123000 && tg.get_Affiliation().equalsIgnoreCase("H"))            
+                linetype=22123002;
             var j = 0;
             var pixels2 = Clazz.newArray(pixels.size() * 2, 0);
             for (j = 0; j < pixels.size(); j++) {
@@ -278,6 +281,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
                     break;
                 case 22123000:
                 case 22123001:
+                case 22123002:
                     if (bolAnimation === true) {
                         channelWidth = 32;
                     } else {

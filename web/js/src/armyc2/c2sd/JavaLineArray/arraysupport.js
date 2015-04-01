@@ -52,10 +52,10 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return minBeta;
             },
-            setMinLength: function (value)
-            {
-                minLength = value;
-            },
+//            setMinLength: function (value)
+//            {
+//                minLength = value;
+//            },
             FillPoints: function (pLinePoints, counter, points)
             {
                 points.clear();
@@ -4703,7 +4703,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 return points;
             },
             maxLength: 100,
-            minLength: 5,
+            minLength: 2.5, //was 5
             dACP: 0,
             _classname: "arraysupport"
         };

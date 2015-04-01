@@ -985,12 +985,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 origLatLongs = tg.LatLongs.clone();
             }
             var origFillPixels=tg.Pixels.clone();
-            var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
-            if (shiftLines) {
-                var affiliation = tg.get_Affiliation();
-                armyc2.c2sd.JavaLineArray.Channels.setAffiliation(affiliation);
-            }
-            armyc2.c2sd.JavaLineArray.CELineArray.setMinLength(2.5);
+//            var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
+//            if (shiftLines) {
+//                var affiliation = tg.get_Affiliation();
+//                armyc2.c2sd.JavaLineArray.Channels.setAffiliation(affiliation);
+//            }
+//            armyc2.c2sd.JavaLineArray.CELineArray.setMinLength(2.5);
             var clipPoints = null;
             if (clipArea !== null) {
                 if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -1280,7 +1280,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
     },
             render: function(mss, converter, shapeInfos, modifierShapeInfos, clipBounds) {
                 try {
-                    var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
+                    //var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
                     var clipRect = new armyc2.c2sd.graphics2d.Rectangle2D();
                     var clipArray = new java.util.ArrayList();
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setClip(clipBounds, clipRect, clipArray);
@@ -1288,11 +1288,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     armyc2.c2sd.JavaTacticalRenderer.clsUtility.initializeLinetypes(rev);
                     var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mss, converter);
                     armyc2.c2sd.JavaLineArray.CELineArray.setClient("generic");
-                    if (shiftLines) {
-                        var affiliation = tg.get_Affiliation();
-                        armyc2.c2sd.JavaLineArray.Channels.setAffiliation(affiliation);
-                    }
-                    armyc2.c2sd.JavaLineArray.CELineArray.setMinLength(2.5);
+//                    if (shiftLines) {
+//                        var affiliation = tg.get_Affiliation();
+//                        armyc2.c2sd.JavaLineArray.Channels.setAffiliation(affiliation);
+//                    }
+                    //armyc2.c2sd.JavaLineArray.CELineArray.setMinLength(2.5);
                     armyc2.c2sd.JavaTacticalRenderer.clsUtility.setRevC(tg);
                     var scale = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getScale(tg, converter, clipBounds);
                     var linetype = tg.get_LineType();

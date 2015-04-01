@@ -3,9 +3,9 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.DISMSupport =
         {
-            setMinLength: function(mLength) {
-                minLength = mLength;
-            },
+//            setMinLength: function(mLength) {
+//                minLength = mLength;
+//            },
             GetTGFontSize: function(iLength) {
                 var result = -1;
                 try {
@@ -3026,7 +3026,7 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
             COLINEAR: 2,
             CONST_PI: 3.141592653589793,
             maxLength: 100,
-            minLength: 5,
+            minLength: 2.5, //was 2.5
             _className: "DISMSupport"
         };
 

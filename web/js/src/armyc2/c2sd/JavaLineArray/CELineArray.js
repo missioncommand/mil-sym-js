@@ -1468,13 +1468,13 @@ armyc2.c2sd.JavaLineArray.CELineArray =
             },
             getClient: function() {
                 return armyc2.c2sd.JavaLineArray.CELineArray._client;
-            },
-            setMinLength: function(value) {
-                armyc2.c2sd.JavaLineArray.DISMSupport.setMinLength(value);
-                armyc2.c2sd.JavaLineArray.arraysupport.setMinLength(value);
-                armyc2.c2sd.JavaLineArray.countsupport.setMinLength(value);
-                return;
             }
+//            setMinLength: function(value) {
+//                armyc2.c2sd.JavaLineArray.DISMSupport.setMinLength(value);
+//                armyc2.c2sd.JavaLineArray.arraysupport.setMinLength(value);
+//                armyc2.c2sd.JavaLineArray.countsupport.setMinLength(value);
+//                return;
+//            }
         };
 armyc2.c2sd.JavaLineArray.CELineArray._className = "CELineArray";
 armyc2.c2sd.JavaLineArray.CELineArray._client = "";
