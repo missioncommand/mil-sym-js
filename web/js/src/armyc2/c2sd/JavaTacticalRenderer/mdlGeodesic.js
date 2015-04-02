@@ -462,6 +462,56 @@ armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic = {
         }
         return pt;
     },
+    geoRotatePoint:function(ptCenter, ptRotate, rotation)
+    {
+        try
+        {
+            var bearing=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(ptCenter, ptRotate);
+            var dist=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter,ptRotate,null,null);
+            return armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter,dist,bearing+rotation);
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic._className, "geodesic_center", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside geoRotatePoint", exc));
+            } else {
+                throw exc;
+            }
+            return null;
+        }
+        return null;
+    },
+    getGeoEllipse:function(ptCenter, majorRadius, minorRadius, rotation)
+    {        
+        var pEllipsePoints=null;
+        try
+        {
+            //pEllipsePoints=new POINT2[37];
+            pEllipsePoints=new Array(37);
+            var pt=null;            
+            var dFactor,a=0,b=0;
+            var ptLongitude=null,ptLatitude=null;
+            for (var l = 1; l < 37; l++)
+            {
+                dFactor = (10.0 * l) * Math.PI / 180.0;                
+                a=majorRadius * Math.cos(dFactor);
+                b=minorRadius * Math.sin(dFactor);
+                ptLongitude=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter,a,90);
+                ptLatitude=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter,b,0);
+                pt=new armyc2.c2sd.JavaLineArray.POINT2(ptLongitude.x,ptLatitude.y);
+                pEllipsePoints[l-1]=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geoRotatePoint(ptCenter,pt,-rotation);
+            }            
+            pEllipsePoints[36]=new armyc2.c2sd.JavaLineArray.POINT2(pEllipsePoints[0]);
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic._className, "getGeoEllipse", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside geoRotatePoint", exc));
+            } else {
+                throw exc;
+            }
+            return null;
+        }
+        return pEllipsePoints;
+    },      
     _className: "mdlGeodesic",
     sm_a: 6378137
 };

@@ -80,6 +80,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 24339300:
             case 24353000:
             case 24363000:
+            case 25200101:
                 result = 1;
                 break;
             case 243111000:
@@ -1015,6 +1016,11 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 minPoints.value = Clazz.newArray(1, 0);
             }
             switch (lineType) {
+                case 25200101:
+                    if (minPoints !== null) {
+                        minPoints.value[0] = 1;
+                    }
+                    return true;
                 case 22421000:
                     if (minPoints !== null) {
                         minPoints.value[0] = 1;

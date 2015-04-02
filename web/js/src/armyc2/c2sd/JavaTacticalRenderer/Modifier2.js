@@ -642,14 +642,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR = function (tg, ptUl, ptUr, pt
         var j = 0;
         var x = 0;
         var y = 0;
-        ptUl.x=tg.Pixels.get(0).x;
-        ptUl.y=tg.Pixels.get(0).y;
-        ptUr.x=tg.Pixels.get(0).x;
-        ptUr.y=tg.Pixels.get(0).y;
-        ptLl.x=tg.Pixels.get(0).x;
-        ptLl.y=tg.Pixels.get(0).y;
-        ptLr.x=tg.Pixels.get(0).x;
-        ptLr.y=tg.Pixels.get(0).y;
+        ptUl.x = tg.Pixels.get(0).x;
+        ptUl.y = tg.Pixels.get(0).y;
+        ptUr.x = tg.Pixels.get(0).x;
+        ptUr.y = tg.Pixels.get(0).y;
+        ptLl.x = tg.Pixels.get(0).x;
+        ptLl.y = tg.Pixels.get(0).y;
+        ptLr.x = tg.Pixels.get(0).x;
+        ptLr.y = tg.Pixels.get(0).y;
         for (j = 1; j < tg.Pixels.size(); j++) {
             x = tg.Pixels.get(j).x;
             y = tg.Pixels.get(j).y;
@@ -2691,15 +2691,15 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
         var pts = tg.Pixels.toArray();
         //var ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble2(pts, pts.length);
         var ptCenter = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_center(tg.LatLongs);
-        if(ptCenter===null)
+        if (ptCenter === null)
             ptCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble2(pts, pts.length);
-        else                
+        else
         {
-            var pt=converter.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(ptCenter.x,ptCenter.y));
-            ptCenter.x=pt.x;
-            ptCenter.y=pt.y;
+            var pt = converter.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(ptCenter.x, ptCenter.y));
+            ptCenter.x = pt.x;
+            ptCenter.y = pt.y;
         }
-        
+
         var middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
         if (clipRect !== null)
             middleSegment = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment(tg, clipRect);
@@ -3310,9 +3310,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             case 22613000:
             case 22527000:
                 //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor/2, pt0, pt1, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, pt0, pt1, new Boolean(false));
                 //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor/2, ptLast, ptNextToLast, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, ptLast, ptNextToLast, new Boolean(false));
                 break;
             case 22125000:
             case 22523000:
@@ -3353,18 +3353,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 if (stringWidth2 > stringWidth)
                     stringWidth = stringWidth2;
                 if (tg.Pixels.size() === 2) {
-                    if(pt0.x<pt1.x)
+                    if (pt0.x < pt1.x)
                         pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);//was stringWidth
                     else
-                        pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth/2);//was stringWidth
+                        pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth / 2);//was stringWidth
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_Name() + " " + label, 2, -0.7 * csFactor, pt0, pt1, false);
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG(), 2, 0.7 * csFactor, pt0, pt1, false);
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG1(), 2, 1.7 * csFactor, pt0, pt1, false);
                     if (dist > 2 * stringWidth + 5) {
                         pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
                         pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
-                        if(pt0.x>pt1.x)
-                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth/2);//was stringWidth
+                        if (pt0.x > pt1.x)
+                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth / 2);//was stringWidth
                         else
                             pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);//was stringWidth
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_Name() + " " + label, 2, -0.7 * csFactor, pt0, pt1, false);
@@ -3405,18 +3405,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 if (stringWidth2 > stringWidth)
                     stringWidth = stringWidth2;
                 if (tg.Pixels.size() === 2) {
-                    if(pt0.x<pt1.x)
+                    if (pt0.x < pt1.x)
                         pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);//was stringWidth
                     else
-                        pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth/2);//was stringWidth
+                        pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth / 2);//was stringWidth
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), 2, -0.7 * csFactor, pt0, pt1, false);
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG(), 2, 0.7 * csFactor, pt0, pt1, false);
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG1(), 2, 1.7 * csFactor, pt0, pt1, false);
                     if (dist > 2 * stringWidth + 5) {
                         pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
                         pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
-                        if(pt0.x>pt1.x)
-                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth/2);//was stringWidth
+                        if (pt0.x > pt1.x)
+                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth / 2);//was stringWidth
                         else
                             pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);//was stringWidth                            
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), 2, -0.7 * csFactor, pt0, pt1, false);
@@ -3587,7 +3587,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     if (linetype !== 243112000) {
         return false;
     }
-    var AM=new java.util.ArrayList();
+    var AM = new java.util.ArrayList();
     //var AN=new java.util.ArrayList();
     var H1 = tg.get_H1();
     var T = tg.get_Name();
@@ -3600,13 +3600,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     if (numSectors < 1) {
         return false;
     }
-    
+
     try {
         for (var k = 0; k < am.length; k++) {
             min = Double.parseDouble(am[k]);
             AM.add(min);
         }
-    } 
+    }
     catch (exc)
     {
         if (Clazz.instanceOf(exc)) {
@@ -3615,7 +3615,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
             throw exc;
         }
     }
-    
+
     var n = tg.Pixels.size();
     //pt0 and pt1 are points for the location indicator
     var pt0 = tg.Pixels.get(n - 5);
@@ -4480,6 +4480,31 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
             pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x2, y2);
             midPt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2((x1 + x2) / 2, (y1 + y2) / 2);
             switch (modifier.type) {
+                case 5: //aboveEnd
+                    if (x1 === x2) {
+                        x2 += 1;
+                    }
+
+                    if (x1 < x2) {
+                        x = x1;
+                        y = y1 + stringHeight / 2 + (lineFactor * stringHeight);
+                    } else {
+                        x = x1 - stringWidth;
+                        y = y1 + stringHeight / 2 + (lineFactor * stringHeight);
+                    }
+                    if (lineFactor >= 0) {
+                        direction = 2;
+                    } else {
+                        direction = 3;
+                    }
+
+                    if (lineType === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {   //LC
+                        direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
+                    }
+
+                    pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
+                    glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
+                    break;
                 case 1: //to end
                     dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
                     direction = 2;
@@ -4661,7 +4686,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.createTextOutline = function (origina
             siOutline.setLineColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
         var width = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getTextOutlineWidth();
         siOutline.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(width, 1, 1, 3));
-    } catch (exc) {
+    }
+    catch (exc) {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "createTextOutline", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside createTextOutline", exc));
         } else {
@@ -4670,10 +4696,783 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.createTextOutline = function (origina
     }
     return siOutline;
 };
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.getShapePoints = function (shape)
+{
+    try
+    {
+        var ptsPoly = new java.util.ArrayList();
+        var ptPoly = null;
+        var coords = new Array(6);
+        for (var i = shape.getPathIterator(null); !i.isDone(); i.next())
+        {
+            var type = i.currentSegment(coords);
+            switch (type) {
+                case armyc2.c2sd.graphics2d.PathIterator.SEG_MOVETO:
+                    ptPoly = new armyc2.c2sd.graphics2d.Point2D(coords[0], coords[1]);
+                    ptsPoly.add(ptPoly);
+                    break;
+                case armyc2.c2sd.graphics2d.PathIterator.SEG_LINETO:
+                    ptPoly = new armyc2.c2sd.graphics2d.Point2D(coords[0], coords[1]);
+                    ptsPoly.add(ptPoly);
+                    break;
+                case armyc2.c2sd.graphics2d.PathIterator.SEG_QUADTO: //quadTo was never used
+                    break;
+                case armyc2.c2sd.graphics2d.PathIterator.SEG_CUBICTO:  //curveTo was used for HOLD, BRDGHD and some METOC's
+                    break;
+                case armyc2.c2sd.graphics2d.PathIterator.SEG_CLOSE:    //closePath was never used
+                    break;
+            }
+        }
+        if (ptsPoly.size() > 0)
+        {
+            var pts = null;
+            pts = new java.util.ArrayList();
+            for (var j = 0; j < ptsPoly.size(); j++)
+            {
+                var pt2d = ptsPoly.get(j);
+                var pt = new armyc2.c2sd.JavaLineArray.POINT2(pt2d.getX(), pt2d.getY());
+                pts.add(pt);
+            }
+            return pts;
+        }
+    }
+    catch (exc) {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "createTextOutline", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getShapePoints", exc));
+        } else {
+            throw exc;
+        }
+    }
+    return null;
+};
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, shapes)
+{
+    if (tg.get_SymbolId().length < 20) {
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
+        return;
+    }
+    try
+    {
+        var symbolId = tg.get_SymbolId();
+        var setA = symbolId.substring(0, 10);
+        var setB = symbolId.substring(10);
+        var code = setB.substring(0, 6);
+        var nCode = Integer.parseInt(code);
+        var symbolSet = setA.substring(4, 6);
+        var nSymbol = Integer.parseInt(symbolSet);
+        //default values for modifiers AP and V
+        var country = "US";  //country AS modifier
+        var v = "MORTAR";    //type            
+        var ap = "QC 1968";    //target designator    AP modifier
+        var pt0 = null, pt1 = null;
+        var csFactor = 1.0;
+        var n = tg.Pixels.size();
+        var ptLeft = null, ptRight = null, ptCenter = null;
+        var label = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRevDLabel(nCode);
+        var dash = " - ";
+        switch (nCode.valueOf())
+        {
+            case 200202:
+                ptLeft = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(0), tg.Pixels.get(1), 0);
+                ptRight = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(2), tg.Pixels.get(3), 0);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + " - " + tg.get_Name(), 2, csFactor / 2, ptLeft, ptRight, false);
+                break;
+            case 290600:
+                pt0 = tg.Pixels.get(4);
+                pt1 = tg.Pixels.get(2);
+                if (tg.Pixels.get(0).y < tg.Pixels.get(1).y)
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + " - " + tg.get_DTG1(), 2, csFactor / 2, pt0, pt1, false);
+                else
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + " - " + tg.get_DTG1(), 2, -csFactor / 2, pt0, pt1, false);
+                break;
+            case 200402:
+                if (tg.Pixels.get(0).x > tg.Pixels.get(3).x)
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, csFactor, tg.Pixels.get(0), tg.Pixels.get(3), false);
+                else
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, csFactor, tg.Pixels.get(1), tg.Pixels.get(2), false);
+                break;
+            case 141500:
+            case 141400:
+            case 200300:
+            case 240804:
+                break;
+            case 151407:    //eny spt confirmed
+            case 151408:    //eny spt anticipated
+                var shape = shapes.get(shapes.size() - 1);
+                var pts = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getShapePoints(shape.getShape());
+                if (n === 3)
+                {
+                    pt0 = pts.get(0);
+                    pt1 = pts.get(1);
+                    pt1 = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
+                }
+                else
+                {
+                    pt0 = pts.get(n - 4);
+                    pt1 = pts.get(n - 3);
+                }
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
+                if (n === 3)
+                {
+                    pt0 = pts.get(pts.size() - 9);
+                    pt1 = pts.get(pts.size() - 8);
+                    pt1 = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
+                }
+                else
+                {
+                    pt0 = pts.get(pts.size() - 10);
+                    pt1 = pts.get(pts.size() - 9);
+                }
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
+                break;
+            default:
+                var saveStd = tg.getSymbologyStandard();
+                tg.setSymbologyStandard(armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
+                tg.setSymbologyStandard(saveStd);
+                break;
+        }
+
+    }
+    catch (exc) {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddModifiers2RevD", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside addModifiers2RevD", exc));
+        } else {
+            throw exc;
+        }
+    }
+};
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRevDLabel = function (code) {
+    switch (code) {
+
+        case 200401:
+        case 200402:
+            return "AOI";
+        case 200300:
+            return "N";
+        case 200101:
+            return "LA";
+        case 200201:
+        case 200202:
+            return "DA";
+        case 170800:
+            return "BDZ";
+        case 150501:
+            return "JTAA";
+        case 150502:
+            return "SAA";
+        case 150503:
+            return "SGSA";
+        case 140700:
+            return "FCL";
+        case 151500:
+            return "ASLT";
+        case 170400:
+            return "SL";
+        case 170600:
+            return "TC";
+        case 171100:
+            return "AARROZ";
+        case 171200:
+            return "UAROZ";
+        case 171300:
+            return "WEZ";
+        case 171400:
+            return "FEZ";
+        case 171500:
+            return "JEZ";
+        case 171900:
+            return "SHORADEZ";
+        case 190100:
+            return "IFF OFF";
+        case 190200:
+            return "IFF ON";
+        case 220102:
+            return "EW";
+        case 220107:
+            return "J";
+        case 220108:
+            return "RDF";
+        case 260300:    //nfl handle like fscl
+            return "NFL";
+        case 260400:
+            return "BCL";
+        case 300100:
+            return "ICL";
+        case 140400:
+        case 140401:
+            return "FEBA";
+        case 140900:
+            return "LOA";
+        default:
+            return "";
+    }
+};
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
+        g2d,
+        clipBounds,
+        converter) {
+    if (tg.get_SymbolId().length < 20) {
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
+        return;
+    }
+    try {
+        var symbolId = tg.get_SymbolId();
+        var setA = symbolId.substring(0, 10);
+        var setB = symbolId.substring(10);
+        var code = setB.substring(0, 6);
+        var nCode = Integer.parseInt(code);
+        var symbolSet = setA.substring(4, 6);
+        var nSymbol = Integer.parseInt(symbolSet);
+        //default values for modifiers AP and V
+        var country = "US";  //country AS modifier
+        var v = "MORTAR";    //type            
+        var ap = "QC 1968";    //target designator    AP modifier
+        var lineutility=armyc2.c2sd.JavaLineArray.lineutility;
+        var Modifier2=armyc2.c2sd.JavaTacticalRenderer.Modifier2;
+        var mdlGeodesic=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic;
+        var graphics2d=armyc2.c2sd.graphics2d;
+        //assume we are using tg.get_Location() for the Y modifier
+        //uncomment 3 lines after the methods become available           
+        //country=tg.get_AS();
+        //v=tg.get_V();
+        //ap=tg.get_AP();
+        var t = tg.get_Name();
+        var label = Modifier2.GetCenterLabel(tg);
+        var csFactor = 1.0;
+        if (nSymbol.valueOf() === 45 || nSymbol.valueOf() === 46) {
+            Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
+            return;
+        }
+        if (nSymbol.valueOf() !== 25) {
+            Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
+            return;
+        }
+        //at this point the symbol is a control measure
+        var factor = 1.0;//10d/tg.get_Font().getSize();
+        var j = 0, k = 0;
+        var x = 0, y = 0;
+
+        if (tg.get_Font() !== null && tg.get_Font().getSize() > 0) {
+            factor = 10.0 / tg.get_Font().getSize();
+        } else {
+            return;
+        }
+        var metrics = g2d.getFontMetrics();
+        var stringWidth = 0, stringWidth2 = 0;
+        var dash = "";
+        if (tg.get_DTG() !== null && tg.get_DTG1() !== null && tg.get_DTG().isEmpty() === false && tg.get_DTG1().isEmpty() === false) {
+            dash = " - ";
+        }
+        
+        
+        var lastIndex = tg.Pixels.size() - 1;
+        var nextToLastIndex = tg.Pixels.size() - 2;
+        var pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(0));
+        var pt1 = null;
+        var pt2 = null, pt3 = null;
+        var ptLast = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(lastIndex));
+        var ptNextToLast = null, midPt = null;
+
+        if (lastIndex > 0) {
+            ptNextToLast = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(lastIndex - 1));
+        }
+
+        if (tg.Pixels.size() > 1) {
+            pt1 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(1));
+        }
+        if (tg.Pixels.size() > 2) {
+            pt2 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(2));
+        }
+        if (tg.Pixels.size() > 3) {
+            pt3 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(3));
+        }
+        var pts = tg.Pixels.toArray();
+        var ptCenter = null;
+        if (converter !== null) //cpof uses latlonconverter so cpof passes null for this               
+        {
+            ptCenter = mdlGeodesic.geodesic_center(tg.LatLongs);
+            if (ptCenter !== null) {
+                var pt = converter.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(ptCenter.x, ptCenter.y));
+                ptCenter.x = pt.x;
+                ptCenter.y = pt.y;
+            } else {
+                ptCenter = lineutility.CalcCenterPointDouble2(pts, pts.length);
+            }
+        } else {
+            ptCenter = lineutility.CalcCenterPointDouble2(pts, pts.length);
+        }
+        var lr = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(0));
+        var ll = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(0));
+        var ul = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(0));
+        var ur = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(0));
+        var clipRect = null;
+        var clipArray = null;
+//            if (clipBounds != null && java.util.ArrayList.class.isAssignableFrom(clipBounds.getClass())) {
+//                clipArray = clipBounds;
+//            }
+//            if (clipBounds != null && armyc2.c2sd.graphics2d.Rectangle2D.class.isAssignableFrom(clipBounds.getClass())) {
+//                clipRect = clipBounds;
+//            }
+
+        if (clipBounds !== null && clipBounds instanceof java.util.ArrayList) {
+            clipArray = clipBounds;
+        }
+        if (clipBounds !== null && clipBounds instanceof armyc2.c2sd.graphics2d.Rectangle2D) {
+            clipRect = clipBounds;
+        }
+        if (clipBounds !== null && clipBounds instanceof armyc2.c2sd.graphics2d.Rectangle) {
+            clipRect = clipBounds;
+        }
+
+
+
+        var middleSegment = (tg.Pixels.size() + 1) / 2 - 1;
+
+        if (clipRect !== null) {
+            middleSegment = Modifier2.getVisibleMiddleSegment(tg, clipRect);
+        } else if (clipArray !== null) {
+            middleSegment = Modifier2.getVisibleMiddleSegment(tg, clipArray);
+        }
+        var dist = 0, dist2 = 0;
+        var font = null;
+        font = tg.get_Font();    //might have to change this
+        if (font === null) {
+            font = g2d.getFont();
+        }
+        g2d.setFont(font);
+        var ptUl = null, ptUr = null, ptLl = null, ptLr = null;
+        var toEnd = 1, aboveMiddle = 2, area = 3, screen = 4, aboveEnd = 5;
+        //switch adds the new modifiers or calls the old function if the modifiers did not change        
+        switch (nCode.valueOf()) {
+            case 200401:
+                ptUr = new armyc2.c2sd.JavaLineArray.POINT2();
+                ptUl = new armyc2.c2sd.JavaLineArray.POINT2();
+                ptLl = new armyc2.c2sd.JavaLineArray.POINT2();
+                ptLr = new armyc2.c2sd.JavaLineArray.POINT2();
+                Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, csFactor, ptLl, ptLr, false);
+                break;
+            case 110101:    //lateral boundary
+            case 110102:    //fwd boundary
+            case 110103:    //rear boundary
+                t += " " + "(" + country + ")";
+                tg.set_Name(t);
+                tg.set_T1(t);
+                Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
+                break;
+            case 110200:    //LL
+            case 141000:    //LD
+            case 141100:    //LDLC
+            case 141200:    //PLD
+            case 141400:    //BL
+            case 141500:    //HOLD
+            case 141600:    //release
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, pt0, pt1, false);
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, ptLast, ptNextToLast, false);
+                break;
+            case 120400:
+                ptUr = new POINT2();
+                ptUl = new POINT2();
+                ptLl = new POINT2();
+                ptLr = new POINT2();
+                Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
+                stringWidth = metrics.stringWidth(tg.get_H());
+                pt0.x = ptUr.x + stringWidth / 2 + 1;
+                pt0.y = (ptUr.y + ptLr.y) / 2 - metrics.getFont().getSize();
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_H(), area, csFactor, pt0, pt0, false);
+                break;
+            case 200101:
+            case 200201:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label + " - " + tg.get_Name(), area, 0, ptCenter, ptCenter, false);
+                break;
+            case 140700:
+            case 140900:
+            case 190100:
+            case 190200:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, pt0, pt1, false);
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, ptLast, ptNextToLast, false);
+                break;
+            case 140103:
+            case 140104:
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), toEnd, -1 * csFactor, pt0, pt1, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), toEnd, -1 * csFactor, ptLast, ptNextToLast, false);
+                break;
+            case 200402:
+            case 140101:    //flot has no labels
+            case 140102:
+            case 150101:
+            case 150102:
+            case 151801:
+            case 151900:
+            case 152000:
+            case 152100:
+            case 152200:
+            case 141700:
+                break;
+            case 140400:    //feba has labels at end    
+            case 140401:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, toEnd, 0, pt0, pt1, false);
+                Modifier2.AddIntegralAreaModifier(tg, label, toEnd, 0, ptLast, ptNextToLast, false);
+                break;
+            case 150103:
+            case 150104:
+            case 151802:
+                Modifier2.areasWithENY(tg, g2d);
+                break;
+            case 150501:
+            case 150502:
+            case 150503:
+                Modifier2.areasWithENY(tg, g2d);
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), area, 0, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, ptCenter, ptCenter, false);
+                break;
+            case 151000:    //fort now has T modifier
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, 0, ptCenter, ptCenter, false);
+                break;
+            case 151401:    //airaoa
+            case 151402:    //rotary
+                if (tg.Pixels.size() === 3) //one segment           
+                {
+                    midPt = lineutility.MidPointDouble(pt0, pt1, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 0, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), aboveMiddle, csFactor, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, 2 * csFactor, midPt, midPt, false);
+
+                } else if (tg.Pixels.size() === 4) //2 segments
+                {
+                    midPt = lineutility.MidPointDouble(pt1, pt2, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 0, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), aboveMiddle, csFactor, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, 2 * csFactor, midPt, midPt, false);
+                } else // 3 or more segments
+                {
+                    midPt = lineutility.MidPointDouble(pt1, pt2, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, -csFactor / 2, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), aboveMiddle, csFactor / 2, midPt, midPt, false);
+                    midPt = lineutility.MidPointDouble(pt2, pt3, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, -csFactor / 2, midPt, midPt, false);
+                }
+                break;
+            case 151403:    //main
+            case 151404:    //spt
+            case 151405:
+            case 151406:
+            case 151407:
+            case 151408:
+                if (tg.Pixels.size() === 3) //one segment           
+                {
+                    midPt = lineutility.MidPointDouble(pt0, pt1, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 0, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), aboveMiddle, csFactor, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, 2 * csFactor, midPt, midPt, false);
+
+                } else //2 or more segments
+                {
+                    midPt = lineutility.MidPointDouble(pt0, pt1, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, -csFactor / 2, midPt, midPt, false);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), aboveMiddle, csFactor / 2, midPt, midPt, false);
+                    midPt = lineutility.MidPointDouble(pt1, pt2, 0);
+                    Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, -csFactor / 2, midPt, midPt, false);
+                }
+                break;
+            case 140601:    //diratkair
+            case 140602:
+            case 140603:
+            case 140604:
+            case 140605:
+                midPt = lineutility.MidPointDouble(pt0, pt1, 0);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), aboveMiddle, 0, pt0, midPt, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, pt0, pt1, false);
+                break;
+            case 140606:
+            case 140607:
+                midPt = lineutility.MidPointDouble(pt0, pt1, 0);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), aboveMiddle, 0, pt1, midPt, false);
+                break;
+            case 170800:    //bdz
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 0, ptCenter, ptCenter, false);
+                break;
+            case 151500:    //assault pos
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, ptCenter, ptCenter, false);
+                break;
+            case 151600:    //atk pos
+            case 151700:    //obj
+                Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, ptCenter, ptCenter, false);
+                break;
+            case 141300:
+                Modifier2.GetMBR(tg, ul, ur, lr, ll);
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 1.35 * factor * csFactor, ll, lr, false);
+                break;
+            case 170100:
+            case 170200:
+            case 170300:
+            case 170500:
+            case 170700:
+                Modifier2.AddIntegralModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), aboveMiddle, -4 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Min Alt: " + tg.get_H(), aboveMiddle, -5 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Width: " + tg.get_H2(), aboveMiddle, -6 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Name: " + tg.get_Name(), aboveMiddle, -7 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "DTG Start: " + tg.get_DTG(), aboveMiddle, -3 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "DTG End: " + tg.get_DTG1(), aboveMiddle, -2 * csFactor, middleSegment, middleSegment + 1, false);
+                break;
+            case 170400:
+            case 170600:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), aboveMiddle, -4 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Min Alt: " + tg.get_H(), aboveMiddle, -5 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Width: " + tg.get_H2(), aboveMiddle, -6 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "Name: " + tg.get_Name(), aboveMiddle, -7 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "DTG Start: " + tg.get_DTG(), aboveMiddle, -3 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, "DTG End: " + tg.get_DTG1(), aboveMiddle, -2 * csFactor, middleSegment, middleSegment + 1, false);
+                break;
+            case 171100:
+            case 171200:
+            case 171300:
+            case 171400:
+            case 171500:
+            case 171900:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, area, -2.5, ptCenter, ptCenter, false, "");
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, -1.5, ptCenter, ptCenter, false, "T");
+                Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), area, -0.5, ptCenter, ptCenter, false, "H");
+                Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), area, 0.5, ptCenter, ptCenter, false, "H1");
+                Modifier2.AddIntegralAreaModifier(tg, "TIME FROM: " + tg.get_DTG(), area, 1.5, ptCenter, ptCenter, false, "W");
+                Modifier2.AddIntegralAreaModifier(tg, "TIME TO: " + tg.get_DTG1(), area, 2.5, ptCenter, ptCenter, false, "W1");
+                break;
+            case 200300:
+                label = getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, -1, pt0, pt0, false); //ENY or N?
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, pt0, pt0, false);
+                break;
+            case 200102:
+            case 220107:
+            case 220108:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 0, pt0, pt1, false); //ENY or N?
+                break;
+            case 240101:
+                Modifier2.AddIntegralAreaModifier(tg, label, area, -3 * csFactor, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, -2 * csFactor, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), area, -1 * csFactor, ptCenter, ptCenter, false, "H");
+                Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), area, 0, ptCenter, ptCenter, false, "H1");
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Location(), area, 1 * csFactor, ptCenter, ptCenter, false, "H2");
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), area, 2 * csFactor, ptCenter, ptCenter, false, "W");
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), area, 3 * csFactor, ptCenter, ptCenter, false, "W1");
+                break;
+            case 300100:    //icl
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                pt0 = tg.Pixels.get(0);
+                pt1 = tg.Pixels.get(1);
+                pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
+                pt3 = tg.Pixels.get(tg.Pixels.size() - 2);
+                dist = lineutility.CalcDistanceDouble(pt0, pt1);
+                dist2 = lineutility.CalcDistanceDouble(pt2, pt3);
+                stringWidth = (metrics.stringWidth(tg.get_Name() + " " + label));
+                stringWidth2 = (metrics.stringWidth(tg.get_DTG()));
+                if (stringWidth2 > stringWidth) {
+                    stringWidth = stringWidth2;
+                }
+
+                if (tg.Pixels.size() === 2) //one segment
+                {
+                    pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                    Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                    Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                    Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    if (dist > 3.5 * stringWidth)//was 28stringwidth+5
+                    {
+                        pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
+                        pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                } else //more than one semgent
+                {
+                    var dist3 = lineutility.CalcDistanceDouble(pt0, pt2);
+                    if (dist > stringWidth + 5 || dist >= dist2 || dist3 > stringWidth + 5) {
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                    if (dist2 > stringWidth + 5 || dist2 > dist || dist3 > stringWidth + 5) {
+                        pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
+                        pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                }
+                break;
+            case 260300:    //nfl handle like fscl
+            case 260400:
+                label = Modifier2.getRevDLabel(nCode.valueOf());
+                pt0 = tg.Pixels.get(0);
+                pt1 = tg.Pixels.get(1);
+                pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
+                pt3 = tg.Pixels.get(tg.Pixels.size() - 2);
+                dist = lineutility.CalcDistanceDouble(pt0, pt1);
+                dist2 = lineutility.CalcDistanceDouble(pt2, pt3);
+                stringWidth = (metrics.stringWidth(tg.get_Name() + " " + label));
+                stringWidth2 = (metrics.stringWidth(tg.get_DTG()));
+                if (stringWidth2 > stringWidth) {
+                    stringWidth = stringWidth2;
+                }
+
+                if (tg.Pixels.size() == 2) //one segment
+                {
+                    pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                    Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                    Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                    Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    if (dist > 3.5 * stringWidth)//was 28stringwidth+5
+                    {
+                        pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
+                        pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                } else //more than one semgent
+                {
+                    var dist3 = lineutility.CalcDistanceDouble(pt0, pt2);
+                    if (dist > stringWidth + 5 || dist >= dist2 || dist3 > stringWidth + 5) {
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                    if (dist2 > stringWidth + 5 || dist2 > dist || dist3 > stringWidth + 5) {
+                        pt0 = tg.Pixels.get(tg.Pixels.size() - 1);
+                        pt1 = tg.Pixels.get(tg.Pixels.size() - 2);
+                        pt1 = lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth);
+                        Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), aboveMiddle, -0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG(), aboveMiddle, 0.7 * csFactor, pt0, pt1, false);
+                        Modifier2.AddModifier2(tg, tg.get_DTG1(), aboveMiddle, 1.7 * csFactor, pt0, pt1, false);
+                    }
+                }
+                break;
+            case 260600:    //mfp
+                pt0 = tg.Pixels.get(middleSegment);
+                pt1 = tg.Pixels.get(middleSegment + 1);
+                Modifier2.AddIntegralModifier(tg, label, aboveMiddle, 0, middleSegment, middleSegment + 1, true);
+                Modifier2.AddIntegralModifier(tg, tg.get_DTG(), aboveEnd, 1 * csFactor, 0, 1, false);
+                Modifier2.AddIntegralModifier(tg, tg.get_DTG1(), aboveEnd, 2 * csFactor, 0, 1, false);
+                break;
+            case 240701:    //lintgt
+                Modifier2.AddIntegralModifier(tg, ap, aboveMiddle, -0.8 * csFactor, middleSegment, middleSegment + 1, false);
+                break;
+            case 240702:    //smoke
+                Modifier2.AddIntegralModifier(tg, ap, aboveMiddle, -0.8 * csFactor, middleSegment, middleSegment + 1, false);
+                Modifier2.AddIntegralModifier(tg, label, aboveMiddle, 0.8 * csFactor, middleSegment, middleSegment + 1, false);
+                break;
+            case 240703:
+                Modifier2.AddIntegralModifier(tg, ap, aboveMiddle, -1 * csFactor, 0, 1, false);
+                Modifier2.AddIntegralModifier(tg, label, aboveMiddle, 1 * csFactor, 0, 1, false);
+                Modifier2.AddIntegralModifier(tg, tg.get_T1(), aboveMiddle, 2 * csFactor, 0, 1, false);
+                Modifier2.AddIntegralModifier(tg, v, aboveMiddle, 3 * csFactor, 0, 1, false);
+                break;
+            case 240801:
+                Modifier2.AddIntegralAreaModifier(tg, ap, area, 0, ptCenter, ptCenter, false);
+                break;
+            case 240802:
+            case 240803:
+                Modifier2.AddIntegralAreaModifier(tg, ap, area, 0, pt0, pt0, false);
+                break;
+            case 240804:
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, 0, ptCenter, ptCenter, false);
+                break;
+            case 240806:    //smoke
+            case 240807:
+                Modifier2.AddIntegralAreaModifier(tg, ap, area, -csFactor, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, label, area, 0, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), area, 1 * csFactor, ptCenter, ptCenter, false, "W+W1");
+                break;
+            case 242301:    //kill boxes irregular
+            case 242304:
+                Modifier2.AddIntegralAreaModifier(tg, label, area, 0, ptCenter, ptCenter, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, 1 * csFactor, ptCenter, ptCenter, false);
+                Modifier2.GetMBR(tg, ul, ur, lr, ll);
+                var ptLeft = ul;
+                var ptRight = ur;
+                if (tg.get_Client().equalsIgnoreCase("ge")) {
+                    ptLeft.x -= font.getSize() / 2;
+                    ptRight.x -= font.getSize() / 2;
+                }
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), toEnd, 0.5 * csFactor, ptLeft, ptRight, false, "W");
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), toEnd, 1.5 * csFactor, ptLeft, ptRight, false, "W1");
+                break;
+            case 242302:    //kill box rect, circ have W,W1 outside use AddModifiers2RevD
+            case 242303:
+            case 242305:
+            case 242306:
+            case 140500:    //pdf has no label
+                break;
+            case 290100:    //zone
+                Modifier2.AddIntegralModifier(tg, tg.get_Name(), aboveMiddle, csFactor, middleSegment, middleSegment + 1, false);
+                break;
+            case 290600:    //lane new W-W1 use addModifiers2RevD
+                break;
+            case 270800:    //mined
+                Modifier2.GetMBR(tg, ul, ur, lr, ll);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_H(), aboveMiddle, -1.5 * factor * csFactor, ul, ur, false);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 1.5 * factor * csFactor, ll, lr, false);
+                Modifier2.areasWithENY(tg, g2d);
+                break;
+            case 271300:    //ASLTXING uses W-W1 like gap
+                if (tg.Pixels.get(1).y > tg.Pixels.get(0).y) {
+                    pt0 = tg.Pixels.get(1);
+                    pt1 = tg.Pixels.get(3);
+                    pt2 = tg.Pixels.get(0);
+                    pt3 = tg.Pixels.get(2);
+                } else {
+                    pt0 = tg.Pixels.get(0);
+                    pt1 = tg.Pixels.get(2);
+                    pt2 = tg.Pixels.get(1);
+                    pt3 = tg.Pixels.get(3);
+                }
+                pt2 = lineutility.ExtendAlongLineDouble2(pt0, pt2, -20);
+                pt3 = lineutility.ExtendAlongLineDouble2(pt1, pt3, -20);
+                Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, 0, pt2, pt3, false);
+                break;
+            case 330100:    //convoys
+            case 330200:
+                var convoyBlankString = Modifier2.blankString(metrics, 35);
+                Modifier2.AddIntegralModifier(tg, v + convoyBlankString + tg.get_H(), aboveMiddle, 0, 0, 1, false);
+                Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, 1.2 * csFactor, 0, 1, false);
+                break;
+            default:
+                Modifier2.AddModifiersGeo(tg, g2d, clipBounds, converter);
+                break;
+        }
+    }
+    catch (exc) {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddModifier", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifiersGeo2", exc));
+        } else {
+            throw exc;
+        }
+    }
+};
 
 armyc2.c2sd.JavaTacticalRenderer.Modifier2._className = "Modifier2";
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.toEnd = 1;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddle = 2;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.area = 3;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.screen = 4;
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveEnd = 5;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.fillAlphaCanObscureText = 50;

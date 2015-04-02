@@ -283,6 +283,11 @@ armyc2.c2sd.JavaLineArray.TacticalLines = function()
     this.RANGE_FAN = 243111000;
     this.RANGE_FAN_FILL = 243111001;
     this.RANGE_FAN_SECTOR = 243112000;
+
+    //rev D new line types
+    this.LAUNCH_AREA = 25200101;
+
+    
     this.CF = 31131000;
     this.UCF = 31131100;
     this.CFG = 31131200;

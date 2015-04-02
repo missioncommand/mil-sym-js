@@ -3,7 +3,7 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaRendererServer = armyc2.c2sd.JavaRendererServer || {};
 armyc2.c2sd.JavaRendererServer.RenderMultipoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints || {};
 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
-    setClientCoords: function(milStd, tg) {
+    setClientCoords: function (milStd, tg) {
         try {
             var latLongs = new java.util.ArrayList();
             var j = 0;
@@ -24,7 +24,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
         }
     },
-    getClientCoords: function(tg) {
+    getClientCoords: function (tg) {
         var coords = null;
         try {
             var j = 0;
@@ -45,7 +45,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return coords;
     },
-    createMilStdSymboFromTGLight: function(tg, converter) {
+    createMilStdSymboFromTGLight: function (tg, converter) {
         var milStd = null;
         try {
             var j = 0;
@@ -304,7 +304,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return milStd;
     },
-    createTGLightFromMilStdSymbol: function(milStd, converter) {
+    createTGLightFromMilStdSymbol: function (milStd, converter) {
         var tg = new armyc2.c2sd.JavaTacticalRenderer.TGLight();
         var modifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
         try {
@@ -315,10 +315,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_SymbolId(symbolId);
             var useLineInterpolation = milStd.getUseLineInterpolation();
             tg.set_UseLineInterpolation(useLineInterpolation);
-            var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
+            
+            //rev D diagnostic
+            //var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
+            //int lineType=JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
+            var lineType = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getRevDLinetype(tg);
+            //end section
+            
+            
             //overhead wire may be large scale
-            if(lineType===23200000 && converter._scale>=250000)
-                lineType=23200001;
+            if (lineType === 23200000 && converter._scale >= 250000)
+                lineType = 23200001;
             tg.set_LineType(lineType);
             var status = tg.get_Status();
             if (status !== null && status.equals("A")) {
@@ -361,112 +368,112 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
             }
-            var altitudeLabel=milStd.getAltitudeMode();
-            if(altitudeLabel===null || altitudeLabel.isEmpty())
-                altitudeLabel="MSL";
-            var x_alt=0;
-            var n_alt=0;
-            var strXAlt="";
-            
-            if (lineType === 243112000) 
+            var altitudeLabel = milStd.getAltitudeMode();
+            if (altitudeLabel === null || altitudeLabel.isEmpty())
+                altitudeLabel = "MSL";
+            var x_alt = 0;
+            var n_alt = 0;
+            var strXAlt = "";
+
+            if (lineType === 243112000)
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 var X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
-                if(AM!==null)
+                if (AM !== null)
                 {
-                    var strT1="";
-                    for(var j=0;j<AM.length;j++)
+                    var strT1 = "";
+                    for (var j = 0; j < AM.length; j++)
                     {
-                        strT1+=Double.toString(AM[j]);
-                        if(j<AM.length-1)
-                            strT1+=",";                        
+                        strT1 += Double.toString(AM[j]);
+                        if (j < AM.length - 1)
+                            strT1 += ",";
                     }
                     tg.set_T1(strT1);
                 }
-                if(AN!==null)
+                if (AN !== null)
                 {
-                    var strT="";
-                    for(var j=0;j<AN.length;j++)
+                    var strT = "";
+                    for (var j = 0; j < AN.length; j++)
                     {
-                        strT+=AN[j];
-                        if(j<AN.length-1)
-                            strT+=",";                        
+                        strT += AN[j];
+                        if (j < AN.length - 1)
+                            strT += ",";
                     }
                     tg.set_Name(strT);
                 }
-                if(X!==null)
+                if (X !== null)
                 {
-                    var strH1="";
-                    for(var j=0;j<X.length;j++)
+                    var strH1 = "";
+                    for (var j = 0; j < X.length; j++)
                     {
                         //strH1+=Double.toString(X[j]);
-                        x_alt = X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[j] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        strH1+=strXAlt;
-                        
-                        if(j<X.length-1)
-                            strH1+=",";                        
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
+                        strH1 += strXAlt;
+
+                        if (j < X.length - 1)
+                            strH1 += ",";
                     }
                     tg.set_H1(strH1);
-                }                
-                if(AM !== null && AN !== null)
+                }
+                if (AM !== null && AN !== null)
                 {
-                    var numSectors=AN.length/2;
-                    var left=0,right=0,min=0,max=0;
+                    var numSectors = AN.length / 2;
+                    var left = 0, right = 0, min = 0, max = 0;
                     //construct left,right,min,max from the arraylists
-                    var strLeftRightMinMax="";
+                    var strLeftRightMinMax = "";
                     //String strH1="";
-                    for(var j=0;j<numSectors;j++)
+                    for (var j = 0; j < numSectors; j++)
                     {
-                        left=AN[2*j];
-                        right=AN[2*j+1];
-                        if(j+1===AM.length)                            
+                        left = AN[2 * j];
+                        right = AN[2 * j + 1];
+                        if (j + 1 === AM.length)
                             break;
-                        min=AM[j];
-                        max=AM[j+1];
-                        strLeftRightMinMax+=Double.toString(left)+","+Double.toString(right)+","+Double.toString(min)+","+Double.toString(max);
-                        if(j<numSectors-1)
-                            strLeftRightMinMax+=",";                        
+                        min = AM[j];
+                        max = AM[j + 1];
+                        strLeftRightMinMax += Double.toString(left) + "," + Double.toString(right) + "," + Double.toString(min) + "," + Double.toString(max);
+                        if (j < numSectors - 1)
+                            strLeftRightMinMax += ",";
                     }
-                    var len=strLeftRightMinMax.length;
-                    var c=strLeftRightMinMax.substr(len-1,1);
-                    if(c.equalsIgnoreCase(","))
-                        strLeftRightMinMax=strLeftRightMinMax.substr(0,len-1);
+                    var len = strLeftRightMinMax.length;
+                    var c = strLeftRightMinMax.substr(len - 1, 1);
+                    if (c.equalsIgnoreCase(","))
+                        strLeftRightMinMax = strLeftRightMinMax.substr(0, len - 1);
                     tg.set_H2(strLeftRightMinMax);
-                }                                                
+                }
             }
             var j = 0;
-            if(lineType===15000003 || lineType===15000004)
+            if (lineType === 15000003 || lineType === 15000004)
             {
-                var minLat=tg.LatLongs.get(0).y;
-                var maxLat=tg.LatLongs.get(0).y;
-                var minLong=tg.LatLongs.get(0).x;
-                var maxLong=tg.LatLongs.get(0).x;
-                for(j=1;j<tg.LatLongs.size();j++)
+                var minLat = tg.LatLongs.get(0).y;
+                var maxLat = tg.LatLongs.get(0).y;
+                var minLong = tg.LatLongs.get(0).x;
+                var maxLong = tg.LatLongs.get(0).x;
+                for (j = 1; j < tg.LatLongs.size(); j++)
                 {
-                    if(tg.LatLongs.get(j).x<minLong)
-                        minLong=tg.LatLongs.get(j).x;
-                    if(tg.LatLongs.get(j).x>maxLong)
-                        maxLong=tg.LatLongs.get(j).x;
-                    if(tg.LatLongs.get(j).y<minLat)
-                        minLat=tg.LatLongs.get(j).y;
-                    if(tg.LatLongs.get(j).y>maxLat)
-                        maxLat=tg.LatLongs.get(j).y;
+                    if (tg.LatLongs.get(j).x < minLong)
+                        minLong = tg.LatLongs.get(j).x;
+                    if (tg.LatLongs.get(j).x > maxLong)
+                        maxLong = tg.LatLongs.get(j).x;
+                    if (tg.LatLongs.get(j).y < minLat)
+                        minLat = tg.LatLongs.get(j).y;
+                    if (tg.LatLongs.get(j).y > maxLat)
+                        maxLat = tg.LatLongs.get(j).y;
                 }
-                tg.LatLongs=new java.util.ArrayList();
-                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,maxLat));
-                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong,maxLat));
-                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong,minLat));
-                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,minLat));
-                if(lineType===15000004)
-                    tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong,maxLat));
-                tg.Pixels=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
+                tg.LatLongs = new java.util.ArrayList();
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong, maxLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong, maxLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(maxLong, minLat));
+                tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong, minLat));
+                if (lineType === 15000004)
+                    tg.LatLongs.add(new armyc2.c2sd.JavaLineArray.POINT2(minLong, maxLat));
+                tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
             }
             switch (lineType) {
                 case 15000001:
@@ -489,13 +496,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                                     pt0 = tg.LatLongs.get(0);
                                     pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);
                                     //var pt02d = new java.awt.geom.Point2D.Double(pt0.x, pt0.y);                                                                        
-                                    var pt02d=new armyc2.c2sd.graphics2d.Point2D();
-                                    pt02d.x=pt0.x;
-                                    pt02d.y=pt0.y;
+                                    var pt02d = new armyc2.c2sd.graphics2d.Point2D();
+                                    pt02d.x = pt0.x;
+                                    pt02d.y = pt0.y;
                                     //var pt12d = new java.awt.geom.Point2D.Double(pt1.x, pt1.y);
-                                    pt12d=new armyc2.c2sd.graphics2d.Point2D();
-                                    pt12d.x=pt1.x;
-                                    pt12d.y=pt1.y;
+                                    pt12d = new armyc2.c2sd.graphics2d.Point2D();
+                                    pt12d.x = pt1.x;
+                                    pt12d.y = pt1.y;
                                     pt02d = converter.GeoToPixels(pt02d);
                                     pt12d = converter.GeoToPixels(pt12d);
                                     pt0.x = pt02d.getX();
@@ -527,25 +534,25 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     if (X !== null && X.length > 0)
                     {
                         //tg.set_H(X[0]);
-                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[0] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
                         tg.set_H(strXAlt);
                     }
                     if (X !== null && X.length > 1)
                     {
                         //tg.set_H1(X[1]);
-                        x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[1] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
@@ -617,30 +624,45 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     if (X !== null && X.length > 0)
                     {
                         //tg.set_H(X[0]);
-                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[0] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
                         tg.set_H(strXAlt);
                     }
                     if (X !== null && X.length > 1)
                     {
                         //tg.set_H1(X[1]);
-                        x_alt=X[1]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[1] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
                 default:
                     break;
+            }
+            if (lineType === 25200101) //geo ellipse
+            {
+                AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
+                AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                if (AM !== null && AM.length > 1) {
+                    var H = AM[0].toString();  //major axis
+                    tg.set_H(H);
+                    var T1 = AM[1].toString(); //minor axis
+                    tg.set_T1(T1);
+                }
+                if (AN !== null && AN.length > 0) {
+                    var H2 = AN[0].toString(); //rotation
+                    tg.set_H2(H2);
+                }
             }
             switch (lineType)
             {
@@ -649,17 +671,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     strH1 = "";
-                    if (X !== null) 
+                    if (X !== null)
                     {
                         //strH1 = X[0];
                         //tg.set_H1(strH1);
-                        x_alt=X[0]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                        x_alt = X[0] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                         //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                        x_alt*=10.0;
-                        x_alt=Math.round(x_alt);
-                        n_alt=x_alt;
-                        x_alt=n_alt/10.0;                        
-                        strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
+                        x_alt *= 10.0;
+                        x_alt = Math.round(x_alt);
+                        n_alt = x_alt;
+                        x_alt = n_alt / 10.0;
+                        strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
                         tg.set_H1(strXAlt);
                     }
                     break;
@@ -682,15 +704,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         if (X !== null && j < X.length)
                         {
                             //strH1 += X[j];
-                            x_alt=X[j]*armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
+                            x_alt = X[j] * armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.feetPerMeter;
                             //strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                            x_alt*=10.0;
-                            x_alt=Math.round(x_alt);
-                            n_alt=x_alt;
-                            x_alt=n_alt/10.0;                        
-                            strXAlt=Double.toString(x_alt)+" ft. "+altitudeLabel;
-                            strH1+=strXAlt;
-                            
+                            x_alt *= 10.0;
+                            x_alt = Math.round(x_alt);
+                            n_alt = x_alt;
+                            x_alt = n_alt / 10.0;
+                            strXAlt = Double.toString(x_alt) + " ft. " + altitudeLabel;
+                            strH1 += strXAlt;
+
                             if (j < X.length - 1)
                                 strH1 += ",";
                         }
@@ -775,7 +797,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return tg;
     },
-    render: function(symbol, converter) {
+    render: function (symbol, converter) {
         try {
             var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(symbol, converter);
             var shapeInfos = new java.util.ArrayList();
@@ -794,7 +816,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
-    render_TG: function(tg, converter, shapeInfos, modifierShapeInfos) {
+    render_TG: function (tg, converter, shapeInfos, modifierShapeInfos) {
         try {
             var lineType = -1;
             var isClosedArea = false;
@@ -821,7 +843,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
-    GetLineArray: function(tg, converter, shapeInfos, modifierShapeInfos) {
+    GetLineArray: function (tg, converter, shapeInfos, modifierShapeInfos) {
         try {
             var shapes = new java.util.ArrayList();
             var modifierShapes = new java.util.ArrayList();
@@ -906,7 +928,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
-    Shape2ToShapeInfo2: function(shape) {
+    Shape2ToShapeInfo2: function (shape) {
         var si = null;
         try {
             var s = shape.getShape();
@@ -936,7 +958,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return si;
     },
-    Shape2ToShapeInfo: function(shapeInfos, shapes) {
+    Shape2ToShapeInfo: function (shapeInfos, shapes) {
         try {
             var j = 0;
             var shape = null;
@@ -957,7 +979,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
-    renderWithPolylines: function(mss, converter, clipArea) {
+    renderWithPolylines: function (mss, converter, clipArea) {
         try {
             var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mss, converter);
             var shapeInfos = new java.util.ArrayList();
@@ -973,8 +995,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
         }
     },
-    render_GE: function(tg, shapeInfos, modifierShapeInfos, converter, clipArea) {
+    render_GE: function (tg, shapeInfos, modifierShapeInfos, converter, clipArea) {
         try {
+            armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setTGProperties(tg);
             var clipBounds = null;
             armyc2.c2sd.JavaLineArray.CELineArray.setClient("ge");
             var origPixels = null;
@@ -984,7 +1007,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 origPixels = tg.Pixels.clone();
                 origLatLongs = tg.LatLongs.clone();
             }
-            var origFillPixels=tg.Pixels.clone();
+            var origFillPixels = tg.Pixels.clone();
 //            var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
 //            if (shiftLines) {
 //                var affiliation = tg.get_Affiliation();
@@ -1048,9 +1071,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong(tg.Pixels, converter);
                 }
             }
-            if(tg.Pixels===null || tg.Pixels.isEmpty())
+            if (tg.Pixels === null || tg.Pixels.isEmpty())
                 return;
-            if (origPixels !== null) 
+            if (origPixels !== null)
             {
                 tg.Pixels = origPixels;
                 tg.LatLongs = origLatLongs;
@@ -1061,22 +1084,23 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var bi = new armyc2.c2sd.graphics2d.BufferedImage(8, 8, 2);
             var g2d = bi.createGraphics();
             //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers(tg, g2d, clipArea);
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, clipArea, converter);
+            //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo(tg, g2d, clipArea, converter);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2(tg, g2d, clipArea, converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.FilterPoints2(tg, converter);
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.FilterVerticalSegments(tg);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.FilterAXADPoints(tg, converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.ClearPixelsStyle(tg);
             var linesWithFillShapes = null;
-            var savePixels=tg.Pixels;
-            tg.Pixels=origFillPixels;
+            var savePixels = tg.Pixels;
+            tg.Pixels = origFillPixels;
             if (clipBounds !== null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill(tg, clipBounds);
             else if (clipPoints !== null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.LinesWithFill(tg, clipPoints);
             else if (clipArea === null)
                 linesWithFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.LinesWithFill(tg, clipBounds);
-            tg.Pixels=savePixels;
-            
+            tg.Pixels = savePixels;
+
             var rangeFanFillShapes = null;
             var savefillStyle = tg.get_FillStyle();
             if (linetype === 243111000)
@@ -1090,8 +1114,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             else if (clipArea === null)
                 shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg, converter, (isTextFlipped).valueOf(), clipBounds);
             if (linetype === 243111000 || linetype === 243112000)
-            {                
-                if(tg.get_FillColor()!==null && tg.get_FillColor().getAlpha()>1)
+            {
+                if (tg.get_FillColor() !== null && tg.get_FillColor().getAlpha() > 1)
                 {
                     var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG(tg);
                     tg1.set_Fillstyle(savefillStyle);
@@ -1160,7 +1184,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
-    setHostileLC: function(tg) {
+    setHostileLC: function (tg) {
         try {
             var usas1314 = new Boolean(true);
             var pts = new java.util.ArrayList();
@@ -1201,7 +1225,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
         }
     },
-    getScale: function(tg, converter, clipBounds) {
+    getScale: function (tg, converter, clipBounds) {
         var scale = 0;
         try {
             if (clipBounds === null || converter === null)
@@ -1232,7 +1256,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             scale = (distanceInPixels / distanceInMeters) * (0.010416666666666666) * (0.025400050800101603);
             scale = 1.0 / scale;
             var lineType = tg.get_LineType();
-            if (lineType === 23200000 && scale >= 250000)
+            if (lineType === 23200000 && scale >= 250000 && tg.get_SymbolId().length <= 15)
                 tg.set_LineType(23200001);
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
@@ -1243,7 +1267,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return scale;
     },
-    setClip: function(clipBounds, clipRect, clipArray) {
+    setClip: function (clipBounds, clipRect, clipArray) {
         try {
             if (clipBounds === null) {
                 return false;
@@ -1265,7 +1289,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return true;
     },
-    render:function(mss, converter, clipBounds) {
+    render:function (mss, converter, clipBounds) {
         try {
             var shapeInfos = new java.util.ArrayList();
             var modifierShapeInfos = new java.util.ArrayList();
@@ -1278,7 +1302,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
         }
     },
-            render: function(mss, converter, shapeInfos, modifierShapeInfos, clipBounds) {
+            render: function (mss, converter, shapeInfos, modifierShapeInfos, clipBounds) {
                 try {
                     //var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
                     var clipRect = new armyc2.c2sd.graphics2d.Rectangle2D();
@@ -1397,7 +1421,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 }
                 return;
             },
-            render: function(tg, converter, shapeInfos, modifierShapeInfos, clipBounds) {
+            render: function (tg, converter, shapeInfos, modifierShapeInfos, clipBounds) {
                 try {
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setHostileLC(tg);
                     var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(tg.get_LineType(), null);
@@ -1458,6 +1482,736 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     }
                 }
             },
-            _className: "clsRenderer",
-            feetPerMeter:3.28084
+            getCMLineType: function (SymbolSet, entityCode)
+            {
+                try
+                {
+                    var symbolSet = Integer.parseInt(SymbolSet);
+                    if (symbolSet.valueOf() !== 25) {
+                        return -1;
+                    }
+                    var nCode = Integer.parseInt(entityCode);
+                    var TacticalLines = new armyc2.c2sd.JavaLineArray.TacticalLines();
+                    switch (nCode.valueOf()) {
+                        case 200101:
+                        case 200201:
+                            return TacticalLines.LAUNCH_AREA;
+                        case 120100:
+                            return TacticalLines.AO;
+                        case 120200:
+                            return TacticalLines.NAI;
+                        case 120300:
+                            return TacticalLines.TAI;
+                        case 120400:
+                            return TacticalLines.AIRFIELD;
+                        case 151401:
+                            return TacticalLines.AIRAOA;
+                        case 151402:
+                            return TacticalLines.AAAAA;
+                        case 151403:
+                            return TacticalLines.MAIN;
+                        case 151404:
+                        case 151405:
+                        case 151407:
+                        case 151408:
+                            return TacticalLines.SPT;
+                        case 151406:
+                            return TacticalLines.AAFNT;
+                        case 110101:                        //new label
+                        case 110102:                        //new label
+                        case 110103:                        //new label
+                            return TacticalLines.BOUNDARY;
+                        case 110200:
+                            return TacticalLines.LL;
+                        case 120101:
+                            return TacticalLines.AO;
+                        case 120102:
+                            return TacticalLines.NAI;
+                        case 120103:
+                            return TacticalLines.TAI;
+                        case 120104:
+                            return TacticalLines.AIRFIELD;
+                        case 140100:
+                        case 140101:
+                        case 140102:
+                        case 140103:
+                        case 140104:
+                            return TacticalLines.FLOT;
+                        case 140200:
+                            return TacticalLines.LC;
+                        case 140300:
+                            return TacticalLines.PL;
+                        case 140400:                //new FEBA as a line, new label
+                        case 140401:
+                            return TacticalLines.PL;
+                        case 140500:
+                            return TacticalLines.PDF;
+                        case 140601:
+                            return TacticalLines.DIRATKAIR;
+                        case 140602:
+                            return TacticalLines.DIRATKGND;
+                        case 140603:
+                        case 140604:
+                        case 140606:
+                        case 140607:
+                            return TacticalLines.DIRATKSPT;
+                        case 140605:
+                            return TacticalLines.DIRATKFNT;
+                        case 140700:
+                            return TacticalLines.FCL;
+                        case 140800:
+                            return TacticalLines.IL;
+                        case 140900:
+                            return TacticalLines.LOA;
+                        case 141000:
+                            return TacticalLines.LOD;
+                        case 141100:
+                            return TacticalLines.LDLC;
+                        case 141200:
+                            return TacticalLines.PLD;
+                        case 150101:
+                        case 150102:
+                        case 150103:
+                        case 150104:
+                        case 200401:
+                            return TacticalLines.PEN;
+                        case 150200:
+                        case 150300:
+                        case 150301:
+                        case 150302:
+                        case 150400:
+                            return TacticalLines.ASSY;
+                        case 150501:
+                        case 150502:
+                        case 150503:
+                            return TacticalLines.GENERAL;
+                        case 150600:    //dz no eny
+                            return TacticalLines.DZ;
+                        case 150700:    //ez no eny
+                            return TacticalLines.EZ;
+                        case 150800:    //lz no eny
+                            return TacticalLines.LZ;
+                        case 150900:    //pz no eny
+                            return TacticalLines.PZ;
+                        case 151000:
+                            return TacticalLines.FORT;
+                        case 151100:
+                            return TacticalLines.LAA;
+                        case 151200:
+                        case 151201:
+                            return TacticalLines.BATTLE;
+                        case 151202:
+                            return TacticalLines.PNO;
+                        case 151204:
+                            return TacticalLines.CONTAIN;
+                        case 151205:
+                            return TacticalLines.RETAIN;
+                        case 151300:
+                            return TacticalLines.EA;
+                        case 151203:
+                            return TacticalLines.STRONG;
+                        case 151500:
+                            return TacticalLines.ASSAULT;
+                        case 151600:
+                            return TacticalLines.ATKPOS;
+                        case 151700:
+                            return TacticalLines.OBJ;
+                        case 151801:
+                        case 151802:
+                            return TacticalLines.ENCIRCLE;
+                        case 151900:
+                            return TacticalLines.PEN;
+                        case 152000:
+                            return TacticalLines.ATKBYFIRE;
+                        case 152100:
+                            return TacticalLines.SPTBYFIRE;
+                        case 152200:
+                            return TacticalLines.SARA;
+                        case 141300:
+                            return TacticalLines.AIRHEAD;
+                        case 141400:
+                            return TacticalLines.BRDGHD;
+                        case 141500:
+                            return TacticalLines.HOLD;
+                        case 141600:
+                            return TacticalLines.RELEASE;
+                        case 141700:
+                            return TacticalLines.AMBUSH;
+                        case 170100:
+                            return TacticalLines.AC;
+                        case 170200:
+                            return TacticalLines.LLTR;
+                        case 170300:
+                            return TacticalLines.MRR;
+                        case 170400:                    //SL new label
+                            return TacticalLines.MRR;
+                        case 170500:
+                            return TacticalLines.SAAFR;
+                        case 170600:                    //TC new label
+                            return TacticalLines.MRR;
+                        case 170700:
+                            return TacticalLines.UAV;
+                        case 170800:
+                            return TacticalLines.PEN;   //BDZ new label
+                        case 170900:
+                            return TacticalLines.HIDACZ;
+                        case 171000:
+                            return TacticalLines.ROZ;
+                        case 171100:                    // new label type AAROZ
+                        case 171200:                    // new label UAROZ
+                        case 171300:                    // new label WEZ
+                        case 171400:                    // new label FEZ
+                        case 171500:                    // new label JEZ
+                            return TacticalLines.ROZ;
+                        case 171600:
+                            return TacticalLines.MEZ;
+                        case 171700:
+                            return TacticalLines.LOMEZ;
+                        case 171800:
+                            return TacticalLines.HIMEZ;
+                        case 171900:
+                            return TacticalLines.FAADZ;
+                        case 172000:
+                            return TacticalLines.WFZ;
+                        case 190100:    //iff off new label
+                        case 190200:    //iff on new label
+                            return TacticalLines.FSCL;
+                        case 200202:    //defended area rect
+                        case 200402:
+                        case 240804:
+                            return TacticalLines.FSA_RECTANGULAR;    //DA new label
+                        case 200300:    //no atk
+                            return TacticalLines.FSA_CIRCULAR;  //no atk new label
+                        case 220100:
+                            return TacticalLines.BEARING;
+                        case 220101:
+                            return TacticalLines.ELECTRO;
+                        case 220102:    //EW                //new label
+                            return TacticalLines.BEARING;
+                        case 220103:
+                        case 220104:
+                            return TacticalLines.ACOUSTIC;
+                        case 220105:
+                            return TacticalLines.TORPEDO;
+                        case 220106:
+                            return TacticalLines.OPTICAL;
+                        case 218400:
+                            return TacticalLines.NAVIGATION;
+                        case 220107:    //Jammer                //new label
+                        case 220108:    //RDF                   //new label
+                            return TacticalLines.BEARING;
+                        case 230100:
+                        case 230200:
+                            return TacticalLines.DECEIVE;
+                        case 240101:
+                            return TacticalLines.ACA;
+                        case 240102:
+                            return TacticalLines.ACA_RECTANGULAR;
+                        case 240103:
+                            return TacticalLines.ACA_CIRCULAR;
+
+                        case 240201:
+                            return TacticalLines.FFA;
+                        case 240202:
+                            return TacticalLines.FFA_RECTANGULAR;
+                        case 240203:
+                            return TacticalLines.FFA_CIRCULAR;
+
+                        case 240301:
+                            return TacticalLines.NFA;
+                        case 240302:
+                            return TacticalLines.NFA_RECTANGULAR;
+                        case 240303:
+                            return TacticalLines.NFA_CIRCULAR;
+
+                        case 240401:
+                            return TacticalLines.RFA;
+                        case 240402:
+                            return TacticalLines.RFA_RECTANGULAR;
+                        case 240403:
+                            return TacticalLines.RFA_CIRCULAR;
+
+                        case 240501:
+                            return TacticalLines.PAA_RECTANGULAR;
+                        case 240502:
+                            return TacticalLines.PAA_CIRCULAR;
+                        case 260100:
+                            return TacticalLines.FSCL;
+                        case 260200:
+                            return TacticalLines.CFL;
+                        case 260300:
+                            return TacticalLines.NFL;
+                        case 260400:    //BCL               new label
+                            return TacticalLines.FSCL;
+                        case 260500:
+                            return TacticalLines.RFL;
+                        case 260600:
+                            return TacticalLines.MFP;
+                        case 240701:
+                            return TacticalLines.LINTGT;
+                        case 240702:
+                            return TacticalLines.LINTGTS;
+                        case 240703:
+                            return TacticalLines.FPF;
+                        case 240801:
+                            return TacticalLines.AT;
+                        case 240802:
+                            return TacticalLines.RECTANGULAR;
+                        case 240803:
+                            return TacticalLines.CIRCULAR;
+                        case 240805:
+                            return TacticalLines.SERIES;
+                        case 240806:
+                        case 240807:
+                            return TacticalLines.SMOKE;
+                        case 240808:
+                            return TacticalLines.BOMB;
+                        case 241001:
+                            return TacticalLines.FSA;
+                        case 241002:
+                            return TacticalLines.FSA_RECTANGULAR;
+                        case 241003:
+                            return TacticalLines.FSA_CIRCULAR;
+                        case 241101:
+                            return TacticalLines.ATI;
+                        case 241102:
+                            return TacticalLines.ATI_RECTANGULAR;
+                        case 241103:
+                            return TacticalLines.ATI_CIRCULAR;
+                        case 241201:
+                            return TacticalLines.CFFZ;
+                        case 241202:
+                            return TacticalLines.CFFZ_RECTANGULAR;
+                        case 241203:
+                            return TacticalLines.CFFZ_CIRCULAR;
+                        case 241301:
+                            return TacticalLines.CENSOR;
+                        case 241302:
+                            return TacticalLines.CENSOR_RECTANGULAR;
+                        case 241303:
+                            return TacticalLines.CENSOR_CIRCULAR;
+                        case 241401:
+                            return TacticalLines.CFZ;
+                        case 241402:
+                            return TacticalLines.CFZ_RECTANGULAR;
+                        case 241403:
+                            return TacticalLines.CFZ_CIRCULAR;
+                        case 241501:
+                            return TacticalLines.DA;
+                        case 241502:
+                            return TacticalLines.DA_RECTANGULAR;
+                        case 241503:
+                            return TacticalLines.DA_CIRCULAR;
+                        case 241601:
+                            return TacticalLines.SENSOR;
+                        case 241602:
+                            return TacticalLines.SENSOR_RECTANGULAR;
+                        case 241603:
+                            return TacticalLines.SENSOR_CIRCULAR;
+                        case 241701:
+                            return TacticalLines.TBA;
+                        case 241702:
+                            return TacticalLines.TBA_RECTANGULAR;
+                        case 241703:
+                            return TacticalLines.TBA_CIRCULAR;
+                        case 241801:
+                            return TacticalLines.TVAR;
+                        case 241802:
+                            return TacticalLines.TVAR_RECTANGULAR;
+                        case 241803:
+                            return TacticalLines.TVAR_CIRCULAR;
+                        case 241901:
+                            return TacticalLines.ZOR;
+                        case 241902:
+                            return TacticalLines.ZOR_RECTANGULAR;
+                        case 241903:
+                            return TacticalLines.ZOR_CIRCULAR;
+                        case 242000:
+                            return TacticalLines.TGMF;
+                        case 242100:
+                            return TacticalLines.RANGE_FAN;
+                        case 242200:
+                            return TacticalLines.RANGE_FAN_SECTOR;
+                        case 242301:
+                            return TacticalLines.KILLBOXBLUE;
+                        case 242302:
+                            return TacticalLines.KILLBOXBLUE_RECTANGULAR;
+                        case 242303:
+                            return TacticalLines.KILLBOXBLUE_CIRCULAR;
+                        case 242304:
+                            return TacticalLines.KILLBOXPURPLE;
+                        case 242305:
+                            return TacticalLines.KILLBOXPURPLE_RECTANGULAR;
+                        case 242306:
+                            return TacticalLines.KILLBOXPURPLE_CIRCULAR;
+                        case 270100:
+                            return TacticalLines.BELT;
+                        case 270200:
+                            return TacticalLines.ZONE;
+                        case 270300:
+                            return TacticalLines.OBSFAREA;
+                        case 270400:
+                            return TacticalLines.OBSAREA;
+                        case 270501:
+                            return TacticalLines.MNFLDBLK;
+                        case 270502:
+                            return TacticalLines.MNFLDDIS;
+                        case 270503:
+                            return TacticalLines.MNFLDFIX;
+                        case 270504:
+                            return TacticalLines.TURN;
+                        case 270601:
+                            return TacticalLines.EASY;
+                        case 270602:
+                            return TacticalLines.BYDIF;
+                        case 270603:
+                            return TacticalLines.BYIMP;
+                        case 271100:
+                            return TacticalLines.GAP;
+                        case 271201:
+                            return TacticalLines.PLANNED;
+                        case 271202:
+                            return TacticalLines.ESR1;
+                        case 271203:
+                            return TacticalLines.ESR2;
+                        case 271204:
+                            return TacticalLines.ROADBLK;
+                        case 280100:
+                            return TacticalLines.ABATIS;
+                        case 290100:
+                            return TacticalLines.LINE;
+                        case 290201:
+                            return TacticalLines.ATDITCH;
+                        case 290202:
+                            return TacticalLines.ATDITCHC;
+                        case 290203:
+                            return TacticalLines.ATDITCHM;
+                        case 290204:
+                            return TacticalLines.ATWALL;
+                        case 290301:
+                            return TacticalLines.UNSP;
+                        case 290302:
+                            return TacticalLines.SFENCE;
+                        case 290303:
+                            return TacticalLines.DFENCE;
+                        case 290304:
+                            return TacticalLines.DOUBLEA;
+                        case 290305:
+                            return TacticalLines.LWFENCE;
+                        case 290306:
+                            return TacticalLines.HWFENCE;
+                        case 290307:
+                            return TacticalLines.SINGLEC;
+                        case 290308:
+                            return TacticalLines.DOUBLEC;
+                        case 290309:
+                            return TacticalLines.TRIPLE;
+                        case 290600:
+                            return TacticalLines.MFLANE;
+                        case 270706:
+                            return TacticalLines.DUMMY;
+                        case 270707:
+                            return TacticalLines.DEPICT;
+                        case 270800:
+                            return TacticalLines.MINED;
+                        case 270900:
+                            return TacticalLines.DMA;
+                        case 270901:
+                            return TacticalLines.DMAF;
+                        case 271000:
+                            return TacticalLines.UXO;
+                        case 290400:
+                            return TacticalLines.CLUSTER;
+                        case 290500:
+                            return TacticalLines.TRIP;
+                        case 282003:
+                            return TacticalLines.OVERHEAD_WIRE;
+                        case 271300:
+                            return TacticalLines.ASLTXING;
+                        case 271400:
+                            return TacticalLines.BRIDGE;
+                        case 271500:
+                            return TacticalLines.FORDSITE;
+                        case 271600:
+                            return TacticalLines.FORDIF;
+                        case 290700:
+                            return TacticalLines.FERRY;
+                        case 290800:
+                            return TacticalLines.RAFT;
+                        case 290900:
+                            return TacticalLines.FORTL;
+                        case 291000:
+                            return TacticalLines.FOXHOLE;
+                        case 272100:
+                            return TacticalLines.MSDZ;
+                        case 272200:
+                            return TacticalLines.DRCL;
+
+                        case 310100:
+                            return TacticalLines.DHA;
+                        case 310200:
+                            return TacticalLines.EPW;
+                        case 310300:
+                            return TacticalLines.FARP;
+                        case 310400:
+                            return TacticalLines.RHA;
+                        case 310500:
+                            return TacticalLines.RSA;
+                        case 310600:
+                            return TacticalLines.BSA;
+                        case 310700:
+                            return TacticalLines.DSA;
+                        case 330100:
+                            return TacticalLines.CONVOY;
+                        case 330200:
+                            return TacticalLines.HCONVOY;
+                        case 330300:
+                            return TacticalLines.MSR;
+                        case 330301:
+                            return TacticalLines.ONEWAY;
+                        case 330302:
+                            return TacticalLines.TWOWAY;
+                        case 330303:
+                            return TacticalLines.ALT;
+
+                        case 330400:
+                            return TacticalLines.ASR;
+                        case 330401:                    //asr one way   new label
+                            return TacticalLines.ONEWAY;
+                        case 330402:                    //asr two way   new label
+                            return TacticalLines.TWOWAY;
+                        case 330403:                    //asr alt       new label
+                            return TacticalLines.ALT;
+
+                        case 340100:
+                            return TacticalLines.BLOCK;
+                        case 340200:
+                            return TacticalLines.BREACH;
+                        case 340300:
+                            return TacticalLines.BYPASS;
+                        case 340400:
+                            return TacticalLines.CANALIZE;
+                        case 340500:
+                            return TacticalLines.CLEAR;
+                        case 340600:
+                            return TacticalLines.CATK;
+                        case 340700:
+                            return TacticalLines.CATKBYFIRE;
+
+                        case 340800:
+                            return TacticalLines.DELAY;
+                        case 341000:
+                            return TacticalLines.DISRUPT;
+                        case 341100:
+                            return TacticalLines.FIX;
+                        case 341200:
+                            return TacticalLines.FOLLA;
+                        case 341300:
+                            return TacticalLines.FOLSP;
+                        case 341500:
+                            return TacticalLines.ISOLATE;
+                        case 341700:
+                            return TacticalLines.OCCUPY;
+                        case 341800:
+                            return TacticalLines.PENETRATE;
+                        case 341900:
+                            return TacticalLines.RIP;
+                        case 342000:
+                            return TacticalLines.RETIRE;
+                        case 342100:
+                            return TacticalLines.SECURE;
+                        case 342201:
+                            return TacticalLines.COVER;
+                        case 342202:
+                            return TacticalLines.GUARD;
+                        case 342203:
+                            return TacticalLines.SCREEN;
+                        case 342300:
+                            return TacticalLines.SEIZE;
+                        case 342400:
+                            return TacticalLines.WITHDRAW;
+                        case 342500:
+                            return TacticalLines.WDRAWUP;
+                        case 300100:    //ICL               new label
+                            return TacticalLines.FSCL;
+                        default:
+                            break;
+                    }
+                    return -1;
+                }
+                catch (exc)
+                {
+                    if (Clazz.instanceOf(exc)) {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer._className, "render", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getCMLineType", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+            },
+    setTGProperties: function (tg)
+    {
+        try
+        {
+            if (tg.get_SymbolId().length < 20) {
+                return;
+            }
+            var setA = tg.get_SymbolId().substring(0, 10);
+            var setB = tg.get_SymbolId().substring(10);
+            var symbolSet = setA.substring(4, 6);
+            var nSymbolSet = Integer.parseInt(symbolSet);
+            if (nSymbolSet.valueOf() !== 25) {
+                return;
+            }
+            var code = setB.substring(0, 6);
+            var nCode = Integer.parseInt(code);
+            //Color=armyc2.c2sd.renderer.utilities.Color;
+            switch (nCode.valueOf())
+            {
+                case 140101:    //friendly present flot
+                    break;
+                case 140102:
+                    tg.set_LineStyle(1);
+                    break;
+                case 140103:
+                    break;
+                case 140104:
+                case 140607:
+                case 150102:
+                case 150104:
+                    tg.set_LineStyle(1);
+                    break;
+                case 140604:
+                case 140401:
+                case 220104:
+                case 240807:
+                case 151405:
+                case 150400:
+                    tg.set_LineStyle(1);
+                    break;
+                case 151802:
+                case 140606:
+                case 150501:
+                case 150502:
+                case 150503:
+                    break;
+                case 151407:
+                    tg.set_Name("");
+                    break;
+                case 151408:
+                    tg.set_Name("");
+                    tg.set_LineStyle(1);
+                    break;
+                case 200101:
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(255, 155, 0, 191));
+                    break;
+                case 200201:
+                case 200202:
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(85, 119, 136, 191));
+                    break;
+                case 270100:
+                    tg.set_T1("");
+                    break;
+                case 290301:
+                case 290305:
+                case 290306:
+                case 290307:
+                case 290308:
+                case 290309:
+                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.reversePointsRevD(tg);
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (exc)
+        {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer._className, "render", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside setTGProperties", exc));
+            } else {
+                throw exc;
+            }
+        }
+    },
+    reversePointsRevD: function (tg) {
+        try {
+            var j = 0;
+            var pts = null;
+            if (tg.get_SymbolId().length < 20) {
+                return;
+            }
+            var setB = tg.get_SymbolId().substring(10);
+            var entityCode = setB.substring(0, 6);
+            var nCode = Integer.parseInt(entityCode);
+            switch (nCode.valueOf()) {
+                case 290301:
+                case 290305:
+                case 290306:
+                case 290307:
+                case 290308:
+                case 290309:
+                    if (tg.Pixels !== null) {
+                        pts = tg.Pixels.clone();
+                        for (j = 0; j < tg.Pixels.size(); j++) {
+                            tg.Pixels.set(j, pts.get(pts.size() - j - 1));
+                        }
+                    }
+                    if (tg.LatLongs !== null) {
+                        pts = tg.LatLongs.clone();
+                        for (j = 0; j < tg.LatLongs.size(); j++) {
+                            tg.LatLongs.set(j, pts.get(pts.size() - j - 1));
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        catch (exc)
+        {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer._className, "render", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside reversePointsRevD", exc));
+            } else {
+                throw exc;
+            }
+        }
+    },
+    getRevDLinetype:function(tg) {
+        var linetype = -1;
+        try {
+            var symbolId = tg.get_SymbolId();
+            if (symbolId.length > 15) //rev D
+            {
+                var setA=symbolId.substring(0,10);
+                var setB=symbolId.substring(10);
+                var code=setB.substring(0,6);
+                var symbolSet=setA.substring(4,6);
+                var nSymbol = Integer.parseInt(symbolSet);
+                if (nSymbol.valueOf() === 25) {
+                    linetype = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getCMLineType(symbolSet, code);
+                } else if (nSymbol === 45 || nSymbol === 46) {
+                    linetype = armyc2.c2sd.JavaTacticalRenderer.clsMETOC.getWeatherLinetype(symbolSet, code);
+                }
+
+            } else //not rev D            
+            {
+                linetype = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
+            }
+
+            tg.set_LineType(linetype);
+        } 
+        catch (exc)
+        {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer._className, "render", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getRevDLinetype", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return linetype;
+    },
+    
+                
+    _className: "clsRenderer",
+    feetPerMeter: 3.28084
 };

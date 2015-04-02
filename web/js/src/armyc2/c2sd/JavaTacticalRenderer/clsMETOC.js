@@ -4,6 +4,30 @@ armyc2.c2sd.JavaTacticalRenderer = armyc2.c2sd.JavaTacticalRenderer || {};
 armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
     IsWeather: function(symbolID) {
         try {
+            //added section for revD
+            if(symbolID.length>15)
+            {
+                var TacticalLines=new armyc2.c2sd.JavaLineArray.TacticalLines();
+                var setA=symbolID.substring(0,10);
+                var setB=symbolID.substring(10);
+                var entityCode=setB.substring(0,6);
+                var nEntityCode=Integer.parseInt(entityCode);
+                var symbolSet=setA.substring(4,6);
+                var nSymbolSet=Integer.parseInt(symbolSet);
+                switch(nSymbolSet.valueOf())
+                {
+                    case 25:    //look for holding line, bridgehead
+                        if(nEntityCode.valueOf()===141400)
+                            return TacticalLines.BRDGHD;
+                        else if(nEntityCode.valueOf()===141500)
+                            return TacticalLines.HOLD;
+                        break;
+                    case 45:
+                    case 46:
+                        return armyc2.c2sd.JavaTacticalRenderer.clsMETOC.getWeatherLinetype(symbolSet,entityCode);
+                }
+            }
+            //end section
             if (symbolID === null)
                 return -1;
             if (symbolID.length !== 15)
@@ -502,7 +526,20 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
     },
     SetMeTOCProperties: function(tg) {
         try {
+            var symbolId=tg.get_SymbolId();
             switch (tg.get_LineType()) {
+                case 31141000:
+                    if(symbolId.length>=20)
+                    {
+                       var setB=symbolId.substring(10);
+                       var entityCode=setB.substring(0,6);
+                       if(entityCode.equalsIgnoreCase("110401"))
+                       {
+                           tg.set_LineStyle(2);
+                       }
+                    }
+                    tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.BLACK);
+                    break;
                 case 32416200:
                     tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(127, 255, 0));
                     tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(127, 255, 0));
@@ -852,7 +889,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32151000:
                 case 31143000:
                 case 31142000:
-                case 31141000:
+                //case 31141000:
                 case 32163000:
                 case 32163001:
                 case 32164000:
@@ -2371,5 +2408,325 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
         }
         return channelPoints2;
     },
+    getWeatherLinetype:function(SymbolSet, entityCode)
+    {
+        var symbolSet=Integer.parseInt(SymbolSet);
+        if(symbolSet.valueOf() !== 45 && symbolSet.valueOf() !== 46)
+            return -1;
+        var nCode=Integer.parseInt(entityCode);
+        var TacticalLines=new armyc2.c2sd.JavaLineArray.TacticalLines();
+        switch(nCode.valueOf())
+        {
+            case 110301:
+                return TacticalLines.CF;
+            case 110302:
+                return TacticalLines.UCF;
+            case 110303:
+                return TacticalLines.CFG;
+            case 110304:
+                return TacticalLines.CFY;
+            case 110305:
+                return TacticalLines.WF;
+            case 110306:
+                return TacticalLines.UWF;
+            case 110307:
+                return TacticalLines.WFG;
+            case 110308:
+                return TacticalLines.WFY;
+            case 110309:
+                return TacticalLines.OCCLUDED;
+            case 110310:
+                return TacticalLines.UOF;
+            case 110311:
+                return TacticalLines.OFY;
+            case 110312:
+                return TacticalLines.SF;
+            case 110313:
+                return TacticalLines.USF;
+            case 110314:
+                return TacticalLines.SFG;
+            case 110315:
+                return TacticalLines.SFY;
+            case 110401:    //trough with dashed lines new symbol
+            case 110402:    //now called upper trough
+                return TacticalLines.TROUGH;
+            case 110403:
+                return TacticalLines.RIDGE;
+            case 110404:
+                return TacticalLines.SQUALL;
+            case 110405:
+                return TacticalLines.INSTABILITY;
+            case 110406:
+                return TacticalLines.SHEAR;
+            case 110407:
+                return TacticalLines.ITC;
+            case 110408:
+                return TacticalLines.CONVERGANCE;
+            case 110409:
+                return TacticalLines.ITD;
+            case 140300:
+                return TacticalLines.JET;
+            case 140400:
+                return TacticalLines.STREAM;
+            case 162004:            //tropical storm wind
+                break;
+            case 170100:
+                return TacticalLines.IFR;
+            case 170200:
+                return TacticalLines.MVFR;
+            case 170300:
+                return TacticalLines.TURBULENCE;
+            case 170400:
+                return TacticalLines.ICING;
+            case 170500:
+                return TacticalLines.NON_CONVECTIVE;
+            case 170501:
+                return TacticalLines.CONVECTIVE;
+            case 170600:
+                return TacticalLines.FROZEN;
+            case 170700:
+                return TacticalLines.THUNDERSTORMS;
+            case 170800:
+                return TacticalLines.FOG;                
+            case 170900:
+                return TacticalLines.SAND;
+            case 171000:
+                return TacticalLines.FREEFORM;
+            case 180100:
+                return TacticalLines.ISOBAR;
+            case 180200:
+                return TacticalLines.UPPER_AIR;
+            case 180300:
+                return TacticalLines.ISOTHERM;
+            case 180400:
+                return TacticalLines.ISOTACH;
+            case 180500:
+                return TacticalLines.ISODROSOTHERM;
+            case 180600:
+                return TacticalLines.ISOPLETHS;
+            case 180700:
+                return TacticalLines.OPERATOR_FREEFORM;
+            case 110501:
+                return TacticalLines.LVO;
+            case 110502:
+                return TacticalLines.UNDERCAST;
+            case 110503:
+                return TacticalLines.LRO;
+            case 110504:
+                return TacticalLines.ICE_EDGE;
+            case 110505:
+                return TacticalLines.ESTIMATED_ICE_EDGE;
+            case 110506:
+                return TacticalLines.ICE_EDGE_RADAR;
+            case 110601:
+                return TacticalLines.CRACKS;
+            case 110602:
+                return TacticalLines.CRACKS_SPECIFIC_LOCATION;
+            case 110603:
+                return TacticalLines.ICE_OPENINGS_LEAD;
+            case 110604:
+                return TacticalLines.ICE_OPENINGS_FROZEN;
+            case 120102:
+                return TacticalLines.DEPTH_CURVE;
+            case 120103:
+                return TacticalLines.DEPTH_CONTOUR;
+            case 120104:
+                return TacticalLines.DEPTH_AREA;
+            case 120201:
+                return TacticalLines.COASTLINE;
+            case 120202:
+                return TacticalLines.ISLAND;
+            case 120203:
+                return TacticalLines.BEACH;
+            case 120204:
+                return TacticalLines.WATER;
+            case 120205:
+                return TacticalLines.FORESHORE_LINE;
+            case 120206:
+                return TacticalLines.FORESHORE_AREA;
+            case 120305:
+                return TacticalLines.ANCHORAGE_LINE;
+            case 120306:
+                return TacticalLines.ANCHORAGE_AREA;
+                
+            case 120308:
+                return TacticalLines.PIER;
+            case 120312:
+                return TacticalLines.WEIRS;
+            case 120313:
+                return TacticalLines.DRYDOCK;
+            case 120317:
+                return TacticalLines.LOADING_FACILITY_LINE;
+            case 120318:
+                return TacticalLines.LOADING_FACILITY_AREA;
+                
+            case 120319:
+                return TacticalLines.RAMP_ABOVE_WATER;
+            case 120320:
+                return TacticalLines.RAMP_BELOW_WATER;
+                
+            case 120326:
+                return TacticalLines.JETTY_ABOVE_WATER;
+            case 120327:
+                return TacticalLines.JETTY_BELOW_WATER;
+            case 120328:
+                return TacticalLines.SEAWALL;
+            case 120405:
+                return TacticalLines.PERCHES;
+            case 120407:
+                return TacticalLines.LEADING_LINE;
+            case 120503:
+                return TacticalLines.UNDERWATER_HAZARD;
+            case 120505:
+                return TacticalLines.FOUL_GROUND;
+            case 120507:
+                return TacticalLines.KELP;
+            case 120511:
+                return TacticalLines.BREAKERS;
+            case 120512:
+                return TacticalLines.REEF;
+            case 120514:
+                return TacticalLines.DISCOLORED_WATER;
+            case 120702:
+                return TacticalLines.EBB_TIDE;
+            case 120703:
+                return TacticalLines.FLOOD_TIDE;
+                
+            case 130101:
+                return TacticalLines.VDR_LEVEL_12;
+            case 130102:
+                return TacticalLines.VDR_LEVEL_23;
+            case 130103:
+                return TacticalLines.VDR_LEVEL_34;
+            case 130104:
+                return TacticalLines.VDR_LEVEL_45;
+            case 130105:
+                return TacticalLines.VDR_LEVEL_56;
+            case 130106:
+                return TacticalLines.VDR_LEVEL_67;
+            case 130107:
+                return TacticalLines.VDR_LEVEL_78;
+            case 130108:
+                return TacticalLines.VDR_LEVEL_89;
+            case 130109:
+                return TacticalLines.VDR_LEVEL_910;
+            case 130201:
+                return TacticalLines.BEACH_SLOPE_FLAT;
+            case 130202:
+                return TacticalLines.BEACH_SLOPE_GENTLE;
+            case 130203:
+                return TacticalLines.BEACH_SLOPE_MODERATE;
+            case 130204:
+                return TacticalLines.BEACH_SLOPE_STEEP;
+            case 140101:
+                return TacticalLines.SOLID_ROCK;
+            case 140102:
+                return TacticalLines.CLAY;
+            case 140103:
+                return TacticalLines.VERY_COARSE_SAND;
+            case 140104:
+                return TacticalLines.COARSE_SAND;
+            case 140105:
+                return TacticalLines.MEDIUM_SAND;
+            case 140106:
+                return TacticalLines.FINE_SAND;
+            case 140107:
+                return TacticalLines.VERY_FINE_SAND;
+            case 140108:
+                return TacticalLines.VERY_FINE_SILT;
+            case 140109:
+                return TacticalLines.FINE_SILT;
+            case 140110:
+                return TacticalLines.MEDIUM_SILT;
+            case 140111:
+                return TacticalLines.COARSE_SILT;
+            case 140112:
+                return TacticalLines.BOULDERS;
+            case 140113:
+                return TacticalLines.OYSTER_SHELLS;
+            case 140114:
+                return TacticalLines.PEBBLES;
+            case 140115:
+                return TacticalLines.SAND_AND_SHELLS;
+            case 140116:
+                return TacticalLines.BOTTOM_SEDIMENTS_LAND;
+            case 140117:
+                return TacticalLines.BOTTOM_SEDIMENTS_NO_DATA;
+            case 140118:
+                return TacticalLines.BOTTOM_ROUGHNESS_SMOOTH;
+            case 140119:
+                return TacticalLines.BOTTOM_ROUGHNESS_MODERATE;
+            case 140120:
+                return TacticalLines.BOTTOM_ROUGHNESS_ROUGH;
+            case 140121:
+                return TacticalLines.CLUTTER_LOW;
+            case 140122:
+                return TacticalLines.CLUTTER_MEDIUM;
+            case 140123:
+                return TacticalLines.CLUTTER_HIGH;
+            case 140124:
+                return TacticalLines.IMPACT_BURIAL_0;
+            case 140125:
+                return TacticalLines.IMPACT_BURIAL_10;
+            case 140126:
+                return TacticalLines.IMPACT_BURIAL_20;
+            case 140127:
+                return TacticalLines.IMPACT_BURIAL_75;
+            case 140128:
+                return TacticalLines.IMPACT_BURIAL_100;
+            case 140129:
+                return TacticalLines.BOTTOM_CATEGORY_A;
+            case 140130:
+                return TacticalLines.BOTTOM_CATEGORY_B;
+            case 140131:
+                return TacticalLines.BOTTOM_CATEGORY_C;
+            case 140132:
+                return TacticalLines.BOTTOM_TYPE_A1;
+            case 140133:
+                return TacticalLines.BOTTOM_TYPE_A2;
+            case 140134:
+                return TacticalLines.BOTTOM_TYPE_A3;
+            case 140135:
+                return TacticalLines.BOTTOM_TYPE_B1;
+            case 140136:
+                return TacticalLines.BOTTOM_TYPE_B2;
+            case 140137:
+                return TacticalLines.BOTTOM_TYPE_B3;
+            case 140138:
+                return TacticalLines.BOTTOM_TYPE_C1;
+            case 140139:
+                return TacticalLines.BOTTOM_TYPE_C2;
+            case 140140:
+                return TacticalLines.BOTTOM_TYPE_C3;
+            
+            case 150100:
+                return TacticalLines.MARITIME_LIMIT;
+            case 150200:
+                return TacticalLines.MARITIME_AREA;
+            case 150300:
+                return TacticalLines.RESTRICTED_AREA;
+            case 150400:
+                return TacticalLines.SWEPT_AREA;
+            case 150500:
+                return TacticalLines.TRAINING_AREA;
+            case 150600:
+                return TacticalLines.OPERATOR_DEFINED;
+            case 160100:
+                return TacticalLines.CABLE;
+            case 160200:
+                return TacticalLines.SUBMERGED_CRIB;
+            case 160300:
+                return TacticalLines.CANAL;
+            case 160700:
+                return TacticalLines.OIL_RIG_FIELD;
+            case 160800:
+                return TacticalLines.PIPE;
+                
+            default:
+                return -1;
+        }
+        return -1;
+    },
+
     _className: "clsMETOC"
 };
