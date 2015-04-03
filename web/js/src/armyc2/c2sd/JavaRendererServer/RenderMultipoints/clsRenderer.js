@@ -257,6 +257,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24324300:
                 case 24325300:
                 case 24326200:
+                case 24326100:
                 case 24331300:
                 case 24332300:
                 case 24333300:
@@ -746,6 +747,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24324300:
                 case 24325300:
                 case 24326200:
+                case 24326100:
                 case 24331300:
                 case 24332300:
                 case 24333300:
@@ -1119,6 +1121,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 {
                     var tg1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetCircularRangeFanFillTG(tg);
                     tg1.set_Fillstyle(savefillStyle);
+                    tg1.set_SymbolId(tg.get_SymbolId());
                     if (clipBounds !== null)
                     {
                         rangeFanFillShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.GetLineArray(tg1, converter, (isTextFlipped).valueOf(), clipBounds);
