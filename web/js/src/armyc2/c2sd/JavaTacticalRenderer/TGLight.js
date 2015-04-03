@@ -322,6 +322,7 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_SymbolId = function (valu
                     this.echelon = "M";
                 }
             }
+            else return;
         }//end if symbolId length >= 20
         if (this.echelon.equals("M"))
             this.echelonSymbol = "XXXXXX";

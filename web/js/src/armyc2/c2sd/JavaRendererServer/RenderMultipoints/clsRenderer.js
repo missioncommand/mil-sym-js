@@ -2189,7 +2189,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 var nSymbol = Integer.parseInt(symbolSet);
                 if (nSymbol.valueOf() === 25) {
                     linetype = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getCMLineType(symbolSet, code);
-                } else if (nSymbol === 45 || nSymbol === 46) {
+                } else if (nSymbol.valueOf() === 45 || nSymbol.valueOf() === 46) {
                     linetype = armyc2.c2sd.JavaTacticalRenderer.clsMETOC.getWeatherLinetype(symbolSet, code);
                 }
 
