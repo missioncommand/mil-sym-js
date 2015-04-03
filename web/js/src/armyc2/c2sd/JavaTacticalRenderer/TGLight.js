@@ -239,42 +239,15 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_SymbolId = function (valu
             }
             this.affiliation = this.symbolId.substring(1, 2);
             this.echelon = this.symbolId.substring(11, 12);
-//            if (this.echelon.equals("M"))
-//                this.echelonSymbol = "XXXXXX";
-//            else if (this.echelon.equals("L"))
-//                this.echelonSymbol = "XXXXX";
-//            else if (this.echelon.equals("K"))
-//                this.echelonSymbol = "XXXX";
-//            else if (this.echelon.equals("J"))
-//                this.echelonSymbol = "XXX";
-//            else if (this.echelon.equals("I"))
-//                this.echelonSymbol = "XX";
-//            else if (this.echelon.equals("H"))
-//                this.echelonSymbol = "X";
-//            else if (this.echelon.equals("G"))
-//                this.echelonSymbol = "III";
-//            else if (this.echelon.equals("F"))
-//                this.echelonSymbol = "II";
-//            else if (this.echelon.equals("E"))
-//                this.echelonSymbol = "I";
-//            else if (this.echelon.equals("D")) {
-//                letter = String.fromCharCode(9679);
-//                this.echelonSymbol = (letter) + (letter) + (letter);
-//            } else if (this.echelon.equals("C")) {
-//                letter = String.fromCharCode(9679);
-//                this.echelonSymbol = (letter) + (letter);
-//            } else if (this.echelon.equals("B")) {
-//                letter = String.fromCharCode(9679);
-//                this.echelonSymbol = (letter);
-//            } else if (this.echelon.equals("A")) {
-//                letter = String.fromCharCode(216);
-//                this.echelonSymbol = (letter);
-//            }
         }   //end if symbolId length is 15
         else if (this.symbolId.length >= 20)
         {
             var setA = this.symbolId.substring(0, 10);
             var symbolSet = setA.substring(4, 6);
+            var setB=this.symbolId.substring(10);
+            var entityCode=setB.substring(0,6);
+            var code=Integer.parseInt(entityCode);
+            var nCode=code.valueOf();
             if (symbolSet.equalsIgnoreCase("25"))
             {
 
@@ -283,6 +256,24 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_SymbolId = function (valu
                     this.affiliation = "F";
                 } else if (this.affiliation.equalsIgnoreCase("06")) {
                     this.affiliation = "H";
+                }
+                switch(nCode)
+                {
+                    case 140103:
+                    case 140104:
+                    case 150103:
+                    case 150104:
+                    case 150501:
+                    case 150502:
+                    case 150503:
+                    case 140606:
+                    case 140607:
+                    case 151802:
+                    case 200300:    //?
+                        this.affiliation="H";
+                        break;
+                    default:
+                        break;
                 }
                 this.status = setA.substring(6, 7);
                 if (this.status.equalsIgnoreCase("0")) {

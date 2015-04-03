@@ -11,15 +11,17 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 var setA=symbolID.substring(0,10);
                 var setB=symbolID.substring(10);
                 var entityCode=setB.substring(0,6);
-                var nEntityCode=Integer.parseInt(entityCode);
+                var entityCode2=Integer.parseInt(entityCode);
+                var nEntityCode=entityCode2.valueOf();
                 var symbolSet=setA.substring(4,6);
-                var nSymbolSet=Integer.parseInt(symbolSet);
-                switch(nSymbolSet.valueOf())
+                var symbolSet2=Integer.parseInt(symbolSet);
+                var nSymbolSet=symbolSet2.valueOf();
+                switch(nSymbolSet)
                 {
                     case 25:    //look for holding line, bridgehead
-                        if(nEntityCode.valueOf()===141400)
+                        if(nEntityCode===141400)
                             return TacticalLines.BRDGHD;
-                        else if(nEntityCode.valueOf()===141500)
+                        else if(nEntityCode===141500)
                             return TacticalLines.HOLD;
                         break;
                     case 45:
@@ -2413,9 +2415,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
         var symbolSet=Integer.parseInt(SymbolSet);
         if(symbolSet.valueOf() !== 45 && symbolSet.valueOf() !== 46)
             return -1;
-        var nCode=Integer.parseInt(entityCode);
+        var code=Integer.parseInt(entityCode);
+        var nCode=code.valueOf();
         var TacticalLines=new armyc2.c2sd.JavaLineArray.TacticalLines();
-        switch(nCode.valueOf())
+        switch(nCode)
         {
             case 110301:
                 return TacticalLines.CF;

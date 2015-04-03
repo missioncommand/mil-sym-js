@@ -4501,7 +4501,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                     if (lineType === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {   //LC
                         direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
                     }
-
+                    pt0.x=x;
+                    pt0.y=y;
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
                     break;
@@ -4757,7 +4758,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
         var setA = symbolId.substring(0, 10);
         var setB = symbolId.substring(10);
         var code = setB.substring(0, 6);
-        var nCode = Integer.parseInt(code);
+        var code2 = Integer.parseInt(code);
+        var nCode=code2.valueOf();
         var symbolSet = setA.substring(4, 6);
         var nSymbol = Integer.parseInt(symbolSet);
         //default values for modifiers AP and V
@@ -4770,7 +4772,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
         var ptLeft = null, ptRight = null, ptCenter = null;
         var label = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRevDLabel(nCode);
         var dash = " - ";
-        switch (nCode.valueOf())
+        switch (nCode)
         {
             case 200202:
                 ptLeft = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(0), tg.Pixels.get(1), 0);
@@ -4921,7 +4923,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         var setA = symbolId.substring(0, 10);
         var setB = symbolId.substring(10);
         var code = setB.substring(0, 6);
-        var nCode = Integer.parseInt(code);
+        var code2 = Integer.parseInt(code);
+        var nCode = code2.valueOf();
         var symbolSet = setA.substring(4, 6);
         var nSymbol = Integer.parseInt(symbolSet);
         //default values for modifiers AP and V
@@ -5024,9 +5027,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         if (clipBounds !== null && clipBounds instanceof armyc2.c2sd.graphics2d.Rectangle) {
             clipRect = clipBounds;
         }
-
-
-
+        
         var middleSegment = (tg.Pixels.size() + 1) / 2 - 1;
 
         if (clipRect !== null) {
@@ -5044,14 +5045,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         var ptUl = null, ptUr = null, ptLl = null, ptLr = null;
         var toEnd = 1, aboveMiddle = 2, area = 3, screen = 4, aboveEnd = 5;
         //switch adds the new modifiers or calls the old function if the modifiers did not change        
-        switch (nCode.valueOf()) {
+        switch (nCode) {
             case 200401:
                 ptUr = new armyc2.c2sd.JavaLineArray.POINT2();
                 ptUl = new armyc2.c2sd.JavaLineArray.POINT2();
                 ptLl = new armyc2.c2sd.JavaLineArray.POINT2();
                 ptLr = new armyc2.c2sd.JavaLineArray.POINT2();
                 Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, csFactor, ptLl, ptLr, false);
                 break;
             case 110101:    //lateral boundary
@@ -5085,14 +5086,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 200101:
             case 200201:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label + " - " + tg.get_Name(), area, 0, ptCenter, ptCenter, false);
                 break;
             case 140700:
             case 140900:
             case 190100:
             case 190200:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, pt0, pt1, false);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveEnd, -csFactor, ptLast, ptNextToLast, false);
                 break;
@@ -5115,7 +5116,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 140400:    //feba has labels at end    
             case 140401:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, toEnd, 0, pt0, pt1, false);
                 Modifier2.AddIntegralAreaModifier(tg, label, toEnd, 0, ptLast, ptNextToLast, false);
                 break;
@@ -5128,7 +5129,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
             case 150502:
             case 150503:
                 Modifier2.areasWithENY(tg, g2d);
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), area, 0, ptCenter, ptCenter, false);
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, ptCenter, ptCenter, false);
                 break;
@@ -5196,11 +5197,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), aboveMiddle, 0, pt1, midPt, false);
                 break;
             case 170800:    //bdz
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 0, ptCenter, ptCenter, false);
                 break;
             case 151500:    //assault pos
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, ptCenter, ptCenter, false);
                 break;
             case 151600:    //atk pos
@@ -5226,7 +5227,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 170400:
             case 170600:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralModifier(tg, label + " " + tg.get_Name(), aboveMiddle, 0, middleSegment, middleSegment + 1, false);
                 Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), aboveMiddle, -4 * csFactor, middleSegment, middleSegment + 1, false);
                 Modifier2.AddIntegralModifier(tg, "Min Alt: " + tg.get_H(), aboveMiddle, -5 * csFactor, middleSegment, middleSegment + 1, false);
@@ -5241,7 +5242,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
             case 171400:
             case 171500:
             case 171900:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, area, -2.5, ptCenter, ptCenter, false, "");
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), area, -1.5, ptCenter, ptCenter, false, "T");
                 Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), area, -0.5, ptCenter, ptCenter, false, "H");
@@ -5250,14 +5251,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 Modifier2.AddIntegralAreaModifier(tg, "TIME TO: " + tg.get_DTG1(), area, 2.5, ptCenter, ptCenter, false, "W1");
                 break;
             case 200300:
-                label = getRevDLabel(nCode.valueOf());
+                label = getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, -1, pt0, pt0, false); //ENY or N?
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, pt0, pt0, false);
                 break;
             case 200102:
             case 220107:
             case 220108:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 0, pt0, pt1, false); //ENY or N?
                 break;
             case 240101:
@@ -5270,7 +5271,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), area, 3 * csFactor, ptCenter, ptCenter, false, "W1");
                 break;
             case 300100:    //icl
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);
@@ -5319,7 +5320,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 260300:    //nfl handle like fscl
             case 260400:
-                label = Modifier2.getRevDLabel(nCode.valueOf());
+                label = Modifier2.getRevDLabel(nCode);
                 pt0 = tg.Pixels.get(0);
                 pt1 = tg.Pixels.get(1);
                 pt2 = tg.Pixels.get(tg.Pixels.size() - 1);

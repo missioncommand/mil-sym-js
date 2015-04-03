@@ -1490,9 +1490,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     if (symbolSet.valueOf() !== 25) {
                         return -1;
                     }
-                    var nCode = Integer.parseInt(entityCode);
+                    var code = Integer.parseInt(entityCode);
+                    var nCode=code.valueOf();
                     var TacticalLines = new armyc2.c2sd.JavaLineArray.TacticalLines();
-                    switch (nCode.valueOf()) {
+                    switch (nCode) {
                         case 200101:
                         case 200201:
                             return TacticalLines.LAUNCH_AREA;
@@ -2062,10 +2063,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (nSymbolSet.valueOf() !== 25) {
                 return;
             }
-            var code = setB.substring(0, 6);
-            var nCode = Integer.parseInt(code);
-            //Color=armyc2.c2sd.renderer.utilities.Color;
-            switch (nCode.valueOf())
+            var entity = setB.substring(0, 6);
+            var code = Integer.parseInt(entity);
+            var nCode=code.valueOf();
+            switch (nCode)
             {
                 case 140101:    //friendly present flot
                     break;
@@ -2141,8 +2142,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
             var setB = tg.get_SymbolId().substring(10);
             var entityCode = setB.substring(0, 6);
-            var nCode = Integer.parseInt(entityCode);
-            switch (nCode.valueOf()) {
+            var code = Integer.parseInt(entityCode);
+            var nCode=code.valueOf();
+            switch (nCode) {
                 case 290301:
                 case 290305:
                 case 290306:
