@@ -909,7 +909,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 }
             }
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.SetShapeProperties(tg, shapes, bi);
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg,shapes);
             if (hatchShape !== null)
                 shapes.add(hatchShape);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo(shapeInfos, shapes);

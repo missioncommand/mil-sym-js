@@ -218,7 +218,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             if (hatchShape !== null)
                 shapes.add(hatchShape);
             //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD(tg);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD(tg,shapes);
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers(tg, converter);
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes(tg, g2d, shapes);
             bi.flush();

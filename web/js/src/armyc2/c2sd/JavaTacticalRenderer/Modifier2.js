@@ -4813,19 +4813,20 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
                     pt0 = pts.get(n - 4);
                     pt1 = pts.get(n - 3);
                 }
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, -csFactor/2, pt0, pt1, false);
+                //ok to here
                 if (n === 3)
                 {
-                    pt0 = pts.get(pts.size() - 9);
-                    pt1 = pts.get(pts.size() - 8);
+                    pt0 = pts.get(pts.size() - 8); //was 9
+                    pt1 = pts.get(pts.size() - 7);  //was 8
                     pt1 = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
                 }
                 else
                 {
-                    pt0 = pts.get(pts.size() - 10);
-                    pt1 = pts.get(pts.size() - 9);
+                    pt0 = pts.get(pts.size() - 9); //was 10
+                    pt1 = pts.get(pts.size() - 8);  //was 9
                 }
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, -csFactor/2, pt0, pt1, false);
                 break;
             default:
                 var saveStd = tg.getSymbologyStandard();
