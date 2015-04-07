@@ -68,6 +68,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetCenterLabel = function (tg)
     {
         switch (tg.get_LineType())
         {
+            case 22223000:
+                label="SAAFR";
+                break;
             case 22221000:
                 label = "AC";
                 break;
@@ -5250,6 +5253,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 1.35 * factor * csFactor, ll, lr, false);
                 break;
             case 170100:
+            case 170101:
             case 170200:
             case 170300:
             case 170500:

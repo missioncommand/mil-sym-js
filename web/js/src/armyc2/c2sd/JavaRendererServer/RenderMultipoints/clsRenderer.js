@@ -1642,6 +1642,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         case 141700:
                             return TacticalLines.AMBUSH;
                         case 170100:
+                        case 170101:
                             return TacticalLines.AC;
                         case 170200:
                             return TacticalLines.LLTR;
