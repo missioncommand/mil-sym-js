@@ -4704,13 +4704,17 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getShapePoints = function (shape)
         var ptsPoly = new java.util.ArrayList();
         var ptPoly = null;
         var coords = new Array(6);
+        var zeros=0;
         for (var i = shape.getPathIterator(null); !i.isDone(); i.next())
         {
             var type = i.currentSegment(coords);
+            if(type===0 && zeros===2)
+                break;
             switch (type) {
                 case armyc2.c2sd.graphics2d.PathIterator.SEG_MOVETO:
                     ptPoly = new armyc2.c2sd.graphics2d.Point2D(coords[0], coords[1]);
                     ptsPoly.add(ptPoly);
+                    zeros++;
                     break;
                 case armyc2.c2sd.graphics2d.PathIterator.SEG_LINETO:
                     ptPoly = new armyc2.c2sd.graphics2d.Point2D(coords[0], coords[1]);
@@ -4802,31 +4806,41 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
             case 151408:    //eny spt anticipated
                 var shape = shapes.get(shapes.size() - 1);
                 var pts = armyc2.c2sd.JavaTacticalRenderer.Modifier2.getShapePoints(shape.getShape());
-                if (n === 3)
+                n=pts.size();
+                if(n===4)    //was 3
                 {
-                    pt0 = pts.get(0);
-                    pt1 = pts.get(1);
-                    pt1 = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
+                    pt0=pts.get(0);
+                    pt1=pts.get(1);
+                    pt1=armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
+                }
+                else if(n===6)
+                {
+                    pt0=pts.get(3);   
+                    pt1=pts.get(4);   
                 }
                 else
                 {
-                    pt0 = pts.get(n - 4);
-                    pt1 = pts.get(n - 3);
+                    pt0=pts.get(1);   //was n-4
+                    pt1=pts.get(2);   //was n-3                     
                 }
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, -csFactor/2, pt0, pt1, false);
-                //ok to here
-                if (n === 3)
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
+                if(n===4)
                 {
-                    pt0 = pts.get(pts.size() - 8); //was 9
-                    pt1 = pts.get(pts.size() - 7);  //was 8
-                    pt1 = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
+                    pt0=pts.get(2);  //was pts.size()-9
+                    pt1=pts.get(3);  //was pts.size()-8
+                    pt1=armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
                 }
+                else if(n===6)
+                {
+                    pt0=pts.get(0);   
+                    pt1=pts.get(1);   
+                }   
                 else
                 {
-                    pt0 = pts.get(pts.size() - 9); //was 10
-                    pt1 = pts.get(pts.size() - 8);  //was 9
+                    pt0=pts.get(n/2+1); //was pts.size()-10
+                    pt1=pts.get(n/2+2);  //was pts.get(pts.size()-9
                 }
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, -csFactor/2, pt0, pt1, false);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);                    
                 break;
             default:
                 var saveStd = tg.getSymbologyStandard();
