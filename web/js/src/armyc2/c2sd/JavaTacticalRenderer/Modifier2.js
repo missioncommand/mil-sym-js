@@ -4784,7 +4784,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
             case 200202:
                 ptLeft = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(0), tg.Pixels.get(1), 0);
                 ptRight = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(2), tg.Pixels.get(3), 0);
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + " - " + tg.get_Name(), 2, csFactor / 2, ptLeft, ptRight, false);
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + " - " + tg.get_Name(), 2, -csFactor / 2, ptLeft, ptRight, false);
                 break;
             case 290600:
                 pt0 = tg.Pixels.get(4);
@@ -4995,8 +4995,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         var midPt = null;
         //ok to here
         var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(tg.get_LineType(), null);
-        if (isChange1Area)
+        if (isChange1Area && tg.get_LineType() !== 25200101)                    
             return;
+        
         var clipRect = null;
         var clipArray = null;
         if (clipBounds !== null && clipBounds instanceof java.util.ArrayList) {
@@ -5296,7 +5297,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, -1, pt0, pt0, false); //ENY or N?
                 Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), aboveMiddle, csFactor, pt0, pt0, false);
                 break;
-            case 200102:
             case 220107:
             case 220108:
                 label = Modifier2.getRevDLabel(nCode);
