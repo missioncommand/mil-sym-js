@@ -1014,7 +1014,21 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.blankString = function (metrics, widt
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function (tg, pt0, pt1, ptLast, ptNextToLast) {
     try {
+        var p0=null, p1=null;
+        var last=1.0;
         switch (tg.get_LineType()) {
+            case 22121000:
+                for(var j=0;j<tg.Pixels.size()-1;j++)
+                {
+                    p0=tg.Pixels.get(j);
+                    p1=tg.Pixels.get(j+1);
+                    if(p0.x===p1.x)
+                    {
+                        p1.x += last;
+                        last = -last;
+                    }
+                }
+                break;
             case 22422000:
             case 22124000:
             case 22525000:
