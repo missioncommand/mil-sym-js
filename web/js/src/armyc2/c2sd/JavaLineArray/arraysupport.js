@@ -1162,7 +1162,13 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         if (segQty > 0) {
                             pSquallSegPts = new Array(segQty);
                             armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSquallSegPts);
-                        } else {
+                        } 
+                        else 
+                        {
+                            pSquallPts[counter].x = StartSegPt.x;
+                            pSquallPts[counter++].y = StartSegPt.y;
+                            pSquallPts[counter].x = EndSegPt.x;
+                            pSquallPts[counter++].y = EndSegPt.y;
                             continue;
                         }
                         sign.value[0] = -1;

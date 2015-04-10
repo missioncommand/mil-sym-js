@@ -5009,8 +5009,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         var midPt = null;
         //ok to here
         var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(tg.get_LineType(), null);
-        if (isChange1Area && tg.get_LineType() !== 25200101)                    
-            return;
+        if (isChange1Area)                    
+        {
+            switch(nCode)
+            {
+                case 200101:
+                case 200201:
+                case 240804:
+                    break;
+                default:
+                    return;
+            }
+        }
         
         var clipRect = null;
         var clipArray = null;
@@ -5162,7 +5172,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
             case 140102:
             case 150101:
             case 150102:
-            case 151801:
+            //case 151801:
             case 151900:
             case 152000:
             case 152100:
@@ -5177,7 +5187,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 150103:
             case 150104:
-            case 151802:
+            //case 151802:
                 Modifier2.areasWithENY(tg, g2d);
                 break;
             case 150501:
