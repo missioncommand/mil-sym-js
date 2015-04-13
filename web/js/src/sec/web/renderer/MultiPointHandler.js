@@ -506,7 +506,7 @@ return{
      */        
     RenderSymbol: function(id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd)
     {
-        if(symStd === undefined)
+        if(!symStd)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
@@ -896,8 +896,10 @@ return{
      */        
     RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd)
     {
-        if(arguments.length === 11)
+        if(!symStd)
+        {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+        }
         
         var jsonOutput = "",
             jsonContent = "",
@@ -913,7 +915,24 @@ return{
             right = 0,
             top = 0,
             bottom = 0;
-    
+			
+		//process coordinates
+		var tempPt = null;
+        coordinates = controlPoints.trim();
+        coordinates = coordinates.split(" ");
+        var len = coordinates.length;
+		
+		for (var i = 0; i < len; i++) 
+        {
+            var coordPair = coordinates[i].split(",");
+            var latitude = coordPair[1];//.trim();
+            var longitude = coordPair[0];//.trim();
+            tempPt = new armyc2.c2sd.graphics2d.Point2D();
+            tempPt.setLocation(longitude, latitude);
+            geoCoords.push(tempPt);
+        }
+
+		//get bounding box
         if (bbox !== null && bbox !== ("")) 
         {
                     var bounds = bbox.split(",");
@@ -925,25 +944,15 @@ return{
         } 
         else 
         {
+			var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
+			ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
+			
             //System.out.println("Bad bbox value: " + bbox);
             //System.out.println("bbox is viewable area of the map.  Passed in the format of a string \"lowerLeftX,lowerLeftY,upperRightX,upperRightY.\" example: \"-50.4,23.6,-42.2,24.2\"");
-            return "ERROR - Bad bbox value: " + bbox;
+
         }
         
-        var tempPt = null;
-        coordinates = controlPoints.trim();
-        coordinates = coordinates.split(" ");
-        var len = coordinates.length;
-        
-        for (var i = 0; i < len; i++) 
-        {
-            var coordPair = coordinates[i].split(",");
-            var latitude = coordPair[1];//.trim();
-            var longitude = coordPair[0];//.trim();
-            tempPt = new armyc2.c2sd.graphics2d.Point2D();
-            tempPt.setLocation(longitude, latitude);
-            geoCoords.push(tempPt);
-        }
+
         
         try {
             var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
@@ -1664,27 +1673,40 @@ return{
         
         var lineColor = "#000000";
         var ctx = buffer.getContext('2d');
+		
+		/*//TEST/////////////////////////
+		ctx.setTransform(1,0,0,1,0,0);
+		ctx.lineWidth = 5;
+		ctx.beginPath();
+		ctx.strokeStyle = "#0000FF";
+        ctx.moveTo(10,10);
+		ctx.lineTo(50,50);
+		ctx.stroke();
+		////////////////////////////////*/
         
         ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
         for (var i = 0; i < pathSize; i++)
         {
             pi = pathInfo[i];
-            if (i === 0)
+            if (pi.lineColor !== null)
             lineColor = pi.lineColor;
             if (pi.lineWidth)
             ctx.lineWidth = pi.lineWidth;
             if (pi.lineColor !== null)
             {
                 ctx.strokeStyle = pi.lineColor;
+				ctx.globalAlpha = 1;
                 pi.path.stroke(ctx);
             }
-            if (pi.fillStyle !== null)
+            if (pi.fillColor !== null)
             {
                 ctx.fillStyle = pi.fillColor;
-                pi.path.stroke(ctx);
+				ctx.globalAlpha = pi.alpha;
+                pi.path.fill(ctx);
             }
         }
-        
+
+		
         ctx.setTransform(1,0,0,1,0,0);
         if (textInfos.length > 0)
         {
@@ -1696,6 +1718,7 @@ return{
             var outlineWidth = RendererSettings.getTextOutlineWidth();
             var mpFont = RendererSettings.getModifierFont();
             var outlineStyle = RendererUtilities.getIdealOutlineColor(lineColor);
+			ctx.globalAlpha = 1;
             ctx.fillStyle = lineColor;
             ctx.lineCap = "butt";
             ctx.lineJoin = "miter";
@@ -1729,6 +1752,7 @@ return{
                 ctx.translate(tX, tY);
 
                 //TEST
+				/*
                 ctx.save();
                 ctx.setTransform(1,0,0,1,0,0);
                 
@@ -1737,7 +1761,7 @@ return{
                 ctx.translate(tiRect.x - offsetX, tiRect.y - offsetY);
                 
                 //TEST: stroke to see bounds
-                //ctx.strokeRect(0,0,tiRect.getWidth(),tiRect.getHeight());
+                ctx.strokeRect(0,0,tiRect.getWidth(),tiRect.getHeight());
                 
                 ctx.restore();
                 ctx.setTransform(1,0,0,1,0,0);
@@ -1766,6 +1790,8 @@ return{
                 
                 ctx.setTransform(1,0,0,1,0,0);
             }
+			
+			
             
         }
         //test
@@ -2369,12 +2395,12 @@ return{
         var geometry = {};
         if (shapeInfo.getLineColor() !== null) {
             lineColor = shapeInfo.getLineColor();
-            alpha = lineColor.getAlpha();
+            alpha = lineColor.getAlpha()/255;
             lineColor = lineColor.toHexString(false);
         }
         if (shapeInfo.getFillColor() !== null) {
             fillColor = shapeInfo.getFillColor();
-            alpha = fillColor.getAlpha();
+            alpha = fillColor.getAlpha()/255;
             fillColor = fillColor.toHexString(false);
         }
         
@@ -2411,7 +2437,7 @@ return{
             }
             
         }
-        pathInfo = {path:path, lineWidth:lineWidth, lineColor:lineColor, fillColor:fillColor, dashArray:dashArray};
+        pathInfo = {path:path, lineWidth:lineWidth, lineColor:lineColor, fillColor:fillColor, dashArray:dashArray, alpha:alpha};
         return pathInfo;
     },
             
@@ -2552,7 +2578,7 @@ return{
         }
         return feature;
     },
-    /**
+	/**
      * Basically renders the symbol with the 2d renderer than pulls out
      * just the label placemarks.  Altitudes are then added so that will place
      * with the 3d symbol they are being added to.
@@ -2592,6 +2618,31 @@ return{
             var curr = 0;
             var count = 0;
             var tempPlacemark="";
+			
+			var max = 0;
+			var min = 0;
+
+			//grab max altitude so labels are in the air with the symbol.
+			if (symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH] && symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH] instanceof Array)
+            {
+                var XN = symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+                altitudes = new Array();
+                for (i = 0; i < XN.length; i++) {
+                    if(XN[i] > max)
+						max = XN[i];
+                }
+            }
+            else if (symbolModifiers.altitudeDepth && symbolModifiers.altitudeDepth instanceof Array)
+            {
+                altitudes = new Array();
+                for (i = 0; i < symbolModifiers.altitudeDepth.length; i++) {
+                    if(symbolModifiers.altitudeDepth[i] > max)
+						max = symbolModifiers.altitudeDepth[i];
+                }
+            }
+
+			
+			
             while(pmiStart > 0)
             {
                 if(count > 0)
@@ -2599,7 +2650,13 @@ return{
                     pmiEnd = output.indexOf("</Placemark>",pmiStart)+12;
                     tempPlacemark=output.substring(pmiStart,pmiEnd);
                     if(tempPlacemark.contains("</Point>"))
-                        placemarks.push(output.substring(pmiStart,pmiEnd));
+					{
+						
+						//TODO - set extrude to false
+                        var outputSubstring = output.substring(pmiStart,pmiEnd);
+                        outputSubstring = outputSubstring.replace(/<\/coordinates>/gi, "," + max + "<\/coordinates>");
+                        placemarks.push(outputSubstring);
+					}
                     //System.out.println(placemarks.get(count));
                     //end, check for more
                     pmiStart = output.indexOf("<Placemark",pmiEnd-2);
@@ -3006,7 +3063,81 @@ return{
     {
         _appletUrl = hostURL;
         _appletUrl += "mil-sym-service/renderer/image/";          
-    }
+    },
+	
+	GetBboxFromCoordinates: function(symbolID, geoCoords, modifiers, symStd)
+	{
+		var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+		//check points and come up with a bbox
+		var len = geoCoords.length;
+		if(len >= 2)
+		{
+			rbb = new armyc2.c2sd.renderer.so.Rect(geoCoords[0].getX(),geoCoords[0].getY(),0,0);
+			for(var i = 1; i < len; i++)
+			{
+				rbb.unionPoint(geoCoords[i]);
+			}
+			return {top:rbb.getY(),left:rbb.getX(),bottom:rbb.getBottom(),right:rbb.getRight()};
+		}
+		else if(len == 1 && modifiers[ModifiersTG.AM_DISTANCE])
+		{
+			var arrAM,
+				pTL,
+				pBR,
+				aTL = 315,
+				aBR = 135;
+			var sd = SymbolDefTable.getSymbolDef(basicID, symStd);
+			if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE)
+			{
+				//1 AM value representing radius
+				arrAM = modifiers[ModifiersTG.AM_DISTANCE];
+				var dAM = parseFloat(arrAM[0]);
+				var pTL = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAM,aTL);//start, distance, azimuth
+				var pBR = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAM,aBR);//start, distance, azimuth
+
+				var a12 = null, 
+					a21 = null;
+				var dst = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pTL,pBR,a12,a21);
+				
+				return {top:pTL.y,left:pTL.x,bottom:pBR.y,right:pBR.x};
+			}
+			else if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE)
+			{
+				//2 AM values representing width and length
+				arrAM = modifiers[ModifiersTG.AM_DISTANCE];
+				var dAM1 = parseFloat(arrAM[0]);
+				var dAM2 = parseFloat(arrAM[0]);
+				var dAMmax = dAM1/2;
+				if(dAM2 > dAM1)
+					dAMmax = dAM2/2;
+				
+				pTL = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAMmax,aTL);//start, distance, azimuth
+				pBR = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAMmax,aBR);//start, distance, azimuth
+				
+				return {top:pTL.y,left:pTL.x,bottom:pBR.y,right:pBR.x};
+			}
+			else if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE ||
+					sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE)
+			{
+				//1 AM value representing radius
+				arrAM = modifiers[ModifiersTG.AM_DISTANCE];
+				var dAM = parseFloat(arrAM[len-1]);
+				var pTL = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAM,aTL);//start, distance, azimuth
+				var pBR = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:geoCoords[0].getX(),y:geoCoords[0].getY()},dAM,aBR);//start, distance, azimuth
+				
+				return {top:pTL.y,left:pTL.x,bottom:pBR.y,right:pBR.x};
+			}
+			else if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE)
+			{
+				//union 2 points
+				//
+			}
+		}
+		else
+		{
+			return null;
+		}
+	}
             
   
     
