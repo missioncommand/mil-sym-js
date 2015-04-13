@@ -3229,7 +3229,7 @@ return{
         var ti = null;
         
         {
-            if(modifiers.N !== undefined)
+            if(modifiers.N)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
                 ti = new TextInfo(strText,0,0,textInfoContext);

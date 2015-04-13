@@ -5345,7 +5345,11 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "SYMBOLID": "S*G*EVSR--*****",
-        "DESCRIPTION": "Transporter"
+        "DESCRIPTION": "Transporter",
+		"MAPPING1U": "1876",
+        "MAPPING1F": "1876",
+        "MAPPING1N": "1876",
+        "MAPPING1H": "1876"
       },
       {
         "SYMBOLID": "S*G*EVSC--*****",

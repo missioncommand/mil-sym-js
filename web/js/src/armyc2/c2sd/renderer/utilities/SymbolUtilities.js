@@ -769,6 +769,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE:
                         returnVal = true;
                         break;
+					case SymbolDefTable.DRAW_CATEGORY_LINE:
+						if(sd.modifiers.indexOf(tgModifier + ".") > -1)
+							returnVal = true;
+						break;
                     default:
                         returnVal = false;
                 }
@@ -2231,11 +2235,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         
             switch(dc)
             {
-                case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE://width
+                case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:  //width
                 case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
                 case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
                     returnVal = true;
                     break;
+				case SymbolDefTable.DRAW_CATEGORY_LINE:
+						if(sd.modifiers.indexOf(tgModifier + ".") > -1)
+							returnVal = true;
+						break;
                 default:
                     returnVal = false;
             }
