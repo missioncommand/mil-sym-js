@@ -84,16 +84,6 @@ console.log(foo.toString());*/
         //var bbox = "-180.0,-90.0,180.0,90.0";
         var scale = 500000.0;
 		
-		//circular target test
-		var altMode = "absolute";//clampToGround
-		symbolCode = "GFFPATC-------X";////Circular Target
-		controlPoints = "-96.94648487863668,30.910413822168287";
-		//scale = 211035.88572516918
-		modifiers = {"LINEWIDTH":"5","ALTMODE":"absolute","H":"H","T":"CP59","T1":"","AM":[10000],"lineColor":"#000000"};//180000
-		modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.SymbologyStandard] = 0;
-		bbox = "-96.94648487863668,30.910413822168287,-96.94648487863668,30.910413822168287";
-		bbox = null;
-		//////////////////////*/
 		
 		var formatSymbolInfo = 5;
 		var formatGeoCanvasDataURL = 4;
@@ -101,8 +91,8 @@ console.log(foo.toString());*/
 		var formatGeoJSON = 2;
 		var formatJSON = 1;
 		var formatKML = 0;
-		var pixelWidth = 600;
-		var pixelHeight = 600;
+		var pixelWidth = 1000;
+		var pixelHeight = 1000;
 		
 		//change this to format JSON to see the different output.
         //var format = formatGeoCanvasDataURL;
@@ -123,8 +113,8 @@ console.log(foo.toString());*/
 		//KML is being worked on more due to google earth in bcweb.  We are not actively using JSON for anything.
 		//ID, Name and Description are optional when using JSON format.
 		var start = Date.now();
-		var json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, "clampToGround",scale, bbox, modifiers,format, symStd);
-        //var json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format,symStd);
+		//var json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, "clampToGround",scale, bbox, modifiers,format, symStd);
+        var json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format,symStd);
 		var stop = Date.now();
 		var timeAmbush = (stop-start);
 		
@@ -191,10 +181,11 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //G*G*GLB---****X
         //var symbolCode2 = "GFGPGLB-------X"; //boundary
         //var symbolCode2 = "GHGPGAG-------X"; //general area
-        var symbolCode2 = "GHGPGAA-------X"; //assembly area
+        //var symbolCode2 = "GHGPGAA-------X"; //assembly area
         //var symbolCode2 = "GHMPOADC--****X"; //antitank ditch, complete 
         //var symbolCode2 = "GFTPL---------X"; //delay
         //var symbolCode2 = "GHGPSLA-------X"; //ambush
+		var symbolCode2 = "GHGPALC-------X";////air corridor
         var controlPoints2 = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         var bbox2 = "66.26,30.627,66.27,30.63"; //will show clipping at work
         //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
@@ -209,7 +200,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		format = formatGeoJSON;
 		var json2;
 		start = Date.now();
-		if(format == formatKML)
+		if(format === formatKML || format === formatGeoJSON)
 		{
 			//RenderSymbol for 3D Google Earth.  KML format recommended.
 			json2 = rendererMP.RenderSymbol("ID","Name","Description", symbolCode2, controlPoints2, "clampToGround",scale2, bbox2, modifiers,format);
@@ -224,7 +215,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		
         document.getElementById("contentSpan").innerHTML += "<br/><br/>Assembly Area:   <br/>";
 
-		if(format == formatJSON)
+		if(format === formatKML || format === formatGeoJSON)
 		{
 			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
 			if (json2 == null || json2 == "")
