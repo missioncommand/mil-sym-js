@@ -29,7 +29,8 @@ return{
     lat2y: function( latitude,  scale,  latOrigin,  metPerPix) 
     {
 
-        var latRem = -(latitude - latOrigin);
+        //var latRem = -(latitude - latOrigin);
+        var latRem = latOrigin - latitude;
         var pixDis = (latRem * METERS_PER_DEG) / metPerPix;
         return pixDis;
     },
