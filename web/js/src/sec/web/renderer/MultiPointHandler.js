@@ -935,26 +935,32 @@ return{
 		//get bounding box
         if (bbox !== null && bbox !== ("")) 
         {
-                    var bounds = bbox.split(",");
-                    left = bounds[0];
-                    right = bounds[2];
-                    top = bounds[3];
-                    bottom = bounds[1];
-                    ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (top), (left), (bottom), (right));
+			var bounds = bbox.split(",");
+			left = bounds[0];
+			right = bounds[2];
+			top = bounds[3];
+			bottom = bounds[1];
+			
+			if(top !== bottom && left != right)
+			{
+				ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (top), (left), (bottom), (right));
+			}
+			else
+			{
+				var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
+				ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
+			}
         } 
         else 
         {
 			var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
 			ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
-			
-            //System.out.println("Bad bbox value: " + bbox);
-            //System.out.println("bbox is viewable area of the map.  Passed in the format of a string \"lowerLeftX,lowerLeftY,upperRightX,upperRightY.\" example: \"-50.4,23.6,-42.2,24.2\"");
-
         }
         
 
         
-        try {
+        try 
+		{
             var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
             mSymbol.setSymbologyStandard(symStd);
 			if(format === 3 || format === 4)
@@ -2654,7 +2660,10 @@ return{
 						
 						//TODO - set extrude to false
                         var outputSubstring = output.substring(pmiStart,pmiEnd);
+						//add altitude to modifier
                         outputSubstring = outputSubstring.replace(/<\/coordinates>/gi, "," + max + "<\/coordinates>");
+						//disable extrude so you don't see a line going from the ground to the modifier
+						outputSubstring = outputSubstring.replace(/<extrude>1<\/extrude>/gi, "<extrude>0<\/extrude>");
                         placemarks.push(outputSubstring);
 					}
                     //System.out.println(placemarks.get(count));
@@ -3130,7 +3139,19 @@ return{
 			else if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE)
 			{
 				//union 2 points
-				//
+				rbb = new armyc2.c2sd.renderer.so.Rect(geoCoords[0].getX(),geoCoords[0].getY(),0,0);
+				for(var i = 1; i < len; i++)
+				{
+					rbb.unionPoint(geoCoords[i]);
+				}
+				//should calculate 4 points based on the two and the width. Doing quick way for right now.
+				arrAM = modifiers[ModifiersTG.AM_DISTANCE];
+				var dAM = parseFloat(arrAM[0])/2;
+				var top = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:rbb.getX(),y:rbb.getY()},dAM,0);//start, distance, azimuth
+				var right = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:rbb.getRight(),y:rbb.getY()},dAM,90);//start, distance, azimuth
+				var bottom = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:rbb.hryX(),y:rbb.getBottom()},dAM,180);//start, distance, azimuth
+				var left = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x:rbb.getX(),y:rbb.getY()},dAM,270);//start, distance, azimuth
+				return {top:top,left:left,bottom:bottom,right:right};
 			}
 		}
 		else
