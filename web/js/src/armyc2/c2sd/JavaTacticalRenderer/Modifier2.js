@@ -3324,11 +3324,17 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 break;
             case 22525000:
             case 22526000:
-            case 22613000:
+            //case 22613000:
             case 22527000:
-                //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, pt0, pt1, new Boolean(false));
+                if(!tg.get_Name().isEmpty())
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, csFactor/2, pt0, pt1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, pt0, pt1, new Boolean(false));
-                //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, 1 * csFactor, ptLast, ptNextToLast, new Boolean(false));
+                if(!tg.get_Name().isEmpty())
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 1, csFactor/2, ptLast, ptNextToLast, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, ptLast, ptNextToLast, new Boolean(false));
+                break;
+            case 22613000:
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, pt0, pt1, new Boolean(false));
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 1, -csFactor / 2, ptLast, ptNextToLast, new Boolean(false));
                 break;
             case 22125000:
