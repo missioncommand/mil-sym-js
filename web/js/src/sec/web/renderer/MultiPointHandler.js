@@ -510,7 +510,6 @@ return{
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
-        
         var normalize = false,
             controlLat = 0,
             controlLong = 0,
@@ -538,6 +537,9 @@ return{
             rightX = 0,
             j = 0,
             bboxCoords = null;
+            
+        var setRectNull=false;  //Deutch 4-15-15
+        
         if (bbox !== null && bbox !== ("")) {
             var bounds = null;
             if (bbox.contains(" ")) //trapezoid
@@ -587,6 +589,12 @@ return{
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
+                
+                //Deutch 4-15-15
+                if(left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))                
+                    setRectNull=true;                
+                //end section
+                
                 scale=sec.web.renderer.MultiPointHandler.getReasonableScale(bbox,scale);                
                 
                 ipc = new sec.web.renderer.PointConverter(left, top, scale);
@@ -634,6 +642,15 @@ return{
                 rightX = Math.round(temp.getX());
                 width = Math.abs(rightX - leftX);
                 height = Math.abs(bottomY - topY);
+                //Deutch 4-15-15
+                if(scale>1e7)
+                {
+                    if(width<1000)
+                        width=1000;
+                    if(height<1000)
+                        height=1000;
+                }
+                //end section
                 rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
             }
         } 
@@ -641,6 +658,8 @@ return{
         {
             rect = null;
         }
+        if(setRectNull) //Deutcvh 4-15-15
+            rect=null;
         
         var tempPt = null;
         coordinates = controlPoints.trim();
