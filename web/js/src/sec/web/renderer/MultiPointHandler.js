@@ -442,6 +442,8 @@ return{
             var right = bounds[2];
             var top = bounds[3];
             var bottom = bounds[1];
+            if(left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))
+                return origScale;
             var ul=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
             var ur=new armyc2.c2sd.JavaLineArray.POINT2(right,top);
             //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
