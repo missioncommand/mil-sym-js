@@ -336,7 +336,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_VisibleModifiers(true);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setClientCoords(milStd, tg);
             tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
-            tg.set_Font(new armyc2.c2sd.graphics2d.Font("Arial", armyc2.c2sd.graphics2d.Font.PLAIN, 12));
+            //tg.set_Font(new armyc2.c2sd.graphics2d.Font("Arial", armyc2.c2sd.graphics2d.Font.PLAIN, 12));
+            var instance=armyc2.c2sd.renderer.utilities.RendererSettings.getInstance();
+            var fontName=instance.getModifierFontName();
+            var fontSize=instance.getModifierFontSize();
+            var fontStyle=instance.getModifierFontStyle();
+            tg.set_Font(new armyc2.c2sd.graphics2d.Font(fontName,fontStyle,fontSize));
             tg.set_FillColor(milStd.getFillColor());
             tg.set_LineColor(milStd.getLineColor());
             tg.set_LineThickness(milStd.getLineWidth());
