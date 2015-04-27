@@ -891,6 +891,25 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             var hasFill = armyc2.c2sd.JavaTacticalRenderer.clsUtility.LinesWithFill(lineType);
             var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(lineType, null);
             var isClosedPolygon = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType);
+            if(tg.get_FillColor()===null)
+            {
+                switch(tg.get_LineType())
+                {
+                    case 22221000:
+                    case 22223000:
+                    case 22222000:
+                    case 22222001:
+                    case 22224000:
+                    case 22224001:
+                    case 22225000:
+                        shape=shapes.get(shapes.size()-1);
+                        shapes.clear();
+                        shapes.add(shape);
+                        break;
+                    default:
+                        break;
+                }
+            }
             for (j = 0; j < shapes.size(); j++) {
                 shape = shapes.get(j);
                 if (shape === null || shape.getShape() === null) {
