@@ -902,7 +902,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     case 22224000:
                     case 22224001:
                     case 22225000:
-                    
+                        shape=shapes.get(shapes.size()-1);
+                        shapes.clear();
+                        shapes.add(shape);
+                        break;                    
                     case 21700000:
                     case 22521100:
                     case 22521200:
@@ -911,9 +914,16 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     case 22320000:
                     case 22521410:
                     case 21710000:
-                        shape=shapes.get(shapes.size()-1);
+                        var tempShapes=new java.util.ArrayList();
+                        for(j=0;j<shapes.size();j++)
+                        {
+                            shape=shapes.get(j);
+                            if(shape.getShapeType() !== armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL)
+                                tempShapes.add(shape);
+                        }
+                        //alert(tempShapes.size());
                         shapes.clear();
-                        shapes.add(shape);
+                        shapes.addAll(tempShapes);                        
                         break;
                     default:
                         break;
