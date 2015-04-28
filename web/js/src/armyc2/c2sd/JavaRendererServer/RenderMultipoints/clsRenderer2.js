@@ -240,7 +240,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                 return;
             if(tg.Pixels===null || tg.Pixels.size()===0)
                 return;
-            
+            if(tg.get_FillColor()===null)
+              return;
+          
             var linetype = tg.get_LineType();
             var symbolID = tg.get_SymbolId();
             var j = 0;
