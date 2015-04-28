@@ -22,7 +22,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             shape.setLineColor(tg.get_LineColor());
             shape.setStroke(stroke);
             var strH = tg.get_H();
-            if (strH != null && !strH.isEmpty()) {
+            if (strH !== null && !strH.isEmpty()) {
                 var strs = strH.split(",");
                 if (strs.length < 2) {
                     shape.moveTo(tg.Pixels.get(0));
@@ -188,7 +188,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                     if (lineType === 25222000 || lineType === 25221000) {
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.getMSRShapes(tg, shapes);
                     }
-                    if (lineType !== 23111001) {
+                    else if (lineType !== 23111001) {
                         tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, tg.Pixels, shapes, clipBounds2, rev);
                     } else if (lineType === 23111001) {
                         var tempShapes = null;
