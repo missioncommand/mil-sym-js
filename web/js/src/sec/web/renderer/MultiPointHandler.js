@@ -644,8 +644,6 @@ return{
                 temp = ipc.GeoToPixels(pt2d);
                 bottomY = Math.round(temp.getY());
                 rightX = Math.round(temp.getX());
-                width = Math.abs(rightX - leftX);
-                height = Math.abs(bottomY - topY);
                 if(scale>1e7)
                 {
 //                    if(width<1000)
@@ -665,6 +663,8 @@ return{
                     rightX = temp.getX();
                     //alert(rightX);
                 }
+                width = Math.abs(rightX - leftX);
+                height = Math.abs(bottomY - topY);
                 rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
             }
         } 
