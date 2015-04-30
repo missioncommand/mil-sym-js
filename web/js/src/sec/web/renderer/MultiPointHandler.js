@@ -646,15 +646,25 @@ return{
                 rightX = Math.round(temp.getX());
                 width = Math.abs(rightX - leftX);
                 height = Math.abs(bottomY - topY);
-                //Deutch 4-15-15
                 if(scale>1e7)
                 {
-                    if(width<1000)
-                        width=1000;
-                    if(height<1000)
-                        height=1000;
+//                    if(width<1000)
+//                        width=1000;
+//                    if(height<1000)
+//                        height=1000;
+                    //get widest point in the AOI
+                    var midLat=0;
+                    if(bottom<0 && top >0)
+                        midLat=0;
+                    else if(bottom<0 && top<0)
+                        midLat=top;
+                    else if(bottom>0 && top>0)
+                        midLat=bottom;
+                    
+                    temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
+                    rightX = temp.getX();
+                    //alert(rightX);
                 }
-                //end section
                 rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
             }
         } 
