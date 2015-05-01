@@ -2994,6 +2994,13 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     pt0 = savepoints[0];
                                     pt1 = savepoints[1];
                                 }
+                                else
+                                {
+                                    savepoints=new Array(2);
+                                    savepoints[0]=new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                                    savepoints[1]=new armyc2.c2sd.JavaLineArray.POINT2(pt1);
+                                    drawJaggies=false;
+                                }
                                 midpt = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
                                 var dist0 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(midpt, pt0);
                                 var dist1 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(midpt, pt1);
