@@ -172,9 +172,9 @@ sec.geo.kml.KmlRenderer = function()
             var elements = aext.getElements();
             var j = 0;
             for (j = 0; j < elements.size(); j++)
-            {
+            {  
                 var route = elements.get(j);
-                var aext2 = new sec.geo.shape.AExtObject(route);
+                var aext2 = new sec.geo.shape.AExtObject(route);                
                 sb.append(this.getPlacemarkKml(aext2, id, name, description, color));
             }
 
@@ -187,9 +187,9 @@ sec.geo.kml.KmlRenderer = function()
     this.getKml = function(ext, id, name, description, color) {
         try {
             var aext = this.getAExtObject(ext);
-            if (aext.getElements() !== null)
+            if (aext.getElements() !== null)            
                 return (this.getTrackKml(ext, id, name, description, color));
-
+            
             var sb = new sec.geo.utilities.StringBuilder();
             sb.append(this.KML_START);
             var idIndex = sb.indexOf(this.idField);
