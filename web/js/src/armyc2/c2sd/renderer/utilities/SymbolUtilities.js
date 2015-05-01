@@ -808,7 +808,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfAffiliation = function(symbolID){
         var retColor = null,
         basicSymbolID = this.getBasicSymbolID(symbolID);
-        var AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors;
+        //var AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors;
 
         // We can't get the fill color if there is no symbol id, since that also means there is no affiliation
         if((symbolID === null) || (symbolID===("")))
@@ -1250,7 +1250,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString = function(hexValue)
     {
-        var hexOriginal = new String(hexValue);
+        //var hexOriginal = new String(hexValue);
 
         var hexAlphabet = "0123456789ABCDEF";
 
@@ -1392,7 +1392,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMCSSpecificForceElement = function (ud){
-        if(isSASO(ud))
+        if(this.isSASO(ud))
         {
             return true;
         }
@@ -2241,7 +2241,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     returnVal = true;
                     break;
 				case SymbolDefTable.DRAW_CATEGORY_LINE:
-						if(sd.modifiers.indexOf(tgModifier + ".") > -1)
+						if(sd.modifiers.indexOf(armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE + ".") > -1)
 							returnVal = true;
 						break;
                 default:

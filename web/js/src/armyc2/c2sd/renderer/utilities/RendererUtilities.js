@@ -192,15 +192,15 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             div.style.fontWeight = fontStyle ? 'bold' : 'normal';
             div.style.fontSize = fontSize + 'pt';
             doc.body.appendChild(div);
-            var size = [div.offsetWidth, div.offsetHeight];
+            size = [div.offsetWidth, div.offsetHeight];
 
             doc.body.removeChild(div);
             div = null;
 
-            var textWidth = size[0],
-                    fullHeight = size[1],
-                    height = 0,
-                    descent =  0;
+            textWidth = size[0];
+            var fullHeight = size[1],
+                height = 0,
+                descent =  0;
 
             size = pastTextMeasurements[font];
             fullHeight = Math.round(fullHeight * 0.9);
@@ -457,7 +457,7 @@ return{
         else
         {
             var fontString = fontStyle + " " + fontSize + "pt " + fontName;
-            return measureTextWidthWithFontString(text, context, fontString);
+            return this.measureTextWidthWithFontString(text, context, fontString);
         }
 
     },

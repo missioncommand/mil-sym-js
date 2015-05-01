@@ -164,7 +164,7 @@ armyc2.c2sd.renderer.utilities.Color.getBlueFromColor = function(color)
 */
 armyc2.c2sd.renderer.utilities.Color.getColorFromHexString = function(hexValue)
 {
-    var hexOriginal = new String(hexValue);
+    //var hexOriginal = new String(hexValue);
 
     var hexAlphabet = "0123456789ABCDEF";
 
