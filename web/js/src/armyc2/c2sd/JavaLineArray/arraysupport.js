@@ -3034,6 +3034,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     dExtendLength = n * 5;
                                     pLinePoints[pointCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pt4, pt5, dExtendLength - dWidth, 0);
                                     pointCounter++;
+                                    if(pointCounter>=pLinePoints.length-1)
+                                        break;
                                     n++;
                                 }
                             pLinePoints[pointCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt1);
