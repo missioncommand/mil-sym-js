@@ -296,9 +296,23 @@ sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, 
         var latlons = controlPoints.split (" ");
         var numberOfPoints = latlons.length;
         
-        //ensure enough values in distance and altitude arrays for the number of points M. Deutch 4-15-15
+//        var numAM=attributes.AM_DISTANCE.size();
+//        var numX=attributes.X_ALTITUDE_DEPTH.size();
+//        var lastAlt=attributes.X_ALTITUDE_DEPTH.get(numX-1);
+//        var lastWidth=attributes.AM_DISTANCE.get(numAM-1);
+//        var delta=2*(numberOfPoints-1)-numAM;   //one width per segment
+//        if(delta>0)
+//            for(var j=0;j<delta;j++)
+//                attributes.AM_DISTANCE.add(lastWidth);
+//
+//        delta=2*(numberOfPoints-1)-numX;    //two alts per segment
+//        if(delta>0)
+//            for(var j=0;j<delta;j++)
+//                attributes.X_ALTITUDE_DEPTH.add(lastAlt);
+        
         var numAM=attributes.AM_DISTANCE.size();
         var numX=attributes.X_ALTITUDE_DEPTH.size();
+        var nextToLastAlt=attributes.X_ALTITUDE_DEPTH.get(numX-2);
         var lastAlt=attributes.X_ALTITUDE_DEPTH.get(numX-1);
         var lastWidth=attributes.AM_DISTANCE.get(numAM-1);
         var delta=2*(numberOfPoints-1)-numAM;   //one width per segment
@@ -307,9 +321,13 @@ sec.web.renderer.Shape3DHandler.buildTrack = function (controlPoints, id, name, 
                 attributes.AM_DISTANCE.add(lastWidth);
 
         delta=2*(numberOfPoints-1)-numX;    //two alts per segment
-        if(delta>0)
-            for(var j=0;j<delta;j++)
-                attributes.X_ALTITUDE_DEPTH.add(lastAlt);
+        var j=0;
+        while(j<delta)
+        {
+            attributes.X_ALTITUDE_DEPTH.add(nextToLastAlt);
+            attributes.X_ALTITUDE_DEPTH.add(lastAlt);
+            j+=2;
+        }
         //end section
         
         if (numberOfPoints >= 2) {

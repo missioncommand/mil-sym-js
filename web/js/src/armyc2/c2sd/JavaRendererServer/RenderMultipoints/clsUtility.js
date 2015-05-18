@@ -465,7 +465,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
     },
     RemoveDuplicatePoints:function (tg) {
         try {
-            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.isAutoshape (tg)) return ;
+            //if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.isAutoshape (tg)) return ;
+            switch (tg.get_LineType()) {
+                case 22221000:
+                case 22222000:
+                case 22223000:
+                case 22224000:
+                case 22225000:
+                    break;
+                default:
+                    if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.isAutoshape (tg)) return;
+            }
             switch (tg.get_LineType ()) {
                 case 21700000:  //these are channel types
                 case 21710000:
@@ -500,11 +510,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j));
                 if (ptCurrent.x === ptLast.x && ptCurrent.y === ptLast.y) {
-                    //if (tg.Pixels.size () > 2) 
                     if (tg.Pixels.size () > minSize) 
                     {
                         tg.Pixels.remove (j);
                         tg.LatLongs.remove (j);
+                        j=1;
                     }
                 }
             }
