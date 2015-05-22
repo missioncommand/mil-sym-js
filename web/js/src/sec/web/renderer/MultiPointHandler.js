@@ -1201,6 +1201,8 @@ return{
             fillColor = null,
             lineColor = null,
             lineWidth = 0,
+			textColor = null,
+			textBackgroundColor = null,
             symbolFillIDs = null,
             symbolFillIconSize = null,
             altMode = null;
@@ -1399,6 +1401,7 @@ return{
 			else
 			{
 				symbol.setTextColor(symbol.getLineColor());
+				textColor = symbol.getLineColor().toHexString(false);
 			}
 			if (textBackgroundColor !== null) {
                 symbol.setTextBackgroundColor(SymbolUtilities.getColorFromHexString(textBackgroundColor));
@@ -1783,6 +1786,7 @@ return{
             var tis = textInfos;
             var ti = null;
             var angle = 0;
+			var tbm = RendererSettings.getTextBackgroundMethod();
             var outlineWidth = RendererSettings.getTextOutlineWidth();
             var mpFont = RendererSettings.getModifierFont();
             var outlineStyle = RendererUtilities.getIdealOutlineColor(lineColor);
@@ -1841,13 +1845,33 @@ return{
                     ctx.rotate(angle*Math.PI/180);
                 }
 
-                if (outlineWidth > 0)
-                {
-                    ctx.strokeText(ti.text,0,0);
-                    //ti.strokeText(ctx);
-                }
+				switch(tbm)
+				{
+					case RendererSettings.TextBackgroundMethod_OUTLINE:
+					case RendererSettings.TextBackgroundMethod_OUTLINE_QUICK:
+					case RendererSettings.TextBackgroundMethod_COLORFILL:
+						if (outlineWidth > 0)
+						{
+							ctx.strokeText(ti.text,0,0);
+							ctx.fillText(ti.text,0,0);
+						}
+						break;
+					case RendererSettings.TextBackgroundMethod_COLORFILL:
+						ctx.fillStyle = outlineStyle;
+						var rectFill = ti.getTextOutlineBounds();
+						var location = ti.getLocation();
+						rectFill.shift(-offsetX,-offsetY);
+						rectFill.fill(ctx);
+						ctx.fillStyle = lineColor;
+						ctx.fillText(ti.text,0,0);
+						break;
+					default:
+						ctx.fillText(ti.text,0,0);
+						break;
+					
+				}
                 
-                ctx.fillText(ti.text,0,0);
+                
                 
                 //TEST: stroke to see draw point of text
                 //ctx.strokeRect(0,0,1,1);
