@@ -4,21 +4,21 @@ android.graphics.Path = function() {
     this.pts = new java.util.ArrayList();
 };
 android.graphics.Path.prototype.lineTo = function(x, y) {
-    if (this.pts.size() > 0)
-    {
-        var lastPt = this.pts.get(this.pts.size() - 1);
-        if (lastPt.x === x && lastPt.y === y)
-            return;
-    }
+//    if (this.pts.size() > 0)
+//    {
+//        var lastPt = this.pts.get(this.pts.size() - 1);
+//        if (lastPt.x === x && lastPt.y === y)
+//            return;
+//    }
     this.pts.add(new armyc2.c2sd.JavaLineArray.POINT2(x, y));
 };
 android.graphics.Path.prototype.moveTo = function(x, y) {
-    if (this.pts.size() > 0)
-    {
-        var lastPt = this.pts.get(this.pts.size() - 1);
-        if (lastPt.x === x && lastPt.y === y)
-            return;
-    }
+//    if (this.pts.size() > 0)
+//    {
+//        var lastPt = this.pts.get(this.pts.size() - 1);
+//        if (lastPt.x === x && lastPt.y === y)
+//            return;
+//    }
     this.pts.add(new armyc2.c2sd.JavaLineArray.POINT2(x, y));
 };
 android.graphics.Path.prototype.curveTo = function(x1, y1, x2, y2, x3, y3) {

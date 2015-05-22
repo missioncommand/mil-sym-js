@@ -1622,8 +1622,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pArcLinePoints = new Array(numarcpts);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pArcLinePoints);
                     increment = (endangle - startangle) / (numarcpts - 1);
-                    C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
-                    C.y = Math.floor((e.y - (dRadius / length) * (a.y - e.y)));
+                    if(dRadius !== 0 && length !== 0)
+                    {
+                        C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
+                        C.y = Math.floor((e.y - (dRadius / length) * (a.y - e.y)));
+                    }
+                    else
+                    {
+                        C.x=e.x;
+                        C.y=e.y;
+                    }
                     for (j = 0; j < numarcpts; j++) {
                         pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
                         pArcLinePoints[j].y = Math.floor((dRadius * Math.sin(startangle + j * increment)));
