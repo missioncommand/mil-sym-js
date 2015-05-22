@@ -769,6 +769,7 @@ return{
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, bboxCoords);
             shapes = mSymbol.getSymbolShapes();
             modifiers = mSymbol.getModifierShapes();
+            var textColor = mSymbol.getTextColor().toKMLHexString();
             if (format === 1) 
             {
                 jsonOutput = "{\"type\":\"symbol\",";
@@ -778,10 +779,8 @@ return{
             } 
             else if (format === 0) 
             {
-                var textColor = null;
-                if(symbolCode.charAt(0) === 'G')
+                if(symbolCode.charAt(0) === 'G' && textColor===null)
                 {
-                    textColor = mSymbol.getLineColor().toKMLHexString();
                     if(textColor === "#FF000000")
                         textColor = "#FFFFFFFF";
                 }
@@ -816,7 +815,7 @@ return{
             }
             else if (format === 2) 
             {
-                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize);
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, textColor);
                 jsonContent.properties.id = id;
                 jsonContent.properties.name = name;
                 jsonContent.properties.description = description;
@@ -1056,12 +1055,12 @@ return{
             modifiers = mSymbol.getModifierShapes();
             var normalize = false;
             
+            var textColor = mSymbol.getLineColor().toKMLHexString();
             if (format === 0) 
             {
-                var textColor = null;
                 if(symbolCode.charAt(0) === 'G')
                 {
-                    textColor = mSymbol.getLineColor().toKMLHexString();
+                    //textColor = mSymbol.getLineColor().toKMLHexString();
                     if(textColor === "#FF000000")
                         textColor = "#FFFFFFFF";
                 }
@@ -1079,7 +1078,7 @@ return{
             }
             else if (format === 2) 
             {
-                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize);
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, textColor);
                 //set id and any other properties
                 jsonContent.properties.id = id;
                 jsonContent.properties.name = name;
@@ -1556,7 +1555,7 @@ return{
         }
         return jstr;
     },
-    GeoJSONize: function(shapes, modifiers, ipc, normalize)
+    GeoJSONize: function(shapes, modifiers, ipc, normalize, textColor)
     {
         var featureCollection = {"type":"FeatureCollection","features":[],"properties":{}};
         try
@@ -1575,7 +1574,7 @@ return{
                 //assume kml labels will be centered on coordinate (as per google earth)
                 //sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
 
-                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize);
+                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize, textColor);
                 if(labelsToAdd)
                 {
                     featureCollection.features.push(labelsToAdd);
@@ -2610,7 +2609,7 @@ return{
         }
         return JSONed;
     },
-    LabelToGeoJSONString: function(shapeInfo, ipc, normalize)
+    LabelToGeoJSONString: function(shapeInfo, ipc, normalize, textColor)
     {
         var JSONed = "";
         var fillColor = null;
@@ -2654,6 +2653,7 @@ return{
             feature.properties.labelXOffset = 0;
             feature.properties.labelYOffset = 0;
             feature.properties.labelOutlineColor = RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
+            feature.properties.fontColor = textColor;
             feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
             feature.properties.rotation = angle;//rt,cm
             feature.properties.angle = angle;//rt,cm
