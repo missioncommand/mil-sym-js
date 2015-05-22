@@ -157,6 +157,8 @@ return{
     AZIMUTH: "azimuth",//AN
     FILL_COLOR: "fillColor",
     LINE_COLOR: "lineColor",
+	TEXT_COLOR: "textColor",
+    TEXT_BACKGROUND_COLOR: "textBackgroundColor",
     LINE_THICKNESS: "lineThickness",
     
     SYMBOL_FILL_ICON_SIZE: "symbolFillIconSize",
@@ -1330,6 +1332,16 @@ return{
                 lineColor = modifiers[MilStdAttributes.LineColor];
             else if (modifiers.lineColor)
                 lineColor = modifiers.lineColor;
+			
+			if(modifiers[MilStdAttributes.TextColor])
+                textColor = modifiers[MilStdAttributes.TextColor];
+            else if (modifiers.textColor)
+                textColor = modifiers.fillColor;
+            
+            if(modifiers[MilStdAttributes.TextBackgroundColor])
+                textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
+            else if (modifiers.textBackgroundColor)
+                textBackgroundColor = modifiers.textBackgroundColor;
 
             if(modifiers[MilStdAttributes.LineWidth])
                 lineWidth = modifiers[MilStdAttributes.LineWidth];
@@ -1373,12 +1385,29 @@ return{
             symbol.setUseDashArray(useDashArray);
             if (fillColor !== null) {
                 symbol.setFillColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(fillColor));
-            } else {
+            } 
+			else 
+			{
                 symbol.setFillColor(null);
             }
             if (lineColor !== null) {
-                symbol.setLineColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(lineColor));
+                symbol.setLineColor(SymbolUtilities.getColorFromHexString(lineColor));
             }
+			if (textColor !== null) {
+                symbol.setTextColor(SymbolUtilities.getColorFromHexString(textColor));
+            }
+			else
+			{
+				symbol.setTextColor(symbol.getLineColor());
+			}
+			if (textBackgroundColor !== null) {
+                symbol.setTextBackgroundColor(SymbolUtilities.getColorFromHexString(textBackgroundColor));
+            }
+			else
+			{
+				textBackgroundColor = RendererUtilities.getIdealOutlineColor(textColor);
+				symbol.setTextBackgroundColor(SymbolUtilities.getColorFromHexString(textBackgroundColor));
+			}
             if (lineWidth > 0) {
                 symbol.setLineWidth(lineWidth);
             }

@@ -54,6 +54,7 @@
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
             //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE] = "5";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
             //symbol.symbolicon A
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
@@ -62,6 +63,14 @@
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
             //*/
             //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+			
+			//attributes
+			
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#00FF00";
+			
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextBackgroundColor] = "#00FF00";
             
             return modifiers;
         }
@@ -327,6 +336,7 @@
 	function preload()
 	{
             var msi = armyc2.c2sd.renderer.MilStdIconRenderer;
+			var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
             var symStd = 1;//2525C, 0=2525B
             //populate sybol list boxes
             var lbTG = document.getElementById("lbTG");
@@ -374,8 +384,14 @@
             }//*/
 
 
-            armyc2.c2sd.renderer.utilities.RendererSettings.setTextOutlineWidth(1);
-			armyc2.c2sd.renderer.utilities.RendererSettings.setSymbologyStandard(1);
+            RendererSettings.setTextOutlineWidth(1);
+			RendererSettings.setSymbologyStandard(1);
+			//RendererSettings.setSymbologyStandard(0);
+			
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_NONE);
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_COLORFILL);
+			RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE);
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE_QUICK);
 
 	}
 </script>

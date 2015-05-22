@@ -95,12 +95,12 @@ return{
 	
         var pixel = null,//point to center symbol on.
             basicID = SymbolUtilities.getBasicSymbolID(symbolID),
-            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
+            symStd = modifiers[MilStdAttributes.SymbologyStandard],
             ufli = UnitFontLookup.getUnitLookup(basicID, symStd),
             strUnitFont = "";
             
         
-        var intFill = UnitFontLookup.getFillCode(symbolID),
+        var intFill = UnitFontLookup.getFillCode(symbolID, symStd),
             intFrame = UnitFontLookup.getFrameCode(symbolID, intFill, symStd),
             fillColor = SymbolUtilities.getFillColorOfAffiliation(symbolID).toHexString(false),
             lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false),
@@ -133,8 +133,26 @@ return{
                 case 'S':
                 case 'G':
                 case 'M':
-                    intFrameAssume = intFill + 2;
-                    break;
+                    if(symbolID.charAt(2) === 'U' && 
+							symbolID.substring(4, 6) === "WM")
+					{
+						if(symbolID.charAt(3) != 'A')
+						{
+							intFill++;
+							fill = String.fromCharCode(intFill);
+						}
+						intFrameAssume = intFill - 1;
+						intFrame = -1;
+						frame = null;
+					}
+					else
+					{
+						intFrame = intFill + 2;
+						intFrameAssume = intFill + 1;
+						frame = String.fromCharCode(intFrame);
+					}
+					
+					break;
             }
             if(intFrameAssume > 0)
                 frameAssume = String.fromCharCode(intFrameAssume);
@@ -195,7 +213,37 @@ return{
         if(modifiers[MilStdAttributes.Alpha] !== undefined)
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
-        }        
+        } 
+
+		//Just for sea mines
+		if(symbolID.charAt(2) == 'U' &&
+						symbolID.substring(4, 6) === "WM")
+		{
+			if(symStd == RendererSettings.Symbology_2525Bch2_USAS_13_14)
+			{
+				if(modifiers[MilStdAttributes.LineColor] !== undefined)
+				{
+					color1 = lineColor;
+				}
+				//color2 = fillColor;
+			}
+			else if(symStd == RendererSettings.Symbology_2525C)
+			{
+				if(modifiers[MilStdAttributes.LineColor] !== undefined)
+				{
+					fillColor = lineColor;
+				}
+			}
+			
+		}
+		else if(symbolID.charAt(2) == 'S' &&
+			symbolID.charAt(4) == 'O')//own track, //SUSPO
+		{
+			if(modifiers[MilStdAttributes.LineColor] !== undefined)
+			{
+				fillColor = modifiers[MilStdAttributes.LineColor];
+			}
+		}	//*/	
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="Determine font size">
@@ -279,6 +327,13 @@ return{
             {
                 ctx.globalAlpha = alpha;
             }
+			
+			if(frameAssume !== null && frameAssume !== ""  && intFrame === -1)
+            {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillText(frameAssume, x, y);
+				frameAssume = null;
+            }
 
             if(fill !== null && fill !== "")
             {
@@ -286,16 +341,16 @@ return{
                 ctx.fillText(fill,x,y);
             }
 
+			if(frameAssume !== null && frameAssume !== "")
+            {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillText(frameAssume, x, y);
+            }
+			
             if(frame !== null && frame !== "")
             {
                 ctx.fillStyle = lineColor;
                 ctx.fillText(frame, x, y);
-            }
-            
-            if(frameAssume !== null && frameAssume !== "")
-            {
-                ctx.fillStyle = "#ffffff";
-                ctx.fillText(frameAssume, x, y);
             }
 
             if(symbol2 !== null && symbol2 !== "")
@@ -387,7 +442,7 @@ return{
             ctx = null,
             offsetX = 0,
             offsetY = 0,
-            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
+            symStd = modifiers[MilStdAttributes.SymbologyStandard];
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
@@ -1582,6 +1637,9 @@ return{
             echelonText = SymbolUtilities.getEchelonText(echelon),
             amText = SymbolUtilities.getUnitAffiliationModifier(symbolID, symStd);
     
+	
+		var textColor = null,
+			textBackgroundColor = null;
     
         //make room for echelon & mobility.
         if(modifiers.Q === undefined)
@@ -1620,7 +1678,7 @@ return{
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
+        var symStd = modifiers[MilStdAttributes.SymbologyStandard];
         
         //Affiliation Modifier being drawn as a display modifier
         var affiliationModifier = null;
@@ -2145,13 +2203,18 @@ return{
 
                 if(render === true)
                 {
+					if(modifiers[MilStdAttributes.TextColor])
+						textColor = modifiers[MilStdAttributes.TextColor];
+					if(modifiers[MilStdAttributes.TextBackgroundColor])
+						textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
+					
                     var buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
                     var ctx = buffer.getContext('2d');
 
                     //draw original icon with potential modifiers.
                     ctx.drawImage(ii.getImage(),imageBoundsOld.getX(),imageBoundsOld.getY());
 
-                    this.renderText(ctx,tiArray);
+                    this.renderText(ctx,tiArray,textColor,textBackgroundColor);
                     
                 }
 
@@ -2206,7 +2269,7 @@ return{
         var pixel = null;//point to center symbol on.
         var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
         var strSPFont = "";
-        var symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
+        var symStd = modifiers[MilStdAttributes.SymbologyStandard];
         var keepUnitRatio = true;
         var intFill = -1;
         var intFrame = -1;
@@ -2546,7 +2609,7 @@ return{
             y = 0,
             x2 = 0,
             y2 = 0,
-            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
+            symStd = modifiers[MilStdAttributes.SymbologyStandard],
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
             labelWidth = 0,
@@ -2559,6 +2622,9 @@ return{
             bounds = ii.getSymbolBounds().clone(),
             imageBounds = ii.getImageBounds().clone(),
             centerPoint = ii.getCenterPoint().clone();
+			
+		var textColor = overrideColor,
+			textBackgroundColor = null;
     
         centerPoint = new SO.Point(Math.round(ii.getCenterPoint().getX()),Math.round(ii.getCenterPoint().getY()));
     
@@ -2706,11 +2772,27 @@ return{
                     byLabelHeight = true;
         }
 
-        if(basicID ===("G*G*GPH---****X") ||
-                basicID ===("G*G*GPPC--****X") ||
+        if(basicID ===("G*G*GPPC--****X") ||
                 basicID ===("G*G*GPPD--****X"))
         {
-            if(modifiers.H !== undefined)
+            if(modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1] !== undefined)
+            {
+                strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
+                ti = new TextInfo(strText,0,0,textInfoContext);
+                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                //One modifier symbols and modifier goes in center
+                x = bounds.x + (bounds.width * 0.5);
+                x = x - (labelWidth * 0.5);
+                y = bounds.y + (bounds.height * 0.4);
+                y = y + (labelHeight * 0.5);
+                
+                ti.setLocation(Math.round(x),Math.round(y));
+                arrMods.push(ti);
+            }
+        }
+		else if(basicID === "G*G*GPH---****X")       
+        {
+            if(modifiers[ModifiersTG.H_ADDITIONAL_INFO_1] !== undefined)
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new TextInfo(strText,0,0,textInfoContext);
@@ -3108,8 +3190,13 @@ return{
                                 symbolBounds.getWidth(), symbolBounds.getHeight(),
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
+								
+				if(modifiers[MilStdAttributes.TextColor])
+					textColor = modifiers[MilStdAttributes.TextColor];
+				if(modifiers[MilStdAttributes.TextBackgroundColor])
+					textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
 
-                this.renderText(ctx,arrMods, overrideColor);
+                this.renderText(ctx,arrMods, textColor, textBackgroundColor);
 
                 //draw DOM arrow
                 if(domBounds !== null)
@@ -3174,7 +3261,7 @@ return{
             y = 0,
             x2 = 0,
             y2 = 0,
-            symStd = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard(),
+            symStd = modifiers[MilStdAttributes.SymbologyStandard],
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
             labelWidth = 0,
@@ -3187,6 +3274,9 @@ return{
             bounds = ii.getSymbolBounds().clone(),
             imageBounds = ii.getImageBounds().clone(),
             centerPoint = ii.getCenterPoint().clone();
+			
+		var textColor = overrideColor,
+			textBackgroundColor = null;
     
         centerPoint = new SO.Point(Math.round(ii.getCenterPoint().getX()),Math.round(ii.getCenterPoint().getY()));
     
@@ -3396,7 +3486,12 @@ return{
                                 symbolBounds.getX(),symbolBounds.getY(),
                                 symbolBounds.getWidth(), symbolBounds.getHeight());
 
-                this.renderText(ctx,arrMods, overrideColor);
+				if(modifiers[MilStdAttributes.TextColor])
+					textColor = modifiers[MilStdAttributes.TextColor];
+				if(modifiers[MilStdAttributes.TextBackgroundColor])
+					textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
+					
+                this.renderText(ctx,arrMods, textColor, textBackgroundColor);
             }
             newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
@@ -3715,7 +3810,7 @@ return{
      * @param {type} color a hex string "#000000"
      * @returns {void}
      */
-    renderText: function(ctx, tiArray, color)
+    renderText: function(ctx, tiArray, color, backgroundColor)
     {
         ctx.lineCap = "butt";
         ctx.lineJoin = "miter";
@@ -3730,6 +3825,7 @@ return{
         var size = tiArray.length,
             tempShape = null,
             fillStyle = "#000000",
+			outlineStyle = null;
             tbm = RendererSettings.getTextBackgroundMethod(),
             outlineWidth = RendererSettings.getTextOutlineWidth();
     
@@ -3742,7 +3838,15 @@ return{
             fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
         }   
 
-        var outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
+		if(backgroundColor)
+		{
+			outlineStyle = backgroundColor;
+		}
+		else
+		{
+			outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
+		}
+        
 
         if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
         {    
@@ -3766,7 +3870,37 @@ return{
                 tempShape.fillText(ctx);
             }
         }
-        else
+		else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)
+		{
+			//draw text outline
+            if(outlineWidth > 0)
+            {
+                ctx.fillStyle = outlineStyle;
+                for(var i=0; i<size;i++)
+                {
+                    tempShape = tiArray[i];
+					tempShape.getTextOutlineBounds().fill(ctx);
+                }
+            }
+            //draw text
+            ctx.fillStyle = fillStyle;
+            for(var j=0; j<size;j++)
+            {
+                tempShape = tiArray[j];
+                tempShape.fillText(ctx);
+            }
+		}
+		else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
+		{
+			//draw text
+            ctx.fillStyle = fillStyle;
+            for(var j=0; j<size;j++)
+            {
+                tempShape = tiArray[j];
+                tempShape.fillText(ctx);
+            }
+		}
+		else// if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE)
         {
             if(outlineWidth > 0)
                 ctx.lineWidth = (outlineWidth * 2) + 1;

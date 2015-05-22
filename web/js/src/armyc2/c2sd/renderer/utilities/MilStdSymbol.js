@@ -32,6 +32,8 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._LineWidth = 3;
     this._LineColor = null;
     this._FillColor = null;
+	this._TextColor = null;
+    this._TextBackgroundColor = null;
     this._Rotation = 0.0;
     this._Outline = false;
     this._OutLineColor = null;
@@ -362,6 +364,36 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getLineColor = function()
     {
         return this._LineColor;
+    };
+	
+	/**
+     * @param {armyc2.c2sd.renderer.utilities.Color} value
+     */
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setTextColor = function(value)
+    {
+        this._TextColor = value;
+    };
+    /**
+     * @return {armyc2.c2sd.renderer.utilities.Color}
+     */
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getTextColor = function()
+    {
+        return this._TextColor;
+    };
+	
+		/**
+     * @param {armyc2.c2sd.renderer.utilities.Color} value
+     */
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setTextBackgroundColor = function(value)
+    {
+        this._TextBackgroundColor = value;
+    };
+    /**
+     * @return {armyc2.c2sd.renderer.utilities.Color}
+     */
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getTextBackgroundColor = function()
+    {
+        return this._TextBackgroundColor;
     };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setOutlineColor = function(value)

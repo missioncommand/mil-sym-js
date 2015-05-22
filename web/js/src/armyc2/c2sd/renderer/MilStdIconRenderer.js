@@ -75,7 +75,7 @@ return{
             modifiers = {};
         }
         var symStd = 0;
-        if(modifiers[MilStdAttributes.SymbologyStandard])
+        if(modifiers[MilStdAttributes.SymbologyStandard] !== null && modifiers[MilStdAttributes.SymbologyStandard] !== undefined)
         {
             symStd = modifiers[MilStdAttributes.SymbologyStandard];
         }

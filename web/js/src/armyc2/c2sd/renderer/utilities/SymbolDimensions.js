@@ -98,6 +98,18 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 839:
                     rect = new Rectangle(0,-5,64.7,58);//y=-10
                     break;
+			case 2059:
+			case 2062:
+			case 2064:
+			case 2073:
+			case 2075:
+			case 2084:
+			case 2086:
+			case 2094:
+			case 2115:
+			case 2121:
+                    rect = new Rectangle(0,-5,35,43);//y=-10
+                    break;			
             default:
                     rect = new Rectangle(0,0,65,65);
                     break;
