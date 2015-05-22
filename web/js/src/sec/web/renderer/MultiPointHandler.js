@@ -1615,6 +1615,7 @@ return{
         var labels = [];
         var labelBounds = null;
         var unionBounds = null;
+		var rotatedBounds = null;
         try
         {
 
@@ -1648,7 +1649,7 @@ return{
                 if(degrees !== 0)
                 {
                     bounds = this.GetRotatedRectangleBounds(bounds, tiTemp.getLocation(), degrees);
-                    tiTemp.bounds = bounds;
+                    rotatedBounds = bounds;
                     tiTemp.angle = degrees;
                 }
                 
@@ -1656,9 +1657,9 @@ return{
                 {
                     labels.push(tiTemp);
                     if(labelBounds === null)
-                        labelBounds = tiTemp.getTextOutlineBounds();
+                        labelBounds = rotatedBounds;
                     else
-                        labelBounds.union(tiTemp.getTextOutlineBounds());
+                        labelBounds.union(rotatedBounds);
                 }
                 
                 
@@ -1849,18 +1850,16 @@ return{
 				{
 					case RendererSettings.TextBackgroundMethod_OUTLINE:
 					case RendererSettings.TextBackgroundMethod_OUTLINE_QUICK:
-					case RendererSettings.TextBackgroundMethod_COLORFILL:
 						if (outlineWidth > 0)
 						{
 							ctx.strokeText(ti.text,0,0);
 							ctx.fillText(ti.text,0,0);
 						}
 						break;
-					case RendererSettings.TextBackgroundMethod_COLORFILL:
+					case RendererSettings.TextBackgroundMethod_COLORFILL: 
 						ctx.fillStyle = outlineStyle;
 						var rectFill = ti.getTextOutlineBounds();
-						var location = ti.getLocation();
-						rectFill.shift(-offsetX,-offsetY);
+						rectFill.setLocation(0 - outlineWidth, 0 - Math.round(rectFill.getHeight()/2));
 						rectFill.fill(ctx);
 						ctx.fillStyle = lineColor;
 						ctx.fillText(ti.text,0,0);
