@@ -494,6 +494,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         H2 = AM[0].toString();
                         tg.set_H2(H2);
                     }
+                    if(H2 !== null && !H2.isEmpty())
                     for (j = 0; j < tg.LatLongs.size(); j++) {
                         if (tg.LatLongs.size() > j) {
                             if (!Double.isNaN(Double.parseDouble(H2))) {
