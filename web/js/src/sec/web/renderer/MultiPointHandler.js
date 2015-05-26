@@ -769,22 +769,21 @@ return{
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, bboxCoords);
             shapes = mSymbol.getSymbolShapes();
             modifiers = mSymbol.getModifierShapes();
-            var textColor = mSymbol.getTextColor().toKMLHexString();
-            if (format === 1) 
+            
+			var textColor = mSymbol.getTextColor();
+			var textBackgroundColor = mSymbol.getTextBackgroundColor();
+			var hexTextColor = null;
+			var hexTextBackgroundColor = null;
+			
+            if (format === 0) //KML
             {
-                jsonOutput = "{\"type\":\"symbol\",";
-                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
-                jsonOutput += jsonContent;
-                jsonOutput += "}";
-            } 
-            else if (format === 0) 
-            {
+				hexTextColor = textColor.toKMLHexString();
                 if(symbolCode.charAt(0) === 'G' && textColor===null)
                 {
                     if(textColor === "#FF000000")
                         textColor = "#FFFFFFFF";
                 }
-                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor);
+                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
                 
                 //generate image fill kml if we have symbolfillids or symbollineids
                 if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined) 
@@ -813,9 +812,14 @@ return{
                 
                 jsonOutput = jsonContent;
             }
-            else if (format === 2) 
+            else if (format === 2) //GeoJSON
             {
-                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, textColor);
+				if(textColor)
+					hexTextColor = textColor.toHexString(false);
+				if(textBackgroundColor)
+					hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+				
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, hexTextColor, hexTextBackgroundColor);
                 jsonContent.properties.id = id;
                 jsonContent.properties.name = name;
                 jsonContent.properties.description = description;
@@ -823,10 +827,22 @@ return{
                 //set id and any other properties
                 jsonOutput = JSON.stringify(jsonContent);
             }
-            else if (format === 3 || format === 4)//render to canvas
+            else if (format === 3 || format === 4)//render to canvas/dataURL
             {
+				if(textColor)
+					hexTextColor = textColor.toHexString(false);
+				if(textBackgroundColor)
+					hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+				
                 //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format);
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor);
+            }
+			else if (format === 1) //deprecated
+            {
+                jsonOutput = "{\"type\":\"symbol\",";
+                jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
+                jsonOutput += jsonContent;
+                jsonOutput += "}";
             }
         } 
         catch (exc) 
@@ -1055,16 +1071,22 @@ return{
             modifiers = mSymbol.getModifierShapes();
             var normalize = false;
             
-            var textColor = mSymbol.getLineColor().toKMLHexString();
-            if (format === 0) 
+			var textColor = mSymbol.getTextColor();
+			var textBackgroundColor = mSymbol.getTextBackgroundColor();
+			var hexTextColor = null;
+			var hexTextBackgroundColor = null;
+			
+            
+            if (format === 0) //KML
             {
+				hexTextColor = textColor.toKMLHexString();
                 if(symbolCode.charAt(0) === 'G')
                 {
                     //textColor = mSymbol.getLineColor().toKMLHexString();
                     if(textColor === "#FF000000")
                         textColor = "#FFFFFFFF";
                 }
-                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor);
+                jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
 
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"]) 
                 {
@@ -1076,9 +1098,14 @@ return{
                 }//*/
                 jsonOutput = jsonContent;
             }
-            else if (format === 2) 
+            else if (format === 2) //GeoJSON
             {
-                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, textColor);
+				if(textColor)
+					hexTextColor = textColor.toHexString(false);
+				if(textBackgroundColor)
+					hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+			
+                jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, hexTextColor, hexTextBackgroundColor);
                 //set id and any other properties
                 jsonContent.properties.id = id;
                 jsonContent.properties.name = name;
@@ -1086,12 +1113,18 @@ return{
                 jsonContent.properties.symbolID = symbolCode;
                 jsonOutput = JSON.stringify(jsonContent);
             }
-            else if (format === 3 || format === 4)//render to canvas
+            else if (format === 3 || format === 4)//render to canvas/dataURL
             {
+				
+				if(textColor)
+					hexTextColor = textColor.toHexString(false);
+				if(textBackgroundColor)
+					hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+				
                 //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format);
+                jsonOutput = sec.web.renderer.MultiPointHandler.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor);
             }
-            else if (format === 1) 
+            else if (format === 1) //deprecated
             {
                 jsonOutput = ("{\"type\":\"symbol\",");
                 jsonContent = sec.web.renderer.MultiPointHandler.JSONize(shapes, modifiers, ipc, normalize);
@@ -1337,7 +1370,7 @@ return{
 			if(modifiers[MilStdAttributes.TextColor])
                 textColor = modifiers[MilStdAttributes.TextColor];
             else if (modifiers.textColor)
-                textColor = modifiers.fillColor;
+                textColor = modifiers.textColor;
             
             if(modifiers[MilStdAttributes.TextBackgroundColor])
                 textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
@@ -1555,7 +1588,7 @@ return{
         }
         return jstr;
     },
-    GeoJSONize: function(shapes, modifiers, ipc, normalize, textColor)
+    GeoJSONize: function(shapes, modifiers, ipc, normalize, textColor, textBackgroundColor)
     {
         var featureCollection = {"type":"FeatureCollection","features":[],"properties":{}};
         try
@@ -1574,7 +1607,7 @@ return{
                 //assume kml labels will be centered on coordinate (as per google earth)
                 //sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
 
-                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize, textColor);
+                var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToGeoJSONString(tempModifier, ipc, normalize, textColor, textBackgroundColor);
                 if(labelsToAdd)
                 {
                     featureCollection.features.push(labelsToAdd);
@@ -1588,7 +1621,7 @@ return{
         }
         return featureCollection;
     },
-    GeoCanvasize: function(shapes, modifiers, ipc, normalize, format)
+    GeoCanvasize: function(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor)
     {
         if(textInfoBuffer===null)
         {
@@ -1691,7 +1724,7 @@ return{
         }
         //if(renderToCanvas)
         //{
-            var geoCanvas = this.RenderShapeInfoToCanvas(paths,labels,unionBounds,geoCoordTL, geoCoordBR, format);
+            var geoCanvas = this.RenderShapeInfoToCanvas(paths,labels,unionBounds,geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor);
             return geoCanvas;
         //}
         //else
@@ -1705,10 +1738,12 @@ return{
      * @param {type} geoTL
      * @param {type} geoBR
      * @param {type} format 3 for canvas, 4 for image as dataurl
+	 * @param {String} hexTextColor "#FFFFFF"
+	 * @param {String} hexTextBackgroundColor "#FFFFFF"
      * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
      *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
      */
-    RenderShapeInfoToCanvas: function(paths, textInfos, bounds, geoTL, geoBR, format)
+    RenderShapeInfoToCanvas: function(paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor)
     {
         var buffer = null;
         if(format === 4)
@@ -1789,9 +1824,14 @@ return{
 			var tbm = RendererSettings.getTextBackgroundMethod();
             var outlineWidth = RendererSettings.getTextOutlineWidth();
             var mpFont = RendererSettings.getModifierFont();
-            var outlineStyle = RendererUtilities.getIdealOutlineColor(lineColor);
+
+			//set text color and outline/fill color
+			var htbc = hexTextBackgroundColor || RendererUtilities.getIdealOutlineColor(hexTextColor || lineColor);
+			var htc = hexTextColor || lineColor;
+			ctx.fillStyle = htc;
+			var outlineStyle = htbc;
+            
 			ctx.globalAlpha = 1;
-            ctx.fillStyle = lineColor;
             ctx.lineCap = "butt";
             ctx.lineJoin = "miter";
             ctx.miterLimit = 3;
@@ -1856,11 +1896,11 @@ return{
 						}
 						break;
 					case RendererSettings.TextBackgroundMethod_COLORFILL: 
-						ctx.fillStyle = outlineStyle;
+						ctx.fillStyle = htbc;
 						var rectFill = ti.getTextOutlineBounds();
 						rectFill.setLocation(0 - outlineWidth, 0 - Math.round(rectFill.getHeight()/2));
 						rectFill.fill(ctx);
-						ctx.fillStyle = lineColor;
+						ctx.fillStyle = htc;
 						ctx.fillText(ti.text,0,0);
 						break;
 					default:
@@ -2609,7 +2649,7 @@ return{
         }
         return JSONed;
     },
-    LabelToGeoJSONString: function(shapeInfo, ipc, normalize, textColor)
+    LabelToGeoJSONString: function(shapeInfo, ipc, normalize, textColor, textBackgroundColor)
     {
         var JSONed = "";
         var fillColor = null;
@@ -2645,16 +2685,17 @@ return{
             //feature.properties.name = "text";//rt,cm,lb
             feature.properties.label = text;//rt,cm,lb
             feature.properties.pointRadius = 0;
-            feature.properties.fontColor = shapeInfo.getFillColor().toHexString(false);//"#FFFFFF";
-            feature.properties.fontSize = RS.getMPModifierFontSize() + "pt";//"12pt";
+			feature.properties.fontSize = RS.getMPModifierFontSize() + "pt";//"12pt";
             feature.properties.fontFamily = RS.getMPModifierFontName();//"Arial, sans-serif";
             feature.properties.fontWeight = RS.getMPModifierFontStyle();
+            //feature.properties.fontColor = shapeInfo.getFillColor().toHexString(false);//"#FFFFFF";
+			feature.properties.fontColor = textColor || shapeInfo.getFillColor().toHexString(false);
+			feature.properties.labelOutlineColor = textBackgroundColor || RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
+            feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
             feature.properties.labelAlign ="lm";// "cm";//rt,cm,lb
             feature.properties.labelXOffset = 0;
             feature.properties.labelYOffset = 0;
-            feature.properties.labelOutlineColor = RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
-            feature.properties.fontColor = textColor;
-            feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
+
             feature.properties.rotation = angle;//rt,cm
             feature.properties.angle = angle;//rt,cm
 
