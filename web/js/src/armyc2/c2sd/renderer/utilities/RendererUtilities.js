@@ -261,8 +261,17 @@ return{
 			
             var tempColor = color;
             
-            if(tempColor.length === 9)
-                    tempColor = "#" + tempColor.substring(3);
+			if(tempColor.charAt !== '#')
+				tempColor = "#" + tempColor;
+			
+			var len = tempColor.length;
+			
+			var alpha = "FF";
+            if(len === 9)
+			{
+				alpha = tempColor.substring(1,3)
+				tempColor = "#" + tempColor.substring(3);
+			}
             var threshold = armyc2.c2sd.renderer.utilities.RendererSettings.getTextBackgroundAutoColorThreshold();
             
             //hex to rgb
@@ -274,14 +283,20 @@ return{
         
             var delta = ((r * 0.299) + (g * 0.587) + (b * 0.114));
             
-            if((255 - delta < threshold))
-            {
-                idealColor = "#000000";
-            }
-            else
-            {
-                idealColor = "#FFFFFF";
-            }
+			if((255 - delta < threshold))
+			{
+				if(len === 9)
+					idealColor = "#" + alpha  + "000000";
+				else
+					idealColor = "#000000";
+			}
+			else
+			{
+				if(len === 9)
+					idealColor = "#" + alpha  + "FFFFFF";
+				else
+					idealColor = "#FFFFFF";
+			}
         }
         pastIdealOutlineColors[color] = idealColor;
         return idealColor;
