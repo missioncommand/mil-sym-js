@@ -276,14 +276,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 return true;
             },
             CalcTrueSlopeDouble2: function(firstLinePoint, lastLinePoint, slope) {
-                var result = new Boolean(true);
+                //var result = new Boolean(true);
+                var result = true;
                 try {
                     var deltaX = 0;
                     var deltaY = 0;
                     deltaX = (firstLinePoint.x) - (lastLinePoint.x);
                     if (deltaX === 0) {
                         deltaX = 1;
-                        result = new Boolean(false);
+                        //result = new Boolean(false);
+                        result = false;
                     }
                     deltaY = (firstLinePoint.y) - (lastLinePoint.y);
                     if (slope.value === null)
