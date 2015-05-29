@@ -244,6 +244,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
         try {
             var linetype = tg.get_LineType();
             switch (linetype) {
+                case 15000002:
+                case 15000003:
+                case 15000004:
+                case 12000000:
+                case 13000000:
+                case 14000000:
                 case 212600000:
                 case 212500000:
                 case 21100000:
