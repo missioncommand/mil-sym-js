@@ -500,7 +500,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                             if (!Double.isNaN(Double.parseDouble(H2))) {
                                 if (j === 0) {
                                     dist = Double.parseDouble(H2);
-                                    pt0 = tg.LatLongs.get(0);
+                                    pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.LatLongs.get(0));
                                     pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);
                                     //var pt02d = new java.awt.geom.Point2D.Double(pt0.x, pt0.y);                                                                        
                                     var pt02d = new armyc2.c2sd.graphics2d.Point2D();
