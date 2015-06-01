@@ -31,12 +31,12 @@ armyc2.c2sd.renderer.utilities.PointConversion =  function(pixelWidth, pixelHeig
         this._geoRight = Number(geoRight);
         this._pixelMultiplierX = (this._geoRight - this._geoLeft) / (this._pixelWidth);
         this._pixelMultiplierY = (this._geoTop - this._geoBottom) / (this._PixelHeight);
-        if (this._geoRight - this._geoLeft < -180) {
-            this._pixelMultiplierX = (this._geoRight - this._geoLeft + 360) / (this._pixelWidth);
-        }
-        if (this._geoRight - this._geoLeft > 180) {
-            this._pixelMultiplierX = (360 - (this._geoRight - this._geoLeft)) / (this._pixelWidth);
-        }
+//        if (this._geoRight - this._geoLeft < -180) {
+//            this._pixelMultiplierX = (this._geoRight - this._geoLeft + 360) / (this._pixelWidth);
+//        }
+//        if (this._geoRight - this._geoLeft > 180) {
+//            this._pixelMultiplierX = (360 - (this._geoRight - this._geoLeft)) / (this._pixelWidth);
+//        }
         if (this._geoTop < this._geoBottom)
             this._pixelMultiplierY = -Math.abs(this._pixelMultiplierY);
         else
