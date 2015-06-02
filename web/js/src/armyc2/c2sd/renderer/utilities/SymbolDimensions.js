@@ -16,7 +16,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolDimensions.getUnitBounds = function(charIndex, fontSize){
         var Rectangle = armyc2.c2sd.renderer.so.Rectangle,
-            index = charIndex;
+            index = charIndex - 57000;
         var rect = null;
 
         switch(index)

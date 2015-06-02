@@ -76,6 +76,11 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
                         data.width = parseInt(symbol["WIDTH"] || ""); //WIDTH
                         data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
+						
+						if(data.mappingP !== "")
+							data.mappingP = (parseInt(data.mappingP) + 57000) + "";
+						if(data.mappingA !== "")
+							data.mappingA = (parseInt(data.mappingA) + 57000) + "";
                     } 
                     if((symbolMapB[data.symbolID])===undefined)
                     {
@@ -103,6 +108,11 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
                         data.width = parseInt(symbol["WIDTH"] || ""); //WIDTH
                         data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
+						
+						if(data.mappingP !== "")
+							data.mappingP = (parseInt(data.mappingP) + 57000) + "";
+						if(data.mappingA !== "")
+							data.mappingA = (parseInt(data.mappingA) + 57000) + "";
                     } 
                     
                     if((symbolMapC[data.symbolID])===undefined)

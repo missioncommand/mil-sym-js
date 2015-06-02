@@ -97,6 +97,14 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         
                         if(data.mapping2color !== null && data.mapping2color.length === 6)
                             data.mapping2color = "#" + data.mapping2color;
+						
+						 //Check for bad font locations and remap
+						  data.mapping1U = this.checkMappingIndex(data.mapping1U);
+						  data.mapping1F = this.checkMappingIndex(data.mapping1F);
+						  data.mapping1N = this.checkMappingIndex(data.mapping1N);
+						  data.mapping1H = this.checkMappingIndex(data.mapping1H);
+						  data.mapping2 = this.checkMappingIndex(data.mapping2);
+						  ////////////////////////////////////////
 
                     } 
                     if((symbolMapB[data.symbolID])===undefined)
@@ -140,6 +148,14 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                         
                         if(data.mapping2color !== null && data.mapping2color.length === 6)
                             data.mapping2color = "#" + data.mapping2color;
+						
+						//Check for bad font locations and remap
+						  data.mapping1U = this.checkMappingIndex(data.mapping1U);
+						  data.mapping1F = this.checkMappingIndex(data.mapping1F);
+						  data.mapping1N = this.checkMappingIndex(data.mapping1N);
+						  data.mapping1H = this.checkMappingIndex(data.mapping1H);
+						  data.mapping2 = this.checkMappingIndex(data.mapping2);
+						  ////////////////////////////////////////
 
                     } 
                     if((symbolMapC[data.symbolID])===undefined)
@@ -156,6 +172,28 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
             if(symbolMapB !== null || symbolMapC !== null)
                 symbolsLoaded = true;
         },
+		
+	   /**
+	    * Until XML files are updated, we need to shift the index
+	    * @param index
+	    * @return 
+	    */  
+		checkMappingIndex: function (index)
+		{
+			var i = -1;
+			if(index)
+			{
+				i = parseInt(index);
+
+				if(i < 9000)
+				  return (i + 57000) + "";
+				else
+				  return (i + 54000) + "";
+			}
+			else
+				return index;
+		  
+		},
         /**
          * 
          * @param {String} symbolID
@@ -615,7 +653,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
               returnVal = 800;
           }
           
-          return returnVal;
+          return returnVal + 57000;
     
         },
         /**

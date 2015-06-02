@@ -261,7 +261,7 @@ return{
 			
             var tempColor = color;
             
-			if(tempColor.charAt !== '#')
+			if(tempColor.charAt(0) !== '#')
 				tempColor = "#" + tempColor;
 			
 			var len = tempColor.length;

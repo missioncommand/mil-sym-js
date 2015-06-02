@@ -2093,6 +2093,9 @@ return{
                     data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
                     data.mapping = symbol["MAPPING"] || ""; //MAPPING
                     data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
+					
+					if(data.mapping !== "")
+							data.mapping = (parseInt(data.mapping) + 57000) + "";
                     
                 } 
                 if((symbolMap[data.symbolID])===undefined)
