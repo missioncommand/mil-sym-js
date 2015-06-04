@@ -1204,13 +1204,26 @@ return{
                 return {canRender:true,message:""};
             }
         }
-        else if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 )
+        else if(symbolID.indexOf("BS_") === 0) 
         {
             //Will need to be updated to do a more thorough check for
             //basic shapes and buffered basic shapes.
             //Return true for now.
             return {canRender:true,message:""};
         }
+		else if(symbolID.indexOf("BBS_") === 0) 
+		{
+			var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
+			var fillColor = symbol.getFillColor();
+			if(fillColor && AM && AM.length > 0)
+			{
+				return {canRender:true,message:""};
+			}
+			else
+			{
+				return {canRender:false,message:"Buffered Basic Shapes require a width (AM) and a fill color for the buffer"};
+			}
+		}
         else
         {
            return {canRender:false,message:"symbolID: \"" + symbolID  + "\" not recognized."};
