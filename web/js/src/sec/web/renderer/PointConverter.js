@@ -16,7 +16,7 @@ sec.web.renderer.PointConverter = function (controlLong, controlLat, scale) {
     this._controlLong = 0,
     this._scale = 0,
     this._metersPerPixel = 0,
-    this._normalize=false,
+    this._normalize=true,
     this._GeoPixelConversion = sec.web.renderer.GeoPixelConversion;    
         
     //constructor code

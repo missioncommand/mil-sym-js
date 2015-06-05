@@ -700,7 +700,10 @@ return{
             ipc.set_normalize(true);
         }
         else
+        {
             normalize = false;
+            ipc.set_normalize(false);
+        }
         if (normalize) {
             sec.web.renderer.MultiPointHandler.NormalizeGECoordsToGEExtents(0, 360, geoCoords);
         }
