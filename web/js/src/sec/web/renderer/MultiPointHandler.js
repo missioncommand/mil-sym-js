@@ -695,7 +695,10 @@ return{
             ipc = new sec.web.renderer.PointConverter(ptCoordsUL.getX(), ptCoordsUL.getY(), scale);
         }
         if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+        {
             normalize = true;
+            ipc.set_normalize(true);
+        }
         else
             normalize = false;
         if (normalize) {

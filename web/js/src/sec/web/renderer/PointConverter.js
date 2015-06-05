@@ -16,15 +16,19 @@ sec.web.renderer.PointConverter = function (controlLong, controlLat, scale) {
     this._controlLong = 0,
     this._scale = 0,
     this._metersPerPixel = 0,
-    this._GeoPixelConversion = sec.web.renderer.GeoPixelConversion;
-    
-    
+    this._normalize=false,
+    this._GeoPixelConversion = sec.web.renderer.GeoPixelConversion;    
+        
     //constructor code
     this._controlLat=Number(controlLat);
     this._controlLong=Number(controlLong);
     this._scale=Number(scale);
     this._metersPerPixel=sec.web.renderer.GeoPixelConversion.metersPerPixel(scale);
     
+};
+sec.web.renderer.PointConverter.prototype.set_normalize = function(value)
+{
+    this._normalize=value;
 };
 /**
  * @param {armyc2.c2sd.graphics2d.Point2D} coord
@@ -33,7 +37,7 @@ sec.web.renderer.PointConverter = function (controlLong, controlLat, scale) {
 sec.web.renderer.PointConverter.prototype.GeoToPixels = function(coord)
 {
     var y=this._GeoPixelConversion.lat2y(coord.getY(), this._scale, this._controlLat, this._metersPerPixel);
-    var x=this._GeoPixelConversion.long2x(coord.getX(), this._scale, this._controlLong, coord.getY(), this._metersPerPixel);
+    var x=this._GeoPixelConversion.long2x(coord.getX(), this._scale, this._controlLong, coord.getY(), this._metersPerPixel, this._normalize);
     var ptPixels=new armyc2.c2sd.graphics2d.Point2D(x,y);
 
     return ptPixels;

@@ -730,6 +730,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.set_H2(strH2);
                 tg.set_H1(strH1);
             }
+            switch(lineType)
+            {
+                case 15000000:
+                case 15000001:
+                case 15000002:
+                case 15000003:
+                    if(tg.get_FillColor()===null)
+                        tg.set_FillColor(armyc2.c2sd.renderer.utilities.Color.LIGHT_GRAY);
+                    break;
+                default:
+                    break;
+            }
             switch (lineType) {
                 case 24326101:
                 case 24321200:

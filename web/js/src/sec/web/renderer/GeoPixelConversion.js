@@ -41,17 +41,18 @@ return{
         return latitude;
     },
 
-    long2x: function(longitude, scale, longOrigin, latitude, metPerPix) {
+    long2x: function(longitude, scale, longOrigin, latitude, metPerPix, normalize) {
         
         var longRem = longitude-longOrigin;
-
-        if (longRem > 180) {
-            longRem -= 360;
+        if(normalize===true)
+        {
+            if (longRem > 180) {
+                longRem -= 360;
+            }
+            if (longRem < -180) {
+                longRem += 360;
+            }        
         }
-        if (longRem < -180) {
-            longRem += 360;
-        }        
-
         var metersPerDeg = this.GetMetersPerDegAtLat(latitude);
         var pixDis = (longRem * metersPerDeg) / metPerPix;
         return pixDis;
