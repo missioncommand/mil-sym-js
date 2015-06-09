@@ -2604,7 +2604,8 @@ return{
         var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
         var angle = Math.round(shapeInfo.getModifierStringAngle());
         var text = shapeInfo.getModifierString();
-        if (text !== null && text !== ("")) {
+		var kmlScale = RendererSettings.getKMLLabelScale();
+        if (kmlScale > 0 && text !== null && text !== ("")) {
             kml += ("<Placemark>");//("<Placemark id=\"" + id + "_lp" + i + "\">");
             kml += ("<name>" + cdataStart + text + cdataEnd + "</name>");
             kml += ("<Style>");
@@ -2618,7 +2619,7 @@ return{
             kml += ("<LabelStyle>");
             if(textColor)
                 kml += ("<color>" + textColor + "</color>");
-            kml += ("<scale>.8</scale>");
+            kml += ("<scale>" + kmlScale + "</scale>");
             kml += ("</LabelStyle>");
             kml += ("</Style>");
             kml += ("<Point>");

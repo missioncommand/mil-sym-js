@@ -16,7 +16,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
      */
     _TextBackgroundAutoColorThreshold = 160,
 
-    //if TextBackgroundMethod_OUTLINE is set, This value determnies the width of that outline.
+    //if TextBackgroundMethod_OUTLINE is set, This value determines the width of that outline.
     _TextOutlineWidth = 1,
     
     //outline approach.  none, filled rectangle, outline (default),
@@ -45,6 +45,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _MPModifierFontName = "Arial, sans-serif",
     _MPModifierFontSize = 12,
     _MPModifierFontStyle = "bold",
+	_KMLLabelScale = 1.0,
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
@@ -363,20 +364,30 @@ return{
      * available in case 'Arial' is not present.
      * @param {Number} size like 12
      * @param {String} style like "bold"
+	 * @param {Number} Only set if you want to scale the KML label font. (default 1.0)
      * @returns {undefined}
      */
-    setMPModifierFont: function(name, size, style){
-        _ModifierFontName = name;
-        _ModifierFontSize = size;
+    setMPModifierFont: function(name, size, style, kmlLabelScale){
+        _MPModifierFontName = name;
+        _MPModifierFontSize = size;
         if(style !== 'bold' || style !== 'normal')
         {
-            _ModifierFontStyle = style;
+            _MPModifierFontStyle = style;
         }
         else
         {
-            _ModifierFontStyle = 'bold';
+            _MPModifierFontStyle = 'bold';
         }
-        _ModifierFont = style + " " + size + "pt " + name;
+		if(kmlLabelScale)
+		{
+			_KMLLabelScale = kmlLabelScale;
+		}
+		else
+		{
+			_KMLLabelScale = 1.0;
+		}
+		var tempSize = Math.round(size * _KMLLabelScale);
+        _MPModifierFont = style + " " + tempSize + "pt " + name;
     },
     /**
      * 
@@ -406,6 +417,10 @@ return{
     getMPModifierFontStyle: function(){
         return _MPModifierFontStyle;
     },
+	
+	getKMLLabelScale: function(){
+		return _KMLLabelScale;
+	},
 	
     getInstance: function(){
             return armyc2.c2sd.renderer.utilities.RendererSettings;
