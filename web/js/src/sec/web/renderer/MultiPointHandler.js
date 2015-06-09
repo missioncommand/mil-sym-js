@@ -1220,14 +1220,14 @@ return{
 		else if(symbolID.indexOf("BBS_") === 0) 
 		{
 			var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
-			var fillColor = symbol.getFillColor();
-			if(fillColor && AM && AM.length > 0)
+
+			if(AM && AM.length > 0)
 			{
 				return {canRender:true,message:""};
 			}
 			else
 			{
-				return {canRender:false,message:"Buffered Basic Shapes require a width (AM) and a fill color for the buffer"};
+				return {canRender:false,message:"Buffered Basic Shapes require a width (AM)"};
 			}
 		}
         else
