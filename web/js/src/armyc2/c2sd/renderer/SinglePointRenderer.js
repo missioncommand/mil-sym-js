@@ -3825,7 +3825,7 @@ return{
         var size = tiArray.length,
             tempShape = null,
             fillStyle = "#000000",
-			outlineStyle = null;
+			outlineStyle = null,
             tbm = RendererSettings.getTextBackgroundMethod(),
             outlineWidth = RendererSettings.getTextOutlineWidth();
     

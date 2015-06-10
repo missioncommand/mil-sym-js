@@ -28,10 +28,10 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
             return this._mappingP;
         };
         this.getWidth = function(){
-            return _width;
+            return this._width;
         };
         this.getHeight = function(){
-            return _height;
+            return this._height;
         };
         
     }

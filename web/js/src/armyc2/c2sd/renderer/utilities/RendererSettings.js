@@ -9,7 +9,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
-    _UseLineInterpolation = true,
+    _UseLineInterpolation = true,   
     /**
      * Value from 0 to 255. The closer to 0 the lighter the text color has to be
      * to have the outline be black. Default value is 160.
