@@ -378,7 +378,7 @@ return{
         {
             _MPModifierFontStyle = 'bold';
         }
-		if(kmlLabelScale)
+		if(kmlLabelScale !== null)
 		{
 			_KMLLabelScale = kmlLabelScale;
 		}
