@@ -3413,8 +3413,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 }
                 break;
             case 24222000:
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 2, 0.7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1, middleSegment, middleSegment + 1, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 2, 1, middleSegment, middleSegment + 1, new Boolean(false));
                 break;
             case 24224000:  //RFL
                 pt0 = tg.Pixels.get(0);
@@ -4450,10 +4450,15 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
         var quadrant = -1;
         var shape2 = null;
         var lineType = tg.get_LineType();
-        font = tg.get_Font();
+        var sz=armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontSize();
+        if(sz===0)
+            return;
+        font = tg.get_Font();        
         if (font === null) {
             font = g2d.getFont();
         }
+        if(font.getSize()===0)
+            return;
         g2d.setFont(font);
         var metrics = g2d.getFontMetrics();
         if (fontBackColor !== null) {
