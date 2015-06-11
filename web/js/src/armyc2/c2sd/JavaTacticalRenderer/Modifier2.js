@@ -3242,13 +3242,29 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             case 22225000:
                 if (tg.getSymbologyStandard() === 1) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + " " + tg.get_Name(), 2, 0, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), 2, -4 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Min Alt: " + tg.get_H(), 2, -5 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Width: " + tg.get_H2(), 2, -6 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Name: " + tg.get_Name(), 2, -7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG Start: " + tg.get_DTG(), 2, -3 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG End: " + tg.get_DTG1(), 2, -2 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
-                } else {
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), 2, -4 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Min Alt: " + tg.get_H(), 2, -5 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Width: " + tg.get_H2(), 2, -6 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Name: " + tg.get_Name(), 2, -7 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG Start: " + tg.get_DTG(), 2, -3 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG End: " + tg.get_DTG1(), 2, -2 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
+                    
+                    pt0=new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(middleSegment));
+                    pt1=new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(middleSegment+1));  
+                    if(pt0.y<pt1.y)
+                        pt1.y=pt0.y;
+                    else
+                        pt0.y=pt1.y;
+                    pt0.y-=pt0.style/2;
+                    pt1.y-=pt0.style/2;                
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Max Alt: " + tg.get_H1(), 2, -4 * csFactor, pt0, pt1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Min Alt: " + tg.get_H(), 2, -5 * csFactor, pt0, pt1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Width: " + tg.get_H2(), 2, -6 * csFactor, pt0, pt1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Name: " + tg.get_Name(), 2, -7 * csFactor, pt0, pt1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "DTG Start: " + tg.get_DTG(), 2, -3 * csFactor, pt0, pt1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "DTG End: " + tg.get_DTG1(), 2, -2 * csFactor, pt0, pt1, new Boolean(false));
+                } 
+                else {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label, 2, -0.5, middleSegment, middleSegment + 1, new Boolean(false));
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 2, 0.5, middleSegment, middleSegment + 1, new Boolean(false));
                 }
