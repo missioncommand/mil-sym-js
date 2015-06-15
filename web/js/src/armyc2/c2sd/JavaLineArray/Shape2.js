@@ -43,10 +43,12 @@ armyc2.c2sd.JavaLineArray.Shape2.prototype.get_Style = function() {
     return this.style;
 };
 armyc2.c2sd.JavaLineArray.Shape2.prototype.lineTo = function(pt) {
-    this._Shape.lineTo(Math.floor(pt.x), Math.floor(pt.y));
+    //this._Shape.lineTo(Math.floor(pt.x), Math.floor(pt.y));
+    this._Shape.lineTo(pt.x, pt.y);
 };
 armyc2.c2sd.JavaLineArray.Shape2.prototype.moveTo = function(pt) {
-    this._Shape.moveTo(Math.floor(pt.x), Math.floor(pt.y));
+    //this._Shape.moveTo(Math.floor(pt.x), Math.floor(pt.y));
+    this._Shape.moveTo(pt.x, pt.y);
 };
 armyc2.c2sd.JavaLineArray.Shape2.prototype.getBounds = function() {
     var rectf = new android.graphics.RectF();
