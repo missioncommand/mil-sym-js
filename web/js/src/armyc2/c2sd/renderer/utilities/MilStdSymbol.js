@@ -59,6 +59,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._Coordinates = coordinates;
     this.setSymbolID(symbolID);
     this._LineColor = SymbolUtilties.getLineColorOfAffiliation(this._symbolID);
+    this._TextColor = this._LineColor;
     
     if(SymbolUtilties.hasDefaultFill(this._symbolID))
         this._FillColor = SymbolUtilties.getFillColorOfAffiliation(this._symbolID);
