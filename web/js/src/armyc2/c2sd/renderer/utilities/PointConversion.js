@@ -15,12 +15,15 @@ armyc2.c2sd.renderer.utilities.PointConversion =  function(pixelWidth, pixelHeig
     this._geoRight = 0;
     this._pixelMultiplierX = 0;
     this._pixelMultiplierY = 0;
-
+    this._normalize=true;
     //constructor code
     this.UpdateExtents (pixelWidth, pixelHeight, geoTop, geoLeft, geoBottom, geoRight);
 };   
 
-    
+    armyc2.c2sd.renderer.utilities.PointConversion.prototype.set_normalize=function(value)
+    {
+        this._normalize=value;
+    };
     armyc2.c2sd.renderer.utilities.PointConversion.prototype.UpdateExtents = function(pixelWidth, pixelHeight, geoTop, geoLeft, geoBottom, geoRight)
     {
         this._pixelWidth = Number(pixelWidth);
@@ -65,10 +68,22 @@ armyc2.c2sd.renderer.utilities.PointConversion =  function(pixelWidth, pixelHeig
         var x = 0;
         var y = 0;
         var temp;
-        temp = ((coord.getX () - this._geoLeft) / this._pixelMultiplierX);
-        x = Math.round (temp);
+        //temp = ((coord.getX () - this._geoLeft) / this._pixelMultiplierX);
+        var calcValue=coord.getX()  - this._geoLeft;
+        if(this._normalize)
+        {
+            if(calcValue<-180)
+                calcValue+=360;
+            else if(calcValue>180)
+                calcValue-=360;
+        }
+        temp = (calcValue / this._pixelMultiplierX);
+                
+        //x = Math.round (temp);
+        x = temp;
         temp = ((this._geoTop - coord.getY ()) / this._pixelMultiplierY);
-        y = Math.round (temp);
+        //y = Math.round (temp);
+        y = temp;
         pixel.setLocation (x, y);
         return pixel;
     };
