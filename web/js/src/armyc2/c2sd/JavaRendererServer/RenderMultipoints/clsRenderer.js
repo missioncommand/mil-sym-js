@@ -964,6 +964,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 si.setPolylines(shape.getPolylines());
             si.setShapeType(shape.getShapeType());
             si.setStroke(shape.getStroke());
+            si.setModifierStringPosition(shape.getModifierStringPosition());
             if (s === null) {
                 si.setTextLayout(shape.getTextLayout());
             }

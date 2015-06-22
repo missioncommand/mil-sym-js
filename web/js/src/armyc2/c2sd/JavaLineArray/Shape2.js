@@ -19,6 +19,7 @@ armyc2.c2sd.JavaLineArray.Shape2 = function()
     this._ModifierStringAngle = 0;
     this._Polylines = null;
     this.style = 0;
+    this._justify = 0,
     this.fillStyle = 0;
     if (arguments.length === 1)
     {
@@ -69,6 +70,15 @@ armyc2.c2sd.JavaLineArray.Shape2.prototype.setShape = function(value) {
     this._Shape = value;
     this._TextLayout = null;
 };
+
+armyc2.c2sd.JavaLineArray.Shape2.prototype.getTextJustify = function() {
+    return this._justify;
+};
+armyc2.c2sd.JavaLineArray.Shape2.prototype.setTextJustify = function(value) {
+    this._justify = value;
+};
+
+
 armyc2.c2sd.JavaLineArray.Shape2.prototype.getTextLayout = function() {
     return this._TextLayout;
 };

@@ -22,6 +22,8 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
         _ModifierStringPosition = null,
         _ModifierStringAngle = 0,
         _Tag = null,
+        //private int _justify=justify_left;
+        _justify = armyc2.c2sd.renderer.utilities.ShapeInfo.ustify_left,
         _Polylines = null;
 
     //constructor code
@@ -186,6 +188,15 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
         return _Polylines;
     };
     
+    this.setTextJustify = function(value)
+    {
+        _justify = value;
+    };
+    this.getTextJustify = function()
+    {
+        return _justify;
+    };
+    
     /**
      * @return {armyc2.c2sd.graphics2d.Rectangle} description
      */
@@ -250,6 +261,12 @@ armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_TG_Q_MODIFIER = 14;
 armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_TG_SP_OUTLINE = 15;
 armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_SINGLE_POINT_OUTLINE = 16;
 armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_UNIT_OUTLINE = 17;
+    //public static int justify_left=0;
+    //public static int justify_center=1;
+    //public static int justify_right=2;
+armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left = 0;
+armyc2.c2sd.renderer.utilities.ShapeInfo.justify_center = 1;
+armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right = 2;
 
 armyc2.c2sd.renderer.utilities.ShapeInfoTextLayout = function(textLayout, position)
 {
