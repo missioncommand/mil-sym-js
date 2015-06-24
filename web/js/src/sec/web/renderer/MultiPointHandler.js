@@ -2680,7 +2680,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
             var RU = armyc2.c2sd.renderer.utilities.RendererUtilities;
             var coord = new armyc2.c2sd.graphics2d.Point2D();
-            coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
+            //coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
+            coord.setLocation(shapeInfo.getModifierStringPosition().getX(), shapeInfo.getModifierStringPosition().getY());
             var geoCoord = ipc.PixelsToGeo(coord);
             if (normalize)
                 geoCoord = this.NormalizeCoordToGECoord(geoCoord);
@@ -2691,6 +2692,16 @@ sec.web.renderer.MultiPointHandler = (function () {
             var angle = shapeInfo.getModifierStringAngle();
             coord.setLocation(longitude, latitude);
             shapeInfo.setGlyphPosition(coord);
+            
+            var justify=shapeInfo.getTextJustify();
+            var strJustify="";
+            if(justify===0)
+                strJustify="left";
+            if(justify===1)
+                strJustify="center";
+            if(justify===2)
+                strJustify="right";
+            
             var text = shapeInfo.getModifierString();
             if (text !== null && text !== ("")) {
                 feature = {};
@@ -2707,7 +2718,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 feature.properties.fontColor = textColor || shapeInfo.getFillColor().toHexString(false);
                 feature.properties.labelOutlineColor = textBackgroundColor || RU.getIdealOutlineColor(feature.properties.fontColor);//"#000000";//label.getLineColor().toHexString(false);
                 feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
-                feature.properties.labelAlign = "lm";// "cm";//rt,cm,lb
+                //feature.properties.labelAlign = "lm";// "cm";//rt,cm,lb //old openlayers 2 format
+                feature.properties.labelAlign = strJustify;// "left" "center" "right"
+                feature.properties.labelBaseline = "middle";// alphabetic, middle, top, bottom
                 feature.properties.labelXOffset = 0;
                 feature.properties.labelYOffset = 0;
 
