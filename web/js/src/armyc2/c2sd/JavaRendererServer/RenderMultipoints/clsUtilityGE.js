@@ -780,19 +780,24 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     shape = shapes.get(index);
                 if (hatch < armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal)
                     continue;
+                
+                var hatchLineThickness=Math.round(tg.get_LineThickness()/2);
                 if (hatch !== armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_Cross)
                 {
                     shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, hatch);
-                    shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    //shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shape.setLineColor(tg.get_LineColor());
                     shapes.add(shape);
                 } else {
                     var shapeBk = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_BackwardDiagonal);
                     var shapeFwd = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal);
-                    shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    //shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeBk.setLineColor(tg.get_LineColor());
                     shapes.add(shapeBk);
-                    shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    //shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                    shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeFwd.setLineColor(tg.get_LineColor());
                     shapes.add(shapeFwd);
                 }
