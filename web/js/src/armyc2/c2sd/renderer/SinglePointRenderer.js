@@ -136,7 +136,7 @@ return{
                     if(symbolID.charAt(2) === 'U' && 
 							symbolID.substring(4, 6) === "WM")
 					{
-						if(symbolID.charAt(3) != 'A')
+						if(symbolID.charAt(3) !== 'A')
 						{
 							intFill++;
 							fill = String.fromCharCode(intFill);
@@ -216,10 +216,10 @@ return{
         } 
 
 		//Just for sea mines
-		if(symbolID.charAt(2) == 'U' &&
+		if(symbolID.charAt(2) === 'U' &&
 						symbolID.substring(4, 6) === "WM")
 		{
-			if(symStd == RendererSettings.Symbology_2525Bch2_USAS_13_14)
+			if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
 			{
 				if(modifiers[MilStdAttributes.LineColor] !== undefined)
 				{
@@ -227,7 +227,7 @@ return{
 				}
 				//color2 = fillColor;
 			}
-			else if(symStd == RendererSettings.Symbology_2525C)
+			else if(symStd === RendererSettings.Symbology_2525C)
 			{
 				if(modifiers[MilStdAttributes.LineColor] !== undefined)
 				{
@@ -236,8 +236,8 @@ return{
 			}
 			
 		}
-		else if(symbolID.charAt(2) == 'S' &&
-			symbolID.charAt(4) == 'O')//own track, //SUSPO
+		else if(symbolID.charAt(2) === 'S' &&
+			symbolID.charAt(4) === 'O')//own track, //SUSPO
 		{
 			if(modifiers[MilStdAttributes.LineColor] !== undefined)
 			{
