@@ -776,11 +776,13 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (format === 0) //KML
                 {
-                    hexTextColor = textColor.toKMLHexString();
-                    if (symbolCode.charAt(0) === 'G' && textColor === null)
+                    if (textColor !== null)
                     {
-                        if (textColor === "#FF000000")
-                            textColor = "#FFFFFFFF";
+                        hexTextColor = textColor.toKMLHexString();
+                    }
+                    else
+                    {
+                        hexTextColor = "#FF000000";
                     }
                     jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
 
@@ -1088,12 +1090,13 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (format === 0) //KML
                 {
-                    hexTextColor = textColor.toKMLHexString();
-                    if (symbolCode.charAt(0) === 'G')
+                    if (textColor !== null)
                     {
-                        //textColor = mSymbol.getLineColor().toKMLHexString();
-                        if (textColor === "#FF000000")
-                            textColor = "#FFFFFFFF";
+                        hexTextColor = textColor.toKMLHexString();
+                    }
+                    else
+                    {
+                        hexTextColor = "#FF000000";
                     }
                     jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
 
