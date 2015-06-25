@@ -4549,10 +4549,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                     }
                     
                     //add section 6/22/15
-                    if(x1<=x2)
+                    if(x1<x2)
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
+                    if(x1===x2)
+                    {
+                        if(y1>y2)
+                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
+                        else
+                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
+                    }
+                    
                     //if using justify
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
                     modifierPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
@@ -4578,10 +4586,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
                     
                     //add setcion 6-22-15
-                    if(x1<=x2)
+                    if(x1<x2)
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
+                    if(x1===x2)
+                    {
+                        if(y1>y2)
+                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
+                        else
+                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
+                    }
+                    
                     //if using justify
                     modifierPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
                     //end section
