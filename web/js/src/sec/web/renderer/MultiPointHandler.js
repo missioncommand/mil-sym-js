@@ -1696,15 +1696,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
                     var justify=tempModifier.getTextJustify() || "";
-                    var strJustify="";
+                    var strJustify="left";
                     if(justify===0)
                         strJustify="left";
-                    if(justify===1)
+                    else if(justify===1)
                         strJustify="center";
-                    if(justify===2)
+                    else if(justify===2)
                         strJustify="right";
-                    else
-                        strJustify="left";
+
                     textInfoContext.textAlign=strJustify;
                     //textInfoContext.textBaseline = "middle";
                     textInfoContext.textBaseline = "alphabetic";
@@ -2727,15 +2726,13 @@ sec.web.renderer.MultiPointHandler = (function () {
             shapeInfo.setGlyphPosition(coord);
             
             var justify=shapeInfo.getTextJustify();
-            var strJustify="";
+            var strJustify="left";
             if(justify===0)
                 strJustify="left";
-            if(justify===1)
+            else if(justify===1)
                 strJustify="center";
-            if(justify===2)
+            else if(justify===2)
                 strJustify="right";
-            else
-                strJustify="left";
             
             var text = shapeInfo.getModifierString();
             if (text !== null && text !== ("")) {

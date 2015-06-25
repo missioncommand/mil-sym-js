@@ -23,7 +23,7 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
         _ModifierStringAngle = 0,
         _Tag = null,
         //private int _justify=justify_left;
-        _justify = armyc2.c2sd.renderer.utilities.ShapeInfo.ustify_left,
+        _justify = armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left,
         _Polylines = null;
 
     //constructor code
