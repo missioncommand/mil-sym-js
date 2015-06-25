@@ -219,17 +219,17 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                             modifiers = modifiers.modifiers;
                         }
                     
-                        // These guys store array values.  Put in appropriate data strucutre
+                        // These guys store array values.  Put in appropriate data structure
                         // for MilStdSymbol.
                         var jsonAltitudeArray = null;
                         if (modifiers.X) 
                         {
                             jsonAltitudeArray = modifiers.X;
                         }        
-                        else if (modifiers.altitudeDepth) 
+                        /*else if (modifiers.altitudeDepth) 
                         {
                             jsonAltitudeArray = modifiers.altitudeDepth;
-                        }  
+                        } //*/
                         if (jsonAltitudeArray && jsonAltitudeArray.length >= 2)
                         {
                             returnValue = true;                                    

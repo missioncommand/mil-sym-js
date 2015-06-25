@@ -1531,7 +1531,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     tempModifier = modifiers.get(j);
 
                     //assume kml labels will be centered on coordinate (as per google earth)
-                    sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
+                    //sec.web.renderer.MultiPointHandler.AdjustModifierPointToCenter(tempModifier);
 
                     var labelsToAdd = sec.web.renderer.MultiPointHandler.LabelToKMLString(tempModifier, ipc, normalize, textColor);
                     kml += labelsToAdd;
@@ -1691,11 +1691,27 @@ sec.web.renderer.MultiPointHandler = (function () {
                     tempModifier = modifiers.get(j);
 
                     var labelInfo = tempModifier;
-                    var tempLocation = tempModifier.getGlyphPosition();
+                    var tempLocation = tempModifier.getModifierStringPosition();
                     //multipoint renderer is assuming text is centered vertically 
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
+                    var justify=tempModifier.getTextJustify() || "";
+                    var strJustify="";
+                    if(justify===0)
+                        strJustify="left";
+                    if(justify===1)
+                        strJustify="center";
+                    if(justify===2)
+                        strJustify="right";
+                    else
+                        strJustify="left";
+                    textInfoContext.textAlign=strJustify;
+                    //textInfoContext.textBaseline = "middle";
+                    textInfoContext.textBaseline = "alphabetic";
                     tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height / 2), textInfoContext, null);
+                    tiTemp.textAlign=strJustify;
+                    //tiTemp.textBaseline = "middle";
+                    tiTemp.textBaseline = "alphabetic";
                     var bounds = tiTemp.getTextBounds();
                     var degrees = parseFloat(tempModifier.getModifierStringAngle());
                     if (degrees !== 0)
@@ -1708,10 +1724,20 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (tiTemp)
                     {
                         labels.push(tiTemp);
-                        if (labelBounds === null)
-                            labelBounds = rotatedBounds;
+                        if (labelBounds)
+                        {
+                            if(rotatedBounds)
+                                labelBounds.union(rotatedBounds);
+                            else if(bounds)
+                                labelBounds.union(bounds);
+                        }
                         else
-                            labelBounds.union(rotatedBounds);
+                        {
+                            if(rotatedBounds)
+                                labelBounds = rotatedBounds;
+                            else if(bounds)
+                                labelBounds = bounds;
+                        }
                     }
 
 
@@ -1740,7 +1766,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             catch (err)
             {
-                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "JSONize", err);
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "GeoJSONize", err);
             }
             //if(renderToCanvas)
             //{
@@ -1858,7 +1884,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 ctx.font = mpFont;
                 //ctx.textBaseline = "top";
                 //ctx.textBaseline = "Alphabetic";
-                ctx.textBaseline = "middle";
+                //ctx.textBaseline = "middle";
                 //ctx.textAlign="left";
                 if (outlineWidth > 0)
                     ctx.lineWidth = (outlineWidth * 2) + 1;
@@ -1872,8 +1898,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                 //ctx.fillText("test",10,height + 80);
                 for (var j = 0; j < textSize; j++)
                 {
+                    
                     ti = tis[j];
 
+                    if(ti.textAlign)
+                        ctx.textAlign=ti.textAlign;
+                    if(ti.textBaseline)
+                        ctx.textBaseline=ti.textBaseline;
+                    
                     //ti.getTextOutlineBounds().stroke(ctx);
                     ////TEST: stroke to see bounds (before transform)
                     //ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
@@ -2592,7 +2624,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             var cdataEnd = "]]>";
             var kml = "";
             var coord = new armyc2.c2sd.graphics2d.Point2D();
-            coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
+            //coord.setLocation(shapeInfo.getGlyphPosition().getX(), shapeInfo.getGlyphPosition().getY());
+            coord.setLocation(shapeInfo.getModifierStringPosition().getX(), shapeInfo.getModifierStringPosition().getY());
             var geoCoord = ipc.PixelsToGeo(coord);
             if (normalize)
                 geoCoord = this.NormalizeCoordToGECoord(geoCoord);
@@ -2701,6 +2734,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 strJustify="center";
             if(justify===2)
                 strJustify="right";
+            else
+                strJustify="left";
             
             var text = shapeInfo.getModifierString();
             if (text !== null && text !== ("")) {
@@ -2720,7 +2755,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 feature.properties.labelOutlineWidth = RS.getTextOutlineWidth() * 2 + 1;//3;//rt,cm
                 //feature.properties.labelAlign = "lm";// "cm";//rt,cm,lb //old openlayers 2 format
                 feature.properties.labelAlign = strJustify;// "left" "center" "right"
-                feature.properties.labelBaseline = "middle";// alphabetic, middle, top, bottom
+                feature.properties.labelBaseline = "alphabetic";// alphabetic, middle, top, bottom
                 feature.properties.labelXOffset = 0;
                 feature.properties.labelYOffset = 0;
 

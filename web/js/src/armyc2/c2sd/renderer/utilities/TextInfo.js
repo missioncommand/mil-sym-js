@@ -26,7 +26,13 @@ armyc2.c2sd.renderer.utilities.TextInfo = function (text, x,y, context, font) {
         context = buffer.getContext('2d');
     }
 
+    
+    
     this.bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(context, text, this.location, font);
+    if(context.textAlign==="right")
+        this.bounds.shift(-this.bounds.getWidth(),0);
+    else if(context.textAlign==="center")
+        this.bounds.shift(-(this.bounds.getWidth()/2),0);
 
 };
 	
