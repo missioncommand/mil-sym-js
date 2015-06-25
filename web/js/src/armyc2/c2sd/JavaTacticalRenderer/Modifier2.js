@@ -4553,9 +4553,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    if(x1===x2)
+                    if(Math.round(x1)===Math.round(x2))
                     {
-                        if(y1>y2)
+                        if(y1<y2)
                             justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                         else
                             justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
@@ -4590,9 +4590,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    if(x1===x2)
+                    if(Math.round(x1)===Math.round(x2))
                     {
-                        if(y1>y2)
+                        if(y1<y2)
                             justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                         else
                             justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
