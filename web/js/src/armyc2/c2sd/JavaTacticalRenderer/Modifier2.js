@@ -4511,11 +4511,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
             var y2 = 0;
             var dist = 0;
             pt0 = modifier.textPath[0];
-            x1 = pt0.x;
-            y1 = pt0.y;
+            x1 = Math.round(pt0.x);
+            y1 = Math.round(pt0.y);
             pt1 = modifier.textPath[1];
-            x2 = pt1.x;
-            y2 = pt1.y;
+            x2 = Math.round(pt1.x);
+            y2 = Math.round(pt1.y);
             theta = Math.atan2(y2 - y1, x2 - x1);
             var midPt;
             if (x1 > x2) {
@@ -4553,13 +4553,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    if(Math.round(x1)===Math.round(x2))
-                    {
-                        if(y1<y2)
-                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
-                        else
-                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    }
                     
                     //if using justify
                     pt3 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt0, direction, lineFactor * stringHeight);
@@ -4573,6 +4566,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                     glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
                     break;
                 case 1: //to end
+                    if (x1 === x2) {
+                        x2 += 1;
+                    }
                     dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
                     direction = 2;
                     if (lineFactor >= 0)
@@ -4590,13 +4586,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
                     else
                         justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    if(Math.round(x1)===Math.round(x2))
-                    {
-                        if(y1<y2)
-                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_right;
-                        else
-                            justify=armyc2.c2sd.renderer.utilities.ShapeInfo.justify_left;
-                    }
                     
                     //if using justify
                     modifierPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
