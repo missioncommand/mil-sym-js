@@ -226,7 +226,7 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
                         {
                             jsonAltitudeArray = modifiers.X;
                         }        
-                        /*else if (modifiers.altitudeDepth) 
+                        else if (modifiers.altitudeDepth) 
                         {
                             jsonAltitudeArray = modifiers.altitudeDepth;
                         } //*/
