@@ -204,7 +204,8 @@ return{
      * @param {String} shapeType A 15 character ID of the type of symbol to draw.
      * @param {String} description A brief description of what the symbol represents.  
      * Generic text that does not require any format.
-     * @param {String} color The fill color of the graphic
+     * @param {String} lineColor The line color of the graphic
+     * @param {String} fillColor The fill color of the graphic
      * @param {String} controlPoints The vertices of the shape.  The number of required
      * vertices varies based on the shapeType of the symbol.  The simplest shape 
      * requires at least one point.  Shapes that require more points than 
@@ -220,7 +221,7 @@ return{
      * "relativeToSeaFloor" (from the bottom of major bodies of water).
      * @return {String} A KML string that represents a placemark for the 3D shape
      */
-    Render3dSymbol:function (name, id, shapeType, description, color, controlPoints, AttributesArray) 
+    Render3dSymbol:function (name, id, shapeType, description, lineColor, fillColor, controlPoints, AttributesArray) 
     {
         var returnValue = "";
         try {
@@ -606,6 +607,7 @@ return{
                 }
                 
                 fillColor = JavaRendererUtilities.ARGBtoABGR(fillColor);
+                lineColor = JavaRendererUtilities.ARGBtoABGR(lineColor);
                     
 				// if it's a killbox, need to set minimum alt to 0.
 				if (symbolId.substring(0,3)===("AKP") && altitudeDepthLength === 1)
