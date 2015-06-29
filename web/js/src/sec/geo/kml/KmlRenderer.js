@@ -119,7 +119,7 @@ sec.geo.kml.KmlRenderer = function()
         }
         return polys;
     };
-    this.getPlacemarkKml = function(ext, id, name, description, color) {
+    this.getPlacemarkKml = function(ext, id, name, description, lineColor, fillColor) {
         try {
             var sb = new sec.geo.utilities.StringBuilder();
             var polys = this.renderPolygons(ext);
@@ -135,13 +135,13 @@ sec.geo.kml.KmlRenderer = function()
                 sb.replace(descriptionIndex, descriptionIndex + descriptionLength, "<![CDATA[" + description + "]]>");
             var colorIndex = sb.indexOf(this.colorField);
             var colorLength = this.colorField.length;
-            if (color !== null) {
-                sb.replace(colorIndex, colorIndex + colorLength, color);
+            if (fillColor !== null) {
+                sb.replace(colorIndex, colorIndex + colorLength, fillColor);
             } else
                 sb.replace(colorIndex, colorIndex + colorLength, this.colorDefault);
             var lineColorIndex = sb.indexOf2(this.colorField, colorIndex + colorLength);
-            if (color !== null) {
-                sb.replace(lineColorIndex, lineColorIndex + colorLength, color);
+            if (lineColor !== null) {
+                sb.replace(lineColorIndex, lineColorIndex + colorLength, lineColor);
             } else
                 sb.replace(lineColorIndex, lineColorIndex + colorLength, this.colorDefault);
             var nameIndex = sb.indexOf(this.nameField);
@@ -159,7 +159,7 @@ sec.geo.kml.KmlRenderer = function()
             throw e;
         }
     };
-    this.getTrackKml = function(ext, id, name, description, color) {
+    this.getTrackKml = function(ext, id, name, description, lineColor, fillColor) {
         try {
             var aext = this.getAExtObject(ext);
             var sb = new sec.geo.utilities.StringBuilder();
@@ -175,7 +175,7 @@ sec.geo.kml.KmlRenderer = function()
             {  
                 var route = elements.get(j);
                 var aext2 = new sec.geo.shape.AExtObject(route);                
-                sb.append(this.getPlacemarkKml(aext2, id, name, description, color));
+                sb.append(this.getPlacemarkKml(aext2, id, name, description, lineColor, fillColor));
             }
 
             sb.append(this.KML_END);
@@ -184,18 +184,18 @@ sec.geo.kml.KmlRenderer = function()
             throw e;
         }
     };
-    this.getKml = function(ext, id, name, description, color) {
+    this.getKml = function(ext, id, name, description, lineColor, fillColor) {
         try {
             var aext = this.getAExtObject(ext);
             if (aext.getElements() !== null)            
-                return (this.getTrackKml(ext, id, name, description, color));
+                return (this.getTrackKml(ext, id, name, description, lineColor, fillColor));
             
             var sb = new sec.geo.utilities.StringBuilder();
             sb.append(this.KML_START);
             var idIndex = sb.indexOf(this.idField);
             var idLength = this.idField.length;
             sb.replace(idIndex, idIndex + idLength, id);
-            sb.append(this.getPlacemarkKml(aext, id, name, description, color));
+            sb.append(this.getPlacemarkKml(aext, id, name, description, lineColor, fillColor));
             sb.append(this.KML_END);
             return sb.toString();
         } catch (e) {

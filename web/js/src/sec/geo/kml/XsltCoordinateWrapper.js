@@ -76,34 +76,34 @@ sec.geo.kml.XsltCoordinateWrapper=
         sec.geo.kml.XsltCoordinateWrapper.addPoints (points, aext);
         return polyarc;
     }, 
-    getLineKml:function (points, id, name, description, color, altitudeMode, minAltitude, maxAltitude) {
+    getLineKml:function (points, id, name, description, lineColor, fillColor, altitudeMode, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getLine (points, altitudeMode, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getLine (points, altitudeMode, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getCircleKml:function (pivotX, pivotY, id, name, description, color, altitudeMode, radius, minAltitude, maxAltitude) {
+    getCircleKml:function (pivotX, pivotY, id, name, description, lineColor, fillColor, altitudeMode, radius, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getCircle (pivotX, pivotY, altitudeMode, radius, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getCircle (pivotX, pivotY, altitudeMode, radius, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getOrbitKml:function (point1X, point1Y, point2X, point2Y, id, name, description, color, altitudeMode, width, minAltitude, maxAltitude) {
+    getOrbitKml:function (point1X, point1Y, point2X, point2Y, id, name, description, lineColor, fillColor, altitudeMode, width, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getOrbit (point1X, point1Y, point2X, point2Y, altitudeMode, width, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getOrbit (point1X, point1Y, point2X, point2Y, altitudeMode, width, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getRouteKml:function (points, id, name, description, color, altitudeMode, leftWidth, rightWidth, minAltitude, maxAltitude) {
+    getRouteKml:function (points, id, name, description, lineColor, fillColor, altitudeMode, leftWidth, rightWidth, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getRoute (points, altitudeMode, leftWidth, rightWidth, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getRoute (points, altitudeMode, leftWidth, rightWidth, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getPolygonKml:  function (points, id, name, description, color, altitudeMode, minAltitude, maxAltitude) {
+    getPolygonKml:  function (points, id, name, description, lineColor, fillColor, altitudeMode, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getPolygon (points, altitudeMode, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getPolygon (points, altitudeMode, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getRadarcKml:  function (pivotX, pivotY, id, name, description, color, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
+    getRadarcKml:  function (pivotX, pivotY, id, name, description, lineColor, fillColor, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getRadarc (pivotX, pivotY, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getRadarc (pivotX, pivotY, altitudeMode, innerRadius, outerRadius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
-    getPolyarcKml:  function (points, pivotX, pivotY, id, name, description, color, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
+    getPolyarcKml:  function (points, pivotX, pivotY, id, name, description, lineColor, fillColor, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();
         
-        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getPolyarc (points, pivotX, pivotY, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude), id, name, description, color);
+        return renderer.getKml (sec.geo.kml.XsltCoordinateWrapper.getPolyarc (points, pivotX, pivotY, altitudeMode, radius, leftAzimuth, rightAzimuth, minAltitude, maxAltitude), id, name, description, lineColor, fillColor);
     }, 
     plotLine: function (points, altitudeMode, minAltitude, maxAltitude) {
         var renderer =  new sec.geo.kml.KmlRenderer ();

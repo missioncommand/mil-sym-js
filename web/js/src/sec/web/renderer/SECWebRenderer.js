@@ -519,6 +519,8 @@ return{
             var distanceLength = 0;
             var azimuthLength = 0;
             var color = "";
+            var lineColor = "";
+            var fillColor = "";
             //modifiers=JSON.parse(modifiers);          
             if (modifiers)
             {
@@ -560,21 +562,39 @@ return{
                     distanceLength = distanceJSON.length;
                 } 
                 
-                if (modifiersJSON.fillColor)
+                if (modifiersJSON.lineColor)
                 {
-                    color = modifiersJSON.fillColor;
+                    lineColor = modifiersJSON.lineColor;
                 }
                 else
                 {   
-                    color = SymbolUtilities.getFillColorOfAffiliation(symbolCode);
-                    color.A = 170;
-                    color = color.toHexString().substring(1);
+                    lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolCode);
+                    lineColor.A = 170;
+                    lineColor = lineColor.toHexString().substring(1);
                     //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
                     // ensure that some color is selected.  If no color can be
                     // found, use black.
-                    if (color === null)
+                    if (lineColor === null)
                     {
-                        color = "AA000000";
+                        lineColor = "FF000000";
+                    }
+                }
+                
+                if (modifiersJSON.fillColor)
+                {
+                    fillColor = modifiersJSON.fillColor;
+                }
+                else
+                {   
+                    fillColor = SymbolUtilities.getFillColorOfAffiliation(symbolCode);
+                    fillColor.A = 170;
+                    fillColor = fillColor.toHexString().substring(1);
+                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
+                    // ensure that some color is selected.  If no color can be
+                    // found, use black.
+                    if (fillColor === null)
+                    {
+                        fillColor = "AA000000";
                     }
                 }
                 
@@ -585,7 +605,7 @@ return{
                         attributes.ALT_MODE.push(convertedAltitudeMode);
                 }
                 
-                color = JavaRendererUtilities.ARGBtoABGR(color);
+                fillColor = JavaRendererUtilities.ARGBtoABGR(fillColor);
                     
 				// if it's a killbox, need to set minimum alt to 0.
 				if (symbolId.substring(0,3)===("AKP") && altitudeDepthLength === 1)
@@ -629,7 +649,7 @@ return{
                         symbolId.equals("AAMH--")) // HIMEZ
                 {
                     output = Shape3DHandler.buildPolygon(controlPoints, id, name, 
-                        description, color, attributes);
+                        description, lineColor, fillColor, attributes);
                 }
                 else if (symbolId.equals("ACAR--") || // ACA - rectangular
                         symbolId.equals("AKPR--") || // Killbox - rectangular
@@ -640,13 +660,13 @@ return{
                         symbolId.equals("ALL---"))   // LLTR
                 {
                     output = Shape3DHandler.buildTrack(controlPoints, id, name, 
-                        description, color, attributes);
+                        description, lineColor, fillColor, attributes);
                 }
                 else if (symbolId.equals("ACAC--") || // ACA - circular
                         symbolId.equals("AKPC--"))    // Killbox - circular
                 {
                     output = Shape3DHandler.buildCylinder(controlPoints, id, name, 
-                        description, color, attributes);
+                        description, lineColor, fillColor, attributes);
 
                 }   
 
