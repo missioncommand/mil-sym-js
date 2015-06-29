@@ -1022,7 +1022,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function (tg, pt0
                 {
                     p0=tg.Pixels.get(j);
                     p1=tg.Pixels.get(j+1);
-                    if(p0.x===p1.x)
+                    //if(p0.x===p1.x)
+                    if(Math.abs(p0.x-p1.x)<1)
                     {
                         p1.x += last;
                         last = -last;
@@ -1045,9 +1046,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function (tg, pt0
             case 22623000:
             case 22612001:
             case 22623001:
-                if (pt0 !== null && pt1 !== null && pt0.x === pt1.x)
+                if (pt0 !== null && pt1 !== null && Math.abs(pt0.x - pt1.x)<1)
                     pt1.x += 1;
-                if (ptLast !== null && ptNextToLast !== null && ptNextToLast.x === ptLast.x)
+                if (ptLast !== null && ptNextToLast !== null && Math.abs(ptNextToLast.x - ptLast.x)<1)
                     ptNextToLast.x += 1;
                 break;
             default:

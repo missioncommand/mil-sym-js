@@ -17,7 +17,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             if (Math.abs(edgePt1.getX() - edgePt2.getX()) < Math.abs(edgePt1.getY() - edgePt2.getY())) {
                 ptIntersect = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D();
                 edge_x = edgePt1.getX();
-                if (pt1.getX() === pt0.getX())
+                //if (pt1.getX() === pt0.getX())
+                if (Math.abs(pt1.getX() - pt0.getX())<1)
                     pt1.setLocation(pt1.getX() + 1, pt1.getY());
                 m = (pt1.getY() - pt0.getY()) / (pt1.getX() - pt0.getX());
                 deltaX = edge_x - pt0.getX();
@@ -25,7 +26,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             } else {
                 ptIntersect = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D();
                 edge_y = edgePt1.getY();
-                if (pt1.getX() === pt0.getX())
+                //if (pt1.getX() === pt0.getX())
+                if (Math.abs(pt1.getX() - pt0.getX())<1)
                     pt1.setLocation(pt1.getX() + 1, pt1.getY());
                 m = (pt1.getY() - pt0.getY()) / (pt1.getX() - pt0.getX());
                 deltaY = edge_y - pt0.getY();
