@@ -125,6 +125,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
         try {
             var ll = currentEdge.getP1();
             var ul = currentEdge.getP2();
+            //if (Math.abs(current.getX() - previous.getX())<1)
             if (current.getX() === previous.getX())
                 current.setLocation(current.getX() + 1, current.getY());
             var m1 = (ul.getY() - ll.getY()) / (ul.getX() - ll.getX());
@@ -172,11 +173,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             } else if (index === 1) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D(clipBounds.get(0).getX(), clipBounds.get(0).getY());
             }
-            //if (pt2.getX() === pt1.getX())
-            if (Math.abs(pt2.getX() - pt1.getX())<1)
+            //if (Math.abs(pt2.getX() - pt1.getX())<1)
+            if (pt2.getX() === pt1.getX())
                 pt2.setLocation(pt2.getX() + 1, pt2.getY());
-            //if (pt2.getY() === pt1.getY())
-            if (Math.abs(pt2.getY() - pt1.getY())<1)
+            //if (Math.abs(pt2.getY() - pt1.getY())<1)
+            if (pt2.getY() === pt1.getY())
                 pt2.setLocation(pt2.getX(), pt2.getY() + 1);
             for (j = 0; j < pts.size(); j++) {
                 current = pts.get(j);

@@ -1427,7 +1427,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 25224000:
                 case 25223000:
                 case 25225000:
-                case 23134000:
+                //case 23134000:
                     break;
                 default:
                     return;
@@ -1437,7 +1437,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             for (var j = 1; j < tg.Pixels.size(); j++) {
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(j));
-                if (Math.abs(ptCurrent.x-ptLast.x)<1) 
+                //if (Math.abs(ptCurrent.x-ptLast.x)<1) 
+                if (ptCurrent.x === ptLast.x) 
                 {
                     ptCurrent.x += Math.pow(-1, j);
                     tg.Pixels.set(j, ptCurrent);

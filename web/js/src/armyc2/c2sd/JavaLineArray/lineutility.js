@@ -210,8 +210,8 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaX = 0;
                     var deltaY = 0;
                     deltaX = firstLinePoint.x - lastLinePoint.x;
-                    //if (deltaX === 0) 
-                    if (Math.abs(deltaX)<1) 
+                    //if (Math.abs(deltaX)<1) 
+                    if (deltaX === 0) 
                     {
                         deltaX = 1;
                         result = 1;
@@ -284,8 +284,8 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaX = 0;
                     var deltaY = 0;
                     deltaX = (firstLinePoint.x) - (lastLinePoint.x);
-                    //if (deltaX === 0) 
-                    if (Math.abs(deltaX)<1) 
+                    //if (Math.abs(deltaX)<1) 
+                    if (deltaX === 0) 
                     {
                         deltaX = 1;
                         //result = new Boolean(false);
