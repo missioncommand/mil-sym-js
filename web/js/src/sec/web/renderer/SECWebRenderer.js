@@ -393,7 +393,7 @@ return{
                 }
             }
 
-            returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, color, controlPoints, attributes);
+            returnValue = sec.web.renderer.Shape3DHandler.render3dSymbol (name, id, shapeType, description, lineColor, fillColor, controlPoints, attributes);
         } 
         catch (err) 
         {
