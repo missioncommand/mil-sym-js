@@ -192,7 +192,8 @@ sec.sun.awt.geom.SomeOp = function()
                         }
                     }
                     //while (++cur < right && (e === edgelist[cur]).getEquivalence() === eq);
-                    while (++cur < right && (e === edgelist[cur]) && e.getEquivalence() === eq);
+                    //while (++cur < right && (e === edgelist[cur]) && e.getEquivalence() === eq);
+                    while (++cur < right && (e = edgelist[cur]).getEquivalence() === eq);
                     --cur;
                     if (this.getState() === origstate) {
                         etag = 0;
