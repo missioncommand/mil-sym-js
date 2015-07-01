@@ -179,7 +179,7 @@ sec.sun.awt.geom.SomeOp = function()
                     etag = (origstate === 1 ? -1 : 1);
                     var activematch = null;
                     var longestmatch = e;
-                    var furthesty = yend;
+                    var furthesty = yend;                    
                     do {
                         this.classify(e);
                         if (activematch === null && e.isActiveFor(ystart, etag)) {
@@ -190,7 +190,9 @@ sec.sun.awt.geom.SomeOp = function()
                             longestmatch = e;
                             furthesty = y;
                         }
-                    } while (++cur < right && (e === edgelist[cur]).getEquivalence() === eq);
+                    }
+                    //while (++cur < right && (e === edgelist[cur]).getEquivalence() === eq);
+                    while (++cur < right && (e === edgelist[cur]) && e.getEquivalence() === eq);
                     --cur;
                     if (this.getState() === origstate) {
                         etag = 0;
