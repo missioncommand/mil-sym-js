@@ -94,7 +94,7 @@ return{
     getVersion: function()
     {
         return _Version;
-    }
+    },
     
     /**
      * None, outline (default), or filled background.
