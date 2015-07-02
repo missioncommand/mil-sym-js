@@ -6,6 +6,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
+    var _Version = "0.0.77";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -89,6 +90,11 @@ return{
      * 2525C, which includes 2525Bch2 & USAS 13/14
      */
     Symbology_2525C : 1,
+    
+    getVersion: function()
+    {
+        return _Version;
+    }
     
     /**
      * None, outline (default), or filled background.
