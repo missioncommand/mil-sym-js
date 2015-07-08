@@ -1985,7 +1985,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                     //diagnostic
                     if(vbiDrawThis===15000000)
                     {
-                        shapes.remove(1);
+                        //shapes.remove(1);
                         shape=new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
                         shape.moveTo(pOriginalLinePoints[0]);
                         for(j=1;j<pOriginalLinePoints.length;j++)
