@@ -17,7 +17,7 @@ sec.geo.shape.Radarc = function()
     this.limit = 0;
     this.maxDistanceMeters = 100000;
     this.flatnessDistanceMeters = 1;
-    this.limit = 4;
+    this.limit = 8; //was 4
     this.setRightAzimuthDegrees = function(rightAzimuthDegrees) {
         this.rightAzimuthDegrees = rightAzimuthDegrees;
         this.shapeChanged();
