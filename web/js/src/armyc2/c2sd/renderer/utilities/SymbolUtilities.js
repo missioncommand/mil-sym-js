@@ -955,7 +955,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("G") ||
                         switchChar===("W"))
                     {
-                            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FFFACD");//new Color(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
+                            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FFFACD");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
                     }
                     else
 
@@ -995,7 +995,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     switchChar===("G") ||
                     switchChar===("W"))
                 {
-                        retColor = AffiliationColors.UnknownUnitFillColor;//new Color(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
+                        retColor = AffiliationColors.UnknownUnitFillColor;//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
                 }
                 else
 
@@ -1053,8 +1053,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolID === ("WA-DBAT-----A--") || // 
             symbolID === ("WA-DIPIS---L---") || // 
             symbolID === ("WA-DIPTH---L---") || // 
-            symbolID === ("WA-DWJ-----L---") // Jet Stream
-            )
+            symbolID === ("WA-DWJ-----L---") || // Jet Stream  
+            symbolID === ("WO-DGMSB----A--") || //
+            symbolID === ("WO-DGMRR----A--") ||
+            symbolID === ("WO-DGMCH----A--") ||
+            symbolID === ("WO-DGMIBE---A--") ||
+            symbolID === ("WO-DGMBCC---A--") ||
+            symbolID === ("WO-DOBVI----A--"))
 
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.RED;//0xff0000;	// Red
@@ -1064,8 +1069,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 symbolID === ("WA-DBAMV----A--")  ||// MARGINAL VISUAL FLIGHT RULE (MVFR)
                 symbolID === ("WA-DBATB----A--")  ||// BOUNDED AREAS OF WEATHER / TURBULENCE
                 symbolID.substring(0,5) === ("WAS-T")  ||// Turbulence
-                symbolID.substring(0,7) === ("WA-DPFC")//cold front
-                )
+                symbolID.substring(0,7) === ("WA-DPFC") || //cold front
+                symbolID === ("WO-DGMIBA---A--"))
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.BLUE;
         }
@@ -1076,6 +1081,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WAS-WSFGSVP----") || // Fog - Sky Visible
         symbolID === ("WAS-WSFGSOP----") || // Fog - Sky Obscured
         symbolID === ("WA-DBAFG----A--") || // Fog
+        symbolID === ("WO-DGMRM----A--") ||
+        symbolID === ("WO-DGMCM----A--") ||
+        symbolID === ("WO-DGMIBC---A--") ||
+        symbolID === ("WO-DGMBCB---A--") ||
+        symbolID === ("WO-DGMBTE---A--") ||
         symbolID === ("WAS-WSBR--P----")) // Mist
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.YELLOW;//0xffff00;	// Yellow
@@ -1089,14 +1099,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WA-DBAD-----A--") || // Dust or Sand
         symbolID === ("WAS-WSBD--P----")) // Blowing Dust or Sand
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#A52A2A");//new Color(165,42,42);  //165 42 42 //0xa52a2a;	// Brown
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#A52A2A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(165,42,42);  //165 42 42 //0xa52a2a;	// Brown
         }
         else if(
         symbolID === ("WA-DBALPNC--A--") || // 
         symbolID === ("WA-DBALPC---A--") || // 
         symbolID === ("WA-DIPID---L---") || // 
         symbolID === ("WO-DHCF----L---") || // 
-        symbolID === ("WO-DHCF-----A--") || // 
+        symbolID === ("WO-DHCF-----A--") || //
+        symbolID === ("WO-DGMSIM---A--") || //
+        symbolID === ("WO-DGMRS----A--") ||
+        symbolID === ("WO-DGMCL----A--") ||
+        symbolID === ("WO-DGMIBB---A--") ||
+        symbolID === ("WO-DGMBCA---A--") || 
         symbolID === ("WAS-WSR-LIP----") || // Rain - Intermittent Light
         symbolID === ("WAS-WSR-LCP----") || // Rain - Continuous Light
         symbolID === ("WAS-WSR-MIP----") || // Rain - Intermittent Moderate
@@ -1132,13 +1147,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             //Color.GREEN;// 0x00ff00;	// Green
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#00FF00");
         }
-        else if(symbolID ===("WA-DBAI-----A--") || //BOUNDED AREAS OF WEATHER / ICING
-                symbolID.indexOf("WAS-IC") === 0 || // Clear Icing
-                symbolID.indexOf("WAS-IR") === 0  ||// Rime Icing
-                symbolID.indexOf("WAS-IM") === 0) // Mixed Icing
-        {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#806010");//new Color(128,96,16);
-        }
         else if(symbolID === ("WOS-HDS---P----")|| // Soundings
             symbolID === ("WOS-HHDF--P----")||//foul ground
             symbolID === ("WO-DHHDF----A--")||//foul ground
@@ -1159,8 +1167,22 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolID===("WO-DTCCCFE-L---")||//current flow - ebb
             symbolID===("WO-DTCCCFF-L---")||//current flow - flood
             symbolID===("WOS-TCCTD-P----")||//tide data point
+            symbolID === ("WO-DHCW-----A--") ||
+            symbolID === ("WO-DMOA-----A--") ||
             symbolID === ("WO-DHCW-----A--"))//water
             retColor = armyc2.c2sd.renderer.utilities.Color.GRAY;//0x808080;	// Gray
+        else if(
+                    symbolID.equals("WO-DBSM-----A--") ||
+                    symbolID.equals("WO-DBSF-----A--") ||
+                    symbolID.equals("WO-DGMN-----A--")) // 
+        {
+                retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(230,230,230);//230,230,230;	// light gray
+        }
+        else if(
+                    symbolID.equals("WO-DBSG-----A--")) // 
+        {
+                retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(169,169,169);//169,169,169;	// dark gray
+        }
         else if(
         symbolID === ("WAS-WSVE--P----") || // Volcanic Eruption
         symbolID === ("WAS-WSVA--P----") || // Volcanic Ash
@@ -1179,27 +1201,38 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WOS-HABM--P----") ||//marker
         symbolID === ("WOS-HAL---P----") ||//light
         symbolID === ("WA-DIPIT---L---") ||//ISOTACH
-        symbolID === ("WOS-TCCTG-P----")) // Tide gauge
+        symbolID === ("WOS-TCCTG-P----") || // Tide gauge
+        symbolID === ("WO-DL-ML---L---") ||
+        symbolID === ("WOS-HPM-FC-L---") ||
+        symbolID === ("WO-DL-RA---L---") ||
+        symbolID === ("WO-DHPBA---L---") ||
+        symbolID === ("WO-DMCA----L---") ||
+        symbolID === ("WO-DHPBA----A--") ||
+        symbolID === ("WO-DL-MA----A--") ||
+        symbolID === ("WO-DL-SA----A--") ||
+        symbolID === ("WO-DL-TA----A--") ||
+        symbolID === ("WO-DGMSR----A--")) 
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF00FF");//new Color(255,0,255);//magenta
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF00FF");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,0,255);//magenta
         }
         else if(symbolID.substring(0,7) === ("WA-DPFO")//occluded front
         )
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#E29FFF");//new Color(226,159,255);//light purple
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#E29FFF");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(226,159,255);//light purple
         }
         else if(
         symbolID === ("WA-DPXITCZ-L---") || // inter-tropical convergance zone oragne?
+        symbolID === ("WO-DL-O-----A--") ||
         symbolID === ("WA-DPXCV---L---")) // 
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF7F00");//new Color(255,127,0);//bright orange
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF7F00");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,127,0);//bright orange
         }
-        else if(
-        symbolID.indexOf("WAS-IC") === 0 || // clear icing
-        symbolID.indexOf("WAS-IR") === 0 || // rime icing
-        symbolID.indexOf("WAS-IM") === 0) // mixed icing
+        else if(symbolID ===("WA-DBAI-----A--") || //BOUNDED AREAS OF WEATHER / ICING
+                symbolID.indexOf("WAS-IC") === 0 || // Clear Icing
+                symbolID.indexOf("WAS-IR") === 0  ||// Rime Icing
+                symbolID.indexOf("WAS-IM") === 0) // Mixed Icing
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#806010");//new Color(128,96,16);//mud?
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#806010");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(128,96,16);//mud?
         }
         else if(
         symbolID===("WO-DHCI-----A--") || //Island
@@ -1207,7 +1240,150 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID===("WO-DHPMO---L---")||//offshore loading"
         symbolID===("WO-DHCI-----A--")) // mixed icing
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//new Color(210,176,106);//light/soft brown
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);//light/soft brown
+        }
+        else if(symbolID.substring(0,7).equals("WO-DOBVA----A--")
+        )
+        {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(26,153,77);//dark green
+        }
+        else if(symbolID.substring(0,7).equals("WO-DGMBTI---A--")
+        )
+        {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,48,0);//orange red
+        }
+        else if(symbolID.substring(0,7).equals("WO-DGMBTH---A--")
+        )
+        {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,80,0);//dark orange
+        }
+        //255,127,0
+        //WO-DGMBTG---A--
+        else if (symbolID === ("WO-DGMBTG---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 127, 0);
+        }
+        //255,207,0
+        //WO-DGMBTF---A--
+        else if (symbolID === ("WO-DGMBTF---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 207, 0);
+        }
+        //048,255,0
+        //WO-DGMBTA---A--
+        else if (symbolID === ("WO-DGMBTA---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(48, 255, 0);
+        }
+        //220,220,220
+        //WO-DGML-----A--
+        else if (symbolID === ("WO-DGML-----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(220, 220, 220);
+        }
+        //255,220,220
+        //WO-DGMS-SH--A--
+        else if (symbolID === ("WO-DGMS-SH--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 220, 220);
+        }
+        //255,190,190
+        //WO-DGMS-PH--A--
+        else if (symbolID === ("WO-DGMS-PH--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 190, 190);
+        }
+        //lime green 128,255,51
+        //WO-DOBVC----A--
+        else if (symbolID === ("WO-DOBVC----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(128, 255, 51);
+        }
+        //255,255,0
+        //WO-DOBVE----A--
+        else if (symbolID === ("WO-DOBVE----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 0);
+        }
+        //255,150,150
+        //WO-DGMS-CO--A--
+        else if (symbolID === ("WO-DGMS-CO--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 150, 150);
+        }
+        //175,255,0
+        //WO-DGMBTC---A--
+        else if (symbolID === ("WO-DGMBTC---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(175, 255, 0);
+        }
+        //207,255,0
+        //WO-DGMBTD---A--
+        else if (symbolID === ("WO-DGMBTD---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(207, 255, 0);
+        }
+        //127,255,0
+        //WO-DGMBTB---A--
+        else if (symbolID === ("WO-DGMBTB---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(127, 255, 0);
+        }
+        //255,127,0
+        //WO-DGMIBD---A--
+        else if (symbolID === ("WO-DGMIBD---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 127, 0);
+        }
+        else if (symbolID === ("WO-DGMSIF---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(25, 255, 230);
+        }
+        //0,215,255
+        //WO-DGMSIVF--A--
+        else if (symbolID === ("WO-DGMSIVF--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0, 215, 255);
+        }
+        //255,255,220
+        //WO-DGMSSVF--A--
+        else if (symbolID === ("WO-DGMSSVF--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 220);
+        }
+        //255,255,140
+        //WO-DGMSSF---A--
+        else if (symbolID === ("WO-DGMSSF---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 140);
+        }
+        //255,235,0
+        //WO-DGMSSM---A--
+        else if (symbolID === ("WO-DGMSSM---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 235, 0);
+        }
+        //255,215,0
+        //WO-DGMSSC---A--
+        else if (symbolID === ("WO-DGMSSC---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 215, 0);
+        }
+        //255,180,0
+        //WO-DGMSSVS--A--
+        else if (symbolID === ("WO-DGMSSVS--A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 180, 0);
+        }
+        //200,255,105
+        //WO-DGMSIC---A--
+        else if (symbolID === ("WO-DGMSIC---A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(200, 255, 105);
+        }
+        //100,130,255
+        //WO-DGMSC----A--
+        else if (symbolID === ("WO-DGMSC----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(100, 130, 255);
+        }
+        //255,77,0
+        //WO-DOBVH----A--
+        else if (symbolID === ("WO-DOBVH----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 77, 0);
+        }
+        //255,128,0
+        //WO-DOBVG----A--
+        else if (symbolID === ("WO-DOBVG----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 128, 0);
+        }
+        //255,204,0
+        //WO-DOBVF----A--
+        else if (symbolID === ("WO-DOBVF----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 204, 0);
+        }
+        //204,255,26
+        //WO-DOBVD----A--
+        else if (symbolID === ("WO-DOBVD----A--")) {
+            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(204, 255, 26);
         }
         else
         {
@@ -1223,19 +1399,32 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getFillColorOfWeather = function(symbolID){
         if(symbolID === ("WOS-HPM-R-P----"))//landing ring - brown 148,48,0
-            return new armyc2.c2sd.renderer.utilities.Color(148,48,0);
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(148,48,0);
         else if(symbolID === ("WOS-HPD---P----"))//dolphin facilities - brown
-            return new armyc2.c2sd.renderer.utilities.Color(148,48,0);
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(148,48,0);
+        else if(symbolID === ("WO-DHCB-----A--"))//
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(249,243,241);
         else if(symbolID === ("WOS-HABB--P----"))//buoy default - 255,0,255
-            return new armyc2.c2sd.renderer.utilities.Color(255,0,255);//magenta
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,0,255);//magenta
         else if(symbolID === ("WOS-HHRS--P----"))//rock submerged - 0,204,255
-            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);//a type of blue
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);//a type of blue
         else if(symbolID === ("WOS-HHDS--P----"))//snags/stumps - 0,204,255
-            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);
         else if(symbolID === ("WOS-HHDWB-P----"))//wreck - 0,204,255
-            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);
         else if(symbolID === ("WOS-TCCTG-P----"))//tide gauge - 210, 176, 106
-            return new armyc2.c2sd.renderer.utilities.Color(210,176,106);
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);
+        else if(symbolID === ("WO-DHCW-----A--"))//water
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,255,255);
+        else if (symbolID === ("WO-DHABP----A--") ||
+            symbolID === ("WO-DHHD-----A--") ||
+            symbolID === ("WO-DHHDD----A--") ||
+            symbolID === ("WO-DMCC-----A--")) 
+        {
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,0,255);
+        }
+        else if(symbolID === ("WO-DHPMD----A--"))//drydock
+            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(188,153,58);
         else return null;
     };
     

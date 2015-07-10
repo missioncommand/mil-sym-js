@@ -8575,6 +8575,38 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsC = {
         "MAPPING1H": "4506"
       },
       {
+        "SYMBOLID": "O*O*C-----*****",
+        "DESCRIPTION": "Composite Loss",
+        "MAPPING1U": "4062",
+        "MAPPING1F": "4062",
+        "MAPPING1N": "4062",
+        "MAPPING1H": "4062"
+      },
+      {
+        "SYMBOLID": "O*O*CA----*****",
+        "DESCRIPTION": "Composite Loss Combat",
+        "MAPPING1U": "4063",
+        "MAPPING1F": "4063",
+        "MAPPING1N": "4063",
+        "MAPPING1H": "4063"
+      },
+      {
+        "SYMBOLID": "O*O*CB----*****",
+        "DESCRIPTION": "Composite Loss Accident",
+        "MAPPING1U": "4064",
+        "MAPPING1F": "4064",
+        "MAPPING1N": "4064",
+        "MAPPING1H": "4064"
+      },
+      {
+        "SYMBOLID": "O*O*CC----*****",
+        "DESCRIPTION": "Composite Loss Other",
+        "MAPPING1U": "4065",
+        "MAPPING1F": "4065",
+        "MAPPING1N": "4065",
+        "MAPPING1H": "4065"
+      },
+      {
         "SYMBOLID": "O*O*N-----*****",
         "DESCRIPTION": "Raid on a House",
         "MAPPING1U": "4500",

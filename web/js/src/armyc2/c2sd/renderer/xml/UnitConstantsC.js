@@ -8301,6 +8301,38 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "PATH": "Stability Operations/OPERATIONS/DRUG OPERATION"
       },
       {
+        "SYMBOLID": "O*O*C-----*****",
+        "DESCRIPTION": "Composite Loss",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "5.X.3.14",
+        "ALPHAHIERARCHY": "STBOPS.OPN.CMPLSS",
+        "PATH": "Stability Operations/Operations"
+      },
+      {
+        "SYMBOLID": "O*O*CA----*****",
+        "DESCRIPTION": "Composite Loss Combat",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "5.X.3.14.1",
+        "ALPHAHIERARCHY": "STBOPS.OPN.CMPLSS.CBT",
+        "PATH": "Stability Operations/Operations/Composite Loss"
+      },
+      {
+        "SYMBOLID": "O*O*CB----*****",
+        "DESCRIPTION": "Composite Loss Accident",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "5.X.3.14.2",
+        "ALPHAHIERARCHY": "STBOPS.OPN.CMPLSS.ACCDNT",
+        "PATH": "Stability Operations/Operations/Composite Loss"
+      },
+      {
+        "SYMBOLID": "O*O*CC----*****",
+        "DESCRIPTION": "Composite Loss Other",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "5.X.3.14.3",
+        "ALPHAHIERARCHY": "STBOPS.OPN.CMPLSS.OTHER",
+        "PATH": "Stability Operations/Operations/Composite Loss"
+      },
+      {
         "SYMBOLID": "O*O*N-----*****",
         "DESCRIPTION": "Raid on a House",
         "DRAWCATEGORY": "8",
