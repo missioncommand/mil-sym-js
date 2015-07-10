@@ -76,6 +76,11 @@ sec.geo.GeoArc = function()
         return this.toPoints;
     };
     this.closePath = function() {
+        //if(this.toPoints.get(0) !== null && this.toPoints.get(this.toPoints.size() - 1) !== null)
+        var pt0=this.toPoints.get(0);
+        var pt1=this.toPoints.get(this.toPoints.size() - 1);
+        if(pt0 === null || pt1 === null)
+            return;
         if (this.toPoints.size() > 0 && !this.toPoints.get(0).equals(this.toPoints.get(this.toPoints.size() - 1))) {
             this.lineTo(this.toPoints.get(0));
         }
