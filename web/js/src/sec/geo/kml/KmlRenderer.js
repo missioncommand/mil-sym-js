@@ -49,8 +49,10 @@ sec.geo.kml.KmlRenderer = function()
     this.renderPolygons = function(ext) {
         var polys = new java.util.ArrayList();
         ext.setMaxDistance(200000);
-        ext.setFlatness(1);
-        ext.setLimit(3);
+        //ext.setFlatness(1);
+        //ext.setLimit(3);
+        ext.setFlatness(2);
+        ext.setLimit(8);
         var perimeterPoints = new java.util.ArrayList();
         var it = null;
         var ait = null;
