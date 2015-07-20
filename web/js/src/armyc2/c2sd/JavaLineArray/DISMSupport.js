@@ -1524,7 +1524,9 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                         savepoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(points[j]);
                     }
                     var client = armyc2.c2sd.JavaLineArray.CELineArray.getClient();
-                    if (!client.startsWith("cpof") && radius === 0) {
+                    //if (!client.startsWith("cpof") && radius === 0) 
+                    if (!client.substring(0,4).equals("cpof") && radius === 0)
+                    {
                         dArcRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(savepoints[0], savepoints[1]);
                         if (iCircleRadius > dArcRadius / 2)
                             iCircleRadius = dArcRadius / 2;

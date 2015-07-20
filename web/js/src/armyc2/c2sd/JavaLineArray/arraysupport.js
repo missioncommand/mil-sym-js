@@ -3325,7 +3325,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             if (dMBR / 20 < armyc2.c2sd.JavaLineArray.arraysupport.minLength) {
                                 dMBR = 20 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
-                            if (client.startsWith("cpof")) {
+                            //if (client.startsWith("cpof")) 
+                            if (client.substring(0,4).equals("cpof")) 
+                            {
                                 if (dMBR < 250)
                                     dMBR = 250;
                             } else {
@@ -3527,7 +3529,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 211200000:
                             d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[0], pLinePoints[1]);
-                            if (client.startsWith("cpof"))
+                            //if (client.startsWith("cpof"))
+                            if (client.substring(0,4).equals("cpof")) 
                                 d2 = 20;
                             else
                                 d2 = 30;
@@ -3584,7 +3587,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = 16;
                             break;
                         case 211210000:
-                            if (client.startsWith("cpof"))
+                            //if (client.startsWith("cpof"))
+                            if (client.substring(0,4).equals("cpof")) 
                                 d2 = 25;
                             else
                                 d2 = 25;
@@ -3602,7 +3606,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             if (dMBR / 10 < armyc2.c2sd.JavaLineArray.arraysupport.minLength) {
                                 dMBR = 10 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
-                            if (client.startsWith("cpof")) {
+                            //if (client.startsWith("cpof")) 
+                            if (client.substring(0,4).equals("cpof")) 
+                            {
                                 if (folspDist < 25)
                                     dMBR = 125;
                                 if (folspDist < 75)

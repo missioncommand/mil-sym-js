@@ -1740,7 +1740,8 @@ armyc2.c2sd.JavaLineArray.Channels =
                                 pLinePoints[vblCounter - 7] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt4);
                                 pLinePoints[vblCounter - 5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(midPt2);
                                 if (midPt1.x === midPt2.x && midPt1.y === midPt2.y) {
-                                    if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                    //if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                    if (armyc2.c2sd.JavaLineArray.Channels._client.substring(0,4).equals("cpof"))
                                         dFeature = 30;
                                     else
                                         dFeature = 15;
@@ -1749,7 +1750,8 @@ armyc2.c2sd.JavaLineArray.Channels =
                                     pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendTrueLinePerpDouble(lastPoint, midPt1, midPt1, -dFeature, 5);
                                     pLinePoints[vblCounter - 9] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt1);
                                     pLinePoints[vblCounter - 6] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
-                                    if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                    //if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                    if (armyc2.c2sd.JavaLineArray.Channels._client.substring(0,4).equals("cpof"))
                                         midPt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(nextToLastPoint, pArrowLinePoints[0], 20, 17);
                                     else {
                                         if (dist2 > 30)
@@ -1764,7 +1766,8 @@ armyc2.c2sd.JavaLineArray.Channels =
                                     pLinePoints[vblCounter - 7] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt2);
                                     pLinePoints[vblCounter - 5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(midPt2);
                                 }
-                                if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                //if (armyc2.c2sd.JavaLineArray.Channels._client.startsWith("cpof"))
+                                if (armyc2.c2sd.JavaLineArray.Channels._client.substring(0,4).equals("cpof"))
                                     dFeature = 30;
                                 else {
                                     if (dist2 > 30)
