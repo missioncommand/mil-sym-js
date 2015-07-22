@@ -639,10 +639,6 @@ sec.web.renderer.MultiPointHandler = (function () {
                     rightX = Math.round(temp.getX());
                     if (scale > 1e7)
                     {
-//                    if(width<1000)
-//                        width=1000;
-//                    if(height<1000)
-//                        height=1000;
                         //get widest point in the AOI
                         var midLat = 0;
                         if (bottom < 0 && top > 0)
@@ -696,25 +692,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 normalize = false;
                 ipc.set_normalize(false);
             }
-            //if (normalize) {
-            //    sec.web.renderer.MultiPointHandler.NormalizeGECoordsToGEExtents(0, 360, geoCoords);
-            //}
-
-            //M. Deutch 10-3-11
-            //must shift the rect pixels to synch with the new ipc
-            //the old ipc was in synch with the bbox, so rect x,y was always 0,0
-            //the new ipc synchs with the upper left of the geocoords so the boox is shifted
-            //and therefore the clipping rectangle must shift by the delta x,y between
-            //the upper left corner of the original bbox and the upper left corner of the geocoords
-//            var geoCoords2 = new Array();
-//            var ptLT = new armyc2.c2sd.graphics2d.Point2D();
-//            ptLT.setLocation(left, top);
-//            geoCoords2.push(ptLT);
-//            var ptRB = new armyc2.c2sd.graphics2d.Point2D();
-//            ptRB.setLocation(right, bottom);
-//            geoCoords2.push(ptRB);
-//            if (normalize)
-//                sec.web.renderer.MultiPointHandler.NormalizeGECoordsToGEExtents(0, 360, geoCoords2);
+            if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+            {
+                normalize = true;
+                ipc.set_normalize(true);
+            }
 
             //check if symbolID is valid, if not, turn it into something renderable.
             if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode), symStd) === false)
@@ -1040,6 +1022,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else
                 {
                     ipc.set_normalize(false);
+                }
+                if(sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+                {
+                    ipc.set_normalize(true);
+                    normalize = true;                    
                 }
                 if ((sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
