@@ -3068,6 +3068,8 @@ sec.web.renderer.MultiPointHandler = (function () {
     },
         AddImageFillToKML: function (tgPoints, jsonContent, mSymbol, ipc, normalize)
         {
+            if(tgPoints===null || tgPoints.size()===0)
+                return null;
             //get original point values in pixel form                    
             var pixelPoints = new java.util.ArrayList();
             var path = new armyc2.c2sd.graphics2d.GeneralPath();
