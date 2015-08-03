@@ -1062,10 +1062,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                 //Switch arrays to ArrayLists
                 mSymbol = sec.web.renderer.utilities.JavaRendererUtilities.MilStdSymbolArraysToArrayLists(mSymbol);
 
-                /*if (mSymbol.getModifierMap().containsKey("symbolFillIds") || mSymbol.getModifierMap().containsKey("symbolLineIds")) {
-                 tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
-                 tgPoints = tgl.get_Pixels();
-                 }*/
+                if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
+                {
+                    tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
+                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
+                    tgPoints = tgl.get_Pixels();
+                }
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, rect);
                 shapes = mSymbol.getSymbolShapes();
                 modifiers = mSymbol.getModifierShapes();
