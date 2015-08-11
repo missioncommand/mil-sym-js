@@ -365,7 +365,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             if (index !== j) {
                                 if (lineType === 23111001 && oppSegment !== j)
                                     continue;
-                                if ((pLinePoints[j].y <= Y0 && pLinePoints[j + 1].y >= Y0) || (pLinePoints[j].y >= Y0 && pLinePoints[j + 1].y <= Y0)) {
+                                //if ((pLinePoints[j].y <= Y0 && pLinePoints[j + 1].y >= Y0) || (pLinePoints[j].y >= Y0 && pLinePoints[j + 1].y <= Y0)) 
+                                if ((pLinePoints[j].y < Y0 && pLinePoints[j + 1].y > Y0) ||
+                                    (pLinePoints[j].y > Y0 && pLinePoints[j + 1].y < Y0) ||
+                                    (pLinePoints[j].y < Y0 && pLinePoints[j + 1].y === Y0) ||
+                                     (pLinePoints[j].y === Y0 && pLinePoints[j + 1].y < Y0)) 
+                                {
                                     bolVertical2 = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble(pLinePoints[j], pLinePoints[j + 1], m);
                                     if (bolVertical2 === 1 && m.value[0] === 0) {
                                         nInOutCounter++;
@@ -392,7 +397,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             if (index !== j) {
                                 if (lineType === 23111001 && oppSegment !== j)
                                     continue;
-                                if ((pLinePoints[j].x <= X0 && pLinePoints[j + 1].x >= X0) || (pLinePoints[j].x >= X0 && pLinePoints[j + 1].x <= X0)) {
+                                //if ((pLinePoints[j].x <= X0 && pLinePoints[j + 1].x >= X0) || (pLinePoints[j].x >= X0 && pLinePoints[j + 1].x <= X0)) 
+                                if ((pLinePoints[j].x < X0 && pLinePoints[j + 1].x > X0) ||
+                                    (pLinePoints[j].x > X0 && pLinePoints[j + 1].x < X0) ||
+                                    (pLinePoints[j].x < X0 && pLinePoints[j + 1].x === X0) ||
+                                     (pLinePoints[j].x === X0 && pLinePoints[j + 1].x < X0)) 
+                                {
                                     bolVertical2 = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble(pLinePoints[j], pLinePoints[j + 1], m);
                                     if (bolVertical2 === 0) {
                                         nInOutCounter++;
