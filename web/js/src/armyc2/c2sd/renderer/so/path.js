@@ -14,7 +14,8 @@ armyc2.c2sd.renderer.so.Path = function () {
     this._startPoint=null,
     this._endPoint=null,
     this._lastMoveTo = null,
-    this._rectangle = null;
+    this._rectangle = null,
+    this._method = null;//stroke,fill,fillPattern
 	
 };
 
@@ -309,15 +310,31 @@ armyc2.c2sd.renderer.so.Path = function () {
 
             if(temp[0]===ActionTypes.ACTION_MOVE_TO)
             {
-                context.moveTo(temp[1],temp[2]);
+                //context.moveTo(temp[1],temp[2]);
+                
+                if(i === 0 || this._method !== "fillPattern")
+                {
+                    context.moveTo(temp[1],temp[2]);
+                }
+                else//no moves in a fill shape except maybe for the first one
+                {
+                    context.lineTo(temp[1],temp[2]);
+                }//*/
             }
             else if(temp[0]===ActionTypes.ACTION_LINE_TO)
             {
                 context.lineTo(temp[1],temp[2]);
             }
-			else if(temp[0]===ActionTypes.ACTION_DASHED_LINE_TO)
+            else if(temp[0]===ActionTypes.ACTION_DASHED_LINE_TO)
             {
-                context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
+                if(this._method === "stroke")
+                {
+                    context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
+                }
+                else //you don't dash a fill shape
+                {
+                    context.lineTo(temp[3],temp[4]);
+                }
             }
             else if(temp[0]===ActionTypes.ACTION_CURVE_TO)
             {
@@ -343,6 +360,7 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @return {void} 
      */
     armyc2.c2sd.renderer.so.Path.prototype.stroke = function(context){
+        this._method = "stroke";
         context.beginPath();
         this.setPath(context);
         context.stroke();
@@ -353,7 +371,17 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @return {void} 
      */
     armyc2.c2sd.renderer.so.Path.prototype.fill = function(context){
+        this._method = "fill";
         context.beginPath();
         this.setPath(context);
+        context.fill();
+    };
+    
+    armyc2.c2sd.renderer.so.Path.prototype.fillPattern = function(context,fillPattern){
+        this._method = "fillPattern";
+        context.beginPath();
+        this.setPath(context);
+        var pattern = context.createPattern(fillPattern, "repeat");   
+        context.fillStyle = pattern;
         context.fill();
     };

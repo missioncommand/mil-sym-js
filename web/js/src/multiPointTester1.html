@@ -51,6 +51,14 @@ function testRender()
     //var rendererMP = document.getElementById("SECRenderApplet");
 	//var rendererMP = new sec.web.renderer.SECWebRenderer();
         var rendererMP = sec.web.renderer.SECWebRenderer;
+		
+		var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
+		//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_NONE);
+		//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_COLORFILL);
+		RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE);
+		//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE_QUICK);
+		
+		RendererSettings.setMPModifierFont("Arial, sans-serif",16,"normal",0.8);
 
     if (rendererMP !== null) {
         
@@ -63,22 +71,32 @@ console.log(foo.toString());*/
 
         var modifiers = "";
         //AMBUSH EXAMPLE
-        var symbolCode = "GHGASLA-------X";//ambush
+        //var symbolCode = "GHGASLA-------X";//ambush anticipated
+		//var symbolCode = "GHGPSLA-------X";//ambush present
 		//var symbolCode = "GFGPGAE---****X";//engagement area
-        //var symbolCode = "GHGPGAA-------X"; //assembly area
+        //var symbolCode = "GFGAGAA-------X"; //assembly area
         //var symbolCode = "GHGPGLF-------X";//flot
 		//var symbolCode = "GHGPGAL-------X";//landing zone
-		var symbolCode = "GHGPALL-------X";//LLTR
-		var symbolCode = "GHGPALC-------X";////air corridor
+		//var symbolCode = "GHGPALL-------X";//LLTR
+		//var symbolCode = "GHGPALC-------X";////air corridor
 		//var symbolCode = "GFGPAAR---****X";//ROZ
+        //var symbolCode = "GFFPLTS--------";//Linear Smoke Target
 		//var symbolCode = "GHFPLCN-------X";//NFL
 		//var symbolCode = "GHFPLCR-------X";//RFL
-		
+        //var symbolCode = "GFGPGLP---****X";//Phase Line
+        var symbolCode = "WOS-HPFF----A--";//Weirs
+		//var symbolCode = "WO-DHHDF----A--";//fould ground
         var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
 		//var controlPoints = "66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+        //angled 2 pt line
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703";
+        //horizontal 2 pt line
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
         
 		//modifiers = {"T":"NAME","H":"H","lineColor":"ff00ff00","W":"W1","W1":"W2"};
 		modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"fillColor":"#800000FF"};
+		modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"fillColor":"#800000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		
         var bbox = "66.25,30.60,66.28,30.65";
         //var bbox = "-180.0,-90.0,180.0,90.0";
@@ -113,6 +131,8 @@ console.log(foo.toString());*/
 		//KML is being worked on more due to google earth in bcweb.  We are not actively using JSON for anything.
 		//ID, Name and Description are optional when using JSON format.
 		var start = Date.now();
+        //var json = sec.web.renderer.SECWebRenderer.RenderSymbol2D("ID","Name","Description","GFFPLTS-------X", "22.506472646071693,1.0075800280212468 -7.459195558797445,1.00758002802124680",688,590, "114,-56,-126,64",{T:"t", lineColor:"FFFF00"},3);
+        //var json = sec.web.renderer.SECWebRenderer.RenderSymbol2D("ID","Name","Description","GFFPLTS-------X", "22.506472646071693,1.0075800280212468 -7.459195558797445,1.00758002802124680",688,590, "-10,-7,25,7",{T:"t", lineColor:"FFFF00"},3);
 		//var json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, "clampToGround",scale, bbox, modifiers,format, symStd);
         var json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format,symStd);
 		var stop = Date.now();
@@ -181,11 +201,11 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //G*G*GLB---****X
         //var symbolCode2 = "GFGPGLB-------X"; //boundary
         //var symbolCode2 = "GHGPGAG-------X"; //general area
-        //var symbolCode2 = "GHGPGAA-------X"; //assembly area
+        var symbolCode2 = "GHGPGAA-------X"; //assembly area
         //var symbolCode2 = "GHMPOADC--****X"; //antitank ditch, complete 
         //var symbolCode2 = "GFTPL---------X"; //delay
         //var symbolCode2 = "GHGPSLA-------X"; //ambush
-		var symbolCode2 = "GHGPALC-------X";////air corridor
+		//var symbolCode2 = "GHGPALC-------X";////air corridor
         var controlPoints2 = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         var bbox2 = "66.26,30.627,66.27,30.63"; //will show clipping at work
         //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
@@ -193,6 +213,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         var scale2 = 50000.0;
 		//modifiers = "{\"modifiers\":{\"uniqueDesignation1\":\"T modifier\"}}";
 		modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
+		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
 		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\",\"symbolFillIds\":\"SFGP-----------\"}}";
 		
 		//format = formatJSON;
@@ -260,7 +281,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		modifiers = {};
 		modifiers[mtg.AM_DISTANCE] = [3000,10000];
 		modifiers[mtg.AN_AZIMUTH] = [315,45];
-		modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+		//modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
 		modifiers[msa.LineWidth]=8;//*/
 		modifiers[msa.LookAtTag]=true;
 		
@@ -379,11 +400,11 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		}
 		
                
-                document.getElementById("contentSpan").innerHTML += "<br/><br/>Time for 1k renders: <br/>";
+        /*document.getElementById("contentSpan").innerHTML += "<br/><br/>Time for 1k renders: <br/>";
 		document.getElementById("contentSpan").innerHTML += "<br/><br/>Ambush: "+ timeAmbush/1000 +"  <br/>";
 		document.getElementById("contentSpan").innerHTML += "Assembly Area: "+ timeAA/1000 +"  <br/>";
 		document.getElementById("contentSpan").innerHTML += "Sector Range Fan: "+ timeSRF/1000 +"  <br/>";
-		document.getElementById("contentSpan").innerHTML += "FLOT: "+ timeFlot/1000 +"  <br/>";
+		document.getElementById("contentSpan").innerHTML += "FLOT: "+ timeFlot/1000 +"  <br/>";//*/
 		
 		//webworker
 		/*var json4;
@@ -440,6 +461,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		
 		try
 		{
+			armyc2.c2sd.renderer.utilities.RendererUtilities.getIdealOutlineColor("FF00FF00");
 			armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
 			var foo = armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint("G*TPB-----****X");
 			
@@ -509,10 +531,10 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
                 //*/
         ////////////////////////////////////////////////////////////////////////////////////////
 	//getsinglepointinfo test	
-        var offsets = rendererMP.getSinglePointInfoBatch("{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}");
-        console.log(offsets);
-        console.log(JSON.stringify({"test":123,"test2":456}));
-		console.log(hold);
+        //var offsets = rendererMP.getSinglePointInfoBatch("{\"iconURLs\":[\"SFGP------*****?size=35&T=Hello\",\"SHGPE-----*****?size=50\"]}");
+        //console.log(offsets);
+        //console.log(JSON.stringify({"test":123,"test2":456}));
+		//console.log(hold);
                 
     } //end if
 }

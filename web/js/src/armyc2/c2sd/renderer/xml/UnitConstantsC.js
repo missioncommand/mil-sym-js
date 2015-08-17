@@ -8336,7 +8336,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*N-----*****",
         "DESCRIPTION": "Raid on a House",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.14",
+        "HIERARCHY": "5.X.3.15",
         "ALPHAHIERARCHY": "STBOPS.OPN.HSRAID",
         "PATH": "Stability Operations/OPERATIONS"
       },
@@ -8344,7 +8344,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*2-----*****",
         "DESCRIPTION": "Burglary",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.15",
+        "HIERARCHY": "5.X.3.16",
         "ALPHAHIERARCHY": "STBOPS.OPN.BRGLRY",
         "PATH": "Stability Operations/OPERATIONS"
       },
@@ -8352,7 +8352,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*V-----*****",
         "DESCRIPTION": "Home Eviction",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.16",
+        "HIERARCHY": "5.X.3.17",
         "ALPHAHIERARCHY": "STBOPS.OPN.HSEVCT",
         "PATH": "Stability Operations/OPERATIONS"
       },
@@ -8360,7 +8360,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*I-----*****",
         "DESCRIPTION": "Black Marketing",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.17",
+        "HIERARCHY": "5.X.3.18",
         "ALPHAHIERARCHY": "STBOPS.OPM.BLKMKT",
         "PATH": "Stability Operations/OPERATIONS"
       },
@@ -8368,7 +8368,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*J-----*****",
         "DESCRIPTION": "Jail Break",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.18",
+        "HIERARCHY": "5.X.3.19",
         "ALPHAHIERARCHY": "STBOPS.OPN.JAILBREAK",
         "PATH": "Stability Operations/OPERATIONS"
       },
@@ -8376,7 +8376,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "SYMBOLID": "O*O*B-----*****",
         "DESCRIPTION": "Robbery",
         "DRAWCATEGORY": "8",
-        "HIERARCHY": "5.X.3.19",
+        "HIERARCHY": "5.X.3.20",
         "ALPHAHIERARCHY": "STBOPS.OPN.ROB",
         "PATH": "Stability Operations/OPERATIONS"
       },

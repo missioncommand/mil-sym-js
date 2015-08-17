@@ -955,6 +955,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             si = new armyc2.c2sd.renderer.utilities.ShapeInfo(s);
             si.setAffineTransform(shape.getAffineTransform());
             si.setFillColor(shape.getFillColor());
+            if(shape.getTexturePaint() !== null)
+                si.setTexturePaint(shape.getTexturePaint());
             if (shape.getGlyphPosition() !== null)
                 si.setGlyphPosition(shape.getGlyphPosition());
             si.setLineColor(shape.getLineColor());

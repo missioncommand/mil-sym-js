@@ -13,6 +13,7 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
         UnitFontLookup = armyc2.c2sd.renderer.utilities.UnitFontLookup,
         SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable,
         RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
+        RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities,
         SinglePointRenderer = armyc2.c2sd.renderer.SinglePointRenderer,
         TacticalGraphicIconRenderer = armyc2.c2sd.renderer.TacticalGraphicIconRenderer,
         initialized = false;

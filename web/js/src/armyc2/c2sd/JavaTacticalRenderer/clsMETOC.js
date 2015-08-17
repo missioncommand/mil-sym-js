@@ -1638,13 +1638,34 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32223000:
                     shape = shapes.get(0);
                     shape.setLineColor(tg.get_LineColor());
-                    if (inFile !== null) {
+                    /*if (inFile !== null) {
                         bi2 = armyc2.c2sd.graphics2d.ImageIO.read(inFile);
                         rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, bi2.getWidth(), bi2.getHeight());
                         tp = new armyc2.c2sd.graphics2d.TexturePaint(bi2, rect);
                         shape.setTexturePaint(tp);
                         inFile.close();
-                    }
+                    }//*/
+                    var pattern = null;
+                    if(tg.get_LineType() === 32323000)//beach slope moderate
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DBSM-----A--");
+                    else if(tg.get_LineType() === 32324000)//beach slope steep
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DBST-----A--");
+                    else if(tg.get_LineType() === 32223000)//beige stipple
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DHCB-----A--");
+                    else if(tg.get_LineType() === 32254200)//Foul Ground
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DHHDF----A--");
+                    else if(tg.get_LineType() === 32255200)//Kelp
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DHHDK----A--");
+                    else if(tg.get_LineType() === 32670000)//OIL/GAS RIG FIELD 32670000
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DMOA-----A--");
+                    else if(tg.get_LineType() === 32540000)//swept area 32540000
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DL-SA----A--");
+                    else if(tg.get_LineType() === 32232400)//Weirs 32232400
+                        pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WOS-HPFF----A--");
+                    if(pattern !== null)
+                    {
+                        shape.setTexturePaint(pattern);
+                    }       
                     break;
                 case 31134000:
                 case 31134100:

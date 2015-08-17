@@ -1846,6 +1846,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                     ctx.globalAlpha = pi.alpha;
                     pi.path.fill(ctx);
                 }
+                if(pi.fillPattern !== null && pi.fillPattern.src)
+                {
+                    pi.path.fillPattern(ctx, pi.fillPattern);
+                }
             }
 
 
@@ -2554,6 +2558,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             var lineWidth = null;
             var alpha = null;
             var dashArray = null;
+            var fillPattern = null;
 
 
             var feature = {};
@@ -2570,6 +2575,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                 fillColor = shapeInfo.getFillColor();
                 alpha = fillColor.getAlpha() / 255;
                 fillColor = fillColor.toHexString(false);
+            }
+            if(shapeInfo.getTexturePaint() !== null)
+            {
+                fillPattern = shapeInfo.getTexturePaint();
             }
 
             var stroke = null;
@@ -2605,7 +2614,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 }
 
             }
-            pathInfo = {path: path, lineWidth: lineWidth, lineColor: lineColor, fillColor: fillColor, dashArray: dashArray, alpha: alpha};
+            pathInfo = {path: path, lineWidth: lineWidth, lineColor: lineColor, fillColor: fillColor, dashArray: dashArray, alpha: alpha, fillPattern: fillPattern};
             return pathInfo;
         },
         LabelToKMLString: function (shapeInfo, ipc, normalize, textColor)
