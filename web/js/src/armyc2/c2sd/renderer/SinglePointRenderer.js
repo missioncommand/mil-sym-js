@@ -214,6 +214,10 @@ return{
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
         } 
+        if(modifiers[MilStdAttributes.IconColor] !== undefined)
+        {
+            color1 = modifiers[MilStdAttributes.IconColor];
+        }
 
 		//Just for sea mines
 		if(symbolID.charAt(2) === 'U' &&
