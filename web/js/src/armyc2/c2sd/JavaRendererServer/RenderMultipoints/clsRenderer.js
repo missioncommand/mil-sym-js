@@ -678,7 +678,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     strH1 = "";
-                    if (X !== null)
+                    if (X !== null && X.length>0)
                     {
                         //strH1 = X[0];
                         //tg.set_H1(strH1);
