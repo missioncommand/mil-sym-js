@@ -1748,8 +1748,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         || hq===('B')
                             || hq===('C') || hq===('D'));
         return blRetVal;
-        
-        return false;
     };
     /**
      * 
