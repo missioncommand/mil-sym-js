@@ -746,8 +746,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined)
                 {
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
-                    //var tgPoints = tgl.get_Pixels();//java.util.ArrayList
-                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
+                    if(rect !== null)
+                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
+                    
                     var tgPoints = tgl.get_Pixels();//java.util.ArrayList
                 }//*/
                 if (bboxCoords === null)
@@ -1069,7 +1070,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                 {
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
-                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
+                    if(rect !== null)
+                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
+                    
                     tgPoints = tgl.get_Pixels();
                 }
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, rect);
