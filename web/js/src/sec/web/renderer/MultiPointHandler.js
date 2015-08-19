@@ -15,6 +15,7 @@ sec.web.renderer.MultiPointHandler = (function () {
     var _appletChecked = false;
     var _appletUrl = null;
     var _buffer = null;
+    var _blankCanvas = null;
 
     var textInfoBuffer = null,
             textInfoContext = null,
@@ -33,6 +34,9 @@ sec.web.renderer.MultiPointHandler = (function () {
     var _minWidthInPixels = 100;
 
     //constructor code
+    _blankCanvas = document.createElement('canvas');
+    _blankCanvas.width=2;
+    _blankCanvas.height=2;
 
     //private functions
     /**\
@@ -1732,27 +1736,51 @@ sec.web.renderer.MultiPointHandler = (function () {
 
 
                 }//*/
-                unionBounds = pathBounds.clone();
+                if(pathBounds)
+                {
+                    unionBounds = pathBounds.clone();
+                }
                 if (labelBounds)
                 {
-                    unionBounds.union(labelBounds);
+                    if(unionBounds)
+                    {
+                        unionBounds.union(labelBounds);
+                    }
+                    else
+                    {
+                        unionBounds = labelBounds;
+                    }
                 }
 
                 //get geo bounds for canvas
-                var coordTL = new armyc2.c2sd.graphics2d.Point2D();
-                coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
-                var coordBR = new armyc2.c2sd.graphics2d.Point2D();
-                coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
-
-                var geoCoordTL = ipc.PixelsToGeo(coordTL);
-                var geoCoordBR = ipc.PixelsToGeo(coordBR);
-                if (normalize)
+                var geoCoordTL = null;
+                var geoCoordBR = null;
+                if(unionBounds)
                 {
-                    geoCoordTL = this.NormalizeCoordToGECoord(geoCoordTL);
-                    geoCoordBR = this.NormalizeCoordToGECoord(geoCoordBR);
+                    var coordTL = new armyc2.c2sd.graphics2d.Point2D();
+                    coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
+                    var coordBR = new armyc2.c2sd.graphics2d.Point2D();
+                    coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());8
+                    
+                    geoCoordTL = ipc.PixelsToGeo(coordTL);
+                    geoCoordBR = ipc.PixelsToGeo(coordBR);
+                    if (normalize)
+                    {
+                        geoCoordTL = this.NormalizeCoordToGECoord(geoCoordTL);
+                        geoCoordBR = this.NormalizeCoordToGECoord(geoCoordBR);
+                    }
+                    geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
+                    geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
                 }
-                geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
-                geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
+                else//nothing to draw
+                {
+                    geoCoordTL = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordBR = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordTL.setLocation(0,0);
+                    geoCoordBR.setLocation(0,0);
+                }
+
+                
             }
             catch (err)
             {
@@ -1760,8 +1788,16 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             //if(renderToCanvas)
             //{
-            var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor);
-            return geoCanvas;
+            if(paths && len > 0)
+            {
+                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor);
+                return geoCanvas;
+            }
+            else
+            {
+                //{image:buffer, geoTL:geoTL, geoBR:geoBR} OR {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
+                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR};
+            }
             //}
             //else
             //  return {paths:paths,textInfos:labels,bounds:unionBounds,geoTL:geoCoordTL,geoBR:geoCoordBR};
