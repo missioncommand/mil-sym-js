@@ -186,9 +186,9 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
 				i = parseInt(index);
 
 				if(i < 9000)
-				  return (i + 57000) + "";
+				  return (i + 57000);
 				else
-				  return (i + 54000) + "";
+				  return (i + 54000);
 			}
 			else
 				return index;

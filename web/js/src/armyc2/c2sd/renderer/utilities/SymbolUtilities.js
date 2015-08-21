@@ -1176,12 +1176,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     symbolID.equals("WO-DBSF-----A--") ||
                     symbolID.equals("WO-DGMN-----A--")) // 
         {
-                retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(230,230,230);//230,230,230;	// light gray
+                retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
                     symbolID.equals("WO-DBSG-----A--")) // 
         {
-                retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(169,169,169);//169,169,169;	// dark gray
+                retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
         else if(
         symbolID === ("WAS-WSVE--P----") || // Volcanic Eruption
@@ -1245,145 +1245,145 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(symbolID.substring(0,7).equals("WO-DOBVA----A--")
         )
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(26,153,77);//dark green
+            retColor = new armyc2.c2sd.renderer.utilities.Color(26,153,77);//dark green
         }
         else if(symbolID.substring(0,7).equals("WO-DGMBTI---A--")
         )
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,48,0);//orange red
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255,48,0);//orange red
         }
         else if(symbolID.substring(0,7).equals("WO-DGMBTH---A--")
         )
         {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,80,0);//dark orange
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255,80,0);//dark orange
         }
         //255,127,0
         //WO-DGMBTG---A--
         else if (symbolID === ("WO-DGMBTG---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 127, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 127, 0);
         }
         //255,207,0
         //WO-DGMBTF---A--
         else if (symbolID === ("WO-DGMBTF---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 207, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 207, 0);
         }
         //048,255,0
         //WO-DGMBTA---A--
         else if (symbolID === ("WO-DGMBTA---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(48, 255, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(48, 255, 0);
         }
         //220,220,220
         //WO-DGML-----A--
         else if (symbolID === ("WO-DGML-----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(220, 220, 220);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(220, 220, 220);
         }
         //255,220,220
         //WO-DGMS-SH--A--
         else if (symbolID === ("WO-DGMS-SH--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 220, 220);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 220, 220);
         }
         //255,190,190
         //WO-DGMS-PH--A--
         else if (symbolID === ("WO-DGMS-PH--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 190, 190);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 190, 190);
         }
         //lime green 128,255,51
         //WO-DOBVC----A--
         else if (symbolID === ("WO-DOBVC----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(128, 255, 51);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(128, 255, 51);
         }
         //255,255,0
         //WO-DOBVE----A--
         else if (symbolID === ("WO-DOBVE----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 255, 0);
         }
         //255,150,150
         //WO-DGMS-CO--A--
         else if (symbolID === ("WO-DGMS-CO--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 150, 150);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 150, 150);
         }
         //175,255,0
         //WO-DGMBTC---A--
         else if (symbolID === ("WO-DGMBTC---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(175, 255, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(175, 255, 0);
         }
         //207,255,0
         //WO-DGMBTD---A--
         else if (symbolID === ("WO-DGMBTD---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(207, 255, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(207, 255, 0);
         }
         //127,255,0
         //WO-DGMBTB---A--
         else if (symbolID === ("WO-DGMBTB---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(127, 255, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(127, 255, 0);
         }
         //255,127,0
         //WO-DGMIBD---A--
         else if (symbolID === ("WO-DGMIBD---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 127, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 127, 0);
         }
         else if (symbolID === ("WO-DGMSIF---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(25, 255, 230);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(25, 255, 230);
         }
         //0,215,255
         //WO-DGMSIVF--A--
         else if (symbolID === ("WO-DGMSIVF--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0, 215, 255);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(0, 215, 255);
         }
         //255,255,220
         //WO-DGMSSVF--A--
         else if (symbolID === ("WO-DGMSSVF--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 220);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 255, 220);
         }
         //255,255,140
         //WO-DGMSSF---A--
         else if (symbolID === ("WO-DGMSSF---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 255, 140);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 255, 140);
         }
         //255,235,0
         //WO-DGMSSM---A--
         else if (symbolID === ("WO-DGMSSM---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 235, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 235, 0);
         }
         //255,215,0
         //WO-DGMSSC---A--
         else if (symbolID === ("WO-DGMSSC---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 215, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 215, 0);
         }
         //255,180,0
         //WO-DGMSSVS--A--
         else if (symbolID === ("WO-DGMSSVS--A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 180, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 180, 0);
         }
         //200,255,105
         //WO-DGMSIC---A--
         else if (symbolID === ("WO-DGMSIC---A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(200, 255, 105);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(200, 255, 105);
         }
         //100,130,255
         //WO-DGMSC----A--
         else if (symbolID === ("WO-DGMSC----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(100, 130, 255);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(100, 130, 255);
         }
         //255,77,0
         //WO-DOBVH----A--
         else if (symbolID === ("WO-DOBVH----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 77, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 77, 0);
         }
         //255,128,0
         //WO-DOBVG----A--
         else if (symbolID === ("WO-DOBVG----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 128, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 128, 0);
         }
         //255,204,0
         //WO-DOBVF----A--
         else if (symbolID === ("WO-DOBVF----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255, 204, 0);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(255, 204, 0);
         }
         //204,255,26
         //WO-DOBVD----A--
         else if (symbolID === ("WO-DOBVD----A--")) {
-            retColor = armyc2.c2sd.renderer.utilities.Color.rgbToHexString(204, 255, 26);
+            retColor = new armyc2.c2sd.renderer.utilities.Color(204, 255, 26);
         }
         else
         {
@@ -1399,32 +1399,32 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getFillColorOfWeather = function(symbolID){
         if(symbolID === ("WOS-HPM-R-P----"))//landing ring - brown 148,48,0
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(148,48,0);
+            return new armyc2.c2sd.renderer.utilities.Color(148,48,0);
         else if(symbolID === ("WOS-HPD---P----"))//dolphin facilities - brown
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(148,48,0);
+            return new armyc2.c2sd.renderer.utilities.Color(148,48,0);
         else if(symbolID === ("WO-DHCB-----A--"))//
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(249,243,241);
+            return new armyc2.c2sd.renderer.utilities.Color(249,243,241);
         else if(symbolID === ("WOS-HABB--P----"))//buoy default - 255,0,255
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,0,255);//magenta
+            return new armyc2.c2sd.renderer.utilities.Color(255,0,255);//magenta
         else if(symbolID === ("WOS-HHRS--P----"))//rock submerged - 0,204,255
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);//a type of blue
+            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);//a type of blue
         else if(symbolID === ("WOS-HHDS--P----"))//snags/stumps - 0,204,255
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);
+            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);
         else if(symbolID === ("WOS-HHDWB-P----"))//wreck - 0,204,255
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,204,255);
+            return new armyc2.c2sd.renderer.utilities.Color(0,204,255);
         else if(symbolID === ("WOS-TCCTG-P----"))//tide gauge - 210, 176, 106
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);
+            return new armyc2.c2sd.renderer.utilities.Color(210,176,106);
         else if(symbolID === ("WO-DHCW-----A--"))//water
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,255,255);
+            return new armyc2.c2sd.renderer.utilities.Color(255,255,255);
         else if (symbolID === ("WO-DHABP----A--") ||
             symbolID === ("WO-DHHD-----A--") ||
             symbolID === ("WO-DHHDD----A--") ||
             symbolID === ("WO-DMCC-----A--")) 
         {
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(0,0,255);
+            return new armyc2.c2sd.renderer.utilities.Color(0,0,255);
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
-            return armyc2.c2sd.renderer.utilities.Color.rgbToHexString(188,153,58);
+            return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
         else return null;
     };
     
