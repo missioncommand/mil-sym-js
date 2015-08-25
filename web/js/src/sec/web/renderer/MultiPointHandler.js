@@ -1791,7 +1791,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             //if(renderToCanvas)
             //{
-            if(paths && len > 0)
+            if(paths && len > 0 && unionBounds)
             {
                 var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor);
                 return geoCanvas;
