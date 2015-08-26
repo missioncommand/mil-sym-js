@@ -31,10 +31,17 @@ armyc2.c2sd.renderer.so.Path = function () {
      * @return {_rectangle} description
      */
     armyc2.c2sd.renderer.so.Path.prototype.getBounds = function(){
-        return new armyc2.c2sd.renderer.so.Rectangle(this._rectangle.getX(),
-                                this._rectangle.getY(),
-                                this._rectangle.getWidth(),
-                                this._rectangle.getHeight());
+        if(this._rectangle)
+        {
+            return new armyc2.c2sd.renderer.so.Rectangle(this._rectangle.getX(),
+                this._rectangle.getY(),
+                this._rectangle.getWidth(),
+                this._rectangle.getHeight());
+        }
+        else
+        {
+            return null;
+        }
     };
     /**
      * @param {Number} x 

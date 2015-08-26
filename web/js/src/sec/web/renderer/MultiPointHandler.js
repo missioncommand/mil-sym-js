@@ -1672,15 +1672,17 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    //var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToGeoJSONString(shapes.get(i), ipc, normalize);
                     var pathInfo = sec.web.renderer.MultiPointHandler.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer);
-                    tempBounds = pathInfo.path.getBounds();
-                    tempBounds.grow(Math.round(pathInfo.lineWidth / 2));//adjust for line width so nothing gets clipped.
-                    if (pathBounds === null)
-                        pathBounds = tempBounds.clone();
-                    else
-                        pathBounds.union(tempBounds);
-                    paths.push(pathInfo);
+                    if(pathInfo.path && pathInfo.path.getBounds())
+                    {
+                        tempBounds = pathInfo.path.getBounds();
+                        tempBounds.grow(Math.round(pathInfo.lineWidth / 2));//adjust for line width so nothing gets clipped.
+                        if (pathBounds === null)
+                            pathBounds = tempBounds.clone();
+                        else
+                            pathBounds.union(tempBounds);
+                        paths.push(pathInfo);
+                    }
                 }
 
                 var tempModifier, len2 = modifiers.size();
