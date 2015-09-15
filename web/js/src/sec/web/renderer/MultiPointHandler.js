@@ -2160,7 +2160,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         kml += (longitude);
                         kml += (",");
                         kml += (latitude);
-                        kml += (" ");
+                        if(j<len2-1)
+                            kml += (" ");
                     }
                     kml += ("</coordinates>");
                     kml += ("</LineString>");
@@ -2219,7 +2220,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         kml += (longitude);
                         kml += (",");
                         kml += (latitude);
-                        kml += (" ");
+                        if(j<shape.size()-1)
+                            kml += (" ");
                     }
                     kml += ("</coordinates>");
                     kml += ("</LinearRing>");
