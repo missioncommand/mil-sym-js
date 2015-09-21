@@ -740,16 +740,16 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGP": "2137",
         "MAPPINGA": "2137",
         "DESCRIPTION": "Antipersonnel (AP) Mines",
-        "WIDTH": "34",
-        "HEIGHT": "30"
+        "WIDTH": "40",
+        "HEIGHT": "33"
       },
       {
         "SYMBOLID": "G*M*OMW---****X",
         "MAPPINGP": "2138",
         "MAPPINGA": "2138",
         "DESCRIPTION": "Wide Area Mines",
-        "WIDTH": "40",
-        "HEIGHT": "33"
+        "WIDTH": "54",
+        "HEIGHT": "42"
       },
       {
         "SYMBOLID": "G*M*OFS---****X",
@@ -1086,7 +1086,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "MAPPINGA": "2201",
         "DESCRIPTION": "Sea Mine-Like",
         "WIDTH": "22",
-        "HEIGHT": "22"
+        "HEIGHT": "21"
       },
       {
         "SYMBOLID": "G*O*HO----****X",

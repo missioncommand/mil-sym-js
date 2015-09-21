@@ -250,7 +250,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 if(basicID === "G*G*GPWD--****X")//drop point
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.85);
+                        center.y = Math.round(bounds.height * 0.87);
                 }
                 if(basicID === "G*G*PN----****X")//dummy minefield static
                 {
@@ -260,7 +260,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 if(basicID === "G*M*OB----****X")//booby trap
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.8);
+                        center.y = Math.round(bounds.height * 0.79);
                 }
                 if(basicID === "G*M*OME---****X")//antitank mine directional
                 {
@@ -270,27 +270,27 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 if(basicID === "G*M*OMW---****X")//wide area mines
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.34);
+                        center.y = Math.round(bounds.height * 0.3);
                 }
                 if(basicID === "G*M*OMP---****X")//anti personnel mines
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.59);
+                        center.y = Math.round(bounds.height * 0.64);
                 }
                 if(basicID === "G*M*OHTL--****X")//Aviation/tower/low//2525C
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.95);
+                        center.y = Math.round(bounds.height * 0.88);
                 }
                 if(basicID === "G*M*OHTH--****X")//Aviation/tower/high//2525C
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.95);
+                        center.y = Math.round(bounds.height * 0.90);
                 }
                 if(basicID === "G*O*HM----****X")//sea mine-like
                 {
                         center.x = bounds.width/2;
-                        center.y = Math.round(bounds.height * 0.7);
+                        center.y = Math.round(bounds.height * 0.65);
                 }
                 if(basicID === "G*O*HI----****X")
                 {
