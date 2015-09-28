@@ -3636,13 +3636,16 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     var T1 = tg.get_T1();
     var az = T.split(",");  //azimuths l,r,l,r,...
     var am = T1.split(","); //radii
-    var altitudes = H1.split(",");
+    //var altitudes = H1.split(",");
+    var altitudes = null;
     var min = 0;
     var numSectors = az.length / 2;
     if (numSectors < 1) {
         return false;
     }
-
+    if(!H1.isEmpty())
+        altitudes = H1.split(",");
+            
     try {
         for (var k = 0; k < am.length; k++) {
             min = Double.parseDouble(am[k]);
@@ -3689,12 +3692,15 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         pt2.y = pt22d.getY();
         locModifier.add(pt2);
     }
-    for (var k = 0; k < altitudes.length; k++) {
-        if (k >= locModifier.size()) {
-            break;
+    if(altitudes !== null)
+    {
+        for (var k = 0; k < altitudes.length; k++) {
+            if (k >= locModifier.size()) {
+                break;
+            }
+            pt0 = locModifier.get(k);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "ALT " + altitudes[k], 3, 0, pt0, pt0);
         }
-        pt0 = locModifier.get(k);
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "ALT " + altitudes[k], 3, 0, pt0, pt0);
     }
     return true;
 };
