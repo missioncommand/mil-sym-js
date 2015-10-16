@@ -8,7 +8,7 @@ armyc2.c2sd.renderer.utilities.MilStdAttributes = armyc2.c2sd.renderer.utilities
 
 armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor = "LINECOLOR";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor = "FILLCOLOR";
-armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor = "ICONCOLOR";
+armyc2.c2sd.renderer.utilities.MilStdAttributes.IconColor = "ICONCOLOR";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.TextColor = "TEXTCOLOR";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.TextBackgroundColor = "TEXTBACKGROUNDCOLOR";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.Alpha = "ALPHA";
