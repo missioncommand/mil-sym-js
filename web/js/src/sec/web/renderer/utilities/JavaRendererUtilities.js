@@ -28,6 +28,12 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
      */
     sec.web.renderer.utilities.JavaRendererUtilities.ARGBtoABGR = function(rgbString)
     {
+        if(rgbString.length===6)
+        {
+            var s="FF";
+            rgbString=s.concat(rgbString);
+        }
+
         var c = rgbString.split('');
         var temp1 = c[2];
         var temp2 = c[3];
