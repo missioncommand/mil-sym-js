@@ -704,6 +704,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212600000:
                         case 212500000:
                         case 211400000:
+                            if(dRadius>100)
+                                dLength=0.8*dRadius;
                             for (j = 1; j <= 23; j++) {
                                 if (j % 3 === 0) {
                                     midPts[k].x = pt0.x - Math.floor(((dLength / dRadius) * (pt0.x - ptsArc[j].x)));
