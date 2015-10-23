@@ -398,6 +398,7 @@
         
             <!--(Single) Rendering Utility imports (minus multi-point)--> 
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/FillPatterns.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TextInfo.js" />
@@ -436,6 +437,7 @@
             <fileset file="web/js/src/sec/web/renderer/PointConverter.js" />
             <fileset file="web/js/src/sec/web/renderer/SymbolModifiers.js" />
             <fileset file="web/js/src/sec/web/renderer/GeoPixelConversion.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerCanvas.js" />
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />

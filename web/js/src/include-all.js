@@ -76,7 +76,9 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/MilStdSymbol.js" typ
 document.write('<script src="armyc2/c2sd/renderer/utilities/ModifiersTG.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/PointConversion.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/PointConverter3D.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/FillPatterns.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/RendererSettings.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/RendererUtilities.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/ShapeInfo.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/SymbolUtilities.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/SymbolDefTable.js" type="text/javascript" ></script>');
@@ -101,5 +103,6 @@ document.write('<script src="sec/web/renderer/utilities/JavaRendererUtilities.js
 document.write('<script src="sec/web/renderer/PointConverter.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SymbolModifiers.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/GeoPixelConversion.js" type="text/javascript" ></script>');
+document.write('<script src="sec/web/renderer/MultiPointHandlerCanvas.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/MultiPointHandler.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SECWebRenderer.js" type="text/javascript" ></script>');
