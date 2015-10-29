@@ -8254,7 +8254,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Compact or Wet Snow (With or Without Ice) Covering Less than One-Hald of Ground",
+        "DESCRIPTION": "Compact or Wet Snow (With or Without Ice) Covering Less than One-Half of Ground",
         "HIERARCHY": "3.X.1.9.2.2",
         "ALPHAHIERARCHY": "METOC.AMPHC.STOG.WSMIC.CWSNLH",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
