@@ -645,7 +645,7 @@ return{
     {
         if(FillPatterns)
         {
-            FillPatterns.getCanvasFillStylePattern(pattern, lineColor, fillColor, lineWidth);
+            return FillPatterns.getCanvasFillStylePattern(pattern, lineColor, fillColor, lineWidth);
         }
         else
         {
