@@ -494,9 +494,10 @@ sec.web.renderer.MultiPointHandler = (function () {
          * example: {"C":"4","Z":"300","AN":[100,200]}}
          * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
          * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
+	 * @param {Object} optional converter for canvas or datauri format
          * @return A JSON string representation of the graphic.
          */
-        RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd)
+        RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd, converter)
         {
             if (!symStd)
             {
@@ -594,6 +595,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                     
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
+
+		if(converter !== undefined && converter !== null)
+			ipc=converter;
 
                 //sanity check
                 //when spanning the IDL sometimes they send a bad bbox with 0 width
