@@ -98,9 +98,10 @@ return{
      * example: {"C":"4","Z":"300","AN":[100,200]}}
      * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
      * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
+     * @param {Object} converter an optional canvas converter for the pixels based image
      * @return A JSON string representation of the graphic.
      */        
-    RenderSymbol: function(id, name, description, symbolCode, controlPoints, altitudeMode, scale, bbox, modifiers, format, symStd)
+    RenderSymbol: function(id, name, description, symbolCode, controlPoints, altitudeMode, scale, bbox, modifiers, format, symStd, converter)
     {
         var output = "";
         try 
@@ -131,12 +132,12 @@ return{
                
                 if (output ==="") {
                     output = sec.web.renderer.MultiPointHandler.RenderSymbol(id, name, description, symbolCode, controlPoints,
-                        scale, bbox, modifiers, format,symStd);
+                        scale, bbox, modifiers, format,symStd, converter);
                 }
             }
             else//*/
             {
-                output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd);
+                output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd, converter);
             }
             //console.dir(output);
             return output;
