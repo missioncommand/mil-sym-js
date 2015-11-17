@@ -1,17 +1,25 @@
-/*
+/* expected input format
 var e.data = {};
 		e.data.id = "ID";
 		e.data.name = "Name";
 		e.data.description = "description";
 		e.data.symbolID = symbolCode4;
 		e.data.points = controlPoints4;
-		e.data.altMode = "absolute";
-		e.data.scale = scale4;
+		e.data.altMode = "absolute";//for 3D
+		e.data.scale = scale4;//for 3D
 		e.data.bbox = bbox4;
 		e.data.modifiers = modifiers;
 		e.data.format = format;
-		e.data.pHeight = pixelHeight;
-		e.data.pWidth = pixelWidth;
+		e.data.pHeight = pixelHeight;//for 2D
+		e.data.pWidth = pixelWidth;//for 2D
+*/
+
+/* return object
+{
+    id:e.data.id,//same as what was passed in
+    result:strOutput,//resultant kml,json or error message
+    format:e.data.format//format number or "ERROR" if there was a problem like missing required parameters    
+}
 */
 
 importScripts('m-c.js');
@@ -57,42 +65,27 @@ var rendererMP = sec.web.renderer.SECWebRenderer;
 
 onmessage = function(e)
 {
-	var strKml = null;
+	var strOutput = null;
 	
 	if(e.data !== null && e.data.altMode !== null)
-	{
-		try
-		{
-			strKml = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
-		}
-		catch(err)
-		{
-			 var myStack = "";
-			 if(err.stack !== undefined)
-			 myStack = err.stack;
-			postMessage({kml:err.message,format:"ERROR", stack:myStack});
-		}
+	{	
+        //data for symbol on 3d map so call RenderSymbol     
+        strOutput = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
 	}
 	else
 	{
-		try
-		{
-			strKml = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
-		}
-		catch(error)
-		{
-			var myStack = "";
-			 if(err.stack !== undefined)
-			 myStack = err.stack;
-			postMessage({kml:err.message,format:"ERROR", stack:myStack});
-			throw error;
-		}
+        //data for symbol on 2D map so call RenderSymbol2D
+        strOutput = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
 	}
 	
 	
-	if(strKml !== null)
+	if(strOutput !== null)
 	{
-		postMessage({kml:strKml,format:e.data.format});
+        //return results
+        var format = e.data.format;
+        if(strOutput.substring(0,15) === '{"type":"error"')
+            format = "ERROR";
+		postMessage({id:e.data.id,result:strOutput,format:format});
 	}
 }
 

@@ -557,6 +557,9 @@
             <fileset file="web/js/src/renderer.css" />
         </copy>
         <copy todir="dist">
+            <fileset file="web/js/src/MPWorker.js" />
+        </copy>
+        <copy todir="dist">
             <fileset dir="web/samples" />
         </copy>
     </target>
