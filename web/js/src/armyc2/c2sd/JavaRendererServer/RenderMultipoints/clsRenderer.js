@@ -380,7 +380,31 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var x_alt = 0;
             var n_alt = 0;
             var strXAlt = "";
-
+            if (lineType === 13000000)
+            {
+                var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
+                var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                if(AM !== null && AM.length>=2 && AN !== null && AN.length>=1)
+                {
+                    var ptAzimuth=new armyc2.c2sd.JavaLineArray.POINT2(0,0);
+                    ptAzimuth.x=AN[0];
+                    var ptCenter=tg.Pixels.get(0);
+                    var pt0 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), AM[0], 90);//semi-major axis
+                    var pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), AM[1], 0);//semi-minor axis
+                    var pt02d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
+                    var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt1.x, pt1.y);
+                    pt02d = converter.GeoToPixels(pt02d);
+                    pt12d = converter.GeoToPixels(pt12d);
+                    pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt02d.getX(),pt02d.getY());
+                    pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(),pt12d.getY());
+                    tg.Pixels=new java.util.ArrayList();
+                    tg.Pixels.add(ptCenter);
+                    tg.Pixels.add(pt0);
+                    tg.Pixels.add(pt1);   
+                    tg.Pixels.add(ptAzimuth);
+                }
+                
+            }
             if (lineType === 243112000)
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);

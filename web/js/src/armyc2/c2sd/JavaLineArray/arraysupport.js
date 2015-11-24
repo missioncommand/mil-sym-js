@@ -1457,12 +1457,42 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     pEllipsePoints[36] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pEllipsePoints[0]);
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
-                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetXPointsDouble", new armyc2.c2sd.renderer.utilities.RendererException("GetXPointsDouble", exc));
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetXPointsDouble", new armyc2.c2sd.renderer.utilities.RendererException("GetEllipsePoints", exc));
                     } else {
                         throw exc;
                     }
                 }
                 return pEllipsePoints;
+            },
+            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth) {
+                var pResultPoints = null;
+                try {                    
+                        var pEllipsePoints=new Array(36);
+                        var l=0,j=0;
+                        var dFactor=0;
+                        var a=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
+                        var b=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
+                        armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
+                        for (l = 1; l < 37; l++)
+                        {
+                            dFactor = (10.0 * l) * Math.PI / 180.0;
+                            pEllipsePoints[l - 1].x = ptCenter.x + (a * Math.cos(dFactor));
+                            pEllipsePoints[l - 1].y = ptCenter.y + (b * Math.sin(dFactor));
+                            pEllipsePoints[l - 1].style = 0;
+                        }
+                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth-90);
+                        pResultPoints=new Array(37);
+                        for(j=0;j<36;j++)
+                            pResultPoints[j]=pEllipsePoints[j];
+                        pResultPoints[36]=pEllipsePoints[0];                    
+                } catch (exc) {
+                    if (Clazz.instanceOf(exc)) {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetXPointsDouble", new armyc2.c2sd.renderer.utilities.RendererException("GetRotatedEllipsePoints", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+                return pResultPoints;
             },
             GetLVOPoints: function (linetype, pOriginalLinePoints, pLinePoints, vblCounter) {
                 var lEllipseCounter = 0;
@@ -2116,7 +2146,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pt0 = pLinePoints[0];
                             pt1 = pLinePoints[1];
                             pt2 = pLinePoints[2];
-                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getEllipsePoints(pt0, pt1, pt2);
+                            //pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getEllipsePoints(pt0, pt1, pt2);
+                            var azimuth=pLinePoints[3].x;
+                            pLinePoints=armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0,pt1,pt2,azimuth);
                             acCounter = 37;
                             break;
                         case 23200000:
