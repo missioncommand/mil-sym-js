@@ -384,6 +384,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                if(AN===null)
+                    AN=new Array();
+                if(AN.length<1)
+                    AN[0]=0;
                 if(AM !== null && AM.length>=2 && AN !== null && AN.length>=1)
                 {
                     var ptAzimuth=new armyc2.c2sd.JavaLineArray.POINT2(0,0);
