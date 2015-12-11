@@ -4307,7 +4307,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
         var echelonSymbol = null;
         var stringWidthEchelonSymbol = 0;
         var stringWidthENY = 0;
-        var lineTooShort = false;
+        //var lineTooShort = false;
         var ptEchelonStart = null;
         var ptEchelonEnd = null;
         var midpt;
@@ -4346,12 +4346,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
                     }
                     pt0 = tg.Pixels.get(j);
                     pt1 = tg.Pixels.get(j + 1);
-                    lineTooShort = armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j);
+                    //lineTooShort = armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j);
                     if (segShape !== null)
                         segShape.moveTo(pt0);
                     else
                         shape.moveTo(pt0);
-                    if (lineTooShort || tg.get_Client().equals("ge")) {
+                    //if (lineTooShort || tg.get_Client().equals("ge")) 
+                    if (tg.get_Client().equals("ge") || armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j)===true) 
+                    {
                         if (segShape !== null) {
                             segShape.lineTo(pt1);
                             shapes.add(segShape);
