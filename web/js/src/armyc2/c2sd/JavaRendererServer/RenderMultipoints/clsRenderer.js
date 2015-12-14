@@ -1039,6 +1039,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.render_GE(tg, shapeInfos, modifierShapeInfos, converter, clipArea);
             mss.setSymbolShapes(shapeInfos);
             mss.setModifierShapes(modifierShapeInfos);
+            mss.setWasClipped(tg.get_WasClipped());
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("clsRenderer", "renderWithPolylines", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside renderWithPolylines", exc));

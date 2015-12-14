@@ -42,7 +42,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
         }
         return ptIntersect;
     },
-    clipTop: function(pts, clipBounds) {
+    clipTop: function(tg, pts, clipBounds) {
         var ptsResult = new java.util.ArrayList();
         try {
             var ulx = 0;
@@ -73,6 +73,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                     if (intersectPt !== null) {
                         ptsResult.add(intersectPt);
                     }
+                    tg.set_WasClipped(true);
                 }
                 if (previous.getY() < ul.getY() && current.getY() < ul.getY()) {
                     continue;
@@ -84,6 +85,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                         ptsResult.add(intersectPt);
                     }
                     ptsResult.add(current);
+                    tg.set_WasClipped(true);
                 }
             }
         } catch (exc) {
@@ -95,7 +97,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
         }
         return ptsResult;
     },
-    clipBottom: function(pts, clipBounds) {
+    clipBottom: function(tg, pts, clipBounds) {
         var ptsResult = new java.util.ArrayList();
         try {
             var ulx = 0;
@@ -128,6 +130,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                     if (intersectPt !== null) {
                         ptsResult.add(intersectPt);
                     }
+                    tg.set_WasClipped(true);
                 }
                 if (previous.getY() > lr.getY() && current.getY() > lr.getY()) {
                     continue;
@@ -139,6 +142,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                         ptsResult.add(intersectPt);
                     }
                     ptsResult.add(current);
+                    tg.set_WasClipped(true);
                 }
             }
         } catch (exc) {
@@ -150,7 +154,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
         }
         return ptsResult;
     },
-    clipRight: function(pts, clipBounds) {
+    clipRight: function(tg, pts, clipBounds) {
         var ptsResult = new java.util.ArrayList();
         try {
             var uly = 0;
@@ -182,6 +186,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                     if (intersectPt !== null) {
                         ptsResult.add(intersectPt);
                     }
+                    tg.set_WasClipped(true);
                 }
                 if (previous.getX() > lr.getX() && current.getX() > lr.getX()) {
                     continue;
@@ -193,6 +198,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                         ptsResult.add(intersectPt);
                     }
                     ptsResult.add(current);
+                    tg.set_WasClipped(true);
                 }
             }
         } catch (exc) {
@@ -204,7 +210,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
         }
         return ptsResult;
     },
-    clipLeft: function(pts, clipBounds) {
+    clipLeft: function(tg, pts, clipBounds) {
         var ptsResult = new java.util.ArrayList();
         try {
             var ulx = 0;
@@ -236,6 +242,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                     if (intersectPt !== null) {
                         ptsResult.add(intersectPt);
                     }
+                    tg.set_WasClipped(true);
                 }
                 if (previous.getX() < ll.getX() && current.getX() < ll.getX()) {
                     continue;
@@ -247,6 +254,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
                         ptsResult.add(intersectPt);
                     }
                     ptsResult.add(current);
+                    tg.set_WasClipped(true);
                 }
             }
         } catch (exc) {
@@ -561,10 +569,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             } else {
                 addedLinePoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.AddBoundaryPointsForLines(polygon, clipBounds2);
             }
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipRight(polygon, clipBounds2);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipTop(poly, clipBounds2);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipLeft(poly, clipBounds2);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipBottom(poly, clipBounds2);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipRight(tg, polygon, clipBounds2);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipTop(tg, poly, clipBounds2);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipLeft(tg, poly, clipBounds2);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipBottom(tg, poly, clipBounds2);
             if (isClosed.valueOf() === true) {
                 if (poly.size() > 0) {
                     poly.add(poly.get(0));
@@ -641,10 +649,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2 = {
             } else {
                 addedLinePoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.AddBoundaryPointsForLines(polygon, clipBounds);
             }
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipRight(polygon, clipBounds);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipTop(poly, clipBounds);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipLeft(poly, clipBounds);
-            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipBottom(poly, clipBounds);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipRight(null, polygon, clipBounds);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipTop(null, poly, clipBounds);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipLeft(null, poly, clipBounds);
+            poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.clipBottom(null, poly, clipBounds);
             if (isClosed.valueOf() === true) {
                 if (poly.size() > 0) {
                     poly.add(poly.get(0));

@@ -37,6 +37,13 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight = function () {
     this._useLineInterpolation = false;
     this.fontBackColor = armyc2.c2sd.renderer.utilities.Color.WHITE;
     this._useDashArray = false;
+    this._wasClipped = false;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_WasClipped = function () {
+    return this._wasClipped;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_WasClipped = function (value) {
+    this._wasClipped = value;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_LatLongs = function () {
     return this.LatLongs;

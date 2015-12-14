@@ -1130,7 +1130,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor);
+                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped());
                 }
                 else if (format === 1) //deprecated
                 {

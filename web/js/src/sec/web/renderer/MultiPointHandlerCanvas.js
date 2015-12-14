@@ -32,7 +32,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
         //public vars
         
         //public functions
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor)
+        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped)
         {
             if (textInfoBuffer === null)
             {
@@ -188,13 +188,13 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             //{
             if(paths && len > 0 && unionBounds)
             {
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor);
+                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped);
                 return geoCanvas;
             }
             else
             {
                 //{image:buffer, geoTL:geoTL, geoBR:geoBR} OR {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
-                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR};
+                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasclipped};
             }
             //}
             //else
@@ -213,7 +213,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
          *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
          */
-        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor)
+        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor, wasClipped)
         {
             var buffer = null;
             if (format === 4)
@@ -420,12 +420,12 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if (format === 3)
             {
                 //return object with canvas and geo points
-                return {image: buffer, geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height};
+                return {image: buffer, geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
             }
             else if (format === 4)
             {
                 //return object with dataurl and geo points
-                return {dataURL: buffer.toDataURL(), geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height};
+                return {dataURL: buffer.toDataURL(), geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
             }
             else
             {//should never get here:

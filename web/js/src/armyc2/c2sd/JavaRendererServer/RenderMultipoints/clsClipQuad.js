@@ -142,7 +142,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
         }
         return ptIntersect;
     },
-    clipSide: function(pts, index, clipBounds) {
+    clipSide: function(tg, pts, index, clipBounds) {
         var ptsResult = null;
         try {
             var pt1 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D(clipBounds.get(index).getX(), clipBounds.get(index).getY());
@@ -206,6 +206,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
                     if (intersectPt !== null) {
                         ptsResult.add(intersectPt);
                     }
+                    tg.set_WasClipped(true);
                 } else if (previousQuadrant !== clipBoundsQuadrant && currentQuadrant === clipBoundsQuadrant) {
                     edge = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setLine2D(pt1, pt2);
                     intersectPt = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.intersectPoint2(previous, current, edge);
@@ -213,6 +214,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
                         ptsResult.add(intersectPt);
                     }
                     ptsResult.add(current);
+                    tg.set_WasClipped(true);
                 } else if (previousQuadrant !== clipBoundsQuadrant && currentQuadrant !== clipBoundsQuadrant)
                     continue;
             }
@@ -472,9 +474,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             }
             for (j = 0; j < clipBounds.size() - 1; j++) {
                 if (j === 0)
-                    poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide(polygon, j, clipBounds);
+                    poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide(tg, polygon, j, clipBounds);
                 else
-                    poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide(poly, j, clipBounds);
+                    poly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad.clipSide(tg, poly, j, clipBounds);
             }
             if (isClosed.valueOf() === true) {
                 if (poly.size() > 0) {

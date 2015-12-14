@@ -45,7 +45,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._Tag = null;
     this._AltitudeMode = "";
     this._UseDashArray = false;
-
+    this._wasClipped = false;
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Constructor Code">
@@ -193,6 +193,14 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
 
 
     // <editor-fold defaultstate="collapsed" desc="Public Functions">
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setWasClipped = function(value)
+    {
+        this._wasClipped = value;
+    };
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getWasClipped = function()
+    {
+        return this._wasClipped;
+    };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setSymbologyStandard = function(symStd)
     {
