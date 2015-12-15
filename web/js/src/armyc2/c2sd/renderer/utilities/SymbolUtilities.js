@@ -826,6 +826,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             {
                 retColor = armyc2.c2sd.renderer.utilities.Color.GREEN;	// Green
             }
+            else if(this.isEMSNaturalEvent(symbolID))
+            {
+                retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;	// Black
+            }
             else if ((this.isNBC(symbolID)) && 
                     (basicSymbolID===("G*M*NR----****X") || //Radioactive Area
                     basicSymbolID===("G*M*NC----****X") || //Chemically Contaminated Area

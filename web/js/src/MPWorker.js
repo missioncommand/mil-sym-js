@@ -3,7 +3,7 @@ var e.data = {};
 		e.data.id = "ID";
 		e.data.name = "Name";
 		e.data.description = "description";
-		e.data.symbolID = symbolCode4;
+		e.data.symbolID = "SFGPU----------";//A 15 character symbolID corresponding to one of the graphics in the MIL-STD-2525C
 		e.data.points = controlPoints4;
 		e.data.altMode = "absolute";//for 3D
 		e.data.scale = scale4;//for 3D
@@ -12,6 +12,7 @@ var e.data = {};
 		e.data.format = format;
 		e.data.pHeight = pixelHeight;//for 2D
 		e.data.pWidth = pixelWidth;//for 2D
+        e.data.converter l converter for canvas or datauri format
 */
 
 /* return object

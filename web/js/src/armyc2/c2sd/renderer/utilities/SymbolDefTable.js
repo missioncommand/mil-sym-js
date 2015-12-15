@@ -9,8 +9,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
     var symbolMapB = null,
         symbolMapC = null,
         RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings,
-        SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
-        parser;
+        SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
 
 
     return {
