@@ -2513,6 +2513,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
     try {
         if (tg.Pixels === null || tg.Pixels.isEmpty())
             return;
+        var origPoints=null;
         var font = tg.get_Font();
         var stringHeight = font.getSize();
         var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
@@ -2680,6 +2681,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             case 15000001:
             case 10000000:
             case 11000000:
+                origPoints=armyc2.c2sd.JavaLineArray.lineutility.getDeepCopy(tg.Pixels);
                 break;
             default:
                 return;
@@ -3582,6 +3584,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             default:
                 break;
         }
+        tg.Pixels=origPoints;
     } catch (exc) {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddModifiersGeo", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifiersGeo", exc));
@@ -3710,10 +3713,84 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
             return;
         if (tg.modifiers === null)
             tg.modifiers = new java.util.ArrayList();
+        var linetype = tg.get_LineType();
+        //diagnostic add early exit for lines which do not use this function
+        switch (linetype) 
+        {
+            case 14000000:
+            case 15000003:
+            case 21200000:
+            case 21300000:
+            case 21400000:
+            case 211700000:
+            case 21500000:
+            case 211000000:
+            case 211100000:
+            case 211400000:
+            case 211600000:
+            case 211900000:
+            case 212100000:
+            case 21600000:
+            case 212300000:
+            case 212300001:
+            case 212600000:
+            case 212500000:
+            case 211200000:
+            case 211210000:
+            case 24322200:
+            case 24322300:
+            case 24311000:
+            case 24312000:
+            case 15000002:
+            case 24321300:
+            case 24331300:
+            case 24332300:
+            case 24333300:
+            case 24334300:
+            case 24335300:
+            case 24336300:
+            case 24337300:
+            case 24338300:
+            case 24339300:
+            case 24323300:
+            case 24324300:
+            case 24325300:
+            case 24353000:
+            case 24363000:
+            case 21100000:
+            case 22612000:
+            case 22623000:
+            case 22612001:
+            case 22623001:
+            case 24323200:
+            case 24324200:
+            case 24325200:
+            case 24352000:
+            case 24362000:
+            case 24321200:
+            case 24331200:
+            case 24332200:
+            case 24333200:
+            case 24334200:
+            case 24335200:
+            case 24336200:
+            case 24337200:
+            case 24338200:
+            case 24339200:
+            case 24326100:
+            case 24326101:
+            case 24326200:
+            case 243111000:
+            case 243112000:
+                break;
+            default:
+                return;
+        }
+        //end section
+        var origPoints=armyc2.c2sd.JavaLineArray.lineutility.getDeepCopy(tg.Pixels);
         var font = tg.get_Font();
         var ptCenter = null;
         var csFactor = 1;
-        var linetype = tg.get_LineType();
         var pt0 = null;
         var pt1 = null;
         var pt2 = null;
@@ -4093,6 +4170,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
             default:
                 return;
         }
+        tg.Pixels=origPoints;
         g2d.dispose();
         g2d = null;
     }

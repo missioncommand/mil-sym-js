@@ -2712,6 +2712,20 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
+            getDeepCopy:function(pts)
+            {
+                if(pts === null || pts.isEmpty())
+                    return pts;
+                var deepCopy=new java.util.ArrayList();
+                var j=0;
+                var pt=null;
+                for(j=0;j<pts.size();j++)
+                {
+                    pt=new armyc2.c2sd.JavaLineArray.POINT2(pts.get(j));
+                    deepCopy.add(pt);
+                }
+                return deepCopy;
+            },
             extend_left: 0,
             extend_right: 1,
             extend_above: 2,
