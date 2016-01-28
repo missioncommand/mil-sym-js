@@ -532,6 +532,19 @@ sec.web.renderer.MultiPointHandler = (function () {
                     bboxCoords = null;
 
             var setRectNull = false;  //Deutch 4-15-15
+            var tempPt = null;
+            coordinates = controlPoints.trim();
+            coordinates = coordinates.split(" ");
+            var len = coordinates.length;
+
+            for (var i = 0; i < len; i++) {
+                var coordPair = coordinates[i].split(",");
+                var latitude = coordPair[1];//.trim();
+                var longitude = coordPair[0];//.trim();
+                tempPt = new armyc2.c2sd.graphics2d.Point2D();
+                tempPt.setLocation(longitude, latitude);
+                geoCoords.push(tempPt);
+            }
 
             if (bbox !== null && bbox !== ("")) {
                 var bounds = null;
@@ -642,17 +655,29 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (scale > 1e7)
                     {
                         //get widest point in the AOI
-                        var midLat = 0;
-                        if (bottom < 0 && top > 0)
-                            midLat = 0;
-                        else if (bottom < 0 && top < 0)
-                            midLat = top;
-                        else if (bottom > 0 && top > 0)
-                            midLat = bottom;
+//                        var midLat = 0;
+//                        if (bottom < 0 && top > 0)
+//                            midLat = 0;
+//                        else if (bottom < 0 && top < 0)
+//                            midLat = top;
+//                        else if (bottom > 0 && top > 0)
+//                            midLat = bottom;
+//
+//                        temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
+//                        rightX = temp.getX();
+                    var coordsUL=sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
+                    temp = ipc.GeoToPixels(coordsUL);
+                    left=coordsUL.getX();
+                    top=coordsUL.getY();
+                    //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
+                    ipc = new sec.web.renderer.PointConverter(left, top, scale);
+                    //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
+                    leftX -= temp.getX();
+                    rightX -= temp.getX();
+                    topY -= temp.getY();
+                    bottomY -= temp.getY();
+                    //end diagnostic
 
-                        temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
-                        rightX = temp.getX();
-                        //alert(rightX);
                     }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
@@ -666,19 +691,19 @@ sec.web.renderer.MultiPointHandler = (function () {
             if (setRectNull) //Deutcvh 4-15-15
                 rect = null;
 
-            var tempPt = null;
-            coordinates = controlPoints.trim();
-            coordinates = coordinates.split(" ");
-            var len = coordinates.length;
-
-            for (var i = 0; i < len; i++) {
-                var coordPair = coordinates[i].split(",");
-                var latitude = coordPair[1];//.trim();
-                var longitude = coordPair[0];//.trim();
-                tempPt = new armyc2.c2sd.graphics2d.Point2D();
-                tempPt.setLocation(longitude, latitude);
-                geoCoords.push(tempPt);
-            }
+//            var tempPt = null;
+//            coordinates = controlPoints.trim();
+//            coordinates = coordinates.split(" ");
+//            var len = coordinates.length;
+//
+//            for (var i = 0; i < len; i++) {
+//                var coordPair = coordinates[i].split(",");
+//                var latitude = coordPair[1];//.trim();
+//                var longitude = coordPair[0];//.trim();
+//                tempPt = new armyc2.c2sd.graphics2d.Point2D();
+//                tempPt.setLocation(longitude, latitude);
+//                geoCoords.push(tempPt);
+//            }
             if (ipc === null) {
                 var ptCoordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                 ipc = new sec.web.renderer.PointConverter(ptCoordsUL.getX(), ptCoordsUL.getY(), scale);
