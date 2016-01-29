@@ -166,8 +166,54 @@ armyc2.c2sd.renderer.utilities.ModifiersTG = {
     LENGTH : "Length",
     WIDTH : "Width",
     RADIUS : "Radius",
-    ANGLE : "Angle"
+    ANGLE : "Angle",
     //SEGMENT_DATA : "Segment Data",
+    
+    getModifierName : function(modifier)
+    {
+        switch(modifier)
+        {
+            //case A_SYMBOL_ICON:
+            //    return "Symbol Icon";
+            case this.B_ECHELON:
+                return "Echelon";
+            case this.C_QUANTITY:
+                return "Quantity";
+            case this.H_ADDITIONAL_INFO_1:
+                return "Additional Info 1";
+            case this.H1_ADDITIONAL_INFO_2:
+                return "Additional Info 2";
+            case this.H2_ADDITIONAL_INFO_3:
+                return "Additional Info 3";
+            case this.N_HOSTILE:
+                return "Hostile";
+            case this.Q_DIRECTION_OF_MOVEMENT:
+                return "Direction of Movement";
+            //case this.S_OFFSET_INDICATOR:
+            //    return "Offset Indicator";
+            case this.T_UNIQUE_DESIGNATION_1:
+                return "Unique Designation 1";
+            case this.T1_UNIQUE_DESIGNATION_2:
+                return "Unique Designation 2";
+            case this.V_EQUIP_TYPE:
+                return "Equipment Type";
+            case this.W_DTG_1:
+                return "Date Time Group 1";
+            case this.W1_DTG_2:
+                return "Date Time Group 2";
+            case this.X_ALTITUDE_DEPTH:
+                return "Altitude Depth";
+            case this.Y_LOCATION:
+                return "Location";
+            case this.AM_DISTANCE:
+                return "Distance";
+            case this.AN_AZIMUTH:
+                return "Azimuth";
+            default:
+                return "";
+
+        }
+    }
     
 };
 

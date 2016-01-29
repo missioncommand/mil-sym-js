@@ -337,7 +337,104 @@ armyc2.c2sd.renderer.utilities.ModifiersUnits = {
      * Sonar Classification Confidence level. valid values are 1-5.
      * Only applies to the 4 subsurface MILCO sea mines
      */
-    SCC_SONAR_CLASSIFICATION_CONFIDENCE : "SCC"
+    SCC_SONAR_CLASSIFICATION_CONFIDENCE : "SCC",
+    
+    
+    getModifierName : function(modifier)
+    {
+        switch(modifier)
+        {
+            //case this.A_SYMBOL_ICON:
+            //    return "Symbol Icon";
+            case this.B_ECHELON:
+                return "Echelon";
+            case this.C_QUANTITY:
+                return "Quantity";
+            //case this.D_TASK_FORCE_INDICATOR:
+            //    return "Task Force Indicator";
+            //case this.E_FRAME_SHAPE_MODIFIER:
+            //    return "Frame Shape Modifier";
+            case this.F_REINFORCED_REDUCED:
+                return "Reinforce Reduced";
+            case this.G_STAFF_COMMENTS:
+                return "Staff Comments";
+            case this.H_ADDITIONAL_INFO_1:
+                return "Additional Info 1";
+            case this.H1_ADDITIONAL_INFO_2:
+                return "Additional Info 2";
+            case this.H2_ADDITIONAL_INFO_3:
+                return "Additional Info 3";
+            case this.J_EVALUATION_RATING:
+                return "Evaluation Rating";
+            case this.K_COMBAT_EFFECTIVENESS:
+                return "Combat Effectiveness";
+            case this.L_SIGNATURE_EQUIP:
+                return "Signature Equipment";
+            case this.M_HIGHER_FORMATION:
+                return "Higher Formation";
+            case this.N_HOSTILE:
+                return "Hostile";
+            case this.P_IFF_SIF:
+                return "IFF SIF";
+            case this.Q_DIRECTION_OF_MOVEMENT:
+                return "Direction of Movement";
+            case this.R_MOBILITY_INDICATOR:
+                return "Mobility Indicator";
+            case this.R2_SIGNIT_MOBILITY_INDICATOR:
+                return "Signals Intelligence Mobility Indicator";
+            //case this.S_HQ_STAFF_OR_OFFSET_INDICATOR:
+            //    return "HQ Staff / Offset Indicator";
+            //case this.S_OFFSET_INDICATOR:
+            //    return "Offset Indicator";
+            case this.T_UNIQUE_DESIGNATION_1:
+                return "Unique Designation 1";
+            case this.T1_UNIQUE_DESIGNATION_2:
+                return "Unique Designation 2";
+            case this.V_EQUIP_TYPE:
+                return "Equipment Type";
+            case this.W_DTG_1:
+                return "Date Time Group 1";
+            case this.W1_DTG_2:
+                return "Date Time Group 2";
+            case this.X_ALTITUDE_DEPTH:
+                return "Altitude Depth";
+            case this.Y_LOCATION:
+                return "Location";
+            case this.Z_SPEED:
+                return "Speed";
+            case this.AA_SPECIAL_C2_HQ:
+                return "Special C2 HQ";
+            //case this.AB_FEINT_DUMMY_INDICATOR:
+            //    return "Feint Dummy Indicator";
+            //case this.AC_INSTALLATION:
+            //    return "Installation";
+            case this.AD_PLATFORM_TYPE:
+                return "Platform Type";
+            case this.AE_EQUIPMENT_TEARDOWN_TIME:
+                return "Equipment Teardown Time";
+            case this.AF_COMMON_IDENTIFIER:
+                return "Common Identifier";
+            //case this.AG_AUX_EQUIP_INDICATOR:
+            //    return "Auxiliary Equipment Indicator";
+            /*case this.AH_AREA_OF_UNCERTAINTY:
+                return "Area of Uncertainty";
+            case this.AI_DEAD_RECKONING_TRAILER:
+                return "Dead Reckoning Trailer";
+            case this.AJ_SPEED_LEADER:
+                return "Speed Leader";
+            case this.AK_PAIRING_LINE:
+                return "Pairing Line";
+            case this.AL_OPERATIONAL_CONDITION:
+                return "Operational Condition";
+            case this.AO_ENGAGEMENT_BAR:
+                return "Engagement Bar";//*/
+            case this.SCC_SONAR_CLASSIFICATION_CONFIDENCE:
+                return "Sonar Classification Confidence";
+            default:
+                return "";
+
+        }
+    }
 
     
 };
