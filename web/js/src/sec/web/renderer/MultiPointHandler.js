@@ -652,7 +652,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                     temp = ipc.GeoToPixels(pt2d);
                     bottomY = Math.round(temp.getY());
                     rightX = Math.round(temp.getX());
-                    if (scale > 1e7)
+                    //if (scale > 1e7)
+                    //for large scales and client is not using the canvas converter
+                    if (scale > 1e7 && (converter === undefined || converter === null))
                     {
                         //get widest point in the AOI
 //                        var midLat = 0;
