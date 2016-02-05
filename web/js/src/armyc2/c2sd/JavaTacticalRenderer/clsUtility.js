@@ -1018,6 +1018,33 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                             shape.setFillColor(tg.get_FillColor());
                             grid.dispose();
                             break;
+                        case 7:// +
+                            rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, 8, 8);
+                            grid = bi.createGraphics();
+                            grid.setColor(armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetOpaqueColor(tg.get_LineColor()));
+                            grid.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                            //grid.drawLine(0, 4, 8, 4);
+                            grid.drawLine(4, 2, 4, 6);
+                            grid.drawLine(2, 4, 6, 4);
+                            tp = new armyc2.c2sd.graphics2d.TexturePaint(bi, rect);
+                            shape.setTexturePaint(tp);
+                            shape.setFillColor(tg.get_FillColor());
+                            grid.dispose();
+                            break;
+                        case 8:// x hatch
+                            //rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, 8, 8);
+                            rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, 10, 10);
+                            grid = bi.createGraphics();
+                            grid.setColor(armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetOpaqueColor(tg.get_LineColor()));
+                            grid.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
+                            //grid.drawLine(0, 4, 8, 4);
+                            grid.drawLine(2, 2, 8, 8);                            
+                            grid.drawLine(2, 8, 8, 2);
+                            tp = new armyc2.c2sd.graphics2d.TexturePaint(bi, rect);
+                            shape.setTexturePaint(tp);
+                            shape.setFillColor(tg.get_FillColor());
+                            grid.dispose();
+                            break;
                         case 1:
                             break;
                         default:
