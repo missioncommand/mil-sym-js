@@ -134,7 +134,8 @@ return{
                 case 'G':
                 case 'M':
                     if(symbolID.charAt(2) === 'U' && 
-							symbolID.substring(4, 6) === "WM")
+							(symbolID.substring(4, 6) === "WM" ||
+                            symbolID.substring(4, 7) === "WDM"))
 					{
 						if(symbolID.charAt(3) !== 'A')
 						{
