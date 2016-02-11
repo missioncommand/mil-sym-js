@@ -317,7 +317,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                             break;
                         case 23225000:
                             dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceToLineDouble(pLinePoints[0], pLinePoints[1], pLinePoints[2]);
-                            count = Math.floor(((dRadius / 5) * 3));
+                            count = Math.floor(((dRadius / 5) * 3)) + 6;
                             if (clipBounds !== null) {
                                 var width = clipBounds.getWidth();
                                 var height = clipBounds.getHeight();
