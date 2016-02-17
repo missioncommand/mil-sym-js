@@ -121,7 +121,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             //no required parameters
             return {hasRequiredModifiers: true, message: true};
         }
-    };
+    }
+    ;
 
     return{
         //public vars
@@ -496,7 +497,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          * example: {"C":"4","Z":"300","AN":[100,200]}}
          * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
          * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
-	 * @param {Object} optional converter for canvas or datauri format
+         * @param {Object} optional converter for canvas or datauri format
          * @return A JSON string representation of the graphic.
          */
         RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd, converter)
@@ -603,16 +604,16 @@ sec.web.renderer.MultiPointHandler = (function () {
                         setRectNull = true;
                     //end section
 
-                    if(format !== 3 && format !== 4)
+                    if (format !== 3 && format !== 4)
                     {
                         scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
                     }
-                    
+
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
 
-		if(converter !== undefined && converter !== null)
-			ipc=converter;
+                if (converter !== undefined && converter !== null)
+                    ipc = converter;
 
                 //sanity check
                 //when spanning the IDL sometimes they send a bad bbox with 0 width
@@ -669,23 +670,59 @@ sec.web.renderer.MultiPointHandler = (function () {
 //
 //                        temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
 //                        rightX = temp.getX();
-                    var coordsUL=sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
-                    temp = ipc.GeoToPixels(coordsUL);
-                    left=coordsUL.getX();
-                    top=coordsUL.getY();
-                    //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
-                    ipc = new sec.web.renderer.PointConverter(left, top, scale);
-                    //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
-                    leftX -= temp.getX();
-                    rightX -= temp.getX();
-                    topY -= temp.getY();
-                    bottomY -= temp.getY();
-                    //end diagnostic
+                        var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
+                        temp = ipc.GeoToPixels(coordsUL);
+                        left = coordsUL.getX();
+                        top = coordsUL.getY();
+                        //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
+                        ipc = new sec.web.renderer.PointConverter(left, top, scale);
+                        //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
+                        leftX -= temp.getX();
+                        rightX -= temp.getX();
+                        topY -= temp.getY();
+                        bottomY -= temp.getY();
+                        //end diagnostic
 
                     }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                    if (format === 3 || format === 4)
+                    {
+                        var midlat = (Number(top) + Number(bottom)) / 2;
+                        pt2d.setLocation(left, midlat);
+                        temp = ipc.GeoToPixels(pt2d);
+                        leftX = Math.round(temp.getX());
+                        pt2d.setLocation(right, midlat);
+                        temp = ipc.GeoToPixels(pt2d);
+                        rightX = Math.round(temp.getX());
+                        if (rightX < leftX)
+                        {
+                            var tempX = rightX;
+                            rightX = leftX;
+                            leftX = tempX;
+                        }
+                        width = rightX - leftX;
+
+                        var midlon = Math.round(Number(left) + Number(right)) / 2;
+                        if (Math.abs(right - left) > 180)
+                            midlon += 180;
+
+                        pt2d.setLocation(midlon, top);
+                        temp = ipc.GeoToPixels(pt2d);
+                        topY = Math.round(temp.getY());
+                        pt2d.setLocation(midlon, bottom);
+                        temp = ipc.GeoToPixels(pt2d);
+                        bottomY = Math.round(temp.getX());
+                        if (bottomY < topY)
+                        {
+                            var tempY = topY;
+                            topY = bottomY;
+                            bottomY = tempY;
+                        }
+                        height = bottomY - topY;
+                        rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                    }
                 }
             }
             else
@@ -773,9 +810,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined)
                 {
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
-                    if(rect !== null)
-                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
-                    
+                    if (rect !== null)
+                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl, rect);
+
                     var tgPoints = tgl.get_Pixels();//java.util.ArrayList
                 }//*/
                 if (bboxCoords === null)
@@ -853,12 +890,13 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //for lineJoin to make autoshapes look better
                     var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
-                    var sd = SymbolDefTable.getSymbolDef(basicID,symStd);
-                    if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE);
+                    var sd = SymbolDefTable.getSymbolDef(basicID, symStd);
+                    if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE)
+                        ;
                     {
                         shapes.smooth = true;
                     }
-                    
+
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor);
                 }
@@ -1065,10 +1103,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     ipc.set_normalize(false);
                 }
-                if(sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+                if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
                     ipc.set_normalize(true);
-                    normalize = true;                    
+                    normalize = true;
                 }
                 if ((sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
@@ -1105,9 +1143,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                 {
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
-                    if(rect !== null)
-                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl,rect);
-                    
+                    if (rect !== null)
+                        armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl, rect);
+
                     tgPoints = tgl.get_Pixels();
                 }
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, rect);
@@ -1165,11 +1203,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextColor = textColor.toHexString(false);
                     if (textBackgroundColor)
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
-                    
+
                     //for lineJoin to make autoshapes look better    
                     var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
-                    var sd = SymbolDefTable.getSymbolDef(basicID,symStd);
-                    if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE);
+                    var sd = SymbolDefTable.getSymbolDef(basicID, symStd);
+                    if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE)
+                        ;
                     {
                         shapes.smooth = true;
                     }
@@ -1279,7 +1318,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             else
             {
                 return {canRender: false, message: "symbolID: \"" + symbolID + "\" not recognized."};
-          }
+            }
         },
         /**
          * 
@@ -1796,7 +1835,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         kml += (longitude);
                         kml += (",");
                         kml += (latitude);
-                        if(j<len2-1)
+                        if (j < len2 - 1)
                             kml += (" ");
                     }
                     kml += ("</coordinates>");
@@ -1856,7 +1895,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         kml += (longitude);
                         kml += (",");
                         kml += (latitude);
-                        if(j<shape.size()-1)
+                        if (j < shape.size() - 1)
                             kml += (" ");
                     }
                     kml += ("</coordinates>");
@@ -2213,16 +2252,16 @@ sec.web.renderer.MultiPointHandler = (function () {
             var angle = shapeInfo.getModifierStringAngle();
             coord.setLocation(longitude, latitude);
             shapeInfo.setGlyphPosition(coord);
-            
-            var justify=shapeInfo.getTextJustify();
-            var strJustify="left";
-            if(justify===0)
-                strJustify="left";
-            else if(justify===1)
-                strJustify="center";
-            else if(justify===2)
-                strJustify="right";
-            
+
+            var justify = shapeInfo.getTextJustify();
+            var strJustify = "left";
+            if (justify === 0)
+                strJustify = "left";
+            else if (justify === 1)
+                strJustify = "center";
+            else if (justify === 2)
+                strJustify = "right";
+
             var text = shapeInfo.getModifierString();
             if (text !== null && text !== ("")) {
                 feature = {};
@@ -2563,10 +2602,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                 ErrorLogger.LogException("MPH", "GenerateSymbolLineFillUrl", exc);
             }
             return url;
-    },
+        },
         AddImageFillToKML: function (tgPoints, jsonContent, mSymbol, ipc, normalize)
         {
-            if(tgPoints===null || tgPoints.size()===0)
+            if (tgPoints === null || tgPoints.size() === 0)
                 return null;
             //get original point values in pixel form                    
             var pixelPoints = new java.util.ArrayList();
