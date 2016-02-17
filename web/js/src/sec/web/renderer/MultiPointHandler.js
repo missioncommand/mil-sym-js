@@ -851,6 +851,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (textBackgroundColor)
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
+                    //for lineJoin to make autoshapes look better
+                    var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
+                    var sd = SymbolDefTable.getSymbolDef(basicID,symStd);
+                    if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE);
+                    {
+                        shapes.smooth = true;
+                    }
+                    
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor);
                 }
@@ -1157,6 +1165,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextColor = textColor.toHexString(false);
                     if (textBackgroundColor)
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+                    
+                    //for lineJoin to make autoshapes look better    
+                    var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
+                    var sd = SymbolDefTable.getSymbolDef(basicID,symStd);
+                    if(sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE);
+                    {
+                        shapes.smooth = true;
+                    }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped());

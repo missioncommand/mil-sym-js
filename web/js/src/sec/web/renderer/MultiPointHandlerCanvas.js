@@ -164,8 +164,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     geoCoordBR = ipc.PixelsToGeo(coordBR);
                     if (normalize)
                     {
-                        geoCoordTL = this.NormalizeCoordToGECoord(geoCoordTL);
-                        geoCoordBR = this.NormalizeCoordToGECoord(geoCoordBR);
+                        geoCoordTL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTL);
+                        geoCoordBR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBR);
                     }
                     geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
                     geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
@@ -188,6 +188,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             //{
             if(paths && len > 0 && unionBounds)
             {
+                paths.smooth = shapes.smooth;//for lineJoin
                 var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped);
                 return geoCanvas;
             }
@@ -250,15 +251,20 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var lineColor = "#000000";
             var ctx = buffer.getContext('2d');
 
-            /*//TEST/////////////////////////
-             ctx.setTransform(1,0,0,1,0,0);
-             ctx.lineWidth = 5;
-             ctx.beginPath();
-             ctx.strokeStyle = "#0000FF";
-             ctx.moveTo(10,10);
-             ctx.lineTo(50,50);
-             ctx.stroke();
-             ////////////////////////////////*/
+            //configure line settings/////////
+            ctx.globalAlpha = 1;
+            ctx.lineCap = "round";//butt,round,square
+            if(paths.smooth === true)
+            {
+                ctx.lineJoin = "round";//bevel,round,miter    
+            }
+            else
+            {
+                ctx.lineJoin = "miter";//bevel,round,miter
+            }
+            
+            //ctx.miterLimit = 2;
+            //////////////////////////////////
 
             ctx.translate(bounds.getX() * -1, bounds.getY() * -1);
             for (var i = 0; i < pathSize; i++)
@@ -305,10 +311,6 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 ctx.fillStyle = htc;
                 var outlineStyle = htbc;
 
-                ctx.globalAlpha = 1;
-                ctx.lineCap = "butt";
-                ctx.lineJoin = "miter";
-                ctx.miterLimit = 3;
                 ctx.font = mpFont;
                 //ctx.textBaseline = "top";
                 //ctx.textBaseline = "Alphabetic";
