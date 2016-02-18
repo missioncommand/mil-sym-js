@@ -195,7 +195,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             else
             {
                 //{image:buffer, geoTL:geoTL, geoBR:geoBR} OR {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
-                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasclipped};
+                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
             }
             //}
             //else
