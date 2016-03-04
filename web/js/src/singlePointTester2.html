@@ -83,20 +83,18 @@
             var size = document.getElementById("tbSize").value;
             var keepUnitRatio = document.getElementById("cbKeepUnitRatio").checked;
             var showLabels = document.getElementById("cbLabels").checked;
+			var drawAsIcon = document.getElementById("cbDrawAsIcon").checked;
             
             var modifiers = {};
             
             if(showLabels === true)
             {
                 modifiers = populateModifiers();
-                modifiers.SYMSTD = symStd;
-                modifiers.SIZE = size;
-                modifiers.KEEPUNITRATIO = keepUnitRatio;
             }
-            else
-            {
-                modifiers = {SYMSTD:symStd,SIZE:size,KEEPUNITRATIO:keepUnitRatio};//{SIZE:35,SYMSTD:symStd};
-            }
+            modifiers.SYMSTD = symStd;
+			modifiers.SIZE = size;
+			modifiers.KEEPUNITRATIO = keepUnitRatio;
+			modifiers.ICON = drawAsIcon;
             
         
             var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID,modifiers);
@@ -440,6 +438,7 @@ Modifier: <input id="tbModifiers" type="text" value="*****">
 Size: <input id="tbSize" type="number" value=35>
 Keep Unit Ratio: <input id="cbKeepUnitRatio" type="checkbox" checked>
 Labels:  <input id="cbLabels" type="checkbox">
+Draw as Icon:  <input id="cbDrawAsIcon" type="checkbox">
 <button id="btnClear" type='button' onclick='clearCanvas();' >Clear Canvas</button>
 <br/>
 <!-- <button id="btnRender" type='button' onclick='testRender();' disabled>Loading Page</button>-->
