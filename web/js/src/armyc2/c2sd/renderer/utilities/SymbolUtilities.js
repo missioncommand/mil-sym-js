@@ -535,7 +535,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.canUnitHaveModifier = function (symbolID, unitModifier){
-        var returnVal = false;
 
         var ModifiersUnits = armyc2.c2sd.renderer.utilities.ModifiersUnits;
         if(unitModifier===(ModifiersUnits.B_ECHELON))
@@ -727,10 +726,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else
             return false;
-
-
-       
-        return returnVal;
     };
     /**
      * 
@@ -1686,8 +1681,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
           return false;
         }
-        
-        return false;
     };
     /**
      * 
@@ -1704,8 +1697,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
           return false;
         }
-        
-        return false;
     };
     /**
      * 
@@ -1922,8 +1913,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     };
     /**
      * 
-     * @param {String} strSymbolID
-     * @returns {Boolean}
+     * @param {string} strSymbolID
+     * @returns {boolean}
      */        
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isUnit = function (strSymbolID){
         
@@ -1933,7 +1924,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return blRetVal;
         
     };
-
+    /**
+     * 
+     * 
+     * @param {string} strSymbolID 
+     * @param {number} symStd 
+     * @returns {boolean} 
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGWithControlPoints = function (strSymbolID, symStd){
         
         if(symStd!==undefined)

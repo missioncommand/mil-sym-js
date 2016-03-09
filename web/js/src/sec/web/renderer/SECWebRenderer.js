@@ -68,38 +68,38 @@ return{
      * clipped when the parts of the graphic that aren't on the screen.  To help 
      * readjust graphics and increase performance, this function requires the 
      * scale and bounding box to help calculate the new locations.
-     * @param {String} id A unique identifier used to identify the symbol by Google map. 
+     * @param {string} id - A unique identifier used to identify the symbol by Google map. 
      * The id will be the folder name that contains the graphic.
-     * @param {String} name a string used to display to the user as the name of the 
+     * @param {string} name - a string used to display to the user as the name of the 
      * graphic being created.
-     * @param {String} description a brief description about the graphic being made and 
+     * @param {string} description - a brief description about the graphic being made and 
      * what it represents.
-     * @param {String} symbolCode A 15 character symbolID corresponding to one of the
+     * @param {string} symbolCode - A 15 character symbolID corresponding to one of the
      * graphics in the MIL-STD-2525C
-     * @param {String} controlPoints The vertices of the graphics that make up the
+     * @param {string} controlPoints - The vertices of the graphics that make up the
      * graphic.  Passed in the format of a string, using decimal degrees 
      * separating lat and lon by a comma, separating coordinates by a space.  
      * The following format shall be used "x1,y1[,z1] [xn,yn[,zn]]..."
-     * @param {String} altitudeMode Indicates whether the symbol should interpret 
+     * @param {string} altitudeMode - Indicates whether the symbol should interpret 
      * altitudes as above sea level or above ground level. Options are 
      * "clampToGround", "relativeToGround" (from surface of earth), "absolute" 
      * (sea level), "relativeToSeaFloor" (from the bottom of major bodies of 
      * water),"none" for non-three dimensions symbology.
-     * @param {Number} scale A number corresponding to how many meters one meter of our 
+     * @param {number} scale - A number corresponding to how many meters one meter of our 
      * map represents. A value "50000" would mean 1:50K which means for every 
      * meter of our map it represents 50000 meters of real world distance.
-     * @param {String} bbox The viewable area of the map.  Passed in the format of a
+     * @param {string} bbox - The viewable area of the map.  Passed in the format of a
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY." Not required
      * but can speed up rendering in some cases.
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {Object} modifiers An Object representing all the possible symbol 
+     * @param {object} modifiers - An Object representing all the possible symbol 
      * modifiers represented in the MIL-STD-2525C.  Key values come from
      * MilStdAttributes, ModifiersTG and ModifiersUnits 
      * example: {"C":"4","Z":"300","AN":[100,200]}}
-     * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
-     * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
-     * @param {Object} converter an optional canvas converter for the pixels based image
-     * @return A JSON string representation of the graphic.
+     * @param {number} format - An enumeration: 0 for KML, 1 for JSON.
+     * @param {number} symStd - An enumeration: 0 for 2525Bch2, 1 for 2525C.
+     * @param {object} converter - an optional canvas converter for the pixels based image
+     * @return {string} A JSON string representation of the graphic.
      */        
     RenderSymbol: function(id, name, description, symbolCode, controlPoints, altitudeMode, scale, bbox, modifiers, format, symStd, converter)
     {
@@ -152,23 +152,23 @@ return{
     },
     /**
      * Multipoint Rendering on flat 2D maps
-     * @param {String} id A unique ID for the symbol.  only used in KML currently
-     * @param {String} name description
-     * @param {String} description description
-     * @param {String} symbolCode
-     * @param {String} controlPoints
-     * @param {Number} pixelWidth pixel dimensions of the viewable map area
-     * @param {Number} pixelHeight pixel dimensions of the viewable map area
-     * @param {String} bbox The viewable area of the map.  Passed in the format of a
+     * @param {string} id A unique ID for the symbol.  only used in KML currently
+     * @param {string} name description
+     * @param {string} description description
+     * @param {string} symbolCode
+     * @param {string} controlPoints
+     * @param {number} pixelWidth pixel dimensions of the viewable map area
+     * @param {number} pixelHeight pixel dimensions of the viewable map area
+     * @param {string} bbox The viewable area of the map.  Passed in the format of a
      * string "lowerLeftX,lowerLeftY,upperRightX,upperRightY."
      * example: "-50.4,23.6,-42.2,24.2"
-     * @param {Object} An Object representing all the possible symbol 
+     * @param {object} An Object representing all the possible symbol 
      * modifiers represented in the MIL-STD-2525C.  Key values come from
      * MilStdAttributes, ModifiersTG and ModifiersUnits 
      * example: {"C":"4","Z":"300","AN":[100,200]}}
-     * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
-     * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
-     * @return {String} A JSON or KML string representation of the graphic.
+     * @param {number} format An enumeration: 0 for KML, 1 for JSON.
+     * @param {number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
+     * @return {string} A JSON or KML string representation of the graphic.
      */             
     RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd)
     {
@@ -198,29 +198,29 @@ return{
      * of the format:
      * <tr><code>{"attributes":[{"<i>attribute1</i>":<i>value</i>,...},{<i>[optional]</i>]}</code></tr>
      * 
-     * @param {String} name The user displayed name for the symbol.  Users will use this 
+     * @param {string} name - The user displayed name for the symbol.  Users will use this 
      * to identify with the symbol.
-     * @param {String} id An internally used unique id that developers can use to 
+     * @param {string} id - An internally used unique id that developers can use to 
      * uniquely distinguish this symbol from others.
-     * @param {String} shapeType A 15 character ID of the type of symbol to draw.
-     * @param {String} description A brief description of what the symbol represents.  
+     * @param {string} shapeType - A 15 character ID of the type of symbol to draw.
+     * @param {string} description - A brief description of what the symbol represents.  
      * Generic text that does not require any format.
-     * @param {String} lineColor The line color of the graphic
-     * @param {String} fillColor The fill color of the graphic
-     * @param {String} controlPoints The vertices of the shape.  The number of required
+     * @param {string} lineColor - The line color of the graphic
+     * @param {string} fillColor - The fill color of the graphic
+     * @param {string} controlPoints - The vertices of the shape.  The number of required
      * vertices varies based on the shapeType of the symbol.  The simplest shape 
      * requires at least one point.  Shapes that require more points than 
      * required will ignore extra points.  Format for numbers is as follows: 
      * <br/><br/>
      * "x,y,z [x,y,z ]..."
-     * @param {String} AttributesArray A JS array holding the parameters for the 
+     * @param {string} AttributesArray - A JS array holding the parameters for the 
      * shape.  Attributes should be of the following format: <br/><br/>
      * <tr><code>[{"<i>attribute1</i>":<i>value</i>,...},{<i>[optional]</i>}]</code></tr>
      * one attribute is "altitudeMode" which indicates whether the symbol should interpret 
      * altitudes as above sea level or above ground level. Options are 
      * "relativeToGround" (from surface of earth), "absolute" (sea level), 
      * "relativeToSeaFloor" (from the bottom of major bodies of water).
-     * @return {String} A KML string that represents a placemark for the 3D shape
+     * @return {string} A KML string that represents a placemark for the 3D shape
      */
     Render3dSymbol:function (name, id, shapeType, description, lineColor, fillColor, controlPoints, AttributesArray) 
     {
@@ -441,7 +441,7 @@ return{
         return signedArea/2;
     },
     
-         /**
+    /**
      * Creates a 3D symbol from the MilStd2525B USAS or MIL-STD-2525C to be 
      * displayed on a 3D globe surface.  Only certain symbols from the MIL-STD
      * can be displayed in 3D.   Most of these are graphics that fall under Fire
@@ -455,30 +455,30 @@ return{
      * <tr><code>"x,y,z [x,y,z]..."</code></tr>
      * 
      * 
-     * @param name The user displayed name for the symbol.  Users will use this 
+     * @param {string} name - The user displayed name for the symbol.  Users will use this 
      * to identify with the symbol.
-     * @param id An internally used unique id that developers can use to 
+     * @param {string} id - An internally used unique id that developers can use to 
      * uniquely distinguish this symbol from others.
-     * @param symbolCode A 15 character ID of the type of symbol to draw.  Only
+     * @param {string} symbolCode - A 15 character ID of the type of symbol to draw.  Only
      * symbols with an X modifier from the standard will draw.
-     * @param description A brief description of what the symbol represents.  
+     * @param {string} description - A brief description of what the symbol represents.  
      * Generic text that does not require any format.  
-     * @param altitudeMode Indicates whether the symbol should interpret 
+     * @param {string} altitudeMode - Indicates whether the symbol should interpret 
      * altitudes as above sea level or above ground level. Options are 
      * "relativeToGround" (from surface of earth), "absolute" (sea level), 
      * "relativeToSeaFloor" (from the bottom of major bodies of water).
-     * @param controlPoints The vertices of the shape.  The number of required
+     * @param {string} controlPoints - The vertices of the shape.  The number of required
      * vertices varies based on the shapeType of the symbol.  The simplest shape 
      * requires at least one point.  Shapes that require more points than 
      * required will ignore extra points.  Format for numbers is as follows: 
      * <br/><br/>
      * "x,y,z [x,y,z ]..."
-     * @modifiers a JSON string containing the attributes of the object.  These
+     * @param {string} modifiers - a JSON string containing the attributes of the object.  These
      * attributes can be in MIL-STD-2525BCh2 USAS 13-14 or MIL-STD-2525C. The 
      * format of the modifiers are: 
      * <br/>
      * {"modifiers":{"<i>attribute1</i>":<i>value</i>}}
-     * @return A KML string that represents a placemark for the 3D shape
+     * @return {string} A KML string that represents a placemark for the 3D shape
      */
     RenderMilStd3dSymbol: function(name, id, symbolCode, 
             description, 
@@ -683,6 +683,13 @@ return{
         return output;
     },
         
+    
+    /**
+     * ShouldClipMultipointSymbol
+     * 
+     * @param {string} symbolID
+     * @returns {boolean} (description)
+     */
     ShouldClipMultipointSymbol: function(symbolID)
     {
         return sec.web.renderer.MultiPointHandler.ShouldClipSymbol (symbolID);
@@ -693,9 +700,9 @@ return{
      * anchor point at which to display that image based off the image returned
      * from the URL of the SinglePointServer.
      *
-     * @param symbolID - the 15 character symbolID of a single point MilStd2525
+     * @param {string} symbolID - the 15 character symbolID of a single point MilStd2525
      * symbol.
-     * @return A pixel coordinate of the format "anchorX,anchorY,SymbolBoundsX,
+     * @return {string} A pixel coordinate of the format "anchorX,anchorY,SymbolBoundsX,
      * SymbolBoundsY,SymbolBoundsWidth,SymbolBoundsHeight,IconWidth,IconHeight".
      * Anchor, represents the center point of the core symbol within the image.
      * The image should be centered on this point.
@@ -732,8 +739,8 @@ return{
      * Given a symbol code meant for a single point symbol, returns the
      * anchor point at which to display that image based off the image returned
      * from the URL of the SinglePointServer.
-     * @param batch like "{"iconURLs":["SFGP------*****?size=35&T=Hello","SHGPE-----*****?size=50"]}"
-     * @return like {"singlepoints":[{"x":0,"y":0,"boundsx":0,"boundsy":0,"boundswidth":35,"boundsheight":35,"iconwidth":35,"iconwidth":35}, ... ]}
+     * @param {string} batch like "{"iconURLs":["SFGP------*****?size=35&T=Hello","SHGPE-----*****?size=50"]}"
+     * @return {string} like {"singlepoints":[{"x":0,"y":0,"boundsx":0,"boundsy":0,"boundswidth":35,"boundsheight":35,"iconwidth":35,"iconwidth":35}, ... ]}
      */
     getSinglePointInfoBatch: function(batch)
     {
@@ -811,7 +818,7 @@ return{
      * Let's user choose between 2525Bch2 and 2525C.
      * Ideally, set only once at startup.
      * 2525Bch2 = 0, 2525C = 1.
-     * @param {Number} symStd like armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C
+     * @param {number} symStd like armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C
      */
     setDefaultSymbologyStandard: function(symStd)
     {

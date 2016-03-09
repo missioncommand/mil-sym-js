@@ -6,11 +6,12 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.0.95";
+    var _Version = "0.0.96";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
-    _UseLineInterpolation = true,   
+    _UseLineInterpolation = true,
+    _AutoCollapseModifiers = true,   
     /**
      * Value from 0 to 255. The closer to 0 the lighter the text color has to be
      * to have the outline be black. Default value is 160.
@@ -152,6 +153,22 @@ return{
      */
     getUseLineInterpolation: function (){
         return _UseLineInterpolation;
+    },
+    /**
+     * Collapse Modifiers for fire support areas when the symbol isn't large enough to show all
+     * the labels.  Identifying label will always be visible.  Zooming in, to make the symbol larger,
+     * will make more modifiers visible.  Resizing the symbol can also make more modifiers visible.
+     * @param {boolean} value
+     */
+    setAutoCollapseModifiers: function (value){
+        _AutoCollapseModifiers = value;
+    },
+    /**
+     * Returns the current setting for Line Interpolation.
+     * @returns {Boolean}
+     */
+    getAutoCollapseModifiers: function (){
+        return _AutoCollapseModifiers;
     },
     /**
      * if true (default), when HQ Staff is present, location will be indicated by the free
