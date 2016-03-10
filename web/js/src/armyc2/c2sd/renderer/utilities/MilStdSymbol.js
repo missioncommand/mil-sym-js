@@ -5,10 +5,10 @@ armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 
 /**
- * @param {String} symbolID 15 character milstd code
- * @param {String} uniqueID 
- * @param {Array} coordinates array of Point2d
- * @param {Object} modifiers 
+ * @param {string} symbolID - 15 character milstd code
+ * @param {string} uniqueID 
+ * @param {array} coordinates - array of Point2d
+ * @param {object} modifiers 
  * @returns {armyc2.c2sd.renderer.utilities.MilStdSymbol}
  */
 armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coordinates, modifiers) {

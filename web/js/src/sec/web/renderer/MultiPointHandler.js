@@ -771,9 +771,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
 
             //disable clipping if necessary
-            if ((sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === false)
+            if (format < 3 && (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === false)
+            {
                 if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === false)
                     rect = null;
+            }
 
             tgl.set_SymbolId(symbolCode);//like "GFGPSLA---****X" AMBUSH symbol code
             tgl.set_Pixels(null);
@@ -1107,7 +1109,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     ipc.set_normalize(true);
                     normalize = true;
                 }
-                if ((sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+                if (format > 2 || (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
                     pt2d = new armyc2.c2sd.graphics2d.Point2D();
                     pt2d.setLocation(left, top);
