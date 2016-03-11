@@ -1280,7 +1280,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
         }
         return shape;
     },
-    buildShapeSpecFromPoints: function(shapeSpec, pts, clipArea) {
+    buildShapeSpecFromPoints: function(tg0, shapeSpec, pts, clipArea) {
         var shapeSpecs2 = null;
         var shapeSpec2;
         try {
@@ -1383,6 +1383,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.BuildShapeFromPoints(pts2d);
                     gp.append(shape, false);
                 }
+                tg0.set_WasClipped(tg.get_WasClipped());
             }
             shapeSpec2 = new armyc2.c2sd.JavaLineArray.Shape2(shapeSpec.getShapeType());
             shapeSpec2.setLineColor(shapeSpec.getLineColor());
@@ -1464,7 +1465,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             break;
                     }
                 }
-                tempShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.buildShapeSpecFromPoints(shapeSpec, pts, clipArea);
+                tempShapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.buildShapeSpecFromPoints(tg,shapeSpec, pts, clipArea);
                 shapeSpecs2.addAll(tempShapes);
             }
         } catch (exc) {
