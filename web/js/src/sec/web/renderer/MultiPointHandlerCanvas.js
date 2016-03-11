@@ -32,7 +32,24 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
         //public vars
         
         //public functions
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped)
+        
+        /**
+         * Generates a GeoCanvas which can be draped on a map.
+         * Better with RenderSymbol2D
+         * 
+         * @param {ShapeInfo[]} shapes - array of armyc2.c2sd.renderer.utilities.ShapeInfo
+         * @param {ShapeInfo[]} modifiers - array of armyc2.c2sd.renderer.utilities.ShapeInfo
+         * @param {object} ipc - PointConversion or PointConverter3D
+         * @param {boolean} normalize 
+         * @param {number} format - 3 for canvas, 4 for dataURL (expensive, don't use)
+         * @param {string} hexTextColor - 
+         * @param {string} hexTextBackgroundColor - 
+         * @param {boolean} wasClipped - true if symbol was clipped and will need redraw on map pan.
+         * @param {number} pixelWidth - pixel width of the bounding box
+         * @param {number} pixelHeight - pixel height of the bounding box
+         * @returns {geoCanvas} - looks like: {image:canvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+         */
+        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight)
         {
             if (textInfoBuffer === null)
             {
@@ -77,6 +94,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                         paths.push(pathInfo);
                     }
                 }
+                
+                var bbox = new armyc2.c2sd.renderer.so.Rectangle(0,0,pixelWidth,pixelHeight);
 
                 var tempModifier, len2 = modifiers.size();
                 var tiTemp = null;
@@ -113,7 +132,9 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                         tiTemp.angle = degrees;
                     }
 
-                    if (tiTemp)
+                    //make sure labels are in the bbox, otherwise they canvas
+                    //make the canvas grow out of control.
+                    if (tiTemp && bbox.containsRectangle(bounds))
                     {
                         labels.push(tiTemp);
                         if (labelBounds)

@@ -206,7 +206,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         {
             if(x && y && w && h)
             {
-                if (isEmpty() || w <= 0 || h <= 0) {
+                if (this.isEmpty() || w <= 0 || h <= 0) {
                     return false;
                 }
                 var x0 = this.getX(),
@@ -224,6 +224,47 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
                     y >= y0 &&
                     x < x0 + this.getWidth() &&
                     y < y0 + this.getHeight());
+            }
+            else
+                return false;
+        };
+        
+        armyc2.c2sd.renderer.so.Rectangle.prototype.containsPoint = function(point)
+        {
+            var x = point.getX();
+            var y = point.getY();
+            if(x && y)
+            {
+                var x0 = this.getX(),
+                    y0 = this.getY();
+                return (x >= x0 &&
+                    y >= y0 &&
+                    x < x0 + this.getWidth() &&
+                    y < y0 + this.getHeight());
+            }
+            else
+                return false;
+        };
+        
+        armyc2.c2sd.renderer.so.Rectangle.prototype.containsRectangle = function(rect)
+        {
+            var x = rect.getX();
+            var y = rect.getY();
+            var w = rect.getWidth();
+            var h = rect.getHeight();
+            
+            if(x && y && w && h)
+            {
+                if (this.isEmpty() || w <= 0 || h <= 0) 
+                {
+                    return false;
+                }
+                var x0 = this.getX(),
+                    y0 = this.getY();
+                return (x >= x0 &&
+                    y >= y0 &&
+                    (x + w) <= x0 + this.getWidth() &&
+                    (y + h) <= y0 + this.getHeight());
             }
             else
                 return false;
