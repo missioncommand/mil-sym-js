@@ -2496,6 +2496,51 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.RemoveModifiers = function (tg, g2d, 
 //        }
 //    }
 //};
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function (tg) {
+    var height = 0;
+    try
+    {
+        switch (tg.get_LineType())
+        {
+            case 24326101:
+            case 24321200:
+            case 24323200:
+            case 24322200:
+            case 24324200:
+            case 24325200:
+            case 24331200:
+            case 24332200:
+            case 24333200:
+            case 24334200:
+            case 24335200:
+            case 24336200:
+            case 24337200:
+            case 24338200:
+            case 24339200:
+            case 24352000:
+            case 24362000:
+                break;
+            default:
+                return;
+        }
+            var x1=tg.Pixels.get(0).x;
+            var y1=tg.Pixels.get(0).y;
+            var x2=tg.Pixels.get(1).x;
+            var y2=tg.Pixels.get(1).y;
+            var deltax=x2-x1;
+            var deltay=y2-y1;
+            height=Math.sqrt(deltax*deltax+deltay*deltay);        
+    }
+    catch (exc)
+    {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "scaleModifiers", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getChange1Height", exc));
+        } else {
+            throw exc;
+        }
+    }
+    return height;
+};
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
     try {
         if (armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getAutoCollapseModifiers() === false)
@@ -2513,24 +2558,33 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
         var sz = tg.get_Font().getSize();
         //heightMBR is half the MBR height
-        var heightMBR = Math.abs(ptLr.y - ptUr.y) / 2;
+        //var heightMBR = Math.abs(ptLr.y - ptUr.y) / 2;
+        var heightMBR=0;
+        var change1Height=armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height(tg);
+        if(change1Height <= 0)
+            heightMBR=Math.abs(ptLr.y-ptUr.y)/2;
+        else
+            heightMBR=change1Height;
+        
         var heightModifiers = 0;
         var modifiers = tg.modifiers;
         var modifier = null;
         var minLF = Integer.MAX_VALUE;
         var j = 0;
-        var type3Area = false;
+        var isValid = false;
         for (j = 0; j < modifiers.size(); j++)
         {
             modifier = modifiers.get(j);
-            if (modifier.type !== armyc2.c2sd.JavaTacticalRenderer.Modifier2.area)
+            if(modifier.type===armyc2.c2sd.JavaTacticalRenderer.Modifier2.toEnd)
                 continue;
-            type3Area = true;
+            if(modifier.type===armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddle && isChange1Area===false)
+                continue;
             if (modifier.lineFactor < minLF)
                 minLF = modifier.lineFactor;
+            isValid=true;
         }
         //if there are no 'area' modifiers then exit early
-        if (!type3Area)
+        if (!isValid)
             return;
         heightModifiers = Math.abs(minLF) * sz;
         var expandModifiers = false, shrinkModifiers = false;
@@ -2550,8 +2604,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
             for (j = 0; j < modifiers.size(); j++)
             {
                 modifier = modifiers.get(j);
-                if (modifier.type !== armyc2.c2sd.JavaTacticalRenderer.Modifier2.area)
-                    continue;
+                if(modifier.type===armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddle)
+                {
+                    if(isChange1Area===false)
+                        continue;
+                }
+                else if(modifier.type!==armyc2.c2sd.JavaTacticalRenderer.Modifier2.area)
+                        continue;
                 modifier.lineFactor *= factor;
             }
         }
@@ -2564,20 +2623,26 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
             for (j = 0; j < modifiers.size(); j++)
             {
                 modifier = modifiers.get(j);
-                if (modifier.type !== armyc2.c2sd.JavaTacticalRenderer.Modifier2.area)
-                    continue;
+                if(modifier.type===armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddle)
+                {
+                    if(isChange1Area===false)
+                        continue;
+                }
+                else if(modifier.type!==armyc2.c2sd.JavaTacticalRenderer.Modifier2.area)
+                        continue;
                 newLF = modifier.lineFactor + deltaLF;
                 if (Math.abs(newLF * sz) >= heightMBR)
                 {
                     //flag the modifier to remove
                     if (modifier.lineFactor > minLF)
                     {
+                        modifierE.type = modifier.type;
                         modifier.type = 7;
                         if (!modifier.text.isEmpty())
                             addEllipsis = true;
                     }
                     modifier.lineFactor = newLF;
-                    modifierE.type = armyc2.c2sd.JavaTacticalRenderer.Modifier2.area;
+                    //modifierE.type = armyc2.c2sd.JavaTacticalRenderer.Modifier2.area;
                     modifierE.textPath = modifier.textPath;
                     continue;
                 }
