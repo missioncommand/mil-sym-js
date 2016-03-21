@@ -2502,7 +2502,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function (tg) {
     {
         switch (tg.get_LineType())
         {
-            case 24326101:
+            //case 24326101:
             case 24321200:
             case 24323200:
             case 24322200:
@@ -2518,10 +2518,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function (tg) {
             case 24338200:
             case 24339200:
             case 24352000:
-            case 24362000:
+            //case 24362000:
                 break;
             default:
-                return;
+                return 0;
         }
             var x1=tg.Pixels.get(0).x;
             var y1=tg.Pixels.get(0).y;
@@ -2554,6 +2554,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
         var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(linetype, null);
         if (!isClosedPolygon && !isChange1Area)
             return;
+        switch(linetype)
+        {
+            case 24326200:
+            case 24326100:
+            case 24326101:
+            case 243111000:
+            case 243112000:
+                return;
+            default:
+                break;
+        }
+        
         var ptUl = new armyc2.c2sd.JavaLineArray.POINT2(), ptUr = new armyc2.c2sd.JavaLineArray.POINT2(), ptLr = new armyc2.c2sd.JavaLineArray.POINT2(), ptLl = new armyc2.c2sd.JavaLineArray.POINT2();
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
         var sz = tg.get_Font().getSize();
