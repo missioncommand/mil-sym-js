@@ -1070,7 +1070,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
             }
 
-
+            //check if symbolID is valid, if not, turn it into something renderable.
+            if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode), symStd) === false)
+                symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
 
             try
             {

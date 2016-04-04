@@ -146,7 +146,11 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
             }
             else
             {
-                return null;
+                var temp = symbolID.substr(0,10) + "H****";
+                if(symbolMap[temp] !== undefined)
+                    return symbolMap[temp];
+                else
+                    return null;
             }
             
         },

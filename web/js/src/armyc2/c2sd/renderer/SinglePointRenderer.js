@@ -3729,7 +3729,7 @@ return{
         var affiliation = symbolID.charAt(1);
         if(scheme !== "W")
         {
-            if(scheme !== "G" && (scheme !== "E" && SymbolUtilities.isEMSNaturalEvent(symbolID) === false))
+            if(scheme !== "G" && SymbolUtilities.isEMSNaturalEvent(symbolID) === false)
             {
                 switch (status)
                 {

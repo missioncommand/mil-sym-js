@@ -67,17 +67,24 @@ var rendererMP = sec.web.renderer.SECWebRenderer;
 onmessage = function(e)
 {
 	var strOutput = null;
+    var converter = null;
 	
-	if(e.data !== null && e.data.altMode !== null)
-	{	
-        //data for symbol on 3d map so call RenderSymbol     
-        strOutput = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
-	}
-	else
-	{
-        //data for symbol on 2D map so call RenderSymbol2D
-        strOutput = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
-	}
+    if(e.data !== null)
+    {
+   
+        if(e.data.altMode !== null)
+        {
+            if(e.data.converter !== null)
+                converter = e.data.converter;	
+            //data for symbol on 3d map so call RenderSymbol     
+            strOutput = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd, converter);
+        }
+        else
+        {
+            //data for symbol on 2D map so call RenderSymbol2D
+            strOutput = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
+        }
+    }
 	
 	
 	if(strOutput !== null)
