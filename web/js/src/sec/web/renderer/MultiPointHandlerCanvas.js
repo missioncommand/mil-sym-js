@@ -288,30 +288,38 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             //////////////////////////////////
 
             ctx.translate(bounds.getX() * -1, bounds.getY() * -1);
-            for (var i = 0; i < pathSize; i++)
+            if(format !== 5)
             {
-                pi = pathInfo[i];
-                if (pi.lineColor !== null)
-                    lineColor = pi.lineColor;
-                if (pi.lineWidth)
-                    ctx.lineWidth = pi.lineWidth;
-                if (pi.lineColor !== null)
+                for (var i = 0; i < pathSize; i++)
                 {
-                    ctx.strokeStyle = pi.lineColor;
-                    ctx.globalAlpha = 1;
-                    pi.path.stroke(ctx);
-                }
-                if (pi.fillColor !== null)
-                {
-                    ctx.fillStyle = pi.fillColor;
-                    ctx.globalAlpha = pi.alpha;
-                    pi.path.fill(ctx);
-                }
-                if(pi.fillPattern !== null && pi.fillPattern.src)
-                {
-                    pi.path.fillPattern(ctx, pi.fillPattern);
+                    pi = pathInfo[i];
+                    if (pi.lineColor !== null)
+                        lineColor = pi.lineColor;
+                    if (pi.lineWidth)
+                        ctx.lineWidth = pi.lineWidth;
+                    if (pi.lineColor !== null)
+                    {
+                        ctx.strokeStyle = pi.lineColor;
+                        ctx.globalAlpha = 1;
+                        pi.path.stroke(ctx);
+                    }
+                    if (pi.fillColor !== null)
+                    {
+                        ctx.fillStyle = pi.fillColor;
+                        ctx.globalAlpha = pi.alpha;
+                        pi.path.fill(ctx);
+                    }
+                    if(pi.fillPattern !== null && pi.fillPattern.src)
+                    {
+                        pi.path.fillPattern(ctx, pi.fillPattern);
+                    }
                 }
             }
+            else
+            {
+                ctx.globalAlpha = 1;
+            }
+           
 
 
             ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -347,6 +355,11 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 //362,422
                 var height = RendererUtilities.measureTextWithFontString(mpFont, "Tj", ctx).height;
                 //ctx.fillText("test",10,height + 80);
+                
+                //set line style for text stroke
+                ctx.lineCap = "butt";
+                ctx.lineJoin = "miter";
+                ctx.miterLimit = 3;
                 for (var j = 0; j < textSize; j++)
                 {
                     
@@ -440,7 +453,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             //ctx.fillText("test",362,422);
             //georeference buffer
 
-            if (format === 3)
+            if (format === 3 || format === 5)
             {
                 //return object with canvas and geo points
                 return {image: buffer, geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};

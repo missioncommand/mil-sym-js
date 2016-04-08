@@ -604,7 +604,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         setRectNull = true;
                     //end section
 
-                    if (format !== 3 && format !== 4)
+                    if (format !== 3 && format !== 4 && format !== 5)
                     {
                         scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
                     }
@@ -687,7 +687,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    if (format === 3 || format === 4)
+                    if (format === 3 || format === 4 || format === 5)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
                         pt2d.setLocation(left, midlat);
@@ -783,7 +783,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format === 3 || format === 4)
+                if (format === 3 || format === 4 || format === 5)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
@@ -883,7 +883,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //set id and any other properties
                     jsonOutput = JSON.stringify(jsonContent);
                 }
-                else if (format === 3 || format === 4)//render to canvas/dataURL
+                else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -1078,7 +1078,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format === 3 || format === 4)
+                if (format === 3 || format === 4 || format === 5)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
@@ -1199,7 +1199,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     jsonContent.properties.symbolID = symbolCode;
                     jsonOutput = JSON.stringify(jsonContent);
                 }
-                else if (format === 3 || format === 4)//render to canvas/dataURL
+                else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
 
                     if (textColor)

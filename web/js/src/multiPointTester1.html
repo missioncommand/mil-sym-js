@@ -84,6 +84,8 @@ console.log(foo.toString());*/
 		//var symbolCode = "GHFPLCN-------X";//NFL
 		//var symbolCode = "GHFPLCR-------X";//RFL
         //var symbolCode = "GFGPGLP---****X";//Phase Line
+		//var symbolCode = "GFFPACSI--****X";//Fire Support Area
+		//var symbolCode = "GFFPACAI--****X";//Airspace Coordination Area
         //var symbolCode = "WOS-HPFF----A--";//Weirs
 		//var symbolCode = "GFTPF-----****X";//Task/Fix
 		//var symbolCode = "WO-DHHDF----A--";//fould ground
@@ -96,16 +98,16 @@ console.log(foo.toString());*/
         //horizontal 2 pt line
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
         
-		//modifiers = {"T":"NAME","H":"H","lineColor":"ff00ff00","W":"W1","W1":"W2"};
-		modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"fillColor":"#800000FF"};
-		modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"fillColor":"#800000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
+		modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
+		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
+		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		
         var bbox = "66.25,30.60,66.28,30.65";
         //var bbox = "-180.0,-90.0,180.0,90.0";
         var scale = 500000.0;
 		
 		
-		var formatSymbolInfo = 5;
+		var formatGeoCanvasLabels = 5;
 		var formatGeoCanvasDataURL = 4;
 		var formatGeoCanvas = 3;
 		var formatGeoJSON = 2;
@@ -116,7 +118,8 @@ console.log(foo.toString());*/
 		
 		//change this to format JSON to see the different output.
         //var format = formatGeoCanvasDataURL;
-		var format = formatGeoCanvas;
+		//var format = formatGeoCanvas;
+		var format = 4;
 		//var format = formatGeoJSON;
 		//var format = formatJSON;
 		//var format = formatKML;
@@ -172,11 +175,17 @@ console.log(foo.toString());*/
 				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
 			}
 		}
-		else if(format === formatSymbolInfo)
-		{
-			
-		}
 		else if(format === formatGeoCanvas)
+		{
+                    var geoCanvas = json.image;//sec.web.renderer.MultiPointHandler.RenderShapeInfoToCanvas(json.paths, json.textInfos, json.bounds, json.geoTL, json.geoBR);
+                    var preview = document.getElementById("preview");
+                    preview.width = geoCanvas.width;
+                    preview.height = geoCanvas.height;
+                    var ctx = preview.getContext('2d');
+                    ctx.drawImage(geoCanvas,0,0);
+   
+		}
+		else if(format === formatGeoCanvasLabels)
 		{
                     var geoCanvas = json.image;//sec.web.renderer.MultiPointHandler.RenderShapeInfoToCanvas(json.paths, json.textInfos, json.bounds, json.geoTL, json.geoBR);
                     var preview = document.getElementById("preview");
