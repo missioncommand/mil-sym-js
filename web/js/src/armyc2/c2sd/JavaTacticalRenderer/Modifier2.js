@@ -4601,7 +4601,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
                     for (j = 1; j < tg.Pixels.size(); j++)
                         shape.lineTo(tg.Pixels.get(j));
                     shapes.add(shape);
-                    break;
+                    //break;
                 }
                 //end section
                 for (j = 0; j < tg.Pixels.size() - 1; j++) {
