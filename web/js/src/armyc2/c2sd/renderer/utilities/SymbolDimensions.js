@@ -160,7 +160,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
     armyc2.c2sd.renderer.utilities.SymbolDimensions.getSymbolCenter = function (symbolID, bounds){
         
         var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
-        var basicID = SymbolUtilities.getBasicSymbolID(symbolID),
+        var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID),
             center = new armyc2.c2sd.renderer.so.Point(bounds.width/2,bounds.height/2);
 
         if(basicID === "G*G*GPUUB-****X" ||

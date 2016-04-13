@@ -94,7 +94,7 @@ return{
             modifiers = {};
 	
         var pixel = null,//point to center symbol on.
-            basicID = SymbolUtilities.getBasicSymbolID(symbolID),
+            basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID),
             symStd = modifiers[MilStdAttributes.SymbologyStandard],
             ufli = UnitFontLookup.getUnitLookup(basicID, symStd),
             strUnitFont = "";
@@ -2272,7 +2272,7 @@ return{
 	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
 	//ctx.font="150pt UnitFontsC"; // * 4 (because font file is 25% of original)
         var pixel = null;//point to center symbol on.
-        var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+        var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
         var strSPFont = "";
         var symStd = modifiers[MilStdAttributes.SymbologyStandard];
         var keepUnitRatio = true;
@@ -2653,7 +2653,7 @@ return{
             text1 = null,
             text2 = null;
 
-        var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+        var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
         
         if(outlineOffset > 2)
             outlineOffset = ((outlineOffset - 1) /2);
@@ -3305,7 +3305,7 @@ return{
             text1 = null,
             text2 = null;
 
-        var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+        var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
         
         if(outlineOffset > 2)
             outlineOffset = ((outlineOffset - 1) /2);
@@ -3769,7 +3769,7 @@ return{
             return false;
         if(scheme==="G")
         {
-            var basic = SymbolUtilities.getBasicSymbolID(symbolID);
+            var basic = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             
             var sd = SymbolDefTable.getSymbolDef(basic, symStd);
             

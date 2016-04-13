@@ -86,7 +86,7 @@ return{
             modifiers[MilStdAttributes.SymbologyStandard] = symStd;
         }
         
-        var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+        var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
         
         if(SymbolUtilities.isTacticalGraphic(symbolID))
         {
@@ -94,7 +94,7 @@ return{
             if(sd === null)
             {
                 symbolID = SymbolUtilities.reconcileSymbolID(symbolID);
-                basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+                basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
                 sd = SymbolDefTable.getSymbolDef(basicID);
             }
             

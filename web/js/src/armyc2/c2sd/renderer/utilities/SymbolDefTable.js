@@ -286,7 +286,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
             var returnVal = false;
             if (codingScheme === 'G' || codingScheme === 'W') 
             {
-                var sd = this.getSymbolDef(SymbolUtilities.getBasicSymbolID(symbolID),symStd);
+                var sd = this.getSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolID),symStd);
                 if (sd) 
                 {
                     if(sd.maxPoints > 1)

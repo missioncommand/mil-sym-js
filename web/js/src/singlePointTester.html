@@ -225,7 +225,7 @@
 
             for(var i = 0; i < 1000000; i++)
             {
-                armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID("SUGDUSAT--MY***");
+                armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict("SUGDUSAT--MY***");
             }
 
             var end = new Date().getTime();
@@ -234,7 +234,7 @@
 			var start2 = new Date().getTime();            
 			for(var j = 0; j < 1000000; j++)
             {
-                SymbolUtilities.getBasicSymbolID("SUGDUSAT--MY***");
+                SymbolUtilities.getBasicSymbolIDStrict("SUGDUSAT--MY***");
             }
 			var end2 = new Date().getTime();
             var time2 = end2 - start2;
@@ -260,22 +260,22 @@
             var myTimeMessage = "UnitDefTable.hasUnitDef: " + (time/1000);
             alert(myTimeMessage);//*/
         
-            //getBasicSymbolID check//////////////////////////
+            //getBasicSymbolIDStrict check//////////////////////////
             /*
             var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
             var start = new Date().getTime();
 
             for(var i = 0; i < 1000000; i++)
             {
-                SymbolUtilities.getBasicSymbolID("SFGPE345--MY***");
-                //SymbolUtilities.getBasicSymbolID(null);
+                SymbolUtilities.getBasicSymbolIDStrict("SFGPE345--MY***");
+                //SymbolUtilities.getBasicSymbolIDStrict(null);
             }
 
             var end = new Date().getTime();
             var time = end - start;
 			
 			
-            var myTimeMessage = "SymbolUtilities.getBasicSymbolID: " + (time/1000);
+            var myTimeMessage = "SymbolUtilities.getBasicSymbolIDStrict: " + (time/1000);
             alert(myTimeMessage);//*/
 			
 			//!! check//////////////////////////
@@ -420,7 +420,7 @@
             var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef("G*G*SLA---****X");
             var ud = armyc2.c2sd.renderer.utilities.UnitDefTable.getUnitDef("S*G*E-----*****");
             var canHas = armyc2.c2sd.renderer.utilities.SymbolUtilities.canUnitHaveModifier("SFGPU-----*****",armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ);
-            var basic = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID("SFGPE-----MO***");
+            var basic = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict("SFGPE-----MO***");
 
 
             var pt = new armyc2.c2sd.renderer.utilities.SO.Point(4,5);

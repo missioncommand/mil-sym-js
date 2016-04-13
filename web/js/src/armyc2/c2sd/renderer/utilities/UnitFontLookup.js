@@ -412,10 +412,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           returnVal = 809;//index in font file
                       }
                   }
-                  else if(affiliation === 'P' ||
+                  else /*if(affiliation === 'P' ||
                      affiliation === 'U' ||
                      affiliation === 'G' ||
-                     affiliation === 'W')
+                     affiliation === 'W')*/ //these or bad affiliation codes.
                   {
 
                       if(battleDimension==='Z' ||//unknown
@@ -441,10 +441,9 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           returnVal = 849;
                       }
                       else
-                          returnVal = 800;
+                          returnVal = FillIndexUG;
                   }
-                  else
-                      returnVal = FillIndexUG;
+
               }//end if scheme === 's'
               else if(scheme === 'E')//Emergency Management Symbols
               {
@@ -714,7 +713,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
             affiliation = SymbolID.charAt(1);//F,H,N,U,etc...
             
 
-            if(SymbolUtilities.getBasicSymbolID(SymbolID)===("S*S*O-----*****"))
+            if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID)===("S*S*O-----*****"))
             {
               return 2016;  
             }
@@ -796,7 +795,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 }
 
                 //appears in USAS so we check in both standards
-                if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*X-----*****"))
+                if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*X-----*****"))
                 {
                     if(status==='A')
                         returnVal = returnVal+2;
@@ -810,8 +809,8 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 {
                     if(SymbolID.indexOf("WM")===4 || //Sea Mine
                             SymbolID.indexOf("WDM")===4 ||//Sea Mine Decoy
-                            SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*E-----*****") ||
-                            SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*V-----*****"))
+                            SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*E-----*****") ||
+                            SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*V-----*****"))
                     {
                         returnVal++;
 
@@ -819,7 +818,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                             returnVal++;
 
                     }
-                    else if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*ND----*****"))
+                    else if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*ND----*****"))
                     {
                         returnVal = 2121;
                     }
@@ -851,7 +850,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                     {
                           returnVal = 2115;
                     }
-                    else if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*ND----*****"))
+                    else if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*ND----*****"))
                     {
                           returnVal = 2121;
                     }//
@@ -875,7 +874,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
         getSeaSurfaceFrame: function(SymbolID, fillCode){
             var returnVal = fillCode+1;
 
-            if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*S*O-----*****"))
+            if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*S*O-----*****"))
                 returnVal = -1;
             else
             {
@@ -905,13 +904,13 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                   {
                       if(SymbolID.indexOf("WM")===4 || //Sea Mine
                               SymbolID.indexOf("WDM")===4 ||//Sea Mine Decoy
-                              SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*E-----*****") ||
-                              SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*V-----*****") ||
-                              SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*X-----*****"))
+                              SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*E-----*****") ||
+                              SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*V-----*****") ||
+                              SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*X-----*****"))
                       {
                           returnVal = -1;
                       }
-                      else if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*ND----*****"))
+                      else if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*ND----*****"))
                       {
                           returnVal = -1;
                       }
@@ -934,11 +933,11 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       {
                             returnVal = -1;
                       }
-                      else if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*ND----*****"))
+                      else if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*ND----*****"))
                       {
                             returnVal = -1;
                       }//
-                      else if(SymbolUtilities.getBasicSymbolID(SymbolID) === ("S*U*X-----*****"))
+                      else if(SymbolUtilities.getBasicSymbolIDStrict(SymbolID) === ("S*U*X-----*****"))
                       {
                           returnVal = -1;
                       }

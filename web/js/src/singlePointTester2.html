@@ -381,7 +381,10 @@
                     fontCheckTimer = setTimeout(checkFonts, 1000);
             }//*/
 
-
+			var basic = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID("SFGPI-----H****");
+			var tf = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basic);
+			var ud = armyc2.c2sd.renderer.utilities.UnitDefTable.getUnitDef(basic);
+			
             RendererSettings.setTextOutlineWidth(1);
 			RendererSettings.setSymbologyStandard(1);
 			//RendererSettings.setSymbologyStandard(0);

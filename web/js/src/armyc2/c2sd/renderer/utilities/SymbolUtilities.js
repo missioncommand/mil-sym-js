@@ -15,7 +15,72 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @param {String} symbolID 15 character code
      * @returns {String} basic symbolID
      */
-    armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID = function (symbolID) {
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID = function (symbolID, symStd) {
+        //try {
+        
+            var basic = symbolID;
+            if(symbolID && symbolID.length === 15)
+            {
+                var scheme = symbolID.charAt(0);
+                if(scheme === 'S' || scheme === 'O' || scheme === 'E')
+                {
+                    basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
+                    
+                    var i = symStd || 0;
+                    for(; i < 2; i++)
+                    {
+                        var has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basic, i);
+                        var temp = null;
+                        if(has)
+                        {
+                            i=3;
+                        }
+                        else
+                        {
+                            temp = basic.substr(0,10) + "H****";
+                            has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, i);
+                            if(has)
+                            {
+                                basic = temp;
+                                i=3;
+                            }
+                            else
+                            {
+                                temp = basic.substr(0,10) + "MO***";
+                                has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, i);
+                                if(has)
+                                {
+                                    basic = temp;
+                                    i=3;
+                                }
+                            }    
+                        }
+                    }
+                }
+                else if (scheme === 'G') //tactical graphic
+                {
+                    basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "****X";
+                } 
+                else if(scheme === 'I')
+                {
+                    basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "--***";
+                }
+                else// if (scheme === 'W' || scheme === 'B')//weather or basic/buffered shape
+                {
+                    basic = symbolID;
+                }
+            }
+            return basic;
+        //} catch (error) {}
+        //return symbolID;
+    };
+    /**
+     * Swaps status and affiliation for '*' and appends "****X" or "*****" to the end.
+     * Only used for font character lookups.  Not for general use. Use getBasicSymbolID.
+     * @param {String} symbolID 15 character code
+     * @returns {String} basic symbolID
+     */
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict = function (symbolID) {
         //try {
         
             var basic = symbolID;
@@ -746,7 +811,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
         var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
-        basic = this.getBasicSymbolID(symbolID);
+        basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
@@ -802,7 +867,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfAffiliation = function(symbolID){
         var retColor = null,
-        basicSymbolID = this.getBasicSymbolID(symbolID);
+        basicSymbolID = this.getBasicSymbolIDStrict(symbolID);
         //var AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors;
 
         // We can't get the fill color if there is no symbol id, since that also means there is no affiliation
@@ -848,7 +913,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("K"))
                     {
 
-                        if (this.getBasicSymbolID(symbolID)===("G*G*GLC---****X"))	// Line of Contact
+                        if (this.getBasicSymbolIDStrict(symbolID)===("G*G*GLC---****X"))	// Line of Contact
                         {
                             retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0x000000;	// Black
                         }
@@ -897,7 +962,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */        
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getFillColorOfAffiliation = function(symbolID) {
         var retColor = null,
-        basicSymbolID = this.getBasicSymbolID(symbolID);
+        basicSymbolID = this.getBasicSymbolIDStrict(symbolID);
         var AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors;
         
         var switchChar;
@@ -1016,7 +1081,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfWeather = function(symbolID){
         var retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//Color.BLACK;
         // Get the basic id
-        //String symbolID = SymbolUtilities.getBasicSymbolID(symbolID);
+        //String symbolID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
 
         if(symbolID === ("WAS-WSGRL-P----") || // Hail - Light not Associated With Thunder
             symbolID === ("WAS-WSGRMHP----") || // Hail - Moderate/Heavy not Associated with Thunder
@@ -1708,7 +1773,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         
         var arr = null;
         var category = strSymbolID.charAt(2);
-        var strBasicSymbolID = this.getBasicSymbolID(strSymbolID);
+        var strBasicSymbolID = this.getBasicSymbolIDStrict(strSymbolID);
         if(this.isMOOTW(strSymbolID) || 
                 (this.isEMS(strSymbolID) && 
                       (category === 'I' || category === 'N' || category === 'O')))
@@ -1817,7 +1882,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNBC = function (strSymbolID){
        
-        //var temp = this.getBasicSymbolID(strSymbolID),
+        //var temp = this.getBasicSymbolIDStrict(strSymbolID),
         //var blRetVal = (temp.substring(0, 5) === ("G*M*N"));         
         var blRetVal = ((strSymbolID.charAt(0) === ('G')) && ((strSymbolID.charAt(2) === ('M')) && (strSymbolID.charAt(4) === ('N'))));
         return blRetVal;
@@ -1834,7 +1899,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return blRetVal;
      };
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isCheckPoint = function (strSymbolID){
-        var basicID = this.getBasicSymbolID(strSymbolID);
+        var basicID = this.getBasicSymbolIDStrict(strSymbolID);
         var blRetVal = false;
         if(basicID===("G*G*GPPE--****X")//release point
           || basicID===("G*G*GPPK--****X")//check point
@@ -1938,7 +2003,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
 
-        var temp = this.getBasicSymbolID(strSymbolID);
+        var temp = this.getBasicSymbolIDStrict(strSymbolID);
         var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.GetSymbolDef(temp,symStd);
 
         if (sd !== null && 
@@ -1959,7 +2024,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGSPWithSpecialModifierLayout = function (strSymbolID){
-        var temp = this.getBasicSymbolID(strSymbolID);
+        var temp = this.getBasicSymbolIDStrict(strSymbolID);
       
         var blRetVal = (temp === ("G*G*GPH---****X"))//Harbor(General) - center
         || (temp === ("G*G*GPPC--****X")) //Contact Point - center
@@ -1985,7 +2050,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGSPWithIntegralText = function (strSymbolID){
-         var temp = this.getBasicSymbolID(strSymbolID);
+         var temp = this.getBasicSymbolIDStrict(strSymbolID);
 
         // ErrorLogger.LogMessage("SU", "integraltext?", temp);
 
@@ -2008,7 +2073,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGSPWithFill = function (strSymbolID){
-         var temp = this.getBasicSymbolID(strSymbolID),
+         var temp = this.getBasicSymbolIDStrict(strSymbolID),
          blRetVal = this.isDeconPoint(temp)//Decon Points
           || temp.substring(0,5)===("G*S*P")//TG/combat service support/points
           ||(temp === ("G*G*GPP---****X"))//Action points (general)
@@ -2061,7 +2126,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.hasDefaultFill = function(strSymbolID){
         if(this.isTacticalGraphic(strSymbolID))
         {
-                var temp = this.getBasicSymbolID(strSymbolID);
+                var temp = this.getBasicSymbolIDStrict(strSymbolID);
                 //SymbolDef sd = SymbolDefTable.getInstance().getSymbolDef(temp);
                 if((temp === ("G*M*NEB---****X"))//BIO
                     || (temp === ("G*M*NEC---****X")) //CHEM
@@ -2082,7 +2147,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
       * @returns {String}
       */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.getTGFillSymbolCode = function (strSymbolID){
-        var temp = this.getBasicSymbolID(strSymbolID);
+        var temp = this.getBasicSymbolIDStrict(strSymbolID);
         if(temp === ("G*M*NEB---****X"))
             return "NBCBIOFILL****X";
         if(temp === ("G*M*NEC---****X"))
@@ -2169,7 +2234,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      };
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isSonobuoy = function (strSymbolID){
         
-        var basic = this.getBasicSymbolID(strSymbolID);
+        var basic = this.getBasicSymbolIDStrict(strSymbolID);
         var blRetVal = (basic.substring(0, 8)==="G*G*GPUY");
         return blRetVal;
      };
@@ -2213,7 +2278,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
       * @returns {Boolean}
       */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSEquipment = function (strSymbolID){
-        var basicCode = this.getBasicSymbolID(strSymbolID),
+        var basicCode = this.getBasicSymbolIDStrict(strSymbolID),
         blRetVal = false;
        
         if(strSymbolID.charAt(0)==='E')
@@ -2407,7 +2472,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierWidth = function (symbolID, symStd){
         var sd = null,
             returnVal = false,
-            basic = this.getBasicSymbolID(symbolID);
+            basic = this.getBasicSymbolIDStrict(symbolID);
             
         if(symStd === undefined)
         {
@@ -2415,7 +2480,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
-        basic = this.getBasicSymbolID(symbolID);
+        basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
@@ -2448,7 +2513,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierRadius = function (symbolID, symStd){
         var sd = null,
             returnVal = false,
-            basic = this.getBasicSymbolID(symbolID);
+            basic = this.getBasicSymbolIDStrict(symbolID);
             
         if(symStd === undefined)
         {
@@ -2456,7 +2521,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
-        basic = this.getBasicSymbolID(symbolID);
+        basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
@@ -2484,7 +2549,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.hasANmodifier = function (symbolID, symStd){
         var sd = null,
             returnVal = false,
-            basic = this.getBasicSymbolID(symbolID);
+            basic = this.getBasicSymbolIDStrict(symbolID);
             
         if(symStd === undefined)
         {
@@ -2492,7 +2557,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
-        basic = this.getBasicSymbolID(symbolID);
+        basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {

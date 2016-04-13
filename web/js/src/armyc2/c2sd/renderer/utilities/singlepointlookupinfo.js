@@ -28,7 +28,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookupInfo = function (basicSymbolID, 
     * 
     * @returns {String}
     */
-   this.getBasicSymbolID = function(){
+   this.getBasicSymbolIDStrict = function(){
        return _SymbolID;
    };
    /**

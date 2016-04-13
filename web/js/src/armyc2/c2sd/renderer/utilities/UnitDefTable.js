@@ -146,17 +146,13 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
             }
             else
             {
-                var temp = symbolID.substr(0,10) + "H****";
-                if(symbolMap[temp] !== undefined)
-                    return symbolMap[temp];
-                else
-                    return null;
+                return null;
             }
             
         },
         /**
          * 
-         * @param {String} symbolID
+         * @param {String} basic symbolID
          * @param {Number} symStd
          * @returns {Boolean}
          */

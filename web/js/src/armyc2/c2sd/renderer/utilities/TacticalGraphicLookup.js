@@ -2113,7 +2113,7 @@ return{
             var basicID = symbolID;
             if(armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dAirspace(symbolID)===false)
             {
-                basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+                basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             }   
             if(basicID in symbolMap)
             {

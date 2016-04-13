@@ -390,7 +390,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             if (armyc2.c2sd.renderer.utilities.SymbolUtilities.isWeather(symbolID))
                 return true;
-            var id = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+            var id = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             if (id === ("G*T*F-----****X") || id === ("G*F*LCC---****X") || id === ("G*G*GLB---****X") ||
                     id === ("G*G*GLF---****X") || id === ("G*G*GLC---****X") || id === ("G*G*GAF---****X") ||
                     id === ("G*G*AAW---****X") || id === ("G*G*DABP--****X") || id === ("G*G*OLP---****X") ||
@@ -767,7 +767,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
 
             //check if symbolID is valid, if not, turn it into something renderable.
-            if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode), symStd) === false)
+            if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
                 symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
 
             //disable clipping if necessary
@@ -891,7 +891,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
                     //for lineJoin to make autoshapes look better
-                    var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
+                    var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolCode);
                     var sd = SymbolDefTable.getSymbolDef(basicID, symStd);
                     if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE)
                     {
@@ -1071,7 +1071,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
 
             //check if symbolID is valid, if not, turn it into something renderable.
-            if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolID(symbolCode), symStd) === false)
+            if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
                 symbolCode = SymbolUtilities.reconcileSymbolID(symbolCode, true);
 
             try
@@ -1208,7 +1208,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
                     //for lineJoin to make autoshapes look better    
-                    var basicID = SymbolUtilities.getBasicSymbolID(symbolCode);
+                    var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolCode);
                     var sd = SymbolDefTable.getSymbolDef(basicID, symStd);
                     if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_AUTOSHAPE)
                     {
@@ -1266,7 +1266,7 @@ sec.web.renderer.MultiPointHandler = (function () {
         {
             var symStd = symbol.getSymbologyStandard();
             var symbolID = symbol.getSymbolID();
-            var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+            var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             var sd = null;
             var dc = 99;
             var coordCount = symbol.getCoordinates().length;
@@ -1562,7 +1562,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (azimuths !== null) {
                     symbol.setModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH, azimuths);
                 }
-                if (armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbol.getSymbolID()) === ("G*F*AXS---****X")) {
+                if (armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbol.getSymbolID()) === ("G*F*AXS---****X")) {
                     if (symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH) !== null && symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE) !== null) {
                         var anCount = symbol.getModifiers_AM_AN_X(ModifiersTG.AN_AZIMUTH).length;
                         var amCount = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE).length;
@@ -1726,7 +1726,7 @@ sec.web.renderer.MultiPointHandler = (function () {
         IsOnePointSymbolCode: function (symbolCode)
         {
             var symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
-            var basicCode = SymbolUtilities.getBasicSymbolID(symbolCode);
+            var basicCode = SymbolUtilities.getBasicSymbolIDStrict(symbolCode);
             var sd = null;
             if (SymbolDefTable.hasSymbolDef(basicCode, symStd))
             {
@@ -2787,7 +2787,7 @@ sec.web.renderer.MultiPointHandler = (function () {
         },
         GetBboxFromCoordinates: function (symbolID, geoCoords, modifiers, symStd)
         {
-            var basicID = SymbolUtilities.getBasicSymbolID(symbolID);
+            var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             //check points and come up with a bbox
             var len = geoCoords.length;
             if (len >= 2)

@@ -177,7 +177,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
                 this._symbolID = value;
             }
             if (armyc2.c2sd.renderer.utilities.SymbolUtilities.getAffiliation(value)===("H")) {
-                var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(value);
+                var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(value);
                 if (armyc2.c2sd.renderer.utilities.SymbolUtilities.isObstacle(basicID) || basicID===("G*M*NZ----****X") || basicID===("G*M*NEB---****X") || basicID===("G*M*NEC---****X")) {
                     this.setModifier("N", "ENY");
                 }

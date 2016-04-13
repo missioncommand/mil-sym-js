@@ -15,7 +15,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
         this._mappingA = mappingA;
         this._width = width;
         this._height = height;
-        this.getBasicSymbolID = function(){
+        this.getBasicSymbolIDStrict = function(){
             return this._SymbolID;
         };
         this.getDescription = function(){
@@ -131,7 +131,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
          * mapping1N, mapping1H, mapping1color, mapping2, mapping2color
          */
         getSPLookupInfo: function (symbolID, symStd) {
-            var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+            var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             
             if(symStd === undefined)
                 symStd = RendererSettings.getSymbologyStandard();
@@ -159,7 +159,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
          */
         hasSPLookupInfo: function (symbolID,symStd) {
             
-            var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolID);
+            var basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             
             if(symStd === undefined)
                 symStd = RendererSettings.getSymbologyStandard();
@@ -192,7 +192,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                 var strSymbolLookup = null;
                 
                 if(symbolCode.indexOf("FILL")=== -1)
-                    strSymbolLookup = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID(symbolCode);
+                    strSymbolLookup = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolCode);
                 else
                     strSymbolLookup = symbolCode;
 
