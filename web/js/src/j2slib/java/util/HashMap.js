@@ -65,9 +65,9 @@ java.util.HashMap = function()
     this.isEmpty = function()
     {
         if(length>0)
-            return true;
-        else
             return false;
+        else
+            return true;
     };
 };
 
