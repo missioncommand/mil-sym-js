@@ -220,6 +220,12 @@ armyc2.c2sd.graphics2d.Area.getLineIntersectPoints = function (polygon, hatchLin
         var segment = null;
         var pt0 = null;
         var pt1 = null;
+        //close polygon
+        pt0=polygon.get(0);
+        pt1=polygon.get(polygon.size()-1);
+        if(pt0.x !== pt1.x || pt0.y !== pt1.y)        
+            polygon.add(pt0);            
+        
         var pt2 = null;
         armyc2.c2sd.graphics2d.Area.adjustVerticalLine (hatchLine);
         var ptsPath =  new java.util.ArrayList ();
