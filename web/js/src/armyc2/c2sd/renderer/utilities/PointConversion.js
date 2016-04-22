@@ -7,6 +7,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 armyc2.c2sd.renderer.utilities.PointConversion =  function(pixelWidth, pixelHeight, geoTop, geoLeft, geoBottom, geoRight)
 {
     //private vars
+    this._scale = 0;
     this._pixelWidth = 0;
     this._PixelHeight = 0;
     this._geoTop = 0;
@@ -48,6 +49,17 @@ armyc2.c2sd.renderer.utilities.PointConversion =  function(pixelWidth, pixelHeig
 //            this._pixelMultiplierX = -Math.abs(this._pixelMultiplierX);
 //        else
 //            this._pixelMultiplierX = Math.abs(this._pixelMultiplierX);
+            
+	//for 2d
+        //40.075m meters is the circumference of the earth
+	//distanceInMeters=(distanceInDegrees/360)*40.075m meters
+        var distanceInDegrees=Math.abs(this._geoRight - this._geoLeft);
+        if(Math.abs(this._geoRight - this._geoLeft)>180)
+            distanceInDegrees=Math.abs(distanceInDegrees-360);
+	var distanceInMeters=(distanceInDegrees/360)*(40.075*1000000);
+        var scale = (this._pixelWidth / distanceInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
+        this._scale = 1.0 / scale;
+
     };
     
     //public functions
