@@ -21,18 +21,18 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
             shape.setLineColor(tg.get_LineColor());
             shape.setStroke(stroke);
-            var strH = tg.get_H();
-            if (strH !== null && !strH.isEmpty()) {
-                var strs = strH.split(",");
-                if (strs.length < 2) {
-                    shape.moveTo(tg.Pixels.get(0));
-                    for (j = 1; j < tg.Pixels.size(); j++) {
-                        shape.lineTo(tg.Pixels.get(j));
-                    }
-                    shapes.add(shape);
-                    return;
-                }
-            }
+//            var strH = tg.get_H();
+//            if (strH !== null && !strH.isEmpty()) {
+//                var strs = strH.split(",");
+//                if (strs.length < 2) {
+//                    shape.moveTo(tg.Pixels.get(0));
+//                    for (j = 1; j < tg.Pixels.size(); j++) {
+//                        shape.lineTo(tg.Pixels.get(j));
+//                    }
+//                    shapes.add(shape);
+//                    return;
+//                }
+//            }
             var lastColor = null;
             var dist = 0;
             var dist2 = 0;
