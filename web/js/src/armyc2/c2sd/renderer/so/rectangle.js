@@ -229,6 +229,9 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
                 return false;
         };
         
+        /**
+         * 
+         */
         armyc2.c2sd.renderer.so.Rectangle.prototype.containsPoint = function(point)
         {
             var x = point.getX();
@@ -270,6 +273,9 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
                 return false;
         };
         
+        /**
+         * Ported from Java
+         */
         armyc2.c2sd.renderer.so.Rectangle.prototype.outcode = function(x, y) {
 	    var out = 0;
 	    if (this.width <= 0) {
@@ -291,7 +297,7 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         
         /**
         * Tests if the specified line segment intersects the interior of this
-        * <code>Rectangle</code>.
+        * <code>Rectangle</code>. Ported from java.
         *
         * @param x1 the X coordinate of the start point of the specified
         *           line segment
@@ -360,6 +366,9 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
             return new armyc2.c2sd.renderer.so.Rectangle(this.x,this.y,this.width,this.height);
         };
         
+        /**
+         * ported from java
+         */
         armyc2.c2sd.renderer.so.Rectangle.prototype.intersects = function(r){
             var tw = this.width;
             var th = this.height;

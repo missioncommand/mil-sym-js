@@ -125,16 +125,17 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     tiTemp.textBaseline = "alphabetic";
                     var bounds = tiTemp.getTextBounds();
                     var degrees = parseFloat(tempModifier.getModifierStringAngle());
+                    rotatedBounds = null;
                     if (degrees !== 0)
                     {
-                        bounds = this.GetRotatedRectangleBounds(bounds, tiTemp.getLocation(), degrees);
-                        rotatedBounds = bounds;
+                        rotatedBounds = this.GetRotatedRectangleBounds(bounds, tiTemp.getLocation(), degrees);
                         tiTemp.angle = degrees;
                     }
 
-                    //make sure labels are in the bbox, otherwise they canvas
+                    //make sure labels are in the bbox, otherwise they can
                     //make the canvas grow out of control.
-                    if (tiTemp && bbox.containsRectangle(bounds))
+                    //if (tiTemp && bbox.containsRectangle(bounds))
+                    if (tiTemp && bbox.intersects(bounds))
                     {
                         labels.push(tiTemp);
                         if (labelBounds)
