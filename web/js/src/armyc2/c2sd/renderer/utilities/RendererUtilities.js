@@ -249,9 +249,11 @@ return{
 	/**
      * 
      * @param {String} color like "#FFFFFF"
+     * @param {Boolean} forceRGB, return value drops any alpha value
+     * and is formatted like "#RRGGBB"
      * @returns {String}
      */
-    getIdealOutlineColor: function(color){
+    getIdealOutlineColor: function(color, forceRGB){
         var idealColor = null;
         
         if(pastIdealOutlineColors[color])
@@ -287,14 +289,14 @@ return{
             
 			if((255 - delta < threshold))
 			{
-				if(len === 9)
+				if(len === 9 && forceRGB !== true)
 					idealColor = "#" + alpha  + "000000";
 				else
 					idealColor = "#000000";
 			}
 			else
 			{
-				if(len === 9)
+				if(len === 9 && forceRGB !== true)
 					idealColor = "#" + alpha  + "FFFFFF";
 				else
 					idealColor = "#FFFFFF";

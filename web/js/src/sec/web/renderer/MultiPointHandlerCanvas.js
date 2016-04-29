@@ -10,12 +10,16 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
     var RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities;
     var _buffer = null;
     var _blankCanvas = null;
+    var _blankCanvasContext = null;
 
     var textInfoBuffer = null,
         textInfoContext = null,
         textInfoContextFont = null,
         tempMPBuffer = null,
         tempMPContext = null;
+        
+    var hasSetLineDash = false;
+     
         
     //decimal lat/lon accuracy by decimal place
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
@@ -25,6 +29,12 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
     _blankCanvas = document.createElement('canvas');
     _blankCanvas.width=2;
     _blankCanvas.height=2;
+    _blankCanvasContext = _blankCanvas.getContext('2d');
+    if(_blankCanvasContext.setLineDash)
+    {
+        hasSetLineDash = true;
+    }
+    
     
     //private functions
             
@@ -336,7 +346,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 var mpFont = RendererSettings.getModifierFont();
 
                 //set text color and outline/fill color
-                var htbc = hexTextBackgroundColor || RendererUtilities.getIdealOutlineColor(hexTextColor || lineColor);
+                var htbc = hexTextBackgroundColor || RendererUtilities.getIdealOutlineColor((hexTextColor || lineColor),true);
                 var htc = hexTextColor || lineColor;
                 ctx.fillStyle = htc;
                 var outlineStyle = htbc;
@@ -516,6 +526,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var stroke = null;
             stroke = shapeInfo.getStroke();
             lineWidth = 4;
+            
             if (stroke !== null) {
                 lineWidth = Math.round(stroke.getLineWidth());
                 dashArray = stroke.getDashArray();
@@ -523,6 +534,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
 
             var shapesArray = shapeInfo.getPolylines();
             path = new armyc2.c2sd.renderer.so.Path();
+            path.setLineDash(dashArray);
             for (var i = 0; i < shapesArray.size(); i++)
             {
 
@@ -536,7 +548,15 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     }
                     else if (dashArray)
                     {
-                        path.dashedLineTo(coord.x, coord.y, dashArray);
+                        if(hasSetLineDash)
+                        {
+                            path.lineTo(coord.x, coord.y);
+                        }
+                        else
+                        {
+                            path.dashedLineTo(coord.x, coord.y, dashArray);    
+                        }
+                        
                     }//*/
                     else
                     {

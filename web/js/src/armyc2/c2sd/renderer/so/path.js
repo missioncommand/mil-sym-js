@@ -11,6 +11,7 @@ armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
 armyc2.c2sd.renderer.so.Path = function () {
     
     this._actions = [],
+    this._dashArray = null,
     this._startPoint=null,
     this._endPoint=null,
     this._lastMoveTo = null,
@@ -26,6 +27,11 @@ armyc2.c2sd.renderer.so.Path = function () {
     armyc2.c2sd.renderer.so.Path.prototype.getShapeType = function(){
         return armyc2.c2sd.renderer.so.ShapeTypes.PATH;
     };
+    
+    armyc2.c2sd.renderer.so.Path.prototype.setLineDash = function(dashArray)
+    {
+        this._dashArray = dashArray;
+    }
 
     /**
      * @return {_rectangle} description
@@ -310,6 +316,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         //context.beginPath();
         var size = this._actions.length;
         var temp = null;
+        
         for(var i=0; i<size;i++)
         {
             temp = this._actions[i];
@@ -336,7 +343,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             {
                 if(this._method === "stroke")
                 {
-                    context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
+                    context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);    
                 }
                 else //you don't dash a fill shape
                 {
@@ -360,6 +367,7 @@ armyc2.c2sd.renderer.so.Path = function () {
                 context.arc(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6]);
             }//*/
         }
+        
     };
     /**
      * Draws the path to the passed context
@@ -368,9 +376,14 @@ armyc2.c2sd.renderer.so.Path = function () {
      */
     armyc2.c2sd.renderer.so.Path.prototype.stroke = function(context){
         this._method = "stroke";
+        if(this._dashArray)
+        {
+            context.setLineDash(this._dashArray);
+        }
         context.beginPath();
         this.setPath(context);
         context.stroke();
+        context.setLineDash([]);
     };
     /**
      * Fills the path on the passed context

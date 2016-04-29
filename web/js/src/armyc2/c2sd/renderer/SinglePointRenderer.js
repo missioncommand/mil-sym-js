@@ -2540,7 +2540,7 @@ return{
                 if(outlineOffset > 0)
                 {
                     ctx.lineWidth = symbolOutlineWidth;
-                    ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(lineColor);
+                    ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(lineColor,true);
                     ctx.strokeText(frame, x, y);
                 }
             }
@@ -3849,7 +3849,7 @@ return{
 		}
 		else
 		{
-			outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle);
+			outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle,true);
 		}
         
 
