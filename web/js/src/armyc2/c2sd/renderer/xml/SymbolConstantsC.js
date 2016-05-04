@@ -3618,7 +3618,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "MINPOINTS": "2",
         "DESCRIPTION": "Overhead Wire",
         "HIERARCHY": "2.X.3.1.12.2",
-        "ALPHAHIERARCHY": "TACGRP.MOBSU.OBST.AVN.TWR.HIGH",
+        "ALPHAHIERARCHY": "TACGRP.MOBSU.OBST.AVN.OHWIRE",
         "PATH": "Tactical Graphics/Mobility-Survivability/Obstacles/Aviation"
       },
       {
