@@ -336,6 +336,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             if (textInfos.length > 0)
             {
+                ctx.globalAlpha = 1;
                 //apply mpmodfier font
                 //loop and render text
                 var tis = textInfos;
