@@ -1551,7 +1551,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var pt1 = null;
             var pt = null;
             var dist = 0;
-            var interval = 1000000;
+            //var interval = 1000000;
+            var interval = 250000;
             var az = 0;
             var maxDist = 0;
             var pt2d = null;
@@ -1609,7 +1610,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 return;
             var resultPts = new java.util.ArrayList();
             var lineType = tg.get_LineType();
-            var interval = 1000000;
+            //var interval = 1000000;
+            var interval = 250000;
             switch (lineType) {
                 case 22528000:
                 case 24222000:
