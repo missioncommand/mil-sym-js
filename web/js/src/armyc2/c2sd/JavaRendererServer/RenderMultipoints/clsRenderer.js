@@ -1082,6 +1082,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     clipPoints = clipArea;
                 }
             }
+            var zoomFactor=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.getZoomFactor(clipBounds, clipPoints, tg.Pixels);
             var useClipPoints = false;
             if (useClipPoints === true && clipBounds !== null) {
                 var x = clipBounds.getMinX();
@@ -1111,7 +1112,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var shapes = null;
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setSplineLinetype(tg);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setHostileLC(tg);
-            armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.SegmentGeoPoints(tg, converter);
+            armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.SegmentGeoPoints(tg, converter, zoomFactor);
             if (clipBounds !== null || clipPoints !== null)
             {
                 if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg).valueOf() === true)
@@ -1378,7 +1379,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setHostileLC(tg);
                     var bi = new armyc2.c2sd.graphics2d.BufferedImage(8, 8, 2);
                     var g2d = bi.createGraphics();
-                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.SegmentGeoPoints(tg, converter);
+                    armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.SegmentGeoPoints(tg, converter, 1);
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.FilterAXADPoints(tg, converter);
                     armyc2.c2sd.JavaTacticalRenderer.clsUtility.FilterVerticalSegments(tg);
                     var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(linetype, null);

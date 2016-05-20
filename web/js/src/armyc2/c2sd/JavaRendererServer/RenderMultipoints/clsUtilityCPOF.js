@@ -1604,7 +1604,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             }
         }
     },
-    SegmentGeoPoints: function(tg, converter) {
+    SegmentGeoPoints: function(tg, converter, zoomFactor) {
         try {
             if (tg.get_Client().equals("2D"))
                 return;
@@ -1675,6 +1675,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             }
             if (interval > maxDist)
                 interval = maxDist;
+            
+            if(zoomFactor>0 && zoomFactor<0.1)
+                zoomFactor=0.1;
+            if(zoomFactor>0 && zoomFactor<1)
+                interval *= zoomFactor;
+
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j));
                 pt0.style = 0;

@@ -1046,6 +1046,63 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
         }
         return line;
     },
+    getZoomFactor:function(rect, clipPoints, pixels)
+    {
+        var factor=-1;
+        try
+        {
+            if(pixels===null || pixels.size()<2)
+                return factor;
+            if(clipPoints===null && rect===null)
+                return factor;
+            var maxLengthPixels=0, maxLengthClipArea=0,temp=0;
+            var j=0;
+            var pt2d0=null, pt2d1=null, pt0=null, pt1=null;
+            for(j=0;j<pixels.size()-1;j++)
+            {
+               pt0=pixels.get(j);
+               pt1=pixels.get(j+1);
+               temp=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+               if(temp>maxLengthPixels)
+                   maxLengthPixels=temp;
+            }
+            temp=0;
+            if(clipPoints !== null)
+            {
+                for(j=0;j<clipPoints.size()-1;j++)
+                {
+                   pt2d0=clipPoints.get(j);
+                   pt2d1=clipPoints.get(j+1);
+                   pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt2d0.getX(),pt2d0.getY());
+                   pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt2d1.getX(),pt2d1.getY());
+                   temp=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                }
+            }
+            else if(rect !== null)
+            {
+                temp=rect.getMaxX()-rect.getMinX();
+                if(temp < rect.getMaxY()-rect.getMinY())
+                    temp=rect.getMaxY()-rect.getMinY();
+            }
+            if(temp>maxLengthClipArea)
+                maxLengthClipArea=temp;
+            if(maxLengthPixels > 0 && maxLengthClipArea > 0)
+                factor=maxLengthClipArea/maxLengthPixels;
+            
+        }
+        catch (exc) 
+        {
+            if (Clazz.instanceOf(exc)) 
+            {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE._className, "segmentColorsSet", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside segmentColorsSet", exc));
+            } 
+            else 
+            {
+                throw exc;
+            }
+        }
+        return factor;
+    },
     _className: "clsUtilityGE",
     Hatch_ForwardDiagonal: 2,
     Hatch_BackwardDiagonal: 3,
