@@ -1676,8 +1676,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             if (interval > maxDist)
                 interval = maxDist;
             
-            if(zoomFactor>0 && zoomFactor<0.1)
-                zoomFactor=0.1;
+            if(zoomFactor>0 && zoomFactor<0.01)
+                zoomFactor=0.01;
             if(zoomFactor>0 && zoomFactor<1)
                 interval *= zoomFactor;
 
