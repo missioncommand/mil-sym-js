@@ -2,6 +2,7 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaRendererServer = armyc2.c2sd.JavaRendererServer || {};
 armyc2.c2sd.JavaRendererServer.RenderMultipoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints || {};
+var vincenty=vincenty || {};
 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
     BuildDummyShapeSpec: function() {
         var shape = new armyc2.c2sd.renderer.utilities.ShapeInfo(null);
@@ -1663,6 +1664,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var dist = 0;
             var az = 0;
             var maxDist = 0;
+            //vincenty stuff
+            var useVincenty=false;
+            var fraction=0;
+            var start=null,end=null;
+            var lon=0, lat=0;
+            var cartographic=new Cartographic(0, 0, 0);
+            //uncomment following line to use Vincenty
+            useVincenty = true;
+            //if(converter._scale>10000)
+                //useVincenty=false;
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = tg.LatLongs.get(j);
                 pt1 = tg.LatLongs.get(j + 1);
@@ -1686,17 +1697,42 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 pt0.style = 0;
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j + 1));
                 pt1.style = 0;
+                if(useVincenty)
+                {
+                    start=new Cartographic(pt0.x*Math.PI/180,pt0.y*Math.PI/180,0);    
+                    end=new Cartographic(pt1.x*Math.PI/180,pt1.y*Math.PI/180,0);    
+                    vincenty.EllipsoidGeodesic.EllipsoidGeodesic(start,end);
+                    vincenty.EllipsoidGeodesic.setEndPoints(start,end); 
+                }
                 az = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt0, pt1);
                 dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(tg.LatLongs.get(j), tg.LatLongs.get(j + 1), null, null);
+                if(useVincenty)
+                    dist=vincenty.EllipsoidGeodesic._distance;
                 n = Math.floor((dist / interval));
+                //for some reason it has a problem if n is too large
+                if(n>100)                    
+                    n=100;
                 if (j === 0)
                     resultPts.add(pt0);
-                for (k = 1; k <= n; k++) {
-                    pt = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, interval * k, az);
-                    pt.style = -2;
-                    dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt, pt1, null, null);
-                    if (dist >= interval / 2)
-                        resultPts.add(pt);
+                for (k = 1; k <= n; k++) 
+                {
+                    if(!useVincenty)    //geotrans interpolation
+                    {
+                        pt = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, interval * k, az);
+                        pt.style = -2;
+                        dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt, pt1, null, null);
+                        if (dist >= interval / 2)
+                            resultPts.add(pt);
+                    }
+                    else    //use Vincenty surface distance algorithm
+                    {
+                        fraction = k/n;
+                        if(fraction >= 1)
+                            break;
+                        vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
+                        pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
+                            resultPts.add(pt);
+                    }
                 }
                 resultPts.add(pt1);
             }

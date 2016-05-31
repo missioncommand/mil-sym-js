@@ -67,13 +67,14 @@
             <fileset file="web/js/src/renderer-jquery-plugin.js" />
         </concat>
         
+
         <concat destfile="build/multi-body.js">
             <!--Core classes for j2slib-->   
             <fileset file="web/js/src/j2slib/java/lang/Class.js" />
             <fileset file="web/js/src/j2slib/java/lang/Double.js" />
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
-            <fileset file="web/js/src/j2slib/java/lang/System.js" />
-        
+            <fileset file="web/js/src/j2slib/java/lang/System.js" />        
+
             <!--add the android graphics types--> 
             <fileset file="web/js/src/android/graphics/Bitmap.js" />
             <fileset file="web/js/src/android/graphics/Paint.js" />
@@ -258,6 +259,20 @@
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
             <fileset file="web/js/src/j2slib/java/lang/System.js" />
         
+            <!--add the vincenty package--> 
+            <fileset file="web/js/src/vincenty/defined.js" />
+            <fileset file="web/js/src/vincenty/DeveloperError.js" />
+            <fileset file="web/js/src/vincenty/freezeObject.js" />
+            <fileset file="web/js/src/vincenty/defineProperties.js" />
+            <fileset file="web/js/src/vincenty/defaultValue.js" />
+            <fileset file="web/js/src/vincenty/ThirdParty/mersenne-twister.js" />
+            <fileset file="web/js/src/vincenty/Math.js" />
+            <fileset file="web/js/src/vincenty/Cartesian3.js" />
+            <fileset file="web/js/src/vincenty/scaleToGeodeticSurface.js" />
+            <fileset file="web/js/src/vincenty/Cartographic.js" />
+            <fileset file="web/js/src/vincenty/Ellipsoid.js" />
+            <fileset file="web/js/src/vincenty/EllipsoidGeodesic.js" />
+
             <!--(Multi) add the android graphics types--> 
             <fileset file="web/js/src/android/graphics/Bitmap.js" />
             <fileset file="web/js/src/android/graphics/Paint.js" />
