@@ -184,7 +184,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		};
 		worker.onmessage = function(e)
 		{
-			json5 = e.data.kml;
+			json5 = e.data.result;
 			document.getElementById("contentSpan").innerHTML += "<br/><br/>Sector Range Fan via Web Worker:   <br/>";
 
 			if(e.data.format == "ERROR")
