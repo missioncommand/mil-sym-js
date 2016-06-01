@@ -698,7 +698,7 @@
         return value < min ? min : value > max ? max : value;
     };
 
-    var randomNumberGenerator = new MersenneTwister();
+    //var randomNumberGenerator = new MersenneTwister();
 
     /**
      * Sets the seed used by the random number generator
@@ -706,15 +706,15 @@
      *
      * @param {Number} seed An integer used as the seed.
      */
-    CesiumMath.setRandomNumberSeed = function(seed) {
-        //>>includeStart('debug', pragmas.debug);
-        if (!defined(seed)) {
-            throw new DeveloperError('seed is required.');
-        }
-        //>>includeEnd('debug');
-
-        randomNumberGenerator = new MersenneTwister(seed);
-    };
+//    CesiumMath.setRandomNumberSeed = function(seed) {
+//        //>>includeStart('debug', pragmas.debug);
+//        if (!defined(seed)) {
+//            throw new DeveloperError('seed is required.');
+//        }
+//        //>>includeEnd('debug');
+//
+//        randomNumberGenerator = new MersenneTwister(seed);
+//    };
 
     /**
      * Generates a random number in the range of [0.0, 1.0)
@@ -725,9 +725,9 @@
      * @see CesiumMath.setRandomNumberSeed
      * @see {@link http://en.wikipedia.org/wiki/Mersenne_twister|Mersenne twister on Wikipedia}
      */
-    CesiumMath.nextRandomNumber = function() {
-        return randomNumberGenerator.random();
-    };
+//    CesiumMath.nextRandomNumber = function() {
+//        return randomNumberGenerator.random();
+//    };
 
     /**
      * Computes <code>Math.acos(value)</acode>, but first clamps <code>value</code> to the range [-1.0, 1.0]
