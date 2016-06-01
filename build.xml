@@ -81,7 +81,7 @@
             <fileset file="web/js/src/vincenty/freezeObject.js" />
             <fileset file="web/js/src/vincenty/defineProperties.js" />
             <fileset file="web/js/src/vincenty/defaultValue.js" />
-            <fileset file="web/js/src/vincenty/ThirdParty/mersenne-twister.js" />
+            <!--fileset file="web/js/src/vincenty/ThirdParty/mersenne-twister.js" /-->
             <fileset file="web/js/src/vincenty/Math.js" />
             <fileset file="web/js/src/vincenty/Cartesian3.js" />
             <fileset file="web/js/src/vincenty/scaleToGeodeticSurface.js" />
@@ -279,7 +279,7 @@
             <fileset file="web/js/src/vincenty/freezeObject.js" />
             <fileset file="web/js/src/vincenty/defineProperties.js" />
             <fileset file="web/js/src/vincenty/defaultValue.js" />
-            <fileset file="web/js/src/vincenty/ThirdParty/mersenne-twister.js" />
+            <!--fileset file="web/js/src/vincenty/ThirdParty/mersenne-twister.js" /-->
             <fileset file="web/js/src/vincenty/Math.js" />
             <fileset file="web/js/src/vincenty/Cartesian3.js" />
             <fileset file="web/js/src/vincenty/scaleToGeodeticSurface.js" />
