@@ -1060,6 +1060,82 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function (tg, pt0
     }
     return;
 };
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithTwoLabels = function (tg, label, eny, g2d) {
+    try
+    {
+        switch (tg.get_LineType()) {
+            case 2237000:
+                if (!tg.get_Affiliation().equalsIgnoreCase("H")) {
+                    eny = "";
+                }
+                break;
+            default:
+                return false;
+        }
+        var metrics = g2d.getFontMetrics();
+        var labelLength = metrics.stringWidth(label);
+        var enyLength = metrics.stringWidth(eny);
+        var j = 0;
+        var pt0 = null, pt1 = null;
+        var last = eny;
+        var dist = 0;
+        var sumLabel = 0, sumENY = 0;
+        for (j = 0; j < tg.Pixels.size() - 1; j++) {
+            if(eny.isEmpty() && last.equalsIgnoreCase(label))
+                last=eny;
+            if(label.isEmpty() && last.equalsIgnoreCase(eny))
+                last=label;
+            pt0 = tg.Pixels.get(j);
+            pt1 = tg.Pixels.get(j + 1);
+            dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+            if (dist > 1.5 * labelLength && last.equalsIgnoreCase(eny)) {
+                last = label;
+                sumLabel++;
+            } else if (dist > 1.5 * enyLength && last.equalsIgnoreCase(label)) {
+                sumENY++;
+                last = eny;
+            }
+        }
+        if (eny.isEmpty()) {
+            if (sumENY < 2) {
+                sumENY = 2;
+            }
+        }
+        if (sumLabel + sumENY < 4) {
+            return false;
+        }
+        var aboveMiddle=2;
+        //at this point we have valid pixels for alternating labels, i.e. at least one of each will appear
+        for (j = 0; j < tg.Pixels.size() - 1; j++) {
+            if(eny.isEmpty() && last.equalsIgnoreCase(label))
+                last=eny;
+            if(label.isEmpty() && last.equalsIgnoreCase(eny))
+                last=label;
+            pt0 = tg.Pixels.get(j);
+            pt1 = tg.Pixels.get(j + 1);
+            dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+            if (dist > 1.5 * labelLength && last.equalsIgnoreCase(eny)) {
+                //add the label
+                if(!label.isEmpty())
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, aboveMiddle, 0, pt0, pt1, new Boolean(true));
+                last = label;
+            } else if (dist > 1.5 * enyLength && last.equalsIgnoreCase(label)) {
+                //add the eny
+                if(!eny.isEmpty())
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, eny, aboveMiddle, 0, pt0, pt1, new Boolean(true));
+                last = eny;
+            }
+        }
+        return true;
+    }
+    catch (exc) {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "areasWithTwoLabels", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside areasWithTwoLabels", exc));
+        } else {
+            throw exc;
+        }
+    }
+};
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithENY = function (tg, g2d) {
     try {
         var metrics = g2d.getFontMetrics();
@@ -2979,6 +3055,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, 0, middleSegment, middleSegment + 1, new Boolean(true));
                 break;
             case 2237000:
+                if(armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithTwoLabels(tg,tg.get_H(),tg.get_N(),g2d)===true)
+                    break;
                 if (affiliation !== null && affiliation.equals("H")) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_N(), 2, 0, 0, 1, new Boolean(true));
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_N(), 2, 0, Math.floor(lastIndex / 2), Math.floor(lastIndex / 2) + 1, new Boolean(true));
