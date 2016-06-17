@@ -1647,7 +1647,7 @@ return{
 			textBackgroundColor = null;
     
         //make room for echelon & mobility.
-        if(modifiers.Q === undefined)
+        if(modifiers.Q)
         {
             //if no DOM, we can just use the image bounds
             bounds = new SO.Rectangle(imageBounds.getX(), symbolBounds.getY(),
@@ -1717,7 +1717,7 @@ return{
         var modifierValue = null;
         var tiTemp = null;
         //if(ModifiersUnits.C_QUANTITY in modifiers 
-        if(modifiers.C !== undefined 
+        if(modifiers.C 
                 && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.C_QUANTITY))
         {
             var text = modifiers[ModifiersUnits.C_QUANTITY];
@@ -1732,16 +1732,16 @@ return{
         }
         
         //if(ModifiersUnits.X_ALTITUDE_DEPTH in modifiers || ModifiersUnits.Y_LOCATION in modifiers)
-        if(modifiers.X !== undefined || modifiers.Y !== undefined)
+        if(modifiers.X || modifiers.Y)
         {
             modifierValue = null;
             
             var xm = null,
                 ym = null;
                     
-            if(modifiers.X !== undefined) 
+            if(modifiers.X) 
                 xm = modifiers.X;
-            if(modifiers.Y !== undefined) 
+            if(modifiers.Y) 
                 ym = modifiers.Y;
 
             if(xm === null && ym !== null)
@@ -1775,7 +1775,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.G !== undefined && modifiers.G !== null)
+        if(modifiers.G)
         {
             modifierValue = modifiers.G;
             
@@ -1807,7 +1807,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.V !== undefined)
+        if(modifiers.V)
         {
             modifierValue = modifiers.V;
             
@@ -1827,7 +1827,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.H !== undefined)
+        if(modifiers.H)
         {
             modifierValue = modifiers.H;
 
@@ -1849,7 +1849,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.T !== undefined)
+        if(modifiers.T)
         {
             modifierValue = modifiers[ModifiersUnits.T_UNIQUE_DESIGNATION_1];
             
@@ -1877,7 +1877,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.M !== undefined || modifiers.CC !== undefined)
+        if(modifiers.M || modifiers.CC)
         {
             modifierValue = "";
             
@@ -1914,7 +1914,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.Z !== undefined)
+        if(modifiers.Z)
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
@@ -1938,11 +1938,11 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.J !== undefined ||
-            modifiers.K !== undefined ||
-            modifiers.L !== undefined ||
-            modifiers.N !== undefined ||
-            modifiers.P !== undefined)
+        if(modifiers.J ||
+            modifiers.K ||
+            modifiers.L ||
+            modifiers.N ||
+            modifiers.P)
         {
             modifierValue = null;
             
@@ -1952,15 +1952,15 @@ return{
                 nm = null,
                 pm = null;
         
-            if(modifiers.J !== undefined) 
+            if(modifiers.J) 
                 jm = modifiers[ModifiersUnits.J_EVALUATION_RATING];
-            if(modifiers.K !== undefined) 
+            if(modifiers.K) 
                 km = modifiers[ModifiersUnits.K_COMBAT_EFFECTIVENESS];
-            if(modifiers.L !== undefined) 
+            if(modifiers.L) 
                 lm = modifiers[ModifiersUnits.L_SIGNATURE_EQUIP];
-            if(modifiers.N !== undefined) 
+            if(modifiers.N) 
                 nm = modifiers[ModifiersUnits.N_HOSTILE];
-            if(modifiers.P !== undefined) 
+            if(modifiers.P) 
                 pm = modifiers[ModifiersUnits.P_IFF_SIF];
             
             modifierValue = "";
@@ -2002,7 +2002,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.W !== undefined)
+        if(modifiers.W)
         {
             modifierValue = modifiers[ModifiersUnits.W_DTG_1];
             
@@ -2030,21 +2030,21 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.F !== undefined || modifiers.E !== undefined)
+        if(modifiers.F || modifiers.E)
         {
             modifierValue = null;
             var E = null,
                 F = null;
         
-            if(modifiers.E !== undefined) 
+            if(modifiers.E) 
                 E = modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER];
-            if(modifiers.F !== undefined) 
+            if(modifiers.F) 
                 F = modifiers[ModifiersUnits.F_REINFORCED_REDUCED];
 
             if(E !== null && E!==(""))
                     modifierValue = E;
 
-            if(F!== null && F!==(""))
+            if(F !== null && F!==(""))
             {
                 if(F.toUpperCase()===("R"))
                     F = "(+)";
@@ -2052,8 +2052,9 @@ return{
                     F = "(-)";
                 else if(F.toUpperCase()===("RD"))
                     F = "(" + String.fromCharCode(177) + ")";
-                else
-                    F = null;
+                //else, just treat it like a regular string.
+                /*else
+                    F = null;//*/
             }
 
             if(F !== null && F!==(""))
@@ -2092,7 +2093,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.AA !== undefined)
+        if(modifiers.AA)
         {
             modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
             
@@ -2110,7 +2111,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.CN !== undefined)
+        if(modifiers.CN)
         {
             modifierValue = modifiers[ModifiersUnits.CN_CPOF_NAME_LABEL];
             
@@ -2128,7 +2129,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.SCC !== undefined)
+        if(modifiers.SCC)
         {
             modifierValue = modifiers[ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE];
             
