@@ -97,6 +97,19 @@ document.write('<script src="armyc2/c2sd/JavaRendererServer/RenderMultipoints/cl
 document.write('<script src="j2slib/java/util/ArrayList.js" type="text/javascript" ></script>');
 document.write('<script src="j2slib/java/util/HashMap.js" type="text/javascript" ></script>');
 
+//add Vincenty
+document.write('<script src="vincenty/defined.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/DeveloperError.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/freezeObject.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/defineProperties.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/defaultValue.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/Math.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/Cartesian3.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/scaleToGeodeticSurface.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/Cartographic.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/Ellipsoid.js" type="text/javascript" ></script>');
+document.write('<script src="vincenty/EllipsoidGeodesic.js" type="text/javascript" ></script>');
+
 // add source required by SECWebRenderer 
 document.write('<script src="sec/web/renderer/utilities/JavaRendererUtilities.js" type="text/javascript" ></script>');
 
