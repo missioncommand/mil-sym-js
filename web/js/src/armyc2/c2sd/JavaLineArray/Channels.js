@@ -1534,7 +1534,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                                                             }
                                                             break;
                                                         case 231113000:
-                                                            if (XCounter === 2 || XCounter === 3 || XCounter === 4) {
+                                                            if (XCounter === 3 || XCounter === 4 || XCounter === 5) {   //was 2,3 OR 4
                                                                 pLinePoints[lEllipseCounter].style = 5;
                                                             }
                                                             break;
