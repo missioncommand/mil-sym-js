@@ -6439,6 +6439,46 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsC = {
         "MAPPING2COLOR": "#FFFFFF"
       },
       {
+        "SYMBOLID": "S*S*XA----*****",
+        "DESCRIPTION": "Fast Recreational Craft",
+        "MAPPING1U": "2011",
+        "MAPPING1F": "2011",
+        "MAPPING1N": "2011",
+        "MAPPING1H": "2011",
+        "MAPPING2": "2012",
+        "MAPPING2COLOR": "#FFFFFF"
+      },
+      {
+        "SYMBOLID": "S*S*XAR---*****",
+        "DESCRIPTION": "Rigid-Hull Inflatable Boat",
+        "MAPPING1U": "2013",
+        "MAPPING1F": "2013",
+        "MAPPING1N": "2013",
+        "MAPPING1H": "2013",
+        "MAPPING2": "2012",
+        "MAPPING2COLOR": "#FFFFFF"
+      },
+      {
+        "SYMBOLID": "S*S*XAS---*****",
+        "DESCRIPTION": "Speed Boat",
+        "MAPPING1U": "2014",
+        "MAPPING1F": "2014",
+        "MAPPING1N": "2014",
+        "MAPPING1H": "2014",
+        "MAPPING2": "2012",
+        "MAPPING2COLOR": "#FFFFFF"
+      },
+      {
+        "SYMBOLID": "S*S*XP----*****",
+        "DESCRIPTION": "Personal Watercraft",
+        "MAPPING1U": "2015",
+        "MAPPING1F": "2015",
+        "MAPPING1N": "2015",
+        "MAPPING1H": "2015",
+        "MAPPING2": "2112",
+        "MAPPING2COLOR": "#FFFFFF"
+      },
+      {
         "SYMBOLID": "S*S*O-----*****",
         "DESCRIPTION": "Own Track"
       },

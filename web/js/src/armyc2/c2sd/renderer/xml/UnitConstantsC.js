@@ -4147,7 +4147,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "DESCRIPTION": "Antitank Rocket Launcher Light",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.3.2.1.4.1",
-        "ALPHAHIERARCHY": "211SYMBOL UNKNOWN FRIEND NEUTRAL HOSTILEWAR.GRDTRK.EQT.WPN.MRL.HVYWARFIGHTING SYMBOLSGROUND TRACKEQUIPMENTWEAPONMULTIPLE ROCKET LAUNCHERHEAVYHierarchy: 1.X.3.2.1.3.3Framed: FOSUGPEWXH--*****SFGPEWXH--*****SNGPEWXH--*****SHGPEWXH--*****SUGPEWXH--*****SFGPEWXH--*****SNGPEWXH--*****SHGPEWXH--*****WAR.GRDTRK.EQT.WPN.ATRLWARFIGHTING SYMBOLSGROUND TRACKEQUIPMENTWEAPONANTITANK ROCKET LAUNCHERHierarchy: 1.X.3.2.1.4Framed: FOSUGPEWT---*****SFGPEWT---*****SNGPEWT---*****SHGPEWT---*****SUGPEWT---*****SFGPEWT---*****SNGPEWT---*****SHGPEWT---*****WAR.GRDTRK.EQT.WPN.ATRL.LIT",
+        "ALPHAHIERARCHY": "WAR.GRDTRK.EQT.WPN.ATRL.LIT",
         "PATH": "Warfighting Symbology/Ground Track/Ground Track Equipment/Weapon/Anti-Tank Rocket Launcher"
       },
       {
@@ -6156,6 +6156,38 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "DRAWCATEGORY": "8",
         "HIERARCHY": "1.X.4.3.5",
         "ALPHAHIERARCHY": "WAR.SSUF.NMIL.HOV",
+        "PATH": "Warfighting Symbology/Sea Surface Track/Non-Military"
+      },
+      {
+        "SYMBOLID": "S*S*XA----*****",
+        "DESCRIPTION": "Fast Recreational Craft",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "1.X.4.3.6",
+        "ALPHAHIERARCHY": "WAR.SSUF.NMIL.FSTREC",
+        "PATH": "Warfighting Symbology/Sea Surface Track/Non-Military"
+      },
+      {
+        "SYMBOLID": "S*S*XAR---*****",
+        "DESCRIPTION": "Rigid-Hull Inflatable Boat",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "1.X.4.3.6.1",
+        "ALPHAHIERARCHY": "WAR.SSUF.NMIL.FSTREC.RHIB",
+        "PATH": "Warfighting Symbology/Sea Surface Track/Non-Military/Fast Recreational Craft"
+      },
+      {
+        "SYMBOLID": "S*S*XAS---*****",
+        "DESCRIPTION": "Speed Boat",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "1.X.4.3.6.2",
+        "ALPHAHIERARCHY": "WAR.SSUF.NMIL.FSTREC.SPDBT",
+        "PATH": "Warfighting Symbology/Sea Surface Track/Non-Military/Fast Recreational Craft"
+      },
+      {
+        "SYMBOLID": "S*S*XP----*****",
+        "DESCRIPTION": "Personal Watercraft",
+        "DRAWCATEGORY": "8",
+        "HIERARCHY": "1.X.4.3.7",
+        "ALPHAHIERARCHY": "WAR.SSUF.NMIL.PWC",
         "PATH": "Warfighting Symbology/Sea Surface Track/Non-Military"
       },
       {
