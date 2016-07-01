@@ -1046,6 +1046,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
 
             //get bounding box
+            var worldView=false;
             if (bbox !== null && bbox !== (""))
             {
                 var bounds = bbox.split(",");
@@ -1053,7 +1054,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
-
+                //process world view
+                //if(left==='-180' && right==='180' && top==='90' && bottom==='-90')
+                if(left==='-180' && right==='180')
+                {
+                    left=-180;
+                    right=0;
+                    worldView=true;
+                }
+                //hack added until they change the emp3-cesium code. M. Deutch 7-1-16
+                else if(top==='90')
+                {
+                    left=-180;
+                    right=0;
+                    worldView=true;
+                }
                 if (top !== bottom && left != right)
                 {
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (top), (left), (bottom), (right));
@@ -1127,7 +1142,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
                 }
-
+                if(worldView)
+                    rect=null;
                 //check for required points & parameters
                 var symbolIsValid = this.canRenderMultiPoint(mSymbol);
                 if (symbolIsValid.canRender === false)
