@@ -1060,6 +1060,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     left=-180;
                     right=0;
+                    top=90;
+                    bottom=-90;
                     worldView=true;
                 }
                 //hack added until they change the emp3-cesium code. M. Deutch 7-1-16
@@ -1067,6 +1069,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     left=-180;
                     right=0;
+                    top=90;
+                    bottom=-90;
                     worldView=true;
                 }
                 if (top !== bottom && left != right)
