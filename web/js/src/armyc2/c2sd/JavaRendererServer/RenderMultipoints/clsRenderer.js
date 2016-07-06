@@ -380,7 +380,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var x_alt = 0;
             var n_alt = 0;
             var strXAlt = "";
-            if (lineType === 13000000)
+            if (lineType === 13000000 || lineType === 13000001)
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);

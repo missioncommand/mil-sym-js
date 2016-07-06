@@ -28,6 +28,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSquarePoints);
                     switch (vbiDrawThis) {
                         case 13000000:
+                        case 13000001:
                             count = 37;
                             break;
                         case 12000000:
