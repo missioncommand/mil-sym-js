@@ -10788,7 +10788,7 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "PATH": "Emergency Management Symbols/Infrastructure/Agriculture and Food Infrastructure"
       },
       {
-        "SYMBOLID": "E*F*AH----H****",
+        "SYMBOLID": "E*F*AG----H****",
         "DESCRIPTION": "Grain Storage",
         "DRAWCATEGORY": "8",
         "HIERARCHY": "6.X.4.1.7",

@@ -11061,7 +11061,7 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsC = {
         "MAPPING1H": "5284"
       },
       {
-        "SYMBOLID": "E*F*AH----*****",
+        "SYMBOLID": "E*F*AG----*****",
         "DESCRIPTION": "Grain Storage",
         "MAPPING1U": "5285",
         "MAPPING1F": "5285",
