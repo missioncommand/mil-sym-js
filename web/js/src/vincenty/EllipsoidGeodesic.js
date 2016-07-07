@@ -20,7 +20,7 @@
 //    'use strict';
 var Cartesian3 = Cartesian3 || {};
 var CesiumMath = CesiumMath || {};
-var Ellipsoid = Ellipsoid || {};
+//var Ellipsoid = Ellipsoid || {};
 var Cartographic = Cartographic || {};
 var vincenty = vincenty || {};
 //vincenty.EllipsoidGeodesic = vincenty.EllipsoidGeodesic || {};
@@ -231,7 +231,7 @@ vincenty.EllipsoidGeodesic = {
      * @param {Ellipsoid} [ellipsoid=Ellipsoid.WGS84] The ellipsoid on which the geodesic lies.
      */
     EllipsoidGeodesic: function (start, end, ellipsoid) {
-        var e = defaultValue(ellipsoid, Ellipsoid.WGS84);
+        var e = defaultValue(ellipsoid, vincenty.Ellipsoid.WGS84);
         this._ellipsoid = e;
         this._start = new Cartographic();
         this._end = new Cartographic();

@@ -22,8 +22,8 @@
     'use strict';
     var CesiumMath=CesiumMath || {};
     var Cartesian3=Cartesian3 || {};
-    
-
+    var vincenty = vincenty || {}; 
+   
     function initialize(ellipsoid, x, y, z) {
         x = defaultValue(x, 0.0);
         y = defaultValue(y, 0.0);
@@ -80,7 +80,7 @@
      * @see Ellipsoid.WGS84
      * @see Ellipsoid.UNIT_SPHERE
      */
-    function Ellipsoid(x, y, z) {
+    vincenty.Ellipsoid=function(x, y, z) {
         this._radii = undefined;
         this._radiiSquared = undefined;
         this._radiiToTheFourth = undefined;
@@ -93,7 +93,7 @@
         initialize(this, x, y, z);
     }
 
-    defineProperties(Ellipsoid.prototype, {
+    defineProperties(vincenty.Ellipsoid.prototype, {
         /**
          * Gets the radii of the ellipsoid.
          * @memberof Ellipsoid.prototype
@@ -181,7 +181,7 @@
      *                    instance should be created.
      * @returns {Ellipsoid} The cloned Ellipsoid. (Returns undefined if ellipsoid is undefined)
      */
-    Ellipsoid.clone = function(ellipsoid, result) {
+    vincenty.Ellipsoid.clone = function(ellipsoid, result) {
         if (!defined(ellipsoid)) {
             return undefined;
         }
@@ -214,7 +214,7 @@
      * @see Ellipsoid.WGS84
      * @see Ellipsoid.UNIT_SPHERE
      */
-    Ellipsoid.fromCartesian3 = function(cartesian, result) {
+    vincenty.Ellipsoid.fromCartesian3 = function(cartesian, result) {
         if (!defined(result)) {
             result = new Ellipsoid();
         }
@@ -233,7 +233,7 @@
      * @type {Ellipsoid}
      * @constant
      */
-    Ellipsoid.WGS84 = freezeObject(new Ellipsoid(6378137.0, 6378137.0, 6356752.3142451793));
+    vincenty.Ellipsoid.WGS84 = freezeObject(new vincenty.Ellipsoid(6378137.0, 6378137.0, 6356752.3142451793));
 
     /**
      * An Ellipsoid instance initialized to radii of (1.0, 1.0, 1.0).
@@ -241,7 +241,7 @@
      * @type {Ellipsoid}
      * @constant
      */
-    Ellipsoid.UNIT_SPHERE = freezeObject(new Ellipsoid(1.0, 1.0, 1.0));
+    vincenty.Ellipsoid.UNIT_SPHERE = freezeObject(new vincenty.Ellipsoid(1.0, 1.0, 1.0));
 
     /**
      * An Ellipsoid instance initialized to a sphere with the lunar radius.
@@ -249,7 +249,7 @@
      * @type {Ellipsoid}
      * @constant
      */
-    Ellipsoid.MOON = freezeObject(new Ellipsoid(CesiumMath.LUNAR_RADIUS, CesiumMath.LUNAR_RADIUS, CesiumMath.LUNAR_RADIUS));
+    vincenty.Ellipsoid.MOON = freezeObject(new vincenty.Ellipsoid(CesiumMath.LUNAR_RADIUS, CesiumMath.LUNAR_RADIUS, CesiumMath.LUNAR_RADIUS));
 
     /**
      * Duplicates an Ellipsoid instance.
@@ -258,7 +258,7 @@
      *                    instance should be created.
      * @returns {Ellipsoid} The cloned Ellipsoid.
      */
-    Ellipsoid.prototype.clone = function(result) {
+    vincenty.Ellipsoid.prototype.clone = function(result) {
         return Ellipsoid.clone(this, result);
     };
 
@@ -266,7 +266,7 @@
      * The number of elements used to pack the object into an array.
      * @type {Number}
      */
-    Ellipsoid.packedLength = Cartesian3.packedLength;
+    vincenty.Ellipsoid.packedLength = Cartesian3.packedLength;
 
     /**
      * Stores the provided instance into the provided array.
@@ -275,7 +275,7 @@
      * @param {Number[]} array The array to pack into.
      * @param {Number} [startingIndex=0] The index into the array at which to start packing the elements.
      */
-    Ellipsoid.pack = function(value, array, startingIndex) {
+    vincenty.Ellipsoid.pack = function(value, array, startingIndex) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(value)) {
             throw new DeveloperError('value is required');
@@ -298,7 +298,7 @@
      * @param {Ellipsoid} [result] The object into which to store the result.
      * @returns {Ellipsoid} The modified result parameter or a new Ellipsoid instance if one was not provided.
      */
-    Ellipsoid.unpack = function(array, startingIndex, result) {
+    vincenty.Ellipsoid.unpack = function(array, startingIndex, result) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(array)) {
             throw new DeveloperError('array is required');
@@ -319,7 +319,7 @@
      * @param {Cartesian3} [result] The object onto which to store the result.
      * @returns {Cartesian3} The modified result parameter or a new Cartesian3 instance if none was provided.
      */
-    Ellipsoid.prototype.geocentricSurfaceNormal = Cartesian3.normalize;
+    vincenty.Ellipsoid.prototype.geocentricSurfaceNormal = Cartesian3.normalize;
 
     /**
      * Computes the normal of the plane tangent to the surface of the ellipsoid at the provided position.
@@ -328,7 +328,7 @@
      * @param {Cartesian3} [result] The object onto which to store the result.
      * @returns {Cartesian3} The modified result parameter or a new Cartesian3 instance if none was provided.
      */
-    Ellipsoid.prototype.geodeticSurfaceNormalCartographic = function(cartographic, result) {
+    vincenty.Ellipsoid.prototype.geodeticSurfaceNormalCartographic = function(cartographic, result) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(cartographic)) {
             throw new DeveloperError('cartographic is required.');
@@ -359,7 +359,7 @@
      * @param {Cartesian3} [result] The object onto which to store the result.
      * @returns {Cartesian3} The modified result parameter or a new Cartesian3 instance if none was provided.
      */
-    Ellipsoid.prototype.geodeticSurfaceNormal = function(cartesian, result) {
+    vincenty.Ellipsoid.prototype.geodeticSurfaceNormal = function(cartesian, result) {
         if (!defined(result)) {
             result = new Cartesian3();
         }
@@ -382,7 +382,7 @@
      * var position = new Cesium.Cartographic(Cesium.Math.toRadians(21), Cesium.Math.toRadians(78), 5000);
      * var cartesianPosition = Cesium.Ellipsoid.WGS84.cartographicToCartesian(position);
      */
-    Ellipsoid.prototype.cartographicToCartesian = function(cartographic, result) {
+    vincenty.Ellipsoid.prototype.cartographicToCartesian = function(cartographic, result) {
         //`cartographic is required` is thrown from geodeticSurfaceNormalCartographic.
         var n = cartographicToCartesianNormal;
         var k = cartographicToCartesianK;
@@ -412,7 +412,7 @@
      *                  new Cesium.Cartographic(Cesium.Math.toRadians(21.645), Cesium.Math.toRadians(78.456), 250)];
      * var cartesianPositions = Cesium.Ellipsoid.WGS84.cartographicArrayToCartesianArray(positions);
      */
-    Ellipsoid.prototype.cartographicArrayToCartesianArray = function(cartographics, result) {
+    vincenty.Ellipsoid.prototype.cartographicArrayToCartesianArray = function(cartographics, result) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(cartographics)) {
             throw new DeveloperError('cartographics is required.');
@@ -448,7 +448,7 @@
      * var position = new Cesium.Cartesian3(17832.12, 83234.52, 952313.73);
      * var cartographicPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(position);
      */
-    Ellipsoid.prototype.cartesianToCartographic = function(cartesian, result) {
+    vincenty.Ellipsoid.prototype.cartesianToCartographic = function(cartesian, result) {
         //`cartesian is required.` is thrown from scaleToGeodeticSurface
         var p = this.scaleToGeodeticSurface(cartesian, cartesianToCartographicP);
 
@@ -486,7 +486,7 @@
      *                  new Cesium.Cartesian3(17832.14, 83234.54, 952313.73)]
      * var cartographicPositions = Cesium.Ellipsoid.WGS84.cartesianArrayToCartographicArray(positions);
      */
-    Ellipsoid.prototype.cartesianArrayToCartographicArray = function(cartesians, result) {
+    vincenty.Ellipsoid.prototype.cartesianArrayToCartographicArray = function(cartesians, result) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(cartesians)) {
             throw new DeveloperError('cartesians is required.');
@@ -514,7 +514,7 @@
      * @param {Cartesian3} [result] The object onto which to store the result.
      * @returns {Cartesian3} The modified result parameter, a new Cartesian3 instance if none was provided, or undefined if the position is at the center.
      */
-    Ellipsoid.prototype.scaleToGeodeticSurface = function(cartesian, result) {
+    vincenty.Ellipsoid.prototype.scaleToGeodeticSurface = function(cartesian, result) {
         return scaleToGeodeticSurface(cartesian, this._oneOverRadii, this._oneOverRadiiSquared, this._centerToleranceSquared, result);
     };
 
@@ -526,7 +526,7 @@
      * @param {Cartesian3} [result] The object onto which to store the result.
      * @returns {Cartesian3} The modified result parameter or a new Cartesian3 instance if none was provided.
      */
-    Ellipsoid.prototype.scaleToGeocentricSurface = function(cartesian, result) {
+    vincenty.Ellipsoid.prototype.scaleToGeocentricSurface = function(cartesian, result) {
         //>>includeStart('debug', pragmas.debug);
         if (!defined(cartesian)) {
             throw new DeveloperError('cartesian is required.');
@@ -559,7 +559,7 @@
      * @returns {Cartesian3} The position expressed in the scaled space.  The returned instance is the
      *          one passed as the result parameter if it is not undefined, or a new instance of it is.
      */
-    Ellipsoid.prototype.transformPositionToScaledSpace = function(position, result) {
+    vincenty.Ellipsoid.prototype.transformPositionToScaledSpace = function(position, result) {
         if (!defined(result)) {
             result = new Cartesian3();
         }
@@ -577,7 +577,7 @@
      * @returns {Cartesian3} The position expressed in the unscaled space.  The returned instance is the
      *          one passed as the result parameter if it is not undefined, or a new instance of it is.
      */
-    Ellipsoid.prototype.transformPositionFromScaledSpace = function(position, result) {
+    vincenty.Ellipsoid.prototype.transformPositionFromScaledSpace = function(position, result) {
         if (!defined(result)) {
             result = new Cartesian3();
         }
@@ -592,7 +592,7 @@
      * @param {Ellipsoid} [right] The other Ellipsoid.
      * @returns {Boolean} <code>true</code> if they are equal, <code>false</code> otherwise.
      */
-    Ellipsoid.prototype.equals = function(right) {
+    vincenty.Ellipsoid.prototype.equals = function(right) {
         return (this === right) ||
                (defined(right) &&
                 Cartesian3.equals(this._radii, right._radii));
@@ -603,7 +603,7 @@
      *
      * @returns {String} A string representing this ellipsoid in the format '(radii.x, radii.y, radii.z)'.
      */
-    Ellipsoid.prototype.toString = function() {
+    vincenty.Ellipsoid.prototype.toString = function() {
         return this._radii.toString();
     };
 
