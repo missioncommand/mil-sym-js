@@ -9,6 +9,7 @@ armyc2.c2sd.JavaLineArray.TacticalLines = function()
     this.BS_ELLIPSE = 13000000;
     this.PBS_ELLIPSE = 13000001;
     this.BS_RECTANGLE = 14000000;
+    this.PBS_RECTANGLE = 14000001;
     this.BBS_LINE = 15000000;
     this.BBS_AREA = 15000001;
     this.BBS_POINT = 15000002;

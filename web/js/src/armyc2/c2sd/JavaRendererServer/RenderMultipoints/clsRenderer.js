@@ -280,7 +280,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 default:
                     break;
             }
-            if (lineType === 24311000) {
+            if (lineType === 24311000 || lineType===14000001) {
                 AM = milStd.getModifiers_AM_AN_X("AM");
                 AN = milStd.getModifiers_AM_AN_X("AN");
                 if (AM !== null && AM.size() > 1 && AN !== null && AN.size() > 0) {
@@ -823,7 +823,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 default:
                     break;
             }
-            if (lineType === 24311000) {
+            if (lineType === 24311000 || lineType===14000001) {
                 AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)

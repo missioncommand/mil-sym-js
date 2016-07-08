@@ -2,7 +2,7 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaTacticalRenderer = armyc2.c2sd.JavaTacticalRenderer || {};
 armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
-    POINT2ToPoint2D: function(pt2) {
+    POINT2ToPoint2D: function (pt2) {
         if (pt2 === null) {
             return null;
         }
@@ -11,7 +11,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         var pt = new armyc2.c2sd.graphics2d.Point2D(x, y);
         return pt;
     },
-    linesOutsideClipBounds: function(tg, clipBounds) {
+    linesOutsideClipBounds: function (tg, clipBounds) {
         try {
             var isAutoshape = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isAutoshape(tg);
             if (isAutoshape)
@@ -55,10 +55,11 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return true;
     },
-    GetMinPoints: function(lineType) {
+    GetMinPoints: function (lineType) {
         var result = -1;
         switch (lineType) {
             case 24311000:
+            case 14000001:
                 result = 1;
                 break;
             case 15000002:
@@ -271,7 +272,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return result;
     },
-    isBasicShape: function(linetype) {
+    isBasicShape: function (linetype) {
         switch (linetype) {
             case 11000000:
             case 10000000:
@@ -289,7 +290,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 return false;
         }
     },
-    isClosedPolygon: function(linetype) {
+    isClosedPolygon: function (linetype) {
         var result = false;
         switch (linetype) {
             case 15000001:
@@ -458,7 +459,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return result;
     },
-    ClosePolygon: function(Pixels) {
+    ClosePolygon: function (Pixels) {
         try {
             var pt0 = Pixels.get(0);
             var pt1 = Pixels.get(Pixels.size() - 1);
@@ -473,7 +474,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    shiftModifiersLeft: function(p1, p2, shift) {
+    shiftModifiersLeft: function (p1, p2, shift) {
         try {
             var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(p1);
             var pt2 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(p2);
@@ -498,7 +499,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    ResolveModifierShape: function(tg, shape) {
+    ResolveModifierShape: function (tg, shape) {
         try {
             var shapeStyle = shape.get_Style();
             var lineStyle = tg.get_LineStyle();
@@ -511,7 +512,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 22421000:
                     shape.setFillColor(null);
                     shape.set_Style(tg.get_LineStyle());
-                    shape.setLineColor(tg.get_LineColor());                    
+                    shape.setLineColor(tg.get_LineColor());
                     break;
                 case 24324100:
                 case 24324300:
@@ -656,7 +657,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                             case 13000000:
                             case 13000001:
                             case 14000000:
-                            //case 15000003:
+                                //case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
                                 shape.setFillColor(tg.get_FillColor());
                                 break;
@@ -678,13 +679,13 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    GetOpaqueColor: function(color) {
+    GetOpaqueColor: function (color) {
         var r = color.getRed();
         var g = color.getGreen();
         var b = color.getBlue();
         return  new armyc2.c2sd.renderer.utilities.Color(r, g, b);
     },
-    LinesWithFill: function(linetype) {
+    LinesWithFill: function (linetype) {
         var result = false;
         try {
             switch (linetype) {
@@ -704,8 +705,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 22123000:
                 case 22124000:
                 case 22125000:
-                //case 22221000:
-                //case 22223000:
+                    //case 22221000:
+                    //case 22223000:
                 case 22421000:
                 case 22522210:
                 case 22522220:
@@ -757,7 +758,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return result;
     },
-    tweakFillColor: function(tg) {
+    tweakFillColor: function (tg) {
         try {
             if ((armyc2.c2sd.JavaTacticalRenderer.clsUtility.isSameColor(tg.get_LineColor(), tg.get_FillColor())).valueOf() === false)
                 return;
@@ -782,7 +783,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    isSameColor: function(c1, c2) {
+    isSameColor: function (c1, c2) {
         try {
             if (c1 === null || c2 === null)
                 return true;
@@ -805,7 +806,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return false;
     },
-    getLineStroke: function(width, style, cap, round) {
+    getLineStroke: function (width, style, cap, round) {
         var stroke = null;
         try {
             switch (style) {
@@ -841,7 +842,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return stroke;
     },
-    getLineStroke2: function(width, style, cap, round) {
+    getLineStroke2: function (width, style, cap, round) {
         var stroke = null;
         try {
             switch (style) {
@@ -878,7 +879,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return stroke;
     },
-    SetShapeProperties: function(tg, shapes, bi) {
+    SetShapeProperties: function (tg, shapes, bi) {
         try {
             if (shapes === null) {
                 return;
@@ -893,9 +894,9 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             var hasFill = armyc2.c2sd.JavaTacticalRenderer.clsUtility.LinesWithFill(lineType);
             var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(lineType, null);
             var isClosedPolygon = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType);
-            if(tg.get_FillColor()===null)
+            if (tg.get_FillColor() === null)
             {
-                switch(tg.get_LineType())
+                switch (tg.get_LineType())
                 {
                     case 22221000:
                     case 22223000:
@@ -904,10 +905,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     case 22224000:
                     case 22224001:
                     case 22225000:
-                        shape=shapes.get(shapes.size()-1);
+                        shape = shapes.get(shapes.size() - 1);
                         shapes.clear();
                         shapes.add(shape);
-                        break;                    
+                        break;
                     case 21700000:
                     case 22521100:
                     case 22521200:
@@ -916,16 +917,16 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     case 22320000:
                     case 22521410:
                     case 21710000:
-                        var tempShapes=new java.util.ArrayList();
-                        for(j=0;j<shapes.size();j++)
+                        var tempShapes = new java.util.ArrayList();
+                        for (j = 0; j < shapes.size(); j++)
                         {
-                            shape=shapes.get(j);
-                            if(shape.getShapeType() !== armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL)
+                            shape = shapes.get(j);
+                            if (shape.getShapeType() !== armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL)
                                 tempShapes.add(shape);
                         }
                         //alert(tempShapes.size());
                         shapes.clear();
-                        shapes.addAll(tempShapes);                        
+                        shapes.addAll(tempShapes);
                         break;
                     default:
                         break;
@@ -946,12 +947,12 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     }
                 }
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ResolveModifierShape(tg, shape);
-                if(lineType===221311000)    //AIRFIELD
-                    if(j===1)
+                if (lineType === 221311000)    //AIRFIELD
+                    if (j === 1)
                         shape.setFillColor(null);
                 //diagnostic
-                if(lineType===15000002)    //BBS_POINT
-                    if(j===0)
+                if (lineType === 15000002)    //BBS_POINT
+                    if (j === 0)
                         shape.setLineColor(null);
                 //end section
                 shapeType = shape.getShapeType();
@@ -1040,7 +1041,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                             grid.setColor(armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetOpaqueColor(tg.get_LineColor()));
                             grid.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                             //grid.drawLine(0, 4, 8, 4);
-                            grid.drawLine(2, 2, 8, 8);                            
+                            grid.drawLine(2, 2, 8, 8);
                             grid.drawLine(2, 8, 8, 2);
                             tp = new armyc2.c2sd.graphics2d.TexturePaint(bi, rect);
                             shape.setTexturePaint(tp);
@@ -1077,7 +1078,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    IsChange1Area: function(lineType, minPoints) {
+    IsChange1Area: function (lineType, minPoints) {
         try {
             if (minPoints !== null) {
                 minPoints.value = Clazz.newArray(1, 0);
@@ -1095,6 +1096,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     return false;
                 case 15000002:
                 case 24311000:
+                case 14000001:
                 case 24312000:
                 case 24321300:
                 case 24323300:
@@ -1153,7 +1155,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return false;
     },
-    WriteFile: function(str) {
+    WriteFile: function (str) {
         try {
             var bufferedWriter = new java.io.BufferedWriter(new java.io.FileWriter("Test.txt"));
             bufferedWriter.write(str);
@@ -1167,7 +1169,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    CalcIntersectPt: function(pt1, m1, pt2, m2, ptIntersect) {
+    CalcIntersectPt: function (pt1, m1, pt2, m2, ptIntersect) {
         try {
             if (m1 === m2) {
                 return;
@@ -1190,7 +1192,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    ChannelWidth: function(pixels, distanceToChannelPOINT2) {
+    ChannelWidth: function (pixels, distanceToChannelPOINT2) {
         var width = 0;
         try {
             var numPOINT2s = Math.floor(pixels.length / 2);
@@ -1241,7 +1243,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return width;
     },
-    InYOrder: function(pt0, pt1, pt2) {
+    InYOrder: function (pt0, pt1, pt2) {
         try {
             if (pt0.y <= pt1.y && pt1.y <= pt2.y) {
                 return true;
@@ -1258,7 +1260,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return false;
     },
-    InXOrder: function(pt0, pt1, pt2) {
+    InXOrder: function (pt0, pt1, pt2) {
         try {
             if (pt0.x <= pt1.x && pt1.x <= pt2.x) {
                 return true;
@@ -1275,7 +1277,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return false;
     },
-    GetSectorRadiiFromPoints: function(tg) {
+    GetSectorRadiiFromPoints: function (tg) {
         try {
             if (tg.get_LineType() === 243111001)
                 return;
@@ -1329,7 +1331,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    GetRadii: function(tg, lineType) {
+    GetRadii: function (tg, lineType) {
         var radius = null;
         try {
             if (lineType === 243111000 && tg.LatLongs.size() > 2) {
@@ -1392,7 +1394,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return radius;
     },
-    ReorderPixels: function(pixels) {
+    ReorderPixels: function (pixels) {
         try {
             var tempPixels;
             var j;
@@ -1426,7 +1428,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    FilterVerticalSegments: function(tg) {
+    FilterVerticalSegments: function (tg) {
         try {
             switch (tg.get_LineType()) {
                 case 22320000:
@@ -1456,7 +1458,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 25224000:
                 case 25223000:
                 case 25225000:
-                //case 23134000:
+                    //case 23134000:
                     break;
                 default:
                     return;
@@ -1467,7 +1469,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(j));
                 //if (Math.abs(ptCurrent.x-ptLast.x)<1) 
-                if (ptCurrent.x === ptLast.x) 
+                if (ptCurrent.x === ptLast.x)
                 {
                     ptCurrent.x += Math.pow(-1, j);
                     tg.Pixels.set(j, ptCurrent);
@@ -1482,7 +1484,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    MovePixels2: function(pixels2) {
+    MovePixels2: function (pixels2) {
         try {
             var pixels = Clazz.newArray(pixels2.size() * 2, 0);
             var j = 0;
@@ -1505,7 +1507,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    MovePixels: function(pixels, count) {
+    MovePixels: function (pixels, count) {
         try {
             var bolNoRepeats = false;
             var j;
@@ -1548,7 +1550,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    ComputeLastPoint: function(arrLocation) {
+    ComputeLastPoint: function (arrLocation) {
         var locD = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(0, 0);
         try {
             var locA = arrLocation.get(1);
@@ -1578,7 +1580,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return locD;
     },
-    GetSegments: function(pixels, segments, factor) {
+    GetSegments: function (pixels, segments, factor) {
         try {
             var j = 0;
             var m1 = new armyc2.c2sd.JavaLineArray.ref();
@@ -1619,7 +1621,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    SetLCColor: function(tg, shape) {
+    SetLCColor: function (tg, shape) {
         try {
             var affiliation = tg.get_Affiliation();
             if (affiliation !== null && affiliation.equals("H")) {
@@ -1643,7 +1645,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    ReverseUSASLCPointsByQuadrant: function(tg) {
+    ReverseUSASLCPointsByQuadrant: function (tg) {
         try {
             if (tg.Pixels.size() < 2)
                 return;
@@ -1692,7 +1694,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    getHatchShape: function(tg, bi) {
+    getHatchShape: function (tg, bi) {
         var shape = null;
         try {
             switch (tg.get_LineType()) {
@@ -1730,7 +1732,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return shape;
     },
-    initializeLinetypes: function(rev) {
+    initializeLinetypes: function (rev) {
         try {
             if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes !== null || armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs !== null)
                 return;
@@ -1741,6 +1743,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_ELLIPSE-----", (13000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_ELLIPSE----", (13000001));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_RECTANGLE---", (14000000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_RECTANGLE--", (14000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_LINE-------", (15000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_AREA-------", (15000001));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_POINT------", (15000002));
@@ -2161,32 +2164,38 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    GetLinetypeFromString: function(str) {
+    GetLinetypeFromString: function (str) {
         var result = -1;
         try {
             var strLine = str;
             var strMask = strLine.substring(0, 1) + "*" + strLine.substring(2, 3) + "P" + strLine.substring(4, 10) + "****X";
             if (str.equalsIgnoreCase("GENERIC---****X")) {
                 strMask = str;
-            } 
+            }
             else if (str.equalsIgnoreCase("BS_LINE--------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BS_AREA--------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BS_CROSS-------")) {
                 strMask = str;
-            } else if (str.equalsIgnoreCase("BS_ELLIPSE-----")) {
-                strMask = str;
-            } else if (str.equalsIgnoreCase("BS_RECTANGLE---")) {
+            }
+            else if (str.equalsIgnoreCase("BS_ELLIPSE-----")) {
                 strMask = str;
             }
-            else if (str.equalsIgnoreCase("BBS_LINE-------")) {
+            else if (str.equalsIgnoreCase("PBS_ELLIPSE----")) {
+                strMask = str;
+            }
+            else if (str.equalsIgnoreCase("BS_RECTANGLE---")) {
+                strMask = str;
+            } else if (str.equalsIgnoreCase("PBS_RECTANGLE--")) {
+                strMask = str;
+            } else if (str.equalsIgnoreCase("BBS_LINE-------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BBS_AREA-------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BBS_POINT------")) {
                 strMask = str;
-            } 
+            }
             else if (str.equalsIgnoreCase("BBS_RECTANGLE--")) {
                 strMask = str;
             }
@@ -2213,7 +2222,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return result;
     },
-    setRevC: function(tg) {
+    setRevC: function (tg) {
         try {
             var rev = tg.getSymbologyStandard();
             if (rev === 0) {
@@ -2282,7 +2291,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
-    isAutoshape: function(tg) {
+    isAutoshape: function (tg) {
         try {
             var linetype = tg.get_LineType();
             switch (linetype) {
@@ -2378,7 +2387,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return false;
     },
-    getMSRSegmentColors: function(tg) {
+    getMSRSegmentColors: function (tg) {
         var hMap = null;
         try {
             var linetype = tg.get_LineType();
@@ -2418,7 +2427,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return hMap;
     },
-    reviseHModifier: function(originalPixels, tg) {
+    reviseHModifier: function (originalPixels, tg) {
         try {
             if (tg.get_H() === null || tg.get_H().isEmpty())
                 return;
@@ -2512,7 +2521,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             }
         }
     },
-    InterpolatePixels: function(tg) {
+    InterpolatePixels: function (tg) {
         try {
             if (tg.get_UseLineInterpolation() === false)
                 return;

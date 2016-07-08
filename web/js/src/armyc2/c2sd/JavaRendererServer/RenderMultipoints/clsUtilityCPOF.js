@@ -150,6 +150,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     radius.value[0] = Double.parseDouble(tg.get_T1());
                     break;
                 case 24311000:
+                case 14000001:
                     length.value[0] = Double.parseDouble(tg.get_T1());
                     width.value[0] = Double.parseDouble(tg.get_H());
                     //value passed in mils
@@ -348,6 +349,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     tg.Pixels.add(pt00);
                     break;
                 case 24311000:
+                case 14000001:
                     ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, length.value[0] / 2, attitude.value[0] - 90);
                     ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTemp, width.value[0] / 2, attitude.value[0] + 0);
                     ptTemp = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.PointLatLongToPixels(ptTemp, converter);
