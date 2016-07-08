@@ -2144,6 +2144,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 13000000:
                         case 13000001:
+                        case 13000002:
                             pt0 = pLinePoints[0];
                             pt1 = pLinePoints[1];
                             pt2 = pLinePoints[2];

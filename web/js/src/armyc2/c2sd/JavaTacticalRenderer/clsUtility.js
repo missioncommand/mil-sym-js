@@ -60,6 +60,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         switch (lineType) {
             case 24311000:
             case 14000001:
+            case 14000002:
                 result = 1;
                 break;
             case 15000002:
@@ -279,6 +280,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 12000000:
             case 13000000:
             case 13000001:
+            case 13000002:
             case 14000000:
             case 15000001:
             case 15000000:
@@ -656,6 +658,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         switch (lineType) {
                             case 13000000:
                             case 13000001:
+                            case 13000002:
                             case 14000000:
                                 //case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
@@ -1097,6 +1100,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 15000002:
                 case 24311000:
                 case 14000001:
+                case 14000002:
                 case 24312000:
                 case 24321300:
                 case 24323300:
@@ -1742,8 +1746,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_CROSS-------", (12000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_ELLIPSE-----", (13000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_ELLIPSE----", (13000001));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_CIRCLE-----", (13000002));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_RECTANGLE---", (14000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_RECTANGLE--", (14000000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_SQUARE-----", (14000002));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_LINE-------", (15000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_AREA-------", (15000001));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_POINT------", (15000002));
@@ -2185,11 +2191,21 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             else if (str.equalsIgnoreCase("PBS_ELLIPSE----")) {
                 strMask = str;
             }
+            else if (str.equalsIgnoreCase("PBS_CIRCLE-----")) {
+                strMask = str;
+            }
             else if (str.equalsIgnoreCase("BS_RECTANGLE---")) {
                 strMask = str;
-            } else if (str.equalsIgnoreCase("PBS_RECTANGLE--")) {
+            } 
+            else if (str.equalsIgnoreCase("PBS_RECTANGLE--")) 
+            {
                 strMask = str;
-            } else if (str.equalsIgnoreCase("BBS_LINE-------")) {
+            } 
+            else if (str.equalsIgnoreCase("PBS_SQUARE-----")) 
+            {
+                strMask = str;
+            } 
+            else if (str.equalsIgnoreCase("BBS_LINE-------")) {
                 strMask = str;
             } else if (str.equalsIgnoreCase("BBS_AREA-------")) {
                 strMask = str;
@@ -2299,6 +2315,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 15000002:
                 case 13000000:
                 case 13000001:
+                case 13000002:
                 case 14000000:
                 case 12000000:
                 case 212600000:

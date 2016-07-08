@@ -29,6 +29,7 @@ armyc2.c2sd.JavaLineArray.countsupport =
                     switch (vbiDrawThis) {
                         case 13000000:
                         case 13000001:
+                        case 13000002:
                             count = 37;
                             break;
                         case 12000000:

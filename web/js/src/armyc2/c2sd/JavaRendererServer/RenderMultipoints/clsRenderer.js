@@ -280,9 +280,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 default:
                     break;
             }
-            if (lineType === 24311000 || lineType===14000001) {
+            if (lineType === 24311000 || lineType === 14000001 || lineType === 14000002) {
                 AM = milStd.getModifiers_AM_AN_X("AM");
                 AN = milStd.getModifiers_AM_AN_X("AN");
+                if(AM.length<2) //for square
+                    AM[1]=AM[0];
                 if (AM !== null && AM.size() > 1 && AN !== null && AN.size() > 0) {
                     strT1 = Double.toString((AM.get(0)).doubleValue());
                     var strH = Double.toString((AM.get(1)).doubleValue());
@@ -380,7 +382,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var x_alt = 0;
             var n_alt = 0;
             var strXAlt = "";
-            if (lineType === 13000000 || lineType === 13000001)
+            if (lineType === 13000000 || lineType === 13000001 || lineType === 13000002)
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
@@ -388,6 +390,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     AN=new Array();
                 if(AN.length<1)
                     AN[0]=0;
+                if(AM.length<2) //for circle
+                    AM[1]=AM[0];
                 if(AM !== null && AM.length>=2 && AN !== null && AN.length>=1)
                 {
                     var ptAzimuth=new armyc2.c2sd.JavaLineArray.POINT2(0,0);
@@ -823,9 +827,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 default:
                     break;
             }
-            if (lineType === 24311000 || lineType===14000001) {
+            if (lineType === 24311000 || lineType===14000001 || lineType === 14000002) {
                 AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                if(AM.length<2) //for square
+                    AM[1]=AM[0];
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)
                 {
                     strT1 = AM[0];
