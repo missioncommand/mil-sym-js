@@ -1054,9 +1054,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 top = bounds[3];
                 bottom = bounds[1];
                 
-                //Cesium clients create aspect ratio of 1:1 at world view, else x:y is 2:1
+                //Hack for Cesium clients: create aspect ratio of 1:1 at world view
                 if(Number(top)-Number(bottom)>90)
-                    pixelHeight*=2;
+                    pixelHeight*=3;
                 //end section
                 
                 if (top !== bottom && left != right)
