@@ -1055,8 +1055,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                 bottom = bounds[1];
                 
                 //Hack for Cesium clients: create aspect ratio of 1:1 at world view
-                if(Number(top)-Number(bottom)>90)
-                    pixelHeight*=3;
+                if(armyc2.c2sd.renderer.utilities.RendererSettings.getUseCesium2DScaleModifiers()===true)                
+                    if(Number(top)-Number(bottom)>90)
+                        pixelHeight*=3;
+                
                 //end section
                 
                 if (top !== bottom && left != right)
