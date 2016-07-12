@@ -32,6 +32,8 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
        
     _SymbolOutlineWidth = 3,
     
+    _UseCesium2DScaleModifiers = false,
+    
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
      * end of the staff
@@ -169,6 +171,19 @@ return{
      */
     getAutoCollapseModifiers: function (){
         return _AutoCollapseModifiers;
+    },
+    /**
+     * Cesium users calling RenderSymbol2D should set this to true
+     * @param {boolean} value
+     */
+    setUseCesium2DScaleModifiers: function (value){
+        _UseCesium2DScaleModifiers = value;
+    },
+    /**
+     * @returns {Boolean}
+     */
+    getUseCesium2DScaleModifiers: function (){
+        return _UseCesium2DScaleModifiers;
     },
     /**
      * if true (default), when HQ Staff is present, location will be indicated by the free
