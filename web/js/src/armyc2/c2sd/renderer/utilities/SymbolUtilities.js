@@ -112,7 +112,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var sb = "";
         var codingScheme = symbolID.charAt(0);
 
-        if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 )
+        if(symbolID.indexOf("BS_") === 0 || symbolID.indexOf("BBS_") === 0 || symbolID.indexOf("PBS_") === 0 )
         {
             return symbolID;
         }

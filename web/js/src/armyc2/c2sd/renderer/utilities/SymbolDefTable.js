@@ -314,7 +314,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                     return false;
                 }
             }
-            else if(symbolID.substring(0,3) === "BS_" || symbolID.substring(0,4) === "BBS_")
+            else if(symbolID.substring(0,3) === "BS_" || symbolID.substring(0,4) === "BBS_" || symbolID.substring(0,4) === "PBS_")
             {
                 return true;
             }
