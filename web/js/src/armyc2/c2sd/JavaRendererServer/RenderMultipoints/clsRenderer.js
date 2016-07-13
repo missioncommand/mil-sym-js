@@ -390,7 +390,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     AN=new Array();
                 if(AN.length<1)
                     AN[0]=0;
-                if(AM.length<2) //for circle
+                if(lineType === 13000002) //for circle
                     AM[1]=AM[0];
                 if(AM !== null && AM.length>=2 && AN !== null && AN.length>=1)
                 {
