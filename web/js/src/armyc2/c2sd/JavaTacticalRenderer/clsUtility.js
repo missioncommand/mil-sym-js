@@ -1748,7 +1748,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_ELLIPSE----", (13000001));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_CIRCLE-----", (13000002));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BS_RECTANGLE---", (14000000));
-            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_RECTANGLE--", (14000000));
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_RECTANGLE--", (14000001));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("PBS_SQUARE-----", (14000002));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_LINE-------", (15000000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.linetypes.put("BBS_AREA-------", (15000001));
