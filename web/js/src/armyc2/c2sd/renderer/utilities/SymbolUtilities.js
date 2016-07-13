@@ -91,7 +91,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "****X";
                 } 
-                else if (scheme !== 'W' && scheme !== 'B')//weather or basic/buffered shape
+                else if (scheme !== 'W' && scheme !== 'B' && scheme !== 'P')//weather or basic/buffered shape/parametered basic shape
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
                 }
