@@ -1323,6 +1323,37 @@ sec.web.renderer.MultiPointHandler = (function () {
                     return {canRender: false, message: "Buffered Basic Shapes require a width (AM)"};
                 }
             }
+            else if (symbolID.indexOf("PBS_") === 0)
+            {
+                var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
+
+                if(symbolID === "PBS_CIRCLE-----" || symbolID === "PBS_SQUARE-----")
+                {
+                    if (AM && AM.length > 0 && coordCount > 0)
+                    {
+                        return {canRender: true, message: ""};
+                    }
+                    else
+                    {
+                        return {canRender: false, message: (symbolID + ", requires a width (AM) and 1 control point")};
+                    }
+                }
+                else if(symbolID === "PBS_ELLIPSE----" || symbolID === "PBS_RECTANGLE--")
+                {
+                    if (AM && AM.length > 1 && coordCount > 0)
+                    {
+                        return {canRender: true, message: ""};
+                    }
+                    else
+                    {
+                        return {canRender: false, message: (symbolID + ", requires 2 AM values, length and width (AM) and 1 control point")};
+                    }
+                }
+                else
+                {
+                    return {canRender: false, message: "Parametered Basic Shapes code: " + symbolID + ", not recognized."};
+                }
+            }
             else
             {
                 return {canRender: false, message: "symbolID: \"" + symbolID + "\" not recognized."};
