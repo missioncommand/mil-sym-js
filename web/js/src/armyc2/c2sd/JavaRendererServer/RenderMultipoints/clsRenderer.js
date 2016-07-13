@@ -830,7 +830,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (lineType === 24311000 || lineType===14000001 || lineType === 14000002) {
                 AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
-                if(AM.length<2) //for square
+                if(lineType === 14000002) //for square
                     AM[1]=AM[0];
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)
                 {
