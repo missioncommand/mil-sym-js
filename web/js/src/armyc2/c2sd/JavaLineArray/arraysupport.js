@@ -3116,10 +3116,14 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             if (dMBR / 30 < armyc2.c2sd.JavaLineArray.arraysupport.minLength) {
                                 dMBR = 30 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
-                            if (dMBR < 500)
-                                dMBR = 500;
-                            if (dMBR > 750)
-                                dMBR = 500;
+//                            if (dMBR < 500)
+//                                dMBR = 500;
+//                            if (dMBR > 750)
+//                                dMBR = 500;
+                            if (dMBR < 250)
+                                dMBR = 250;
+                            if (dMBR > 500)
+                                dMBR = 250;
                             d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[0], pLinePoints[1]);
                             if (d < dMBR / 40)
                                 pLinePoints[1] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[0], pLinePoints[1], dMBR / 40 + 1);
