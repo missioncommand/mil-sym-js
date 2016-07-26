@@ -162,3 +162,15 @@ document.write('<script src="sec/web/renderer/MultiPointHandlerCanvas.js" type="
 document.write('<script src="sec/web/renderer/MultiPointHandler.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SECWebRenderer.js" type="text/javascript" ></script>');
 
+//add SVG code
+document.write('<script src="armyc2/c2sd/renderer/xml/SinglePointSVG.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/xml/TacticalGraphicsSVG.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/xml/UnitFontSVG.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/SPSVGTable.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/TGSVGTable.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/UnitSVGTable.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/SymbolSVGDimensions.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/SVGInfo.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/SinglePointSVGRenderer.js" type = "text/javascript"></script>');
+document.write('<script src="armyc2/c2sd/renderer/MilStdSVGRenderer.js" type = "text/javascript"></script>');
+
