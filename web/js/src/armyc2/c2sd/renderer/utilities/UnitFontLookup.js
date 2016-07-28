@@ -959,11 +959,12 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
               return returnVal;
         },
         /**
-         * 
+         * Until XML files are updated, we need to shift the index
          * @param {Number} characterIndex
          * @returns {Number}
          */        
-        getUnitRatioHeight: function(characterIndex){
+        getUnitRatioHeight: function(charIndex){
+            var characterIndex = charIndex - 57000;
             if(characterIndex === FillIndexHP ||
               characterIndex === FillIndexHA ||
               characterIndex === FillIndexHU ||
@@ -1026,10 +1027,11 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
         },
         /**
          * 
-         * @param {Number} characterIndex
+         * @param {Number} charIndex
          * @returns {Number}
          */               
-        getUnitRatioWidth: function (characterIndex) {
+        getUnitRatioWidth: function (charIndex) {
+            var characterIndex = charIndex - 57000;
               if(characterIndex === FillIndexUP ||
                       characterIndex === FillIndexUA ||
                       characterIndex === FillIndexUU ||

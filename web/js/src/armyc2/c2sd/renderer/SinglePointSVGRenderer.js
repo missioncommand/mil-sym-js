@@ -13,6 +13,7 @@ armyc2.c2sd.renderer.SinglePointSVGRenderer = (function () {
         TextInfo = armyc2.c2sd.renderer.utilities.TextInfo,
         ImageInfo = armyc2.c2sd.renderer.utilities.ImageInfo,
         SVGInfo = armyc2.c2sd.renderer.utilities.SVGInfo,
+        SVGTextInfo = armyc2.c2sd.renderer.utilities.SVGTextInfo,
         MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes,
         SymbolDimensions = armyc2.c2sd.renderer.utilities.SymbolDimensions,
         SymbolSVGDimensions = armyc2.c2sd.renderer.utilities.SymbolSVGDimensions,
@@ -45,36 +46,16 @@ armyc2.c2sd.renderer.SinglePointSVGRenderer = (function () {
 return{    
     
     
-    checkModifierFont: function()
-    {
-        if(textInfoBuffer===null)
-            textInfoBuffer = this.createBuffer(1,1);
-        if(textInfoContext===null && textInfoBuffer.getContext !== undefined)
-        {
-            textInfoContext = textInfoBuffer.getContext('2d');
-            textInfoContext.lineCap = "butt";
-            textInfoContext.lineJoin = "miter";
-            textInfoContext.miterLimit = 3;
-        }
-        else if(!(textInfoContext))
-        {
-            textInfoContext = {};//for IE8
-        }
-        if(textInfoContextFont !== RendererSettings.getModifierFont())
-        {
-            textInfoContextFont = RendererSettings.getModifierFont();
-            textInfoContext.font = textInfoContextFont;
-        }
-    },
-    
+   
     // <editor-fold defaultstate="collapsed" desc="Unit Functions">
     /**
      * 
-     * @param {type} symbolID
-     * @param {type} modifiers
+     * @param {String} symbolID
+     * @param {Object} modifiers
+     * @param {Object} fontInfo
      * @returns {armyc2.c2sd.renderer.armyc2.c2sd.renderer.utilities.ImageInfo}
      */
-    renderUnit: function (symbolID, modifiers)
+    renderUnit: function (symbolID, modifiers, fontInfo)
     {
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
@@ -83,6 +64,11 @@ return{
         
         var buffer = null,
             ctx = null;
+        
+        if(!fontInfo)
+        {
+            fontInfo = RendererSettings.getFontInfo();
+        }
         
         if(render && _bufferUnit === null)
         {
@@ -169,7 +155,6 @@ return{
                 frameAssume = getSVGPath(intFrameAssume);
         }
             
-        this.checkModifierFont();
         
         // </editor-fold>
         
@@ -267,8 +252,8 @@ return{
         var rect = SymbolSVGDimensions.getUnitBounds(intFill);
         if(pixelSize > 0 && keepUnitRatio ===true)
         {
-            var heightRatio = UnitFontLookup.getUnitRatioHeight(intFill-57000),
-                widthRatio = UnitFontLookup.getUnitRatioWidth(intFill-57000);
+            var heightRatio = UnitFontLookup.getUnitRatioHeight(intFill),
+                widthRatio = UnitFontLookup.getUnitRatioWidth(intFill);
             var ratio = -1;
             if(heightRatio > widthRatio)
             {
@@ -300,8 +285,8 @@ return{
             symbolHeight = Math.round(symbolBounds.getHeight() * ratio);
 
         
-        var x = Math.round(symbolWidth/2),
-            y = Math.round((symbolHeight/2) + symbolBounds.getY());
+        var x = Math.round(-symbolBounds.getX()),
+            y = Math.round(-symbolBounds.getY());
 	
         var unitPaths = [];
         if(render === true)//get svg path elements
@@ -357,7 +342,7 @@ return{
         //wrap svg elements in a group and scale and translate accordingly.
         var transX = symbolWidth / 2;
         var transY = symbolHeight / 2;
-        var seGroupUnit = '<g transform="translate(' + transX + ',' + transY +') scale(' + ratio + ',-' + ratio +')">'; 
+        var seGroupUnit = '<g transform="translate(' + (x * ratio) + ',' + (y * ratio) +') scale(' + ratio + ',-' + ratio +')">'; 
         for(var i = 0; i < unitPaths.length; i++)
         {
             seGroupUnit += unitPaths[i];
@@ -376,33 +361,89 @@ return{
         
         
         var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
+        symbolBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
         
-        var centerPoint = new SO.Point(x,y);
+        var centerPoint = new SO.Point(x * ratio,y * ratio);
         
         var si = new SVGInfo(seGroupUnit,centerPoint,symbolBounds,imageBounds);
         
         // </editor-fold>
 	
         // <editor-fold defaultstate="collapsed" desc="Process Display Modifiers">
-        var sinew = null;
+        var svgElements = null;
+        var svgElementInfo = null;
+        var svgElementsDOM = [];
         
-        hasDisplayModifiers=false;
         hasTextModifiers=false;
         if(hasDisplayModifiers===true)
-            sinew = this.processUnitDisplayModifiers(si, symbolID, modifiers,hasTextModifiers);
-        
-        if(sinew !== null)
-            si = iinew;
-        sinew = null;
+            svgElementInfo = this.processUnitDisplayModifiers(si, symbolID, modifiers, fontInfo);
+       
         // </editor-fold>
+        
+        
+        if(svgElementInfo != null)
+        {
+            centerPoint = svgElementInfo.centerPoint;
+            svgElements = svgElementInfo.svgElements;
+            imageBounds = svgElementInfo.imageBounds;
+
+            if(svgElementInfo.hasDOMArrow)
+            {
+                svgElementsDOM.push(svgElements.pop());
+                svgElementsDOM.push(svgElements.pop());
+            }
+        }
+        else
+        {
+            svgElements = [];
+        }
         
         // <editor-fold defaultstate="collapsed" desc="Process Text Modifiers">
         
         if(hasTextModifiers===true)
-            sinew = this.processUnitModifiers(si,symbolID,modifiers);
-        
-        if(sinew !== null)
-            si = sinew;
+        {   
+            svgElementInfo = this.processUnitModifiers(symbolID,modifiers,symbolBounds, imageBounds, svgElements, svgElementInfo.hasDOMArrow);
+            //centerPoint = svgElementInfo.centerPoint;
+            svgElements = svgElementInfo.svgElements;
+            imageBounds = svgElementInfo.imageBounds;
+        }
+        var returnSVG = "";
+        if(svgElements.length > 0)
+        {
+            var domSE = [];
+            for(var k = 0; k < svgElements.length; k++)
+            {
+                returnSVG += svgElements[k] + "\n";    
+            }
+            returnSVG += seGroupUnit + "\n";
+            if(svgElementsDOM.length > 0)
+            {
+                returnSVG += svgElements[0] + "\n";
+                returnSVG += svgElements[1] + "\n";
+            }
+            
+            //make group with translation
+            var shiftX = -imageBounds.getX();
+            var shiftY = -imageBounds.getY();
+            //shift bounds and center point
+            imageBounds.shift(shiftX,shiftY);
+            symbolBounds.shift(shiftX,shiftY);
+            centerPoint.shift(shiftX,shiftY);
+            //combine with returnSVG
+            //wrap in SVG tag
+            
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+                        + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
+                        + returnSVG; 
+            returnSVG += '</g>';
+            returnSVG += '</svg>';
+        }
+        else
+        {
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+            returnSVG += seGroupUnit;
+            returnSVG += '</svg>';
+        }
         
         // </editor-fold>
         
@@ -414,9 +455,9 @@ return{
         //add group to translate after adding modifiers
         
         //close SVG
-        var svg = si.getSVG();
-        svg = '<svg width="' + symbolWidth + 'px" height="' + symbolHeight + 'px" xmlns="http://www.w3.org/2000/svg" version="1.1">' + svg + '</svg>';
-        si = new SVGInfo(svg,centerPoint,symbolBounds,imageBounds);
+        //var svg = si.getSVG();
+        //svg = '<svg width="' + symbolWidth + 'px" height="' + symbolHeight + 'px" xmlns="http://www.w3.org/2000/svg" version="1.1">' + svg + '</svg>';
+        si = new SVGInfo(returnSVG,centerPoint,symbolBounds,imageBounds);
         /*if(icon)
             return ii.getSquareImageInfo();
         else//*/
@@ -435,21 +476,16 @@ return{
         se += ' />';
         return se;
     },
-    getSVGFrameDimensions: function(symbolID)
-    {
-        var scheme = symbolID.charAt(0);
-        var bd = symbolID.charAt(2);
-        
-        return {width:width, height: height};
-    },
+
     /**
      * 
-     * @param {ImageInfo} ii
+     * @param {SVGInfo} si
      * @param {String} symbolID
      * @param {type} modifiers
-     * @returns {ImageInfo}
+     * @param {object} fontInfo
+     * @returns {Object} {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow}
      */
-    processUnitDisplayModifiers: function(ii, symbolID, modifiers){
+    processUnitDisplayModifiers: function(si, symbolID, modifiers,fontInfo){
         
 //        if(_bufferDisplayModifiers===null)
 //                    _bufferDisplayModifiers = this.createBuffer(250,250);
@@ -458,9 +494,9 @@ return{
             render = modifiers["RENDER"];
                 
         var newii = null,
-            symbolBounds = ii.getSymbolBounds(),
-            imageBounds = ii.getImageBounds(),
-            centerPoint = ii.getCenterPoint(),
+            symbolBounds = si.getSymbolBounds(),
+            imageBounds = si.getSVGBounds(),
+            centerPoint = si.getAnchorPoint(),
             tiEchelon = null,
             echelonBounds = null,
             amBounds = null,
@@ -495,7 +531,7 @@ return{
                     y = symbolBounds.getY();
                     height = Math.round(symbolBounds.getHeight());
                     width = Math.round(symbolBounds.getWidth())-1;
-                    bottomY = y+height+1;
+                    bottomY = y+height+2;
             
                 if(symbolID.charAt(10)===("M")){
                 
@@ -646,170 +682,7 @@ return{
                         default:
                             break;
                     }
-                    // <editor-fold defaultstate="collapsed" desc="if else... Build Mobility Modifiers">
-                    /*
-                    if(mobility === ("MO"))//mobility wheeled (limited cross country)
-                    {
 
-                        //line
-                        shapes.push(new SO.Line(x,bottomY,x+width,bottomY));
-                        //left circle
-                        shapes.push(new SO.Ellipse(x,bottomY + wheelOffset,wheelSize,wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //right circle
-                        shapes.push(new SO.Ellipse(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize), false);
-
-                    }
-                    else if(mobility === ("MP"))//mobility wheeled (cross country)
-                    {
-                        //line
-                        var line = new SO.Line(x,bottomY,x+width,bottomY);
-                        shapes.push(line);
-                        //shapeMobility.append(new Line2D.Double(x,bottomY,x + width, bottomY), false);
-                        //left circle
-                        shapes.push(new SO.Ellipse(x, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //right circle
-                        shapes.push(new SO.Ellipse(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //center wheel
-                        shapes.push(new SO.Ellipse(x + (width/2)-(wheelSize/2), bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + (width/2)-(wheelSize/2), bottomY + wheelOffset, wheelSize, wheelSize), false);
-
-                    }
-                    else if(mobility === ("MQ"))//mobility tracked
-                    {
-                        //round rectangle
-                        shapes.push(new SO.RoundedRectangle(x, bottomY, width, rrHeight,rrArcWidth));
-                        //shapeMobility.append(new RoundRectangle2D.Double(x, bottomY, width, rrHeight, rrArcWidth, rrHeight),false);
-                    }
-                    else if(mobility === ("MR"))//mobility wheeled and tracked combination
-                    {
-                        //round rectangle
-                        shapes.push(new SO.RoundedRectangle(x, bottomY, width, rrHeight,rrArcWidth));
-                        //shapeMobility.append(new RoundRectangle2D.Double(x, bottomY, width, rrHeight, rrArcWidth, rrHeight),false);
-                        //left circle
-                        shapes.push(new SO.Ellipse(x - wheelSize - wheelSize, bottomY, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x - wheelSize - wheelSize, bottomY, wheelSize, wheelSize), false);
-
-                    }
-                    else if(mobility === ("MS"))//mobility towed
-                    {
-                        //line
-                        var line = new SO.Line(x + wheelSize,bottomY + (wheelSize/2),
-                                                x + width - wheelSize, bottomY + (wheelSize/2));
-                        shapes.push(line);
-                        //shapeMobility.append(new Line2D.Double(x + wheelSize,bottomY + (wheelSize/2),x + width - wheelSize, bottomY + (wheelSize/2)), false);
-                        //left circle
-                        shapes.push(new SO.Ellipse(x, bottomY, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x, bottomY, wheelSize, wheelSize), false);
-                        //right circle
-                        shapes.push(new SO.Ellipse(x + width - wheelSize, bottomY, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + width - wheelSize, bottomY, wheelSize, wheelSize), false);
-                    }
-                    else if(mobility === ("MT"))//mobility rail
-                    {
-                        //line
-                        var line = new SO.Line(x,bottomY,x + width, bottomY);
-                        shapes.push(line);
-                        //shapeMobility.append(new Line2D.Double(x,bottomY,x + width, bottomY), false);
-                        //left circle
-                        shapes.push(new SO.Ellipse(x + wheelSize, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + wheelSize, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //left circle2
-                        shapes.push(new SO.Ellipse(x, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //right circle
-                        shapes.push(new SO.Ellipse(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + width - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                        //right circle2
-                        shapes.push(new SO.Ellipse(x + width - wheelSize - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize));
-                        //shapeMobility.append(new Ellipse2D.Double(x + width - wheelSize - wheelSize, bottomY + wheelOffset, wheelSize, wheelSize), false);
-                    }
-                    else if(mobility === ("MU"))//mobility over the snow
-                    {
-                        
-                        var muPath = new SO.Path();
-                        muPath.moveTo(x,bottomY);
-                        muPath.lineTo(x + 5, bottomY + 5);
-                        muPath.lineTo(x + width, bottomY + 5);
-                        shapes.push(muPath);
-//                        shapeMobility.moveTo(x, bottomY);
-//                        shapeMobility.lineTo(x + 5, bottomY + 5);
-//                        shapeMobility.lineTo(x + width, bottomY + 5);
-                    }
-                    else if(mobility === ("MV"))//mobility sled
-                    {
-                        var path = new SO.Path();
-                        
-                        path.moveTo(x,bottomY);
-                        path.bezierCurveTo(x, bottomY, x-rrArcWidth, bottomY+3, x, bottomY+rrHeight);
-                        path.lineTo(x + width, bottomY + rrHeight);
-                        shapes.push(path);
-                    
-                    }
-                    else if(mobility === ("MW"))//mobility pack animals
-                    {
-                        centerX = Math.round(symbolBounds.getCenterX());
-                        
-                        var mwPath = new SO.Path();
-                        mwPath.moveTo(centerX, bottomY + rrHeight+2);
-                        mwPath.lineTo(centerX - 3, bottomY);
-                        mwPath.lineTo(centerX - 6, bottomY + rrHeight+2);
-                                                
-                        mwPath.moveTo(centerX, bottomY + rrHeight+2);
-                        mwPath.lineTo(centerX + 3, bottomY);
-                        mwPath.lineTo(centerX + 6, bottomY + rrHeight+2);
-                        shapes.push(mwPath);
-                        
-//                        centerX = Math.round(symbolBounds.getCenterX());
-//                        shapeMobility.moveTo(centerX, bottomY + rrHeight+2);
-//                        shapeMobility.lineTo(centerX - 3, bottomY);
-//                        shapeMobility.lineTo(centerX - 6, bottomY + rrHeight+2);
-//                        shapeMobility.moveTo(centerX, bottomY + rrHeight+2);
-//                        shapeMobility.lineTo(centerX + 3, bottomY);
-//                        shapeMobility.lineTo(centerX + 6, bottomY + rrHeight+2);
-
-                    }
-                    else if(mobility === ("MX"))//mobility barge
-                    {
-                        centerX = Math.round(symbolBounds.getCenterX());
-                        
-                        var line = new SO.Line(x + width, bottomY,x, bottomY);
-                        shapes.push(line);
-                        
-                        var quarterX = (centerX - x)/2;
-                        //var quarterY = (((bottomY + rrHeight) - bottomY)/2);
-                        shapes.push(new SO.BCurve(x, bottomY,x+quarterX, bottomY+rrHeight, centerX + quarterX, bottomY + rrHeight, x + width, bottomY));
-                        
-//                        centerX = bounds.getCenterX();
-//                        shapeMobility.moveTo(x+width, bottomY);
-//                        shapeMobility.lineTo(x, bottomY);
-//                        var quarterX = (centerX - x)/2;
-//                        var quarterY = (((bottomY + rrHeight) - bottomY)/2);
-//                        shapeMobility.curveTo(x+quarterX, bottomY+rrHeight, centerX + quarterX, bottomY + rrHeight, x + width, bottomY);
-                    }
-                    else if(mobility === ("MY"))//mobility amphibious
-                    {
-                        var incrementX = width / 7,
-                        middleY = (bottomY + (rrHeight/2));
-
-                        var x = Math.round(x + (incrementX/2));
-                        var r = Math.round(incrementX/2);
-                        
-                        var path = new SO.Path();
-                        path.arc(x,middleY,r,180,0);
-                        path.arc(x + incrementX,middleY,r,180,0, true);
-                        path.arc(x + incrementX*2,middleY,r,180,0);
-                        path.arc(x + incrementX*3,middleY,r,180,0,true);
-                        path.arc(x + incrementX*4,middleY,r,180,0);
-                        path.arc(x + incrementX*5,middleY,r,180,0,true);
-                        path.arc(x + incrementX*6,middleY,r,180,0);
-                        shapes.push(path);
-
-                    }//*/
-                    // </editor-fold>
                     
                 }
                 //Draw Towed Array Sonar
@@ -906,31 +779,22 @@ return{
                     var echelonOffset = 2,
                         outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                    var tiEchelon = new TextInfo(strEchelon,0,0,textInfoContext,textInfoContextFont);
-                    echelonBounds = tiEchelon.getTextBounds();
-
+                    var tiEchelon = new SVGTextInfo(strEchelon,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                    
                     var y = Math.round(symbolBounds.getY() - echelonOffset),
-                        x = Math.round(symbolBounds.getX() + (symbolBounds.getWidth()/2) - 
-                                (echelonBounds.getWidth()/2));
+                        x = Math.round(symbolBounds.getCenterX());
                     tiEchelon.setLocation(x,y);
 
-                    //There will never be lowercase characters in an echelon so trim that fat.    
-                    //Remove the descent from the bounding box.
-                    //tiEchelon.getTextBounds().shiftBR(0,Math.round(-(echelonBounds.getHeight()*0.3)));                         
-
-
                     //adjust for outline.
-                    echelonBounds = tiEchelon.getTextOutlineBounds();
-                    echelonBounds.shift(0,-outlineOffset);// - Math.round(echelonOffset/2));
-                    tiEchelon.setLocation(x,y-outlineOffset);
-
+                    tiEchelon.shift(0,-outlineOffset);
+                    echelonBounds = tiEchelon.getBounds();
                     imageBounds.union(echelonBounds);
                 }
             }
             // </editor-fold>
             
             // <editor-fold defaultstate="collapsed" desc="Build Affiliation Modifier">
-            //Draw Echelon
+            //Draw Affiliation Modifier
             var affiliationModifier = null;
             if(RendererSettings.getDrawAffiliationModifierAsLabel()===false)
             {
@@ -942,8 +806,8 @@ return{
                 var amOffset = 2,
                     outlineOffset = RendererSettings.getTextOutlineWidth();
 
-                var tiAM = new TextInfo(affiliationModifier,0,0,textInfoContext,textInfoContextFont);
-                amBounds = tiAM.getTextBounds();
+                var tiAM = new SVGTextInfo(affiliationModifier,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
+                amBounds = tiAM.getBounds();
 
                 var x,y;
                 
@@ -966,9 +830,8 @@ return{
 
 
                 //adjust for outline.
-                amBounds = tiAM.getTextOutlineBounds();
-                amBounds.shift(0,-outlineOffset);// - Math.round(echelonOffset/2));
                 tiAM.setLocation(x,y-outlineOffset);
+                amBounds = tiAM.getOutlineBounds();
 
                 imageBounds.union(amBounds);
             }
@@ -1250,64 +1113,8 @@ return{
             {
                 var shiftX = Math.abs(imageBounds.getX()),
                     shiftY = Math.abs(imageBounds.getY());
+                    //<g transform="translate(0,15)"></g>
 
-                if(hqBounds !== null)
-                {
-                    pt1HQ.shift(shiftX,shiftY);
-                    pt2HQ.shift(shiftX,shiftY);
-                }
-                if(echelonBounds !== null)
-                {
-                    tiEchelon.setLocation(tiEchelon.getLocation().getX() + shiftX, tiEchelon.getLocation().getY() + shiftY);
-                }
-                if(amBounds)
-                {
-                    tiAM.setLocation(tiAM.getLocation().getX() + shiftX, tiAM.getLocation().getY() + shiftY);
-                }
-                if(tfBounds !== null)
-                {
-                    tfRectangle.shift(shiftX, shiftY);
-                    tfBounds.shift(shiftX, shiftY);
-                }
-                if(instBounds !== null)
-                {
-                    instRectangle.shift(shiftX, shiftY);
-                    instBounds.shift(shiftX, shiftY);
-                }
-                if(fdiBounds !== null)
-                {
-                    fdiBounds.shift(shiftX, shiftY);
-                    fdiLeft.shift(shiftX, shiftY);
-                    fdiTop.shift(shiftX, shiftY);
-                    fdiRight.shift(shiftX, shiftY);
-                }
-                if(ociBounds !== null)
-                {
-                    ociBounds.shift(shiftX,shiftY);
-                    ociShape.shift(shiftX,shiftY);
-                }
-                if(domBounds !== null)
-                {
-                    for(var i = 0; i < 6; i++)
-                    {
-                        temp = domPoints[i];
-                        if(temp !== null)
-                            temp.shift(shiftX, shiftY);
-                    }
-                    domBounds.shift(shiftX, shiftY);
-                }
-                if(mobilityBounds !== null)
-                {
-                    //shift mobility points
-                    var size = shapes.length;
-                    var tempShape = null;
-                    for(var i=0; i<size;i++)
-                    {
-                        tempShape = shapes[i];
-                        tempShape.shift(shiftX,shiftY);
-                    }
-                    mobilityBounds.shift(shiftX,shiftY);
-                }
 
                 centerPoint.shift(shiftX, shiftY);
                 symbolBounds.shift(shiftX, shiftY);
@@ -1327,89 +1134,64 @@ return{
                 buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
                 ctx = buffer.getContext('2d');
             //}*/
-            
+            var svgElements = [];
             if(render === true)
             {
-                buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
-                ctx = buffer.getContext('2d');
-                if(echelonBounds || amBounds)
-                {
-                    ctx.font = RendererSettings.getModifierFont();
-                }
-            
-            
-            
+           
+                //create SVG elements then enclose in group with transform
                 //render////////////////////////////////////////////////////////
                 if(hqBounds !== null)
                 {
-                    ctx.beginPath();
-                    ctx.moveTo(pt1HQ.getX(),pt1HQ.getY());
-                    ctx.lineTo(pt2HQ.getX(),pt2HQ.getY());
-                    ctx.lineWidth = 2;
-                    ctx.strokStyle = '#000000';
-                    ctx.stroke();
+                    var hq = new SO.Line(pt1HQ.getX(),pt1HQ.getY(),pt2HQ.getX(),pt2HQ.getY());
+                    svgElements.push(hq.toSVGElement('#000000',2));
                 }
 
                 if(tfBounds !== null)
                 {
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = "#000000";
-
-                    ctx.strokeRect(tfRectangle.getX(), tfRectangle.getY(),
-                                    tfRectangle.getWidth(), tfRectangle.getHeight());
-
-                    /*ctx.beginPath();
-                    ctx.moveTo(tfRectangle.getX(), tfRectangle.getY());
-                    ctx.lineTo(tfRectangle.right, tfRectangle.y);
-                    ctx.lineTo(tfRectangle.right, tfRectangle.bottom);
-                    ctx.lineTo(tfRectangle.x, tfRectangle.bottom);
-                    //ctx.lineTo(tfRectangle.x, tfRectangle.y);
-                    ctx.closePath();
-                    ctx.stroke();*/
+                    svgElements.push(tfRectangle.toSVGElement('#000000',2));
                 }
 
                 if(instBounds !== null)
                 {
-                    ctx.lineWidth = 2;
-                    ctx.fillStyle = "#000000";
-                    ctx.fillRect(instRectangle.getX(), instRectangle.getY(),
-                                    instRectangle.getWidth(), instRectangle.getHeight());
-                    /*ctx.beginPath();
-                    ctx.moveTo(instRectangle.getX(), instRectangle.getY());
-                    ctx.lineTo(instRectangle.right, instRectangle.y);
-                    ctx.lineTo(instRectangle.right, instRectangle.bottom);
-                    ctx.lineTo(instRectangle.x, instRectangle.bottom);
-                    //ctx.lineTo(tfRectangle.x, tfRectangle.y);
-                    ctx.closePath();
-                    ctx.fill();*/
+                    svgElements.push(instRectangle.toSVGElement(null,null,'#000000'));
                 }
 
                 if(echelonBounds !== null)
                 {
-                    this.renderText(ctx,[tiEchelon]);
+                    //ctx.lineCap = "butt";
+                    //ctx.lineJoin = "miter";
+                    //ctx.miterLimit = 3;
+
+                    //RendererSettings.TextBackgroundMethod_COLORFILL
+                    //RendererSettings.TextBackgroundMethod_NONE
+                    //RendererSettings.TextBackgroundMethod_OUTLINE_QUICK
+                    //RendererSettings.TextBackgroundMethod_OUTLINE
+                        
+                    var tbm = RendererSettings.getTextBackgroundMethod()
+                    var outlineWidth = RendererSettings.getTextOutlineWidth();
+                    //get outline, outline color and fill color
+                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE || tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+                        svgElements.push(tiEchelon.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                    else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
+                        svgElements.push(tiEchelon.toSVGElement(null,null,'#000000'));
+                    else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)//TODO: implement color fill
+                        svgElements.push(tiEchelon.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                        
                     echelonBounds = null;
-                    tiEchelon = null;
                 }   
                 
                 if(amBounds !== null)
                 {
-                    this.renderText(ctx,[tiAM]);
-                    /*
-                    var textOutlineWidth = RendererSettings.getTextOutlineWidth();
-                    if(textOutlineWidth > 0)
-                    {
-                        ctx.lineWidth = textOutlineWidth;
-                        ctx.strokeStyle = "#FFFFFF";
-                        ctx.strokeText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
-                    }
-
-                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
-                        ctx.style = modifiers[MilStdAttributes.LineColor];
-                    else
-                        ctx.style = "#000000";
-
-                    ctx.fillText(tiAM.getText(), tiAM.getLocation().getX(), tiAM.getLocation().getY());
-                    //*/
+                    var tbm = RendererSettings.getTextBackgroundMethod()
+                    var outlineWidth = RendererSettings.getTextOutlineWidth();
+                    //get outline, outline color and fill color
+                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE || tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+                        svgElements.push(tiAM.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                    else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
+                        svgElements.push(tiAM.toSVGElement(null,null,'#000000'));
+                    else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)//TODO: implement color fill
+                        svgElements.push(tiAM.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                        
                     amBounds = null;
                     tiAM = null;
                 }   
@@ -1417,56 +1199,40 @@ return{
                 if(fdiBounds !== null)
                 {
                     var oldDash = null;
-                    if(!ctx.setLineDash){//not yet supported but it's coming for html5
-                        ctx.setLineDash = function () {};
-                    }
-                    if(!ctx.getLineDash){//not yet supported but it's coming for html5
-                        ctx.getLineDash = function () {};
-                    }
+                    var fdiPath = new SO.Path();
 
-                    oldDash = ctx.getLineDash();
                     if(symbolBounds.getWidth()>19)
                     {
-                        ctx.setLineDash([6,4]);
+                        fdiPath.setLineDash([6,4]);
                     }
                     else
                     {
-                        ctx.setLineDash([5,3]);
+                        fdiPath.setLineDash([5,3]);
                     }
-                    ctx.lineCap = "butt";
-                    ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(fdiLeft.getX(),fdiLeft.getY());
-                    ctx.lineTo(fdiTop.getX(),fdiTop.getY());
-                    ctx.lineTo(fdiRight.getX(),fdiRight.getY());
-                    ctx.stroke();
-                    ctx.setLineDash(oldDash);
+                    fdiPath.moveTo(fdiLeft.getX(),fdiLeft.getY());
+                    fdiPath.lineTo(fdiTop.getX(),fdiTop.getY());
+                    fdiPath.lineTo(fdiRight.getX(),fdiRight.getY());
+                    
+                    svgElements.push(fdiPath.toSVGElement('#000000',2,null));
+                    
+                    //ctx.lineCap = "butt";
+                    //ctx.lineJoin = "miter";
+                    //ctx.strokeStyle = "#000000";
+                    //ctx.lineWidth = 2;
 
                     fdiBounds = null;
-
                 }
 
                 if(mobilityBounds !== null)
                 {
                                         //ctx.lineCap = "butt";
                     //ctx.lineJoin = "miter";
-                    if(symbolID.charAt(10)===("M"))
+                    var mobilityLineWidth = 2;
+                    if(symbolID.charAt(10)===("N"))
                     {
-                        ctx.lineWidth = 2;
-                        ctx.strokeStyle = "#000000";
-                        ctx.fillStyle = "#000000";
+                        mobilityLineWidth = 1;
                     }
-                    else //NS or NL
-                    {
-                        //disable anti-aliasing
-                        /*if(ctx.webkitImageSmoothingEnabled)
-                            ctx.webkitImageSmoothingEnabled = false;//*/
-                        ctx.lineWidth = 1;
-                        ctx.strokeStyle = "#000000";
-                        ctx.fillStyle = "#000000";
-                    }
+
 
                     var size = shapes.length;
                     var tempShape = null;
@@ -1475,11 +1241,13 @@ return{
                         tempShape = shapes[i];
                         if(tempShape.getShapeType()!==SO.ShapeTypes.RECTANGLE)
                         {
-                            tempShape.stroke(ctx);
+                            svgElements.push(tempShape.toSVGElement('#000000',2,null));
+                            //tempShape.stroke(ctx);
                         }
                         else
                         {
-                            tempShape.fill(ctx);
+                            svgElements.push(tempShape.toSVGElement(null,null,'#000000'));
+                            //tempShape.fill(ctx);
                         }
                     }
                     mobilityBounds = null;
@@ -1500,23 +1268,19 @@ return{
                     else if(status===("F"))//full to capacity(hospital)
                         statusColor = '#0000FF';
 
-                    ctx.lineWidth = 2;
+                    /*ctx.lineWidth = 2;
                     ctx.strokeStyle = '#000000';
                     ociShape.stroke(ctx);
                     ctx.fillStyle = statusColor;
-                    ociShape.fill(ctx);
+                    ociShape.fill(ctx);//*/
+                    
+                    svgElements.push(tempShape.toSVGElement('#000000',2,statusColor));
 
                     ociBounds = null;
                     ociShape = null;
                 }
 
-                //draw original icon.        
-                //ctx.drawImage(ii.getImage(),symbolBounds.getX(), symbolBounds.getY());                                               
-                ctx.drawImage(ii.getImage(),0,0,
-                                symbolBounds.getWidth(), symbolBounds.getHeight(),
-                                symbolBounds.getX(),symbolBounds.getY(),
-                                symbolBounds.getWidth(), symbolBounds.getHeight());
-
+                
                 if(domBounds !== null)
                 {
                     ctx.lineWidth = 2;
@@ -1530,38 +1294,44 @@ return{
                     if(domPoints[2] !== null)
                         ctx.lineTo(domPoints[2].getX(),domPoints[2].getY());
                     ctx.stroke();
+                    
+                    var linePath = new SO.Path();
+                    linePath.moveTo(domPoints[0].getX(),domPoints[0].getY());
+                    if(domPoints[1] !== null)
+                        linePath.lineTo(domPoints[1].getX(),domPoints[1].getY());
+                    if(domPoints[2] !== null)
+                        linePath.lineTo(domPoints[2].getX(),domPoints[2].getY());
+                        
+                    svgElements.push(linePath.toSVGElement('#000000',2,null));
+                    
+                    var arrowPath = new SO.Path();
+                    arrowPath.moveTo(domPoints[3].getX(),domPoints[3].getY());
+                    arrowPath.lineTo(domPoints[4].getX(),domPoints[4].getY());
+                    arrowPath.lineTo(domPoints[5].getX(),domPoints[5].getY());
+                    arrowPath.closePath();
+                    
+                    svgElements.push(arrowPath.toSVGElement(null,null,'#000000'));
 
-                    ctx.beginPath();
-                    ctx.fillStyle = "#000000";
-                    ctx.moveTo(domPoints[3].getX(),domPoints[3].getY());
-                    ctx.lineTo(domPoints[4].getX(),domPoints[4].getY());
-                    ctx.lineTo(domPoints[5].getX(),domPoints[5].getY());
-                    ctx.closePath();
-                    ctx.fill();
-
-                    domBounds = null;
-                    domPoints = null;
                 }
             }
             // </editor-fold>
             
-            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
-            
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
+                domBounds = null;
+                domPoints = null;
                 shapes = null;
                 ctx = null;
                 buffer = null;
             // </editor-fold>
             
-            //return newii;    
-            if(newii !== null)
-            {
-                return newii;
-            }
+            //return ;
+            var hasDOMArrow = domBounds ? true : false;
+            if(svgElements !== null && svgElements.length > 0)
+                return {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow};
             else
-            {
                 return null;
-            }
+                
+           
             
     },
             
@@ -1594,14 +1364,7 @@ return{
                 offsetY += Math.round(symbolBounds.getY() + symbolBounds.getHeight());
                         
                 bar = new SO.Rectangle(symbolBounds.getX()+1, offsetY, Math.round(symbolBounds.getWidth())-2,barSize);
-                /*ctx.lineColor = '#000000';
-                ctx.lineWidth = 1;
-                ctx.fillColor = statusColor;
-                bar.fill(ctx);
-                bar.grow(1);
-                bar.stroke(ctx);
-                
-                imageBounds.union(bar.getBounds());//*/
+
             }
             
             return bar;
@@ -1616,7 +1379,7 @@ return{
      * @param {type} modifiers
      * @returns {ImageInfo}
      */
-    processUnitModifiers: function(ii, symbolID, modifiers){
+    processUnitModifiers: function(si, symbolID, modifiers,fontInfo){
         
         var render = true;
         if(modifiers["RENDER"] !== undefined)
@@ -1689,9 +1452,6 @@ return{
             }    
         }
             
-            
-        this.checkModifierFont();
-        
         
         cpofNameX = bounds.x + bounds.width + bufferXR;
         
@@ -3944,33 +3704,7 @@ return{
             }
         }     
     },
-    /**
-     * 
-     * @param {armyc2.c2sd.renderer.utilities.ImageInfo} ii
-     * @param {String} symbolID
-     * @param {object} modifiers
-     * @returns {armyc2.c2sd.renderer.utilities.ImageInfo}
-     */
-    renderImage: function(ii, symbolID, modifiers)
-    {
-        var iinew = null;
 
-        var hasTextModifiers = true;
-        
-        iinew = this.processUnitDisplayModifiers(ii, symbolID, modifiers,hasTextModifiers);
-
-        if(iinew !== null)
-            ii = iinew;
-
-        iinew = null;
-
-        iinew = this.processUnitModifiers(ii,symbolID,modifiers);
-
-        if(iinew !== null)
-                ii = iinew;
-        
-        return ii;
-    }
     
     // </editor-fold>
 };

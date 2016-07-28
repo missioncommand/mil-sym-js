@@ -93,4 +93,27 @@ armyc2.c2sd.renderer.so.RoundedRectangle = function (x,y,w,h,radius) {
         this.setPath(context);
         context.fill();
     };
+    
+    armyc2.c2sd.renderer.so.RoundedRectangle.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    {  
+        var line = '<rect x="' + this.x + '" y="' + this.y;
+        line += '" rx="' + r + '" ry="' + r;
+        line += '" width="' + this.width + ' height="' + this.height + '"';
+        
+        if(strokeWidth)
+            line += ' stroke-width="' + strokeWidth + '"';
+        else 
+            line += ' stroke-width="2"';
+        
+        if(stroke)
+            line += ' stroke="' + stroke + '"';
+            
+        if(fill)
+            line += ' fill="' + fill + '"';
+        else
+            line += ' fill="none"';
+        
+        line += '/>';
+        return line;
+    };
 

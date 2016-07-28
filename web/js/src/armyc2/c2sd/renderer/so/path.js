@@ -405,3 +405,99 @@ armyc2.c2sd.renderer.so.Path = function () {
         context.fillStyle = pattern;
         context.fill();
     };
+    
+    /**
+     * Arc and ArcTo do not covert currently
+     */
+    armyc2.c2sd.renderer.so.Path.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    {
+        
+        var ActionTypes = armyc2.c2sd.renderer.so.ActionTypes;
+        //context.beginPath();
+        var size = this._actions.length;
+        var temp = null;
+        var path = "";
+        
+        for(var i=0; i<size;i++)
+        {
+            temp = this._actions[i];
+			
+            /*if(path !== "")
+                path += " ";*/
+
+            if(temp[0]===ActionTypes.ACTION_MOVE_TO)
+            {
+                //context.moveTo(temp[1],temp[2]);
+                
+                if(i === 0 || this._method !== "fillPattern")
+                {
+                    path += "M" + temp[1] + " " + temp[2];
+                    //context.moveTo(temp[1],temp[2]);
+                }
+                else//no moves in a fill shape except maybe for the first one
+                {
+                    path += "L" + temp[1] + " " + temp[2];
+                    //context.lineTo(temp[1],temp[2]);
+                }//*/
+            }
+            else if(temp[0]===ActionTypes.ACTION_LINE_TO)
+            {
+                path += "L" + temp[1] + " " + temp[2];
+                //context.lineTo(temp[1],temp[2]);
+            }
+            else if(temp[0]===ActionTypes.ACTION_DASHED_LINE_TO)
+            {
+                path += "L" + temp[4] + " " + temp[4];
+                /*if(this._method === "stroke")
+                {
+                    context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);    
+                }
+                else //you don't dash a fill shape
+                {
+                    context.lineTo(temp[3],temp[4]);
+                }//*/
+            }
+            else if(temp[0]===ActionTypes.ACTION_CURVE_TO)
+            {
+                //C100 100 250 100 250 200
+                path += "C" + temp[1] + " " + temp[2] + " " + temp[3] + " " + temp[4] + " " + temp[5] + " " + temp[6]; 
+                //context.bezierCurveTo(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6]);
+            }
+            else if(temp[0]===ActionTypes.ACTION_QUAD_TO)
+            {
+                path += "Q" + temp[1] + " " + temp[2] + " " + temp[3] + " " + temp[4];
+                context.quadraticCurveTo(temp[1],temp[2],temp[3],temp[4]);
+            }
+            else if(temp[0]===ActionTypes.ACTION_ARC_TO)
+            {
+                //path += "C" + temp[1] + " " + temp[2] + " " + temp[3] + " " + temp[4] + " " + temp[5];
+                //context.arcTo(temp[1],temp[2],temp[3],temp[4],temp[5]);
+            }
+            else if(temp[0]===ActionTypes.ACTION_ARC)
+            {
+                //context.arc(temp[1],temp[2],temp[3],temp[4],temp[5],temp[6]);
+            }//*/
+        }
+        //TODO: generate path svg element
+        var line = '<path d="' + path + '" ';
+
+        if(strokeWidth)
+            line += 'stroke-width="' + strokeWidth + '"';
+        else 
+            line += 'stroke-width="2"';
+        
+        if(stroke)
+            line += 'stroke="' + stroke + '"';
+            
+        if(this._dashArray !== null)
+            line += 'stroke-dasharray="' + this._dashArray.toString() + '"';
+            
+        if(fill)
+            line += 'fill="' + fill + '"';
+        else
+            line += ' fill="none"';
+        
+        line += '/>';
+        return line;
+        
+    };

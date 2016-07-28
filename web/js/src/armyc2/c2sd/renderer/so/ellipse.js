@@ -62,3 +62,28 @@ armyc2.c2sd.renderer.so.Ellipse = function (x,y,w,h) {
         this.setPath(context);
         context.fill();
     };
+    armyc2.c2sd.renderer.so.Ellipse.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    {
+        var cx = this.rectangle.getCenterX();
+        var cy = this.rectangle.getCenterY();
+        var rx = this.rectangle.getWidth()/2;
+        var ry = this.rectangle.getHeight()/2;
+        var line = '<ellipse cx="' + cx + '" cy="' + cy;
+        line += '" rx="' + rx + '" ry="' + ry + '"';
+        
+        if(strokeWidth)
+            line += ' stroke-width="' + strokeWidth + '"';
+        else 
+            line += ' stroke-width="2"';
+        
+        if(stroke)
+            line += ' stroke="' + stroke + '"';
+            
+        if(fill)
+            line += ' fill="' + fill + '"';
+        else
+            line += ' fill="none"';    
+        
+        line += '/>';
+        return line;
+    };

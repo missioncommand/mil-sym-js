@@ -92,4 +92,26 @@ armyc2.c2sd.renderer.so.Line = function (x1,y1,x2,y2) {
         context.fill();
     };
     
+    armyc2.c2sd.renderer.so.Line.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    {
+        var line = '<line x1="' + this.pt1.getX() + '" y1="' + this.pt1.getY();
+        line += '" x2="' + this.pt2.getX() + '" y2="' + this.pt2.getY() + '"';
+        
+        if(strokeWidth)
+            line += ' stroke-width="' + strokeWidth + '"';
+        else 
+            line += ' stroke-width="2"';
+        
+        if(stroke)
+            line += ' stroke="' + stroke + '"';
+            
+        if(fill)
+            line += ' fill="' + fill + '"';
+        else
+            line += ' fill="none"';
+        
+        line += '/>';
+        return line;
+    };
+    
 	// </editor-fold>

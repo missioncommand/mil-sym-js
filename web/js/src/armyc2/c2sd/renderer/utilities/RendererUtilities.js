@@ -7,6 +7,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
     //private vars
     var pastTextMeasurements = {};
+    var fullFontMeasurements = {};
     var pastIdealOutlineColors = {};
     var FillPatterns = armyc2.c2sd.renderer.utilities.FillPatterns || null;
     
@@ -80,7 +81,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
 
     /**
      * 
-     * @param {type} font
+     * @param {type} font like "bold 9pt Arial, sans-serif"
      * @param {string} text include if you want a width value
      * @returns {armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.end|Number|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.row|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.height|armyc2.c2sd.renderer.utilities.RendererUtilities.getFontHeightAndDescent.start}
      */
@@ -126,7 +127,8 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
         return {width:textWidth,height:height,descent:descent,fullHeight:fullHeight};
             
     };
-	
+    
+
 	/**
      * Clients should use getTextBounds
      * Not accurate but good to check if the rendering fonts have been loaded
@@ -607,6 +609,89 @@ return{
         }
         pastTextMeasurements[fontString] = {height:size.height,fullHeight:size.fullHeight,descent:size.descent};//size[1];
         return size.descent;//size[1];
+    },
+    
+        /**
+     * Measures chars 33 to 127 of a font for use in measureStringNoDOM.
+     * 
+     */
+    measureFont: function(font)
+    {     
+        if(fullFontMeasurements[font])
+        {
+            return fullFontMeasurements[font];
+        }   
+        else
+        {
+            var width = 100,
+            height = 100;
+
+            _ctx.textBaseline = "top";
+            _ctx.font = font;
+
+            _ctx.fillStyle = 'black';
+            _ctx.fillRect(0,0,width,height);
+            _ctx.fillStyle = 'white';
+            
+            _ctx.fillText("M",0,0);
+            
+
+            var mWidth = Math.ceil(_ctx.measureText("M").width);//highest character
+            var gWidth = Math.ceil(_ctx.measureText("g").width);//lowest character
+            
+            var pixels = _ctx.getImageData(0,0,width,height).data;
+            
+            var mtb = scanForCharTopAndBottom(pixels,width,height, mWidth);
+
+            _ctx.fillStyle = 'black';
+            _ctx.fillRect(0,0,width,height);
+            _ctx.fillStyle = 'white';
+            
+            _ctx.fillText("g",0,0);
+            pixels = _ctx.getImageData(0,0,width,height).data;
+            
+            var gtb = scanForCharTopAndBottom(pixels,width,height, gWidth);
+
+            var height = mtb.bottom - mtb.top;
+            var descent = gtb.bottom - mtb.bottom;
+            var fullHeight = gtb.bottom - mtb.top;
+            
+            var textWidth = 0;
+                
+            //measure letter widths
+            var widths = {};
+            var letter = null;
+            for(var i = 32; i < 127; i++)
+            {
+                letter = String.fromCharCode(i);
+                widths[letter] = _ctx.measureText(letter).width;
+            }
+            
+            fullFontMeasurements[font] = {widths:widths,height:height,descent:descent,fullHeight:fullHeight}; 
+            return fullFontMeasurements[font];
+        }
+        
+    },
+    
+    /**
+     * Made with the intent to use in a web worker.
+     * @param {type} font like "bold 9pt Arial, sans-serif"
+     * @param {string} text include if you want a width value
+     */
+    measureStringNoDOM: function(text, measurements)
+    {
+        //get font measurements
+        var widths = measurements.widths; 
+        var width = 0;
+        var length = text.length;
+        for (var i=0; i < length; i++) 
+        {
+            var character = text.charAt(i);
+            widths[character] ? width += widths[character] : widths["W"]; 
+        } 
+        var bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
+                                Math.round(width), fullHeight); 
+        return bounds;
     },
     
     

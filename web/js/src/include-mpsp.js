@@ -97,8 +97,8 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/Color.js" type="text
 document.write('<script src="armyc2/c2sd/renderer/utilities/AffiliationColors.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/MilStdAttributes.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/FillPatterns.js" type="text/javascript" ></script>');
-document.write('<script src="armyc2/c2sd/renderer/utilities/RendererSettings.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/RendererUtilities.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/RendererSettings.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/MilStdSymbol.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/ImageInfo.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/TextInfo.js" type="text/javascript" ></script>');
@@ -171,6 +171,7 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/TGSVGTable.js" type=
 document.write('<script src="armyc2/c2sd/renderer/utilities/UnitSVGTable.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/SymbolSVGDimensions.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/SVGInfo.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/SVGTextInfo.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/SinglePointSVGRenderer.js" type = "text/javascript"></script>');
 document.write('<script src="armyc2/c2sd/renderer/MilStdSVGRenderer.js" type = "text/javascript"></script>');
 

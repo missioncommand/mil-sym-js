@@ -56,6 +56,15 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _SPFontSize = 60,
     _UnitFontSize = 50,
     _PixelSize = 35;
+    
+    try
+    {
+        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+    }
+    catch(err)
+    {
+        
+    }
 
 return{
     
@@ -366,6 +375,8 @@ return{
             _ModifierFontStyle = 'bold';
         }
         _ModifierFont = style + " " + size + "pt " + name;
+        
+        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
     },
     /**
      * 
@@ -426,6 +437,7 @@ return{
 		}
 		var tempSize = Math.round(size * _KMLLabelScale);
         _MPModifierFont = style + " " + tempSize + "pt " + name;
+        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont);
     },
     /**
      * 
@@ -459,6 +471,14 @@ return{
 	getKMLLabelScale: function(){
 		return _KMLLabelScale;
 	},
+    
+    getFontInfo: function (){
+        return {name: _ModifierFontName, size:_ModifierFontSize, style:_ModifierFontStyle, measurements:armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont)};
+    },
+    
+    getMPFontInfo: function (){
+        return {name: _MPModifierFontName, size:_MPModifierFontSize, style:_MPModifierFontStyle, measurements:armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont)};
+    },
 	
     getInstance: function(){
             return armyc2.c2sd.renderer.utilities.RendererSettings;
