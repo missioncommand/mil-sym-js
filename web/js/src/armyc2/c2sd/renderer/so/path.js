@@ -483,7 +483,7 @@ armyc2.c2sd.renderer.so.Path = function () {
 
         if(strokeWidth)
             line += 'stroke-width="' + strokeWidth + '"';
-        else 
+        else if(stroke) 
             line += 'stroke-width="2"';
         
         if(stroke)

@@ -689,8 +689,8 @@ return{
             var character = text.charAt(i);
             widths[character] ? width += widths[character] : widths["W"]; 
         } 
-        var bounds = new armyc2.c2sd.renderer.so.Rectangle(location.getX(),location.getY() - height,
-                                Math.round(width), fullHeight); 
+        var bounds = new armyc2.c2sd.renderer.so.Rectangle(0,0 - measurements.height,
+                                Math.round(width), measurements.fullHeight); 
         return bounds;
     },
     

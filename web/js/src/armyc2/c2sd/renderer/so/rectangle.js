@@ -395,11 +395,11 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         armyc2.c2sd.renderer.so.Rectangle.prototype.toSVGElement = function(stroke, strokeWidth, fill)
         {
             var line = '<rect x="' + this.x + '" y="' + this.y;
-            line += '" width="' + this.width + ' height="' + this.height + '"';
+            line += '" width="' + this.width + '" height="' + this.height + '"';
             
             if(strokeWidth)
                 line += ' stroke-width="' + strokeWidth + '"';
-            else 
+            else if(stroke) 
                 line += ' stroke-width="2"';
             
             if(stroke)

@@ -99,7 +99,7 @@ armyc2.c2sd.renderer.so.Line = function (x1,y1,x2,y2) {
         
         if(strokeWidth)
             line += ' stroke-width="' + strokeWidth + '"';
-        else 
+        else if(stroke) 
             line += ' stroke-width="2"';
         
         if(stroke)

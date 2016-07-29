@@ -94,10 +94,10 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     };
     armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill)
     {
-        var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getX() + '"';
+        var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getY() + '"';
         se += ' font-family="' + this._fontName + '"';
         se += ' font-size="' + this._fontSize + 'pt"';
-        se += ' font-style="' + this._fontName + '"';
+        se += ' font-weight="' + this._fontStyle + '"';
         se += ' text-anchor="' + this._justification + '"';
 
         var seStroke = null, 
@@ -107,7 +107,8 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         {
             seStroke = se + ' stroke="' + stroke + '"';
             if(strokeWidth)
-                seStroke += ' stroke-width="' + strokeWidth + '"';
+                seStroke += ' stroke-width="' + (strokeWidth + 2) + '"';
+            seStroke += ' fill="none"';
             seStroke += '>';
             seStroke += this._text;
             seStroke += '</text>';
@@ -115,16 +116,16 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
             
         if(fill)
         {
-            seFill += ' fill="' + fill + '"';
+            seFill = se + ' fill="' + fill + '"';
             seFill += '>';
             seFill += this._text;
             seFill += '</text>';
         }
         
         if(stroke && fill)
-            se = stroke + fill;
+            se = seStroke + seFill;
         else if(fill)
-            se = fill;
+            se = seFill;
         else
             se = "";
         return se;

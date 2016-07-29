@@ -474,7 +474,7 @@ return{
                     y = symbolBounds.getY();
                     height = Math.round(symbolBounds.getHeight());
                     width = Math.round(symbolBounds.getWidth())-1;
-                    bottomY = y+height+1;
+                    bottomY = y+height+2;
             
                 if(symbolID.charAt(10)===("M")){
                 
@@ -1058,7 +1058,7 @@ return{
                 {
                     //6th height, 3rd width
                     height = Math.round(symbolBounds.getHeight() / 6);
-                    width = Math.round(symbolBounds.getWidth() / 3);  
+                    width = Math.round(symbolBounds.getWidth() / 3 * 0.9);  
                 }
                 else if(affiliation === 'N' || affiliation === 'L')//neutral,exercise neutral
                 {
@@ -1103,7 +1103,7 @@ return{
                 }
                 else if(affiliation === 'H' || affiliation === 'S')//hostile,suspect
                 {
-                    instRectangle = new SO.Rectangle(symbolBounds.getX() + width,
+                    instRectangle = new SO.Rectangle(symbolBounds.getCenterX() - width/2,
                         Math.round(symbolBounds.getY() - (height * 0.15)),
                         width,
                         height);

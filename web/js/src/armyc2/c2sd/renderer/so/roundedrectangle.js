@@ -96,13 +96,13 @@ armyc2.c2sd.renderer.so.RoundedRectangle = function (x,y,w,h,radius) {
     
     armyc2.c2sd.renderer.so.RoundedRectangle.prototype.toSVGElement = function(stroke, strokeWidth, fill)
     {  
-        var line = '<rect x="' + this.x + '" y="' + this.y;
-        line += '" rx="' + r + '" ry="' + r;
-        line += '" width="' + this.width + ' height="' + this.height + '"';
+        var line = '<rect x="' + this.rectangle.getX() + '" y="' + this.rectangle.getY();
+        line += '" rx="' + this.radius + '" ry="' + this.radius;
+        line += '" width="' + this.rectangle.getWidth() + '" height="' + this.rectangle.getHeight() + '"';
         
         if(strokeWidth)
             line += ' stroke-width="' + strokeWidth + '"';
-        else 
+        else if(stroke) 
             line += ' stroke-width="2"';
         
         if(stroke)

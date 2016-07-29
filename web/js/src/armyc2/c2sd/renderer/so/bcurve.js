@@ -84,24 +84,21 @@ armyc2.c2sd.renderer.so.BCurve = function (x1,y1,x2,y2,x3,y3,x4,y4) {
     {
         // Q400,50 600,300
         var path = '<path d="M' + this.x1 + ' ' + this.y1;
-        path += "C" + this.x2 + " " + this.y2 + " " + this.x3 + " " + this.y3 + " " + this.x4 + " " + this.y4;
-        
-        //TODO: generate path svg element
-        var line = '<rect x="' + this.x + '" y="' + this.y;
-        path += '" width="' + this.width + ' height="' + this.height + '"';
-        
-        if(strokeWidth)
-            path += ' stroke-width="' + strokeWidth + '"';
-        else 
-            path += ' stroke-width="2"';
-        
+        path += "C" + this.x2 + " " + this.y2 + " " + this.x3 + " " + this.y3 + " " + this.x4 + " " + this.y4 + '"';
+                
         if(stroke)
             path += ' stroke="' + stroke + '"';
-            
+        
+        if(strokeWidth)
+            path += ' stroke-width="' + (strokeWidth) + '"';
+        else if(stroke) 
+            path += ' stroke-width="2"';
+        
+                    
         if(fill)
             path += ' fill="' + fill + '"';
         else
-            line += ' fill="none"';
+            path += ' fill="none"';
         
         path += '/>';
         return path;

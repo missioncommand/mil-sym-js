@@ -663,12 +663,12 @@ return{
                             
                         case "MY":
                             var incrementX = width / 7,
-                            middleY = (bottomY + (rrHeight/2));
+                            tY = bottomY,
+                            mY = (bottomY + (rrHeight/2)),
+                            bY = mY + (rrHeight/2);
+                            
 
-                            var x = Math.round(x + (incrementX/2));
-                            var r = Math.round(incrementX/2);
-
-                            var path = new SO.Path();
+                            /*var path = new SO.Path();
                             path.arc(x,middleY,r,180,0);
                             path.arc(x + incrementX,middleY,r,180,0, true);
                             path.arc(x + incrementX*2,middleY,r,180,0);
@@ -676,7 +676,19 @@ return{
                             path.arc(x + incrementX*4,middleY,r,180,0);
                             path.arc(x + incrementX*5,middleY,r,180,0,true);
                             path.arc(x + incrementX*6,middleY,r,180,0);
+                            shapes.push(path);//*/
+                            
+                            var path = new SO.Path();
+                            path.moveTo(x,mY);
+                            path.bezierCurveTo(x,tY, x + incrementX, tY,x + incrementX, mY);
+                            path.bezierCurveTo(x + incrementX,bY, x + incrementX*2, bY,x + incrementX*2, mY);
+                            path.bezierCurveTo(x + incrementX*2,tY, x + incrementX*3, tY,x + incrementX*3, mY);
+                            path.bezierCurveTo(x + incrementX*3,bY, x + incrementX*4, bY,x + incrementX*4, mY);
+                            path.bezierCurveTo(x + incrementX*4,tY, x + incrementX*5, tY,x + incrementX*5, mY);
+                            path.bezierCurveTo(x + incrementX*5,bY, x + incrementX*6, bY,x + incrementX*6, mY);
+                            path.bezierCurveTo(x + incrementX*6,tY, x + incrementX*7, tY,x + incrementX*7, mY);
                             shapes.push(path);
+                            
                             break;
                             
                         default:
@@ -942,7 +954,7 @@ return{
                 {
                     //6th height, 3rd width
                     height = Math.round(symbolBounds.getHeight() / 6);
-                    width = Math.round(symbolBounds.getWidth() / 3);  
+                    width = Math.round(symbolBounds.getWidth() / 3 * 0.9);  
                 }
                 else if(affiliation === 'N' || affiliation === 'L')//neutral,exercise neutral
                 {
@@ -987,7 +999,7 @@ return{
                 }
                 else if(affiliation === 'H' || affiliation === 'S')//hostile,suspect
                 {
-                    instRectangle = new SO.Rectangle(symbolBounds.getX() + width,
+                    instRectangle = new SO.Rectangle(symbolBounds.getCenterX() - width/2,
                         Math.round(symbolBounds.getY() - (height * 0.15)),
                         width,
                         height);
@@ -1109,7 +1121,8 @@ return{
             // 
             // <editor-fold defaultstate="collapsed" desc="Shift Modifiers">
             //adjust points if necessary
-            if(imageBounds.getX() < 0 || imageBounds.getY() < 0)
+            //translation group added in renderUnit, don't shift anything here.
+            /*if(imageBounds.getX() < 0 || imageBounds.getY() < 0)
             {
                 var shiftX = Math.abs(imageBounds.getX()),
                     shiftY = Math.abs(imageBounds.getY());
@@ -1119,7 +1132,7 @@ return{
                 centerPoint.shift(shiftX, shiftY);
                 symbolBounds.shift(shiftX, shiftY);
                 imageBounds.shift(shiftX, shiftY);
-            }
+            }//*/
             // </editor-fold>
 
             // <editor-fold defaultstate="collapsed" desc="Draw Modifiers">

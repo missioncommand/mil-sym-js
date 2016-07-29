@@ -73,7 +73,7 @@ armyc2.c2sd.renderer.so.Ellipse = function (x,y,w,h) {
         
         if(strokeWidth)
             line += ' stroke-width="' + strokeWidth + '"';
-        else 
+        else if(stroke)
             line += ' stroke-width="2"';
         
         if(stroke)
