@@ -832,6 +832,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 if(lineType === 14000002) //for square
                     AM[1]=AM[0];
+                if(AN===null || AN===undefined)                
+                    AN=new Array();
+                if(AN.length<1)
+                    AN[0]=0;
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)
                 {
                     strT1 = AM[0];
