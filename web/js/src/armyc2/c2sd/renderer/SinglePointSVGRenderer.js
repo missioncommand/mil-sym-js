@@ -70,7 +70,7 @@ return{
             fontInfo = RendererSettings.getFontInfo();
         }
         
-        if(render && _bufferUnit === null)
+        /*if(render && _bufferUnit === null)
         {
             _bufferUnit = this.createBuffer(_bufferUnitSize,_bufferUnitSize);
             ctx = _bufferUnit.getContext('2d');
@@ -78,7 +78,7 @@ return{
             ctx.lineJoin = "miter";
             ctx.miterLimit = 3;
             ctx = null;
-        }
+        }//*/
         
         
         if(modifiers === undefined || modifiers === null)
@@ -2022,7 +2022,7 @@ return{
         var buffer = null,
             ctx = null;
         
-        if(_bufferSymbol === null)
+        /*if(_bufferSymbol === null)
         {
             _bufferSymbol = this.createBuffer(_bufferSymbolSize,_bufferSymbolSize);
             var ctx = _bufferSymbol.getContext('2d');
@@ -2030,7 +2030,7 @@ return{
             ctx.lineJoin = "miter";
             ctx.miterLimit = 3;
             ctx = null;
-        }
+        }//*/
 
         var fontSize = 60;
 	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
@@ -3277,7 +3277,7 @@ return{
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Support functions">
-    createBuffer: function(width, height)
+    /*createBuffer: function(width, height)
     {
 	var buffer = _document.createElement('canvas');
 	buffer.width = width;
@@ -3285,7 +3285,7 @@ return{
         
 	return buffer;
 	
-    },
+    },//*/
     getYPositionForSCC: function(symbolID)
     {
         var yPosition = 0.32;

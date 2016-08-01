@@ -3602,4 +3602,4 @@ armyc2.c2sd.renderer.xml.TacticalGraphicsSVG =  {
         "_xmlns:xlink": "http://www.w3.org/1999/xlink",
         "_version": "1.1"
     }
-}
+};

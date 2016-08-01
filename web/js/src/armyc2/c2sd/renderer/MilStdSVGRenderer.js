@@ -73,7 +73,7 @@ return{
     CanRender: function(){
         
     },
-    Render: function(symbolID, modifiers){
+    Render: function(symbolID, modifiers,fontInfo){
         if(!(modifiers))
         {
             modifiers = {};
@@ -103,7 +103,7 @@ return{
             
             if(sd !== null && sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_POINT)
             {
-                return armyc2.c2sd.renderer.SinglePointSVGRenderer.renderSPTG(symbolID, modifiers);
+                return armyc2.c2sd.renderer.SinglePointSVGRenderer.renderSPTG(symbolID, modifiers, fontInfo);
             }
             else
             {
@@ -112,16 +112,16 @@ return{
         }
         else if(UnitFontLookup.hasUnitLookup(basicID,symStd))
         {
-            return SinglePointSVGRenderer.renderUnit(symbolID, modifiers);
+            return SinglePointSVGRenderer.renderUnit(symbolID, modifiers, fontInfo);
         }
         else if(SymbolUtilities.is3dAirspace(symbolID))
         {
-            return renderTacticalMultipointIcon(symbolID, modifiers);
+            return renderTacticalMultipointIcon(symbolID, modifiers, fontInfo);
         }
         else
         {
             symbolID = SymbolUtilities.reconcileSymbolID(symbolID,false);
-            return SinglePointSVGRenderer.renderUnit(symbolID, modifiers);
+            return SinglePointSVGRenderer.renderUnit(symbolID, modifiers, fontInfo);
         }
     },
 };

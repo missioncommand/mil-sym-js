@@ -67,6 +67,58 @@
             <fileset file="web/js/src/renderer-jquery-plugin.js" />
         </concat>
         
+        <concat destfile="build/single-body-svg.js">
+            <!-- Single Point Rendering imports -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/rectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/roundedrectangle.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/ellipse.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/arc.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/bcurve.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/line.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/path.js" />
+        
+            <!-- Rendering Utility imports -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TextInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersUnits.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/singlepointlookupinfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/unitfontlookupinfo.js" />
+        
+            <!-- Rendering & XML lookup imports  -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TacticalGraphicLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SinglePointLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitDefTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitFontLookup.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDimensions.js" />
+        
+            <!-- Top level Renderer classes -->
+            <!-- <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
+            <fileset file="web/js/src/renderer-jquery-plugin.js" /> -->
+            
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SinglePointSVG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/TacticalGraphicsSVG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/xml/UnitFontSVG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SPSVGTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TGSVGTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitSVGTable.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolSVGDimensions.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGTextInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointSVGRenderer.js"/>
+            <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdSVGRenderer.js"/>
+        </concat>
+        
 
         <concat destfile="build/multi-body.js">
             <!--Core classes for j2slib-->   
@@ -499,6 +551,15 @@
         </concat>
     </target>
     
+    <!-- Build single point-only, B and C, jQuery renderer-->
+    <target name="sv-bc">
+        <concat destfile="dist/sv-bc.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/single-body-svg.js" />
+        </concat>
+    </target>
+    
     <!-- Build multi point-only, B-only, no jQuery renderer-->
     <target name="m-b">
         <concat destfile="dist/m-b.js">
@@ -553,6 +614,7 @@
         <antcall target="s-b" />
         <antcall target="s-c" />
         <antcall target="s-bc" />
+        <antcall target="sv-bc" />
         <antcall target="m-b" />
         <antcall target="m-c" />
         <antcall target="m-bc" />

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta line required for IE-->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+<script src="include-mpsp.js" type="text/javascript" ></script>
+<!-- <script src="armyc2\c2sd\renderer\utilities\RendererUtilities.js" type="text/javascript" ></script> -->
+
+
+
+
+ <script type = "text/javascript">
+ 
+function formatKMLForHTML(kml)
+{
+	var formattedKML = "";
+	var tempString = kml;
+	
+	var index = 0;
+	var start = 0;
+
+	var index = tempString.indexOf("<");
+	while(index >=0)
+	{
+		tempString = tempString.replace("<","&lt;");
+		start = index+1;
+		index = tempString.indexOf("<", start);
+	}
+	var index = tempString.indexOf(">");
+	while(index >=0)
+	{
+		tempString = tempString.replace(">","&gt;");
+		start = index+1;
+		index = tempString.indexOf(">", start);
+	}
+
+	formattedKML = tempString;
+	
+	return formattedKML;
+}
+function cleartext()
+{
+	//alert('clr');
+	document.getElementById("contentSpan").innerHTML = "";
+	return;
+}
+function getFontInfo(name, size, style){
+    _ModifierFontName = name;
+    _ModifierFontSize = size;
+    if(style !== 'bold' || style !== 'normal')
+    {
+        _ModifierFontStyle = style;
+    }
+    else
+    {
+        _ModifierFontStyle = 'bold';
+    }
+    _ModifierFont = style + " " + size + "pt " + name;
+    
+    var measurements = armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+    return {name: name, size:size, style:style, measurements:measurements};
+}
+function testRender()
+{
+    //var rendererMP = document.getElementById("SECRenderApplet");
+	//var rendererMP = new sec.web.renderer.SECWebRenderer();
+        //var rendererMP = sec.web.renderer.SECWebRenderer;
+
+        //var rendererSPSVG = armyc2.c2sd.renderer.MilStdSVGRenderer;//.Render(symbolID,modifiers);
+
+		var start = Date.now();
+
+		
+        var fontInfo = this.getFontInfo("Arial",10,"bold");
+
+armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender","Unit");
+		//UNIT RANGE FAN EXAMPLE
+
+		var symbolCode = "SFGPU-----****X"; //sector range fan
+
+		var modifiers = {"SIZE":100};
+
+		//webworker sector range fan test
+		//web worker assumes defaults.  you must pass any relevant overrides like symstd.
+		var json5;
+		var data = {};
+		data.id = "ID";
+		data.symbolID = symbolCode;
+		data.modifiers = modifiers;
+        data.fontInfo = fontInfo;
+	
+		
+		var worker = new Worker('SPWorker.js');
+		
+		worker.onerror = function(error)
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",error);
+		};
+		worker.onmessage = function(e)
+		{
+			document.getElementById("contentSpan").innerHTML += "<br/><br/>Unit via Web Worker:   <br/>";
+
+			if(e.data.format == "ERROR")
+			{
+				document.getElementById("contentSpan").innerHTML += e.data.result;
+				if(e.data.stack !== null)
+				{
+					document.getElementById("contentSpan").innerHTML += ("<br/>at " + e.data.stack);
+				}
+			}
+			else
+			{
+                var svg = e.data.svg;
+                document.getElementById("contentSpan").innerHTML += svg;
+			}
+			
+			
+		};//*/
+		
+		//send data to web renderer
+		worker.postMessage(data);
+		
+ /*
+		try
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",new Error("error test"));
+		}
+		catch(error)
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",error);
+		}
+		
+    } //end if//*/
+}
+
+	</script>
+</head>
+<body>
+
+    <button type='button' onclick='testRender()'>Test Single Point SVG</button>
+	<button type='button' onclick='cleartext()'>Clear</button>
+	
+   <span id='contentSpan'/>
+   
+   
+   
+
+</body>
+
+</html>
