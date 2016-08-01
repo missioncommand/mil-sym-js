@@ -26,18 +26,18 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         this._justification = "start";
     
     this._bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.measureStringNoDOM(text,fontInfo.measurements);
-    this._bounds.setLocation(anchorPoint.getX(),anchorPoint.getY());    
+    this._bounds.setLocation(this._anchor.getX(),this._anchor.getY());    
     if(this._justification === "start")
     {
-        this._bounds.shift(0,anchorPoint.getX() - fontInfo.measurements.height);    
+        this._bounds.shift(0,this._anchor.getX() - fontInfo.measurements.height);    
     }
     else if(this._justification === "middle")
     {
-        this._bounds.shift(-(this._bounds.getWidth()/2),anchorPoint.getY() - fontInfo.measurements.height);
+        this._bounds.shift(-(this._bounds.getWidth()/2),this._anchor.getY() - fontInfo.measurements.height);
     }
     else if(this._justification === "end")
     {
-        this._bounds.shift(-this._bounds.getWidth(),anchorPoint.getY() - fontInfo.measurements.height);
+        this._bounds.shift(-this._bounds.getWidth(),this._anchor.getY() - fontInfo.measurements.height);
     }
     
     
@@ -59,8 +59,13 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     };
     armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.getOutlineBounds = function()
     {
-        var outlineOffset = armyc2.c2sd.renderer.utilities.RendererSettings.getTextOutlineWidth();
+        var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
+        var outlineOffset = RS.getTextOutlineWidth();
 
+        var tbm = RS.getTextBackgroundMethod();
+        if(tbm === RS.TextBackgroundMethod_OUTLINE || 
+            tbm === RS.TextBackgroundMethod_OUTLINE_QUICK)
+            outlineOffset += 2;   
         if(outlineOffset > 0)
         {//adjust bounds if an outline value is set.
             var bounds = new armyc2.c2sd.renderer.so.Rectangle(

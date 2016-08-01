@@ -374,7 +374,6 @@ return{
         var svgElementInfo = null;
         var svgElementsDOM = [];
         
-        hasTextModifiers=false;
         if(hasDisplayModifiers===true)
             svgElementInfo = this.processUnitDisplayModifiers(si, symbolID, modifiers, fontInfo);
        
@@ -401,14 +400,23 @@ return{
         // <editor-fold defaultstate="collapsed" desc="Process Text Modifiers">
         
         if(hasTextModifiers===true)
-        {   
-            svgElementInfo = this.processUnitModifiers(symbolID,modifiers,symbolBounds, imageBounds, svgElements, svgElementInfo.hasDOMArrow);
+        {   //processUnitModifiers: function(si, symbolID, modifiers, fontInfo)
+            si = new SVGInfo("",centerPoint,symbolBounds,imageBounds);
+            svgElementInfo = this.processUnitModifiers(si,symbolID,modifiers,fontInfo);
             //centerPoint = svgElementInfo.centerPoint;
-            svgElements = svgElementInfo.svgElements;
-            imageBounds = svgElementInfo.imageBounds;
+            
+            if(svgElementInfo !== null)
+            {
+                svgTextElements = svgElementInfo.svgElements;
+                if(svgTextElements !== null && svgTextElements.length > 0)
+                {
+                    imageBounds.union(svgElementInfo.modifierBounds);
+                    svgElements.push(svgTextElements);
+                }                
+            }
         }
         var returnSVG = "";
-        if(svgElements.length > 0)
+        if(svgElements.length > 0 || svgElementsDOM.length > 0)
         {
             var domSE = [];
             for(var k = 0; k < svgElements.length; k++)
@@ -418,8 +426,8 @@ return{
             returnSVG += seGroupUnit + "\n";
             if(svgElementsDOM.length > 0)
             {
-                returnSVG += svgElements[0] + "\n";
-                returnSVG += svgElements[1] + "\n";
+                returnSVG += svgElementsDOM[0] + "\n";
+                returnSVG += svgElementsDOM[1] + "\n";
             }
             
             //make group with translation
@@ -1287,7 +1295,7 @@ return{
                     ctx.fillStyle = statusColor;
                     ociShape.fill(ctx);//*/
                     
-                    svgElements.push(tempShape.toSVGElement('#000000',2,statusColor));
+                    svgElements.push(ociShape.toSVGElement('#000000',1,statusColor));
 
                     ociBounds = null;
                     ociShape = null;
@@ -1296,18 +1304,11 @@ return{
                 
                 if(domBounds !== null)
                 {
-                    ctx.lineWidth = 2;
+                    /*ctx.lineWidth = 2;
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
-                    ctx.beginPath();
-                    ctx.moveTo(domPoints[0].getX(),domPoints[0].getY());
-                    if(domPoints[1] !== null)
-                        ctx.lineTo(domPoints[1].getX(),domPoints[1].getY());
-                    if(domPoints[2] !== null)
-                        ctx.lineTo(domPoints[2].getX(),domPoints[2].getY());
-                    ctx.stroke();
-                    
+                    ctx.strokeStyle = "#000000";//*/
+                                        
                     var linePath = new SO.Path();
                     linePath.moveTo(domPoints[0].getX(),domPoints[0].getY());
                     if(domPoints[1] !== null)
@@ -1330,15 +1331,15 @@ return{
             // </editor-fold>
             
             // <editor-fold defaultstate="collapsed" desc="Cleanup">
-                domBounds = null;
                 domPoints = null;
                 shapes = null;
                 ctx = null;
                 buffer = null;
+                var hasDOMArrow = domBounds ? true : false;
+                domBounds = null;
             // </editor-fold>
             
             //return ;
-            var hasDOMArrow = domBounds ? true : false;
             if(svgElements !== null && svgElements.length > 0)
                 return {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow};
             else
@@ -1387,12 +1388,12 @@ return{
     
     /**
      * 
-     * @param {ImageInfo} ii
+     * @param {SVGInfo} ii
      * @param {String} symbolID
      * @param {type} modifiers
      * @returns {ImageInfo}
      */
-    processUnitModifiers: function(si, symbolID, modifiers,fontInfo){
+    processUnitModifiers: function(si, symbolID, modifiers, fontInfo){
         
         var render = true;
         if(modifiers["RENDER"] !== undefined)
@@ -1405,6 +1406,7 @@ return{
         x = 0,
         y = 0,//best y
         cpofNameX = 0,
+        svgElements = [],
         newii = null;
         
         /*var outlineSize = 0;
@@ -1423,17 +1425,18 @@ return{
         
         var tiArray = new Array(),
         
-            descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj"),
+            descent = fontInfo.measurements.descent,
         
             bounds = null,
             labelBounds = null,
             labelWidth, labelHeight;
         
-        var bounds = ii.getSymbolBounds().clone(),
-            symbolBounds = ii.getSymbolBounds().clone(),
-            centerPoint = ii.getCenterPoint(),
-            imageBounds = ii.getImageBounds().clone(),
-            imageBoundsOld = ii.getImageBounds().clone();
+        var bounds = si.getSymbolBounds().clone(),
+            imageBounds = si.getSVGBounds().clone(),
+            symbolBounds = si.getSymbolBounds().clone();
+            /*centerPoint = si.getAnchorPoint(),
+            imageBounds = si.getImageBounds().clone(),
+            imageBoundsOld = si.getImageBounds().clone();//*/
     
         var echelon = SymbolUtilities.getEchelon(symbolID),
             echelonText = SymbolUtilities.getEchelonText(echelon),
@@ -1463,16 +1466,14 @@ return{
                 if(x < bounds.x)
                     bounds.shiftTL(x,0);
             }    
-        }
+        }//*/
             
         
         cpofNameX = bounds.x + bounds.width + bufferXR;
         
         //check if text is too tall:
         var byLabelHeight = false;
-        labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
-                                RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle()).fullHeight;
+        labelHeight = fontInfo.measurements.fullHeight;
         var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
@@ -1516,8 +1517,8 @@ return{
         {
             var text = modifiers[ModifiersUnits.C_QUANTITY];
             //bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextOutlineBounds(textInfoContext, text, new SO.Point(0,0));
-            tiTemp = new TextInfo(text,0,0,textInfoContext,textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(text,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             x = Math.round((symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5));
             y = Math.round(symbolBounds.y - bufferY - descent);
@@ -1545,18 +1546,18 @@ return{
             else if(xm !== null && ym !== null)
                 modifierValue = xm + "  " + ym;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             if(!byLabelHeight)
             {
-                x = bounds.x - labelBounds.width - bufferXL;
+                x = bounds.x - bufferXL;
                 y = bounds.y + labelHeight - descent;
             }
             else
             {
-                x = bounds.x - labelBounds.width - bufferXL;
+                x = bounds.x - bufferXL;
 
                 y = (bounds.height );
                 y = ((y * 0.5) + (labelHeight * 0.5));
@@ -1573,8 +1574,8 @@ return{
         {
             modifierValue = modifiers.G;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             if(!byLabelHeight)
@@ -1605,12 +1606,12 @@ return{
         {
             modifierValue = modifiers.V;
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
           
-            x = bounds.x - labelBounds.width - bufferXL;
+            x = bounds.x - bufferXL;
 
             y = (bounds.height );//checkpoint, get box above the point
             y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
@@ -1625,8 +1626,8 @@ return{
         {
             modifierValue = modifiers.H;
 
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             x = bounds.x + bounds.width + bufferXR;
@@ -1647,18 +1648,18 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.T_UNIQUE_DESIGNATION_1];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             if(!byLabelHeight)
             {
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 y = bounds.y + bounds.height;
             }
             else
             {
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                     
                 y = (bounds.height );
                 y = ((y * 0.5) + (labelHeight * 0.5));
@@ -1684,8 +1685,8 @@ return{
                 modifierValue += modifiers[ModifiersUnits.CC_COUNTRY_CODE];
             }
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             x = bounds.x + bounds.width + bufferXR;
@@ -1712,11 +1713,11 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
-            x = bounds.x - labelWidth - bufferXL;
+            x = bounds.x - bufferXL;
             if(!byLabelHeight)
                 y = Math.round(bounds.y + bounds.height + labelHeight + bufferText);
             else
@@ -1772,8 +1773,8 @@ return{
             if(modifierValue.charAt(0)===" ")
                 modifierValue = modifierValue.substring(1);
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             x = bounds.x + bounds.width + bufferXR;
@@ -1800,18 +1801,18 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.W_DTG_1];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             if(!byLabelHeight)
             {
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 y = bounds.y - bufferY - descent;
             }
             else
             {
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
 
                 y = (bounds.height );
                 y = ((y * 0.5) + (labelHeight * 0.5));
@@ -1859,8 +1860,8 @@ return{
                     modifierValue = F;
             }
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             if(!byLabelHeight)
@@ -1891,8 +1892,8 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             x = (symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5);
@@ -1909,8 +1910,8 @@ return{
         {
             modifierValue = modifiers[ModifiersUnits.CN_CPOF_NAME_LABEL];
             
-            tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-            labelBounds = tiTemp.getTextBounds();
+            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+            labelBounds = tiTemp.getBounds();
             labelWidth = labelBounds.getWidth();
             
             x = cpofNameX;
@@ -1936,8 +1937,8 @@ return{
                     
                     var yPosition = this.getYPositionForSCC(symbolID);
                      
-                    tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
-                    labelBounds = tiTemp.getTextBounds();
+                    tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+                    labelBounds = tiTemp.getBounds();
                     labelWidth = labelBounds.getWidth();
                     
                     x = (bounds.x + (bounds.width * 0.5)) - (labelWidth * 0.5);
@@ -1957,71 +1958,33 @@ return{
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="Shift Points and Draw">
-            var modifierBounds = null;
-            if(tiArray !== null && tiArray.length > 0)
-            {
+        var modifierBounds = null;
+        if(tiArray !== null && tiArray.length > 0)
+        {
 
-                //build modifier bounds/////////////////////////////////////////
-                modifierBounds = tiArray[0].getTextOutlineBounds();
-                var size = tiArray.length;
-                var tempShape = null;
-                for(var i=1; i<size;i++)
-                {
-                    tempShape = tiArray[i];
-                    modifierBounds.union(tempShape.getTextOutlineBounds());
-                }
-                
+            //build modifier bounds/////////////////////////////////////////
+            modifierBounds = tiArray[0].getOutlineBounds();
+            var size = tiArray.length;
+            var tempShape = null;
+            if(modifiers[MilStdAttributes.TextColor])
+                textColor = modifiers[MilStdAttributes.TextColor];
+            else
+                textColor = "#000000";
+            if(modifiers[MilStdAttributes.TextBackgroundColor])
+                textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
+            else
+                textBackgroundColor = RendererUtilities.getIdealOutlineColor(textColor,true);
+            var outlineWidth = RendererSettings.getTextOutlineWidth();
+            for(var i=0; i<size;i++)
+            {
+                tempShape = tiArray[i];
+                modifierBounds.union(tempShape.getOutlineBounds());
+                svgElements.push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
             }
+            
+        }
 
             
-            if(modifierBounds !== null){
-
-                imageBounds.union(modifierBounds);
-
-                //shift points if needed////////////////////////////////////////
-                if(imageBounds.getX() < 0 || imageBounds.getY() < 0)
-                {
-                    var shiftX = Math.round(Math.abs(imageBounds.getX())),
-                        shiftY = Math.round(Math.abs(imageBounds.getY()));
-
-                    //shift mobility points
-                    var size = tiArray.length;
-                    var tempShape = null;
-                    for(var i=0; i<size;i++)
-                    {
-                        tempShape = tiArray[i];
-                        tempShape.shift(shiftX,shiftY);
-                    }
-                    modifierBounds.shift(shiftX,shiftY);
-
-                    //shift image points
-                    centerPoint.shift(shiftX, shiftY);
-                    symbolBounds.shift(shiftX, shiftY);
-                    imageBounds.shift(shiftX, shiftY);
-                    imageBoundsOld.shift(shiftX, shiftY);
-                }
-
-                if(render === true)
-                {
-					if(modifiers[MilStdAttributes.TextColor])
-						textColor = modifiers[MilStdAttributes.TextColor];
-					if(modifiers[MilStdAttributes.TextBackgroundColor])
-						textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
-					
-                    var buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
-                    var ctx = buffer.getContext('2d');
-
-                    //draw original icon with potential modifiers.
-                    ctx.drawImage(ii.getImage(),imageBoundsOld.getX(),imageBoundsOld.getY());
-
-                    this.renderText(ctx,tiArray,textColor,textBackgroundColor);
-                    
-                }
-
-                newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
-                
-            }
-            // </editor-fold>
             
         // <editor-fold defaultstate="collapsed" desc="Cleanup">
         tiArray = null;
@@ -2031,8 +1994,14 @@ return{
         ctx = null;
         buffer = null;
         // </editor-fold>
-            
-            return newii;
+        if(svgElements.length > 0)
+        {
+            return {svgElements:svgElements, modifierBounds:modifierBounds};
+        }
+        else
+        {
+            return null;            
+        }
     },
             
     // </editor-fold>

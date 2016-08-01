@@ -683,11 +683,11 @@ return{
         //get font measurements
         var widths = measurements.widths; 
         var width = 0;
-        var length = text.length;
+        var length = text.length-1;
         for (var i=0; i < length; i++) 
         {
             var character = text.charAt(i);
-            widths[character] ? width += widths[character] : widths["W"]; 
+            widths[character] ? width += (widths[character] + 1) : widths["W"]; 
         } 
         var bounds = new armyc2.c2sd.renderer.so.Rectangle(0,0 - measurements.height,
                                 Math.round(width), measurements.fullHeight); 
