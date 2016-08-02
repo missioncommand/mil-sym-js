@@ -1,17 +1,33 @@
-/* expected input format
+/* expected input format for non-batch
 var e.data = {};
 		e.data.id = "ID";
 		e.data.symbolID = "SFGPU----------";//A 15 character symbolID corresponding to one of the graphics in the MIL-STD-2525C
-		e.data.modifiers = modifiers;
+		e.data.modifiers = {ModifiersUnits.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.PixelSize:50};
 */
 
-/* return object
+/* return object for non-batch
 {
     id:e.data.id,//same as what was passed in
     symbolID:e.data.SymbolID,//resultant kml,json or error message
     si:si//SVGInfo object
+    anchorPoint:
+    symbolBounds:
+    imageBounds:
 }
 */
+
+/* expected input format for batch
+var e.data = {};
+        e.data.batch = {fontInfo:fontInfo,batch:[{id:"ID",symbolID:"SFGPU----------",modifiers:{ModifiersUnits.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.PixelSize:50}}]}
+*/
+
+/* return object for batch
+{
+    [{id:batch.id,symbolID:batch.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()}]
+}
+*/
+
+
 
 importScripts('sv-bc.js');
 
@@ -56,19 +72,52 @@ importScripts('sv-bc.js');
 onmessage = function(e)
 {
     var si = null;
+    var batch = null;
 	
     if(e.data !== null)
     {
         try
         {
             
-            var si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(e.data.symbolID,e.data.modifiers,e.data.fontInfo);
-            
-            if(si !== null)
+            if(e.data.batch && e.data.batch.length > 0)
             {
-                //return results
-                postMessage({id:e.data.id,symbolID:e.data.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint()});
+                var batch = e.data.batch;
+                var returnBatch = [];
+                var len = e.data.batch.length;
+                for(var i = 0; i < len; i++)
+                {
+                    si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(batch[i].symbolID,batch[i].modifiers,e.data.fontInfo);
+                    returnBatch.push({id:batch.id,symbolID:batch.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()});
+                }
+                if(si !== null)
+                {
+                    postMessage(returnBatch);
+                }
+                else
+                {
+                    postMessage({error:"no results"});
+                }
             }
+            else if(e.data.id && e.data.symbolID)
+            {
+                si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(e.data.symbolID,e.data.modifiers,e.data.fontInfo);
+            
+                if(si !== null)
+                {
+                    //return results
+                    postMessage({id:e.data.id,symbolID:e.data.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()});
+                }
+                else
+                {
+                    postMessage({error:"no results"});
+                }
+            }
+            else
+            {
+                JSON.stringify(e.data);
+                postMessage({error:"no batch object or symbol information" + JSON.stringify(e.data)});
+            }
+            
             
         }
         catch(err)

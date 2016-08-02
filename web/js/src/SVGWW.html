@@ -11,6 +11,9 @@
 
  <script type = "text/javascript">
  
+ var start = null;
+ var stop = null;
+ 
 function formatKMLForHTML(kml)
 {
 	var formattedKML = "";
@@ -60,7 +63,54 @@ function getFontInfo(name, size, style){
     var measurements = armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
     return {name: name, size:size, style:style, measurements:measurements};
 }
-function testRender()
+ function populateModifiers()
+{
+    var modifiers = {};
+    
+    
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY]=10;
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H_ADDITIONAL_INFO_1] = "H";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H1_ADDITIONAL_INFO_2] = "H1";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H2_ADDITIONAL_INFO_3] = "H2";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.X_ALTITUDE_DEPTH] = "X";//X
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.K_COMBAT_EFFECTIVENESS] = "K";//K
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] = "45";//Q
+
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W_DTG_1] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W1_DTG_2] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W1
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.J_EVALUATION_RATING] = "J";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.M_HIGHER_FORMATION] = "M";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.N_HOSTILE] = "ENY";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.P_IFF_SIF] = "P";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Y_LOCATION] = "Y";
+    
+    //if(symbol.getSymbolID().startsWith("G"))
+        modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY] = "C";
+    
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "(+)";//"RD";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
+    //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE] = "5";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
+    //symbol.symbolicon A
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T_UNIQUE_DESIGNATION_1] = "T";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T1_UNIQUE_DESIGNATION_2] = "T1";
+    modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
+    //*/
+    //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+    
+    //attributes
+    
+    //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#FF00FF";
+    //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#00FF00";
+    
+    //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextColor] = "#FF00FF";
+    //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextBackgroundColor] = "#00FF00";
+    
+    return modifiers;
+}
+function speedTest(modifiersOn)
 {
     //var rendererMP = document.getElementById("SECRenderApplet");
 	//var rendererMP = new sec.web.renderer.SECWebRenderer();
@@ -69,6 +119,104 @@ function testRender()
         //var rendererSPSVG = armyc2.c2sd.renderer.MilStdSVGRenderer;//.Render(symbolID,modifiers);
 
 		var start = Date.now();
+
+		
+        var fontInfo = this.getFontInfo("Arial",10,"bold");
+
+armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender","Unit");
+		//UNIT RANGE FAN EXAMPLE
+
+		var symbolCode = "SFGPU-----****X"; //sector range fan
+
+		var modifiers = {"SIZE":100};
+
+        if(modifiersOn)
+            modifiers = populateModifiers();
+		//webworker sector range fan test
+		//web worker assumes defaults.  you must pass any relevant overrides like symstd.
+		var json5;
+		var data = {};
+		data.id = "ID";
+		data.symbolID = symbolCode;
+		data.modifiers = modifiers;
+        data.fontInfo = fontInfo;
+	
+		
+		var worker = new Worker('SPWorker.js');
+		
+		worker.onerror = function(error)
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",error);
+		};
+		worker.onmessage = function(e)
+		{
+            stop = new Date().getTime();
+            var time = stop - start;
+            alert('Render 1k symbols: ' + (time/1000));//*/
+            
+			document.getElementById("contentSpan").innerHTML += "<br/><br/>Unit via Web Worker:   <br/>";
+
+			if(e.data.format == "ERROR")
+			{
+				document.getElementById("contentSpan").innerHTML += e.data.result;
+				if(e.data.stack !== null)
+				{
+					document.getElementById("contentSpan").innerHTML += ("<br/>at " + e.data.stack);
+				}
+			}
+			else
+			{
+                cleartext();
+                document.getElementById("contentSpan").innerHTML += "<br/>"
+                start = new Date().getTime();
+                for(var j = 0; j < 1000; j++)
+                {
+                    var total = "";
+                    var svg = e.data[j].svg;
+                    total += svg;
+                    if(j % 10 === 0)
+                        total += "<br/>"
+                        
+                    document.getElementById("contentSpan").innerHTML += total;
+                }
+                stop = new Date().getTime();
+                time = stop - start;
+                alert('Add 1k symbols to the dom: ' + (time/1000));//*/
+                
+			}
+			
+			
+		};//*/
+		
+		//send batch data to web renderer
+        var batch = [];
+        for(var i = 0; i < 1000; i++)
+        {
+            batch.push({id:"ID",symbolID:"SFGPU----------",modifiers:modifiers})
+        }
+        start = new Date().getTime();
+		worker.postMessage({fontInfo:fontInfo,batch:batch});
+		
+ /*
+		try
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",new Error("error test"));
+		}
+		catch(error)
+		{
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("SPWorker","postMessage",error);
+		}
+		
+    } //end if//*/
+}
+
+function testRender()
+{
+    //var rendererMP = document.getElementById("SECRenderApplet");
+	//var rendererMP = new sec.web.renderer.SECWebRenderer();
+        //var rendererMP = sec.web.renderer.SECWebRenderer;
+
+        //var rendererSPSVG = armyc2.c2sd.renderer.MilStdSVGRenderer;//.Render(symbolID,modifiers);
 
 		
         var fontInfo = this.getFontInfo("Arial",10,"bold");
@@ -100,7 +248,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 		{
 			document.getElementById("contentSpan").innerHTML += "<br/><br/>Unit via Web Worker:   <br/>";
 
-			if(e.data.format == "ERROR")
+			if(e.data.error)
 			{
 				document.getElementById("contentSpan").innerHTML += e.data.result;
 				if(e.data.stack !== null)
@@ -138,6 +286,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 <body>
 
     <button type='button' onclick='testRender()'>Test Single Point SVG</button>
+    <button type='button' onclick='speedTest(false)'>Speed test 1k SVG batch</button>
+    <button type='button' onclick='speedTest(true)'>Speed test 1k SVG batch with all modifiers</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
 	
    <span id='contentSpan'/>

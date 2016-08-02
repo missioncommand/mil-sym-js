@@ -772,7 +772,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             //they clearly do.
             return true;
         }
-        else if(unitModifier.equals(ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
+        else if(unitModifier === (ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
         {
            if(this.isSubSurface(symbolID))
            {
@@ -1236,14 +1236,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolID === ("WO-DHCW-----A--"))//water
             retColor = armyc2.c2sd.renderer.utilities.Color.GRAY;//0x808080;	// Gray
         else if(
-                    symbolID.equals("WO-DBSM-----A--") ||
-                    symbolID.equals("WO-DBSF-----A--") ||
-                    symbolID.equals("WO-DGMN-----A--")) // 
+                    symbolID === ("WO-DBSM-----A--") ||
+                    symbolID === ("WO-DBSF-----A--") ||
+                    symbolID === ("WO-DGMN-----A--")) // 
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
-                    symbolID.equals("WO-DBSG-----A--")) // 
+                    symbolID === ("WO-DBSG-----A--")) // 
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
@@ -1306,17 +1306,17 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);//light/soft brown
         }
-        else if(symbolID.substring(0,7).equals("WO-DOBVA----A--")
+        else if(symbolID.substring(0,7) === ("WO-DOBVA----A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(26,153,77);//dark green
         }
-        else if(symbolID.substring(0,7).equals("WO-DGMBTI---A--")
+        else if(symbolID.substring(0,7) === ("WO-DGMBTI---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,48,0);//orange red
         }
-        else if(symbolID.substring(0,7).equals("WO-DGMBTH---A--")
+        else if(symbolID.substring(0,7) === ("WO-DGMBTH---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,80,0);//dark orange
