@@ -50,7 +50,7 @@ return{
             ctx.lineCap = "butt";
             ctx.lineJoin = "miter";
             ctx.miterLimit = 5;
-            ctx.fillStyle = color;
+            ctx.fillStyle = color.toHexString(false);
             ctx.font = fontSize + "pt TacticalGraphics";
             if(alpha < 1.0)
                 ctx.globalAlpha = alpha;

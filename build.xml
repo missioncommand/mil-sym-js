@@ -116,6 +116,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGTextInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointSVGRenderer.js"/>
+            <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicSVGRenderer.js"/>
             <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdSVGRenderer.js"/>
         </concat>
         

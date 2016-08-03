@@ -173,5 +173,6 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/SymbolSVGDimensions.
 document.write('<script src="armyc2/c2sd/renderer/utilities/SVGInfo.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/SVGTextInfo.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/SinglePointSVGRenderer.js" type = "text/javascript"></script>');
+document.write('<script src="armyc2/c2sd/renderer/TacticalGraphicSVGRenderer.js" type = "text/javascript"></script>');
 document.write('<script src="armyc2/c2sd/renderer/MilStdSVGRenderer.js" type = "text/javascript"></script>');
 

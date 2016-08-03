@@ -440,10 +440,15 @@ return{
             //combine with returnSVG
             //wrap in SVG tag
             
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
             returnSVG += '</g>';
+            returnSVG += '</svg>';//*/
+            
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox=' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+                        + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
+                        + returnSVG; 
             returnSVG += '</svg>';
         }
         else

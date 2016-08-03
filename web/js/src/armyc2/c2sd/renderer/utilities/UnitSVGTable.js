@@ -35,11 +35,11 @@ armyc2.c2sd.renderer.utilities.UnitSVGTable = (function () {
                 for (i = 0; i < count; i++) {
                     symbol = symbols[i];
                     
-                    if (symbol !== null && symbol["_glyph-name"] !== null && symbol["_glyph-name"].startsWith("uni") && symbol._d != null) 
+                    if (symbol && symbol._unicode && symbol._d) 
                     {
                         
                         data = {};
-                        data.ID = parseInt(symbol["_glyph-name"].replace("uni","0x"));
+                        data.ID = parseInt("0x" + symbol._unicode);
                         data.d = symbol._d;
                         map[data.ID] = data.d;
                     } 

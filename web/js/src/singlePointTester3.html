@@ -253,7 +253,7 @@
             for(var key in symbolMap)
             {
                 def = symbolMap[key];
-                if(def.drawCategory === 8)
+                if(def.drawCategory !== 0)
                 {
                     tmpArray.push([def.description,def.symbolID]);
                 }
