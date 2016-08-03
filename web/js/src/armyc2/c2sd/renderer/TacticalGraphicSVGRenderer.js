@@ -65,8 +65,9 @@ return{
                 symbolBounds = new armyc2.c2sd.renderer.so.Rectangle(0,0,size,size),
                 imageBounds = symbolBounds.clone();
                 
-            var svg = '<svg width="' + size + 'px" height="' + size + 'px" viewbox="-600 -600 1200 1200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
-                        + path + '</svg>'; 
+            var svg = '<svg width="' + size + 'px" height="' + size + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+                      + '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')" >'
+                        + path + '</g></svg>'; 
             
 
             var si = new armyc2.c2sd.renderer.utilities.SVGInfo(svg,centerPoint,symbolBounds,imageBounds);
