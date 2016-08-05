@@ -121,6 +121,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     lCount = armyc2.c2sd.JavaLineArray.countsupport.GetFORTLCountDouble(pLinePoints, lineType, vblSaveCounter);
                     var numGlyphs=0;
+                    var dGlyphSize=0;
 
                     pSpikePoints = new Array(lCount);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSpikePoints);
@@ -140,9 +141,15 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             nCounter++;
                             continue;
                         }
-                        numGlyphs=(dLengthSegment/dIncrement);
-                        if(numGlyphs>3)                
-                            dIncrement=dLengthSegment/numGlyphs;
+                        numGlyphs=Math.floor(dLengthSegment/dIncrement);
+                        //dGlyphSize=dIncrement/2;
+                        dGlyphSize=10;
+                        dIncrement=(dLengthSegment/numGlyphs);
+                        if(dIncrement>25)
+                        {
+                            dIncrement=25;
+                            numGlyphs=Math.floor(dLengthSegment/dIncrement);                    
+                        }
                         //for (k = 0; k < dLengthSegment / 20 - 1; k++) {
                         for (k = 0; k < dLengthSegment / dIncrement - 1; k++) {
                             pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement, 0);
@@ -151,34 +158,36 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - dIncrement/2, 0);
                             nCounter++;
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pSpikePoints[nCounter - 1]);
-                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], 10);
+                            //pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], 10);
+                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], dIncrement/2);
                             if (pLinePoints[j].x > pLinePoints[j + 1].x) {
-                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 3, 10);
+                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 3, dGlyphSize);
                                 nCounter++;
-                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 3, 10);
+                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 3, dGlyphSize);
                                 nCounter++;
                             }
                             if (pLinePoints[j].x < pLinePoints[j + 1].x) {
-                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 2, 10);
+                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 2, dGlyphSize);
                                 nCounter++;
-                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 2, 10);
+                                pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 2, dGlyphSize);
                                 nCounter++;
                             }
                             if (pLinePoints[j].x === pLinePoints[j + 1].x) {
                                 if (pLinePoints[j].y < pLinePoints[j + 1].y) {
-                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 1, 10);
+                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 1, dGlyphSize);
                                     nCounter++;
-                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 1, 10);
+                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 1, dGlyphSize);
                                     nCounter++;
                                 }
                                 if (pLinePoints[j].y > pLinePoints[j + 1].y) {
-                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 0, 10);
+                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 0, dGlyphSize);
                                     nCounter++;
-                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 0, 10);
+                                    pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt1, 0, dGlyphSize);
                                     nCounter++;
                                 }
                             }
-                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, 0);
+                            //pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, 0);
+                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, dIncrement/2);
                             nCounter++;
                         }
                         pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j + 1]);
