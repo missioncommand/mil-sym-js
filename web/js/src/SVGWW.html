@@ -128,7 +128,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 
 		var symbolCode = "SFGPU-----****X"; //sector range fan
 
-		var modifiers = {"SIZE":100};
+		var modifiers = {"SIZE":40};
 
         if(modifiersOn)
             modifiers = populateModifiers();
@@ -152,7 +152,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 		{
             stop = new Date().getTime();
             var time = stop - start;
-            alert('Render 1k symbols: ' + (time/1000));//*/
+            //alert('Render 1k symbols: ' + (time/1000));//*/
+            document.getElementById("contentSpan").innerHTML += 'Render 1k symbols: ' + (time/1000);
             
 			document.getElementById("contentSpan").innerHTML += "<br/><br/>Unit via Web Worker:   <br/>";
 
@@ -181,7 +182,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
                 }
                 stop = new Date().getTime();
                 time = stop - start;
-                alert('Add 1k symbols to the dom: ' + (time/1000));//*/
+                //alert('Add 1k symbols to the dom: ' + (time/1000));//*/
+                document.getElementById("contentSpan").innerHTML += 'Add 1k symbols to the dom: ' + (time/1000);
                 
 			}
 			
