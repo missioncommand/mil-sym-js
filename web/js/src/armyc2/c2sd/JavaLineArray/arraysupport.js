@@ -151,7 +151,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             numGlyphs=Math.floor(dLengthSegment/dIncrement);                    
                         }
                         //for (k = 0; k < dLengthSegment / 20 - 1; k++) {
-                        for (k = 0; k < dLengthSegment / dIncrement; k++) {
+                        for (k = 0; k < Math.floor(dLengthSegment / dIncrement); k++) {
                             pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement, 0);
                             nCounter++;
                             //pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - 10, 0);
