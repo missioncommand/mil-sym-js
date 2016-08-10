@@ -389,91 +389,442 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
         {
             switch(true)
             {
-                case (59080 <= index && index <= 59081)://Action Points
-                case (60080 <= index && index <= 60081)://Action Points
-                case (59085 <= index && index <= 59089):
-                case (60085 <= index && index <= 60089):
-                case (59151 <= index && index <= 59157):
-                case (60151 <= index && index <= 60157):
-                case (59165 <= index && index <= 59197):
-                case (60165 <= index && index <= 60197):
-                case (59091 === index || index === 60091):
-                case (59119 === index || index === 60119):
-                case (59128 === index || index === 60128):
-                case (59142 === index || index === 60142):
-                case (59214 === index || index === 60214):
-                        rect = new Rectangle(-418,-1509,836,1509);
+                case (62000 === index)://low pressure center
+                        rect = new Rectangle(-390,-545,777,1096);
                         break;
-                case (59007 <= index && index <= 59018)://SONOBUOY
-                case (60007 <= index && index <= 60018)://SONOBUOY
-                        rect = new Rectangle(-405,-1196,810,1576);
+                case (62001 === index)://LPC Cyclone Center
+                        rect = new Rectangle(-444,-544,883,1088);
                         break;
-                case (59007 <= index && index <= 59018)://Reference Point
-                case (60007 <= index && index <= 60018):
-                        rect = new Rectangle(-521,-502,1042,1004);
-                        break;  
-                case (59041 <= index && index <= 59045)://Harbor
-                case (60041 <= index && index <= 60045):
-                        rect = new Rectangle(-519,-376,1038,746);
+                case (62002 === index)://LPC TROPOPAUSE LOW
+                        rect = new Rectangle(-452,-424,896,424);
                         break;
-                case (59047 <= index && index <= 59051)://Point Route specific
-                case (60047 <= index && index <= 60051):
-                        rect = new Rectangle(-592,-376,1184,1132);
+                case (62003 === index)://High Pressure Center
+                        rect = new Rectangle(-442,-548,877,1098);
                         break;
-                case (59052 <= index && index <= 59074)://Air Control
-                case (60052 <= index && index <= 60074):
-                        rect = new Rectangle(-480,-705,960,1410);
+                case (62004 === index)://HPC ANTICYCLONE CENTER
+                        rect = new Rectangle(-437,-543,870,1100);
                         break;
-                case (59092 <= index && index <= 59105)://Sea Surface Control Station
-                case (60092 <= index && index <= 60105):
-                        rect = new Rectangle(-480,-705,960,1410);
+                case (62005 === index)://HPC TROPOPAUSE HIGH
+                        rect = new Rectangle(-451,-424,895,859);
+                        break;
+                case (62006 === index)://TURBULENCE - LIGHT
+                        rect = new Rectangle(-645,-358,1287,718);
+                        break;
+                case (62007 === index)://TURBULENCE - Moderate
+                        rect = new Rectangle(-755,-358,1508,718);
+                        break;
+                case (62008 === index)://TURBULENCE - Severe
+                        rect = new Rectangle(-755,-456,1508,1006);
+                        break;
+                case (62009 === index)://TURBULENCE - Extreme
+                        rect = new Rectangle(-755,-556,1508,1118);
+                        break;
+                case (62010 === index)://TURBULENCE - Mountain Waves
+                        rect = new Rectangle(-405,-201,813,402);
+                        break;
+                case (62011 === index)://Clear Icing Light, Moderate, severe
+                case (62012 === index)://Clear Icing Light, Moderate, severe
+                case (62013 === index)://Clear Icing Light, Moderate, severe
+                        rect = new Rectangle(-794,-488,1585,971);
+                        break;
+                case (62014 === index)://Rime Icing Light, Moderate, severe
+                case (62015 === index)://Rime Icing Light, Moderate, severe
+                case (62016 === index)://Rime Icing Light, Moderate, severe
+                        rect = new Rectangle(-794,-488,1585,972);
+                        break;
+                case (62017 === index)://Mixed Icing Light
+                        rect = new Rectangle(-815,-902,1630,1804);
+                        break;
+                case (62018 === index)://Mixed Icing Moderate, severe
+                case (62019 === index)://Mixed Icing Moderate, severe
+                        rect = new Rectangle(-1009,-576,2014,1158);
+                        break;
+                case (62021 <= index && index <= 62026)://Calm Winds
+                        rect = new Rectangle(-640,-641,1283,1281);
+                        break;
+                case (62027 === index)://RAIN - INTERMITTENT LIGHT
+                        rect = new Rectangle(-141,-141,282,282);
+                        break;
+                case (62028 === index)://RAIN - INTERMITTENT Continuous
+                        rect = new Rectangle(-595,-141,1190,282);
+                        break;
+                case (62029 === index)://RAIN - INTERMITTENT moderdate
+                        rect = new Rectangle(-142,-446,284,892);
+                        break;
+                case (62030 === index)://RAIN - INTERMITTENT continuous moderdate
+                        rect = new Rectangle(-425,-370,850,745);
+                        break;
+                case (62031 === index)://RAIN - INTERMITTENT heavy
+                        rect = new Rectangle(-141,-500,282,1000);
+                        break;
+                case (62032 === index)://RAIN - INTERMITTENT continuous heavy
+                        rect = new Rectangle(-570,-446,1140,892);
+                        break;
+                case (62033 === index)://freezing rain
+                case (62034 === index)://
+                        rect = new Rectangle(-800,-413,1600,844);
+                        break;
+                case (62035 === index)://rain showers
+                case (62036 === index)://
+                        rect = new Rectangle(-181,-441,362,893);
+                        break;
+                case (62037 === index)://rain showers
+                        rect = new Rectangle(-181,-615,362,1237);
+                        break;
+                case (62038 === index)://drizzle
+                        rect = new Rectangle(-108,-207,222,430);
+                        break;
+                case (62039 === index)://drizzle
+                        rect = new Rectangle(-354,-207,693,430);
+                        break;
+                case (62040 === index)://drizzle
+                        rect = new Rectangle(-108,-520,222,1041);
+                        break;
+                case (62041 === index)://drizzle
+                        rect = new Rectangle(-354,-471,693,950);
+                        break;
+                case (62042 === index)://drizzle
+                        rect = new Rectangle(-108,-721,222,1446);
+                        break;
+                case (62043 === index)://drizzle
+                        rect = new Rectangle(-449,-576,890,1443);
+                        break;
+                case (62044 === index)://freezing drizzle
+                case (62045 === index)://
+                        rect = new Rectangle(-800,-413,1600,844);
+                        break;
+                case (62046 === index)://rain or drizzle and snow
+                        rect = new Rectangle(-250,-546,500,1085);
+                        break;
+                case (62047 === index)://
+                        rect = new Rectangle(-250,-870,500,1749);
+                        break;
+                case (62048 === index)://
+                        rect = new Rectangle(-250,-787,500,1843);
+                        break;
+                case (62049 === index)://
+                        rect = new Rectangle(-250,-787,500,1828);
+                        break;
+                case (62050 === index)://
+                        rect = new Rectangle(-250,-300,500,600);
+                        break;
+                case (62051 === index)://
+                        rect = new Rectangle(-579,-300,1158,600);
+                        break;
+                case (62052 === index)://
+                        rect = new Rectangle(-250,-655,500,1310);
+                        break;
+                case (62053 === index)://
+                        rect = new Rectangle(-579,-655,1158,1319);
+                        break;
+                case (62054 === index)://
+                        rect = new Rectangle(-250,-1000,500,2009);
+                        break;
+                case (62055 === index)://
+                        rect = new Rectangle(-579,-1000,1158,2009);
+                        break;
+                case (62056 === index)://blowing snow
+                case (62057 === index)://blowing snow
+                        rect = new Rectangle(-557,-559,1117,1114);
+                        break;
+                case (62058 === index)://snow grains
+                        rect = new Rectangle(-702,-336,1404,640);
+                        break;
+                case (62059 === index)://snow showers
+                case (62060 === index)://snow showers
+                        rect = new Rectangle(-180,-441,360,893);
+                        break;
+                case (62061 === index)://snow showers
+                case (62062 === index)://snow showers
+                        rect = new Rectangle(-180,-458,360,910);
+                        break;
+                case (62063 === index)://ice crystals
+                        rect = new Rectangle(-180,-458,360,910);
+                        break;
+                case (62064 === index)://ice pellets
+                        rect = new Rectangle(-400,-336,800,640);
+                        break;
+                case (62065 === index)://ice pellets
+                        rect = new Rectangle(-551,-511,1103,1014);
+                        break;
+                case (62066 === index)://ice pellets
+                        rect = new Rectangle(-551,-671,1103,1362);
+                        break;
+                case (62067 === index)://thunderstorm
+                        rect = new Rectangle(-813,-696,1626,1406);
+                        break;
+                case (62068 === index)://thunderstorm
+                        rect = new Rectangle(-422,-800,850,1600);
+                        break;
+                case (62069 === index)://thunderstorm
+                        rect = new Rectangle(-465,-800,921,1600);
+                        break;
+                case (62070 === index)://thunderstorm
+                        rect = new Rectangle(-379,-800,760,1600);
+                        break;
+                case (62071 === index)://thunderstorm
+                        rect = new Rectangle(-416,-800,821,1600);
+                        break;
+                case (62072 === index)://funnel cloud
+                        rect = new Rectangle(-423,-800,821,1600);
+                        break;
+                case (62073 === index)://squall
+                        rect = new Rectangle(-383,-478,766,939);
+                        break;
+                case (62074 === index)://lightning
+                        rect = new Rectangle(-383,-478,766,939);
+                        break;
+                case (62075 <= index && index <= 62079)://fog
+                        rect = new Rectangle(-450,-490,900,980);
+                        break;
+                case (62080 === index)://fog freezing
+                case (62081 === index)://fog freezing
+                        rect = new Rectangle(-500,-483,766,1000);
+                        break;
+                case (62082 === index)://mist
+                        rect = new Rectangle(-450,-259,900,518);
+                        break;
+                case (62083 === index)://smoke
+                        rect = new Rectangle(-435,-800,868,1600);
+                        break;
+                case (62084 === index)://haze
+                        rect = new Rectangle(-803,-371,1606,742);
+                        break;
+                case (62085 === index)://dust sandstorm
+                case (62086 === index)://dust sandstorm
+                        rect = new Rectangle(-700,-700,1400,1400);
+                        break;
+                case (62087 === index)://dust devil
+                        rect = new Rectangle(-430,-791,848,1597);
+                        break;
+                case (62088 === index)://blowing dust or sand
+                        rect = new Rectangle(-459,-800,918,1600);
+                        break;
+                case (62089 === index)://tropical depression
+                        rect = new Rectangle(-405,-405,813,813);
+                        break;
+                case (62090 === index)://tropical storm
+                case (62091 === index)://hurricane typhoon
+                        rect = new Rectangle(-546,-869,1092,1746);
+                        break;
+                case (62092 === index)://volcanic eruption
+                        rect = new Rectangle(-517,-607,1018,1223);
+                        break;
+                case (62093 === index)://volcanic ash
+                        rect = new Rectangle(-400,-429,856,829);
+                        break;
+                case (62094 === index)://TROPOPAUSE LEVEL
+                case (62095 === index)://FREEZING LEVEL
+                        rect = new Rectangle(-826,-448,1652,896);
+                        break;
+                case (62096 === index)://PRECIPITATION OF UNKNOWN TYPE AND INTENSITY
+                        rect = new Rectangle(-795,-400,1590,818);
+                        break;
+                case (62097 <= index && index <= 62116)://stuff
+                        rect = new Rectangle(-604,-647,1208,1294);
+                        break;
+                case (62117 === index)://icebergs
+                        rect = new Rectangle(-600,-474,1200,961);
+                        break;
+                case (62118 === index)://icebergs
+                        rect = new Rectangle(-450,-353,1200,715);
+                        break;
+                case (62119 === index)://belt and strips
+                        rect = new Rectangle(-600,-152,1200,315);
+                        break;
+                case (62120 === index)://iceberg
+                case (62121 === index)://iceberg
+                        rect = new Rectangle(-600,-474,1200,961);
+                        break;
+                case (62122 === index)://bergy bit
+                case (62123 === index)://bergy bit
+                        rect = new Rectangle(-510,-496,1020,1006);
+                        break;
+                case (62124 === index)://growler
+                case (62125 === index)://growler
+                        rect = new Rectangle(-510,-386,1020,766);
+                        break;
+                case (62126 === index)://FLOEBERG
+                        rect = new Rectangle(-600,-600,1200,1200);
+                        break;
+                case (62127 === index)://ice island
+                        rect = new Rectangle(-600,-600,1200,1202);
+                        break;
+                case (62128 === index)://bergy water
+                        rect = new Rectangle(-800,-267,1600,544);
+                        break;
+                case (62129 === index)://water with target
+                        rect = new Rectangle(-800,-259,1600,518);
+                        break;
+                case (62130 === index)://ice free
+                        rect = new Rectangle(-600,-233,1200,466);
+                        break;
+                case (62131 === index)://convergence
+                case (62132 === index)://divergence
+                        rect = new Rectangle(-698,-130,1396,260);
+                        break;
+                case (62133 === index)://SHEARING OR SHEAR ZONE
+                        rect = new Rectangle(-698,-130,1396,260);
+                        break;
+                case (62134 === index)://ice drift
+                        rect = new Rectangle(-328,-130,650,260);
+                        break;
+                case (62135 === index)://sea ice 
+                        rect = new Rectangle(-328,-405,650,815);
+                        break;
+                case (62136 === index)://ice thickness
+                case (62137 === index)://ice thickness  
+                        rect = new Rectangle(-753,-670,1506,1340);
+                        break;
+                case (62138 === index)://MELT PUDDLES OR FLOODED ICE  
+                        rect = new Rectangle(-655,-233,1310,466);
+                        break;
+                case (62139 === index)://snow cover  
+                        rect = new Rectangle(-285,-474,558,964);
+                        break;
+                case (62140 === index)://SASTRUGI  
+                        rect = new Rectangle(-483,-731,966,1475);
+                        break;
+                case (62141 === index)://RIDGES OR HUMMOCKS  
+                        rect = new Rectangle(-600,-294,1200,588);
+                        break;
+                case (62142 === index)://Rafting  
+                        rect = new Rectangle(-600,-414,1200,839);
+                        break;
+                case (62143 === index)://JAMMED BRASH BARRIER  
+                        rect = new Rectangle(-600,-294,1200,588);
+                        break;
+                case (62144 === index)://soundings  
+                        rect = new Rectangle(-504,-521,1005,1054);
+                        break;
+                case (62145 === index)://berths  
+                        rect = new Rectangle(-601,-601,1202,1202);
+                        break;
+                case (62146 === index)://BERTHS (ANCHOR)
+                case (62147 === index)://ports anchorage    
+                        rect = new Rectangle(-779,-730,1558,1467);
+                        break;
+                case (62148 === index)://call in point    
+                        rect = new Rectangle(-300,-600,600,1200);
+                        break;
+                case (62149 === index)://fishing harbor  //FISH STAKES/TRAPS/WEIRS  
+                        rect = new Rectangle(-600,-556,1200,1104);
+                        break;
+                case (62150 === index)://FISH STAKES/TRAPS/WEIRS  
+                        rect = new Rectangle(-550,-515,1100,1035);
+                        break;
+                case (62151 === index)://FISH STAKES  
+                        rect = new Rectangle(-600,-509,1200,1033);
+                        break;
+                case (62152 === index)://Landing place  
+                        rect = new Rectangle(-600,-600,1200,1200);
+                        break;
+                case (62153 === index)://OFFSHORE LOADING FACILITY  
+                        rect = new Rectangle(-581,-657,1162,1098);
+                        break;
+                case (62154 === index)://OFFSHORE LOADING FACILITY  
+                        rect = new Rectangle(-600,-38,1200,76);
+                        break;
+                case (62155 === index)://Landing Ring
+                case (62156 === index)://
+                case (62159 === index):// Dolphin
+                case (62160 === index)://   
+                        rect = new Rectangle(-600,-325,1200,650);
+                        break;
+                case (62157 === index)://ferry crossing
+                case (62158 === index)://    cable ferry crossing
+                        rect = new Rectangle(-615,-40,1236,80);
+                        break;
+                case (62161 === index)://beacon
+                        rect = new Rectangle(-600,-648,1200,1300);
+                        break;
+                case (62162 === index)://buoy default
+                case (62163 === index)://buoy default
+                        rect = new Rectangle(-861,-551,1722,1103);
+                        break;
+                case (62164 === index)://marker
+                        rect = new Rectangle(-396,-523,792,1055);
+                        break;
+                case (62165 === index)://perches stakes
+                        rect = new Rectangle(-406,-406,813,812);
+                        break;
+                case (62166 === index)://light
+                        rect = new Rectangle(-655,-593,1309,1193);
+                        break;
+                case (62167 === index)://LIGHT VESSEL/LIGHTSHIP
+                        rect = new Rectangle(-582,-521,1164,1042);
+                        break;
+                case (62168 === index)://LIGHTHOUSE
+                        rect = new Rectangle(-450,-600,900,1200);
+                        break;
+                case (62169 === index)://rock submerged
+                case (62170 === index)://rock submerged
+                        rect = new Rectangle(-436,-433,870,869);
+                        break;
+                case (62171 === index)://rock awashed
+                        rect = new Rectangle(-443,-601,884,1202);
+                        break;
+                case (62172 === index)://foul ground
+                        rect = new Rectangle(-430,-598,861,1196);
+                        break;
+                case (62173 === index)://kelp/seaweed
+                        rect = new Rectangle(-645,-208,1283,422);
                         break;
                 default:
                         break;
             }
         }
-        else if(schema === "E")
+        else if(schema === "E")//EMS Natural Events
         {
             switch(true)
             {
-                case (59080 <= index && index <= 59081)://Action Points
-                case (60080 <= index && index <= 60081)://Action Points
-                case (59085 <= index && index <= 59089):
-                case (60085 <= index && index <= 60089):
-                case (59151 <= index && index <= 59157):
-                case (60151 <= index && index <= 60157):
-                case (59165 <= index && index <= 59197):
-                case (60165 <= index && index <= 60197):
-                case (59091 === index || index === 60091):
-                case (59119 === index || index === 60119):
-                case (59128 === index || index === 60128):
-                case (59142 === index || index === 60142):
-                case (59214 === index || index === 60214):
-                        rect = new Rectangle(-418,-1509,836,1509);
+                case (63000 === index)://aftershock
+                        rect = new Rectangle(-563,-562,1131,1133);
                         break;
-                case (59007 <= index && index <= 59018)://SONOBUOY
-                case (60007 <= index && index <= 60018)://SONOBUOY
-                        rect = new Rectangle(-405,-1196,810,1576);
+                case (63001 === index)://avalanche
+                        rect = new Rectangle(-501,-651,984,1164);
                         break;
-                case (59007 <= index && index <= 59018)://Reference Point
-                case (60007 <= index && index <= 60018):
-                        rect = new Rectangle(-521,-502,1042,1004);
-                        break;  
-                case (59041 <= index && index <= 59045)://Harbor
-                case (60041 <= index && index <= 60045):
-                        rect = new Rectangle(-519,-376,1038,746);
+                case (63002 === index)://earthquake epicenter
+                        rect = new Rectangle(-632,-629,1266,1268);
                         break;
-                case (59047 <= index && index <= 59051)://Point Route specific
-                case (60047 <= index && index <= 60051):
-                        rect = new Rectangle(-592,-376,1184,1132);
+                case (63003 === index)://landslide
+                        rect = new Rectangle(-650,-587,1300,1023);
                         break;
-                case (59052 <= index && index <= 59074)://Air Control
-                case (60052 <= index && index <= 60074):
-                        rect = new Rectangle(-480,-705,960,1410);
+                case (63004 === index)://subsidence
+                        rect = new Rectangle(-702,-231,1404,585);
                         break;
-                case (59092 <= index && index <= 59105)://Sea Surface Control Station
-                case (60092 <= index && index <= 60105):
-                        rect = new Rectangle(-480,-705,960,1410);
+                case (63005 === index)://volcanic eruption, should use the weather graphic: WAS-WSVE--P----
+                        rect = new Rectangle(-0,-0,0,0);
+                        break;
+                case (63006 === index)://volcanic threat
+                        rect = new Rectangle(-565,-512,1131,1027);
+                        break;
+                case (63007 === index)://drought
+                        rect = new Rectangle(-599,-413,1198,805);
+                        break;
+                case (63008 === index)://flood
+                        rect = new Rectangle(-532,-446,1066,895);
+                        break;
+                case (63009 === index)://inversion
+                        rect = new Rectangle(-507,-460,1015,922);
+                        break;
+                case (63010 === index)://tsunami
+                        rect = new Rectangle(-583,-410,1166,823);
+                        break;
+                case (63011 === index)://bird infestation
+                        rect = new Rectangle(-665,-501,1335,1009);
+                        break;
+                case (63012 === index)://insect infestation
+                        rect = new Rectangle(-742,-427,1482,861);
+                        break;
+                case (63013 === index)://microbial infestation
+                        rect = new Rectangle(-670,-273,1341,549);
+                        break;
+                case (63014 === index)://reptile infestation
+                        rect = new Rectangle(-615,-369,1231,741);
+                        break;
+                case (63015 === index)://rodent infestation
+                        rect = new Rectangle(-629,-459,1261,924);
                         break;
                 default:
                         break;
