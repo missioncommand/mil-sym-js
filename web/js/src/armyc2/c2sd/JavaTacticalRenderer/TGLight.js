@@ -38,6 +38,7 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight = function () {
     this.fontBackColor = armyc2.c2sd.renderer.utilities.Color.WHITE;
     this._useDashArray = false;
     this._wasClipped = false;
+    this._setRFText = true;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_WasClipped = function () {
     return this._wasClipped;
@@ -396,4 +397,11 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_UseDashArray = function (
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_UseDashArray = function (value) {
     this._useDashArray = value;
 };
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_RFText = function () {
+    return this._setRFText;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_RFText = function (value) {
+    this._setRFText = value;
+};
+
 armyc2.c2sd.JavaTacticalRenderer.TGLight._className = "TGLight";

@@ -3894,7 +3894,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         return false;
     }
     var AM = new java.util.ArrayList();
-    //var AN=new java.util.ArrayList();
+    var AN=new java.util.ArrayList();
     var H1 = tg.get_H1();
     var T = tg.get_Name();
     var T1 = tg.get_T1();
@@ -3903,6 +3903,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     //var altitudes = H1.split(",");
     var altitudes = null;
     var min = 0;
+    //diagnostic
+    var left=0,right=0;
+    //end section
+    
     var numSectors = az.length / 2;
     if (numSectors < 1) {
         return false;
@@ -3923,7 +3927,27 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
             throw exc;
         }
     }
-
+    //diagnostic
+    try 
+    {
+        for (var k = 0; k < az.length/2; k++) 
+        {
+            left = Double.parseDouble(az[2*k]);
+            right = Double.parseDouble(az[2*k+1]);
+            AN.add(left);
+            AN.add(right);
+        }
+    }
+    catch (exc) 
+    {
+        if (Clazz.instanceOf(exc)) {
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "addSectorModifiers", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifiers", exc));
+        } else {
+            throw exc;
+        }
+    }
+    //end section
+    
     var n = tg.Pixels.size();
     //pt0 and pt1 are points for the location indicator
     var pt0 = tg.Pixels.get(n - 5);
@@ -3940,6 +3964,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     var az12 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt0, pt1);
     var pt2 = null;
     var locModifier = new java.util.ArrayList();
+    //diagnostic
+    var ptLeft=null,ptRight=null;
+    var locAZModifier = new java.util.ArrayList();
+    //end section
     var pt22d = null;
     var radius = 0;
     for (var k = 0; k < numSectors; k++) {
@@ -3954,6 +3982,24 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         pt2.x = pt22d.getX();
         pt2.y = pt22d.getY();
         locModifier.add(pt2);
+        //diagnostic
+        if(tg.get_RFText()===false)
+            continue;
+        ptLeft = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, AN.get(2*k));
+        //need ptLeft in geo pixels                
+        pt22d = new armyc2.c2sd.graphics2d.Point2D(ptLeft.x, ptLeft.y);
+        pt22d = converter.GeoToPixels(pt22d);
+        ptLeft.x = pt22d.getX();
+        ptLeft.y = pt22d.getY();
+        ptRight = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, AN.get(2*k+1));
+        //need ptRight in geo pixels                
+        pt22d = new armyc2.c2sd.graphics2d.Point2D(ptRight.x, ptRight.y);
+        pt22d = converter.GeoToPixels(pt22d);
+        ptRight.x = pt22d.getX();
+        ptRight.y = pt22d.getY();
+        locAZModifier.add(ptLeft);
+        locAZModifier.add(ptRight);
+        //end section
     }
     if (altitudes !== null)
     {
@@ -3965,6 +4011,20 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "ALT " + altitudes[k], 3, 0, pt0, pt0);
         }
     }
+    //diagnostic    add range and azimuth modifiers
+    //add early eixt if tg.setRangeFanAZLabels is false
+    if(tg.get_RFText()===false)
+        return true;
+    for(var k=0;k<numSectors;k++)
+    {
+        pt0 = locModifier.get(k);
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + AM.get(k+1), 3, -1, pt0, pt0);
+        ptLeft=locAZModifier.get(2*k);
+        ptRight=locAZModifier.get(2*k+1);
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k], 3, 0, ptLeft, ptLeft);                        
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k+1], 3, 0, ptRight, ptRight);                        
+    }
+    //end section    
     return true;
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
@@ -4414,6 +4474,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                         }
                     }
                 }
+                if(tg.get_RFText())
+                {
+                    var H2 = tg.get_H2();
+                    var am = H2.split(",");
+                    for(j=0;j<am.length;j++)
+                    {
+                        if (tg.Pixels.size() > j * 102 + 25) {
+                            pt0 = tg.Pixels.get(j * 102 + 25);
+                            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
+                        }                            
+                    }
+                }// end if set range fan text
                 break;
             case 243112000:
 //                if (tg.get_H1() !== null && tg.get_H1().equals("") === false) 

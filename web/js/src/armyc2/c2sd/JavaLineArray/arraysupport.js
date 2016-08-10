@@ -273,7 +273,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var pSpikePoints = null;
                     var pt0;
                     var dSpikeSize = 0;
-                    var limit = 0;
+                    var limit = 0, numSpikes = 0
                     lCount = armyc2.c2sd.JavaLineArray.countsupport.GetFORTLCountDouble(pLinePoints, lineType, vblSaveCounter);
                     pSpikePoints = new Array(lCount);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSpikePoints);
@@ -282,14 +282,21 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         dLengthSegment = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pLinePoints[j + 1]);
                         dIncrement = 20;
                         dSpikeSize = 10;
-                        limit = Math.floor((dLengthSegment / dIncrement)) - 1;
-                        if (limit < 1) {
-                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j]);
-                            nCounter++;
-                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j + 1]);
-                            nCounter++;
-                            continue;
-                        }
+//  diagnostic
+                        numSpikes=Math.round((dLengthSegment-10)/dIncrement);
+                        dIncrement=dLengthSegment/numSpikes;
+                        if(dIncrement>25)
+                            dIncrement=25;
+                        //limit = Math.floor((dLengthSegment / dIncrement)) - 1;
+                        limit = numSpikes - 1;                
+//                        if (limit < 1) {
+//                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j]);
+//                            nCounter++;
+//                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j + 1]);
+//                            nCounter++;
+//                            continue;
+//                        }
+//  end diagnostic
                         for (k = -1; k < limit; k++) {
                             pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - 30, 0);
                             nCounter++;
