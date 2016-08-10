@@ -1380,6 +1380,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     symbolFillIconSize = null,
                     altMode = null;
             useDashArray = symbol.getUseDashArray();
+            var hideOptionalLabels = false;
 
             //alert(jsonString);
             try {
@@ -1530,6 +1531,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (modifiers[MilStdAttributes.AltitudeMode])
                     altMode = modifiers[MilStdAttributes.AltitudeMode];
+                    
+                if (modifiers[MilStdAttributes.HideOptionalLabels])
+                    hideOptionalLabels = modifiers[MilStdAttributes.HideOptionalLabels];    
 
                 // These are for when we create a area fill that is comprised of symbols//////////
                 if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null)
@@ -1558,6 +1562,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             try {
                 symbol.setModifierMap(modifierMap);
                 symbol.setUseDashArray(useDashArray);
+                symbol.setHideOptionalLabels(hideOptionalLabels);
                 if (fillColor !== null) {
                     symbol.setFillColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(fillColor));
                 }
