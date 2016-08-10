@@ -799,9 +799,57 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-594,-545,1201,1096);
                         break;
                 case (62186 === index)://Stones
-                        rect = new Rectangle(-000,-000,000,000);
+                        rect = new Rectangle(-604,-545,1214,1096);
                         break;
-                        
+                case (62187 === index)://gravel
+                        rect = new Rectangle(-674,-702,1342,1419);
+                        break;
+                case (62188 === index)://pebbles
+                        rect = new Rectangle(-480,-487,971,997);
+                        break;
+                case (62189 === index)://cobbles
+                        rect = new Rectangle(-598,-412,1204,826);
+                        break;
+                case (62190 === index)://rock
+                        rect = new Rectangle(-503,-549,1004,1104);
+                        break;
+                case (62191 === index)://coral
+                        rect = new Rectangle(-608,-398,1209,809);
+                        break;
+                case (62192 === index)://shell
+                        rect = new Rectangle(-597,-451,1194,915);
+                        break;
+                case (62193 === index)://fine
+                        rect = new Rectangle(-424,-603,855,1205);
+                        break;
+                case (62194 === index)://medium
+                        rect = new Rectangle(-596,-400,1202,824);
+                        break;
+                case (62195 === index)://coarse
+                        rect = new Rectangle(-521,-593,1051,1197);
+                        break;
+                case (62196 === index)://water turbulence
+                        rect = new Rectangle(-1002,-335,1997,681);
+                        break;
+                case (62197 === index)://tide data point
+                        rect = new Rectangle(-515,-602,1030,1204);
+                        break;
+                case (62198 === index)://tide gauge
+                case (62199 === index)://tide gauge
+                        rect = new Rectangle(-724,-488,1448,976);
+                        break;
+                case (62200 === index)://Ford
+                        rect = new Rectangle(-180,-561,360,1122);
+                        break;
+                case (62201 === index)://Lock
+                        rect = new Rectangle(-357,-442,718,887);
+                        break;
+                case (62202 === index)://oil/gas rig
+                        rect = new Rectangle(-508,-700,1400,887);
+                        break;
+                case (62203 === index)://PILE/PILING/POST
+                        rect = new Rectangle(-405,-405,813,813);
+                        break;
                 default:
                         break;
             }
