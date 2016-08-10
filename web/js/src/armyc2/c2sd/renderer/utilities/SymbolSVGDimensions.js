@@ -770,6 +770,38 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (62173 === index)://kelp/seaweed
                         rect = new Rectangle(-645,-208,1283,422);
                         break;
+                case (62174 === index)://mine naval doubtful
+                case (62175 === index)://mine naval definite
+                        rect = new Rectangle(-383,-598,772,1204);
+                        break;
+                case (62176 === index)://snags/stumps
+                case (62177 === index)://snags/stumps
+                case (62179 === index)://wreck submerged
+                case (62180 === index)://wreck submerged
+                        rect = new Rectangle(-600,-360,1200,712);
+                        break;
+                case (62178 === index)://wreck uncovers
+                        rect = new Rectangle(-698,-834,1396,952);
+                        break;
+                case (62181 === index)://EDDIES/OVERFALLS/TIDE RIPS
+                        rect = new Rectangle(-989,-338,1981,670);
+                        break;
+                case (62182 === index)://Sand
+                        rect = new Rectangle(-472,-603,949,1229);
+                        break;
+                case (62183 === index)://Mud
+                        rect = new Rectangle(-638,-440,1264,875);
+                        break;
+                case (62184 === index)://Clay
+                        rect = new Rectangle(-603,-485,1204,992);
+                        break;
+                case (62185 === index)://Silt
+                        rect = new Rectangle(-594,-545,1201,1096);
+                        break;
+                case (62186 === index)://Stones
+                        rect = new Rectangle(-000,-000,000,000);
+                        break;
+                        
                 default:
                         break;
             }
