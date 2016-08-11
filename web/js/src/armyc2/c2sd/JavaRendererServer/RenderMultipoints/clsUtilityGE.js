@@ -416,7 +416,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                         break;
                 }
             }
-            if (ptsPoly.size() > 0)
+            if (ptsPoly.size() > 1)
             {
                 if (shapeType === armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_FILL)
                 {
@@ -426,8 +426,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                         ptsPoly.add(pt2d);
                     }
                 }
-                if(ptsPoly.size()>1)
-                    polylines2.add(ptsPoly);
+                polylines2.add(ptsPoly);
             }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
