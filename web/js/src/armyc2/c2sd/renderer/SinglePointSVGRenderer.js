@@ -23,7 +23,7 @@ armyc2.c2sd.renderer.SinglePointSVGRenderer = (function () {
         SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable,
         UnitSVGTable = armyc2.c2sd.renderer.utilities.UnitSVGTable,
         TGSVGTable = armyc2.c2sd.renderer.utilities.TGSVGTable,
-        SPVGTable = armyc2.c2sd.renderer.utilities.SPVGTable;
+        SPSVGTable = armyc2.c2sd.renderer.utilities.SPSVGTable;
     
     
     var textInfoBuffer = null,
@@ -62,24 +62,13 @@ return{
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
-        var buffer = null,
-            ctx = null;
-        
+      
         if(!fontInfo)
         {
             fontInfo = RendererSettings.getFontInfo();
         }
         
-        /*if(render && _bufferUnit === null)
-        {
-            _bufferUnit = this.createBuffer(_bufferUnitSize,_bufferUnitSize);
-            ctx = _bufferUnit.getContext('2d');
-            ctx.lineCap = "butt";
-            ctx.lineJoin = "miter";
-            ctx.miterLimit = 3;
-            ctx = null;
-        }//*/
-        
+       
         
         if(modifiers === undefined || modifiers === null)
             modifiers = {};
@@ -116,9 +105,7 @@ return{
         var intFrameAssume = -1,
             frameAssume = null;
         
-        if(render===false)
-            ctx={};
-        
+       
         if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14)
         {
             var affiliation = symbolID.charAt(1);
@@ -363,7 +350,7 @@ return{
         var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
         symbolBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
         
-        var centerPoint = new SO.Point(x * ratio,y * ratio);
+        var centerPoint = new SO.Point(x * ratio, y * ratio);
         
         var si = new SVGInfo(seGroupUnit,centerPoint,symbolBounds,imageBounds);
         
@@ -476,17 +463,76 @@ return{
         else//*/
             return si;
     },
-    processSVGPath: function(path, fillColor, lineColor, strokeWidth)
+    processSVGPath: function(path, fillColor, lineColor, strokeWidth, outlineMethod, outlineWidth, outlineColor)
     {
         var se = '<path d="';
         se += path + '"';
         if(fillColor)
             se += ' fill="' + fillColor + '"';
         if(lineColor)
+        {
             se += ' stroke="' + lineColor + '"';
-        if(strokeWidth)
-            se += ' stroke-width="' + strokeWidth + '"';
+            if(strokeWidth)
+                se += ' stroke-width="' + strokeWidth + '"';
+        }
         se += ' />';
+        return se;
+    },
+    
+    processSVGPathBackground: function(path, bgColor, bgMethod, bgWidth, pathBounds)
+    {
+        var om = RendererSettings.TextBackgroundMethod_NONE;
+        var se = "";
+        //TextBackgroundMethod_COLORFILL
+        //TextBackgroundMethod_OUTLINE//stroke methond
+        //TextBackgroundMethod_OUTLINE_QUICK//shifting dups method
+        
+        if(bgMethod)
+            om = bgMethod;
+        if(om === RendererSettings.TextBackgroundMethod_COLORFILL && pathBounds)
+        {
+            se = '<rect x="' + pathBounds.getX() + '" y="' + pathBounds.getX()
+                + '" width="' + pathBounds.getWidth() + '" y="' + pathBounds.Height()
+                + '" fill="' + bgColor + '/>';
+        }
+        else if(om === RendererSettings.TextBackgroundMethod_OUTLINE && bgColor && bgwidth)
+        {
+            //stroke-linejoin="miter"//default linejoin
+            //stroke-miterlimit//default 4
+            //stroke-linejoin="round"
+            //stroke-linejoin="bevel"
+            se += path + '"';
+            se += ' fill="none"';
+            
+            se += ' stroke="' + bgColor + '"';
+            se += ' stroke-width="' + bgWidth + '"';
+       
+            se += ' />';
+            
+        }
+        else if(om === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK && bgColor)
+        {
+            
+            se += path + '"';
+            se += ' fill="' + bgColor + '"';
+            se += ' transform="translate(-1,-1)"';
+            se += ' />';
+            
+            se += path + '"';
+            se += ' fill="' + bgColor + '"';
+            se += ' transform="translate(1,-1)"';
+            se += ' />';
+            
+            se += path + '"';
+            se += ' fill="' + bgColor + '"';
+            se += ' transform="translate(1,1)"';
+            se += ' />';
+            
+            se += path + '"';
+            se += ' fill="' + bgColor + '"';
+            se += ' transform="translate(-1,1)"';
+            se += ' />';
+        }
         return se;
     },
 
@@ -2018,24 +2064,12 @@ return{
      * @param {type} modifiers
      * @returns {armyc2.c2sd.renderer.armyc2.c2sd.renderer.utilities.ImageInfo}
      */
-    renderSPTG: function (symbolID, modifiers){
+    renderSPTG: function (symbolID, modifiers, fontInfo){
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
-        var buffer = null,
-            ctx = null;
-        
-        /*if(_bufferSymbol === null)
-        {
-            _bufferSymbol = this.createBuffer(_bufferSymbolSize,_bufferSymbolSize);
-            var ctx = _bufferSymbol.getContext('2d');
-            ctx.lineCap = "butt";
-            ctx.lineJoin = "miter";
-            ctx.miterLimit = 3;
-            ctx = null;
-        }//*/
 
         var fontSize = 60;
 	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
@@ -2050,9 +2084,9 @@ return{
         var fillColor = null;
         var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         var alpha = 1.0;
-	var fill = null;
-	var frame = null;
-        var scale = -999;
+	    var fill = null;
+	    var frame = null;
+
         
         var hasDisplayModifiers = false;
         var hasTextModifiers = false;
@@ -2145,11 +2179,13 @@ return{
             rect = null;
         
         var ratio = 1;
+        
+        intFrame = SinglePointLookup.getCharCodeFromSymbol(symbolID,symStd);
 
         if(pixelSize > 0)
         {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
-            rect = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
+            symbolBounds = SymbolSVGDimensions.getSymbolBounds(symbolID, intFrame);
+            rect = symbolBounds.clone();
 
             if(keepUnitRatio===true)
             {
@@ -2157,78 +2193,22 @@ return{
 
                //when SymbolSizeMedium = 80;
                //a pixel size of 35 = scale value of 1.0
-               
-                if(fontSize===80)//medium
-                {
-                 scale = pixelSize / 35.0;
-                }//TODO: need to adjust multiplier for other scales
-                else if(fontSize===60)//small
-                {
-                 scale = pixelSize / 35.0;
-                }
-                else if(fontSize===100)//large
-                {
-                 scale = pixelSize / 35.0;
-                }
-                else if(fontSize===120)//XL
-                {
-                 scale = pixelSize / 35.0;
-                }
-                else
-                {
-                    scale = pixelSize / 35.0;
-                }
-               
+                pixelSize = pixelSize * 1.4;
+                               
             }
 
             //adjust size
             ratio = Math.min((pixelSize / rect.getHeight()), (pixelSize / rect.getWidth()));
 
         }
+       
         
-        //scale overrides pixel size.
-        if(scale !== -999)
-        {
-            ratio = scale;
-        }
-        
-        if(ratio > 0)
-        {
-            fontSize = fontSize * ratio;
-        }
-        
-        //TODO: if else block does the same thing either way.  probably remove
-        /*
-        if(pixelSize > 0)
-        {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
+        var symbolWidth = Math.round(symbolBounds.getWidth() * ratio),
+            symbolHeight = Math.round(symbolBounds.getHeight() * ratio);
 
-            fontSize = (((fontSize) / 96) * 72);
-          
-            strSPFont = fontSize + "pt SinglePoint";
-        }
-        else
-        {
-            symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
-            fontSize = ((fontSize / 96) * 72);
-            //ctx.font= "45pt SinglePoint";
-            strSPFont = fontSize + "pt SinglePoint";
-        }//*/
-        symbolBounds = SymbolDimensions.getSymbolBounds(symbolID, symStd, fontSize);
-        fontSize = (((fontSize) / 96) * 72);
-        strSPFont = fontSize + "pt SinglePoint";
         
-        
-        // </editor-fold>
-        
-        this.checkModifierFont();
-        
-        // </editor-fold>
-        
-        
-        intFrame = SinglePointLookup.getCharCodeFromSymbol(symbolID,symStd);
-            
-
+        var offsetX = Math.round(-symbolBounds.getX()),
+            offsetY = Math.round(-symbolBounds.getY());
         
         var fillID = null;
         if(SymbolUtilities.hasDefaultFill(symbolID) && fillColor === null)
@@ -2248,46 +2228,20 @@ return{
 
         }
         
-        if(intFill > 0)
-            fill = String.fromCharCode(intFill);
-	frame = String.fromCharCode(intFrame);
         
-        var symbolWidth = Math.round(symbolBounds.getWidth()) + (outlineOffset*2),
-            symbolHeight = Math.round(symbolBounds.getHeight()) + (outlineOffset*2);
+        var symbolWidth = Math.ceil(symbolBounds.getWidth() * ratio) + (outlineOffset*2),
+            symbolHeight = Math.ceil(symbolBounds.getHeight() * ratio) + (outlineOffset*2);
     
         var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
     
-        if(render === true)
-        {
-            if((hasDisplayModifiers === true || hasTextModifiers === true) &&
-                    symbolWidth < _bufferSymbolSize && 
-                    symbolHeight < _bufferSymbolSize)
-            {
-                buffer = _bufferSymbol;//
-                ctx = buffer.getContext('2d');
-                ctx.clearRect(0,0,_bufferSymbolSize,_bufferSymbolSize);
-                if(ctx.globalAlpha < 1.0)
-                    ctx.globalAlpha = 1.0;
-            }
-            else
-            {//*/
-                buffer = this.createBuffer(symbolWidth,symbolHeight);
-                ctx = buffer.getContext('2d');
-                ctx.lineCap = "butt";
-                ctx.lineJoin = "miter";
-                ctx.miterLimit = 3;
-            }
 
-            ctx.font = strSPFont;
-        }
-        var x = Math.round(symbolBounds.getWidth()/2),
-            y = Math.round(symbolBounds.getHeight()/2);
+        var x = Math.round((-symbolBounds.getX() * ratio)),
+            y = Math.round((-symbolBounds.getY() * ratio));
     
-        var centerPoint = SymbolDimensions.getSymbolCenter(symbolID, symbolBounds);
+        var centerPoint = new SO.Point(x,y);
         
-        x = centerPoint.getX();
-        y = centerPoint.getY();
         
+        var tgPaths = [];
         
         if(outlineOffset>0)
         {
@@ -2298,66 +2252,144 @@ return{
             symbolBounds.grow(outlineOffset);
         }
         
+        if(intFill > 0)
+        {
+            fill = SPSVGTable.getSVGPath(intFill);
+        }
+        if(intFrame > 0)
+        {
+            frame = SPSVGTable.getSVGPath(intFrame);
+        }
+        
         //do outline first if present
+        var seBGGroup = null;
         if(render === true)
         {
-            if(alpha < 1.0)
-                ctx.globalAlpha = alpha;
+            //if(alpha < 1.0)
+                //ctx.globalAlpha = alpha;
             
-            if(frame !== null && frame !== "")
+            if(outlineOffset > 0 && frame !== null)
             {
-                if(outlineOffset > 0)
-                {
-                    ctx.lineWidth = symbolOutlineWidth;
-                    ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(lineColor,true);
-                    ctx.strokeText(frame, x, y);
-                }
+                var oc =RendererUtilities.getIdealOutlineColor(lineColor,true);
+                var ol = this.processSVGPath(frame, oc);
+                //tgPaths.push(ol);
+                seBGGroup = '<g transform="translate(' + (x - 1) + ',' + (y - 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
+                seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y - 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
+                seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
+                seBGGroup += '<g transform="translate(' + (x - 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
+                
             }
             //then do fill if present
-            if(fill !== null && fill !== "" && fillColor !== null)
+            if(fill !== null &&  fillColor !== null)
             {
-                ctx.fillStyle=fillColor;
-                ctx.fillText(fill,x,y);
+                fill = this.processSVGPath(fill, fillColor);
+                tgPaths.push(fill);
             }
             //then draw frame
-            if(frame !== null && frame !== "")
+            if(frame !== null)
             {
-                ctx.fillStyle = lineColor;
-                ctx.fillText(frame, x, y);
+                frame = this.processSVGPath(frame, lineColor);
+                tgPaths.push(frame);
             }
         }
+        
+        var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">'; 
+        if(seBGGroup)
+            seGroupTG = seBGGroup + seGroupTG;
+        for(var i = 0; i < tgPaths.length; i++)
+        {
+            seGroupTG += tgPaths[i];
+        }
+        seGroupTG += '</g>';
 
-                
-        var ii = new ImageInfo(buffer,centerPoint,symbolBounds,imageBounds);
+        imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
+        symbolBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);        
+        var si = new SVGInfo(seGroupTG,centerPoint,symbolBounds,imageBounds);
         
         //Process Modifiers
-        var iiNew = null;
+        var svgElements = null;
+        var svgElementInfo = null;
+        var svgElementsDOM = [];
+        var siNew = null;
         if(icon === false && (hasTextModifiers || hasDisplayModifiers || SymbolUtilities.isTGSPWithIntegralText(symbolID)))
         {
             if(SymbolUtilities.isTGSPWithSpecialModifierLayout(symbolID) || 
                 SymbolUtilities.isTGSPWithIntegralText(symbolID))
             {
-                iiNew = this.ProcessTGSPWithSpecialModifierLayout(ii,symbolID,modifiers, lineColor);
+                svgElementInfo = this.ProcessTGSPWithSpecialModifierLayout(si,symbolID,modifiers, lineColor,fontInfo);
             }
             else 
             {
-                iiNew = this.ProcessTGSPModifiers(ii,symbolID,modifiers, lineColor);
+                svgElementInfo = this.ProcessTGSPModifiers(si,symbolID,modifiers, lineColor,fontInfo);
             }
 
         }
         
-        if(iiNew)
-            ii = iiNew;
-        
-        // <editor-fold defaultstate="collapsed" desc="Cleanup">
-        ctx = null;
-        buffer = null;
-        // </editor-fold>
-        
-        if(icon)
-            return ii.getSquareImageInfo();
+        var returnSVG = "";
+        if(svgElementInfo != null)
+        {
+            centerPoint = svgElementInfo.centerPoint;
+            svgElements = svgElementInfo.svgElements;
+            imageBounds = svgElementInfo.imageBounds;
+
+            if(svgElementInfo.hasDOMArrow)
+            {
+                svgElementsDOM.push(svgElements.pop());
+                svgElementsDOM.push(svgElements.pop());
+            }
+        }
         else
-            return ii;
+        {
+            svgElements = [];
+        }
+        if(svgElements.length > 0 || svgElementsDOM.length > 0)
+        {
+            var domSE = [];
+            for(var k = 0; k < svgElements.length; k++)
+            {
+                returnSVG += svgElements[k] + "\n";    
+            }
+            returnSVG += seGroupTG + "\n";
+            if(svgElementsDOM.length > 0)
+            {
+                returnSVG += svgElementsDOM[0] + "\n";
+                returnSVG += svgElementsDOM[1] + "\n";
+            }
+            
+            //make group with translation
+            var shiftX = -imageBounds.getX();
+            var shiftY = -imageBounds.getY();
+            //shift bounds and center point
+            imageBounds.shift(shiftX,shiftY);
+            symbolBounds.shift(shiftX,shiftY);
+            centerPoint.shift(shiftX,shiftY);
+            //combine with returnSVG
+            //wrap in SVG tag
+            
+            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+                        + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
+                        + returnSVG; 
+            returnSVG += '</g>';
+            returnSVG += '</svg>';//*/
+            
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox=' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+                        + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
+                        + returnSVG; 
+            returnSVG += '</svg>';
+        }
+        else
+        {
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+            returnSVG += seGroupTG;
+            returnSVG += '</svg>';
+        }
+        
+
+        si = new SVGInfo(returnSVG,centerPoint,symbolBounds,imageBounds);
+        if(icon)
+            return si;//si.getSquareImageInfo();
+        else
+            return si;
     },
     /**
      * 
@@ -3042,28 +3074,27 @@ return{
             newii = null;
     
         var arrMods = new Array();
+        var svgElements = [];
         var duplicate = false;
         
-        var symbolBounds = ii.getSymbolBounds().clone(),
-            bounds = ii.getSymbolBounds().clone(),
-            imageBounds = ii.getImageBounds().clone(),
-            centerPoint = ii.getCenterPoint().clone();
+        var symbolBounds = si.getSymbolBounds().clone(),
+            bounds = si.getSVGBounds().clone(),
+            imageBounds = ii.getSVGBounds().clone(),
+            centerPoint = ii.getAnchorPoint().clone();
 			
 		var textColor = overrideColor,
 			textBackgroundColor = null;
     
-        centerPoint = new SO.Point(Math.round(ii.getCenterPoint().getX()),Math.round(ii.getCenterPoint().getY()));
+        centerPoint = new SO.Point(Math.round(ii.getAnchorPoint().getX()),Math.round(ii.getAnchorPoint().getY()));
     
         var byLabelHeight = false;
-        labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
-                                RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle()).fullHeight;
+        labelHeight = fontInfo.measurements.height;
         labelHeight = Math.round(labelHeight);
-        var maxHeight = (symbolBounds.getHeight());
+        var maxHeight = fontInfo.measurements.fullHeight;
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj");
+        var descent = fontInfo.measurements.descent;
         var yForY = -1;
         
         var labelBounds1 = null,//text.getPixelBounds(null, 0, 0);
@@ -3096,7 +3127,7 @@ return{
             if(modifiers.N)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 x = bounds.x + bounds.width + bufferXR;
 
@@ -3119,11 +3150,9 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y - descent;
                 
                 ti.setLocation(x,y);
@@ -3132,11 +3161,9 @@ return{
             if(modifiers.H1 !== undefined)//H1
             {//pretty much just for Action Point
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + labelHeight + (bounds.height*0.2);
                 
                 ti.setLocation(x,y);
@@ -3145,10 +3172,9 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 y = bounds.y + labelHeight - descent;
                            
                 ti.setLocation(x,y);
@@ -3157,10 +3183,9 @@ return{
             if(modifiers.W1 !== undefined)//W1
             {
                 strText = modifiers[ModifiersTG.W1_DTG_2];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 
                 y = ((labelHeight - descent + bufferText) * 2);
                 y = bounds.y + y;
@@ -3171,7 +3196,7 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 x = bounds.x + bounds.width + bufferXR;
                 y = bounds.y + labelHeight - descent;
@@ -3185,13 +3210,10 @@ return{
                     basicID===("G*S*PX----****X")))//ambulance exchange point
             {
                 strText = modifiers[ModifiersTG.T1_UNIQUE_DESIGNATION_2];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 
                 //points
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
-                //y = bounds.y + (bounds.height * 0.5);
 
                 y = ((bounds.height * 0.60));//633333333
                 y = bounds.y + y;
@@ -3208,74 +3230,37 @@ return{
         var modifierBounds = null;
         if(arrMods !== null && arrMods.length > 0)
         {
+            if(modifiers[MilStdAttributes.TextColor])
+					textColor = modifiers[MilStdAttributes.TextColor];
+            if(modifiers[MilStdAttributes.TextBackgroundColor])
+                textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
+            else
+                textBackgroundColor = RendererUtilities.getIdealOutlineColor(textColor,true);
 
             //build modifier bounds/////////////////////////////////////////
-            modifierBounds = arrMods[0].getTextOutlineBounds();
+            modifierBounds = arrMods[0].getOutlineBounds();
             var size = arrMods.length;
             var tempShape = null;
             for(var i=1; i<size;i++)
             {
                 tempShape = arrMods[i];
-                modifierBounds.union(tempShape.getTextOutlineBounds());
+                modifierBounds.union(tempShape.getOutlineBounds());
+                svgElements.push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
             }
 
         }
-
-
-        if(modifierBounds !== null){
-
-            imageBounds.union(modifierBounds);
-
-            //shift points if needed////////////////////////////////////////
-            if(imageBounds.getX() < 0 || imageBounds.getY() < 0)
-            {
-                var shiftX = Math.abs(imageBounds.getX()),
-                    shiftY = Math.abs(imageBounds.getY());
-
-                //shift mobility points
-                var size = arrMods.length;
-                var tempShape = null;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = arrMods[i];
-                    tempShape.shift(shiftX,shiftY);
-                }
-                modifierBounds.shift(shiftX,shiftY);
-
-                //shift image points
-                centerPoint.shift(shiftX, shiftY);
-                symbolBounds.shift(shiftX, shiftY);
-                imageBounds.shift(shiftX, shiftY);
-            }
-
-            if(render === true)
-            {
-                var buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
-                var ctx = buffer.getContext('2d');
-
-                //draw original icon
-                //ctx.drawImage(ii.getImage(),symbolBounds.getX(),symbolBounds.getY());
-                ctx.drawImage(ii.getImage(),0,0,
-                                symbolBounds.getWidth(), symbolBounds.getHeight(),
-                                symbolBounds.getX(),symbolBounds.getY(),
-                                symbolBounds.getWidth(), symbolBounds.getHeight());
-
-				if(modifiers[MilStdAttributes.TextColor])
-					textColor = modifiers[MilStdAttributes.TextColor];
-				if(modifiers[MilStdAttributes.TextBackgroundColor])
-					textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
-					
-                this.renderText(ctx,arrMods, textColor, textBackgroundColor);
-            }
-            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
-            
-            // <editor-fold defaultstate="collapsed" desc="Cleanup">
-            ctx = null;
-            buffer = null;
-            // </editor-fold>
-            
-            return newii;
+        
+        if(svgElements.length > 0)
+        {
+            return {svgElements:svgElements, modifierBounds:modifierBounds};
         }
+        else
+        {
+            return null;            
+        }
+
+
+        
         // </editor-fold>
 
     },

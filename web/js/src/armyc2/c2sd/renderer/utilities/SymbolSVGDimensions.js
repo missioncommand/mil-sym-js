@@ -125,6 +125,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolSVGDimensions.getSymbolBounds = function (symbolID, index){
         var rect = null;
+        var Rectangle = armyc2.c2sd.renderer.so.Rectangle;
         var schema = symbolID.charAt(0);
         if(schema === "G")
         {
