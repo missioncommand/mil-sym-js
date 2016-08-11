@@ -3983,7 +3983,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         pt2.y = pt22d.getY();
         locModifier.add(pt2);
         //diagnostic
-        if(tg.get_RFText()===false)
+        if(tg.get_HideOptionalLabels())
             continue;
         ptLeft = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, AN.get(2*k));
         //need ptLeft in geo pixels                
@@ -4013,7 +4013,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     }
     //diagnostic    add range and azimuth modifiers
     //add early eixt if tg.setRangeFanAZLabels is false
-    if(tg.get_RFText()===false)
+    if(tg.get_HideOptionalLabels())
         return true;
     for(var k=0;k<numSectors;k++)
     {
@@ -4474,7 +4474,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                         }
                     }
                 }
-                if(tg.get_RFText())
+                if(!tg.get_HideOptionalLabels())
                 {
                     var H2 = tg.get_H2();
                     var am = H2.split(",");
