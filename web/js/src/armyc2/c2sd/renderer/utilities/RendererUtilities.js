@@ -683,7 +683,7 @@ return{
         //get font measurements
         var widths = measurements.widths; 
         var width = 0;
-        var length = text.length-1;
+        var length = text.length;
         for (var i=0; i < length; i++) 
         {
             var character = text.charAt(i);

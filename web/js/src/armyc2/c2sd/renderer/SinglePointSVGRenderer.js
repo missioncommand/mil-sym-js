@@ -2069,9 +2069,12 @@ return{
         var render = true;
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
-        
+            
+        if(!fontInfo)
+        {
+            fontInfo = RendererSettings.getFontInfo();
+        }
 
-        var fontSize = 60;
 	//ctx.font="37.5pt UnitFontsC"; //50 / 96 * 72
 	//ctx.font="150pt UnitFontsC"; // * 4 (because font file is 25% of original)
         var pixel = null;//point to center symbol on.
@@ -2149,8 +2152,8 @@ return{
         }
         
         var outlineOffset = symbolOutlineWidth;
-        if(outlineOffset > 2)
-            outlineOffset = (outlineOffset-1)/2;
+        if(outlineOffset > 2)//symbol outline is only ever 0 or 1 for SVG
+            outlineOffset = 1;//(outlineOffset-1)/2;
         else
             outlineOffset = 0;
 
@@ -2228,29 +2231,29 @@ return{
 
         }
         
+        var x = Math.round((-symbolBounds.getX() * ratio) + outlineOffset),
+            y = Math.round((-symbolBounds.getY() * ratio) + outlineOffset);
         
-        var symbolWidth = Math.ceil(symbolBounds.getWidth() * ratio) + (outlineOffset*2),
-            symbolHeight = Math.ceil(symbolBounds.getHeight() * ratio) + (outlineOffset*2);
+        symbolBounds = new SO.Rectangle(outlineOffset,outlineOffset,symbolWidth,symbolHeight);
+        
+        symbolWidth = Math.ceil(symbolBounds.getWidth()) + (outlineOffset*2);
+        symbolHeight = Math.ceil(symbolBounds.getHeight()) + (outlineOffset*2);
     
         var imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
     
-
-        var x = Math.round((-symbolBounds.getX() * ratio)),
-            y = Math.round((-symbolBounds.getY() * ratio));
-    
-        var centerPoint = new SO.Point(x,y);
         
+        var centerPoint = new SO.Point(x, y);
         
         var tgPaths = [];
         
-        if(outlineOffset>0)
+        /*if(outlineOffset>0)//svg symbol outline is only ever 0 or 1.
         {
             centerPoint.shift(outlineOffset,outlineOffset);
             x += outlineOffset;
             y += outlineOffset;
             symbolBounds.shift(outlineOffset,outlineOffset);
             symbolBounds.grow(outlineOffset);
-        }
+        }//*/
         
         if(intFill > 0)
         {
@@ -2302,8 +2305,6 @@ return{
         }
         seGroupTG += '</g>';
 
-        imageBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);
-        symbolBounds = new SO.Rectangle(0,0,symbolWidth,symbolHeight);        
         var si = new SVGInfo(seGroupTG,centerPoint,symbolBounds,imageBounds);
         
         //Process Modifiers
@@ -2328,9 +2329,8 @@ return{
         var returnSVG = "";
         if(svgElementInfo != null)
         {
-            centerPoint = svgElementInfo.centerPoint;
             svgElements = svgElementInfo.svgElements;
-            imageBounds = svgElementInfo.imageBounds;
+            imageBounds = svgElementInfo.modifierBounds;
 
             if(svgElementInfo.hasDOMArrow)
             {
@@ -2399,15 +2399,15 @@ return{
      * @param {String} overrideColor like "#000000"
      * @returns {ImageInfo}
      */        
-    ProcessTGSPWithSpecialModifierLayout: function(ii,symbolID,modifiers, overrideColor){
+    ProcessTGSPWithSpecialModifierLayout: function(si,symbolID,modifiers, overrideColor, fontInfo){
     
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
-        var bufferXL = 6,
-            bufferXR = 4,
+        var bufferXL = 5,
+            bufferXR = 5,
             bufferY = 2,
             bufferText = 2,
             centerOffset = 1, //getCenterX/Y function seems to go over by a pixel
@@ -2422,28 +2422,27 @@ return{
             newii = null;
     
         var arrMods = new Array();
+        var svgElements = [];
         var duplicate = false;
         
-        var symbolBounds = ii.getSymbolBounds().clone(),
-            bounds = ii.getSymbolBounds().clone(),
-            imageBounds = ii.getImageBounds().clone(),
-            centerPoint = ii.getCenterPoint().clone();
+        var symbolBounds = si.getSymbolBounds().clone(),
+            bounds = symbolBounds.clone(),
+            imageBounds = si.getSVGBounds().clone(),
+            centerPoint = si.getAnchorPoint().clone();
 			
 		var textColor = overrideColor,
 			textBackgroundColor = null;
     
-        centerPoint = new SO.Point(Math.round(ii.getCenterPoint().getX()),Math.round(ii.getCenterPoint().getY()));
+        centerPoint = new SO.Point(Math.round(si.getAnchorPoint().getX()),Math.round(si.getAnchorPoint().getY()));
     
         var byLabelHeight = false;
-        labelHeight = RendererUtilities.measureTextHeight(RendererSettings.getModifierFontName(),
-                                RendererSettings.getModifierFontSize(),
-                                RendererSettings.getModifierFontStyle()).fullHeight;
+        labelHeight = fontInfo.measurements.height;
         labelHeight = Math.round(labelHeight);
-        var maxHeight = (symbolBounds.getHeight());
+        var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
-        var descent = RendererUtilities.getFontDescent(RendererSettings.getModifierFontName(),RendererSettings.getModifierFontSize(),RendererSettings.getModifierFontStyle(),"TQgj");
+        var descent = fontInfo.measurements.descent;
         var yForY = -1;
         
         var labelBounds1 = null,//text.getPixelBounds(null, 0, 0);
@@ -2461,7 +2460,7 @@ return{
         else
             outlineOffset = 0;
         
-        /*bufferXL += outlineOffset;
+        bufferXL += outlineOffset;
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
         bufferText += outlineOffset;//*/
@@ -2474,13 +2473,13 @@ return{
 
             strText1 = "D";
             
-            text1 = new TextInfo(strText1,0,0,textInfoContext);
+            text1 = new SVGTextInfo(strText1,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
             
-            labelBounds1 = text1.getTextBounds();
+            labelBounds1 = text1.getBounds();
             if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
             {
                 y = symbolBounds.getY() + symbolBounds.getHeight();
-                x = symbolBounds.getX() - labelBounds1.getWidth() - bufferXL;
+                x = symbolBounds.getX() - bufferXL;
                 text1.setLocation(Math.round(x),Math.round(y));
             }
             else//2525C built in
@@ -2495,9 +2494,9 @@ return{
         else if (basicID===("G*G*APU---****X")) //pull-up point (PUP)
         {
             strText1 = "PUP";
-            text1 = new TextInfo(strText1,0,0,textInfoContext);
+            text1 = new SVGTextInfo(strText1,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
             
-            labelBounds1 = text1.getTextBounds();
+            labelBounds1 = text1.getBounds();
             y = symbolBounds.getCenterY() + ((labelBounds1.getHeight() - descent)/2);
             x = symbolBounds.getX() + symbolBounds.getWidth() + bufferXR;
             
@@ -2526,15 +2525,15 @@ return{
             //text1 = new TextLayout(strText1, labelFont, frc);
             var offset = 1;
             strText2 = "BIO";
-            text2 = new TextInfo(strText2,0,0,textInfoContext);
+            text2 = new SVGTextInfo(strText2,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
 
-            labelBounds2 = text2.getTextBounds();
+            labelBounds2 = text2.getBounds();
             //y = symbolBounds.getY() + (symbolBounds.getHeight() * 0.9);
             //x = symbolBounds.getCenterX() - centerOffset - (labelBounds1.getWidth()/2);
             
             y2 = symbolBounds.getCenterY() + ((labelBounds2.getHeight() - descent)*0.5);
             
-            x2 = symbolBounds.getX() - labelBounds2.getWidth() - bufferXL;
+            x2 = symbolBounds.getX() - bufferXL;
 
             text2.setLocation(Math.round(x2),Math.round(y2-offset));
             //ErrorLogger.LogMessage("BIO: " + String.valueOf(x2)+ ", " + String.valueOf(y2));
@@ -2545,15 +2544,15 @@ return{
             //text1 = new TextLayout(strText1, labelFont, frc);
             var offset = 1;
             strText2 = "CML";
-            text2 = new TextInfo(strText2,0,0,textInfoContext);
+            text2 = new SVGTextInfo(strText2,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
             
-            labelBounds2 = text2.getTextBounds();
+            labelBounds2 = text2.getBounds();
             //y = symbolBounds.getY() + (symbolBounds.getHeight() * 0.9);
             //x = symbolBounds.getCenterX() - centerOffset - (labelBounds1.getWidth()/2);
 
             y2 = symbolBounds.getCenterY() + ((labelBounds2.getHeight() - descent)/2);
 
-            x2 = symbolBounds.getX() - labelBounds2.getWidth() - bufferXL;
+            x2 = symbolBounds.getX() - bufferXL;
             
             text2.setLocation(Math.round(x2),Math.round(y2-offset));
         }
@@ -2584,11 +2583,10 @@ return{
             if(modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1] !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //One modifier symbols and modifier goes in center
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + (bounds.height * 0.4);
                 y = y + (labelHeight * 0.5);
                 
@@ -2601,11 +2599,10 @@ return{
             if(modifiers[ModifiersTG.H_ADDITIONAL_INFO_1] !== undefined)
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //One modifier symbols and modifier goes in center
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + (bounds.height * 0.5);
                 y = y + (labelHeight * 0.5);
                 
@@ -2618,11 +2615,10 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 //One modifier symbols, top third & center
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + (bounds.height * 0.25);
                 y = y + (labelHeight * 0.5);
                 
@@ -2636,7 +2632,7 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 //One modifier symbols and modifier goes right of center
                 x = bounds.x + (bounds.width * 0.75);
@@ -2653,11 +2649,10 @@ return{
             if(modifiers.T !== undefined)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 var labelWidth = ti.getTextBounds().getWidth();
                 //One modifier symbols and modifier goes just below of center
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + (bounds.height * 0.5);
                 y = y + (((bounds.height * 0.5) - labelHeight)/2) + labelHeight - descent;
                 
@@ -2674,7 +2669,7 @@ return{
                     basicID ===("G*F*PTS---****X"))//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 x = bounds.getCenterX() + (bounds.width * 0.15);
                 y = bounds.y + (bounds.height * 0.75);
@@ -2687,10 +2682,9 @@ return{
                     basicID ===("G*F*PTS---****X"))//H1
             {
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 labelWidth = Math.round(ti.getTextBounds().getWidth());
                 x = bounds.getCenterX() - (bounds.width * 0.15);
-                x = x - (labelWidth);
                 y = bounds.y + (bounds.height * 0.75);
                 y = y + (labelHeight * 0.5);
                 
@@ -2700,10 +2694,9 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
 
                 x = bounds.getCenterX() + (bounds.width * 0.15);
-//                    x = x - (labelBounds.width * 0.5);
                 y = bounds.y + (bounds.height * 0.25);
                 y = y + (labelHeight * 0.5);
 
@@ -2719,7 +2712,7 @@ return{
             if(modifiers.N !== undefined)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 x = bounds.x + bounds.width + bufferXR;
 
@@ -2739,7 +2732,7 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
                 
                 x = bounds.x + bounds.width + bufferXR;
                 if(!byLabelHeight)
@@ -2758,10 +2751,9 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 if(!byLabelHeight)
                 {
                     y = bounds.y + labelHeight - descent;
@@ -2778,11 +2770,10 @@ return{
             if(modifiers.V !== undefined && basicID ===("G*M*NZ----****X"))//V
             {
                 strText = modifiers[ModifiersTG.V_EQUIP_TYPE];
-                ti = new TextInfo(strText,0,0,textInfoContext);
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 
                 //subset of nbc, just nuclear
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
-                x = bounds.x - labelWidth - bufferXL;
+                x = bounds.x - bufferXL;
                 y = bounds.y + ((bounds.height * 0.5) + ((labelHeight - descent) * 0.5));//((bounds.height / 2) - (labelHeight/2));
                 
                 ti.setLocation(Math.round(x),Math.round(y));
@@ -2791,9 +2782,8 @@ return{
             if(modifiers.T !== undefined)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
-                x = bounds.x - labelWidth - bufferXL;
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
+                x = bounds.x - bufferXL;
                 if(!byLabelHeight)
                 {
                     y = bounds.y + bounds.height;
@@ -2809,21 +2799,18 @@ return{
             if(modifiers.Y !== undefined)//Y
             {
                 strText = modifiers[ModifiersTG.Y_LOCATION];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+
                 //just NBC
-                //x = bounds.getX() + (bounds.getWidth() * 0.5);
-                //x = x - (labelWidth * 0.5);
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
 
                 if(!byLabelHeight)
                 {
-                    y = bounds.y + bounds.height + labelHeight - descent + bufferY;
+                    y = bounds.y + bounds.height + labelHeight + bufferY;
                 }
                 else
                 {
-                    y = bounds.y + ((bounds.height * 0.5) + ((labelHeight-descent) * 0.5) + ((labelHeight + bufferText)*2) - descent);
+                    y = bounds.y + ((bounds.height * 0.5) + ((labelHeight-descent) * 0.5) + ((labelHeight + bufferText)*2));
                     
                 }
                 yForY = y + descent; //so we know where to start the DOM arrow.
@@ -2834,12 +2821,10 @@ return{
             if(modifiers.C !== undefined)//C
             {
                 strText = modifiers[ModifiersTG.C_QUANTITY];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 //subset of NBC, just nuclear
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
-                y = bounds.y - descent;
+                y = bounds.y - bufferY - descent;
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
 
@@ -2850,10 +2835,8 @@ return{
             if(modifiers.H !== undefined)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y - descent;// + (bounds.height * 0.5);
                 //y = y + (labelHeight * 0.5);
                 
@@ -2864,10 +2847,8 @@ return{
             if(modifiers.W !== undefined)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 x = bounds.x + (bounds.width * 0.5);
-                x = x - (labelWidth * 0.5);
                 y = bounds.y + (bounds.height);
                 y = y + (labelHeight);
                 
@@ -2877,16 +2858,15 @@ return{
             if(modifiers.N !== undefined)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
-                ti = new TextInfo(strText,0,0,textInfoContext);
-                var ti2 = new TextInfo(strText,0,0,textInfoContext);
-                labelWidth = Math.round(ti.getTextBounds().getWidth());
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
+                var ti2 = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
                 x = bounds.x + (bounds.width) + bufferXR;//right
                 //x = x + labelWidth;//- (labelBounds.width * 0.75);
 
                 duplicate = true;
 
                 x2 = bounds.x;//left
-                x2 = x2 - labelWidth - bufferXL;// - (labelBounds.width * 0.25);
+                x2 = x2 - bufferXL;// - (labelBounds.width * 0.25);
 
                 y = bounds.y + (bounds.height * 0.5);//center
                 y = y + ((labelHeight - descent) * 0.5);
@@ -2914,7 +2894,7 @@ return{
             var tempBounds = bounds.clone();
             tempBounds.unionPoint(new SO.Point(bounds.getCenterX(),yForY));
             
-            domPoints = this.createDOMArrowPoints(symbolID, tempBounds,ii.getCenterPoint(), q, false);
+            domPoints = this.createDOMArrowPoints(symbolID, tempBounds,si.getAnchorPoint(), q, false);
 
             domBounds = new SO.Rectangle(domPoints[0].getX(),domPoints[0].getY(),1,1);
 
@@ -2935,13 +2915,13 @@ return{
         {
 
             //build modifier bounds/////////////////////////////////////////
-            modifierBounds = arrMods[0].getTextOutlineBounds();
+            modifierBounds = arrMods[0].getOutlineBounds();
             var size = arrMods.length;
             var tempShape = null;
             for(var i=1; i<size;i++)
             {
                 tempShape = arrMods[i];
-                modifierBounds.union(tempShape.getTextOutlineBounds());
+                modifierBounds.union(tempShape.getOutlineBounds());
             }
 
         }
@@ -2952,91 +2932,50 @@ return{
             imageBounds.union(modifierBounds);
             imageBounds.union(domBounds);
 
-            //shift points if needed////////////////////////////////////////
-            if(imageBounds.getX() < 0 || imageBounds.getY() < 0)
-            {
-                var shiftX = Math.abs(imageBounds.getX()),
-                    shiftY = Math.abs(imageBounds.getY());
-
-                //shift mobility points
-                var size = arrMods.length;
-                var tempShape = null;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = arrMods[i];
-                    tempShape.shift(shiftX,shiftY);
-                }
-                modifierBounds.shift(shiftX,shiftY);
-                
-                if(domBounds !== null)
-                {
-                    for(var i = 0; i < 6; i++)
-                    {
-                        temp = domPoints[i];
-                        if(temp !== null)
-                            temp.shift(shiftX, shiftY);
-                    }
-                    domBounds.shift(shiftX, shiftY);
-                }
-
-                //shift image points
-                centerPoint.shift(shiftX, shiftY);
-                symbolBounds.shift(shiftX, shiftY);
-                imageBounds.shift(shiftX, shiftY);
-            }
-
+            
             if(render === true)
             {
-                var buffer = this.createBuffer(imageBounds.getWidth(),imageBounds.getHeight());
-                var ctx = buffer.getContext('2d');
 
-                //draw original icon
-                //ctx.drawImage(ii.getImage(),symbolBounds.getX(),symbolBounds.getY());
-                ctx.drawImage(ii.getImage(),0,0,
-                                symbolBounds.getWidth(), symbolBounds.getHeight(),
-                                symbolBounds.getX(),symbolBounds.getY(),
-                                symbolBounds.getWidth(), symbolBounds.getHeight());
-								
 				if(modifiers[MilStdAttributes.TextColor])
 					textColor = modifiers[MilStdAttributes.TextColor];
 				if(modifiers[MilStdAttributes.TextBackgroundColor])
 					textBackgroundColor = modifiers[MilStdAttributes.TextBackgroundColor];
 
-                this.renderText(ctx,arrMods, textColor, textBackgroundColor);
+                svgElements = this.renderTextElement(arrMods, textColor, textBackgroundColor);
 
                 //draw DOM arrow
+                var hasDOMArrow = false;
                 if(domBounds !== null)
                 {
-                    ctx.lineWidth = 2;
+                    /*ctx.lineWidth = 2;
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
-                    ctx.beginPath();
-                    ctx.moveTo(domPoints[0].getX(),domPoints[0].getY());
+                    ctx.strokeStyle = "#000000";//*/
+                                        
+                    var linePath = new SO.Path();
+                    linePath.moveTo(domPoints[0].getX(),domPoints[0].getY());
                     if(domPoints[1] !== null)
-                        ctx.lineTo(domPoints[1].getX(),domPoints[1].getY());
+                        linePath.lineTo(domPoints[1].getX(),domPoints[1].getY());
                     if(domPoints[2] !== null)
-                        ctx.lineTo(domPoints[2].getX(),domPoints[2].getY());
-                    ctx.stroke();
-
-                    ctx.beginPath();
-                    ctx.fillStyle = "#000000";
-                    ctx.moveTo(domPoints[3].getX(),domPoints[3].getY());
-                    ctx.lineTo(domPoints[4].getX(),domPoints[4].getY());
-                    ctx.lineTo(domPoints[5].getX(),domPoints[5].getY());
-                    ctx.closePath();
-                    ctx.fill();
+                        linePath.lineTo(domPoints[2].getX(),domPoints[2].getY());
+                        
+                    svgElements.push(linePath.toSVGElement('#000000',2,null));
+                    
+                    var arrowPath = new SO.Path();
+                    arrowPath.moveTo(domPoints[3].getX(),domPoints[3].getY());
+                    arrowPath.lineTo(domPoints[4].getX(),domPoints[4].getY());
+                    arrowPath.lineTo(domPoints[5].getX(),domPoints[5].getY());
+                    arrowPath.closePath();
+                    
+                    svgElements.push(arrowPath.toSVGElement(null,null,'#000000'));
+                    hasDOMArrow = true;
                 }
             }
-            newii = new ImageInfo(buffer, centerPoint, symbolBounds, imageBounds);
             
-            // <editor-fold defaultstate="collapsed" desc="Cleanup">
-            ctx = null;
-            buffer = null;
-            // </editor-fold>
-
-            if(newii !== undefined && newii !== null)
-                return newii;
+            if(svgElements !== null && svgElements.length > 0)
+                return {svgElements:svgElements, modifierBounds:imageBounds, hasDOMArrow:hasDOMArrow};
+            else
+                return null;
         }
         else 
             return null;
@@ -3051,15 +2990,15 @@ return{
      * @param {String} overrideColor like "#000000"
      * @returns {ImageInfo}
      */        
-    ProcessTGSPModifiers: function(ii,symbolID,modifiers, overrideColor){
+    ProcessTGSPModifiers: function(si,symbolID,modifiers, overrideColor,fontInfo){
     
         // <editor-fold defaultstate="collapsed" desc="Variables">
         var render = true;
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
         
-        var bufferXL = 6,
-            bufferXR = 4,
+        var bufferXL = 5,
+            bufferXR = 5,
             bufferY = 2,
             bufferText = 2,
             centerOffset = 1, //getCenterX/Y function seems to go over by a pixel
@@ -3068,6 +3007,7 @@ return{
             x2 = 0,
             y2 = 0,
             symStd = modifiers[MilStdAttributes.SymbologyStandard],
+            outlineWidth = RendererSettings.getTextOutlineWidth(),
             outlineOffset = RendererSettings.getTextOutlineWidth(),
             labelHeight = 0,
             labelWidth = 0,
@@ -3078,19 +3018,19 @@ return{
         var duplicate = false;
         
         var symbolBounds = si.getSymbolBounds().clone(),
-            bounds = si.getSVGBounds().clone(),
-            imageBounds = ii.getSVGBounds().clone(),
-            centerPoint = ii.getAnchorPoint().clone();
+            bounds = symbolBounds.clone(),
+            imageBounds = si.getSVGBounds().clone(),
+            centerPoint = si.getAnchorPoint().clone();
 			
 		var textColor = overrideColor,
 			textBackgroundColor = null;
     
-        centerPoint = new SO.Point(Math.round(ii.getAnchorPoint().getX()),Math.round(ii.getAnchorPoint().getY()));
+        centerPoint = new SO.Point(Math.round(si.getAnchorPoint().getX()),Math.round(si.getAnchorPoint().getY()));
     
         var byLabelHeight = false;
         labelHeight = fontInfo.measurements.height;
         labelHeight = Math.round(labelHeight);
-        var maxHeight = fontInfo.measurements.fullHeight;
+        var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
             byLabelHeight = true;
         
@@ -3112,10 +3052,10 @@ return{
         else
             outlineOffset = 0;
         
-        /*bufferXL += outlineOffset;
+        bufferXL += outlineOffset;
         bufferXR += outlineOffset;
         bufferY += outlineOffset;
-        bufferText += outlineOffset;*/
+        bufferText += outlineOffset;
         
         
         // </editor-fold>
@@ -3153,7 +3093,7 @@ return{
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
                 
                 x = bounds.x + (bounds.width * 0.5);
-                y = bounds.y - descent;
+                y = bounds.y - descent - outlineOffset - bufferY;
                 
                 ti.setLocation(x,y);
                 arrMods.push(ti);
@@ -3187,7 +3127,7 @@ return{
                 
                 x = bounds.x - bufferXL;
                 
-                y = ((labelHeight - descent + bufferText) * 2);
+                y = ((labelHeight + bufferText) * 2);
                 y = bounds.y + y;
                                 
                 ti.setLocation(x,y);
@@ -3569,17 +3509,15 @@ return{
      * @param {type} color a hex string "#000000"
      * @returns {void}
      */
-    renderText: function(ctx, tiArray, color, backgroundColor)
+    renderTextElement: function(tiArray, color, backgroundColor)
     {
-        ctx.lineCap = "butt";
-        ctx.lineJoin = "miter";
-        ctx.miterLimit = 3;
+        //ctx.lineCap = "butt";
+        //ctx.lineJoin = "miter";
+        //ctx.miterLimit = 3;
         /*ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.miterLimit = 3;*/
-
-        
-        ctx.font = RendererSettings.getModifierFont();
+        var svgElements = []
 
         var size = tiArray.length,
             tempShape = null,
@@ -3608,74 +3546,42 @@ return{
         
 
         if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
-        {    
-            //draw text outline
-            if(outlineWidth > 0)
+        {    //TODO: need to update, this is regular outline approach
+            for(var i=0; i<size;i++)
             {
-                ctx.lineWidth = RendererSettings.getTextOutlineWidth();
-                ctx.fillStyle = outlineStyle;
-                ctx.strokeStyle = outlineStyle;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = tiArray[i];
-                    tempShape.outlineText(ctx);
-                }
-            }
-            //draw text
-            ctx.fillStyle = fillStyle;
-            for(var j=0; j<size;j++)
-            {
-                tempShape = tiArray[j];
-                tempShape.fillText(ctx);
+                tempShape = tiArray[i];
+                svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
             }
         }
 		else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)
 		{
-			//draw text outline
-            if(outlineWidth > 0)
+            
+            for(var i=0; i<size;i++)
             {
-                ctx.fillStyle = outlineStyle;
-                for(var i=0; i<size;i++)
-                {
-                    tempShape = tiArray[i];
-					tempShape.getTextOutlineBounds().fill(ctx);
-                }
-            }
-            //draw text
-            ctx.fillStyle = fillStyle;
-            for(var j=0; j<size;j++)
-            {
-                tempShape = tiArray[j];
-                tempShape.fillText(ctx);
+                tempShape = tiArray[i];
+                svgElements.push(tempShape.getOutlineBounds().toSVGElement(null,null,outlineStyle));
+                svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
             }
 		}
 		else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
 		{
 			//draw text
-            ctx.fillStyle = fillStyle;
             for(var j=0; j<size;j++)
             {
                 tempShape = tiArray[j];
-                tempShape.fillText(ctx);
+                svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
             }
 		}
 		else// if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE)
         {
-            if(outlineWidth > 0)
-                ctx.lineWidth = (outlineWidth * 2) + 1;
-            ctx.fillStyle = fillStyle;
-            ctx.strokeStyle = outlineStyle;
             for(var i=0; i<size;i++)
             {
                 tempShape = tiArray[i];
-                if(outlineWidth>0)
-                {
-                    tempShape.strokeText(ctx);
-                }
-                tempShape.fillText(ctx);
+                svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
             }
-        }     
-    },
+        }
+        return svgElements;     
+    }
 
     
     // </editor-fold>

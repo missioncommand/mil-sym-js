@@ -63,8 +63,7 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         var outlineOffset = RS.getTextOutlineWidth();
 
         var tbm = RS.getTextBackgroundMethod();
-        if(tbm === RS.TextBackgroundMethod_OUTLINE || 
-            tbm === RS.TextBackgroundMethod_OUTLINE_QUICK)
+        if(tbm === RS.TextBackgroundMethod_OUTLINE)
             outlineOffset += 2;   
         if(outlineOffset > 0)
         {//adjust bounds if an outline value is set.
@@ -97,13 +96,17 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         this._bounds.shift(shiftX,shiftY);
         this._anchor.setLocation(x,y);
     };
-    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    /**
+     * 
+     */
+    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm)
     {
         var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getY() + '"';
         se += ' font-family="' + this._fontName + '"';
         se += ' font-size="' + this._fontSize + 'pt"';
         se += ' font-weight="' + this._fontStyle + '"';
         se += ' text-anchor="' + this._justification + '"';
+        se += ' alignment-baseline="hanging"';//
 
         var seStroke = null, 
             seFill = null;        
