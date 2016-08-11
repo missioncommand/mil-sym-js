@@ -397,7 +397,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                                     ptsPoly.add(pt2d)
                                 }
                             }
-                            polylines2.add(ptsPoly);
+                            if(ptsPoly.size()>1)
+                                polylines2.add(ptsPoly);
                         }
                         ptsPoly = new java.util.ArrayList();
                         ptPoly = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D(coords[0], coords[1]);
@@ -415,7 +416,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                         break;
                 }
             }
-            if (ptsPoly.size() > 0)
+            if (ptsPoly.size() > 1)
             {
                 if (shapeType === armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_FILL)
                 {
