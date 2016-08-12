@@ -75,7 +75,7 @@ console.log(foo.toString());*/
 		var symbolCode = "GHGPSLA-------X";//ambush present
 		//var symbolCode = "GFGPGAE---****X";//engagement area
         //var symbolCode = "GFGAGAA-------X"; //assembly area
-        //var symbolCode = "GHGPGLF-------X";//flot
+        //var symbolCode = "GHGAGLF-------X";//flot
 		//var symbolCode = "GHGPGAL-------X";//landing zone
 		//var symbolCode = "GHGPALL-------X";//LLTR
 		//var symbolCode = "GHGPALC-------X";////air corridor
@@ -89,6 +89,7 @@ console.log(foo.toString());*/
         //var symbolCode = "WOS-HPFF----A--";//Weirs
 		//var symbolCode = "GFTPF-----****X";//Task/Fix
 		//var symbolCode = "WO-DHHDF----A--";//fould ground
+        //var symbolCode = "G*F*AKBC--****X";//kill box blue rectangular
 		//3 point area
         var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
 		//var controlPoints = "66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
@@ -99,10 +100,12 @@ console.log(foo.toString());*/
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
         
 		modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
+        modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
 		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
 		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		
         var bbox = "66.25,30.60,66.28,30.65";
+		//var bbox = "66.25,30.60,66.26,30.65";
         //var bbox = "-180.0,-90.0,180.0,90.0";
         var scale = 500000.0;
 		
@@ -210,9 +213,9 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		//ASSEMBLY AREA EXAMPLE
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //G*G*GLB---****X
-        //var symbolCode2 = "GFGPGLB-------X"; //boundary
+        var symbolCode2 = "GFGPGLB-------X"; //boundary
         //var symbolCode2 = "GHGPGAG-------X"; //general area
-        var symbolCode2 = "GHGPGAA-------X"; //assembly area
+        //var symbolCode2 = "GHGPGAA-------X"; //assembly area
         //var symbolCode2 = "GHMPOADC--****X"; //antitank ditch, complete 
         //var symbolCode2 = "GFTPL---------X"; //delay
         //var symbolCode2 = "GHGPSLA-------X"; //ambush
@@ -222,8 +225,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
         //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
         //var bbox2 = "-180.0,-90.0,180.0,90.0";
         var scale2 = 50000.0;
-		//modifiers = "{\"modifiers\":{\"uniqueDesignation1\":\"T modifier\"}}";
-		modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
+		modifiers = "{\"modifiers\":{\"uniqueDesignation1\":\"T modifier\"}}";
+		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
 		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\"}}";
 		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\",\"symbolFillIds\":\"SFGP-----------\"}}";
 		
@@ -247,7 +250,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		
         document.getElementById("contentSpan").innerHTML += "<br/><br/>Assembly Area:   <br/>";
 
-		if(format === formatKML || format === formatGeoJSON)
+		if(format === formatGeoJSON)
 		{
 			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
 			if (json2 == null || json2 == "")
@@ -475,6 +478,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 			armyc2.c2sd.renderer.utilities.RendererUtilities.getIdealOutlineColor("FF00FF00");
 			armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
 			var foo = armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint("G*TPB-----****X");
+			var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolDef("PBS_RECTANGLE--", symStd);
 			
 			document.getElementById("contentSpan").innerHTML += "<br>isMultiPoint: " + foo.toString();
 		}

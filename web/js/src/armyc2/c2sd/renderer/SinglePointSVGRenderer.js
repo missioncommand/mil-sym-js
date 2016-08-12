@@ -123,7 +123,7 @@ return{
 						if(symbolID.charAt(3) !== 'A')
 						{
 							intFill++;
-							fill = getSVGPath(intFill);
+							fill = UnitSVGTable.getSVGPath(intFill);
 						}
 						intFrameAssume = intFill - 1;
 						intFrame = -1;
@@ -133,13 +133,13 @@ return{
 					{
 						intFrame = intFill + 2;
 						intFrameAssume = intFill + 1;
-						frame = getSVGPath(intFrame);
+						frame = UnitSVGTable.getSVGPath(intFrame);
 					}
 					
 					break;
             }
             if(intFrameAssume > 0)
-                frameAssume = getSVGPath(intFrameAssume);
+                frameAssume = UnitSVGTable.getSVGPath(intFrameAssume);
         }
             
         

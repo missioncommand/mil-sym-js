@@ -189,7 +189,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 
 			if(e.data.format == "ERROR")
 			{
-				document.getElementById("contentSpan").innerHTML += e.data.kml;
+				document.getElementById("contentSpan").innerHTML += e.data.result;
 				if(e.data.stack !== null)
 				{
 					document.getElementById("contentSpan").innerHTML += ("<br/>at " + e.data.stack);
