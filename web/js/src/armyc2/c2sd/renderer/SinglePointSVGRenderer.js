@@ -2016,7 +2016,7 @@ return{
 
             //build modifier bounds/////////////////////////////////////////
             modifierBounds = imageBounds.clone();
-            modifierBounds.union(arrMods[0].getOutlineBounds());
+            modifierBounds.union(tiArray[0].getOutlineBounds());
             var size = tiArray.length;
             var tempShape = null;
             if(modifiers[MilStdAttributes.TextColor])
