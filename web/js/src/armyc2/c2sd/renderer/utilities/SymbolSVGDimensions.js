@@ -158,6 +158,9 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (60041 <= index && index <= 60045):
                         rect = new Rectangle(-519,-376,1038,746);
                         break;
+                case (59046 === index || index === 60046):
+                        rect = new Rectangle(-589,-392,1178,795);
+                        break;
                 case (59047 <= index && index <= 59051)://Point Route specific
                 case (60047 <= index && index <= 60051):
                         rect = new Rectangle(-592,-376,1184,1132);
@@ -170,8 +173,8 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (61506 <= index && index <= 61515)://
                         rect = new Rectangle(-480,-705,960,1410);
                         break;
-                case (59092 <= index && index <= 59105)://Sea Surface Control Station
-                case (60092 <= index && index <= 60105):
+                case (59092 <= index && index <= 59112)://Sea Surface/subsurface Control Station
+                case (60092 <= index && index <= 60125):
                         rect = new Rectangle(-705,-480,1410,960);
                         break;
                 case (58999 === index || index === 59999):
@@ -191,7 +194,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         break;
                 case (59004 === index || index === 60004)://underwater brief contact
                 case (59005 === index || index === 60005)://underwater lost contact
-                        rect = new Rectangle(-405,-637,994,994);
+                        rect = new Rectangle(-405,-994,810,994);
                         break;
                 case (59006 === index || index === 60006)://underwater sinker
                         rect = new Rectangle(-502,-1038,1004,1038);
@@ -207,6 +210,10 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (59023 === index || index === 60023)://search center
                         rect = new Rectangle(-600,-600,1200,1200);
                         break;
+                case (59024 <= index && index <= 59031)://
+                case (60024 <= index && index <= 60031):
+                        rect = new Rectangle(-705,-480,1410,960);
+                        break;
                 case (59032 === index || index === 60032)://point of interest
                         rect = new Rectangle(-405,-1406,810,1406);
                         break;
@@ -220,7 +227,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-1050,-1134,2100,1134);
                         break;
                 case (59036 === index || index === 60036)://ground zero
-                        rect = new Rectangle(-553,-1142,1106,1142);
+                        rect = new Rectangle(-553,-1442,1106,1442);
                         break;
                 case (59037 === index || index === 60037)://msl detection point
                         rect = new Rectangle(-762,-1352,1524,1352);
@@ -254,7 +261,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-800,-953,1600,1393);
                         break;
                 case (59121 === index || index === 60121)://target reference
-                        rect = new Rectangle(-800,-953,1600,1393);
+                        rect = new Rectangle(-600,-600,1200,1200);
                         break;
                 case (59123 === index || index === 60123)://combat outpost
                         rect = new Rectangle(-582,-654,1164,1148);
@@ -265,17 +272,17 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         break;
                 case (59129 <= index && index <= 59131)://anti-tank obstacles
                 case (60129 <= index && index <= 60131):
-                        rect = new Rectangle(-500,-986,1000,994);
+                        rect = new Rectangle(-500,-998,1000,998);
                         break;
                 case (59132 === index || index === 60132)://booby trap
                         rect = new Rectangle(-503,-1007,1006,1281);
                         break;
                 case (59133 === index || index === 60133)://unspecified mine
                 case (59134 === index || index === 60134)://antitank mine
-                        rect = new Rectangle(-400,-400,800,800);
+                        rect = new Rectangle(-402,-401,805,803);
                         break;
                 case (59135 === index || index === 60135)://ANTITANK MINE WITH ANTIHANDLING DEVICE
-                        rect = new Rectangle(-406,-400,812,1622);
+                        rect = new Rectangle(-407,-398,813,1623);
                         break;
                 case (59136 === index || index === 60136)://ANTITANK MINE directional
                         rect = new Rectangle(-400,-1371,800,1771);
@@ -335,7 +342,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-355,-471,711,719);
                         break;
                 case (59202 === index || index === 60202)://iceberg
-                        rect = new Rectangle(-612,-506,711,1218);
+                        rect = new Rectangle(-612,-506,1218,886);
                         break;
                 case (59203 === index || index === 60203)://oilrig
                         rect = new Rectangle(-500,-339,1000,600);
@@ -355,7 +362,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-0,-321,1140,642);
                         break;
                 case (59210 === index || index === 60210)://Sea Anomoly
-                        rect = new Rectangle(-648,-474,1298,1026);
+                        rect = new Rectangle(-648,-574,1298,1026);
                         break;
                 case (59211 === index || index === 60211)://FIX
                         rect = new Rectangle(-462,-480,924,960);
@@ -397,7 +404,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-444,-544,883,1088);
                         break;
                 case (62002 === index)://LPC TROPOPAUSE LOW
-                        rect = new Rectangle(-452,-424,896,424);
+                        rect = new Rectangle(-452,-424,896,859);
                         break;
                 case (62003 === index)://High Pressure Center
                         rect = new Rectangle(-442,-548,877,1098);
@@ -426,12 +433,12 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (62011 === index)://Clear Icing Light, Moderate, severe
                 case (62012 === index)://Clear Icing Light, Moderate, severe
                 case (62013 === index)://Clear Icing Light, Moderate, severe
-                        rect = new Rectangle(-794,-488,1585,971);
+                        rect = new Rectangle(-796,-488,1589,971);
                         break;
                 case (62014 === index)://Rime Icing Light, Moderate, severe
                 case (62015 === index)://Rime Icing Light, Moderate, severe
                 case (62016 === index)://Rime Icing Light, Moderate, severe
-                        rect = new Rectangle(-794,-488,1585,972);
+                        rect = new Rectangle(-796,-488,1589,972);
                         break;
                 case (62017 === index)://Mixed Icing Light
                         rect = new Rectangle(-815,-902,1630,1804);
@@ -440,6 +447,9 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                 case (62019 === index)://Mixed Icing Moderate, severe
                         rect = new Rectangle(-1009,-576,2014,1158);
                         break;
+                case (62020 === index)://Calm Winds
+                        rect = new Rectangle(-500,-500,1000,1000);
+                        break;
                 case (62021 <= index && index <= 62026)://Calm Winds
                         rect = new Rectangle(-640,-641,1283,1281);
                         break;
@@ -447,7 +457,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-141,-141,282,282);
                         break;
                 case (62028 === index)://RAIN - INTERMITTENT Continuous
-                        rect = new Rectangle(-595,-141,1190,282);
+                        rect = new Rectangle(-596,-141,1192,282);
                         break;
                 case (62029 === index)://RAIN - INTERMITTENT moderdate
                         rect = new Rectangle(-142,-446,284,892);
@@ -459,7 +469,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-141,-500,282,1000);
                         break;
                 case (62032 === index)://RAIN - INTERMITTENT continuous heavy
-                        rect = new Rectangle(-570,-446,1140,892);
+                        rect = new Rectangle(-572,-446,1144,892);
                         break;
                 case (62033 === index)://freezing rain
                 case (62034 === index)://
@@ -476,13 +486,13 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-108,-207,222,430);
                         break;
                 case (62039 === index)://drizzle
-                        rect = new Rectangle(-354,-207,693,430);
+                        rect = new Rectangle(-354,-207,695,430);
                         break;
                 case (62040 === index)://drizzle
                         rect = new Rectangle(-108,-520,222,1041);
                         break;
                 case (62041 === index)://drizzle
-                        rect = new Rectangle(-354,-471,693,950);
+                        rect = new Rectangle(-355,-471,695,950);
                         break;
                 case (62042 === index)://drizzle
                         rect = new Rectangle(-108,-721,222,1446);
@@ -573,14 +583,14 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-383,-478,766,939);
                         break;
                 case (62074 === index)://lightning
-                        rect = new Rectangle(-383,-478,766,939);
+                        rect = new Rectangle(-520,-697,1040,1401);
                         break;
                 case (62075 <= index && index <= 62079)://fog
                         rect = new Rectangle(-450,-490,900,980);
                         break;
                 case (62080 === index)://fog freezing
                 case (62081 === index)://fog freezing
-                        rect = new Rectangle(-500,-483,766,1000);
+                        rect = new Rectangle(-500,-483,1000,972);
                         break;
                 case (62082 === index)://mist
                         rect = new Rectangle(-450,-259,900,518);
@@ -612,7 +622,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-517,-607,1018,1223);
                         break;
                 case (62093 === index)://volcanic ash
-                        rect = new Rectangle(-400,-429,856,829);
+                        rect = new Rectangle(-400,-429,856,876);
                         break;
                 case (62094 === index)://TROPOPAUSE LEVEL
                 case (62095 === index)://FREEZING LEVEL
@@ -734,7 +744,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         break;
                 case (62157 === index)://ferry crossing
                 case (62158 === index)://    cable ferry crossing
-                        rect = new Rectangle(-615,-40,1236,80);
+                        rect = new Rectangle(-615,-152,1236,304);
                         break;
                 case (62161 === index)://beacon
                         rect = new Rectangle(-600,-648,1200,1300);
@@ -846,7 +856,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-357,-442,718,887);
                         break;
                 case (62202 === index)://oil/gas rig
-                        rect = new Rectangle(-508,-700,1400,887);
+                        rect = new Rectangle(-508,-700,1016,1400);
                         break;
                 case (62203 === index)://PILE/PILING/POST
                         rect = new Rectangle(-405,-405,813,813);
@@ -872,7 +882,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
                         rect = new Rectangle(-650,-587,1300,1023);
                         break;
                 case (63004 === index)://subsidence
-                        rect = new Rectangle(-702,-231,1404,585);
+                        rect = new Rectangle(-702,-292,1404,585);
                         break;
                 case (63005 === index)://volcanic eruption, should use the weather graphic: WAS-WSVE--P----
                         rect = new Rectangle(-0,-0,0,0);

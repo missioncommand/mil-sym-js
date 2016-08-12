@@ -725,16 +725,16 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
         "MAPPINGP": "2135",
         "MAPPINGA": "2135",
         "DESCRIPTION": "Antitank Mine with Antihandling Device",
-        "WIDTH": "24",
-        "HEIGHT": "44"
+        "WIDTH": "25",
+        "HEIGHT": "52"
       },
       {
         "SYMBOLID": "G*M*OME---****X",
         "MAPPINGP": "2136",
         "MAPPINGA": "2136",
         "DESCRIPTION": "Antitank Mine (Directional)",
-        "WIDTH": "24",
-        "HEIGHT": "53"
+        "WIDTH": "25",
+        "HEIGHT": "51"
       },
       {
         "SYMBOLID": "G*M*OMP---****X",
@@ -999,7 +999,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
         "MAPPINGA": "2210",
         "DESCRIPTION": "Sea Anomaly [Wake, Current, Knuckle]",
         "WIDTH": "39",
-        "HEIGHT": "31"
+        "HEIGHT": "30"
       },
       {
         "SYMBOLID": "G*O*SM----****X",
@@ -2199,7 +2199,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
         "SYMBOLID": "WOS-IBM---P----",
         "MAPPINGP": "5118",
         "DESCRIPTION": "Many Icebergs",
-        "WIDTH": "36",
+        "WIDTH": "44",
         "HEIGHT": "22"
       },
       {
@@ -2446,7 +2446,7 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsB =  {
         "MAPPINGP": "5153",
         "DESCRIPTION": "Offshore Loading Facility 1",
         "WIDTH": "35",
-        "HEIGHT": "33"
+        "HEIGHT": "38"
       },
       {
         "SYMBOLID": "WO-DHPMO---L---",

@@ -427,16 +427,17 @@ return{
             //combine with returnSVG
             //wrap in SVG tag
             
-            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
             returnSVG += '</g>';
             returnSVG += '</svg>';//*/
             
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox=' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            //with viewbox
+            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
-            returnSVG += '</svg>';
+            returnSVG += '</svg>';//*/
         }
         else
         {
@@ -2014,7 +2015,8 @@ return{
         {
 
             //build modifier bounds/////////////////////////////////////////
-            modifierBounds = tiArray[0].getOutlineBounds();
+            modifierBounds = imageBounds.clone();
+            modifierBounds.union(arrMods[0].getOutlineBounds());
             var size = tiArray.length;
             var tempShape = null;
             if(modifiers[MilStdAttributes.TextColor])
@@ -2030,8 +2032,9 @@ return{
             {
                 tempShape = tiArray[i];
                 modifierBounds.union(tempShape.getOutlineBounds());
-                svgElements.push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
+                //svgElements.push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
             }
+            svgElements = this.renderTextElement(tiArray,textColor,textBackgroundColor);
             
         }
 
@@ -2196,22 +2199,27 @@ return{
 
                //when SymbolSizeMedium = 80;
                //a pixel size of 35 = scale value of 1.0
-                pixelSize = pixelSize * 1.4;
+                //pixelSize = pixelSize * 1.4;
+                ratio = pixelSize / 1400;
                                
             }
+            else
+            {
+                //adjust size
+                ratio = Math.min((pixelSize / rect.getHeight()), (pixelSize / rect.getWidth()));
+            }
 
-            //adjust size
-            ratio = Math.min((pixelSize / rect.getHeight()), (pixelSize / rect.getWidth()));
+            
 
         }
        
         
-        var symbolWidth = Math.round(symbolBounds.getWidth() * ratio),
-            symbolHeight = Math.round(symbolBounds.getHeight() * ratio);
+        var symbolWidth = Math.ceil(symbolBounds.getWidth() * ratio),
+            symbolHeight = Math.ceil(symbolBounds.getHeight() * ratio);
 
         
-        var offsetX = Math.round(-symbolBounds.getX()),
-            offsetY = Math.round(-symbolBounds.getY());
+        var offsetX = Math.ceil(-symbolBounds.getX()),
+            offsetY = Math.ceil(-symbolBounds.getY());
         
         var fillID = null;
         if(SymbolUtilities.hasDefaultFill(symbolID) && fillColor === null)
@@ -2231,8 +2239,8 @@ return{
 
         }
         
-        var x = Math.round((-symbolBounds.getX() * ratio) + outlineOffset),
-            y = Math.round((-symbolBounds.getY() * ratio) + outlineOffset);
+        var x = Math.ceil((-symbolBounds.getX() * ratio) + outlineOffset),
+            y = Math.ceil((-symbolBounds.getY() * ratio) + outlineOffset);
         
         symbolBounds = new SO.Rectangle(outlineOffset,outlineOffset,symbolWidth,symbolHeight);
         
@@ -2366,16 +2374,16 @@ return{
             //combine with returnSVG
             //wrap in SVG tag
             
-            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
             returnSVG += '</g>';
             returnSVG += '</svg>';//*/
             
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox=' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            /*returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="' + imageBounds.getX()  + ' ' + imageBounds.getY() + ' ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() +  '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
-            returnSVG += '</svg>';
+            returnSVG += '</svg>';//*/
         }
         else
         {
@@ -2915,7 +2923,8 @@ return{
         {
 
             //build modifier bounds/////////////////////////////////////////
-            modifierBounds = arrMods[0].getOutlineBounds();
+            modifierBounds = imageBounds.clone();
+            modifierBounds.union(arrMods[0].getOutlineBounds());
             var size = arrMods.length;
             var tempShape = null;
             for(var i=1; i<size;i++)
@@ -2931,7 +2940,6 @@ return{
 
             imageBounds.union(modifierBounds);
             imageBounds.union(domBounds);
-
             
             if(render === true)
             {
@@ -3178,15 +3186,17 @@ return{
                 textBackgroundColor = RendererUtilities.getIdealOutlineColor(textColor,true);
 
             //build modifier bounds/////////////////////////////////////////
-            modifierBounds = arrMods[0].getOutlineBounds();
+            modifierBounds = imageBounds.clone();
+            modifierBounds.union(arrMods[0].getOutlineBounds());
             var size = arrMods.length;
             var tempShape = null;
             for(var i=1; i<size;i++)
             {
                 tempShape = arrMods[i];
                 modifierBounds.union(tempShape.getOutlineBounds());
-                svgElements.push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
+                //svgElements .push(tempShape.toSVGElement(textBackgroundColor,outlineWidth,textColor));
             }
+            svgElements = this.renderTextElement(arrMods,textColor,textBackgroundColor);
 
         }
         

@@ -39,12 +39,15 @@ return{
 
         var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id);
 
+        if(color.toHexString)
+            color = color.toHexString(false);
+
         if(charSymbolIndex >= 0)
         {
             var ratio = size/1200;
 
             var path = TGSVGTable.getSVGPath(charSymbolIndex);
-            path = processSVGPath(path,color.toHexString(false));
+            path = processSVGPath(path,color);
             var pixel = new armyc2.c2sd.renderer.so.Point(0,0);
 
 

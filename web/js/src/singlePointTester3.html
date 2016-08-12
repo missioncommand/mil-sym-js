@@ -75,7 +75,7 @@
             return modifiers;
         }
         
-        function render(symbolID, x, y, modifiers)
+        function render(symbolID, x, y)
         {
             var symStd = 1;
             
@@ -111,6 +111,9 @@
                 y = y - center.getY();
                 //alert(x + " " + y);
                 ctx.drawImage(ii.getImage(), Math.ceil(x),Math.ceil(y));
+                var bounds = ii.getImageBounds();
+                bounds.setLocation(x,y);
+                bounds.stroke(ctx);
             }
             catch(err)
             {
@@ -304,7 +307,7 @@
             var preview = document.getElementById("preview");
             var x = e.pageX - preview.offsetLeft;
             var y = e.pageY - preview.offsetTop;
-            render(_symbolID,x, y,_modifiers);
+            render(_symbolID,x, y);
         }
         
         function setSpeedTestImages()

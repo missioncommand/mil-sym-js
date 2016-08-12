@@ -192,7 +192,6 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                 basicID === "G*O*SB----****X" ||
                 basicID === "G*O*SBM---****X" ||
                 basicID === "G*O*SBN---****X" ||
-                basicID === "G*O*SS----****X" ||
                 basicID === "G*G*GPPN--****X" || //entry control point
                 basicID === "G*S*PX----****X" || //ambulance exchange point
                 basicID === "G*O*ES----****X" || //emergency distress call
@@ -208,7 +207,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
         {
                 //bottom third
                 center.x = bounds.width/2;
-                center.y = Math.round(bounds.height * 0.66);
+                center.y = Math.round(bounds.height * 0.75);
         }
         else if((basicID.substring(0,7)==="G*G*GPO" && basicID.substring(7,8)!=="-"))//antitank mine w/ handling device
         {
@@ -302,6 +301,11 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
                         center.x = 0;
                         center.y = Math.round(bounds.height * 0.5);
                 }
+        }
+        else if(basicID === "G*O*SS----****X")//sea anomaly
+        {
+            center.x = bounds.width/2;
+            center.y = Math.round(bounds.height * 0.45);
         }
         else
         {

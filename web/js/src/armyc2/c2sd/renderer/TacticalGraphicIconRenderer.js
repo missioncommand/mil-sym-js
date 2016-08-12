@@ -22,6 +22,9 @@ return{
             color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         }
 
+        if(color.toHexString)
+            color = color.toHexString(false);
+
         var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id);
 
         if(charSymbolIndex >= 0)
