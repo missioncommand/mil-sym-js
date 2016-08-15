@@ -1,0 +1,87 @@
+<html>
+<head>
+</head>
+<body>
+ <script src="jquery-3.1.0.min.js"></script>
+ <script src="SinglePointSVG.js"></script>
+ <script src="UnitFontSVG.js"></script>
+ <script src="TacticalGraphicsSVG.js"></script>
+ <script>
+
+/**
+ * The purpose is to clean out the extra garbage we don't need in the converted font files.
+ * After saving the cleaned up file, pretty it up here: http://codebeautify.org/jsonviewer
+ * Then copy and paste the data from the new one into the old one.
+ * units went from 1342kb to 1035kb, 992kb min
+ * sp went from 426kb to 335kb, 320kb min
+ * tg went from 452kb to 358kb, 344kb min
+ * overall, 2.16 MB to 1.61MB
+ * after minification sv-bc went from 
+ */
+
+function cleanTG()
+{
+    //var cleaned = clean(armyc2.c2sd.renderer.xml.TacticalGraphicsSVG.svg.glyhps);
+    worker.postMessage({glyphs:armyc2.c2sd.renderer.xml.TacticalGraphicsSVG.svg.glyph,name:"TacticalGraphicsSVGClean.js"});
+}
+function cleanSP()
+{
+    //var cleaned = clean(armyc2.c2sd.renderer.xml.SinglePointSVG);
+    worker.postMessage({glyphs:armyc2.c2sd.renderer.xml.SinglePointSVG.svg.glyph,name:"SinglePointSVGClean.js"});
+}
+function cleanUnits()
+{
+    //var cleaned = clean(armyc2.c2sd.renderer.xml.UnitFontSVG);
+    worker.postMessage({glyphs:armyc2.c2sd.renderer.xml.UnitFontSVG.svg.glyph,name:"UnitFontSVGClean.js"});
+}
+
+var worker = new Worker('cleanup.js');
+
+worker.onerror = function(error)
+{
+    console.log(error);
+}
+worker.onmessage = function(e)
+{
+    
+    //var fo = {svg:glyphs:[]};
+    //fo.svg.glyphs = e.data.glyphs;
+    try
+    {
+        var fo = {svg:{}};
+        fo.svg.glyph = e.data.glyphs;
+        
+        
+        var json = JSON.stringify(fo);
+        var blob = new Blob([json], {type: "application/json"});
+        var url = URL.createObjectURL(blob);
+        
+        var a = document.createElement('a');
+        a.download = e.data.name;
+        a.href = url;
+        a.textContent = "download " + e.data.name;
+        
+        document.getElementById("contentSpan").appendChild(a);
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+    
+}//*/
+
+
+	</script>
+
+	<p>
+    <button type='button' onclick='cleanUnits()'>cleanUnits</button>
+	<button type='button' onclick='cleanSP()'>cleanSP</button>
+	<button type='button' onclick='cleanTG()'>cleanTG</button>
+  <span id='contentSpan'/>
+   
+   
+   
+
+</body>
+beautify at http://codebeautify.org/jsonviewer
+</html>
