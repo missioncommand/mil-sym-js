@@ -29,7 +29,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 803://FG
             case 804:
             case 805:
-                    rect = new Rectangle(0,0,65,47);
+                    rect = new Rectangle(0,0,62.547,44.52632);//
                     break;
             case 806://HG
             case 807:
@@ -39,12 +39,12 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 809://NG
             case 810:
             case 811:
-                    rect = new Rectangle(0,0,50.05,50.05);
+                    rect = new Rectangle(0,0,47.6085,47.6085);
                     break;
             case 812://FE
             case 813:
             case 814:
-                    rect = new Rectangle(0,0,53.75,53.75);
+                    rect = new Rectangle(0,0,51.0625,51.0625);
                     break;
             case 816://HA/S
             case 817:
@@ -52,7 +52,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 840:
             case 841:
             case 842:
-                    rect = new Rectangle(0,8,50.3,53);//
+                    rect = new Rectangle(0,8,47.8463,53);//
                     break;
             case 819://FA/S
             case 820:
@@ -81,7 +81,7 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 828://HSub
             case 829:
             case 830:
-                    rect = new Rectangle(0,-8,50.3,53);//{x : 0, y:-7, width:50.3,height:53}
+                    rect = new Rectangle(0,-8,47.8463,53);//{x : 0, y:-7, width:50.3,height:53}
                     break;
             case 831://FSub
             case 832:
