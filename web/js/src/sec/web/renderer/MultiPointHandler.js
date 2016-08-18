@@ -897,9 +897,25 @@ sec.web.renderer.MultiPointHandler = (function () {
                     {
                         shapes.smooth = true;
                     }
+                    
+                    //check for area pattern fill
+                    var map = mSymbol.getModifierMap();
+                    var fillTexture = null;
+                    var fillTextureSymbolSize = 15;
+                    if(map["symbolFillIds"])
+                    {
+                        var strIDs = map["symbolFillIds"];
+                        if(map["symbolFillSize"])
+                            fillTextureSymbolSize = map["symbolFillSize"];
+                        
+                        if(strIDs && strIDs !== "")
+                        {
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                        }
+                    }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight());
+                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture);
                 }
                 else if (format === 1) //deprecated
                 {
@@ -1221,8 +1237,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                         shapes.smooth = true;
                     }
 
+                    //check for area pattern fill
+                    var map = mSymbol.getModifierMap();
+                    var fillTexture = null;
+                    var fillTextureSymbolSize = 15;
+                    if(map["symbolFillIds"])
+                    {
+                        var strIDs = map["symbolFillIds"];
+                        if(map["symbolFillIconSize"])
+                            fillTextureSymbolSize = map["symbolFillIconSize"];
+                        
+                        if(strIDs && strIDs !== "")
+                        {
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                        }
+                    }
+
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight);
+                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
                 }
                 else if (format === 1) //deprecated
                 {

@@ -3,7 +3,7 @@
 <head>
 <!-- Meta line required for IE-->
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
-
+<link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" />
 <script src="include-mpsp.js" type="text/javascript" ></script>
 
 
@@ -74,7 +74,7 @@ console.log(foo.toString());*/
         //var symbolCode = "GHGASLA-------X";//ambush anticipated
 		var symbolCode = "GHGPSLA-------X";//ambush present
 		//var symbolCode = "GFGPGAE---****X";//engagement area
-        //var symbolCode = "GFGAGAA-------X"; //assembly area
+        var symbolCode = "GFGAGAA-------X"; //assembly area
         //var symbolCode = "GHGAGLF-------X";//flot
 		//var symbolCode = "GHGPGAL-------X";//landing zone
 		//var symbolCode = "GHGPALL-------X";//LLTR
@@ -100,7 +100,8 @@ console.log(foo.toString());*/
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
         
 		modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
-        modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
+        //modifiers = {"symbolFillIds":"SFGPU----------,SHGPU----------","symbolFillIconSize":35};
+        //modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
 		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
 		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		

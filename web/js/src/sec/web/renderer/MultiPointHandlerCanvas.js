@@ -11,6 +11,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
     var _buffer = null;
     var _blankCanvas = null;
     var _blankCanvasContext = null;
+    var _document = document;
 
     var textInfoBuffer = null,
         textInfoContext = null,
@@ -57,9 +58,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {boolean} wasClipped - true if symbol was clipped and will need redraw on map pan.
          * @param {number} pixelWidth - pixel width of the bounding box
          * @param {number} pixelHeight - pixel height of the bounding box
+         * @param {object} fillTexture - an html5 canvas
          * @returns {geoCanvas} - looks like: {image:canvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight)
+        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture)
         {
             if (textInfoBuffer === null)
             {
@@ -86,13 +88,14 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var labelBounds = null;
             var unionBounds = null;
             var rotatedBounds = null;
+            
             try
             {
 
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer);
+                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer, fillTexture);
                     if(pathInfo.path && pathInfo.path.getBounds())
                     {
                         tempBounds = pathInfo.path.getBounds();
@@ -221,7 +224,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(paths && len > 0 && unionBounds)
             {
                 paths.smooth = shapes.smooth;//for lineJoin
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped);
+                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture);
                 return geoCanvas;
             }
             else
@@ -246,7 +249,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
          *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
          */
-        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor, wasClipped)
+        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
         {
             var buffer = null;
             if (format === 4)
@@ -323,6 +326,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     if(pi.fillPattern !== null && pi.fillPattern.src)
                     {
                         pi.path.fillPattern(ctx, pi.fillPattern);
+                    }
+                    else if(fillTexture)
+                    {
+                        pi.path.fillPattern(ctx, fillTexture);
                     }
                 }
             }
@@ -489,9 +496,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {type} shapeInfos
          * @param {type} ipc
          * @param {type} normalize
+         * @param {type} fillTexture
          * @returns {feature} {path, lineColor, fillColor, lineWidth, bounds}
          */
-        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize)
+        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize, fillTexture)
         {
 
             var pathInfo = null;
@@ -522,6 +530,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(shapeInfo.getTexturePaint() !== null)
             {
                 fillPattern = shapeInfo.getTexturePaint();
+            }
+            if(fillTexture)
+            {
+                fillPattern = fillTexture;
             }
 
             var stroke = null;
@@ -569,6 +581,47 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             }
             pathInfo = {path: path, lineWidth: lineWidth, lineColor: lineColor, fillColor: fillColor, dashArray: dashArray, alpha: alpha, fillPattern: fillPattern};
             return pathInfo;
+        },
+        
+        MakeFillTexture(symbolFillIds, symbolFillSize)
+        {
+            var texture;
+            var symbolIDs = symbolFillIds.split(","); 
+            var symbols = [];
+            var width = 0, height = 0, spacerW = 0, spacerH = 0;
+            //calculate texture dimensions
+            for(var i = 0; i < symbolIDs.length; i++)
+            {
+                symbols.push(armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
+                var rect = symbols[i].getImageBounds();
+                if(rect.getWidth() > width)
+                    width = rect.getWidth();
+                if(rect.getHeight() > height)
+                    height = rect.getHeight();
+            }
+            spacerW = width / 3;
+            spacerH = 10; //width / 2;
+            
+            
+            //create texture
+            texture = _document.createElement('canvas');
+            texture.width = (width * symbols.length) + (spacerW * symbols.length);
+            texture.height = height + spacerH;
+            
+            //draw to texture
+            var x = spacerW;
+            var y = spacerH;
+            var ctx = texture.getContext('2d');
+            for(var j = 0; j < symbols.length; j++)
+            {
+                var sym = symbols[j];
+                var center = sym.getCenterPoint();
+                
+                ctx.drawImage(sym.getImage(),x + width/2 - center.getX(),y + height/2 - center.getY());
+                x += spacerW + width;
+            }
+          
+            return texture;  
         },
         /**
          * 

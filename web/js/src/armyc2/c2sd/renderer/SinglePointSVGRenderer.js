@@ -283,11 +283,7 @@ return{
                 color1 = "#000000";
             }
             
-            if(alpha < 1.0)
-            {
-                //ctx.globalAlpha = alpha;
-            }
-			
+		
 			if(frameAssume !== null && intFrame === -1)
             {
                 seFrameAssume = this.processSVGPath(frameAssume, "#ffffff");
@@ -329,7 +325,11 @@ return{
         //wrap svg elements in a group and scale and translate accordingly.
         var transX = symbolWidth / 2;
         var transY = symbolHeight / 2;
-        var seGroupUnit = '<g transform="translate(' + (x * ratio) + ',' + (y * ratio) +') scale(' + ratio + ',-' + ratio +')">'; 
+        var seGroupUnit = '<g transform="translate(' + (x * ratio) + ',' + (y * ratio) +') scale(' + ratio + ',-' + ratio +')"';
+        if(alpha !== 1.0)
+            seGroupUnit +=  ' fill-opacity="' + alpha + '">';
+        else
+            seGroupUnit +=  '>'; 
         for(var i = 0; i < unitPaths.length; i++)
         {
             seGroupUnit += unitPaths[i];
@@ -1235,35 +1235,22 @@ return{
                     //ctx.lineJoin = "miter";
                     //ctx.miterLimit = 3;
 
-                    //RendererSettings.TextBackgroundMethod_COLORFILL
-                    //RendererSettings.TextBackgroundMethod_NONE
-                    //RendererSettings.TextBackgroundMethod_OUTLINE_QUICK
-                    //RendererSettings.TextBackgroundMethod_OUTLINE
-                        
-                    var tbm = RendererSettings.getTextBackgroundMethod()
-                    var outlineWidth = RendererSettings.getTextOutlineWidth();
-                    //get outline, outline color and fill color
-                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE || tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
-                        svgElements.push(tiEchelon.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
-                    else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
-                        svgElements.push(tiEchelon.toSVGElement(null,null,'#000000'));
-                    else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)//TODO: implement color fill
-                        svgElements.push(tiEchelon.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                    var temp1 = this.renderTextElement([tiEchelon]);
+                    for(var i = 0; i < temp1.length; i++)
+                    {
+                        svgElements.push(temp1[i]);
+                    }
                         
                     echelonBounds = null;
                 }   
                 
                 if(amBounds !== null)
                 {
-                    var tbm = RendererSettings.getTextBackgroundMethod()
-                    var outlineWidth = RendererSettings.getTextOutlineWidth();
-                    //get outline, outline color and fill color
-                    if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE || tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
-                        svgElements.push(tiAM.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
-                    else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
-                        svgElements.push(tiAM.toSVGElement(null,null,'#000000'));
-                    else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)//TODO: implement color fill
-                        svgElements.push(tiAM.toSVGElement('#FFFFFF',outlineWidth,'#000000'));
+                    var temp2 = this.renderTextElement([tiAM]);
+                    for(var j = 0; j < temp2.length; j++)
+                    {
+                        svgElements.push(temp2[j]);
+                    }
                         
                     amBounds = null;
                     tiAM = null;
@@ -2304,7 +2291,12 @@ return{
             }
         }
         
-        var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">'; 
+        var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')"';
+        if(alpha !== 1.0)
+            seGroupTG +=  ' fill-opacity="' + alpha + '">';
+        else
+            seGroupTG +=  '>';
+         
         if(seBGGroup)
             seGroupTG = seBGGroup + seGroupTG;
         for(var i = 0; i < tgPaths.length; i++)
@@ -3555,7 +3547,15 @@ return{
 		}
         
 
-        if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+        if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE)
+        {
+            for(var i=0; i<size;i++)
+            {
+                tempShape = tiArray[i];
+                svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
+            }
+        }
+        else if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
         {    //TODO: need to update, this is regular outline approach
             for(var i=0; i<size;i++)
             {
@@ -3565,7 +3565,6 @@ return{
         }
 		else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)
 		{
-            
             for(var i=0; i<size;i++)
             {
                 tempShape = tiArray[i];
@@ -3573,23 +3572,15 @@ return{
                 svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
             }
 		}
-		else if(tbm === RendererSettings.TextBackgroundMethod_NONE)
+		else //if(tbm === RendererSettings.TextBackgroundMethod_NONE)
 		{
-			//draw text
             for(var j=0; j<size;j++)
             {
                 tempShape = tiArray[j];
                 svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
             }
 		}
-		else// if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE)
-        {
-            for(var i=0; i<size;i++)
-            {
-                tempShape = tiArray[i];
-                svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
-            }
-        }
+		
         return svgElements;     
     }
 
