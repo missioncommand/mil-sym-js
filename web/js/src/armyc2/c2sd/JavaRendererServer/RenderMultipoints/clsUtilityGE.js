@@ -428,6 +428,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 }
                 polylines2.add(ptsPoly);
             }
+            //  the following else block made necessary to prevent empty shapes caused by the following line from android.Path.lineTo
+            //if (lastPt.x === x && lastPt.y === y) return; Java and Adnroid multipoint renderers don't have the issue because they use native code
+            //for lineTo
+            else
+                if(ptsPoly.size() === 1 && polylines2.isEmpty())
+            {
+                ptsPoly.add(ptsPoly.get(0));                
+                polylines2.add(ptsPoly);
+            }
+                
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE._className, "createRenderableFromShape", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside createRenderableFromShape", exc));
