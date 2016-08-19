@@ -583,7 +583,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             return pathInfo;
         },
         
-        MakeFillTexture(symbolFillIds, symbolFillSize)
+        MakeFillTexture:function(symbolFillIds, symbolFillSize)
         {
             var texture;
             var symbolIDs = symbolFillIds.split(","); 
