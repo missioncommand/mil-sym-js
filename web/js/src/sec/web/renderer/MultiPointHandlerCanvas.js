@@ -150,8 +150,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     //make sure labels are in the bbox, otherwise they can
                     //make the canvas grow out of control.
                     //if (tiTemp && bbox.containsRectangle(bounds))
-                    if(bbox !== null)
-                    if (tiTemp && bbox.intersects(bounds))
+                    //if(bbox !== null)
+                    if (tiTemp && bbox !== null && bbox.intersects(bounds))
                     {
                         labels.push(tiTemp);
                         if (labelBounds)
@@ -169,28 +169,24 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                                 labelBounds = bounds;
                         }
                     }
-                    else
+                    else if (tiTemp)
                     {
-                        if (tiTemp)
+                        labels.push(tiTemp);
+                        if (labelBounds)
                         {
-                            labels.push(tiTemp);
-                            if (labelBounds)
-                            {
-                                if(rotatedBounds)
-                                    labelBounds.union(rotatedBounds);
-                                else if(bounds)
-                                    labelBounds.union(bounds);
-                            }
-                            else
-                            {
-                                if(rotatedBounds)
-                                    labelBounds = rotatedBounds;
-                                else if(bounds)
-                                    labelBounds = bounds;
-                            }
-                        }                        
+                            if(rotatedBounds)
+                                labelBounds.union(rotatedBounds);
+                            else if(bounds)
+                                labelBounds.union(bounds);
+                        }
+                        else
+                        {
+                            if(rotatedBounds)
+                                labelBounds = rotatedBounds;
+                            else if(bounds)
+                                labelBounds = bounds;
+                        }
                     }
-
                 }//*/
                 if(pathBounds)
                 {
