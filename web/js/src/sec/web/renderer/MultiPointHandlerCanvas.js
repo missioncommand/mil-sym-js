@@ -108,7 +108,9 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     }
                 }
                 
-                var bbox = new armyc2.c2sd.renderer.so.Rectangle(0,0,pixelWidth,pixelHeight);
+                var bbox = null;
+                if(pixelWidth>0 && pixelHeight>0)
+                    bbox = new armyc2.c2sd.renderer.so.Rectangle(0,0,pixelWidth,pixelHeight);
 
                 var tempModifier, len2 = modifiers.size();
                 var tiTemp = null;
@@ -148,6 +150,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     //make sure labels are in the bbox, otherwise they can
                     //make the canvas grow out of control.
                     //if (tiTemp && bbox.containsRectangle(bounds))
+                    if(bbox !== null)
                     if (tiTemp && bbox.intersects(bounds))
                     {
                         labels.push(tiTemp);
@@ -166,7 +169,27 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                                 labelBounds = bounds;
                         }
                     }
-
+                    else
+                    {
+                        if (tiTemp)
+                        {
+                            labels.push(tiTemp);
+                            if (labelBounds)
+                            {
+                                if(rotatedBounds)
+                                    labelBounds.union(rotatedBounds);
+                                else if(bounds)
+                                    labelBounds.union(bounds);
+                            }
+                            else
+                            {
+                                if(rotatedBounds)
+                                    labelBounds = rotatedBounds;
+                                else if(bounds)
+                                    labelBounds = bounds;
+                            }
+                        }                        
+                    }
 
                 }//*/
                 if(pathBounds)
