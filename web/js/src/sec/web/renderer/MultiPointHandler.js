@@ -2865,6 +2865,7 @@ sec.web.renderer.MultiPointHandler = (function () {
         },
         GetBboxFromCoordinates: function (symbolID, geoCoords, modifiers, symStd)
         {
+            var bbox = null;
             var basicID = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             //check points and come up with a bbox
             var len = geoCoords.length;
@@ -2875,7 +2876,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     rbb.unionPoint(geoCoords[i]);
                 }
-                return {top: rbb.getY(), left: rbb.getX(), bottom: rbb.getBottom(), right: rbb.getRight()};
+                bbox = {top: rbb.getBottom(), left: rbb.getX(), bottom: rbb.getY(), right: rbb.getRight()};
+                return bbox;
             }
             else if (len == 1 && modifiers[ModifiersTG.AM_DISTANCE])
             {
@@ -2897,7 +2899,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                             a21 = null;
                     var dst = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pTL, pBR, a12, a21);
 
-                    return {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
+                    bbox =  {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
                 }
                 else if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE)
                 {
@@ -2912,7 +2914,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     pTL = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: geoCoords[0].getX(), y: geoCoords[0].getY()}, dAMmax, aTL);//start, distance, azimuth
                     pBR = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: geoCoords[0].getX(), y: geoCoords[0].getY()}, dAMmax, aBR);//start, distance, azimuth
 
-                    return {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
+                    bbox = {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
                 }
                 else if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_CIRCULAR_RANGEFAN_AUTOSHAPE ||
                         sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE)
@@ -2923,7 +2925,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var pTL = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: geoCoords[0].getX(), y: geoCoords[0].getY()}, dAM, aTL);//start, distance, azimuth
                     var pBR = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: geoCoords[0].getX(), y: geoCoords[0].getY()}, dAM, aBR);//start, distance, azimuth
 
-                    return {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
+                    bbox = {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
                 }
                 else if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE)
                 {
@@ -2940,8 +2942,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var right = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: rbb.getRight(), y: rbb.getY()}, dAM, 90);//start, distance, azimuth
                     var bottom = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: rbb.hryX(), y: rbb.getBottom()}, dAM, 180);//start, distance, azimuth
                     var left = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate({x: rbb.getX(), y: rbb.getY()}, dAM, 270);//start, distance, azimuth
-                    return {top: top, left: left, bottom: bottom, right: right};
+                    bbox = {top: top, left: left, bottom: bottom, right: right};
                 }
+                return bbox;
             }
             else
             {
