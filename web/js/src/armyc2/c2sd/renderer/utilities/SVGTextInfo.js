@@ -99,14 +99,18 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     /**
      * 
      */
-    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm)
+    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm,noFontInfo)
     {
         var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getY() + '"';
-        se += ' font-family="' + this._fontName + '"';
-        se += ' font-size="' + this._fontSize + 'pt"';
-        se += ' font-weight="' + this._fontStyle + '"';
+        if(noFontInfo !== true)
+        {
+            se += ' font-family="' + this._fontName + '"';
+            se += ' font-size="' + this._fontSize + 'pt"';
+            se += ' font-weight="' + this._fontStyle + '"';
+            se += ' alignment-baseline="alphabetic"';//    
+        }
         se += ' text-anchor="' + this._justification + '"';
-        se += ' alignment-baseline="hanging"';//
+        
 
         var seStroke = null, 
             seFill = null;        

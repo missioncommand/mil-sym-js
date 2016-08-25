@@ -62,6 +62,11 @@ armyc2.c2sd.renderer.utilities.Color = function (R,G,B,A) {
         return this.B;
     };
     
+    armyc2.c2sd.renderer.utilities.Color.prototype.toRGB = function()
+    {
+        return (this.R*65536) + (this.G*256) + this.B;
+    };
+    
     armyc2.c2sd.renderer.utilities.Color.prototype.toARGB = function()
     {
         return (this.A << 24) + ((this.R & 0xFF) << 16) + ((this.G & 0xFF) << 8) + (this.B & 0xFF);

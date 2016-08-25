@@ -4,10 +4,6 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.so = armyc2.c2sd.renderer.so || {};
 
-armyc2.c2sd.renderer.so.Rect = {
-    
-    
-};
 
 /**
  * 

@@ -479,25 +479,25 @@ armyc2.c2sd.renderer.so.Path = function () {
             }//*/
         }
         //TODO: generate path svg element
-        var line = '<path d="' + path + '" ';
+        var line = '<path d="' + path + '"';
 
         if(strokeWidth)
-            line += 'stroke-width="' + strokeWidth + '"';
+            line += ' stroke-width="' + strokeWidth + '"';
         else if(stroke) 
-            line += 'stroke-width="2"';
+            line += ' stroke-width="2"';
         
         if(stroke)
-            line += 'stroke="' + stroke + '"';
+            line += ' stroke="' + stroke + '"';
             
         if(this._dashArray !== null)
-            line += 'stroke-dasharray="' + this._dashArray.toString() + '"';
+            line += ' stroke-dasharray="' + this._dashArray.toString() + '"';
             
         if(fill)
-            line += 'fill="' + fill + '"';
+            line += ' fill="' + fill + '"';
         else
             line += ' fill="none"';
         
-        line += '/>';
+        line += ' />';
         return line;
         
     };
