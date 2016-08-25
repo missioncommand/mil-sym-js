@@ -1089,12 +1089,20 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
+                    left=rbb.left;
+                    top=rbb.top;
+                    right=rbb.right;
+                    bottom=rbb.bottom;
                 }
             }
             else
             {
                 var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                 ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
+                left=rbb.left;
+                top=rbb.top;
+                right=rbb.right;
+                bottom=rbb.bottom;
             }
 
             //check if symbolID is valid, if not, turn it into something renderable.
