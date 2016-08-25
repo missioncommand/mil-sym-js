@@ -150,6 +150,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 		};
 		worker.onmessage = function(e)
 		{
+            cleartext();
             stop = new Date().getTime();
             var time = stop - start;
             //alert('Render 1k symbols: ' + (time/1000));//*/
@@ -167,19 +168,19 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 			}
 			else
 			{
-                cleartext();
-                document.getElementById("contentSpan").innerHTML += "<br/>"
+                
+                //document.getElementById("contentSpan").innerHTML += "<br/>"
+                var total = "";
                 start = new Date().getTime();
                 for(var j = 0; j < 1000; j++)
                 {
-                    var total = "";
+                    
                     var svg = e.data[j].svg;
                     total += svg;
                     if(j % 10 === 0)
-                        total += "<br/>"
-                        
-                    document.getElementById("contentSpan").innerHTML += total;
+                        total += "<br/>"  
                 }
+                document.getElementById("contentSpan").innerHTML += total;
                 stop = new Date().getTime();
                 time = stop - start;
                 //alert('Add 1k symbols to the dom: ' + (time/1000));//*/

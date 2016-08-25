@@ -398,7 +398,7 @@ return{
                 if(svgTextElements !== null && svgTextElements.length > 0)
                 {
                     imageBounds.union(svgElementInfo.modifierBounds);
-                    svgElements.push(svgTextElements);
+                    svgElements = svgElements.concat(svgTextElements);
                 }                
             }
         }
@@ -408,14 +408,16 @@ return{
             var domSE = [];
             for(var k = 0; k < svgElements.length; k++)
             {
-                returnSVG += svgElements[k] + "\n";    
+                returnSVG += svgElements[k];    
             }
-            returnSVG += seGroupUnit + "\n";
+            
             if(svgElementsDOM.length > 0)
             {
-                returnSVG += svgElementsDOM[0] + "\n";
-                returnSVG += svgElementsDOM[1] + "\n";
+                returnSVG += svgElementsDOM[0];
+                returnSVG += svgElementsDOM[1];
             }
+            
+            returnSVG += seGroupUnit;
             
             //make group with translation
             var shiftX = -imageBounds.getX();
@@ -427,7 +429,7 @@ return{
             //combine with returnSVG
             //wrap in SVG tag
             
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="0 0 ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() + '"  preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
             returnSVG += '</g>';
@@ -441,7 +443,7 @@ return{
         }
         else
         {
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="0 0 ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() + '"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.1">';
             returnSVG += seGroupUnit;
             returnSVG += '</svg>';
         }
