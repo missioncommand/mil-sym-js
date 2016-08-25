@@ -2870,7 +2870,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             var len = geoCoords.length;
             if (len >= 2)
             {
-                rbb = new armyc2.c2sd.renderer.so.Rect(geoCoords[0].getX(), geoCoords[0].getY(), 0, 0);
+                rbb = new armyc2.c2sd.renderer.so.Rectangle(geoCoords[0].getX(), geoCoords[0].getY(), 0, 0);
                 for (var i = 1; i < len; i++)
                 {
                     rbb.unionPoint(geoCoords[i]);
