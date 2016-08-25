@@ -33,10 +33,6 @@ armyc2.c2sd.renderer.utilities.SVGInfo = function (svg, centerPoint, symbolBound
             return this._svgDataURI;
         else
         {
-            /*var uri = this._svg.replace(/#/g,"%23");//# to %23 for FF
-            uri = uri.replace(/"/g,"%22"); //" to %22 for EDGE, IE wont take SVG from a datauri
-            uri = uri.replace(/,/g,"%2C");
-            uri = uri.replace(/\./g,"%2E");//*/
             
             var uri;
             if(encodeURIComponent)
@@ -52,10 +48,27 @@ armyc2.c2sd.renderer.utilities.SVGInfo = function (svg, centerPoint, symbolBound
             }
             else
             {
-                uri = this._svg.replace(/#/g,"%23");//# to %23 for FF
+                uri = this._svg.replace(/%/g,"%25");
+                uri = uri.replace(/#/g,"%23");//# to %23 for FF
                 uri = uri.replace(/"/g,"%22"); //" to %22 for EDGE, IE wont take SVG from a datauri
-                uri = uri.replace(/,/g,"%2C");
-                uri = uri.replace(/\./g,"%2E");
+                uri = uri.replace(/</g,"%3C");
+                uri = uri.replace(/=/g,"%3D")
+                uri = uri.replace(/>/g,"%3E");
+                uri = uri.replace(/\//g,"%2F");
+                uri = uri.replace(/\\/g,"%5C");
+                uri = uri.replace(/\[/g,"%5B");
+                uri = uri.replace(/\]/g,"%5D");
+                uri = uri.replace(/\^/g,"%5E");
+                uri = uri.replace(/\`/g,"%60");
+                uri = uri.replace(/\~/g,"%7E");
+                uri = uri.replace(/\?/g,"%3F");
+                uri = uri.replace(/:/g,"%3A");
+                uri = uri.replace(/;/g,"%3B");
+                uri = uri.replace(/\@/g,"%40");
+                uri = uri.replace(/\&/g,"%26");
+                uri = uri.replace(/\{/g,"%7B");
+                uri = uri.replace(/\|/g,"%7C");
+                uri = uri.replace(/\}/g,"%7D");//
                 uri = "data:image/svg+xml," + uri;
             }
             //chrome doesn't seem to need any changes.
