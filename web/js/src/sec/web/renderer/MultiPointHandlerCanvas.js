@@ -212,7 +212,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     var coordTL = new armyc2.c2sd.graphics2d.Point2D();
                     coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
                     var coordBR = new armyc2.c2sd.graphics2d.Point2D();
-                    coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());8
+                    coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
                     
                     geoCoordTL = ipc.PixelsToGeo(coordTL);
                     geoCoordBR = ipc.PixelsToGeo(coordBR);
