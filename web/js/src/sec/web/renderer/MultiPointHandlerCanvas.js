@@ -169,7 +169,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                                 labelBounds = bounds;
                         }
                     }
-                    else if (tiTemp)
+                    else if (tiTemp && bbox === null)
                     {
                         labels.push(tiTemp);
                         if (labelBounds)
