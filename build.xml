@@ -41,6 +41,7 @@
             <!-- Rendering Utility imports -->
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
@@ -83,10 +84,9 @@
             <!-- Rendering Utility imports -->
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/Color.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/AffiliationColors.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ErrorLogger.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ImageInfo.js" />
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/TextInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersUnits.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
@@ -1019,6 +1019,22 @@
             <fileset file="build/single-body-svg.js" />
         </concat>
     </target>
+
+            <!-- Build single point SVG-only, B-only, jQuery renderer-->
+    <target name="sv-b">
+        <concat destfile="dist/sv-b.js">
+            <fileset file="build/single-b-header.js" />
+            <fileset file="build/single-body-svg.js" />
+        </concat>
+    </target>
+    
+        <!-- Build single point SVG-only, C-only, jQuery renderer-->
+    <target name="sv-c">
+        <concat destfile="dist/sv-c.js">
+            <fileset file="build/single-c-header.js" />
+            <fileset file="build/single-body-svg.js" />
+        </concat>
+    </target>
     
     <!-- Build multi point-only, B-only, no jQuery renderer-->
     <target name="m-b">
@@ -1092,17 +1108,22 @@
         <antcall target="s-b" />
         <antcall target="s-c" />
         <antcall target="s-bc" />
-        <antcall target="sv-bc" />
         <antcall target="m-b" />
         <antcall target="m-c" />
         <antcall target="m-bc" />
         <antcall target="sm-b" />
         <antcall target="sm-c" />
         <antcall target="sm-bc" />
+        <antcall target="sv-b" />
+        <antcall target="sv-c" />
+        <antcall target="sv-bc" />
         <antcall target="svm-bc" />
+        <antcall target="savm-bc" />
     </target>
     
     <target name="svg">
+        <antcall target="sv-b" />
+        <antcall target="sv-c" />
         <antcall target="sv-bc" />
         <antcall target="svm-bc" />
         <antcall target="savm-bc" />
@@ -1134,6 +1155,7 @@
         </copy>
         <copy todir="dist">
             <fileset file="web/js/src/MPWorker.js" />
+            <fileset file="web/js/src/SPWorker.js" />
         </copy>
         <copy todir="dist">
             <fileset dir="web/samples" />

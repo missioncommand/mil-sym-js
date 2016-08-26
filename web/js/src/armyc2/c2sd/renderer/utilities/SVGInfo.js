@@ -50,7 +50,7 @@ armyc2.c2sd.renderer.utilities.SVGInfo = function (svg, centerPoint, symbolBound
             {
                 uri = this._svg.replace(/%/g,"%25");
                 uri = uri.replace(/#/g,"%23");//# to %23 for FF
-                uri = uri.replace(/"/g,"%22"); //" to %22 for EDGE, IE wont take SVG from a datauri
+                uri = uri.replace(/"/g,"%22"); //" to %22 for EDGE
                 uri = uri.replace(/</g,"%3C");
                 uri = uri.replace(/=/g,"%3D")
                 uri = uri.replace(/>/g,"%3E");

@@ -411,13 +411,13 @@ return{
                 returnSVG += svgElements[k];    
             }
             
+            returnSVG += seGroupUnit;
+            
             if(svgElementsDOM.length > 0)
             {
                 returnSVG += svgElementsDOM[0];
                 returnSVG += svgElementsDOM[1];
             }
-            
-            returnSVG += seGroupUnit;
             
             //make group with translation
             var shiftX = -imageBounds.getX();
@@ -443,7 +443,7 @@ return{
         }
         else
         {
-            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="0 0 ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() + '"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+            returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="0 0 ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() + '"  preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" version="1.1">';
             returnSVG += seGroupUnit;
             returnSVG += '</svg>';
         }

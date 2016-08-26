@@ -1,18 +1,25 @@
 /* expected input format for non-batch
-var e.data = {};
-		e.data.id = "ID";
-		e.data.symbolID = "SFGPU----------";//A 15 character symbolID corresponding to one of the graphics in the MIL-STD-2525C
-		e.data.modifiers = {ModifiersUnits.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.PixelSize:50};
+var batch = [];//batch objects look like {id:"ID",symbolID:"SFGPU----------",modifiers:{ModifiersUnits.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.PixelSize:50}};
+var e.data = {base64:true, batch:batch};
+		e.data.batch[].id = "ID";
+		e.data.batch[].symbolID = "SFGPU----------";//A 15 character symbolID corresponding to one of the graphics in the MIL-STD-2525C
+		e.data.batch[].modifiers = {ModifiersUnits.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.PixelSize:50};
+        e.data.format = "svg", "base64", "both"
+                if(format === "svg"), return object will have a .svg property with the svg string
+                if(format === "base64"), return object will have a .base64 property with the svg string like:
+                    "data:image/svg+xml;base64,[SVG string after run through btoa()]
+                if(format === "both"), return object will have both properties.
 */
 
 /* return object for non-batch
 {
     id:e.data.id,//same as what was passed in
     symbolID:e.data.SymbolID,//resultant kml,json or error message
-    si:si//SVGInfo object
+    svg:svg string
     anchorPoint:
     symbolBounds:
     imageBounds:
+    base64:svg string like: "data:image/svg+xml;base64,[SVG string after run through btoa()]". 
 }
 */
 
@@ -29,7 +36,7 @@ var e.data = {};
 
 
 
-importScripts('sv-bc.js');
+importScripts('sv-c.js');
 
 
 	armyc2.c2sd.renderer.utilities.ErrorLogger = {};
@@ -78,16 +85,30 @@ onmessage = function(e)
     {
         try
         {
-            
+            var returnVal = null;
             if(e.data.batch && e.data.batch.length > 0)
             {
                 var batch = e.data.batch;
                 var returnBatch = [];
                 var len = e.data.batch.length;
+                var item = null;
+                
                 for(var i = 0; i < len; i++)
                 {
-                    si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(batch[i].symbolID,batch[i].modifiers,e.data.fontInfo);
-                    returnBatch.push({id:batch.id,symbolID:batch.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()});
+                    item = batch[i];
+                    si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(item.symbolID,item.modifiers,e.data.fontInfo);
+                    returnVal = {id:batch.id,symbolID:batch.symbolID,anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()};
+                    if(e.data.format === "base64")
+                        returnVal.base64 = si.getSVGDataURI();
+                    else if(e.data.format === "both")
+                    {
+                        returnVal.base64 = si.getSVGDataURI();
+                        returnVal.svg = si.getSVG();
+                    }
+                    else
+                        returnVal.svg = si.getSVG();
+                    
+                    returnBatch.push(returnVal);
                 }
                 if(si !== null)
                 {
@@ -105,7 +126,19 @@ onmessage = function(e)
                 if(si !== null)
                 {
                     //return results
-                    postMessage({id:e.data.id,symbolID:e.data.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()});
+                    returnVal = {id:e.data.id,symbolID:e.data.symbolID,svg:si.getSVG(),anchorPoint:si.getAnchorPoint(),symbolBounds:si.getSymbolBounds(),bounds:si.getSVGBounds()};
+                    
+                    if(e.data.format === "base64")
+                        returnVal.base64 = si.getSVGDataURI();
+                    else if(e.data.format === "both")
+                    {
+                        returnVal.base64 = si.getSVGDataURI();
+                        returnVal.svg = si.getSVG();
+                    }
+                    else
+                        returnVal.svg = si.getSVG();
+                    
+                    postMessage(returnVal);
                 }
                 else
                 {
