@@ -90,7 +90,7 @@ armyc2.c2sd.renderer.utilities.SymbolSVGDimensions = {};
             case 834://NSub
             case 835:
             case 836:
-                    rect = new Rectangle(952,-1211,1904,1961);//y=-5
+                    rect = new Rectangle(-952,-1211,1904,1961);//y=-5
                     break;
             case 837://USub
             case 838:
