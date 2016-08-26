@@ -35,18 +35,18 @@ armyc2.c2sd.renderer.utilities.SVGInfo = function (svg, centerPoint, symbolBound
         {
             
             var uri;
-            if(encodeURIComponent)
+            /*if(encodeURIComponent)//consistently slower than btoa so dropped.
             {
                 uri = encodeURIComponent(this._svg);
                 uri = "data:image/svg+xml," + uri;
             }
             else//*/
-             if(btoa)
+            if(btoa)//btoa should always be available, even in a web worker.
             {
                 uri = btoa(this._svg);
                 uri = "data:image/svg+xml;base64," + uri;
             }
-            else
+            else//if for some reason btoa is not available
             {
                 uri = this._svg.replace(/%/g,"%25");
                 uri = uri.replace(/#/g,"%23");//# to %23 for FF

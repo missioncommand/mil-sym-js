@@ -112,6 +112,9 @@
             svgImage.height = si.getSVGBounds().getHeight();
             svgImage.src = si.getSVGDataURI();
             
+            //test urlEncode vs base64
+            //speedTestSVGConversion(si.getSVG());
+            
             try
             {
                 x = x - center.getX();
@@ -127,6 +130,8 @@
                 console.log(err);
             }
         }
+        
+        
         
         function buildSymbolID(basicID)
         {
@@ -216,6 +221,31 @@
             }
 
 	}
+    function speedTestSVGConversion(svg)
+    {
+        var start = new Date().getTime();
+        
+        for(var i = 0; i < 10000; i++)
+		{
+			encodeURIComponent(svg)
+		}
+        
+        var end = new Date().getTime();
+		var time = end - start;
+		alert('encodeURIComponent: ' + (time/1000) + "; length: " + encodeURIComponent(svg).length);//*/
+        
+        start = new Date().getTime();
+        
+        for(var j = 0; j < 10000; j++)
+		{
+			btoa(svg)
+		}
+        
+        end = new Date().getTime();
+		time = end - start;
+		alert('btoa: ' + (time/1000) + "; length: " + btoa(svg).length);//*/
+        
+    }
 	function speedTest(type)
 	{
 		//PERFORMANCE TEST///////////////////////////
