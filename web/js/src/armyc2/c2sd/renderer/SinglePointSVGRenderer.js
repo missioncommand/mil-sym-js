@@ -97,7 +97,9 @@ return{
             seFrameAssume = null,
             color1 = ufli.getColor1(),
             color2 = ufli.getColor2(),
-            alpha = 1.0;
+            alpha = 1.0,
+            lineAlpha = 1.0,
+            fillAlpha = 1.0;
     
         var hasDisplayModifiers = false;
         var hasTextModifiers = false;
@@ -188,14 +190,25 @@ return{
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
+            lineColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(lineColor);
+            lineAlpha = lineColor.getAlpha() / 255.0;
+            lineColor = lineColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
+            fillColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(fillColor);
+            fillAlpha = fillColor.getAlpha() / 255.0;
+            fillColor = fillColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.Alpha] !== undefined)
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+            if(alpha !== 1)
+            {
+                lineAlpha = alpha;
+                fillAlpha = alpha;
+            }
         } 
         if(modifiers[MilStdAttributes.IconColor] !== undefined)
         {
@@ -286,38 +299,39 @@ return{
 		
 			if(frameAssume !== null && intFrame === -1)
             {
-                seFrameAssume = this.processSVGPath(frameAssume, "#ffffff");
+
+                seFrameAssume = this.processSVGPath(frameAssume, "#ffffff",null,null,null,null,null,lineAlpha);
                 frameAssume = null;
                 unitPaths.push(seFrameAssume);
             }
 
             if(fill !== null)
             {
-                seFill = this.processSVGPath(fill, fillColor);
+                seFill = this.processSVGPath(fill, fillColor,null,null,null,null,null,fillAlpha);
                 unitPaths.push(seFill);
             }
 
 			if(frameAssume !== null)
             {
-                seFrameAssume = this.processSVGPath(frameAssume, "#ffffff");
+                seFrameAssume = this.processSVGPath(frameAssume, "#ffffff",null,null,null,null,null,lineAlpha);
                 unitPaths.push(seFrameAssume);
             }
 			
             if(frame !== null)
             {
-                seFrame = this.processSVGPath(frame, lineColor);
+                seFrame = this.processSVGPath(frame, lineColor,null,null,null,null,null,lineAlpha);
                 unitPaths.push(seFrame);
             }
 
             if(symbol2 !== null)
             {
-                seSymbol2 = this.processSVGPath(symbol2, color2);
+                seSymbol2 = this.processSVGPath(symbol2, color2,null,null,null,null,null,alpha);
                 unitPaths.push(seSymbol2);
             }
 
             if(symbol1 !== null)
             {
-                seSymbol1 = this.processSVGPath(symbol1, color1);
+                seSymbol1 = this.processSVGPath(symbol1, color1,null,null,null,null,null,alpha);
                 unitPaths.push(seSymbol1);
             }
         }
@@ -326,9 +340,9 @@ return{
         var transX = symbolWidth / 2;
         var transY = symbolHeight / 2;
         var seGroupUnit = '<g transform="translate(' + (x * ratio) + ',' + (y * ratio) +') scale(' + ratio + ',-' + ratio +')"';
-        if(alpha !== 1.0)
+        /*if(fillAlpha !== 1.0)
             seGroupUnit +=  ' fill-opacity="' + alpha + '">';
-        else
+        else//*/
             seGroupUnit +=  '>'; 
         for(var i = 0; i < unitPaths.length; i++)
         {
@@ -466,15 +480,24 @@ return{
         else//*/
             return si;
     },
-    processSVGPath: function(path, fillColor, lineColor, strokeWidth, outlineMethod, outlineWidth, outlineColor)
+    processSVGPath: function(path, fillColor, lineColor, strokeWidth, outlineMethod, outlineWidth, outlineColor, alpha)
     {
+        var a = 1;
+        if(alpha)
+            a = alpha;
         var se = '<path d="';
         se += path + '"';
         if(fillColor)
+        {
             se += ' fill="' + fillColor + '"';
+            if(a !== 1)
+                se += ' fill-opacity="' + a + '"';
+        }
         if(lineColor)
         {
             se += ' stroke="' + lineColor + '"';
+            if(a !== 1)
+                se += ' stroke-opacity="' + a + '"';
             if(strokeWidth)
                 se += ' stroke-width="' + strokeWidth + '"';
         }
@@ -2133,14 +2156,25 @@ return{
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
+            lineColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(lineColor);
+            lineAlpha = lineColor.getAlpha() / 255.0;
+            lineColor = lineColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
+            fillColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(fillColor);
+            fillAlpha = fillColor.getAlpha() / 255.0;
+            fillColor = fillColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.Alpha] !== undefined)
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+            if(alpha !== 1)
+            {
+                lineAlpha = alpha;
+                fillAlpha = alpha;
+            }
         }
         
         var outlineOffset = symbolOutlineWidth;
@@ -2271,7 +2305,7 @@ return{
             if(outlineOffset > 0 && frame !== null)
             {
                 var oc =RendererUtilities.getIdealOutlineColor(lineColor,true);
-                var ol = this.processSVGPath(frame, oc);
+                var ol = this.processSVGPath(frame, oc,null,null,null,null,null,lineAlpha);
                 //tgPaths.push(ol);
                 seBGGroup = '<g transform="translate(' + (x - 1) + ',' + (y - 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
                 seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y - 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
@@ -2282,21 +2316,21 @@ return{
             //then do fill if present
             if(fill !== null &&  fillColor !== null)
             {
-                fill = this.processSVGPath(fill, fillColor);
+                fill = this.processSVGPath(fill, fillColor,null,null,null,null,null,fillAlpha);
                 tgPaths.push(fill);
             }
             //then draw frame
             if(frame !== null)
             {
-                frame = this.processSVGPath(frame, lineColor);
+                frame = this.processSVGPath(frame, lineColor,null,null,null,null,null,lineAlpha);
                 tgPaths.push(frame);
             }
         }
         
         var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')"';
-        if(alpha !== 1.0)
+        /*if(alpha !== 1.0)
             seGroupTG +=  ' fill-opacity="' + alpha + '">';
-        else
+        else//*/
             seGroupTG +=  '>';
          
         if(seBGGroup)

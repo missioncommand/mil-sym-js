@@ -112,7 +112,9 @@ return{
             symbol2 = (mapping2 !==null) ? String.fromCharCode(mapping2) : null,
             color1 = ufli.getColor1(),
             color2 = ufli.getColor2(),
-            alpha = 1.0;
+            alpha = 1.0,
+            lineAlpha = 1.0,
+            fillAlpha = 1.0;
     
         var hasDisplayModifiers = false;
         var hasTextModifiers = false;
@@ -206,14 +208,25 @@ return{
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
+            lineColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(lineColor);
+            lineAlpha = lineColor.getAlpha() / 255.0;
+            lineColor = lineColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
+            fillColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(fillColor);
+            fillAlpha = fillColor.getAlpha() / 255.0;
+            fillColor = fillColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.Alpha] !== undefined)
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+            if(alpha !== 1)
+            {
+                lineAlpha = alpha;
+                fillAlpha = alpha;
+            }
         } 
         if(modifiers[MilStdAttributes.IconColor] !== undefined)
         {
@@ -328,13 +341,18 @@ return{
                 color1 = "#000000";
             }
             
-            if(alpha < 1.0)
+            /*if(alpha < 1.0)
             {
                 ctx.globalAlpha = alpha;
-            }
-			
+            }//*/
+			var currentAlpha = 1;
 			if(frameAssume !== null && frameAssume !== ""  && intFrame === -1)
             {
+                if(lineAlpha !== 1)
+                {
+                    ctx.globalAlpha = lineAlpha;
+                    currentAlpha = lineAlpha;
+                }
                 ctx.fillStyle = "#ffffff";
                 ctx.fillText(frameAssume, x, y);
 				frameAssume = null;
@@ -342,12 +360,27 @@ return{
 
             if(fill !== null && fill !== "")
             {
+                if(currentAlpha !== fillAlpha)
+                {
+                    ctx.globalAlpha = fillAlpha;
+                    currentAlpha = fillAlpha;   
+                }
+                
                 ctx.fillStyle=fillColor;
                 ctx.fillText(fill,x,y);
             }
 
+            if(currentAlpha !== lineAlpha)
+            {
+                ctx.globalAlpha = lineAlpha;
+                currentAlpha = lineAlpha;   
+            }
+            
 			if(frameAssume !== null && frameAssume !== "")
             {
+                if(lineAlpha !== fillAlpha)
+                    ctx.globalAlpha = lineAlpha;
+                    
                 ctx.fillStyle = "#ffffff";
                 ctx.fillText(frameAssume, x, y);
             }
@@ -356,6 +389,17 @@ return{
             {
                 ctx.fillStyle = lineColor;
                 ctx.fillText(frame, x, y);
+            }
+
+            if(alpha !== 1 && currentAlpha !== alpha)
+            {
+                ctx.globalAlpha = alpha;
+                currentAlpha = alpha;   
+            }
+            else if(alpha === 1 && currentAlpha !== 1)
+            {
+                ctx.globalAlpha = 1;
+                currentAlpha = 1;
             }
 
             if(symbol2 !== null && symbol2 !== "")
@@ -2282,8 +2326,10 @@ return{
         var fillColor = null;
         var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         var alpha = 1.0;
-	var fill = null;
-	var frame = null;
+        var lineApha = 1.0;
+        var fillAlpha = 1.0;
+        var fill = null;
+        var frame = null;
         var scale = -999;
         
         var hasDisplayModifiers = false;
@@ -2336,14 +2382,25 @@ return{
         if(modifiers[MilStdAttributes.LineColor] !== undefined)
         {
             lineColor = modifiers[MilStdAttributes.LineColor];
+            lineColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(lineColor);
+            lineAlpha = lineColor.getAlpha() / 255.0;
+            lineColor = lineColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.FillColor] !== undefined)
         {
             fillColor = modifiers[MilStdAttributes.FillColor];
+            fillColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString(fillColor);
+            fillAlpha = fillColor.getAlpha() / 255.0;
+            fillColor = fillColor.toHexString(false);
         }
         if(modifiers[MilStdAttributes.Alpha] !== undefined)
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
+            if(alpha !== 1)
+            {
+                lineAlpha = alpha;
+                fillAlpha = alpha;
+            }
         }
         
         var outlineOffset = symbolOutlineWidth;
@@ -2482,7 +2539,7 @@ return{
         
         if(intFill > 0)
             fill = String.fromCharCode(intFill);
-	frame = String.fromCharCode(intFrame);
+	    frame = String.fromCharCode(intFrame);
         
         var symbolWidth = Math.round(symbolBounds.getWidth()) + (outlineOffset*2),
             symbolHeight = Math.round(symbolBounds.getHeight()) + (outlineOffset*2);
@@ -2533,13 +2590,17 @@ return{
         //do outline first if present
         if(render === true)
         {
-            if(alpha < 1.0)
-                ctx.globalAlpha = alpha;
+            var currentAlpha = 1;
             
             if(frame !== null && frame !== "")
             {
                 if(outlineOffset > 0)
                 {
+                    if(lineAlpha !== currentAlpha)
+                    {
+                        ctx.globalAlpha = lineAlpha;
+                        currentAlpha = lineAlpha;
+                    }
                     ctx.lineWidth = symbolOutlineWidth;
                     ctx.strokeStyle = RendererUtilities.getIdealOutlineColor(lineColor,true);
                     ctx.strokeText(frame, x, y);
@@ -2548,12 +2609,22 @@ return{
             //then do fill if present
             if(fill !== null && fill !== "" && fillColor !== null)
             {
+                if(fillAlpha !== currentAlpha)
+                {
+                    ctx.globalAlpha = fillAlpha;
+                    currentAlpha = fillAlpha;
+                }
                 ctx.fillStyle=fillColor;
                 ctx.fillText(fill,x,y);
             }
             //then draw frame
             if(frame !== null && frame !== "")
             {
+                if(lineAlpha !== currentAlpha)
+                {
+                    ctx.globalAlpha = lineAlpha;
+                    currentAlpha = lineAlpha;
+                }
                 ctx.fillStyle = lineColor;
                 ctx.fillText(frame, x, y);
             }
