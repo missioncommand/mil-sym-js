@@ -432,10 +432,13 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var right = bounds[2];
                 var top = bounds[3];
                 var bottom = bounds[1];
+                //return a somewhat arbitrary scale value for unreasonable extents, i.e. 1000 is typical
+                //earth circumference/2 meters * 39.3701 inches/meter * 96 pixels/inch * 1000 pixels wide
+                //features will shrink as the globe gets shrinks less than 1000 pixels across                
                 if (left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))
-                    return origScale;
+                    return 7.573e7; //was origScale
                 else if (left.equalsIgnoreCase("180") && right.equalsIgnoreCase("-180"))
-                    return origScale;
+                    return 7.573e7; //was origScale
                 var ul = new armyc2.c2sd.JavaLineArray.POINT2(left, top);
                 var ur = new armyc2.c2sd.JavaLineArray.POINT2(right, top);
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
