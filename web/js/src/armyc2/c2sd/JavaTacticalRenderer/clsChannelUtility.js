@@ -188,8 +188,47 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
         }
         return;
     },
+    /*
+     * handle too small MBR for line of contact
+     */
+    getLCPixels: function(tg, pixels)
+    {
+        var pixels2=null;
+        try{
+            if(tg.get_LineType()!==22123000)
+                return pixels;
+            var pts=tg.Pixels.toArray();
+            var ul=new armyc2.c2sd.JavaLineArray.POINT2(),lr=new armyc2.c2sd.JavaLineArray.POINT2();
+            armyc2.c2sd.JavaLineArray.lineutility.CalcMBRPoints(pts, pts.length, ul, lr);
+            if(lr.x-ul.x>=21)
+                return pixels;
+            else if (lr.y-ul.y>=21)
+                return pixels;
+            //at this point the mbr is too small for a meaningful LC symbol
+            var x0=pts[0].x,y0=pts[0].y,x1=pts[1].x,y1=pts[1].y;
+            if (x0<=x1)            
+                x1=x0+21;            
+            else
+                x1=x0-21;
+            y1=y0;
+            var pt0=new armyc2.c2sd.JavaLineArray.POINT2(x0,y0),pt1=new armyc2.c2sd.JavaLineArray.POINT2(x1,y1);
+            pixels2=new java.util.ArrayList();
+            pixels2.add(pt0);
+            pixels2.add(pt1);                        
+        }
+        catch (exc) 
+        {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility._className, "DrawSegments", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getLCPixels", exc));
+            } else {
+                throw exc;
+            }            
+        }
+        return pixels2;
+    },
     DrawChannel: function(pixels, linetype, tg, shapes, channelPoints, rev) {
         try {
+            pixels=this.getLCPixels(tg,pixels);
             armyc2.c2sd.JavaLineArray.lineutility.adjustCATKBYFIREControlPoint(linetype, pixels, 45);            
             if(tg.get_LineType()===22123000 && tg.get_Affiliation().equalsIgnoreCase("H"))            
                 linetype=22123002;
