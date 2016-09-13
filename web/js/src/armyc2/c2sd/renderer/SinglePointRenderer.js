@@ -2326,7 +2326,7 @@ return{
         var fillColor = null;
         var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         var alpha = 1.0;
-        var lineApha = 1.0;
+        var lineAlpha = 1.0;
         var fillAlpha = 1.0;
         var fill = null;
         var frame = null;
