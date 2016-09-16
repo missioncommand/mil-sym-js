@@ -114,7 +114,13 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
 
         var seStroke = null, 
             seFill = null;        
-
+            
+        var text = this._text;
+        //catch special characters that break SVGs as base64 dataURIs
+        text = text.replace(/\&/g,"&amp;");
+        text = text.replace(/\</g,"&lt;");
+        text = text.replace(/\</g,"&gt;");
+        
         if(stroke)
         {
             seStroke = se + ' stroke="' + stroke + '"';
@@ -122,7 +128,7 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
                 seStroke += ' stroke-width="' + (strokeWidth + 2) + '"';
             seStroke += ' fill="none"';
             seStroke += '>';
-            seStroke += this._text;
+            seStroke += text;
             seStroke += '</text>';
         }
             
@@ -130,7 +136,7 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         {
             seFill = se + ' fill="' + fill + '"';
             seFill += '>';
-            seFill += this._text;
+            seFill += text;
             seFill += '</text>';
         }
         

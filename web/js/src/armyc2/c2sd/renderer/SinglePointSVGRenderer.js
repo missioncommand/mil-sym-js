@@ -417,6 +417,7 @@ return{
             }
         }
         var returnSVG = "";
+        var showCenter = false;
         if(svgElements.length > 0 || svgElementsDOM.length > 0)
         {
             var domSE = [];
@@ -447,6 +448,10 @@ return{
                         + '<g transform="translate(' + shiftX + ',' + shiftY + ')">'
                         + returnSVG; 
             returnSVG += '</g>';
+            if(showCenter)
+            {
+                returnSVG += '<circle cx="' + centerPoint.getX() + '" cy="' + centerPoint.getY() + '" r="2" fill="red" />';
+            }
             returnSVG += '</svg>';//*/
             
             //with viewbox
@@ -459,6 +464,10 @@ return{
         {
             returnSVG = '<svg width="' + imageBounds.getWidth() + 'px" height="' + imageBounds.getHeight() + 'px" viewbox="0 0 ' + imageBounds.getWidth() + ' ' + imageBounds.getHeight() + '"  preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" version="1.1">';
             returnSVG += seGroupUnit;
+            if(showCenter)
+            {
+                returnSVG += '<circle cx="' + centerPoint.getX() + '" cy="' + centerPoint.getY() + '" r="2" fill="red" />';
+            }
             returnSVG += '</svg>';
         }
         
@@ -2618,7 +2627,7 @@ return{
         if(basicID ===("G*G*GPPC--****X") ||
                 basicID ===("G*G*GPPD--****X"))
         {
-            if(modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1] !== undefined)
+            if(modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1])
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2634,7 +2643,7 @@ return{
         }
 		else if(basicID === "G*G*GPH---****X")       
         {
-            if(modifiers[ModifiersTG.H_ADDITIONAL_INFO_1] !== undefined)
+            if(modifiers[ModifiersTG.H_ADDITIONAL_INFO_1])
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2650,7 +2659,7 @@ return{
         }
         else if(basicID ===("G*G*GPRI--****X"))
         {
-            if(modifiers.T !== undefined)
+            if(modifiers.T)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2667,7 +2676,7 @@ return{
         else if(basicID ===("G*G*GPPW--****X") ||
                 basicID ===("G*F*PCF---****X"))
         {
-            if(modifiers.T !== undefined)
+            if(modifiers.T)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -2684,7 +2693,7 @@ return{
         else if(basicID ===("G*G*APP---****X") ||
                 basicID ===("G*G*APC---****X"))
         {
-            if(modifiers.T !== undefined)
+            if(modifiers.T)
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2703,8 +2712,7 @@ return{
                 basicID ===("G*F*PTS---****X") || //t,h,h1 (Point/Single Target)
                 basicID ===("G*F*PTN---****X")) //T (nuclear target)
         { //Targets with special modifier positions
-            if(modifiers.H !== undefined &&
-                    basicID ===("G*F*PTS---****X"))//H
+            if(modifiers.H && basicID ===("G*F*PTS---****X"))//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -2716,8 +2724,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.H1 !== undefined &&
-                    basicID ===("G*F*PTS---****X"))//H1
+            if(modifiers.H1 && basicID === ("G*F*PTS---****X"))//H1
             {
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -2729,7 +2736,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.T !== undefined)//T
+            if(modifiers.T)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -2747,7 +2754,7 @@ return{
                 basicID ===("G*M*NEB---****X") ||//biological
                 basicID ===("G*M*NEC---****X"))//chemical
         {//NBC
-            if(modifiers.N !== undefined)
+            if(modifiers.N)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -2767,7 +2774,7 @@ return{
                 arrMods.push(ti);
 
             }
-            if(modifiers.H !== undefined)//H
+            if(modifiers.H)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -2786,7 +2793,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.W !== undefined)//W
+            if(modifiers.W)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -2805,7 +2812,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.V !== undefined && basicID ===("G*M*NZ----****X"))//V
+            if(modifiers.V && basicID ===("G*M*NZ----****X"))//V
             {
                 strText = modifiers[ModifiersTG.V_EQUIP_TYPE];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -2817,7 +2824,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.T !== undefined)//T
+            if(modifiers.T)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -2834,7 +2841,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.Y !== undefined)//Y
+            if(modifiers.Y)//Y
             {
                 strText = modifiers[ModifiersTG.Y_LOCATION];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2856,7 +2863,7 @@ return{
                 arrMods.push(ti);
 
             }
-            if(modifiers.C !== undefined)//C
+            if(modifiers.C)//C
             {
                 strText = modifiers[ModifiersTG.C_QUANTITY];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2870,7 +2877,7 @@ return{
         }
         else if(basicID ===("G*M*OFS---****X"))
         {
-            if(modifiers.H !== undefined)//H
+            if(modifiers.H)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2882,7 +2889,7 @@ return{
                 arrMods.push(ti);
 
             }
-            if(modifiers.W !== undefined)//W
+            if(modifiers.W)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -2893,7 +2900,7 @@ return{
                 ti.setLocation(Math.round(x),Math.round(y));
                 arrMods.push(ti);
             }
-            if(modifiers.N !== undefined)
+            if(modifiers.N)
             {
                 strText = modifiers[ModifiersTG.N_HOSTILE];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -3125,7 +3132,7 @@ return{
                 arrMods.push(ti);
 
             }
-            if(modifiers.H !== undefined)//H
+            if(modifiers.H)//H
             {
                 strText = modifiers[ModifiersTG.H_ADDITIONAL_INFO_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -3136,7 +3143,7 @@ return{
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
-            if(modifiers.H1 !== undefined)//H1
+            if(modifiers.H1)//H1
             {//pretty much just for Action Point
                 strText = modifiers[ModifiersTG.H1_ADDITIONAL_INFO_2];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
@@ -3147,7 +3154,7 @@ return{
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
-            if(modifiers.W !== undefined)//W
+            if(modifiers.W)//W
             {
                 strText = modifiers[ModifiersTG.W_DTG_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -3158,7 +3165,7 @@ return{
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
-            if(modifiers.W1 !== undefined)//W1
+            if(modifiers.W1)//W1
             {
                 strText = modifiers[ModifiersTG.W1_DTG_2];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
@@ -3171,7 +3178,7 @@ return{
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
-            if(modifiers.T !== undefined)//T
+            if(modifiers.T)//T
             {
                 strText = modifiers[ModifiersTG.T_UNIQUE_DESIGNATION_1];
                 ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo);
@@ -3182,7 +3189,7 @@ return{
                 ti.setLocation(x,y);
                 arrMods.push(ti);
             }
-            if((modifiers.T1 !== undefined) &&//T1
+            if((modifiers.T1) &&//T1
                     (basicID===("G*O*ES----****X") || //emergency distress call
                     basicID===("G*S*PP----****X") || //medevac pick-up point
                     basicID===("G*S*PX----****X")))//ambulance exchange point
