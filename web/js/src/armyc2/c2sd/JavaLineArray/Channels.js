@@ -1712,7 +1712,7 @@ armyc2.c2sd.JavaLineArray.Channels =
                             var dist2 = 0;
                             if (vbiDrawThis === 21710000) {
                                 dist2 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(nextToLastPoint, lastPoint);
-                                if (dist2 > 45)
+                                if (dist2 > 75) //was 45
                                     dist -= 45;
                                 if (dist2 > 20) {
                                     pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pUpperLinePoints[vblUpperCounter - 2], pUpperLinePoints[vblUpperCounter - 1], 5 + dist);
