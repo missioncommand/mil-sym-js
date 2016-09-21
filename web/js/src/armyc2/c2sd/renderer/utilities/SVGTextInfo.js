@@ -9,13 +9,15 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
  * @param {String} text
  * @param {SO.Point} anchorPoint
  * @param {Object} fontInfo
- * @returns {String} justification "start", "middle", or "end"
+ * @param {String} justification "start", "middle", or "end"
+ * @param {Number} angle
  */
-armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontInfo, justification) {
+armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontInfo, justification, angle) {
     this._text = text;
     this._fontName = fontInfo.name;
     this._fontSize = fontInfo.size;
     this._fontStyle = fontInfo.style;
+
     if(anchorPoint)
         this._anchor = anchorPoint;
     else
@@ -24,6 +26,10 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         this._justification = justification;
     else
         this._justification = "start";
+    if(angle)
+        this._angle = angle;
+    else
+        this._angle = null;
     
     this._bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.measureStringNoDOM(text,fontInfo.measurements);
     this._bounds.setLocation(this._anchor.getX(),this._anchor.getY());    
@@ -33,11 +39,11 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     }
     else if(this._justification === "middle")
     {
-        this._bounds.shift(-(this._bounds.getWidth()/2),this._anchor.getY() - fontInfo.measurements.height);
+        this._bounds.shift(-(this._bounds.getWidth()/2), -fontInfo.measurements.height);
     }
     else if(this._justification === "end")
     {
-        this._bounds.shift(-this._bounds.getWidth(),this._anchor.getY() - fontInfo.measurements.height);
+        this._bounds.shift(-this._bounds.getWidth(), -fontInfo.measurements.height);
     }
     
     
@@ -99,18 +105,21 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     /**
      * 
      */
-    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm,noFontInfo)
+    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm)
     {
         var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getY() + '"';
-        if(noFontInfo !== true)
-        {
-            se += ' font-family="' + this._fontName + '"';
-            se += ' font-size="' + this._fontSize + 'pt"';
-            se += ' font-weight="' + this._fontStyle + '"';
-            se += ' alignment-baseline="alphabetic"';//    
-        }
+ 
+        se += ' font-family="' + this._fontName + '"';
+        se += ' font-size="' + this._fontSize + 'pt"';
+        se += ' font-weight="' + this._fontStyle + '"';
+        se += ' alignment-baseline="alphabetic"';//    
+        
         se += ' text-anchor="' + this._justification + '"';
         
+        if(this._angle)
+        {
+            se += ' transform="rotate(' + this._angle + ' ' + this._anchor.getX() + ' ' + this._anchor.getY() + ')"';
+        }
 
         var seStroke = null, 
             seFill = null;        

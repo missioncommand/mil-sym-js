@@ -409,7 +409,7 @@ armyc2.c2sd.renderer.so.Path = function () {
     /**
      * Arc and ArcTo do not covert currently
      */
-    armyc2.c2sd.renderer.so.Path.prototype.toSVGElement = function(stroke, strokeWidth, fill)
+    armyc2.c2sd.renderer.so.Path.prototype.toSVGElement = function(stroke, strokeWidth, fill, strokeOpacity, fillOpacity)
     {
         
         var ActionTypes = armyc2.c2sd.renderer.so.ActionTypes;
@@ -481,19 +481,42 @@ armyc2.c2sd.renderer.so.Path = function () {
         //TODO: generate path svg element
         var line = '<path d="' + path + '"';
 
-        if(strokeWidth)
-            line += ' stroke-width="' + strokeWidth + '"';
-        else if(stroke) 
-            line += ' stroke-width="2"';
-        
         if(stroke)
+        {
             line += ' stroke="' + stroke + '"';
+            
+            if(strokeWidth)
+                line += ' stroke-width="' + strokeWidth + '"';
+            else
+                line += ' stroke-width="2"';
+        
+            if(strokeOpacity && strokeOpacity !== 1.0)
+            {
+                //stroke-opacity="0.4"
+                line += ' stroke-opacity="' + strokeOpacity + '"';
+            }
+        }
             
         if(this._dashArray !== null)
             line += ' stroke-dasharray="' + this._dashArray.toString() + '"';
             
         if(fill)
-            line += ' fill="' + fill + '"';
+        {
+            if(fill.indexOf("url") === 0)
+            {
+                line += ' fill="url(#fillPattern)"';
+            }
+            else
+            {
+                line += ' fill="' + fill + '"';
+                if(fillOpacity && fillOpacity !== 1.0)
+                {
+                    //fill-opacity="0.4"
+                    line += ' fill-opacity="' + fillOpacity + '"';
+                }    
+            }
+            
+        }
         else
             line += ' fill="none"';
         

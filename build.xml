@@ -972,7 +972,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointSVGRenderer.js"/>
             <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicSVGRenderer.js"/>
             <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdSVGRenderer.js"/>
-        
+            
             <!--(Multi) add source required by SECWebRenderer--> 
             <fileset file="web/js/src/sec/web/renderer/utilities/JavaRendererUtilities.js" />
             <fileset file="web/js/src/sec/web/renderer/PointConverter.js" />
@@ -982,6 +982,9 @@
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
+            
+            <!--(Multi) SVG specific Renderer classes--> 
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" />
         
         </concat>
     </target>

@@ -230,10 +230,10 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
          */
         armyc2.c2sd.renderer.so.Rectangle.prototype.containsPoint = function(point)
         {
-            var x = point.getX();
-            var y = point.getY();
-            if(x && y)
+            if(point)
             {
+                var x = point.getX();
+                var y = point.getY();
                 var x0 = this.getX(),
                     y0 = this.getY();
                 return (x >= x0 &&
@@ -247,13 +247,12 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         
         armyc2.c2sd.renderer.so.Rectangle.prototype.containsRectangle = function(rect)
         {
-            var x = rect.getX();
-            var y = rect.getY();
-            var w = rect.getWidth();
-            var h = rect.getHeight();
-            
-            if(x && y && w && h)
+            if(rect)
             {
+                var x = rect.getX();
+                var y = rect.getY();
+                var w = rect.getWidth();
+                var h = rect.getHeight();
                 if (this.isEmpty() || w <= 0 || h <= 0) 
                 {
                     return false;
@@ -272,23 +271,24 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         /**
          * Ported from Java
          */
-        armyc2.c2sd.renderer.so.Rectangle.prototype.outcode = function(x, y) {
-	    var out = 0;
-	    if (this.width <= 0) {
-		out |= this.OUT_LEFT | this.OUT_RIGHT;
-	    } else if (x < this.x) {
-		out |= this.OUT_LEFT;
-	    } else if (x > this.x + this.width) {
-		out |= this.OUT_RIGHT;
-	    }
-	    if (this.height <= 0) {
-		out |= this.OUT_TOP | this.OUT_BOTTOM;
-	    } else if (y < this.y) {
-		out |= this.OUT_TOP;
-	    } else if (y > this.y + this.height) {
-		out |= this.OUT_BOTTOM;
-	    }
-	    return out;
+        armyc2.c2sd.renderer.so.Rectangle.prototype.outcode = function(x, y) 
+        {
+            var out = 0;
+            if (this.width <= 0) {
+            out |= this.OUT_LEFT | this.OUT_RIGHT;
+            } else if (x < this.x) {
+            out |= this.OUT_LEFT;
+            } else if (x > this.x + this.width) {
+            out |= this.OUT_RIGHT;
+            }
+            if (this.height <= 0) {
+            out |= this.OUT_TOP | this.OUT_BOTTOM;
+            } else if (y < this.y) {
+            out |= this.OUT_TOP;
+            } else if (y > this.y + this.height) {
+            out |= this.OUT_BOTTOM;
+            }
+            return out;
         };
         
         /**
@@ -365,27 +365,34 @@ armyc2.c2sd.renderer.so.Rectangle = function (x,y,width,height) {
         /**
          * ported from java
          */
-        armyc2.c2sd.renderer.so.Rectangle.prototype.intersects = function(r){
-            var tw = this.width;
-            var th = this.height;
-            var rw = r.width;
-            var rh = r.height;
-            if (rw <= 0 || rh <= 0 || tw <= 0 || th <= 0) {
-                return false;
+        armyc2.c2sd.renderer.so.Rectangle.prototype.intersects = function(r)
+        {
+            if(r)
+            {
+                var tw = this.width;
+                var th = this.height;
+                var rw = r.width;
+                var rh = r.height;
+                if (rw <= 0 || rh <= 0 || tw <= 0 || th <= 0) {
+                    return false;
+                }
+                var tx = this.x;
+                var ty = this.y;
+                var rx = r.x;
+                var ry = r.y;
+                rw += rx;
+                rh += ry;
+                tw += tx;
+                th += ty;
+                //      overflow || intersect
+                return ((rw < rx || rw > tx) &&
+                        (rh < ry || rh > ty) &&
+                        (tw < tx || tw > rx) &&
+                        (th < ty || th > ry));    
             }
-            var tx = this.x;
-            var ty = this.y;
-            var rx = r.x;
-            var ry = r.y;
-            rw += rx;
-            rh += ry;
-            tw += tx;
-            th += ty;
-            //      overflow || intersect
-            return ((rw < rx || rw > tx) &&
-                    (rh < ry || rh > ty) &&
-                    (tw < tx || tw > rx) &&
-                    (th < ty || th > ry));
+            else
+                return false;
+            
         };//*/
         
         armyc2.c2sd.renderer.so.Rectangle.prototype.toSVGElement = function(stroke, strokeWidth, fill)

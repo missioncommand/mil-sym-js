@@ -159,6 +159,7 @@ document.write('<script src="sec/web/renderer/PointConverter.js" type="text/java
 document.write('<script src="sec/web/renderer/SymbolModifiers.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/GeoPixelConversion.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/MultiPointHandlerCanvas.js" type="text/javascript" ></script>');
+document.write('<script src="sec/web/renderer/MultiPointHandlerSVG.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/MultiPointHandler.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SECWebRenderer.js" type="text/javascript" ></script>');
 
@@ -175,4 +176,6 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/SVGTextInfo.js" type
 document.write('<script src="armyc2/c2sd/renderer/SinglePointSVGRenderer.js" type = "text/javascript"></script>');
 document.write('<script src="armyc2/c2sd/renderer/TacticalGraphicSVGRenderer.js" type = "text/javascript"></script>');
 document.write('<script src="armyc2/c2sd/renderer/MilStdSVGRenderer.js" type = "text/javascript"></script>');
+
+
 

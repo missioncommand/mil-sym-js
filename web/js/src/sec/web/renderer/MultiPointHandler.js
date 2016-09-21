@@ -13,6 +13,7 @@ sec.web.renderer.MultiPointHandler = (function () {
     var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
     var RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities;
     var MPHC = sec.web.renderer.MultiPointHandlerCanvas;
+    var MPHS = sec.web.renderer.MultiPointHandlerSVG;
     var _appletChecked = false;
     var _appletUrl = null;
 
@@ -690,7 +691,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    if (format === 3 || format === 4 || format === 5)
+                    if (format <= 3 && format <= 6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
                         pt2d.setLocation(left, midlat);
@@ -786,7 +787,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format === 3 || format === 4 || format === 5)
+                if (format >= 3 && format <= 6)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
@@ -922,6 +923,36 @@ sec.web.renderer.MultiPointHandler = (function () {
                         jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture);
                     else
                         jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture);
+                        
+                }
+                else if (format === 6)//geoSVG
+                {
+                    if (textColor)
+                        hexTextColor = textColor.toHexString(false);
+                    if (textBackgroundColor)
+                        hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+
+                    //check for area pattern fill
+                    var map = mSymbol.getModifierMap();
+                    var fillTexture = null;
+                    var fillTextureSymbolSize = 15;
+                    if(map["symbolFillIds"])
+                    {
+                        var strIDs = map["symbolFillIds"];
+                        if(map["symbolFillSize"])
+                            fillTextureSymbolSize = map["symbolFillSize"];
+                        
+                        if(strIDs && strIDs !== "")
+                        {
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                        }
+                    }
+
+                    //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
+                    if(rect != null)
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture);
+                    else
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture);
                         
                 }
                 else if (format === 1) //deprecated
@@ -1116,7 +1147,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format === 3 || format === 4 || format === 5)
+                if (format >= 3 && format <= 6)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
@@ -1270,6 +1301,33 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
+                }
+                else if (format === 6 || format === 7)//render to geoSVG
+                {
+
+                    if (textColor)
+                        hexTextColor = textColor.toHexString(false);
+                    if (textBackgroundColor)
+                        hexTextBackgroundColor = textBackgroundColor.toHexString(false);
+
+                    //check for area pattern fill
+                    var map = mSymbol.getModifierMap();
+                    var fillTexture = null;
+                    var fillTextureSymbolSize = 15;
+                    if(map["symbolFillIds"])
+                    {
+                        var strIDs = map["symbolFillIds"];
+                        if(map["symbolFillIconSize"])
+                            fillTextureSymbolSize = map["symbolFillIconSize"];
+                        
+                        if(strIDs && strIDs !== "")
+                        {
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                        }
+                    }
+
+                    //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
+                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
                 }
                 else if (format === 1) //deprecated
                 {
