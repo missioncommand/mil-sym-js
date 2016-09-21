@@ -405,13 +405,13 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             {
                 fillPattern = fillTexture;
             }
-            else if(shapeInfo.getTexturePaint() !== null)
+            /*else if(shapeInfo.getTexturePaint() !== null)
             {
                 fillPattern = shapeInfo.getTexturePaint();
                 fillPattern = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse"><image xlink:href="'
                 + fillPattern.src + '" /></pattern></defs>';
                 fillTexture = "url(#fillPattern)";
-            }
+            }//*/
             //*/
 
             var stroke = null;
