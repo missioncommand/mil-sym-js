@@ -979,12 +979,11 @@
             <fileset file="web/js/src/sec/web/renderer/SymbolModifiers.js" />
             <fileset file="web/js/src/sec/web/renderer/GeoPixelConversion.js" />
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerCanvas.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" />
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
-            
-            <!--(Multi) SVG specific Renderer classes--> 
-            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" />
+                        
         
         </concat>
     </target>
