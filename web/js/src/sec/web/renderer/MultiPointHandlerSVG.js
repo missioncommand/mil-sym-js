@@ -3,11 +3,12 @@ var sec = sec || {};
 sec.web = sec.web || {};
 sec.web.renderer = sec.web.renderer || {};
 /** @class */
-sec.web.renderer.MultiPointHandlerCanvas = (function () {
+sec.web.renderer.MultiPointHandlerSVG = (function () {
     //private vars
     var ErrorLogger = armyc2.c2sd.renderer.utilities.ErrorLogger;
     var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
     var RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities;
+    var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
     var _buffer = null;
     var _blankCanvas = null;
     var _blankCanvasContext = null;
@@ -20,6 +21,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
         tempMPContext = null;
         
     var hasSetLineDash = false;
+    
+    var fillTextures = {};
      
         
     //decimal lat/lon accuracy by decimal place
@@ -45,41 +48,26 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
         //public functions
         
         /**
-         * Generates a GeoCanvas which can be draped on a map.
+         * Generates an SVG which can be draped on a map.
          * Better with RenderSymbol2D
          * 
          * @param {ShapeInfo[]} shapes - array of armyc2.c2sd.renderer.utilities.ShapeInfo
          * @param {ShapeInfo[]} modifiers - array of armyc2.c2sd.renderer.utilities.ShapeInfo
          * @param {object} ipc - PointConversion or PointConverter3D
          * @param {boolean} normalize 
-         * @param {number} format - 3 for canvas, 4 for dataURL (expensive, don't use)
          * @param {string} hexTextColor - 
          * @param {string} hexTextBackgroundColor - 
          * @param {boolean} wasClipped - true if symbol was clipped and will need redraw on map pan.
          * @param {number} pixelWidth - pixel width of the bounding box
          * @param {number} pixelHeight - pixel height of the bounding box
-         * @param {object} fillTexture - an html5 canvas
-         * @returns {geoCanvas} - looks like: {image:canvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+         * @param {object} fillTexture - an html5 canvas or SVG pattern
+         * @param {object} fontInfo - {name:name,size:size,style:style,measurements:{widths:widths[],height:height,descent:descent,fullHeight:fullHeight}}
+         * @returns {geoSVG} - looks like: {svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture)
+        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo)
         {
-            if (textInfoBuffer === null)
-            {
-                textInfoBuffer = document.createElement('canvas');
-                textInfoBuffer.width = 1;
-                textInfoBuffer.height = 1;
-            }
-            if (textInfoContext === null && textInfoBuffer.getContext !== undefined)
-            {
-                textInfoContext = textInfoBuffer.getContext('2d');
-                textInfoContext.lineCap = "butt";
-                textInfoContext.lineJoin = "miter";
-                textInfoContext.miterLimit = 3;
-                textInfoContextFont = RendererSettings.getModifierFont();
-                textInfoContext.font = textInfoContextFont;
-            }
-
-            var height = RendererUtilities.measureTextWithFontString(textInfoContext.font, "Tj", textInfoContext).height;
+            
+            var height = 10;
 
             var tempBounds = null;
             var paths = [];
@@ -88,23 +76,37 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var labelBounds = null;
             var unionBounds = null;
             var rotatedBounds = null;
+            var lineWidth = 4;
             
             try
             {
+                if(modifiers[MilStdAttributes.LineWidth])
+                    lineWidth = modifiers[MilStdAttributes.LineWidth];
+                    
+                /*if(!fontInfo)
+                    fontInfo = RendererSettings.getMPFontInfo();//*/
+                    
+                if(!fontInfo)
+                    fontInfo = RendererSettings.getFontInfo();
+                
+                height = fontInfo.measurements.height;
 
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer, fillTexture);
-                    if(pathInfo.path && pathInfo.path.getBounds())
+                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture);
+                    if(pathInfo.svg && pathInfo.bounds)
                     {
-                        tempBounds = pathInfo.path.getBounds();
-                        tempBounds.grow(Math.round(pathInfo.lineWidth / 2));//adjust for line width so nothing gets clipped.
+                        tempBounds = pathInfo.bounds;
+                        tempBounds.grow(Math.round(lineWidth / 2));//adjust for line width so nothing gets clipped.
                         if (pathBounds === null)
                             pathBounds = tempBounds.clone();
                         else
                             pathBounds.union(tempBounds);
-                        paths.push(pathInfo);
+                        paths.push(pathInfo.svg);
+                        
+                        if(pathInfo.fillPattern && pathInfo.fillPattern != fillTexture)
+                            fillTexture = pathInfo.fillPattern;
                     }
                 }
                 
@@ -114,7 +116,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
 
                 var tempModifier, len2 = modifiers.size();
                 var tiTemp = null;
-                for (var j = 0; j < len2; j++) {
+                for (var j = 0; j < len2; j++) 
+                {
                     tempModifier = modifiers.get(j);
 
                     var labelInfo = tempModifier;
@@ -122,29 +125,27 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     //multipoint renderer is assuming text is centered vertically 
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
+                    tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
+                    
                     var justify=tempModifier.getTextJustify() || "";
                     var strJustify="left";
                     if(justify===0)
-                        strJustify="left";
+                        strJustify="start";
                     else if(justify===1)
-                        strJustify="center";
+                        strJustify="middle";
                     else if(justify===2)
-                        strJustify="right";
+                        strJustify="end";
 
-                    textInfoContext.textAlign=strJustify;
-                    //textInfoContext.textBaseline = "middle";
-                    textInfoContext.textBaseline = "alphabetic";
-                    tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height / 2), textInfoContext, null);
-                    tiTemp.textAlign=strJustify;
-                    //tiTemp.textBaseline = "middle";
-                    tiTemp.textBaseline = "alphabetic";
-                    var bounds = tiTemp.getTextBounds();
                     var degrees = parseFloat(tempModifier.getModifierStringAngle());
+                    tiTemp = new armyc2.c2sd.renderer.utilities.SVGTextInfo(tempModifier.getModifierString(), tempLocation, fontInfo, strJustify, degrees);
+                    //tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height / 2), textInfoContext, null);
+
+                    var bounds = tiTemp.getBounds();
+                    
                     rotatedBounds = null;
                     if (degrees !== 0)
                     {
-                        rotatedBounds = this.GetRotatedRectangleBounds(bounds, tiTemp.getLocation(), degrees);
-                        tiTemp.angle = degrees;
+                        rotatedBounds = this.GetRotatedRectangleBounds(bounds, tempLocation, degrees);
                     }
 
                     //make sure labels are in the bbox, otherwise they can
@@ -236,289 +237,139 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             }
             catch (err)
             {
-                ErrorLogger.LogException("MultiPointHandler", "GeoJSONize", err);
+                ErrorLogger.LogException("MultiPointHandler", "GeoSVGize", err);
             }
             //if(renderToCanvas)
             //{
             if(paths && len > 0 && unionBounds)
             {
-                paths.smooth = shapes.smooth;//for lineJoin
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture);
-                return geoCanvas;
+                //create group with offset translation
+                //ctx.translate(bounds.getX() * -1, bounds.getY() * -1);
+                var group = '<g transform="translate(' + (unionBounds.getX() * -1) + ',' + (unionBounds.getY() * -1) +')">';
+                
+                //loop through paths and labels and build SVG.
+                if(format === 6)
+                {
+                    for(var i = 0; i < paths.length; i++)
+                    {
+                        group += paths[i];
+                    }   
+                }
+                labels = this.renderTextElement(labels,hexTextColor,hexTextBackgroundColor);
+                for(var j = 0; j < labels.length; j++)
+                {
+                    group += labels[j];
+                }
+                //close
+                group += '</g>'; 
+                
+                //wrap in SVG
+                var geoSVG = '<svg width="' + unionBounds.getWidth() + 'px" height="' + unionBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                if(fillTexture)
+                    geoSVG += fillTexture;
+                geoSVG += group;
+                geoSVG += '</svg>';//*/
+                
+                return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
             }
             else
             {
-                //{image:buffer, geoTL:geoTL, geoBR:geoBR} OR {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
-                return {image:_blankCanvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                //return blank SVG
+                return {svg:geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
             }
             //}
             //else
             //  return {paths:paths,textInfos:labels,bounds:unionBounds,geoTL:geoCoordTL,geoBR:geoCoordBR};
         },
-        /**
-         * 
-         * @param {type} paths
-         * @param {type} textInfos
-         * @param {type} bounds
-         * @param {type} geoTL
-         * @param {type} geoBR
-         * @param {type} format 3 for canvas, 4 for image as dataurl
-         * @param {String} hexTextColor "#FFFFFF"
-         * @param {String} hexTextBackgroundColor "#FFFFFF"
-         * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
-         *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
+            /**
+         * renders modifier text to a canvas
+         * @param {type} ctx html5 canvas context object
+         * @param {type} tiArray array of TextInfo.js objects
+         * @param {type} color a hex string "#000000"
+         * @returns {void}
          */
-        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
+        renderTextElement: function(tiArray, color, backgroundColor)
         {
-            var buffer = null;
-            if (format === 4)
+            //ctx.lineCap = "butt";
+            //ctx.lineJoin = "miter";
+            //ctx.miterLimit = 3;
+            /*ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            ctx.miterLimit = 3;*/
+            var svgElements = []
+
+            var size = tiArray.length,
+                tempShape = null,
+                fillStyle = "#000000",
+                outlineStyle = null,
+                tbm = RendererSettings.getTextBackgroundMethod(),
+                outlineWidth = RendererSettings.getTextOutlineWidth();
+        
+            if(color)
             {
-                if (tempMPBuffer === null)
-                {
-                    tempMPBuffer = document.createElement('canvas');
-                }
-                if (tempMPContext === null)
-                {
-                    tempMPContext = tempMPBuffer.getContext('2d');
-                }
-                buffer = tempMPBuffer;
-                ctx = tempMPContext;
+                fillStyle = color;
+            }
+            else if(RendererSettings.getLabelForegroundColor() !== null)
+            {
+                fillStyle = RendererSettings.getLabelForegroundColor().toHexString(false);
+            }   
+
+            if(backgroundColor)
+            {
+                outlineStyle = backgroundColor;
             }
             else
             {
-                buffer = document.createElement('canvas');
-            }
-
-            var pathSize = paths.length;
-            var textSize = textInfos.length;
-            var pathInfo = paths;
-            var pi = null;
-            var bounds = bounds;
-            buffer.width = bounds.getWidth();
-            buffer.height = bounds.getHeight();
-
-            if (format === 4)//recycling buffer so we need to make sure it's clean.
-            {
-                ctx.clearRect(0, 0, bounds.getWidth(), bounds.getHeight());
-            }
-
-            var lineColor = "#000000";
-            var ctx = buffer.getContext('2d');
-
-            //configure line settings/////////
-            ctx.globalAlpha = 1;
-            ctx.lineCap = "round";//butt,round,square
-            if(paths.smooth === true)
-            {
-                ctx.lineJoin = "round";//bevel,round,miter    
-            }
-            else
-            {
-                ctx.lineJoin = "miter";//bevel,round,miter
+                outlineStyle = RendererUtilities.getIdealOutlineColor(fillStyle,true);
             }
             
-            //ctx.miterLimit = 2;
-            //////////////////////////////////
 
-            ctx.translate(bounds.getX() * -1, bounds.getY() * -1);
-            if(format !== 5)
+            if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE)
             {
-                for (var i = 0; i < pathSize; i++)
+                for(var i=0; i<size;i++)
                 {
-                    pi = pathInfo[i];
-                    if (pi.lineColor !== null)
-                        lineColor = pi.lineColor;
-                    if (pi.lineWidth)
-                        ctx.lineWidth = pi.lineWidth;
-                    if (pi.lineColor !== null)
-                    {
-                        ctx.strokeStyle = pi.lineColor;
-                        ctx.globalAlpha = 1;
-                        pi.path.stroke(ctx);
-                    }
-                    if (pi.fillColor !== null)
-                    {
-                        ctx.fillStyle = pi.fillColor;
-                        ctx.globalAlpha = pi.alpha;
-                        pi.path.fill(ctx);
-                    }
-                    if(pi.fillPattern !== null && pi.fillPattern.src)
-                    {
-                        pi.path.fillPattern(ctx, pi.fillPattern);
-                    }
-                    else if(fillTexture)
-                    {
-                        pi.path.fillPattern(ctx, fillTexture);
-                    }
+                    tempShape = tiArray[i];
+                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
                 }
             }
-            else
-            {
-                ctx.globalAlpha = 1;
-            }
-           
-
-
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            if (textInfos.length > 0)
-            {
-                ctx.globalAlpha = 1;
-                //apply mpmodfier font
-                //loop and render text
-                var tis = textInfos;
-                var ti = null;
-                var angle = 0;
-                var tbm = RendererSettings.getTextBackgroundMethod();
-                var outlineWidth = RendererSettings.getTextOutlineWidth();
-                var mpFont = RendererSettings.getModifierFont();
-
-                //set text color and outline/fill color
-                var htbc = hexTextBackgroundColor || RendererUtilities.getIdealOutlineColor((hexTextColor || lineColor),true);
-                var htc = hexTextColor || lineColor;
-                ctx.fillStyle = htc;
-                var outlineStyle = htbc;
-
-                ctx.font = mpFont;
-                //ctx.textBaseline = "top";
-                //ctx.textBaseline = "Alphabetic";
-                //ctx.textBaseline = "middle";
-                //ctx.textAlign="left";
-                if (outlineWidth > 0)
-                    ctx.lineWidth = (outlineWidth * 2) + 1;
-                ctx.strokeStyle = outlineStyle;
-                var offsetX = bounds.getX();
-                var offsetY = bounds.getY();
-                var tX = 0;
-                var tY = 0;
-                //362,422
-                var height = RendererUtilities.measureTextWithFontString(mpFont, "Tj", ctx).height;
-                //ctx.fillText("test",10,height + 80);
-                
-                //set line style for text stroke
-                ctx.lineCap = "butt";
-                ctx.lineJoin = "miter";
-                ctx.miterLimit = 3;
-                for (var j = 0; j < textSize; j++)
+            else if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
+            {    //TODO: need to update, this is regular outline approach
+                for(var i=0; i<size;i++)
                 {
-                    
-                    ti = tis[j];
-
-                    if(ti.textAlign)
-                        ctx.textAlign=ti.textAlign;
-                    if(ti.textBaseline)
-                        ctx.textBaseline=ti.textBaseline;
-                    
-                    //ti.getTextOutlineBounds().stroke(ctx);
-                    ////TEST: stroke to see bounds (before transform)
-                    //ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
-                    angle = ti.angle;
-
-                    tX = ((ti.getLocation().getX()) - offsetX);
-                    tY = ((ti.getLocation().getY()) - offsetY);
-                    ctx.translate(tX, tY);
-
-                    //TEST
-                    /*
-                     ctx.save();
-                     ctx.setTransform(1,0,0,1,0,0);
-                     
-                     ctx.strokeStyle="#00FF00";
-                     var tiRect = ti.getTextOutlineBounds();
-                     ctx.translate(tiRect.x - offsetX, tiRect.y - offsetY);
-                     
-                     //TEST: stroke to see bounds
-                     ctx.strokeRect(0,0,tiRect.getWidth(),tiRect.getHeight());
-                     
-                     ctx.restore();
-                     ctx.setTransform(1,0,0,1,0,0);
-                     ctx.translate(tX, tY);
-                     //*/
-
-                    if (angle !== 0)
-                    {
-                        ctx.rotate(angle * Math.PI / 180);
-                    }
-
-                    switch (tbm)
-                    {
-                        case RendererSettings.TextBackgroundMethod_OUTLINE:
-                        case RendererSettings.TextBackgroundMethod_OUTLINE_QUICK:
-                            if (outlineWidth > 0)
-                            {
-                                ctx.strokeText(ti.text, 0, 0);
-                                ctx.fillText(ti.text, 0, 0);
-                            }
-                            break;
-                        case RendererSettings.TextBackgroundMethod_COLORFILL:
-                            ctx.fillStyle = htbc;
-                            var rectFill = ti.getTextOutlineBounds();
-                            rectFill.setLocation(0 - outlineWidth, 0 - Math.round(rectFill.getHeight() / 2));
-                            rectFill.fill(ctx);
-                            ctx.fillStyle = htc;
-                            ctx.fillText(ti.text, 0, 0);
-                            break;
-                        default:
-                            ctx.fillText(ti.text, 0, 0);
-                            break;
-
-                    }
-
-
-
-                    //TEST: stroke to see draw point of text
-                    //ctx.strokeRect(0,0,1,1);
-
-                    //ti.fillText(ctx);
-
-
-
-                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                    tempShape = tiArray[i];
+                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
                 }
-
-
-
             }
-            //test
-
-            /*ctx.translate(bounds.getX() * - 1, bounds.getY() * - 1);
-             ctx.strokeStyle = "#000000";
-             ctx.strokeRect(bounds.getX(), bounds.getY(),buffer.width,buffer.height);//*/
-
-            /*ctx.setTransform(1,0,0,1,0,0);
-             ctx.translate((bounds.getX()+100),(bounds.getY() + 100));
-             ctx.rotate(45*Math.PI/180);
-             ctx.fillText("test",0,0);//*/
-            //ctx.fillText("test",362,422);
-            //georeference buffer
-
-            if (format === 3 || format === 5)
+            else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)
             {
-                //return object with canvas and geo points
-                return {image: buffer, geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
+                for(var i=0; i<size;i++)
+                {
+                    tempShape = tiArray[i];
+                    svgElements.push(tempShape.getOutlineBounds().toSVGElement(null,null,outlineStyle));
+                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
+                }
             }
-            else if (format === 4)
+            else //if(tbm === RendererSettings.TextBackgroundMethod_NONE)
             {
-                //return object with dataurl and geo points
-                return {dataURL: buffer.toDataURL(), geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
+                for(var j=0; j<size;j++)
+                {
+                    tempShape = tiArray[j];
+                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
+                }
             }
-            else
-            {//should never get here:
-                //just return the canvas
-                buffer.geoTL = geoTL;
-                buffer.geoBR = geoBR;
-                return buffer;
-            }
-
+            
+            return svgElements;     
         },
+        
         /**
          * 
          * @param {type} shapeInfos
          * @param {type} ipc
          * @param {type} normalize
          * @param {type} fillTexture
-         * @returns {feature} {path, lineColor, fillColor, lineWidth, bounds}
+         * @returns {string} svgElement
          */
-        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize, fillTexture)
+        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture)
         {
 
             var pathInfo = null;
@@ -527,6 +378,8 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var lineColor = null;
             var lineWidth = null;
             var alpha = null;
+            var lineAlpha = 1.0;
+            var fillAlpha = 1.0;
             var dashArray = null;
             var fillPattern = null;
 
@@ -538,22 +391,28 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             var geometry = {};
             if (shapeInfo.getLineColor() !== null) {
                 lineColor = shapeInfo.getLineColor();
-                alpha = lineColor.getAlpha() / 255;
+                lineAlpha = lineColor.getAlpha() / 255;
                 lineColor = lineColor.toHexString(false);
             }
             if (shapeInfo.getFillColor() !== null) {
                 fillColor = shapeInfo.getFillColor();
-                alpha = fillColor.getAlpha() / 255;
+                fillAlpha = fillColor.getAlpha() / 255;
                 fillColor = fillColor.toHexString(false);
             }
-            if(shapeInfo.getTexturePaint() !== null)
-            {
-                fillPattern = shapeInfo.getTexturePaint();
-            }
+            
+            //TODO, pattern fill
             if(fillTexture)
             {
                 fillPattern = fillTexture;
             }
+            /*else if(shapeInfo.getTexturePaint() !== null)
+            {
+                fillPattern = shapeInfo.getTexturePaint();
+                fillPattern = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse"><image xlink:href="'
+                + fillPattern.src + '" /></pattern></defs>';
+                fillTexture = "url(#fillPattern)";
+            }//*/
+            //*/
 
             var stroke = null;
             stroke = shapeInfo.getStroke();
@@ -598,12 +457,16 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 }
 
             }
-            pathInfo = {path: path, lineWidth: lineWidth, lineColor: lineColor, fillColor: fillColor, dashArray: dashArray, alpha: alpha, fillPattern: fillPattern};
-            return pathInfo;
+            if(fillTexture)
+                fillColor = "url(#fillPattern)";
+            var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, fillTexture);
+            var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};
+            return svgInfo;
         },
         
         MakeFillTexture:function(symbolFillIds, symbolFillSize)
         {
+            
             var texture;
             var symbolIDs = symbolFillIds.split(","); 
             var symbols = [];
@@ -640,8 +503,70 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 x += spacerW + width;
             }
           
+            //return {dataURI:texture.toDataURL, width:texture.width, height:texture.height};
+            var svgPattern = '<defs>';
+            svgPattern += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + texture.width + '" height="' + texture.height + '" >';
+            svgPattern += '<image xlink:href="' + texture.toDataURL() + '" x="0" y="0" width="' + texture.width + '" height="' + texture.height + '" />';
+            svgPattern += '</pattern>';
+            svgPattern += '</defs>';  
+            
+            return svgPattern;
+        },
+        
+        MakeFillTextureSVG:function(symbolFillIds, symbolFillSize)
+        {
+            //needs to return {dataURI, width, height}
+            var texture = "";
+            var symbolIDs = symbolFillIds.split(","); 
+            var symbols = [];
+            var width = 0, height = 0, spacerW = 0, spacerH = 0;
+            //calculate texture dimensions
+            for(var i = 0; i < symbolIDs.length; i++)
+            {
+                symbols.push(armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
+                var rect = symbols[i].getSVGBounds();
+                if(rect.getWidth() > width)
+                    width = rect.getWidth();
+                if(rect.getHeight() > height)
+                    height = rect.getHeight();
+            }
+            spacerW = width / 3;
+            spacerH = 10; //width / 2;
+            
+            
+            //create texture
+            //texture = _document.createElement('canvas');
+            svgWidth = (width * symbols.length) + (spacerW * symbols.length);
+            svgHeight = height + spacerH;
+            
+            //draw to texture
+            var x = spacerW;
+            var y = spacerH;
+            //var ctx = texture.getContext('2d');
+            var pattern = "";
+            for(var j = 0; j < symbols.length; j++)
+            {
+                var sym = symbols[j];
+                var center = sym.getAnchorPoint();
+                pattern += '<g transform="translate(' + (x + width/2 - center.getX()) + ' ' + (y + height/2 - center.getY()) + ')" >';
+                
+                var paths = sym.getSVG();
+                paths = paths.substr(paths.indexOf("<g"));
+                paths = paths.replace("</svg>","");
+                
+                pattern += paths;
+                pattern += '</g>';
+                x += spacerW + width;
+            }
+            
+            texture = '<defs>';
+            texture += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + svgWidth + '" height="' + svgHeight + '" >';
+            texture += pattern;
+            texture += '</pattern>';
+            texture += '</defs>'; 
             return texture;  
         },
+        
         /**
          * 
          * @param {armyc2.c2sd.renderer.so.Rectangle} rectangle
