@@ -5,8 +5,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints=armyc2.c2sd.JavaRendererServer.
 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
     POINT2ToPoint:function (pt2) {
         var pt =  new armyc2.c2sd.graphics2d.Point ();
-        pt.x = Math.floor (pt2.x);
-        pt.y = Math.floor (pt2.y);
+        //pt.x = Math.floor (pt2.x);
+        //pt.y = Math.floor (pt2.y);
+        pt.x = pt2.x;
+        pt.y = pt2.y;
         return pt;
     }, 
     PointToPOINT2:function (pt) {
