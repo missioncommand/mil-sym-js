@@ -495,6 +495,10 @@ armyc2.c2sd.renderer.so.Path = function () {
                 //stroke-opacity="0.4"
                 line += ' stroke-opacity="' + strokeOpacity + '"';
             }
+            
+            //line += ' stroke-linejoin="round"';
+            line += ' stroke-linecap="round"';
+            //line += ' stroke-linecap="square"';
         }
             
         if(this._dashArray !== null)

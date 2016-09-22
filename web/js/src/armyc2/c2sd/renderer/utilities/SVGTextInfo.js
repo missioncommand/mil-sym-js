@@ -112,7 +112,8 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         se += ' font-family="' + this._fontName + '"';
         se += ' font-size="' + this._fontSize + 'pt"';
         se += ' font-weight="' + this._fontStyle + '"';
-        se += ' alignment-baseline="alphabetic"';//    
+        se += ' alignment-baseline="alphabetic"';//  
+        se += ' stroke-miterlimit="3"';  
         
         se += ' text-anchor="' + this._justification + '"';
         
