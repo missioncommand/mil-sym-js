@@ -129,6 +129,7 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         text = text.replace(/\&/g,"&amp;");
         text = text.replace(/\</g,"&lt;");
         text = text.replace(/\</g,"&gt;");
+        text = text.replace(/\u2022/g,"&#x2022;")//echelon and ellipses dot
         
         if(stroke)
         {
