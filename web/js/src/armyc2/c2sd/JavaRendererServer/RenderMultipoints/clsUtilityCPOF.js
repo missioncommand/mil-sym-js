@@ -1737,7 +1737,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 if (j === 0)
                 {
                     resultPts.add(pt0);
-                    if (hmap.containsKey(j)) 
+                    if (hmap !== null && hmap.containsKey(j)) 
                     {
                         if(!H.isEmpty())
                             H+=",";
@@ -1756,7 +1756,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         if (dist >= interval / 2)
                         {
                             resultPts.add(pt);
-                            if (hmap.containsKey(j)) 
+                            if (hmap !== null && hmap.containsKey(j)) 
                             {
                                 color = hmap.get(j);
                                 if(!H.isEmpty())
@@ -1774,7 +1774,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
                         pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
                         resultPts.add(pt);
-                        if (hmap.containsKey(j)) 
+                        if (hmap !== null && hmap.containsKey(j)) 
                         {
                             color = hmap.get(j);
                             if(!H.isEmpty())
@@ -1788,7 +1788,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 //if the Vincenty segment for j consists only of pt0-pt1 then add a color for the segment
                 if(j!==0 && n<=1)
                 {
-                    if (hmap.containsKey(j)) 
+                    if (hmap !== null && hmap.containsKey(j)) 
                     {
                         if(!H.isEmpty())
                             H+=",";
