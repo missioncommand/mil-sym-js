@@ -999,7 +999,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 23120000:
                 case 22612000:
                 case 22623000:
-                case 22121000:
+                //case 22121000:    
                 case 22122000:
                 case 22123000:
                 case 22124000:
@@ -1107,8 +1107,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 24339100:
                 case 24351000:
                 case 24361000:
-                case 25221000:
-                case 25222000:
+                //case 25221000:    //MSR
+                //case 25222000:    //ASR
                 case 25223000:
                 case 25225000:
                 case 25224000:
@@ -1121,6 +1121,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 25353000:
                 case 24226000:
                     return true;
+                case 22121000:  //boundary
+                case 25221000:  //MSR
+                case 25222000:  //ASR
+                    var colorsSet=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg);
+                    if(colorsSet===true)
+                        return false;
+                    else
+                        return true;
                 default:
                     return false;
             }
@@ -1674,6 +1682,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var start=null,end=null;
             var lon=0, lat=0;
             var cartographic=new Cartographic(0, 0, 0);
+            //ndew variables for tg.H colors
+            var colorStrs = null;
+            var H="";
+            var color="";
+            var segPlusColor=null;
+            var seg="";
+            var counter=0;
+            var hmap=armyc2.c2sd.JavaTacticalRenderer.clsUtility.getMSRSegmentColorStrings(tg);
+            if(hmap !== null)
+                tg.set_H("");
             //uncomment following line to use Vincenty
             useVincenty = true;
             //if(converter._scale>10000)
@@ -1717,7 +1735,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 if(n>100)                    
                     n=100;
                 if (j === 0)
+                {
                     resultPts.add(pt0);
+                    if (hmap.containsKey(j)) 
+                    {
+                        if(!H.isEmpty())
+                            H+=",";
+                        color = hmap.get(j);
+                        H+=counter.toString()+":"+color;
+                        counter++;
+                    }
+                }
                 for (k = 1; k <= n; k++) 
                 {
                     if(!useVincenty)    //geotrans interpolation
@@ -1726,7 +1754,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         pt.style = -2;
                         dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt, pt1, null, null);
                         if (dist >= interval / 2)
+                        {
                             resultPts.add(pt);
+                            if (hmap.containsKey(j)) 
+                            {
+                                color = hmap.get(j);
+                                if(!H.isEmpty())
+                                    H+=",";
+                                H+=counter.toString()+":"+color;
+                                counter++;
+                            }                        
+                        }
                     }
                     else    //use Vincenty surface distance algorithm
                     {
@@ -1735,11 +1773,33 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             break;
                         vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
                         pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
-                            resultPts.add(pt);
+                        resultPts.add(pt);
+                        if (hmap.containsKey(j)) 
+                        {
+                            color = hmap.get(j);
+                            if(!H.isEmpty())
+                                H+=",";
+                            H+=counter.toString()+":"+color;
+                            counter++;
+                        }                        
                     }
                 }
                 resultPts.add(pt1);
+                //if the Vincenty segment for j consists only of pt0-pt1 then add a color for the segment
+                if(j!==0 && n<=1)
+                {
+                    if (hmap.containsKey(j)) 
+                    {
+                        if(!H.isEmpty())
+                            H+=",";
+                        color = hmap.get(j);
+                        H+=counter.toString()+":"+color;
+                        counter++;
+                    }
+                }
             }
+            if(!H.isEmpty())
+                tg.set_H(H);
             tg.LatLongs = resultPts;
             tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
         } catch (exc) {

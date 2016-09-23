@@ -1064,20 +1064,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setTGProperties(tg);
             var clipBounds = null;
             armyc2.c2sd.JavaLineArray.CELineArray.setClient("ge");
-            var origPixels = null;
-            var origLatLongs = null;
-            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg))
-            {
-                origPixels = tg.Pixels.clone();
-                origLatLongs = tg.LatLongs.clone();
-            }
-            var origFillPixels = tg.Pixels.clone();
-//            var shiftLines = armyc2.c2sd.JavaLineArray.Channels.getShiftLines();
-//            if (shiftLines) {
-//                var affiliation = tg.get_Affiliation();
-//                armyc2.c2sd.JavaLineArray.Channels.setAffiliation(affiliation);
+//            var origPixels = null;
+//            var origLatLongs = null;
+//            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg))
+//            {
+//                origPixels = tg.Pixels.clone();
+//                origLatLongs = tg.LatLongs.clone();
+//                clipArea=null;
 //            }
-//            armyc2.c2sd.JavaLineArray.CELineArray.setMinLength(2.5);
+            var origFillPixels = tg.Pixels.clone();
+            
             var clipPoints = null;
             if (clipArea !== null) {
                 if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -1138,12 +1134,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
             if (tg.Pixels === null || tg.Pixels.isEmpty())
                 return;
-            if (origPixels !== null)
-            {
-                tg.Pixels = origPixels;
-                tg.LatLongs = origLatLongs;
-                clipArea = null;
-            }
+//            if (origPixels !== null)
+//            {
+//                tg.Pixels = origPixels;
+//                tg.LatLongs = origLatLongs;
+//            }
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.InterpolatePixels(tg);
             tg.modifiers = new java.util.ArrayList();
             var bi = new armyc2.c2sd.graphics2d.BufferedImage(8, 8, 2);

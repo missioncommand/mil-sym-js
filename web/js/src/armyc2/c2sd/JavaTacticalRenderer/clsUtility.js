@@ -2444,6 +2444,47 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return hMap;
     },
+    getMSRSegmentColorStrings: function (tg) {
+        var hMap = null;
+        try {
+            var linetype = tg.get_LineType();
+            switch (linetype) {
+                case 25221000:
+                case 25222000:
+                case 22121000:
+                    if (tg.get_H() === null || tg.get_H().isEmpty())
+                        return null;
+                    hMap = new java.util.HashMap();
+                    break;
+                default:
+                    return null;
+            }
+            var colorStrs = tg.get_H().split(",");
+            var j = 0;
+            var numSegs = colorStrs.length;
+            var segPlusColor = "";
+            var seg = null;
+            var color = null;
+            var index = -1;
+            for (j = 0; j < numSegs; j++) {
+                segPlusColor = colorStrs[j];
+                if (!segPlusColor.contains(":"))
+                    continue;
+                seg = segPlusColor.split(":");
+                //color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(seg[1]);
+                index = Integer.parseInt(seg[0]);
+                //hMap.put(new Integer(index), color);
+                hMap.put(new Integer(index), seg[1]);
+            }
+        } catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.clsUtility._className, "getMSRSegmentColors", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getMSRSegmentColors", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return hMap;
+    },
     reviseHModifier: function (originalPixels, tg) {
         try {
             if (tg.get_H() === null || tg.get_H().isEmpty())

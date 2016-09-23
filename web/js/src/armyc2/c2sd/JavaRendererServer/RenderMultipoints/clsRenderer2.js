@@ -88,7 +88,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
             }
             if (segShape !== null)
                 shapes.add(segShape);
-            shapes.add(shape);
+            if(!shape.getShape().getPathIterator().getPoints().isEmpty())
+                shapes.add(shape);
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2._className, "getMSRShapes", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside getMSRShapes", exc));

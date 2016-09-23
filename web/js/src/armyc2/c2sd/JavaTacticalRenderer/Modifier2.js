@@ -4846,8 +4846,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
                     }
                     if (segShape !== null)
                         shapes.add(segShape);
-                }
-                shapes.add(shape);
+                }     
+                if(!shape.getShape().getPathIterator().getPoints().isEmpty())
+                    shapes.add(shape);
                 break;
             default:
                 break;
