@@ -1688,7 +1688,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var color="";
             var segPlusColor=null;
             var seg="";
-            var counter=0;
+            //var counter=0;
             var hmap=armyc2.c2sd.JavaTacticalRenderer.clsUtility.getMSRSegmentColorStrings(tg);
             if(hmap !== null)
                 tg.set_H("");
@@ -1734,17 +1734,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 //for some reason it has a problem if n is too large
                 if(n>100)                    
                     n=100;
-                if (j === 0)
+                resultPts.add(pt0);
+                if (hmap !== null && hmap.containsKey(j)) 
                 {
-                    resultPts.add(pt0);
-                    if (hmap !== null && hmap.containsKey(j)) 
-                    {
-                        if(!H.isEmpty())
-                            H+=",";
-                        color = hmap.get(j);
-                        H+=counter.toString()+":"+color;
-                        counter++;
-                    }
+                    if(!H.isEmpty())
+                        H+=",";
+                    color = hmap.get(j);
+                    H+=(resultPts.size()-1).toString()+":"+color;
                 }
                 for (k = 1; k <= n; k++) 
                 {
@@ -1761,8 +1757,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                                 color = hmap.get(j);
                                 if(!H.isEmpty())
                                     H+=",";
-                                H+=counter.toString()+":"+color;
-                                counter++;
+                                H+=(resultPts.size()-1).toString()+":"+color;
                             }                        
                         }
                     }
@@ -1779,23 +1774,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             color = hmap.get(j);
                             if(!H.isEmpty())
                                 H+=",";
-                            H+=counter.toString()+":"+color;
-                            counter++;
+                            H+=(resultPts.size()-1).toString()+":"+color;
                         }                        
                     }
                 }
                 resultPts.add(pt1);
-                //if the Vincenty segment for j consists only of pt0-pt1 then add a color for the segment
-                if(j!==0 && n<=1)
+                if (hmap !== null && hmap.containsKey(j)) 
                 {
-                    if (hmap !== null && hmap.containsKey(j)) 
-                    {
-                        if(!H.isEmpty())
-                            H+=",";
-                        color = hmap.get(j);
-                        H+=counter.toString()+":"+color;
-                        counter++;
-                    }
+                    if(!H.isEmpty())
+                        H+=",";
+                    color = hmap.get(j);
+                    H+=(resultPts.size()-1).toString()+":"+color;
                 }
             }
             if(!H.isEmpty())
