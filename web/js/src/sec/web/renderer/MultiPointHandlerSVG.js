@@ -104,9 +104,6 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                         else
                             pathBounds.union(tempBounds);
                         paths.push(pathInfo.svg);
-                        
-                        if(pathInfo.fillPattern && pathInfo.fillPattern != fillTexture)
-                            fillTexture = pathInfo.fillPattern;
                     }
                 }
                 

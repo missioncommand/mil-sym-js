@@ -24,6 +24,46 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     var duriSweptArea = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkBAMAAAATLoWrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAAAnUExURQAAAP4A/v41/v5k/v51/v6F/v6T/v6h/v6t/v7E/v7P/v7Z/v7j/s8+NL4AAAABdFJOUwBA5thmAAAAbElEQVQoz2NgGHLgmKHZAVQRVkFBQVFUIUOgkKABsggLSERQBFloIlhIcAK6PkFBByQhiIigAEKEGyokjVcIi0YGRYiQApJQIUSoAEmICSwihOxUTrCQJAOG8yegCPEECgrGoAfYigUMwwIAAJevDkkSlISwAAAAAElFTkSuQmCC";
     var duriWeirs = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiBAMAAADFd2a2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAAAhUExURQAAAMDAwMTExMjIyM7OztHR0dXV1d3d3eHh4enp6fDw8MnCp1cAAAABdFJOUwBA5thmAAAASUlEQVQoz2NgIBp4YoiwCU7AEFOUxBBioqEy1lAgCBEUCQUDsNBCQWSwACxk0QEE7R1gYAgRCkAyJXDICWHxI6YQ1ypkwDB4AQCRDzCzcuhQTwAAAABJRU5ErkJggg==";
     
+    //<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" ></pattern></defs>
+    var svgBeachSlopeModerate = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        + '<circle id="svg_2" r="4" cy="16" cx="16" fill="#808080"/>'
+                        + '<circle id="svg_2" r="4" cy="16" cx="48" fill="#808080"/>'
+                        + '<circle id="svg_2" r="4" cy="48" cx="16" fill="#808080"/>'
+                        + '<circle id="svg_2" r="4" cy="48" cx="48" fill="#808080"/>'
+                        +   '</pattern></defs>';
+    var svgBeachSlopeSteep = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        + '<circle id="svg_2" r="4" cy="16" cx="16" fill="#E6E6E6"/>'
+                        + '<circle id="svg_2" r="4" cy="16" cx="48" fill="#E6E6E6"/>'
+                        + '<circle id="svg_2" r="4" cy="48" cx="16" fill="#E6E6E6"/>'
+                        + '<circle id="svg_2" r="4" cy="48" cx="48" fill="#E6E6E6"/>'
+                        +   '</pattern></defs>';
+    var svgBeigeStipple = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        +   '<rect id="svg_1" height="68" width="68" y="-2" x="-2" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#F9F3F1"/>'
+                        +   '</pattern></defs>';
+    var svgFoulGround = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        + '<text fill="#808080" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="23" y="30.399994" id="svg_1" font-size="24" font-family="arial, san-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">#</text>'
+                        + '<text id="svg_2" fill="#808080" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="52.033325" y="61.5" font-size="24" font-family="arial, san-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">#</text>'
+                        +   '</pattern></defs>';
+    var svgKelp = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="160" height="96" >'
+                        +   '<g transform="translate(43, 15) scale(0.0642857, -0.0642857)" id="svg_9"><path d="m-87.349503,25.374092q130.510529,-167.594231 198.975067,-167.594231q0,-6.012329 39.937653,-18.037048q249.610245,17.285507 249.610245,48.098793l22.821533,18.037048q8.558105,0 17.11618,-18.037048q-44.216705,-72.14817 -278.137207,-72.14817q-74.883087,-19.540131 -171.161346,-107.470749l-10.697578,0q-11.410755,0 -11.410755,12.024719q79.162128,84.172867 141.921276,101.458389l0,6.012329q-33.519081,0 -114.107555,60.123497l-11.410755,0q-111.25486,0 -318.074814,-155.569557l-11.410797,18.037094q126.944641,101.458374 147.626633,101.458374l0,6.01236q-64.185471,0 -153.332016,48.098785q-20.681946,-9.770065 -67.751343,-48.098785l-11.410736,0q-11.410797,0 -11.410797,12.024689l51.34848,48.098785q-74.883087,26.304016 -85.580719,42.086441l0,6.012352q1.426361,12.024696 11.410736,12.024696q218.230682,-96.197571 295.253281,-96.197571l11.410767,0q86.293839,30.061737 102.696808,30.061737l17.116135,0l0,6.012344q-66.325027,80.415168 -68.464523,95.446021l17.116112,12.024713l0.000015,0l-0.000008,0l0.000031,0.000008l0,-0.000008l0,-0.000008z" fill="#808080" id="svg_10"/></g>'
+                        + '<g id="svg_2" transform="translate(43, 15) scale(0.0642857, -0.0642857)"><path id="svg_3" d="m1116.504639,-692.460327q130.510742,-167.594727 198.975586,-167.594727q0,-6.011719 39.937012,-18.037109q249.609863,17.286133 249.609863,48.099121l22.822266,18.037109q8.558105,0 17.115723,-18.037109q-44.216797,-72.147949 -278.136719,-72.147949q-74.883301,-19.540039 -171.161621,-107.471191l-10.697266,0q-11.411133,0 -11.411133,12.025391q79.162109,84.172852 141.921875,101.458008l0,6.012695q-33.519531,0 -114.10791,60.123047l-11.410645,0q-111.255371,0 -318.075195,-155.568848l-11.410156,18.037109q126.943848,101.458008 147.625977,101.458008l0,6.011719q-64.185059,0 -153.332031,48.099121q-20.682129,-9.77002 -67.750977,-48.099121l-11.411133,0q-11.411133,0 -11.411133,12.024902l51.349121,48.099121q-74.882813,26.303711 -85.581055,42.086426l0,6.012207q1.427246,12.024902 11.411133,12.024902q218.230957,-96.197754 295.25293,-96.197754l11.411133,0q86.293945,30.062012 102.696777,30.062012l17.116211,0l0,6.012207q-66.325195,80.415039 -68.464844,95.445801l17.116211,12.024902l0,0l0,0l0,0z" fill="#808080"/></g>'
+                        +   '</pattern></defs>';
+    var svgRigField = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        + '<circle id="svg_2" r="8" cy="16" cx="16" fill="#E6E6E6"/>' 
+                        + '<circle id="svg_2" r="8" cy="16" cx="48" fill="#E6E6E6"/>'
+                        + '<circle id="svg_2" r="8" cy="48" cx="16" fill="#E6E6E6"/>'
+                        + '<circle id="svg_2" r="8" cy="48" cx="48" fill="#E6E6E6"/>'
+                        + '</pattern></defs>';
+    var svgSweptArea = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'
+                        +   '<circle fill="#ff00ff" stroke="#000000" stroke-width="0" cx="16" cy="16" r="8" />'
+                        +   '<circle fill="#ff00ff" stroke="#000000" stroke-width="0" cx="48" cy="48" r="8" /></pattern></defs>';
+    var svgWeirs = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'//stroke="#E6E6E6"//light gray
+                        + '<rect height="10" width="20" y="17" x="10" fill="none" stroke-linecap="null" stroke-linejoin="null"  stroke-width="2"stroke="#E6E6E6" id="svg_1"/>'
+                        + '<line x1="20" y1="16" x2="13" y2="9" stroke-width="2" stroke="#E6E6E6" id="svg_5"/>'
+                        + '<rect height="10" width="20" y="48" x="42" fill="none" stroke-linecap="null" stroke-linejoin="null" stroke-width="2"stroke="#E6E6E6" id="svg_7"/>'
+                        + '<line x1="52" y1="48" x2="45" y2="41" stroke-width="2" stroke="#E6E6E6" id="svg_8"/>'
+                        + '</pattern></defs>';
+    
     //constructor code
 
     //set METOC patterns, do this now so that they're loaded by the time someone needs them
@@ -98,6 +138,54 @@ return{
         //set ctx.fillStyle=pattern
         //then ctx.fill();
         
+    },
+    getSVGFillStylePattern: function (pattern, lineColor, fillColor, lineWidth)
+    {
+        var imagePattern = null;
+        var duri = null;
+        if(pattern.charAt(0) === "W")//METOC fill
+        {
+            if(pattern === "WO-DBSM-----A--")//beach slope moderate
+                return svgBeachSlopeModerate;
+            else if(pattern === "WO-DBST-----A--")//beach slope steep
+                return svgBeachSlopeSteep;
+            else if(pattern === "WO-DHCB-----A--")//beige stipple
+                return svgBeigeStipple;
+            else if(pattern === "WO-DHHDF----A--")//Foul Ground
+                return svgFoulGround;
+            else if(pattern === "WO-DHHDK----A--")//Kelp
+                return svgKelp;
+            else if(pattern === "WO-DMOA-----A--")//OIL/GAS RIG FIELD
+                return svgRigField;
+            else if(pattern === "WO-DL-SA----A--")//swept area
+                return svgSweptArea;
+            else if(pattern === "WOS-HPFF----A--")//Weirs
+                return svgWeirs;            
+        }
+        else//hash fill 
+        {//TODO: implement generation of hash pattern based on pattern, color, and line width.
+            /*
+            if(imagePattern == null)
+            {
+                imagePattern = _document.createElement('canvas');
+                buffer.width = 50;
+                buffer.height = 50;
+            }
+            ctx = imagePattern.getContext("2d");
+            ctx.clearRect(0,0,50,50);
+            
+            return imagePattern;//*/
+        
+            return null;
+        }
+        
+        return null;
+        
+        //pattern name
+        //set ctx.fillStyle=pattern
+        //then ctx.fill();
+        
     }
+    
 };
 }());

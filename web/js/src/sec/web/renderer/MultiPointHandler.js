@@ -1325,6 +1325,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                             fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
                         }
                     }
+                    if(symbolCode.charAt(0) === 'W')
+                    {
+                        fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
+                    }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);

@@ -74,7 +74,7 @@ console.log(foo.toString());*/
         //var symbolCode = "GHGASLA-------X";//ambush anticipated
 		var symbolCode = "GHGPSLA-------X";//ambush present
 		//var symbolCode = "GFGPGAE---****X";//engagement area
-        var symbolCode = "GFGAGAA-------X"; //assembly area
+        //var symbolCode = "GFGAGAA-------X"; //assembly area
         //var symbolCode = "GHGAGLF-------X";//flot
 		//var symbolCode = "GHGPGAL-------X";//landing zone
 		//var symbolCode = "GHGPALL-------X";//LLTR
@@ -85,8 +85,10 @@ console.log(foo.toString());*/
 		//var symbolCode = "GHFPLCR-------X";//RFL
         //var symbolCode = "GFGPGLP---****X";//Phase Line
 		//var symbolCode = "GFFPACSI--****X";//Fire Support Area
-		//var symbolCode = "GFFPACAI--****X";//Airspace Coordination Area
+		//var symbolCode = "GFFPACAI--****X";//Airspace Coordination Area Irregular
+        //var symbolCode = "GFFPACAR--****X";//Airspace Coordination Area Rectangular
         //var symbolCode = "WOS-HPFF----A--";//Weirs
+        //var symbolCode = "WO-DHCB-----A--";//Beack Hydrography
 		//var symbolCode = "GFTPF-----****X";//Task/Fix
 		//var symbolCode = "WO-DHHDF----A--";//fould ground
         //var symbolCode = "G*F*AKBC--****X";//kill box blue rectangular
@@ -102,13 +104,13 @@ console.log(foo.toString());*/
 
         
 		//modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
-        modifiers = {"symbolFillIds":"SFGPU----------,SUGPU----------","symbolFillIconSize":35};
-        //modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
+        //modifiers = {"symbolFillIds":"SFGPU----------,SUGPU----------","symbolFillIconSize":35};
+        modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
 		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
 		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		
-        //var bbox = "66.25,30.60,66.28,30.65";
-        var bbox = "66.20,30.5,66.35,30.8";
+        var bbox = "66.25,30.60,66.28,30.65";
+        //var bbox = "66.20,30.5,66.35,30.8";
 		//var bbox = "66.25,30.60,66.26,30.65";
         //var bbox = "-180.0,-90.0,180.0,90.0";
         //bbox = null;
