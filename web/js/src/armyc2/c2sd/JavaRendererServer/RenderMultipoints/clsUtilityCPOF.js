@@ -1124,11 +1124,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 22121000:  //boundary
                 case 25221000:  //MSR
                 case 25222000:  //ASR
-                    var colorsSet=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg);
-                    if(colorsSet===true)
+                    //var colorsSet=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg);
+                    //if(colorsSet===true)
                         return false;
-                    else
-                        return true;
+                    //else
+                    //    return true;
                 default:
                     return false;
             }
