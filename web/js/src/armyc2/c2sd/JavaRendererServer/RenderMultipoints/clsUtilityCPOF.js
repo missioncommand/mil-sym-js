@@ -1734,13 +1734,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 //for some reason it has a problem if n is too large
                 if(n>100)                    
                     n=100;
-                resultPts.add(pt0);
-                if (hmap !== null && hmap.containsKey(j)) 
+                if(j===0)
                 {
-                    if(!H.isEmpty())
-                        H+=",";
-                    color = hmap.get(j);
-                    H+=(resultPts.size()-1).toString()+":"+color;
+                    resultPts.add(pt0);
+                    if (hmap !== null && hmap.containsKey(j)) 
+                    {
+                        if(!H.isEmpty())
+                            H+=",";
+                        color = hmap.get(j);
+                        H+=(resultPts.size()-1).toString()+":"+color;
+                    }
                 }
                 for (k = 1; k <= n; k++) 
                 {
@@ -1779,11 +1782,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     }
                 }
                 resultPts.add(pt1);
-                if (hmap !== null && hmap.containsKey(j)) 
+                if (hmap !== null && hmap.containsKey(j+1)) 
                 {
                     if(!H.isEmpty())
                         H+=",";
-                    color = hmap.get(j);
+                    color = hmap.get(j+1);
                     H+=(resultPts.size()-1).toString()+":"+color;
                 }
             }
