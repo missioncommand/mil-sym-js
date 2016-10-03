@@ -691,7 +691,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    if (format <= 3 && format <= 6)
+                    if (format <= 3 && format <= 6 && scale >1e6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
                         pt2d.setLocation(left, midlat);
