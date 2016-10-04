@@ -81,7 +81,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "MODIFIERS": "AM.",
         "DESCRIPTION": "Buffered Basic Shapes",
         "HIERARCHY": "0.X.6",
         "ALPHAHIERARCHY": "BS.BBS"
@@ -104,19 +103,19 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "MODIFIERS": "AM.T.",
-        "DESCRIPTION": "Buffered Basic Shapes",
+        "DESCRIPTION": "Buffered Area",
         "HIERARCHY": "0.X.6.2",
         "ALPHAHIERARCHY": "BS.BBS.AREA"
       },
       {
         "SYMBOLID": "BBS_POINT------",
-        "GEOMETRY": "area",
+        "GEOMETRY": "point",
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
         "MODIFIERS": "AM.T.",
-        "DESCRIPTION": "Buffered Basic Shapes",
-        "HIERARCHY": "0.X.6.2",
+        "DESCRIPTION": "Buffered Point",
+        "HIERARCHY": "0.X.6.3",
         "ALPHAHIERARCHY": "BS.BBS.POINT"
       },
       {
@@ -127,7 +126,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "MINPOINTS": "2",
         "MODIFIERS": "AM.T.",
         "DESCRIPTION": "Buffered Rectangle",
-        "HIERARCHY": "0.X.6.3",
+        "HIERARCHY": "0.X.6.4",
         "ALPHAHIERARCHY": "BS.BBS.RECT"
       },
       {
@@ -136,10 +135,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "MODIFIERS": "",
         "DESCRIPTION": "Parametered Basic Shapes",
         "HIERARCHY": "0.X.7",
-        "ALPHAHIERARCHY": "BS.PBS",
+        "ALPHAHIERARCHY": "BS.PBS"
       },
       {
         "SYMBOLID": "PBS_CIRCLE-----",
@@ -150,40 +148,40 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "MODIFIERS": "AM.",
         "DESCRIPTION": "Circle",
         "HIERARCHY": "0.X.7.1",
-        "ALPHAHIERARCHY": "BS.PBS.CIRCLE",
+        "ALPHAHIERARCHY": "BS.PBS.CIRCLE"
       },
       {
         "SYMBOLID": "PBS_ELLIPSE----",
-        "GEOMETRY": "point",
+        "GEOMETRY": "area",
         "DRAWCATEGORY": "17",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
         "MODIFIERS": "AM.AN.",
         "DESCRIPTION": "Ellipse",
         "HIERARCHY": "0.X.7.2",
-        "ALPHAHIERARCHY": "BS.PBS.ELLIPSE",
+        "ALPHAHIERARCHY": "BS.PBS.ELLIPSE"
       },
       {
         "SYMBOLID": "PBS_SQUARE-----",
-        "GEOMETRY": "point",
+        "GEOMETRY": "area",
         "DRAWCATEGORY": "16",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
         "MODIFIERS": "AM.AN.",
         "DESCRIPTION": "Square",
         "HIERARCHY": "0.X.7.3",
-        "ALPHAHIERARCHY": "BS.PBS.SQUARE",
+        "ALPHAHIERARCHY": "BS.PBS.SQUARE"
       },
       {
         "SYMBOLID": "PBS_RECTANGLE--",
-        "GEOMETRY": "point",
+        "GEOMETRY": "area",
         "DRAWCATEGORY": "17",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
         "MODIFIERS": "AM.AN.",
         "DESCRIPTION": "Rectangle",
         "HIERARCHY": "0.X.7.4",
-        "ALPHAHIERARCHY": "BS.PBS.ELLIPSE",
+        "ALPHAHIERARCHY": "BS.PBS.RECTANGLE"
       },
       {
         "SYMBOLID": "G*-*------****X",
@@ -290,7 +288,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "15",
         "MAXPOINTS": "3",
         "MINPOINTS": "3",
-        "MODIFIERS": "W",
+        "MODIFIERS": "W.",
         "DESCRIPTION": "Delay",
         "HIERARCHY": "2.X.1.8",
         "PATH": "Tactical Graphics/Tasks"
@@ -1992,7 +1990,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "0",
         "MAXPOINTS": "0",
         "MINPOINTS": "0",
-        "MODIFIERS": "0",
         "DESCRIPTION": "Points",
         "HIERARCHY": "2.X.2.5.1",
         "PATH": "Tactical Graphics/Command and Control and General Maneuver/Offense"
@@ -3736,7 +3733,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "MODIFIERS": "T.",
+        "MODIFIERS": "T.W.W1.",
         "DESCRIPTION": "Fire Support Area (FSA) Irregular",
         "HIERARCHY": "2.X.4.3.2.1.1",
         "PATH": "Tactical Graphics/Fire Support/Areas/Command and Control Areas/Fire Support Area (FSA)"
@@ -6771,7 +6768,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Turbulence",
         "HIERARCHY": "3.X.1.7.3",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -6782,7 +6778,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Icing",
         "HIERARCHY": "3.X.1.7.4",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -6823,7 +6818,6 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
-        "MODIFIERS": "H.H1.",
         "DESCRIPTION": "Weather Thunderstorm",
         "HIERARCHY": "3.X.1.7.7",
         "PATH": "METOC/Atmospheric/Bounded Areas of Weather"
@@ -7085,7 +7079,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DRAWCATEGORY": "8",
         "MAXPOINTS": "1",
         "MINPOINTS": "1",
-        "DESCRIPTION": "Compact or Wet Snow (With or Without Ice) Covering Less than One-Half of Ground",
+        "DESCRIPTION": "Compact or Wet Snow (With or Without Ice) Covering Less than One-Hald of Ground",
         "HIERARCHY": "3.X.1.9.2.2",
         "PATH": "METOC/Atmospheric/State of the Ground/With Snow or Measureable Ice Cover"
       },
