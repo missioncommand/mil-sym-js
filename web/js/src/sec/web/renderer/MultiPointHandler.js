@@ -451,6 +451,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var maxWidthInPixels = _maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
                 var minScale = (maxWidthInPixels / widthInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
                 minScale = 1.0 / minScale;
+                if(origScale===null || origScale===undefined)
+                    return minScale;
                 if (origScale < minScale) {
                     return minScale;
                 }
