@@ -783,6 +783,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             }
             var hatchLineThickness=Math.round(tg.get_LineThickness()/2);
             for (var k = 0; k < shapes.size(); k++) {
+                
+                //this should never happen
+                shape2 = shapes.get(k);
+                if(shape2===null || shape2.getShape().getPath().getPts().isEmpty()===true)
+                    continue;
+                
                 var shape = null;
                 if (lineType === 243111000 || lineType === 243112000) {
                     shape = shapes.get(k);
@@ -792,7 +798,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     shape = shapes.get(index);
                 if (hatch < armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal)
                     continue;
-                
+                                
                 if (hatch !== armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_Cross)
                 {
                     shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, hatch);

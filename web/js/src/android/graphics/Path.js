@@ -66,7 +66,7 @@ android.graphics.Path.prototype.computeBounds = function(rect, exact) {
 android.graphics.Path.prototype.close = function() {
 };
 android.graphics.Path.prototype.getPts = function() {
-    return pts;
+    return this.pts;
 };
 
 
