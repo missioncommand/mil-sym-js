@@ -58,9 +58,9 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
                         +   '<circle fill="#ff00ff" stroke="#000000" stroke-width="0" cx="16" cy="16" r="8" />'
                         +   '<circle fill="#ff00ff" stroke="#000000" stroke-width="0" cx="48" cy="48" r="8" /></pattern></defs>';
     var svgWeirs = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" width="64" height="64" >'//stroke="#E6E6E6"//light gray
-                        + '<rect height="10" width="20" y="17" x="10" fill="none" stroke-linecap="null" stroke-linejoin="null"  stroke-width="2"stroke="#E6E6E6" id="svg_1"/>'
+                        + '<rect height="10" width="20" y="17" x="10" fill="none" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#E6E6E6" id="svg_1"/>'
                         + '<line x1="20" y1="16" x2="13" y2="9" stroke-width="2" stroke="#E6E6E6" id="svg_5"/>'
-                        + '<rect height="10" width="20" y="48" x="42" fill="none" stroke-linecap="null" stroke-linejoin="null" stroke-width="2"stroke="#E6E6E6" id="svg_7"/>'
+                        + '<rect height="10" width="20" y="48" x="42" fill="none" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#E6E6E6" id="svg_7"/>'
                         + '<line x1="52" y1="48" x2="45" y2="41" stroke-width="2" stroke="#E6E6E6" id="svg_8"/>'
                         + '</pattern></defs>';
     
