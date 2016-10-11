@@ -99,9 +99,10 @@ return{
      * @param {number} format - An enumeration: 0 for KML, 1 for JSON.
      * @param {number} symStd - An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @param {object} converter - an optional canvas converter for the pixels based image
+     * @param {Object} fontInfo, required for SVG when used in Web Worker
      * @return {string} A JSON string representation of the graphic.
      */        
-    RenderSymbol: function(id, name, description, symbolCode, controlPoints, altitudeMode, scale, bbox, modifiers, format, symStd, converter)
+    RenderSymbol: function(id, name, description, symbolCode, controlPoints, altitudeMode, scale, bbox, modifiers, format, symStd, converter, fontInfo)
     {
         var output = "";
         try 
@@ -132,12 +133,12 @@ return{
                
                 if (output ==="") {
                     output = sec.web.renderer.MultiPointHandler.RenderSymbol(id, name, description, symbolCode, controlPoints,
-                        scale, bbox, modifiers, format,symStd, converter);
+                        scale, bbox, modifiers, format,symStd, converter, fontInfo);
                 }
             }
             else//*/
             {
-                output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd, converter);
+                output = sec.web.renderer.MultiPointHandler.RenderSymbol (id, name, description, symbolCode, controlPoints, scale, bbox, modifiers, format, symStd, converter, fontInfo);
             }
             //console.dir(output);
             return output;
@@ -170,12 +171,12 @@ return{
      * @param {number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return {string} A JSON or KML string representation of the graphic.
      */             
-    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd)
+    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo)
     {
         var output = "";
         try 
         {
-            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd);
+            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo);
         }
         catch (exc) 
         {

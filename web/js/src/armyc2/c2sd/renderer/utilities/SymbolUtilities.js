@@ -1522,7 +1522,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
         if(count === 8 || count === 6)
         {
-            value = new Array();//int[(count / 2)];
+            value = [];//int[(count / 2)];
             for(var i=0; i<count;i+=2)
             {
                     int1 = hexAlphabet.indexOf(hexValue.charAt(i));
@@ -1780,8 +1780,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return true;
         else
         {
-            arr = new Array("S*G*EXI---*****",
-                                     "S*G*EXI---MO***");
+            arr = ["S*G*EXI---*****","S*G*EXI---MO***"];
             var arrLength = arr.length;
             for(var i = 0; i < arrLength; i++)
             {

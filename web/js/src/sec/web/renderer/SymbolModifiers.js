@@ -25,8 +25,8 @@ sec.web.renderer.SymbolModifiers.AN_AZIMUTH = null;
 sec.web.renderer.SymbolModifiers.FillColor = "";
 sec.web.renderer.SymbolModifiers.LineColor = "";
 
-sec.web.renderer.SymbolModifiers.X_ALTITUDE_DEPTH =  new Array();
-sec.web.renderer.SymbolModifiers.AM_DISTANCE =  new Array();
-sec.web.renderer.SymbolModifiers.AN_AZIMUTH =  new Array();
+sec.web.renderer.SymbolModifiers.X_ALTITUDE_DEPTH =  [];
+sec.web.renderer.SymbolModifiers.AM_DISTANCE =  [];
+sec.web.renderer.SymbolModifiers.AN_AZIMUTH =  [];
 
 

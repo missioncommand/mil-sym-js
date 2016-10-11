@@ -100,19 +100,19 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
             if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AM_DISTANCE)
             {
                 if(this._AM_Distance === null)
-                    this._AM_Distance = new Array();
+                    this._AM_Distance = [];
                 modifiers = this._AM_Distance;
             }
             else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH)
             {
                 if(this._AN_Azimuth === null)
-                    this._AN_Azimuth = new Array();
+                    this._AN_Azimuth = [];
                 modifiers = this._AN_Azimuth;
             }
             else if(modifier === armyc2.c2sd.renderer.utilities.ModifiersTG.X_ALTITUDE_DEPTH)
             {
                 if(this._X_Altitude === null)
-                    this._X_Altitude = new Array();
+                    this._X_Altitude = [];
                 modifiers = this._X_Altitude;
             }
 

@@ -296,6 +296,15 @@
             <fileset file="web/js/src/sec/geo/kml/KmlPolygon.js" />
             <fileset file="web/js/src/sec/geo/kml/KmlRenderer.js" />
             <fileset file="web/js/src/sec/geo/kml/XsltCoordinateWrapper.js" />
+            
+            <!-- SVG classes -->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/path.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGTextInfo.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" />
         
             <!--add source required by SECWebRenderer--> 
             <fileset file="web/js/src/sec/web/renderer/utilities/JavaRendererUtilities.js" />
@@ -526,7 +535,7 @@
         
         </concat>
     
-            <concat destfile="build/singlesvgmulti-body.js">
+        <concat destfile="build/singlesvgmulti-body.js">
             <!--(Single) Single Point Rendering imports--> 
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
@@ -745,7 +754,8 @@
             <fileset file="web/js/src/sec/web/renderer/PointConverter.js" />
             <fileset file="web/js/src/sec/web/renderer/SymbolModifiers.js" />
             <fileset file="web/js/src/sec/web/renderer/GeoPixelConversion.js" />
-            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerCanvas.js" />
+            <!-- <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerCanvas.js" /> -->
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" /><!--(Multi) SVG specific Renderer class--> 
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
@@ -1097,7 +1107,7 @@
         </concat>
     </target>
     
-    <!-- Build single and multi point SVG, B and C, no jQuery renderer-->
+    <!-- Build single and multi point SVG & Canvas, B and C, no jQuery renderer-->
     <target name="savm-bc">
         <concat destfile="dist/savm-bc.js">
             <fileset file="build/single-b-header.js" />

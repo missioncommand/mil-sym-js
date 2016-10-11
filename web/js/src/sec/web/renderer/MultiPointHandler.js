@@ -451,8 +451,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var maxWidthInPixels = _maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
                 var minScale = (maxWidthInPixels / widthInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
                 minScale = 1.0 / minScale;
-                if(origScale===null || origScale===undefined)
+                if (origScale === null || origScale === undefined) {
                     return minScale;
+                }
                 if (origScale < minScale) {
                     return minScale;
                 }
@@ -504,9 +505,10 @@ sec.web.renderer.MultiPointHandler = (function () {
          * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
          * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
          * @param {Object} optional converter for canvas or datauri format
+         * @param {Object} fontInfo, required for SVG when used in Web Worker
          * @return A JSON string representation of the graphic.
          */
-        RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd, converter)
+        RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd, converter, fontInfo)
         {
             if (!symStd)
             {
@@ -521,9 +523,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                     tgPoints = null,
                     coordinates = null,
                     tgl = new armyc2.c2sd.JavaTacticalRenderer.TGLight(),
-                    shapes = new Array(),
-                    modifiers = new Array(),
-                    geoCoords = new Array(),
+                    shapes = [],
+                    modifiers = [],
+                    geoCoords = [],
                     ipc = null,
                     left = 0,
                     right = 0,
@@ -559,7 +561,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var bounds = null;
                 if (bbox.contains(" ")) //trapezoid
                 {
-                    bboxCoords = new Array();
+                    bboxCoords = [];
                     var x = 0;
                     var y = 0;
                     var coords = bbox.split(" ");
@@ -952,9 +954,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
                     if(rect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo);
                         
                 }
                 else if (format === 1) //deprecated
@@ -1007,7 +1009,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          */
         ConvertPolylinePixelsToCoords: function (polylines, ipc, normalize)
         {
-            var newPolylines = new Array();
+            var newPolylines = [];
             var latitude = 0;
             var longitude = 0;
             var newLine = null;
@@ -1019,7 +1021,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 for (var i = 0; i < polylines.length; i++)
                 {
-                    newLine = new Array();
+                    newLine = [];
                     for (var j = 0; j < newLine.length; j++)
                     {
                         pt = newLine[j];
@@ -1061,9 +1063,10 @@ sec.web.renderer.MultiPointHandler = (function () {
          * example: {"C":"4","Z":"300","AN":[100,200]}}
          * @param {Number} format An enumeration: 0 for KML, 1 for JSON.
          * @param {Number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
+         * @param {Object} fontInfo, required for SVG when used in Web Worker
          * @return {String} A JSON or KML string representation of the graphic.
          */
-        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd)
+        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo)
         {
             if (!symStd)
             {
@@ -1076,9 +1079,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                     tgPoints = null,
                     coordinates = null,
                     tgl = new armyc2.c2sd.JavaTacticalRenderer.TGLight(),
-                    shapes = new Array(),
-                    modifiers = new Array(),
-                    geoCoords = new Array(),
+                    shapes = [],
+                    modifiers = [],
+                    geoCoords = [],
                     ipc = null,
                     left = 0,
                     right = 0,
@@ -1333,7 +1336,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
+                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo);
                 }
                 else if (format === 1) //deprecated
                 {
@@ -1553,21 +1556,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (modifiers[ModifiersTG.X_ALTITUDE_DEPTH] && modifiers[ModifiersTG.X_ALTITUDE_DEPTH] instanceof Array)
                 {
                     var XN = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
-                    altitudes = new Array();
+                    altitudes = [];
                     for (i = 0; i < XN.length; i++) {
                         altitudes.push(XN[i]);
                     }
                 }
                 else if (modifiers.altitudeDepth && modifiers.altitudeDepth instanceof Array)
                 {
-                    altitudes = new Array();
+                    altitudes = [];
                     for (i = 0; i < modifiers.altitudeDepth.length; i++) {
                         altitudes.push(modifiers.altitudeDepth[i]);
                     }
                 }
                 else if (modifiers.X && modifiers.X instanceof Array)
                 {
-                    altitudes = new Array();
+                    altitudes = [];
                     if (modifiers.X.length)
                     {
                         for (i = 0; i < modifiers.X.length; i++) {
@@ -1579,14 +1582,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (modifiers[ModifiersTG.AM_DISTANCE] && modifiers[ModifiersTG.AM_DISTANCE] instanceof Array)
                 {
                     var AM = modifiers[ModifiersTG.AM_DISTANCE];
-                    distances = new Array();
+                    distances = [];
                     for (i = 0; i < AM.length; i++) {
                         distances.push(AM[i]);
                     }
                 }
                 else if (modifiers.distance && modifiers.distance instanceof Array)
                 {
-                    distances = new Array();
+                    distances = [];
                     for (i = 0; i < modifiers.distance.length; i++) {
                         distances.push(modifiers.distance[i]);
                     }
@@ -1596,14 +1599,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (modifiers[ModifiersTG.AN_AZIMUTH] && modifiers[ModifiersTG.AN_AZIMUTH] instanceof Array)
                 {
                     var AN = modifiers[ModifiersTG.AN_AZIMUTH];
-                    azimuths = new Array();
+                    azimuths = [];
                     for (i = 0; i < AN.length; i++) {
                         azimuths.push(AN[i]);
                     }
                 }
                 else if (modifiers.azimuth && modifiers.azimuth instanceof Array)
                 {
-                    azimuths = new Array();
+                    azimuths = [];
                     for (i = 0; i < modifiers.azimuth.length; i++) {
                         azimuths.push(modifiers.azimuth[i]);
                     }
@@ -1901,7 +1904,7 @@ sec.web.renderer.MultiPointHandler = (function () {
         },
         normalizePoints: function (shape, ipc)
         {
-            var geoCoords = new Array();
+            var geoCoords = [];
             for (var j = 0; j < shape.size(); j++)
             {
                 var coord = shape.get(j);
@@ -2480,7 +2483,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 format, symStd)
         {
             var output = "";
-            var placemarks = new Array();
+            var placemarks = [];
 
             try
             {
@@ -2501,7 +2504,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 if (symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH] && symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH] instanceof Array)
                 {
                     var XN = symbolModifiers[ModifiersTG.X_ALTITUDE_DEPTH];
-                    altitudes = new Array();
+                    altitudes = [];
                     for (i = 0; i < XN.length; i++) {
                         if (XN[i] > max)
                             max = XN[i];
@@ -2509,7 +2512,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 }
                 else if (symbolModifiers.altitudeDepth && symbolModifiers.altitudeDepth instanceof Array)
                 {
-                    altitudes = new Array();
+                    altitudes = [];
                     for (i = 0; i < symbolModifiers.altitudeDepth.length; i++) {
                         if (symbolModifiers.altitudeDepth[i] > max)
                             max = symbolModifiers.altitudeDepth[i];
@@ -3032,4 +3035,3 @@ sec.web.renderer.MultiPointHandler = (function () {
         // </editor-fold>
     };
 }());
-

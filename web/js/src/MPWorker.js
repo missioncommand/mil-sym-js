@@ -13,17 +13,48 @@ var e.data = {};
 		e.data.pHeight = pixelHeight;//for 2D
 		e.data.pWidth = pixelWidth;//for 2D
         e.data.converter l converter for canvas or datauri format
+        e.data.fontInfo
 */
 
-/* return object
+/* return object for KML or GeoJSON
 {
     id:e.data.id,//same as what was passed in
     result:strOutput,//resultant kml,json or error message
     format:e.data.format//format number or "ERROR" if there was a problem like missing required parameters    
 }
 */
+/* return object for SVG
+{
+    id:e.data.id,//same as what was passed in
+    result:{svg:dataURI,geoTL:{x,y}, geoBR:{x,y}, wasClipped:true/false, bounds:{x,y,width,height}}
+    format:e.data.format//format number or "ERROR" if there was a problem like missing required parameters    
+}
+*/
 
-importScripts('m-c.js');
+
+/* expected input format for batch
+var e.data = {};
+        e.data.altMode = "absolute";//for 3D
+		e.data.scale = scale4;//for 3D
+		e.data.bbox = bbox4;
+        e.data.format = format
+        e.data.pHeight = pixelHeight;//for 2D
+		e.data.pWidth = pixelWidth;//for 2D
+        e.data.converter = optional converter for SVG format
+        e.data.fontInfo = fontInfo//for SVG
+        e.data.batch = [{id:"ID",name:"name",description:"description",symbolID:"GFTPL-----****X",points:controlPoints,symStd:symStd,modifiers:{ModifiersTG.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.LineColor:"#00FF00"}}];
+        
+*/
+
+/* return object for batch
+{
+    [{id:batch.id,symbolID:symbolID,svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped}]
+}
+*/
+
+//importScripts('m-c.js');//for strictly KML or GeoJSON
+importScripts('m-c.js');//for strictly KML, GeoJSON and SVG(with no pattern fill)
+//importScripts('svm-bc.js');//for strictly KML, GeoJSON and SVG(with pattern fill)
 
 var rendererMP = sec.web.renderer.SECWebRenderer;
 
@@ -66,34 +97,90 @@ var rendererMP = sec.web.renderer.SECWebRenderer;
 
 onmessage = function(e)
 {
-	var strOutput = null;
+	var output = null;
     var converter = null;
+    var fontInfo = null;
+    
+    if(e.data.fontInfo !== null)
+            fontInfo = e.data.fontInfo;
 	
-    if(e.data !== null)
+    if(e.data && e.data.batch && e.data.batch.length > 0)
     {
-   
-        if(e.data.altMode !== null)
+        var result = null;
+        var len = e.data.batch.length;
+        var items = e.data.batch;
+        //output = new Array(len);
+        output = [];
+        try
         {
-            if(e.data.converter !== null)
+            for(var i = 0; i < len; i++)
+            {
+                item = items[i];
+                if(e.data.altMode)
+                {
+                    if(e.data.converter)
+                        converter = e.data.converter;	
+                    //data for symbol on 3d map so call RenderSymbol     
+                    result = rendererMP.RenderSymbol(item.id,item.name,item.description, item.symbolID, item.points, e.data.altMode,e.data.scale, e.data.bbox, item.modifiers,e.data.format, item.symstd, converter, fontInfo);
+                }
+                else
+                {
+                    //data for symbol on 2D map so call RenderSymbol2D
+                    result = rendererMP.RenderSymbol2D(item.id,item.name,item.description, item.symbolID, item.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, item.modifiers,e.data.format, item.symstd, fontInfo);
+                }
+                if(result)
+                {
+                    result.id = item.id;
+                    result.symbolID = item.symbolID;
+                    //output[i] = result;
+                    output.push(result);
+                }
+            }
+        }
+        catch(err)
+        {
+            throw(err);
+        }
+        //[{id:batch.id,symbolID:symbolID,svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped}]
+    }
+    else if(e.data)
+    {
+        if(e.data.altMode)
+        {
+            if(e.data.converter)
                 converter = e.data.converter;	
             //data for symbol on 3d map so call RenderSymbol     
-            strOutput = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd, converter);
+            output = rendererMP.RenderSymbol(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.altMode,e.data.scale, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd, converter, fontInfo);
         }
         else
         {
             //data for symbol on 2D map so call RenderSymbol2D
-            strOutput = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd);
+            output = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd, fontInfo);
         }
     }
 	
+	if(e.data.batch)
+    {
+        postMessage({result:output,format:e.data.format});
+    }
+    else
+    {
+        if(output && output.substring)//kml or geojson
+        {
+            //return results
+            var format = e.data.format;
+            if(output.substring(0,15) === '{"type":"error"')
+            {
+                format = "ERROR";
+            }
+            postMessage({id:e.data.id,result:output,format:format});
+                
+        }
+        else if(output)//SVG
+        {
+            postMessage({id:e.data.id,result:output,format:format});
+        }
+    }
 	
-	if(strOutput !== null)
-	{
-        //return results
-        var format = e.data.format;
-        if(strOutput.substring(0,15) === '{"type":"error"')
-            format = "ERROR";
-		postMessage({id:e.data.id,result:strOutput,format:format});
-	}
 }
 

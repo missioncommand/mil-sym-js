@@ -188,7 +188,7 @@ armyc2.c2sd.renderer.utilities.Color.getColorFromHexString = function(hexValue)
 
     if(count === 8 || count === 6)
     {
-        value = new Array();//int[(count / 2)];
+        value = [];//int[(count / 2)];
         for(var i=0; i<count;i+=2)
         {
                 int1 = hexAlphabet.indexOf(hexValue.charAt(i));

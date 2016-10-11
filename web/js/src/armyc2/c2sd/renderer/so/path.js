@@ -130,7 +130,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             //curr_endPoint = new armyc2.c2sd.renderer.so.Point(x,y);
         }
         this._rectangle.unionPoint(new so.Point(x,y));
-        this._actions.push(new Array(so.ActionTypes.ACTION_MOVE_TO,x,y));
+        this._actions.push([so.ActionTypes.ACTION_MOVE_TO,x,y]);
         this._lastMoveTo = new so.Point(x,y);
 		this._endPoint = new so.Point(x,y);
     };
@@ -147,7 +147,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(so.ActionTypes.ACTION_LINE_TO,x,y));
+        this._actions.push([so.ActionTypes.ACTION_LINE_TO,x,y]);
         this._rectangle.unionPoint(new so.Point(x,y));
         this._endPoint = new so.Point(x,y);
     };
@@ -167,7 +167,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             this.moveTo(0,0);
         }
 		var start = this.getCurrentPoint();
-        this._actions.push(new Array(so.ActionTypes.ACTION_DASHED_LINE_TO,start.getX(),start.getY(), x, y, pattern));
+        this._actions.push([so.ActionTypes.ACTION_DASHED_LINE_TO,start.getX(),start.getY(), x, y, pattern]);
         this._rectangle.unionPoint(new so.Point(x,y));
         this._endPoint = new so.Point(x,y);
     };
@@ -191,7 +191,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(so.ActionTypes.ACTION_CURVE_TO,cp1x,cp1y,cp2x,cp2y,x,y));
+        this._actions.push([so.ActionTypes.ACTION_CURVE_TO,cp1x,cp1y,cp2x,cp2y,x,y]);
         this._rectangle.unionPoint(new so.Point(cp1x,cp1y));
         this._rectangle.unionPoint(new so.Point(cp2x,cp2y));
         this._rectangle.unionPoint(new so.Point(x,y));
@@ -214,7 +214,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(so.ActionTypes.ACTION_QUAD_TO,cpx,cpy,x,y));
+        this._actions.push([so.ActionTypes.ACTION_QUAD_TO,cpx,cpy,x,y]);
         this._rectangle.unionPoint(new so.Point(cpx,cpy));
         this._rectangle.unionPoint(new so.Point(x,y));
         this._endPoint = new so.Point(x,y);
@@ -234,7 +234,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         {
             this.moveTo(0,0);
         }
-        this._actions.push(new Array(so.ActionTypes.ACTION_ARC_TO,x1,y1,x2,y2));
+        this._actions.push([so.ActionTypes.ACTION_ARC_TO,x1,y1,x2,y2]);
         this._rectangle.unionPoint(new so.Point(x1,y1));
         this._rectangle.unionPoint(new so.Point(x2,y2));
         this._endPoint = new so.Point(x2,y2);
@@ -276,7 +276,7 @@ armyc2.c2sd.renderer.so.Path = function () {
         }
         
 
-        this._actions.push(new Array(so.ActionTypes.ACTION_ARC,x,y,r,sa,ea,counterclockwise));
+        this._actions.push([so.ActionTypes.ACTION_ARC,x,y,r,sa,ea,counterclockwise]);
         this._rectangle.union(new so.Rectangle(x-r,y-r,r*2,r*2));
         
         var newX = r * Math.cos(ea) + x;
@@ -425,7 +425,12 @@ armyc2.c2sd.renderer.so.Path = function () {
             /*if(path !== "")
                 path += " ";*/
 
-            if(temp[0]===ActionTypes.ACTION_MOVE_TO)
+            if(temp[0]===ActionTypes.ACTION_LINE_TO)
+            {
+                path += "L" + temp[1] + " " + temp[2];
+                //context.lineTo(temp[1],temp[2]);
+            }
+            else if(temp[0]===ActionTypes.ACTION_MOVE_TO)
             {
                 //context.moveTo(temp[1],temp[2]);
                 
@@ -440,14 +445,9 @@ armyc2.c2sd.renderer.so.Path = function () {
                     //context.lineTo(temp[1],temp[2]);
                 }//*/
             }
-            else if(temp[0]===ActionTypes.ACTION_LINE_TO)
-            {
-                path += "L" + temp[1] + " " + temp[2];
-                //context.lineTo(temp[1],temp[2]);
-            }
             else if(temp[0]===ActionTypes.ACTION_DASHED_LINE_TO)
             {
-                path += "L" + temp[4] + " " + temp[4];
+                path += "L" + temp[3] + " " + temp[4];
                 /*if(this._method === "stroke")
                 {
                     context.dashedLineTo(temp[1],temp[2],temp[3],temp[4],temp[5]);    

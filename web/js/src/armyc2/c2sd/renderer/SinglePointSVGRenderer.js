@@ -602,7 +602,7 @@ return{
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
-            var shapes = new Array();
+            var shapes = [];
             if(symbolID.charAt(10)===("M") || symbolID.charAt(10)===("N"))
             {
                 
@@ -1496,7 +1496,7 @@ return{
             bufferText += outlineSize;
         }//*/
         
-        var tiArray = new Array(),
+        var tiArray = [],
         
             descent = fontInfo.measurements.descent,
         
@@ -2468,7 +2468,7 @@ return{
             labelWidth = 0,
             newii = null;
     
-        var arrMods = new Array();
+        var arrMods = [];
         var svgElements = [];
         var duplicate = false;
         
@@ -3058,7 +3058,7 @@ return{
             labelWidth = 0,
             newii = null;
     
-        var arrMods = new Array();
+        var arrMods = [];
         var svgElements = [];
         var duplicate = false;
         
@@ -3355,7 +3355,7 @@ return{
      * are the arrowhead.
      */
     createDOMArrowPoints: function(symbolID, bounds, center, angle, isY){
-        var arrowPoints = new Array();
+        var arrowPoints = [];
         var pt1 = null,
             pt2 = null,
             pt3 = null;
@@ -3412,10 +3412,10 @@ return{
         //create arrowhead//////////////////////////////////////////////////////
         var arrowWidth = 8.0,//6.5f;//7.0f;//6.5f;//10.0f//default
             theta = 0.7,//0.423,//higher value == shorter arrow head
-            xPoints = new Array(),//3
-            yPoints = new Array(),//3
-            vecLine = new Array(),//2
-            vecLeft = new Array(),//2
+            xPoints = [],//3
+            yPoints = [],//3
+            vecLine = [],//2
+            vecLeft = [],//2
             fLength,
             th,
             ta,

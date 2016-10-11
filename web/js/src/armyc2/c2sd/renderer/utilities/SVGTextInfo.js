@@ -130,8 +130,10 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         text = text.replace(/\&/g,"&amp;");
         text = text.replace(/\</g,"&lt;");
         text = text.replace(/\</g,"&gt;");
-        text = text.replace(/\u2022/g,"&#x2022;")//echelon and ellipses dot
-        text = text.replace(/\u00B1/g,"&#x00B1;")//"RD" reinforce/reduced +- symbol
+        //text = text.replace(/\u2022/g,"&#x2022;");//echelon and ellipses dot
+        //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
+        text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
+        text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced +- symbol
         
         if(stroke)
         {

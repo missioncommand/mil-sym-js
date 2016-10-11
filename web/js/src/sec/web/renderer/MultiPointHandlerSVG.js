@@ -9,17 +9,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
     var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
     var RendererUtilities = armyc2.c2sd.renderer.utilities.RendererUtilities;
     var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
-    var _buffer = null;
-    var _blankCanvas = null;
-    var _blankCanvasContext = null;
-    var _document = document;
 
-    var textInfoBuffer = null,
-        textInfoContext = null,
-        textInfoContextFont = null,
-        tempMPBuffer = null,
-        tempMPContext = null;
-        
+       
     var hasSetLineDash = false;
     
     var fillTextures = {};
@@ -29,16 +20,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
             
-    //constructor code
-    _blankCanvas = document.createElement('canvas');
-    _blankCanvas.width=2;
-    _blankCanvas.height=2;
-    _blankCanvasContext = _blankCanvas.getContext('2d');
-    if(_blankCanvasContext.setLineDash)
-    {
-        hasSetLineDash = true;
-    }
-    
+   
     
     //private functions
             
@@ -80,8 +62,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             
             try
             {
-                if(modifiers[MilStdAttributes.LineWidth])
-                    lineWidth = modifiers[MilStdAttributes.LineWidth];
+                /*if(modifiers[MilStdAttributes.LineWidth])
+                    lineWidth = modifiers[MilStdAttributes.LineWidth];//*/
                     
                 /*if(!fontInfo)
                     fontInfo = RendererSettings.getMPFontInfo();//*/
@@ -461,7 +443,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             return svgInfo;
         },
         
-        MakeFillTexture:function(symbolFillIds, symbolFillSize)
+        /*MakeFillTexture:function(symbolFillIds, symbolFillSize)
         {
             
             var texture;
@@ -508,10 +490,14 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             svgPattern += '</defs>';  
             
             return svgPattern;
-        },
+        },//*/
         
         MakeFillTextureSVG:function(symbolFillIds, symbolFillSize)
         {
+            if(!armyc2.c2sd.renderer.MilStdSVGRenderer)
+            {
+                return null;
+            }
             //needs to return {dataURI, width, height}
             var texture = "";
             var symbolIDs = symbolFillIds.split(","); 
