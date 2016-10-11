@@ -1493,7 +1493,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     symbolFillIDs = null,
                     symbolFillIconSize = null,
                     altMode = null;
-            useDashArray = symbol.getUseDashArray();
+            var useDashArray = symbol.getUseDashArray();
+            var usePatternFill = symbol.getUseFillPattern();
             var hideOptionalLabels = false;
 
             //alert(jsonString);
@@ -1638,6 +1639,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else if (modifiers.lineThickness)
                     lineWidth = modifiers.lineThickness;
 
+                if (modifiers[MilStdAttributes.UsePatternFill])
+                    usePatternFill = modifiers[MilStdAttributes.UsePatternFill];
+                else if (modifiers.usePatternFill)
+                    usePatternFill = modifiers.usePatternFill;
+
                 if (modifiers[MilStdAttributes.UseDashArray])
                     useDashArray = modifiers[MilStdAttributes.UseDashArray];
                 else if (modifiers.useDashArray)
@@ -1676,6 +1682,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             try {
                 symbol.setModifierMap(modifierMap);
                 symbol.setUseDashArray(useDashArray);
+                symbol.setUseFillPattern(usePatternFill);
                 symbol.setHideOptionalLabels(hideOptionalLabels);
                 if (fillColor !== null) {
                     symbol.setFillColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(fillColor));
