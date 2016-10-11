@@ -155,6 +155,15 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
         texturePaint = value;
     };
     
+    this.getFillStyle = function()
+    {
+        return fillStyle;
+    };
+    this.setFillStyle = function(value)
+    {
+        fillStyle = value;
+    };
+    
     this.setTextLayout = function(value)
     {
        _TextLayout = value;

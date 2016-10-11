@@ -45,6 +45,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._Tag = null;
     this._AltitudeMode = "";
     this._UseDashArray = false;
+    this._UseFillPattern = false;
     this._HideOptionalLabels = false;
     this._wasClipped = false;
     // </editor-fold>
@@ -431,6 +432,15 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getUseDashArray = function()
     {
         return this._UseDashArray;
+    };
+    
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setUseFillPattern = function(value)
+    {
+        this._UseFillPattern = value;
+    };
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getUseFillPattern = function()
+    {
+        return this._UseFillPattern;
     };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setHideOptionalLabels = function(value)
