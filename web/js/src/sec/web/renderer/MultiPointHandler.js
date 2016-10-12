@@ -929,7 +929,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture);
                         
                 }
-                else if (format === 6)//geoSVG
+                else if (format === 6 || format === 7)//render to geoSVG
                 {
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -950,6 +950,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                         {
                             fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
                         }
+                    }
+                    if(symbolCode.charAt(0) === 'W')
+                    {
+                        fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
                     }
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
