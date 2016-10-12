@@ -921,6 +921,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                             fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
                         }
                     }
+                    if(symbolCode.charAt(0) === 'W')
+                    {
+                        fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
+                    }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     if(rect != null)
@@ -1306,6 +1310,10 @@ sec.web.renderer.MultiPointHandler = (function () {
                         {
                             fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
                         }
+                    }
+                    if(symbolCode.charAt(0) === 'W')
+                    {
+                        fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.

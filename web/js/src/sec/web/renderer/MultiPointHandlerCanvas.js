@@ -546,10 +546,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 alpha = fillColor.getAlpha() / 255;
                 fillColor = fillColor.toHexString(false);
             }
-            if(shapeInfo.getTexturePaint() !== null)
+            /*if(shapeInfo.getTexturePaint() !== null)
             {
                 fillPattern = shapeInfo.getTexturePaint();
-            }
+            }//*/
             if(fillTexture)
             {
                 fillPattern = fillTexture;

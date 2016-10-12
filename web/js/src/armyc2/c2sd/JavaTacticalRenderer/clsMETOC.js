@@ -1628,7 +1628,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
             var tp = tg.get_TexturePaint();
             var fileName = armyc2.c2sd.JavaTacticalRenderer.clsMETOC.GetImageFile(tg);
             switch (tg.get_LineType()) {
-                case 32232400:
+                /*case 32232400:
                 case 32540000:
                 case 32670000:
                 case 32254200:
@@ -1638,13 +1638,13 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                 case 32223000:
                     shape = shapes.get(0);
                     shape.setLineColor(tg.get_LineColor());
-                    /*if (inFile !== null) {
-                        bi2 = armyc2.c2sd.graphics2d.ImageIO.read(inFile);
-                        rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, bi2.getWidth(), bi2.getHeight());
-                        tp = new armyc2.c2sd.graphics2d.TexturePaint(bi2, rect);
-                        shape.setTexturePaint(tp);
-                        inFile.close();
-                    }//*/
+                    //if (inFile !== null) {
+                    //    bi2 = armyc2.c2sd.graphics2d.ImageIO.read(inFile);
+                    //    rect = new armyc2.c2sd.graphics2d.Rectangle2D(0, 0, bi2.getWidth(), bi2.getHeight());
+                    //    tp = new armyc2.c2sd.graphics2d.TexturePaint(bi2, rect);
+                    //    shape.setTexturePaint(tp);
+                    //    inFile.close();
+                    //}
                     var pattern = null;
                     if(tg.get_LineType() === 32323000)//beach slope moderate
                         pattern = armyc2.c2sd.renderer.utilities.RendererUtilities.getCanvasFillStylePattern("WO-DBSM-----A--");
@@ -1666,7 +1666,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     {
                         shape.setTexturePaint(pattern);
                     }       
-                    break;
+                    break;//*/
                 case 31134000:
                 case 31134100:
                 case 31134200:
