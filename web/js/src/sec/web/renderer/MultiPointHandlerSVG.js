@@ -66,10 +66,10 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     lineWidth = modifiers[MilStdAttributes.LineWidth];//*/
                     
                 /*if(!fontInfo)
-                    fontInfo = RendererSettings.getMPFontInfo();//*/
+                    fontInfo = RendererSettings.getFontInfo();//*/
                     
                 if(!fontInfo)
-                    fontInfo = RendererSettings.getFontInfo();
+                    fontInfo = RendererSettings.getMPFontInfo();
                 
                 height = fontInfo.measurements.height;
 

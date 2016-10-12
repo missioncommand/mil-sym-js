@@ -59,7 +59,11 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     
     try
     {
-        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+        if(document)
+        {
+            armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+            armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont);
+        }
     }
     catch(err)
     {
@@ -427,7 +431,7 @@ return{
         {
             _MPModifierFontStyle = 'bold';
         }
-		if(kmlLabelScale !== null)
+		if(kmlLabelScale)
 		{
 			_KMLLabelScale = kmlLabelScale;
 		}

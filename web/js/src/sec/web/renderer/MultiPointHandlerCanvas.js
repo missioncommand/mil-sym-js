@@ -75,7 +75,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 textInfoContext.lineCap = "butt";
                 textInfoContext.lineJoin = "miter";
                 textInfoContext.miterLimit = 3;
-                textInfoContextFont = RendererSettings.getModifierFont();
+                textInfoContextFont = RendererSettings.getMPModifierFont();
                 textInfoContext.font = textInfoContextFont;
             }
 
@@ -370,7 +370,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 var angle = 0;
                 var tbm = RendererSettings.getTextBackgroundMethod();
                 var outlineWidth = RendererSettings.getTextOutlineWidth();
-                var mpFont = RendererSettings.getModifierFont();
+                var mpFont = RendererSettings.getMPModifierFont();
 
                 //set text color and outline/fill color
                 var htbc = hexTextBackgroundColor || RendererUtilities.getIdealOutlineColor((hexTextColor || lineColor),true);
