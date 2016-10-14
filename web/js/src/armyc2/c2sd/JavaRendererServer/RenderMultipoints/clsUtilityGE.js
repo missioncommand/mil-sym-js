@@ -802,11 +802,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                                 
                 if (hatch !== armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_Cross)
                 {
-                    shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, hatch);
+                    var shape3 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, hatch);
                     //shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
-                    shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
-                    shape.setLineColor(tg.get_LineColor());
-                    shapes.add(shape);
+                    shape3.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
+                    shape3.setLineColor(tg.get_LineColor());
+                    shapes.add(shape3);
                 } else {
                     var shapeBk = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_BackwardDiagonal);
                     var shapeFwd = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal);
