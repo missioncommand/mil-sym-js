@@ -1011,6 +1011,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 si.setTextLayout(shape.getTextLayout());
             }
             si.setTextJustify(shape.getTextJustify());
+            si.setFillStyle(shape.get_FillStyle());
             if (s !== null)
                 si.setShape(s);
         } catch (exc) {
