@@ -86,6 +86,9 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                         else
                             pathBounds.union(tempBounds);
                         paths.push(pathInfo.svg);
+
+                        if(pathInfo.fillPattern && !fillTexture)
+                            fillTexture = pathInfo.fillPattern
                     }
                 }
                 
@@ -384,11 +387,9 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             {
                 fillPattern = fillTexture;
             }
-            /*else if(shapeInfo.getTexturePaint() !== null)
+            else if(shapeInfo.getFillStyle() > 0)
             {
-                fillPattern = shapeInfo.getTexturePaint();
-                fillPattern = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse"><image xlink:href="'
-                + fillPattern.src + '" /></pattern></defs>';
+                fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(shapeInfo.getFillStyle(), lineColor)
                 fillTexture = "url(#fillPattern)";
             }//*/
             //*/
@@ -442,19 +443,23 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};
             return svgInfo;
         },
-        
-        /*MakeFillTexture:function(symbolFillIds, symbolFillSize)
+                
+        MakeFillTextureSVG:function(symbolFillIds, symbolFillSize)
         {
-            
-            var texture;
+            if(!armyc2.c2sd.renderer.MilStdSVGRenderer)
+            {
+                return null;
+            }
+            //needs to return {dataURI, width, height}
+            var texture = "";
             var symbolIDs = symbolFillIds.split(","); 
             var symbols = [];
             var width = 0, height = 0, spacerW = 0, spacerH = 0;
             //calculate texture dimensions
             for(var i = 0; i < symbolIDs.length; i++)
             {
-                symbols.push(armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
-                var rect = symbols[i].getImageBounds();
+                symbols.push(armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
+                var rect = symbols[i].getSVGBounds();
                 if(rect.getWidth() > width)
                     width = rect.getWidth();
                 if(rect.getHeight() > height)
@@ -465,34 +470,43 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             
             
             //create texture
-            texture = _document.createElement('canvas');
-            texture.width = (width * symbols.length) + (spacerW * symbols.length);
-            texture.height = height + spacerH;
+            //texture = _document.createElement('canvas');
+            svgWidth = (width * symbols.length) + (spacerW * symbols.length);
+            svgHeight = height + spacerH;
             
             //draw to texture
             var x = spacerW;
             var y = spacerH;
-            var ctx = texture.getContext('2d');
+            //var ctx = texture.getContext('2d');
+            var pattern = "";
             for(var j = 0; j < symbols.length; j++)
             {
                 var sym = symbols[j];
-                var center = sym.getCenterPoint();
+                var center = sym.getAnchorPoint();
+                pattern += '<g transform="translate(' + (x + width/2 - center.getX()) + ' ' + (y + height/2 - center.getY()) + ')" >';
                 
-                ctx.drawImage(sym.getImage(),x + width/2 - center.getX(),y + height/2 - center.getY());
+                var paths = sym.getSVG();
+                paths = paths.substr(paths.indexOf("<g"));
+                paths = paths.replace("</svg>","");
+                
+                pattern += paths;
+                pattern += '</g>';
                 x += spacerW + width;
             }
-          
-            //return {dataURI:texture.toDataURL, width:texture.width, height:texture.height};
-            var svgPattern = '<defs>';
-            svgPattern += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + texture.width + '" height="' + texture.height + '" >';
-            svgPattern += '<image xlink:href="' + texture.toDataURL() + '" x="0" y="0" width="' + texture.width + '" height="' + texture.height + '" />';
-            svgPattern += '</pattern>';
-            svgPattern += '</defs>';  
             
-            return svgPattern;
-        },//*/
-        
-        MakeFillTextureSVG:function(symbolFillIds, symbolFillSize)
+            texture = '<defs>';
+            texture += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + svgWidth + '" height="' + svgHeight + '" >';
+            texture += pattern;
+            texture += '</pattern>';
+            texture += '</defs>'; 
+            return texture;  
+        },
+
+        /**
+         * @param Number fillType - forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
+         * @param String color "hexString like '#00FF00'";
+         */
+        MakeHatchFillTextureSVG:function(fillType, color)
         {
             if(!armyc2.c2sd.renderer.MilStdSVGRenderer)
             {

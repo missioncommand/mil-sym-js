@@ -63,6 +63,30 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
                         + '<rect height="10" width="20" y="48" x="42" fill="none" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#E6E6E6" id="svg_7"/>'
                         + '<line x1="52" y1="48" x2="45" y2="41" stroke-width="2" stroke="#E6E6E6" id="svg_8"/>'
                         + '</pattern></defs>';
+
+    var svgCrossHatchSmall = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="15" height="15">'
+                        + '<g style="fill:none; stroke:black; stroke-width:1">'
+				        + '<path d="M0,0 l15,15"/>'
+				        + '<path d="M15,0 l-15,15"/>'
+			            + '</g></pattern></defs>';
+
+    var svgCrossHatchMedium = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">'
+                        + '<g style="fill:none; stroke:black; stroke-width:1">'
+				        + '<path d="M0,0 l25,25"/>'
+				        + '<path d="M25,0 l-25,25"/>'
+			            + '</g></pattern></defs>';
+
+    var svgCrossHatchLarge = '<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="50" height="50">'
+                        + '<g style="fill:none; stroke:black; stroke-width:1">'
+				        + '<path d="M0,0 l50,50"/>'
+				        + '<path d="M50,0 l-50,50"/>'
+			            + '</g></pattern></defs>';
+
+    var svgHatch = '<defs><pattern id="fillPattern" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">'
+                        + '<line x1="0" y1="0" x2="0" y2="10" style="stroke:black; stroke-width:1" />'
+                        + '</pattern></defs>';
+		
+
     
     //constructor code
 
@@ -83,6 +107,10 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     
     
 return{    
+
+    //Hatching patterns
+    //forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
+
 
     /**
      * 
@@ -139,11 +167,10 @@ return{
         //then ctx.fill();
         
     },
-    getSVGFillStylePattern: function (pattern, lineColor, fillColor, lineWidth)
+    getSVGFillStylePattern: function (pattern, lineColor, alpha, lineWidth)
     {
-        var imagePattern = null;
-        var duri = null;
-        if(pattern.charAt(0) === "W")//METOC fill
+        var svgPattern = null;
+        if(pattern.charAt && pattern.charAt(0) === "W")//METOC fill
         {
             if(pattern === "WO-DBSM-----A--")//beach slope moderate
                 return svgBeachSlopeModerate;
@@ -163,7 +190,34 @@ return{
                 return svgWeirs;            
         }
         else//hash fill 
-        {//TODO: implement generation of hash pattern based on pattern, color, and line width.
+        {//forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
+            //pattern = 5;
+            if(pattern === 2)//forward diagonal /
+            {
+                svgPattern = svgHatch + "";//force copy
+            }
+            else if(pattern === 3)//backward diagonal \
+            {
+                svgPattern = svgHatch.replace("rotate(45 0 0)","rotate(-45 0 0)");
+            }
+            else if(pattern === 8)//cross X
+            {
+                svgPattern = svgCrossHatchMedium + "";//force copy
+            }
+            else if(pattern === 4)//vertical |
+            {
+                svgPattern = svgHatch.replace("rotate(45 0 0)","rotate(0 0 0)");
+            }
+            else if(pattern === 5)//horizontal _
+            {
+                svgPattern = svgHatch.replace("rotate(45 0 0)","rotate(90 0 0)");
+            }
+
+            if(svgPattern)
+            {
+                svgPattern = svgPattern.replace("black",lineColor);
+            }
+            //TODO: implement generation of hash pattern based on pattern, color, and line width.
             /*
             if(imagePattern == null)
             {
@@ -176,7 +230,7 @@ return{
             
             return imagePattern;//*/
         
-            return null;
+            return svgPattern;
         }
         
         return null;

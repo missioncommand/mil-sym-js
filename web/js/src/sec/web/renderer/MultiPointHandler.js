@@ -791,9 +791,13 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format >= 3 && format <= 6)
+                if (format >= 3 && format <= 7)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
+                }
+                if (format >= 6 && format <= 7)
+                {
+                    symbolModifiers[MilStdAttributes.UsePatternFill] = true;
                 }
                 if (symbolModifiers !== null && symbolModifiers !== (""))
                 {
@@ -1160,9 +1164,13 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var mSymbol = new armyc2.c2sd.renderer.utilities.MilStdSymbol(symbolCode, null, geoCoords, null);
                 mSymbol.setSymbologyStandard(symStd);
-                if (format >= 3 && format <= 6)
+                if (format >= 3 && format <= 7)
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
+                }
+                if (format >= 6 && format <= 7)
+                {
+                    symbolModifiers[MilStdAttributes.UsePatternFill] = true;
                 }
                 if (symbolModifiers !== null && symbolModifiers !== (""))
                 {
