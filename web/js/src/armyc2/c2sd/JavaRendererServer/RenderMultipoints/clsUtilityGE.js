@@ -737,8 +737,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
         try {
             if(shapes===null || shapes.size()===0)
                 return;
-            if(tg.get_UseHatchFill()===true)
-                return;
+            //if(tg.get_UseHatchFill()===true)
+                //return;
             var lineType = tg.get_LineType();
             var hatch = tg.get_FillStyle();
             var symbolID = tg.get_SymbolId();
@@ -802,14 +802,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                                 
                 if (hatch !== armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_Cross)
                 {
-                    shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, hatch);
+                    shape = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, hatch);
                     //shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shape.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shape.setLineColor(tg.get_LineColor());
                     shapes.add(shape);
                 } else {
-                    var shapeBk = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_BackwardDiagonal);
-                    var shapeFwd = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal);
+                    var shapeBk = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_BackwardDiagonal);
+                    var shapeFwd = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.buildHatchFill2(tg, shape, armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.Hatch_ForwardDiagonal);
                     //shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeBk.setLineColor(tg.get_LineColor());
@@ -848,7 +848,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
         }
         return;
     },
-    buildHatchFill2: function(shape, hatch) {
+    buildHatchFill2: function(tg, shape, hatch) {
         var hatchLineShape = null;
         try {
             hatchLineShape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
@@ -862,6 +862,24 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                 height = width;
             else
                 width = height;
+            
+            //diagnostic
+            if(tg.get_UseHatchFill()===true)
+            {
+                hatchLineShape.moveTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
+                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0));
+                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0+width));
+                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0+width));
+                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
+                hatchLineShape.set_Fillstyle(hatch);
+                var shapeArea = new armyc2.c2sd.graphics2d.Area(shape.getShape());
+                hatchLineArea = new armyc2.c2sd.graphics2d.Area(hatchLineShape.getShape());
+                hatchLineArea.intersect(shapeArea);
+                hatchLineShape.setShape(hatchLineArea);
+                return hatchLineShape;
+            }
+            //end section
+            
             width *= 2;
             height *= 2;
             var horizLimit = 0;
