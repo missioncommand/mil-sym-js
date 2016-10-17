@@ -510,6 +510,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             var bolMETOC = armyc2.c2sd.JavaTacticalRenderer.clsMETOC.IsWeather(tg.get_SymbolId());
             if (bolMETOC > 0)
                 return;
+            var fillStyle=0;
             switch (tg.get_LineType()) {
                 case 22421000:
                     shape.setFillColor(null);
@@ -529,10 +530,13 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                 case 23460000:
                 case 23440000:
                 case 22235000:
+                    fillStyle=3;
+                    if(tg.get_UseHatchFill()===true)
+                        fillStyle=0;
                     if (shape.getShapeType() === armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE) {
                         shape.set_Style(tg.get_LineStyle());
                         shape.setLineColor(tg.get_LineColor());
-                        shape.set_Fillstyle(3);
+                        shape.set_Fillstyle(fillStyle);//was 3
                         shape.setFillColor(tg.get_FillColor());
                     }
                     break;
@@ -545,10 +549,13 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     }
                     break;
                 case 221310000:
+                    fillStyle=2;
+                    if(tg.get_UseHatchFill()===true)
+                        fillStyle=0;
                     if (shape.getShapeType() === armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE) {
                         shape.set_Style(tg.get_LineStyle());
                         shape.setLineColor(tg.get_LineColor());
-                        shape.set_Fillstyle(2);
+                        shape.set_Fillstyle(fillStyle);//was 2
                         shape.setFillColor(tg.get_FillColor());
                     }
                     break;
@@ -1701,6 +1708,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
     getHatchShape: function (tg, bi) {
         var shape = null;
         try {
+            if(tg.get_UseHatchFill()===true)
+                return null;
             switch (tg.get_LineType()) {
                 case 23115000:
                     break;
