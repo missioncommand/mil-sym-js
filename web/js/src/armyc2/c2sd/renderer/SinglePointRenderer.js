@@ -3853,7 +3853,7 @@ return{
             
                 for(var i=0; i<len; i++)
                 {
-                    if(modifiers[tgSpecificKeys[i]] !== undefined)
+                    if(modifiers[tgSpecificKeys[i]])
                         return true;
                 }
             }
@@ -3873,7 +3873,7 @@ return{
             var len = _unitTextModifierKeys.length;
             for(var j=0; j<len; j++)
             {
-                if(modifiers[_unitTextModifierKeys[j]] !== undefined)
+                if(modifiers[_unitTextModifierKeys[j]])
                     return true;
             }
         }
