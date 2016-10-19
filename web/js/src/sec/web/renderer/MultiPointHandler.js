@@ -795,7 +795,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
-                if (format >= 6 && format <= 7)
+                if (format >= 3 && format <= 7)
                 {
                     symbolModifiers[MilStdAttributes.UsePatternFill] = true;
                 }
@@ -1168,7 +1168,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     symbolModifiers[MilStdAttributes.UseDashArray] = true;
                 }
-                if (format >= 6 && format <= 7)
+                if (format >= 3 && format <= 7)
                 {
                     symbolModifiers[MilStdAttributes.UsePatternFill] = true;
                 }

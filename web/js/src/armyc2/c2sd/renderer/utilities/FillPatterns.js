@@ -86,10 +86,12 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
                         + '<line x1="0" y1="0" x2="0" y2="10" style="stroke:black; stroke-width:1" />'
                         + '</pattern></defs>';
 		
-
+    
     
     //constructor code
-
+    var _document = null;
+    if(document)
+        _document = document;
     //set METOC patterns, do this now so that they're loaded by the time someone needs them
     patternBeachSlopeModerate.src = duriBeachSlopeModerate;
     patternBeachSlopeSteep.src = duriBeachSlopeSteep;
@@ -124,7 +126,8 @@ return{
     {
         var imagePattern = null;
         var duri = null;
-        if(pattern.charAt(0) === "W")//METOC fill
+
+        if(pattern.charAt && pattern.charAt(0) === "W")//METOC fill
         {
             if(pattern === "WO-DBSM-----A--")//beach slope moderate
                 return patternBeachSlopeModerate;
@@ -143,29 +146,114 @@ return{
             else if(pattern === "WOS-HPFF----A--")//Weirs
                 return patternWeirs;            
         }
-        else//hash fill 
-        {//TODO: implement generation of hash pattern based on pattern, color, and line width.
-            /*
-            if(imagePattern == null)
+        else if(_document && pattern > 0 && pattern < 9)//hatch fill
+        {
+            imagePattern = _document.createElement('canvas');
+            imagePattern.id = pattern + "";
+            if(pattern < 8)
             {
-                imagePattern = _document.createElement('canvas');
-                buffer.width = 50;
-                buffer.height = 50;
+                imagePattern.width = 15;
+                imagePattern.height = 15;
             }
-            ctx = imagePattern.getContext("2d");
-            ctx.clearRect(0,0,50,50);
+            else
+            {
+                imagePattern.width = 15;
+                imagePattern.height = 15;
+            }
+            var ctx = imagePattern.getContext("2d");
+            //ctx.clearRect(0,0,50,50);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = lineColor;
+            pattern = 8;
+            if(pattern > 1 && pattern < 6)
+            {
+                if(pattern === 2)//forward diagonal /
+                {
+                    //ctx.rotate(45*Math.PI/180);
+                    ctx.beginPath();
+                    ctx.moveTo(-1,16);
+                    ctx.lineTo(16,-1);
+                    ctx.moveTo(14,16);
+                    ctx.lineTo(16,14);
+                    ctx.moveTo(-1,1);
+                    ctx.lineTo(1,-1);
+                    ctx.stroke();
+                }
+                else if(pattern === 3)//backward diagonal \
+                {
+                    //ctx.rotate(-90*Math.PI/180);
+                    ctx.beginPath();
+                    ctx.moveTo(15,15);
+                    ctx.lineTo(-1,-1);
+                    ctx.moveTo(1,16);
+                    ctx.lineTo(-1,14);
+                    ctx.moveTo(14,-1);
+                    ctx.lineTo(16,1);
+                    ctx.stroke();
+                }
+                else if(pattern === 4)//vertical |
+                {
+                    ctx.beginPath();
+                    ctx.moveTo(3,0);
+                    ctx.lineTo(3,15);
+                    ctx.stroke();
+                }
+                else if(pattern === 5)//horizontal _
+                {
+                    ctx.beginPath();
+                    ctx.moveTo(0,4);
+                    ctx.lineTo(15,4);
+                    ctx.stroke();
+                }
+                /*ctx.beginPath();
+                ctx.moveTo(0,0);
+                ctx.lineTo(0,15);
+                ctx.stroke();*/
+
+                
+            }
+            else if(pattern === 8)//cross X
+            {
+                /*'<defs><pattern id="fillPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">'
+                    + '<g style="fill:none; stroke:black; stroke-width:1">'
+                    + '<path d="M0,0 l25,25"/>'
+                    + '<path d="M25,0 l-25,25"/>'
+                    + '</g></pattern></defs>';//*/
+                
+                /*ctx.beginPath();
+                ctx.moveTo(0,0);
+                ctx.lineTo(24,24);
+                ctx.moveTo(0,24);
+                ctx.lineTo(24,0);
+                ctx.stroke();*/
+
+                ctx.beginPath();
+                ctx.moveTo(-1,16);
+                ctx.lineTo(16,-1);
+                ctx.moveTo(14,16);
+                ctx.lineTo(16,14);
+                ctx.moveTo(-1,1);
+                ctx.lineTo(1,-1);
+                ctx.moveTo(15,15);
+                ctx.lineTo(-1,-1);
+                ctx.moveTo(1,16);
+                ctx.lineTo(-1,14);
+                ctx.moveTo(14,-1);
+                ctx.lineTo(16,1);
+                ctx.stroke();
+            }
+
+            /*var image = new Image();
+            image.src = imagePattern.toDataURL("image/png");
+            return image;//*/
+            //return ctx;
             
-            return imagePattern;//*/
-        
-            return null;
+            /*console.log(imagePattern.toDataURL());
+            var duri = imagePattern.toDataURL();*/
+            return imagePattern;
         }
         
-        return null;
-        
-        //pattern name
-        //set ctx.fillStyle=pattern
-        //then ctx.fill();
-        
+        return null;        
     },
     getSVGFillStylePattern: function (pattern, lineColor, alpha, lineWidth)
     {
@@ -217,18 +305,6 @@ return{
             {
                 svgPattern = svgPattern.replace("black",lineColor);
             }
-            //TODO: implement generation of hash pattern based on pattern, color, and line width.
-            /*
-            if(imagePattern == null)
-            {
-                imagePattern = _document.createElement('canvas');
-                buffer.width = 50;
-                buffer.height = 50;
-            }
-            ctx = imagePattern.getContext("2d");
-            ctx.clearRect(0,0,50,50);
-            
-            return imagePattern;//*/
         
             return svgPattern;
         }

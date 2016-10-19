@@ -342,7 +342,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                         ctx.globalAlpha = pi.alpha;
                         pi.path.fill(ctx);
                     }
-                    if(pi.fillPattern !== null && pi.fillPattern.src)
+                    if(pi.fillPattern !== null)
                     {
                         pi.path.fillPattern(ctx, pi.fillPattern);
                     }
@@ -553,6 +553,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(fillTexture)
             {
                 fillPattern = fillTexture;
+            }
+            else if(shapeInfo.getFillStyle() > 0)
+            {
+                fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(shapeInfo.getFillStyle(), lineColor)
             }
 
             var stroke = null;
