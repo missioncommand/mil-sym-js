@@ -866,17 +866,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             //diagnostic
             if(tg.get_UseHatchFill()===true)
             {
-                hatchLineShape.moveTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
-                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0));
-                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0+width));
-                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0+width));
-                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
-                hatchLineShape.set_Fillstyle(hatch);
-                var shapeArea = new armyc2.c2sd.graphics2d.Area(shape.getShape());
-                hatchLineArea = new armyc2.c2sd.graphics2d.Area(hatchLineShape.getShape());
-                hatchLineArea.intersect(shapeArea);
-                hatchLineShape.setShape(hatchLineArea);
-                return hatchLineShape;
+//                hatchLineShape.moveTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
+//                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0));
+//                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0+width,y0+width));
+//                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0+width));
+//                hatchLineShape.lineTo(armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(x0,y0));
+//                hatchLineShape.set_Fillstyle(hatch);
+//                var shapeArea = new armyc2.c2sd.graphics2d.Area(shape.getShape());
+//                hatchLineArea = new armyc2.c2sd.graphics2d.Area(hatchLineShape.getShape());
+//                hatchLineArea.intersect(shapeArea);
+//                hatchLineShape.setShape(hatchLineArea);
+//                return hatchLineShape;
+                  hatchLineShape.setShape(armyc2.c2sd.JavaLineArray.lineutility.createStrokedShape(shape.getShape()));                                    
+                  return hatchLineShape;
             }
             //end section
             
