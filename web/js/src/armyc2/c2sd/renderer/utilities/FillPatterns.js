@@ -6,14 +6,14 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     //private vars
-    var patternBeachSlopeModerate = new Image();
-    var patternBeachSlopeSteep = new Image();
-    var patternBeigeStipple = new Image();
-    var patternFoulGround = new Image();
-    var patternKelp = new Image();
-    var patternRigField = new Image();
-    var patternSweptArea = new Image();
-    var patternWeirs = new Image();
+    var patternBeachSlopeModerate = null;
+    var patternBeachSlopeSteep = null;
+    var patternBeigeStipple = null;
+    var patternFoulGround = null;
+    var patternKelp = null;
+    var patternRigField = null;
+    var patternSweptArea = null;
+    var patternWeirs = null;
     
     var duriBeachSlopeModerate = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAzBAMAAAAupuZdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAAAYUExURQAAAMXFxczMzM3NzdXV1dnZ2eLi4ubm5nz94OEAAAABdFJOUwBA5thmAAAAWklEQVQ4y2NgoD8wA5PMCQgSKgTkCjuAKEMTBAkRYgIyhAxAfCNlBAkVAgJ3MMlSgCChQiMc4AtrIcywFoKFtTJmWCuPhjXJaVcIT9odDU/qpl1hPGl3SJUTACZHFZF+np+2AAAAAElFTkSuQmCC";
     var duriBeachSlopeSteep = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaBAMAAABbZFH9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAAAVUExURQAAAJSUlKKioru7u87OztfX1+Li4hAmdeYAAAABdFJOUwBA5thmAAAAJElEQVQY02NgIB+YIpEMzEIOMJIJiAQVGGAkELghkfQHg8WdABqRBBGoXfbeAAAAAElFTkSuQmCC";
@@ -91,16 +91,26 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     //constructor code
     var _document = null;
     if(document)
+    {
         _document = document;
-    //set METOC patterns, do this now so that they're loaded by the time someone needs them
-    patternBeachSlopeModerate.src = duriBeachSlopeModerate;
-    patternBeachSlopeSteep.src = duriBeachSlopeSteep;
-    patternBeigeStipple.src = duriBeigeStipple;
-    patternFoulGround.src = duriFoulGround;
-    patternKelp.src = duriKelp;
-    patternRigField.src = duriRigField;
-    patternSweptArea.src = duriSweptArea;
-    patternWeirs.src = duriWeirs;
+        patternBeachSlopeModerate = new Image();
+        patternBeachSlopeSteep = new Image();
+        patternBeigeStipple = new Image();
+        patternFoulGround = new Image();
+        patternKelp = new Image();
+        patternRigField = new Image();
+        patternSweptArea = new Image();
+        patternWeirs = new Image();
+        //set METOC patterns, do this now so that they're loaded by the time someone needs them
+        patternBeachSlopeModerate.src = duriBeachSlopeModerate;
+        patternBeachSlopeSteep.src = duriBeachSlopeSteep;
+        patternBeigeStipple.src = duriBeigeStipple;
+        patternFoulGround.src = duriFoulGround;
+        patternKelp.src = duriKelp;
+        patternRigField.src = duriRigField;
+        patternSweptArea.src = duriSweptArea;
+        patternWeirs.src = duriWeirs;
+    }
     //patternWeirs.onload=function(){patternWeirs.loaded=true;console.log("loaded");if(_ctx != null){patternWeirs = _ctx.createPattern(patternWeirs, "repeat");}}
     
 

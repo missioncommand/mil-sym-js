@@ -27,13 +27,16 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
     var _decimalAccuracy = 7;
             
     //constructor code
-    _blankCanvas = document.createElement('canvas');
-    _blankCanvas.width=2;
-    _blankCanvas.height=2;
-    _blankCanvasContext = _blankCanvas.getContext('2d');
-    if(_blankCanvasContext.setLineDash)
+    if(document)
     {
-        hasSetLineDash = true;
+        _blankCanvas = document.createElement('canvas');
+        _blankCanvas.width=2;
+        _blankCanvas.height=2;
+        _blankCanvasContext = _blankCanvas.getContext('2d');
+        if(_blankCanvasContext.setLineDash)
+        {
+            hasSetLineDash = true;
+        }
     }
     
     

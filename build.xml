@@ -213,6 +213,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/FillPatterns.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
@@ -638,12 +639,27 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererException.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ShapeInfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolDefTable.js" />
+            
+            <!--(Multi) add JavaRendererServer package--> 
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipPolygon2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipQuad.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer2.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtility.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
+            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
+        
+            <!--(Multi) add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!-- (Airspaces) add packages for airspaces -->
             <!-- org.gavaghan.geodesy -->
@@ -707,9 +723,7 @@
             
         
             <!--(Single) Rendering Utility imports (minus multi-point)--> 
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/FillPatterns.js" />
-            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersUnits.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/singlepointlookupinfo.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/unitfontlookupinfo.js" />
@@ -721,19 +735,6 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SinglePointLookup.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/UnitFontLookup.js" />
 
-        
-            <!--(Multi) add JavaRendererServer package--> 
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipPolygon2.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsClipQuad.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsRenderer2.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtility.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
-            <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
-        
-            <!--(Multi) add java types provided by j2slib and required by above source--> 
-            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
-            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!--(Single) SVG specific Renderer classes--> 
             <fileset file="web/js/src/armyc2/c2sd/renderer/xml/SinglePointSVG.js" />
