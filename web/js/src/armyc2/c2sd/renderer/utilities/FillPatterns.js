@@ -177,21 +177,8 @@ return{
             //pattern = 8;
             if(pattern > 1 && pattern < 6)
             {
-                if(pattern === 2)//forward diagonal /
+                if(pattern === 2)//forward diagonal \
                 {
-                    //ctx.rotate(45*Math.PI/180);
-                    ctx.beginPath();
-                    ctx.moveTo(-1,16);
-                    ctx.lineTo(16,-1);
-                    ctx.moveTo(14,16);
-                    ctx.lineTo(16,14);
-                    ctx.moveTo(-1,1);
-                    ctx.lineTo(1,-1);
-                    ctx.stroke();
-                }
-                else if(pattern === 3)//backward diagonal \
-                {
-                    //ctx.rotate(-90*Math.PI/180);
                     ctx.beginPath();
                     ctx.moveTo(15,15);
                     ctx.lineTo(-1,-1);
@@ -199,6 +186,17 @@ return{
                     ctx.lineTo(-1,14);
                     ctx.moveTo(14,-1);
                     ctx.lineTo(16,1);
+                    ctx.stroke();                    
+                }
+                else if(pattern === 3)//backward diagonal /
+                {
+                    ctx.beginPath();
+                    ctx.moveTo(-1,16);
+                    ctx.lineTo(16,-1);
+                    ctx.moveTo(14,16);
+                    ctx.lineTo(16,14);
+                    ctx.moveTo(-1,1);
+                    ctx.lineTo(1,-1);
                     ctx.stroke();
                 }
                 else if(pattern === 4)//vertical |
@@ -292,11 +290,11 @@ return{
             //pattern = 5;
             if(pattern === 2)//forward diagonal /
             {
-                svgPattern = svgHatch + "";//force copy
+                svgPattern = svgHatch.replace("rotate(45 0 0)","rotate(-45 0 0)");
             }
             else if(pattern === 3)//backward diagonal \
             {
-                svgPattern = svgHatch.replace("rotate(45 0 0)","rotate(-45 0 0)");
+                svgPattern = svgHatch + "";//force copy
             }
             else if(pattern === 8)//cross X
             {
