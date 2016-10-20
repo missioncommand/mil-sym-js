@@ -83,7 +83,7 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
 			            + '</g></pattern></defs>';
 
     var svgHatch = '<defs><pattern id="fillPattern" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">'
-                        + '<line x1="0" y1="0" x2="0" y2="10" style="stroke:black; stroke-width:1" />'
+                        + '<line x1="1" y1="0" x2="1" y2="10" style="stroke:black; stroke-width:1" />'
                         + '</pattern></defs>';
 		
     
@@ -174,7 +174,7 @@ return{
             //ctx.clearRect(0,0,50,50);
             ctx.lineWidth = 1;
             ctx.strokeStyle = lineColor;
-            pattern = 8;
+            //pattern = 8;
             if(pattern > 1 && pattern < 6)
             {
                 if(pattern === 2)//forward diagonal /
