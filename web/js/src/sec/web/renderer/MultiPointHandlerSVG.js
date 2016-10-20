@@ -256,8 +256,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             }
             else
             {
-                //return blank SVG
-                return {svg:geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                //return blank 1x1 SVG
+                return {svg:"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjwvc3ZnPg==", geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
             }
             //}
             //else
