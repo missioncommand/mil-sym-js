@@ -15,7 +15,7 @@
         padding: 25px;
     }
     </style> -->
-	<script src="savm-bc.min.js" type="text/javascript" ></script>
+	<script src="savm-bc.js" type="text/javascript" ></script>
 	    
     <script type = "text/javascript">
 	
@@ -51,7 +51,7 @@
             //if(symbol.getSymbolID().startsWith("G"))
                 modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY] = "C";
             
-            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "(+)";//"RD";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";//"(+)";//"RD";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
             //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE] = "5";
@@ -62,12 +62,18 @@
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T1_UNIQUE_DESIGNATION_2] = "T1";
             modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
             //*/
-            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "~`"; //\"CPOF'D";//Z
 			
 			//attributes
 			
-			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#60FFFF00";
 			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#00FF00";
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.Alpha] = 50;
+            
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#8800FF00";
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.Alpha] = 50;
 			
 			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextColor] = "#FF00FF";
 			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextBackgroundColor] = "#00FF00";
@@ -98,12 +104,21 @@
             
         
             var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID,modifiers);
-            var si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolID,modifiers);
-            document.getElementById("contentSpan").innerHTML += si.getSVG();
             var center = ii.getCenterPoint();
             
             var preview = document.getElementById("preview");
             var ctx = preview.getContext('2d');
+            
+            //SVG TEST
+            var si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolID,modifiers);
+            document.getElementById("contentSpan").innerHTML += si.getSVG();
+            var svgImage = document.getElementById("SVGTest");
+            svgImage.width = si.getSVGBounds().getWidth();
+            svgImage.height = si.getSVGBounds().getHeight();
+            svgImage.src = si.getSVGDataURI();
+            
+            //test urlEncode vs base64
+            //speedTestSVGConversion(si.getSVG());
             
             try
             {
@@ -111,15 +126,17 @@
                 y = y - center.getY();
                 //alert(x + " " + y);
                 ctx.drawImage(ii.getImage(), Math.ceil(x),Math.ceil(y));
-                var bounds = ii.getImageBounds();
+                /*var bounds = ii.getImageBounds();
                 bounds.setLocation(x,y);
-                bounds.stroke(ctx);
+                bounds.stroke(ctx);//*/
             }
             catch(err)
             {
                 console.log(err);
             }
         }
+        
+        
         
         function buildSymbolID(basicID)
         {
@@ -209,6 +226,31 @@
             }
 
 	}
+    function speedTestSVGConversion(svg)
+    {
+        var start = new Date().getTime();
+        
+        for(var i = 0; i < 10000; i++)
+		{
+			encodeURIComponent(svg)
+		}
+        
+        var end = new Date().getTime();
+		var time = end - start;
+		alert('encodeURIComponent: ' + (time/1000) + "; length: " + encodeURIComponent(svg).length);//*/
+        
+        start = new Date().getTime();
+        
+        for(var j = 0; j < 10000; j++)
+		{
+			btoa(svg)
+		}
+        
+        end = new Date().getTime();
+		time = end - start;
+		alert('btoa: ' + (time/1000) + "; length: " + btoa(svg).length);//*/
+        
+    }
 	function speedTest(type)
 	{
 		//PERFORMANCE TEST///////////////////////////
@@ -457,6 +499,8 @@ Draw as Icon:  <input id="cbDrawAsIcon" type="checkbox">
 <button id="btnST2" type='button' onclick='speedTest(3);'>Loading Fonts</button><!-- Speed Test With Modifiers -->
 <!-- <img id="batch1" src="" alt="batch1" height="35" width="35">
 <img id="batch2" src="" alt="batch2" height="35" width="35"> -->
+<br/>
+<img id="SVGTest" src="" alt="svg from datauri" height="100" width="100">
 <br/>
 <span id='contentSpan'/>
 </BODY>

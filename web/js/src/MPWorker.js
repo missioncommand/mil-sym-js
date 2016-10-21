@@ -4,16 +4,16 @@ var e.data = {};
 		e.data.name = "Name";
 		e.data.description = "description";
 		e.data.symbolID = "SFGPU----------";//A 15 character symbolID corresponding to one of the graphics in the MIL-STD-2525C
-		e.data.points = controlPoints4;
+		e.data.points = controlPoints4;//like "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704","x1,y1[,z1] [xn,yn[,zn]]...".
 		e.data.altMode = "absolute";//for 3D
-		e.data.scale = scale4;//for 3D
-		e.data.bbox = bbox4;
+		e.data.scale = scale4;//for 3D like 50000.0; a number corresponding to how many meters one meter of our map represents. A value "50000" would mean 1:50K which means for every meter of our map it represents 50000 meters of real world distance.
+		e.data.bbox = bbox4;//like "66.25,30.60,66.28,30.65";"lowerLeftX,lowerLeftY,upperRightX,upperRightY."
 		e.data.modifiers = modifiers;
-		e.data.format = format;
+		e.data.format = format;//0 for KML, 2 for GeoJSON, 6 for GeoSVG
 		e.data.pHeight = pixelHeight;//for 2D
 		e.data.pWidth = pixelWidth;//for 2D
-        e.data.converter l converter for canvas or datauri format
-        e.data.fontInfo
+        e.data.converter  = {} optional converter object for custom geoToPixel Conversion
+        e.data.fontInfo = {} required for SVG format only.  Get from RendererSettings.getMPFontInfo();
 */
 
 /* return object for KML or GeoJSON
@@ -35,22 +35,28 @@ var e.data = {};
 /* expected input format for batch
 var e.data = {};
         e.data.altMode = "absolute";//for 3D
-		e.data.scale = scale4;//for 3D
-		e.data.bbox = bbox4;
-        e.data.format = format
+		e.data.scale = scale4;//for 3D like 50000.0;  a number corresponding to how many meters one meter of our map represents. A value "50000" would mean 1:50K which means for every meter of our map it represents 50000 meters of real world distance.
+		e.data.bbox = bbox4;//like "66.25,30.60,66.28,30.65";"lowerLeftX,lowerLeftY,upperRightX,upperRightY."
+        e.data.format = format;//0 for KML, 2 for GeoJSON, 6 for GeoSVG
         e.data.pHeight = pixelHeight;//for 2D
 		e.data.pWidth = pixelWidth;//for 2D
-        e.data.converter = optional converter for SVG format
-        e.data.fontInfo = fontInfo//for SVG
+        e.data.converter = {} optional converter object for custom geoToPixel Conversion
+        e.data.fontInfo = {} required for SVG format only.  Get from RendererSettings.getMPFontInfo();
         e.data.batch = [{id:"ID",name:"name",description:"description",symbolID:"GFTPL-----****X",points:controlPoints,symStd:symStd,modifiers:{ModifiersTG.T_UNIQUE_DESIGNATION_1:"T",MilStdAttributes.LineColor:"#00FF00"}}];
         
 */
 
-/* return object for batch
+/* return objects for batch
 {
+    //KML
+    [{id:batch.id,symbolID:symbolID,kml:"kml string"}]
+    //GeoJSON
+    [{id:batch.id,symbolID:symbolID,geojson:"geojson string"]
+    //SVG
     [{id:batch.id,symbolID:symbolID,svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped}]
 }
 */
+
 
 //GeoCanvas doesn't work in a web worker due to its need for the DOM.
 importScripts('m-c.js');//for strictly KML, GeoJSON and SVG(with hatch line and metoc fills, but no symbol fills)
@@ -100,6 +106,7 @@ onmessage = function(e)
 	var output = null;
     var converter = null;
     var fontInfo = null;
+    var format = ["kml","json","geojson","","","","svg","svg"];
     
     if(e.data.fontInfo !== null)
             fontInfo = e.data.fontInfo;
@@ -109,6 +116,7 @@ onmessage = function(e)
         var result = null;
         var len = e.data.batch.length;
         var items = e.data.batch;
+        var temp = null;
         //output = new Array(len);
         output = [];
         try
@@ -130,10 +138,19 @@ onmessage = function(e)
                 }
                 if(result)
                 {
-                    result.id = item.id;
-                    result.symbolID = item.symbolID;
-                    //output[i] = result;
-                    output.push(result);
+                    if(e.data.format === 6 || e.data.format === 7)//SVG
+                    {
+                        result.id = item.id;
+                        result.symbolID = item.symbolID;
+                        //output[i] = result;
+                        output.push(result);
+                    }
+                    else//KML or GeoJSON return string
+                    {
+                        temp = {id:item.id, symbolID:item.symbolID}
+                        temp[format[e.data.format]] = result; 
+                        output.push(temp);
+                    }
                 }
             }
         }
