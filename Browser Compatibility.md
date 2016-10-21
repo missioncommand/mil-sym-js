@@ -1,9 +1,9 @@
 **MIL SYMBOLOGY JAVASCRIPT RENDERER**
 
 
-Web Browser Compatibility Chart for Single Point Icon Rendering
-This is only in reference to canvas rendering. 
-SVG based singlepoint rendering should be compatible is most situations.
+Web Browser Compatibility Chart for Single Point Icon Rendering  
+This is only in reference to canvas rendering.  
+SVG based singlepoint rendering should be compatible is most situations.  
 
 Revision History  
 03/24/2014      Initial Document  
