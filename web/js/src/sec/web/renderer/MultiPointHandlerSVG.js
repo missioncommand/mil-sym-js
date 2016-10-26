@@ -253,6 +253,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 geoSVG += '</svg>';//*/
                 
                 return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
             }
             else
             {
@@ -387,7 +388,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             {
                 fillPattern = fillTexture;
             }
-            else if(shapeInfo.getFillStyle() > 0)
+            else if(shapeInfo.getFillStyle() > 1)
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(shapeInfo.getFillStyle(), lineColor)
                 fillTexture = "url(#fillPattern)";

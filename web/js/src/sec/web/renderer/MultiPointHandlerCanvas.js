@@ -557,7 +557,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             {
                 fillPattern = fillTexture;
             }
-            else if(shapeInfo.getFillStyle() > 0)
+            else if(shapeInfo.getFillStyle() > 1)
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(shapeInfo.getFillStyle(), lineColor)
             }
