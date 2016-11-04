@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Mil-sym-js : MIL-STD-2525 symbol rendering JavaScript library for modern web applications">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mil-sym-js</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/missioncommand/mil-sym-js">View on GitHub</a>
+
+          <h1 id="project_title">Mil-sym-js</h1>
+          <h2 id="project_tagline">MIL-STD-2525 symbol rendering JavaScript library for modern web applications</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/missioncommand/mil-sym-js/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/missioncommand/mil-sym-js/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="mil-sym-js" class="anchor" href="#mil-sym-js" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>mil-sym-js</h1>
+
+<p>mil-sym-js is a JavaScript port of the java-based mil-std rendering libraries that have been used in US Army Mission Command software for years.  In November 2013 Mission Command was given the approval to release and maintain these libraries as public open source. </p>
+
+<p><a href="https://github.com/missioncommand/mil-sym-js/wiki/Developer's-Guide">JS Renderer Developer's Guide Wiki</a><br>
+<a href="https://groups.google.com/forum/#!forum/mission-command-milstd-renderer">Google Group Discussion Forum</a>  </p>
+
+<h2>
+<a id="mil-std-2525" class="anchor" href="#mil-std-2525" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MIL-STD-2525</h2>
+
+<p>The MIL-STD-2525 standard defines how to visualize military symbology.  This project provides support for the entire MIL-STD-2525B Change II and MIL-STD-2525C specs.  </p>
+
+<h2>
+<a id="project-structure" class="anchor" href="#project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Structure</h2>
+
+<p>mil-sym-js has a namespace structure that resembles the java layout although differs where we needed to implement java functionality that wasn't available in JavaScript:</p>
+
+<p>When using Ant to build, the output to the "dist" folder will include a few html files that show basic usage of the renderer.</p>
+
+<h2>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version</h2>
+
+<p>1.1</p>
+
+<h2>
+<a id="features-" class="anchor" href="#features-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features </h2>
+
+<ul>
+<li>Supports MilStd 2525bch2 and 2525C<br>
+</li>
+<li>Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v1.1 for 2525Bch2<br>
+</li>
+<li>Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v2 for 2525C.  Have not seen a v3 document yet.<br>
+</li>
+<li>Single Point Symbology output as HTML5 Canvas or SVG<br>
+</li>
+<li>Multi Point Symbology output as KML, GeoJSON, GeoCanvas, GeoSVG<br>
+</li>
+<li>GeoCanvas and GeoSVG are regular HTML5 canvas objects and SVG strings with extra information on how to georeference the image and drape it on the map.<br>
+</li>
+<li>
+<a href="https://www.html5rocks.com/en/tutorials/workers/basics/">Web Worker</a> Support: Single Point SVGs and all Multi Point formats except for GeoCanvas support use in a web worker.  This allows for symbology generation to happen off of the main thread and keep your GUI responsive under heavy loads.<br>
+</li>
+</ul>
+
+<h2>
+<a id="tech" class="anchor" href="#tech" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tech</h2>
+
+<p>mil-sym-js project uses a handful of open source projects to work properly:</p>
+
+<ul>
+<li>
+<a href="http://ant.apache.org/">Ant</a> - Open source Apache build manager for Java projects</li>
+<li>
+<a href="http://jQuery.com">jQuery</a> - A fast, small, and feature-rich JavaScript library </li>
+</ul>
+
+<h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Limitations</h2>
+
+<p>Rendering of Single Point Symbology to an HTML5 canvas requires the loading of external fonts via CSS.  If this is not possible due to group policies or other reasons, it is recommended to use SVG as your Single Point Symbology rendering format.
+<a href="https://github.com/missioncommand/mil-sym-js/blob/master/Browser%20Compatibility.md">Single Point HTML5 Canvas Rendering Web Browser Compatibility Tables</a> </p>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h2>
+
+<p>This project builds with Ant resulting in two JavaScript files.<br>
+One has all of the JS code combined into one file.<br>
+The other is a minified version of the first file. (i.e. sm-bc.js &amp; sm-bc.min.js)</p>
+
+<p>Open a command prompt to the root folder of the repository on your local machine and enter:</p>
+
+<pre><code>ant clean
+ant concat sm-bc minify samples
+
+</code></pre>
+
+<p>"sm-bc" represents what you rendering capabilities you want.</p>
+
+<p>s: singlepoint canvas support (jquery plugin for singlepoint rendering only available in singlepoint only builds)
+sv: singlepoint svg support<br>
+sav: singlepoint canvas and svg support
+m: multipoints (KML, GeoJSON, GeoSVG) 
+sm: singlepoint canvas and multipoints (multipoint GeoCanvas support requires both)
+savm: (singlepoint canvas &amp; svg format and all multipoint formats)</p>
+
+<p>b: 2525B support<br>
+c: 2525C support<br>
+bc: both  </p>
+
+<p>allFlavors: every variation will be generated</p>
+
+<p>running "ant concat sm-bc minify samples" would result in the following files being placed in the "dist" folder:  </p>
+
+<ul>
+<li>fonts (contains fonts needed for singlepoint rendering)<br>
+</li>
+<li>renderer.css (to load the font files)<br>
+</li>
+<li>jquery-[version].min.js<br>
+</li>
+<li>multiPointTester1.html (renders kml for a couple multipoint symbols)<br>
+</li>
+<li>multiPointTester2.html (renders kml for a couple multipoint symbols in a loop to test performance)<br>
+</li>
+<li>singlePointTester.html (renders a couple of singlepoint symbols to the page)<br>
+</li>
+<li>singlePointTester2.html (Allows you to render any single point symbol and adjust rendering attributes &amp; modifiers)<br>
+</li>
+<li>single-point-plugin.html (show sample usage with jQuery)<br>
+</li>
+<li>sm-bc.js (concatenated renderer code)<br>
+</li>
+<li>sm-bc.min.js (concatenated &amp; minified renderer code)<br>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Apache License
+Version 2.0, January 2004
+<a href="http://www.apache.org/licenses/">http://www.apache.org/licenses/</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mil-sym-js maintained by <a href="https://github.com/missioncommand">missioncommand</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
