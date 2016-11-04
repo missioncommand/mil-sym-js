@@ -47,15 +47,18 @@
             //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
 
 
-            modifiers = populateModifiers();
-            modifiers[msa.PixelSize]=35;
+            //modifiers = populateModifiers();
+            modifiers[msa.PixelSize]=undefined;
             modifiers[msa.KeepUnitRatio]=true;
             modifiers[msa.SymbologyStandard] = 1;
+            modifiers[msa.Alpha] = 55;
 			//modifiers[msa.Icon]=true;
             //CALL TO RENDER////////////////////////////////////////////////
             //var iiTG = armyc2.c2sd.renderer.MilStdIconRenderer.Render("UPPS-----*****",modifiers);
             //SUGDUSAT--FM***//"SUGDUSAT--MY***"
-            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SFGDUSAT----US*",modifiers);
+            //var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHGDUSAT----US*",modifiers);
+            modifiers = {H:"",H1:"",H2:"",KEEPUNITRATIO:true,SIZE:undefined,T:"",T1:"",W:"",W1:""};
+            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render("OHOPHT--------*",modifiers);
 
             var showDrawAreas = true;
 
@@ -148,7 +151,14 @@
             //modifiers[msa.LineColor]="#FFFF00";
             //WA-DPFCU---L---  //Upper Cold Front (Blue)
             //"GHGPSLA---****X" // ambush
-            var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("WA-DPFCU---L---",modifiers);
+            var mods = {};
+            mods[msa.KeepUnitRatio] = true;
+            mods[msa.PixelSize] = 50;//
+            mods[msa.SymbologyStandard] = 1;
+            //mods[msa.Alpha] = 55;
+            mods["T"] = "";
+            var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHGPUCA--------",mods);
+            //var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("WA-DPFCU---L---",modifiers);
             //var iiTGMP = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPSLA---****X",modifiers);
 
             ctx.drawImage(iiTGMP.getImage(), Math.ceil(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + 20), 0);
@@ -217,6 +227,60 @@
             ti.strokeText(ctx);
             ctx.fillStyle = "#000000";
             ti.fillText(ctx);
+
+            //string replace speed check//////////////////////////
+            /*
+            var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities;
+            var start = new Date().getTime();
+            var str = "fd&fdsafd&fdsafdsaf&";
+            var temp = "";
+            for(var i = 0; i < 1000; i++)
+            {
+                temp = str;
+                temp = temp.replace(/\&/g,"&amp;");
+            }
+            console.log(temp);
+            var end = new Date().getTime();
+            var time = end - start;
+			
+            var pos = 0;  
+            //doesn't work
+			var start2 = new Date().getTime();
+            
+			for(var j = 0; j < 1000; j++)
+            {
+                temp = str;
+                var x = -1;
+                while(pos < temp.length && (x = temp.indexOf("&",pos) >= 0))
+                {
+                    temp = temp.replace("&","&amp;");
+                    pos = pos + 2;
+                }
+                
+            }
+            console.log(temp);
+			var end2 = new Date().getTime();
+            var time2 = end2 - start2;
+            
+            var start3 = new Date().getTime();  
+			for(var j = 0; j < 1000; j++)
+            {
+                temp = str;
+                var x = -1;
+                while(pos < temp.length && (x = temp.indexOf("&",pos) >= 0))
+                {
+                    temp = temp.substr(0,x) + "&amp;" + temp.substr(x + 1);
+                    pos = pos + 2;
+                }
+                
+            }
+            console.log(temp);
+			var end3 = new Date().getTime();
+            var time3 = end3 - start3;
+			
+			var myTimeMessage = "regex: " + (time/1000) + "\n" +
+                                "indexOf with substr: " + (time3/1000);
+            alert(myTimeMessage);//*/
 			
             //namespace speed check//////////////////////////
             /*
