@@ -2,10 +2,6 @@ mil-sym-js
 =========
 mil-sym-js is a JavaScript port of the java-based mil-std rendering libraries that have been used in US Army Mission Command software for years.  In November 2013 Mission Command was given the approval to release and maintain these libraries as public open source. 
 
-[Single Point Rendering Web Browser Compatibility Tables](https://github.com/missioncommand/mil-sym-js/blob/master/Browser%20Compatibility.md)
-
-See sample KML output for multipoints [here.]()  - service discontinued  
-
 [JS Renderer Developer's Guide Wiki](https://github.com/missioncommand/mil-sym-js/wiki/Developer's-Guide)  
 [Google Group Discussion Forum](https://groups.google.com/forum/#!forum/mission-command-milstd-renderer)  
 
@@ -22,7 +18,7 @@ When using Ant to build, the output to the "dist" folder will include a few html
 Version
 --------------
 
-1.0
+1.1
 
 Features 
 
@@ -47,7 +43,8 @@ mil-sym-js project uses a handful of open source projects to work properly:
 Limitations
 --------------
   
-Rendering of Single Point Symbology to an HTML5 canvas requires the loading of external fonts via CSS.  If this is not possible due to group policies or other reasons, it is recommended to use SVG and your Single Point Symbology rendering format.  
+Rendering of Single Point Symbology to an HTML5 canvas requires the loading of external fonts via CSS.  If this is not possible due to group policies or other reasons, it is recommended to use SVG as your Single Point Symbology rendering format.
+[Single Point HTML5 Canvas Rendering Web Browser Compatibility Tables](https://github.com/missioncommand/mil-sym-js/blob/master/Browser%20Compatibility.md) 
 
 
 Build
@@ -57,7 +54,7 @@ One has all of the JS code combined into one file.
 The other is a minified version of the first file. (i.e. sm-bc.js & sm-bc.min.js)
 
 Open a command prompt to the root folder of the repository on your local machine and enter:
-```sh
+```
 ant clean
 ant concat sm-bc minify samples
 
