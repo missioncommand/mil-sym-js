@@ -109,7 +109,7 @@ onmessage = function(e)
     var oldFont = null;
     var format = ["kml","json","geojson","","","","svg","svg"];
     
-    if(e.data.fontInfo !== null)
+    if(e.data.fontInfo)
     {
         fontInfo = e.data.fontInfo;
         oldFont = {};
@@ -187,7 +187,7 @@ onmessage = function(e)
         }
     }
 
-    if(fontInfo !== null)
+    if(fontInfo)
     {
         armyc2.c2sd.renderer.utilities.RendererSettings.setMPModifierFont(oldFont.name, oldFont.size, oldFont.style);//name, size, style, scale
     }
