@@ -409,8 +409,13 @@ armyc2.c2sd.renderer.so.Path = function () {
     /**
      * Arc and ArcTo do not covert currently
      */
-    armyc2.c2sd.renderer.so.Path.prototype.toSVGElement = function(stroke, strokeWidth, fill, strokeOpacity, fillOpacity)
+    armyc2.c2sd.renderer.so.Path.prototype.toSVGElement = function(stroke, strokeWidth, fill, strokeOpacity, fillOpacity, svgFormat)
     {
+        var format = 1;
+        if(svgFormat)
+        {
+            format = svgFormat;
+        }
         
         var ActionTypes = armyc2.c2sd.renderer.so.ActionTypes;
         //context.beginPath();
@@ -483,7 +488,13 @@ armyc2.c2sd.renderer.so.Path = function () {
 
         if(stroke)
         {
-            line += ' stroke="' + stroke + '"';
+            //line += ' stroke="' + stroke + '"';
+            if(format === 2)
+                line += ' stroke="' + stroke.replace(/#/g,"%23") + '"';//.replace(/#/g,"%23")
+            else
+                line += ' stroke="' + stroke + '"';
+            /*else
+                line += ' stroke="' + stroke.replace(/#/g,"&#35;") + '"';*/
             
             if(strokeWidth)
                 line += ' stroke-width="' + strokeWidth + '"';
@@ -509,10 +520,18 @@ armyc2.c2sd.renderer.so.Path = function () {
             if(fill.indexOf("url") === 0)
             {
                 line += ' fill="url(#fillPattern)"';
+                //line += ' fill="url(&#35;fillPattern)"';
             }
             else
             {
-                line += ' fill="' + fill + '"';
+                //line += ' fill="' + fill + '"';
+                if(format === 2)
+                    line += ' fill="' + fill.replace(/#/g,"%23") + '"';//text = text.replace(/\</g,"&gt;");
+                else
+                    line += ' fill="' + fill + '"';//text = text.replace(/\</g,"&gt;");
+                /*else
+                    line += ' fill="' + fill.replace(/#/g,"&#35;") + '"';//text = text.replace(/\</g,"&gt;");*/
+                    
                 if(fillOpacity && fillOpacity !== 1.0)
                 {
                     //fill-opacity="0.4"

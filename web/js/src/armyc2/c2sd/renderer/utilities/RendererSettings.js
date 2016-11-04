@@ -6,7 +6,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.6";
+    var _Version = "0.3.7";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -367,7 +367,7 @@ return{
      * @param {String} style like "bold"
      * @returns {undefined}
      */
-    setModifierFont: function(name, size, style){
+    setModifierFont: function(name, size, style, fontInfo){
         _ModifierFontName = name;
         _ModifierFontSize = size;
         if(style !== 'bold' || style !== 'normal')
@@ -380,7 +380,7 @@ return{
         }
         _ModifierFont = style + " " + size + "pt " + name;
         
-        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont, fontInfo);
     },
     /**
      * 
@@ -420,7 +420,7 @@ return{
 	 * @param {Number} Only set if you want to scale the KML label font. (default 1.0)
      * @returns {undefined}
      */
-    setMPModifierFont: function(name, size, style, kmlLabelScale){
+    setMPModifierFont: function(name, size, style, kmlLabelScale, fontInfo){
         _MPModifierFontName = name;
         _MPModifierFontSize = size;
         if(style !== 'bold' || style !== 'normal')
@@ -441,7 +441,7 @@ return{
 		}
 		var tempSize = Math.round(size * _KMLLabelScale);
         _MPModifierFont = style + " " + tempSize + "pt " + name;
-        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont);
+        armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont, fontInfo);
     },
     /**
      * 

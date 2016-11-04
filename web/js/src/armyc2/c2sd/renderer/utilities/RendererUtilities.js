@@ -156,6 +156,27 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             div = null;
             return size;//*/
     };
+
+    /**
+     * Made with the intent to use in a web worker.
+     * @param {type} font like "bold 9pt Arial, sans-serif"
+     * @param {string} text include if you want a width value
+     */
+    function measureStringSansDOM(text, measurements)
+    {
+        //get font measurements
+        var widths = measurements.widths; 
+        var width = 0;
+        var length = text.length;
+        for (var i=0; i < length; i++) 
+        {
+            var character = text.charAt(i);
+            widths[character] ? width += (widths[character] + 1) : widths["W"]; 
+        } 
+        var bounds = new armyc2.c2sd.renderer.so.Rectangle(0,0 - measurements.height,
+                                Math.round(width), measurements.fullHeight); 
+        return bounds;
+    };
     
     
     function measureTextIE8(fontName, fontSize, fontStyle, text){
@@ -172,18 +193,23 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             height = size.height;
             descent = size.descent;
 			
-            if(text && _ctx)
+            if(text)
             {
+                if(_ctx)
+                {
                     textWidth = _ctx.measureText(text).width;
-            }
-            else if (text)//use an approximation
-            {
-
+                }
+                else if(fullFontMeasurements[font])
+                {
+                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]);
+                }
+                else//use an approximation
+                {
                     textWidth = Math.floor(parseFloat(fontSize) / 2.0) * text.length;
-
+                }
             }
-			
         }
+
         else if(doc.createElement)
         {
 
@@ -611,17 +637,17 @@ return{
         return size.descent;//size[1];
     },
     
-        /**
+    /**
      * Measures chars 33 to 127 of a font for use in measureStringNoDOM.
-     * 
+     * Or, if used in web worker, applies passed in measurment values
      */
-    measureFont: function(font)
+    measureFont: function(font, fontInfo)
     {     
         if(fullFontMeasurements[font])
         {
             return fullFontMeasurements[font];
         }   
-        else
+        else if(_ctx)
         {
             var width = 100,
             height = 100;
@@ -668,8 +694,27 @@ return{
             }
             
             fullFontMeasurements[font] = {widths:widths,height:height,descent:descent,fullHeight:fullHeight}; 
+            pastTextMeasurements[font] = {height:height,fullHeight:fullHeight,descent:descent};
             return fullFontMeasurements[font];
         }
+        else if(fontInfo)
+        {
+            if(!fullFontMeasurements[font])
+            {
+                pastTextMeasurements[font] = {height:fontInfo.measurements.height,fullHeight:fontInfo.measurements.fullHeight,descent:fontInfo.measurements.descent};
+                fullFontMeasurements[font] = fontInfo.measurements;
+            }
+            return fullFontMeasurements[font];                 
+        }
+        /*else
+        {
+            var objFont = splitFontString(font);
+            var fontStyle = objFont.fontStyle,
+            fontName = objFont.fontName,
+            fontSize = objFont.fontSize;
+            size = measureTextIE8(fontName, fontSize, fontStyle,"");
+        }//*/
+        return null;
         
     },
     
@@ -680,6 +725,7 @@ return{
      */
     measureStringNoDOM: function(text, measurements)
     {
+        return measureStringSansDOM(text, measurements);
         //get font measurements
         var widths = measurements.widths; 
         var width = 0;
