@@ -24,7 +24,7 @@ Features
 --------------
 * Supports MilStd 2525bch2 and 2525C  
 * Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v1.1 for 2525Bch2  
-* Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v2 for 2525C  
+* Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v2 for 2525C.  Have not seen a v3 document yet.  
 * Single Point Symbology output as HTML5 Canvas or SVG  
 * Multi Point Symbology output as KML, GeoJSON, GeoCanvas, GeoSVG  
 * GeoCanvas and GeoSVG are regular HTML5 canvas objects and SVG strings with extra information on how to georeference the image and drape it on the map.   
