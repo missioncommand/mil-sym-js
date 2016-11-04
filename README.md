@@ -21,7 +21,6 @@ Version
 1.1
 
 Features 
-
 --------------
 * Supports MilStd 2525bch2 and 2525C  
 * Supports Unified Specification for ABCS Symbology (USAS) for Common Operating Environment (COE) v1.1 for 2525Bch2  
