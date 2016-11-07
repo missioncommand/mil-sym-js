@@ -67,9 +67,9 @@ console.log(foo.toString());*/
 armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","AMBUSH");
         var modifiers = {};
         //AMBUSH EXAMPLE
-        //var symbolCode = "GHGPSLA-------X";//ambush
+        var symbolCode = "GHGPSLA-------X";//ambush
         //var symbolCode = "GHGPGAA-------X"; //assembly area
-        var symbolCode = "GHGPGLF-------X";//flot
+        //var symbolCode = "GHGPGLF-------X";//flot
         var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         
         var bbox = "66.25,30.60,66.28,30.65";
@@ -87,10 +87,10 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
 		var pixelHeight = 600;
 		
 		//change this to format JSON to see the different output.
-		var format = formatGeoJSON;
+		//var format = formatGeoJSON;
         //var format = formatGeoCanvas;
 		//var format = formatKML;
-        //var format = formatGeoSVG;
+        var format = formatGeoSVG;
 		
 		
 		//Not meant to be changed on the fly.
@@ -115,6 +115,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
             //data.altMode = "absolute";//comment out to render as 2D
             data.scale = scale;
             data.bbox = bbox;
+			modifiers["SVGFORMAT"] = 2;
             data.modifiers = modifiers;//{"AM":[3000,10000],"AN":[315,45],"X":[0],"LOOKAT":true};
             data.format = format;
             data.pixelHeight = pixelHeight;
@@ -123,7 +124,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
             data.batch = [];
         if(format === formatGeoSVG)
         {
-            data.fontInfo = getFontInfo("arial",14,"bold");
+            data.fontInfo = getFontInfo("arial",12,"bold");
         }
 		for(var i = 0; i < renderCount; i++)
 		{
@@ -146,7 +147,7 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testR
             document.getElementById("contentSpan").innerHTML += "<br/><br/>Ambush avg: "+ timeAmbush +"  <br/>";
             document.getElementById("contentSpan").innerHTML += "Ambush total: "+ totalAmbush +"  <br/>";
             
-            /*if(e.data.id)//not a batch call
+            if(e.data.id)//not a batch call
             {
                 result = e.data.result;
                 document.getElementById("contentSpan").innerHTML += "<br/><br/>Symbol via Web Worker:   <br/>";

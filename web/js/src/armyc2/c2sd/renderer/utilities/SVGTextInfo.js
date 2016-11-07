@@ -105,8 +105,14 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     /**
      * 
      */
-    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, tbm)
+    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.toSVGElement = function(stroke, strokeWidth, fill, svgFormat)
     {
+        var format = 1;
+        if(svgFormat)
+        {
+            format = svgFormat;
+        }
+
         var se = '<text x="' + this._anchor.getX() + '" y="' + this._anchor.getY() + '"';
  
         se += ' font-family="' + this._fontName + '"';
@@ -127,17 +133,35 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
             
         var text = this._text;
         //catch special characters that break SVGs as base64 dataURIs
-        text = text.replace(/\&/g,"&amp;");
-        text = text.replace(/\</g,"&lt;");
-        text = text.replace(/\</g,"&gt;");
-        //text = text.replace(/\u2022/g,"&#x2022;");//echelon and ellipses dot
-        //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
-        text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
-        text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced +- symbol
+        if(format === 1)
+        {
+            text = text.replace(/\&/g,"&amp;");
+            text = text.replace(/\</g,"&lt;");
+            text = text.replace(/\</g,"&gt;");
+            //text = text.replace(/\u2022/g,"&#x2022;");//echelon and ellipses dot
+            //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
+            text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
+            text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced +- symbol
+        }
+        else if(format === 2)
+        {
+            text = encodeURIComponent(text);
+            /*text = text.replace(/\&/g,"%24");
+            text = text.replace(/\</g,"%3C");
+            text = text.replace(/\</g,"%3E");
+            text = text.replace(/\u2022|\u25CF/g,"%95");//echelon and ellipses dot (black circle)
+            text = text.replace(/\u00B1/g,"%C2%B1");//"RD" reinforce/reduced +- symbol//*/
+        }
         
         if(stroke)
         {
-            seStroke = se + ' stroke="' + stroke + '"';
+            if(format === 2)
+                seStroke = se + ' stroke="' + stroke.replace(/#/g,"%23") + '"';
+            else
+                seStroke = se + ' stroke="' + stroke + '"';
+            /*else
+                seStroke = se + ' stroke="' + stroke.replace(/#/g,"&#35;") + '"';*/
+                
             if(strokeWidth)
                 seStroke += ' stroke-width="' + (strokeWidth + 2) + '"';
             seStroke += ' fill="none"';
@@ -148,7 +172,12 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
             
         if(fill)
         {
-            seFill = se + ' fill="' + fill + '"';
+            if(format === 2)
+                seFill = se + ' fill="' + fill.replace(/#/g,"%23") + '"';
+            else
+                seFill = se + ' fill="' + fill + '"';
+            /*else
+                seFill = se + ' fill="' + fill.replace(/#/g,"%23") + '"';*/
             seFill += '>';
             seFill += text;
             seFill += '</text>';

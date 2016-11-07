@@ -939,6 +939,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
+                    var svgFormat = 1;
+                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                        svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
                     if (textBackgroundColor)
@@ -966,9 +969,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
                     if(rect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo,svgFormat);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo,svgFormat);
                         
                 }
                 else if (format === 1) //deprecated
@@ -1329,7 +1332,9 @@ sec.web.renderer.MultiPointHandler = (function () {
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
-
+                    var svgFormat = 1;
+                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                        svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
                     if (textBackgroundColor)
@@ -1356,7 +1361,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo);
+                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo,svgFormat);
                 }
                 else if (format === 1) //deprecated
                 {

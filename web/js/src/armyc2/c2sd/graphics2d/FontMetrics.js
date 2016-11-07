@@ -43,14 +43,14 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
         //return Math.floor(_font.getSize() / 2) * str.length;
         //return (_font.getSize() / 2) * str.length;        
         var location=new armyc2.c2sd.renderer.so.Point(0,0);
-        var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location);            
+        var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFont());            
         var stringWidth=bounds.width;
         return stringWidth;
     };
     this.stringHeight=function(str)
     {
         //var location=new armyc2.c2sd.renderer.so.Point(0,0);
-        //var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location);            
+        //var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFont());            
         //var stringHeight=bounds.height;
         var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
         //getTextBounds does 2 calculations.  Limit to what you need and just get height.
@@ -67,7 +67,7 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
     this.getTextBounds=function(str)
     {
         var location=new armyc2.c2sd.renderer.so.Point(0,0);
-        var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, undefined);            
+        var bounds = armyc2.c2sd.renderer.utilities.RendererUtilities.getTextBounds(this.textInfoContext, str, location, armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFont());            
         return bounds;
     };
     this.getFontRenderContext = function() {

@@ -106,10 +106,21 @@ onmessage = function(e)
 	var output = null;
     var converter = null;
     var fontInfo = null;
+    var oldFont = null;
     var format = ["kml","json","geojson","","","","svg","svg"];
     
-    if(e.data.fontInfo !== null)
-            fontInfo = e.data.fontInfo;
+    if(e.data.fontInfo)
+    {
+        fontInfo = e.data.fontInfo;
+        oldFont = {};
+        oldFont.name = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontName();
+        oldFont.size = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontSize();
+        oldFont.style = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontStyle();
+        //oldFont.kmlScale = armyc2.c2sd.renderer.utilities.RendererSettings.getKMLLabelScale();
+        armyc2.c2sd.renderer.utilities.RendererSettings.setMPModifierFont(fontInfo.name, fontInfo.size, fontInfo.style, null, fontInfo);//name, size, style, scale
+    }
+
+    
 	
     if(e.data && e.data.batch && e.data.batch.length > 0)
     {
@@ -174,6 +185,11 @@ onmessage = function(e)
             //data for symbol on 2D map so call RenderSymbol2D
             output = rendererMP.RenderSymbol2D(e.data.id,e.data.name,e.data.description, e.data.symbolID, e.data.points, e.data.pixelWidth,e.data.pixelHeight, e.data.bbox, e.data.modifiers,e.data.format, e.data.symstd, fontInfo);
         }
+    }
+
+    if(fontInfo)
+    {
+        armyc2.c2sd.renderer.utilities.RendererSettings.setMPModifierFont(oldFont.name, oldFont.size, oldFont.style);//name, size, style, scale
     }
 	
 	if(e.data.batch)

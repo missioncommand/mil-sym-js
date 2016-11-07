@@ -44,9 +44,10 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {number} pixelHeight - pixel height of the bounding box
          * @param {object} fillTexture - an html5 canvas or SVG pattern
          * @param {object} fontInfo - {name:name,size:size,style:style,measurements:{widths:widths[],height:height,descent:descent,fullHeight:fullHeight}}
+         * @param {number} SVGFormat - 0 plain svg string, 1 base64 string (default), 2 url endcoded (% notation)
          * @returns {geoSVG} - looks like: {svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo)
+        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat)
         {
             
             var height = 10;
@@ -59,6 +60,9 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             var unionBounds = null;
             var rotatedBounds = null;
             var lineWidth = 4;
+            var svgFormat = 1;
+            if(SVGFormat)
+                svgFormat = SVGFormat;
             
             try
             {
@@ -76,7 +80,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture);
+                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture, svgFormat);
                     if(pathInfo.svg && pathInfo.bounds)
                     {
                         tempBounds = pathInfo.bounds;
@@ -237,7 +241,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                         group += paths[i];
                     }   
                 }
-                labels = this.renderTextElement(labels,hexTextColor,hexTextBackgroundColor);
+                labels = this.renderTextElement(labels,hexTextColor,hexTextBackgroundColor, svgFormat);
                 for(var j = 0; j < labels.length; j++)
                 {
                     group += labels[j];
@@ -246,19 +250,32 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 group += '</g>'; 
                 
                 //wrap in SVG
-                var geoSVG = '<svg width="' + unionBounds.getWidth() + 'px" height="' + unionBounds.getHeight() + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
                 if(fillTexture)
                     geoSVG += fillTexture;
                 geoSVG += group;
                 geoSVG += '</svg>';//*/
                 
-                return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
-                //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                if(svgFormat === 1)
+                    return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                else if(svgFormat === 2)
+                {
+                    geoSVG = geoSVG.replace(/\</g,"%3C");
+                    geoSVG = geoSVG.replace(/\>/g,"%3E");
+                    geoSVG = geoSVG.replace(/\"/g,"%22");
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                }
+                else
+                {
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                }
             }
             else
             {
-                //return blank 1x1 SVG
-                return {svg:"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjwvc3ZnPg==", geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                //return blank 2x2 SVG
+                //<svg width="1px" height="1px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+                //return {svg:"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjwvc3ZnPg==", geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
             }
             //}
             //else
@@ -271,7 +288,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {type} color a hex string "#000000"
          * @returns {void}
          */
-        renderTextElement: function(tiArray, color, backgroundColor)
+        renderTextElement: function(tiArray, color, backgroundColor, svgFormat)
         {
             //ctx.lineCap = "butt";
             //ctx.lineJoin = "miter";
@@ -312,7 +329,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 for(var i=0; i<size;i++)
                 {
                     tempShape = tiArray[i];
-                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
+                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle, svgFormat));
                 }
             }
             else if(tbm === RendererSettings.TextBackgroundMethod_OUTLINE_QUICK)
@@ -320,7 +337,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 for(var i=0; i<size;i++)
                 {
                     tempShape = tiArray[i];
-                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle));
+                    svgElements.push(tempShape.toSVGElement(outlineStyle,outlineWidth,fillStyle, svgFormat));
                 }
             }
             else if(tbm === RendererSettings.TextBackgroundMethod_COLORFILL)
@@ -328,8 +345,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 for(var i=0; i<size;i++)
                 {
                     tempShape = tiArray[i];
-                    svgElements.push(tempShape.getOutlineBounds().toSVGElement(null,null,outlineStyle));
-                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
+                    svgElements.push(tempShape.getOutlineBounds().toSVGElement(null,null,outlineStyle, svgFormat));
+                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle, svgFormat));
                 }
             }
             else //if(tbm === RendererSettings.TextBackgroundMethod_NONE)
@@ -337,7 +354,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 for(var j=0; j<size;j++)
                 {
                     tempShape = tiArray[j];
-                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle));
+                    svgElements.push(tempShape.toSVGElement(null,null,fillStyle, svgFormat));
                 }
             }
             
@@ -352,7 +369,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {type} fillTexture
          * @returns {string} svgElement
          */
-        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture)
+        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture, svgFormat)
         {
 
             var pathInfo = null;
@@ -440,7 +457,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             }
             if(fillTexture)
                 fillColor = "url(#fillPattern)";
-            var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, fillTexture);
+            var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, svgFormat);
             var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};
             return svgInfo;
         },
