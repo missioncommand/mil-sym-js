@@ -234,7 +234,7 @@ function testRender(batch)
         //process results from web worker
 		worker.onmessage = function(e)
 		{
-
+                document.getElementById("contentSpan").innerHTML = "";
                 stopTime = Date.now();
                 var batchTime = (stopTime-startTime) / 1000;
                 document.getElementById("contentSpan").innerHTML += "<br/><br/>Batch Time: "+ batchTime +"  <br/>";
