@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta line required for IE-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>single point tester</title>
+    <link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" />
+    <!-- Not necessary as fonts are body fonts set in renderer.css
+    <style type="text/css">
+    body 
+    {
+        font-family: UnitFont, SinglePoint, TacticalGraphics;
+        font-size: 48pt;
+        padding: 25px;
+    }
+    </style> -->
+	<script src="savm-bc.js" type="text/javascript" ></script>
+	    
+    <script type = "text/javascript">
+	
+	var fontCheckTimer =  null;
+	var retries = 15;
+	var attempts = 0;
+        var _symbolID = null;
+        var _symStd = null;
+        var _modifiers = null;
+	
+	
+        function populateModifiers()
+        {
+            var modifiers = {};
+            
+            
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY]=10;
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H_ADDITIONAL_INFO_1] = "H";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H1_ADDITIONAL_INFO_2] = "H1";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.H2_ADDITIONAL_INFO_3] = "H2";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.X_ALTITUDE_DEPTH] = "X";//X
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.K_COMBAT_EFFECTIVENESS] = "K";//K
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] = "45";//Q
+
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W_DTG_1] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.W1_DTG_2] = armyc2.c2sd.renderer.utilities.SymbolUtilities.getDateLabel(new Date());//W1
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.J_EVALUATION_RATING] = "J";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.M_HIGHER_FORMATION] = "M";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.N_HOSTILE] = "ENY";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.P_IFF_SIF] = "P";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Y_LOCATION] = "Y";
+            
+            //if(symbol.getSymbolID().startsWith("G"))
+                modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.C_QUANTITY] = "C";
+            
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.F_REINFORCED_REDUCED] = "RD";//"(+)";//"RD";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.L_SIGNATURE_EQUIP] = "!";
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.AA_SPECIAL_C2_HQ] = "AA";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE] = "5";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.G_STAFF_COMMENTS] = "G";
+            //symbol.symbolicon A
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.V_EQUIP_TYPE] = "V";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T_UNIQUE_DESIGNATION_1] = "T";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.T1_UNIQUE_DESIGNATION_2] = "T1";
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.Z_SPEED] = "999";//Z
+            //*/
+            modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "CPOF'D";//Z
+            //modifiers[armyc2.c2sd.renderer.utilities.ModifiersUnits.CN_CPOF_NAME_LABEL] = "~`"; //\"CPOF'D";//Z
+			
+			//attributes
+			
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#60FFFF00";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#00FF00";
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.Alpha] = 50;
+            
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.LineColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.FillColor] = "#8800FF00";
+            //modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.Alpha] = 50;
+			
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextColor] = "#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.TextBackgroundColor] = "#00FF00";
+            
+            return modifiers;
+        }
+        
+        function render(symbolID, x, y)
+        {
+            var symStd = 1;
+            
+           
+            var size = document.getElementById("tbSize").value;
+            var keepUnitRatio = document.getElementById("cbKeepUnitRatio").checked;
+            var showLabels = document.getElementById("cbLabels").checked;
+			var drawAsIcon = document.getElementById("cbDrawAsIcon").checked;
+            
+            var modifiers = {};
+            
+            if(showLabels === true)
+            {
+                modifiers = populateModifiers();
+            }
+            modifiers.SYMSTD = symStd;
+			modifiers.SIZE = size;
+			modifiers.KEEPUNITRATIO = keepUnitRatio;
+			modifiers.ICON = drawAsIcon;
+            
+        
+            var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID,modifiers);
+            var center = ii.getCenterPoint();
+            
+            var preview = document.getElementById("preview");
+            var ctx = preview.getContext('2d');
+            
+            //SVG TEST
+            var si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolID,modifiers);
+            document.getElementById("contentSpan").innerHTML += si.getSVG();
+            var svgImage = document.getElementById("SVGTest");
+            svgImage.width = si.getSVGBounds().getWidth();
+            svgImage.height = si.getSVGBounds().getHeight();
+            svgImage.src = si.getSVGDataURI();
+            
+            //test urlEncode vs base64
+            //speedTestSVGConversion(si.getSVG());
+            
+            try
+            {
+                x = x - center.getX();
+                y = y - center.getY();
+                //alert(x + " " + y);
+                ctx.drawImage(ii.getImage(), Math.ceil(x),Math.ceil(y));
+                /*var bounds = ii.getImageBounds();
+                bounds.setLocation(x,y);
+                bounds.stroke(ctx);//*/
+            }
+            catch(err)
+            {
+                console.log(err);
+            }
+        }
+        
+        
+        
+        function buildSymbolID(basicID)
+        {
+            
+            if(basicID.charAt(0) !== 'W')
+            {
+                var affiliation = document.getElementById("lbAffiliation").value;
+                var status = document.getElementById("lbStatus").value;
+                var modifiers = document.getElementById("tbModifiers").value;
+
+                var symbolID = basicID.substring(0,1);
+                symbolID += affiliation;
+                symbolID += basicID.substring(2,3);
+                symbolID += status;
+                symbolID += basicID.substring(4,10);
+                symbolID += (modifiers.length === 5) ? modifiers : basicID.substring(10,15);
+                return symbolID;
+            }
+            else
+                return basicID
+            
+        }
+        
+        function renderFE()
+        {
+            var lb = document.getElementById("lbU");
+            var lb2 = document.getElementById("lbTG");
+            lb2.selectedIndex = -1;
+            var id = lb.value;
+            if(id && id !== "")
+            {
+                _symbolID = id;
+				var modifiers = document.getElementById("tbModifiers").value;
+				if(id.charAt(10) === 'H' && modifiers.charAt(0) !== 'H')
+				{
+					document.getElementById("tbModifiers").value = "H****";
+				}
+				else if(id.charAt(10) !== 'H' && modifiers.charAt(0) === 'H')
+				{
+					document.getElementById("tbModifiers").value = "*****";
+				}
+				
+            }
+            else
+            {
+                alert("Pick a symbol from the right list first.");
+            }
+        }
+        
+        function renderTG()
+        {
+            var lb = document.getElementById("lbTG");
+            var lb2 = document.getElementById("lbU");
+            lb2.selectedIndex = -1;
+            var id = lb.value;
+            if(id && id !== "")
+            {
+                _symbolID = id;
+            }
+            else
+            {
+                alert("Pick a symbol from the right list first.");
+            }
+        }
+        
+        function checkFonts()
+	{
+            if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded())
+            {
+                setSpeedTestImages();
+                console.log("fonts loaded");
+            }
+            else if(attempts < retries)
+            {
+                attempts++;
+                fontCheckTimer = setTimeout(checkFonts, 1000);
+                console.log("fonts loading...");
+                //sometimes font won't register until after a render attempt
+                armyc2.c2sd.renderer.MilStdIconRenderer.Render("SHAPWMSA-------",{});
+            }
+            else
+            {
+                console.log("fonts didn't load or status couldn't be determined for " + retries + " seconds.");
+                var button = document.getElementById("btnRender");
+                button.disabled = false;
+                button.innerHTML = "Render";
+            }
+
+	}
+    function speedTestSVGConversion(svg)
+    {
+        var start = new Date().getTime();
+        
+        for(var i = 0; i < 10000; i++)
+		{
+			encodeURIComponent(svg)
+		}
+        
+        var end = new Date().getTime();
+		var time = end - start;
+		alert('encodeURIComponent: ' + (time/1000) + "; length: " + encodeURIComponent(svg).length);//*/
+        
+        start = new Date().getTime();
+        
+        for(var j = 0; j < 10000; j++)
+		{
+			btoa(svg)
+		}
+        
+        end = new Date().getTime();
+		time = end - start;
+		alert('btoa: ' + (time/1000) + "; length: " + btoa(svg).length);//*/
+        
+    }
+	function speedTest(type)
+	{
+		//PERFORMANCE TEST///////////////////////////
+		
+		var start = new Date().getTime();
+		var modifiers;
+		//modifiers = populateModifiers();//render time increases with the number of modifiers
+		//modifiers["RENDER"] = false;//dimensions without labels
+		var apID = "GFGPGPP---****X";//action point
+		var dmID = "SUGDUSAT--MY***";//symbol with display modifiers, will add to render time
+		var plainID = "SUGPUSAT----***";//plain symbol with no display modifiers
+		var id;
+		if(type === 1)
+		{
+			id = plainID;
+			modifiers = new Object();
+		}
+		else if(type === 2)
+		{
+			id = dmID;
+			modifiers = new Object();
+		}
+		else if(type === 3)
+		{
+			id = dmID;
+			modifiers = populateModifiers();
+		}
+		for(var i = 0; i < 1000; i++)
+		{
+			armyc2.c2sd.renderer.MilStdIconRenderer.Render(id,modifiers);
+		}
+
+		var end = new Date().getTime();
+		var time = end - start;
+		alert('Render 1k symbols: ' + (time/1000));//*/
+	}
+
+        function populateListBox(lb, symbolMap)
+        {
+            var tmpArray = new Array();
+            var option = null;
+            var def = null;
+            
+            //put values in array and sort
+            for(var key in symbolMap)
+            {
+                def = symbolMap[key];
+                if(def.drawCategory !== 0)
+                {
+                    tmpArray.push([def.description,def.symbolID]);
+                }
+            }
+            tmpArray.sort();
+            
+            //add values to list box
+            for(var i=0; i<tmpArray.length;i++)
+            {
+                option = new Option();
+                option.text = tmpArray[i][0];
+                option.value = tmpArray[i][1];
+                lb.add(option);
+            }
+            
+        }
+        function clearCanvas()
+        {
+            var preview = document.getElementById("preview");
+            preview.onclick = canvasClick;
+            
+            var ctx = preview.getContext('2d');
+            //outline the canvas
+            ctx.clearRect(0,0,650,300);
+            ctx.strokeStyle="#000000";
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(650,0);
+            ctx.lineTo(650,300);
+            ctx.lineTo(0,300);
+            ctx.lineTo(0,0);
+            ctx.stroke();//*/
+        }
+        function canvasClick(e)
+        {
+            //alert("clicked");
+            //console.dir(e);
+            //e.clientX;
+            //e.clientY;
+            if(_symbolID === null)
+            {
+                alert("Choose a symbol from one of the lists");
+                return;
+            }
+            
+            _symbolID = buildSymbolID(_symbolID);
+            
+            var preview = document.getElementById("preview");
+            var x = e.pageX - preview.offsetLeft;
+            var y = e.pageY - preview.offsetTop;
+            render(_symbolID,x, y);
+        }
+        
+        function setSpeedTestImages()
+        {
+            var msi = armyc2.c2sd.renderer.MilStdIconRenderer;
+            
+            //set speed test images
+            var ii1 = msi.Render("SUGPUSAT----***",{});
+            var img = document.getElementById("iST1");
+            img.src = ii1.toDataUrl();
+            img.width = ii1.getImageBounds().width;
+            img.height = ii1.getImageBounds().height;
+
+            var ii2 = msi.Render("SUGDUSAT--MY***",populateModifiers());
+            var img2 = document.getElementById("iST2");
+            img2.src = ii2.toDataUrl();
+            img2.width = ii2.getImageBounds().width;
+            img2.height = ii2.getImageBounds().height;
+            
+            //enable speed test buttons
+            var button = document.getElementById("btnST2");
+            button.disabled = false;
+            button.innerHTML = "Speed Test With Modifiers";
+            var button2 = document.getElementById("btnST1");
+            button2.disabled = false;
+            button2.innerHTML = "Speed Test";
+        }
+        
+	function preload()
+	{
+            var msi = armyc2.c2sd.renderer.MilStdIconRenderer;
+			var RendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings;
+            var symStd = 1;//2525C, 0=2525B
+            //populate sybol list boxes
+            var lbTG = document.getElementById("lbTG");
+            var lbU = document.getElementById("lbU");
+            var lbStatus = document.getElementById("lbStatus");
+            lbStatus.selectedIndex = 1;
+            if(lbTG)
+            {
+                populateListBox(lbTG,armyc2.c2sd.renderer.utilities.SymbolDefTable.getSymbolMap(symStd));
+                lbTG.remove(1);
+                lbTG.onselect = renderTG;
+                lbTG.onchange = renderTG;
+            }
+            if(lbU)
+            {
+                populateListBox(lbU,armyc2.c2sd.renderer.utilities.UnitDefTable.getSymbolMap(symStd));
+                lbU.remove(1);
+                lbU.onselect = renderFE;
+                lbU.onchange = renderFE;
+            }
+            
+            var preview = document.getElementById("preview");
+            preview.onclick = canvasClick;
+            
+            var ctx = preview.getContext('2d');
+            //outline the canvas
+            ctx.strokeStyle="#000000";
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(650,0);
+            ctx.lineTo(650,300);
+            ctx.lineTo(0,300);
+            ctx.lineTo(0,0);
+            ctx.stroke();//*/
+            
+            //console.log("preloading...");
+            //make sure fonts are loaded.
+            if(armyc2.c2sd.renderer.utilities.RendererUtilities.fontsLoaded()){
+                    console.log("fonts loaded fast");
+                    setSpeedTestImages();
+            }
+            else
+            {
+                    fontCheckTimer = setTimeout(checkFonts, 1000);
+            }//*/
+
+			var basic = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID("SFGPI-----H****");
+			var tf = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basic);
+			var ud = armyc2.c2sd.renderer.utilities.UnitDefTable.getUnitDef(basic);
+			
+            RendererSettings.setTextOutlineWidth(1);
+			RendererSettings.setSymbologyStandard(1);
+			//RendererSettings.setSymbologyStandard(0);
+			
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_NONE);
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_COLORFILL);
+			RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE);
+			//RendererSettings.setTextBackgroundMethod(RendererSettings.TextBackgroundMethod_OUTLINE_QUICK);
+
+	}
+</script>
+</head>
+   
+<BODY bgcolor="Cyan" onload="preload();">
+<select id="lbTG" size="10">
+    <option>Single Point Tactical</option>
+    <option>Populating Values...</option>
+</select>        
+<select id="lbU" size="10">
+    <option>Single Point Warfighting</option>
+    <option>Populating Values...</option>
+</select>     
+<br/>
+Rendered via HTML5 Canvas:<br/>
+<canvas id="preview" width="650" height="300"></canvas>
+<br/>
+<!-- <button id="btnDrawTG" type='button' onclick='renderTG();'>Draw TG</button>
+<button id="btnDrawFE" type='button' onclick='renderFE();'>Draw FE</button> -->
+Affiliation: <select id = lbAffiliation>
+    <option>F</option>
+    <option>H</option>
+    <option>U</option>
+    <option>N</option>
+    <option>S</option>
+    <option>L</option>
+    <option>P</option>
+    <option>G</option>
+    <option>W</option>
+    <option>A</option>
+    <option>D</option>
+    <option>M</option>
+    <option>J</option>
+    <option>K</option>
+</select>
+Status: <select id = lbStatus>
+    <option>A</option>
+    <option>P</option>
+    <option>C</option>
+    <option>D</option>
+    <option>X</option>
+    <option>F</option>
+</select>
+Modifier: <input id="tbModifiers" type="text" value="*****">
+Size: <input id="tbSize" type="number" value=35>
+Keep Unit Ratio: <input id="cbKeepUnitRatio" type="checkbox" checked>
+Labels:  <input id="cbLabels" type="checkbox">
+Draw as Icon:  <input id="cbDrawAsIcon" type="checkbox">
+<button id="btnClear" type='button' onclick='clearCanvas();' >Clear Canvas</button>
+<br/>
+<!-- <button id="btnRender" type='button' onclick='testRender();' disabled>Loading Page</button>-->
+<br/>
+<img id="iST1" src="" alt="test" height="35" width="35">
+<button id="btnST1" type='button' onclick='speedTest(1);'>Loading Fonts</button><!-- Speed Test -->
+<img id="iST2" src="" alt="test" height="35" width="35">
+<button id="btnST2" type='button' onclick='speedTest(3);'>Loading Fonts</button><!-- Speed Test With Modifiers -->
+<!-- <img id="batch1" src="" alt="batch1" height="35" width="35">
+<img id="batch2" src="" alt="batch2" height="35" width="35"> -->
+<br/>
+SVG in image tag:<img id="SVGTest" src="" alt="svg from datauri" height="100" width="100">
+<br/>
+Plain SVG text added to html page:
+<span id='contentSpan'/>
+</BODY>
+</html>
