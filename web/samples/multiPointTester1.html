@@ -39,7 +39,16 @@ function formatKMLForHTML(kml)
 function cleartext()
 {
 	//alert('clr');
-	document.getElementById("contentSpan").innerHTML = "";
+   
+    var canvas = document.getElementById("preview");
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);    
+    
+    var svgImage = document.getElementById("preview2");
+    svgImage.src = null;
+    
+    document.getElementById("contentSpan").innerHTML = "";
+    
 	return;
 }
 function testRender()
@@ -53,7 +62,12 @@ function testRender()
         
 
         
-        armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","AMBUSH");
+
+        var t = document.getElementById("symbol");
+        var selectedText = t.options[t.selectedIndex].text;
+
+
+        armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender",selectedText);
         var modifiers = "";
         //AMBUSH EXAMPLE
         var symbolCode = "GHGPSLA-------X";//ambush
@@ -76,9 +90,47 @@ function testRender()
 		//change this to format JSON to see the different output.
 		//var format = formatGeoJSON;
 		//var format = formatKML;
-        var format = formatGeoCanvas;
+        //var format = formatGeoCanvas;
         //var format = formatGeoSVG;
+        
+        var cbFormat = document.getElementById("format");
+        var format = parseInt(cbFormat.value);
 		
+        var cbSymbol = document.getElementById("symbol");
+        var symNum = parseInt(cbSymbol.value);
+        switch(symNum) 
+        {
+            case 0://Ambush
+                symbolCode = "GHGPSLA-------X";//ambush
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+                break;
+            case 1://FLOT
+                symbolCode = "GFGPGLF---****X";//flot
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                break;
+            case 2://Assembly Area
+                symbolCode = "GHGPGAA-------X"; //assembly area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
+            case 3://Sector Range Fan
+                symbolCode = "GFFPAXS---****X"; //sector range fan
+                controlPoints = "66.26700036208742,30.62755038706961";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [300,1000];
+                modifiers[mtg.AN_AZIMUTH] = [315,45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+                break;
+            default:
+                break;
+        } 
 		
 		//Not meant to be changed on the fly.
 		//Let's user choose between 2525Bch2 and 2525C.
@@ -108,7 +160,7 @@ function testRender()
 		//can also pass parameter saying which version of MilStd to use.
 		//var json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format,symStd);
 
-		document.getElementById("contentSpan").innerHTML = "<br />AMBUSH:   <br/>";
+		document.getElementById("contentSpan").innerHTML = "<br />" + selectedText + "<br/>";
 
 		if(format == formatGeoJSON)
 		{
@@ -153,225 +205,31 @@ function testRender()
 			}
 		}
 
-armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","ASSEMBLY AREA");
-		//ASSEMBLY AREA EXAMPLE
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //G*G*GLB---****X
-        //var symbolCode2 = "GFGPGLB-------X"; //boundary
-        //var symbolCode2 = "GHGPGAG-------X"; //general area
-        var symbolCode2 = "GHGPGAA-------X"; //assembly area
-        //var symbolCode2 = "GHMPOADC--****X"; //antitank ditch, complete 
-        //var symbolCode2 = "GFTPL---------X"; //delay
-        //var symbolCode2 = "GHGPSLA-------X"; //ambush
-        var controlPoints2 = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
-        var bbox2 = "66.26,30.627,66.27,30.63"; //will show clipping at work
-        //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
-        //var bbox2 = "-180.0,-90.0,180.0,90.0";
-        var scale2 = 50000.0;
+    }
+}
 
-		modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
-		//modifiers = "{\"modifiers\":{\"fillColor\":\"FFFFFF\",\"lineColor\":\"00FF00\",\"symbolFillIds\":\"SFGP-----------\"}}";
-		
-		//format = formatJSON;
-		format = formatKML;
-		var json2;
-		start = Date.now();
-		if(format == formatKML)
-		{
-			//RenderSymbol for 3D Google Earth.  KML format recommended.
-			json2 = rendererMP.RenderSymbol("ID","Name","Description", symbolCode2, controlPoints2, "clampToGround",scale2, bbox2, modifiers,format);
-		}
-		else
-		{
-			//RenderSymbol2D for 2D maps, JSON Recommended for simpler output.
-			json2 = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode2, controlPoints2, pixelWidth, pixelHeight, bbox2, modifiers,format);
-		}
-		stop = Date.now();
-		var timeAA = (stop-start)/1000;
-		
-        document.getElementById("contentSpan").innerHTML += "<br/><br/>Assembly Area:   <br/>";
-
-		if(format == formatGeoJSON)
-		{
-			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
-			if (json2 == null || json2 == "")
-				document.getElementById("contentSpan").innerHTML += "json empty";
-			else
-			{
-				document.getElementById("contentSpan").innerHTML += json2;
-			}
-		}
-		else// if formated as KML
-		{
-			document.getElementById("contentSpan").innerHTML += "KML Format:<br/>";
-			//the following is just so you can view the KML properly on the html page.
-			//this isn't something you'd normally do.
-			if (json2 == null || json2 == "")
-				document.getElementById("contentSpan").innerHTML += "kml empty";
-			else
-			{
-				var formattedKML = "";
-				formattedKML = formatKMLForHTML(json2);
-				
-				document.getElementById("contentSpan").innerHTML += formattedKML;
-				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
-			}
-		}
-armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","SECTOR RANGE FAN");
-		//SECTOR RANGE FAN EXAMPLE
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		var symbolCode3 = "GFFPAXS---****X"; //sector range fan
-
-        var controlPoints3 = "66.26700036208742,30.62755038706961";
-        var bbox3 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
-        //var bbox2 = "-180.0,-90.0,180.0,90.0";
-        var scale3 = 50000.0;
-		//distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-		var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
-		modifiers = {};
-		modifiers[mtg.AM_DISTANCE] = [300,1000];
-		modifiers[mtg.AN_AZIMUTH] = [315,45];
-		modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
-		
-		//format = formatJSON;
-		format = formatKML;
-		var json3;
-		start = Date.now();
-		if(format == formatKML)
-		{
-			//RenderSymbol for Google Earth.  KML format recommended.
-			json3 = rendererMP.RenderSymbol("ID","Name","Description", symbolCode3, controlPoints3, "clampToGround",scale3, bbox3, modifiers,format);
-		}
-		else
-		{
-			//RenderSymbol2D for 2D maps, JSON Recommended for simpler output.
-			json3 = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode3, controlPoints3, pixelWidth, pixelHeight, bbox3, modifiers,format);
-		}
-		stop = Date.now();
-		var timeSRF = (stop-start)/1000;
-        document.getElementById("contentSpan").innerHTML += "<br/><br/>Sector Range Fan:   <br/>";
-
-		if(format == formatGeoJSON)
-		{
-			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
-			if (json3 == null || json3 == "")
-				document.getElementById("contentSpan").innerHTML += "json empty";
-			else
-			{
-				document.getElementById("contentSpan").innerHTML += json3;
-			}
-		}
-		else// if formated as KML
-		{
-			document.getElementById("contentSpan").innerHTML += "KML Format:<br/>";
-			//the following is just so you can view the KML properly on the html page.
-			//this isn't something you'd normally do.
-			if (json3 == null || json3 == "")
-				document.getElementById("contentSpan").innerHTML += "kml empty";
-			else
-			{
-				var formattedKML = "";
-				formattedKML = formatKMLForHTML(json3);
-				
-				document.getElementById("contentSpan").innerHTML += formattedKML;
-				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
-			}
-		}
-		
-        ////////////////////////////////////////////////////////////////////////////////////////
-armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPoints3.html","testRender","FLOT");
-		//FLOT EXAMPLE
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		var symbolCode4 = "GHGPGLF-------X"; //flot
-
-        var controlPoints4 = "8.40185525443334,38.95854638813517 15.124217101733166,36.694658205882995 18.49694847529253,40.113591379080155 8.725267851897936,42.44678226078903 8.217048055882143,40.76041657400935";
-        var bbox4 = "5.76417051405295,34.86552015439102,20.291017309471272,45.188646318100695";
-        //var bbox2 = "-180.0,-90.0,180.0,90.0";
-        var scale4 = 5869879.2;
-		//distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-		modifiers = "{\"modifiers\":{\"lineColor\":\"ffff0000\"}}";
-		
-		//format = formatJSON;
-		format = formatKML;
-		
-		var json4;
-		var start = Date.now();
-		if(format === formatKML)
-		{
-			//RenderSymbol for Google Earth.  KML format recommended.
-			json4 = rendererMP.RenderSymbol("ID","Name","Description", symbolCode4, controlPoints4, "clampToGround",scale4, bbox4, modifiers,format);
-		}
-		else
-		{
-			//RenderSymbol2D for 2D maps, JSON Recommended for simpler output.
-			json4 = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode4, controlPoints4, pixelWidth, pixelHeight, bbox4, modifiers,format);
-		}
-		var stop = Date.now();
-		var time = stop - start;
-		var timeFlot = (stop-start)/1000;
-		//alert('Render 1k symbols: ' + (time/1000));
-		console.log('Render 1k symbols: ' + (time/1000));
-        document.getElementById("contentSpan").innerHTML += "<br/><br/>FLOT:   <br/>";
-
-		if(format === formatGeoJSON)
-		{
-			document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
-			if (json4 === null || json4 === "")
-				document.getElementById("contentSpan").innerHTML += "json empty";
-			else
-			{
-				document.getElementById("contentSpan").innerHTML += json4;
-			}
-		}
-		else// if formated as KML
-		{
-			document.getElementById("contentSpan").innerHTML += "KML Format:<br/>";
-			//the following is just so you can view the KML properly on the html page.
-			//this isn't something you'd normally do.
-			if (json4 == null || json4 == "")
-				document.getElementById("contentSpan").innerHTML += "kml empty";
-			else
-			{
-				var formattedKML = "";
-				formattedKML = formatKMLForHTML(json4);
-				
-				document.getElementById("contentSpan").innerHTML += formattedKML;
-				//document.getElementById("XMLHolder").innerHTML +=  json;//parseXMLString(json);
-			}
-		}
-		
-		/*document.getElementById("contentSpan").innerHTML += "<br/><br/>Ambush: "+ timeAmbush +"  <br/>";
-		document.getElementById("contentSpan").innerHTML += "Assembly Area: "+ timeAA +"  <br/>";
-		document.getElementById("contentSpan").innerHTML += "Sector Range Fan: "+ timeSRF +"  <br/>";
-		document.getElementById("contentSpan").innerHTML += "FLOT: "+ timeFlot +"  <br/>";//*/
-		
-
-		/*
-		try
-		{
-			armyc2.c2sd.renderer.utilities.SymbolDefTable.init();
-			var foo = armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint("G*TPB-----****X");
-			
-			document.getElementById("contentSpan").innerHTML += "<br>isMultiPoint: " + foo.toString();
-		}
-		catch(exc)
-		{
-			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("","",exc);
-		}*/
-		
-
-        ////////////////////////////////////////////////////////////////////////////////////////
-		
-    } //end if
+function preload() {
+    var cbFormat = document.getElementById("format");
+    cbFormat.selectedIndex=2;
 }
 
 	</script>
 </head>
-<body bgcolor="Cyan">
-Draw To Canvas Test:
+<body bgcolor="Cyan" onload="preload();">
+Draw Canvas/SVG Test:
 <canvas id="preview" width="30" height="30"></canvas><img id="preview2" src="" alt="" height="30" width="30"><br>
+    <select id="format">
+      <option value=0>KML</option>
+      <option value=2>GeoJSON</option>
+      <option value=3>GeoCanvas</option>
+      <option value=6>GeoSVG</option>
+    </select>
+    <select id="symbol">
+      <option value=0>Ambush</option>
+      <option value=1>FLOT</option>
+      <option value=2>Assembly Area</option>
+      <option value=3>Sector Range Fan</option>
+    </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
 	
