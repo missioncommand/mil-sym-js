@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta line required for IE-->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+
+<!-- Only versions of the renderer starting with "m-" are compatible with web workers" /> -->
+<!-- Output is limited to KML and GeoJSON.  Canvas output is not possible in a web worker /> -->
+<!-- <script src="m-c.js" type="text/javascript" ></script> -->
+<script src="m-c.js" type="text/javascript" ></script> 
+
+
+ <script type = "text/javascript">
+ 
+var worker = new Worker('MPWorker.js');
+var startTime = null;
+var stopTime = null;
+//function for formatting KML so it can be rendered properly on the HTML page
+function formatKMLForHTML(kml)
+{
+	var formattedKML = "";
+	var tempString = kml;
+	
+	var index = 0;
+	var start = 0;
+
+	index = tempString.indexOf("<");
+	while(index >=0)
+	{
+		tempString = tempString.replace("<","&lt;");
+		start = index+1;
+		index = tempString.indexOf("<", start);
+	}
+	index = tempString.indexOf(">");
+	while(index >=0)
+	{
+		tempString = tempString.replace(">","&gt;");
+		start = index+1;
+		index = tempString.indexOf(">", start);
+	}
+
+	formattedKML = tempString;
+	
+	return formattedKML;
+}
+//clears text on HTML page
+function cleartext()
+{
+	//alert('clr');
+	document.getElementById("contentSpan").innerHTML = "";
+     var svgImage = document.getElementById("preview2");
+                svgImage.src = null;
+	return;
+}
+//sample render call to web worker
+var messageCount = 0;
+function testRender(batch)
+{messageCount = 0;
+    var rendererMP = sec.web.renderer.SECWebRenderer;
+    var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
+    var modifiers = {};
+    var controlPoints = null;
+    var symbolCode = null;
+    var bbox = "66.25,30.60,66.28,30.65";
+    //var bbox = "66.20,30.5,66.35,30.8";
+    //var bbox = "66.25,30.60,66.26,30.65";
+    //var bbox = "-180.0,-90.0,180.0,90.0";
+    //bbox = null;
+    var scale = 50000.0;
+
+    if (rendererMP !== null) 
+    {	
+		var formatGeoSVG = 6;
+		var formatGeoCanvasLabels = 5;
+		var formatGeoCanvasDataURL = 4;
+		var formatGeoCanvas = 3;
+		var formatGeoJSON = 2;
+		var formatJSON = 1;
+		var formatKML = 0;
+		var pixelWidth = 1000;
+		var pixelHeight = 1000;
+		
+		//change this to format GeoJSON to see the different output.
+		//var format = formatGeoJSON;
+		//var format = formatGeoSVG;
+        //var format = formatKML;
+        
+        var cbFormat = document.getElementById("format");
+        var format = parseInt(cbFormat.value);
+        
+        var cbSymbol = document.getElementById("symbol");
+        var symNum = parseInt(cbSymbol.value);
+        
+        switch(symNum) 
+        {
+            case 0://Ambush
+                symbolCode = "GHGPSLA-------X";//ambush
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+                break;
+            case 1://FLOT
+                symbolCode = "GFGPGLF---****X";//flot
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                break;
+            case 2://Assembly Area
+                symbolCode = "GHGPGAA-------X"; //assembly area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
+            case 3://Sector Range Fan
+                symbolCode = "GFFPAXS---****X"; //sector range fan
+                controlPoints = "66.26700036208742,30.62755038706961";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [300,1000];
+                modifiers[mtg.AN_AZIMUTH] = [315,45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+                break;
+            default:
+                break;
+        } 
+		
+		//RenderSymbol2D recommended for 2D maps.  
+		//ID, Name and Description are optional when using GeoJSON format.
+
+
+//armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("multiPointTesterWebWorker.html","testRender","SECTOR RANGE FAN");
+		//SECTOR RANGE FAN EXAMPLE
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//var symbolCode = "GFFPAXS---****X"; //sector range fan
+        //var symbolCode = "GHGASLA-------X";//ambush anticipated
+		//var symbolCode = "GHGPSLA-------X";//ambush present
+		//var symbolCode = "GFGPGAE---****X";//engagement area
+        //var symbolCode = "GFGAGAA-------X"; //assembly area
+        //var symbolCode = "GHGPGLF-------X";//flot
+		//var symbolCode = "GHGPGAL-------X";//landing zone
+		//var symbolCode = "GHGPALL-------X";//LLTR
+		//var symbolCode = "GHGPALC-------X";////air corridor
+		//var symbolCode = "GFGPAAR---****X";//ROZ
+        //var symbolCode = "GFFPLTS--------";//Linear Smoke Target
+		//var symbolCode = "GHFPLCN-------X";//NFL
+		//var symbolCode = "GHFPLCR-------X";//RFL
+        //var symbolCode = "GFGPGLP---****X";//Phase Line
+		//var symbolCode = "GFFPACSI--****X";//Fire Support Area
+		//var symbolCode = "GFFPACAI--****X";//Airspace Coordination Area Irregular
+        //var symbolCode = "GFFPACAR--****X";//Airspace Coordination Area Rectangular
+        //var symbolCode = "WOS-HPFF----A--";//Weirs
+        //var symbolCode = "WO-DHCB-----A--";//Beack Hydrography
+		//var symbolCode = "GFTPF-----****X";//Task/Fix
+		//var symbolCode = "WO-DHHDF----A--";//fould ground
+        //var symbolCode = "G*F*AKBC--****X";//kill box blue rectangular
+        //var symbolCode = "GPTPQ---------X";//retain
+        //var symbolCode = "GFMPOAR-------X";//antitank ditch reinforced with antitank mines
+        //var symbolCode = "GFMPORP-------X";//roadblocks, craters, and blown bridges planned
+        //var symbolCode = "GFMPOADC------X";//AD complete
+        //var symbolCode = "GFSPLRA---****X";//ASR
+        
+        //3 point area
+        //var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+		//var controlPoints = "66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+        //angled 2 pt line
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703";
+        //horizontal 2 pt line
+        //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
+
+        //modifiers = {"H":"0:FFFF0000,1:FF00FF00,2:FF0000FF"};
+        //modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
+		//modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","fillColor":"60ff0000","W":"W1","W1":"W2"};
+        //modifiers = {"symbolFillIds":"SFGPU----------,SUGPU----------","symbolFillIconSize":35};
+        //modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2","AM":[5000]};
+		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
+		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
+		
+        
+		
+
+
+        var symStd = RS.Symbology_2525C;
+		//web worker assumes defaults.  you must pass any relevant overrides like symstd.
+		var result;
+        var fontInfo = null;
+		var data = {};
+        //required parameters///////////////////////////////////////////////////////////////////////
+		//data.altMode = "absolute";//required for 3d, comment out to render as 2D
+		data.scale = scale;//required for 3d
+		data.bbox = bbox;//required
+		data.format = format;//required
+		data.pixelHeight = pixelHeight;//required for 2d
+		data.pixelWidth = pixelWidth;//required for 2d
+        //required for non-batch call//////////////////////////////////////////////////////////////////
+		data.id = "ID";
+		data.name = "Name";
+		data.description = "description";
+		data.symbolID = symbolCode;
+		data.points = controlPoints;
+        data.modifiers = modifiers;//{"AM":[3000,10000],"AN":[315,45],"X":[0],"LOOKAT":true};
+        data.symstd = symStd;//1;//1=2525C, 0=2525Bch2 
+        //required for SVG format
+        if(format === formatGeoSVG)
+        {
+            data.fontInfo = getFontInfo("arial",14,"bold");
+        }
+        if(batch)//if batch, fill batch array with symbol properties
+        {
+            try
+            {
+                //populate batch array with symbol information
+                //var item = {id:"ID",name:"name",description:"description",symbolID:symbolCode,points:controlPoints,symstd:symStd,modifiers:modifiers};
+                var batchSize = 1000;
+                data.batch = [];
+                for(var i = 0; i < batchSize; i++)
+                {
+                    data.batch[i] = {id:"ID",name:"name",description:"description",symbolID:symbolCode,points:controlPoints,symstd:symStd,modifiers:modifiers};
+                }
+            }
+            catch(err)
+            {
+                console.log(err);
+            }
+        }
+		
+        //setup callbacks
+		worker.onerror = function(error)
+		{
+            //logs error to console
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MPWorker","postMessage",error);
+		};
+        //process results from web worker
+		worker.onmessage = function(e)
+		{
+
+                stopTime = Date.now();
+                var batchTime = (stopTime-startTime) / 1000;
+                document.getElementById("contentSpan").innerHTML += "<br/><br/>Batch Time: "+ batchTime +"  <br/>";
+            
+            if(e.data.id)//not a batch call
+            {
+
+                    result = e.data.result;
+                    document.getElementById("contentSpan").innerHTML += "<br/><br/>Symbol via Web Worker:   <br/>";
+                
+            }
+            else//batch call
+            {
+            
+                document.getElementById("contentSpan").innerHTML += "<br/><br/>Batch Symbol via Web Worker:   <br/>";
+                if(format === formatKML)
+                {
+                    result = e.data.result[0].kml;
+                }
+                else if(format === formatGeoJSON)
+                {
+                    result = e.data.result[0].geojson;
+                }
+                else
+                    result = e.data.result[0];
+            }
+			
+
+			if(e.data.format === "ERROR")
+			{
+                document.getElementById("contentSpan").innerHTML += "ERROR:<br/>";
+				document.getElementById("contentSpan").innerHTML += result;
+			}
+			else if(format === formatGeoJSON)
+			{
+				document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
+				if (result === null || result === "")
+					document.getElementById("contentSpan").innerHTML += "json empty";
+				else
+				{
+					document.getElementById("contentSpan").innerHTML += result;
+				}
+			}
+            else if(format === formatGeoSVG || format === 7)
+            {   //return {svg:geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                var svg = result.svg;
+                var svgImage = document.getElementById("preview2");
+                svgImage.width = result.bounds.width;
+                svgImage.height = result.bounds.height;
+                svgImage.src = svg;
+            }
+			else// if formatted as KML
+			{
+				document.getElementById("contentSpan").innerHTML += "KML Format:<br/>";
+				
+				if (result === null || result === "")
+					document.getElementById("contentSpan").innerHTML += "kml empty";
+				else
+				{
+					var formattedKML = "";
+                    //the following is just so you can view the KML properly on the html page.
+				    //this isn't something you'd normally do.
+					formattedKML = formatKMLForHTML(result);
+					
+					document.getElementById("contentSpan").innerHTML += formattedKML;
+				}
+			}
+            
+            
+			
+		};//*/
+		
+		//send data for render request to web worker
+        startTime = Date.now();
+        worker.postMessage(data);
+        document.getElementById("contentSpan").innerHTML += "<br/><br/>Batch Running...   <br/>";
+	
+    } //end if
+}
+
+//getFontInfo
+//Use this function to get font info needed for SVG web worker rendering.
+//If you already have the full renderer loaded you can just call armyc2.c2sd.renderer.utilities.RendererSettings.getMPFontInfo();
+//If you want to load as little as possible outside of the web worker, just make sure you have the RendererUtilities.js file loaded
+//and use this function to get the fontInfo object.
+function getFontInfo(name, size, style){
+    _ModifierFontName = name;
+    _ModifierFontSize = size;
+    if(style !== 'bold' || style !== 'normal')
+    {
+        _ModifierFontStyle = style;
+    }
+    else
+    {
+        _ModifierFontStyle = 'bold';
+    }
+    _ModifierFont = style + " " + size + "pt " + name;
+    
+    var measurements = armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont);
+    return {name: name, size:size, style:style, measurements:measurements};
+}
+
+function preload() {
+    var cbFormat = document.getElementById("format");
+    cbFormat.selectedIndex=2;
+}
+
+	</script>
+</head>
+<body bgcolor="Cyan" onload="preload();">
+Draw SVG To Image Test:
+<canvas id="preview" width="30" height="30"></canvas><img id="preview2" src="" alt="" height="30" width="30"><br>
+    <select id="format">
+      <option value=0>KML</option>
+      <option value=2>GeoJSON</option>
+      <option value=6>GeoSVG</option>
+    </select>
+    <select id="symbol">
+      <option value=0>Ambush</option>
+      <option value=1>FLOT</option>
+      <option value=2>Assembly Area</option>
+      <option value=3>Sector Range Fan</option>
+    </select>
+    <button type='button' onclick='testRender()'>Test Multipoint</button>
+    <button type='button' onclick='testRender(true)'>Test Multipoint Batch 1k</button>
+	<button type='button' onclick='cleartext()'>Clear</button>
+	
+   <span id='contentSpan'/>
+   
+   
+   
+
+</body>
+
+</html>
