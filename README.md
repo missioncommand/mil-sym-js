@@ -4,6 +4,7 @@ mil-sym-js is a JavaScript port of the java-based mil-std rendering libraries th
 
 [JS Renderer Developer's Guide Wiki](https://github.com/missioncommand/mil-sym-js/wiki/Developer's-Guide)  
 [Google Group Discussion Forum](https://groups.google.com/forum/#!forum/mission-command-milstd-renderer)  
+[mil-sym-js io page on GitHub](http://missioncommand.github.io/mil-sym-js/)
 
 MIL-STD-2525
 -----------
