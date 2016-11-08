@@ -523,6 +523,15 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/SinglePointRenderer.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/MilStdIconRenderer.js" />
+            
+            <!-- SVG classes for multipoints-->
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/types.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/utilities.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/so/path.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGInfo.js" />
+            <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SVGTextInfo.js" />
+            <fileset file="web/js/src/sec/web/renderer/MultiPointHandlerSVG.js" />
         
             <!--(Multi) add source required by SECWebRenderer--> 
             <fileset file="web/js/src/sec/web/renderer/utilities/JavaRendererUtilities.js" />

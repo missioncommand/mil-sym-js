@@ -727,7 +727,7 @@ return{
     {
         return measureStringSansDOM(text, measurements);
         //get font measurements
-        var widths = measurements.widths; 
+        /*var widths = measurements.widths; 
         var width = 0;
         var length = text.length;
         for (var i=0; i < length; i++) 
@@ -737,7 +737,7 @@ return{
         } 
         var bounds = new armyc2.c2sd.renderer.so.Rectangle(0,0 - measurements.height,
                                 Math.round(width), measurements.fullHeight); 
-        return bounds;
+        return bounds;//*/
     },
     
     

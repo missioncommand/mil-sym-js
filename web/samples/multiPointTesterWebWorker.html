@@ -58,6 +58,15 @@ function testRender(batch)
 {messageCount = 0;
     var rendererMP = sec.web.renderer.SECWebRenderer;
     var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
+    var modifiers = {};
+    var controlPoints = null;
+    var symbolCode = null;
+    var bbox = "66.25,30.60,66.28,30.65";
+    //var bbox = "66.20,30.5,66.35,30.8";
+    //var bbox = "66.25,30.60,66.26,30.65";
+    //var bbox = "-180.0,-90.0,180.0,90.0";
+    //bbox = null;
+    var scale = 50000.0;
 
     if (rendererMP !== null) 
     {	
@@ -78,6 +87,43 @@ function testRender(batch)
         
         var cbFormat = document.getElementById("format");
         var format = parseInt(cbFormat.value);
+        
+        var cbSymbol = document.getElementById("symbol");
+        var symNum = parseInt(cbSymbol.value);
+        
+        switch(symNum) 
+        {
+            case 0://Ambush
+                symbolCode = "GHGPSLA-------X";//ambush
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+                break;
+            case 1://FLOT
+                symbolCode = "GFGPGLF---****X";//flot
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                break;
+            case 2://Assembly Area
+                symbolCode = "GHGPGAA-------X"; //assembly area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
+            case 3://Sector Range Fan
+                symbolCode = "GFFPAXS---****X"; //sector range fan
+                controlPoints = "66.26700036208742,30.62755038706961";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [300,1000];
+                modifiers[mtg.AN_AZIMUTH] = [315,45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+                break;
+            default:
+                break;
+        } 
 		
 		//RenderSymbol2D recommended for 2D maps.  
 		//ID, Name and Description are optional when using GeoJSON format.
@@ -91,7 +137,7 @@ function testRender(batch)
 		//var symbolCode = "GHGPSLA-------X";//ambush present
 		//var symbolCode = "GFGPGAE---****X";//engagement area
         //var symbolCode = "GFGAGAA-------X"; //assembly area
-        var symbolCode = "GHGPGLF-------X";//flot
+        //var symbolCode = "GHGPGLF-------X";//flot
 		//var symbolCode = "GHGPGAL-------X";//landing zone
 		//var symbolCode = "GHGPALL-------X";//LLTR
 		//var symbolCode = "GHGPALC-------X";////air corridor
@@ -103,7 +149,7 @@ function testRender(batch)
 		//var symbolCode = "GFFPACSI--****X";//Fire Support Area
 		//var symbolCode = "GFFPACAI--****X";//Airspace Coordination Area Irregular
         //var symbolCode = "GFFPACAR--****X";//Airspace Coordination Area Rectangular
-        var symbolCode = "WOS-HPFF----A--";//Weirs
+        //var symbolCode = "WOS-HPFF----A--";//Weirs
         //var symbolCode = "WO-DHCB-----A--";//Beack Hydrography
 		//var symbolCode = "GFTPF-----****X";//Task/Fix
 		//var symbolCode = "WO-DHHDF----A--";//fould ground
@@ -115,7 +161,7 @@ function testRender(batch)
         //var symbolCode = "GFSPLRA---****X";//ASR
         
         //3 point area
-        var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+        //var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
 		//var controlPoints = "66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         //angled 2 pt line
@@ -123,7 +169,7 @@ function testRender(batch)
         //horizontal 2 pt line
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.62755038706961";
 
-        modifiers = {"H":"0:FFFF0000,1:FF00FF00,2:FF0000FF"};
+        //modifiers = {"H":"0:FFFF0000,1:FF00FF00,2:FF0000FF"};
         //modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","W":"W1","W1":"W2"};
 		//modifiers = {"T":"NAME","H":"H","lineColor":"00ff00","fillColor":"60ff0000","W":"W1","W1":"W2"};
         //modifiers = {"symbolFillIds":"SFGPU----------,SUGPU----------","symbolFillIconSize":35};
@@ -131,21 +177,9 @@ function testRender(batch)
 		//modifiers = {"T":"NAME","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#0000FF","fillColor":"#0000FF"};
 		//modifiers = {"T":"SNOOPY DOG","H":"H","W":"W1","W1":"W2","AM":[500,700],"lineColor":"#300000FF","fillColor":"#0000FF","textColor":"#FF00FF","textBackgroundColor":"#00FF00"};
 		
-        var bbox = "66.25,30.60,66.28,30.65";
-        //var bbox = "66.20,30.5,66.35,30.8";
-		//var bbox = "66.25,30.60,66.26,30.65";
-        //var bbox = "-180.0,-90.0,180.0,90.0";
-        //bbox = null;
-        var scale = 500000.0;
+        
 		
-        //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-        var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
-        var MilStdAttributes = armyc2.c2sd.renderer.utilities.MilStdAttributes;
-		var modifiers = {};//{"AM":[3000,10000],"AN":[315,45]};
-        modifiers[ModifiersTG.AM_DISTANCE] = [3000,10000];
-        modifiers[ModifiersTG.AN_AZIMUTH] = [315,45];
-        modifiers[ModifiersTG.X_ALTITUDE_DEPTH] = [0];
-		modifiers[MilStdAttributes.LookAtTag] = true;
+
 
         var symStd = RS.Symbology_2525C;
 		//web worker assumes defaults.  you must pass any relevant overrides like symstd.
@@ -318,8 +352,14 @@ Draw SVG To Image Test:
       <option value=2>GeoJSON</option>
       <option value=6>GeoSVG</option>
     </select>
+    <select id="symbol">
+      <option value=0>Ambush</option>
+      <option value=1>FLOT</option>
+      <option value=2>Assembly Area</option>
+      <option value=3>Sector Range Fan</option>
+    </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
-    <button type='button' onclick='testRender(true)'>Test Multipoint Batch</button>
+    <button type='button' onclick='testRender(true)'>Test Multipoint Batch 1k</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
 	
    <span id='contentSpan'/>
