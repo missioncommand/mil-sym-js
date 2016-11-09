@@ -334,6 +334,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (status !== null && status.equals("A")) {
                 if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape(lineType) === false)
                     tg.set_LineStyle(1);
+                if(lineType===23131200)	//atditchc
+                    tg.set_LineStyle(2);   //dotted outline             
             }
             tg.set_VisibleModifiers(true);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setClientCoords(milStd, tg);
