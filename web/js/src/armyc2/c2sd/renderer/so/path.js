@@ -501,7 +501,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             else
                 line += ' stroke-width="2"';
         
-            if(strokeOpacity && strokeOpacity !== 1.0)
+            if(strokeOpacity !== 1.0)
             {
                 //stroke-opacity="0.4"
                 line += ' stroke-opacity="' + strokeOpacity + '"';
@@ -532,7 +532,7 @@ armyc2.c2sd.renderer.so.Path = function () {
                 /*else
                     line += ' fill="' + fill.replace(/#/g,"&#35;") + '"';//text = text.replace(/\</g,"&gt;");*/
                     
-                if(fillOpacity && fillOpacity !== 1.0)
+                if(fillOpacity !== 1.0)
                 {
                     //fill-opacity="0.4"
                     line += ' fill-opacity="' + fillOpacity + '"';
