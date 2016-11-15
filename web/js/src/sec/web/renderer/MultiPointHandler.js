@@ -557,7 +557,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 geoCoords.push(tempPt);
             }
 
-            if (bbox !== null && bbox !== ("")) {
+            if (bbox !== null && bbox !== ("") && bbox !== undefined) {
                 var bounds = null;
                 if (bbox.contains(" ")) //trapezoid
                 {
