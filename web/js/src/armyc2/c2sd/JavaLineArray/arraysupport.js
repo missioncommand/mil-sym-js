@@ -1488,7 +1488,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return pEllipsePoints;
             },
-            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth) {
+            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth, lineType) {
                 var pResultPoints = null;
                 try {                    
                         var pEllipsePoints=new Array(36);
@@ -1496,6 +1496,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         var dFactor=0;
                         var a=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
                         var b=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
+                        if(lineType === 13000002)
+                            b=a;
                         armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
                         for (l = 1; l < 37; l++)
                         {
@@ -1504,7 +1506,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pEllipsePoints[l - 1].y = ptCenter.y + (b * Math.sin(dFactor));
                             pEllipsePoints[l - 1].style = 0;
                         }
-                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth-90);
+                        if(lineType !== 13000002)
+                            armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth-90);
                         pResultPoints=new Array(37);
                         for(j=0;j<36;j++)
                             pResultPoints[j]=pEllipsePoints[j];
@@ -2174,7 +2177,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pt2 = pLinePoints[2];
                             //pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getEllipsePoints(pt0, pt1, pt2);
                             var azimuth=pLinePoints[3].x;
-                            pLinePoints=armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0,pt1,pt2,azimuth);
+                            pLinePoints=armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0,pt1,pt2,azimuth,lineType);
                             acCounter = 37;
                             break;
                         case 23200000:
