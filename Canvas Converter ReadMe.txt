@@ -1,6 +1,6 @@
-Example for sec.web.renderer.MultiPointHandler.Rendersymbol clients using format or datauri formats.
+Example for sec.web.renderer.MultiPointHandler.Rendersymbol clients using canvas, svg, or datauri formats.
 
-The most commonly used formats used by clients for this function are KML and GeoJSON. For these formats the renderer uses virtual pixels and returns geo based strings to the client, so that the virtual pixels estimate typically affects only the glyph size for decorated lines and the variance between scales is usually not noticeable. For canvas and datauri formats the object returned is a pixels based image so it is not well suited for virtual pixels. The client can pass the optional converter parameter to ensure that the renderer geo to pixels conversions match the conversions being done by the client. The example below is for Cesium/webGL clients and describes the required interface for all clients in the commented code.
+The most commonly used formats used by clients for this function are KML and GeoJSON. For these formats the renderer uses virtual pixels and returns geo based strings to the client, so that the virtual pixels estimate typically affects only the glyph size for decorated lines and the variance between scales is usually not noticeable. For canvas, svg and datauri formats the object returned is a pixels based image so it is not well suited for virtual pixels. The client can pass the optional converter parameter to ensure that the renderer geo to pixels conversions match the conversions being done by the client. The example below is for Cesium/webGL clients and describes the required interface for all clients in the commented code.
  
 For calls to RenderSymbol:            
 
