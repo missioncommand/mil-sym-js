@@ -2483,7 +2483,7 @@ return{
         centerPoint = new SO.Point(Math.round(si.getAnchorPoint().getX()),Math.round(si.getAnchorPoint().getY()));
     
         var byLabelHeight = false;
-        labelHeight = fontInfo.measurements.height;
+        labelHeight = fontInfo.measurements.fullHeight;
         labelHeight = Math.round(labelHeight);
         var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
