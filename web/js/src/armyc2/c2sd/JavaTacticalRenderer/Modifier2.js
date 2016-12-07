@@ -4482,7 +4482,12 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                     {
                         if (tg.Pixels.size() > j * 102 + 25) {
                             pt0 = tg.Pixels.get(j * 102 + 25);
-                            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
+                            //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
+                            if(j===0)
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + am[j], 3, -1, pt0, pt0);
+                            else                            
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);                                
+                            
                         }                            
                     }
                 }// end if set range fan text
