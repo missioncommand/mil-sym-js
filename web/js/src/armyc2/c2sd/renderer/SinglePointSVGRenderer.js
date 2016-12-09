@@ -3479,6 +3479,7 @@ return{
                     case "X":
                     case "F":
                         return true;
+                    default:
                         break;  
                 }
 
