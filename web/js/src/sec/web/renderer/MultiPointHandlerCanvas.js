@@ -64,7 +64,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {object} fillTexture - an html5 canvas
          * @returns {geoCanvas} - looks like: {image:canvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture)
+        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, converter)
         {
             if (textInfoBuffer === null)
             {
@@ -98,7 +98,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer, fillTexture);
+                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer, fillTexture, converter);
                     if(pathInfo.path && pathInfo.path.getBounds())
                     {
                         tempBounds = pathInfo.path.getBounds();
@@ -125,6 +125,13 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     //multipoint renderer is assuming text is centered vertically 
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
+
+                    if(converter)//map specific converter
+                    {
+                        tempLocation = ipc.PixelsToGeo(tempLocation);
+                        tempLocation = converter.GeoToPixels(tempLocation);
+                    }
+
                     var justify=tempModifier.getTextJustify() || "";
                     var strJustify="left";
                     if(justify===0)
@@ -210,22 +217,74 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 //get geo bounds for canvas
                 var geoCoordTL = null;
                 var geoCoordBR = null;
+                var geoCoordBL = null;
+                var geoCoordBR = null;
+                var west = null;
+                var north = null;
+                var south = null;
+                var east = null;
                 if(unionBounds)
                 {
                     var coordTL = new armyc2.c2sd.graphics2d.Point2D();
                     coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
                     var coordBR = new armyc2.c2sd.graphics2d.Point2D();
                     coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
+
+                    var coordTR = new armyc2.c2sd.graphics2d.Point2D();
+                    coordTR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY());
+                    var coordBL = new armyc2.c2sd.graphics2d.Point2D();
+                    coordBL.setLocation(unionBounds.getX(), unionBounds.getY() + unionBounds.getHeight());
+
+                    south = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY() + unionBounds.getHeight());
+                    north = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY());
+                    east = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth(),unionBounds.getY() + unionBounds.getHeight()/2);
+                    west = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX(),unionBounds.getY() + unionBounds.getHeight()/2);
                     
-                    geoCoordTL = ipc.PixelsToGeo(coordTL);
-                    geoCoordBR = ipc.PixelsToGeo(coordBR);
+                    if(converter)
+                    {
+                        geoCoordTL = converter.PixelsToGeo(coordTL);
+                        geoCoordBR = converter.PixelsToGeo(coordBR);
+                        geoCoordTR = converter.PixelsToGeo(coordTR);
+                        geoCoordBL = converter.PixelsToGeo(coordBL);
+
+                        north = converter.PixelsToGeo(north);
+                        south = converter.PixelsToGeo(south);
+                        east = converter.PixelsToGeo(east);
+                        west = converter.PixelsToGeo(west);
+                    }
+                    else
+                    {
+                        geoCoordTL = ipc.PixelsToGeo(coordTL);
+                        geoCoordBR = ipc.PixelsToGeo(coordBR);
+                        geoCoordTR = ipc.PixelsToGeo(coordTR);
+                        geoCoordBL = ipc.PixelsToGeo(coordBL);
+
+                        north = ipc.PixelsToGeo(north);
+                        south = ipc.PixelsToGeo(south);
+                        east = ipc.PixelsToGeo(east);
+                        west = ipc.PixelsToGeo(west);
+                    }
                     if (normalize)
                     {
                         geoCoordTL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTL);
                         geoCoordBR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBR);
+                        geoCoordTR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTR);
+                        geoCoordBL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBL);
+
+                        north = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(north);
+                        south = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(south);
+                        east = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(east);
+                        west = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(west);
                     }
                     geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
                     geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
+                    geoCoordTR.setLocation(geoCoordTR.getX().toFixed(_decimalAccuracy), geoCoordTR.getY().toFixed(_decimalAccuracy));
+                    geoCoordBL.setLocation(geoCoordBL.getX().toFixed(_decimalAccuracy), geoCoordBL.getY().toFixed(_decimalAccuracy));
+
+                    north.setLocation(north.getX().toFixed(_decimalAccuracy), north.getY().toFixed(_decimalAccuracy));
+                    south.setLocation(south.getX().toFixed(_decimalAccuracy), south.getY().toFixed(_decimalAccuracy));
+                    east.setLocation(east.getX().toFixed(_decimalAccuracy), east.getY().toFixed(_decimalAccuracy));
+                    west.setLocation(west.getX().toFixed(_decimalAccuracy), west.getY().toFixed(_decimalAccuracy));
                 }
                 else//nothing to draw
                 {
@@ -233,6 +292,15 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     geoCoordBR = new armyc2.c2sd.graphics2d.Point2D();
                     geoCoordTL.setLocation(0,0);
                     geoCoordBR.setLocation(0,0);
+                    geoCoordTR = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordBL = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordTR.setLocation(0,0);
+                    geoCoordBL.setLocation(0,0);
+
+                    north = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    south = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    east = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    west = new armyc2.c2sd.graphics2d.Point2D(0,0);
                 }
 
                 
@@ -246,7 +314,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(paths && len > 0 && unionBounds)
             {
                 paths.smooth = shapes.smooth;//for lineJoin
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture);
+                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, geoCoordTR, geoCoordBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture);
                 return geoCanvas;
             }
             else
@@ -271,7 +339,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
          *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
          */
-        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
+        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, geoTR, geoBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
         {
             var buffer = null;
             if (format === 4)
@@ -497,12 +565,12 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if (format === 3 || format === 5)
             {
                 //return object with canvas and geo points
-                return {image: buffer, geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
+                return {image: buffer, geoTL: geoTL, geoBR: geoBR, geoTR:geoTR, geoBL:geoBL, north:north, south:south, east:east, west:west, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
             }
             else if (format === 4)
             {
                 //return object with dataurl and geo points
-                return {dataURL: buffer.toDataURL(), geoTL: geoTL, geoBR: geoBR, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
+                return {dataURL: buffer.toDataURL(), geoTL: geoTL, geoBR: geoBR, geoTR:geoTR, geoBL:geoBL, north:north, south:south, east:east, west:west, width: buffer.width, height: buffer.height, wasClipped:wasClipped};
             }
             else
             {//should never get here:
@@ -581,6 +649,13 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
 
                 for (var j = 0; j < shape.size(); j++) {
                     var coord = shape.get(j);
+
+                    if(converter)//map specific converter
+                    {
+                        coord = ipc.PixelsToGeo(coord);
+                        coord = converter.GeoToPixels(coord);
+                    }
+                    
                     if (j === 0)
                     {
                         path.moveTo(coord.x, coord.y);
