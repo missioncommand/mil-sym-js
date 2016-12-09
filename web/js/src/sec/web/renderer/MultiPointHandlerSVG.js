@@ -47,7 +47,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {number} SVGFormat - 0 plain svg string, 1 base64 string (default), 2 url endcoded (% notation)
          * @returns {geoSVG} - looks like: {svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat)
+        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat, converter)
         {
             
             var height = 10;
@@ -80,7 +80,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture, svgFormat);
+                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture, svgFormat, converter);
                     if(pathInfo.svg && pathInfo.bounds)
                     {
                         tempBounds = pathInfo.bounds;
@@ -112,6 +112,12 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
                     tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
+
+                    if(converter)//map specific converter
+                    {
+                        tempLocation = ipc.PixelsToGeo(tempLocation);
+                        tempLocation = converter.GeoToPixels(tempLocation);
+                    }
                     
                     var justify=tempModifier.getTextJustify() || "";
                     var strJustify="left";
@@ -193,23 +199,76 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                 //get geo bounds for canvas
                 var geoCoordTL = null;
+                var geoCoordTR = null;
+                var geoCoordBL = null;
                 var geoCoordBR = null;
+                var west = null;
+                var north = null;
+                var south = null;
+                var east = null;
                 if(unionBounds)
                 {
                     var coordTL = new armyc2.c2sd.graphics2d.Point2D();
                     coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
                     var coordBR = new armyc2.c2sd.graphics2d.Point2D();
                     coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
+
+                    var coordTR = new armyc2.c2sd.graphics2d.Point2D();
+                    coordTR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY());
+                    var coordBL = new armyc2.c2sd.graphics2d.Point2D();
+                    coordBL.setLocation(unionBounds.getX(), unionBounds.getY() + unionBounds.getHeight());
+
+                    south = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY() + unionBounds.getHeight());
+                    north = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY());
+                    east = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth(),unionBounds.getY() + unionBounds.getHeight()/2);
+                    west = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX(),unionBounds.getY() + unionBounds.getHeight()/2);
                     
-                    geoCoordTL = ipc.PixelsToGeo(coordTL);
-                    geoCoordBR = ipc.PixelsToGeo(coordBR);
+                    if(converter)
+                    {
+                        geoCoordTL = converter.PixelsToGeo(coordTL);
+                        geoCoordBR = converter.PixelsToGeo(coordBR);
+                        geoCoordTR = converter.PixelsToGeo(coordTR);
+                        geoCoordBL = converter.PixelsToGeo(coordBL);
+
+                        north = converter.PixelsToGeo(north);
+                        south = converter.PixelsToGeo(south);
+                        east = converter.PixelsToGeo(east);
+                        west = converter.PixelsToGeo(west);
+                    }
+                    else
+                    {
+                        geoCoordTL = ipc.PixelsToGeo(coordTL);
+                        geoCoordBR = ipc.PixelsToGeo(coordBR);
+                        geoCoordTR = ipc.PixelsToGeo(coordTR);
+                        geoCoordBL = ipc.PixelsToGeo(coordBL);
+
+                        north = ipc.PixelsToGeo(north);
+                        south = ipc.PixelsToGeo(south);
+                        east = ipc.PixelsToGeo(east);
+                        west = ipc.PixelsToGeo(west);
+                    }
+                    
                     if (normalize)
                     {
                         geoCoordTL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTL);
                         geoCoordBR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBR);
+                        geoCoordTR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTR);
+                        geoCoordBL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBL);
+
+                        north = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(north);
+                        south = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(south);
+                        east = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(east);
+                        west = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(west);
                     }
                     geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
                     geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
+                    geoCoordTR.setLocation(geoCoordTR.getX().toFixed(_decimalAccuracy), geoCoordTR.getY().toFixed(_decimalAccuracy));
+                    geoCoordBL.setLocation(geoCoordBL.getX().toFixed(_decimalAccuracy), geoCoordBL.getY().toFixed(_decimalAccuracy));
+
+                    north.setLocation(north.getX().toFixed(_decimalAccuracy), north.getY().toFixed(_decimalAccuracy));
+                    south.setLocation(south.getX().toFixed(_decimalAccuracy), south.getY().toFixed(_decimalAccuracy));
+                    east.setLocation(east.getX().toFixed(_decimalAccuracy), east.getY().toFixed(_decimalAccuracy));
+                    west.setLocation(west.getX().toFixed(_decimalAccuracy), west.getY().toFixed(_decimalAccuracy));
                 }
                 else//nothing to draw
                 {
@@ -217,6 +276,15 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     geoCoordBR = new armyc2.c2sd.graphics2d.Point2D();
                     geoCoordTL.setLocation(0,0);
                     geoCoordBR.setLocation(0,0);
+                    geoCoordTR = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordBL = new armyc2.c2sd.graphics2d.Point2D();
+                    geoCoordTR.setLocation(0,0);
+                    geoCoordBL.setLocation(0,0);
+
+                    north = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    south = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    east = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    west = new armyc2.c2sd.graphics2d.Point2D(0,0);
                 }
 
                 
@@ -257,17 +325,22 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 geoSVG += '</svg>';//*/
                 
                 if(svgFormat === 1)
-                    return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                {
+                    //return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
+                }
                 else if(svgFormat === 2)
                 {
                     geoSVG = geoSVG.replace(/\</g,"%3C");
                     geoSVG = geoSVG.replace(/\>/g,"%3E");
                     geoSVG = geoSVG.replace(/\"/g,"%22");
-                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
                 }
                 else
                 {
-                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
                 }
             }
             else
@@ -275,7 +348,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 //return blank 2x2 SVG
                 //<svg width="1px" height="1px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
                 //return {svg:"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjwvc3ZnPg==", geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
-                return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                //return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped};
             }
             //}
             //else
@@ -369,7 +443,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {type} fillTexture
          * @returns {string} svgElement
          */
-        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture, svgFormat)
+        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture, svgFormat, converter)
         {
 
             var pathInfo = null;
@@ -431,6 +505,13 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                 for (var j = 0; j < shape.size(); j++) {
                     var coord = shape.get(j);
+
+                    if(converter)//map specific converter
+                    {
+                        coord = ipc.PixelsToGeo(coord);
+                        coord = converter.GeoToPixels(coord);
+                    }
+
                     if (j === 0)
                     {
                         path.moveTo(coord.x, coord.y);

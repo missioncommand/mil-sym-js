@@ -620,8 +620,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
 
-                if (converter !== undefined && converter !== null)
-                    ipc = converter;
+                /*if (converter !== undefined && converter !== null)
+                    ipc = converter;*/
 
                 //sanity check
                 //when spanning the IDL sometimes they send a bad bbox with 0 width
@@ -665,7 +665,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     rightX = Math.round(temp.getX());
                     //if (scale > 1e7)
                     //for large scales and client is not using the canvas converter
-                    if (scale > 1e7 && (converter === undefined || converter === null))
+                    //if (scale > 1e7 && (converter === undefined || converter === null))
+                    if (scale > 1e7)
                     {
                         //get widest point in the AOI
 //                        var midLat = 0;
@@ -969,9 +970,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
                     if(rect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo,svgFormat);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo,svgFormat, converter);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo,svgFormat);
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo,svgFormat, converter);
                         
                 }
                 else if (format === 1) //deprecated
