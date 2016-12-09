@@ -1496,8 +1496,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         var dFactor=0;
                         var a=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
                         var b=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
-                        if(lineType === 13000002)
-                            b=a;
+//                        if(lineType === 13000002)
+//                            b=a;
                         armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
                         for (l = 1; l < 37; l++)
                         {
