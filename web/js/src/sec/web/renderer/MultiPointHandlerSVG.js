@@ -111,7 +111,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //multipoint renderer is assuming text is centered vertically 
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
-                    tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
+                    //tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
 
                     if(converter)//map specific converter
                     {
@@ -318,7 +318,31 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 group += '</g>'; 
                 
                 //wrap in SVG
-                var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                //var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                var tempWidth = Math.ceil(unionBounds.getWidth());
+                var tempHeight = Math.ceil(unionBounds.getHeight());
+                var quality = 1.0;
+                var bigger = Math.max(tempWidth, tempHeight);
+                var max = 1000;
+                if(!converter)
+                {
+                    if(bigger < max)
+                    {
+                        if(bigger * 2 < max)
+                        {
+                            quality = 2;
+                        }
+                        else
+                        {
+                            quality = max / bigger;
+                        }
+                    }
+                    else
+                    {
+                        quality = 1;
+                    }
+                }
+                var geoSVG = '<svg viewBox="0 0 ' + tempWidth + ' ' + tempHeight + '"' + ' width="' + (tempWidth * quality) + 'px" height="' + (tempHeight * quality) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
                 if(fillTexture)
                     geoSVG += fillTexture;
                 geoSVG += group;
