@@ -589,7 +589,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {type} fillTexture
          * @returns {feature} {path, lineColor, fillColor, lineWidth, bounds}
          */
-        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize, fillTexture)
+        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize, fillTexture, converter)
         {
 
             var pathInfo = null;
