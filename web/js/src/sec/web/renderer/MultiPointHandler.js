@@ -612,10 +612,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         setRectNull = true;
                     //end section
 
-                    if (format !== 3 && format !== 4 && format !== 5)
-                    {
-                        scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
-                    }
+                    scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
+                    
 
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
