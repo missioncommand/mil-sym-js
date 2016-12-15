@@ -25,8 +25,8 @@ sec.web.renderer.MultiPointHandler = (function () {
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
 
-    var _maxWidthInPixels = 1000;
-    var _minWidthInPixels = 100;
+    var _maxWidthInPixels = 1600;   //was 1000
+    var _minWidthInPixels = 160;    //was 100
 
     //constructor code
 
@@ -445,8 +445,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
                 var lr = new armyc2.c2sd.JavaLineArray.POINT2(right, bottom);
                 //POINT2 ll=new POINT2(left,bottom);
-                //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
-                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, lr, null, null);
+                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
+                //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, lr, null, null);
                 //double metersHigh=mdlGeodesic.geodesic_distance(ul, ll, null, null);
                 var maxWidthInPixels = _maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
                 var minScale = (maxWidthInPixels / widthInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
