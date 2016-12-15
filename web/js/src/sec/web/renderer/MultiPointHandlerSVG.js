@@ -108,16 +108,17 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                     var labelInfo = tempModifier;
                     var tempLocation = tempModifier.getModifierStringPosition();
-                    //multipoint renderer is assuming text is centered vertically 
-                    //so we add half height to location as text is drawn cetered at 
-                    //the bottom.
-                    //tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
 
                     if(converter)//map specific converter
                     {
                         tempLocation = ipc.PixelsToGeo(tempLocation);
                         tempLocation = converter.GeoToPixels(tempLocation);
                     }
+
+                    //multipoint renderer is assuming text is centered vertically 
+                    //so we add half height to location as text is drawn cetered at 
+                    //the bottom.
+                    tempLocation.setLocation(tempLocation.x, tempLocation.y + (height / 2));
                     
                     var justify=tempModifier.getTextJustify() || "";
                     var strJustify="left";
