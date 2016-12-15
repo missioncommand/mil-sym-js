@@ -6,7 +6,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.8";
+    var _Version = "0.3.10";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -33,6 +33,10 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _SymbolOutlineWidth = 3,
     
     _UseCesium2DScaleModifiers = false,
+
+    //modifier the scale returned from getReasonableScale()
+    _3DMinScaleMultiplier = 1.0;
+    _3DMaxScaleMultiplier = 1.0;
     
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
@@ -197,6 +201,40 @@ return{
      */
     getUseCesium2DScaleModifiers: function (){
         return _UseCesium2DScaleModifiers;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMinScaleMultiplier: function (value){
+        _3DMinScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMinScaleMultiplier: function (){
+        return _3DMinScaleMultiplier;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMaxScaleMultiplier: function (value){
+        _3DMaxScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMaxScaleMultiplier: function (){
+        return _3DMaxScaleMultiplier;
     },
     /**
      * if true (default), when HQ Staff is present, location will be indicated by the free
