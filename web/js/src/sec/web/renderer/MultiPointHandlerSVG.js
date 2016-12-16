@@ -319,7 +319,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 group += '</g>'; 
                 
                 //wrap in SVG
-                //var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                /*//Scale the image, commented out as I decided to alter scale in getReasonableScale rather than adjust after the fact.
                 var tempWidth = Math.ceil(unionBounds.getWidth());
                 var tempHeight = Math.ceil(unionBounds.getHeight());
                 var quality = 1.0;
@@ -343,7 +344,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                         quality = 1;
                     }
                 }
-                var geoSVG = '<svg viewBox="0 0 ' + tempWidth + ' ' + tempHeight + '"' + ' width="' + (tempWidth * quality) + 'px" height="' + (tempHeight * quality) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                var geoSVG = '<svg viewBox="0 0 ' + tempWidth + ' ' + tempHeight + '"' + ' width="' + (tempWidth * quality) + 'px" height="' + (tempHeight * quality) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';//*/
                 if(fillTexture)
                     geoSVG += fillTexture;
                 geoSVG += group;
