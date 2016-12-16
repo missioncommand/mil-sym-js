@@ -2066,6 +2066,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DIPTH---L---", (31860000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DIPFF---L---", (31870000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DHHDB---L---", (32259000));
+            
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DIDID---L---", (32134000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILOV---L---", (32151000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILUC---L---", (32152000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILOR---L---", (32153000));
