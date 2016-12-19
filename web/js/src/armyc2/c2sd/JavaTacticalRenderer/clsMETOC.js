@@ -725,8 +725,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(0, 191, 255));
                     break;
                 case 32233500:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
                     break;
                 case 32233400:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.GRAY);
@@ -734,15 +736,18 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     break;
                 case 32233100:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.BLACK);
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(205, 153, 63));
                     tg.set_LineStyle(1);
                     break;
                 case 32225200:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
                     break;
                 case 32225100:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
                     break;
                 case 32530000:
                 case 32550000:
@@ -824,8 +829,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.MAGENTA);
                     break;
                 case 32222000:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
                     break;
                 case 32234300:
                 case 32234301:
