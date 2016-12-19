@@ -7375,10 +7375,10 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       },
       {
         "SYMBOLID": "WO-DIDID---L---",
-        "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "GEOMETRY": "line",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Ice Drift (Direction)",
         "HIERARCHY": "3.X.2.1.3.4",
         "PATH": "METOC/Oceanic/Ice Systems/Dynamic Processes"
@@ -7867,9 +7867,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WOS-HPFS---L---",
         "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Fish Stakes",
         "HIERARCHY": "3.X.2.2.3.2.3",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Fishing"
@@ -7927,9 +7927,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WO-DHPMO---L---",
         "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Offshore Loading Facility 2",
         "HIERARCHY": "3.X.2.2.3.3.4",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -7977,9 +7977,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WOS-HPM-FC-L---",
         "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Ferry Crossing",
         "HIERARCHY": "3.X.2.2.3.3.9",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -7987,9 +7987,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WOS-HPM-CC-L---",
         "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Cable Ferry Crossing",
         "HIERARCHY": "3.X.2.2.3.3.10",
         "PATH": "METOC/Oceanic/Hydrography/Ports and Harbors/Facilities"
@@ -9247,7 +9247,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WO-DL-ML---L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Maritime Limit",
@@ -9287,7 +9287,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WO-DL-TA----A--",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "1",
+        "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "DESCRIPTION": "Training Area",
@@ -9317,7 +9317,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WO-DMCA----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Cable",
@@ -9337,7 +9337,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       {
         "SYMBOLID": "WO-DMCD----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Canal",
