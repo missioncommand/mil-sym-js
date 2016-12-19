@@ -2328,16 +2328,96 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSIncident = function (strSymbolID){
           return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='I'); 
      };
+          /**
+      * 
+      * @param {String} strSymbolID
+      * @returns {Boolean}
+      */
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSInstallation = function (strSymbolID){
+         var blRetVal = false;
+        if(strSymbolID.charAt(0)==='E')
+        {
+            if(strSymbolID.charAt(2)=='O' &&
+                    strSymbolID.charAt(4)=='D' && strSymbolID.charAt(6)=='C')
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='F' &&
+                    strSymbolID.substring(4, 6).equals("BA")==false)
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='O')
+            {
+                if(strSymbolID.charAt(4)=='A')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'D':
+                        case 'G':
+                        case 'J':
+                        case 'K':
+                        case 'L':
+                        case 'M':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='B')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'E':
+                        case 'F':
+                        case 'G':
+                        case 'H':
+                        case 'I':
+                        case 'K':
+                        case 'L':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='C')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'D':
+                        case 'E':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        } 
+        else
+            return blRetVal;
+     };
      /**
       * 
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
-    
-          var blRetVal = ((strSymbolID.charAt(0)===('S')) && (strSymbolID.charAt(2)===('G')) && (strSymbolID.charAt(4)===('I')));
-          return blRetVal;
-     };
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
+        var blRetVal = false;
+        if(strSymbolID.charAt(0)==='S')
+        {
+            blRetVal = (strSymbolID.charAt(2)==='G') && (strSymbolID.charAt(4)==='I');
+        }
+        else if(strSymbolID.charAt(0)===('E'))
+        {
+            blRetVal = this.isEMSInstallation(strSymbolID);
+        }
+        return blRetVal;
+    };
      /**
       * 
       * @param {String} strSymbolID
