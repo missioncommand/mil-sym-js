@@ -108,9 +108,11 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                     var labelInfo = tempModifier;
                     var tempLocation = tempModifier.getModifierStringPosition();
+                    var oldLocation = null;
 
                     if(converter)//map specific converter
                     {
+                        oldLocation = tempLocation;
                         tempLocation = ipc.PixelsToGeo(tempLocation);
                         tempLocation = converter.GeoToPixels(tempLocation);
                     }
@@ -134,7 +136,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height / 2), textInfoContext, null);
 
                     var bounds = tiTemp.getBounds();
-                    
+
                     rotatedBounds = null;
                     if (degrees !== 0)
                     {
@@ -145,40 +147,66 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //make the canvas grow out of control.
                     //if (tiTemp && bbox.containsRectangle(bounds))
                     //if(bbox !== null)
-                    if (tiTemp && bbox !== null && (bbox.intersects(bounds) || bbox.intersects(rotatedBounds)))
+                    if(tiTemp)
                     {
-                        labels.push(tiTemp);
-                        if (labelBounds)
+                        if (converter)
                         {
-                            if(rotatedBounds)
-                                labelBounds.union(rotatedBounds);
-                            else if(bounds)
-                                labelBounds.union(bounds);
+                            var preConvRect = new armyc2.c2sd.renderer.so.Rectangle(oldLocation.getX(),oldLocation.getY(),bounds.getWidth(),bounds.getHeight());
+                            if((bbox.intersects(preConvRect)))// || bbox.intersects(rotatedBounds)))
+                            {
+                                labels.push(tiTemp);
+                                if (labelBounds)
+                                {
+                                    if(rotatedBounds)
+                                        labelBounds.union(rotatedBounds);
+                                    else if(bounds)
+                                        labelBounds.union(bounds);
+                                }
+                                else
+                                {
+                                    if(rotatedBounds)
+                                        labelBounds = rotatedBounds;
+                                    else if(bounds)
+                                        labelBounds = bounds;
+                                }
+                            }
                         }
-                        else
+                        else if (bbox && (bbox.intersects(bounds) || bbox.intersects(rotatedBounds)))
                         {
-                            if(rotatedBounds)
-                                labelBounds = rotatedBounds;
-                            else if(bounds)
-                                labelBounds = bounds;
+                            labels.push(tiTemp);
+                            if (labelBounds)
+                            {
+                                if(rotatedBounds)
+                                    labelBounds.union(rotatedBounds);
+                                else if(bounds)
+                                    labelBounds.union(bounds);
+                            }
+                            else
+                            {
+                                if(rotatedBounds)
+                                    labelBounds = rotatedBounds;
+                                else if(bounds)
+                                    labelBounds = bounds;
+                            }
                         }
-                    }
-                    else if (tiTemp && bbox === null)
-                    {
-                        labels.push(tiTemp);
-                        if (labelBounds)
+
+                        else if (bbox === null)
                         {
-                            if(rotatedBounds)
-                                labelBounds.union(rotatedBounds);
-                            else if(bounds)
-                                labelBounds.union(bounds);
-                        }
-                        else
-                        {
-                            if(rotatedBounds)
-                                labelBounds = rotatedBounds;
-                            else if(bounds)
-                                labelBounds = bounds;
+                            labels.push(tiTemp);
+                            if (labelBounds)
+                            {
+                                if(rotatedBounds)
+                                    labelBounds.union(rotatedBounds);
+                                else if(bounds)
+                                    labelBounds.union(bounds);
+                            }
+                            else
+                            {
+                                if(rotatedBounds)
+                                    labelBounds = rotatedBounds;
+                                else if(bounds)
+                                    labelBounds = bounds;
+                            }
                         }
                     }
                 }//*/
@@ -273,14 +301,10 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 }
                 else//nothing to draw
                 {
-                    geoCoordTL = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordBR = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordTL.setLocation(0,0);
-                    geoCoordBR.setLocation(0,0);
-                    geoCoordTR = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordBL = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordTR.setLocation(0,0);
-                    geoCoordBL.setLocation(0,0);
+                    geoCoordTL = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordBR = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordTR = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordBL = new armyc2.c2sd.graphics2d.Point2D(0,0);
 
                     north = new armyc2.c2sd.graphics2d.Point2D(0,0);
                     south = new armyc2.c2sd.graphics2d.Point2D(0,0);
