@@ -2398,8 +2398,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 }
             }
         } 
-        else
-            return blRetVal;
+        
+        return blRetVal;
      };
      /**
       * 
