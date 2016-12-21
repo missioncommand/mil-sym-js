@@ -189,7 +189,6 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                                     labelBounds = bounds;
                             }
                         }
-
                         else if (bbox === null)
                         {
                             labels.push(tiTemp);
@@ -311,8 +310,6 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     east = new armyc2.c2sd.graphics2d.Point2D(0,0);
                     west = new armyc2.c2sd.graphics2d.Point2D(0,0);
                 }
-
-                
             }
             catch (err)
             {
