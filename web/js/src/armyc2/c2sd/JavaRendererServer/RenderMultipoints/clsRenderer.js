@@ -654,10 +654,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                                         if (!Double.isNaN(Double.parseDouble(strRadii[j]))) {
                                             pixels = Double.parseDouble(strRadii[j]) * pixelsPerMeter / 2;
                                             tg.Pixels.get(j).style = Math.floor(pixels);
+                                            tg.LatLongs.get(j).style = Math.floor(pixels);
                                         } else
+                                        {
                                             tg.Pixels.get(j).style = Math.floor(maxWidth);
+                                            tg.LatLongs.get(j).style = Math.floor(maxWidth);
+                                        }
                                     } else
+                                    {
                                         tg.Pixels.get(j).style = Math.floor(maxWidth);
+                                        tg.LatLongs.get(j).style = Math.floor(maxWidth);
+                                    }
                                 }
                             }
                         }

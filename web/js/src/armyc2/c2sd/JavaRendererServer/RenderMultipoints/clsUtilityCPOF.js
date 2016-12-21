@@ -1625,7 +1625,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var lineType = tg.get_LineType();
             //var interval = 1000000;
             var interval = 250000;
+            var bolSegmentAC=false,bolIsAC=false,acWidth=0;
+            //uncomment one line to segment AC
+            bolSegmentAC=true;
             switch (lineType) {
+                case 22222001:
+                case 22224001:
+                case 22225000:
+                case 22223000:
+                case 22221000:
+                    if(!bolSegmentAC)
+                        return;
+                    bolIsAC=true;
+                    break;
                 case 22528000:
                 case 24222000:
                 case 231111000:
@@ -1687,7 +1699,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var H="";
             var color="";
             var segPlusColor=null;
-            var seg="";
+            var seg="";            
             //var counter=0;
             var hmap=armyc2.c2sd.JavaTacticalRenderer.clsUtility.getMSRSegmentColorStrings(tg);
             if(hmap !== null)
@@ -1699,7 +1711,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = tg.LatLongs.get(j);
                 pt1 = tg.LatLongs.get(j + 1);
-                pt1.style = -1;
+                //pt1.style = -1;
                 az = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt0, pt1);
                 dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(tg.LatLongs.get(j), tg.LatLongs.get(j + 1), null, null);
                 if (dist > maxDist) {
@@ -1716,9 +1728,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
 
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j));
-                pt0.style = 0;
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j + 1));
-                pt1.style = 0;
+                if(!bolIsAC)
+                {
+                    pt0.style = 0;
+                    pt1.style = 0;
+                }
+                else
+                    acWidth=pt0.style;
+                
                 if(useVincenty)
                 {
                     start=new Cartographic(pt0.x*Math.PI/180,pt0.y*Math.PI/180,0);    
@@ -1753,7 +1771,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         pt.style = -2;
                         dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt, pt1, null, null);
                         if (dist >= interval / 2)
-                        {
+                        {                            
                             resultPts.add(pt);
                             if (hmap !== null && hmap.containsKey(j)) 
                             {
@@ -1771,6 +1789,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             break;
                         vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
                         pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
+                        pt.style=-acWidth;
                         resultPts.add(pt);
                         if (hmap !== null && hmap.containsKey(j)) 
                         {
