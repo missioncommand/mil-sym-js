@@ -1789,7 +1789,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             break;
                         vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
                         pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
-                        pt.style=-acWidth;
+                        if(bolSegmentAC)
+                            pt.style=-acWidth;
                         resultPts.add(pt);
                         if (hmap !== null && hmap.containsKey(j)) 
                         {
