@@ -1711,7 +1711,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = tg.LatLongs.get(j);
                 pt1 = tg.LatLongs.get(j + 1);
-                //pt1.style = -1;
+                if(!bolIsAC)
+                    pt1.style = -1;
                 az = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt0, pt1);
                 dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(tg.LatLongs.get(j), tg.LatLongs.get(j + 1), null, null);
                 if (dist > maxDist) {
