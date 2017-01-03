@@ -1243,7 +1243,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
-                    symbolID === ("WO-DBSG-----A--")) // 
+                    symbolID === ("WO-DBSG-----A--") ||
+                    symbolID === "WO-DBST-----A--") // 
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
@@ -1301,22 +1302,22 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(
         symbolID===("WO-DHCI-----A--") || //Island
         symbolID===("WO-DHCB-----A--") || //Beach
-        symbolID===("WO-DHPMO---L---")||//offshore loading"
+        symbolID===("WO-DHPMO----A--")||//offshore loading"
         symbolID===("WO-DHCI-----A--")) // mixed icing
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);//light/soft brown
         }
-        else if(symbolID.substring(0,7) === ("WO-DOBVA----A--")
+        else if(symbolID === ("WO-DOBVA----A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(26,153,77);//dark green
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTI---A--")
+        else if(symbolID === ("WO-DGMBTI---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,48,0);//orange red
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTH---A--")
+        else if(symbolID === ("WO-DGMBTH---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,80,0);//dark orange
@@ -1480,12 +1481,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return new armyc2.c2sd.renderer.utilities.Color(210,176,106);
         else if(symbolID === ("WO-DHCW-----A--"))//water
             return new armyc2.c2sd.renderer.utilities.Color(255,255,255);
-        else if (symbolID === ("WO-DHABP----A--") ||
-            symbolID === ("WO-DHHD-----A--") ||
-            symbolID === ("WO-DHHDD----A--") ||
-            symbolID === ("WO-DMCC-----A--")) 
+        else if (symbolID === ("WO-DHABP----A--") ||//blue
+            symbolID === ("WO-DMCC-----A--")) //SUBMERGED CRIB (blue)
         {
             return new armyc2.c2sd.renderer.utilities.Color(0,0,255);
+        }
+        else if ((symbolID === "WO-DHHD-----A--") ||//cyan
+            symbolID === "WO-DHHDD----A--")  //discolored water (cyan)
+        {
+            return new armyc2.c2sd.renderer.utilities.Color(0,255,255);   
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
             return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
