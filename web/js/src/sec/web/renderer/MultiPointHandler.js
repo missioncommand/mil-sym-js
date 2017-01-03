@@ -440,6 +440,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     return 7.573e7; //was origScale
                 else if (left.equalsIgnoreCase("180") && right.equalsIgnoreCase("-180"))
                     return 7.573e7; //was origScale
+                else if (top.equalsIgnoreCase("90") || bottom.equalsIgnoreCase("-90"))
+                    return 7.573e7; //was origScale
                 var ul = new armyc2.c2sd.JavaLineArray.POINT2(left, top);
                 var ur = new armyc2.c2sd.JavaLineArray.POINT2(right, top);
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
