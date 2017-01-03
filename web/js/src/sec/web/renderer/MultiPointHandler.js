@@ -440,14 +440,17 @@ sec.web.renderer.MultiPointHandler = (function () {
                     return 7.573e7; //was origScale
                 else if (left.equalsIgnoreCase("180") && right.equalsIgnoreCase("-180"))
                     return 7.573e7; //was origScale
-                else if (top.equalsIgnoreCase("90") || bottom.equalsIgnoreCase("-90"))
-                    return 7.573e7; //was origScale
+                //else if (top.equalsIgnoreCase("90") || bottom.equalsIgnoreCase("-90"))
+                    //return 7.573e7; //was origScale
                 var ul = new armyc2.c2sd.JavaLineArray.POINT2(left, top);
                 var ur = new armyc2.c2sd.JavaLineArray.POINT2(right, top);
+                var ml =new armyc2.c2sd.JavaLineArray.POINT2(left, (parseFloat(top)+parseFloat(bottom))/2);
+                var mr =new armyc2.c2sd.JavaLineArray.POINT2(right, (parseFloat(top)+parseFloat(bottom))/2);
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
                 var lr = new armyc2.c2sd.JavaLineArray.POINT2(right, bottom);
                 //POINT2 ll=new POINT2(left,bottom);
-                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
+                //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
+                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ml, mr, null, null);
                 //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, lr, null, null);
                 //double metersHigh=mdlGeodesic.geodesic_distance(ul, ll, null, null);
                 var maxWidthInPixels = _maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
