@@ -4486,7 +4486,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                             if(j===0)
                                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + am[j], 3, -1, pt0, pt0);
                             else                            
-                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);                                
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MAX RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);                                
                             
                         }                            
                     }
