@@ -441,11 +441,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else if (left.equalsIgnoreCase("180") && right.equalsIgnoreCase("-180"))
                     return 7.573e7; //was origScale
                 //else if (top.equalsIgnoreCase("90") || bottom.equalsIgnoreCase("-90"))
-                    //return 7.573e7; //was origScale
+                //return 7.573e7; //was origScale
                 var ul = new armyc2.c2sd.JavaLineArray.POINT2(left, top);
                 var ur = new armyc2.c2sd.JavaLineArray.POINT2(right, top);
-                var ml =new armyc2.c2sd.JavaLineArray.POINT2(left, (parseFloat(top)+parseFloat(bottom))/2);
-                var mr =new armyc2.c2sd.JavaLineArray.POINT2(right, (parseFloat(top)+parseFloat(bottom))/2);
+                var ml = new armyc2.c2sd.JavaLineArray.POINT2(left, (parseFloat(top) + parseFloat(bottom)) / 2);
+                var mr = new armyc2.c2sd.JavaLineArray.POINT2(right, (parseFloat(top) + parseFloat(bottom)) / 2);
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
                 var lr = new armyc2.c2sd.JavaLineArray.POINT2(right, bottom);
                 //POINT2 ll=new POINT2(left,bottom);
@@ -552,6 +552,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             coordinates = controlPoints.trim();
             coordinates = coordinates.split(" ");
             var len = coordinates.length;
+            var convRect = null;
 
             for (var i = 0; i < len; i++) {
                 var coordPair = coordinates[i].split(",");
@@ -616,15 +617,23 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))
                         setRectNull = true;
                     //end section
-
-                    scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
+                    //diagnostic 1-5-17
+                    var spanX=parseFloat(right)-parseFloat(left);
+                    if(spanX<-180)
+                        spanX+=360;
+                    var spanY=parseFloat(top)-parseFloat(bottom);
+                    if(spanX>10 || spanY>10)
+                        setRectNull=true;
+                    //end section
                     
+                    scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
+
 
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
 
                 /*if (converter !== undefined && converter !== null)
-                    ipc = converter;*/
+                 ipc = converter;*/
 
                 //sanity check
                 //when spanning the IDL sometimes they send a bad bbox with 0 width
@@ -699,7 +708,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    if (format <= 3 && format <= 6 && scale >1e6)
+                    if (format >= 3 && format <= 6 && scale > 1e6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
                         pt2d.setLocation(left, midlat);
@@ -734,6 +743,22 @@ sec.web.renderer.MultiPointHandler = (function () {
                         }
                         height = bottomY - topY;
                         rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                        //get a suitable rect for the client converter
+                        if (converter)
+                        {
+                            var pt3d={};
+                            pt3d.x=left;pt3d.y=top;
+                            pt3d = converter.GeoToPixels(pt3d);
+                            leftX = pt3d.x;
+                            topY = pt3d.y;
+                            pt3d.x=right;pt3d.y=bottom;
+                            pt3d = converter.GeoToPixels(pt3d);
+                            rightX = pt3d.x;
+                            bottomY = pt3d.y;
+                            width=rightX-leftX;
+                            height=bottomY-topY;
+                            convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                        }
                     }
                 }
             }
@@ -913,38 +938,38 @@ sec.web.renderer.MultiPointHandler = (function () {
                     {
                         shapes.smooth = true;
                     }
-                    
+
                     //check for area pattern fill
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillSize"])
+                        if (map["symbolFillSize"])
                             fillTextureSymbolSize = map["symbolFillSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    if(rect != null)
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, converter);
+                    if (rect != null)
+                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(), fillTexture, converter);
                     else
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, converter);
-                        
+                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, converter);
+
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
                     var svgFormat = 1;
-                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                    if (symbolModifiers[MilStdAttributes.SVGFormat])
                         svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -955,28 +980,28 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillSize"])
+                        if (map["symbolFillSize"])
                             fillTextureSymbolSize = map["symbolFillSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
                     }
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
-                    if(rect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo,svgFormat, converter);
+                    if (convRect != null)
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, fontInfo, svgFormat, converter);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo,svgFormat, converter);
-                        
+                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, fontInfo, svgFormat, converter);
+
                 }
                 else if (format === 1) //deprecated
                 {
@@ -1131,14 +1156,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
-                
+
                 //Hack for Cesium clients: create aspect ratio of 1:1 at world view
-                if(armyc2.c2sd.renderer.utilities.RendererSettings.getUseCesium2DScaleModifiers()===true)                
-                    if(Number(top)-Number(bottom)>90)
-                        pixelHeight*=3;
-                
+                if (armyc2.c2sd.renderer.utilities.RendererSettings.getUseCesium2DScaleModifiers() === true)
+                    if (Number(top) - Number(bottom) > 90)
+                        pixelHeight *= 3;
+
                 //end section
-                
+
                 if (top !== bottom && left != right)
                 {
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (top), (left), (bottom), (right));
@@ -1147,20 +1172,20 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
-                    left=rbb.left;
-                    top=rbb.top;
-                    right=rbb.right;
-                    bottom=rbb.bottom;
+                    left = rbb.left;
+                    top = rbb.top;
+                    right = rbb.right;
+                    bottom = rbb.bottom;
                 }
             }
             else
             {
                 var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                 ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
-                left=rbb.left;
-                top=rbb.top;
-                right=rbb.right;
-                bottom=rbb.bottom;
+                left = rbb.left;
+                top = rbb.top;
+                right = rbb.right;
+                bottom = rbb.bottom;
             }
 
             //check if symbolID is valid, if not, turn it into something renderable.
@@ -1315,18 +1340,18 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillIconSize"])
+                        if (map["symbolFillIconSize"])
                             fillTextureSymbolSize = map["symbolFillIconSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
                     }
@@ -1337,7 +1362,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
                     var svgFormat = 1;
-                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                    if (symbolModifiers[MilStdAttributes.SVGFormat])
                         svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -1348,24 +1373,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillIconSize"])
+                        if (map["symbolFillIconSize"])
                             fillTextureSymbolSize = map["symbolFillIconSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo,svgFormat);
+                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo, svgFormat);
                 }
                 else if (format === 1) //deprecated
                 {
@@ -1470,7 +1495,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
 
-                if(symbolID === "PBS_CIRCLE-----" || symbolID === "PBS_SQUARE-----")
+                if (symbolID === "PBS_CIRCLE-----" || symbolID === "PBS_SQUARE-----")
                 {
                     if (AM && AM.length > 0 && coordCount > 0)
                     {
@@ -1481,7 +1506,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         return {canRender: false, message: (symbolID + ", requires a width (AM) and 1 control point")};
                     }
                 }
-                else if(symbolID === "PBS_ELLIPSE----" || symbolID === "PBS_RECTANGLE--")
+                else if (symbolID === "PBS_ELLIPSE----" || symbolID === "PBS_RECTANGLE--")
                 {
                     if (AM && AM.length > 1 && coordCount > 0)
                     {
@@ -1680,9 +1705,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (modifiers[MilStdAttributes.AltitudeMode])
                     altMode = modifiers[MilStdAttributes.AltitudeMode];
-                    
+
                 if (modifiers[MilStdAttributes.HideOptionalLabels])
-                    hideOptionalLabels = modifiers[MilStdAttributes.HideOptionalLabels];    
+                    hideOptionalLabels = modifiers[MilStdAttributes.HideOptionalLabels];
 
                 // These are for when we create a area fill that is comprised of symbols//////////
                 if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null)
@@ -3013,7 +3038,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                             a21 = null;
                     var dst = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pTL, pBR, a12, a21);
 
-                    bbox =  {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
+                    bbox = {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
                 }
                 else if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE)
                 {
