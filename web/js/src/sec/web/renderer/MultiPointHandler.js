@@ -716,8 +716,15 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                         var midlon = Math.round(Number(left) + Number(right)) / 2;
                         if (Math.abs(right - left) > 180)
-                            midlon += 180;
-
+                        {
+                            //midlon += 180;
+                            var dLeft=180-Number(left);
+                            var dRight=180+Number(right);
+                            var dIDL=(dLeft+dRight)/2;
+                            midlon=Number(left)+dIDL;
+                            if(midlon>180)
+                                midlon-=360;
+                        }
                         pt2d.setLocation(midlon, top);
                         temp = ipc.GeoToPixels(pt2d);
                         topY = Math.round(temp.getY());
