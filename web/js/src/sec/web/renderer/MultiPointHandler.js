@@ -680,17 +680,6 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //if (scale > 1e7 && (converter === undefined || converter === null))
                     if (scale > 1e7)
                     {
-                        //get widest point in the AOI
-//                        var midLat = 0;
-//                        if (bottom < 0 && top > 0)
-//                            midLat = 0;
-//                        else if (bottom < 0 && top < 0)
-//                            midLat = top;
-//                        else if (bottom > 0 && top > 0)
-//                            midLat = bottom;
-//
-//                        temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
-//                        rightX = temp.getX();
                         var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                         temp = ipc.GeoToPixels(coordsUL);
                         left = coordsUL.getX();
@@ -707,7 +696,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
-                    rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                    rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);                    
                     if (format >= 3 && format <= 6 && scale > 1e6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
@@ -743,23 +732,26 @@ sec.web.renderer.MultiPointHandler = (function () {
                         }
                         height = bottomY - topY;
                         rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                        //get a suitable rect for the client converter
-                        if (converter)
-                        {
-                            var pt3d={};
-                            pt3d.x=left;pt3d.y=top;
-                            pt3d = converter.GeoToPixels(pt3d);
-                            leftX = pt3d.x;
-                            topY = pt3d.y;
-                            pt3d.x=right;pt3d.y=bottom;
-                            pt3d = converter.GeoToPixels(pt3d);
-                            rightX = pt3d.x;
-                            bottomY = pt3d.y;
-                            width=rightX-leftX;
-                            height=bottomY-topY;
-                            convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                        }
                     }
+                    //get a suitable rect for the client converter
+                    if (converter)
+                    {
+                        var pt3d={};
+                        pt3d.x=left;
+                        pt3d.y=top;
+                        pt3d = converter.GeoToPixels(pt3d);
+                        leftX = pt3d.x;
+                        topY = pt3d.y;
+                        pt3d.x=right;pt3d.y=bottom;
+                        pt3d = converter.GeoToPixels(pt3d);
+                        rightX = pt3d.x;
+                        bottomY = pt3d.y;
+                        width=rightX-leftX;
+                        height=bottomY-topY;
+                        convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                    }
+                    else
+                        convRect=rect;                                        
                 }
             }
             else
@@ -960,8 +952,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    if (rect != null)
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(), fillTexture, converter);
+                    if (convRect !== null)
+                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, converter);
                     else
                         jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, converter);
 
