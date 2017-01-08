@@ -520,8 +520,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             }
             var normalize = false,
-                    controlLat = 0,
-                    controlLong = 0,
+                    //controlLat = 0,
+                    //controlLong = 0,
                     jsonOutput = "",
                     jsonContent = "",
                     rect = null,
@@ -556,8 +556,8 @@ sec.web.renderer.MultiPointHandler = (function () {
 
             for (var i = 0; i < len; i++) {
                 var coordPair = coordinates[i].split(",");
-                var latitude = coordPair[1];//.trim();
-                var longitude = coordPair[0];//.trim();
+                var latitude = coordPair[1];
+                var longitude = coordPair[0];
                 tempPt = new armyc2.c2sd.graphics2d.Point2D();
                 tempPt.setLocation(longitude, latitude);
                 geoCoords.push(tempPt);
@@ -617,7 +617,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))
                         setRectNull = true;
                     //end section
-                    //diagnostic 1-5-17
+                    //diagnostic 1-5-17 this maybe can be removed if the client didn'gt have a problem refreshing
                     var spanX=parseFloat(right)-parseFloat(left);
                     if(spanX<-180)
                         spanX+=360;
@@ -627,8 +627,6 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //end section
                     
                     scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
-
-
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
 
@@ -660,7 +658,6 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var ptBottom = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTop, dist, 180.0);
                     bottom = ptBottom.y;
                 }
-                //end section
                 if (converter)
                 {
                     var ptUL = {};
@@ -695,11 +692,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                     rightX = Math.round(temp.getX());
                     //if (scale > 1e7)
                     //for large scales and client is not using the canvas converter
-                    //if (scale > 1e7 && (converter === undefined || converter === null))
                     if (scale > 1e7 && !converter)
                     {
                         var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                         temp = ipc.GeoToPixels(coordsUL);
+                        //can't do these 2 lines if using canvas or svg converter
                         left = coordsUL.getX();
                         top = coordsUL.getY();
                         //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
@@ -709,8 +706,6 @@ sec.web.renderer.MultiPointHandler = (function () {
                         rightX -= temp.getX();
                         topY -= temp.getY();
                         bottomY -= temp.getY();
-                        //end diagnostic
-
                     }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
@@ -758,52 +753,19 @@ sec.web.renderer.MultiPointHandler = (function () {
                         height = bottomY - topY;
                         rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
                     }
-                    //get a suitable rect for the client converter
-//                    if (converter)
-//                    {
-//                        var pt3d={};
-//                        pt3d.x=left;
-//                        pt3d.y=top;
-//                        pt3d = converter.GeoToPixels(pt3d);
-//                        leftX = pt3d.x;
-//                        topY = pt3d.y;
-//                        pt3d.x=right;pt3d.y=bottom;
-//                        pt3d = converter.GeoToPixels(pt3d);
-//                        rightX = pt3d.x;
-//                        bottomY = pt3d.y;
-//                        width=rightX-leftX;
-//                        height=bottomY-topY;
-//                        convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-//                    }
-//                    else
-//                        convRect=rect;                                        
                 }
             }
             else
             {
                 rect = null;
             }
-            if (setRectNull) //Deutcvh 4-15-15
+            if (setRectNull) //Deutch 4-15-15
                 rect = null;
 
-//            var tempPt = null;
-//            coordinates = controlPoints.trim();
-//            coordinates = coordinates.split(" ");
-//            var len = coordinates.length;
-//
-//            for (var i = 0; i < len; i++) {
-//                var coordPair = coordinates[i].split(",");
-//                var latitude = coordPair[1];//.trim();
-//                var longitude = coordPair[0];//.trim();
-//                tempPt = new armyc2.c2sd.graphics2d.Point2D();
-//                tempPt.setLocation(longitude, latitude);
-//                geoCoords.push(tempPt);
-//            }
             if (ipc === null) {
                 var ptCoordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                 ipc = new sec.web.renderer.PointConverter(ptCoordsUL.getX(), ptCoordsUL.getY(), scale);
             }
-            //if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
             if (Math.abs(right - left) > 180)
             {
                 normalize = true;
