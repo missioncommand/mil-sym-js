@@ -661,6 +661,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                     bottom = ptBottom.y;
                 }
                 //end section
+                if (converter)
+                {
+                    var ptUL = {};
+                    ptUL.x = left;
+                    ptUL.y = top;
+                    ptUL = converter.GeoToPixels(ptUL);
+                    leftX = ptUL.x;
+                    topY = ptUL.y;
+                    var ptBR = {};
+                    ptBR.x = right;
+                    ptBR.y = bottom;
+                    ptBR = converter.GeoToPixels(ptBR);
+                    rightX = ptBR.x;
+                    bottomY = ptBR.y;
+                    width = Math.abs(rightX - leftX);
+                    height = Math.abs(bottomY - topY);
+                    convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                }
 
                 var pt2d = null;
                 if (bboxCoords === undefined || bboxCoords === null)
@@ -678,7 +696,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //if (scale > 1e7)
                     //for large scales and client is not using the canvas converter
                     //if (scale > 1e7 && (converter === undefined || converter === null))
-                    if (scale > 1e7)
+                    if (scale > 1e7 && !converter)
                     {
                         var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                         temp = ipc.GeoToPixels(coordsUL);
@@ -741,24 +759,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                         rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
                     }
                     //get a suitable rect for the client converter
-                    if (converter)
-                    {
-                        var pt3d={};
-                        pt3d.x=left;
-                        pt3d.y=top;
-                        pt3d = converter.GeoToPixels(pt3d);
-                        leftX = pt3d.x;
-                        topY = pt3d.y;
-                        pt3d.x=right;pt3d.y=bottom;
-                        pt3d = converter.GeoToPixels(pt3d);
-                        rightX = pt3d.x;
-                        bottomY = pt3d.y;
-                        width=rightX-leftX;
-                        height=bottomY-topY;
-                        convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    }
-                    else
-                        convRect=rect;                                        
+//                    if (converter)
+//                    {
+//                        var pt3d={};
+//                        pt3d.x=left;
+//                        pt3d.y=top;
+//                        pt3d = converter.GeoToPixels(pt3d);
+//                        leftX = pt3d.x;
+//                        topY = pt3d.y;
+//                        pt3d.x=right;pt3d.y=bottom;
+//                        pt3d = converter.GeoToPixels(pt3d);
+//                        rightX = pt3d.x;
+//                        bottomY = pt3d.y;
+//                        width=rightX-leftX;
+//                        height=bottomY-topY;
+//                        convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+//                    }
+//                    else
+//                        convRect=rect;                                        
                 }
             }
             else
