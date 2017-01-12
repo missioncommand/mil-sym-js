@@ -1923,7 +1923,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var text = null;
         if(echelon === ("A"))
         {
-            text = "0";
+            text = String.fromCharCode(216);//Ø
         }
         else if(echelon === ("B"))
         {
