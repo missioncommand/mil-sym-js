@@ -1565,7 +1565,7 @@ return{
         }//*/
         
         //Check for Valid Country Code
-        if(SymbolUtilities.hasValidCountryCode(symbolID))
+        if(RendererSettings.getDrawCountryCode() && SymbolUtilities.hasValidCountryCode(symbolID))
         {
             modifiers[ModifiersUnits.CC_COUNTRY_CODE] = symbolID.substring(12,14);
         }

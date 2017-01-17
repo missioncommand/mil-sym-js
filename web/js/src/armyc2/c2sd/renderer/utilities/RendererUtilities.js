@@ -201,7 +201,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
                 }
                 else if(fullFontMeasurements[font])
                 {
-                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]);
+                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]).getWidth();
                 }
                 else//use an approximation
                 {

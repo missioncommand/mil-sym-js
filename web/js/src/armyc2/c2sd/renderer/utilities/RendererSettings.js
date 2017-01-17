@@ -6,7 +6,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.13";
+    var _Version = "0.3.14";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -57,6 +57,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
+    _DrawCountryCode = true,
     _SPFontSize = 60,
     _UnitFontSize = 50,
     _PixelSize = 35;
@@ -396,6 +397,20 @@ return{
      */
     getDrawAffiliationModifierAsLabel: function (){
             return _DrawAffiliationModifierAsLabel;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @param {Boolean} value
+     */
+    setDrawCountryCode: function (value){
+            _DrawCountryCode = value;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @returns {Boolean}
+     */
+    getDrawCountryCode: function (){
+            return _DrawCountryCode;
     },
     /**
      * 
