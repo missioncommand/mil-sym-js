@@ -3864,7 +3864,7 @@ return{
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
                 return true;
             
-            if(SymbolUtilities.hasValidCountryCode(symbolID))
+            if(RendererSettings.getDrawCountryCode() && SymbolUtilities.hasValidCountryCode(symbolID))
                 return true;
             
             if(SymbolUtilities.isEMSNaturalEvent(symbolID))
