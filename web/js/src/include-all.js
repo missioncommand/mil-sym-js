@@ -74,6 +74,7 @@ document.write('<script src="armyc2/c2sd/renderer/utilities/AffiliationColors.js
 document.write('<script src="armyc2/c2sd/renderer/utilities/ErrorLogger.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/MilStdSymbol.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/ModifiersTG.js" type="text/javascript" ></script>');
+document.write('<script src="armyc2/c2sd/renderer/utilities/MilStdAttributes.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/PointConversion.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/PointConverter3D.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/utilities/FillPatterns.js" type="text/javascript" ></script>');
