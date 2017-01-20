@@ -23,4 +23,5 @@ armyc2.c2sd.renderer.utilities.MilStdAttributes.UseDashArray = "USEDASHARRAY";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.UsePatternFill = "USEPATTERNFILL";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.HideOptionalLabels = "HIDEOPTIONALLABELS";//azimuth and range labels for range fans.
 armyc2.c2sd.renderer.utilities.MilStdAttributes.SVGFormat = "SVGFORMAT";//0 plain SVG, 1 base64 (default), 2 % notation
+armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat = "GJFORMAT";//0 JSON formatted String (default), 1 Object
 

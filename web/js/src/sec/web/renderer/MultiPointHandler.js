@@ -1297,7 +1297,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                     jsonContent.properties.name = name;
                     jsonContent.properties.description = description;
                     jsonContent.properties.symbolID = symbolCode;
-                    jsonOutput = JSON.stringify(jsonContent);
+
+                    var gjFormat = 0;//String
+                    if(symbolModifiers[MilStdAttributes.GeoJSONFormat])
+                    {
+                        gjFormat = symbolModifiers[MilStdAttributes.GeoJSONFormat];
+                    }
+                    
+                    if(gjFormat === 0)//json formatted string
+                    {
+                        jsonOutput = JSON.stringify(jsonContent);
+                    }
+                    else//json object
+                    {
+                        jsonOutput = jsonContent;
+                    }
                 }
                 else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
