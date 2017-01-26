@@ -618,12 +618,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                         setRectNull = true;
                     //end section
                     //diagnostic 1-5-17 this maybe can be removed if the client didn'gt have a problem refreshing
-                    var spanX=parseFloat(right)-parseFloat(left);
-                    if(spanX<-180)
-                        spanX+=360;
-                    var spanY=parseFloat(top)-parseFloat(bottom);
-                    if(spanX>10 || spanY>10)
-                        setRectNull=true;
+//                    var spanX=parseFloat(right)-parseFloat(left);
+//                    if(spanX<-180)
+//                        spanX+=360;
+//                    var spanY=parseFloat(top)-parseFloat(bottom);
+//                    if(spanX>10 || spanY>10)
+//                        setRectNull=true;
                     //end section
                     
                     scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
