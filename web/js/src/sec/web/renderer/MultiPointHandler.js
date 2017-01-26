@@ -692,21 +692,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                     rightX = Math.round(temp.getX());
                     //if (scale > 1e7)
                     //for large scales and client is not using the canvas converter
-                    if (scale > 1e7 && !converter)
-                    {
-                        var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
-                        temp = ipc.GeoToPixels(coordsUL);
-                        //can't do these 2 lines if using canvas or svg converter
-                        left = coordsUL.getX();
-                        top = coordsUL.getY();
-                        //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
-                        ipc = new sec.web.renderer.PointConverter(left, top, scale);
-                        //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
-                        leftX -= temp.getX();
-                        rightX -= temp.getX();
-                        topY -= temp.getY();
-                        bottomY -= temp.getY();
-                    }
+//                    if (scale > 1e7 && !converter)
+//                    {
+//                        var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
+//                        temp = ipc.GeoToPixels(coordsUL);
+//                        //can't do these 2 lines if using canvas or svg converter
+//                        left = coordsUL.getX();
+//                        top = coordsUL.getY();
+//                        //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
+//                        ipc = new sec.web.renderer.PointConverter(left, top, scale);
+//                        //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
+//                        leftX -= temp.getX();
+//                        rightX -= temp.getX();
+//                        topY -= temp.getY();
+//                        bottomY -= temp.getY();
+//                    }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);                    
