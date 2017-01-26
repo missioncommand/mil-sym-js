@@ -517,21 +517,22 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             }
             if (shapeInfo.getFillColor() !== null) {
                 fillColor = shapeInfo.getFillColor();
-                fillAlpha = fillColor.getAlpha() / 255;
-                fillColor = fillColor.toHexString(false);
+                if(fillColor && fillColor.getAlpha()===0 && fillTexture)//passed in fill pattern
+                {
+                    fillPattern = fillTexture;
+                }
+                else
+                {
+                    fillAlpha = fillColor.getAlpha() / 255;
+                    fillColor = fillColor.toHexString(false);
+                }
             }
             
-            //TODO, pattern fill
-            if(fillTexture)
-            {
-                fillPattern = fillTexture;
-            }
-            else if(shapeInfo.getFillStyle() > 1)
+            if(shapeInfo.getFillStyle() > 1)//hatch fills
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(shapeInfo.getFillStyle(), lineColor)
                 fillTexture = "url(#fillPattern)";
-            }//*/
-            //*/
+            }
 
             var stroke = null;
             stroke = shapeInfo.getStroke();
@@ -583,7 +584,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 }
 
             }
-            if(fillTexture)
+            if(fillTexture && fillColor && fillColor.getAlpha()===0)
                 fillColor = "url(#fillPattern)";
             var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, svgFormat);
             var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};

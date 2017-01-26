@@ -134,6 +134,14 @@ function testRender()
                 symbolCode = "GFGPGLB----A**X";//boundary
                 controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
                 break;
+            case 5://Dummy Minefield Dynamic
+                symbolCode = "G*GPPC----****X";//
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                modifiers = {};
+                modifiers["symbolFillIds"] = "GHMPOMU---****X";
+                modifiers["symbolFillIconSize"] = 30;
+                //modifiers["FILLCOLOR"] = "00000000";
+                break;
             default:
                 break;
         } 
@@ -237,6 +245,7 @@ Draw Canvas/SVG Test:
       <option value=2>Assembly Area</option>
       <option value=3>Sector Range Fan</option>
       <option value=4>Boundary</option>
+      <option value=5>Dummy Minefield Dynamic</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>

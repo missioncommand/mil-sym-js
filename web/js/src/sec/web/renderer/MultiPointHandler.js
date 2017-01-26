@@ -1245,6 +1245,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                 {
+                    mSymbol.setFillColor(new armyc2.c2sd.renderer.utilities.Color(0,0,0,0));
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
                     if (rect !== null)
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl, rect);

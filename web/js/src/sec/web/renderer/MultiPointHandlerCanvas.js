@@ -98,7 +98,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, _buffer, fillTexture, converter);
+                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, fillTexture, converter);
                     if(pathInfo.path && pathInfo.path.getBounds())
                     {
                         tempBounds = pathInfo.path.getBounds();
@@ -335,7 +335,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(paths && len > 0 && unionBounds)
             {
                 paths.smooth = shapes.smooth;//for lineJoin
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, geoCoordTR, geoCoordBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture);
+                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, geoCoordTR, geoCoordBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped);
                 return geoCanvas;
             }
             else
@@ -438,10 +438,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     {
                         pi.path.fillPattern(ctx, pi.fillPattern);
                     }
-                    else if(fillTexture)
+                    /*else if(fillTexture)//can probably remove this case 1/26/17
                     {
                         pi.path.fillPattern(ctx, fillTexture);
-                    }
+                    }//*/
                 }
             }
             else
@@ -635,18 +635,19 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             }
             if (shapeInfo.getFillColor() !== null) {
                 fillColor = shapeInfo.getFillColor();
-                alpha = fillColor.getAlpha() / 255;
-                fillColor = fillColor.toHexString(false);
+                if(fillColor.getAlpha() === 0 && fillTexture)
+                {
+                    fillPattern = fillTexture;
+                    fillColor = null;
+                }
+                else
+                {
+                    alpha = fillColor.getAlpha() / 255;
+                    fillColor = fillColor.toHexString(false);
+                }
             }
-            /*if(shapeInfo.getTexturePaint() !== null)
-            {
-                fillPattern = shapeInfo.getTexturePaint();
-            }//*/
-            if(fillTexture)
-            {
-                fillPattern = fillTexture;
-            }
-            else if(shapeInfo.getFillStyle() > 1)
+            
+            if(shapeInfo.getFillStyle() > 1)
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(shapeInfo.getFillStyle(), lineColor)
             }
