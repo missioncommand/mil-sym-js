@@ -1080,47 +1080,45 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             br = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointPixelsToLatLong(br, converter);
 
             //the latitude range
-            var ptInside = false, ptAbove = false, ptBelow = false;
+            //var ptInside = false, ptAbove = false, ptBelow = false;
             var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
+            var coordsLeft = tg.LatLongs.get(0).x;
+            var coordsRight = coordsLeft;
+            var coordsTop=tg.LatLongs.get(0).y;
+            var coordsBottom=coordsTop;
+            var intersects=false;
+            for (j = 0; j < tg.LatLongs.size(); j++)
+            {                
+                var pt=tg.LatLongs.get(j);
+                if (pt.x < coordsLeft)
+                    coordsLeft = pt.x;
+                if (pt.x > coordsRight)
+                    coordsRight = pt.x;
+                if (pt.y < coordsBottom)
+                    coordsBottom = pt.y;
+                if (pt.y > coordsTop)
+                    coordsTop = pt.y;
+            }
             if (canClipPoints)
             {
-                for (j = 0; j < tg.LatLongs.size(); j++)
-                {
-                    var pt = tg.LatLongs.get(j);
-                    if (br.y <= pt.y && pt.y <= tl.y)
-                        ptInside = true;
-                    if (pt.y < br.y)
-                        ptBelow = true;
-                    if (pt.y > tl.y)
-                        ptAbove = true;
-                }
-                if (!ptInside)
-                {
-                    //if all the points are above the clip area
-                    if (ptAbove && !ptBelow)
-                        return false;
-                    //if all the points are below the clip area
-                    if (!ptAbove && ptBelow)
-                        return false;
-                }
+                if(br.y<=coordsBottom && coordsBottom <= tl.y)
+                    intersects=true;
+                else if(coordsBottom<=br.y && br.y <=coordsTop)
+                    intersects=true;
+                else
+                    return false;
             }
             //if it gets this far then the latitude ranges intersect
+            //reinitialize intersects
+            intersects=false;
             //the longitude range
             //the min and max coords longitude
             var boxSpanIDL = false;
             var coordSpanIDL = false;
             if (Math.abs(br.x - tl.x) > 180)
                 boxSpanIDL = true;
-            var coordsLeft = tg.LatLongs.get(0).x;
-            var coordsRight = coordsLeft;
-            for (j = 0; j < tg.LatLongs.size(); j++)
-            {
-                var pt = tg.LatLongs.get(j);
-                if (pt.x < coordsLeft)
-                    coordsLeft = pt.x;
-                if (pt.x > coordsRight)
-                    coordsRight = pt.x;
-            }
+            //var coordsLeft = tg.LatLongs.get(0).x;
+            //var coordsRight = coordsLeft;
             if (coordsRight - coordsLeft > 180)
             {
                 var temp = coordsLeft;
@@ -1128,7 +1126,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 coordsRight = temp;
                 coordSpanIDL = true;
             }
-            var intersects = false;
+            //var intersects = false;
             if (coordSpanIDL && boxSpanIDL)
                 intersects = true;
             else if (!coordSpanIDL && !boxSpanIDL && canClipPoints)
