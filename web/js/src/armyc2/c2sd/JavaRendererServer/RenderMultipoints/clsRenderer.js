@@ -1087,20 +1087,36 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var coordsTop=tg.LatLongs.get(0).y;
             var coordsBottom=coordsTop;
             var intersects=false;
+            var minx=tg.LatLongs.get(0).x,maxx=minx,maxNegX=0;
             for (j = 0; j < tg.LatLongs.size(); j++)
             {                
                 var pt=tg.LatLongs.get(j);
-                if (pt.x < coordsLeft)
-                    coordsLeft = pt.x;
-                if (pt.x > coordsRight)
-                    coordsRight = pt.x;
+                if (pt.x < minx)
+                    minx = pt.x;
+                if (pt.x > maxx)
+                    maxx = pt.x;
+                if(maxNegX===0 && pt.x<0)
+                    maxNegX=pt.x;
+                if(maxNegX<0 && pt.x<0 && pt.x>maxNegX)
+                    maxNegX=pt.x;
                 if (pt.y < coordsBottom)
                     coordsBottom = pt.y;
                 if (pt.y > coordsTop)
-                    coordsTop = pt.y;
+                    coordsTop = pt.y;                
             }
-            if (canClipPoints)
+            var coordSpanIDL = false;
+            if(maxx-minx>=180)
             {
+                coordSpanIDL=true;
+                coordsLeft=maxx;
+                coordsRight=maxNegX;
+            }else
+            {
+                coordsLeft=minx;
+                coordsRight=maxx;
+            }
+            if(canClipPoints)
+            {                
                 if(br.y<=coordsBottom && coordsBottom <= tl.y)
                     intersects=true;
                 else if(coordsBottom<=br.y && br.y <=coordsTop)
@@ -1109,27 +1125,26 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     return false;
             }
             //if it gets this far then the latitude ranges intersect
-            //reinitialize intersects
+            //re-initialize intersects for the longitude ranges
             intersects=false;
             //the longitude range
             //the min and max coords longitude
             var boxSpanIDL = false;
-            var coordSpanIDL = false;
+            //boolean coordSpanIDL = false;
             if (Math.abs(br.x - tl.x) > 180)
                 boxSpanIDL = true;
-            //var coordsLeft = tg.LatLongs.get(0).x;
-            //var coordsRight = coordsLeft;
-            if (coordsRight - coordsLeft > 180)
-            {
-                var temp = coordsLeft;
-                coordsLeft = coordsRight;
-                coordsRight = temp;
-                coordSpanIDL = true;
-            }
-            //var intersects = false;
-            if (coordSpanIDL && boxSpanIDL)
-                intersects = true;
-            else if (!coordSpanIDL && !boxSpanIDL && canClipPoints)
+            
+//            if (coordsRight - coordsLeft > 180)
+//            {
+//                double temp = coordsLeft;
+//                coordsLeft = coordsRight;
+//                coordsRight = temp;
+//                coordSpanIDL=true;
+//            }
+            //boolean intersects=false;
+            if(coordSpanIDL && boxSpanIDL)
+                intersects=true;
+            else if(!coordSpanIDL && !boxSpanIDL && canClipPoints)
             {
                 if(coordsLeft<=tl.x && tl.x<=coordsRight)
                     intersects=true;
