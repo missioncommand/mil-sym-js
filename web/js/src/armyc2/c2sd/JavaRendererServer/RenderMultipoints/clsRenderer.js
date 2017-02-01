@@ -1185,7 +1185,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mss, converter);
             var shapeInfos = new java.util.ArrayList();
             var modifierShapeInfos = new java.util.ArrayList();
-            if (this.intersectsClipArea(tg, converter, clipArea))
+            //if (this.intersectsClipArea(tg, converter, clipArea))
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.render_GE(tg, shapeInfos, modifierShapeInfos, converter, clipArea);
             mss.setSymbolShapes(shapeInfos);
             mss.setModifierShapes(modifierShapeInfos);
