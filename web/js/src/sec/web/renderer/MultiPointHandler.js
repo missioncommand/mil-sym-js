@@ -519,7 +519,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             }
-            var normalize = false,
+            var normalize = true,
                     //controlLat = 0,
                     //controlLong = 0,
                     jsonOutput = "",
@@ -766,21 +766,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var ptCoordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                 ipc = new sec.web.renderer.PointConverter(ptCoordsUL.getX(), ptCoordsUL.getY(), scale);
             }
-            if (Math.abs(right - left) > 180)
-            {
-                normalize = true;
-                ipc.set_normalize(true);
-            }
-            else
-            {
-                normalize = false;
-                ipc.set_normalize(false);
-            }
-            if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
-            {
-                normalize = true;
-                ipc.set_normalize(true);
-            }
+//            if (Math.abs(right - left) > 180)
+//            {
+//                normalize = true;
+//                ipc.set_normalize(true);
+//            }
+//            else
+//            {
+//                normalize = false;
+//                ipc.set_normalize(false);
+//            }
+//            if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+//            {
+//                normalize = true;
+//                ipc.set_normalize(true);
+//            }
 
             //check if symbolID is valid, if not, turn it into something renderable.
             if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
@@ -1197,21 +1197,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var width;
                 var height;
                 var pt2d = null;
-                var normalize = false;
-                if (Math.abs(right - left) > 180)
-                {
-                    ipc.set_normalize(true);
-                    normalize = true;
-                }
-                else
-                {
-                    ipc.set_normalize(false);
-                }
-                if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
-                {
-                    ipc.set_normalize(true);
-                    normalize = true;
-                }
+                var normalize = true;
+//                if (Math.abs(right - left) > 180)
+//                {
+//                    ipc.set_normalize(true);
+//                    normalize = true;
+//                }
+//                else
+//                {
+//                    ipc.set_normalize(false);
+//                }
+//                if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+//                {
+//                    ipc.set_normalize(true);
+//                    normalize = true;
+//                }
                 if (format > 2 || (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
                     pt2d = new armyc2.c2sd.graphics2d.Point2D();

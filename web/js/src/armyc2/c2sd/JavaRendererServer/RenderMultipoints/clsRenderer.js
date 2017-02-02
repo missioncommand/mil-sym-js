@@ -1054,11 +1054,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         return;
     },
     /**
-     * 
+     * Required to prevent clipped symbols from appearing on the opposite side of the globe from where they were rendered
      * @param {type} tg
-     * @param {type} converter
-     * @param {type} clipArea
-     * @returns {undefined}
+     * @param {type} converter required because the clipArea is in pixels
+     * @param {type} clipArea pixels based bounding box
+     * @returns true if the bounding box intersects the minimum bounding rectangle for the coorindates
      */
     intersectsClipArea: function (tg, converter, clipArea)
     {
@@ -1068,7 +1068,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         try {
             if (!clipArea || tg.LatLongs.size() < 2)
                 return true;
-
+//            var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
+//            if(!canClipPoints)
+//                return true;
+            
             var j = 0;
             var x = clipArea.getMinX();
             var y = clipArea.getMinY();
@@ -1081,7 +1084,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
 
             //the latitude range
             //var ptInside = false, ptAbove = false, ptBelow = false;
-            var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
+            //var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
             var coordsLeft = tg.LatLongs.get(0).x;
             var coordsRight = coordsLeft;
             var coordsTop=tg.LatLongs.get(0).y;
@@ -1115,15 +1118,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 coordsLeft=minx;
                 coordsRight=maxx;
             }
-            if(canClipPoints)
-            {                
+            //if(canClipPoints)
+            //{                
                 if(br.y<=coordsBottom && coordsBottom <= tl.y)
                     intersects=true;
                 else if(coordsBottom<=br.y && br.y <=coordsTop)
                     intersects=true;
                 else
                     return false;
-            }
+            //}
             //if it gets this far then the latitude ranges intersect
             //re-initialize intersects for the longitude ranges
             intersects=false;
@@ -1134,17 +1137,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (Math.abs(br.x - tl.x) > 180)
                 boxSpanIDL = true;
             
-//            if (coordsRight - coordsLeft > 180)
-//            {
-//                double temp = coordsLeft;
-//                coordsLeft = coordsRight;
-//                coordsRight = temp;
-//                coordSpanIDL=true;
-//            }
             //boolean intersects=false;
             if(coordSpanIDL && boxSpanIDL)
                 intersects=true;
-            else if(!coordSpanIDL && !boxSpanIDL && canClipPoints)
+            else if(!coordSpanIDL && !boxSpanIDL)   //was && canClipPoints
             {
                 if(coordsLeft<=tl.x && tl.x<=coordsRight)
                     intersects=true;
@@ -1185,7 +1181,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mss, converter);
             var shapeInfos = new java.util.ArrayList();
             var modifierShapeInfos = new java.util.ArrayList();
-            //if (this.intersectsClipArea(tg, converter, clipArea))
+            if (this.intersectsClipArea(tg, converter, clipArea))
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.render_GE(tg, shapeInfos, modifierShapeInfos, converter, clipArea);
             mss.setSymbolShapes(shapeInfos);
             mss.setModifierShapes(modifierShapeInfos);
