@@ -171,12 +171,12 @@ return{
      * @param {number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return {string} A JSON or KML string representation of the graphic.
      */             
-    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo)
+    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo, converter)
     {
         var output = "";
         try 
         {
-            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo);
+            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo, converter);
         }
         catch (exc) 
         {

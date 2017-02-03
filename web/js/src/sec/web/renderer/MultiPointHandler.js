@@ -625,7 +625,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 //                    if(spanX>10 || spanY>10)
 //                        setRectNull=true;
                     //end section
-                    
+
                     scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
@@ -709,7 +709,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 //                    }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
-                    rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);                    
+                    rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
                     if (format >= 3 && format <= 6 && scale > 1e6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
@@ -731,12 +731,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                         if (Math.abs(right - left) > 180)
                         {
                             //midlon += 180;
-                            var dLeft=180-Number(left);
-                            var dRight=180+Number(right);
-                            var dIDL=(dLeft+dRight)/2;
-                            midlon=Number(left)+dIDL;
-                            if(midlon>180)
-                                midlon-=360;
+                            var dLeft = 180 - Number(left);
+                            var dRight = 180 + Number(right);
+                            var dIDL = (dLeft + dRight) / 2;
+                            midlon = Number(left) + dIDL;
+                            if (midlon > 180)
+                                midlon -= 360;
                         }
                         pt2d.setLocation(midlon, top);
                         temp = ipc.GeoToPixels(pt2d);
@@ -1089,7 +1089,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          * @param {Object} fontInfo, required for SVG when used in Web Worker
          * @return {String} A JSON or KML string representation of the graphic.
          */
-        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo)
+        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo, converter)
         {
             if (!symStd)
             {
@@ -1166,6 +1166,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 right = rbb.right;
                 bottom = rbb.bottom;
             }
+            if(converter)
+                ipc=converter;
 
             //check if symbolID is valid, if not, turn it into something renderable.
             if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
@@ -1245,7 +1247,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                 {
-                    mSymbol.setFillColor(new armyc2.c2sd.renderer.utilities.Color(0,0,0,0));
+                    mSymbol.setFillColor(new armyc2.c2sd.renderer.utilities.Color(0, 0, 0, 0));
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
                     if (rect !== null)
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl, rect);
@@ -1300,12 +1302,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                     jsonContent.properties.symbolID = symbolCode;
 
                     var gjFormat = 0;//String
-                    if(symbolModifiers[MilStdAttributes.GeoJSONFormat])
+                    if (symbolModifiers[MilStdAttributes.GeoJSONFormat])
                     {
                         gjFormat = symbolModifiers[MilStdAttributes.GeoJSONFormat];
                     }
-                    
-                    if(gjFormat === 0)//json formatted string
+
+                    if (gjFormat === 0)//json formatted string
                     {
                         jsonOutput = JSON.stringify(jsonContent);
                     }
