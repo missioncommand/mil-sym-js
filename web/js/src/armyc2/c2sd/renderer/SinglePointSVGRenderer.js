@@ -2925,6 +2925,86 @@ return{
             }
 
         }
+        else if(basicID.charAt(0) === 'W')
+        {
+            if(basicID ===("WAS-WSF-LVP----"))//Freezing Level
+            {
+                strText = "0" + String.fromCharCode(176) + ":";
+                if(modifiers.X !== undefined)
+                    strText += modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+                else
+                    strText += "X?";
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes in center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.4);
+                y = y + (labelHeight * 0.5);
+
+                ti.setLocation(Math.round(x),Math.round(y));
+                arrMods.push(ti);
+            }
+            else if(basicID ===("WAS-WST-LVP----"))//tropopause Level
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes in center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.4);
+                y = y + (labelHeight * 0.5);
+
+                ti.setLocation(Math.round(x),Math.round(y));
+                arrMods.push(ti);
+            }
+            else if(basicID ===("WAS-PLT---P----"))//tropopause Low
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                //var ti2 = new TextInfo("L",0,0,textInfoContext);
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes just above center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y - descent;
+
+                ti.setLocation(Math.round(x),Math.round(y));
+
+                /*//One modifier symbols and modifier goes just below of center
+                x = bounds.x + (bounds.width * 0.5);
+                x = x - (labelWidth * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y + (((bounds.height * 0.5) - labelHeight)/2) + labelHeight - descent;
+                ti2.setLocation(Math.round(x),Math.round(y));//*/
+
+                arrMods.push(ti);
+                //arrMods.push(ti2);
+            }
+            else if(basicID ===("WAS-PHT---P----"))//tropopause High
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+
+                //One modifier symbols and modifier goes just below of center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y + (((bounds.height * 0.5) - labelHeight)/2) + labelHeight - descent;
+                ti.setLocation(Math.round(x),Math.round(y));
+                
+                arrMods.push(ti);
+            }
+        }
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="DOM Arrow">
@@ -3508,7 +3588,15 @@ return{
         var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         var scheme = symbolID.charAt(0);
         if(scheme==="W")
-            return false;
+        {
+            if(symbolID === "WAS-WSF-LVP----" || //freezing level
+                symbolID === "WAS-PHT---P----" || //tropopause high
+                symbolID === "WAS-PLT---P----" || //tropopause low
+                symbolID === "WAS-WST-LVP----") ////tropopause level
+                return true;
+            else
+                return false;
+        }
         if(scheme==="G")
         {
             var basic = SymbolUtilities.getBasicSymbolIDStrict(symbolID);

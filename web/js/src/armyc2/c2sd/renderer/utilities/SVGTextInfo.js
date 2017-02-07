@@ -144,6 +144,7 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
             //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
             text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
             text = text.replace(/\u00D8/g,"&#216;");//Ø
+            text = text.replace(/\u00B0/g,"&#176;");//°
             text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced ±
         }
         else if(format === 2)

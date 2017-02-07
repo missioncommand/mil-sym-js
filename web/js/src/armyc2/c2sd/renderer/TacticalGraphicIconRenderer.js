@@ -10,7 +10,7 @@ armyc2.c2sd.renderer.TacticalGraphicIconRenderer = (function () {
     
 return{    
     
-    getIcon: function(symbolID, size, color, alpha){
+    getIcon: function(symbolID, size, color, alpha, symStd){
         
         var id = symbolID;
         if(armyc2.c2sd.renderer.utilities.SymbolUtilities.isWeather(symbolID)===true)
@@ -29,7 +29,7 @@ return{
         if(color.toHexString)
             color = color.toHexString(false);
 
-        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id);
+        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id,symStd);
 
         if(charSymbolIndex >= 0)
         {

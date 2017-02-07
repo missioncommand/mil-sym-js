@@ -2043,7 +2043,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         || (temp === ("G*M*NEB---****X"))//BIOLOGICAL
         || (temp === ("G*M*NEC---****X"))//CHEMICAL
         || (temp === ("G*G*GPRI--****X"))//Point of Interest
-        || (temp === ("G*M*OFS---****X"));//Minefield
+        || (temp === ("G*M*OFS---****X"))//Minefield
+        || (temp === ("WAS-WSF-LVP----"))//Freezing Level
+        || (temp === ("WAS-PLT---P----"))//Tropopause Low
+        || (temp === ("WAS-PHT---P----"))//Tropopause High
+        || (temp === ("WAS-WST-LVP----"));//Tropopause Level
       return blRetVal;
     };
     /**

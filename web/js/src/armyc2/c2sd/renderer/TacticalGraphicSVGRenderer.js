@@ -23,7 +23,7 @@ armyc2.c2sd.renderer.TacticalGraphicSVGRenderer = (function () {
     
 return{    
     
-    getSVG: function(symbolID, size, color, alpha){
+    getSVG: function(symbolID, size, color, alpha, symStd){
         var symbolBounds = new armyc2.c2sd.renderer.so.Rectangle(-600,-600,1200,1200);
         var width = 1200;
         var height = 1200;
@@ -37,7 +37,7 @@ return{
             color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         }
 
-        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id);
+        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id, symStd);
 
         if(color.toHexString)
             color = color.toHexString(false);

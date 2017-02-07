@@ -4,6 +4,13 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.xml = armyc2.c2sd.renderer.xml || {};
 
+//When updating
+//1) Go to "https://everythingfonts.com/ttf-to-svg" to convert the ttf to svg.
+//2) open resultant svg, remove unnessary tags (meta, def, etc...) and find all "&#x" and replace with "";
+//3) Go to "http://codebeautify.org/xmltojson" and convert to JSON.  Paste Below.
+//4) Open cleanup.html (same location as this file) and save the generated file
+//5) run new file through "http://codebeautify.org/jsonviewer" and beautify the code
+//6) paste below again and you're good to go.
 
 armyc2.c2sd.renderer.xml.UnitFontSVG =  {
 	"svg": {

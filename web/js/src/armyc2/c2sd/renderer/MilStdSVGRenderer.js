@@ -63,8 +63,13 @@ armyc2.c2sd.renderer.MilStdSVGRenderer = (function () {
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
         }
+        var symStd = RendererSettings.getSymbologyStandard();
+        if(modifiers[MilStdAttributes.SymbologyStandard] !== undefined )
+        {
+            symStd = modifiers[MilStdAttributes.SymbologyStandard];
+        }
 
-        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha);
+        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha, symStd);
         return si;
     }
     
