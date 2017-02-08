@@ -1068,9 +1068,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         try {
             if (!clipArea || tg.LatLongs.size() < 2)
                 return true;
-//            var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
-//            if(!canClipPoints)
-//                return true;
             
             var j = 0;
             var x = clipArea.getMinX();
@@ -1108,7 +1105,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     coordsTop = pt.y;                
             }
             var coordSpanIDL = false;
-            if(maxx-minx>=180)
+            if(maxx===180 || minx===-180)
+                coordSpanIDL=true;
+            else if(maxx-minx>=180)
             {
                 coordSpanIDL=true;
                 coordsLeft=maxx;
@@ -1134,7 +1133,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             //the min and max coords longitude
             var boxSpanIDL = false;
             //boolean coordSpanIDL = false;
-            if (Math.abs(br.x - tl.x) > 180)
+            if(tl.x===180 || tl.x===-180 || br.x===180 || br.x===-180)
+                boxSpanIDL=true;
+            else if (Math.abs(br.x - tl.x) > 180)
                 boxSpanIDL = true;
             
             //boolean intersects=false;
