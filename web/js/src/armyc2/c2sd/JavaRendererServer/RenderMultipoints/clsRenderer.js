@@ -1107,7 +1107,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var coordSpanIDL = false;
             if(maxx===180 || minx===-180)
                 coordSpanIDL=true;
-            else if(maxx-minx>=180)
+            if(maxx-minx>=180)
             {
                 coordSpanIDL=true;
                 coordsLeft=maxx;
