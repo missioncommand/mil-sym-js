@@ -648,69 +648,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             texture += '</defs>'; 
             return texture;  
         },
-
-        /**
-         * @param Number fillType - forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
-         * @param String color "hexString like '#00FF00'";
-         */
-        MakeHatchFillTextureSVG:function(fillType, color)
-        {
-            if(!armyc2.c2sd.renderer.MilStdSVGRenderer)
-            {
-                return null;
-            }
-            //needs to return {dataURI, width, height}
-            var texture = "";
-            var symbolIDs = symbolFillIds.split(","); 
-            var symbols = [];
-            var width = 0, height = 0, spacerW = 0, spacerH = 0;
-            //calculate texture dimensions
-            for(var i = 0; i < symbolIDs.length; i++)
-            {
-                symbols.push(armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
-                var rect = symbols[i].getSVGBounds();
-                if(rect.getWidth() > width)
-                    width = rect.getWidth();
-                if(rect.getHeight() > height)
-                    height = rect.getHeight();
-            }
-            spacerW = width / 3;
-            spacerH = 10; //width / 2;
-            
-            
-            //create texture
-            //texture = _document.createElement('canvas');
-            svgWidth = (width * symbols.length) + (spacerW * symbols.length);
-            svgHeight = height + spacerH;
-            
-            //draw to texture
-            var x = spacerW;
-            var y = spacerH;
-            //var ctx = texture.getContext('2d');
-            var pattern = "";
-            for(var j = 0; j < symbols.length; j++)
-            {
-                var sym = symbols[j];
-                var center = sym.getAnchorPoint();
-                pattern += '<g transform="translate(' + (x + width/2 - center.getX()) + ' ' + (y + height/2 - center.getY()) + ')" >';
                 
-                var paths = sym.getSVG();
-                paths = paths.substr(paths.indexOf("<g"));
-                paths = paths.replace("</svg>","");
-                
-                pattern += paths;
-                pattern += '</g>';
-                x += spacerW + width;
-            }
-            
-            texture = '<defs>';
-            texture += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + svgWidth + '" height="' + svgHeight + '" >';
-            texture += pattern;
-            texture += '</pattern>';
-            texture += '</defs>'; 
-            return texture;  
-        },
-        
         /**
          * 
          * @param {armyc2.c2sd.renderer.so.Rectangle} rectangle
