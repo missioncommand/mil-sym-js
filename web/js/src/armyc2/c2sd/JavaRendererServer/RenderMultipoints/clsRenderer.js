@@ -856,6 +856,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     strH2 = AN[0];
                     tg.set_H2(strH2);
                 }
+                if(AM !== null && AM.length > 2)
+                {
+                    var strH1 = AM[2];     //buffer size
+                    tg.set_H1(strH1);
+                }
             }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {

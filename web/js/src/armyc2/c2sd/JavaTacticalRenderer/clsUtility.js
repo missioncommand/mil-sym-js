@@ -672,6 +672,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                                 shape.setFillColor(tg.get_FillColor());
                                 break;
                             case 15000003:
+                            case 14000001:
+                            case 14000002:
                                 shape.setFillColor(null);
                                 break;
                             default:

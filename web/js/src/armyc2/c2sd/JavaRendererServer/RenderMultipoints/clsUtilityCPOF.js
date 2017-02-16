@@ -156,6 +156,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     width.value[0] = Double.parseDouble(tg.get_H());
                     //value passed in mils
                     attitude.value[0] = Double.parseDouble(tg.get_H2()) * (0.05625);
+                    radius.value[0] = Double.parseDouble(tg.get_H1());  //use for the buffer
                     //var std = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getSymbologyStandard();
                     var std = tg.getSymbologyStandard();
                     if(std===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C)//value passed in degrees
@@ -428,14 +429,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 var tempPixels = new java.util.ArrayList();
                 tempPixels.addAll(tg.Pixels);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postSegmentFSA(tg, converter);
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapes);
+                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapes, false);
                 tg.Pixels = tempPixels;
             } else {
                 tg.Pixels = farLeftPixels;
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft);
+                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft, false);
                 tg.Pixels = farRightPixels;
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight);
+                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight, false);
                 shapes.addAll(shapesLeft);
                 shapes.addAll(shapesRight);
             }
@@ -449,6 +450,35 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 shape.lineTo(ptCenter);
                 shapes.add(shape);
             }
+            if (lineType === 14000001 || lineType === 14000002) 
+            {
+                var dist = radius.value[0];//Double.parseDouble(strH1);
+                pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.LatLongs.get(0));
+                pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);//45 is arbitrary
+                var pt02d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
+                var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt1.x, pt1.y);
+                pt02d = converter.GeoToPixels(pt02d);
+                pt12d = converter.GeoToPixels(pt12d);
+                pt0.x = pt02d.getX();
+                pt0.y = pt02d.getY();
+                pt1.x = pt12d.getX();
+                pt1.y = pt12d.getY();
+                dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);    //pixels distance
+                //tg.Pixels.get(0).style=(int)dist;
+                var tempPixels = new java.util.ArrayList();
+                tempPixels.addAll(tg.Pixels);
+                //var pts=tempPixels.toArray(new armyc2.c2sd.JavaLineArray.POINT2[tempPixels.size()]);
+                var pts=tempPixels.toArray(new Array(tempPixels.size()));
+                pts[0].style=dist;
+                armyc2.c2sd.JavaLineArray.lineutility.getExteriorPoints(pts, pts.length, lineType, false);
+                tg.Pixels.clear();
+                for(j=0;j<pts.length;j++)
+                    tg.Pixels.add(new armyc2.c2sd.JavaLineArray.POINT2(pts[j].x,pts[j].y));
+
+                this.Change1PixelsToShapes(tg, shapes, true);
+                //reuse the original pixels for the subsequent call to AddModifier2
+                tg.Pixels = tempPixels;                
+            }
             //end section
             return true;
         } catch (exc) {
@@ -460,7 +490,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
         }
         return false;
     },
-    Change1PixelsToShapes: function(tg, shapes) {
+    Change1PixelsToShapes: function(tg, shapes, fill) {
         var shape = null;
         var beginLine = true;
         var currentPt = null;
@@ -469,7 +499,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
         var linetype = tg.get_LineType();
         for (k = 0; k < tg.Pixels.size(); k++) {
             if (shape === null)
-                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+            {
+                //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                if(!fill)
+                    shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                else if(fill)
+                    shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+            }
             currentPt = tg.Pixels.get(k);
             if (k > 0)
                 lastPt = tg.Pixels.get(k - 1);
