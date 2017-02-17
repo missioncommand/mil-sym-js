@@ -415,7 +415,21 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.Pixels.add(pt1);
                     tg.Pixels.add(ptAzimuth);
                 }
-
+                if(AM !== null && AM.length>2)
+                {
+                    //use AM[2] for the buffer, so PBS_CIRCLE requires AM size 3 like PBS_ELLIPSE to use a buffer
+                    var dist=AM[2];
+                    var pt0=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), dist, 45);   //azimuth 45 is arbitrary
+                    var pt02d = new armyc2.c2sd.graphics2d.Point2D(tg.LatLongs.get(0).x,tg.LatLongs.get(0).y);
+                    var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
+                    pt02d = converter.GeoToPixels(pt02d);
+                    pt12d = converter.GeoToPixels(pt12d);
+                    pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt02d.getX(),pt02d.getY());
+                    var pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(),pt12d.getY());                   
+                    dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                    //arraysupport will use line style to create the buffer shape
+                    tg.Pixels.get(0).style=dist;
+                }
             }
             if (lineType === 243112000)
             {

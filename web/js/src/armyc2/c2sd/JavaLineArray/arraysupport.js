@@ -2170,8 +2170,6 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                            pOriginalLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             break;
                         case 13000000:
-                        case 13000001:
-                        case 13000002:
                             pt0 = pLinePoints[0];
                             pt1 = pLinePoints[1];
                             pt2 = pLinePoints[2];
@@ -2179,6 +2177,21 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             var azimuth = pLinePoints[3].x;
                             pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
                             acCounter = 37;
+                            break;
+                        case 13000001:
+                        case 13000002:
+                            pt0 = pLinePoints[0];//the center of the ellipse
+                            pt1 = pLinePoints[1];//the width of the ellipse
+                            pt2 = pLinePoints[2];//the height of the ellipse
+                            azimuth = pLinePoints[3].x;
+                            pOriginalLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
+                            //use linestyle to get the distance to expand the shape for the buffer shape
+                            var dist=pt0.style;
+                            pt1.x+=dist;
+                            pt2.y-=dist;
+                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
+                            acCounter = 37;
+                            vblSaveCounter=37;
                             break;
                         case 23200000:
                             acCounter = armyc2.c2sd.JavaLineArray.arraysupport.getOverheadWire(pLinePoints, vblSaveCounter);
@@ -4013,6 +4026,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     switch (lineType) {
                         case 15000001:
                         case 15000003:
+                        case 13000001:
+                        case 13000002:
                             //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
 //                            for(j=0;j<vblSaveCounter-1;j++)
 //                            {

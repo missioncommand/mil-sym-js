@@ -664,8 +664,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         }
                         switch (lineType) {
                             case 13000000:
-                            case 13000001:
-                            case 13000002:
+                            //case 13000001:
+                            //case 13000002:
                             case 14000000:
                                 //case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
@@ -674,6 +674,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                             case 15000003:
                             case 14000001:
                             case 14000002:
+                            case 13000001:
+                            case 13000002:
                                 shape.setFillColor(null);
                                 break;
                             default:

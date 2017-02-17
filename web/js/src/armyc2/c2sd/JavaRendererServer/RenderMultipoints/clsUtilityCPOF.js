@@ -875,6 +875,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 22225000:
                 case 22221000:
                 case 22223000:
+                case 13000000:
+                case 13000001:
+                case 13000002:
                     return;
                 default:
                     break;
