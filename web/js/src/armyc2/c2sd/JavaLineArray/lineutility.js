@@ -3,7 +3,7 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.lineutility =
         {
-            ResizeArray: function(pLinePoints, length)
+            ResizeArray: function (pLinePoints, length)
             {
                 var array = new Array();
                 try
@@ -30,7 +30,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return array;
             },
-            SegmentLineShape: function(pt0, pt1, shape) {
+            SegmentLineShape: function (pt0, pt1, shape) {
                 try {
                     if (pt0 === null || pt1 === null)
                         return;
@@ -54,7 +54,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetDirAtkAirMiddleSegment: function(pLinePoints, vblSaveCounter) {
+            GetDirAtkAirMiddleSegment: function (pLinePoints, vblSaveCounter) {
                 var middleSegment = -1;
                 try {
                     var d = 0;
@@ -83,7 +83,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return middleSegment;
             },
-            CalcSegmentAngleDouble: function(pt0, pt1) {
+            CalcSegmentAngleDouble: function (pt0, pt1) {
                 var dAngle = 0;
                 try {
                     var nTemp = 0;
@@ -103,7 +103,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dAngle;
             },
-            InitializePOINT2Array: function(pts) {
+            InitializePOINT2Array: function (pts) {
                 if (pts === null || pts.length === 0)
                     return;
                 for (var j = 0; j < pts.length; j++)
@@ -111,7 +111,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pts[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 }
             },
-            CalcCenterPointDouble: function(pLinePoints, vblCounter) {
+            CalcCenterPointDouble: function (pLinePoints, vblCounter) {
                 var CenterLinePoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                 try {
                     var j = 0;
@@ -144,7 +144,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return CenterLinePoint;
             },
-            CalcCenterPointDouble2: function(pLinePoints, vblCounter) {
+            CalcCenterPointDouble2: function (pLinePoints, vblCounter) {
                 var pt0 = pLinePoints[0];
                 var CenterLinePoint = new armyc2.c2sd.JavaLineArray.POINT2();
                 try {
@@ -180,7 +180,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return CenterLinePoint;
             },
-            CalcDistanceDouble: function(p1, p2) {
+            CalcDistanceDouble: function (p1, p2) {
                 var returnValue = 0;
                 try {
                     returnValue = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
@@ -202,7 +202,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return returnValue;
             },
-            CalcTrueSlopeDouble: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDouble: function (firstLinePoint, lastLinePoint, slope) {
                 var result = 1;
                 try {
                     if (slope.value === null)
@@ -211,7 +211,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaY = 0;
                     deltaX = firstLinePoint.x - lastLinePoint.x;
                     //if (Math.abs(deltaX)<1) 
-                    if (deltaX === 0) 
+                    if (deltaX === 0)
                     {
                         deltaX = 1;
                         result = 1;
@@ -227,7 +227,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            WriteFile: function(str) {
+            WriteFile: function (str) {
                 try {
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -237,7 +237,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            ReversePointsDouble2: function(pLowerLinePoints, vblCounter) {
+            ReversePointsDouble2: function (pLowerLinePoints, vblCounter) {
                 try {
                     var pResultPoints = new Array(vblCounter);
                     var k = 0;
@@ -257,7 +257,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcTrueSlopeDoubleForRoutes: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDoubleForRoutes: function (firstLinePoint, lastLinePoint, slope) {
                 try {
                     var deltaX = 0;
                     var deltaY = 0;
@@ -277,7 +277,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return true;
             },
-            CalcTrueSlopeDouble2: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDouble2: function (firstLinePoint, lastLinePoint, slope) {
                 //var result = new Boolean(true);
                 var result = true;
                 try {
@@ -285,7 +285,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaY = 0;
                     deltaX = (firstLinePoint.x) - (lastLinePoint.x);
                     //if (Math.abs(deltaX)<1) 
-                    if (deltaX === 0) 
+                    if (deltaX === 0)
                     {
                         deltaX = 1;
                         //result = new Boolean(false);
@@ -304,7 +304,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            CalcTrueLinesDouble: function(nDistance, linePoint1, linePoint2, pdResult) {
+            CalcTrueLinesDouble: function (nDistance, linePoint1, linePoint2, pdResult) {
                 try {
                     var nTemp = 0;
                     var b = 0;
@@ -335,7 +335,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcTrueIntersectDouble2: function(m1, b1, m2, b2, bolVertical1, bolVertical2, X1, X2) {
+            CalcTrueIntersectDouble2: function (m1, b1, m2, b2, bolVertical1, bolVertical2, X1, X2) {
                 var ptIntersect = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var x = 0;
@@ -370,7 +370,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptIntersect;
             },
-            GetOffsetPointDouble: function(startLinePoint, endLinePoint, nOffset) {
+            GetOffsetPointDouble: function (startLinePoint, endLinePoint, nOffset) {
                 var tempLinePoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(startLinePoint);
                 try {
                     var dx = endLinePoint.x - startLinePoint.x;
@@ -420,7 +420,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return (tempLinePoint);
             },
-            GetArcFEBADouble: function(dRadius, pLinePoints, vblCounter, pResultLinePoints) {
+            GetArcFEBADouble: function (dRadius, pLinePoints, vblCounter, pResultLinePoints) {
                 try {
                     var dStartAngle = 0;
                     var dEndAngle = 6.283185307179586;
@@ -453,7 +453,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pResultLinePoints;
             },
-            LineOfXPoints: function(pLinePoints) {
+            LineOfXPoints: function (pLinePoints) {
                 var xPoints = new java.util.ArrayList();
                 try {
                     var j = 0;
@@ -497,7 +497,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return xPoints;
             },
-            GetXFEBADouble: function(pLinePoints, dSize, vblCounter, pResultLinePoints) {
+            GetXFEBADouble: function (pLinePoints, dSize, vblCounter, pResultLinePoints) {
                 try {
                     var j = 0;
                     var nXcounter = 0;
@@ -534,7 +534,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            ReorderPoints: function(pLinePoints) {
+            ReorderPoints: function (pLinePoints) {
                 try {
                     var n = pLinePoints.length;
                     var pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -553,7 +553,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcDistanceToLineDouble: function(pt1, pt2, pt3) {
+            CalcDistanceToLineDouble: function (pt1, pt2, pt3) {
                 var dResult = 0;
                 try {
                     var m1 = 1;
@@ -587,7 +587,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dResult;
             },
-            ExtendLineDouble: function(pt1, pt2, dist) {
+            ExtendLineDouble: function (pt1, pt2, dist) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt1, pt2);
@@ -606,7 +606,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAlongLineDouble2: function(pt1, pt2, dist) {
+            ExtendAlongLineDouble2: function (pt1, pt2, dist) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt1, pt2);
@@ -623,7 +623,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAlongLineDouble: function() {
+            ExtendAlongLineDouble: function () {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var pt1 = arguments[0];
@@ -645,7 +645,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendLineAbove: function(pt1, pt2, pt3, d, X, Y, direction) {
+            ExtendLineAbove: function (pt1, pt2, pt3, d, X, Y, direction) {
                 try {
                     var m = new armyc2.c2sd.JavaLineArray.ref();
                     var dx = 0;
@@ -684,7 +684,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            ExtendLineLeft: function(pt1, pt2, pt3, d, X, Y, direction) {
+            ExtendLineLeft: function (pt1, pt2, pt3, d, X, Y, direction) {
                 try {
                     var m = new armyc2.c2sd.JavaLineArray.ref();
                     var dx = 0;
@@ -719,7 +719,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcDirectionFromLine: function(pt0, pt1, pt2) {
+            CalcDirectionFromLine: function (pt0, pt1, pt2) {
                 var result = -1;
                 try {
                     var m2 = 0;
@@ -764,7 +764,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            ExtendDirectedLineText: function(pt1, pt2, pt0, direction, d) {
+            ExtendDirectedLineText: function (pt1, pt2, pt0, direction, d) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var X = new armyc2.c2sd.JavaLineArray.ref();
@@ -836,7 +836,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            ExtendDirectedLine: function() {
+            ExtendDirectedLine: function () {
                 var pt1 = arguments[0];
                 var pt2 = arguments[1];
                 var pt0 = arguments[2];
@@ -887,7 +887,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            ExtendLine2Double: function(pt1, pt2, dist, styl) {
+            ExtendLine2Double: function (pt1, pt2, dist, styl) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try
                 {
@@ -909,7 +909,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAngledLine: function(pt0, pt1, pt2, alpha, d) {
+            ExtendAngledLine: function (pt0, pt1, pt2, alpha, d) {
                 var pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var psi = Math.atan((pt1.y - pt0.y) / (pt1.x - pt0.x));
@@ -928,7 +928,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt;
             },
-            GetQuadrantDouble: function() {
+            GetQuadrantDouble: function () {
                 var nQuadrant = -1;
                 try {
                     if (arguments.length === 2)
@@ -968,7 +968,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return nQuadrant;
             },
-            GetPixelsMin: function(ptsSeize, vblCounter, x, y) {
+            GetPixelsMin: function (ptsSeize, vblCounter, x, y) {
                 try {
                     var xmin = Infinity;
                     var ymin = Infinity;
@@ -992,7 +992,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcClockwiseCenterDouble: function(ptsSeize) {
+            CalcClockwiseCenterDouble: function (ptsSeize) {
                 var dRadius = 0;
                 try {
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsSeize[0]);
@@ -1079,7 +1079,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dRadius;
             },
-            GetArrowHead4Double: function(startLinePoint, endLinePoint, nBiSector, nBase, pResultLinePoints, styl) {
+            GetArrowHead4Double: function (startLinePoint, endLinePoint, nBiSector, nBase, pResultLinePoints, styl) {
                 try {
                     var j = 0;
                     var dy = (endLinePoint.y - startLinePoint.y);
@@ -1160,7 +1160,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            MidPointDouble: function(pt0, pt1, styl) {
+            MidPointDouble: function (pt0, pt1, styl) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                 try {
                     ptResult.x = (pt0.x + pt1.x) / 2;
@@ -1175,7 +1175,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            RotateGeometryDoubleOrigin: function(pLinePoints, vblCounter, lAngle) {
+            RotateGeometryDoubleOrigin: function (pLinePoints, vblCounter, lAngle) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -1209,7 +1209,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pLinePoints;
             },
-            ExtendTrueLinePerpDouble: function(pt0, pt1, pt2, d, styl) {
+            ExtendTrueLinePerpDouble: function (pt0, pt1, pt2, d, styl) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                 try {
                     var ptYIntercept = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
@@ -1263,7 +1263,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            CalcTrueIntersectDouble: function(m1, b1, m2, b2, p2, bolVerticalSlope1, bolVerticalSlope2, dWidth, lOrient, X, Y) {
+            CalcTrueIntersectDouble: function (m1, b1, m2, b2, p2, bolVerticalSlope1, bolVerticalSlope2, dWidth, lOrient, X, Y) {
                 try {
                     var dWidth2 = Math.abs(dWidth);
                     var b = 0;
@@ -1415,7 +1415,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcDistance2: function(x1, y1, x2, y2) {
+            CalcDistance2: function (x1, y1, x2, y2) {
                 var dResult = 0;
                 try {
                     dResult = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -1428,7 +1428,9 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         if (max > 0)
                             dResult = max;
                     }
-                } catch (exc) {
+                }
+                catch (exc)
+                {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "CalcDistance2", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside CalcDistance2", exc));
                     } else {
@@ -1437,7 +1439,53 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dResult;
             },
-            GetSAAFRSegment: function(pLinePoints, lineType, dMRR, rev) {
+            GetSAAFRMiddleLine: function (pLinePoints)
+            {
+                var pts = null;
+                try
+                {
+                    var j = 0, count = 0;
+                    for (j = 0; j < pLinePoints.length - 1; j++) {
+                        if (pLinePoints[j].style > 0) {
+                            count++;
+                        }
+                    }
+                    pts = [];
+                    count = 0;
+                    var dMRR = 0;
+                    var firstSegPt = null, lastSegPt = null, pt0 = null, pt1 = null;
+                    for (j = 0; j < pLinePoints.length; j++) {
+                        if (pLinePoints[j].style >= 0 || j === pLinePoints.length - 1)
+                        {
+                            if (lastSegPt !== null)
+                            {
+                                firstSegPt = new armyc2.c2sd.JavaLineArray.POINT2(lastSegPt);
+                                lastSegPt = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
+                                dMRR = firstSegPt.style;
+                                pt0 = this.ExtendLine2Double(lastSegPt, firstSegPt, -dMRR, 0);
+                                pt1 = this.ExtendLine2Double(firstSegPt, lastSegPt, -dMRR, 5);
+                                pts.push(pt0);
+                                pts.push(pt1);
+                            }
+                            else
+                            {
+                                lastSegPt = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
+                            }
+                        }
+                    }
+                }
+                catch (exc)
+                {
+                    if (Clazz.instanceOf(exc))
+                    {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "GetSAAFRMiddleLine", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSAAFRMiddleLine", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+                return pts;
+            },
+            GetSAAFRSegment: function (pLinePoints, lineType, dMRR, rev) {
                 try {
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -1475,10 +1523,11 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pLinePoints[4] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt4);
                     pLinePoints[5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt5);
                     pLinePoints[5].style = 5;
-                    if (lineType === 22223000)
-                        pLinePoints[0].style = 5;
-                    if (rev === 1)
-                        pLinePoints[0].style = 5;
+//                    if (lineType === 22223000)
+//                        pLinePoints[0].style = 5;
+//                    if (rev === 1)
+//                        pLinePoints[0].style = 5;
+                    pLinePoints[0].style = 5;
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "GetSAAFRSegment", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSAAFRSegment", exc));
@@ -1488,7 +1537,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetSAAFRFillSegment: function(pLinePoints, dMRR) {
+            GetSAAFRFillSegment: function (pLinePoints, dMRR) {
                 try {
                     //var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     //var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -1539,7 +1588,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            ArcArrayDouble: function(pResultLinePoints, vblCounter, dRadius, linetype) {
+            ArcArrayDouble: function (pResultLinePoints, vblCounter, dRadius, linetype) {
                 try {
                     var startangle = 0;
                     var endangle = 0;
@@ -1628,15 +1677,15 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pArcLinePoints = new Array(numarcpts);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pArcLinePoints);
                     increment = (endangle - startangle) / (numarcpts - 1);
-                    if(dRadius !== 0 && length !== 0)
+                    if (dRadius !== 0 && length !== 0)
                     {
                         C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
                         C.y = Math.floor((e.y - (dRadius / length) * (a.y - e.y)));
                     }
                     else
                     {
-                        C.x=e.x;
-                        C.y=e.y;
+                        C.x = e.x;
+                        C.y = e.y;
                     }
                     for (j = 0; j < numarcpts; j++) {
                         pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
@@ -1676,7 +1725,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pResultLinePoints;
             },
-            CalcCircleDouble: function(Center, radius, numpts, CirclePoints, styl) {
+            CalcCircleDouble: function (Center, radius, numpts, CirclePoints, styl) {
                 try {
                     var j = 0;
                     var dSegmentAngle = 6.283185307179586 / numpts;
@@ -1712,7 +1761,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcCircleShape: function(Center, radius, numpts, CirclePoints, styl) {
+            CalcCircleShape: function (Center, radius, numpts, CirclePoints, styl) {
                 var shape;
                 if (styl === 9)
                     shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
@@ -1735,7 +1784,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return shape;
             },
-            GetSquallCurve: function(StartPt, EndPt, pSquallPts, sign, amplitude, quantity) {
+            GetSquallCurve: function (StartPt, EndPt, pSquallPts, sign, amplitude, quantity) {
                 try {
                     var dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(StartPt, EndPt);
                     var ptTemp = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -1754,7 +1803,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetSquallSegment: function(StartPt, EndPt, pSquallPts, sign, amplitude, quantity, length) {
+            GetSquallSegment: function (StartPt, EndPt, pSquallPts, sign, amplitude, quantity, length) {
                 var counter = 0;
                 try {
                     var StartCurvePt;
@@ -1801,7 +1850,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return counter;
             },
-            PointInBounds2: function(pt, ul, lr) {
+            PointInBounds2: function (pt, ul, lr) {
                 try {
                     var maxX = lr.x;
                     var minX = ul.x;
@@ -1820,7 +1869,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            intersectSegment: function(pt0, pt1, sidePt0, sidePt1) {
+            intersectSegment: function (pt0, pt1, sidePt0, sidePt1) {
                 var pt = null;
                 try {
                     if (pt0.x === pt1.x) {
@@ -1894,7 +1943,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return null;
             },
-            BoundOneSegment: function(pt0, pt1, ul, lr) {
+            BoundOneSegment: function (pt0, pt1, ul, lr) {
                 var line = new Array(2);
                 try {
                     if (pt0.y < ul.y && pt1.y < ul.y) {
@@ -1993,7 +2042,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return line;
             },
-            GetDitchSpikeDouble: function(pLinePoints, nOldCounter, bWayIs, linetype) {
+            GetDitchSpikeDouble: function (pLinePoints, nOldCounter, bWayIs, linetype) {
                 var nSpikeCounter = 0;
                 try {
                     var nNumberOfSegments = 0;
@@ -2198,7 +2247,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return nSpikeCounter;
             },
-            MoveChannelPixels: function(pLinePoints) {
+            MoveChannelPixels: function (pLinePoints) {
                 try {
                     if (pLinePoints === null || pLinePoints.length <= 0)
                         return;
@@ -2244,7 +2293,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            moveSingleCPixels: function(linetype, pLinePoints) {
+            moveSingleCPixels: function (linetype, pLinePoints) {
                 try {
                     switch (linetype) {
                         case 231117100:
@@ -2264,7 +2313,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            RotateGeometryDouble: function(pLinePoints, vblCounter, lAngle) {
+            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -2303,7 +2352,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            adjustCATKBYFIREControlPoint: function(linetype, pLinePoints, dist) {
+            adjustCATKBYFIREControlPoint: function (linetype, pLinePoints, dist) {
                 try {
                     if (linetype !== 21710000)
                         return;
@@ -2327,7 +2376,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            PointRelativeToLine: function() {
+            PointRelativeToLine: function () {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var pt0 = arguments[0];
@@ -2391,7 +2440,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            LineRelativeToLine: function(pt0, pt1, ptRelative, pt2, pt3) {
+            LineRelativeToLine: function (pt0, pt1, ptRelative, pt2, pt3) {
                 try {
                     var bolVertical = 0;
                     var m = new armyc2.c2sd.JavaLineArray.ref();
@@ -2432,7 +2481,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcMBR: function(pLinePoints, numpts, ulx, uly, lrx, lry) {
+            CalcMBR: function (pLinePoints, numpts, ulx, uly, lrx, lry) {
                 try {
                     var j = 0;
                     ulx.value = Clazz.newArray(1, 0);
@@ -2462,7 +2511,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcMBRPoints: function(pLinePoints, numpts, ul, lr) {
+            CalcMBRPoints: function (pLinePoints, numpts, ul, lr) {
                 try {
                     var j = 0;
                     ul.x = 1.7976931348623157E308;
@@ -2488,7 +2537,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            MBRDistance: function(pLinePoints, numpts) {
+            MBRDistance: function (pLinePoints, numpts) {
                 var result = 0;
                 try {
                     var ulx = new armyc2.c2sd.JavaLineArray.ref();
@@ -2515,7 +2564,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            Reverse2Points: function(pt1, pt2) {
+            Reverse2Points: function (pt1, pt2) {
                 try {
                     var tempPt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     tempPt.x = pt1.x;
@@ -2533,7 +2582,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            createStrokedShape: function(shape) {
+            createStrokedShape: function (shape) {
                 var newshape = new armyc2.c2sd.graphics2d.GeneralPath();
                 try {
                     var coords = Clazz.newArray(6, 0);
@@ -2566,7 +2615,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return newshape;
             },
-            setPOINT2: function() {
+            setPOINT2: function () {
                 var pt2 = new armyc2.c2sd.JavaLineArray.POINT2();
                 pt2.x = 0;
                 pt2.y = 0;
@@ -2605,7 +2654,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt2;
             },
-            getExteriorPoints: function(pLinePoints, vblCounter, lineType, interior) {
+            getExteriorPoints: function (pLinePoints, vblCounter, lineType, interior) {
                 var j;
                 var index;
                 var pt0;
@@ -2712,16 +2761,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            getDeepCopy:function(pts)
+            getDeepCopy: function (pts)
             {
-                if(pts === null || pts.isEmpty())
+                if (pts === null || pts.isEmpty())
                     return pts;
-                var deepCopy=new java.util.ArrayList();
-                var j=0;
-                var pt=null;
-                for(j=0;j<pts.size();j++)
+                var deepCopy = new java.util.ArrayList();
+                var j = 0;
+                var pt = null;
+                for (j = 0; j < pts.size(); j++)
                 {
-                    pt=new armyc2.c2sd.JavaLineArray.POINT2(pts.get(j));
+                    pt = new armyc2.c2sd.JavaLineArray.POINT2(pts.get(j));
                     deepCopy.add(pt);
                 }
                 return deepCopy;
