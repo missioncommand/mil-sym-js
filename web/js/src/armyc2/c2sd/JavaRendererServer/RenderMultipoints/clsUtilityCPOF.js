@@ -528,7 +528,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 }
             }
             if (k === tg.Pixels.size() - 1) {
-                shapes.add(shape);
+                if(shape.getShapeType()===1)    //fill shape on the bottom
+                    shapes.add(0,shape);
+                else
+                    shapes.add(shape);
             }
         }
     },
