@@ -1088,11 +1088,20 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (!clipArea || tg.LatLongs.size() < 2)
                 return true;
             
+            var clipBounds=clipArea;            
+            if(clipArea instanceof java.util.ArrayList)            
+                clipBounds=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.getMBR(clipArea);
+            
             var j = 0;
-            var x = clipArea.getMinX();
-            var y = clipArea.getMinY();
-            var width = clipArea.getWidth();
-            var height = clipArea.getHeight();
+//            var x = clipArea.getMinX();
+//            var y = clipArea.getMinY();
+//            var width = clipArea.getWidth();
+//            var height = clipArea.getHeight();
+            var x = clipBounds.getMinX();
+            var y = clipBounds.getMinY();
+            var width = clipBounds.getWidth();
+            var height = clipBounds.getHeight();
+            
             var tl = new armyc2.c2sd.JavaLineArray.POINT2(x, y);
             var br = new armyc2.c2sd.JavaLineArray.POINT2(x + width, y + height);
             tl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointPixelsToLatLong(tl, converter);
