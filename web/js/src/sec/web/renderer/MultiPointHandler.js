@@ -349,10 +349,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //We are using the orientation with the north pole on top so we can keep
                     //the existing value for top. Then the left value will be the least positive x value
                     //left = geoCoords[0].x;
-                    left = geoCoords.get(0).x;
-                    for (j = 1; j < geoCoords.length; j++)
+                    //left = geoCoords.get(0).x;
+                    left=180;
+                    for (j = 0; j < geoCoords.length; j++)
                     {
-                        pt = geoCoords[0];
+                        pt = geoCoords[j];
                         if (pt.getX() > 0 && pt.getX() < left)
                             left = pt.getX();
                     }
@@ -364,6 +365,59 @@ sec.web.renderer.MultiPointHandler = (function () {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "getGeoUL", err);
             }
             return ptGeo;
+        },
+        getBboxFromCoords: function (geoCoords)
+        {
+            //var ptGeo = null;
+            var bbox=null;
+            try
+            {
+                var j = 0;
+                var pt = null;
+                var left = geoCoords.get(0).x;
+                var top = geoCoords.get(0).y;
+                var right = geoCoords.get(0).x;
+                var bottom = geoCoords.get(0).y;
+                for (j = 1; j < geoCoords.size(); j++)
+                {
+                    pt = geoCoords.get(j);
+                    if (pt.getX() < left)
+                        left = pt.getX();
+                    if (pt.getX() > right)
+                        right = pt.getX();
+                    if (pt.getY() > top)
+                        top = pt.getY();
+                    if (pt.getY() < bottom)
+                        bottom = pt.getY();
+                }
+                //if geoCoords crosses the IDL
+                if (right - left > 180)
+                {
+                    //There must be at least one x value on either side of +/-180. Also, there is at least
+                    //one positive value to the left of +/-180 and negative x value to the right of +/-180.
+                    //We are using the orientation with the north pole on top so we can keep
+                    //the existing value for top. Then the left value will be the least positive x value
+                    //left = geoCoords[0].x;
+                    left = 180;
+                    right = -180;                    
+                    for (j = 0; j < geoCoords.size(); j++)
+                    {
+                        pt = geoCoords.get(j);
+                        if (pt.getX() > 0 && pt.getX() < left)
+                            left = pt.getX();
+                        if (pt.getX() < 0 && pt.getX() > right)
+                            right = pt.getX();
+                    }
+                }
+                //ptGeo = new armyc2.c2sd.graphics2d.Point2D(left, top);
+                bbox=Double.toString(left)+","+Double.toString(bottom)+","+Double.toString(right)+","+Double.toString(top);
+            }
+            catch (err)
+            {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "getBboxFromCoords", err);
+            }
+            //return ptGeo;            
+            return bbox;            
         },
         getGeoUL2: function (geoCoords)
         {
@@ -396,10 +450,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //We are using the orientation with the north pole on top so we can keep
                     //the existing value for top. Then the left value will be the least positive x value
                     //left = geoCoords[0].x;
-                    left = geoCoords.get(0).x;
-                    for (j = 1; j < geoCoords.size(); j++)
+                    //left = geoCoords.get(0).x;
+                    left=180;
+                    for (j = 0; j < geoCoords.size(); j++)
                     {
-                        pt = geoCoords.get(0);
+                        pt = geoCoords.get(j);
                         if (pt.getX() > 0 && pt.getX() < left)
                             left = pt.getX();
                     }
@@ -639,6 +694,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     ptGeoUL = sec.web.renderer.MultiPointHandler.getGeoUL2(bboxCoords); //was getGeoUL
                     left = ptGeoUL.getX();
                     top = ptGeoUL.getY();
+                    var bbox2=this.getBboxFromCoords(bboxCoords);
+                    scale = this.getReasonableScale(bbox2, scale);
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                     var ptPixels = null;
                     var ptGeo = null;
