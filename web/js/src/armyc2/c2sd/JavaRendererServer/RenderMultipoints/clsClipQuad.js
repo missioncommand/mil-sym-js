@@ -173,11 +173,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             } else if (index === 1) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D(clipBounds.get(0).getX(), clipBounds.get(0).getY());
             }
-            //if (Math.abs(pt2.getX() - pt1.getX())<1)
-            if (pt2.getX() === pt1.getX())
+            //if (pt2.getX() === pt1.getX())
+            if (Math.abs(pt2.getX() - pt1.getX())<1)
                 pt2.setLocation(pt2.getX() + 1, pt2.getY());
-            //if (Math.abs(pt2.getY() - pt1.getY())<1)
-            if (pt2.getY() === pt1.getY())
+            //if (pt2.getY() === pt1.getY())
+            if (Math.abs(pt2.getY() - pt1.getY())<1)
                 pt2.setLocation(pt2.getX(), pt2.getY() + 1);
             for (j = 0; j < pts.size(); j++) {
                 current = pts.get(j);
