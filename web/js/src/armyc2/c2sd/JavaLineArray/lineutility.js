@@ -1588,7 +1588,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            ArcArrayDouble: function (pResultLinePoints, vblCounter, dRadius, linetype) {
+            ArcArrayDouble: function (pResultLinePoints, vblCounter, dRadius, linetype, converter) {
                 try {
                     var startangle = 0;
                     var endangle = 0;
@@ -1612,7 +1612,28 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         else
                             M = 1.5707963267948966;
                     }
+                    if(converter)
+                    {
+                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
+                        var reverseM=false;
+                        pt02d=converter.PixelsToGeo(pt02d);
+                        pt12d=converter.PixelsToGeo(pt12d);
+                        M=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt02d,pt12d);
+                        M*=(Math.PI/180);
+                        if(M<0)
+                            M+=Math.PI;
+                    }
                     length = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(a, e);
+                    if(converter)
+                    {
+                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
+                        pt02d=converter.PixelsToGeo(pt02d);
+                        pt12d=converter.PixelsToGeo(pt12d);
+                        length=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt02d,pt12d,null,null);
+                    }
+                    
                     switch (linetype) {
                         case 23157000:
                             startangle = M - 1.5707963267948966;
@@ -1677,6 +1698,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pArcLinePoints = new Array(numarcpts);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pArcLinePoints);
                     increment = (endangle - startangle) / (numarcpts - 1);
+                                        
                     if (dRadius !== 0 && length !== 0)
                     {
                         C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
@@ -1687,13 +1709,30 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         C.x = e.x;
                         C.y = e.y;
                     }
-                    for (j = 0; j < numarcpts; j++) {
-                        pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
-                        pArcLinePoints[j].y = Math.floor((dRadius * Math.sin(startangle + j * increment)));
+                    if (converter)
+                    {
+                        var C2d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        C2d=converter.PixelsToGeo(C2d);    
+                        var az=0,ptGeo=null,ptPixels=null;
+                        for (j = 0; j < numarcpts; j++) {
+                            az=startangle*180/Math.PI+j*increment*180/Math.PI;
+                            ptGeo=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(C2d,length,az);
+                            ptGeo=new armyc2.c2sd.graphics2d.Point2D(ptGeo.x,ptGeo.y);
+                            ptPixels=converter.GeoToPixels(ptGeo);
+                            pArcLinePoints[j].x = ptPixels.x;
+                            pArcLinePoints[j].y = ptPixels.y;                            
+                        }
                     }
-                    for (j = 0; j < numarcpts; j++) {
-                        pArcLinePoints[j].x += C.x;
-                        pArcLinePoints[j].y += C.y;
+                    else
+                    {
+                        for (j = 0; j < numarcpts; j++) {
+                            pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
+                            pArcLinePoints[j].y = Math.floor((dRadius * Math.sin(startangle + j * increment)));
+                        }
+                        for (j = 0; j < numarcpts; j++) {
+                            pArcLinePoints[j].x += C.x;
+                            pArcLinePoints[j].y += C.y;
+                        }
                     }
                     switch (linetype) {
                         case 211400000:

@@ -190,7 +190,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.getMSRShapes(tg, shapes);
                     }
                     else if (lineType !== 23111001) {
-                        tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, tg.Pixels, shapes, clipBounds2, rev);
+                        tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, tg.Pixels, shapes, clipBounds2, rev, converter);
                     } else if (lineType === 23111001) {
                         var tempShapes = null;
                         var partitions = armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility.GetPartitions2(tg);
@@ -203,7 +203,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                             for (k = partitions.get(l).start; k <= partitions.get(l).end_Renamed + 1; k++) {
                                 pixels.add(tg.Pixels.get(k));
                             }
-                            pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, pixels, tempShapes, clipBounds2, rev);
+                            pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, pixels, tempShapes, clipBounds2, rev, converter);
                             shapes.addAll(tempShapes);
                         }
                     }

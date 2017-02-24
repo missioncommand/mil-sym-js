@@ -64,7 +64,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     points.add(pLinePoints[j]);
                 }
             },
-            GetLineArray2: function (lineType, pts, shapes, clipBounds, rev) {
+            GetLineArray2: function (lineType, pts, shapes, clipBounds, rev, converter) {
                 var points = null;
                 try {
                     var pt = null;
@@ -95,7 +95,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pt = pts.get(j);
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt.x, pt.y, pt.style);
                     }
-                    points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev);
+                    var useConverter=false;
+                    useConverter=true;
+                    if(!useConverter)
+                        converter=undefined;
+                    points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev, converter);
                 }
                 catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -659,7 +663,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return false;
             },
-            GetIsolatePointsDouble: function (pLinePoints, lineType) {
+            GetIsolatePointsDouble: function (pLinePoints, lineType, converter) {
                 try {
                     var reverseTurn = false;
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
@@ -712,7 +716,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     E.y = 2 * pt1.y - pt0.y;
                     ptsArc[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[1]);
                     ptsArc[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(E);
-                    armyc2.c2sd.JavaLineArray.lineutility.ArcArrayDouble(ptsArc, 0, dRadius, lineType);
+                    if(converter)
+                    {
+                        ptsArc[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
+                        ptsArc[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[1]);
+                    }
+                    armyc2.c2sd.JavaLineArray.lineutility.ArcArrayDouble(ptsArc, 0, dRadius, lineType, converter);
                     for (j = 0; j < 26; j++) {
                         ptsArc[j].style = 0;
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsArc[j]);
@@ -1996,7 +2005,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetLineArray2Double: function (lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev) {
+            GetLineArray2Double: function (lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev, converter) {
                 var points = new java.util.ArrayList();
                 try {
                     var client = armyc2.c2sd.JavaLineArray.CELineArray.getClient();
@@ -2664,25 +2673,25 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = 4;
                             break;
                         case 211400000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 50;
                             break;
                         case 212600000:
                         case 212500000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 50;
                             //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         case 211600000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 32;
                             break;
                         case 211900000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 75;
                             break;
                         case 212100000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 29;
                             break;
                         case 23173000:
