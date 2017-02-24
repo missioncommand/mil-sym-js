@@ -132,6 +132,7 @@ function testRender()
                 break;
             case 4://Boundary
                 symbolCode = "GFGPGLB----A**X";//boundary
+                symbolCode = "GFGPGLB----D**X";//boundary
                 controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
                 break;
             case 5://Dummy Minefield Dynamic
@@ -148,6 +149,14 @@ function testRender()
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 modifiers[mtg.AM_DISTANCE] = [100];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                break;
+            case 7://BS Rectangle
+                symbolCode = "BS_RECTANGLE---";//
+                controlPoints = "66.26700036208742,30.62755038706961";
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [100, 200];
                 modifiers["FILLCOLOR"] = "BBFF0000";
                 break;
             default:
@@ -255,6 +264,7 @@ Draw Canvas/SVG Test:
       <option value=4>Boundary</option>
       <option value=5>Dummy Minefield Dynamic</option>
       <option value=6>BBS_RECTANGLE--</option>
+      <option value=7>BS_RECTANGLE---</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
