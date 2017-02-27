@@ -1497,7 +1497,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return pEllipsePoints;
             },
-            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth, lineType) {
+            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth, lineType, converter) {
                 var pResultPoints = null;
                 try {
                     var pEllipsePoints = new Array(36);
@@ -1505,15 +1505,47 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var dFactor = 0;
                     var a = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
                     var b = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
-//                        if(lineType === 13000002)
-//                            b=a;
+                    var ptCenter2d=null;
+                    if(converter)
+                    {
+                        ptCenter2d=new armyc2.c2sd.graphics2d.Point2D(ptCenter.x,ptCenter.y);
+                        ptCenter2d=converter.PixelsToGeo(ptCenter2d);
+                        var ptWidth2d=new armyc2.c2sd.graphics2d.Point2D(ptWidth.x,ptWidth.y);
+                        ptWidth2d=converter.PixelsToGeo(ptWidth2d);
+                        var ptHeight2d=new armyc2.c2sd.graphics2d.Point2D(ptHeight.x,ptHeight.y);
+                        ptHeight2d=converter.PixelsToGeo(ptHeight2d);
+                        a = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter2d, ptWidth2d,null,null);
+                        b = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter2d, ptHeight2d, null, null);
+                        ptCenter.x=ptCenter2d.x;
+                        ptCenter.y=ptCenter2d.y;
+                    }
+                    var ptTemp2d=new armyc2.c2sd.graphics2d.Point2D();
+                    var ptTemp=null,dAzimuth=0,d=0;
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
                     for (l = 1; l < 37; l++)
                     {
                         dFactor = (10.0 * l) * Math.PI / 180.0;
-                        pEllipsePoints[l - 1].x = ptCenter.x + (a * Math.cos(dFactor));
-                        pEllipsePoints[l - 1].y = ptCenter.y + (b * Math.sin(dFactor));
-                        pEllipsePoints[l - 1].style = 0;
+                        if(!converter)
+                        {
+                            pEllipsePoints[l - 1].x = ptCenter.x + (a * Math.cos(dFactor));
+                            pEllipsePoints[l - 1].y = ptCenter.y + (b * Math.sin(dFactor));
+                            pEllipsePoints[l - 1].style = 0;
+                        }
+                        else    //use converter
+                        {
+                            //POINT2 ptCenter x,y is in geo
+                            dFactor = (10.0 * l) * Math.PI / 180.0;
+                            dAzimuth=10.0*l;
+                            //d=Math.sqrt(a*Math.cos(dFactor)*a*Math.cos(dFactor) +  b*Math.sin(dFactor)*b*Math.sin(dFactor));
+                            //d=Math.sqrt(  Math.pow(a*Math.cos(dFactor+Math.PI/2),2) +  Math.pow(b*Math.sin(dFactor+Math.PI/2),2) );
+                            //ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, dAzimuth);
+                            ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, a*Math.cos(dFactor), 90);
+                            ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTemp, b*Math.sin(dFactor), 0);
+                            ptTemp2d.x=ptTemp.x;
+                            ptTemp2d.y=ptTemp.y;                            
+                            ptTemp2d=converter.GeoToPixels(ptTemp2d);
+                            pEllipsePoints[l - 1]=new armyc2.c2sd.JavaLineArray.POINT2(ptTemp2d.x,ptTemp2d.y);
+                        }
                     }
                     if (lineType !== 13000002)
                         armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth - 90);
@@ -2184,21 +2216,49 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pt2 = pLinePoints[2];
                             //pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getEllipsePoints(pt0, pt1, pt2);
                             var azimuth = pLinePoints[3].x;
-                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
+                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
                             acCounter = 37;
                             break;
                         case 13000001:
                         case 13000002:
+                            var x0=pLinePoints[0].x;
+                            var y0=pLinePoints[0].y;
                             pt0 = pLinePoints[0];//the center of the ellipse
                             pt1 = pLinePoints[1];//the width of the ellipse
                             pt2 = pLinePoints[2];//the height of the ellipse
                             azimuth = pLinePoints[3].x;
-                            pOriginalLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
+                            pOriginalLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
                             //use linestyle to get the distance to expand the shape for the buffer shape
+                            //pt0.style is either in pixels or meters, depending on whether the converter is being used
                             var dist=pt0.style;
-                            pt1.x+=dist;
-                            pt2.y-=dist;
-                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType);
+                            if(converter)
+                            {
+                                //extend semi-major axis for the buffer
+                                var pt12d=new armyc2.c2sd.graphics2d.Point2D(pt1.x,pt1.y);
+                                pt12d=converter.PixelsToGeo(pt12d);
+                                pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.x,pt12d.y);
+                                pt1=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt1,dist,90);
+                                pt12d=new armyc2.c2sd.graphics2d.Point2D(pt1.x,pt1.y);
+                                pt12d=converter.GeoToPixels(pt12d);
+                                pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.x,pt12d.y);
+                                //extend semi-minor axis for the buffer
+                                var pt22d=new armyc2.c2sd.graphics2d.Point2D(pt2.x,pt2.y);
+                                pt22d=converter.PixelsToGeo(pt22d);
+                                pt2=new armyc2.c2sd.JavaLineArray.POINT2(pt22d.x,pt22d.y);
+                                pt2=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt2,dist,0);
+                                pt22d=new armyc2.c2sd.graphics2d.Point2D(pt2.x,pt2.y);
+                                pt22d=converter.GeoToPixels(pt22d);
+                                pt2=new armyc2.c2sd.JavaLineArray.POINT2(pt22d.x,pt22d.y);
+                            }
+                            else
+                            {
+                                pt1.x+=dist;
+                                pt2.y-=dist;
+                            }
+                            //restore original pt0;
+                            pt0.x=x0;
+                            pt0.y=y0;
+                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
                             acCounter = 37;
                             vblSaveCounter=37;
                             break;

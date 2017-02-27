@@ -429,6 +429,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
                     //arraysupport will use line style to create the buffer shape
                     tg.Pixels.get(0).style=dist;
+                    //the circles don't appear round in Ceisum so use metric value
+                    var useAM2=false;
+                    //uncomment following line to use meters
+                    useAM2=true;
+                    if(useAM2)
+                        tg.Pixels.get(0).style=AM[2];
+                       
                 }
             }
             if (lineType === 243112000)
