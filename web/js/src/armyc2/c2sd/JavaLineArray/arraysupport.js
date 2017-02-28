@@ -1503,6 +1503,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var pEllipsePoints = new Array(36);
                     var l = 0, j = 0;
                     var dFactor = 0;
+                    var x=0,y=0;
                     var a = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
                     var b = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
                     var ptCenter2d=null;
@@ -1521,6 +1522,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     }
                     var ptTemp2d=new armyc2.c2sd.graphics2d.Point2D();
                     var ptTemp=null,dAzimuth=0,d=0;
+                    var a12 = new armyc2.c2sd.JavaLineArray.ref();
+                    var a21 = new armyc2.c2sd.JavaLineArray.ref();
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
                     for (l = 1; l < 37; l++)
                     {
@@ -1534,15 +1537,25 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         else    //use converter
                         {
                             //POINT2 ptCenter x,y is in geo
-                            dFactor = (10.0 * l) * Math.PI / 180.0;
-                            dAzimuth=10.0*l;
-                            //d=Math.sqrt(a*Math.cos(dFactor)*a*Math.cos(dFactor) +  b*Math.sin(dFactor)*b*Math.sin(dFactor));
-                            //d=Math.sqrt(  Math.pow(a*Math.cos(dFactor+Math.PI/2),2) +  Math.pow(b*Math.sin(dFactor+Math.PI/2),2) );
-                            //ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, dAzimuth);
-                            ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, a*Math.cos(dFactor), 90);
-                            ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTemp, b*Math.sin(dFactor), 0);
+                            //dFactor = (10.0 * l) * Math.PI / 180.0;
+                            dFactor = -(10.0 * l) * Math.PI / 180.0 + Math.PI / 2;
+                            dAzimuth = 10.0 * l;
+                            if (lineType === 13000002)
+                            {
+                                d=Math.sqrt(  Math.pow(a*Math.cos(dFactor),2) +  Math.pow(b*Math.sin(dFactor),2) );
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, dAzimuth);                            
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter,ptTemp,a12,a21);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, a12.value[0]);                            
+                            }
+                            else
+                            {
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, a*Math.cos(dFactor), 90);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTemp, b*Math.sin(dFactor), 0);
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter,ptTemp,a12,a21);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, a12.value[0]);                            
+                            }
                             ptTemp2d.x=ptTemp.x;
-                            ptTemp2d.y=ptTemp.y;                            
+                            ptTemp2d.y=ptTemp.y;                                                        
                             ptTemp2d=converter.GeoToPixels(ptTemp2d);
                             pEllipsePoints[l - 1]=new armyc2.c2sd.JavaLineArray.POINT2(ptTemp2d.x,ptTemp2d.y);
                         }
