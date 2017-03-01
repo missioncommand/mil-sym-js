@@ -2352,7 +2352,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle) {
+            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle, converter) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -2360,25 +2360,51 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var dGamma = 0;
                     var x = 0;
                     var y = 0;
+                    //add converter stuff
+                    var temp2d=null,d=0,theta=0;
+                    var a12 = new armyc2.c2sd.JavaLineArray.ref();
+                    var a21 = new armyc2.c2sd.JavaLineArray.ref();
+                    //end section
                     if (lAngle !== 0) {
                         var pdCenter;
                         dRotate = lAngle * 3.141592653589793 / 180;
                         pdCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter);
-                        for (j = 0; j < vblCounter; j++) {
-                            if (pLinePoints[j].x === pdCenter.x) {
-                                if ((pLinePoints[j].y > pdCenter.y))
-                                    dGamma = 4.71238898038469;
-                                else
-                                    dGamma = 1.5707963267948966;
-                            } else
-                                dGamma = 3.141592653589793 + Math.atan((pLinePoints[j].y - pdCenter.y) / (pLinePoints[j].x - pdCenter.x));
-                            if (pLinePoints[j].x >= pdCenter.x)
-                                dGamma = dGamma + 3.141592653589793;
-                            dTheta = dRotate + dGamma;
-                            y = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.sin(dTheta);
-                            x = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.cos(dTheta);
-                            pLinePoints[j].y = pdCenter.y + y;
-                            pLinePoints[j].x = pdCenter.x + x;
+                        if(converter)
+                        {
+                            pdCenter=new armyc2.c2sd.graphics2d.Point2D(pdCenter.x,pdCenter.y);
+                            pdCenter=converter.PixelsToGeo(pdCenter);                            
+                        }
+                        for (j = 0; j < vblCounter; j++) 
+                        {
+                            if(converter)
+                            {                                
+                                temp2d=new armyc2.c2sd.graphics2d.Point2D(pLinePoints[j].x,pLinePoints[j].y);
+                                temp2d=converter.PixelsToGeo(temp2d);                            
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pdCenter,temp2d,a12,a21);
+                                theta=a12.value[0]+lAngle;
+                                temp2d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pdCenter,d,theta);
+                                temp2d=new armyc2.c2sd.graphics2d.Point2D(temp2d.x,temp2d.y);
+                                temp2d=converter.GeoToPixels(temp2d);                            
+                                pLinePoints[j].x=temp2d.x;
+                                pLinePoints[j].y=temp2d.y;
+                            }
+                            else
+                            {
+                                if (pLinePoints[j].x === pdCenter.x) {
+                                    if ((pLinePoints[j].y > pdCenter.y))
+                                        dGamma = 4.71238898038469;
+                                    else
+                                        dGamma = 1.5707963267948966;
+                                } else
+                                    dGamma = 3.141592653589793 + Math.atan((pLinePoints[j].y - pdCenter.y) / (pLinePoints[j].x - pdCenter.x));
+                                if (pLinePoints[j].x >= pdCenter.x)
+                                    dGamma = dGamma + 3.141592653589793;
+                                dTheta = dRotate + dGamma;
+                                y = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.sin(dTheta);
+                                x = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.cos(dTheta);
+                                pLinePoints[j].y = pdCenter.y + y;
+                                pLinePoints[j].x = pdCenter.x + x;                            
+                            }
                         }
                         return;
                     }

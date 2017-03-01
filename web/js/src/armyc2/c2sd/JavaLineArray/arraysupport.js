@@ -1561,7 +1561,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         }
                     }
                     if (lineType !== 13000002)
-                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth - 90);
+                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth - 90, converter);
                     pResultPoints = new Array(37);
                     for (j = 0; j < 36; j++)
                         pResultPoints[j] = pEllipsePoints[j];
