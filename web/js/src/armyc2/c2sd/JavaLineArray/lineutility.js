@@ -2352,7 +2352,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle, converter) {
+            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle, converter, ptCenter) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -2373,6 +2373,8 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         {
                             pdCenter=new armyc2.c2sd.graphics2d.Point2D(pdCenter.x,pdCenter.y);
                             pdCenter=converter.PixelsToGeo(pdCenter);                            
+                            if(ptCenter)
+                                pdCenter=ptCenter;
                         }
                         for (j = 0; j < vblCounter; j++) 
                         {
