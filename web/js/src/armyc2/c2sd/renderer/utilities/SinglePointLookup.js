@@ -137,7 +137,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -165,7 +165,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -201,7 +201,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                if(symStd === undefined)
                     symStd = RendererSettings.getSymbologyStandard();
                
-                if(symStd===RendererSettings.Symbology_2525Bch2_USAS_13_14)
+                if(symStd===RendererSettings.Symbology_2525B)
                     symbolMap=symbolMapB;
                 else if(symStd===RendererSettings.Symbology_2525C)
                     symbolMap=symbolMapC;

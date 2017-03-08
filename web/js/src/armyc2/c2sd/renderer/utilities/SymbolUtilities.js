@@ -2508,7 +2508,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(affiliation===('A') ||
                 affiliation===('S'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "?";
             else
                 textChar=null;
@@ -2524,7 +2524,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             textChar = "X";
         else if(affiliation===('M'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "X?";
             else
                 textChar = "X";
