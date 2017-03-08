@@ -29,7 +29,7 @@ armyc2.c2sd.renderer.MilStdIconRenderer = (function () {
             armyc2.c2sd.renderer.utilities.UnitFontLookup.init();
             armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.init();
             
-            if(UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525Bch2_USAS_13_14)===false)
+            if(UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525B)===false)
             {//if 2525B info isn't loaded, make C the rendering default.
                 RendererSettings.setSymbologyStandard(RendererSettings.Symbology_2525C);
             }

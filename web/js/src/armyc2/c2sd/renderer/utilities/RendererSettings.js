@@ -102,9 +102,14 @@ return{
      */
     TextBackgroundMethod_OUTLINE_QUICK : 3,
 
-
     /**
-     * 2525Bch2 and USAS 13/14 symbology
+     * 2525Bch2 and USAS 11-12 symbology
+     * @deprecated use Symbology_2525B
+     */
+    Symbology_2525B : 0,
+    /**
+     * 2525Bch2 and USAS 13-14 symbology
+     * @deprecated use Symbology_2525B
      */
     Symbology_2525Bch2_USAS_13_14 : 0,
     /**
@@ -141,7 +146,7 @@ return{
     /**
      * Controls what symbols are supported.
      * Set this before loading the renderer.
-     * @param {Number} standard like RendererSettings.Symbology_2525Bch2_USAS_13_14
+     * @param {Number} standard like RendererSettings.Symbology_2525B
      * @returns {undefined}
      */
     setSymbologyStandard: function (standard){

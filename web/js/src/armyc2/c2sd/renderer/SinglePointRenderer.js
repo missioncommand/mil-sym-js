@@ -125,7 +125,7 @@ return{
         if(render===false)
             ctx={};
         
-        if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14)
+        if(symStd > RendererSettings.Symbology_2525B)
         {
             var affiliation = symbolID.charAt(1);
             switch(affiliation)
@@ -237,7 +237,7 @@ return{
 		if(symbolID.charAt(2) === 'U' &&
 						symbolID.substring(4, 6) === "WM")
 		{
-			if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+			if(symStd === RendererSettings.Symbology_2525B)
 			{
 				if(modifiers[MilStdAttributes.LineColor] !== undefined)
 				{
@@ -2748,7 +2748,7 @@ return{
             text1 = new TextInfo(strText1,0,0,textInfoContext);
             
             labelBounds1 = text1.getTextBounds();
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
             {
                 y = symbolBounds.getY() + symbolBounds.getHeight();
                 x = symbolBounds.getX() - labelBounds1.getWidth() - bufferXL;

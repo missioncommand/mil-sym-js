@@ -108,7 +108,7 @@ return{
             frameAssume = null;
         
        
-        if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14)
+        if(symStd > RendererSettings.Symbology_2525B)
         {
             var affiliation = symbolID.charAt(1);
             switch(affiliation)
@@ -219,7 +219,7 @@ return{
 		if(symbolID.charAt(2) === 'U' &&
 						symbolID.substring(4, 6) === "WM")
 		{
-			if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+			if(symStd === RendererSettings.Symbology_2525B)
 			{
 				if(modifiers[MilStdAttributes.LineColor] !== undefined)
 				{
@@ -2523,7 +2523,7 @@ return{
             text1 = new SVGTextInfo(strText1,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
             
             labelBounds1 = text1.getBounds();
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
             {
                 y = symbolBounds.getY() + symbolBounds.getHeight();
                 x = symbolBounds.getX() - bufferXL;

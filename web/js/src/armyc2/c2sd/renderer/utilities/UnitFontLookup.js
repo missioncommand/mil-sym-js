@@ -207,7 +207,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var map = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 map = symbolMapB;
             else
                 map = symbolMapC;
@@ -233,7 +233,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var map = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 map = symbolMapB;
             else
                 map = symbolMapC;
@@ -351,7 +351,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 843;
+                          if(symStd === 0)
+                            returnVal = 819;
+                          else
+                            returnVal = 843; 
                       }
                       else//if(battleDimension==='Z')//unknown
                       {
@@ -673,7 +676,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
             
             if(symStd === undefined)
                 symStd = RendererSettings.getSymbologyStandard();
-            if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14 && status === 'A')
+            if(symStd > RendererSettings.Symbology_2525B && status === 'A')
             {
                 var affiliation = SymbolID.charAt(1);
                 switch(affiliation)
