@@ -428,7 +428,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     var center=tg.LatLongs.get(0);
                     var semiMajor=parseFloat(tg.get_H1());
                     var semiMinor=parseFloat(tg.get_H2());
-                    var rotation=parseFloat(tg.get_T1());
+                    var rotation=90-parseFloat(tg.get_T1());
                     var ellipse = new EllipseGeometry({
                         center: Cartesian3.fromDegrees(center.x, center.y),
                         semiMajorAxis: semiMajor+buffer,
