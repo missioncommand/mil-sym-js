@@ -188,7 +188,7 @@
         var radii = ellipsoid._radii;
 
         if (!defined(result)) {
-            return new Ellipsoid(radii.x, radii.y, radii.z);
+            return new vincenty.Ellipsoid(radii.x, radii.y, radii.z);
         }
 
         Cartesian3.clone(radii, result._radii);
@@ -259,7 +259,7 @@
      * @returns {Ellipsoid} The cloned Ellipsoid.
      */
     vincenty.Ellipsoid.prototype.clone = function(result) {
-        return Ellipsoid.clone(this, result);
+        return vincenty.Ellipsoid.clone(this, result);
     };
 
     /**

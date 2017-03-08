@@ -1541,7 +1541,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             //dFactor = (10.0 * l) * Math.PI / 180.0;
                             dFactor = -(10.0 * l) * Math.PI / 180.0 + Math.PI / 2;
                             dAzimuth = 10.0 * l;
-                            if (lineType === 13000002)
+                            if (lineType === 13000002) //circle
                             {
                                 d=Math.sqrt(  Math.pow(a*Math.cos(dFactor),2) +  Math.pow(b*Math.sin(dFactor),2) );
                                 ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, dAzimuth);                            
@@ -2227,7 +2227,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                            pOriginalLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
 //                            pOriginalLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             break;
-                        case 13000000:
+                        case 13000000:  //not currently used
                             pt0 = pLinePoints[0];
                             pt1 = pLinePoints[1];
                             pt2 = pLinePoints[2];
@@ -2236,7 +2236,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
                             acCounter = 37;
                             break;
-                        case 13000001:
+                        case 13000001:  //not currently used
                         case 13000002:
                             var x0=pLinePoints[0].x;
                             var y0=pLinePoints[0].y;

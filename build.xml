@@ -315,6 +315,14 @@
             <fileset file="web/js/src/sec/web/renderer/MultiPointHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
+
+            <!--add the Cesium/Core --> 
+            <fileset file="web/js/src/Cesium/Core/Matrix3.js" />
+            <fileset file="web/js/src/Cesium/Core/VertexFormat.js" />
+            <fileset file="web/js/src/Cesium/Core/Quaternion.js" />
+            <fileset file="web/js/src/Cesium/Core/IndexDataType.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometryLibrary.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometry.js" />
         </concat>
         
         <concat destfile="build/singlemulti-body.js">
@@ -543,6 +551,13 @@
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
         
+            <!--add the Cesium/Core --> 
+            <fileset file="web/js/src/Cesium/Core/Matrix3.js" />
+            <fileset file="web/js/src/Cesium/Core/VertexFormat.js" />
+            <fileset file="web/js/src/Cesium/Core/Quaternion.js" />
+            <fileset file="web/js/src/Cesium/Core/IndexDataType.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometryLibrary.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometry.js" />
         </concat>
     
         <concat destfile="build/singlesvgmulti-body.js">
@@ -770,6 +785,13 @@
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
         
+            <!--add the Cesium/Core --> 
+            <fileset file="web/js/src/Cesium/Core/Matrix3.js" />
+            <fileset file="web/js/src/Cesium/Core/VertexFormat.js" />
+            <fileset file="web/js/src/Cesium/Core/Quaternion.js" />
+            <fileset file="web/js/src/Cesium/Core/IndexDataType.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometryLibrary.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometry.js" />
         </concat>
         
         <concat destfile="build/full-body.js">
@@ -1004,6 +1026,13 @@
             <fileset file="web/js/src/sec/web/renderer/Shape3DHandler.js" />
             <fileset file="web/js/src/sec/web/renderer/SECWebRenderer.js" />
                         
+            <!--add the Cesium/Core --> 
+            <fileset file="web/js/src/Cesium/Core/Matrix3.js" />
+            <fileset file="web/js/src/Cesium/Core/VertexFormat.js" />
+            <fileset file="web/js/src/Cesium/Core/Quaternion.js" />
+            <fileset file="web/js/src/Cesium/Core/IndexDataType.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometryLibrary.js" />
+            <fileset file="web/js/src/Cesium/Core/EllipseGeometry.js" />
         
         </concat>
     </target>

@@ -128,6 +128,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             attitude.value = Clazz.newArray(1, 0);
             length.value = Clazz.newArray(1, 0);
             switch (lineType) {
+                case 13000001:
+                    attitude.value[0] = Double.parseDouble(tg.get_T1());    //rotation
+                    width.value[0] = Double.parseDouble(tg.get_H1());       //semi-major axis
+                    length.value[0] = Double.parseDouble(tg.get_H2());    //semi-minor axis
+                    radius.value[0] = Double.parseDouble(tg.get_H());   //buffer
+                    break;
                 case 15000002:
                 case 24312000:
                 case 24321300:
@@ -305,7 +311,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var pPoints = null;
             var ptCenter=this.PointLatLongToPixels(pt0,converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetNumericFields(tg, lineType, radius, width, length, attitude);
-            switch (lineType) {
+            switch (lineType) {                
                 case 25200101:  //launch area
                     var ellipsePts=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.getGeoEllipse(pt0, width.value[0], length.value[0], attitude.value[0]);
                     for (j = 0; j < ellipsePts.length; j++)  //was 103
@@ -417,6 +423,77 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 243111001:
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetSectorRangeFan(tg, converter);
                     break;
+                case 13000001:  //ellipse
+                    var buffer=parseFloat(tg.get_H());
+                    var center=tg.LatLongs.get(0);
+                    var semiMajor=parseFloat(tg.get_H1());
+                    var semiMinor=parseFloat(tg.get_H2());
+                    var rotation=parseFloat(tg.get_T1());
+                    var ellipse = new EllipseGeometry({
+                        center: Cartesian3.fromDegrees(center.x, center.y),
+                        semiMajorAxis: semiMajor+buffer,
+                        semiMinorAxis: semiMinor+buffer,
+                        rotation: CesiumMath.toRadians(rotation)
+                    });
+                    var geometry = EllipseGeometry.createGeometry(ellipse);
+                    var cartesian;
+                    var longitude;
+                    var latitude;
+                    var cartographic;
+                    var pt0, pt;
+                    var x,y,z;
+                    for(j=0;j<geometry.length/3;j++)
+                    {
+                        x=geometry[3*j];
+                        y=geometry[3*j+1];
+                        z=geometry[3*j+2];
+                        cartesian=new Cartesian3(x,y,z);
+                        cartographic = Cartographic.fromCartesian(cartesian);
+                        longitude = CesiumMath.toDegrees(cartographic.longitude);
+                        latitude = CesiumMath.toDegrees(cartographic.latitude);
+                        pt=new armyc2.c2sd.graphics2d.Point2D(longitude,latitude);
+                        pt=converter.GeoToPixels(pt);
+                        if(j===0)
+                            pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        pt=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        tg.Pixels.add(pt);
+                    }
+                    //add the 0th point to close the ellipse
+                    tg.Pixels.add(pt0);
+                    //create the 0th shape as the buffer/fill shape                    
+                    this.Change1PixelsToShapes(tg, shapes, true);
+                    //start over. Build the last shape as the outline shape, this time without the buffer
+                    //the fill shape will be below this shape so the outline should appear on top of the fill unless they are the same color.
+                    tg.Pixels.clear();
+                    ellipse = new EllipseGeometry({
+                        center: Cartesian3.fromDegrees(center.x, center.y),
+                        semiMajorAxis: semiMajor,
+                        semiMinorAxis: semiMinor,
+                        rotation: CesiumMath.toRadians(rotation)
+                    });
+                    geometry = EllipseGeometry.createGeometry(ellipse);
+                    for(j=0;j<geometry.length/3;j++)
+                    {
+                        x=geometry[3*j];
+                        y=geometry[3*j+1];
+                        z=geometry[3*j+2];
+                        cartesian=new Cartesian3(x,y,z);
+                        cartographic = Cartographic.fromCartesian(cartesian);
+                        longitude = CesiumMath.toDegrees(cartographic.longitude);
+                        latitude = CesiumMath.toDegrees(cartographic.latitude);
+                        pt=new armyc2.c2sd.graphics2d.Point2D(longitude,latitude);
+                        pt=converter.GeoToPixels(pt);
+                        if(j===0)
+                            pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        pt=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        tg.Pixels.add(pt);
+                    }
+                    //add the 0th point to close the ellipse
+                    tg.Pixels.add(pt0);
+                    //add the 0th shape as the buffer fill shape                    
+                    //this.Change1PixelsToShapes(tg, shapes, false);
+                    //the code below will build the outline shape from the pixels as part of normal processing.
+                    break;
                 default:
                     return false;
             }
@@ -425,21 +502,24 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels(tg, converter, farLeftPixels, farRightPixels);
             var shapesLeft = new java.util.ArrayList();
             var shapesRight = new java.util.ArrayList();
-            if (farLeftPixels.isEmpty() || farRightPixels.isEmpty()) {
+            //if (farLeftPixels.isEmpty() || farRightPixels.isEmpty()) 
+            //{
                 var tempPixels = new java.util.ArrayList();
                 tempPixels.addAll(tg.Pixels);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postSegmentFSA(tg, converter);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapes, false);
                 tg.Pixels = tempPixels;
-            } else {
-                tg.Pixels = farLeftPixels;
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft, false);
-                tg.Pixels = farRightPixels;
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight, false);
-                shapes.addAll(shapesLeft);
-                shapes.addAll(shapesRight);
-            }
+            //} 
+//            else 
+//            {
+//                tg.Pixels = farLeftPixels;
+//                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
+//                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft, false);
+//                tg.Pixels = farRightPixels;
+//                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight, false);
+//                shapes.addAll(shapesLeft);
+//                shapes.addAll(shapesRight);
+//            }
             //diagnostic
             if(lineType===15000002)
             {

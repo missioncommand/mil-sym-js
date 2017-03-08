@@ -398,6 +398,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     AM[1] = AM[0];
                 if (AM !== null && AM.length >= 2 && AN !== null && AN.length >= 1)
                 {
+                    tg.set_H1(Double.toString(AM[0]));   //semi-major
+                    tg.set_H2(Double.toString(AM[1]));   //semi-minor
+                    tg.set_T1(Double.toString(AN[0]));   //rotation
                     var ptAzimuth = new armyc2.c2sd.JavaLineArray.POINT2(0, 0);
                     ptAzimuth.x = AN[0];
                     var ptCenter = tg.Pixels.get(0);
@@ -419,6 +422,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 {
                     //use AM[2] for the buffer, so PBS_CIRCLE requires AM size 3 like PBS_ELLIPSE to use a buffer
                     var dist=AM[2];
+                    tg.set_H(Double.toString(AM[2]));   //buffer
                     var pt0=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), dist, 45);   //azimuth 45 is arbitrary
                     var pt02d = new armyc2.c2sd.graphics2d.Point2D(tg.LatLongs.get(0).x,tg.LatLongs.get(0).y);
                     var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
