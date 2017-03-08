@@ -2928,8 +2928,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     lastCirclePoint=pOriginalLinePoints[j];
                                 }                                
                                 //get the middle line for Rev B AC, MRR, UAV, and LLTR
-                                //Symbology_2525B
-                                if(rev === armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B && lineType !== 22223000)  //SAAFR
+                                //Symbology_2525Bch2_USAS_13_14
+                                //if(rev === armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14 && lineType !== 22223000)  //SAAFR
+                                if(rev === armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B && lineType !== 22223000)  //SAAFR                                
                                 {
                                     pts=armyc2.c2sd.JavaLineArray.lineutility.GetSAAFRMiddleLine(pOriginalLinePoints);
                                     for(j=0;j<pts.length;j++)
