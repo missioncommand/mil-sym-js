@@ -376,16 +376,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_UseHatchFill(milStd.getUseFillPattern());
             tg.set_HideOptionalLabels(milStd.getHideOptionalLabels());
             var isClosedArea = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType);
-            if (isClosedArea) {
-                armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);
-                armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
-            }
-            var altitudeLabel = milStd.getAltitudeMode();
-            if (altitudeLabel === null || altitudeLabel.isEmpty())
-                altitudeLabel = "MSL";
-            var x_alt = 0;
-            var n_alt = 0;
-            var strXAlt = "";
             if(lineType===23111000 && tg.Pixels.size()===2)
             {
                 var pt0=tg.Pixels.get(0);
@@ -401,6 +391,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.Pixels.add(p3);
                 tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong(tg.Pixels, converter);            
             }
+            if (isClosedArea) {
+                armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);
+                armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
+            }
+            var altitudeLabel = milStd.getAltitudeMode();
+            if (altitudeLabel === null || altitudeLabel.isEmpty())
+                altitudeLabel = "MSL";
+            var x_alt = 0;
+            var n_alt = 0;
+            var strXAlt = "";
             if (lineType === 13000000 || lineType === 13000001 || lineType === 13000002)
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
