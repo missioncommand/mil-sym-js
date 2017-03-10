@@ -3030,7 +3030,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "GEOMETRY": "area",
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
-        "MINPOINTS": "3",
+        "MINPOINTS": "2",
         "MODIFIERS": "T.T1.",
         "DESCRIPTION": "Obstacle Belt",
         "HIERARCHY": "2.X.3.1.1.1",
