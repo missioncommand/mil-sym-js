@@ -423,6 +423,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 243111001:
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetSectorRangeFan(tg, converter);
                     break;
+                case 13000000:
                 case 13000001:  //ellipse
                     var buffer=parseFloat(tg.get_H());
                     var center=tg.LatLongs.get(0);
@@ -460,8 +461,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     }
                     //add the 0th point to close the ellipse
                     tg.Pixels.add(pt0);
-                    //create the 0th shape as the buffer/fill shape                    
+                    //create the 0th shape as the buffer/fill shape
                     this.Change1PixelsToShapes(tg, shapes, true);
+                    if(lineType===13000000)
+                        break;
                     //start over. Build the last shape as the outline shape, this time without the buffer
                     //the fill shape will be below this shape so the outline should appear on top of the fill unless they are the same color.
                     tg.Pixels.clear();
