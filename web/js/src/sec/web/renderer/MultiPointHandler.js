@@ -1050,9 +1050,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
                     if (convRect !== null)
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, converter);
+                        jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, converter);
                     else
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, converter);
+                        jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, converter);
 
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
@@ -1087,9 +1087,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
                     if (convRect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, fontInfo, svgFormat, converter);
+                        jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, fontInfo, svgFormat, converter);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, fontInfo, svgFormat, converter);
+                        jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, fontInfo, svgFormat, converter);
 
                 }
                 else if (format === 1) //deprecated
