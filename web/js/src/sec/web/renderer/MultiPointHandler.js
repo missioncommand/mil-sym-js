@@ -1364,6 +1364,7 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                     tgPoints = tgl.get_Pixels();
                 }
+                
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, rect);
                 shapes = mSymbol.getSymbolShapes();
                 modifiers = mSymbol.getModifierShapes();
@@ -1463,7 +1464,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
+                    jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
@@ -1496,7 +1497,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo, svgFormat);
+                    jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo, svgFormat);
                 }
                 else if (format === 1) //deprecated
                 {

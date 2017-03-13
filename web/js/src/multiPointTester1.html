@@ -4,6 +4,7 @@
 <!-- Meta line required for IE-->
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
 
+<link rel="stylesheet" href="renderer.css" type="text/css" charset="utf-8" />
 <script src="include-mpsp.js" type="text/javascript" ></script>
 
 
@@ -159,6 +160,22 @@ function testRender()
                 modifiers[mtg.AM_DISTANCE] = [100, 200];
                 modifiers["FILLCOLOR"] = "BBFF0000";
                 break;
+            case 8://Swept Area
+                symbolCode = "WO-DL-SA----A--"; //swept area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;//G*MPNB----****X
+            case 9://BIO Area
+                symbolCode = "G*MPNB----****X"; //bio area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
             default:
                 break;
         } 
@@ -265,6 +282,8 @@ Draw Canvas/SVG Test:
       <option value=5>Dummy Minefield Dynamic</option>
       <option value=6>BBS_RECTANGLE--</option>
       <option value=7>BS_RECTANGLE---</option>
+      <option value=8>Swept Area</option>
+      <option value=9>BIO Area</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>

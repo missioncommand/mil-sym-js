@@ -64,7 +64,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {object} fillTexture - an html5 canvas
          * @returns {geoCanvas} - looks like: {image:canvas,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoCanvasize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, converter)
+        GeoCanvasize: function (symbolID, shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, converter)
         {
             if (textInfoBuffer === null)
             {
@@ -98,7 +98,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoCanvas(shapes.get(i), ipc, normalize, fillTexture, converter);
+                    var pathInfo = this.ShapesToGeoCanvas(symbolID, shapes.get(i), ipc, normalize, fillTexture, converter);
                     if(pathInfo.path && pathInfo.path.getBounds())
                     {
                         tempBounds = pathInfo.path.getBounds();
@@ -335,7 +335,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             if(paths && len > 0 && unionBounds)
             {
                 paths.smooth = shapes.smooth;//for lineJoin
-                var geoCanvas = this.RenderShapeInfoToCanvas(paths, labels, unionBounds, geoCoordTL, geoCoordBR, geoCoordTR, geoCoordBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped);
+                var geoCanvas = this.RenderShapeInfoToCanvas(symbolID, paths, labels, unionBounds, geoCoordTL, geoCoordBR, geoCoordTR, geoCoordBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped);
                 return geoCanvas;
             }
             else
@@ -360,7 +360,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @returns {image:buffer, geoTL:geoTL, geoBR:geoBR} OR
          *          {dataURL:buffer.toDataURL(), geoTL:geoTL, geoBR:geoBR}
          */
-        RenderShapeInfoToCanvas: function (paths, textInfos, bounds, geoTL, geoBR, geoTR, geoBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
+        RenderShapeInfoToCanvas: function (symbolID, paths, textInfos, bounds, geoTL, geoBR, geoTR, geoBL, north, south, east, west, format, hexTextColor, hexTextBackgroundColor, wasClipped, fillTexture)
         {
             var buffer = null;
             if (format === 4)
@@ -610,7 +610,7 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
          * @param {type} fillTexture
          * @returns {feature} {path, lineColor, fillColor, lineWidth, bounds}
          */
-        ShapesToGeoCanvas: function (shapeInfo, ipc, normalize, fillTexture, converter)
+        ShapesToGeoCanvas: function (symbolID, shapeInfo, ipc, normalize, fillTexture, converter)
         {
 
             var pathInfo = null;
@@ -645,6 +645,10 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
                     alpha = fillColor.getAlpha() / 255;
                     fillColor = fillColor.toHexString(false);
                 }
+            }
+            else if(fillTexture && symbolID.charAt(0)==='W')
+            {
+                fillPattern = fillTexture;
             }
             
             if(shapeInfo.getFillStyle() > 1)

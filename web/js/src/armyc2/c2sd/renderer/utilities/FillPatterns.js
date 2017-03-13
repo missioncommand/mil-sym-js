@@ -323,6 +323,29 @@ return{
         //set ctx.fillStyle=pattern
         //then ctx.fill();
         
+    },
+    isMETOCWithFillPattern(symbolID)
+    {
+        var returnVal = false;
+        if(symbolID.charAt(0) === "W")
+        {
+            switch(symbolID)
+            {
+                case "WO-DBSM-----A--"://beach slope moderate
+                case "WO-DBST-----A--"://beach slope steep
+                case "WO-DHCB-----A--"://beige stipple
+                case "WO-DHHDF----A--"://Foul Ground
+                case "WO-DHHDK----A--"://Kelp
+                case "WO-DMOA-----A--"://OIL/GAS RIG FIELD
+                case "WO-DL-SA----A--"://swept area
+                case "WOS-HPFF----A--"://Weirs
+                    returnVal = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return returnVal;
     }
     
 };

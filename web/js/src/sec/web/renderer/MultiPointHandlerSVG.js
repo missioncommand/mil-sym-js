@@ -47,7 +47,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {number} SVGFormat - 0 plain svg string, 1 base64 string (default), 2 url endcoded (% notation)
          * @returns {geoSVG} - looks like: {svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat, converter)
+        GeoSVGize: function (symbolID, shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat, converter)
         {
             
             var height = 10;
@@ -77,10 +77,10 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 
                 height = fontInfo.measurements.height;
 
-                var len = shapes.size();
+                var len = shapes.size();                                
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture, svgFormat, converter);
+                    var pathInfo = this.ShapesToGeoSVG(symbolID, shapes.get(i), ipc, normalize, fillTexture, svgFormat, converter);
                     if(pathInfo.svg && pathInfo.bounds)
                     {
                         tempBounds = pathInfo.bounds;
@@ -381,6 +381,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     geoSVG = geoSVG.replace(/\</g,"%3C");
                     geoSVG = geoSVG.replace(/\>/g,"%3E");
                     geoSVG = geoSVG.replace(/\"/g,"%22");
+                    geoSVG = geoSVG.replace(/\#/g,"%23");
                     //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
                     return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
                 }
@@ -490,7 +491,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {type} fillTexture
          * @returns {string} svgElement
          */
-        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture, svgFormat, converter)
+        ShapesToGeoSVG: function (symbolID, shapeInfo, ipc, normalize, fillTexture, svgFormat, converter)
         {
 
             var pathInfo = null;
@@ -517,9 +518,13 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             }
             if (shapeInfo.getFillColor() !== null) {
                 fillColor = shapeInfo.getFillColor();
-                if(fillColor && fillColor.getAlpha()===0 && fillTexture)//passed in fill pattern
+                if(fillTexture)
                 {
-                    fillPattern = fillTexture;
+                    if((fillColor && fillColor.getAlpha()===0))//passed in fill pattern
+                    {
+                        fillPattern = fillTexture;
+                        fillColor = null;
+                    }
                 }
                 else
                 {
@@ -527,12 +532,19 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     fillColor = fillColor.toHexString(false);
                 }
             }
+            else if(fillTexture && symbolID.charAt(0)==='W')
+            {
+                fillPattern = fillTexture;
+                fillColor = null;
+            }
             
             if(shapeInfo.getFillStyle() > 1)//hatch fills
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(shapeInfo.getFillStyle(), lineColor)
                 fillTexture = "url(#fillPattern)";
+                fillColor = null;
             }
+
 
             var stroke = null;
             stroke = shapeInfo.getStroke();
@@ -584,7 +596,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 }
 
             }
-            if(fillTexture && fillColor && fillColor.getAlpha()===0)
+            if(fillPattern && !fillColor)// && fillColor && fillColor.getAlpha()===0)
                 fillColor = "url(#fillPattern)";
             var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, svgFormat);
             var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};
