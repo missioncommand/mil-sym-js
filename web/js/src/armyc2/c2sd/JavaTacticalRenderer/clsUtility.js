@@ -1110,6 +1110,7 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                     return false;
                 case 13000000:  //bs_ellipse
                 case 13000001:  //pbs ellipse
+                case 13000002:  //pbs 
                 case 15000002:
                 case 24311000:
                 case 14000001:

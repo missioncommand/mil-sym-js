@@ -425,6 +425,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     break;
                 case 13000000:
                 case 13000001:  //ellipse
+                case 13000002:  //circle
                     var buffer=parseFloat(tg.get_H());
                     var center=tg.LatLongs.get(0);
                     var semiMajor=parseFloat(tg.get_H1());
