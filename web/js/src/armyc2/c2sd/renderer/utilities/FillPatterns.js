@@ -324,7 +324,7 @@ return{
         //then ctx.fill();
         
     },
-    isMETOCWithFillPattern(symbolID)
+    isMETOCWithFillPattern: function(symbolID)
     {
         var returnVal = false;
         if(symbolID.charAt(0) === "W")
