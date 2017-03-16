@@ -128,6 +128,10 @@
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
             <fileset file="web/js/src/j2slib/java/lang/System.js" />   
 
+            <!--add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
+
             <!--add the vincenty package--> 
             <fileset file="web/js/src/vincenty/defined.js" />
             <fileset file="web/js/src/vincenty/DeveloperError.js" />
@@ -234,9 +238,6 @@
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
         
-            <!--add java types provided by j2slib and required by above source--> 
-            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
-            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!-- packages for airspaces -->
             <!-- org.gavaghan.geodesy -->
@@ -344,6 +345,10 @@
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
             <fileset file="web/js/src/j2slib/java/lang/System.js" />
         
+            <!--(Multi) add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
+
             <!--add the vincenty package--> 
             <fileset file="web/js/src/vincenty/defined.js" />
             <fileset file="web/js/src/vincenty/DeveloperError.js" />
@@ -523,9 +528,6 @@
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
         
-            <!--(Multi) add java types provided by j2slib and required by above source--> 
-            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
-            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!--(Single) Top level Renderer classes--> 
             <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
@@ -578,6 +580,10 @@
             <fileset file="web/js/src/j2slib/java/lang/Double.js" />
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
             <fileset file="web/js/src/j2slib/java/lang/System.js" />
+
+            <!--(Multi) add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
         
             <!--add the vincenty package--> 
             <fileset file="web/js/src/vincenty/defined.js" />
@@ -681,9 +687,6 @@
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
         
-            <!--(Multi) add java types provided by j2slib and required by above source--> 
-            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
-            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!-- (Airspaces) add packages for airspaces -->
             <!-- org.gavaghan.geodesy -->
@@ -812,6 +815,10 @@
             <fileset file="web/js/src/j2slib/java/lang/Double.js" />
             <fileset file="web/js/src/j2slib/java/lang/Integer.js" />
             <fileset file="web/js/src/j2slib/java/lang/System.js" />
+
+            <!--(Multi) add java types provided by j2slib and required by above source--> 
+            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
+            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
         
             <!--add the vincenty package--> 
             <fileset file="web/js/src/vincenty/defined.js" />
@@ -992,9 +999,6 @@
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityCPOF.js" />
             <fileset file="web/js/src/armyc2/c2sd/JavaRendererServer/RenderMultipoints/clsUtilityGE.js" />
         
-            <!--(Multi) add java types provided by j2slib and required by above source--> 
-            <fileset file="web/js/src/j2slib/java/util/ArrayList.js" />
-            <fileset file="web/js/src/j2slib/java/util/HashMap.js" />
             
             <!--(Single) Top level Renderer classes--> 
             <fileset file="web/js/src/armyc2/c2sd/renderer/TacticalGraphicIconRenderer.js" />
