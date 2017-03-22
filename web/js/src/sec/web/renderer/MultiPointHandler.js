@@ -1006,12 +1006,28 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
                     jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, hexTextColor, hexTextBackgroundColor);
+                    //set id and any other properties
                     jsonContent.properties.id = id;
                     jsonContent.properties.name = name;
                     jsonContent.properties.description = description;
                     jsonContent.properties.symbolID = symbolCode;
-                    //set id and any other properties
-                    jsonOutput = JSON.stringify(jsonContent);
+                    jsonContent.properties.wasClipped = mSymbol.getWasClipped();
+                    
+                    var gjFormat = 0;//String
+                    if (symbolModifiers[MilStdAttributes.GeoJSONFormat])
+                    {
+                        gjFormat = symbolModifiers[MilStdAttributes.GeoJSONFormat];
+                    }
+
+                    if (gjFormat === 0)//json formatted string
+                    {
+                        jsonOutput = JSON.stringify(jsonContent);
+                    }
+                    else//json object
+                    {
+                        jsonOutput = jsonContent;
+                    }
+
                 }
                 else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
@@ -1411,6 +1427,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     jsonContent.properties.name = name;
                     jsonContent.properties.description = description;
                     jsonContent.properties.symbolID = symbolCode;
+                    jsonContent.properties.wasClipped = mSymbol.getWasClipped();
 
                     var gjFormat = 0;//String
                     if (symbolModifiers[MilStdAttributes.GeoJSONFormat])
