@@ -1272,9 +1272,11 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var m = 0;
                     X.value = Clazz.newArray(1, 0);
                     Y.value = Clazz.newArray(1, 0);
-                    if (m1 !== m2 && Math.abs(m1 - m2) <= 4.9E-324)
+                    //if (m1 !== m2 && Math.abs(m1 - m2) <= 4.9E-324)
+                    if (m1 !== m2 && Math.abs(m1 - m2) <= 1E-6)
                         m1 = m2;
-                    if (b1 !== b2 && Math.abs(b1 - b2) <= 4.9E-324)
+                    //if (b1 !== b2 && Math.abs(b1 - b2) <= 4.9E-324)
+                    if (b1 !== b2 && Math.abs(b1 - b2) <= 1E-6)
                         b1 = b2;
                     if (b1 === b2 && m1 + b1 === m2 + b2)
                         m1 = m2;
