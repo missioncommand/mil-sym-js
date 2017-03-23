@@ -900,7 +900,10 @@ sec.web.renderer.MultiPointHandler = (function () {
             if (format < 3 && (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === false)
             {
                 if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === false)
+                {
                     rect = null;
+                    bboxCoords = null;
+                }
             }
 
             tgl.set_SymbolId(symbolCode);//like "GFGPSLA---****X" AMBUSH symbol code
