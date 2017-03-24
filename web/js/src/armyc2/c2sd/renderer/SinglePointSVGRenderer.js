@@ -3570,6 +3570,9 @@ return{
                 {
                     return true;
                 }
+
+                if(SymbolUtilities.isHQ(symbolID))
+                    return true;
             }   
             else 
             {

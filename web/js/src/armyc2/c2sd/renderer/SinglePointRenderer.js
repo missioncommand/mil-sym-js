@@ -2619,7 +2619,7 @@ return{
                     ctx.strokeText(frame, x, y);
                 }
             }
-            
+
             //then draw frame
             if(frame !== null && frame !== "")
             {
@@ -3905,6 +3905,9 @@ return{
                 {
                     return true;
                 }
+
+                if(SymbolUtilities.isHQ(symbolID))
+                    return true;
             }   
             else 
             {

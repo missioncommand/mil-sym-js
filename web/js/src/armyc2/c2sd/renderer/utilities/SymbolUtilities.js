@@ -1807,9 +1807,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isHQ = function (strSymbolID){
         
         var hq = strSymbolID.charAt(10);
-        var blRetVal = (hq===('A')
+        var blRetVal = false;
+        if(hq !== '-' && hq !== '*')
+        {
+            blRetVal = (hq===('A')
                         || hq===('B')
                             || hq===('C') || hq===('D'));
+        }
+        else
+        {
+            blRetVal = (strSymbolID.charAt(0) === 'S' && strSymbolID.substring(4,6) === "UH");
+        }
+        
         return blRetVal;
     };
     /**
