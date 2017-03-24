@@ -2587,11 +2587,24 @@ return{
             symbolBounds.grow(outlineOffset);
         }
         
-        //do outline first if present
+        
         if(render === true)
         {
             var currentAlpha = 1;
-            
+
+            //do fill if present
+            if(fill !== null && fill !== "" && fillColor !== null)
+            {
+                if(fillAlpha !== currentAlpha)
+                {
+                    ctx.globalAlpha = fillAlpha;
+                    currentAlpha = fillAlpha;
+                }
+                ctx.fillStyle=fillColor;
+                ctx.fillText(fill,x,y);
+            }
+
+            //do outline if present    
             if(frame !== null && frame !== "")
             {
                 if(outlineOffset > 0)
@@ -2606,17 +2619,7 @@ return{
                     ctx.strokeText(frame, x, y);
                 }
             }
-            //then do fill if present
-            if(fill !== null && fill !== "" && fillColor !== null)
-            {
-                if(fillAlpha !== currentAlpha)
-                {
-                    ctx.globalAlpha = fillAlpha;
-                    currentAlpha = fillAlpha;
-                }
-                ctx.fillStyle=fillColor;
-                ctx.fillText(fill,x,y);
-            }
+            
             //then draw frame
             if(frame !== null && frame !== "")
             {

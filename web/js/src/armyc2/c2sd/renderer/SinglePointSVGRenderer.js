@@ -2337,20 +2337,23 @@ return{
                 tgPaths.push(frame);
             }
         }
-        
-        var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')"';
-        /*if(alpha !== 1.0)
-            seGroupTG +=  ' fill-opacity="' + alpha + '">';
-        else//*/
-            seGroupTG +=  '>';
-         
-        if(seBGGroup)
-            seGroupTG = seBGGroup + seGroupTG;
-        for(var i = 0; i < tgPaths.length; i++)
+        var seGroupTG = "";
+        if(fill !== null)//add fill svg element
         {
-            seGroupTG += tgPaths[i];
+            seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">';
+            seGroupTG += fill;
+            seGroupTG += '</g>';
         }
-        seGroupTG += '</g>';
+         
+        if(seBGGroup)//add outline svg elements
+            seGroupTG += seBGGroup;
+
+        if(frame != null)//add frame svg element
+        {
+            seGroupTG += '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">';
+            seGroupTG += frame;
+            seGroupTG += '</g>';
+        }
 
         var si = new SVGInfo(seGroupTG,centerPoint,symbolBounds,imageBounds);
         
