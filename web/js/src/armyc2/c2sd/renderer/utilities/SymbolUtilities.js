@@ -1609,8 +1609,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNumber = function (text){
-        var re = new RegExp("((-|\\+)?[0-9]+(\\.[0-9]+)?)+");
-        return(re.test(text));
+        var n = parseFloat(text);
+        if(Number.isNaN)
+        {
+            return !Number.isNaN(n) && Number.isFinite(n);
+        }
+        else
+        {
+            return !isNaN(n) && isFinite(n);
+        }
     };
     /**
      * Symbols that don't exist outside of MCS
