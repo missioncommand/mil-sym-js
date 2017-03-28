@@ -1024,7 +1024,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     else
 
                     {
-                            retColor = null;
+                            retColor = AffiliationColors.UnknownGraphicFillColor;
                     }
                 }
         }	// End if(this.IsTacticalGraphic(this._strSymbolID))
