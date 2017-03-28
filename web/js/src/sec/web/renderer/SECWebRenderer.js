@@ -522,8 +522,8 @@ return{
             var distanceLength = 0;
             var azimuthLength = 0;
             var color = "";
-            var lineColor = "";
-            var fillColor = "";
+            var lineColor = null;
+            var fillColor = null;
             //modifiers=JSON.parse(modifiers);          
             if (modifiers)
             {
@@ -572,13 +572,15 @@ return{
                 else
                 {   
                     lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolCode);
-                    lineColor.A = 170;
-                    lineColor = lineColor.toHexString().substring(1);
-                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
-                    // ensure that some color is selected.  If no color can be
-                    // found, use black.
-                    if (lineColor === null)
+                    if(lineColor !== null)
                     {
+                        //lineColor.A = 170;
+                        lineColor = lineColor.toHexString().substring(1);
+                    }
+                    else
+                    {
+                        // ensure that some color is selected.  If no color can be
+                        // found, use black.
                         lineColor = "FF000000";
                     }
                 }
@@ -590,13 +592,15 @@ return{
                 else
                 {   
                     fillColor = SymbolUtilities.getFillColorOfAffiliation(symbolCode);
-                    fillColor.A = 170;
-                    fillColor = fillColor.toHexString().substring(1);
-                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
-                    // ensure that some color is selected.  If no color can be
-                    // found, use black.
-                    if (fillColor === null)
+                    if(fillColor !== null)
                     {
+                        fillColor.A = 170;
+                        fillColor = fillColor.toHexString().substring(1);
+                    }
+                    else
+                    {
+                        // ensure that some color is selected.  If no color can be
+                        // found, use black.
                         fillColor = "AA000000";
                     }
                 }
@@ -605,7 +609,7 @@ return{
                 var pointCount = coords.length;
                 for(var i = 0; i < pointCount; i++)
                 {
-                        attributes.ALT_MODE.push(convertedAltitudeMode);
+                    attributes.ALT_MODE.push(convertedAltitudeMode);
                 }
                 
                 fillColor = JavaRendererUtilities.ARGBtoABGR(fillColor);
