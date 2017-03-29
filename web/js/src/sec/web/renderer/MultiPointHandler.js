@@ -2114,7 +2114,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     fillColor = null,
                     googleLineColor = null,
                     googleFillColor = null,
-                    lineStyleId = "lineColor",
+                    //lineStyleId = "lineColor",
                     stroke = null,
                     lineWidth = 4;
             var cdataStart = "<![CDATA[";
@@ -2125,7 +2125,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 kml += ("<description>" + cdataStart + description + cdataEnd + "</description>");
             }
-            kml += ("<Style id=\"" + lineStyleId + "\">");
+            //kml += ("<Style id=\"" + lineStyleId + "\">");
+            kml += ("<Style>");
             lineColor = shapeInfo.getLineColor();
             if (lineColor !== null) {
                 googleLineColor = shapeInfo.getLineColor().toKMLHexString();
