@@ -120,6 +120,12 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     
 return{    
 
+    PatternSolid = 0,//does nothing.
+    PatternCrossHatch = 8,//X
+    PatternForwardHatch = 2,// /
+    PatternBackwardHatch = 3,// \
+    PatternVerticalHatch = 4,// |
+    PatternHorizontalHatch = 5,// _
     //Hatching patterns
     //forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
 

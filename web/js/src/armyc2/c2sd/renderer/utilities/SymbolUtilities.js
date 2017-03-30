@@ -1550,7 +1550,17 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         return null;
     };
+
     
+
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isBasicShape = function (strSymbolID){
+        var scheme = symbolID.charAt(0);
+        if(scheme === 'B' || scheme === 'P')
+            return true;
+        else
+            return false
+    }
+
     /**
      * Determines if the symbol is a tactical graphic
      * @param {String} strSymbolID
