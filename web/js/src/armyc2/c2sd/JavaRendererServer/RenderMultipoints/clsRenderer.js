@@ -350,6 +350,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_LineColor(milStd.getLineColor());
             tg.set_LineThickness(milStd.getLineWidth());
             tg.set_TexturePaint(milStd.getFillStyle());
+            if(armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape(lineType))
+                tg.set_Fillstyle(milStd.getPatternFillType());
+                            
             tg.set_FontBackColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
             tg.set_TextColor(tg.get_LineColor());
             if (milStd.getModifier("W") !== null) {

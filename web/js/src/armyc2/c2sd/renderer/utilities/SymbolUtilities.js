@@ -1554,7 +1554,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     
 
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isBasicShape = function (strSymbolID){
-        var scheme = symbolID.charAt(0);
+        //var scheme = symbolID.charAt(0);
+        var scheme = strSymbolID.charAt(0);
         if(scheme === 'B' || scheme === 'P')
             return true;
         else

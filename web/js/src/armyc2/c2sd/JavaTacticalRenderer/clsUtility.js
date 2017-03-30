@@ -287,6 +287,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 15000002:
             case 15000003:
             case 15000004:
+            case 14000001:
+            case 14000002:
                 return true;
             default:
                 return false;
