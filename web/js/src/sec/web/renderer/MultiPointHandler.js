@@ -1676,7 +1676,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     altMode = null;
             var useDashArray = symbol.getUseDashArray();
             var usePatternFill = symbol.getUseFillPattern();
-            var patternFillStyle = 0;
+            var patternFillType = 0;
             var hideOptionalLabels = false;
 
             //alert(jsonString);
