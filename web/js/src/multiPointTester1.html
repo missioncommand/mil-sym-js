@@ -117,7 +117,11 @@ function testRender()
                 //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
                 //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
                 scale = 50000.0;
+                var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                modifiers[msa.TextColor] = "00FF00";
+                modifiers[msa.LineColor] = "0000FF";
                 break;
             case 3://Sector Range Fan
                 symbolCode = "GFFPAXS---****X"; //sector range fan
@@ -154,10 +158,10 @@ function testRender()
                 break;
             case 7://BS Rectangle
                 symbolCode = "BS_RECTANGLE---";//
-                controlPoints = "66.26700036208742,30.62755038706961";
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703";
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
-                modifiers[mtg.AM_DISTANCE] = [100, 200];
+                //modifiers[mtg.AM_DISTANCE] = [100, 200];
                 modifiers["FILLCOLOR"] = "BBFF0000";
                 break;
             case 8://Swept Area
@@ -175,6 +179,26 @@ function testRender()
                 //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
                 scale = 50000.0;
                 //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
+            case 10://PBS Circle
+                symbolCode = "PBS_CIRCLE-----"; //pbs circle
+                controlPoints = "66.26700036208742,30.62755038706961";
+                scale = 50000.0;
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [500];
+                //modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 3;
+                break;
+            case 11://PBS Square
+                symbolCode = "PBS_SQUARE-----"; //pbs square
+                controlPoints = "66.26700036208742,30.62755038706961";
+                scale = 50000.0;
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [500];
+                //modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 3;
                 break;
             default:
                 break;
@@ -284,6 +308,8 @@ Draw Canvas/SVG Test:
       <option value=7>BS_RECTANGLE---</option>
       <option value=8>Swept Area</option>
       <option value=9>BIO Area</option>
+      <option value=10>PBS Circle</option>
+      <option value=11>PBS Square</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
