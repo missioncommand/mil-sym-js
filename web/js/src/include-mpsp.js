@@ -163,6 +163,15 @@ document.write('<script src="sec/web/renderer/MultiPointHandlerSVG.js" type="tex
 document.write('<script src="sec/web/renderer/MultiPointHandler.js" type="text/javascript" ></script>');
 document.write('<script src="sec/web/renderer/SECWebRenderer.js" type="text/javascript" ></script>');
 
+//Deutch/Cesium Circle Code
+document.write('<script src="Cesium/Core/Matrix3.js" type="text/javascript" ></script>');
+document.write('<script src="Cesium/Core/VertexFormat.js" type="text/javascript" ></script>');
+document.write('<script src="Cesium/Core/Quaternion.js" type="text/javascript" ></script>');
+document.write('<script src="Cesium/Core/IndexDataType.js" type="text/javascript" ></script>');
+document.write('<script src="Cesium/Core/EllipseGeometryLibrary.js" type="text/javascript" ></script>');
+document.write('<script src="Cesium/Core/EllipseGeometry.js" type="text/javascript" ></script>');
+
+
 //add SVG code
 document.write('<script src="armyc2/c2sd/renderer/xml/SinglePointSVG.js" type="text/javascript" ></script>');
 document.write('<script src="armyc2/c2sd/renderer/xml/TacticalGraphicsSVG.js" type="text/javascript" ></script>');
