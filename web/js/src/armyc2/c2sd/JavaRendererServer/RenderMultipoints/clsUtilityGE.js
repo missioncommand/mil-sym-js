@@ -813,11 +813,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     //shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeBk.setLineColor(tg.get_LineColor());
+                    if(tg.get_UseHatchFill()===true)
+                        shapeBk.set_Fillstyle(8);
                     shapes.add(shapeBk);
-                    //shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeFwd.setLineColor(tg.get_LineColor());
-                    shapes.add(shapeFwd);
+                    if(tg.get_UseHatchFill()===false)
+                        shapes.add(shapeFwd);
                 }
                 if (lineType !== 243111000 && lineType !== 243112000)
                     break;
