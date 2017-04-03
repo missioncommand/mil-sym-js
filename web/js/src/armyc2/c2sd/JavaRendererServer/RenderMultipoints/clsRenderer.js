@@ -459,6 +459,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         tg.Pixels.get(0).style=AM[2];
                        
                 }
+                if(AM !== null && AM.length<=2) //need to set the buffer to 0 if the client did not set it.
+                    tg.set_H('0');   //buffer
             }
             if (lineType === 243112000)
             {
@@ -903,6 +905,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 {
                     var strH1 = AM[2];     //buffer size
                     tg.set_H1(strH1);
+                }
+                if(AM !== null && AM.length <= 2)
+                {
+                    tg.set_H1('0');                    
                 }
             }
         } catch (exc) {
