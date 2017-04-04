@@ -408,6 +408,22 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
+                //ensure array length 3
+                var r=0;
+                var b=0;
+                if(AM.length===1)
+                {
+                    r=AM[0];
+                    AM.push(r);                
+                    AM.push[0];
+                }
+                else if(AM.length===2)
+                {
+                    r=AM[0];
+                    b=AM[1];
+                    AM[1]=r;
+                    AM.push(b);
+                }
                 if (AN === null)
                     AN = new Array();
                 if (AN.length < 1)
@@ -459,8 +475,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         tg.Pixels.get(0).style=AM[2];
                        
                 }
-                if(AM !== null && AM.length<=2) //need to set the buffer to 0 if the client did not set it.
-                    tg.set_H('0');   //buffer
+                //if(AM !== null && AM.length<=2) //need to set the buffer to 0 if the client did not set it.
+                    //tg.set_H('0');   //buffer
             }
             if (lineType === 243112000)
             {
@@ -887,7 +903,21 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
                 if (lineType === 14000002) //for square
-                    AM[1] = AM[0];
+                {
+                    var r=AM[0];
+                    var b=0;
+                    if(AM.length===1)
+                    {
+                        AM.push(r);
+                        AM.push(b);
+                    }
+                    else if(AM.length===2)
+                    {
+                        b=AM[1];
+                        AM[1]=r;
+                        AM.push(b);
+                    }
+                }
                 if (AN === null || AN === undefined)
                     AN = new Array();
                 if (AN.length < 1)
