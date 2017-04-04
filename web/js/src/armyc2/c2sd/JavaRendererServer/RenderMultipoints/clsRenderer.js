@@ -1411,6 +1411,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes(tg, shapes, clipPoints);
                 }
             }
+            //diagnostic: resolve post-clipped shapes
+            this.resolvePostClippedShapes(tg,shapes);
+            //end section
             if (modifierShapeInfos !== null) {
                 var textSpecs = new java.util.ArrayList();
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2(tg, g2d, textSpecs, (isTextFlipped).valueOf(), converter);
@@ -1434,6 +1437,31 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 throw exc;
             }
         }
+        return;
+    },
+    resolvePostClippedShapes:function(tg,shapes)
+    {
+        //resolve the PBS and BBS shape properties after the post clip, regardless whether they were clipped
+        switch(tg.get_LineType())
+        {
+            case 15000003:
+            case 15000002:
+            case 15000001:
+            case 15000000:
+            case 14000001:
+            case 14000002:
+            case 13000001:
+            case 13000002:
+                break;
+            default:
+                return;
+        }
+        var fillColor=tg.get_FillColor();
+        shapes.get(0).setFillColor(fillColor);
+        shapes.get(1).setFillColor(null);
+        var fillStyle=tg.get_FillStyle();
+        shapes.get(0).set_Fillstyle(0);
+        shapes.get(1).set_Fillstyle(fillStyle);
         return;
     },
     setHostileLC: function (tg) {
