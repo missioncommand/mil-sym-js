@@ -2684,44 +2684,15 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return newshape;
             },
-            setPOINT2: function () {
-                var pt2 = new armyc2.c2sd.JavaLineArray.POINT2();
-                pt2.x = 0;
-                pt2.y = 0;
-                pt2.segment = 0;
-                pt2.style = 0;
-//                var j=0;
-//                for(j=0;j<arguments.length;j++)
-//                {
-//                    if(typeof(arguments[j])==='undefined')                    
-//                        return pt2;                                        
-//                }
-                if (arguments.length === 1)
-                {
-                    pt2.x = arguments[0].x;
-                    pt2.y = arguments[0].y;
-                    pt2.segment = arguments[0].segment;
-                    pt2.style = arguments[0].style;
-                }
-                else if (arguments.length === 2)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                }
-                else if (arguments.length === 3)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                    pt2.style = arguments[2];
-                }
-                else if (arguments.length === 4)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                    pt2.segment = arguments[2];
-                    pt2.style = arguments[3];
-                }
-                return pt2;
+            /*
+            *overloads:
+            *(POINT2)
+            *(x,y)
+            *(x,y,style)
+            *(x,y,segment,style)
+            */
+            setPOINT2: function (x, y, param1, param2) {
+                return new armyc2.c2sd.JavaLineArray.POINT2(x, y, param1, param2);
             },
             getExteriorPoints: function (pLinePoints, vblCounter, lineType, interior) {
                 var j;
