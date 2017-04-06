@@ -3,42 +3,39 @@
  * and open the template in the editor.
  */
 var Clazz = {
-    newArray: function() {
-        var args = arguments;
-        if (arguments.length === 1) {
-            if (arguments[0]instanceof Array) {
-                args = arguments[0];
-            }
-        }
-        if (args.length <= 1) {
-            return new Array();
-        } else if (args.length === 2) {
-            var dim = args[0];
-            if (typeof dim === "string") {
-                dim = dim.charCodeAt(0);
-            }
-            var val = args[1];
-            var arr = new Array(dim);
-            for (var i = 0; i < dim; i++) {
-                arr[i] = val;
-            }
-            return arr;
-        } else {
-            dim = args[0];
-            if (typeof dim === "string") {
-                dim = dim.charCodeAt(0);
-            }
-            var len = args.length - 1;
-            var xargs = new Array(len);
-            for (i = 0; i < len; i++) {
-                xargs[i] = args[i + 1];
-            }
-            arr = new Array(dim);
-            for (i = 0; i < dim; i++) {
-                arr[i] = Clazz.newArray(xargs);
-            }
+    newArray: function(obj1, obj2) {
+        var oldArr = null;
+        var arr = new Array();
+        if(!obj1 && !obj2)
+        {
             return arr;
         }
+        else if(obj2)
+        {
+            if(Array.isArray(obj2))
+                oldArr = obj2;
+            else
+                arr.push(obj2);
+        }
+        else if(obj1)
+        {
+            if(Array.isArray(obj1))
+                oldArr = obj1;
+            else
+                arr.push(obj1);
+        }
+        
+        if(oldArr !== null)
+        {
+            var len = oldArr.length;
+        
+            for (var i = 0; i < len; i++) 
+            {
+                arr[i] = oldArr[i];
+            }
+        }
+        
+        return arr;
     },
     instanceOf: function(obj)
     {

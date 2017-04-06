@@ -47,8 +47,9 @@ java.util.HashMap = function()
     };
     this.containsValue = function(value)
     {
-        var j = 0;
-        for (j = 0; j < items.length; j++)
+        
+        var len = items.length;
+        for (var j = 0; j < len; j++)
         {
             if (items[j] === value)
             {

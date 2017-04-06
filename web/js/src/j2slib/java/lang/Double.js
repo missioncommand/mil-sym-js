@@ -1,8 +1,8 @@
-Double = function() {
+Double = function(value) {
     this.value = new Number(0);
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
+        var t = value;
         this.value = new Number(t);
         //return this.value;
     }
@@ -19,40 +19,31 @@ Double.isNaN = function(t)
 {
     return isNaN(t);
 };
-Double.parseDouble = function()
+Double.parseDouble = function(value)
 {
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
-        var n = new Number(t);
-        return n;
+        var t = value;
+        return new Number(value);
     }
     return null;
 };
-Double.isInfinite = function()
+Double.isInfinite = function(value)
 {
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
-        var n = new Number(t);
-        var b = !isFinite(n);
-        return b;
+        var n = new Number(value);
+        return !isFinite(n);
     }
     else
         return true;
 };
-Double.toString = function()
+Double.toString = function(value)
 {
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        //var b=!isFinite(n);
-        var s = n.toString();
-        return s;
-    }
-    else
+    var n = new Number(value);
+    if(Number.isNaN(n))
         return null;
+    else return n.toString();
 };
 Double.serialVersionUID = Double.prototype.serialVersionUID = -9172774392245257468;
 Double.MIN_VALUE = Double.prototype.MIN_VALUE = 4.9e-324;

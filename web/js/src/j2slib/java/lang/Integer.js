@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-Integer = function()
+Integer = function(value)
 {
     this.value = new Number(0);
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
+        var t = value;
         this.value = new Number(t);
         return this.value;
     }
@@ -16,43 +16,34 @@ Integer = function()
         return this.value;
     };
 };
-Integer.parseInt = function()
+Integer.parseInt = function(value)
 {
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        return n;
-    }
-    return null;
+    var temp = new Number(value);
+    if(temp === Number.NaN)
+        return null;
+    else
+        return temp;
 };
 Integer.toHexString = function(i) {
-    return i.toString(16);
-};
-
-Integer.isInfinite = function()
-{
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        var b = !isFinite(n);
-        return b;
-    }
-    else
-        return true;
-};
-Integer.toString = function()
-{
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        var s = n.toString();
-        return s;
-    }
+    if(i !== undefined)
+        return i.toString(16);
     else
         return null;
+};
+Integer.isInfinite = function(value)
+{
+    var n = new Number(value);
+    if(n !== Number.NaN)
+        return !isFinite(n);
+    else
+        return true;   
+};
+Integer.toString = function(value)
+{
+    var n = new Number(value);
+    if(Number.isNaN(n))
+        return null;
+    else return n.toString();
 };
 
 Integer.serialVersionUID = Integer.prototype.serialVersionUID = 1360826667806852920;

@@ -24,8 +24,38 @@ java.util.ArrayList.prototype.setArray = function(obj)
 {
     this.array = obj;
 };
-java.util.ArrayList.prototype.add = function(obj)
+java.util.ArrayList.prototype.add = function(obj1, obj2)
 {
+    if(obj1 !== undefined && obj1 !== null && obj2)
+    {
+        var j = 0, k = 0;
+        var array2 = [];
+        var location = obj1;
+        if (location === this.array.length)
+        {
+            this.array.push(obj2);
+        }
+        else
+        {
+            for (j = 0; j < this.array.length; j++)
+            {
+                if (j !== location)
+                {
+                    array2.push(this.array[j]);
+                }
+                else
+                {
+                    array2.push(obj2);
+                    array2.push(this.array[j]);
+                }
+            }
+            this.array = array2;
+        }
+    }
+    else if (obj1)
+        this.array.push(obj1);
+    /*
+    var obj = obj1;
     if (arguments.length === 1)
         this.array.push(obj);
     else if (arguments.length === 2)
@@ -54,7 +84,7 @@ java.util.ArrayList.prototype.add = function(obj)
             }
             this.array = array2;
         }
-    }
+    }//*/
 };
 java.util.ArrayList.prototype.addAll = function()//was location,obj 
 {
