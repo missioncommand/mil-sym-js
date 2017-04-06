@@ -41,7 +41,7 @@ Integer.isInfinite = function(value)
 Integer.toString = function(value)
 {
     var n = new Number(value);
-    if(Number.isNaN(n))
+    if(n === Number.NaN)
         return null;
     else return n.toString();
 };
