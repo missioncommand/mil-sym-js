@@ -47,10 +47,19 @@ java.util.HashMap = function()
     };
     this.containsValue = function(value)
     {
-        if(!(items.indexOf(value) < 0))
-            return true;
-        else
-            return false;
+        var j = 0;
+        for (j = 0; j < items.length; j++)
+        {
+            if (items[j] === value)
+            {
+                return true;
+            }
+        }
+        //did not find the item
+        return false;
+        
+        //indexOf only faster in Chrome, dramatically slower in IE and FireFox.
+        //return (!(items.indexOf(value) < 0));
     };
     this.size = function()
     {
