@@ -6277,7 +6277,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "GEOMETRY": "area",
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
-        "MINPOINTS": "3",
+        "MINPOINTS": "2",
         "MODIFIERS": "T.T1.",
         "DESCRIPTION": "Obstacle Belt",
         "HIERARCHY": "2.X.3.1.1.1",
@@ -11875,10 +11875,10 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       },
       {
         "SYMBOLID": "WO-DIDID---L---",
-        "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "GEOMETRY": "line",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Ice Drift (Direction)",
         "HIERARCHY": "3.X.2.1.3.4",
         "ALPHAHIERARCHY": "METOC.OCA.ISYS.DYNPRO.ID",
@@ -13934,7 +13934,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DL-ML---L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Maritime Limit Boundary",
@@ -13978,7 +13978,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DL-TA----A--",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "1",
+        "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "DESCRIPTION": "Training Area",
@@ -14011,7 +14011,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DMCA----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Cable",
@@ -14033,7 +14033,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DMCD----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Canal",
@@ -39214,7 +39214,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             else
                 line += ' stroke-width="2"';
         
-            if(strokeOpacity && strokeOpacity !== 1.0)
+            if(strokeOpacity !== 1.0)
             {
                 //stroke-opacity="0.4"
                 line += ' stroke-opacity="' + strokeOpacity + '"';
@@ -39245,7 +39245,7 @@ armyc2.c2sd.renderer.so.Path = function () {
                 /*else
                     line += ' fill="' + fill.replace(/#/g,"&#35;") + '"';//text = text.replace(/\</g,"&gt;");*/
                     
-                if(fillOpacity && fillOpacity !== 1.0)
+                if(fillOpacity !== 1.0)
                 {
                     //fill-opacity="0.4"
                     line += ' fill-opacity="' + fillOpacity + '"';
@@ -39848,8 +39848,10 @@ armyc2.c2sd.renderer.utilities.MilStdAttributes.LookAtTag = "LOOKAT";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.AltitudeMode = "ALTMODE";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.UseDashArray = "USEDASHARRAY";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.UsePatternFill = "USEPATTERNFILL";
+armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType = "PATTERNFILLTYPE";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.HideOptionalLabels = "HIDEOPTIONALLABELS";//azimuth and range labels for range fans.
 armyc2.c2sd.renderer.utilities.MilStdAttributes.SVGFormat = "SVGFORMAT";//0 plain SVG, 1 base64 (default), 2 % notation
+armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat = "GJFORMAT";//0 JSON formatted String (default), 1 Object
 
 var armyc2 = armyc2 || {};
 /** namespace */
@@ -40054,7 +40056,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
                 }
                 else if(fullFontMeasurements[font])
                 {
-                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]);
+                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]).getWidth();
                 }
                 else//use an approximation
                 {
@@ -41307,7 +41309,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.7";
+    var _Version = "0.3.21";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -41334,6 +41336,10 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _SymbolOutlineWidth = 3,
     
     _UseCesium2DScaleModifiers = false,
+
+    //modifier the scale returned from getReasonableScale()
+    _3DMinScaleMultiplier = 1.0;
+    _3DMaxScaleMultiplier = 1.0;
     
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
@@ -41354,6 +41360,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
+    _DrawCountryCode = true,
     _SPFontSize = 60,
     _UnitFontSize = 50,
     _PixelSize = 35;
@@ -41398,9 +41405,14 @@ return{
      */
     TextBackgroundMethod_OUTLINE_QUICK : 3,
 
-
     /**
-     * 2525Bch2 and USAS 13/14 symbology
+     * 2525Bch2 and USAS 11-12 symbology
+     * @deprecated use Symbology_2525B
+     */
+    Symbology_2525B : 0,
+    /**
+     * 2525Bch2 and USAS 13-14 symbology
+     * @deprecated use Symbology_2525B
      */
     Symbology_2525Bch2_USAS_13_14 : 0,
     /**
@@ -41437,7 +41449,7 @@ return{
     /**
      * Controls what symbols are supported.
      * Set this before loading the renderer.
-     * @param {Number} standard like RendererSettings.Symbology_2525Bch2_USAS_13_14
+     * @param {Number} standard like RendererSettings.Symbology_2525B
      * @returns {undefined}
      */
     setSymbologyStandard: function (standard){
@@ -41498,6 +41510,40 @@ return{
      */
     getUseCesium2DScaleModifiers: function (){
         return _UseCesium2DScaleModifiers;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMinScaleMultiplier: function (value){
+        _3DMinScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMinScaleMultiplier: function (){
+        return _3DMinScaleMultiplier;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMaxScaleMultiplier: function (value){
+        _3DMaxScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMaxScaleMultiplier: function (){
+        return _3DMaxScaleMultiplier;
     },
     /**
      * if true (default), when HQ Staff is present, location will be indicated by the free
@@ -41659,6 +41705,20 @@ return{
      */
     getDrawAffiliationModifierAsLabel: function (){
             return _DrawAffiliationModifierAsLabel;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @param {Boolean} value
+     */
+    setDrawCountryCode: function (value){
+            _DrawCountryCode = value;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @returns {Boolean}
+     */
+    getDrawCountryCode: function (){
+            return _DrawCountryCode;
     },
     /**
      * 
@@ -42817,7 +42877,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     else
 
                     {
-                            retColor = null;
+                            retColor = AffiliationColors.UnknownGraphicFillColor;
                     }
                 }
         }	// End if(this.IsTacticalGraphic(this._strSymbolID))
@@ -43036,7 +43096,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
-                    symbolID === ("WO-DBSG-----A--")) // 
+                    symbolID === ("WO-DBSG-----A--") ||
+                    symbolID === "WO-DBST-----A--") // 
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
@@ -43094,22 +43155,22 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(
         symbolID===("WO-DHCI-----A--") || //Island
         symbolID===("WO-DHCB-----A--") || //Beach
-        symbolID===("WO-DHPMO---L---")||//offshore loading"
+        symbolID===("WO-DHPMO----A--")||//offshore loading"
         symbolID===("WO-DHCI-----A--")) // mixed icing
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);//light/soft brown
         }
-        else if(symbolID.substring(0,7) === ("WO-DOBVA----A--")
+        else if(symbolID === ("WO-DOBVA----A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(26,153,77);//dark green
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTI---A--")
+        else if(symbolID === ("WO-DGMBTI---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,48,0);//orange red
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTH---A--")
+        else if(symbolID === ("WO-DGMBTH---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,80,0);//dark orange
@@ -43273,12 +43334,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return new armyc2.c2sd.renderer.utilities.Color(210,176,106);
         else if(symbolID === ("WO-DHCW-----A--"))//water
             return new armyc2.c2sd.renderer.utilities.Color(255,255,255);
-        else if (symbolID === ("WO-DHABP----A--") ||
-            symbolID === ("WO-DHHD-----A--") ||
-            symbolID === ("WO-DHHDD----A--") ||
-            symbolID === ("WO-DMCC-----A--")) 
+        else if (symbolID === ("WO-DHABP----A--") ||//blue
+            symbolID === ("WO-DMCC-----A--")) //SUBMERGED CRIB (blue)
         {
             return new armyc2.c2sd.renderer.utilities.Color(0,0,255);
+        }
+        else if ((symbolID === "WO-DHHD-----A--") ||//cyan
+            symbolID === "WO-DHHDD----A--")  //discolored water (cyan)
+        {
+            return new armyc2.c2sd.renderer.utilities.Color(0,255,255);   
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
             return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
@@ -43339,7 +43403,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         return null;
     };
+
     
+
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isBasicShape = function (strSymbolID){
+        //var scheme = symbolID.charAt(0);
+        var scheme = strSymbolID.charAt(0);
+        if(scheme === 'B' || scheme === 'P')
+            return true;
+        else
+            return false
+    }
+
     /**
      * Determines if the symbol is a tactical graphic
      * @param {String} strSymbolID
@@ -43398,8 +43473,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNumber = function (text){
-        var re = new RegExp("((-|\\+)?[0-9]+(\\.[0-9]+)?)+");
-        return(re.test(text));
+        var n = parseFloat(text);
+        if(Number.isNaN)
+        {
+            return !Number.isNaN(n) && Number.isFinite(n);
+        }
+        else
+        {
+            return !isNaN(n) && isFinite(n);
+        }
     };
     /**
      * Symbols that don't exist outside of MCS
@@ -43596,9 +43678,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isHQ = function (strSymbolID){
         
         var hq = strSymbolID.charAt(10);
-        var blRetVal = (hq===('A')
+        var blRetVal = false;
+        if(hq !== '-' && hq !== '*')
+        {
+            blRetVal = (hq===('A')
                         || hq===('B')
                             || hq===('C') || hq===('D'));
+        }
+        else
+        {
+            blRetVal = (strSymbolID.charAt(0) === 'S' && strSymbolID.substring(4,6) === "UH");
+        }
+        
         return blRetVal;
     };
     /**
@@ -43712,7 +43803,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var text = null;
         if(echelon === ("A"))
         {
-            text = "0";
+            text = String.fromCharCode(216);//Ø
         }
         else if(echelon === ("B"))
         {
@@ -43832,7 +43923,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         || (temp === ("G*M*NEB---****X"))//BIOLOGICAL
         || (temp === ("G*M*NEC---****X"))//CHEMICAL
         || (temp === ("G*G*GPRI--****X"))//Point of Interest
-        || (temp === ("G*M*OFS---****X"));//Minefield
+        || (temp === ("G*M*OFS---****X"))//Minefield
+        || (temp === ("WAS-WSF-LVP----"))//Freezing Level
+        || (temp === ("WAS-PLT---P----"))//Tropopause Low
+        || (temp === ("WAS-PHT---P----"))//Tropopause High
+        || (temp === ("WAS-WST-LVP----"));//Tropopause Level
       return blRetVal;
     };
     /**
@@ -44121,16 +44216,96 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSIncident = function (strSymbolID){
           return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='I'); 
      };
+          /**
+      * 
+      * @param {String} strSymbolID
+      * @returns {Boolean}
+      */
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSInstallation = function (strSymbolID){
+         var blRetVal = false;
+        if(strSymbolID.charAt(0)==='E')
+        {
+            if(strSymbolID.charAt(2)=='O' &&
+                    strSymbolID.charAt(4)=='D' && strSymbolID.charAt(6)=='C')
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='F' &&
+                    strSymbolID.substring(4, 6).equals("BA")==false)
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='O')
+            {
+                if(strSymbolID.charAt(4)=='A')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'D':
+                        case 'G':
+                        case 'J':
+                        case 'K':
+                        case 'L':
+                        case 'M':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='B')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'E':
+                        case 'F':
+                        case 'G':
+                        case 'H':
+                        case 'I':
+                        case 'K':
+                        case 'L':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='C')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'D':
+                        case 'E':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        } 
+        
+        return blRetVal;
+     };
      /**
       * 
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
-    
-          var blRetVal = ((strSymbolID.charAt(0)===('S')) && (strSymbolID.charAt(2)===('G')) && (strSymbolID.charAt(4)===('I')));
-          return blRetVal;
-     };
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
+        var blRetVal = false;
+        if(strSymbolID.charAt(0)==='S')
+        {
+            blRetVal = (strSymbolID.charAt(2)==='G') && (strSymbolID.charAt(4)==='I');
+        }
+        else if(strSymbolID.charAt(0)===('E'))
+        {
+            blRetVal = this.isEMSInstallation(strSymbolID);
+        }
+        return blRetVal;
+    };
      /**
       * 
       * @param {String} strSymbolID
@@ -44213,7 +44388,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(affiliation===('A') ||
                 affiliation===('S'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "?";
             else
                 textChar=null;
@@ -44229,7 +44404,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             textChar = "X";
         else if(affiliation===('M'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "X?";
             else
                 textChar = "X";
@@ -44552,7 +44727,7 @@ armyc2.c2sd.renderer.utilities.TacticalGraphicLookup = (function () {
     var symbols = null,
     symbolMap = null,
     parser,
-    //spMappingXml =  '<TACTICALGRAPHICS><SYMBOL><SYMBOLID>G*T*B-----****X</SYMBOLID><MAPPING>2001</MAPPING><DESCRIPTION>Tactical Graphics_ Tasks_Block</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*H-----****X</SYMBOLID><MAPPING>2002</MAPPING><DESCRIPTION>Tactical Graphics_ Tasks_Breach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Y-----****X</SYMBOLID><MAPPING>2003</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Bypass</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*C-----****X</SYMBOLID><MAPPING>2004</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Canalize</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*X-----****X</SYMBOLID><MAPPING>2005</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Clear</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*J-----****X</SYMBOLID><MAPPING>2006</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Contain</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*K-----****X</SYMBOLID><MAPPING>2007</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Counterattach (CATK)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*KF----****X</SYMBOLID><MAPPING>2008</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Counterattack (CATK)_Counterattack By Fire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*L-----****X</SYMBOLID><MAPPING>2009</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Delay</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*T-----****X</SYMBOLID><MAPPING>2011</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Disrupt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*F-----****X</SYMBOLID><MAPPING>2012</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Fix</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*A-----****X</SYMBOLID><MAPPING>2013</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Follow And Assume</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*AS----****X</SYMBOLID><MAPPING>2014</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Follow And Assume_Follow And Support</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*E-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Isolate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*O-----****X</SYMBOLID><MAPPING>2018</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Occupy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*P-----****X</SYMBOLID><MAPPING>2019</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Penetrate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*R-----****X</SYMBOLID><MAPPING>2020</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Relief In Place (RIP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Q-----****X</SYMBOLID><MAPPING>2021</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Retain</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*M-----****X</SYMBOLID><MAPPING>2022</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Retirement</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*S-----****X</SYMBOLID><MAPPING>2023</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Secure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*US----****X</SYMBOLID><MAPPING>2024</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Screen</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*UG----****X</SYMBOLID><MAPPING>2025</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Guard</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*UC----****X</SYMBOLID><MAPPING>2026</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Cover</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Z-----****X</SYMBOLID><MAPPING>2027</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Seize</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*W-----****X</SYMBOLID><MAPPING>2028</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Withdraw</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*WP----****X</SYMBOLID><MAPPING>2029</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Withdraw_Withdraw Under Pressure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*V-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Cordon_and_Search</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*2-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Cordon_and_Knock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLB---****X</SYMBOLID><MAPPING>2030</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Boundaries</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLF---****X</SYMBOLID><MAPPING>2031</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Forward Line Of Own Troops (Flot)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLC---****X</SYMBOLID><MAPPING>2032</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Line Of Contact</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLP---****X</SYMBOLID><MAPPING>2033</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Phase Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLL---****X</SYMBOLID><MAPPING>2034</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Light Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAG---****X</SYMBOLID><MAPPING>2035</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_General Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAA---****X</SYMBOLID><MAPPING>2036</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Assembly Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAE---****X</SYMBOLID><MAPPING>2037</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Engagement Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAF---****X</SYMBOLID><MAPPING>2038</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Fortified Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAD---****X</SYMBOLID><MAPPING>2039</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Drop Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAX---****X</SYMBOLID><MAPPING>2040</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Area_Extraction Zone (EZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAL---****X</SYMBOLID><MAPPING>2041</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Landing Zone (LZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAP---****X</SYMBOLID><MAPPING>2042</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Pickup Zone (PZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAS---****X</SYMBOLID><MAPPING>2043</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Search Area/Reconnaissance Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAY---****X</SYMBOLID><MAPPING>2044</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Limited Access Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAZ---****X</SYMBOLID><MAPPING>2045</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Airfield Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALC---****X</SYMBOLID><MAPPING>2046</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Air Corridor</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALM---****X</SYMBOLID><MAPPING>2047</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Minimum Risk Route (MRR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALS---****X</SYMBOLID><MAPPING>2048</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Standard-Use Army Aircraft Flight Route (SAAFR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALU---****X</SYMBOLID><MAPPING>2049</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Unmanned Aerial Vehicle (UAV) Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALL---****X</SYMBOLID><MAPPING>2050</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Low Level Transit Route (LLTR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAR---****X</SYMBOLID><MAPPING>2051</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Restricted Operations Zone (ROZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAF---****X</SYMBOLID><MAPPING>2052</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAF---2525C</SYMBOLID><MAPPING>2053</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAH---****X</SYMBOLID><MAPPING>2054</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_High Density Airpspace Control Zone (Hidacz)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAM---****X</SYMBOLID><MAPPING>2055</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAML--****X</SYMBOLID><MAPPING>2056</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Enagement Zone (MEZ) Low Altitude Mez</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAMH--****X</SYMBOLID><MAPPING>2057</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)_High Altitude MEZ</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAW---****X</SYMBOLID><MAPPING>2058</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Weapoins Free Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PD----****X</SYMBOLID><MAPPING>2059</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy (Deception) (Decoy)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PA----****X</SYMBOLID><MAPPING>2060</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Axis Of Advance For Feint</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PF----****X</SYMBOLID><MAPPING>2061</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Direction Of Attack For Feint</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PM----****X</SYMBOLID><MAPPING>2062</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PY----****X</SYMBOLID><MAPPING>2063</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area, Fenced</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PC----****X</SYMBOLID><MAPPING>2064</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy Minefield - Dynamic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DLF---****X</SYMBOLID><MAPPING>2065</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Forward Edge Of Battle Area (FEBA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DLP---****X</SYMBOLID><MAPPING>2066</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Principal Direction Of Fire (PDF)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DAB---****X</SYMBOLID><MAPPING>2067</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DABP--****X</SYMBOLID><MAPPING>2068</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position_Prepared But Not Occupied</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DAE---****X</SYMBOLID><MAPPING>2069</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Area_Engagement Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAV--****X</SYMBOLID><MAPPING>2070</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Aviation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAA--****X</SYMBOLID><MAPPING>2071</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Airborne</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAR--****X</SYMBOLID><MAPPING>2072</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Attack, Rotory Wing</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAGM-****X</SYMBOLID><MAPPING>2073</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Main Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAGS-****X</SYMBOLID><MAPPING>2074</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Support Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKA--****X</SYMBOLID><MAPPING>2075</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Aviation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKGM-****X</SYMBOLID><MAPPING>2076</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_Main Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKGS-****X</SYMBOLID><MAPPING>2077</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_ Supporting Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLF---****X</SYMBOLID><MAPPING>2078</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Final Coordination Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLI---****X</SYMBOLID><MAPPING>2079</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Infiltration Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLL---****X</SYMBOLID><MAPPING>2080</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Limit Of Advance</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLT---****X</SYMBOLID><MAPPING>2081</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLC---****X</SYMBOLID><MAPPING>2082</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure/Line Of Contact (LD.LC)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLP---****X</SYMBOLID><MAPPING>2083</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Probable Line Of Deployment (PLD)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAA---****X</SYMBOLID><MAPPING>2084</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Assault Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAK---****X</SYMBOLID><MAPPING>2085</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAF---****X</SYMBOLID><MAPPING>2086</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack By Fire Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAS---****X</SYMBOLID><MAPPING>2087</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Support By Fire Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAO---****X</SYMBOLID><MAPPING>2088</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Objective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAP---****X</SYMBOLID><MAPPING>2089</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Penetration BoX</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLA---****X</SYMBOLID><MAPPING>2090</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Ambush</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLH---****X</SYMBOLID><MAPPING>2091</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Holding Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLR---****X</SYMBOLID><MAPPING>2092</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Release Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLB---****X</SYMBOLID><MAPPING>2093</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Bridgehead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAO---****X</SYMBOLID><MAPPING>2094</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Area Of Operations (AO)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAA---****X</SYMBOLID><MAPPING>2095</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Airhead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAE---****X</SYMBOLID><MAPPING>2096</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Encirclement</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAN---****X</SYMBOLID><MAPPING>2097</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Named Area Of Interest (NAI)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAT---****X</SYMBOLID><MAPPING>2098</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Targeted Area Of Interest (TAI)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGB---****X</SYMBOLID><MAPPING>2099</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Belt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGL---****X</SYMBOLID><MAPPING>2100</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGZ---****X</SYMBOLID><MAPPING>2101</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGF---****X</SYMBOLID><MAPPING>2102</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Free Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGR---****X</SYMBOLID><MAPPING>2103</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Restricted Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OS----****X</SYMBOLID><MAPPING>2104</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Abatis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OADU--****X</SYMBOLID><MAPPING>2105</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Under Construction</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OADC--****X</SYMBOLID><MAPPING>2106</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Complete</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OAR---****X</SYMBOLID><MAPPING>2107</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch Reinforced With Antitank Mines</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OAW---****X</SYMBOLID><MAPPING>2108</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Wall</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OMC---****X</SYMBOLID><MAPPING>2109</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Mines_Mine Cluster</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFD---****X</SYMBOLID><MAPPING>2110</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Dynamic Depiction</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFG---****X</SYMBOLID><MAPPING>2111</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Gap</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFA---****X</SYMBOLID><MAPPING>2112</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Minded Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OEB---****X</SYMBOLID><MAPPING>2113</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Block</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OEF---****X</SYMBOLID><MAPPING>2114</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_FiX</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OET---****X</SYMBOLID><MAPPING>2115</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Turn</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OED---****X</SYMBOLID><MAPPING>2116</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Disrupt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OU----****X</SYMBOLID><MAPPING>2117</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Unexploed Ordinance Area (UXO)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORP---****X</SYMBOLID><MAPPING>2118</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Planned</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORS---****X</SYMBOLID><MAPPING>2119</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 1 (Safe)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORA---****X</SYMBOLID><MAPPING>2120</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 2 (Armed-But Passable)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORC---****X</SYMBOLID><MAPPING>2121</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Roadblock Complete (Executed)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OT----****X</SYMBOLID><MAPPING>2122</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Trip Wire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWU---****X</SYMBOLID><MAPPING>2123</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle Unspecified</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWS---****X</SYMBOLID><MAPPING>2124</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_ Single Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWD---****X</SYMBOLID><MAPPING>2125</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWA---****X</SYMBOLID><MAPPING>2126</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Apron Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWL---****X</SYMBOLID><MAPPING>2127</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Low Wire Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWH---****X</SYMBOLID><MAPPING>2128</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_High Wire Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCS--****X</SYMBOLID><MAPPING>2129</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Single Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCD--****X</SYMBOLID><MAPPING>2130</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Strand Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCT--****X</SYMBOLID><MAPPING>2131</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Triple Strand Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OHO---****X</SYMBOLID><MAPPING>2133</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Aviation Overhead Wire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDE---****X</SYMBOLID><MAPPING>2134</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Easy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDD---****X</SYMBOLID><MAPPING>2135</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Difficult</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDI---****X</SYMBOLID><MAPPING>2136</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Impossible</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCA---****X</SYMBOLID><MAPPING>2137</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Assault Crossing Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCB---****X</SYMBOLID><MAPPING>2138</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Bridge Or Gap</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCF---****X</SYMBOLID><MAPPING>2139</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ferry</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCE---****X</SYMBOLID><MAPPING>2140</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Easy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCD---****X</SYMBOLID><MAPPING>2141</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Difficult</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCL---****X</SYMBOLID><MAPPING>2142</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Lane</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCR---****X</SYMBOLID><MAPPING>2143</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Raft Site</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SL----****X</SYMBOLID><MAPPING>2144</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Fortified Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SW----****X</SYMBOLID><MAPPING>2145</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Foxhole, Emplacement Or Weapon Site</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SP----****X</SYMBOLID><MAPPING>2146</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Strong Point</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NM----****X</SYMBOLID><MAPPING>2147</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Minimum Safe Distrance Zones</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NR----****X</SYMBOLID><MAPPING>2148</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Radio Active Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NB----****X</SYMBOLID><MAPPING>2149</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Biologically Contaminated Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NC----****X</SYMBOLID><MAPPING>2150</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Chemically Contaminated Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NL----****X</SYMBOLID><MAPPING>2151</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Dose Rate Contour Lines</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LT----****X</SYMBOLID><MAPPING>2152</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Linear Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LTS---****X</SYMBOLID><MAPPING>2153</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Linear Smoke Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LTF---****X</SYMBOLID><MAPPING>2154</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Final Protective Fire (FPF)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCF---****X</SYMBOLID><MAPPING>2155</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Fire Support Coordination Line (FSCL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCC---****X</SYMBOLID><MAPPING>2156</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Coordinated Fire Line (CFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCN---****X</SYMBOLID><MAPPING>2157</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_No-Fire Line (NFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCR---****X</SYMBOLID><MAPPING>2158</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Restrictive Fire Line (RFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCM---****X</SYMBOLID><MAPPING>2159</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Munition Flight Path (MFP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AT----****X</SYMBOLID><MAPPING>2160</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATR---****X</SYMBOLID><MAPPING>2161</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATC---****X</SYMBOLID><MAPPING>2162</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATG---****X</SYMBOLID><MAPPING>2163</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Series Or Group Of Targets</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATS---****X</SYMBOLID><MAPPING>2164</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Smoke</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATB---****X</SYMBOLID><MAPPING>2165</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Bomb Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSI--****X</SYMBOLID><MAPPING>2166</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSR--****X</SYMBOLID><MAPPING>2167</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSC--****X</SYMBOLID><MAPPING>2168</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAI--****X</SYMBOLID><MAPPING>2169</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAR--****X</SYMBOLID><MAPPING>2170</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAC--****X</SYMBOLID><MAPPING>2171</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFI--****X</SYMBOLID><MAPPING>2172</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFR--****X</SYMBOLID><MAPPING>2173</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFC--****X</SYMBOLID><MAPPING>2174</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNI--****X</SYMBOLID><MAPPING>2175</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNR--****X</SYMBOLID><MAPPING>2176</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNC--****X</SYMBOLID><MAPPING>2177</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRI--****X</SYMBOLID><MAPPING>2178</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRR--****X</SYMBOLID><MAPPING>2179</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRC--****X</SYMBOLID><MAPPING>2180</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACPR--****X</SYMBOLID><MAPPING>2181</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_PAA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACPC--****X</SYMBOLID><MAPPING>2182</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_PAA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZII--****X</SYMBOLID><MAPPING>2183</MAPPING><DESCRIPTION>ATI_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZIR--****X</SYMBOLID><MAPPING>2184</MAPPING><DESCRIPTION>ATI_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZIC--****X</SYMBOLID><MAPPING>2185</MAPPING><DESCRIPTION>ATI_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXI--****X</SYMBOLID><MAPPING>2186</MAPPING><DESCRIPTION>CFFZ_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXR--****X</SYMBOLID><MAPPING>2187</MAPPING><DESCRIPTION>CFFZ_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXC--****X</SYMBOLID><MAPPING>2188</MAPPING><DESCRIPTION>CFFZ_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSI--****X</SYMBOLID><MAPPING>2189</MAPPING><DESCRIPTION>Sensor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACEI--****X</SYMBOLID><MAPPING>2189</MAPPING><DESCRIPTION>Sensor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSR--****X</SYMBOLID><MAPPING>2190</MAPPING><DESCRIPTION>Sensor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACER--****X</SYMBOLID><MAPPING>2190</MAPPING><DESCRIPTION>Sensor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSC--****X</SYMBOLID><MAPPING>2191</MAPPING><DESCRIPTION>Sensor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACEC--****X</SYMBOLID><MAPPING>2191</MAPPING><DESCRIPTION>Sensor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCI--****X</SYMBOLID><MAPPING>2192</MAPPING><DESCRIPTION>Censor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCR--****X</SYMBOLID><MAPPING>2193</MAPPING><DESCRIPTION>Censor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCC--****X</SYMBOLID><MAPPING>2194</MAPPING><DESCRIPTION>Censor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDI--****X</SYMBOLID><MAPPING>2195</MAPPING><DESCRIPTION>DA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDI--****X</SYMBOLID><MAPPING>2195</MAPPING><DESCRIPTION>DA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDR--****X</SYMBOLID><MAPPING>2196</MAPPING><DESCRIPTION>DA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDR--****X</SYMBOLID><MAPPING>2196</MAPPING><DESCRIPTION>DA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDC--****X</SYMBOLID><MAPPING>2197</MAPPING><DESCRIPTION>DA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDC--****X</SYMBOLID><MAPPING>2197</MAPPING><DESCRIPTION>DA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFI--****X</SYMBOLID><MAPPING>2217</MAPPING><DESCRIPTION>CFZ_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFR--****X</SYMBOLID><MAPPING>2218</MAPPING><DESCRIPTION>CFZ_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFC--****X</SYMBOLID><MAPPING>2219</MAPPING><DESCRIPTION>CFZ_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZI--****X</SYMBOLID><MAPPING>2198</MAPPING><DESCRIPTION>ZOR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZI--****X</SYMBOLID><MAPPING>2198</MAPPING><DESCRIPTION>ZOR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZR--****X</SYMBOLID><MAPPING>2199</MAPPING><DESCRIPTION>ZOR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZR--****X</SYMBOLID><MAPPING>2199</MAPPING><DESCRIPTION>ZOR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZC--****X</SYMBOLID><MAPPING>2200</MAPPING><DESCRIPTION>ZOR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZC--****X</SYMBOLID><MAPPING>2200</MAPPING><DESCRIPTION>ZOR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBI--****X</SYMBOLID><MAPPING>2201</MAPPING><DESCRIPTION>TBA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBI--****X</SYMBOLID><MAPPING>2201</MAPPING><DESCRIPTION>TBA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBR--****X</SYMBOLID><MAPPING>2202</MAPPING><DESCRIPTION>TBA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBR--****X</SYMBOLID><MAPPING>2202</MAPPING><DESCRIPTION>TBA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBC--****X</SYMBOLID><MAPPING>2203</MAPPING><DESCRIPTION>TBA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBC--****X</SYMBOLID><MAPPING>2203</MAPPING><DESCRIPTION>TBA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVI--****X</SYMBOLID><MAPPING>2204</MAPPING><DESCRIPTION>TVAR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVI--****X</SYMBOLID><MAPPING>2204</MAPPING><DESCRIPTION>TVAR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVR--****X</SYMBOLID><MAPPING>2205</MAPPING><DESCRIPTION>TVAR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVR--****X</SYMBOLID><MAPPING>2205</MAPPING><DESCRIPTION>TVAR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVC--****X</SYMBOLID><MAPPING>2206</MAPPING><DESCRIPTION>TVAR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVC--****X</SYMBOLID><MAPPING>2206</MAPPING><DESCRIPTION>TVAR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACT---****X</SYMBOLID><MAPPING>2210</MAPPING><DESCRIPTION>TGMF</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AXC---****X</SYMBOLID><MAPPING>2207</MAPPING><DESCRIPTION>Range_Fan</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AXS---****X</SYMBOLID><MAPPING>2208</MAPPING><DESCRIPTION>Sector_Range_Fan</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBC--****X</SYMBOLID><MAPPING>2219</MAPPING><DESCRIPTION>BKB Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBI--****X</SYMBOLID><MAPPING>2220</MAPPING><DESCRIPTION>BKB Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBR--****X</SYMBOLID><MAPPING>2221</MAPPING><DESCRIPTION>BKB Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPC--****X</SYMBOLID><MAPPING>2222</MAPPING><DESCRIPTION>PKB Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPI--****X</SYMBOLID><MAPPING>2223</MAPPING><DESCRIPTION>PKB Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPR--****X</SYMBOLID><MAPPING>2224</MAPPING><DESCRIPTION>PKB Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LCM---****X</SYMBOLID><MAPPING>2226</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Convoys_Moving Convoy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LCH---****X</SYMBOLID><MAPPING>2227</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Convoys_Halted Convoy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRM---****X</SYMBOLID><MAPPING>2228</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Main Supply Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRA---****X</SYMBOLID><MAPPING>2229</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternate Supply Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRO---****X</SYMBOLID><MAPPING>2230</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_One-Way Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRT---****X</SYMBOLID><MAPPING>2231</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternating Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRW---****X</SYMBOLID><MAPPING>2232</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Two-Way Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AD----****X</SYMBOLID><MAPPING>2233</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Detainee Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AE----****X</SYMBOLID><MAPPING>2234</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Enemy Prisoner Of War (EPW) Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AR----****X</SYMBOLID><MAPPING>2235</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Forward Arming And Refueling Area (FARP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AH----****X</SYMBOLID><MAPPING>2236</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Refugee Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASB---****X</SYMBOLID><MAPPING>2237</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Brigade (BSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASD---****X</SYMBOLID><MAPPING>2238</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Division (DSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASR---****X</SYMBOLID><MAPPING>2239</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Regimental (RSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*HN----****X</SYMBOLID><MAPPING>2240</MAPPING><DESCRIPTION>Tactical Graphics_Other_Hazard_Navigational</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*B-----****X</SYMBOLID><MAPPING>2241</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BE----****X</SYMBOLID><MAPPING>2242</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Electronic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BA----****X</SYMBOLID><MAPPING>2243</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Acoustic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BT----****X</SYMBOLID><MAPPING>2244</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Torpedo</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BO----****X</SYMBOLID><MAPPING>2245</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Electro-Optical Intercept</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC----L---</SYMBOLID><MAPPING>3000</MAPPING><DESCRIPTION>Cold Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFCU---L---</SYMBOLID><MAPPING>3001</MAPPING><DESCRIPTION>Upper Cold Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC-FG-L---</SYMBOLID><MAPPING>3002</MAPPING><DESCRIPTION>Cold Frontogenisis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC-FY-L---</SYMBOLID><MAPPING>3003</MAPPING><DESCRIPTION>Cold Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW----L---</SYMBOLID><MAPPING>3004</MAPPING><DESCRIPTION>Warm Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFWU---L---</SYMBOLID><MAPPING>3005</MAPPING><DESCRIPTION>Upper Warm Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW-FG-L---</SYMBOLID><MAPPING>3006</MAPPING><DESCRIPTION>Warm Frontogenesis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW-FY-L---</SYMBOLID><MAPPING>3007</MAPPING><DESCRIPTION>Warm Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFO----L---</SYMBOLID><MAPPING>3008</MAPPING><DESCRIPTION>Occluded Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFOU---L---</SYMBOLID><MAPPING>3009</MAPPING><DESCRIPTION>Upper Occluded Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFO-FY-L---</SYMBOLID><MAPPING>3010</MAPPING><DESCRIPTION>Occluded Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS----L---</SYMBOLID><MAPPING>3011</MAPPING><DESCRIPTION>Stationary Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFSU---L---</SYMBOLID><MAPPING>3012</MAPPING><DESCRIPTION>Upper Stationary Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS-FG-L---</SYMBOLID><MAPPING>3013</MAPPING><DESCRIPTION>Stationary Frontogenesis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS-FY-L---</SYMBOLID><MAPPING>3014</MAPPING><DESCRIPTION>Stationary Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXT----L---</SYMBOLID><MAPPING>3015</MAPPING><DESCRIPTION>Trough Axis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXR----L---</SYMBOLID><MAPPING>3016</MAPPING><DESCRIPTION>Ridge Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXSQ---L---</SYMBOLID><MAPPING>3017</MAPPING><DESCRIPTION>Squall Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXIL---L---</SYMBOLID><MAPPING>3018</MAPPING><DESCRIPTION>Instability Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXSH---L---</SYMBOLID><MAPPING>3019</MAPPING><DESCRIPTION>Shear Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXITCZ-L---</SYMBOLID><MAPPING>3020</MAPPING><DESCRIPTION>Inter-Tropical Convergance Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXCV---L---</SYMBOLID><MAPPING>3021</MAPPING><DESCRIPTION>Convergance Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXITD--L---</SYMBOLID><MAPPING>3022</MAPPING><DESCRIPTION>Inter-Tropical Discontinuity</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WAS-WP----P----</SYMBOLID><MAPPING>3023</MAPPING><DESCRIPTION>Wind Plot</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWJ-----L---</SYMBOLID><MAPPING>3030</MAPPING><DESCRIPTION>Jet Stream Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWS-----L---</SYMBOLID><MAPPING>3031</MAPPING><DESCRIPTION>Stream Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWSTSWA--A--</SYMBOLID><MAPPING>3032</MAPPING><DESCRIPTION>Tropical Storm Wind Areas</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAIF----A--</SYMBOLID><MAPPING>3034</MAPPING><DESCRIPTION>IFR</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAMV----A--</SYMBOLID><MAPPING>3035</MAPPING><DESCRIPTION>MVFR</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBATB----A--</SYMBOLID><MAPPING>3036</MAPPING><DESCRIPTION>Weather Turbulence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAI-----A--</SYMBOLID><MAPPING>3037</MAPPING><DESCRIPTION>Weather Icing</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBALPNC--A--</SYMBOLID><MAPPING>3038</MAPPING><DESCRIPTION>Precipitation Non-Convective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBALPC---A--</SYMBOLID><MAPPING>3039</MAPPING><DESCRIPTION>Precipitation Convective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFP----A--</SYMBOLID><MAPPING>3040</MAPPING><DESCRIPTION>Frozen Precipitation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAT-----A--</SYMBOLID><MAPPING>3041</MAPPING><DESCRIPTION>Weather Thunderstorm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFG----A--</SYMBOLID><MAPPING>3042</MAPPING><DESCRIPTION>Weather Fog</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAD-----A--</SYMBOLID><MAPPING>3043</MAPPING><DESCRIPTION>Weather Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFF----A--</SYMBOLID><MAPPING>3044</MAPPING><DESCRIPTION>Weather Freeform</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIB---L---</SYMBOLID><MAPPING>3045</MAPPING><DESCRIPTION>Isobar Surface</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPCO---L---</SYMBOLID><MAPPING>3046</MAPPING><DESCRIPTION>Upper Air</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIS---L---</SYMBOLID><MAPPING>3047</MAPPING><DESCRIPTION>Isotherm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIT---L---</SYMBOLID><MAPPING>3048</MAPPING><DESCRIPTION>Isotach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPID---L---</SYMBOLID><MAPPING>3049</MAPPING><DESCRIPTION>Isodrosotherm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPTH---L---</SYMBOLID><MAPPING>3050</MAPPING><DESCRIPTION>Isopleths</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPFF---L---</SYMBOLID><MAPPING>3051</MAPPING><DESCRIPTION>Operator Freeform</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILOV---L---</SYMBOLID><MAPPING>3052</MAPPING><DESCRIPTION>Limit of Visual Observation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILUC---L---</SYMBOLID><MAPPING>3053</MAPPING><DESCRIPTION>Limit of Undercast</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILOR---L---</SYMBOLID><MAPPING>3054</MAPPING><DESCRIPTION>Limit of Radar Observation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIEO--L---</SYMBOLID><MAPPING>3055</MAPPING><DESCRIPTION>Observed Ice Edge</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIEE--L---</SYMBOLID><MAPPING>3056</MAPPING><DESCRIPTION>Estimated Ice Edge</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIER--L---</SYMBOLID><MAPPING>3057</MAPPING><DESCRIPTION>Ice Edge From Radar</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOC----L---</SYMBOLID><MAPPING>3058</MAPPING><DESCRIPTION>Cracks</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOCS---L---</SYMBOLID><MAPPING>3059</MAPPING><DESCRIPTION>Cracks Specific-Location</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOL----L---</SYMBOLID><MAPPING>3060</MAPPING><DESCRIPTION>Ice Openings-Lead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOLF---L---</SYMBOLID><MAPPING>3061</MAPPING><DESCRIPTION>Frozen Lead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDL---L---</SYMBOLID><MAPPING>3062</MAPPING><DESCRIPTION>Depth Curve</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDC---L---</SYMBOLID><MAPPING>3063</MAPPING><DESCRIPTION>Depth Contour</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDA----A--</SYMBOLID><MAPPING>3064</MAPPING><DESCRIPTION>Depth Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCC----L---</SYMBOLID><MAPPING>3065</MAPPING><DESCRIPTION>Coastline</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCI-----A--</SYMBOLID><MAPPING>3066</MAPPING><DESCRIPTION>Island</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCB-----A--</SYMBOLID><MAPPING>3067</MAPPING><DESCRIPTION>Beach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCW-----A--</SYMBOLID><MAPPING>3068</MAPPING><DESCRIPTION>Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCF----L---</SYMBOLID><MAPPING>3069</MAPPING><DESCRIPTION>Foreshore Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCF-----A--</SYMBOLID><MAPPING>3070</MAPPING><DESCRIPTION>Foreshore Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBA---L---</SYMBOLID><MAPPING>3071</MAPPING><DESCRIPTION>Anchorage Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBA----A--</SYMBOLID><MAPPING>3072</MAPPING><DESCRIPTION>Anchorage Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBP---L---</SYMBOLID><MAPPING>3073</MAPPING><DESCRIPTION>Pier</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WOS-HPFF----A--</SYMBOLID><MAPPING>3074</MAPPING><DESCRIPTION>Wiers</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMD----A--</SYMBOLID><MAPPING>3075</MAPPING><DESCRIPTION>Drydock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMO---L---</SYMBOLID><MAPPING>3076</MAPPING><DESCRIPTION>Offshore Loading Facility Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMO----A--</SYMBOLID><MAPPING>3077</MAPPING><DESCRIPTION>Offshore Loading Facility Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMRA--L---</SYMBOLID><MAPPING>3078</MAPPING><DESCRIPTION>Ramp Above Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMRB--L---</SYMBOLID><MAPPING>3079</MAPPING><DESCRIPTION>Ramp Below Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPA--L---</SYMBOLID><MAPPING>3080</MAPPING><DESCRIPTION>Jetty Above Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPB--L---</SYMBOLID><MAPPING>3081</MAPPING><DESCRIPTION>Jetty Below Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPS--L---</SYMBOLID><MAPPING>3082</MAPPING><DESCRIPTION>Seawall</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHABP----A--</SYMBOLID><MAPPING>3083</MAPPING><DESCRIPTION>Perches</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHALLA--L---</SYMBOLID><MAPPING>3084</MAPPING><DESCRIPTION>Leading Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHD-----A--</SYMBOLID><MAPPING>3085</MAPPING><DESCRIPTION>Underwater Hazard</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDF----A--</SYMBOLID><MAPPING>3200</MAPPING><DESCRIPTION>Foul Ground</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDK----A--</SYMBOLID><MAPPING>3201</MAPPING><DESCRIPTION>Kelp</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDB---L---</SYMBOLID><MAPPING>3086</MAPPING><DESCRIPTION>Breaker</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WOS-HHDR---L---</SYMBOLID><MAPPING>3087</MAPPING><DESCRIPTION>Reef</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDD----A--</SYMBOLID><MAPPING>3089</MAPPING><DESCRIPTION>Discolored Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DTCCCFE-L---</SYMBOLID><MAPPING>3090</MAPPING><DESCRIPTION>Ebb Tide</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DTCCCFF-L---</SYMBOLID><MAPPING>3091</MAPPING><DESCRIPTION>Flood Tide</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVA----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 1-2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVB----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 2-3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVC----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 3-4</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVD----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 4-5</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVE----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 5-6</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVF----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 6-7</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVG----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 7-8</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVH----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 8-9</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVI----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 9-10</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSF-----A--</SYMBOLID><MAPPING>3093</MAPPING><DESCRIPTION>Beach Slope Flat</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSG-----A--</SYMBOLID><MAPPING>3094</MAPPING><DESCRIPTION>Beach Slope Gentle</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSM-----A--</SYMBOLID><MAPPING>3095</MAPPING><DESCRIPTION>Beach Slope Moderate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBST-----A--</SYMBOLID><MAPPING>3096</MAPPING><DESCRIPTION>Beach Slope Steep</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSR----A--</SYMBOLID><MAPPING>3097</MAPPING><DESCRIPTION>Solid Rock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSC----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clay</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSVS--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Course Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Coarse Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSM---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Medium Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Fine Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSVF--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Fine Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIVF--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Fine Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Fine Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIM---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Medium Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Coarse Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSB----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Boulders</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-CO--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Oyster Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-PH--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Pebbles Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-SH--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Sand and Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGML-----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Sediments Land</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMN-----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Sediments Land</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRS----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Smooth</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRM----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Moderate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRR----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Rough</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCL----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter Low</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCM----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter Medium</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCH----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter High</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 0</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 10</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 20</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBD---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 75</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBE---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 100</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category A</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category B</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category C</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTD---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTE---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTG---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTH---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTI---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-ML---L---</SYMBOLID><MAPPING>3099</MAPPING><DESCRIPTION>Maritime Limit</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-MA----A--</SYMBOLID><MAPPING>3100</MAPPING><DESCRIPTION>Maritime Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-RA---L---</SYMBOLID><MAPPING>3101</MAPPING><DESCRIPTION>Restricted Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-SA----A--</SYMBOLID><MAPPING>3102</MAPPING><DESCRIPTION>Swept Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-TA----A--</SYMBOLID><MAPPING>3103</MAPPING><DESCRIPTION>Training Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-O-----A--</SYMBOLID><MAPPING>3104</MAPPING><DESCRIPTION>Operator Defined</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCA----L---</SYMBOLID><MAPPING>3105</MAPPING><DESCRIPTION>Cable</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCC-----A--</SYMBOLID><MAPPING>3106</MAPPING><DESCRIPTION>Submerged Crib</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCD----L---</SYMBOLID><MAPPING>3107</MAPPING><DESCRIPTION>Canal</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMOA-----A--</SYMBOLID><MAPPING>3108</MAPPING><DESCRIPTION>Oil Rig Field</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMPA----L---</SYMBOLID><MAPPING>3109</MAPPING><DESCRIPTION>Pipe</DESCRIPTION></SYMBOL></TACTICALGRAPHICS>';
+    //spMappingXml =  '<TACTICALGRAPHICS><SYMBOL><SYMBOLID>G*T*B-----****X</SYMBOLID><MAPPING>2001</MAPPING><DESCRIPTION>Tactical Graphics_ Tasks_Block</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*H-----****X</SYMBOLID><MAPPING>2002</MAPPING><DESCRIPTION>Tactical Graphics_ Tasks_Breach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Y-----****X</SYMBOLID><MAPPING>2003</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Bypass</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*C-----****X</SYMBOLID><MAPPING>2004</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Canalize</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*X-----****X</SYMBOLID><MAPPING>2005</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Clear</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*J-----****X</SYMBOLID><MAPPING>2006</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Contain</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*K-----****X</SYMBOLID><MAPPING>2007</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Counterattach (CATK)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*KF----****X</SYMBOLID><MAPPING>2008</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Counterattack (CATK)_Counterattack By Fire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*L-----****X</SYMBOLID><MAPPING>2009</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Delay</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*T-----****X</SYMBOLID><MAPPING>2011</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Disrupt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*F-----****X</SYMBOLID><MAPPING>2012</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Fix</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*A-----****X</SYMBOLID><MAPPING>2013</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Follow And Assume</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*AS----****X</SYMBOLID><MAPPING>2014</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Follow And Assume_Follow And Support</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*E-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Isolate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*O-----****X</SYMBOLID><MAPPING>2018</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Occupy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*P-----****X</SYMBOLID><MAPPING>2019</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Penetrate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*R-----****X</SYMBOLID><MAPPING>2020</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Relief In Place (RIP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Q-----****X</SYMBOLID><MAPPING>2021</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Retain</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*M-----****X</SYMBOLID><MAPPING>2022</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Retirement</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*S-----****X</SYMBOLID><MAPPING>2023</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Secure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*US----****X</SYMBOLID><MAPPING>2024</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Screen</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*UG----****X</SYMBOLID><MAPPING>2025</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Guard</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*UC----****X</SYMBOLID><MAPPING>2026</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Security_Cover</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*Z-----****X</SYMBOLID><MAPPING>2027</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Seize</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*W-----****X</SYMBOLID><MAPPING>2028</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Withdraw</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*WP----****X</SYMBOLID><MAPPING>2029</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Withdraw_Withdraw Under Pressure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*V-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Cordon_and_Search</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*T*2-----****X</SYMBOLID><MAPPING>2016</MAPPING><DESCRIPTION>Tactical Graphics_Tasks_Cordon_and_Knock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLB---****X</SYMBOLID><MAPPING>2030</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Boundaries</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLF---****X</SYMBOLID><MAPPING>2031</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Forward Line Of Own Troops (Flot)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLC---****X</SYMBOLID><MAPPING>2032</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Line Of Contact</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLP---****X</SYMBOLID><MAPPING>2033</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Phase Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GLL---****X</SYMBOLID><MAPPING>2034</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Light Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAG---****X</SYMBOLID><MAPPING>2035</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_General Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAA---****X</SYMBOLID><MAPPING>2036</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Assembly Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAE---****X</SYMBOLID><MAPPING>2037</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Engagement Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAF---****X</SYMBOLID><MAPPING>2038</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Lines_Fortified Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAD---****X</SYMBOLID><MAPPING>2039</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Drop Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAX---****X</SYMBOLID><MAPPING>2040</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Area_Extraction Zone (EZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAL---****X</SYMBOLID><MAPPING>2041</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Landing Zone (LZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAP---****X</SYMBOLID><MAPPING>2042</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Pickup Zone (PZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAS---****X</SYMBOLID><MAPPING>2043</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Search Area/Reconnaissance Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAY---****X</SYMBOLID><MAPPING>2044</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Limited Access Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*GAZ---****X</SYMBOLID><MAPPING>2045</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_General_Areas_Airfield Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALC---****X</SYMBOLID><MAPPING>2046</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Air Corridor</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALM---****X</SYMBOLID><MAPPING>2047</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Minimum Risk Route (MRR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALS---****X</SYMBOLID><MAPPING>2048</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Standard-Use Army Aircraft Flight Route (SAAFR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALU---****X</SYMBOLID><MAPPING>2049</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Unmanned Aerial Vehicle (UAV) Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*ALL---****X</SYMBOLID><MAPPING>2050</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Low Level Transit Route (LLTR)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAR---****X</SYMBOLID><MAPPING>2051</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Restricted Operations Zone (ROZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAF---****X</SYMBOLID><MAPPING>2052</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAF---2525C</SYMBOLID><MAPPING>2053</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAH---****X</SYMBOLID><MAPPING>2054</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_High Density Airpspace Control Zone (Hidacz)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAM---****X</SYMBOLID><MAPPING>2055</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAML--****X</SYMBOLID><MAPPING>2056</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Enagement Zone (MEZ) Low Altitude Mez</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAMH--****X</SYMBOLID><MAPPING>2057</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)_High Altitude MEZ</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*AAW---****X</SYMBOLID><MAPPING>2058</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Weapoins Free Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PD----****X</SYMBOLID><MAPPING>2059</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy (Deception) (Decoy)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PA----****X</SYMBOLID><MAPPING>2060</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Axis Of Advance For Feint</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PF----****X</SYMBOLID><MAPPING>2061</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Direction Of Attack For Feint</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PM----****X</SYMBOLID><MAPPING>2062</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PY----****X</SYMBOLID><MAPPING>2063</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area, Fenced</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*PC----****X</SYMBOLID><MAPPING>2064</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy Minefield - Dynamic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DLF---****X</SYMBOLID><MAPPING>2065</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Forward Edge Of Battle Area (FEBA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DLP---****X</SYMBOLID><MAPPING>2066</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Principal Direction Of Fire (PDF)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DAB---****X</SYMBOLID><MAPPING>2067</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DABP--****X</SYMBOLID><MAPPING>2068</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position_Prepared But Not Occupied</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*DAE---****X</SYMBOLID><MAPPING>2069</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Defense_Area_Engagement Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAV--****X</SYMBOLID><MAPPING>2070</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Aviation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAA--****X</SYMBOLID><MAPPING>2071</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Airborne</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAR--****X</SYMBOLID><MAPPING>2072</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Attack, Rotory Wing</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAGM-****X</SYMBOLID><MAPPING>2073</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Main Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLAGS-****X</SYMBOLID><MAPPING>2074</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Support Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKA--****X</SYMBOLID><MAPPING>2075</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Aviation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKGM-****X</SYMBOLID><MAPPING>2076</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_Main Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLKGS-****X</SYMBOLID><MAPPING>2077</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_ Supporting Attack</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLF---****X</SYMBOLID><MAPPING>2078</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Final Coordination Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLI---****X</SYMBOLID><MAPPING>2079</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Infiltration Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLL---****X</SYMBOLID><MAPPING>2080</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Limit Of Advance</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLT---****X</SYMBOLID><MAPPING>2081</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLC---****X</SYMBOLID><MAPPING>2082</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure/Line Of Contact (LD.LC)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OLP---****X</SYMBOLID><MAPPING>2083</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Probable Line Of Deployment (PLD)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAA---****X</SYMBOLID><MAPPING>2084</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Assault Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAK---****X</SYMBOLID><MAPPING>2085</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAF---****X</SYMBOLID><MAPPING>2086</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack By Fire Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAS---****X</SYMBOLID><MAPPING>2087</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Support By Fire Position</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAO---****X</SYMBOLID><MAPPING>2088</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Objective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*OAP---****X</SYMBOLID><MAPPING>2089</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Penetration BoX</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLA---****X</SYMBOLID><MAPPING>2090</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Ambush</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLH---****X</SYMBOLID><MAPPING>2091</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Holding Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLR---****X</SYMBOLID><MAPPING>2092</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Line_Release Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SLB---****X</SYMBOLID><MAPPING>2093</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Bridgehead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAO---****X</SYMBOLID><MAPPING>2094</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Area Of Operations (AO)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAA---****X</SYMBOLID><MAPPING>2095</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Airhead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAE---****X</SYMBOLID><MAPPING>2096</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Encirclement</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAN---****X</SYMBOLID><MAPPING>2097</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Named Area Of Interest (NAI)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*G*SAT---****X</SYMBOLID><MAPPING>2098</MAPPING><DESCRIPTION>Tactical Graphics_Command And Control And General Maneuver_Special_Area_Targeted Area Of Interest (TAI)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGB---****X</SYMBOLID><MAPPING>2099</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Belt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGL---****X</SYMBOLID><MAPPING>2100</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGZ---****X</SYMBOLID><MAPPING>2101</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGF---****X</SYMBOLID><MAPPING>2102</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Free Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OGR---****X</SYMBOLID><MAPPING>2103</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Restricted Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OS----****X</SYMBOLID><MAPPING>2104</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Abatis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OADU--****X</SYMBOLID><MAPPING>2105</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Under Construction</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OADC--****X</SYMBOLID><MAPPING>2106</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Complete</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OAR---****X</SYMBOLID><MAPPING>2107</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch Reinforced With Antitank Mines</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OAW---****X</SYMBOLID><MAPPING>2108</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Wall</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OMC---****X</SYMBOLID><MAPPING>2109</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Mines_Mine Cluster</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFD---****X</SYMBOLID><MAPPING>2110</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Dynamic Depiction</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFG---****X</SYMBOLID><MAPPING>2111</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Gap</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OFA---****X</SYMBOLID><MAPPING>2112</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Minded Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OEB---****X</SYMBOLID><MAPPING>2113</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Block</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OEF---****X</SYMBOLID><MAPPING>2114</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_FiX</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OET---****X</SYMBOLID><MAPPING>2115</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Turn</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OED---****X</SYMBOLID><MAPPING>2116</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Disrupt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OU----****X</SYMBOLID><MAPPING>2117</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Unexploed Ordinance Area (UXO)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORP---****X</SYMBOLID><MAPPING>2118</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Planned</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORS---****X</SYMBOLID><MAPPING>2119</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 1 (Safe)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORA---****X</SYMBOLID><MAPPING>2120</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 2 (Armed-But Passable)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*ORC---****X</SYMBOLID><MAPPING>2121</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Roadblock Complete (Executed)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OT----****X</SYMBOLID><MAPPING>2122</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Trip Wire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWU---****X</SYMBOLID><MAPPING>2123</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle Unspecified</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWS---****X</SYMBOLID><MAPPING>2124</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_ Single Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWD---****X</SYMBOLID><MAPPING>2125</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWA---****X</SYMBOLID><MAPPING>2126</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Apron Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWL---****X</SYMBOLID><MAPPING>2127</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Low Wire Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWH---****X</SYMBOLID><MAPPING>2128</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_High Wire Fence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCS--****X</SYMBOLID><MAPPING>2129</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Single Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCD--****X</SYMBOLID><MAPPING>2130</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Strand Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OWCT--****X</SYMBOLID><MAPPING>2131</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Triple Strand Concertina</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*OHO---****X</SYMBOLID><MAPPING>2133</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacles_Aviation Overhead Wire</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDE---****X</SYMBOLID><MAPPING>2134</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Easy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDD---****X</SYMBOLID><MAPPING>2135</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Difficult</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BDI---****X</SYMBOLID><MAPPING>2136</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Impossible</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCA---****X</SYMBOLID><MAPPING>2137</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Assault Crossing Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCB---****X</SYMBOLID><MAPPING>2138</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Bridge Or Gap</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCF---****X</SYMBOLID><MAPPING>2139</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ferry</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCE---****X</SYMBOLID><MAPPING>2140</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Easy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCD---****X</SYMBOLID><MAPPING>2141</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Difficult</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCL---****X</SYMBOLID><MAPPING>2142</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Lane</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*BCR---****X</SYMBOLID><MAPPING>2143</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Raft Site</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SL----****X</SYMBOLID><MAPPING>2144</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Fortified Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SW----****X</SYMBOLID><MAPPING>2145</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Foxhole, Emplacement Or Weapon Site</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*SP----****X</SYMBOLID><MAPPING>2146</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Surivability_Strong Point</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NM----****X</SYMBOLID><MAPPING>2147</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Minimum Safe Distrance Zones</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NR----****X</SYMBOLID><MAPPING>2148</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Radio Active Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NB----****X</SYMBOLID><MAPPING>2149</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Biologically Contaminated Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NC----****X</SYMBOLID><MAPPING>2150</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Chemically Contaminated Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*M*NL----****X</SYMBOLID><MAPPING>2151</MAPPING><DESCRIPTION>Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Dose Rate Contour Lines</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LT----****X</SYMBOLID><MAPPING>2152</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Linear Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LTS---****X</SYMBOLID><MAPPING>2153</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Linear Smoke Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LTF---****X</SYMBOLID><MAPPING>2154</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Final Protective Fire (FPF)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCF---****X</SYMBOLID><MAPPING>2155</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Fire Support Coordination Line (FSCL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCC---****X</SYMBOLID><MAPPING>2156</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Coordinated Fire Line (CFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCN---****X</SYMBOLID><MAPPING>2157</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_No-Fire Line (NFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCR---****X</SYMBOLID><MAPPING>2158</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Restrictive Fire Line (RFL)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*LCM---****X</SYMBOLID><MAPPING>2159</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Lines_Munition Flight Path (MFP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AT----****X</SYMBOLID><MAPPING>2160</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATR---****X</SYMBOLID><MAPPING>2161</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATC---****X</SYMBOLID><MAPPING>2162</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Area Target_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATG---****X</SYMBOLID><MAPPING>2163</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Series Or Group Of Targets</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATS---****X</SYMBOLID><MAPPING>2164</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Smoke</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ATB---****X</SYMBOLID><MAPPING>2165</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_Bomb Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSI--****X</SYMBOLID><MAPPING>2166</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSR--****X</SYMBOLID><MAPPING>2167</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACSC--****X</SYMBOLID><MAPPING>2168</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FSA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAI--****X</SYMBOLID><MAPPING>2169</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAR--****X</SYMBOLID><MAPPING>2170</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACAC--****X</SYMBOLID><MAPPING>2171</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_ACA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFI--****X</SYMBOLID><MAPPING>2172</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFR--****X</SYMBOLID><MAPPING>2173</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACFC--****X</SYMBOLID><MAPPING>2174</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_FFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNI--****X</SYMBOLID><MAPPING>2175</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNR--****X</SYMBOLID><MAPPING>2176</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACNC--****X</SYMBOLID><MAPPING>2177</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_NFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRI--****X</SYMBOLID><MAPPING>2178</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRR--****X</SYMBOLID><MAPPING>2179</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACRC--****X</SYMBOLID><MAPPING>2180</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_RFA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACPR--****X</SYMBOLID><MAPPING>2181</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_PAA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACPC--****X</SYMBOLID><MAPPING>2182</MAPPING><DESCRIPTION>Tactical Graphics_Fire Support_Areas_PAA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZII--****X</SYMBOLID><MAPPING>2183</MAPPING><DESCRIPTION>ATI_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZIR--****X</SYMBOLID><MAPPING>2184</MAPPING><DESCRIPTION>ATI_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZIC--****X</SYMBOLID><MAPPING>2185</MAPPING><DESCRIPTION>ATI_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXI--****X</SYMBOLID><MAPPING>2186</MAPPING><DESCRIPTION>CFFZ_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXR--****X</SYMBOLID><MAPPING>2187</MAPPING><DESCRIPTION>CFFZ_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZXC--****X</SYMBOLID><MAPPING>2188</MAPPING><DESCRIPTION>CFFZ_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSI--****X</SYMBOLID><MAPPING>2189</MAPPING><DESCRIPTION>Sensor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACEI--****X</SYMBOLID><MAPPING>2189</MAPPING><DESCRIPTION>Sensor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSR--****X</SYMBOLID><MAPPING>2190</MAPPING><DESCRIPTION>Sensor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACER--****X</SYMBOLID><MAPPING>2190</MAPPING><DESCRIPTION>Sensor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZSC--****X</SYMBOLID><MAPPING>2191</MAPPING><DESCRIPTION>Sensor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACEC--****X</SYMBOLID><MAPPING>2191</MAPPING><DESCRIPTION>Sensor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCI--****X</SYMBOLID><MAPPING>2192</MAPPING><DESCRIPTION>Censor_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCR--****X</SYMBOLID><MAPPING>2193</MAPPING><DESCRIPTION>Censor_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZCC--****X</SYMBOLID><MAPPING>2194</MAPPING><DESCRIPTION>Censor_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDI--****X</SYMBOLID><MAPPING>2195</MAPPING><DESCRIPTION>DA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDI--****X</SYMBOLID><MAPPING>2195</MAPPING><DESCRIPTION>DA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDR--****X</SYMBOLID><MAPPING>2196</MAPPING><DESCRIPTION>DA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDR--****X</SYMBOLID><MAPPING>2196</MAPPING><DESCRIPTION>DA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZDC--****X</SYMBOLID><MAPPING>2197</MAPPING><DESCRIPTION>DA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACDC--****X</SYMBOLID><MAPPING>2197</MAPPING><DESCRIPTION>DA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFI--****X</SYMBOLID><MAPPING>2217</MAPPING><DESCRIPTION>CFZ_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFR--****X</SYMBOLID><MAPPING>2218</MAPPING><DESCRIPTION>CFZ_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZFC--****X</SYMBOLID><MAPPING>1052</MAPPING><DESCRIPTION>CFZ_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZI--****X</SYMBOLID><MAPPING>2198</MAPPING><DESCRIPTION>ZOR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZI--****X</SYMBOLID><MAPPING>2198</MAPPING><DESCRIPTION>ZOR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZR--****X</SYMBOLID><MAPPING>2199</MAPPING><DESCRIPTION>ZOR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZR--****X</SYMBOLID><MAPPING>2199</MAPPING><DESCRIPTION>ZOR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZZC--****X</SYMBOLID><MAPPING>2200</MAPPING><DESCRIPTION>ZOR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACZC--****X</SYMBOLID><MAPPING>2200</MAPPING><DESCRIPTION>ZOR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBI--****X</SYMBOLID><MAPPING>2201</MAPPING><DESCRIPTION>TBA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBI--****X</SYMBOLID><MAPPING>2201</MAPPING><DESCRIPTION>TBA_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBR--****X</SYMBOLID><MAPPING>2202</MAPPING><DESCRIPTION>TBA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBR--****X</SYMBOLID><MAPPING>2202</MAPPING><DESCRIPTION>TBA_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZBC--****X</SYMBOLID><MAPPING>2203</MAPPING><DESCRIPTION>TBA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACBC--****X</SYMBOLID><MAPPING>2203</MAPPING><DESCRIPTION>TBA_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVI--****X</SYMBOLID><MAPPING>2204</MAPPING><DESCRIPTION>TVAR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVI--****X</SYMBOLID><MAPPING>2204</MAPPING><DESCRIPTION>TVAR_Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVR--****X</SYMBOLID><MAPPING>2205</MAPPING><DESCRIPTION>TVAR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVR--****X</SYMBOLID><MAPPING>2205</MAPPING><DESCRIPTION>TVAR_Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AZVC--****X</SYMBOLID><MAPPING>2206</MAPPING><DESCRIPTION>TVAR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACVC--****X</SYMBOLID><MAPPING>2206</MAPPING><DESCRIPTION>TVAR_Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*ACT---****X</SYMBOLID><MAPPING>2210</MAPPING><DESCRIPTION>TGMF</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AXC---****X</SYMBOLID><MAPPING>2207</MAPPING><DESCRIPTION>Range_Fan</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AXS---****X</SYMBOLID><MAPPING>2208</MAPPING><DESCRIPTION>Sector_Range_Fan</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBC--****X</SYMBOLID><MAPPING>2219</MAPPING><DESCRIPTION>BKB Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBI--****X</SYMBOLID><MAPPING>2220</MAPPING><DESCRIPTION>BKB Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKBR--****X</SYMBOLID><MAPPING>2221</MAPPING><DESCRIPTION>BKB Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPC--****X</SYMBOLID><MAPPING>2222</MAPPING><DESCRIPTION>PKB Circular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPI--****X</SYMBOLID><MAPPING>2223</MAPPING><DESCRIPTION>PKB Irregular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*F*AKPR--****X</SYMBOLID><MAPPING>2224</MAPPING><DESCRIPTION>PKB Rectangular</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LCM---****X</SYMBOLID><MAPPING>2226</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Convoys_Moving Convoy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LCH---****X</SYMBOLID><MAPPING>2227</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Convoys_Halted Convoy</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRM---****X</SYMBOLID><MAPPING>2228</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Main Supply Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRA---****X</SYMBOLID><MAPPING>2229</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternate Supply Route</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRO---****X</SYMBOLID><MAPPING>2230</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_One-Way Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRT---****X</SYMBOLID><MAPPING>2231</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternating Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*LRW---****X</SYMBOLID><MAPPING>2232</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Lines_Supply Routes_Two-Way Traffic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AD----****X</SYMBOLID><MAPPING>2233</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Detainee Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AE----****X</SYMBOLID><MAPPING>2234</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Enemy Prisoner Of War (EPW) Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AR----****X</SYMBOLID><MAPPING>2235</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Forward Arming And Refueling Area (FARP)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*AH----****X</SYMBOLID><MAPPING>2236</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Refugee Holding Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASB---****X</SYMBOLID><MAPPING>2237</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Brigade (BSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASD---****X</SYMBOLID><MAPPING>2238</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Division (DSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*S*ASR---****X</SYMBOLID><MAPPING>2239</MAPPING><DESCRIPTION>Tactical Graphics_Combat Service Support_Area_Support Areas_Regimental (RSA)</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*HN----****X</SYMBOLID><MAPPING>2240</MAPPING><DESCRIPTION>Tactical Graphics_Other_Hazard_Navigational</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*B-----****X</SYMBOLID><MAPPING>2241</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BE----****X</SYMBOLID><MAPPING>2242</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Electronic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BA----****X</SYMBOLID><MAPPING>2243</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Acoustic</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BT----****X</SYMBOLID><MAPPING>2244</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Torpedo</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>G*O*BO----****X</SYMBOLID><MAPPING>2245</MAPPING><DESCRIPTION>Tactical Graphics_Other_Bearing Line_Electro-Optical Intercept</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC----L---</SYMBOLID><MAPPING>3000</MAPPING><DESCRIPTION>Cold Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFCU---L---</SYMBOLID><MAPPING>3001</MAPPING><DESCRIPTION>Upper Cold Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC-FG-L---</SYMBOLID><MAPPING>3002</MAPPING><DESCRIPTION>Cold Frontogenisis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFC-FY-L---</SYMBOLID><MAPPING>3003</MAPPING><DESCRIPTION>Cold Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW----L---</SYMBOLID><MAPPING>3004</MAPPING><DESCRIPTION>Warm Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFWU---L---</SYMBOLID><MAPPING>3005</MAPPING><DESCRIPTION>Upper Warm Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW-FG-L---</SYMBOLID><MAPPING>3006</MAPPING><DESCRIPTION>Warm Frontogenesis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFW-FY-L---</SYMBOLID><MAPPING>3007</MAPPING><DESCRIPTION>Warm Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFO----L---</SYMBOLID><MAPPING>3008</MAPPING><DESCRIPTION>Occluded Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFOU---L---</SYMBOLID><MAPPING>3009</MAPPING><DESCRIPTION>Upper Occluded Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFO-FY-L---</SYMBOLID><MAPPING>3010</MAPPING><DESCRIPTION>Occluded Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS----L---</SYMBOLID><MAPPING>3011</MAPPING><DESCRIPTION>Stationary Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFSU---L---</SYMBOLID><MAPPING>3012</MAPPING><DESCRIPTION>Upper Stationary Front</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS-FG-L---</SYMBOLID><MAPPING>3013</MAPPING><DESCRIPTION>Stationary Frontogenesis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPFS-FY-L---</SYMBOLID><MAPPING>3014</MAPPING><DESCRIPTION>Stationary Frontolysis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXT----L---</SYMBOLID><MAPPING>3015</MAPPING><DESCRIPTION>Trough Axis</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXR----L---</SYMBOLID><MAPPING>3016</MAPPING><DESCRIPTION>Ridge Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXSQ---L---</SYMBOLID><MAPPING>3017</MAPPING><DESCRIPTION>Squall Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXIL---L---</SYMBOLID><MAPPING>3018</MAPPING><DESCRIPTION>Instability Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXSH---L---</SYMBOLID><MAPPING>3019</MAPPING><DESCRIPTION>Shear Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXITCZ-L---</SYMBOLID><MAPPING>3020</MAPPING><DESCRIPTION>Inter-Tropical Convergance Zone</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXCV---L---</SYMBOLID><MAPPING>3021</MAPPING><DESCRIPTION>Convergance Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DPXITD--L---</SYMBOLID><MAPPING>3022</MAPPING><DESCRIPTION>Inter-Tropical Discontinuity</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WAS-WP----P----</SYMBOLID><MAPPING>3023</MAPPING><DESCRIPTION>Wind Plot</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWJ-----L---</SYMBOLID><MAPPING>3030</MAPPING><DESCRIPTION>Jet Stream Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWS-----L---</SYMBOLID><MAPPING>3031</MAPPING><DESCRIPTION>Stream Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DWSTSWA--A--</SYMBOLID><MAPPING>3032</MAPPING><DESCRIPTION>Tropical Storm Wind Areas</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAIF----A--</SYMBOLID><MAPPING>3034</MAPPING><DESCRIPTION>IFR</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAMV----A--</SYMBOLID><MAPPING>3035</MAPPING><DESCRIPTION>MVFR</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBATB----A--</SYMBOLID><MAPPING>3036</MAPPING><DESCRIPTION>Weather Turbulence</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAI-----A--</SYMBOLID><MAPPING>3037</MAPPING><DESCRIPTION>Weather Icing</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBALPNC--A--</SYMBOLID><MAPPING>3038</MAPPING><DESCRIPTION>Precipitation Non-Convective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBALPC---A--</SYMBOLID><MAPPING>3039</MAPPING><DESCRIPTION>Precipitation Convective</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFP----A--</SYMBOLID><MAPPING>3040</MAPPING><DESCRIPTION>Frozen Precipitation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAT-----A--</SYMBOLID><MAPPING>3041</MAPPING><DESCRIPTION>Weather Thunderstorm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFG----A--</SYMBOLID><MAPPING>3042</MAPPING><DESCRIPTION>Weather Fog</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAD-----A--</SYMBOLID><MAPPING>3043</MAPPING><DESCRIPTION>Weather Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DBAFF----A--</SYMBOLID><MAPPING>3044</MAPPING><DESCRIPTION>Weather Freeform</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIB---L---</SYMBOLID><MAPPING>3045</MAPPING><DESCRIPTION>Isobar Surface</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPCO---L---</SYMBOLID><MAPPING>3046</MAPPING><DESCRIPTION>Upper Air</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIS---L---</SYMBOLID><MAPPING>3047</MAPPING><DESCRIPTION>Isotherm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPIT---L---</SYMBOLID><MAPPING>3048</MAPPING><DESCRIPTION>Isotach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPID---L---</SYMBOLID><MAPPING>3049</MAPPING><DESCRIPTION>Isodrosotherm</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPTH---L---</SYMBOLID><MAPPING>3050</MAPPING><DESCRIPTION>Isopleths</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WA-DIPFF---L---</SYMBOLID><MAPPING>3051</MAPPING><DESCRIPTION>Operator Freeform</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILOV---L---</SYMBOLID><MAPPING>3052</MAPPING><DESCRIPTION>Limit of Visual Observation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILUC---L---</SYMBOLID><MAPPING>3053</MAPPING><DESCRIPTION>Limit of Undercast</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILOR---L---</SYMBOLID><MAPPING>3054</MAPPING><DESCRIPTION>Limit of Radar Observation</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIEO--L---</SYMBOLID><MAPPING>3055</MAPPING><DESCRIPTION>Observed Ice Edge</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIEE--L---</SYMBOLID><MAPPING>3056</MAPPING><DESCRIPTION>Estimated Ice Edge</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DILIER--L---</SYMBOLID><MAPPING>3057</MAPPING><DESCRIPTION>Ice Edge From Radar</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOC----L---</SYMBOLID><MAPPING>3058</MAPPING><DESCRIPTION>Cracks</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOCS---L---</SYMBOLID><MAPPING>3059</MAPPING><DESCRIPTION>Cracks Specific-Location</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOL----L---</SYMBOLID><MAPPING>3060</MAPPING><DESCRIPTION>Ice Openings-Lead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DIOLF---L---</SYMBOLID><MAPPING>3061</MAPPING><DESCRIPTION>Frozen Lead</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDL---L---</SYMBOLID><MAPPING>3062</MAPPING><DESCRIPTION>Depth Curve</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDC---L---</SYMBOLID><MAPPING>3063</MAPPING><DESCRIPTION>Depth Contour</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHDDA----A--</SYMBOLID><MAPPING>3064</MAPPING><DESCRIPTION>Depth Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCC----L---</SYMBOLID><MAPPING>3065</MAPPING><DESCRIPTION>Coastline</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCI-----A--</SYMBOLID><MAPPING>3066</MAPPING><DESCRIPTION>Island</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCB-----A--</SYMBOLID><MAPPING>3067</MAPPING><DESCRIPTION>Beach</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCW-----A--</SYMBOLID><MAPPING>3068</MAPPING><DESCRIPTION>Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCF----L---</SYMBOLID><MAPPING>3069</MAPPING><DESCRIPTION>Foreshore Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHCF-----A--</SYMBOLID><MAPPING>3070</MAPPING><DESCRIPTION>Foreshore Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBA---L---</SYMBOLID><MAPPING>3071</MAPPING><DESCRIPTION>Anchorage Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBA----A--</SYMBOLID><MAPPING>3072</MAPPING><DESCRIPTION>Anchorage Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPBP---L---</SYMBOLID><MAPPING>3073</MAPPING><DESCRIPTION>Pier</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WOS-HPFF----A--</SYMBOLID><MAPPING>3074</MAPPING><DESCRIPTION>Wiers</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMD----A--</SYMBOLID><MAPPING>3075</MAPPING><DESCRIPTION>Drydock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMO---L---</SYMBOLID><MAPPING>3076</MAPPING><DESCRIPTION>Offshore Loading Facility Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMO----A--</SYMBOLID><MAPPING>3077</MAPPING><DESCRIPTION>Offshore Loading Facility Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMRA--L---</SYMBOLID><MAPPING>3078</MAPPING><DESCRIPTION>Ramp Above Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPMRB--L---</SYMBOLID><MAPPING>3079</MAPPING><DESCRIPTION>Ramp Below Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPA--L---</SYMBOLID><MAPPING>3080</MAPPING><DESCRIPTION>Jetty Above Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPB--L---</SYMBOLID><MAPPING>3081</MAPPING><DESCRIPTION>Jetty Below Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHPSPS--L---</SYMBOLID><MAPPING>3082</MAPPING><DESCRIPTION>Seawall</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHABP----A--</SYMBOLID><MAPPING>3083</MAPPING><DESCRIPTION>Perches</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHALLA--L---</SYMBOLID><MAPPING>3084</MAPPING><DESCRIPTION>Leading Line</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHD-----A--</SYMBOLID><MAPPING>3085</MAPPING><DESCRIPTION>Underwater Hazard</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDF----A--</SYMBOLID><MAPPING>3200</MAPPING><DESCRIPTION>Foul Ground</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDK----A--</SYMBOLID><MAPPING>3201</MAPPING><DESCRIPTION>Kelp</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDB---L---</SYMBOLID><MAPPING>3086</MAPPING><DESCRIPTION>Breaker</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WOS-HHDR---L---</SYMBOLID><MAPPING>3087</MAPPING><DESCRIPTION>Reef</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DHHDD----A--</SYMBOLID><MAPPING>3089</MAPPING><DESCRIPTION>Discolored Water</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DTCCCFE-L---</SYMBOLID><MAPPING>3090</MAPPING><DESCRIPTION>Ebb Tide</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DTCCCFF-L---</SYMBOLID><MAPPING>3091</MAPPING><DESCRIPTION>Flood Tide</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVA----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 1-2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVB----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 2-3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVC----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 3-4</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVD----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 4-5</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVE----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 5-6</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVF----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 6-7</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVG----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 7-8</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVH----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 8-9</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DOBVI----A--</SYMBOLID><MAPPING>3092</MAPPING><DESCRIPTION>VDR Level 9-10</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSF-----A--</SYMBOLID><MAPPING>3093</MAPPING><DESCRIPTION>Beach Slope Flat</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSG-----A--</SYMBOLID><MAPPING>3094</MAPPING><DESCRIPTION>Beach Slope Gentle</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBSM-----A--</SYMBOLID><MAPPING>3095</MAPPING><DESCRIPTION>Beach Slope Moderate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DBST-----A--</SYMBOLID><MAPPING>3096</MAPPING><DESCRIPTION>Beach Slope Steep</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSR----A--</SYMBOLID><MAPPING>3097</MAPPING><DESCRIPTION>Solid Rock</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSC----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clay</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSVS--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Course Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Coarse Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSM---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Medium Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Fine Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSSVF--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Fine Sand</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIVF--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Very Fine Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Fine Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIM---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Medium Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSIC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Coarse Silt</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMSB----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Boulders</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-CO--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Oyster Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-PH--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Pebbles Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMS-SH--A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Sand and Shells</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGML-----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Sediments Land</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMN-----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Sediments Land</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRS----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Smooth</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRM----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Moderate</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMRR----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Roughness Rough</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCL----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter Low</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCM----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter Medium</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMCH----A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Clutter High</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 0</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 10</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 20</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBD---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 75</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMIBE---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Impact Burial 100</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category A</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category B</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBCC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Category C</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTA---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTB---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTC---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type A3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTD---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTE---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTF---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type B3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTG---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C1</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTH---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C2</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DGMBTI---A--</SYMBOLID><MAPPING>3098</MAPPING><DESCRIPTION>Bottom Type C3</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-ML---L---</SYMBOLID><MAPPING>3099</MAPPING><DESCRIPTION>Maritime Limit</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-MA----A--</SYMBOLID><MAPPING>3100</MAPPING><DESCRIPTION>Maritime Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-RA---L---</SYMBOLID><MAPPING>3101</MAPPING><DESCRIPTION>Restricted Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-SA----A--</SYMBOLID><MAPPING>3102</MAPPING><DESCRIPTION>Swept Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-TA----A--</SYMBOLID><MAPPING>3103</MAPPING><DESCRIPTION>Training Area</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DL-O-----A--</SYMBOLID><MAPPING>3104</MAPPING><DESCRIPTION>Operator Defined</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCA----L---</SYMBOLID><MAPPING>3105</MAPPING><DESCRIPTION>Cable</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCC-----A--</SYMBOLID><MAPPING>3106</MAPPING><DESCRIPTION>Submerged Crib</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMCD----L---</SYMBOLID><MAPPING>3107</MAPPING><DESCRIPTION>Canal</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMOA-----A--</SYMBOLID><MAPPING>3108</MAPPING><DESCRIPTION>Oil Rig Field</DESCRIPTION></SYMBOL><SYMBOL><SYMBOLID>WO-DMPA----L---</SYMBOLID><MAPPING>3109</MAPPING><DESCRIPTION>Pipe</DESCRIPTION></SYMBOL></TACTICALGRAPHICS>';
     spMappingXml = {
   "TACTICALGRAPHICS": {
     "SYMBOL": [
@@ -44807,14 +44982,14 @@ armyc2.c2sd.renderer.utilities.TacticalGraphicLookup = (function () {
         "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Restricted Operations Zone (ROZ)"
       },
       {
-        "SYMBOLID": "G*G*AAF---****X",
+        "SYMBOLID": "G*G*AAF---2525C",
         "MAPPING": "2052",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)"
+        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)"
       },
       {
-        "SYMBOLID": "G*G*AAF---2525C",
+        "SYMBOLID": "G*G*AAF---****X",
         "MAPPING": "2053",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)"
+        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)"
       },
       {
         "SYMBOLID": "G*G*AAH---****X",
@@ -45573,7 +45748,7 @@ armyc2.c2sd.renderer.utilities.TacticalGraphicLookup = (function () {
       },
       {
         "SYMBOLID": "G*F*AZFC--****X",
-        "MAPPING": "2219",
+        "MAPPING": "1052",
         "DESCRIPTION": "CFZ_Circular"
       },
       {
@@ -46655,18 +46830,28 @@ return{
         try
         {
             var basicID = symbolID;
+            var returnVal = null;
             if(armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dAirspace(symbolID)===false)
             {
                 basicID = armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict(symbolID);
             }   
             if(basicID in symbolMap)
             {
-                return symbolMap[basicID].mapping;
+                returnVal = symbolMap[basicID].mapping;
+                if(returnVal === "59053")
+                {
+                  if(symStd === null || symStd === undefined)
+                    symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+                  if(symStd === 1)
+                    returnVal = "59052";//2052 is SHORADEZ(2525C), 2053 is FAADEZ 2525B.  
+                  //Both share the same symbolID G*G*AAF--------
+
+                }
+                
+                  
             }
-            else
-            {
-                return null;
-            }
+            
+            return returnVal;
         }
         catch(err)
         {
@@ -46906,7 +47091,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -46933,7 +47118,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -47142,7 +47327,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -47170,7 +47355,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -47206,7 +47391,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                if(symStd === undefined)
                     symStd = RendererSettings.getSymbologyStandard();
                
-                if(symStd===RendererSettings.Symbology_2525Bch2_USAS_13_14)
+                if(symStd===RendererSettings.Symbology_2525B)
                     symbolMap=symbolMapB;
                 else if(symStd===RendererSettings.Symbology_2525C)
                     symbolMap=symbolMapC;
@@ -47382,7 +47567,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -47409,7 +47594,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -47635,7 +47820,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var map = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 map = symbolMapB;
             else
                 map = symbolMapC;
@@ -47661,7 +47846,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var map = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 map = symbolMapB;
             else
                 map = symbolMapC;
@@ -47779,7 +47964,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 843;
+                          if(symStd === 0)
+                            returnVal = 819;
+                          else
+                            returnVal = 843; 
                       }
                       else//if(battleDimension==='Z')//unknown
                       {
@@ -47806,7 +47994,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 840;
+                          if(symStd === 0)
+                            returnVal = 816;
+                          else
+                            returnVal = 840; 
                       }
                       else//if(battleDimension==='Z')//unknown
                       {
@@ -47833,7 +48024,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 846;
+                          if(symStd === 0)
+                            returnVal = 822;
+                          else
+                            returnVal = 846; 
                       }
                       else//if(battleDimension==='Z')//unknown
                       {
@@ -47866,7 +48060,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 849;
+                          if(symStd === 0)
+                            returnVal = 825;
+                          else
+                            returnVal = 849;
                       }
                       else
                           returnVal = FillIndexUG;
@@ -47943,7 +48140,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 843;
+                          if(symStd === 0)
+                            returnVal = 819;
+                          else
+                            returnVal = 843;
                       }
                       else
                       {
@@ -47973,7 +48173,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 840;
+                          if(symStd === 0)
+                            returnVal = 816;
+                          else
+                            returnVal = 840;
                       }
                       else
                       {
@@ -48000,7 +48203,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       }
                       else if(battleDimension==='P')//space
                       {
-                          returnVal = 846;
+                          if(symStd === 0)
+                            returnVal = 822;
+                          else
+                            returnVal = 846;
                       }
                       else
                       {
@@ -48028,9 +48234,12 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       {
                           returnVal = 837;
                       }
-                      else if(battleDimension==='P')//Subsurface
+                      else if(battleDimension==='P')//Space
                       {
-                          returnVal = 849;
+                          if(symStd === 0)
+                            returnVal = 825;
+                          else
+                            returnVal = 849;
                       }
                       else
                       {
@@ -48101,7 +48310,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
             
             if(symStd === undefined)
                 symStd = RendererSettings.getSymbologyStandard();
-            if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14 && status === 'A')
+            if(symStd > RendererSettings.Symbology_2525B && status === 'A')
             {
                 var affiliation = SymbolID.charAt(1);
                 switch(affiliation)
@@ -48822,6 +49031,14 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.xml = armyc2.c2sd.renderer.xml || {};
+
+//When updating
+//1) Go to "https://everythingfonts.com/ttf-to-svg" to convert the ttf to svg.
+//2) open resultant svg, remove unnessary tags (meta, def, etc...) and find all "&#x" and replace with "";
+//3) Go to "http://codebeautify.org/xmltojson" and convert to JSON.  Paste Below.
+//4) Open cleanup.html (same location as this file) and save the generated file
+//5) run new file through "http://codebeautify.org/jsonviewer" and beautify the code
+//6) paste below again and you're good to go.
 
 armyc2.c2sd.renderer.xml.SinglePointSVG =  {
 	"svg": {
@@ -50784,11 +51001,11 @@ armyc2.c2sd.renderer.xml.SinglePointSVG =  {
 			},
 			{
 				"_unicode": "f28e;",
-				"_d": "M-826 -448v896h1652v-896h-1652zM753 -371v737h-1498v-737h1498zM-448 -83l48 6q8 -40 27.5 -58t48.5 -18q34 0 57 23.5t23 57.5q0 33 -21.5 54.5t-54.5 21.5q-14 0 -34 -5l5 41h8q31 0 55.5 15.5t24.5 49.5q0 26 -18 43.5t-46 17.5t-46.5 -18t-24.5 -53l-47 9 q8 48 39.5 74.5t77.5 26.5q32 0 58.5 -13.5t41 -37.5t14.5 -50t-13.5 -46.5t-40.5 -32.5q35 -8 54 -33t19 -63q0 -51 -37.5 -86.5t-93.5 -35.5q-52 0 -85.5 30.5t-38.5 79.5zM-60 21q-34 11 -51 31t-17 49q0 42 35.5 71t94.5 29t95.5 -29.5t36.5 -72.5q0 -27 -16.5 -47 t-50.5 -31q42 -12 63.5 -37.5t21.5 -61.5q0 -50 -41 -84t-108 -34t-108 34t-41 85q0 38 22.5 63.5t63.5 34.5zM-71 102q0 -27 21 -45t54 -18q31 0 52 17.5t21 43.5t-21.5 44t-52.5 18q-32 0 -53 -17.5t-21 -42.5zM-89 -77q0 -21 11.5 -40t33.5 -29.5t48 -10.5q39 0 65 22 t26 56q0 35 -26.5 57.5t-66.5 22.5q-39 0 -65 -22.5t-26 -55.5zM205 7q0 68 16.5 109.5t49 64.5t82.5 23q37 0 64.5 -12.5t45.5 -36t28.5 -57.5t10.5 -91q0 -68 -16.5 -109.5t-49.5 -64.5t-83 -23q-66 0 -103 40q-45 48 -45 157zM262 7q0 -95 26.5 -126.5t64.5 -31.5 q39 0 65 31.5t26 126.5t-26 126.5t-65 31.5t-62 -28q-29 -35 -29 -130z"
+				"_d": "M-826 -448v896h1652v-896h-1652zM753 -371v737h-1498v-737h1498z"
 			},
 			{
 				"_unicode": "f28f;",
-				"_d": "M303 2q0 45 11 72.5t32.5 42.5t54.5 15q24 0 42 -8t30 -24t19 -38t7 -60q0 -44 -11 -71.5t-32.5 -42.5t-54.5 -15q-44 0 -68 26q-30 32 -30 103zM341 2q0 -62 17 -83t43 -21q25 0 42.5 21t17.5 83q0 63 -17.5 83.5t-43.5 20.5q-25 0 -40 -18q-19 -23 -19 -86zM63 0 q0 44 11 71.5t32.5 42.5t54.5 15q24 0 42 -8t30 -23.5t19 -38t7 -59.5q0 -45 -11 -72.5t-32.5 -42.5t-54.5 -15q-44 0 -69 26q-29 32 -29 104zM101 0q0 -63 17 -83.5t43 -20.5q25 0 42.5 20.5t17.5 83.5q0 62 -17.5 82.5t-43.5 20.5q-25 0 -40 -18q-19 -23 -19 -85zM-503 -3 q0 45 11 72.5t32.5 42.5t54.5 15q24 0 42.5 -8.5t30.5 -24t18.5 -38t6.5 -59.5q0 -45 -11 -72.5t-32.5 -42.5t-54.5 -15q-43 0 -68 26q-30 32 -30 104zM-465 -3q0 -63 17.5 -83.5t42.5 -20.5q26 0 43 20.5t17 83.5q0 62 -17 83t-43 21t-41 -19q-19 -23 -19 -85zM-222 76v49 h49v-49h-49zM-222 -127v49h49v-49h-49zM25 -127h-31v199q-12 -10 -30 -21t-33 -16v30q26 12 46 29.5t27 34.5h21v-256zM-303 136q0 14 10 24t24 10t24 -10t10 -25q0 -14 -10 -24t-24 -10t-24 10t-10 25zM-289 136q0 -9 6 -15t14 -6t14 6t6 15q0 8 -6 14t-14 6t-14 -6t-6 -14 zM-826 -448v896h1652v-896h-1652zM753 -371v737h-1498v-737h1498z"
+				"_d": "M-886 -448v896h1772v-896h-1772zM813 -371v737h-1618v-737h1618z"
 			},
 			{
 				"_unicode": "f290;",
@@ -51294,6 +51511,13 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.xml = armyc2.c2sd.renderer.xml || {};
 
+//When updating
+//1) Go to "https://everythingfonts.com/ttf-to-svg" to convert the ttf to svg.
+//2) open resultant svg, remove unnessary tags (meta, def, etc...) and find all "&#x" and replace with "";
+//3) Go to "http://codebeautify.org/xmltojson" and convert to JSON.  Paste Below.
+//4) Open cleanup.html (same location as this file) and save the generated file
+//5) run new file through "http://codebeautify.org/jsonviewer" and beautify the code
+//6) paste below again and you're good to go.
 
 armyc2.c2sd.renderer.xml.TacticalGraphicsSVG =  {
 	"svg": {
@@ -52736,7 +52960,7 @@ armyc2.c2sd.renderer.xml.TacticalGraphicsSVG =  {
 			},
 			{
 				"_unicode": "e030;",
-				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM-48 176v307h164v-52 h-116v-73h100v-52h-100v-130h-48zM-134 288l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15 t23 46zM144 178v49l107 207h-97v48h146v-47l-109 -208h114l-2 -49h-159z"
+				"_d": "M1 578q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM-4 444q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM-65 15v307h164v-52 h-116v-73h100v-52h-100v-130h-48zM-151 127l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15 t23 46zM127 17v49l107 207h-97v48h146v-47l-109 -208h114l-2 -49h-159z"
 			},
 			{
 				"_unicode": "e031;",
@@ -53581,6 +53805,334 @@ armyc2.c2sd.renderer.xml.TacticalGraphicsSVG =  {
 			{
 				"_unicode": "e22c;",
 				"_d": "M77 -331h-144l-57 149h-262l-54 -149h-141l256 656h140zM-167 -71l-90 243l-89 -243h179zM63 -111l124 12q11 -62 45.5 -91.5t92.5 -29.5q62 0 93.5 26t31.5 61q0 22 -13.5 38t-45.5 28q-23 7 -103 27q-103 26 -144 63q-58 52 -58 127q0 49 27 91t79 64t125 22 q119 0 179.5 -52t63.5 -140l-128 -5q-9 49 -36 70t-81 21q-55 0 -87 -23q-20 -14 -20 -39q0 -22 19 -38q24 -21 117.5 -43t138 -45.5t70 -64t25.5 -101.5q0 -54 -30.5 -101.5t-85.5 -70.5t-138 -23q-120 0 -184.5 55.5t-76.5 161.5z"
+			},
+			{
+				"_unicode": "e290;",
+				"_d": "M206 627h-515v60h515v-60zM207 740l171 -84l-171 -84v168zM206 -344h-515v67h515v-67zM207 -218l171 -92l-171 -95v187zM-246 13v-289h-62v289h62zM-247 626v-290h-62v290h62zM-307 14v47h90l-225 274h195v-45h-95l228 -276h-193z"
+			},
+			{
+				"_unicode": "e291;",
+				"_d": "M171 624h-513v60h513v-60zM172 737l170 -84l-170 -83v167zM171 -343h-513v68h513v-68zM172 -216l170 -92l-170 -95v187zM-280 623v-895h-62v895h62z"
+			},
+			{
+				"_unicode": "e292;",
+				"_d": "M264 627h-513v60h513v-60zM265 740l170 -84l-170 -83v167zM264 -340h-513v68h513v-68zM265 -213l170 -93l-170 -94v187zM-186 15v-284h-62v284h62zM-186 626v-285h-62v285h62zM2 280h-444v60h444v-60zM3 16h-445v60h445v-60z"
+			},
+			{
+				"_unicode": "e293;",
+				"_d": "M-602 526l598 -375l-598 -372v747zM-570 -150l474 302l-474 305v-607zM596 -222l-598 373l598 375v-748zM559 457l-474 -305l474 -302v607z"
+			},
+			{
+				"_unicode": "e294;",
+				"_d": "M10 736l554 -570l-554 -567v1137zM57 -255l423 423l-423 424v-847zM-420 193h429v-38h-429v38zM-421 122l-143 52l143 53v-105zM301 141l48 -6q-8 -50 -40.5 -78t-79.5 -28q-59 0 -95 38.5t-36 111.5q0 47 15.5 82t47 52.5t68.5 17.5q47 0 77 -24t38 -67l-47 -8 q-7 29 -24.5 44t-41.5 15q-37 0 -60 -26.5t-23 -84.5t22.5 -84.5t57.5 -26.5q29 0 48.5 17.5t24.5 54.5z"
+			},
+			{
+				"_unicode": "e295;",
+				"_d": "M8 736l555 -571l-555 -568v1139zM-450 189h85v-40h-85v40zM-451 114l-150 55l150 56v-111zM-154 149l-60 64l-79 -147l-71 83v40l64 -67l78 145l69 -78zM-152 189h159v-40h-159v40zM-254 283v291h237v-35h-190v-91h165v-33h-165v-132h-47zM76 18v298h239v-36h-194v-91 h180v-34h-180v-101h201v-36h-246zM55 -256l424 423l-424 425v-848z"
+			},
+			{
+				"_unicode": "e296;",
+				"_d": "M8 736l555 -571l-555 -568v1139zM55 -256l424 423l-424 425v-848zM-447 192h85v-40h-85v40zM-448 117l-150 55l150 56v-111zM-151 152l-60 64l-78 -148l-72 84v40l64 -67l78 145l68 -78v-40zM-150 192h156v-40h-156v40zM102 166q0 71 34 112t89 41q35 0 63.5 -19.5 t44 -54t15.5 -77.5t-15.5 -78.5t-45 -53.5t-62.5 -18q-36 0 -65.5 20t-43.5 54.5t-14 73.5zM137 164q0 -52 25 -82t63 -30t62.5 30t24.5 86q0 34 -10.5 61t-30.5 41t-46 14q-36 0 -62 -28t-26 -92zM-252 286v291h237v-35h-190v-91h165v-33h-165v-132h-47z"
+			},
+			{
+				"_unicode": "e297;",
+				"_d": "M-480 527l836 -836l-58 -59l-837 838zM-299 709l839 -838l-58 -57l-841 840zM336 656l-290 -290l-58 57l290 290zM-197 126l-240 -240l-59 58l241 241zM-11 305l-123 -123l-60 60l123 123zM489 431l-254 -254l-59 58l254 254zM-12 -62l-275 -275l-59 59l276 277zM175 118 l-121 -121l-61 58l123 123z"
+			},
+			{
+				"_unicode": "e298;",
+				"_d": "M-505 537l873 -873l-61 -62l-874 875zM-316 727l876 -875l-61 -59l-877 877z"
+			},
+			{
+				"_unicode": "e299;",
+				"_d": "M-134 315l308 -306l-39 -40l-308 307zM207 -24l311 -309l-40 -40l-311 310zM-476 656l305 -304l-39 -40l-306 305z"
+			},
+			{
+				"_unicode": "e29a;",
+				"_d": "M-501 -292l431 430l-431 431l70 70l431 -431l430 431l69 -69l-430 -431l430 -429l-70 -70l-430 429l-431 -430z"
+			},
+			{
+				"_unicode": "e29b;",
+				"_d": "M451 -402l-909 567l909 569v-1136zM401 627l-720 -462l720 -460v922zM356 -205l-584 371l584 373v-744z"
+			},
+			{
+				"_unicode": "e29c;",
+				"_d": "M-454 734l907 -568l-907 -566v1134zM-403 -293l718 459l-718 461v-920z"
+			},
+			{
+				"_unicode": "e29d;",
+				"_d": "M34 454v-848h-75v848h75zM-108 456l105 285l104 -285h-209z"
+			},
+			{
+				"_unicode": "e29e;",
+				"_d": "M-385 -204l4 -185h-127v185h123zM-385 -15l4 -183h-127v183h123zM-394 178l3 -182h-127v182h124zM-372 361l-17 -183l-127 14l22 184zM-275 519l-85 -163l-112 61l88 162zM-312 639l171 70l45 -119l-171 -66zM494 -207v-185h-128l4 185h124zM494 -15v-183h-128l4 183h124 zM503 178v-182h-126l3 182h123zM479 376l22 -184l-126 -14l-19 183zM368 579l89 -162l-112 -61l-84 163zM252 524l-171 66l45 119l170 -70zM-86 733l182 -22l-17 -126l-182 25zM-365 -392q-2 69 -2 133q0 842 349 842h14q354 -15 354 -812q0 -78 -3 -163h-712z"
+			},
+			{
+				"_unicode": "e29f;",
+				"_d": "M286 115h-877v79h877v-79zM288 262l294 -108l-294 -108v216z"
+			},
+			{
+				"_unicode": "e2a0;",
+				"_d": "M294 263l301 -110l-301 -111v221zM-357 451q42 0 71.5 -29.5t29.5 -71.5q0 -40 -29.5 -70t-71.5 -30q-40 0 -69.5 30t-29.5 70q0 42 28.5 71.5t70.5 29.5zM-357 423q-30 0 -51 -21.5t-21 -51.5q0 -29 21 -51t51 -22q31 0 52 22t21 51q0 30 -21 51.5t-52 21.5zM-56 451 l100 -201h-21l-79 164l-79 -164h-21zM15.5 23.5q28.5 -28.5 28.5 -70.5t-29.5 -71.5t-69.5 -29.5q-42 0 -71.5 29.5t-29.5 71.5t29.5 70.5t71.5 28.5t70.5 -28.5zM-106 4.5q-21 -20.5 -21 -51.5q0 -30 21 -51.5t51 -21.5q29 0 50.5 21.5t21.5 51.5q0 31 -21.5 51.5 t-50.5 20.5q-30 0 -51 -20.5zM-256 -148h-21l-80 164l-78 -164h-21l99 200zM293 132h-898v38h898v-38z"
+			},
+			{
+				"_unicode": "e2a1;",
+				"_d": "M294 265l301 -110l-301 -111v221zM293 134h-899v38h899v-38zM-56 453l100 -201h-21l-79 164l-79 -164h-21zM-256 -146h-21l-80 164l-78 -164h-21l99 200zM-256 252h-22l-78 164l-79 -164h-21l100 201zM-55 54l99 -200h-21l-78 164l-80 -164h-21z"
+			},
+			{
+				"_unicode": "e2a2;",
+				"_d": "M302 265l301 -110l-301 -111v221zM301 134h-899v38h899v-38zM-349 453q42 0 71.5 -29.5t29.5 -71.5q0 -41 -29.5 -70.5t-71.5 -29.5q-40 0 -69.5 29.5t-29.5 70.5q0 42 28.5 71.5t70.5 29.5zM-349 424q-30 0 -51 -21t-21 -51q0 -29 21 -51t51 -22q31 0 52 22t21 51 q0 30 -21 51t-52 21zM23.5 25.5q28.5 -28.5 28.5 -70.5t-29.5 -71.5t-69.5 -29.5q-42 0 -71.5 29.5t-29.5 71.5t29.5 70.5t71.5 28.5t70.5 -28.5zM-98 6.5q-21 -20.5 -21 -51.5t21 -52t51 -21q29 0 50.5 21t21.5 52t-21.5 51.5t-50.5 20.5q-30 0 -51 -20.5zM23.5 423.5 q28.5 -29.5 28.5 -71.5q0 -41 -29.5 -70.5t-69.5 -29.5q-42 0 -71.5 29.5t-29.5 70.5q0 42 29.5 71.5t71.5 29.5t70.5 -29.5zM-98 403q-21 -21 -21 -51q0 -29 21 -51t51 -22q29 0 50.5 22t21.5 51q0 30 -21.5 51t-50.5 21q-30 0 -51 -21zM-349 54q42 0 71.5 -28.5 t29.5 -70.5t-29.5 -71.5t-71.5 -29.5q-40 0 -69.5 29.5t-29.5 71.5t28.5 70.5t70.5 28.5zM-349 27q-30 0 -51 -20.5t-21 -51.5t21 -52t51 -21q31 0 52 21t21 52t-21 51.5t-52 20.5z"
+			},
+			{
+				"_unicode": "e2a3;",
+				"_d": "M-225 236q0 32 29.5 52.5t84 31t116.5 10.5q68 0 119.5 -12t78 -34t27.5 -48h-30q-13 33 -37 43.5t-69 17t-89 6.5q-54 0 -97 -7t-66.5 -15.5t-39.5 -44.5h-27zM-198 235l-58 -267h-26l57 267h27zM230 235l54 -264h-26l-58 264h30zM-283 -32h-281v21h286zM280 -9h286v-20 h-281z"
+			},
+			{
+				"_unicode": "e2a4;",
+				"_d": "M-117 273q24 0 46.5 -11.5t35.5 -33t13 -44.5t-12.5 -44.5t-35.5 -33t-47 -11.5q-25 0 -47.5 11.5t-35 33t-12.5 44.5t12.5 44.5t35.5 33t47 11.5zM126 273q24 0 47.5 -11.5t36.5 -33.5t13 -46t-13 -45.5t-36 -34t-48 -12.5q-26 0 -49 12.5t-36 34t-13 45.5t13 46 t36.5 33.5t48.5 11.5zM4 153l34 -31l1 -104h-18v94q-8 11 -16 11t-16 -10l-1 -95h-17l1 106zM-177 25q91 -90 182 -90t181 91l32 13q-72 -93 -144 -113q-36 -11 -72 -11t-71 11q-72 20 -141 108zM-141 -38q38 -116 94 -189l109 1q47 72 80 184q17 13 40 38 q-53 -174 -106 -241h-144q-51 65 -109 239q20 -22 36 -32zM-134 544l-125 -91q-26 -18 -26 -33v-139l13 -22l1 -70l-15 -18l-1 -84l75 -50q83 -264 146 -309q36 -14 71 -14q36 0 72 14q56 42 145 312l72 47v86l-13 15l-1 61l15 33l-1 137v1q0 12 -29 32l-121 90 q-73 18 -144 18q-68 0 -134 -16zM-144 564q73 22 147 22q73 0 147 -22l149 -109q20 -16 20 -29v-144l-15 -42l1 -54l12 -20l1 -79l-70 -52q-79 -263 -167 -332q-38 -15 -76 -15q-37 0 -75 15q-89 70 -168 328l-74 57v78l21 22v60l-21 31v150q0 10 24 30zM11 -86v-140h-16 v140h16zM-32 -85v-141h-15v144q9 -1 15 -3zM-77 -74v-106q-6 10 -16 27v85q9 -3 16 -6zM57 -81v-145h-16v143q6 0 16 2zM102 -65l-1 -89q-7 -15 -15 -29v110q6 2 16 8zM412 553l-93 -121q-3 9 -12 17l96 124h83v66h-66v69h-72v-110l-86 -115l-18 13l79 103v131h117v-73 l69 -1v-103h-97zM-505 553v103l69 1v73h118l-1 -131l80 -104l-19 -12l-85 115v110h-73l1 -69h-67v-66h83l97 -125q-11 -13 -11 -18v-1l-94 124h-98zM509 -251v-104h-69v-73h-117v131l-130 171l10 25l145 -195v-110h72v69h66v66h-83l-178 230l9 24l178 -234h97zM-407 -251 l180 238l8 -25l-180 -233h-83v-66h67l-1 -69h73v110l147 198l11 -24l-134 -175l1 -131h-118v73h-69v104h98z"
+			},
+			{
+				"_unicode": "e2a6;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM516 -101v539h-1015v-539h1015z"
+			},
+			{
+				"_unicode": "e2a7;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2a8;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM375 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM274 208l-37 114l-37 -114h74zM-377 86v307h165v-52h-116v-73h100v-52h-100v-130h-49zM-194 192l72 5q7 -29 26 -43t53 -14q35 0 53 12.5t18 28.5q0 11 -7.5 18t-25.5 12q-14 4 -60 14 q-58 11 -81 29q-34 24 -34 59q0 23 15.5 42.5t45 29t71.5 9.5q68 0 102.5 -23.5t36.5 -64.5l-74 -3q-4 24 -19 34t-46 10q-32 0 -51 -11q-11 -7 -11 -18t10 -18q14 -11 67.5 -21t79 -20.5t40 -29.5t14.5 -47q0 -25 -17 -47.5t-49 -33.5t-79 -11q-68 0 -105 26t-45 76z M516 -101v539h-1015v-539h1015z"
+			},
+			{
+				"_unicode": "e2a9;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM295 222h-48l-18 54h-85l-18 -54h-46l84 243h45zM215 317l-29 90l-29 -90h58zM-299 221v242h130v-41h-91v-57h79v-41h-79v-103h-39z M-154 305l56 3q6 -22 21 -33t42 -11q28 0 42 9.5t14 22.5q0 9 -6 14.5t-20 9.5q-11 3 -47 11q-46 9 -65 23q-27 19 -27 46q0 18 13 33.5t36 23.5t56 8q53 0 80.5 -19t29.5 -51l-59 -3q-3 19 -15 27t-36 8q-25 0 -40 -9q-9 -5 -9 -14q0 -8 8 -14q11 -8 53 -16t62.5 -16.5 t32 -23.5t11.5 -37q0 -20 -13.5 -38t-39 -26t-62.5 -8q-54 0 -83 20.5t-35 59.5zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2aa;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM516 -101v539h-1015v-539h1015zM395 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM294 208l-37 114l-37 -114h74zM67 198l51 -17q-12 -48 -40 -71.5t-70 -23.5q-52 0 -86.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 80 -31 q17 -20 27 -56l-54 -12q-4 21 -19.5 34.5t-36.5 13.5q-29 0 -47 -23.5t-18 -76.5q0 -56 17.5 -79.5t46.5 -23.5q22 0 37 15t23 46zM-115 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM-216 208l-37 114l-37 -114h74z"
+			},
+			{
+				"_unicode": "e2ab;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM375 200h-58l-22 66 h-103l-22 -66h-56l102 295h54zM278 316l-35 109l-36 -109h71zM61 307l49 -17q-12 -46 -38.5 -68.5t-67.5 -22.5q-50 0 -82.5 39t-32.5 105q0 69 32.5 108.5t85.5 39.5q47 0 77 -30q16 -19 26 -53l-52 -12q-4 21 -18.5 33.5t-35.5 12.5q-27 0 -44.5 -22.5t-17.5 -73.5 q0 -53 17 -75.5t45 -22.5q20 0 34.5 14.5t22.5 44.5zM-113 200h-58l-22 66h-103l-22 -66h-56l102 295h54zM-210 316l-35 109l-36 -109h71z"
+			},
+			{
+				"_unicode": "e2ac;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM516 -101v539h-1015v-539h1015zM305 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM204 208l-37 114l-37 -114h74zM-297 86v307h164v-52h-115v-73h99v-52h-99v-130h-49zM-102 86v307h164v-52h-116v-73h100v-52h-100v-130h-48z"
+			},
+			{
+				"_unicode": "e2ad;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM285 196h-56l-22 65 h-101l-22 -65h-54l99 289h54zM190 309l-35 107l-34 -107h69zM-280 195v288h154v-49h-108v-68h93v-49h-93v-122h-46zM-96 195v288h153v-49h-108v-68h93v-49h-93v-122h-45z"
+			},
+			{
+				"_unicode": "e2ae;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM516 -101v539h-1015v-539h1015zM345 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM244 208l-37 114l-37 -114h74zM-62 86v307h164v-52h-116v-73h100v-52h-100v-130h-48zM-349 88v306h63l126 -205v205h60v-306h-63l-127 201v-201h-59z"
+			},
+			{
+				"_unicode": "e2af;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM305 210h-52l-20 59 h-93l-19 -59h-50l91 265h49zM218 314l-32 98l-32 -98h64zM-45 209v264h141v-44h-100v-63h86v-45h-86v-112h-41zM-293 211v263h55l108 -176v176h52v-263h-54l-110 173v-173h-51z"
+			},
+			{
+				"_unicode": "e2b0;",
+				"_d": "M-588 -200v740h1187v-740h-1187zM516 -101v539h-1015v-539h1015zM355 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM254 208l-37 114l-37 -114h74zM-52 86v307h164v-52h-116v-73h100v-52h-100v-130h-48zM-359 85v306h136q50 0 73 -8t37 -29.5t14 -48.5q0 -34 -21 -56.5 t-63 -27.5q20 -13 34 -27.5t38 -48.5l37 -60h-75l-46 66q-26 36 -35.5 45t-19 13t-32.5 4h-13v-128h-64zM-295 260h47q46 0 58 4t18.5 12.5t6.5 22.5q0 17 -8.5 26.5t-25.5 11.5q-7 1 -46 1h-50v-78z"
+			},
+			{
+				"_unicode": "e2b1;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM305 215h-51l-19 58 h-91l-20 -58h-49l90 260h48zM220 317l-32 96l-31 -96h63zM-38 214v259h138v-44h-98v-61h84v-44h-84v-110h-40zM-298 213v259h115q42 0 61.5 -7t31.5 -25t12 -41q0 -29 -18 -48t-53 -23q17 -11 28.5 -23t31.5 -42l32 -50h-64l-39 56q-21 30 -29 38t-16.5 11t-27.5 3h-11v-108 h-54zM-244 361h40q39 0 49 3t15.5 10.5t5.5 19.5q0 14 -7.5 22t-20.5 10h-82v-65z"
+			},
+			{
+				"_unicode": "e2b2;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM314 218h-48l-19 55h-86l-19 -55h-46l85 247h46zM233 315l-30 91l-29 -91h59zM86 218h-48l-19 55h-86l-18 -55h-47l85 247h46zM5 315 l-29 91l-30 -91h59zM-312 220v241h82q47 0 60 -2q21 -6 35.5 -24.5t14.5 -46.5q0 -22 -8.5 -38t-21 -25.5t-26.5 -10.5q-18 -3 -52 -3h-33v-91h-51zM-261 421v-68h28q29 0 39.5 3.5t16 10.5t5.5 19q0 14 -8 22.5t-20 11.5q-10 1 -37 1h-24zM13 605q-183 0 -314.5 -131 t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2b3;",
+				"_d": "M-146 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM182 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-36 177h-60l-23 69h-108l-23 -69h-58l106 308h57zM-137 298l-37 114 l-37 -114h74zM46 178v229h-88v78h230v-78h-86v-229h-56zM235 183v303h82v-303h-82z"
+			},
+			{
+				"_unicode": "e2b4;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-44 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM-145 208l-37 114l-37 -114h74zM38 88v229h-88v78h230v-78h-86v-229h-56zM227 93v303h82v-303h-82z"
+			},
+			{
+				"_unicode": "e2b5;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM-36 177h-60l-23 69 h-108l-23 -69h-58l106 308h57zM-137 298l-37 114l-37 -114h74zM46 178v229h-88v78h230v-78h-86v-229h-56zM235 183v303h82v-303h-82z"
+			},
+			{
+				"_unicode": "e2b6;",
+				"_d": "M-144 487l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 579q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-136 16v307h164v-52h-115v-73h99v-52h-99v-130h-49zM59 16v307h164v-52 h-116v-73h100v-52h-100v-130h-48zM-222 128l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15 t23 46zM244 18v49l108 207h-98v48h147v-47l-110 -208h115l-3 -49h-159z"
+			},
+			{
+				"_unicode": "e2b7;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-136 86v307h164v-52h-115v-73h99v-52h-99v-130h-49zM59 86v307h164v-52h-116v-73h100v-52h-100v-130h-48zM-222 198l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5 q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15t23 46zM244 88v49l108 207h-98v48h147v-47l-110 -208h115l-3 -49h-159z"
+			},
+			{
+				"_unicode": "e2b8;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM-118 220v253h135 v-43h-95v-60h82v-43h-82v-107h-40zM42 220v253h136v-43h-96v-60h83v-43h-83v-107h-40zM-189 313l42 -15q-10 -39 -33 -58.5t-58 -19.5q-43 0 -71.5 33.5t-28.5 90.5q0 60 28.5 93.5t74.5 33.5q40 0 66 -25q14 -17 22 -46l-44 -10q-4 17 -16.5 28t-30.5 11q-24 0 -39 -19 t-15 -63q0 -46 14.5 -65.5t39.5 -19.5q17 0 29.5 12.5t19.5 38.5zM195 222v40l89 170h-81v40h121v-38l-90 -172h95l-2 -40h-132z"
+			},
+			{
+				"_unicode": "e2b9;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-403 282l72 5q7 -29 26 -43t53 -14q35 0 53.5 12.5t18.5 28.5 q0 11 -8 18t-26 12q-14 4 -60 14q-58 11 -81 29q-34 24 -34 59q0 23 15.5 42.5t45 29t71.5 9.5q68 0 102.5 -23.5t37.5 -64.5l-74 -3q-5 24 -20 34t-46 10q-32 0 -51 -11q-11 -7 -11 -18t10 -18q14 -11 67.5 -21t79.5 -20.5t40.5 -29.5t14.5 -47q0 -25 -17.5 -47.5 t-49 -33.5t-79.5 -11q-68 0 -105 26t-45 76zM-79 177v305h191v-52h-140v-67h131v-51h-131v-82h146v-53h-197zM152 178v306h63l126 -205v205h60v-306h-63l-127 201v-201h-59z"
+			},
+			{
+				"_unicode": "e2ba;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-403 192l72 5q7 -29 26 -43t53 -14q35 0 53.5 12.5t18.5 28.5q0 11 -8 18t-26 12q-14 4 -60 14q-58 11 -81 29q-34 24 -34 59q0 23 15.5 42.5t45 29t71.5 9.5q68 0 102.5 -23.5t37.5 -64.5l-74 -3 q-5 24 -20 34t-46 10q-32 0 -51 -11q-11 -7 -11 -18t10 -18q14 -11 67.5 -21t79.5 -20.5t40.5 -29.5t14.5 -47q0 -25 -17.5 -47.5t-49 -33.5t-79.5 -11q-68 0 -105 26t-45 76zM-79 87v305h191v-52h-140v-67h131v-51h-131v-82h146v-53h-197zM152 88v306h63l126 -205v205h60 v-306h-63l-127 201v-201h-59z"
+			},
+			{
+				"_unicode": "e2bb;",
+				"_d": "M19 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM-311 302l56 3q5 -22 20 -33t41 -11q28 0 42 10t14 22q0 9 -6 14t-21 9q-10 3 -46 11q-45 9 -63 23q-26 18 -26 45q0 18 12 33t35 22.5 t55 7.5q53 0 80 -18t28 -50l-57 -3q-3 19 -15 27t-36 8q-25 0 -39 -9q-9 -5 -9 -14q0 -8 8 -14q11 -8 52.5 -16t61.5 -16.5t31 -22.5t11 -36q0 -20 -13 -37.5t-38 -25.5t-62 -8q-52 0 -81 20t-35 59zM-60 220v237h148v-41h-108v-52h101v-39h-101v-64h113v-41h-153zM119 221 v237h49l98 -159v159h46v-237h-49l-98 155v-155h-46zM14 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2bc;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-79 177v305h191v-52h-140v-67h131v-51h-131v-82h146v-53h-197zM152 178 v306h63l126 -205v205h60v-306h-63l-127 201v-201h-59zM-181 291l63 -18q-14 -47 -49 -70t-86 -23q-65 0 -107.5 40t-42.5 108q0 72 42.5 112.5t110.5 40.5q60 0 99 -31q21 -19 33 -55l-66 -12q-6 21 -24.5 34.5t-44.5 13.5q-37 0 -59.5 -23.5t-22.5 -75.5q0 -55 22 -78 t59 -23q26 0 44.5 14.5t28.5 45.5z"
+			},
+			{
+				"_unicode": "e2bd;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-79 87v305h191v-52h-140v-67h131v-51h-131v-82h146v-53h-197zM152 88v306h63l126 -205v205h60v-306h-63l-127 201v-201h-59zM-181 201l63 -18q-14 -47 -49 -70t-86 -23q-65 0 -107.5 40t-42.5 108 q0 72 42.5 112.5t110.5 40.5q60 0 99 -31q21 -19 33 -55l-66 -12q-6 21 -24.5 34.5t-44.5 13.5q-37 0 -59.5 -23.5t-22.5 -75.5q0 -55 22 -78t59 -23q26 0 44.5 14.5t28.5 45.5z"
+			},
+			{
+				"_unicode": "e2be;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM-60 230v236h148v-41h-108v-52h101v-39h-101v-63h112v-41h-152zM119 231v236h48l98 -158v158h46v-236h-49l-97 155v-155h-46zM-138 318 l48 -14q-11 -36 -37.5 -54t-66.5 -18q-50 0 -83 31t-33 84q0 55 33 86.5t85 31.5q47 0 77 -24q16 -15 25 -42l-51 -10q-4 16 -18.5 26.5t-34.5 10.5q-28 0 -45.5 -18t-17.5 -59q0 -42 17 -60t45 -18q20 0 34.5 11.5t22.5 35.5zM13 605q-183 0 -314.5 -131t-131.5 -314 t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2bf;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM286 177h-60l-23 69h-108l-23 -69h-58l106 308h57zM185 298l-37 114 l-37 -114h74zM-288 483h123q42 0 64 -6q28 -8 49 -28t31.5 -49t10.5 -71q0 -38 -9 -65q-12 -32 -35 -54q-19 -15 -47 -23q-23 -7 -60 -7h-127v303zM-220 433v-201h50q28 0 40 2q17 3 27.5 12t17.5 29.5t7 56.5q0 34 -7 53t-19 29t-31 15q-15 4 -55 4h-30z"
+			},
+			{
+				"_unicode": "e2c0;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM286 87h-60l-23 69h-108l-23 -69h-58l106 308h57zM185 208l-37 114l-37 -114h74zM-288 393h123q42 0 64 -6q28 -8 49 -28t31.5 -49t10.5 -71q0 -38 -9 -65q-12 -32 -35 -54q-19 -15 -47 -23q-23 -7 -60 -7 h-127v303zM-220 343v-201h50q28 0 40 2q17 3 27.5 12t17.5 29.5t7 56.5q0 34 -7 53t-19 29t-31 15q-15 4 -55 4h-30z"
+			},
+			{
+				"_unicode": "e2c1;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM284 177h-60l-23 69 h-108l-23 -69h-58l106 308h57zM183 298l-37 114l-37 -114h74zM-290 483h123q42 0 64 -6q28 -8 49 -28t31.5 -49t10.5 -71q0 -38 -9 -65q-12 -32 -35 -54q-19 -15 -47 -23q-23 -7 -60 -7h-127v303zM-222 433v-201h50q28 0 40 2q17 3 27.5 12t17.5 29.5t7 56.5q0 34 -7 53 t-19 29t-31 15q-15 4 -55 4h-30z"
+			},
+			{
+				"_unicode": "e2c2;",
+				"_d": "M-146 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM182 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-48 176v307h164v-52h-116v-73h100v-52h-100v-130h-48zM-134 288l51 -17 q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15t23 46zM144 178v49l107 207h-97v48h146v-47 l-109 -208h114l-2 -49h-159z"
+			},
+			{
+				"_unicode": "e2c3;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-46 86v307h164v-52h-116v-73h100v-52h-100v-130h-48zM-132 198l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12 q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15t23 46zM146 88v49l107 207h-97v48h146v-47l-109 -208h114l-2 -49h-159z"
+			},
+			{
+				"_unicode": "e2c4;",
+				"_d": "M1 578q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM-4 444q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131zM-65 15v307h164v-52 h-116v-73h100v-52h-100v-130h-48zM-151 127l51 -17q-11 -48 -39.5 -71.5t-69.5 -23.5q-53 0 -87.5 40.5t-34.5 109.5q0 73 34.5 114t89.5 41q49 0 81 -31q17 -20 26 -56l-53 -12q-5 21 -20 34.5t-36 13.5q-30 0 -48 -23.5t-18 -76.5q0 -56 17.5 -79.5t47.5 -23.5q21 0 36 15 t23 46zM127 17v49l107 207h-97v48h146v-47l-109 -208h114l-2 -49h-159z"
+			},
+			{
+				"_unicode": "e2c5;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM-394 178v49l108 207h-98v48h147v-47l-110 -208h115l-2 -49h-160z M112 183v298h132q49 0 71.5 -8t36 -28.5t13.5 -47.5q0 -33 -20.5 -55t-61.5 -27q20 -12 33.5 -26t36.5 -48l37 -58h-74l-45 64q-25 35 -34 44t-18.5 13t-31.5 4h-13v-125h-62zM174 353h46q45 0 56.5 4t18 12.5t6.5 21.5q0 17 -8.5 26t-24.5 11q-7 1 -45 1h-49v-76zM-214 331 q0 42 15 74q9 23 26.5 40.5t39.5 26.5q28 11 64 11q66 0 105 -39t39 -113q0 -68 -39 -109t-105 -41t-105.5 41t-39.5 109zM-152 332q0 -48 23.5 -74t59.5 -26q34 0 57.5 26t23.5 76q0 49 -22.5 75t-58.5 26t-59.5 -26t-23.5 -77z"
+			},
+			{
+				"_unicode": "e2c6;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM-394 88v49l108 207h-98v48h147v-47l-110 -208h115l-2 -49h-160zM112 93v298h132q49 0 71.5 -8t36 -28.5t13.5 -47.5q0 -33 -20.5 -55t-61.5 -27q20 -12 33.5 -26t36.5 -48l37 -58h-74l-45 64 q-25 35 -34 44t-18.5 13t-31.5 4h-13v-125h-62zM174 263h46q45 0 56.5 4t18 12.5t6.5 21.5q0 17 -8.5 26t-24.5 11q-7 1 -45 1h-49v-76zM-214 241q0 42 15 74q9 23 26.5 40.5t39.5 26.5q28 11 64 11q66 0 105 -39t39 -113q0 -68 -39 -109t-105 -41t-105.5 41t-39.5 109z M-152 242q0 -48 23.5 -74t59.5 -26q34 0 57.5 26t23.5 76q0 49 -22.5 75t-58.5 26t-59.5 -26t-23.5 -77z"
+			},
+			{
+				"_unicode": "e2c7;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM-311 218v40l87 165h-79v39h118v-37l-88 -168h92l-2 -39h-128zM95 222v239h106q39 0 57 -6t29 -23t11 -38q0 -27 -16.5 -44.5t-49.5 -21.5 q16 -9 27 -20.5t29 -38.5l30 -47h-60l-36 52q-20 28 -27 35t-14.5 10t-25.5 3h-10v-100h-50zM145 358h37q36 0 45 3.5t14.5 10t5.5 17.5q0 14 -7 21t-20 9q-6 1 -36 1h-39v-62zM-166 341q0 34 11 59q8 19 21.5 33t31.5 21q23 9 52 9q52 0 83.5 -31.5t31.5 -90.5 q0 -55 -31.5 -87.5t-83.5 -32.5q-53 0 -84.5 32.5t-31.5 87.5zM-117 342q0 -39 19 -60t48 -21q28 0 46.5 21t18.5 61q0 39 -18 60t-47 21t-48 -21t-19 -61zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z "
+			},
+			{
+				"_unicode": "e2c8;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM401 177h-54l-20 69h-97l-21 -69h-52l95 308h51zM311 298l-34 114 l-33 -114h67zM-136 486h139q41 0 61 -3t36 -13t27 -26t11 -35q0 -22 -13.5 -40.5t-36.5 -27.5q32 -7 49 -27t17 -46q0 -21 -11 -41t-30 -31.5t-46 -14.5q-18 -1 -84 -1h-119v306zM-66 434v-71h47q39 0 50 2q17 1 27.5 10.5t10.5 24.5t-9 23.5t-26 10.5h-100zM-66 313v-83h65 q38 0 48 2q15 3 25 12.5t10 25.5q0 15 -7.5 25t-22 14t-61.5 4h-57zM-310 176v257h-89v51h239v-51h-90v-257h-60z"
+			},
+			{
+				"_unicode": "e2c9;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM401 87h-54l-20 69h-97l-21 -69h-52l95 308h51zM311 208l-34 114l-33 -114h67zM-136 396h139q41 0 61 -3t36 -13t27 -26t11 -35q0 -22 -13.5 -40.5t-36.5 -27.5q32 -7 49 -27t17 -46q0 -21 -11 -41 t-30 -31.5t-46 -14.5q-18 -1 -84 -1h-119v306zM-66 344v-71h47q39 0 50 2q17 1 27.5 10.5t10.5 24.5t-9 23.5t-26 10.5h-100zM-66 223v-83h65q38 0 48 2q15 3 25 12.5t10 25.5q0 15 -7.5 25t-22 14t-61.5 4h-57zM-310 86v257h-89v51h239v-51h-90v-257h-60z"
+			},
+			{
+				"_unicode": "e2ca;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM309 218h-41l-16 53h-75l-16 -53h-40l73 237h40zM239 311l-25 88l-26 -88h51zM-104 456h106q32 0 47.5 -2.5t28 -10t20.5 -19.5t8 -27 q0 -17 -10 -31.5t-28 -21.5q25 -5 38 -20.5t13 -35.5q0 -16 -8.5 -31.5t-23 -24.5t-36.5 -11q-13 -1 -64 -1h-91v236zM-50 416v-55h35q31 0 39 2q13 1 21 8t8 18q0 12 -6.5 18.5t-20.5 8.5h-76zM-50 322v-63h49q29 0 37 1q12 2 19.5 9.5t7.5 20.5q0 11 -6 18.5t-17 10.5 t-47 3h-43zM-238 217v198h-69v40h184v-40h-69v-198h-46zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2cb;",
+				"_d": "M-144 647l-197 -58q-37 -30 -59 -58q-28 -52 -39 -97l-50 -203l30 -214l-10 -116l20 -106l69 -49l88 -38l109 -29l353 -20l99 29l79 49l59 58q31 46 49 88l39 211l-10 107l10 78h-10l-9 145q-24 45 -50 78l-69 57l-78 49l-89 39l-108 19zM184 739q125 -33 221 -80 l159 -126l37 -310l-12 -35l12 -183l-61 -228q-85 -84 -160 -138l-98 -46l-148 -12l-429 36l-110 34q-96 64 -148 148l-12 36l12 91l13 34l-25 79v46l-25 81l13 126l61 229q54 105 148 149l245 69h307zM167 177h-39l-15 69h-70l-15 -69h-38l69 308h37zM101 298l-24 114 l-24 -114h48zM-332 176v257h-65v51h174v-51h-65v-257h-44zM193 178v308h98q38 0 54.5 -8.5t26.5 -30t10 -49.5q0 -33 -15.5 -56t-45.5 -28q15 -12 25 -26.5t27 -49.5l28 -60h-56l-33 66q-19 36 -25.5 45.5t-14 13.5t-23.5 4h-10v-129h-46zM239 353h35q33 0 41.5 4t13.5 13 t5 23q0 17 -6 26.5t-18 11.5q-6 1 -34 1h-37v-79zM-118 180l-83 304h50l59 -227l57 227h50l-83 -304h-50z"
+			},
+			{
+				"_unicode": "e2cc;",
+				"_d": "M-587 -200v740h1187v-740h-1187zM517 -101v539h-1015v-539h1015zM167 87h-39l-15 69h-70l-15 -69h-38l69 308h37zM101 208l-24 114l-24 -114h48zM-332 86v257h-65v51h174v-51h-65v-257h-44zM193 88v308h98q38 0 54.5 -8.5t26.5 -30t10 -49.5q0 -33 -15.5 -56t-45.5 -28 q15 -12 25 -26.5t27 -49.5l28 -60h-56l-33 66q-19 36 -25.5 45.5t-14 13.5t-23.5 4h-10v-129h-46zM239 263h35q33 0 41.5 4t13.5 13t5 23q0 17 -6 26.5t-18 11.5q-6 1 -34 1h-37v-79zM-118 90l-83 304h50l59 -227l57 227h50l-83 -304h-50z"
+			},
+			{
+				"_unicode": "e2cd;",
+				"_d": "M18 739q242 0 411 -169.5t169 -409.5q0 -237 -170 -408.5t-410 -171.5q-239 0 -410 171.5t-171 408.5q0 240 169 409.5t412 169.5zM121 221h-29l-12 52h-53l-11 -52h-29l52 234h29zM71 313l-18 87l-18 -87h36zM-257 220v195h-50v40h132v-40h-49v-195h-33zM141 221v235h75 q28 0 41 -6.5t20.5 -22.5t7.5 -38q0 -25 -12 -42.5t-35 -21.5q12 -9 19.5 -20t20.5 -38l21 -46h-42l-26 51q-14 27 -19 34t-10.5 10t-17.5 3h-8v-98h-35zM176 355h26q26 0 32.5 3t10 9.5t3.5 17.5q0 13 -4.5 20t-13.5 9q-5 1 -26 1h-28v-60zM-95 223l-63 231h38l44 -172 l44 172h38l-63 -231h-38zM13 605q-183 0 -314.5 -131t-131.5 -314t131.5 -314.5t314.5 -131.5q185 0 316 131.5t131 314.5t-129 314t-318 131z"
+			},
+			{
+				"_unicode": "e2ce;",
+				"_d": "M34 140v-144h-66v144q17 5 33 5q17 0 33 -5zM0 460q192 0 326 -134.5t134 -325.5q0 -187 -135 -323.5t-325 -136.5t-326 136.5t-136 323.5q0 191 134.5 325.5t327.5 134.5zM-1 320q137 0 233 -95t96 -230q0 -133 -96.5 -229.5t-232.5 -96.5t-233.5 96.5t-97.5 229.5 q0 135 96.5 230t234.5 95zM2 205q87 0 147.5 -60.5t60.5 -146.5q0 -85 -61 -146.5t-147 -61.5t-147.5 61.5t-61.5 146.5q0 86 61 146.5t148 60.5zM1 146q-59 0 -101.5 -44t-42.5 -105t42.5 -105.5t101.5 -44.5t101.5 44.5t42.5 105.5t-41.5 105t-102.5 44zM-85 578l86 172 l86 -172h-172zM34 577v-117q-16 1 -33 1q-16 0 -33 -1v117h66zM34 387v-68l-34 2l-32 -1v67l33 1zM0 389q-160 0 -275 -114t-115 -274q0 -159 115 -273.5t275 -114.5q162 0 277 114.5t115 273.5q0 160 -113 274t-279 114zM34 257v-53q-16 2 -33 2q-16 0 -33 -2v54q14 1 28 1 q19 0 38 -2zM-4 260q-109 0 -188 -78t-79 -187q0 -108 79 -186.5t188 -78.5q110 0 188.5 78.5t78.5 186.5q0 109 -77 187t-190 78z"
+			},
+			{
+				"_unicode": "e2cf;",
+				"_d": "M-97 429l113 227l114 -227h-227zM60 427v-154q-21 1 -43 1q-21 0 -43 -1v154h86zM60 176v-88h-29q-28 0 -57 -1v89q22 2 43 2q22 0 43 -2zM60 3v-344h-86l-1 346q16 1 32 1q28 0 55 -3zM17 273q253 0 394 -146l-60 -66q-115 117 -333 120q-213 -2 -438 -215l-50 78 q229 229 487 229zM17 87h17q225 0 369 -233l-64 -55q-109 207 -322 208h-5q-148 0 -205 -64l-51 65q75 78 261 79z"
+			},
+			{
+				"_unicode": "e2d1;",
+				"_d": "M-461 113h752q21 1 54 1q22 1 41 1q67 0 97 -13l7 -36q0 -50 -118 -179q-31 -38 -51.5 -45t-69.5 -10h-600q-87 0 -123 19q-40 19 -124 192q-3 10 -3 18q0 27 29 39q30 14 88 14q10 0 21 -1zM-594 424q103 59 179 59h8q78 -4 793 -150l210 -192l-257 -14h-11 q-118 0 -769 91q-61 25 -95.5 56t-57.5 150zM-264 182l83 -64l-278 6l-41 100zM246 -42q-14 0 -27.5 -7.5t-21.5 -21.5t-8 -28q0 -15 7.5 -28.5t21 -21t28.5 -7.5t28.5 7.5t21 21t7.5 28.5q0 14 -7.5 28t-21 21.5t-28.5 7.5zM122 -46q-15 0 -28.5 -7.5t-21 -21t-7.5 -27.5 q0 -15 7.5 -29t21 -21.5t28.5 -7.5q14 0 27.5 7.5t21 21.5t7.5 29q0 14 -7.5 27.5t-21 21t-27.5 7.5zM-4 -46q-14 0 -28 -7.5t-21.5 -21t-7.5 -27.5q0 -15 7.5 -29t21 -21.5t28.5 -7.5q14 0 27.5 7.5t21 21.5t7.5 29q0 14 -7.5 27.5t-21 21t-27.5 7.5zM-130 -46 q-15 0 -28.5 -7.5t-21 -21t-7.5 -27.5q0 -15 7.5 -29t21 -21.5t28.5 -7.5q14 0 27.5 7.5t21 21.5t7.5 29q0 14 -7.5 27.5t-21 21t-27.5 7.5zM-254 -44q-14 0 -27.5 -7.5t-21 -21t-7.5 -28.5t7.5 -28.5t21 -21t27.5 -7.5q15 0 28.5 7.5t21.5 21t8 28.5t-8 28.5t-21.5 21 t-28.5 7.5zM-380 -41q-14 0 -27.5 -7.5t-21 -21t-7.5 -28.5t7 -28.5t21 -21t28 -7.5q15 0 28.5 7.5t21 21t7.5 28.5t-7.5 28.5t-21 21t-28.5 7.5zM-532 84q-9 0 -17.5 -5t-13 -13.5t-4.5 -17.5t4.5 -17.5t13 -13.5t17.5 -5q10 0 18 5t13 13.5t5 17.5t-5 17.5t-13.5 13.5 t-17.5 5zM425 90q-9 0 -17.5 -5t-13.5 -13.5t-5 -17.5t4.5 -18t13 -13.5t18.5 -4.5q9 0 17.5 4.5t13 13.5t4.5 18t-4.5 17.5t-13 13.5t-17.5 5z"
+			},
+			{
+				"_unicode": "e2d2;",
+				"_d": "M251 415l-150 -549l-377 68l153 543zM-177 310q-112 30 -182.5 54.5t-126.5 142.5q34 8 78 8q37 0 80 -5q94 -13 193 -32zM-152 469q-91 15 -173 26q-37 4 -68 4q-39 0 -69 -7q83 -73 143 -90.5t136 -36.5zM-237 123q-114 16 -187 40t-121 156q33 8 76 8q37 0 81 -6 q94 -12 197 -39zM-213 273q-89 23 -171 34q-39 4 -72 4q-37 0 -66 -6q83 -74 143.5 -91.5t135.5 -36.5zM-292 -66q-114 16 -187.5 40.5t-121.5 156.5q34 8 78 8q37 0 80 -5q94 -13 197 -40zM-268 84q-90 24 -172 35q-37 4 -68 4q-39 0 -69 -7q83 -73 143.5 -90.5 t135.5 -36.5zM251 405q114 -27 204.5 -57t140.5 -71q-99 -84 -170 -84q-2 0 -4 1q-72 2 -218 34zM231 272q111 -21 172 -25q7 -1 15 -1q58 0 151 29q-44 34 -123 60.5t-184 53.5zM203 213q114 -28 204.5 -57.5t141.5 -69.5q-100 -84 -170 -84h-4q-72 3 -219 34zM184 81 q111 -22 172 -26q7 -1 15 -1q58 0 150 28q-44 35 -122.5 61.5t-183.5 52.5zM155 29q115 -28 205 -58t141 -70q-99 -84 -170 -84q-2 0 -4 1q-72 2 -219 34zM136 -104q111 -22 172 -26h14q58 0 151 28q-44 35 -122.5 61t-183.5 53z"
+			},
+			{
+				"_unicode": "e2d3;",
+				"_d": "M-425 274h851l170 -219h-1196zM-386 90l231 150h-231v-150zM-421 84v156l-126 -156h126zM134 81l231 167h-231v-167zM-123 86l231 168h-231v-168zM541 90l-127 156v-156h127z"
+			},
+			{
+				"_unicode": "e2d4;",
+				"_d": "M-336 -28l333 1l-173 184zM-552 184l151 173h-151v-173zM-365 -24l174 194l-181 187l-163 -187zM543 363l-170 -2l171 -190zM-392 -27l-160 184v-184h160zM544 150l-151 -179l152 -1zM25 -28l148 194l-168 194l-164 -191zM-23 359h-323l171 -176zM596 408l-2 -489h-1192 v489h1194zM49 -28l288 -1l-148 184zM326 359h-294l155 -177zM366 -30l160 188l-173 196l-151 -190z"
+			},
+			{
+				"_unicode": "e2d5;",
+				"_d": "M-600 546h1202v-73h-1202v73zM-443 -217v689h73v-689h-73zM-29 -217v689h72v-689h-72zM355 -217v689h72v-689h-72zM-369 215l130 96l-130 96v60l170 -126l169 125v-60l-130 -95l130 -95v-61l-169 126l-170 -126v60zM-369 -104l130 97l-130 96v59l170 -126l169 125v-60 l-130 -94l130 -95v-62l-169 126l-170 -126v60zM44 215l119 96l-119 96v60l155 -126l155 127v-61l-119 -96l118 -96v-61l-154 127l-155 -126v60zM44 -104l119 97l-119 96v59l155 -126l154 126v-60l-118 -95l118 -96v-62l-154 127l-155 -126v60z"
+			},
+			{
+				"_unicode": "e2d6;",
+				"_d": "M595 398v-219h-1189v219h1189zM-519 160h179v-238h-179v238zM-223 157h180v-235h-180v235zM73 154h179v-232h-179v232zM353 154h180v-236h-180v236z"
+			},
+			{
+				"_unicode": "e2d7;",
+				"_d": "M-556 306l109 -42l-18 -49l-104 44zM-597 -158h116v-53l-112 5zM-597 -98h116v-52l-112 4zM-597 -34h116v-52l-112 4zM-589 210h116v-52l-112 4zM-589 150h116v-52l-112 4zM-589 86h116v-52l-112 4zM-589 26h116v-52l-112 4zM-506 383l89 -75l-34 -40l-83 75zM-438 440 l72 -92l-41 -32l-66 91zM-304 456l-6 -115l-52 2l9 112zM-31 263l-104 -44l-18 49l108 42zM-7 -202l-113 -4v52h117zM-7 -142l-113 -4v52h117zM-7 -78l-113 -4v52h117zM-15 167l-113 -5v52h117zM-15 106l-113 -4v52h117zM-15 42l-113 -4v52h117zM-15 -18l-113 -4v52h117z M-67 347l-83 -75l-34 40l90 75zM-128 411l-66 -91l-41 32l72 92zM-248 449l10 -112l-52 -2l-6 115zM44 310l109 -42l-18 -49l-104 44zM3 -154h117v-52l-113 4zM3 -94h117v-52l-113 4zM3 -30h117v-52l-113 4zM11 214h117v-52l-113 5zM11 154h117v-52l-113 4zM11 90h117v-52 l-113 4zM11 30h117v-52l-113 4zM94 387l89 -75l-34 -40l-83 75zM162 444l72 -92l-40 -32l-67 91zM296 455l-5 -110l-53 2l9 108h49zM569 267l-104 -44l-18 49l108 42zM593 -198l-112 -4v52h116zM593 -138l-112 -4v52h116zM593 -74l-112 -4v52h116zM585 170l-112 -3v51h116z M585 110l-112 -4v52h116zM585 46l-112 -4v52h116zM585 -14l-112 -4v52h116zM534 351l-84 -75l-33 40l89 75zM473 415l-67 -91l-41 32l72 92zM353 455l9 -104l-52 -2l-6 106h49zM-533 383l-12 -61l-44 -8l4 81zM120 451l-12 -60l-44 -8l3 73zM1 379l-16 -49l-44 -8l-12 57h72 zM56 391l-12 -61l-43 -8l2 81zM56 455l-12 -60l-43 9l2 43zM31 306l-8 -72l-46 4l4 80zM-11 451l-12 -60l-44 -8l-49 68h105zM-581 451h96l-36 -56l-24 4l-36 12v40zM597 439l-5 -64l-62 8l-57 56h124zM585 371l12 -73h-24l-36 73h48zM-599 539h1200v-84l-1200 4v80z"
+			},
+			{
+				"_unicode": "e2d8;",
+				"_d": "M-599 263h333l167 196l89 -67l-203 -240h-53v-278h-166l3 278h-170v111zM599 153h-169l3 -277h-167v277h-53l-202 240l89 67l166 -196h333v-111z"
+			},
+			{
+				"_unicode": "e2d9;",
+				"_d": "M-596 86h211v630h140v-630h489v633l143 1l-2 -634h211v-140h-211v-351h-140v351h-487v-349h-147v349h-207v140zM-244 714q85 -519 236 -521h1q150 0 250 516v-169q-76 -387 -249 -387l-1 -1q-173 0 -237 379v183zM-596 193q109 1 209 523v-168q-77 -392 -209 -392v37z M597 156q-132 0 -209 392v168q100 -522 209 -523v-37z"
+			},
+			{
+				"_unicode": "e2da;",
+				"_d": "M-596 542h1197v-150l-224 -153v-445h-154v445l-220 153l-224 -153v-445h-154v449l-221 148v151z"
+			},
+			{
+				"_unicode": "e2db;",
+				"_d": "M-397 -255l3 -195h-134v195h131zM-397 -54l3 -195h-134v195h131zM-408 150l4 -194h-135v194h131zM-383 343l-20 -192l-133 14l22 193zM-282 510l-90 -173l-118 65l93 171zM-320 638l180 73l49 -126l-182 -70zM533 -259v-195h-134l3 195h131zM533 -54v-195h-134l3 195h131 zM543 150v-194h-134l3 194h131zM517 358l23 -193l-133 -14l-20 192zM401 573l93 -171l-118 -65l-90 173zM277 515l-181 70l47 126l181 -73zM-82 737l192 -24l-18 -133l-191 27zM-377 -454q-2 73 -2 142q0 891 370 891h14q377 -17 377 -862q0 -81 -4 -171h-755z"
+			},
+			{
+				"_unicode": "e2dc;",
+				"_d": "M171 -92h220v510h-220v-510zM-518 -88h84v403zM439 311v-403h83zM-382 -92h219v510h-219v-510zM-164 417v-79l-185 -429h-32v85l189 423h28zM-438 478l877 4l163 -642h-1200zM-103 -92h219v510h-219v-510zM115 417v-79l-184 -429h-33v85l188 423h29zM390 417v-77 l-185 -431h-33v85l188 423h30z"
+			},
+			{
+				"_unicode": "e2dd;",
+				"_d": "M-553 304l109 -41l-19 -49l-103 44zM-594 -159h116v-52l-112 4zM-594 -99h116v-52l-112 4zM-594 -35h116v-52l-112 4zM-586 209h116v-52l-112 4zM-586 149h116v-52l-112 4zM-586 85h116v-52l-112 4zM-586 25h116v-52l-112 4zM-504 381l89 -74l-33 -40l-84 75zM-436 438 l72 -91l-40 -32l-67 90zM-302 455l-6 -116l-52 3l9 111zM-30 262l-103 -44l-19 49l108 41zM-6 -203l-112 -4v52h116zM-6 -143l-112 -4v52h116zM-6 -79l-112 -4v52h116zM-14 165l-112 -4v52h116zM-14 105l-112 -4v52h116zM-14 41l-112 -4v52h116zM-14 -19l-112 -4v52h116z M-65 346l-84 -75l-33 40l89 74zM-126 409l-67 -90l-40 32l72 91zM-246 455l9 -109l-52 -3l-5 112h48zM45 308l109 -41l-18 -49l-104 44zM4 -155h116v-52l-112 4zM4 -95h116v-52l-112 4zM4 -31h116v-52l-112 4zM12 213h116v-52l-112 4zM12 153h116v-52l-112 4zM12 89h116v-52 l-112 4zM12 29h116v-52l-112 4zM95 385l88 -74l-33 -40l-83 75zM163 442l72 -91l-41 -32l-66 90zM296 453l-5 -110l-52 3l8 107h49zM568 266l-103 -44l-18 49l107 41zM592 -199l-112 -4v52h116zM592 -139l-112 -4v52h116zM592 -75l-112 -4v52h116zM584 169l-112 -4v52h116z M584 109l-112 -4v52h116zM584 45l-112 -4v52h116zM584 -15l-112 -4v52h116zM533 350l-83 -75l-34 40l90 74zM472 413l-66 -90l-41 32l72 91zM353 453l9 -103l-52 -3l-5 106h48zM-530 381l-12 -60l-44 -8l4 80zM120 449l-12 -60l-44 -8l4 72zM1 377l-15 -48l-44 -8l-12 56h71 zM56 389l-12 -60l-43 -8l3 80zM56 453l-12 -60l-42 9l2 43zM32 305l-8 -72l-46 4l4 80zM-10 449l-12 -60l-44 -8l-48 68h104zM-578 449h96l-36 -56l-24 4l-36 12v40zM596 437l-5 -64l-61 8l-58 56h124zM584 369l12 -72h-24l-36 72h48zM-596 537h1196v-84l-1196 4v80z"
+			},
+			{
+				"_unicode": "e2de;",
+				"_d": "M-335 -28l333 1l-173 184zM-551 184l151 173h-151v-173zM-364 -24l174 194l-181 187l-163 -187zM544 363l-170 -2l171 -190zM-391 -27l-160 184v-184h160zM545 150l-151 -179l152 -1zM26 -28l148 194l-168 194l-164 -191zM-22 359h-323l171 -176zM597 408l-2 -489h-1192 v489h1194zM50 -28l288 -1l-148 184zM327 359h-294l155 -177zM367 -30l160 188l-173 196l-151 -190z"
+			},
+			{
+				"_unicode": "e2df;",
+				"_d": "M-1 -226v-125h-146v125h146zM-602 -220l818 890l63 -1l-730 -889h-151zM-146 -220l677 889h64l-595 -889h-146zM10 -222l590 891v-72l-590 -948v129zM-451 -227v-125h-147v125h147zM-120 -170l-36 -47h-282l38 47h280zM525 669l-31 -43h-248l37 43h242zM485 621 l-600 -784h-277l639 785zM-345 -226l-97 -125v125h97z"
+			},
+			{
+				"_unicode": "e2e0;",
+				"_d": "M-551 -147h161v-156h-157zM407 -151h158v-156h-158v156zM-387 -463v1195h80v-1199zM325 -467v1195h80v-1199zM13 652q240 0 311 -240h-623q72 240 312 240zM-63 -227l-4 240h-96l176 159l164 -159h-92v-240h-148zM241 464q-71 134 -218 134h-4q-150 -2 -222 -134h444z "
+			},
+			{
+				"_unicode": "e2e1;",
+				"_d": "M-401.5 207.5q57.5 -189.5 382.5 -191.5q4 -1 8 -1q317 0 386 177q69 179 219 220l5 -603h-1199v597q141 -9 198.5 -198.5zM590 511l-45 -109l-1084 4l-10 100z"
+			},
+			{
+				"_unicode": "e2e2;",
+				"_d": "M-1 -226v-125h-146v125h146zM-602 -220l818 890l63 -1l-730 -889h-151zM-146 -220l677 889h64l-595 -889h-146zM10 -222l590 891v-72l-590 -948v129zM-451 -227v-125h-147v125h147zM-120 -170l-36 -47h-282l38 47h280zM525 669l-31 -43h-248l37 43h242zM485 621 l-600 -784h-277l639 785zM-345 -226l-97 -125v125h97z"
+			},
+			{
+				"_unicode": "e2e3;",
+				"_d": "M-508 -233l184 174l614 2l221 -176v-98l-224 174h-611l-184 -174v98zM-508 661l184 -173h611l224 173v-95l-221 -176l-614 2l-184 174v95z"
 			}
 		]
 	}
@@ -53590,6 +54142,13 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.xml = armyc2.c2sd.renderer.xml || {};
 
+//When updating
+//1) Go to "https://everythingfonts.com/ttf-to-svg" to convert the ttf to svg.
+//2) open resultant svg, remove unnessary tags (meta, def, etc...) and find all "&#x" and replace with "";
+//3) Go to "http://codebeautify.org/xmltojson" and convert to JSON.  Paste Below.
+//4) Open cleanup.html (same location as this file) and save the generated file
+//5) run new file through "http://codebeautify.org/jsonviewer" and beautify the code
+//6) paste below again and you're good to go.
 
 armyc2.c2sd.renderer.xml.UnitFontSVG =  {
 	"svg": {
@@ -62743,13 +63302,17 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         //catch special characters that break SVGs as base64 dataURIs
         if(format === 1)
         {
+            //got codes from: http://www.theukwebdesigncompany.com/articles/entity-escape-characters.php
+            //and https://unicodelookup.com (use HTML code)
             text = text.replace(/\&/g,"&amp;");
             text = text.replace(/\</g,"&lt;");
             text = text.replace(/\</g,"&gt;");
             //text = text.replace(/\u2022/g,"&#x2022;");//echelon and ellipses dot
             //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
             text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
-            text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced +- symbol
+            text = text.replace(/\u00D8/g,"&#216;");//Ø
+            text = text.replace(/\u00B0/g,"&#176;");//°
+            text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced ±
         }
         else if(format === 2)
         {
@@ -62911,7 +63474,7 @@ return{
             frameAssume = null;
         
        
-        if(symStd > RendererSettings.Symbology_2525Bch2_USAS_13_14)
+        if(symStd > RendererSettings.Symbology_2525B)
         {
             var affiliation = symbolID.charAt(1);
             switch(affiliation)
@@ -63022,7 +63585,7 @@ return{
 		if(symbolID.charAt(2) === 'U' &&
 						symbolID.substring(4, 6) === "WM")
 		{
-			if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+			if(symStd === RendererSettings.Symbology_2525B)
 			{
 				if(modifiers[MilStdAttributes.LineColor] !== undefined)
 				{
@@ -63935,6 +64498,33 @@ return{
             }
             // </editor-fold>
 
+     
+            
+            // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
+            var domPoints = null,
+                domBounds = null;
+            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined)
+            {
+                var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
+
+                var isY = (modifiers[ModifiersUnits.Y_LOCATION] !== undefined);
+
+                domPoints = this.createDOMArrowPoints(symbolID, symbolBounds,centerPoint, q, isY);
+
+                domBounds = new SO.Rectangle(domPoints[0].getX(),domPoints[0].getY(),1,1);
+
+                var temp = null;
+                for(var i = 1; i < 6; i++)
+                {
+                    temp = domPoints[i];
+                    if(temp !== null)
+                        domBounds.unionPoint(temp);
+                }
+                imageBounds.union(domBounds);
+            }
+
+            // </editor-fold>
+
             // <editor-fold defaultstate="collapsed" desc="Build HQ Staff">
             var hqBounds = null;
             //Draw HQ Staff
@@ -63967,37 +64557,12 @@ return{
                 //create bounding rectangle for HQ staff.
                 hqBounds = new SO.Rectangle(pt1HQ.getX(),pt1HQ.getY(),2,pt2HQ.getY()-pt1HQ.getY());
                 //adjust the image bounds accordingly.
-                imageBounds.shiftBR(0,pt2HQ.getY()-imageBounds.getBottom());
+                imageBounds.union(hqBounds);
                 //adjust symbol center
                 centerPoint.setLocation(pt2HQ.getX(),pt2HQ.getY());
             }
 
-            // </editor-fold>         
-            
-            // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
-            var domPoints = null,
-                domBounds = null;
-            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined)
-            {
-                var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
-
-                var isY = (modifiers[ModifiersUnits.Y_LOCATION] !== undefined);
-
-                domPoints = this.createDOMArrowPoints(symbolID, symbolBounds,centerPoint, q, isY);
-
-                domBounds = new SO.Rectangle(domPoints[0].getX(),domPoints[0].getY(),1,1);
-
-                var temp = null;
-                for(var i = 1; i < 6; i++)
-                {
-                    temp = domPoints[i];
-                    if(temp !== null)
-                        domBounds.unionPoint(temp);
-                }
-                imageBounds.union(domBounds);
-            }
-
-            // </editor-fold>
+            // </editor-fold>  
 
             // <editor-fold defaultstate="collapsed" desc="Build Operational Condition Indicator">
             var ociBounds = null;
@@ -64368,7 +64933,7 @@ return{
         }//*/
         
         //Check for Valid Country Code
-        if(SymbolUtilities.hasValidCountryCode(symbolID))
+        if(RendererSettings.getDrawCountryCode() && SymbolUtilities.hasValidCountryCode(symbolID))
         {
             modifiers[ModifiersUnits.CC_COUNTRY_CODE] = symbolID.substring(12,14);
         }
@@ -65140,20 +65705,23 @@ return{
                 tgPaths.push(frame);
             }
         }
-        
-        var seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')"';
-        /*if(alpha !== 1.0)
-            seGroupTG +=  ' fill-opacity="' + alpha + '">';
-        else//*/
-            seGroupTG +=  '>';
-         
-        if(seBGGroup)
-            seGroupTG = seBGGroup + seGroupTG;
-        for(var i = 0; i < tgPaths.length; i++)
+        var seGroupTG = "";
+        if(fill !== null)//add fill svg element
         {
-            seGroupTG += tgPaths[i];
+            seGroupTG = '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">';
+            seGroupTG += fill;
+            seGroupTG += '</g>';
         }
-        seGroupTG += '</g>';
+         
+        if(seBGGroup)//add outline svg elements
+            seGroupTG += seBGGroup;
+
+        if(frame != null)//add frame svg element
+        {
+            seGroupTG += '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')">';
+            seGroupTG += frame;
+            seGroupTG += '</g>';
+        }
 
         var si = new SVGInfo(seGroupTG,centerPoint,symbolBounds,imageBounds);
         
@@ -65286,7 +65854,7 @@ return{
         centerPoint = new SO.Point(Math.round(si.getAnchorPoint().getX()),Math.round(si.getAnchorPoint().getY()));
     
         var byLabelHeight = false;
-        labelHeight = fontInfo.measurements.height;
+        labelHeight = fontInfo.measurements.fullHeight;
         labelHeight = Math.round(labelHeight);
         var maxHeight = (bounds.height);
         if((labelHeight * 3) > maxHeight)
@@ -65326,7 +65894,7 @@ return{
             text1 = new SVGTextInfo(strText1,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"end");
             
             labelBounds1 = text1.getBounds();
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
             {
                 y = symbolBounds.getY() + symbolBounds.getHeight();
                 x = symbolBounds.getX() - bufferXL;
@@ -65727,6 +66295,86 @@ return{
                 arrMods.push(ti2);
             }
 
+        }
+        else if(basicID.charAt(0) === 'W')
+        {
+            if(basicID ===("WAS-WSF-LVP----"))//Freezing Level
+            {
+                strText = "0" + String.fromCharCode(176) + ":";
+                if(modifiers.X !== undefined)
+                    strText += modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+                else
+                    strText += "X?";
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes in center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.4);
+                y = y + (labelHeight * 0.5);
+
+                ti.setLocation(Math.round(x),Math.round(y));
+                arrMods.push(ti);
+            }
+            else if(basicID ===("WAS-WST-LVP----"))//tropopause Level
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes in center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.4);
+                y = y + (labelHeight * 0.5);
+
+                ti.setLocation(Math.round(x),Math.round(y));
+                arrMods.push(ti);
+            }
+            else if(basicID ===("WAS-PLT---P----"))//tropopause Low
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                //var ti2 = new TextInfo("L",0,0,textInfoContext);
+                labelWidth = Math.round(ti.getBounds().getWidth());
+                //One modifier symbols and modifier goes just above center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y - descent;
+
+                ti.setLocation(Math.round(x),Math.round(y));
+
+                /*//One modifier symbols and modifier goes just below of center
+                x = bounds.x + (bounds.width * 0.5);
+                x = x - (labelWidth * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y + (((bounds.height * 0.5) - labelHeight)/2) + labelHeight - descent;
+                ti2.setLocation(Math.round(x),Math.round(y));//*/
+
+                arrMods.push(ti);
+                //arrMods.push(ti2);
+            }
+            else if(basicID ===("WAS-PHT---P----"))//tropopause High
+            {
+                strText = "X?";
+                if(modifiers.X !== undefined)
+                    strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
+
+                ti = new SVGTextInfo(strText,new armyc2.c2sd.renderer.so.Point(0,0),fontInfo,"middle");
+                labelWidth = Math.round(ti.getBounds().getWidth());
+
+                //One modifier symbols and modifier goes just below of center
+                x = bounds.x + (bounds.width * 0.5);
+                y = bounds.y + (bounds.height * 0.5);
+                y = y + (((bounds.height * 0.5) - labelHeight)/2) + labelHeight - descent;
+                ti.setLocation(Math.round(x),Math.round(y));
+                
+                arrMods.push(ti);
+            }
         }
         // </editor-fold>
         
@@ -66282,6 +66930,7 @@ return{
                     case "X":
                     case "F":
                         return true;
+                    default:
                         break;  
                 }
 
@@ -66289,6 +66938,9 @@ return{
                 {
                     return true;
                 }
+
+                if(SymbolUtilities.isHQ(symbolID))
+                    return true;
             }   
             else 
             {
@@ -66310,7 +66962,15 @@ return{
         var symStd  = modifiers[MilStdAttributes.SymbologyStandard] || RendererSettings.getSymbologyStandard();
         var scheme = symbolID.charAt(0);
         if(scheme==="W")
-            return false;
+        {
+            if(symbolID === "WAS-WSF-LVP----" || //freezing level
+                symbolID === "WAS-PHT---P----" || //tropopause high
+                symbolID === "WAS-PLT---P----" || //tropopause low
+                symbolID === "WAS-WST-LVP----") ////tropopause level
+                return true;
+            else
+                return false;
+        }
         if(scheme==="G")
         {
             var basic = SymbolUtilities.getBasicSymbolIDStrict(symbolID);
@@ -66336,7 +66996,7 @@ return{
             if(SymbolUtilities.getUnitAffiliationModifier(symbolID,symStd) !== null)
                 return true;
             
-            if(SymbolUtilities.hasValidCountryCode(symbolID))
+            if(RendererSettings.getDrawCountryCode() && SymbolUtilities.hasValidCountryCode(symbolID))
                 return true;
             
             if(SymbolUtilities.isEMSNaturalEvent(symbolID))
@@ -66460,7 +67120,7 @@ armyc2.c2sd.renderer.TacticalGraphicSVGRenderer = (function () {
     
 return{    
     
-    getSVG: function(symbolID, size, color, alpha){
+    getSVG: function(symbolID, size, color, alpha, symStd){
         var symbolBounds = new armyc2.c2sd.renderer.so.Rectangle(-600,-600,1200,1200);
         var width = 1200;
         var height = 1200;
@@ -66474,7 +67134,7 @@ return{
             color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
         }
 
-        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id);
+        var charSymbolIndex = armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.getCharCodeFromSymbol(id, symStd);
 
         if(color.toHexString)
             color = color.toHexString(false);
@@ -66554,7 +67214,7 @@ armyc2.c2sd.renderer.MilStdSVGRenderer = (function () {
             armyc2.c2sd.renderer.utilities.TacticalGraphicLookup.init();
             armyc2.c2sd.renderer.utilities.TGSVGTable.init();
             
-            if(UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525Bch2_USAS_13_14)===false)
+            if(UnitDefTable.hasSymbolMap(RendererSettings.Symbology_2525B)===false)
             {//if 2525B info isn't loaded, make C the rendering default.
                 RendererSettings.setSymbologyStandard(RendererSettings.Symbology_2525C);
             }
@@ -66585,8 +67245,13 @@ armyc2.c2sd.renderer.MilStdSVGRenderer = (function () {
         {
             alpha = modifiers[MilStdAttributes.Alpha] / 255.0;
         }
+        var symStd = RendererSettings.getSymbologyStandard();
+        if(modifiers[MilStdAttributes.SymbologyStandard] !== undefined )
+        {
+            symStd = modifiers[MilStdAttributes.SymbologyStandard];
+        }
 
-        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha);
+        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha, symStd);
         return si;
     }
     
