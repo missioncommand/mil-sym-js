@@ -1,27 +1,27 @@
 var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.graphics2d = armyc2.c2sd.graphics2d || {};
-armyc2.c2sd.graphics2d.BasicStroke = function() {
+armyc2.c2sd.graphics2d.BasicStroke = function(width, cap, join, miterlimit, dash, dashPhase) {
     this.width = 0;
     this.join = 0;
     this.cap = 0;
     this.miterlimit = 0;
     this.dash = null;
     this.dash_phase = 0;
-    if (arguments.length > 0)
-        this.width = arguments[0];
-    if (arguments.length > 1)
-        this.cap = arguments[1];
-    if (arguments.length > 2)
-        this.join = arguments[2];
-    if (arguments.length > 3)
-        this.miterlimit = arguments[3];
-    if (arguments.length > 4)
+    if (width !== undefined)
+        this.width = width;
+    if (cap !== undefined)
+        this.cap = cap;
+    if (join !== undefined)
+        this.join = join;
+    if (miterlimit !== undefined)
+        this.miterlimit = miterlimit;
+    if (dash !== undefined)
     {
-        this.dash = arguments[4];
+        this.dash = dash;
     }
-    if (arguments.length > 5)
-        this.dash_phase = arguments[5];
+    if (dashPhase !== undefined)
+        this.dash_phase = dashPhase;
 };
 armyc2.c2sd.graphics2d.BasicStroke.prototype.createStrokedShape = function()
 {

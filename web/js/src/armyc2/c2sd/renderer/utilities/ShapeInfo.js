@@ -35,221 +35,221 @@ armyc2.c2sd.renderer.utilities.ShapeInfo = function(shape, shapeType)
     {
         _Shape = shape;
     }
+};
 
-    this.getShape = function()
-    {
-        return _Shape;
-    };
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getShape = function()
+{
+    return this._Shape;
+};
 
-    this.setShape = function(value)
-    {
-        _Shape = value;
-    };
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setShape = function(value)
+{
+    this._Shape = value;
+};
 
-    this.setModifierString = function(value)
-    {
-        _ModifierString = value;
-    };
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setModifierString = function(value)
+{
+    this._ModifierString = value;
+};
 
-    this.getModifierString = function()
-    {
-        return _ModifierString;
-    };
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getModifierString = function()
+{
+    return this._ModifierString;
+};
 
-    /**
-     * @param {armyc2.c2sd.graphics2d.Point2D} value description
-     */
-    this.setModifierStringPosition = function(value)
+/**
+ * @param {armyc2.c2sd.graphics2d.Point2D} value description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setModifierStringPosition = function(value)
+{
+    this._ModifierStringPosition = value;
+};
+
+/**
+ * @return {armyc2.c2sd.graphics2d.Point2D} description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getModifierStringPosition = function()
+{
+    return this._ModifierStringPosition;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getGlyphPosition = function()
+{
+    return this._Position;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setGlyphPosition = function(value)
+{
+    //alert('si');
+    this._Position = value;
+};
+
+/**
+ * @param {Number} value description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setModifierStringAngle = function(value)
+{
+    this._ModifierStringAngle = value;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getModifierStringAngle = function()
+{
+    return this._ModifierStringAngle;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setTag = function(value)
+{
+    this._Tag = value;
+};    
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getTag = function()
+{
+    return this._Tag;
+};
+
+/**
+ * @param {armyc2.c2sd.renderer.utilities.Color} value description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setLineColor = function(value)
+{
+    this.lineColor = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getLineColor = function()
+{
+    return this.lineColor;
+};
+
+/**
+ * @param {armyc2.c2sd.renderer.utilities.Color} value description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setFillColor = function(value)
+{
+    this.fillColor = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getFillColor = function()
+{
+    return this.fillColor;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setAffineTransform = function(value)
+{
+    this.affineTransform = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getAffineTransform = function()
+{
+    return this.affineTransform;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setStroke = function(value)
+{
+    this.stroke = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getStroke = function()
+{
+    return this.stroke;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getTexturePaint = function()
+{
+    return this.texturePaint;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setTexturePaint = function(value)
+{
+    this.texturePaint = value;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getFillStyle = function()
+{
+    return this.fillStyle;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setFillStyle = function(value)
+{
+    this.fillStyle = value;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setTextLayout = function(value)
+{
+    this._TextLayout = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getTextLayout = function()
+{
+    return this._TextLayout;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setShapeType = function(value)
+{
+    this._shapeType = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getShapeType = function()
+{
+    return this._shapeType;
+};
+
+/**
+ * @param {Array} value Array of armyc2.c2sd.graphics2d.Point2D
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setPolylines = function(value)
+{
+    this._Polylines = value;
+};
+/**
+ * @return {Array} value Array of armyc2.c2sd.graphics2d.Point2D
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getPolylines = function()
+{
+    return this._Polylines;
+};
+
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.setTextJustify = function(value)
+{
+    this._justify = value;
+};
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getTextJustify = function()
+{
+    return this._justify;
+};
+
+/**
+ * @return {armyc2.c2sd.graphics2d.Rectangle} description
+ */
+armyc2.c2sd.renderer.utilities.ShapeInfo.prototype.getBounds = function()
+{
+    var temp = null;
+    if (this._Shape !== null) 
     {
-        _ModifierStringPosition = value;
-    };
-    
-    /**
-     * @return {armyc2.c2sd.graphics2d.Point2D} description
-     */
-    this.getModifierStringPosition = function()
-    {
-        return _ModifierStringPosition;
-    };
-    
-    this.getGlyphPosition = function()
-    {
-        return _Position;
-    };
-    this.setGlyphPosition = function(value)
-    {
-        //alert('si');
-        _Position = value;
-    };
-    
-    /**
-     * @param {Number} value description
-     */
-    this.setModifierStringAngle = function(value)
-    {
-        _ModifierStringAngle = value;
-    };
-    
-    this.getModifierStringAngle = function()
-    {
-        return _ModifierStringAngle;
-    };
-    
-    this.setTag = function(value)
-    {
-        _Tag = value;
-    };    
-    this.getTag = function()
-    {
-        return _Tag;
-    };
-    
-    /**
-     * @param {armyc2.c2sd.renderer.utilities.Color} value description
-     */
-    this.setLineColor = function(value)
-    {
-        lineColor = value;
-    };
-    this.getLineColor = function()
-    {
-        return lineColor;
-    };
-    
-    /**
-     * @param {armyc2.c2sd.renderer.utilities.Color} value description
-     */
-    this.setFillColor = function(value)
-    {
-        fillColor = value;
-    };
-    this.getFillColor = function()
-    {
-        return fillColor;
-    };
-    
-    this.setAffineTransform = function(value)
-    {
-        affineTransform = value;
-    };
-    this.getAffineTransform = function()
-    {
-        return affineTransform;
-    };
-    
-    this.setStroke = function(value)
-    {
-        stroke = value;
-    };
-    this.getStroke = function()
-    {
-        return stroke;
-    };
-    
-    this.getTexturePaint = function()
-    {
-        return texturePaint;
-    };
-    this.setTexturePaint = function(value)
-    {
-        texturePaint = value;
-    };
-    
-    this.getFillStyle = function()
-    {
-        return fillStyle;
-    };
-    this.setFillStyle = function(value)
-    {
-        fillStyle = value;
-    };
-    
-    this.setTextLayout = function(value)
-    {
-       _TextLayout = value;
-    };
-    this.getTextLayout = function()
-    {
-        return _TextLayout;
-    };
-    
-    this.setShapeType = function(value)
-    {
-        _shapeType = value;
-    };
-    this.getShapeType = function()
-    {
-        return _shapeType;
-    };
-    
-    /**
-     * @param {Array} value Array of armyc2.c2sd.graphics2d.Point2D
-     */
-    this.setPolylines = function(value)
-    {
-        _Polylines = value;
-    };
-    /**
-     * @return {Array} value Array of armyc2.c2sd.graphics2d.Point2D
-     */
-    this.getPolylines = function()
-    {
-        return _Polylines;
-    };
-    
-    this.setTextJustify = function(value)
-    {
-        _justify = value;
-    };
-    this.getTextJustify = function()
-    {
-        return _justify;
-    };
-    
-    /**
-     * @return {armyc2.c2sd.graphics2d.Rectangle} description
-     */
-    this.getBounds = function()
-    {
-        var temp = null;
-        if (_Shape !== null) 
+        temp = this._Shape.getBounds();
+        if (this._Shape instanceof armyc2.c2sd.graphics2d.GeneralPath) 
         {
-            temp = this._Shape.getBounds();
-            if (this._Shape instanceof armyc2.c2sd.graphics2d.GeneralPath) 
+            if (shapeType === armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_UNIT_OUTLINE) 
             {
-                if (shapeType === armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_UNIT_OUTLINE) 
+                if (this.lineColor !== null && this.stroke !== null) {
+                    var bs = this.stroke;
+                    if (bs !== null && bs.getLineWidth() > 2)
+                        temp.grow(Math.floor(Math.round(bs.getLineWidth()) / 2), Math.floor(Math.round(bs.getLineWidth()) / 2));
+                }
+            } 
+            else 
+            {
+                if (lineColor !== null && stroke !== null) 
                 {
-                    if (lineColor !== null && stroke !== null) {
-                        var bs = this.stroke;
-                        if (bs !== null && bs.getLineWidth() > 2)
-                            temp.grow(Math.floor(Math.round(bs.getLineWidth()) / 2), Math.floor(Math.round(bs.getLineWidth()) / 2));
-                    }
-                } 
-                else 
-                {
-                    if (lineColor !== null && stroke !== null) 
-                    {
-                        var bs = stroke;
-                        if (bs !== null && bs.getLineWidth() > 2)
-                            temp.grow(Math.round(bs.getLineWidth()) - 1, Math.round(bs.getLineWidth()) - 1);
-                    }
+                    var bs = this.stroke;
+                    if (bs !== null && bs.getLineWidth() > 2)
+                        temp.grow(Math.round(bs.getLineWidth()) - 1, Math.round(bs.getLineWidth()) - 1);
                 }
             }
         }
-        if (_TextLayout !== null && _Position !== null) {
-            temp = _TextLayout.getPixelBounds(null, _Position.getX(), _Position.getY());
-        } else if (_TextLayout !== null) {
-            temp = new armyc2.c2sd.graphics2d.Rectangle(0, 0, 0, 0);
-            temp.setRect(this._TextLayout.getBounds());
-        } else
-            return null;
-        if (this.affineTransform !== null) {
-            var sTemp = temp;
-            sTemp = this.affineTransform.createTransformedShape(temp);
-            temp = sTemp.getBounds();
-        }
-        return temp;
-    };
+    }
+    if (this._TextLayout !== null && this._Position !== null) {
+        temp = _TextLayout.getPixelBounds(null, this._Position.getX(), this._Position.getY());
+    } else if (this._TextLayout !== null) {
+        temp = new armyc2.c2sd.graphics2d.Rectangle(0, 0, 0, 0);
+        temp.setRect(this._TextLayout.getBounds());
+    } else
+        return null;
+    if (this.affineTransform !== null) {
+        var sTemp = temp;
+        sTemp = this.affineTransform.createTransformedShape(temp);
+        temp = sTemp.getBounds();
+    }
+    return temp;
 };
 
 armyc2.c2sd.renderer.utilities.ShapeInfo.SHAPE_TYPE_POLYLINE = 0;

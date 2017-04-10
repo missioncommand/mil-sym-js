@@ -1,13 +1,13 @@
 var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.graphics2d = armyc2.c2sd.graphics2d || {};
-armyc2.c2sd.graphics2d.Point = function() {
+armyc2.c2sd.graphics2d.Point = function(x,y) {
     this.x = 0;
     this.y = 0;
-    if (arguments.length === 2)
+    if (x !== undefined && y !== undefined)
     {
-        this.x = Number(arguments[0]);
-        this.y = Number(arguments[1]);
+        this.x = Number(x);
+        this.y = Number(y);
     }
 };
 armyc2.c2sd.graphics2d.Point.prototype.getX = function() {
