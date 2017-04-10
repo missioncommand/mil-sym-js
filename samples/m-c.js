@@ -3030,7 +3030,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
         "GEOMETRY": "area",
         "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
-        "MINPOINTS": "3",
+        "MINPOINTS": "2",
         "MODIFIERS": "T.T1.",
         "DESCRIPTION": "Obstacle Belt",
         "HIERARCHY": "2.X.3.1.1.1",
@@ -8628,10 +8628,10 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       },
       {
         "SYMBOLID": "WO-DIDID---L---",
-        "GEOMETRY": "point",
-        "DRAWCATEGORY": "8",
-        "MAXPOINTS": "1",
-        "MINPOINTS": "1",
+        "GEOMETRY": "line",
+        "DRAWCATEGORY": "1",
+        "MAXPOINTS": "10000",
+        "MINPOINTS": "2",
         "DESCRIPTION": "Ice Drift (Direction)",
         "HIERARCHY": "3.X.2.1.3.4",
         "ALPHAHIERARCHY": "METOC.OCA.ISYS.DYNPRO.ID",
@@ -10687,7 +10687,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DL-ML---L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Maritime Limit Boundary",
@@ -10731,7 +10731,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DL-TA----A--",
         "GEOMETRY": "area",
-        "DRAWCATEGORY": "1",
+        "DRAWCATEGORY": "3",
         "MAXPOINTS": "10000",
         "MINPOINTS": "3",
         "DESCRIPTION": "Training Area",
@@ -10764,7 +10764,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DMCA----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Cable",
@@ -10786,7 +10786,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
       {
         "SYMBOLID": "WO-DMCD----L---",
         "GEOMETRY": "line",
-        "DRAWCATEGORY": "3",
+        "DRAWCATEGORY": "1",
         "MAXPOINTS": "10000",
         "MINPOINTS": "2",
         "DESCRIPTION": "Canal",
@@ -11197,42 +11197,39 @@ armyc2.c2sd.renderer.xml.SymbolConstantsC = {
  * and open the template in the editor.
  */
 var Clazz = {
-    newArray: function() {
-        var args = arguments;
-        if (arguments.length === 1) {
-            if (arguments[0]instanceof Array) {
-                args = arguments[0];
-            }
-        }
-        if (args.length <= 1) {
-            return new Array();
-        } else if (args.length === 2) {
-            var dim = args[0];
-            if (typeof dim === "string") {
-                dim = dim.charCodeAt(0);
-            }
-            var val = args[1];
-            var arr = new Array(dim);
-            for (var i = 0; i < dim; i++) {
-                arr[i] = val;
-            }
-            return arr;
-        } else {
-            dim = args[0];
-            if (typeof dim === "string") {
-                dim = dim.charCodeAt(0);
-            }
-            var len = args.length - 1;
-            var xargs = new Array(len);
-            for (i = 0; i < len; i++) {
-                xargs[i] = args[i + 1];
-            }
-            arr = new Array(dim);
-            for (i = 0; i < dim; i++) {
-                arr[i] = Clazz.newArray(xargs);
-            }
+    newArray: function(obj1, obj2) {
+        var oldArr = null;
+        var arr = new Array();
+        if(!obj1 && !obj2)
+        {
             return arr;
         }
+        else if(obj2)
+        {
+            if(Array.isArray(obj2))
+                oldArr = obj2;
+            else
+                arr.push(obj2);
+        }
+        else if(obj1)
+        {
+            if(Array.isArray(obj1))
+                oldArr = obj1;
+            else
+                arr.push(obj1);
+        }
+        
+        if(oldArr !== null)
+        {
+            var len = oldArr.length;
+        
+            for (var i = 0; i < len; i++) 
+            {
+                arr[i] = oldArr[i];
+            }
+        }
+        
+        return arr;
     },
     instanceOf: function(obj)
     {
@@ -11251,11 +11248,11 @@ var Clazz = {
     {
         return;
     }
-};Double = function() {
+};Double = function(value) {
     this.value = new Number(0);
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
+        var t = value;
         this.value = new Number(t);
         //return this.value;
     }
@@ -11272,40 +11269,31 @@ Double.isNaN = function(t)
 {
     return isNaN(t);
 };
-Double.parseDouble = function()
+Double.parseDouble = function(value)
 {
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
-        var n = new Number(t);
-        return n;
+        var t = value;
+        return new Number(value);
     }
     return null;
 };
-Double.isInfinite = function()
+Double.isInfinite = function(value)
 {
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
-        var n = new Number(t);
-        var b = !isFinite(n);
-        return b;
+        var n = new Number(value);
+        return !isFinite(n);
     }
     else
         return true;
 };
-Double.toString = function()
+Double.toString = function(value)
 {
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        //var b=!isFinite(n);
-        var s = n.toString();
-        return s;
-    }
-    else
+    var n = new Number(value);
+    if(n === Number.NaN)
         return null;
+    else return n.toString();
 };
 Double.serialVersionUID = Double.prototype.serialVersionUID = -9172774392245257468;
 Double.MIN_VALUE = Double.prototype.MIN_VALUE = 4.9e-324;
@@ -11317,12 +11305,12 @@ Double.TYPE = Double.prototype.TYPE = Double;/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-Integer = function()
+Integer = function(value)
 {
     this.value = new Number(0);
-    if (arguments.length === 1)
+    if (value !== undefined)
     {
-        var t = arguments[0];
+        var t = value;
         this.value = new Number(t);
         return this.value;
     }
@@ -11331,43 +11319,34 @@ Integer = function()
         return this.value;
     };
 };
-Integer.parseInt = function()
+Integer.parseInt = function(value)
 {
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        return n;
-    }
-    return null;
+    var temp = new Number(value);
+    if(temp === Number.NaN)
+        return null;
+    else
+        return temp;
 };
 Integer.toHexString = function(i) {
-    return i.toString(16);
-};
-
-Integer.isInfinite = function()
-{
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        var b = !isFinite(n);
-        return b;
-    }
-    else
-        return true;
-};
-Integer.toString = function()
-{
-    if (arguments.length === 1)
-    {
-        var t = arguments[0];
-        var n = new Number(t);
-        var s = n.toString();
-        return s;
-    }
+    if(i !== undefined)
+        return i.toString(16);
     else
         return null;
+};
+Integer.isInfinite = function(value)
+{
+    var n = new Number(value);
+    if(n !== Number.NaN)
+        return !isFinite(n);
+    else
+        return true;   
+};
+Integer.toString = function(value)
+{
+    var n = new Number(value);
+    if(n === Number.NaN)
+        return null;
+    else return n.toString();
 };
 
 Integer.serialVersionUID = Integer.prototype.serialVersionUID = 1360826667806852920;
@@ -11387,6 +11366,280 @@ System.arraycopy = function(src, srcPos, dest, destPos, length) {
     for (j = 0; j < length; j++)
         dest[j + destPos] = src[srcPos + j];
 };
+var java = java || {};
+java.util = java.util || {};
+java.util.ArrayList = function()
+{
+    this.array = [];
+    if (arguments.length === 1)
+    {
+        var obj = arguments[0];
+        if (obj instanceof java.util.ArrayList)
+        {
+            this.array = obj.getArray();
+        }
+        else if (obj instanceof Array)
+        {
+            this.array = arguments[0];
+        }
+    }
+};
+java.util.ArrayList.prototype.getArray = function()
+{
+    return this.array;
+};
+java.util.ArrayList.prototype.setArray = function(obj)
+{
+    this.array = obj;
+};
+java.util.ArrayList.prototype.add = function(obj1, obj2)
+{
+    if(obj1 !== undefined && obj1 !== null && obj2)
+    {
+        var j = 0, k = 0;
+        var array2 = [];
+        var location = obj1;
+        if (location === this.array.length)
+        {
+            this.array.push(obj2);
+        }
+        else
+        {
+            for (j = 0; j < this.array.length; j++)
+            {
+                if (j !== location)
+                {
+                    array2.push(this.array[j]);
+                }
+                else
+                {
+                    array2.push(obj2);
+                    array2.push(this.array[j]);
+                }
+            }
+            this.array = array2;
+        }
+    }
+    else if (obj1)
+        this.array.push(obj1);
+    /*
+    var obj = obj1;
+    if (arguments.length === 1)
+        this.array.push(obj);
+    else if (arguments.length === 2)
+    {
+        var j = 0, k = 0;
+        var array2 = [];
+        var location = arguments[0];
+        var obj2 = arguments[1];
+        if (location === this.array.length)
+        {
+            this.array.push(obj2);
+        }
+        else
+        {
+            for (j = 0; j < this.array.length; j++)
+            {
+                if (j !== location)
+                {
+                    array2.push(this.array[j]);
+                }
+                else
+                {
+                    array2.push(obj2);
+                    array2.push(this.array[j]);
+                }
+            }
+            this.array = array2;
+        }
+    }//*/
+};
+java.util.ArrayList.prototype.addAll = function()//was location,obj 
+{
+    var location = 0, j = 0, k = 0;
+    var obj = null;
+    var b = false;
+    if (arguments.length === 1)
+    {
+        obj = arguments[0];
+        if (obj instanceof java.util.ArrayList)
+        {
+            //array=array.concat(obj.array);                        
+            this.array = this.array.concat(obj.getArray());
+        }
+    }
+    else if (arguments.length === 2)
+    {
+        location = arguments[0];
+        obj = arguments[1];
+        b = obj instanceof java.util.ArrayList;
+        if (b === false)
+            return;
+        var array2 = [];
+        var obj2 = null;
+        for (j = 0; j < this.array.length; j++)
+        {
+            if (j !== location)
+            {
+                array2.push(this.array[j]);
+            }
+            else
+            {
+                for (k = 0; k < obj.size(); k++)
+                {
+                    obj2 = obj.get(k);
+                    array2.push(obj2);
+                }
+                array2.push(this.array[j]);
+            }
+        }
+        this.array = array2;
+    }
+};
+java.util.ArrayList.prototype.clear = function() {
+    this.array = [];
+};
+java.util.ArrayList.prototype.clone = function() {
+    var a = new java.util.ArrayList();
+    var j = 0;
+    for (j = 0; j < this.array.length; j++)
+    {
+        a.add(this.array[j]);
+    }
+    return a;
+};
+java.util.ArrayList.prototype.remove = function(location) {
+    this.array.splice(location, 1);
+};
+java.util.ArrayList.prototype.removeRange = function(start, end) {
+    this.array.splice(start, end - start);
+};
+java.util.ArrayList.prototype.get = function(location) {
+    if(location < this.array.length)
+    {
+        return this.array[location];
+    }
+    else
+    {
+        throw new Error("java.util.ArrayList.prototype.get - Index " + location + " out of Bounds");
+    }
+};
+java.util.ArrayList.prototype.set = function(location, obj) {
+    if(location < this.array.length)
+    {
+        this.array[location] = obj;
+    }
+    else
+    {
+        throw new Error("java.util.ArrayList.prototype.set - Index " + location + " out of Bounds");
+    }
+};
+java.util.ArrayList.prototype.toArray = function() {
+    var j = 0;
+    var a = [];
+    for (j = 0; j < this.array.length; j++)
+        a.push(this.array[j]);
+    return a;
+};
+java.util.ArrayList.prototype.size = function() {
+    return this.array.length;
+};
+java.util.ArrayList.prototype.isEmpty = function() {
+    if (this.array === null || this.array.length === 0)
+        return true;
+    return false;
+};
+java.util.ArrayList.prototype.contains = function(obj) {
+    for (var j = 0; j < this.array.length; j++) {
+        if (obj === this.array[j])
+            return true;
+    }
+    return false;
+};
+java.util.ArrayList.prototype.indexOf = function(obj) {
+    for (var j = 0; j < this.array.length; j++) {
+        if (obj === this.array[j])
+            return j;
+    }
+    return -1;
+};
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+var java = java || {};
+java.util = java.util || {};
+java.util.HashMap = function()
+{
+    var length = 0;
+    var items = new Array();
+    for (var i = 0; i < arguments.length; i += 2) {
+        if ((arguments[i + 1]) !== undefined) {
+            items[arguments[i]] = arguments[i + 1];
+            length++;
+        }
+    }
+
+    this.remove = function(in_key)
+    {
+        var tmp_value;
+        if ((items[in_key]) !== undefined) {
+            length--;
+            tmp_value = items[in_key];
+            delete items[in_key];
+        }
+        return tmp_value;
+    };
+
+    this.get = function(in_key) {
+        return items[in_key];
+    };
+
+    this.put = function(in_key, in_value)
+    {
+        if (in_value !== undefined) {
+            if (items[in_key] === undefined) {
+                length++;
+            }
+            items[in_key] = in_value;
+        }
+        return in_value;
+    };
+
+    this.containsKey = function(in_key)
+    {
+        return  (items[in_key] !== undefined);
+    };
+    this.containsValue = function(value)
+    {
+        var j = 0;
+        for (j = 0; j < items.length; j++)
+        {
+            if (items[j] === value)
+            {
+                return true;
+            }
+        }
+        //did not find the item
+        return false;
+        
+        //indexOf only faster in Chrome, dramatically slower in IE and FireFox.
+        //return (!(items.indexOf(value) < 0));
+    };
+    this.size = function()
+    {
+        return length;
+    };
+    this.isEmpty = function()
+    {
+        if(length>0)
+            return false;
+        else
+            return true;
+    };
+};
+
+
 //define(function() {
     'use strict';
 
@@ -14059,7 +14312,7 @@ System.arraycopy = function(src, srcPos, dest, destPos, length) {
         var radii = ellipsoid._radii;
 
         if (!defined(result)) {
-            return new Ellipsoid(radii.x, radii.y, radii.z);
+            return new vincenty.Ellipsoid(radii.x, radii.y, radii.z);
         }
 
         Cartesian3.clone(radii, result._radii);
@@ -14130,7 +14383,7 @@ System.arraycopy = function(src, srcPos, dest, destPos, length) {
      * @returns {Ellipsoid} The cloned Ellipsoid.
      */
     vincenty.Ellipsoid.prototype.clone = function(result) {
-        return Ellipsoid.clone(this, result);
+        return vincenty.Ellipsoid.clone(this, result);
     };
 
     /**
@@ -24690,14 +24943,41 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
 var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
-armyc2.c2sd.JavaLineArray.POINT2 = function()
+/*
+*contructors:
+*(POINT2)
+*(x,y)
+*(x,y,style)
+*(x,y,segment,style)
+*/
+armyc2.c2sd.JavaLineArray.POINT2 = function(x, y, param1, param2)
 {
 
     this.x = 0;
     this.y = 0;
     this.segment = 0;
     this.style = 0;
-    if (arguments.length === 1)
+    if (x !== undefined && y !== undefined)
+    {
+        this.x = x;
+        this.y = y;
+        if(param2 !== undefined)
+        {
+            this.style = param2;
+            if(param1 !== undefined)
+                this.segment = param1;
+        }
+        else if(param1 !== undefined)
+            this.style = param1;
+    }
+    else if (x !== undefined && y === undefined)
+    {
+        this.x = x.x;
+        this.y = x.y;
+        this.segment = x.segment;
+        this.style = x.style;
+    }
+    /*if (arguments.length === 1)
     {
         this.x = arguments[0].x;
         this.y = arguments[0].y;
@@ -24722,7 +25002,7 @@ armyc2.c2sd.JavaLineArray.POINT2 = function()
         this.y = arguments[1];
         this.segment = arguments[2];
         this.style = arguments[3];
-    }
+    }//*/
 };
 var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
@@ -25440,7 +25720,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     points.add(pLinePoints[j]);
                 }
             },
-            GetLineArray2: function (lineType, pts, shapes, clipBounds, rev) {
+            GetLineArray2: function (lineType, pts, shapes, clipBounds, rev, converter) {
                 var points = null;
                 try {
                     var pt = null;
@@ -25471,7 +25751,11 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         pt = pts.get(j);
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt.x, pt.y, pt.style);
                     }
-                    points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev);
+                    var useConverter=false;
+                    useConverter=true;
+                    if(!useConverter)
+                        converter=undefined;
+                    points = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2Double(lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev, converter);
                 }
                 catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -25496,8 +25780,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     lCount = armyc2.c2sd.JavaLineArray.countsupport.GetFORTLCountDouble(pLinePoints, lineType, vblSaveCounter);
-                    var numGlyphs=0;
-                    var dGlyphSize=0;
+                    var numGlyphs = 0;
+                    var dGlyphSize = 0;
 
                     pSpikePoints = new Array(lCount);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSpikePoints);
@@ -25517,25 +25801,25 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             nCounter++;
                             continue;
                         }
-                        numGlyphs=Math.floor(dLengthSegment/dIncrement);
+                        numGlyphs = Math.floor(dLengthSegment / dIncrement);
                         //dGlyphSize=dIncrement/2;
-                        dGlyphSize=10;
-                        dIncrement=(dLengthSegment/numGlyphs);
-                        if(dIncrement>25)
+                        dGlyphSize = 10;
+                        dIncrement = (dLengthSegment / numGlyphs);
+                        if (dIncrement > 25)
                         {
-                            dIncrement=25;
-                            numGlyphs=Math.floor(dLengthSegment/dIncrement);                    
+                            dIncrement = 25;
+                            numGlyphs = Math.floor(dLengthSegment / dIncrement);
                         }
                         //for (k = 0; k < dLengthSegment / 20 - 1; k++) {
                         for (k = 0; k < numGlyphs; k++) {
                             pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement, 0);
                             nCounter++;
                             //pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - 10, 0);
-                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - dIncrement/2, 0);
+                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j + 1], pLinePoints[j], -k * dIncrement - dIncrement / 2, 0);
                             nCounter++;
                             pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pSpikePoints[nCounter - 1]);
                             //pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], 10);
-                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], dIncrement/2);
+                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendLineDouble(pLinePoints[j], pSpikePoints[nCounter - 1], dIncrement / 2);
                             if (pLinePoints[j].x > pLinePoints[j + 1].x) {
                                 pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pLinePoints[j], pLinePoints[j + 1], pt0, 3, dGlyphSize);
                                 nCounter++;
@@ -25563,7 +25847,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 }
                             }
                             //pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, 0);
-                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, dIncrement/2);
+                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pLinePoints[j], pSpikePoints[nCounter - 3], 10, dIncrement / 2);
                             nCounter++;
                         }
                         pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j + 1]);
@@ -25659,12 +25943,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         dIncrement = 20;
                         dSpikeSize = 10;
 //  diagnostic
-                        numSpikes=Math.round((dLengthSegment-10)/dIncrement);
-                        dIncrement=dLengthSegment/numSpikes;
-                        if(dIncrement>25)
-                            dIncrement=25;
+                        numSpikes = Math.round((dLengthSegment - 10) / dIncrement);
+                        dIncrement = dLengthSegment / numSpikes;
+                        if (dIncrement > 25)
+                            dIncrement = 25;
                         //limit = Math.floor((dLengthSegment / dIncrement)) - 1;
-                        limit = numSpikes - 1;                
+                        limit = numSpikes - 1;
 //                        if (limit < 1) {
 //                            pSpikePoints[nCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[j]);
 //                            nCounter++;
@@ -25767,9 +26051,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     continue;
                                 //if ((pLinePoints[j].y <= Y0 && pLinePoints[j + 1].y >= Y0) || (pLinePoints[j].y >= Y0 && pLinePoints[j + 1].y <= Y0)) 
                                 if ((pLinePoints[j].y < Y0 && pLinePoints[j + 1].y > Y0) ||
-                                    (pLinePoints[j].y > Y0 && pLinePoints[j + 1].y < Y0) ||
-                                    (pLinePoints[j].y < Y0 && pLinePoints[j + 1].y === Y0) ||
-                                     (pLinePoints[j].y === Y0 && pLinePoints[j + 1].y < Y0)) 
+                                        (pLinePoints[j].y > Y0 && pLinePoints[j + 1].y < Y0) ||
+                                        (pLinePoints[j].y < Y0 && pLinePoints[j + 1].y === Y0) ||
+                                        (pLinePoints[j].y === Y0 && pLinePoints[j + 1].y < Y0))
                                 {
                                     bolVertical2 = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble(pLinePoints[j], pLinePoints[j + 1], m);
                                     if (bolVertical2 === 1 && m.value[0] === 0) {
@@ -25799,9 +26083,9 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     continue;
                                 //if ((pLinePoints[j].x <= X0 && pLinePoints[j + 1].x >= X0) || (pLinePoints[j].x >= X0 && pLinePoints[j + 1].x <= X0)) 
                                 if ((pLinePoints[j].x < X0 && pLinePoints[j + 1].x > X0) ||
-                                    (pLinePoints[j].x > X0 && pLinePoints[j + 1].x < X0) ||
-                                    (pLinePoints[j].x < X0 && pLinePoints[j + 1].x === X0) ||
-                                     (pLinePoints[j].x === X0 && pLinePoints[j + 1].x < X0)) 
+                                        (pLinePoints[j].x > X0 && pLinePoints[j + 1].x < X0) ||
+                                        (pLinePoints[j].x < X0 && pLinePoints[j + 1].x === X0) ||
+                                        (pLinePoints[j].x === X0 && pLinePoints[j + 1].x < X0))
                                 {
                                     bolVertical2 = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble(pLinePoints[j], pLinePoints[j + 1], m);
                                     if (bolVertical2 === 0) {
@@ -25858,7 +26142,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         default:
                             break;
                     }
-                } 
+                }
                 catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetInsideOutsideDouble2", new armyc2.c2sd.renderer.utilities.RendererException("GetInsideOutsideDouble2", exc));
@@ -26035,7 +26319,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return false;
             },
-            GetIsolatePointsDouble: function (pLinePoints, lineType) {
+            GetIsolatePointsDouble: function (pLinePoints, lineType, converter) {
                 try {
                     var reverseTurn = false;
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
@@ -26088,7 +26372,12 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     E.y = 2 * pt1.y - pt0.y;
                     ptsArc[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[1]);
                     ptsArc[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(E);
-                    armyc2.c2sd.JavaLineArray.lineutility.ArcArrayDouble(ptsArc, 0, dRadius, lineType);
+                    if(converter)
+                    {
+                        ptsArc[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
+                        ptsArc[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[1]);
+                    }
+                    armyc2.c2sd.JavaLineArray.lineutility.ArcArrayDouble(ptsArc, 0, dRadius, lineType, converter);
                     for (j = 0; j < 26; j++) {
                         ptsArc[j].style = 0;
                         pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsArc[j]);
@@ -26104,8 +26393,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 212600000:
                         case 212500000:
                         case 211400000:
-                            if(dRadius>100)
-                                dLength=0.8*dRadius;
+                            if (dRadius > 100)
+                                dLength = 0.8 * dRadius;
                             for (j = 1; j <= 23; j++) {
                                 if (j % 3 === 0) {
                                     midPts[k].x = pt0.x - Math.floor(((dLength / dRadius) * (pt0.x - ptsArc[j].x)));
@@ -26574,8 +26863,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         if (segQty > 0) {
                             pSquallSegPts = new Array(segQty);
                             armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pSquallSegPts);
-                        } 
-                        else 
+                        }
+                        else
                         {
                             pSquallPts[counter].x = StartSegPt.x;
                             pSquallPts[counter++].y = StartSegPt.y;
@@ -26864,27 +27153,79 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return pEllipsePoints;
             },
-            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth) {
+            getRotatedEllipsePoints: function (ptCenter, ptWidth, ptHeight, azimuth, lineType, converter) {
                 var pResultPoints = null;
-                try {                    
-                        var pEllipsePoints=new Array(36);
-                        var l=0,j=0;
-                        var dFactor=0;
-                        var a=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
-                        var b=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
-                        armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
-                        for (l = 1; l < 37; l++)
+                try {
+                    var pEllipsePoints = new Array(36);
+                    var l = 0, j = 0;
+                    var dFactor = 0;
+                    var x=0,y=0;
+                    var a = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptWidth);
+                    var b = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(ptCenter, ptHeight);
+                    var ratio=b/a;
+                    var ptCenter2d=null;
+                    if(converter)
+                    {
+                        ptCenter2d=new armyc2.c2sd.graphics2d.Point2D(ptCenter.x,ptCenter.y);
+                        ptCenter2d=converter.PixelsToGeo(ptCenter2d);
+                        var ptWidth2d=new armyc2.c2sd.graphics2d.Point2D(ptWidth.x,ptWidth.y);
+                        ptWidth2d=converter.PixelsToGeo(ptWidth2d);
+                        var ptHeight2d=new armyc2.c2sd.graphics2d.Point2D(ptHeight.x,ptHeight.y);
+                        ptHeight2d=converter.PixelsToGeo(ptHeight2d);
+                        a = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter2d, ptWidth2d,null,null);
+                        b = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter2d, ptHeight2d, null, null);
+                        ptCenter.x=ptCenter2d.x;
+                        ptCenter.y=ptCenter2d.y;
+                    }
+                    var ptTemp2d=new armyc2.c2sd.graphics2d.Point2D();
+                    var ptTemp=null,dAzimuth=0,d=0;
+                    var a12 = new armyc2.c2sd.JavaLineArray.ref();
+                    var a21 = new armyc2.c2sd.JavaLineArray.ref();
+                    armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pEllipsePoints);
+                    for (l = 1; l < 37; l++)
+                    {
+                        dFactor = (10.0 * l) * Math.PI / 180.0;
+                        if(!converter)
                         {
-                            dFactor = (10.0 * l) * Math.PI / 180.0;
                             pEllipsePoints[l - 1].x = ptCenter.x + (a * Math.cos(dFactor));
                             pEllipsePoints[l - 1].y = ptCenter.y + (b * Math.sin(dFactor));
                             pEllipsePoints[l - 1].style = 0;
                         }
-                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth-90);
-                        pResultPoints=new Array(37);
-                        for(j=0;j<36;j++)
-                            pResultPoints[j]=pEllipsePoints[j];
-                        pResultPoints[36]=pEllipsePoints[0];                    
+                        else    //use converter
+                        {
+                            //POINT2 ptCenter x,y is in geo
+                            //dFactor = (10.0 * l) * Math.PI / 180.0;
+                            dFactor = -(10.0 * l) * Math.PI / 180.0 + Math.PI / 2;
+                            dAzimuth = 10.0 * l;
+                            if (lineType === 13000002) //circle
+                            {
+                                d=Math.sqrt(  Math.pow(a*Math.cos(dFactor),2) +  Math.pow(b*Math.sin(dFactor),2) );
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, dAzimuth);                            
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter,ptTemp,a12,a21);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, a12.value[0]);                            
+                            }
+                            else
+                            {
+                                b=a*ratio;
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, a*Math.cos(dFactor), 90);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTemp, b*Math.sin(dFactor), 0);
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ptCenter,ptTemp,a12,a21);
+                                ptTemp = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptCenter, d, a12.value[0]);                            
+                            }
+                            ptTemp2d.x=ptTemp.x;
+                            ptTemp2d.y=ptTemp.y;                                                        
+                            ptTemp2d=converter.GeoToPixels(ptTemp2d);
+                            pEllipsePoints[l - 1]=new armyc2.c2sd.JavaLineArray.POINT2(ptTemp2d.x,ptTemp2d.y);
+                        }
+                    }
+                    if (lineType !== 13000002)
+                    {
+                        armyc2.c2sd.JavaLineArray.lineutility.RotateGeometryDouble(pEllipsePoints, 36, azimuth - 90, converter, ptCenter);
+                    }
+                    pResultPoints = new Array(37);
+                    for (j = 0; j < 36; j++)
+                        pResultPoints[j] = pEllipsePoints[j];
+                    pResultPoints[36] = pEllipsePoints[0];
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.arraysupport._className, "GetXPointsDouble", new armyc2.c2sd.renderer.utilities.RendererException("GetRotatedEllipsePoints", exc));
@@ -27369,7 +27710,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                 }
                 return counter;
             },
-            GetLineArray2Double: function (lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev) {
+            GetLineArray2Double: function (lineType, pLinePoints, vblCounter, vblSaveCounter, shapes, clipBounds, rev, converter) {
                 var points = new java.util.ArrayList();
                 try {
                     var client = armyc2.c2sd.JavaLineArray.CELineArray.getClient();
@@ -27542,16 +27883,57 @@ armyc2.c2sd.JavaLineArray.arraysupport =
 //                            pOriginalLinePoints[3] = new armyc2.c2sd.JavaLineArray.POINT2(pt3);
 //                            pOriginalLinePoints[4] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
                             break;
-                        case 13000000:
-                        case 13000001:
-                        case 13000002:
+                        case 13000000:  //not currently used
                             pt0 = pLinePoints[0];
                             pt1 = pLinePoints[1];
                             pt2 = pLinePoints[2];
                             //pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getEllipsePoints(pt0, pt1, pt2);
-                            var azimuth=pLinePoints[3].x;
-                            pLinePoints=armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0,pt1,pt2,azimuth);
+                            var azimuth = pLinePoints[3].x;
+                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
                             acCounter = 37;
+                            break;
+                        case 13000001:  //not currently used
+                        case 13000002:
+                            var x0=pLinePoints[0].x;
+                            var y0=pLinePoints[0].y;
+                            pt0 = pLinePoints[0];//the center of the ellipse
+                            pt1 = pLinePoints[1];//the width of the ellipse
+                            pt2 = pLinePoints[2];//the height of the ellipse
+                            azimuth = pLinePoints[3].x;
+                            pOriginalLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
+                            //use linestyle to get the distance to expand the shape for the buffer shape
+                            //pt0.style is either in pixels or meters, depending on whether the converter is being used
+                            var dist=pt0.style;
+                            if(converter)
+                            {
+                                //extend semi-major axis for the buffer
+                                var pt12d=new armyc2.c2sd.graphics2d.Point2D(pt1.x,pt1.y);
+                                pt12d=converter.PixelsToGeo(pt12d);
+                                pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.x,pt12d.y);
+                                pt1=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt1,dist,90);
+                                pt12d=new armyc2.c2sd.graphics2d.Point2D(pt1.x,pt1.y);
+                                pt12d=converter.GeoToPixels(pt12d);
+                                pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.x,pt12d.y);
+                                //extend semi-minor axis for the buffer
+                                var pt22d=new armyc2.c2sd.graphics2d.Point2D(pt2.x,pt2.y);
+                                pt22d=converter.PixelsToGeo(pt22d);
+                                pt2=new armyc2.c2sd.JavaLineArray.POINT2(pt22d.x,pt22d.y);
+                                pt2=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt2,dist,0);
+                                pt22d=new armyc2.c2sd.graphics2d.Point2D(pt2.x,pt2.y);
+                                pt22d=converter.GeoToPixels(pt22d);
+                                pt2=new armyc2.c2sd.JavaLineArray.POINT2(pt22d.x,pt22d.y);
+                            }
+                            else
+                            {
+                                pt1.x+=dist;
+                                pt2.y-=dist;
+                            }
+                            //restore original pt0;
+                            pt0.x=x0;
+                            pt0.y=y0;
+                            pLinePoints = armyc2.c2sd.JavaLineArray.arraysupport.getRotatedEllipsePoints(pt0, pt1, pt2, azimuth, lineType, converter);
+                            acCounter = 37;
+                            vblSaveCounter=37;
                             break;
                         case 23200000:
                             acCounter = armyc2.c2sd.JavaLineArray.arraysupport.getOverheadWire(pLinePoints, vblSaveCounter);
@@ -28024,25 +28406,25 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = 4;
                             break;
                         case 211400000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 50;
                             break;
                         case 212600000:
                         case 212500000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 50;
                             //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, acCounter, points);
                             break;
                         case 211600000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 32;
                             break;
                         case 211900000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 75;
                             break;
                         case 212100000:
-                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
+                            armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType, converter);
                             acCounter = 29;
                             break;
                         case 23173000:
@@ -28118,16 +28500,22 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 22225000:
                         case 22223000:
                         case 22221000:
+                            var bolSegmentAC = false;
+                            //uncomment the next line if the air corridor is segmented
+                            bolSegmentAC = true;
                             dMRR = armyc2.c2sd.JavaLineArray.arraysupport.dACP;
                             armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(acPoints);
                             armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(arcPts);
                             acCounter = 0;
-                            for (j = 0; j < vblSaveCounter; j++)
-                                if (pOriginalLinePoints[j].style <= 0)
-                                    pOriginalLinePoints[j].style = 1;
-
+                            if (!bolSegmentAC)
+                            {
+                                for (j = 0; j < vblSaveCounter; j++)
+                                    if (pOriginalLinePoints[j].style <= 0)
+                                        pOriginalLinePoints[j].style = 1;
+                            }
                             for (j = 0; j < vblSaveCounter - 1; j++) {
-                                dMBR = pOriginalLinePoints[j].style;
+                                //use Math.abs here in case it's a negative value used when segmenting
+                                dMBR = Math.abs(pOriginalLinePoints[j].style);
                                 acPoints[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j]);
                                 acPoints[1] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j + 1]);
                                 armyc2.c2sd.JavaLineArray.lineutility.GetSAAFRSegment(acPoints, lineType, dMBR, rev);
@@ -28136,26 +28524,75 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     acCounter++;
                                 }
                             }
-                            var nextCircleSize = 0;
                             var currentCircleSize = 0;
-                            for (j = 0; j < vblSaveCounter - 1; j++) {
-                                currentCircleSize = pOriginalLinePoints[j].style;
-                                nextCircleSize = pOriginalLinePoints[j + 1].style;
-                                arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j]);
-                                dMBR = currentCircleSize;
-                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
-                                arcPts[25].style = 5;
-                                for (k = 0; k < 26; k++) {
-                                    pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
-                                    acCounter++;
+                            if (!bolSegmentAC)
+                            {
+                                for (j = 0; j < vblSaveCounter - 1; j++) {
+                                    currentCircleSize = pOriginalLinePoints[j].style;
+                                    //nextCircleSize = pOriginalLinePoints[j + 1].style;
+                                    arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j]);
+                                    dMBR = currentCircleSize;
+                                    armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
+                                    arcPts[25].style = 5;
+                                    for (k = 0; k < 26; k++) {
+                                        pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
+                                        acCounter++;
+                                    }
+                                    arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j + 1]);
+                                    dMBR = currentCircleSize;
+                                    armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
+                                    arcPts[25].style = 5;
+                                    for (k = 0; k < 26; k++) {
+                                        pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
+                                        acCounter++;
+                                    }
                                 }
-                                arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j + 1]);
-                                dMBR = currentCircleSize;
-                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
-                                arcPts[25].style = 5;
-                                for (k = 0; k < 26; k++) {
-                                    pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
-                                    acCounter++;
+                            }
+                            else    //segmented corridor
+                            {
+                                var lastCircleSize=0;
+                                var lastCirclePoint=null;
+                                for (j = 0; j < vblSaveCounter; j++) {
+                                    currentCircleSize = pOriginalLinePoints[j].style;
+                                    if(j===0)
+                                    {
+                                        lastCircleSize=currentCircleSize;
+                                        lastCirclePoint=pOriginalLinePoints[j];
+                                        continue;
+                                    }
+                                    if(currentCircleSize < 0)
+                                        continue;
+                                    //the current circle point
+                                    arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pOriginalLinePoints[j]);
+                                    dMBR = lastCircleSize;
+                                    armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
+                                    arcPts[25].style = 5;
+                                    for (k = 0; k < 26; k++) {
+                                        pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
+                                        acCounter++;
+                                    }
+                                    //the previous circle point
+                                    arcPts[0] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(lastCirclePoint);
+                                    armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(arcPts[0], dMBR, 26, arcPts, 0);
+                                    arcPts[25].style = 5;
+                                    for (k = 0; k < 26; k++) {
+                                        pLinePoints[acCounter] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(arcPts[k]);
+                                        acCounter++;
+                                    }
+                                    //set the last values
+                                    lastCircleSize=currentCircleSize;
+                                    lastCirclePoint=pOriginalLinePoints[j];
+                                }                                
+                                //get the middle line for Rev B AC, MRR, UAV, and LLTR
+                                //Symbology_2525Bch2_USAS_13_14
+                                //if(rev === armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14 && lineType !== 22223000)  //SAAFR
+                                if(rev === armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B && lineType !== 22223000)  //SAAFR                                
+                                {
+                                    pts=armyc2.c2sd.JavaLineArray.lineutility.GetSAAFRMiddleLine(pOriginalLinePoints);
+                                    for(j=0;j<pts.length;j++)
+                                    {
+                                        pLinePoints[acCounter++] = new armyc2.c2sd.JavaLineArray.POINT2(pts[j]);
+                                    }
                                 }
                             }
                             break;
@@ -28191,7 +28628,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 pLinePoints[200 + j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(circlePoints[j]);
                             }
                             //acCounter = 300;
-                            acCounter=vblCounter;
+                            acCounter = vblCounter;
                             //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             break;
                         case 25211000:
@@ -28442,10 +28879,10 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 }
                                 else
                                 {
-                                    savepoints=new Array(2);
-                                    savepoints[0]=new armyc2.c2sd.JavaLineArray.POINT2(pt0);
-                                    savepoints[1]=new armyc2.c2sd.JavaLineArray.POINT2(pt1);
-                                    drawJaggies=false;
+                                    savepoints = new Array(2);
+                                    savepoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pt0);
+                                    savepoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pt1);
+                                    drawJaggies = false;
                                 }
                                 midpt = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(pt0, pt1, 0);
                                 var dist0 = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(midpt, pt0);
@@ -28487,7 +28924,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                     dExtendLength = n * 5;
                                     pLinePoints[pointCounter] = armyc2.c2sd.JavaLineArray.lineutility.ExtendLine2Double(pt4, pt5, dExtendLength - dWidth, 0);
                                     pointCounter++;
-                                    if(pointCounter>=pLinePoints.length-1)
+                                    if (pointCounter >= pLinePoints.length - 1)
                                         break;
                                     n++;
                                 }
@@ -28776,7 +29213,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 dMBR = 20 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
                             //if (client.startsWith("cpof")) 
-                            if (client.substring(0,4).equals("cpof")) 
+                            if (client.substring(0, 4).equals("cpof"))
                             {
                                 if (dMBR < 250)
                                     dMBR = 250;
@@ -28980,7 +29417,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 211200000:
                             d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[0], pLinePoints[1]);
                             //if (client.startsWith("cpof"))
-                            if (client.substring(0,4).equals("cpof")) 
+                            if (client.substring(0, 4).equals("cpof"))
                                 d2 = 20;
                             else
                                 d2 = 30;
@@ -29038,7 +29475,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             break;
                         case 211210000:
                             //if (client.startsWith("cpof"))
-                            if (client.substring(0,4).equals("cpof")) 
+                            if (client.substring(0, 4).equals("cpof"))
                                 d2 = 25;
                             else
                                 d2 = 25;
@@ -29057,7 +29494,7 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                                 dMBR = 10 * armyc2.c2sd.JavaLineArray.arraysupport.minLength;
                             }
                             //if (client.startsWith("cpof")) 
-                            if (client.substring(0,4).equals("cpof")) 
+                            if (client.substring(0, 4).equals("cpof"))
                             {
                                 if (folspDist < 25)
                                     dMBR = 125;
@@ -29342,6 +29779,8 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                     switch (lineType) {
                         case 15000001:
                         case 15000003:
+                        case 13000001:
+                        case 13000002:
                             //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
 //                            for(j=0;j<vblSaveCounter-1;j++)
 //                            {
@@ -30062,18 +30501,18 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 22224001:
                         case 22225000:
                             for (j = 0; j < vblSaveCounter - 1; j++) {
-                                dMBR=pOriginalLinePoints[j].style;
+                                dMBR = pOriginalLinePoints[j].style;
                                 acPoints[0] = new armyc2.c2sd.JavaLineArray.POINT2(pOriginalLinePoints[j]);
                                 acPoints[1] = new armyc2.c2sd.JavaLineArray.POINT2(pOriginalLinePoints[j + 1]);
                                 armyc2.c2sd.JavaLineArray.lineutility.GetSAAFRFillSegment(acPoints, dMBR);//was dMRR
-                                shape =new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+                                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                                 shape.moveTo(acPoints[0]);
                                 shape.lineTo(acPoints[1]);
                                 shape.lineTo(acPoints[2]);
                                 shape.lineTo(acPoints[3]);
                                 shapes.add(0, shape);
                             }
-                    break;
+                            break;
                         case 23111001:
                             shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
                             shape.moveTo(pUpperLinePoints[0]);
@@ -32583,7 +33022,7 @@ armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.lineutility =
         {
-            ResizeArray: function(pLinePoints, length)
+            ResizeArray: function (pLinePoints, length)
             {
                 var array = new Array();
                 try
@@ -32610,7 +33049,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return array;
             },
-            SegmentLineShape: function(pt0, pt1, shape) {
+            SegmentLineShape: function (pt0, pt1, shape) {
                 try {
                     if (pt0 === null || pt1 === null)
                         return;
@@ -32634,7 +33073,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetDirAtkAirMiddleSegment: function(pLinePoints, vblSaveCounter) {
+            GetDirAtkAirMiddleSegment: function (pLinePoints, vblSaveCounter) {
                 var middleSegment = -1;
                 try {
                     var d = 0;
@@ -32663,7 +33102,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return middleSegment;
             },
-            CalcSegmentAngleDouble: function(pt0, pt1) {
+            CalcSegmentAngleDouble: function (pt0, pt1) {
                 var dAngle = 0;
                 try {
                     var nTemp = 0;
@@ -32683,7 +33122,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dAngle;
             },
-            InitializePOINT2Array: function(pts) {
+            InitializePOINT2Array: function (pts) {
                 if (pts === null || pts.length === 0)
                     return;
                 for (var j = 0; j < pts.length; j++)
@@ -32691,7 +33130,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pts[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 }
             },
-            CalcCenterPointDouble: function(pLinePoints, vblCounter) {
+            CalcCenterPointDouble: function (pLinePoints, vblCounter) {
                 var CenterLinePoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
                 try {
                     var j = 0;
@@ -32724,7 +33163,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return CenterLinePoint;
             },
-            CalcCenterPointDouble2: function(pLinePoints, vblCounter) {
+            CalcCenterPointDouble2: function (pLinePoints, vblCounter) {
                 var pt0 = pLinePoints[0];
                 var CenterLinePoint = new armyc2.c2sd.JavaLineArray.POINT2();
                 try {
@@ -32760,7 +33199,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return CenterLinePoint;
             },
-            CalcDistanceDouble: function(p1, p2) {
+            CalcDistanceDouble: function (p1, p2) {
                 var returnValue = 0;
                 try {
                     returnValue = Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
@@ -32782,7 +33221,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return returnValue;
             },
-            CalcTrueSlopeDouble: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDouble: function (firstLinePoint, lastLinePoint, slope) {
                 var result = 1;
                 try {
                     if (slope.value === null)
@@ -32791,7 +33230,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaY = 0;
                     deltaX = firstLinePoint.x - lastLinePoint.x;
                     //if (Math.abs(deltaX)<1) 
-                    if (deltaX === 0) 
+                    if (deltaX === 0)
                     {
                         deltaX = 1;
                         result = 1;
@@ -32807,7 +33246,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            WriteFile: function(str) {
+            WriteFile: function (str) {
                 try {
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
@@ -32817,7 +33256,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            ReversePointsDouble2: function(pLowerLinePoints, vblCounter) {
+            ReversePointsDouble2: function (pLowerLinePoints, vblCounter) {
                 try {
                     var pResultPoints = new Array(vblCounter);
                     var k = 0;
@@ -32837,7 +33276,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcTrueSlopeDoubleForRoutes: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDoubleForRoutes: function (firstLinePoint, lastLinePoint, slope) {
                 try {
                     var deltaX = 0;
                     var deltaY = 0;
@@ -32857,7 +33296,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return true;
             },
-            CalcTrueSlopeDouble2: function(firstLinePoint, lastLinePoint, slope) {
+            CalcTrueSlopeDouble2: function (firstLinePoint, lastLinePoint, slope) {
                 //var result = new Boolean(true);
                 var result = true;
                 try {
@@ -32865,7 +33304,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var deltaY = 0;
                     deltaX = (firstLinePoint.x) - (lastLinePoint.x);
                     //if (Math.abs(deltaX)<1) 
-                    if (deltaX === 0) 
+                    if (deltaX === 0)
                     {
                         deltaX = 1;
                         //result = new Boolean(false);
@@ -32884,7 +33323,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            CalcTrueLinesDouble: function(nDistance, linePoint1, linePoint2, pdResult) {
+            CalcTrueLinesDouble: function (nDistance, linePoint1, linePoint2, pdResult) {
                 try {
                     var nTemp = 0;
                     var b = 0;
@@ -32915,7 +33354,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcTrueIntersectDouble2: function(m1, b1, m2, b2, bolVertical1, bolVertical2, X1, X2) {
+            CalcTrueIntersectDouble2: function (m1, b1, m2, b2, bolVertical1, bolVertical2, X1, X2) {
                 var ptIntersect = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var x = 0;
@@ -32950,7 +33389,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptIntersect;
             },
-            GetOffsetPointDouble: function(startLinePoint, endLinePoint, nOffset) {
+            GetOffsetPointDouble: function (startLinePoint, endLinePoint, nOffset) {
                 var tempLinePoint = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(startLinePoint);
                 try {
                     var dx = endLinePoint.x - startLinePoint.x;
@@ -33000,7 +33439,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return (tempLinePoint);
             },
-            GetArcFEBADouble: function(dRadius, pLinePoints, vblCounter, pResultLinePoints) {
+            GetArcFEBADouble: function (dRadius, pLinePoints, vblCounter, pResultLinePoints) {
                 try {
                     var dStartAngle = 0;
                     var dEndAngle = 6.283185307179586;
@@ -33033,7 +33472,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pResultLinePoints;
             },
-            LineOfXPoints: function(pLinePoints) {
+            LineOfXPoints: function (pLinePoints) {
                 var xPoints = new java.util.ArrayList();
                 try {
                     var j = 0;
@@ -33077,7 +33516,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return xPoints;
             },
-            GetXFEBADouble: function(pLinePoints, dSize, vblCounter, pResultLinePoints) {
+            GetXFEBADouble: function (pLinePoints, dSize, vblCounter, pResultLinePoints) {
                 try {
                     var j = 0;
                     var nXcounter = 0;
@@ -33114,7 +33553,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            ReorderPoints: function(pLinePoints) {
+            ReorderPoints: function (pLinePoints) {
                 try {
                     var n = pLinePoints.length;
                     var pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -33133,7 +33572,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcDistanceToLineDouble: function(pt1, pt2, pt3) {
+            CalcDistanceToLineDouble: function (pt1, pt2, pt3) {
                 var dResult = 0;
                 try {
                     var m1 = 1;
@@ -33167,7 +33606,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dResult;
             },
-            ExtendLineDouble: function(pt1, pt2, dist) {
+            ExtendLineDouble: function (pt1, pt2, dist) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt1, pt2);
@@ -33186,7 +33625,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAlongLineDouble2: function(pt1, pt2, dist) {
+            ExtendAlongLineDouble2: function (pt1, pt2, dist) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var dOriginalDistance = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt1, pt2);
@@ -33203,7 +33642,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAlongLineDouble: function() {
+            ExtendAlongLineDouble: function () {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var pt1 = arguments[0];
@@ -33225,7 +33664,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendLineAbove: function(pt1, pt2, pt3, d, X, Y, direction) {
+            ExtendLineAbove: function (pt1, pt2, pt3, d, X, Y, direction) {
                 try {
                     var m = new armyc2.c2sd.JavaLineArray.ref();
                     var dx = 0;
@@ -33264,7 +33703,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            ExtendLineLeft: function(pt1, pt2, pt3, d, X, Y, direction) {
+            ExtendLineLeft: function (pt1, pt2, pt3, d, X, Y, direction) {
                 try {
                     var m = new armyc2.c2sd.JavaLineArray.ref();
                     var dx = 0;
@@ -33299,7 +33738,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcDirectionFromLine: function(pt0, pt1, pt2) {
+            CalcDirectionFromLine: function (pt0, pt1, pt2) {
                 var result = -1;
                 try {
                     var m2 = 0;
@@ -33344,7 +33783,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            ExtendDirectedLineText: function(pt1, pt2, pt0, direction, d) {
+            ExtendDirectedLineText: function (pt1, pt2, pt0, direction, d) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var X = new armyc2.c2sd.JavaLineArray.ref();
@@ -33416,7 +33855,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            ExtendDirectedLine: function() {
+            ExtendDirectedLine: function () {
                 var pt1 = arguments[0];
                 var pt2 = arguments[1];
                 var pt0 = arguments[2];
@@ -33467,7 +33906,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            ExtendLine2Double: function(pt1, pt2, dist, styl) {
+            ExtendLine2Double: function (pt1, pt2, dist, styl) {
                 var pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try
                 {
@@ -33489,7 +33928,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt3;
             },
-            ExtendAngledLine: function(pt0, pt1, pt2, alpha, d) {
+            ExtendAngledLine: function (pt0, pt1, pt2, alpha, d) {
                 var pt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var psi = Math.atan((pt1.y - pt0.y) / (pt1.x - pt0.x));
@@ -33508,7 +33947,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pt;
             },
-            GetQuadrantDouble: function() {
+            GetQuadrantDouble: function () {
                 var nQuadrant = -1;
                 try {
                     if (arguments.length === 2)
@@ -33548,7 +33987,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return nQuadrant;
             },
-            GetPixelsMin: function(ptsSeize, vblCounter, x, y) {
+            GetPixelsMin: function (ptsSeize, vblCounter, x, y) {
                 try {
                     var xmin = Infinity;
                     var ymin = Infinity;
@@ -33572,7 +34011,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcClockwiseCenterDouble: function(ptsSeize) {
+            CalcClockwiseCenterDouble: function (ptsSeize) {
                 var dRadius = 0;
                 try {
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(ptsSeize[0]);
@@ -33659,7 +34098,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dRadius;
             },
-            GetArrowHead4Double: function(startLinePoint, endLinePoint, nBiSector, nBase, pResultLinePoints, styl) {
+            GetArrowHead4Double: function (startLinePoint, endLinePoint, nBiSector, nBase, pResultLinePoints, styl) {
                 try {
                     var j = 0;
                     var dy = (endLinePoint.y - startLinePoint.y);
@@ -33740,7 +34179,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            MidPointDouble: function(pt0, pt1, styl) {
+            MidPointDouble: function (pt0, pt1, styl) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                 try {
                     ptResult.x = (pt0.x + pt1.x) / 2;
@@ -33755,7 +34194,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            RotateGeometryDoubleOrigin: function(pLinePoints, vblCounter, lAngle) {
+            RotateGeometryDoubleOrigin: function (pLinePoints, vblCounter, lAngle) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -33789,7 +34228,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pLinePoints;
             },
-            ExtendTrueLinePerpDouble: function(pt0, pt1, pt2, d, styl) {
+            ExtendTrueLinePerpDouble: function (pt0, pt1, pt2, d, styl) {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
                 try {
                     var ptYIntercept = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt0);
@@ -33843,7 +34282,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            CalcTrueIntersectDouble: function(m1, b1, m2, b2, p2, bolVerticalSlope1, bolVerticalSlope2, dWidth, lOrient, X, Y) {
+            CalcTrueIntersectDouble: function (m1, b1, m2, b2, p2, bolVerticalSlope1, bolVerticalSlope2, dWidth, lOrient, X, Y) {
                 try {
                     var dWidth2 = Math.abs(dWidth);
                     var b = 0;
@@ -33852,9 +34291,11 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var m = 0;
                     X.value = Clazz.newArray(1, 0);
                     Y.value = Clazz.newArray(1, 0);
-                    if (m1 !== m2 && Math.abs(m1 - m2) <= 4.9E-324)
+                    //if (m1 !== m2 && Math.abs(m1 - m2) <= 4.9E-324)
+                    if (m1 !== m2 && Math.abs(m1 - m2) <= 1E-6)
                         m1 = m2;
-                    if (b1 !== b2 && Math.abs(b1 - b2) <= 4.9E-324)
+                    //if (b1 !== b2 && Math.abs(b1 - b2) <= 4.9E-324)
+                    if (b1 !== b2 && Math.abs(b1 - b2) <= 1E-6)
                         b1 = b2;
                     if (b1 === b2 && m1 + b1 === m2 + b2)
                         m1 = m2;
@@ -33995,7 +34436,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            CalcDistance2: function(x1, y1, x2, y2) {
+            CalcDistance2: function (x1, y1, x2, y2) {
                 var dResult = 0;
                 try {
                     dResult = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -34008,7 +34449,9 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         if (max > 0)
                             dResult = max;
                     }
-                } catch (exc) {
+                }
+                catch (exc)
+                {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "CalcDistance2", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside CalcDistance2", exc));
                     } else {
@@ -34017,7 +34460,53 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return dResult;
             },
-            GetSAAFRSegment: function(pLinePoints, lineType, dMRR, rev) {
+            GetSAAFRMiddleLine: function (pLinePoints)
+            {
+                var pts = null;
+                try
+                {
+                    var j = 0, count = 0;
+                    for (j = 0; j < pLinePoints.length - 1; j++) {
+                        if (pLinePoints[j].style > 0) {
+                            count++;
+                        }
+                    }
+                    pts = [];
+                    count = 0;
+                    var dMRR = 0;
+                    var firstSegPt = null, lastSegPt = null, pt0 = null, pt1 = null;
+                    for (j = 0; j < pLinePoints.length; j++) {
+                        if (pLinePoints[j].style >= 0 || j === pLinePoints.length - 1)
+                        {
+                            if (lastSegPt !== null)
+                            {
+                                firstSegPt = new armyc2.c2sd.JavaLineArray.POINT2(lastSegPt);
+                                lastSegPt = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
+                                dMRR = firstSegPt.style;
+                                pt0 = this.ExtendLine2Double(lastSegPt, firstSegPt, -dMRR, 0);
+                                pt1 = this.ExtendLine2Double(firstSegPt, lastSegPt, -dMRR, 5);
+                                pts.push(pt0);
+                                pts.push(pt1);
+                            }
+                            else
+                            {
+                                lastSegPt = new armyc2.c2sd.JavaLineArray.POINT2(pLinePoints[j]);
+                            }
+                        }
+                    }
+                }
+                catch (exc)
+                {
+                    if (Clazz.instanceOf(exc))
+                    {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "GetSAAFRMiddleLine", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSAAFRMiddleLine", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
+                return pts;
+            },
+            GetSAAFRSegment: function (pLinePoints, lineType, dMRR, rev) {
                 try {
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -34055,10 +34544,11 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pLinePoints[4] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt4);
                     pLinePoints[5] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pt5);
                     pLinePoints[5].style = 5;
-                    if (lineType === 22223000)
-                        pLinePoints[0].style = 5;
-                    if (rev === 1)
-                        pLinePoints[0].style = 5;
+//                    if (lineType === 22223000)
+//                        pLinePoints[0].style = 5;
+//                    if (rev === 1)
+//                        pLinePoints[0].style = 5;
+                    pLinePoints[0].style = 5;
                 } catch (exc) {
                     if (Clazz.instanceOf(exc)) {
                         armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "GetSAAFRSegment", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSAAFRSegment", exc));
@@ -34068,7 +34558,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetSAAFRFillSegment: function(pLinePoints, dMRR) {
+            GetSAAFRFillSegment: function (pLinePoints, dMRR) {
                 try {
                     //var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     //var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -34119,7 +34609,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            ArcArrayDouble: function(pResultLinePoints, vblCounter, dRadius, linetype) {
+            ArcArrayDouble: function (pResultLinePoints, vblCounter, dRadius, linetype, converter) {
                 try {
                     var startangle = 0;
                     var endangle = 0;
@@ -34143,7 +34633,28 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         else
                             M = 1.5707963267948966;
                     }
+                    if(converter)
+                    {
+                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
+                        var reverseM=false;
+                        pt02d=converter.PixelsToGeo(pt02d);
+                        pt12d=converter.PixelsToGeo(pt12d);
+                        M=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt02d,pt12d);
+                        M*=(Math.PI/180);
+                        if(M<0)
+                            M+=Math.PI;
+                    }
                     length = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(a, e);
+                    if(converter)
+                    {
+                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
+                        pt02d=converter.PixelsToGeo(pt02d);
+                        pt12d=converter.PixelsToGeo(pt12d);
+                        length=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt02d,pt12d,null,null);
+                    }
+                    
                     switch (linetype) {
                         case 23157000:
                             startangle = M - 1.5707963267948966;
@@ -34208,23 +34719,41 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pArcLinePoints = new Array(numarcpts);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pArcLinePoints);
                     increment = (endangle - startangle) / (numarcpts - 1);
-                    if(dRadius !== 0 && length !== 0)
+                                        
+                    if (dRadius !== 0 && length !== 0)
                     {
                         C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
                         C.y = Math.floor((e.y - (dRadius / length) * (a.y - e.y)));
                     }
                     else
                     {
-                        C.x=e.x;
-                        C.y=e.y;
+                        C.x = e.x;
+                        C.y = e.y;
                     }
-                    for (j = 0; j < numarcpts; j++) {
-                        pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
-                        pArcLinePoints[j].y = Math.floor((dRadius * Math.sin(startangle + j * increment)));
+                    if (converter)
+                    {
+                        var C2d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
+                        C2d=converter.PixelsToGeo(C2d);    
+                        var az=0,ptGeo=null,ptPixels=null;
+                        for (j = 0; j < numarcpts; j++) {
+                            az=startangle*180/Math.PI+j*increment*180/Math.PI;
+                            ptGeo=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(C2d,length,az);
+                            ptGeo=new armyc2.c2sd.graphics2d.Point2D(ptGeo.x,ptGeo.y);
+                            ptPixels=converter.GeoToPixels(ptGeo);
+                            pArcLinePoints[j].x = ptPixels.x;
+                            pArcLinePoints[j].y = ptPixels.y;                            
+                        }
                     }
-                    for (j = 0; j < numarcpts; j++) {
-                        pArcLinePoints[j].x += C.x;
-                        pArcLinePoints[j].y += C.y;
+                    else
+                    {
+                        for (j = 0; j < numarcpts; j++) {
+                            pArcLinePoints[j].x = Math.floor((dRadius * Math.cos(startangle + j * increment)));
+                            pArcLinePoints[j].y = Math.floor((dRadius * Math.sin(startangle + j * increment)));
+                        }
+                        for (j = 0; j < numarcpts; j++) {
+                            pArcLinePoints[j].x += C.x;
+                            pArcLinePoints[j].y += C.y;
+                        }
                     }
                     switch (linetype) {
                         case 211400000:
@@ -34256,7 +34785,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return pResultLinePoints;
             },
-            CalcCircleDouble: function(Center, radius, numpts, CirclePoints, styl) {
+            CalcCircleDouble: function (Center, radius, numpts, CirclePoints, styl) {
                 try {
                     var j = 0;
                     var dSegmentAngle = 6.283185307179586 / numpts;
@@ -34292,7 +34821,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcCircleShape: function(Center, radius, numpts, CirclePoints, styl) {
+            CalcCircleShape: function (Center, radius, numpts, CirclePoints, styl) {
                 var shape;
                 if (styl === 9)
                     shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
@@ -34315,7 +34844,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return shape;
             },
-            GetSquallCurve: function(StartPt, EndPt, pSquallPts, sign, amplitude, quantity) {
+            GetSquallCurve: function (StartPt, EndPt, pSquallPts, sign, amplitude, quantity) {
                 try {
                     var dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(StartPt, EndPt);
                     var ptTemp = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
@@ -34334,7 +34863,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            GetSquallSegment: function(StartPt, EndPt, pSquallPts, sign, amplitude, quantity, length) {
+            GetSquallSegment: function (StartPt, EndPt, pSquallPts, sign, amplitude, quantity, length) {
                 var counter = 0;
                 try {
                     var StartCurvePt;
@@ -34381,7 +34910,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return counter;
             },
-            PointInBounds2: function(pt, ul, lr) {
+            PointInBounds2: function (pt, ul, lr) {
                 try {
                     var maxX = lr.x;
                     var minX = ul.x;
@@ -34400,7 +34929,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return 1;
             },
-            intersectSegment: function(pt0, pt1, sidePt0, sidePt1) {
+            intersectSegment: function (pt0, pt1, sidePt0, sidePt1) {
                 var pt = null;
                 try {
                     if (pt0.x === pt1.x) {
@@ -34474,7 +35003,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return null;
             },
-            BoundOneSegment: function(pt0, pt1, ul, lr) {
+            BoundOneSegment: function (pt0, pt1, ul, lr) {
                 var line = new Array(2);
                 try {
                     if (pt0.y < ul.y && pt1.y < ul.y) {
@@ -34573,7 +35102,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return line;
             },
-            GetDitchSpikeDouble: function(pLinePoints, nOldCounter, bWayIs, linetype) {
+            GetDitchSpikeDouble: function (pLinePoints, nOldCounter, bWayIs, linetype) {
                 var nSpikeCounter = 0;
                 try {
                     var nNumberOfSegments = 0;
@@ -34778,7 +35307,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return nSpikeCounter;
             },
-            MoveChannelPixels: function(pLinePoints) {
+            MoveChannelPixels: function (pLinePoints) {
                 try {
                     if (pLinePoints === null || pLinePoints.length <= 0)
                         return;
@@ -34824,7 +35353,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            moveSingleCPixels: function(linetype, pLinePoints) {
+            moveSingleCPixels: function (linetype, pLinePoints) {
                 try {
                     switch (linetype) {
                         case 231117100:
@@ -34844,7 +35373,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
             },
-            RotateGeometryDouble: function(pLinePoints, vblCounter, lAngle) {
+            RotateGeometryDouble: function (pLinePoints, vblCounter, lAngle, converter, ptCenter) {
                 try {
                     var j = 0;
                     var dRotate = 0;
@@ -34852,25 +35381,53 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var dGamma = 0;
                     var x = 0;
                     var y = 0;
+                    //add converter stuff
+                    var temp2d=null,d=0,theta=0;
+                    var a12 = new armyc2.c2sd.JavaLineArray.ref();
+                    var a21 = new armyc2.c2sd.JavaLineArray.ref();
+                    //end section
                     if (lAngle !== 0) {
                         var pdCenter;
                         dRotate = lAngle * 3.141592653589793 / 180;
                         pdCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter);
-                        for (j = 0; j < vblCounter; j++) {
-                            if (pLinePoints[j].x === pdCenter.x) {
-                                if ((pLinePoints[j].y > pdCenter.y))
-                                    dGamma = 4.71238898038469;
-                                else
-                                    dGamma = 1.5707963267948966;
-                            } else
-                                dGamma = 3.141592653589793 + Math.atan((pLinePoints[j].y - pdCenter.y) / (pLinePoints[j].x - pdCenter.x));
-                            if (pLinePoints[j].x >= pdCenter.x)
-                                dGamma = dGamma + 3.141592653589793;
-                            dTheta = dRotate + dGamma;
-                            y = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.sin(dTheta);
-                            x = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.cos(dTheta);
-                            pLinePoints[j].y = pdCenter.y + y;
-                            pLinePoints[j].x = pdCenter.x + x;
+                        if(converter)
+                        {
+                            pdCenter=new armyc2.c2sd.graphics2d.Point2D(pdCenter.x,pdCenter.y);
+                            pdCenter=converter.PixelsToGeo(pdCenter);                            
+                            if(ptCenter)
+                                pdCenter=ptCenter;
+                        }
+                        for (j = 0; j < vblCounter; j++) 
+                        {
+                            if(converter)
+                            {                                
+                                temp2d=new armyc2.c2sd.graphics2d.Point2D(pLinePoints[j].x,pLinePoints[j].y);
+                                temp2d=converter.PixelsToGeo(temp2d);                            
+                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pdCenter,temp2d,a12,a21);
+                                theta=a12.value[0]+lAngle;
+                                temp2d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pdCenter,d,theta);
+                                temp2d=new armyc2.c2sd.graphics2d.Point2D(temp2d.x,temp2d.y);
+                                temp2d=converter.GeoToPixels(temp2d);                            
+                                pLinePoints[j].x=temp2d.x;
+                                pLinePoints[j].y=temp2d.y;
+                            }
+                            else
+                            {
+                                if (pLinePoints[j].x === pdCenter.x) {
+                                    if ((pLinePoints[j].y > pdCenter.y))
+                                        dGamma = 4.71238898038469;
+                                    else
+                                        dGamma = 1.5707963267948966;
+                                } else
+                                    dGamma = 3.141592653589793 + Math.atan((pLinePoints[j].y - pdCenter.y) / (pLinePoints[j].x - pdCenter.x));
+                                if (pLinePoints[j].x >= pdCenter.x)
+                                    dGamma = dGamma + 3.141592653589793;
+                                dTheta = dRotate + dGamma;
+                                y = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.sin(dTheta);
+                                x = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.cos(dTheta);
+                                pLinePoints[j].y = pdCenter.y + y;
+                                pLinePoints[j].x = pdCenter.x + x;                            
+                            }
                         }
                         return;
                     }
@@ -34883,7 +35440,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            adjustCATKBYFIREControlPoint: function(linetype, pLinePoints, dist) {
+            adjustCATKBYFIREControlPoint: function (linetype, pLinePoints, dist) {
                 try {
                     if (linetype !== 21710000)
                         return;
@@ -34907,7 +35464,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            PointRelativeToLine: function() {
+            PointRelativeToLine: function () {
                 var ptResult = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                 try {
                     var pt0 = arguments[0];
@@ -34971,7 +35528,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return ptResult;
             },
-            LineRelativeToLine: function(pt0, pt1, ptRelative, pt2, pt3) {
+            LineRelativeToLine: function (pt0, pt1, ptRelative, pt2, pt3) {
                 try {
                     var bolVertical = 0;
                     var m = new armyc2.c2sd.JavaLineArray.ref();
@@ -35012,7 +35569,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcMBR: function(pLinePoints, numpts, ulx, uly, lrx, lry) {
+            CalcMBR: function (pLinePoints, numpts, ulx, uly, lrx, lry) {
                 try {
                     var j = 0;
                     ulx.value = Clazz.newArray(1, 0);
@@ -35042,7 +35599,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            CalcMBRPoints: function(pLinePoints, numpts, ul, lr) {
+            CalcMBRPoints: function (pLinePoints, numpts, ul, lr) {
                 try {
                     var j = 0;
                     ul.x = 1.7976931348623157E308;
@@ -35068,7 +35625,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            MBRDistance: function(pLinePoints, numpts) {
+            MBRDistance: function (pLinePoints, numpts) {
                 var result = 0;
                 try {
                     var ulx = new armyc2.c2sd.JavaLineArray.ref();
@@ -35095,7 +35652,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return result;
             },
-            Reverse2Points: function(pt1, pt2) {
+            Reverse2Points: function (pt1, pt2) {
                 try {
                     var tempPt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2();
                     tempPt.x = pt1.x;
@@ -35113,7 +35670,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            createStrokedShape: function(shape) {
+            createStrokedShape: function (shape) {
                 var newshape = new armyc2.c2sd.graphics2d.GeneralPath();
                 try {
                     var coords = Clazz.newArray(6, 0);
@@ -35146,46 +35703,17 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return newshape;
             },
-            setPOINT2: function() {
-                var pt2 = new armyc2.c2sd.JavaLineArray.POINT2();
-                pt2.x = 0;
-                pt2.y = 0;
-                pt2.segment = 0;
-                pt2.style = 0;
-//                var j=0;
-//                for(j=0;j<arguments.length;j++)
-//                {
-//                    if(typeof(arguments[j])==='undefined')                    
-//                        return pt2;                                        
-//                }
-                if (arguments.length === 1)
-                {
-                    pt2.x = arguments[0].x;
-                    pt2.y = arguments[0].y;
-                    pt2.segment = arguments[0].segment;
-                    pt2.style = arguments[0].style;
-                }
-                else if (arguments.length === 2)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                }
-                else if (arguments.length === 3)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                    pt2.style = arguments[2];
-                }
-                else if (arguments.length === 4)
-                {
-                    pt2.x = arguments[0];
-                    pt2.y = arguments[1];
-                    pt2.segment = arguments[2];
-                    pt2.style = arguments[3];
-                }
-                return pt2;
+            /*
+            *overloads:
+            *(POINT2)
+            *(x,y)
+            *(x,y,style)
+            *(x,y,segment,style)
+            */
+            setPOINT2: function (x, y, param1, param2) {
+                return new armyc2.c2sd.JavaLineArray.POINT2(x, y, param1, param2);
             },
-            getExteriorPoints: function(pLinePoints, vblCounter, lineType, interior) {
+            getExteriorPoints: function (pLinePoints, vblCounter, lineType, interior) {
                 var j;
                 var index;
                 var pt0;
@@ -35292,16 +35820,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 }
                 return;
             },
-            getDeepCopy:function(pts)
+            getDeepCopy: function (pts)
             {
-                if(pts === null || pts.isEmpty())
+                if (pts === null || pts.isEmpty())
                     return pts;
-                var deepCopy=new java.util.ArrayList();
-                var j=0;
-                var pt=null;
-                for(j=0;j<pts.size();j++)
+                var deepCopy = new java.util.ArrayList();
+                var j = 0;
+                var pt = null;
+                for (j = 0; j < pts.size(); j++)
                 {
-                    pt=new armyc2.c2sd.JavaLineArray.POINT2(pts.get(j));
+                    pt = new armyc2.c2sd.JavaLineArray.POINT2(pts.get(j));
                     deepCopy.add(pt);
                 }
                 return deepCopy;
@@ -38690,6 +39218,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG() + dash + tg.get_DTG1(), 3, 1 * csFactor, ptCenter, ptCenter, new Boolean(true), "W+W1");
                 break;
             case 24321100:
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + " " + tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
+                //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 1 * csFactor, ptCenter, ptCenter, new Boolean(false));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ul, ur, lr, ll);
+                var ptLeftFSA = ul;
+                var ptRightFSA = ur;
+                if (tg.get_Client().equalsIgnoreCase("ge")) {
+                    ptLeftFSA.x -= Math.floor(font.getSize() / 2);
+                    ptRightFSA.x -= Math.floor(font.getSize() / 2);
+                }
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), 1, 0.5 * csFactor, ptLeftFSA, ptRightFSA, new Boolean(false), "W");
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 1, 1.5 * csFactor, ptLeftFSA, ptRightFSA, new Boolean(false), "W1");
+                break;
             case 24331100:
             case 24332100:
             case 24336100:
@@ -38824,8 +39364,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG Start: " + tg.get_DTG(), 2, -3 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "DTG End: " + tg.get_DTG1(), 2, -2 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
                 } else {
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, -0.5 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
-                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_T1(), 2, 0.5 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, -0.5 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
+                    //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_T1(), 2, 0.5 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_Name(), 2, -1.0 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, tg.get_T1(), 2, 1.0 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
                 }
                 break;
             case 22222001:
@@ -39804,7 +40346,12 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                     {
                         if (tg.Pixels.size() > j * 102 + 25) {
                             pt0 = tg.Pixels.get(j * 102 + 25);
-                            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
+                            //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
+                            if(j===0)
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + am[j], 3, -1, pt0, pt0);
+                            else                            
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MAX RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);                                
+                            
                         }                            
                     }
                 }// end if set range fan text
@@ -42893,8 +43440,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(0, 191, 255));
                     break;
                 case 32233500:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
                     break;
                 case 32233400:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.GRAY);
@@ -42902,15 +43451,18 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     break;
                 case 32233100:
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.BLACK);
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(205, 153, 63));
                     tg.set_LineStyle(1);
                     break;
                 case 32225200:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
                     break;
                 case 32225100:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(154, 205, 50));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(173, 255, 47));
                     break;
                 case 32530000:
                 case 32550000:
@@ -42992,8 +43544,10 @@ armyc2.c2sd.JavaTacticalRenderer.clsMETOC = {
                     tg.set_LineColor(armyc2.c2sd.renderer.utilities.Color.MAGENTA);
                     break;
                 case 32222000:
-                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
-                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    //tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(165, 42, 42));
+                    tg.set_LineColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
+                    tg.set_FillColor(new armyc2.c2sd.renderer.utilities.Color(210, 180, 140));
                     break;
                 case 32234300:
                 case 32234301:
@@ -45210,6 +45764,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             case 15000002:
             case 15000003:
             case 15000004:
+            case 14000001:
+            case 14000002:
                 return true;
             default:
                 return false;
@@ -45587,14 +46143,21 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         }
                         switch (lineType) {
                             case 13000000:
-                            case 13000001:
-                            case 13000002:
+                            //case 13000001:
+                            //case 13000002:
                             case 14000000:
                                 //case 15000003:
                                 shape.set_Fillstyle(tg.get_FillStyle());
                                 shape.setFillColor(tg.get_FillColor());
                                 break;
                             case 15000003:
+                            case 15000002:
+                            case 15000001:
+                            case 15000000:
+                            case 14000001:
+                            case 14000002:
+                            case 13000001:
+                            case 13000002:
                                 shape.setFillColor(null);
                                 break;
                             default:
@@ -46027,6 +46590,9 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
                         minPoints.value[0] = 1;
                     }
                     return false;
+                case 13000000:  //bs_ellipse
+                case 13000001:  //pbs ellipse
+                case 13000002:  //pbs 
                 case 15000002:
                 case 24311000:
                 case 14000001:
@@ -46989,6 +47555,8 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DIPTH---L---", (31860000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WA-DIPFF---L---", (31870000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DHHDB---L---", (32259000));
+            
+            armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DIDID---L---", (32134000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILOV---L---", (32151000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILUC---L---", (32152000));
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.metocs.put("WO-DILOR---L---", (32153000));
@@ -48778,6 +49346,7 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     this._AltitudeMode = "";
     this._UseDashArray = false;
     this._UseFillPattern = false;
+    this._PatternFillType = 0;//
     this._HideOptionalLabels = false;
     this._wasClipped = false;
     // </editor-fold>
@@ -49174,6 +49743,15 @@ armyc2.c2sd.renderer.utilities.MilStdSymbol = function (symbolID, uniqueID, coor
     {
         return this._UseFillPattern;
     };
+
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setPatternFillType = function(value)
+    {
+        this._PatternFillType = value;
+    };
+    armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.getPatternFillType = function()
+    {
+        return this._PatternFillType;
+    };
     
     armyc2.c2sd.renderer.utilities.MilStdSymbol.prototype.setHideOptionalLabels = function(value)
     {
@@ -49469,8 +50047,10 @@ armyc2.c2sd.renderer.utilities.MilStdAttributes.LookAtTag = "LOOKAT";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.AltitudeMode = "ALTMODE";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.UseDashArray = "USEDASHARRAY";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.UsePatternFill = "USEPATTERNFILL";
+armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType = "PATTERNFILLTYPE";
 armyc2.c2sd.renderer.utilities.MilStdAttributes.HideOptionalLabels = "HIDEOPTIONALLABELS";//azimuth and range labels for range fans.
 armyc2.c2sd.renderer.utilities.MilStdAttributes.SVGFormat = "SVGFORMAT";//0 plain SVG, 1 base64 (default), 2 % notation
+armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat = "GJFORMAT";//0 JSON formatted String (default), 1 Object
 
 var armyc2 = armyc2 || {};
 /** namespace */
@@ -49594,6 +50174,12 @@ armyc2.c2sd.renderer.utilities.FillPatterns = (function () {
     
 return{    
 
+    PatternSolid : 0,//does nothing.
+    PatternCrossHatch : 8,//X
+    PatternForwardHatch : 2,// /
+    PatternBackwardHatch : 3,// \
+    PatternVerticalHatch : 4,// |
+    PatternHorizontalHatch : 5,// _
     //Hatching patterns
     //forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
 
@@ -49797,6 +50383,29 @@ return{
         //set ctx.fillStyle=pattern
         //then ctx.fill();
         
+    },
+    isMETOCWithFillPattern: function(symbolID)
+    {
+        var returnVal = false;
+        if(symbolID.charAt(0) === "W")
+        {
+            switch(symbolID)
+            {
+                case "WO-DBSM-----A--"://beach slope moderate
+                case "WO-DBST-----A--"://beach slope steep
+                case "WO-DHCB-----A--"://beige stipple
+                case "WO-DHHDF----A--"://Foul Ground
+                case "WO-DHHDK----A--"://Kelp
+                case "WO-DMOA-----A--"://OIL/GAS RIG FIELD
+                case "WO-DL-SA----A--"://swept area
+                case "WOS-HPFF----A--"://Weirs
+                    returnVal = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return returnVal;
     }
     
 };
@@ -50478,7 +51087,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.7";
+    var _Version = "0.3.21";
 //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
@@ -50505,6 +51114,10 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _SymbolOutlineWidth = 3,
     
     _UseCesium2DScaleModifiers = false,
+
+    //modifier the scale returned from getReasonableScale()
+    _3DMinScaleMultiplier = 1.0;
+    _3DMaxScaleMultiplier = 1.0;
     
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
@@ -50525,6 +51138,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
+    _DrawCountryCode = true,
     _SPFontSize = 60,
     _UnitFontSize = 50,
     _PixelSize = 35;
@@ -50569,9 +51183,14 @@ return{
      */
     TextBackgroundMethod_OUTLINE_QUICK : 3,
 
-
     /**
-     * 2525Bch2 and USAS 13/14 symbology
+     * 2525Bch2 and USAS 11-12 symbology
+     * @deprecated use Symbology_2525B
+     */
+    Symbology_2525B : 0,
+    /**
+     * 2525Bch2 and USAS 13-14 symbology
+     * @deprecated use Symbology_2525B
      */
     Symbology_2525Bch2_USAS_13_14 : 0,
     /**
@@ -50608,7 +51227,7 @@ return{
     /**
      * Controls what symbols are supported.
      * Set this before loading the renderer.
-     * @param {Number} standard like RendererSettings.Symbology_2525Bch2_USAS_13_14
+     * @param {Number} standard like RendererSettings.Symbology_2525B
      * @returns {undefined}
      */
     setSymbologyStandard: function (standard){
@@ -50669,6 +51288,40 @@ return{
      */
     getUseCesium2DScaleModifiers: function (){
         return _UseCesium2DScaleModifiers;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMinScaleMultiplier: function (value){
+        _3DMinScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMinScaleMultiplier: function (){
+        return _3DMinScaleMultiplier;
+    },
+    /**
+     * for SVG and Canvas output, if your images look stretched or scaled down,
+     * try altering there values.  Smaller values will result in a bigger image.
+     * Larger values will result in a smaller image.  For example, if you're 
+     * getting images half the size of the space that they take on the map and are 
+     * getting stretched to fill it, try 0.5 as a starting point. 
+     * @param {Number} value (default 1.0)
+     */
+    set3DMaxScaleMultiplier: function (value){
+        _3DMaxScaleMultiplier = value;
+    },
+    /**
+     * @returns {Number}
+     */
+    get3DMaxScaleMultiplier: function (){
+        return _3DMaxScaleMultiplier;
     },
     /**
      * if true (default), when HQ Staff is present, location will be indicated by the free
@@ -50830,6 +51483,20 @@ return{
      */
     getDrawAffiliationModifierAsLabel: function (){
             return _DrawAffiliationModifierAsLabel;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @param {Boolean} value
+     */
+    setDrawCountryCode: function (value){
+            _DrawCountryCode = value;
+    },
+    /**
+     * If present, append the Country Code to the 'M' Label
+     * @returns {Boolean}
+     */
+    getDrawCountryCode: function (){
+            return _DrawCountryCode;
     },
     /**
      * 
@@ -51165,7 +51832,7 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
                 }
                 else if(fullFontMeasurements[font])
                 {
-                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]);
+                    textWidth = measureStringSansDOM(text, fullFontMeasurements[font]).getWidth();
                 }
                 else//use an approximation
                 {
@@ -52777,7 +53444,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     else
 
                     {
-                            retColor = null;
+                            retColor = AffiliationColors.UnknownGraphicFillColor;
                     }
                 }
         }	// End if(this.IsTacticalGraphic(this._strSymbolID))
@@ -52996,7 +53663,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
-                    symbolID === ("WO-DBSG-----A--")) // 
+                    symbolID === ("WO-DBSG-----A--") ||
+                    symbolID === "WO-DBST-----A--") // 
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
@@ -53054,22 +53722,22 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(
         symbolID===("WO-DHCI-----A--") || //Island
         symbolID===("WO-DHCB-----A--") || //Beach
-        symbolID===("WO-DHPMO---L---")||//offshore loading"
+        symbolID===("WO-DHPMO----A--")||//offshore loading"
         symbolID===("WO-DHCI-----A--")) // mixed icing
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#D2B06A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(210,176,106);//light/soft brown
         }
-        else if(symbolID.substring(0,7) === ("WO-DOBVA----A--")
+        else if(symbolID === ("WO-DOBVA----A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(26,153,77);//dark green
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTI---A--")
+        else if(symbolID === ("WO-DGMBTI---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,48,0);//orange red
         }
-        else if(symbolID.substring(0,7) === ("WO-DGMBTH---A--")
+        else if(symbolID === ("WO-DGMBTH---A--")
         )
         {
             retColor = new armyc2.c2sd.renderer.utilities.Color(255,80,0);//dark orange
@@ -53233,12 +53901,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return new armyc2.c2sd.renderer.utilities.Color(210,176,106);
         else if(symbolID === ("WO-DHCW-----A--"))//water
             return new armyc2.c2sd.renderer.utilities.Color(255,255,255);
-        else if (symbolID === ("WO-DHABP----A--") ||
-            symbolID === ("WO-DHHD-----A--") ||
-            symbolID === ("WO-DHHDD----A--") ||
-            symbolID === ("WO-DMCC-----A--")) 
+        else if (symbolID === ("WO-DHABP----A--") ||//blue
+            symbolID === ("WO-DMCC-----A--")) //SUBMERGED CRIB (blue)
         {
             return new armyc2.c2sd.renderer.utilities.Color(0,0,255);
+        }
+        else if ((symbolID === "WO-DHHD-----A--") ||//cyan
+            symbolID === "WO-DHHDD----A--")  //discolored water (cyan)
+        {
+            return new armyc2.c2sd.renderer.utilities.Color(0,255,255);   
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
             return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
@@ -53299,7 +53970,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         return null;
     };
+
     
+
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isBasicShape = function (strSymbolID){
+        //var scheme = symbolID.charAt(0);
+        var scheme = strSymbolID.charAt(0);
+        if(scheme === 'B' || scheme === 'P')
+            return true;
+        else
+            return false
+    }
+
     /**
      * Determines if the symbol is a tactical graphic
      * @param {String} strSymbolID
@@ -53358,8 +54040,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNumber = function (text){
-        var re = new RegExp("((-|\\+)?[0-9]+(\\.[0-9]+)?)+");
-        return(re.test(text));
+        var n = parseFloat(text);
+        if(Number.isNaN)
+        {
+            return !Number.isNaN(n) && Number.isFinite(n);
+        }
+        else
+        {
+            return !isNaN(n) && isFinite(n);
+        }
     };
     /**
      * Symbols that don't exist outside of MCS
@@ -53556,9 +54245,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isHQ = function (strSymbolID){
         
         var hq = strSymbolID.charAt(10);
-        var blRetVal = (hq===('A')
+        var blRetVal = false;
+        if(hq !== '-' && hq !== '*')
+        {
+            blRetVal = (hq===('A')
                         || hq===('B')
                             || hq===('C') || hq===('D'));
+        }
+        else
+        {
+            blRetVal = (strSymbolID.charAt(0) === 'S' && strSymbolID.substring(4,6) === "UH");
+        }
+        
         return blRetVal;
     };
     /**
@@ -53672,7 +54370,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var text = null;
         if(echelon === ("A"))
         {
-            text = "0";
+            text = String.fromCharCode(216);//Ø
         }
         else if(echelon === ("B"))
         {
@@ -53792,7 +54490,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         || (temp === ("G*M*NEB---****X"))//BIOLOGICAL
         || (temp === ("G*M*NEC---****X"))//CHEMICAL
         || (temp === ("G*G*GPRI--****X"))//Point of Interest
-        || (temp === ("G*M*OFS---****X"));//Minefield
+        || (temp === ("G*M*OFS---****X"))//Minefield
+        || (temp === ("WAS-WSF-LVP----"))//Freezing Level
+        || (temp === ("WAS-PLT---P----"))//Tropopause Low
+        || (temp === ("WAS-PHT---P----"))//Tropopause High
+        || (temp === ("WAS-WST-LVP----"));//Tropopause Level
       return blRetVal;
     };
     /**
@@ -54081,16 +54783,96 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSIncident = function (strSymbolID){
           return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='I'); 
      };
+          /**
+      * 
+      * @param {String} strSymbolID
+      * @returns {Boolean}
+      */
+     armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSInstallation = function (strSymbolID){
+         var blRetVal = false;
+        if(strSymbolID.charAt(0)==='E')
+        {
+            if(strSymbolID.charAt(2)=='O' &&
+                    strSymbolID.charAt(4)=='D' && strSymbolID.charAt(6)=='C')
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='F' &&
+                    strSymbolID.substring(4, 6).equals("BA")==false)
+            {
+                blRetVal = true;
+            }
+            else if(strSymbolID.charAt(2)=='O')
+            {
+                if(strSymbolID.charAt(4)=='A')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'D':
+                        case 'G':
+                        case 'J':
+                        case 'K':
+                        case 'L':
+                        case 'M':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='B')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'C':
+                        case 'E':
+                        case 'F':
+                        case 'G':
+                        case 'H':
+                        case 'I':
+                        case 'K':
+                        case 'L':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(strSymbolID.charAt(4)=='C')
+                {
+                    switch(strSymbolID.charAt(5))
+                    {
+                        case 'D':
+                        case 'E':
+                            blRetVal = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        } 
+        
+        return blRetVal;
+     };
      /**
       * 
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
-     armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
-    
-          var blRetVal = ((strSymbolID.charAt(0)===('S')) && (strSymbolID.charAt(2)===('G')) && (strSymbolID.charAt(4)===('I')));
-          return blRetVal;
-     };
+    armyc2.c2sd.renderer.utilities.SymbolUtilities.isInstallation = function (strSymbolID){
+        var blRetVal = false;
+        if(strSymbolID.charAt(0)==='S')
+        {
+            blRetVal = (strSymbolID.charAt(2)==='G') && (strSymbolID.charAt(4)==='I');
+        }
+        else if(strSymbolID.charAt(0)===('E'))
+        {
+            blRetVal = this.isEMSInstallation(strSymbolID);
+        }
+        return blRetVal;
+    };
      /**
       * 
       * @param {String} strSymbolID
@@ -54173,7 +54955,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(affiliation===('A') ||
                 affiliation===('S'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "?";
             else
                 textChar=null;
@@ -54189,7 +54971,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             textChar = "X";
         else if(affiliation===('M'))
         {
-            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525B)
                 textChar = "X?";
             else
                 textChar = "X";
@@ -54861,7 +55643,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -54888,7 +55670,7 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                 symStd = RendererSettings.getSymbologyStandard();
             var symbolMap = null;
             
-            if(symStd === RendererSettings.Symbology_2525Bch2_USAS_13_14)
+            if(symStd === RendererSettings.Symbology_2525B)
                 symbolMap = symbolMapB;
             else
                 symbolMap = symbolMapC;
@@ -55838,11 +56620,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipQuad = {
             } else if (index === 1) {
                 clipBoundsPoint = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.setPoint2D(clipBounds.get(0).getX(), clipBounds.get(0).getY());
             }
-            //if (Math.abs(pt2.getX() - pt1.getX())<1)
-            if (pt2.getX() === pt1.getX())
+            //if (pt2.getX() === pt1.getX())
+            if (Math.abs(pt2.getX() - pt1.getX())<1)
                 pt2.setLocation(pt2.getX() + 1, pt2.getY());
-            //if (Math.abs(pt2.getY() - pt1.getY())<1)
-            if (pt2.getY() === pt1.getY())
+            //if (pt2.getY() === pt1.getY())
+            if (Math.abs(pt2.getY() - pt1.getY())<1)
                 pt2.setLocation(pt2.getX(), pt2.getY() + 1);
             for (j = 0; j < pts.size(); j++) {
                 current = pts.get(j);
@@ -56491,8 +57273,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (lineType === 24311000 || lineType === 14000001 || lineType === 14000002) {
                 AM = milStd.getModifiers_AM_AN_X("AM");
                 AN = milStd.getModifiers_AM_AN_X("AN");
-                if(AM.length<2) //for square
-                    AM[1]=AM[0];
+                if (AM.length < 2) //for square
+                    AM[1] = AM[0];
                 if (AM !== null && AM.size() > 1 && AN !== null && AN.size() > 0) {
                     strT1 = Double.toString((AM.get(0)).doubleValue());
                     var strH = Double.toString((AM.get(1)).doubleValue());
@@ -56526,14 +57308,14 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_SymbolId(symbolId);
             var useLineInterpolation = milStd.getUseLineInterpolation();
             tg.set_UseLineInterpolation(useLineInterpolation);
-            
+
             //rev D diagnostic
             //var lineType = armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
             //int lineType=JavaTacticalRenderer.clsUtility.GetLinetypeFromString(symbolId);
             var lineType = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getRevDLinetype(tg);
             //end section
-            
-            
+
+
             //overhead wire may be large scale
             if (lineType === 23200000 && converter._scale >= 250000)
                 lineType = 23200001;
@@ -56542,20 +57324,25 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             if (status !== null && status.equals("A")) {
                 if (armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape(lineType) === false)
                     tg.set_LineStyle(1);
+                if (lineType === 23131200)	//atditchc
+                    tg.set_LineStyle(2);   //dotted outline             
             }
             tg.set_VisibleModifiers(true);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setClientCoords(milStd, tg);
             tg.Pixels = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.LatLongToPixels(tg.LatLongs, converter);
             //tg.set_Font(new armyc2.c2sd.graphics2d.Font("Arial", armyc2.c2sd.graphics2d.Font.PLAIN, 12));
-            var instance=armyc2.c2sd.renderer.utilities.RendererSettings.getInstance();
-            var fontName=instance.getModifierFontName();
-            var fontSize=instance.getModifierFontSize();
-            var fontStyle=instance.getModifierFontStyle();
-            tg.set_Font(new armyc2.c2sd.graphics2d.Font(fontName,fontStyle,fontSize));
+            var instance = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance();
+            var fontName = instance.getModifierFontName();
+            var fontSize = instance.getModifierFontSize();
+            var fontStyle = instance.getModifierFontStyle();
+            tg.set_Font(new armyc2.c2sd.graphics2d.Font(fontName, fontStyle, fontSize));
             tg.set_FillColor(milStd.getFillColor());
             tg.set_LineColor(milStd.getLineColor());
             tg.set_LineThickness(milStd.getLineWidth());
             tg.set_TexturePaint(milStd.getFillStyle());
+            if(armyc2.c2sd.JavaTacticalRenderer.clsUtility.isBasicShape(lineType))
+                tg.set_Fillstyle(milStd.getPatternFillType());
+                            
             tg.set_FontBackColor(armyc2.c2sd.renderer.utilities.Color.WHITE);
             tg.set_TextColor(tg.get_LineColor());
             if (milStd.getModifier("W") !== null) {
@@ -56582,6 +57369,21 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             tg.set_UseHatchFill(milStd.getUseFillPattern());
             tg.set_HideOptionalLabels(milStd.getHideOptionalLabels());
             var isClosedArea = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(lineType);
+            if(lineType===23111000 && tg.Pixels.size()===2)
+            {
+                var pt0=tg.Pixels.get(0);
+                var pt1=tg.Pixels.get(1);
+                var p0=armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0,pt1,pt0,2,5);
+                var p1=armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0,pt1,pt1,2,5);
+                var p2=armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0,pt1,pt1,3,5);
+                var p3=armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0,pt1,pt0,3,5);
+                tg.Pixels.clear();
+                tg.Pixels.add(p0);
+                tg.Pixels.add(p1);
+                tg.Pixels.add(p2);
+                tg.Pixels.add(p3);
+                tg.LatLongs = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PixelsToLatLong(tg.Pixels, converter);            
+            }
             if (isClosedArea) {
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.Pixels);
                 armyc2.c2sd.JavaTacticalRenderer.clsUtility.ClosePolygon(tg.LatLongs);
@@ -56596,32 +57398,75 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             {
                 var AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 var AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
-                if(AN===null)
-                    AN=new Array();
-                if(AN.length<1)
-                    AN[0]=0;
-                if(lineType === 13000002) //for circle
-                    AM[1]=AM[0];
-                if(AM !== null && AM.length>=2 && AN !== null && AN.length>=1)
+                //ensure array length 3
+                var r=0;
+                var b=0;
+                if(AM.length===1)
                 {
-                    var ptAzimuth=new armyc2.c2sd.JavaLineArray.POINT2(0,0);
-                    ptAzimuth.x=AN[0];
-                    var ptCenter=tg.Pixels.get(0);
+                    r=AM[0];
+                    AM.push(r);                
+                    AM.push[0];
+                }
+                else if(AM.length===2)
+                {
+                    r=AM[0];
+                    b=AM[1];
+                    AM[1]=r;
+                    AM.push(b);
+                }
+                if (AN === null)
+                    AN = new Array();
+                if (AN.length < 1)
+                    AN[0] = 0;
+                if (lineType === 13000002) //for circle
+                    AM[1] = AM[0];
+                if (AM !== null && AM.length >= 2 && AN !== null && AN.length >= 1)
+                {
+                    tg.set_H1(Double.toString(AM[0]));   //semi-major
+                    tg.set_H2(Double.toString(AM[1]));   //semi-minor
+                    tg.set_T1(Double.toString(AN[0]));   //rotation
+                    var ptAzimuth = new armyc2.c2sd.JavaLineArray.POINT2(0, 0);
+                    ptAzimuth.x = AN[0];
+                    var ptCenter = tg.Pixels.get(0);
                     var pt0 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), AM[0], 90);//semi-major axis
                     var pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), AM[1], 0);//semi-minor axis
                     var pt02d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
                     var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt1.x, pt1.y);
                     pt02d = converter.GeoToPixels(pt02d);
                     pt12d = converter.GeoToPixels(pt12d);
-                    pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt02d.getX(),pt02d.getY());
-                    pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(),pt12d.getY());
-                    tg.Pixels=new java.util.ArrayList();
+                    pt0 = new armyc2.c2sd.JavaLineArray.POINT2(pt02d.getX(), pt02d.getY());
+                    pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(), pt12d.getY());
+                    tg.Pixels = new java.util.ArrayList();
                     tg.Pixels.add(ptCenter);
                     tg.Pixels.add(pt0);
-                    tg.Pixels.add(pt1);   
+                    tg.Pixels.add(pt1);
                     tg.Pixels.add(ptAzimuth);
                 }
-                
+                if(AM !== null && AM.length>2)
+                {
+                    //use AM[2] for the buffer, so PBS_CIRCLE requires AM size 3 like PBS_ELLIPSE to use a buffer
+                    var dist=AM[2];
+                    tg.set_H(Double.toString(AM[2]));   //buffer
+                    var pt0=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(tg.LatLongs.get(0), dist, 45);   //azimuth 45 is arbitrary
+                    var pt02d = new armyc2.c2sd.graphics2d.Point2D(tg.LatLongs.get(0).x,tg.LatLongs.get(0).y);
+                    var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
+                    pt02d = converter.GeoToPixels(pt02d);
+                    pt12d = converter.GeoToPixels(pt12d);
+                    pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt02d.getX(),pt02d.getY());
+                    var pt1=new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(),pt12d.getY());                   
+                    dist=armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                    //arraysupport will use line style to create the buffer shape
+                    tg.Pixels.get(0).style=dist;
+                    //the circles don't appear round in Ceisum so use metric value
+                    var useAM2=false;
+                    //uncomment following line to use meters
+                    useAM2=true;
+                    if(useAM2)
+                        tg.Pixels.get(0).style=AM[2];
+                       
+                }
+                //if(AM !== null && AM.length<=2) //need to set the buffer to 0 if the client did not set it.
+                    //tg.set_H('0');   //buffer
             }
             if (lineType === 243112000)
             {
@@ -56736,35 +57581,35 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         H2 = AM[0].toString();
                         tg.set_H2(H2);
                     }
-                    if(H2 !== null && !H2.isEmpty())
-                    for (j = 0; j < tg.LatLongs.size(); j++) {
-                        if (tg.LatLongs.size() > j) {
-                            if (!Double.isNaN(Double.parseDouble(H2))) {
-                                if (j === 0) {
-                                    dist = Double.parseDouble(H2);
-                                    pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.LatLongs.get(0));
-                                    pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);
-                                    //var pt02d = new java.awt.geom.Point2D.Double(pt0.x, pt0.y);                                                                        
-                                    var pt02d = new armyc2.c2sd.graphics2d.Point2D();
-                                    pt02d.x = pt0.x;
-                                    pt02d.y = pt0.y;
-                                    //var pt12d = new java.awt.geom.Point2D.Double(pt1.x, pt1.y);
-                                    pt12d = new armyc2.c2sd.graphics2d.Point2D();
-                                    pt12d.x = pt1.x;
-                                    pt12d.y = pt1.y;
-                                    pt02d = converter.GeoToPixels(pt02d);
-                                    pt12d = converter.GeoToPixels(pt12d);
-                                    pt0.x = pt02d.getX();
-                                    pt0.y = pt02d.getY();
-                                    pt1.x = pt12d.getX();
-                                    pt1.y = pt12d.getY();
-                                    dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
-                                }
-                                tg.Pixels.get(j).style = Math.round(dist);
-                            } else
-                                tg.Pixels.get(j).style = 0;
+                    if (H2 !== null && !H2.isEmpty())
+                        for (j = 0; j < tg.LatLongs.size(); j++) {
+                            if (tg.LatLongs.size() > j) {
+                                if (!Double.isNaN(Double.parseDouble(H2))) {
+                                    if (j === 0) {
+                                        dist = Double.parseDouble(H2);
+                                        pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.LatLongs.get(0));
+                                        pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);
+                                        //var pt02d = new java.awt.geom.Point2D.Double(pt0.x, pt0.y);                                                                        
+                                        var pt02d = new armyc2.c2sd.graphics2d.Point2D();
+                                        pt02d.x = pt0.x;
+                                        pt02d.y = pt0.y;
+                                        //var pt12d = new java.awt.geom.Point2D.Double(pt1.x, pt1.y);
+                                        pt12d = new armyc2.c2sd.graphics2d.Point2D();
+                                        pt12d.x = pt1.x;
+                                        pt12d.y = pt1.y;
+                                        pt02d = converter.GeoToPixels(pt02d);
+                                        pt12d = converter.GeoToPixels(pt12d);
+                                        pt0.x = pt02d.getX();
+                                        pt0.y = pt02d.getY();
+                                        pt1.x = pt12d.getX();
+                                        pt1.y = pt12d.getY();
+                                        dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                                    }
+                                    tg.Pixels.get(j).style = Math.round(dist);
+                                } else
+                                    tg.Pixels.get(j).style = 0;
+                            }
                         }
-                    }
                     break;
                 default:
                     break;
@@ -56860,10 +57705,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                                         if (!Double.isNaN(Double.parseDouble(strRadii[j]))) {
                                             pixels = Double.parseDouble(strRadii[j]) * pixelsPerMeter / 2;
                                             tg.Pixels.get(j).style = Math.floor(pixels);
+                                            tg.LatLongs.get(j).style = Math.floor(pixels);
                                         } else
+                                        {
                                             tg.Pixels.get(j).style = Math.floor(maxWidth);
+                                            tg.LatLongs.get(j).style = Math.floor(maxWidth);
+                                        }
                                     } else
+                                    {
                                         tg.Pixels.get(j).style = Math.floor(maxWidth);
+                                        tg.LatLongs.get(j).style = Math.floor(maxWidth);
+                                    }
                                 }
                             }
                         }
@@ -56920,7 +57772,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 case 24362000:
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     strH1 = "";
-                    if (X !== null && X.length>0)
+                    if (X !== null && X.length > 0)
                     {
                         //strH1 = X[0];
                         //tg.set_H1(strH1);
@@ -56972,13 +57824,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.set_H2(strH2);
                 tg.set_H1(strH1);
             }
-            switch(lineType)
+            switch (lineType)
             {
                 case 15000000:
                 case 15000001:
                 case 15000002:
                 case 15000003:
-                    if(tg.get_FillColor()===null)
+                    if (tg.get_FillColor() === null)
                         tg.set_FillColor(armyc2.c2sd.renderer.utilities.Color.LIGHT_GRAY);
                     break;
                 default:
@@ -57037,15 +57889,29 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 default:
                     break;
             }
-            if (lineType === 24311000 || lineType===14000001 || lineType === 14000002) {
+            if (lineType === 24311000 || lineType === 14000001 || lineType === 14000002) {
                 AM = milStd.getModifiers_AM_AN_X(modifiersTG.AM_DISTANCE);
                 AN = milStd.getModifiers_AM_AN_X(modifiersTG.AN_AZIMUTH);
-                if(lineType === 14000002) //for square
-                    AM[1]=AM[0];
-                if(AN===null || AN===undefined)                
-                    AN=new Array();
-                if(AN.length<1)
-                    AN[0]=0;
+                if (lineType === 14000002) //for square
+                {
+                    var r=AM[0];
+                    var b=0;
+                    if(AM.length===1)
+                    {
+                        AM.push(r);
+                        AM.push(b);
+                    }
+                    else if(AM.length===2)
+                    {
+                        b=AM[1];
+                        AM[1]=r;
+                        AM.push(b);
+                    }
+                }
+                if (AN === null || AN === undefined)
+                    AN = new Array();
+                if (AN.length < 1)
+                    AN[0] = 0;
                 if (AM !== null && AM.length > 1 && AN !== null && AN.length > 0)
                 {
                     strT1 = AM[0];
@@ -57054,6 +57920,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     tg.set_H(strH);
                     strH2 = AN[0];
                     tg.set_H2(strH2);
+                }
+                if(AM !== null && AM.length > 2)
+                {
+                    var strH1 = AM[2];     //buffer size
+                    tg.set_H1(strH1);
+                }
+                if(AM !== null && AM.length <= 2)
+                {
+                    tg.set_H1('0');                    
                 }
             }
         } catch (exc) {
@@ -57175,7 +58050,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 }
             }
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.SetShapeProperties(tg, shapes, bi);
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg,shapes);
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg, shapes);
             if (hatchShape !== null)
                 shapes.add(hatchShape);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo(shapeInfos, shapes);
@@ -57203,7 +58078,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             si = new armyc2.c2sd.renderer.utilities.ShapeInfo(s);
             si.setAffineTransform(shape.getAffineTransform());
             si.setFillColor(shape.getFillColor());
-            if(shape.getTexturePaint() !== null)
+            if (shape.getTexturePaint() !== null)
                 si.setTexturePaint(shape.getTexturePaint());
             if (shape.getGlyphPosition() !== null)
                 si.setGlyphPosition(shape.getGlyphPosition());
@@ -57252,12 +58127,146 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return;
     },
+    /**
+     * Required to prevent clipped symbols from appearing on the opposite side of the globe from where they were rendered
+     * @param {type} tg
+     * @param {type} converter required because the clipArea is in pixels
+     * @param {type} clipArea pixels based bounding box
+     * @returns true if the bounding box intersects the minimum bounding rectangle for the coorindates
+     */
+    intersectsClipArea: function (tg, converter, clipArea)
+    {
+        //assumes clipArea is a rectangle since that's what clients are currently using and it spans <= 180 degrees
+        //assumes coords span <= 180 regardless whether they span the IDL
+        var result = false;
+        try {
+            if (!clipArea || tg.LatLongs.size() < 2)
+                return true;
+            
+            var clipBounds=clipArea;            
+            if(clipArea instanceof java.util.ArrayList)            
+                clipBounds=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.getMBR(clipArea);
+            
+            var j = 0;
+//            var x = clipArea.getMinX();
+//            var y = clipArea.getMinY();
+//            var width = clipArea.getWidth();
+//            var height = clipArea.getHeight();
+            var x = clipBounds.getMinX();
+            var y = clipBounds.getMinY();
+            var width = clipBounds.getWidth();
+            var height = clipBounds.getHeight();
+            
+            var tl = new armyc2.c2sd.JavaLineArray.POINT2(x, y);
+            var br = new armyc2.c2sd.JavaLineArray.POINT2(x + width, y + height);
+            tl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointPixelsToLatLong(tl, converter);
+            br = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointPixelsToLatLong(br, converter);
+
+            //the latitude range
+            //var ptInside = false, ptAbove = false, ptBelow = false;
+            //var canClipPoints = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.canClipPoints(tg);
+            var coordsLeft = tg.LatLongs.get(0).x;
+            var coordsRight = coordsLeft;
+            var coordsTop=tg.LatLongs.get(0).y;
+            var coordsBottom=coordsTop;
+            var intersects=false;
+            var minx=tg.LatLongs.get(0).x,maxx=minx,maxNegX=0;
+            for (j = 0; j < tg.LatLongs.size(); j++)
+            {                
+                var pt=tg.LatLongs.get(j);
+                if (pt.x < minx)
+                    minx = pt.x;
+                if (pt.x > maxx)
+                    maxx = pt.x;
+                if(maxNegX===0 && pt.x<0)
+                    maxNegX=pt.x;
+                if(maxNegX<0 && pt.x<0 && pt.x>maxNegX)
+                    maxNegX=pt.x;
+                if (pt.y < coordsBottom)
+                    coordsBottom = pt.y;
+                if (pt.y > coordsTop)
+                    coordsTop = pt.y;                
+            }
+            var coordSpanIDL = false;
+            if(maxx===180 || minx===-180)
+                coordSpanIDL=true;
+            if(maxx-minx>=180)
+            {
+                coordSpanIDL=true;
+                coordsLeft=maxx;
+                coordsRight=maxNegX;
+            }else
+            {
+                coordsLeft=minx;
+                coordsRight=maxx;
+            }
+            //if(canClipPoints)
+            //{                
+                if(br.y<=coordsBottom && coordsBottom <= tl.y)
+                    intersects=true;
+                else if(coordsBottom<=br.y && br.y <=coordsTop)
+                    intersects=true;
+                else
+                    return false;
+            //}
+            //if it gets this far then the latitude ranges intersect
+            //re-initialize intersects for the longitude ranges
+            intersects=false;
+            //the longitude range
+            //the min and max coords longitude
+            var boxSpanIDL = false;
+            //boolean coordSpanIDL = false;
+            if(tl.x===180 || tl.x===-180 || br.x===180 || br.x===-180)
+                boxSpanIDL=true;
+            else if (Math.abs(br.x - tl.x) > 180)
+                boxSpanIDL = true;
+            
+            //boolean intersects=false;
+            if(coordSpanIDL && boxSpanIDL)
+                intersects=true;
+            else if(!coordSpanIDL && !boxSpanIDL)   //was && canClipPoints
+            {
+                if(coordsLeft<=tl.x && tl.x<=coordsRight)
+                    intersects=true;
+                if(coordsLeft<=br.x && br.x<=coordsRight)
+                    intersects=true;
+                if(tl.x<=coordsLeft && coordsLeft<=br.x)
+                    intersects=true;
+                if(tl.x<=coordsRight && coordsRight<=br.x)
+                    intersects=true;
+            }
+            else if(!coordSpanIDL && boxSpanIDL)    //box spans IDL and coords do not
+            {   
+                if(tl.x<coordsRight && coordsRight<180)
+                    intersects=true;
+                if(-180<coordsLeft && coordsLeft<br.x)
+                    intersects=true;
+            }
+            else if(coordSpanIDL && !boxSpanIDL)    //coords span IDL and box does not
+            {   
+                if(coordsLeft<br.x && br.x<180)
+                    intersects=true;
+                if(-180<tl.x && tl.x<coordsRight)
+                    intersects=true;
+            }
+            return intersects;
+        }
+        catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("clsRenderer", "intersectsClipArea", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside intersectsClipArea", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return result;
+    },
     renderWithPolylines: function (mss, converter, clipArea) {
         try {
             var tg = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mss, converter);
             var shapeInfos = new java.util.ArrayList();
             var modifierShapeInfos = new java.util.ArrayList();
-            armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.render_GE(tg, shapeInfos, modifierShapeInfos, converter, clipArea);
+            if (this.intersectsClipArea(tg, converter, clipArea))
+                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.render_GE(tg, shapeInfos, modifierShapeInfos, converter, clipArea);
             mss.setSymbolShapes(shapeInfos);
             mss.setModifierShapes(modifierShapeInfos);
             mss.setWasClipped(tg.get_WasClipped());
@@ -57274,16 +58283,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.setTGProperties(tg);
             var clipBounds = null;
             armyc2.c2sd.JavaLineArray.CELineArray.setClient("ge");
-//            var origPixels = null;
-//            var origLatLongs = null;
-//            if (armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.segmentColorsSet(tg))
-//            {
-//                origPixels = tg.Pixels.clone();
-//                origLatLongs = tg.LatLongs.clone();
-//                clipArea=null;
-//            }
             var origFillPixels = tg.Pixels.clone();
-            
+
             var clipPoints = null;
             if (clipArea !== null) {
                 if (clipArea instanceof armyc2.c2sd.graphics2d.Rectangle)
@@ -57299,7 +58300,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     clipPoints = clipArea;
                 }
             }
-            var zoomFactor=armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.getZoomFactor(clipBounds, clipPoints, tg.Pixels);
+            var zoomFactor = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE.getZoomFactor(clipBounds, clipPoints, tg.Pixels);
             var useClipPoints = false;
             if (useClipPoints === true && clipBounds !== null) {
                 var x = clipBounds.getMinX();
@@ -57430,6 +58431,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     shapes = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postClipShapes(tg, shapes, clipPoints);
                 }
             }
+            //diagnostic: resolve post-clipped shapes
+            this.resolvePostClippedShapes(tg,shapes);
+            //end section
             if (modifierShapeInfos !== null) {
                 var textSpecs = new java.util.ArrayList();
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2(tg, g2d, textSpecs, (isTextFlipped).valueOf(), converter);
@@ -57453,6 +58457,31 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 throw exc;
             }
         }
+        return;
+    },
+    resolvePostClippedShapes:function(tg,shapes)
+    {
+        //resolve the PBS and BBS shape properties after the post clip, regardless whether they were clipped
+        switch(tg.get_LineType())
+        {
+            case 15000003:
+            case 15000002:
+            case 15000001:
+            case 15000000:
+            case 14000001:
+            case 14000002:
+            case 13000001:
+            case 13000002:
+                break;
+            default:
+                return;
+        }
+        var fillColor=tg.get_FillColor();
+        shapes.get(0).setFillColor(fillColor);
+        shapes.get(1).setFillColor(null);
+        var fillStyle=tg.get_FillStyle();
+        shapes.get(0).set_Fillstyle(0);
+        shapes.get(1).set_Fillstyle(fillStyle);
         return;
     },
     setHostileLC: function (tg) {
@@ -57762,7 +58791,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         return -1;
                     }
                     var code = Integer.parseInt(entityCode);
-                    var nCode=code.valueOf();
+                    var nCode = code.valueOf();
                     var TacticalLines = new armyc2.c2sd.JavaLineArray.TacticalLines();
                     switch (nCode) {
                         case 200101:
@@ -58337,7 +59366,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
             var entity = setB.substring(0, 6);
             var code = Integer.parseInt(entity);
-            var nCode=code.valueOf();
+            var nCode = code.valueOf();
             switch (nCode)
             {
                 case 140101:    //friendly present flot
@@ -58415,7 +59444,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var setB = tg.get_SymbolId().substring(10);
             var entityCode = setB.substring(0, 6);
             var code = Integer.parseInt(entityCode);
-            var nCode=code.valueOf();
+            var nCode = code.valueOf();
             switch (nCode) {
                 case 290301:
                 case 290305:
@@ -58450,16 +59479,16 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
         }
     },
-    getRevDLinetype:function(tg) {
+    getRevDLinetype: function (tg) {
         var linetype = -1;
         try {
             var symbolId = tg.get_SymbolId();
             if (symbolId.length > 15) //rev D
             {
-                var setA=symbolId.substring(0,10);
-                var setB=symbolId.substring(10);
-                var code=setB.substring(0,6);
-                var symbolSet=setA.substring(4,6);
+                var setA = symbolId.substring(0, 10);
+                var setB = symbolId.substring(10);
+                var code = setB.substring(0, 6);
+                var symbolSet = setA.substring(4, 6);
                 var nSymbol = Integer.parseInt(symbolSet);
                 if (nSymbol.valueOf() === 25) {
                     linetype = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.getCMLineType(symbolSet, code);
@@ -58473,7 +59502,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             }
 
             tg.set_LineType(linetype);
-        } 
+        }
         catch (exc)
         {
             if (Clazz.instanceOf(exc)) {
@@ -58484,8 +59513,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
         }
         return linetype;
     },
-    
-                
     _className: "clsRenderer",
     feetPerMeter: 3.28084
 };var armyc2 = armyc2 || {};
@@ -58680,7 +59707,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2.getMSRShapes(tg, shapes);
                     }
                     else if (lineType !== 23111001) {
-                        tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, tg.Pixels, shapes, clipBounds2, rev);
+                        tg.Pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, tg.Pixels, shapes, clipBounds2, rev, converter);
                     } else if (lineType === 23111001) {
                         var tempShapes = null;
                         var partitions = armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility.GetPartitions2(tg);
@@ -58693,7 +59720,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer2 = {
                             for (k = partitions.get(l).start; k <= partitions.get(l).end_Renamed + 1; k++) {
                                 pixels.add(tg.Pixels.get(k));
                             }
-                            pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, pixels, tempShapes, clipBounds2, rev);
+                            pixels = armyc2.c2sd.JavaLineArray.arraysupport.GetLineArray2(lineType, pixels, tempShapes, clipBounds2, rev, converter);
                             shapes.addAll(tempShapes);
                         }
                     }
@@ -59580,6 +60607,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             attitude.value = Clazz.newArray(1, 0);
             length.value = Clazz.newArray(1, 0);
             switch (lineType) {
+                case 13000001:
+                    attitude.value[0] = Double.parseDouble(tg.get_T1());    //rotation
+                    width.value[0] = Double.parseDouble(tg.get_H1());       //semi-major axis
+                    length.value[0] = Double.parseDouble(tg.get_H2());    //semi-minor axis
+                    radius.value[0] = Double.parseDouble(tg.get_H());   //buffer
+                    break;
                 case 15000002:
                 case 24312000:
                 case 24321300:
@@ -59608,6 +60641,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     width.value[0] = Double.parseDouble(tg.get_H());
                     //value passed in mils
                     attitude.value[0] = Double.parseDouble(tg.get_H2()) * (0.05625);
+                    radius.value[0] = Double.parseDouble(tg.get_H1());  //use for the buffer
                     //var std = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getSymbologyStandard();
                     var std = tg.getSymbologyStandard();
                     if(std===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C)//value passed in degrees
@@ -59756,7 +60790,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var pPoints = null;
             var ptCenter=this.PointLatLongToPixels(pt0,converter);
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetNumericFields(tg, lineType, radius, width, length, attitude);
-            switch (lineType) {
+            switch (lineType) {                
                 case 25200101:  //launch area
                     var ellipsePts=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.getGeoEllipse(pt0, width.value[0], length.value[0], attitude.value[0]);
                     for (j = 0; j < ellipsePts.length; j++)  //was 103
@@ -59868,6 +60902,81 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 243111001:
                     armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetSectorRangeFan(tg, converter);
                     break;
+                case 13000000:
+                case 13000001:  //ellipse
+                case 13000002:  //circle
+                    var buffer=parseFloat(tg.get_H());
+                    var center=tg.LatLongs.get(0);
+                    var semiMajor=parseFloat(tg.get_H1());
+                    var semiMinor=parseFloat(tg.get_H2());
+                    var rotation=90-parseFloat(tg.get_T1());
+                    var ellipse = new EllipseGeometry({
+                        center: Cartesian3.fromDegrees(center.x, center.y),
+                        semiMajorAxis: semiMajor+buffer,
+                        semiMinorAxis: semiMinor+buffer,
+                        rotation: CesiumMath.toRadians(rotation)
+                    });
+                    var geometry = EllipseGeometry.createGeometry(ellipse);
+                    var cartesian;
+                    var longitude;
+                    var latitude;
+                    var cartographic;
+                    var pt0, pt;
+                    var x,y,z;
+                    for(j=0;j<geometry.length/3;j++)
+                    {
+                        x=geometry[3*j];
+                        y=geometry[3*j+1];
+                        z=geometry[3*j+2];
+                        cartesian=new Cartesian3(x,y,z);
+                        cartographic = Cartographic.fromCartesian(cartesian);
+                        longitude = CesiumMath.toDegrees(cartographic.longitude);
+                        latitude = CesiumMath.toDegrees(cartographic.latitude);
+                        pt=new armyc2.c2sd.graphics2d.Point2D(longitude,latitude);
+                        pt=converter.GeoToPixels(pt);
+                        if(j===0)
+                            pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        pt=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        tg.Pixels.add(pt);
+                    }
+                    //add the 0th point to close the ellipse
+                    tg.Pixels.add(pt0);
+                    //create the 0th shape as the buffer/fill shape
+                    this.Change1PixelsToShapes(tg, shapes, true);
+                    if(lineType===13000000)
+                        break;
+                    //start over. Build the last shape as the outline shape, this time without the buffer
+                    //the fill shape will be below this shape so the outline should appear on top of the fill unless they are the same color.
+                    tg.Pixels.clear();
+                    ellipse = new EllipseGeometry({
+                        center: Cartesian3.fromDegrees(center.x, center.y),
+                        semiMajorAxis: semiMajor,
+                        semiMinorAxis: semiMinor,
+                        rotation: CesiumMath.toRadians(rotation)
+                    });
+                    geometry = EllipseGeometry.createGeometry(ellipse);
+                    for(j=0;j<geometry.length/3;j++)
+                    {
+                        x=geometry[3*j];
+                        y=geometry[3*j+1];
+                        z=geometry[3*j+2];
+                        cartesian=new Cartesian3(x,y,z);
+                        cartographic = Cartographic.fromCartesian(cartesian);
+                        longitude = CesiumMath.toDegrees(cartographic.longitude);
+                        latitude = CesiumMath.toDegrees(cartographic.latitude);
+                        pt=new armyc2.c2sd.graphics2d.Point2D(longitude,latitude);
+                        pt=converter.GeoToPixels(pt);
+                        if(j===0)
+                            pt0=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        pt=new armyc2.c2sd.JavaLineArray.POINT2(pt.x,pt.y);
+                        tg.Pixels.add(pt);
+                    }
+                    //add the 0th point to close the ellipse
+                    tg.Pixels.add(pt0);
+                    //add the 0th shape as the buffer fill shape                    
+                    //this.Change1PixelsToShapes(tg, shapes, false);
+                    //the code below will build the outline shape from the pixels as part of normal processing.
+                    break;
                 default:
                     return false;
             }
@@ -59876,21 +60985,24 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.GetFarPixels(tg, converter, farLeftPixels, farRightPixels);
             var shapesLeft = new java.util.ArrayList();
             var shapesRight = new java.util.ArrayList();
-            if (farLeftPixels.isEmpty() || farRightPixels.isEmpty()) {
+            //if (farLeftPixels.isEmpty() || farRightPixels.isEmpty()) 
+            //{
                 var tempPixels = new java.util.ArrayList();
                 tempPixels.addAll(tg.Pixels);
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.postSegmentFSA(tg, converter);
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapes);
+                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapes, false);
                 tg.Pixels = tempPixels;
-            } else {
-                tg.Pixels = farLeftPixels;
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft);
-                tg.Pixels = farRightPixels;
-                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight);
-                shapes.addAll(shapesLeft);
-                shapes.addAll(shapesRight);
-            }
+            //} 
+//            else 
+//            {
+//                tg.Pixels = farLeftPixels;
+//                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2(tg);
+//                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesLeft, false);
+//                tg.Pixels = farRightPixels;
+//                armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF.Change1PixelsToShapes(tg, shapesRight, false);
+//                shapes.addAll(shapesLeft);
+//                shapes.addAll(shapesRight);
+//            }
             //diagnostic
             if(lineType===15000002)
             {
@@ -59900,6 +61012,35 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 ptCenter.y+=1;
                 shape.lineTo(ptCenter);
                 shapes.add(shape);
+            }
+            if (lineType === 14000001 || lineType === 14000002) 
+            {
+                var dist = radius.value[0];//Double.parseDouble(strH1);
+                pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.LatLongs.get(0));
+                pt1 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, dist, 45);//45 is arbitrary
+                var pt02d = new armyc2.c2sd.graphics2d.Point2D(pt0.x, pt0.y);
+                var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt1.x, pt1.y);
+                pt02d = converter.GeoToPixels(pt02d);
+                pt12d = converter.GeoToPixels(pt12d);
+                pt0.x = pt02d.getX();
+                pt0.y = pt02d.getY();
+                pt1.x = pt12d.getX();
+                pt1.y = pt12d.getY();
+                dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);    //pixels distance
+                //tg.Pixels.get(0).style=(int)dist;
+                var tempPixels = new java.util.ArrayList();
+                tempPixels.addAll(tg.Pixels);
+                //var pts=tempPixels.toArray(new armyc2.c2sd.JavaLineArray.POINT2[tempPixels.size()]);
+                var pts=tempPixels.toArray(new Array(tempPixels.size()));
+                pts[0].style=dist;
+                armyc2.c2sd.JavaLineArray.lineutility.getExteriorPoints(pts, pts.length, lineType, false);
+                tg.Pixels.clear();
+                for(j=0;j<pts.length;j++)
+                    tg.Pixels.add(new armyc2.c2sd.JavaLineArray.POINT2(pts[j].x,pts[j].y));
+
+                this.Change1PixelsToShapes(tg, shapes, true);
+                //reuse the original pixels for the subsequent call to AddModifier2
+                tg.Pixels = tempPixels;                
             }
             //end section
             return true;
@@ -59912,7 +61053,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
         }
         return false;
     },
-    Change1PixelsToShapes: function(tg, shapes) {
+    Change1PixelsToShapes: function(tg, shapes, fill) {
         var shape = null;
         var beginLine = true;
         var currentPt = null;
@@ -59921,7 +61062,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
         var linetype = tg.get_LineType();
         for (k = 0; k < tg.Pixels.size(); k++) {
             if (shape === null)
-                shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+            {
+                //shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                if(!fill)
+                    shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
+                else if(fill)
+                    shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_FILL);
+            }
             currentPt = tg.Pixels.get(k);
             if (k > 0)
                 lastPt = tg.Pixels.get(k - 1);
@@ -59944,7 +61091,10 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 }
             }
             if (k === tg.Pixels.size() - 1) {
-                shapes.add(shape);
+                if(shape.getShapeType()===1)    //fill shape on the bottom
+                    shapes.add(0,shape);
+                else
+                    shapes.add(shape);
             }
         }
     },
@@ -60291,6 +61441,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 case 22225000:
                 case 22221000:
                 case 22223000:
+                case 13000000:
+                case 13000001:
+                case 13000002:
                     return;
                 default:
                     break;
@@ -61077,7 +62230,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var lineType = tg.get_LineType();
             //var interval = 1000000;
             var interval = 250000;
+            var bolSegmentAC=false,bolIsAC=false,acWidth=0;
+            //uncomment one line to segment AC
+            bolSegmentAC=true;
             switch (lineType) {
+                case 22222001:
+                case 22224001:
+                case 22225000:
+                case 22223000:
+                case 22221000:
+                    if(!bolSegmentAC)
+                        return;
+                    bolIsAC=true;
+                    break;
                 case 22528000:
                 case 24222000:
                 case 231111000:
@@ -61139,7 +62304,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             var H="";
             var color="";
             var segPlusColor=null;
-            var seg="";
+            var seg="";            
             //var counter=0;
             var hmap=armyc2.c2sd.JavaTacticalRenderer.clsUtility.getMSRSegmentColorStrings(tg);
             if(hmap !== null)
@@ -61151,7 +62316,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = tg.LatLongs.get(j);
                 pt1 = tg.LatLongs.get(j + 1);
-                pt1.style = -1;
+                if(!bolIsAC)
+                    pt1.style = -1;
                 az = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt0, pt1);
                 dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(tg.LatLongs.get(j), tg.LatLongs.get(j + 1), null, null);
                 if (dist > maxDist) {
@@ -61168,9 +62334,15 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
 
             for (j = 0; j < tg.LatLongs.size() - 1; j++) {
                 pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j));
-                pt0.style = 0;
                 pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.LatLongs.get(j + 1));
-                pt1.style = 0;
+                if(!bolIsAC)
+                {
+                    pt0.style = 0;
+                    pt1.style = 0;
+                }
+                else
+                    acWidth=pt0.style;
+                
                 if(useVincenty)
                 {
                     start=new Cartographic(pt0.x*Math.PI/180,pt0.y*Math.PI/180,0);    
@@ -61205,7 +62377,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         pt.style = -2;
                         dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt, pt1, null, null);
                         if (dist >= interval / 2)
-                        {
+                        {                            
                             resultPts.add(pt);
                             if (hmap !== null && hmap.containsKey(j)) 
                             {
@@ -61223,6 +62395,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                             break;
                         vincenty.EllipsoidGeodesic.interpolateUsingFraction(fraction,cartographic);
                         pt=new armyc2.c2sd.JavaLineArray.POINT2(cartographic.longitude*180.0/Math.PI,cartographic.latitude*180.0/Math.PI);
+                        if(bolIsAC)
+                            pt.style=-acWidth;
                         resultPts.add(pt);
                         if (hmap !== null && hmap.containsKey(j)) 
                         {
@@ -62071,11 +63245,13 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
                     //shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shapeBk.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeBk.setLineColor(tg.get_LineColor());
+                    if(tg.get_UseHatchFill()===true)
+                        shapeBk.set_Fillstyle(8);
                     shapes.add(shapeBk);
-                    //shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(1));
                     shapeFwd.setStroke(new armyc2.c2sd.graphics2d.BasicStroke(hatchLineThickness));
                     shapeFwd.setLineColor(tg.get_LineColor());
-                    shapes.add(shapeFwd);
+                    if(tg.get_UseHatchFill()===false)
+                        shapes.add(shapeFwd);
                 }
                 if (lineType !== 243111000 && lineType !== 243112000)
                     break;
@@ -62407,247 +63583,6 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
     Hatch_Cross: 8
 };
 
-
-
-var java = java || {};
-java.util = java.util || {};
-java.util.ArrayList = function()
-{
-    this.array = [];
-    if (arguments.length === 1)
-    {
-        var obj = arguments[0];
-        if (obj instanceof java.util.ArrayList)
-        {
-            this.array = obj.getArray();
-        }
-        else if (obj instanceof Array)
-        {
-            this.array = arguments[0];
-        }
-    }
-};
-java.util.ArrayList.prototype.getArray = function()
-{
-    return this.array;
-};
-java.util.ArrayList.prototype.setArray = function(obj)
-{
-    this.array = obj;
-};
-java.util.ArrayList.prototype.add = function(obj)
-{
-    if (arguments.length === 1)
-        this.array.push(obj);
-    else if (arguments.length === 2)
-    {
-        var j = 0, k = 0;
-        var array2 = [];
-        var location = arguments[0];
-        var obj2 = arguments[1];
-        if (location === this.array.length)
-        {
-            this.array.push(obj2);
-        }
-        else
-        {
-            for (j = 0; j < this.array.length; j++)
-            {
-                if (j !== location)
-                {
-                    array2.push(this.array[j]);
-                }
-                else
-                {
-                    array2.push(obj2);
-                    array2.push(this.array[j]);
-                }
-            }
-            this.array = array2;
-        }
-    }
-};
-java.util.ArrayList.prototype.addAll = function()//was location,obj 
-{
-    var location = 0, j = 0, k = 0;
-    var obj = null;
-    var b = false;
-    if (arguments.length === 1)
-    {
-        obj = arguments[0];
-        if (obj instanceof java.util.ArrayList)
-        {
-            //array=array.concat(obj.array);                        
-            this.array = this.array.concat(obj.getArray());
-        }
-    }
-    else if (arguments.length === 2)
-    {
-        location = arguments[0];
-        obj = arguments[1];
-        b = obj instanceof java.util.ArrayList;
-        if (b === false)
-            return;
-        var array2 = [];
-        var obj2 = null;
-        for (j = 0; j < this.array.length; j++)
-        {
-            if (j !== location)
-            {
-                array2.push(this.array[j]);
-            }
-            else
-            {
-                for (k = 0; k < obj.size(); k++)
-                {
-                    obj2 = obj.get(k);
-                    array2.push(obj2);
-                }
-                array2.push(this.array[j]);
-            }
-        }
-        this.array = array2;
-    }
-};
-java.util.ArrayList.prototype.clear = function() {
-    this.array = [];
-};
-java.util.ArrayList.prototype.clone = function() {
-    var a = new java.util.ArrayList();
-    var j = 0;
-    for (j = 0; j < this.array.length; j++)
-    {
-        a.add(this.array[j]);
-    }
-    return a;
-};
-java.util.ArrayList.prototype.remove = function(location) {
-    this.array.splice(location, 1);
-};
-java.util.ArrayList.prototype.removeRange = function(start, end) {
-    this.array.splice(start, end - start);
-};
-java.util.ArrayList.prototype.get = function(location) {
-    if(location < this.array.length)
-    {
-        return this.array[location];
-    }
-    else
-    {
-        throw new Error("java.util.ArrayList.prototype.get - Index " + location + " out of Bounds");
-    }
-};
-java.util.ArrayList.prototype.set = function(location, obj) {
-    if(location < this.array.length)
-    {
-        this.array[location] = obj;
-    }
-    else
-    {
-        throw new Error("java.util.ArrayList.prototype.set - Index " + location + " out of Bounds");
-    }
-};
-java.util.ArrayList.prototype.toArray = function() {
-    var j = 0;
-    var a = [];
-    for (j = 0; j < this.array.length; j++)
-        a.push(this.array[j]);
-    return a;
-};
-java.util.ArrayList.prototype.size = function() {
-    return this.array.length;
-};
-java.util.ArrayList.prototype.isEmpty = function() {
-    if (this.array === null || this.array.length === 0)
-        return true;
-    return false;
-};
-java.util.ArrayList.prototype.contains = function(obj) {
-    for (var j = 0; j < this.array.length; j++) {
-        if (obj === this.array[j])
-            return true;
-    }
-    return false;
-};
-java.util.ArrayList.prototype.indexOf = function(obj) {
-    for (var j = 0; j < this.array.length; j++) {
-        if (obj === this.array[j])
-            return j;
-    }
-    return -1;
-};
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-var java = java || {};
-java.util = java.util || {};
-java.util.HashMap = function()
-{
-    var length = 0;
-    var items = new Array();
-    for (var i = 0; i < arguments.length; i += 2) {
-        if (typeof (arguments[i + 1]) !== 'undefined') {
-            items[arguments[i]] = arguments[i + 1];
-            length++;
-        }
-    }
-
-    this.remove = function(in_key)
-    {
-        var tmp_value;
-        if (typeof (items[in_key]) !== 'undefined') {
-            length--;
-            tmp_value = items[in_key];
-            delete items[in_key];
-        }
-        return tmp_value;
-    };
-
-    this.get = function(in_key) {
-        return items[in_key];
-    };
-
-    this.put = function(in_key, in_value)
-    {
-        if (typeof (in_value) !== 'undefined') {
-            if (typeof (items[in_key]) === 'undefined') {
-                length++;
-            }
-            items[in_key] = in_value;
-        }
-        return in_value;
-    };
-
-    this.containsKey = function(in_key)
-    {
-        return typeof (items[in_key]) !== 'undefined';
-    };
-    this.containsValue = function(value)
-    {
-        var j = 0;
-        for (j = 0; j < items.length; j++)
-        {
-            if (items[j] === value)
-            {
-                return true;
-            }
-        }
-        //did not find the item
-        return false;
-    };
-    this.size = function()
-    {
-        return length;
-    };
-    this.isEmpty = function()
-    {
-        if(length>0)
-            return false;
-        else
-            return true;
-    };
-};
 
 
 var org = org || {};
@@ -71113,7 +72048,7 @@ armyc2.c2sd.renderer.so.Path = function () {
             else
                 line += ' stroke-width="2"';
         
-            if(strokeOpacity && strokeOpacity !== 1.0)
+            if(strokeOpacity !== 1.0)
             {
                 //stroke-opacity="0.4"
                 line += ' stroke-opacity="' + strokeOpacity + '"';
@@ -71144,7 +72079,7 @@ armyc2.c2sd.renderer.so.Path = function () {
                 /*else
                     line += ' fill="' + fill.replace(/#/g,"&#35;") + '"';//text = text.replace(/\</g,"&gt;");*/
                     
-                if(fillOpacity && fillOpacity !== 1.0)
+                if(fillOpacity !== 1.0)
                 {
                     //fill-opacity="0.4"
                     line += ' fill-opacity="' + fillOpacity + '"';
@@ -71401,13 +72336,17 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
         //catch special characters that break SVGs as base64 dataURIs
         if(format === 1)
         {
+            //got codes from: http://www.theukwebdesigncompany.com/articles/entity-escape-characters.php
+            //and https://unicodelookup.com (use HTML code)
             text = text.replace(/\&/g,"&amp;");
             text = text.replace(/\</g,"&lt;");
             text = text.replace(/\</g,"&gt;");
             //text = text.replace(/\u2022/g,"&#x2022;");//echelon and ellipses dot
             //text = text.replace(/\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
             text = text.replace(/\u2022|\u25CF/g,"&#x2022;");//echelon and ellipses dot (black circle)
-            text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced +- symbol
+            text = text.replace(/\u00D8/g,"&#216;");//Ø
+            text = text.replace(/\u00B0/g,"&#176;");//°
+            text = text.replace(/\u00B1/g,"&#x00B1;");//"RD" reinforce/reduced ±
         }
         else if(format === 2)
         {
@@ -71508,7 +72447,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {number} SVGFormat - 0 plain svg string, 1 base64 string (default), 2 url endcoded (% notation)
          * @returns {geoSVG} - looks like: {svg:dataURI,geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
          */
-        GeoSVGize: function (shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat)
+        GeoSVGize: function (symbolID, shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, wasClipped, pixelWidth, pixelHeight, fillTexture, fontInfo, SVGFormat, converter)
         {
             
             var height = 10;
@@ -71538,10 +72477,10 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 
                 height = fontInfo.measurements.height;
 
-                var len = shapes.size();
+                var len = shapes.size();                                
                 for (var i = 0; i < len; i++)
                 {
-                    var pathInfo = this.ShapesToGeoSVG(shapes.get(i), ipc, normalize, fillTexture, svgFormat);
+                    var pathInfo = this.ShapesToGeoSVG(symbolID, shapes.get(i), ipc, normalize, fillTexture, svgFormat, converter);
                     if(pathInfo.svg && pathInfo.bounds)
                     {
                         tempBounds = pathInfo.bounds;
@@ -71569,6 +72508,15 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                     var labelInfo = tempModifier;
                     var tempLocation = tempModifier.getModifierStringPosition();
+                    var oldLocation = null;
+
+                    if(converter)//map specific converter
+                    {
+                        oldLocation = tempLocation;
+                        tempLocation = ipc.PixelsToGeo(tempLocation);
+                        tempLocation = converter.GeoToPixels(tempLocation);
+                    }
+
                     //multipoint renderer is assuming text is centered vertically 
                     //so we add half height to location as text is drawn cetered at 
                     //the bottom.
@@ -71588,7 +72536,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //tiTemp = new armyc2.c2sd.renderer.utilities.TextInfo(tempModifier.getModifierString(), tempLocation.x, tempLocation.y + (height / 2), textInfoContext, null);
 
                     var bounds = tiTemp.getBounds();
-                    
+
                     rotatedBounds = null;
                     if (degrees !== 0)
                     {
@@ -71599,40 +72547,65 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                     //make the canvas grow out of control.
                     //if (tiTemp && bbox.containsRectangle(bounds))
                     //if(bbox !== null)
-                    if (tiTemp && bbox !== null && (bbox.intersects(bounds) || bbox.intersects(rotatedBounds)))
+                    if(tiTemp)
                     {
-                        labels.push(tiTemp);
-                        if (labelBounds)
+                        if (converter)
                         {
-                            if(rotatedBounds)
-                                labelBounds.union(rotatedBounds);
-                            else if(bounds)
-                                labelBounds.union(bounds);
+                            var preConvRect = new armyc2.c2sd.renderer.so.Rectangle(oldLocation.getX(),oldLocation.getY(),bounds.getWidth(),bounds.getHeight());
+                            if((bbox.intersects(preConvRect)))// || bbox.intersects(rotatedBounds)))
+                            {
+                                labels.push(tiTemp);
+                                if (labelBounds)
+                                {
+                                    if(rotatedBounds)
+                                        labelBounds.union(rotatedBounds);
+                                    else if(bounds)
+                                        labelBounds.union(bounds);
+                                }
+                                else
+                                {
+                                    if(rotatedBounds)
+                                        labelBounds = rotatedBounds;
+                                    else if(bounds)
+                                        labelBounds = bounds;
+                                }
+                            }
                         }
-                        else
+                        else if (bbox && (bbox.intersects(bounds) || bbox.intersects(rotatedBounds)))
                         {
-                            if(rotatedBounds)
-                                labelBounds = rotatedBounds;
-                            else if(bounds)
-                                labelBounds = bounds;
+                            labels.push(tiTemp);
+                            if (labelBounds)
+                            {
+                                if(rotatedBounds)
+                                    labelBounds.union(rotatedBounds);
+                                else if(bounds)
+                                    labelBounds.union(bounds);
+                            }
+                            else
+                            {
+                                if(rotatedBounds)
+                                    labelBounds = rotatedBounds;
+                                else if(bounds)
+                                    labelBounds = bounds;
+                            }
                         }
-                    }
-                    else if (tiTemp && bbox === null)
-                    {
-                        labels.push(tiTemp);
-                        if (labelBounds)
+                        else if (bbox === null)
                         {
-                            if(rotatedBounds)
-                                labelBounds.union(rotatedBounds);
-                            else if(bounds)
-                                labelBounds.union(bounds);
-                        }
-                        else
-                        {
-                            if(rotatedBounds)
-                                labelBounds = rotatedBounds;
-                            else if(bounds)
-                                labelBounds = bounds;
+                            labels.push(tiTemp);
+                            if (labelBounds)
+                            {
+                                if(rotatedBounds)
+                                    labelBounds.union(rotatedBounds);
+                                else if(bounds)
+                                    labelBounds.union(bounds);
+                            }
+                            else
+                            {
+                                if(rotatedBounds)
+                                    labelBounds = rotatedBounds;
+                                else if(bounds)
+                                    labelBounds = bounds;
+                            }
                         }
                     }
                 }//*/
@@ -71654,33 +72627,89 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                 //get geo bounds for canvas
                 var geoCoordTL = null;
+                var geoCoordTR = null;
+                var geoCoordBL = null;
                 var geoCoordBR = null;
+                var west = null;
+                var north = null;
+                var south = null;
+                var east = null;
                 if(unionBounds)
                 {
                     var coordTL = new armyc2.c2sd.graphics2d.Point2D();
                     coordTL.setLocation(unionBounds.getX(), unionBounds.getY());
                     var coordBR = new armyc2.c2sd.graphics2d.Point2D();
                     coordBR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY() + unionBounds.getHeight());
+
+                    var coordTR = new armyc2.c2sd.graphics2d.Point2D();
+                    coordTR.setLocation(unionBounds.getX() + unionBounds.getWidth(), unionBounds.getY());
+                    var coordBL = new armyc2.c2sd.graphics2d.Point2D();
+                    coordBL.setLocation(unionBounds.getX(), unionBounds.getY() + unionBounds.getHeight());
+
+                    south = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY() + unionBounds.getHeight());
+                    north = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth()/2,unionBounds.getY());
+                    east = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX() + unionBounds.getWidth(),unionBounds.getY() + unionBounds.getHeight()/2);
+                    west = new armyc2.c2sd.graphics2d.Point2D(unionBounds.getX(),unionBounds.getY() + unionBounds.getHeight()/2);
                     
-                    geoCoordTL = ipc.PixelsToGeo(coordTL);
-                    geoCoordBR = ipc.PixelsToGeo(coordBR);
+                    if(converter)
+                    {
+                        geoCoordTL = converter.PixelsToGeo(coordTL);
+                        geoCoordBR = converter.PixelsToGeo(coordBR);
+                        geoCoordTR = converter.PixelsToGeo(coordTR);
+                        geoCoordBL = converter.PixelsToGeo(coordBL);
+
+                        north = converter.PixelsToGeo(north);
+                        south = converter.PixelsToGeo(south);
+                        east = converter.PixelsToGeo(east);
+                        west = converter.PixelsToGeo(west);
+                    }
+                    else
+                    {
+                        geoCoordTL = ipc.PixelsToGeo(coordTL);
+                        geoCoordBR = ipc.PixelsToGeo(coordBR);
+                        geoCoordTR = ipc.PixelsToGeo(coordTR);
+                        geoCoordBL = ipc.PixelsToGeo(coordBL);
+
+                        north = ipc.PixelsToGeo(north);
+                        south = ipc.PixelsToGeo(south);
+                        east = ipc.PixelsToGeo(east);
+                        west = ipc.PixelsToGeo(west);
+                    }
+                    
                     if (normalize)
                     {
                         geoCoordTL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTL);
                         geoCoordBR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBR);
+                        geoCoordTR = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordTR);
+                        geoCoordBL = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(geoCoordBL);
+
+                        north = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(north);
+                        south = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(south);
+                        east = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(east);
+                        west = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(west);
                     }
                     geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
                     geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
+                    geoCoordTR.setLocation(geoCoordTR.getX().toFixed(_decimalAccuracy), geoCoordTR.getY().toFixed(_decimalAccuracy));
+                    geoCoordBL.setLocation(geoCoordBL.getX().toFixed(_decimalAccuracy), geoCoordBL.getY().toFixed(_decimalAccuracy));
+
+                    north.setLocation(north.getX().toFixed(_decimalAccuracy), north.getY().toFixed(_decimalAccuracy));
+                    south.setLocation(south.getX().toFixed(_decimalAccuracy), south.getY().toFixed(_decimalAccuracy));
+                    east.setLocation(east.getX().toFixed(_decimalAccuracy), east.getY().toFixed(_decimalAccuracy));
+                    west.setLocation(west.getX().toFixed(_decimalAccuracy), west.getY().toFixed(_decimalAccuracy));
                 }
                 else//nothing to draw
                 {
-                    geoCoordTL = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordBR = new armyc2.c2sd.graphics2d.Point2D();
-                    geoCoordTL.setLocation(0,0);
-                    geoCoordBR.setLocation(0,0);
-                }
+                    geoCoordTL = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordBR = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordTR = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    geoCoordBL = new armyc2.c2sd.graphics2d.Point2D(0,0);
 
-                
+                    north = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    south = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    east = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                    west = new armyc2.c2sd.graphics2d.Point2D(0,0);
+                }
             }
             catch (err)
             {
@@ -71712,23 +72741,54 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 
                 //wrap in SVG
                 var geoSVG = '<svg width="' + Math.ceil(unionBounds.getWidth()) + 'px" height="' + Math.ceil(unionBounds.getHeight()) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+                /*//Scale the image, commented out as I decided to alter scale in getReasonableScale rather than adjust after the fact.
+                var tempWidth = Math.ceil(unionBounds.getWidth());
+                var tempHeight = Math.ceil(unionBounds.getHeight());
+                var quality = 1.0;
+                var bigger = Math.max(tempWidth, tempHeight);
+                var max = 1000;
+                if(!converter)
+                {
+                    if(bigger < max)
+                    {
+                        if(bigger * 2 < max)
+                        {
+                            quality = 2;
+                        }
+                        else
+                        {
+                            quality = max / bigger;
+                        }
+                    }
+                    else
+                    {
+                        quality = 1;
+                    }
+                }
+                var geoSVG = '<svg viewBox="0 0 ' + tempWidth + ' ' + tempHeight + '"' + ' width="' + (tempWidth * quality) + 'px" height="' + (tempHeight * quality) + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">';//*/
                 if(fillTexture)
                     geoSVG += fillTexture;
                 geoSVG += group;
                 geoSVG += '</svg>';//*/
                 
                 if(svgFormat === 1)
-                    return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                {
+                    //return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml;base64," + btoa(geoSVG), geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
+                }
                 else if(svgFormat === 2)
                 {
                     geoSVG = geoSVG.replace(/\</g,"%3C");
                     geoSVG = geoSVG.replace(/\>/g,"%3E");
                     geoSVG = geoSVG.replace(/\"/g,"%22");
-                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    geoSVG = geoSVG.replace(/\#/g,"%23");
+                    //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
                 }
                 else
                 {
-                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    //return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped, bounds:unionBounds};
+                    return {svg:"data:image/svg+xml," + geoSVG, geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped, bounds:unionBounds};
                 }
             }
             else
@@ -71736,7 +72796,8 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 //return blank 2x2 SVG
                 //<svg width="1px" height="1px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
                 //return {svg:"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjwvc3ZnPg==", geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
-                return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                //return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, wasClipped:wasClipped};
+                return {svg:'data:image/svg+xml,<svg width="2px" height="2px" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>', geoTL:geoCoordTL, geoBR:geoCoordBR, geoTR:geoCoordTR, geoBL:geoCoordBL, north:north, south:south, east:east, west:west, wasClipped:wasClipped};
             }
             //}
             //else
@@ -71830,7 +72891,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
          * @param {type} fillTexture
          * @returns {string} svgElement
          */
-        ShapesToGeoSVG: function (shapeInfo, ipc, normalize, fillTexture, svgFormat)
+        ShapesToGeoSVG: function (symbolID, shapeInfo, ipc, normalize, fillTexture, svgFormat, converter)
         {
 
             var pathInfo = null;
@@ -71857,21 +72918,33 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             }
             if (shapeInfo.getFillColor() !== null) {
                 fillColor = shapeInfo.getFillColor();
-                fillAlpha = fillColor.getAlpha() / 255;
-                fillColor = fillColor.toHexString(false);
+                if(fillTexture)
+                {
+                    if((fillColor && fillColor.getAlpha()===0))//passed in fill pattern
+                    {
+                        fillPattern = fillTexture;
+                        fillColor = null;
+                    }
+                }
+                else
+                {
+                    fillAlpha = fillColor.getAlpha() / 255;
+                    fillColor = fillColor.toHexString(false);
+                }
             }
-            
-            //TODO, pattern fill
-            if(fillTexture)
+            else if(fillTexture && symbolID.charAt(0)==='W')
             {
                 fillPattern = fillTexture;
+                fillColor = null;
             }
-            else if(shapeInfo.getFillStyle() > 1)
+            
+            if(shapeInfo.getFillStyle() > 1)//hatch fills
             {
                 fillPattern = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(shapeInfo.getFillStyle(), lineColor)
                 fillTexture = "url(#fillPattern)";
-            }//*/
-            //*/
+                fillColor = null;
+            }
+
 
             var stroke = null;
             stroke = shapeInfo.getStroke();
@@ -71892,6 +72965,13 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
 
                 for (var j = 0; j < shape.size(); j++) {
                     var coord = shape.get(j);
+
+                    if(converter)//map specific converter
+                    {
+                        coord = ipc.PixelsToGeo(coord);
+                        coord = converter.GeoToPixels(coord);
+                    }
+
                     if (j === 0)
                     {
                         path.moveTo(coord.x, coord.y);
@@ -71916,7 +72996,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                 }
 
             }
-            if(fillTexture)
+            if(fillPattern && !fillColor)// && fillColor && fillColor.getAlpha()===0)
                 fillColor = "url(#fillPattern)";
             var svgElement = path.toSVGElement(lineColor, lineWidth, fillColor, lineAlpha, fillAlpha, svgFormat);
             var svgInfo = {svg:svgElement,bounds:path.getBounds(),fillPattern:fillPattern};
@@ -71980,69 +73060,7 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
             texture += '</defs>'; 
             return texture;  
         },
-
-        /**
-         * @param Number fillType - forward diagonal (fillStyle=2), backward diagonal (3). We also have capabilities for vertical (4), horizontal (5), and cross (8).
-         * @param String color "hexString like '#00FF00'";
-         */
-        MakeHatchFillTextureSVG:function(fillType, color)
-        {
-            if(!armyc2.c2sd.renderer.MilStdSVGRenderer)
-            {
-                return null;
-            }
-            //needs to return {dataURI, width, height}
-            var texture = "";
-            var symbolIDs = symbolFillIds.split(","); 
-            var symbols = [];
-            var width = 0, height = 0, spacerW = 0, spacerH = 0;
-            //calculate texture dimensions
-            for(var i = 0; i < symbolIDs.length; i++)
-            {
-                symbols.push(armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolIDs[i],{"SIZE":symbolFillSize}));
-                var rect = symbols[i].getSVGBounds();
-                if(rect.getWidth() > width)
-                    width = rect.getWidth();
-                if(rect.getHeight() > height)
-                    height = rect.getHeight();
-            }
-            spacerW = width / 3;
-            spacerH = 10; //width / 2;
-            
-            
-            //create texture
-            //texture = _document.createElement('canvas');
-            svgWidth = (width * symbols.length) + (spacerW * symbols.length);
-            svgHeight = height + spacerH;
-            
-            //draw to texture
-            var x = spacerW;
-            var y = spacerH;
-            //var ctx = texture.getContext('2d');
-            var pattern = "";
-            for(var j = 0; j < symbols.length; j++)
-            {
-                var sym = symbols[j];
-                var center = sym.getAnchorPoint();
-                pattern += '<g transform="translate(' + (x + width/2 - center.getX()) + ' ' + (y + height/2 - center.getY()) + ')" >';
                 
-                var paths = sym.getSVG();
-                paths = paths.substr(paths.indexOf("<g"));
-                paths = paths.replace("</svg>","");
-                
-                pattern += paths;
-                pattern += '</g>';
-                x += spacerW + width;
-            }
-            
-            texture = '<defs>';
-            texture += '<pattern id="fillPattern" patternUnits="userSpaceOnUse" width="' + svgWidth + '" height="' + svgHeight + '" >';
-            texture += pattern;
-            texture += '</pattern>';
-            texture += '</defs>'; 
-            return texture;  
-        },
-        
         /**
          * 
          * @param {armyc2.c2sd.renderer.so.Rectangle} rectangle
@@ -72845,8 +73863,8 @@ sec.web.renderer.MultiPointHandler = (function () {
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
 
-    var _maxWidthInPixels = 1000;
-    var _minWidthInPixels = 100;
+    var _maxWidthInPixels = 1600;   //was 1000
+    var _minWidthInPixels = 160;    //was 100
 
     //constructor code
 
@@ -73168,10 +74186,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //one positive value to the left of +/-180 and negative x value to the right of +/-180.
                     //We are using the orientation with the north pole on top so we can keep
                     //the existing value for top. Then the left value will be the least positive x value
-                    left = geoCoords[0].x;
-                    for (j = 1; j < geoCoords.length; j++)
+                    //left = geoCoords[0].x;
+                    //left = geoCoords.get(0).x;
+                    left=180;
+                    for (j = 0; j < geoCoords.length; j++)
                     {
-                        pt = geoCoords[0];
+                        pt = geoCoords[j];
                         if (pt.getX() > 0 && pt.getX() < left)
                             left = pt.getX();
                     }
@@ -73181,6 +74201,107 @@ sec.web.renderer.MultiPointHandler = (function () {
             catch (err)
             {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "getGeoUL", err);
+            }
+            return ptGeo;
+        },
+        getBboxFromCoords: function (geoCoords)
+        {
+            //var ptGeo = null;
+            var bbox=null;
+            try
+            {
+                var j = 0;
+                var pt = null;
+                var left = geoCoords.get(0).x;
+                var top = geoCoords.get(0).y;
+                var right = geoCoords.get(0).x;
+                var bottom = geoCoords.get(0).y;
+                for (j = 1; j < geoCoords.size(); j++)
+                {
+                    pt = geoCoords.get(j);
+                    if (pt.getX() < left)
+                        left = pt.getX();
+                    if (pt.getX() > right)
+                        right = pt.getX();
+                    if (pt.getY() > top)
+                        top = pt.getY();
+                    if (pt.getY() < bottom)
+                        bottom = pt.getY();
+                }
+                //if geoCoords crosses the IDL
+                if (right - left > 180)
+                {
+                    //There must be at least one x value on either side of +/-180. Also, there is at least
+                    //one positive value to the left of +/-180 and negative x value to the right of +/-180.
+                    //We are using the orientation with the north pole on top so we can keep
+                    //the existing value for top. Then the left value will be the least positive x value
+                    //left = geoCoords[0].x;
+                    left = 180;
+                    right = -180;                    
+                    for (j = 0; j < geoCoords.size(); j++)
+                    {
+                        pt = geoCoords.get(j);
+                        if (pt.getX() > 0 && pt.getX() < left)
+                            left = pt.getX();
+                        if (pt.getX() < 0 && pt.getX() > right)
+                            right = pt.getX();
+                    }
+                }
+                //ptGeo = new armyc2.c2sd.graphics2d.Point2D(left, top);
+                bbox=Double.toString(left)+","+Double.toString(bottom)+","+Double.toString(right)+","+Double.toString(top);
+            }
+            catch (err)
+            {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "getBboxFromCoords", err);
+            }
+            //return ptGeo;            
+            return bbox;            
+        },
+        getGeoUL2: function (geoCoords)
+        {
+            var ptGeo = null;
+            try
+            {
+                var j = 0;
+                var pt = null;
+                var left = geoCoords.get(0).x;
+                var top = geoCoords.get(0).y;
+                var right = geoCoords.get(0).x;
+                var bottom = geoCoords.get(0).y;
+                for (j = 1; j < geoCoords.size(); j++)
+                {
+                    pt = geoCoords.get(j);
+                    if (pt.getX() < left)
+                        left = pt.getX();
+                    if (pt.getX() > right)
+                        right = pt.getX();
+                    if (pt.getY() > top)
+                        top = pt.getY();
+                    if (pt.getY() < bottom)
+                        bottom = pt.getY();
+                }
+                //if geoCoords crosses the IDL
+                if (right - left > 180)
+                {
+                    //There must be at least one x value on either side of +/-180. Also, there is at least
+                    //one positive value to the left of +/-180 and negative x value to the right of +/-180.
+                    //We are using the orientation with the north pole on top so we can keep
+                    //the existing value for top. Then the left value will be the least positive x value
+                    //left = geoCoords[0].x;
+                    //left = geoCoords.get(0).x;
+                    left=180;
+                    for (j = 0; j < geoCoords.size(); j++)
+                    {
+                        pt = geoCoords.get(j);
+                        if (pt.getX() > 0 && pt.getX() < left)
+                            left = pt.getX();
+                    }
+                }
+                ptGeo = new armyc2.c2sd.graphics2d.Point2D(left, top);
+            }
+            catch (err)
+            {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException("MultiPointHandler", "getGeoUL2", err);
             }
             return ptGeo;
         },
@@ -73260,13 +74381,18 @@ sec.web.renderer.MultiPointHandler = (function () {
                     return 7.573e7; //was origScale
                 else if (left.equalsIgnoreCase("180") && right.equalsIgnoreCase("-180"))
                     return 7.573e7; //was origScale
+                //else if (top.equalsIgnoreCase("90") || bottom.equalsIgnoreCase("-90"))
+                //return 7.573e7; //was origScale
                 var ul = new armyc2.c2sd.JavaLineArray.POINT2(left, top);
                 var ur = new armyc2.c2sd.JavaLineArray.POINT2(right, top);
+                var ml = new armyc2.c2sd.JavaLineArray.POINT2(left, (parseFloat(top) + parseFloat(bottom)) / 2);
+                var mr = new armyc2.c2sd.JavaLineArray.POINT2(right, (parseFloat(top) + parseFloat(bottom)) / 2);
                 //var ptLeft=new armyc2.c2sd.JavaLineArray.POINT2(left,top);
                 var lr = new armyc2.c2sd.JavaLineArray.POINT2(right, bottom);
                 //POINT2 ll=new POINT2(left,bottom);
                 //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, ur, null, null);
-                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, lr, null, null);
+                var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ml, mr, null, null);
+                //var widthInMeters = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(ul, lr, null, null);
                 //double metersHigh=mdlGeodesic.geodesic_distance(ul, ll, null, null);
                 var maxWidthInPixels = _maxWidthInPixels;   //this should be RendererSettings.getMaxPixels
                 var minScale = (maxWidthInPixels / widthInMeters) * (1.0 / 96.0) * (1.0 / 39.37);
@@ -73334,9 +74460,9 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             }
-            var normalize = false,
-                    controlLat = 0,
-                    controlLong = 0,
+            var normalize = true,
+                    //controlLat = 0,
+                    //controlLong = 0,
                     jsonOutput = "",
                     jsonContent = "",
                     rect = null,
@@ -73367,21 +74493,23 @@ sec.web.renderer.MultiPointHandler = (function () {
             coordinates = controlPoints.trim();
             coordinates = coordinates.split(" ");
             var len = coordinates.length;
+            var convRect = null;
 
             for (var i = 0; i < len; i++) {
                 var coordPair = coordinates[i].split(",");
-                var latitude = coordPair[1];//.trim();
-                var longitude = coordPair[0];//.trim();
+                var latitude = coordPair[1];
+                var longitude = coordPair[0];
                 tempPt = new armyc2.c2sd.graphics2d.Point2D();
                 tempPt.setLocation(longitude, latitude);
                 geoCoords.push(tempPt);
             }
 
-            if (bbox !== null && bbox !== ("")) {
+            if (bbox !== null && bbox !== ("") && bbox !== undefined) {
                 var bounds = null;
                 if (bbox.contains(" ")) //trapezoid
                 {
-                    bboxCoords = [];
+                    //bboxCoords = [];
+                    bboxCoords = new java.util.ArrayList();
                     var x = 0;
                     var y = 0;
                     var coords = bbox.split(" ");
@@ -73396,18 +74524,23 @@ sec.web.renderer.MultiPointHandler = (function () {
                         y = arrCoord[1];
                         tempPt = new armyc2.c2sd.graphics2d.Point2D();
                         tempPt.setLocation(x, y);
-                        bboxCoords.push(tempPt);
+                        //bboxCoords.push(tempPt);
+                        bboxCoords.add(tempPt);
                     }
                     //use the upper left corner of the MBR containing geoCoords
                     //to set the converter
-                    ptGeoUL = sec.web.renderer.MultiPointHandler.getGeoUL(bboxCoords);
+                    ptGeoUL = sec.web.renderer.MultiPointHandler.getGeoUL2(bboxCoords); //was getGeoUL
                     left = ptGeoUL.getX();
                     top = ptGeoUL.getY();
+                    var bbox2=this.getBboxFromCoords(bboxCoords);
+                    scale = this.getReasonableScale(bbox2, scale);
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                     var ptPixels = null;
                     var ptGeo = null;
-                    for (j = 0; j < bboxCoords.length; j++) {
-                        ptGeo = bboxCoords[j];
+                    for (j = 0; j < bboxCoords.size(); j++)     //was length
+                    {
+                        //ptGeo = bboxCoords[j];
+                        ptGeo = bboxCoords.get(j);
                         ptPixels = ipc.GeoToPixels(ptGeo);
                         x = ptPixels.getX();
                         y = ptPixels.getY();
@@ -73416,7 +74549,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         if (y < 20)
                             y = 20;
                         ptPixels.setLocation(x, y);
-                        bboxCoords[j] = ptPixels;
+                        //bboxCoords[j] = ptPixels;
+                        bboxCoords.set(j,ptPixels);
                     }
                 }
                 else //rectangle
@@ -73431,17 +74565,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                     if (left.equalsIgnoreCase("-180") && right.equalsIgnoreCase("180"))
                         setRectNull = true;
                     //end section
+                    //diagnostic 1-5-17 this maybe can be removed if the client didn'gt have a problem refreshing
+//                    var spanX=parseFloat(right)-parseFloat(left);
+//                    if(spanX<-180)
+//                        spanX+=360;
+//                    var spanY=parseFloat(top)-parseFloat(bottom);
+//                    if(spanX>10 || spanY>10)
+//                        setRectNull=true;
+                    //end section
 
-                    if (format !== 3 && format !== 4 && format !== 5)
-                    {
-                        scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
-                    }
-
+                    scale = sec.web.renderer.MultiPointHandler.getReasonableScale(bbox, scale);
                     ipc = new sec.web.renderer.PointConverter(left, top, scale);
                 }
 
-                if (converter !== undefined && converter !== null)
-                    ipc = converter;
+                /*if (converter !== undefined && converter !== null)
+                 ipc = converter;*/
 
                 //sanity check
                 //when spanning the IDL sometimes they send a bad bbox with 0 width
@@ -73468,7 +74606,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var ptBottom = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(ptTop, dist, 180.0);
                     bottom = ptBottom.y;
                 }
-                //end section
+                if (converter)
+                {
+                    var ptUL = {};
+                    ptUL.x = left;
+                    ptUL.y = top;
+                    ptUL = converter.GeoToPixels(ptUL);
+                    leftX = ptUL.x;
+                    topY = ptUL.y;
+                    var ptBR = {};
+                    ptBR.x = right;
+                    ptBR.y = bottom;
+                    ptBR = converter.GeoToPixels(ptBR);
+                    rightX = ptBR.x;
+                    bottomY = ptBR.y;
+                    width = Math.abs(rightX - leftX);
+                    height = Math.abs(bottomY - topY);
+                    convRect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
+                }
 
                 var pt2d = null;
                 if (bboxCoords === undefined || bboxCoords === null)
@@ -73485,37 +74640,25 @@ sec.web.renderer.MultiPointHandler = (function () {
                     rightX = Math.round(temp.getX());
                     //if (scale > 1e7)
                     //for large scales and client is not using the canvas converter
-                    if (scale > 1e7 && (converter === undefined || converter === null))
-                    {
-                        //get widest point in the AOI
-//                        var midLat = 0;
-//                        if (bottom < 0 && top > 0)
-//                            midLat = 0;
-//                        else if (bottom < 0 && top < 0)
-//                            midLat = top;
-//                        else if (bottom > 0 && top > 0)
-//                            midLat = bottom;
-//
-//                        temp = ipc.GeoToPixels(new armyc2.c2sd.graphics2d.Point2D(right, midLat));
-//                        rightX = temp.getX();
-                        var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
-                        temp = ipc.GeoToPixels(coordsUL);
-                        left = coordsUL.getX();
-                        top = coordsUL.getY();
-                        //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
-                        ipc = new sec.web.renderer.PointConverter(left, top, scale);
-                        //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
-                        leftX -= temp.getX();
-                        rightX -= temp.getX();
-                        topY -= temp.getY();
-                        bottomY -= temp.getY();
-                        //end diagnostic
-
-                    }
+//                    if (scale > 1e7 && !converter)
+//                    {
+//                        var coordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
+//                        temp = ipc.GeoToPixels(coordsUL);
+//                        //can't do these 2 lines if using canvas or svg converter
+//                        left = coordsUL.getX();
+//                        top = coordsUL.getY();
+//                        //shift the ipc to coordsUL origin so that conversions will be more accurate for large scales.
+//                        ipc = new sec.web.renderer.PointConverter(left, top, scale);
+//                        //shift the rect to compenstate for the shifted ipc so that we can maintain the original clipping area.
+//                        leftX -= temp.getX();
+//                        rightX -= temp.getX();
+//                        topY -= temp.getY();
+//                        bottomY -= temp.getY();
+//                    }
                     width = Math.abs(rightX - leftX);
                     height = Math.abs(bottomY - topY);
                     rect = new armyc2.c2sd.graphics2d.Rectangle(leftX, topY, width, height);
-                    if (format <= 3 && format <= 6 && scale >1e6)
+                    if (format >= 3 && format <= 6 && scale > 1e6)
                     {
                         var midlat = (Number(top) + Number(bottom)) / 2;
                         pt2d.setLocation(left, midlat);
@@ -73534,8 +74677,15 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                         var midlon = Math.round(Number(left) + Number(right)) / 2;
                         if (Math.abs(right - left) > 180)
-                            midlon += 180;
-
+                        {
+                            //midlon += 180;
+                            var dLeft = 180 - Number(left);
+                            var dRight = 180 + Number(right);
+                            var dIDL = (dLeft + dRight) / 2;
+                            midlon = Number(left) + dIDL;
+                            if (midlon > 180)
+                                midlon -= 360;
+                        }
                         pt2d.setLocation(midlon, top);
                         temp = ipc.GeoToPixels(pt2d);
                         topY = Math.round(temp.getY());
@@ -73557,42 +74707,28 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 rect = null;
             }
-            if (setRectNull) //Deutcvh 4-15-15
+            if (setRectNull) //Deutch 4-15-15
                 rect = null;
 
-//            var tempPt = null;
-//            coordinates = controlPoints.trim();
-//            coordinates = coordinates.split(" ");
-//            var len = coordinates.length;
-//
-//            for (var i = 0; i < len; i++) {
-//                var coordPair = coordinates[i].split(",");
-//                var latitude = coordPair[1];//.trim();
-//                var longitude = coordPair[0];//.trim();
-//                tempPt = new armyc2.c2sd.graphics2d.Point2D();
-//                tempPt.setLocation(longitude, latitude);
-//                geoCoords.push(tempPt);
-//            }
             if (ipc === null) {
                 var ptCoordsUL = sec.web.renderer.MultiPointHandler.getGeoUL(geoCoords);
                 ipc = new sec.web.renderer.PointConverter(ptCoordsUL.getX(), ptCoordsUL.getY(), scale);
             }
-            //if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
-            if (Math.abs(right - left) > 180)
-            {
-                normalize = true;
-                ipc.set_normalize(true);
-            }
-            else
-            {
-                normalize = false;
-                ipc.set_normalize(false);
-            }
-            if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
-            {
-                normalize = true;
-                ipc.set_normalize(true);
-            }
+//            if (Math.abs(right - left) > 180)
+//            {
+//                normalize = true;
+//                ipc.set_normalize(true);
+//            }
+//            else
+//            {
+//                normalize = false;
+//                ipc.set_normalize(false);
+//            }
+//            if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+//            {
+//                normalize = true;
+//                ipc.set_normalize(true);
+//            }
 
             //check if symbolID is valid, if not, turn it into something renderable.
             if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
@@ -73602,7 +74738,10 @@ sec.web.renderer.MultiPointHandler = (function () {
             if (format < 3 && (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === false)
             {
                 if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === false)
+                {
                     rect = null;
+                    bboxCoords = null;
+                }
             }
 
             tgl.set_SymbolId(symbolCode);//like "GFGPSLA---****X" AMBUSH symbol code
@@ -73708,12 +74847,28 @@ sec.web.renderer.MultiPointHandler = (function () {
                         hexTextBackgroundColor = textBackgroundColor.toHexString(false);
 
                     jsonContent = sec.web.renderer.MultiPointHandler.GeoJSONize(shapes, modifiers, ipc, normalize, hexTextColor, hexTextBackgroundColor);
+                    //set id and any other properties
                     jsonContent.properties.id = id;
                     jsonContent.properties.name = name;
                     jsonContent.properties.description = description;
                     jsonContent.properties.symbolID = symbolCode;
-                    //set id and any other properties
-                    jsonOutput = JSON.stringify(jsonContent);
+                    jsonContent.properties.wasClipped = mSymbol.getWasClipped();
+                    
+                    var gjFormat = 0;//String
+                    if (symbolModifiers[MilStdAttributes.GeoJSONFormat])
+                    {
+                        gjFormat = symbolModifiers[MilStdAttributes.GeoJSONFormat];
+                    }
+
+                    if (gjFormat === 0)//json formatted string
+                    {
+                        jsonOutput = JSON.stringify(jsonContent);
+                    }
+                    else//json object
+                    {
+                        jsonOutput = jsonContent;
+                    }
+
                 }
                 else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
@@ -73729,38 +74884,38 @@ sec.web.renderer.MultiPointHandler = (function () {
                     {
                         shapes.smooth = true;
                     }
-                    
+
                     //check for area pattern fill
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillSize"])
+                        if (map["symbolFillSize"])
                             fillTextureSymbolSize = map["symbolFillSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    if(rect != null)
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture);
+                    if (convRect !== null)
+                        jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, converter);
                     else
-                        jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture);
-                        
+                        jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, converter);
+
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
                     var svgFormat = 1;
-                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                    if (symbolModifiers[MilStdAttributes.SVGFormat])
                         svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -73771,28 +74926,28 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillSize"])
+                        if (map["symbolFillSize"])
                             fillTextureSymbolSize = map["symbolFillSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
                     }
 
                     //returns an svg with a geoTL and geoBR value to use to place the canvas on the map.
-                    if(rect != null)
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), rect.getWidth(), rect.getHeight(),fillTexture, fontInfo,svgFormat);
+                    if (convRect != null)
+                        jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), convRect.getWidth(), convRect.getHeight(), fillTexture, fontInfo, svgFormat, converter);
                     else
-                        jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1,fillTexture, fontInfo,svgFormat);
-                        
+                        jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), -1, -1, fillTexture, fontInfo, svgFormat, converter);
+
                 }
                 else if (format === 1) //deprecated
                 {
@@ -73901,7 +75056,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          * @param {Object} fontInfo, required for SVG when used in Web Worker
          * @return {String} A JSON or KML string representation of the graphic.
          */
-        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo)
+        RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo, converter)
         {
             if (!symStd)
             {
@@ -73947,14 +75102,14 @@ sec.web.renderer.MultiPointHandler = (function () {
                 right = bounds[2];
                 top = bounds[3];
                 bottom = bounds[1];
-                
+
                 //Hack for Cesium clients: create aspect ratio of 1:1 at world view
-                if(armyc2.c2sd.renderer.utilities.RendererSettings.getUseCesium2DScaleModifiers()===true)                
-                    if(Number(top)-Number(bottom)>90)
-                        pixelHeight*=3;
-                
+                if (armyc2.c2sd.renderer.utilities.RendererSettings.getUseCesium2DScaleModifiers() === true)
+                    if (Number(top) - Number(bottom) > 90)
+                        pixelHeight *= 3;
+
                 //end section
-                
+
                 if (top !== bottom && left != right)
                 {
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (top), (left), (bottom), (right));
@@ -73963,21 +75118,23 @@ sec.web.renderer.MultiPointHandler = (function () {
                 {
                     var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                     ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
-                    left=rbb.left;
-                    top=rbb.top;
-                    right=rbb.right;
-                    bottom=rbb.bottom;
+                    left = rbb.left;
+                    top = rbb.top;
+                    right = rbb.right;
+                    bottom = rbb.bottom;
                 }
             }
             else
             {
                 var rbb = this.GetBboxFromCoordinates(symbolCode, geoCoords, symbolModifiers, symStd);
                 ipc = new armyc2.c2sd.renderer.utilities.PointConversion(pixelWidth, pixelHeight, (rbb.top), (rbb.left), (rbb.bottom), (rbb.right));
-                left=rbb.left;
-                top=rbb.top;
-                right=rbb.right;
-                bottom=rbb.bottom;
+                left = rbb.left;
+                top = rbb.top;
+                right = rbb.right;
+                bottom = rbb.bottom;
             }
+            if(converter)
+                ipc=converter;
 
             //check if symbolID is valid, if not, turn it into something renderable.
             if (armyc2.c2sd.renderer.utilities.SymbolDefTable.hasSymbolDef(SymbolUtilities.getBasicSymbolIDStrict(symbolCode), symStd) === false)
@@ -74009,21 +75166,21 @@ sec.web.renderer.MultiPointHandler = (function () {
                 var width;
                 var height;
                 var pt2d = null;
-                var normalize = false;
-                if (Math.abs(right - left) > 180)
-                {
-                    ipc.set_normalize(true);
-                    normalize = true;
-                }
-                else
-                {
-                    ipc.set_normalize(false);
-                }
-                if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
-                {
-                    ipc.set_normalize(true);
-                    normalize = true;
-                }
+                var normalize = true;
+//                if (Math.abs(right - left) > 180)
+//                {
+//                    ipc.set_normalize(true);
+//                    normalize = true;
+//                }
+//                else
+//                {
+//                    ipc.set_normalize(false);
+//                }
+//                if (sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
+//                {
+//                    ipc.set_normalize(true);
+//                    normalize = true;
+//                }
                 if (format > 2 || (sec.web.renderer.MultiPointHandler.ShouldClipSymbol(symbolCode)) === true || sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords) === true)
                 {
                     pt2d = new armyc2.c2sd.graphics2d.Point2D();
@@ -74057,12 +75214,14 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                 {
+                    mSymbol.setFillColor(new armyc2.c2sd.renderer.utilities.Color(0, 0, 0, 0));
                     tgl = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.createTGLightFromMilStdSymbol(mSymbol, ipc);
                     if (rect !== null)
                         armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsClipPolygon2.ClipPolygon(tgl, rect);
 
                     tgPoints = tgl.get_Pixels();
                 }
+                
                 armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.renderWithPolylines(mSymbol, ipc, rect);
                 shapes = mSymbol.getSymbolShapes();
                 modifiers = mSymbol.getModifierShapes();
@@ -74109,7 +75268,22 @@ sec.web.renderer.MultiPointHandler = (function () {
                     jsonContent.properties.name = name;
                     jsonContent.properties.description = description;
                     jsonContent.properties.symbolID = symbolCode;
-                    jsonOutput = JSON.stringify(jsonContent);
+                    jsonContent.properties.wasClipped = mSymbol.getWasClipped();
+
+                    var gjFormat = 0;//String
+                    if (symbolModifiers[MilStdAttributes.GeoJSONFormat])
+                    {
+                        gjFormat = symbolModifiers[MilStdAttributes.GeoJSONFormat];
+                    }
+
+                    if (gjFormat === 0)//json formatted string
+                    {
+                        jsonOutput = JSON.stringify(jsonContent);
+                    }
+                    else//json object
+                    {
+                        jsonOutput = jsonContent;
+                    }
                 }
                 else if (format === 3 || format === 4 || format === 5)//render to canvas/dataURL
                 {
@@ -74131,29 +75305,29 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillIconSize"])
+                        if (map["symbolFillIconSize"])
                             fillTextureSymbolSize = map["symbolFillIconSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHC.MakeFillTexture(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getCanvasFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHC.GeoCanvasize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
+                    jsonOutput = MPHC.GeoCanvasize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture);
                 }
                 else if (format === 6 || format === 7)//render to geoSVG
                 {
                     var svgFormat = 1;
-                    if(symbolModifiers[MilStdAttributes.SVGFormat])
+                    if (symbolModifiers[MilStdAttributes.SVGFormat])
                         svgFormat = symbolModifiers[MilStdAttributes.SVGFormat];
                     if (textColor)
                         hexTextColor = textColor.toHexString(false);
@@ -74164,24 +75338,24 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var map = mSymbol.getModifierMap();
                     var fillTexture = null;
                     var fillTextureSymbolSize = 15;
-                    if(map["symbolFillIds"])
+                    if (map["symbolFillIds"])
                     {
                         var strIDs = map["symbolFillIds"];
-                        if(map["symbolFillIconSize"])
+                        if (map["symbolFillIconSize"])
                             fillTextureSymbolSize = map["symbolFillIconSize"];
-                        
-                        if(strIDs && strIDs !== "")
+
+                        if (strIDs && strIDs !== "")
                         {
-                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);    
+                            fillTexture = MPHS.MakeFillTextureSVG(strIDs, fillTextureSymbolSize);
                         }
                     }
-                    if(symbolCode.charAt(0) === 'W')
+                    if (symbolCode.charAt(0) === 'W')
                     {
                         fillTexture = armyc2.c2sd.renderer.utilities.FillPatterns.getSVGFillStylePattern(symbolCode);
                     }
 
                     //returns a canvas with a geoTL and geoBR value to use to place the canvas on the map.
-                    jsonOutput = MPHS.GeoSVGize(shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo,svgFormat);
+                    jsonOutput = MPHS.GeoSVGize(mSymbol.getSymbolID(), shapes, modifiers, ipc, normalize, format, hexTextColor, hexTextBackgroundColor, mSymbol.getWasClipped(), pixelWidth, pixelHeight, fillTexture, fontInfo, svgFormat);
                 }
                 else if (format === 1) //deprecated
                 {
@@ -74286,7 +75460,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var AM = symbol.getModifiers_AM_AN_X(ModifiersTG.AM_DISTANCE);
 
-                if(symbolID === "PBS_CIRCLE-----" || symbolID === "PBS_SQUARE-----")
+                if (symbolID === "PBS_CIRCLE-----" || symbolID === "PBS_SQUARE-----")
                 {
                     if (AM && AM.length > 0 && coordCount > 0)
                     {
@@ -74297,7 +75471,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         return {canRender: false, message: (symbolID + ", requires a width (AM) and 1 control point")};
                     }
                 }
-                else if(symbolID === "PBS_ELLIPSE----" || symbolID === "PBS_RECTANGLE--")
+                else if (symbolID === "PBS_ELLIPSE----" || symbolID === "PBS_RECTANGLE--")
                 {
                     if (AM && AM.length > 1 && coordCount > 0)
                     {
@@ -74340,6 +75514,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     altMode = null;
             var useDashArray = symbol.getUseDashArray();
             var usePatternFill = symbol.getUseFillPattern();
+            var patternFillType = 0;
             var hideOptionalLabels = false;
 
             //alert(jsonString);
@@ -74489,6 +75664,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else if (modifiers.usePatternFill)
                     usePatternFill = modifiers.usePatternFill;
 
+                if (modifiers[MilStdAttributes.PatternFillType])
+                    patternFillType = modifiers[MilStdAttributes.PatternFillType];
+                else if (modifiers.patternFillType)
+                    patternFillType = modifiers.patternFillType;
+
                 if (modifiers[MilStdAttributes.UseDashArray])
                     useDashArray = modifiers[MilStdAttributes.UseDashArray];
                 else if (modifiers.useDashArray)
@@ -74496,9 +75676,9 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (modifiers[MilStdAttributes.AltitudeMode])
                     altMode = modifiers[MilStdAttributes.AltitudeMode];
-                    
+
                 if (modifiers[MilStdAttributes.HideOptionalLabels])
-                    hideOptionalLabels = modifiers[MilStdAttributes.HideOptionalLabels];    
+                    hideOptionalLabels = modifiers[MilStdAttributes.HideOptionalLabels];
 
                 // These are for when we create a area fill that is comprised of symbols//////////
                 if (modifiers.symbolFillIds !== undefined && modifiers.symbolFillIds !== null)
@@ -74528,6 +75708,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                 symbol.setModifierMap(modifierMap);
                 symbol.setUseDashArray(useDashArray);
                 symbol.setUseFillPattern(usePatternFill);
+                if(SymbolUtilities.isBasicShape(symbol.getSymbolID()))
+                    symbol.setPatternFillType(patternFillType);
                 symbol.setHideOptionalLabels(hideOptionalLabels);
                 if (fillColor !== null) {
                     symbol.setFillColor(armyc2.c2sd.renderer.utilities.SymbolUtilities.getColorFromHexString(fillColor));
@@ -74778,7 +75960,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     fillColor = null,
                     googleLineColor = null,
                     googleFillColor = null,
-                    lineStyleId = "lineColor",
+                    //lineStyleId = "lineColor",
                     stroke = null,
                     lineWidth = 4;
             var cdataStart = "<![CDATA[";
@@ -74789,7 +75971,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 kml += ("<description>" + cdataStart + description + cdataEnd + "</description>");
             }
-            kml += ("<Style id=\"" + lineStyleId + "\">");
+            //kml += ("<Style id=\"" + lineStyleId + "\">");
+            kml += ("<Style>");
             lineColor = shapeInfo.getLineColor();
             if (lineColor !== null) {
                 googleLineColor = shapeInfo.getLineColor().toKMLHexString();
@@ -75829,7 +77012,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                             a21 = null;
                     var dst = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pTL, pBR, a12, a21);
 
-                    bbox =  {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
+                    bbox = {top: pTL.y, left: pTL.x, bottom: pBR.y, right: pBR.x};
                 }
                 else if (sd.drawCategory === SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE)
                 {
@@ -76489,12 +77672,12 @@ return{
      * @param {number} symStd An enumeration: 0 for 2525Bch2, 1 for 2525C.
      * @return {string} A JSON or KML string representation of the graphic.
      */             
-    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo)
+    RenderSymbol2D: function(id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo, converter)
     {
         var output = "";
         try 
         {
-            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo);
+            output = sec.web.renderer.MultiPointHandler.RenderSymbol2D (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers, format, symStd, fontInfo, converter);
         }
         catch (exc) 
         {
@@ -76840,8 +78023,8 @@ return{
             var distanceLength = 0;
             var azimuthLength = 0;
             var color = "";
-            var lineColor = "";
-            var fillColor = "";
+            var lineColor = null;
+            var fillColor = null;
             //modifiers=JSON.parse(modifiers);          
             if (modifiers)
             {
@@ -76890,13 +78073,15 @@ return{
                 else
                 {   
                     lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolCode);
-                    lineColor.A = 170;
-                    lineColor = lineColor.toHexString().substring(1);
-                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
-                    // ensure that some color is selected.  If no color can be
-                    // found, use black.
-                    if (lineColor === null)
+                    if(lineColor !== null)
                     {
+                        //lineColor.A = 170;
+                        lineColor = lineColor.toHexString().substring(1);
+                    }
+                    else
+                    {
+                        // ensure that some color is selected.  If no color can be
+                        // found, use black.
                         lineColor = "FF000000";
                     }
                 }
@@ -76908,13 +78093,15 @@ return{
                 else
                 {   
                     fillColor = SymbolUtilities.getFillColorOfAffiliation(symbolCode);
-                    fillColor.A = 170;
-                    fillColor = fillColor.toHexString().substring(1);
-                    //color = JavaRendererUtilities.getAffiliationFillColor(symbolCode);
-                    // ensure that some color is selected.  If no color can be
-                    // found, use black.
-                    if (fillColor === null)
+                    if(fillColor !== null)
                     {
+                        fillColor.A = 170;
+                        fillColor = fillColor.toHexString().substring(1);
+                    }
+                    else
+                    {
+                        // ensure that some color is selected.  If no color can be
+                        // found, use black.
                         fillColor = "AA000000";
                     }
                 }
@@ -76923,7 +78110,7 @@ return{
                 var pointCount = coords.length;
                 for(var i = 0; i < pointCount; i++)
                 {
-                        attributes.ALT_MODE.push(convertedAltitudeMode);
+                    attributes.ALT_MODE.push(convertedAltitudeMode);
                 }
                 
                 fillColor = JavaRendererUtilities.ARGBtoABGR(fillColor);
@@ -77146,3 +78333,3558 @@ return{
             
 };
 }());
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+    /**
+     * A 3x3 matrix, indexable as a column-major order array.
+     * Constructor parameters are in row-major order for code readability.
+     * @alias Matrix3
+     * @constructor
+     *
+     * @param {Number} [column0Row0=0.0] The value for column 0, row 0.
+     * @param {Number} [column1Row0=0.0] The value for column 1, row 0.
+     * @param {Number} [column2Row0=0.0] The value for column 2, row 0.
+     * @param {Number} [column0Row1=0.0] The value for column 0, row 1.
+     * @param {Number} [column1Row1=0.0] The value for column 1, row 1.
+     * @param {Number} [column2Row1=0.0] The value for column 2, row 1.
+     * @param {Number} [column0Row2=0.0] The value for column 0, row 2.
+     * @param {Number} [column1Row2=0.0] The value for column 1, row 2.
+     * @param {Number} [column2Row2=0.0] The value for column 2, row 2.
+     *
+     * @see Matrix3.fromColumnMajorArray
+     * @see Matrix3.fromRowMajorArray
+     * @see Matrix3.fromQuaternion
+     * @see Matrix3.fromScale
+     * @see Matrix3.fromUniformScale
+     * @see Matrix2
+     * @see Matrix4
+     */
+    function Matrix3(column0Row0, column1Row0, column2Row0,
+                           column0Row1, column1Row1, column2Row1,
+                           column0Row2, column1Row2, column2Row2) {
+        this[0] = defaultValue(column0Row0, 0.0);
+        this[1] = defaultValue(column0Row1, 0.0);
+        this[2] = defaultValue(column0Row2, 0.0);
+        this[3] = defaultValue(column1Row0, 0.0);
+        this[4] = defaultValue(column1Row1, 0.0);
+        this[5] = defaultValue(column1Row2, 0.0);
+        this[6] = defaultValue(column2Row0, 0.0);
+        this[7] = defaultValue(column2Row1, 0.0);
+        this[8] = defaultValue(column2Row2, 0.0);
+    }
+
+    /**
+     * The number of elements used to pack the object into an array.
+     * @type {Number}
+     */
+    Matrix3.packedLength = 9;
+
+    /**
+     * Stores the provided instance into the provided array.
+     *
+     * @param {Matrix3} value The value to pack.
+     * @param {Number[]} array The array to pack into.
+     * @param {Number} [startingIndex=0] The index into the array at which to start packing the elements.
+     *
+     * @returns {Number[]} The array that was packed into
+     */
+    Matrix3.pack = function(value, array, startingIndex) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(value)) {
+            throw new DeveloperError('value is required');
+        }
+
+        if (!defined(array)) {
+            throw new DeveloperError('array is required');
+        }
+        //>>includeEnd('debug');
+
+        startingIndex = defaultValue(startingIndex, 0);
+
+        array[startingIndex++] = value[0];
+        array[startingIndex++] = value[1];
+        array[startingIndex++] = value[2];
+        array[startingIndex++] = value[3];
+        array[startingIndex++] = value[4];
+        array[startingIndex++] = value[5];
+        array[startingIndex++] = value[6];
+        array[startingIndex++] = value[7];
+        array[startingIndex++] = value[8];
+
+        return array;
+    };
+
+    /**
+     * Retrieves an instance from a packed array.
+     *
+     * @param {Number[]} array The packed array.
+     * @param {Number} [startingIndex=0] The starting index of the element to be unpacked.
+     * @param {Matrix3} [result] The object into which to store the result.
+     * @returns {Matrix3} The modified result parameter or a new Matrix3 instance if one was not provided.
+     */
+    Matrix3.unpack = function(array, startingIndex, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(array)) {
+            throw new DeveloperError('array is required');
+        }
+        //>>includeEnd('debug');
+
+        startingIndex = defaultValue(startingIndex, 0);
+
+        if (!defined(result)) {
+            result = new Matrix3();
+        }
+
+        result[0] = array[startingIndex++];
+        result[1] = array[startingIndex++];
+        result[2] = array[startingIndex++];
+        result[3] = array[startingIndex++];
+        result[4] = array[startingIndex++];
+        result[5] = array[startingIndex++];
+        result[6] = array[startingIndex++];
+        result[7] = array[startingIndex++];
+        result[8] = array[startingIndex++];
+        return result;
+    };
+
+    /**
+     * Duplicates a Matrix3 instance.
+     *
+     * @param {Matrix3} matrix The matrix to duplicate.
+     * @param {Matrix3} [result] The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter or a new Matrix3 instance if one was not provided. (Returns undefined if matrix is undefined)
+     */
+    Matrix3.clone = function(values, result) {
+        if (!defined(values)) {
+            return undefined;
+        }
+        if (!defined(result)) {
+            return new Matrix3(values[0], values[3], values[6],
+                               values[1], values[4], values[7],
+                               values[2], values[5], values[8]);
+        }
+        result[0] = values[0];
+        result[1] = values[1];
+        result[2] = values[2];
+        result[3] = values[3];
+        result[4] = values[4];
+        result[5] = values[5];
+        result[6] = values[6];
+        result[7] = values[7];
+        result[8] = values[8];
+        return result;
+    };
+
+    /**
+     * Creates a Matrix3 from 9 consecutive elements in an array.
+     *
+     * @param {Number[]} array The array whose 9 consecutive elements correspond to the positions of the matrix.  Assumes column-major order.
+     * @param {Number} [startingIndex=0] The offset into the array of the first element, which corresponds to first column first row position in the matrix.
+     * @param {Matrix3} [result] The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Create the Matrix3:
+     * // [1.0, 2.0, 3.0]
+     * // [1.0, 2.0, 3.0]
+     * // [1.0, 2.0, 3.0]
+     *
+     * var v = [1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0];
+     * var m = Cesium.Matrix3.fromArray(v);
+     *
+     * // Create same Matrix3 with using an offset into an array
+     * var v2 = [0.0, 0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0];
+     * var m2 = Cesium.Matrix3.fromArray(v2, 2);
+     */
+    Matrix3.fromArray = function(array, startingIndex, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(array)) {
+            throw new DeveloperError('array is required');
+        }
+        //>>includeEnd('debug');
+
+        startingIndex = defaultValue(startingIndex, 0);
+
+        if (!defined(result)) {
+            result = new Matrix3();
+        }
+
+        result[0] = array[startingIndex];
+        result[1] = array[startingIndex + 1];
+        result[2] = array[startingIndex + 2];
+        result[3] = array[startingIndex + 3];
+        result[4] = array[startingIndex + 4];
+        result[5] = array[startingIndex + 5];
+        result[6] = array[startingIndex + 6];
+        result[7] = array[startingIndex + 7];
+        result[8] = array[startingIndex + 8];
+        return result;
+    };
+
+    /**
+     * Creates a Matrix3 instance from a column-major order array.
+     *
+     * @param {Number[]} values The column-major order array.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     */
+    Matrix3.fromColumnMajorArray = function(values, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(values)) {
+            throw new DeveloperError('values parameter is required');
+        }
+        //>>includeEnd('debug');
+
+        return Matrix3.clone(values, result);
+    };
+
+    /**
+     * Creates a Matrix3 instance from a row-major order array.
+     * The resulting matrix will be in column-major order.
+     *
+     * @param {Number[]} values The row-major order array.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     */
+    Matrix3.fromRowMajorArray = function(values, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(values)) {
+            throw new DeveloperError('values is required.');
+        }
+        //>>includeEnd('debug');
+
+        if (!defined(result)) {
+            return new Matrix3(values[0], values[1], values[2],
+                               values[3], values[4], values[5],
+                               values[6], values[7], values[8]);
+        }
+        result[0] = values[0];
+        result[1] = values[3];
+        result[2] = values[6];
+        result[3] = values[1];
+        result[4] = values[4];
+        result[5] = values[7];
+        result[6] = values[2];
+        result[7] = values[5];
+        result[8] = values[8];
+        return result;
+    };
+
+    /**
+     * Computes a 3x3 rotation matrix from the provided quaternion.
+     *
+     * @param {Quaternion} quaternion the quaternion to use.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The 3x3 rotation matrix from this quaternion.
+     */
+    Matrix3.fromQuaternion = function(quaternion, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(quaternion)) {
+            throw new DeveloperError('quaternion is required');
+        }
+        //>>includeEnd('debug');
+
+        var x2 = quaternion.x * quaternion.x;
+        var xy = quaternion.x * quaternion.y;
+        var xz = quaternion.x * quaternion.z;
+        var xw = quaternion.x * quaternion.w;
+        var y2 = quaternion.y * quaternion.y;
+        var yz = quaternion.y * quaternion.z;
+        var yw = quaternion.y * quaternion.w;
+        var z2 = quaternion.z * quaternion.z;
+        var zw = quaternion.z * quaternion.w;
+        var w2 = quaternion.w * quaternion.w;
+
+        var m00 = x2 - y2 - z2 + w2;
+        var m01 = 2.0 * (xy - zw);
+        var m02 = 2.0 * (xz + yw);
+
+        var m10 = 2.0 * (xy + zw);
+        var m11 = -x2 + y2 - z2 + w2;
+        var m12 = 2.0 * (yz - xw);
+
+        var m20 = 2.0 * (xz - yw);
+        var m21 = 2.0 * (yz + xw);
+        var m22 = -x2 - y2 + z2 + w2;
+
+        if (!defined(result)) {
+            return new Matrix3(m00, m01, m02,
+                               m10, m11, m12,
+                               m20, m21, m22);
+        }
+        result[0] = m00;
+        result[1] = m10;
+        result[2] = m20;
+        result[3] = m01;
+        result[4] = m11;
+        result[5] = m21;
+        result[6] = m02;
+        result[7] = m12;
+        result[8] = m22;
+        return result;
+    };
+
+    /**
+     * Computes a 3x3 rotation matrix from the provided headingPitchRoll. (see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles )
+     *
+     * @param {HeadingPitchRoll} headingPitchRoll the headingPitchRoll to use.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The 3x3 rotation matrix from this headingPitchRoll.
+     */
+    Matrix3.fromHeadingPitchRoll = function(headingPitchRoll, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(headingPitchRoll)) {
+            throw new DeveloperError('headingPitchRoll is required');
+        }
+        //>>includeEnd('debug');
+        var cosTheta = Math.cos(-headingPitchRoll.pitch);
+        var cosPsi = Math.cos(-headingPitchRoll.heading);
+        var cosPhi = Math.cos(headingPitchRoll.roll);
+        var sinTheta = Math.sin(-headingPitchRoll.pitch);
+        var sinPsi = Math.sin(-headingPitchRoll.heading);
+        var sinPhi = Math.sin(headingPitchRoll.roll);
+
+        var m00 = cosTheta * cosPsi;
+        var m01 = -cosPhi * sinPsi + sinPhi * sinTheta * cosPsi;
+        var m02 = sinPhi * sinPsi + cosPhi * sinTheta * cosPsi;
+
+        var m10 = cosTheta * sinPsi;
+        var m11 = cosPhi * cosPsi + sinPhi * sinTheta * sinPsi;
+        var m12 = -sinTheta * cosPhi + cosPhi * sinTheta * sinPsi;
+
+        var m20 = -sinTheta;
+        var m21 = sinPhi * cosTheta;
+        var m22 = cosPhi * cosTheta;
+
+        if (!defined(result)) {
+            return new Matrix3(m00, m01, m02,
+                m10, m11, m12,
+                m20, m21, m22);
+        }
+        result[0] = m00;
+        result[1] = m10;
+        result[2] = m20;
+        result[3] = m01;
+        result[4] = m11;
+        result[5] = m21;
+        result[6] = m02;
+        result[7] = m12;
+        result[8] = m22;
+        return result;
+    };
+
+    /**
+     * Computes a Matrix3 instance representing a non-uniform scale.
+     *
+     * @param {Cartesian3} scale The x, y, and z scale factors.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Creates
+     * //   [7.0, 0.0, 0.0]
+     * //   [0.0, 8.0, 0.0]
+     * //   [0.0, 0.0, 9.0]
+     * var m = Cesium.Matrix3.fromScale(new Cesium.Cartesian3(7.0, 8.0, 9.0));
+     */
+    Matrix3.fromScale = function(scale, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(scale)) {
+            throw new DeveloperError('scale is required.');
+        }
+        //>>includeEnd('debug');
+
+        if (!defined(result)) {
+            return new Matrix3(
+                scale.x, 0.0,     0.0,
+                0.0,     scale.y, 0.0,
+                0.0,     0.0,     scale.z);
+        }
+
+        result[0] = scale.x;
+        result[1] = 0.0;
+        result[2] = 0.0;
+        result[3] = 0.0;
+        result[4] = scale.y;
+        result[5] = 0.0;
+        result[6] = 0.0;
+        result[7] = 0.0;
+        result[8] = scale.z;
+        return result;
+    };
+
+    /**
+     * Computes a Matrix3 instance representing a uniform scale.
+     *
+     * @param {Number} scale The uniform scale factor.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Creates
+     * //   [2.0, 0.0, 0.0]
+     * //   [0.0, 2.0, 0.0]
+     * //   [0.0, 0.0, 2.0]
+     * var m = Cesium.Matrix3.fromUniformScale(2.0);
+     */
+    Matrix3.fromUniformScale = function(scale, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (typeof scale !== 'number') {
+            throw new DeveloperError('scale is required.');
+        }
+        //>>includeEnd('debug');
+
+        if (!defined(result)) {
+            return new Matrix3(
+                scale, 0.0,   0.0,
+                0.0,   scale, 0.0,
+                0.0,   0.0,   scale);
+        }
+
+        result[0] = scale;
+        result[1] = 0.0;
+        result[2] = 0.0;
+        result[3] = 0.0;
+        result[4] = scale;
+        result[5] = 0.0;
+        result[6] = 0.0;
+        result[7] = 0.0;
+        result[8] = scale;
+        return result;
+    };
+
+    /**
+     * Computes a Matrix3 instance representing the cross product equivalent matrix of a Cartesian3 vector.
+     *
+     * @param {Cartesian3} the vector on the left hand side of the cross product operation.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Creates
+     * //   [0.0, -9.0,  8.0]
+     * //   [9.0,  0.0, -7.0]
+     * //   [-8.0, 7.0,  0.0]
+     * var m = Cesium.Matrix3.fromCrossProduct(new Cesium.Cartesian3(7.0, 8.0, 9.0));
+     */
+    Matrix3.fromCrossProduct = function(vector, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(vector)) {
+            throw new DeveloperError('vector is required.');
+        }
+        //>>includeEnd('debug');
+
+        if (!defined(result)) {
+            return new Matrix3(
+                      0.0, -vector.z,  vector.y,
+                 vector.z,       0.0, -vector.x,
+                -vector.y,  vector.x,       0.0);
+        }
+
+        result[0] = 0.0;
+        result[1] = vector.z;
+        result[2] = -vector.y;
+        result[3] = -vector.z;
+        result[4] = 0.0;
+        result[5] = vector.x;
+        result[6] = vector.y;
+        result[7] = -vector.x;
+        result[8] = 0.0;
+        return result;
+    };
+
+    /**
+     * Creates a rotation matrix around the x-axis.
+     *
+     * @param {Number} angle The angle, in radians, of the rotation.  Positive angles are counterclockwise.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Rotate a point 45 degrees counterclockwise around the x-axis.
+     * var p = new Cesium.Cartesian3(5, 6, 7);
+     * var m = Cesium.Matrix3.fromRotationX(Cesium.Math.toRadians(45.0));
+     * var rotated = Cesium.Matrix3.multiplyByVector(m, p, new Cesium.Cartesian3());
+     */
+    Matrix3.fromRotationX = function(angle, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(angle)) {
+            throw new DeveloperError('angle is required.');
+        }
+        //>>includeEnd('debug');
+
+        var cosAngle = Math.cos(angle);
+        var sinAngle = Math.sin(angle);
+
+        if (!defined(result)) {
+            return new Matrix3(
+                1.0, 0.0, 0.0,
+                0.0, cosAngle, -sinAngle,
+                0.0, sinAngle, cosAngle);
+        }
+
+        result[0] = 1.0;
+        result[1] = 0.0;
+        result[2] = 0.0;
+        result[3] = 0.0;
+        result[4] = cosAngle;
+        result[5] = sinAngle;
+        result[6] = 0.0;
+        result[7] = -sinAngle;
+        result[8] = cosAngle;
+
+        return result;
+    };
+
+    /**
+     * Creates a rotation matrix around the y-axis.
+     *
+     * @param {Number} angle The angle, in radians, of the rotation.  Positive angles are counterclockwise.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Rotate a point 45 degrees counterclockwise around the y-axis.
+     * var p = new Cesium.Cartesian3(5, 6, 7);
+     * var m = Cesium.Matrix3.fromRotationY(Cesium.Math.toRadians(45.0));
+     * var rotated = Cesium.Matrix3.multiplyByVector(m, p, new Cesium.Cartesian3());
+     */
+    Matrix3.fromRotationY = function(angle, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(angle)) {
+            throw new DeveloperError('angle is required.');
+        }
+        //>>includeEnd('debug');
+
+        var cosAngle = Math.cos(angle);
+        var sinAngle = Math.sin(angle);
+
+        if (!defined(result)) {
+            return new Matrix3(
+                cosAngle, 0.0, sinAngle,
+                0.0, 1.0, 0.0,
+                -sinAngle, 0.0, cosAngle);
+        }
+
+        result[0] = cosAngle;
+        result[1] = 0.0;
+        result[2] = -sinAngle;
+        result[3] = 0.0;
+        result[4] = 1.0;
+        result[5] = 0.0;
+        result[6] = sinAngle;
+        result[7] = 0.0;
+        result[8] = cosAngle;
+
+        return result;
+    };
+
+    /**
+     * Creates a rotation matrix around the z-axis.
+     *
+     * @param {Number} angle The angle, in radians, of the rotation.  Positive angles are counterclockwise.
+     * @param {Matrix3} [result] The object in which the result will be stored, if undefined a new instance will be created.
+     * @returns {Matrix3} The modified result parameter, or a new Matrix3 instance if one was not provided.
+     *
+     * @example
+     * // Rotate a point 45 degrees counterclockwise around the z-axis.
+     * var p = new Cesium.Cartesian3(5, 6, 7);
+     * var m = Cesium.Matrix3.fromRotationZ(Cesium.Math.toRadians(45.0));
+     * var rotated = Cesium.Matrix3.multiplyByVector(m, p, new Cesium.Cartesian3());
+     */
+    Matrix3.fromRotationZ = function(angle, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(angle)) {
+            throw new DeveloperError('angle is required.');
+        }
+        //>>includeEnd('debug');
+
+        var cosAngle = Math.cos(angle);
+        var sinAngle = Math.sin(angle);
+
+        if (!defined(result)) {
+            return new Matrix3(
+                cosAngle, -sinAngle, 0.0,
+                sinAngle, cosAngle, 0.0,
+                0.0, 0.0, 1.0);
+        }
+
+        result[0] = cosAngle;
+        result[1] = sinAngle;
+        result[2] = 0.0;
+        result[3] = -sinAngle;
+        result[4] = cosAngle;
+        result[5] = 0.0;
+        result[6] = 0.0;
+        result[7] = 0.0;
+        result[8] = 1.0;
+
+        return result;
+    };
+
+    /**
+     * Creates an Array from the provided Matrix3 instance.
+     * The array will be in column-major order.
+     *
+     * @param {Matrix3} matrix The matrix to use..
+     * @param {Number[]} [result] The Array onto which to store the result.
+     * @returns {Number[]} The modified Array parameter or a new Array instance if one was not provided.
+     */
+    Matrix3.toArray = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        //>>includeEnd('debug');
+
+        if (!defined(result)) {
+            return [matrix[0], matrix[1], matrix[2], matrix[3], matrix[4], matrix[5], matrix[6], matrix[7], matrix[8]];
+        }
+        result[0] = matrix[0];
+        result[1] = matrix[1];
+        result[2] = matrix[2];
+        result[3] = matrix[3];
+        result[4] = matrix[4];
+        result[5] = matrix[5];
+        result[6] = matrix[6];
+        result[7] = matrix[7];
+        result[8] = matrix[8];
+        return result;
+    };
+
+    /**
+     * Computes the array index of the element at the provided row and column.
+     *
+     * @param {Number} row The zero-based index of the row.
+     * @param {Number} column The zero-based index of the column.
+     * @returns {Number} The index of the element at the provided row and column.
+     *
+     * @exception {DeveloperError} row must be 0, 1, or 2.
+     * @exception {DeveloperError} column must be 0, 1, or 2.
+     *
+     * @example
+     * var myMatrix = new Cesium.Matrix3();
+     * var column1Row0Index = Cesium.Matrix3.getElementIndex(1, 0);
+     * var column1Row0 = myMatrix[column1Row0Index]
+     * myMatrix[column1Row0Index] = 10.0;
+     */
+    Matrix3.getElementIndex = function(column, row) {
+        //>>includeStart('debug', pragmas.debug);
+        if (typeof row !== 'number' || row < 0 || row > 2) {
+            throw new DeveloperError('row must be 0, 1, or 2.');
+        }
+        if (typeof column !== 'number' || column < 0 || column > 2) {
+            throw new DeveloperError('column must be 0, 1, or 2.');
+        }
+        //>>includeEnd('debug');
+
+        return column * 3 + row;
+    };
+
+    /**
+     * Retrieves a copy of the matrix column at the provided index as a Cartesian3 instance.
+     *
+     * @param {Matrix3} matrix The matrix to use.
+     * @param {Number} index The zero-based index of the column to retrieve.
+     * @param {Cartesian3} result The object onto which to store the result.
+     * @returns {Cartesian3} The modified result parameter.
+     *
+     * @exception {DeveloperError} index must be 0, 1, or 2.
+     */
+    Matrix3.getColumn = function(matrix, index, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required.');
+        }
+
+        if (typeof index !== 'number' || index < 0 || index > 2) {
+            throw new DeveloperError('index must be 0, 1, or 2.');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var startIndex = index * 3;
+        var x = matrix[startIndex];
+        var y = matrix[startIndex + 1];
+        var z = matrix[startIndex + 2];
+
+        result.x = x;
+        result.y = y;
+        result.z = z;
+        return result;
+    };
+
+    /**
+     * Computes a new matrix that replaces the specified column in the provided matrix with the provided Cartesian3 instance.
+     *
+     * @param {Matrix3} matrix The matrix to use.
+     * @param {Number} index The zero-based index of the column to set.
+     * @param {Cartesian3} cartesian The Cartesian whose values will be assigned to the specified column.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     *
+     * @exception {DeveloperError} index must be 0, 1, or 2.
+     */
+    Matrix3.setColumn = function(matrix, index, cartesian, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(cartesian)) {
+            throw new DeveloperError('cartesian is required');
+        }
+        if (typeof index !== 'number' || index < 0 || index > 2) {
+            throw new DeveloperError('index must be 0, 1, or 2.');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result = Matrix3.clone(matrix, result);
+        var startIndex = index * 3;
+        result[startIndex] = cartesian.x;
+        result[startIndex + 1] = cartesian.y;
+        result[startIndex + 2] = cartesian.z;
+        return result;
+    };
+
+    /**
+     * Retrieves a copy of the matrix row at the provided index as a Cartesian3 instance.
+     *
+     * @param {Matrix3} matrix The matrix to use.
+     * @param {Number} index The zero-based index of the row to retrieve.
+     * @param {Cartesian3} result The object onto which to store the result.
+     * @returns {Cartesian3} The modified result parameter.
+     *
+     * @exception {DeveloperError} index must be 0, 1, or 2.
+     */
+    Matrix3.getRow = function(matrix, index, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required.');
+        }
+        if (typeof index !== 'number' || index < 0 || index > 2) {
+            throw new DeveloperError('index must be 0, 1, or 2.');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var x = matrix[index];
+        var y = matrix[index + 3];
+        var z = matrix[index + 6];
+
+        result.x = x;
+        result.y = y;
+        result.z = z;
+        return result;
+    };
+
+    /**
+     * Computes a new matrix that replaces the specified row in the provided matrix with the provided Cartesian3 instance.
+     *
+     * @param {Matrix3} matrix The matrix to use.
+     * @param {Number} index The zero-based index of the row to set.
+     * @param {Cartesian3} cartesian The Cartesian whose values will be assigned to the specified row.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     *
+     * @exception {DeveloperError} index must be 0, 1, or 2.
+     */
+    Matrix3.setRow = function(matrix, index, cartesian, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(cartesian)) {
+            throw new DeveloperError('cartesian is required');
+        }
+        if (typeof index !== 'number' || index < 0 || index > 2) {
+            throw new DeveloperError('index must be 0, 1, or 2.');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result = Matrix3.clone(matrix, result);
+        result[index] = cartesian.x;
+        result[index + 3] = cartesian.y;
+        result[index + 6] = cartesian.z;
+        return result;
+    };
+
+    var scratchColumn = new Cartesian3();
+
+    /**
+     * Extracts the non-uniform scale assuming the matrix is an affine transformation.
+     *
+     * @param {Matrix3} matrix The matrix.
+     * @param {Cartesian3} result The object onto which to store the result.
+     * @returns {Cartesian3} The modified result parameter.
+     */
+    Matrix3.getScale = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required.');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result.x = Cartesian3.magnitude(Cartesian3.fromElements(matrix[0], matrix[1], matrix[2], scratchColumn));
+        result.y = Cartesian3.magnitude(Cartesian3.fromElements(matrix[3], matrix[4], matrix[5], scratchColumn));
+        result.z = Cartesian3.magnitude(Cartesian3.fromElements(matrix[6], matrix[7], matrix[8], scratchColumn));
+        return result;
+    };
+
+    var scratchScale = new Cartesian3();
+
+    /**
+     * Computes the maximum scale assuming the matrix is an affine transformation.
+     * The maximum scale is the maximum length of the column vectors.
+     *
+     * @param {Matrix3} matrix The matrix.
+     * @returns {Number} The maximum scale.
+     */
+    Matrix3.getMaximumScale = function(matrix) {
+        Matrix3.getScale(matrix, scratchScale);
+        return Cartesian3.maximumComponent(scratchScale);
+    };
+
+    /**
+     * Computes the product of two matrices.
+     *
+     * @param {Matrix3} left The first matrix.
+     * @param {Matrix3} right The second matrix.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.multiply = function(left, right, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(left)) {
+            throw new DeveloperError('left is required');
+        }
+        if (!defined(right)) {
+            throw new DeveloperError('right is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var column0Row0 = left[0] * right[0] + left[3] * right[1] + left[6] * right[2];
+        var column0Row1 = left[1] * right[0] + left[4] * right[1] + left[7] * right[2];
+        var column0Row2 = left[2] * right[0] + left[5] * right[1] + left[8] * right[2];
+
+        var column1Row0 = left[0] * right[3] + left[3] * right[4] + left[6] * right[5];
+        var column1Row1 = left[1] * right[3] + left[4] * right[4] + left[7] * right[5];
+        var column1Row2 = left[2] * right[3] + left[5] * right[4] + left[8] * right[5];
+
+        var column2Row0 = left[0] * right[6] + left[3] * right[7] + left[6] * right[8];
+        var column2Row1 = left[1] * right[6] + left[4] * right[7] + left[7] * right[8];
+        var column2Row2 = left[2] * right[6] + left[5] * right[7] + left[8] * right[8];
+
+        result[0] = column0Row0;
+        result[1] = column0Row1;
+        result[2] = column0Row2;
+        result[3] = column1Row0;
+        result[4] = column1Row1;
+        result[5] = column1Row2;
+        result[6] = column2Row0;
+        result[7] = column2Row1;
+        result[8] = column2Row2;
+        return result;
+    };
+
+    /**
+     * Computes the sum of two matrices.
+     *
+     * @param {Matrix3} left The first matrix.
+     * @param {Matrix3} right The second matrix.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.add = function(left, right, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(left)) {
+            throw new DeveloperError('left is required');
+        }
+        if (!defined(right)) {
+            throw new DeveloperError('right is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = left[0] + right[0];
+        result[1] = left[1] + right[1];
+        result[2] = left[2] + right[2];
+        result[3] = left[3] + right[3];
+        result[4] = left[4] + right[4];
+        result[5] = left[5] + right[5];
+        result[6] = left[6] + right[6];
+        result[7] = left[7] + right[7];
+        result[8] = left[8] + right[8];
+        return result;
+    };
+
+    /**
+     * Computes the difference of two matrices.
+     *
+     * @param {Matrix3} left The first matrix.
+     * @param {Matrix3} right The second matrix.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.subtract = function(left, right, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(left)) {
+            throw new DeveloperError('left is required');
+        }
+        if (!defined(right)) {
+            throw new DeveloperError('right is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = left[0] - right[0];
+        result[1] = left[1] - right[1];
+        result[2] = left[2] - right[2];
+        result[3] = left[3] - right[3];
+        result[4] = left[4] - right[4];
+        result[5] = left[5] - right[5];
+        result[6] = left[6] - right[6];
+        result[7] = left[7] - right[7];
+        result[8] = left[8] - right[8];
+        return result;
+    };
+
+    /**
+     * Computes the product of a matrix and a column vector.
+     *
+     * @param {Matrix3} matrix The matrix.
+     * @param {Cartesian3} cartesian The column.
+     * @param {Cartesian3} result The object onto which to store the result.
+     * @returns {Cartesian3} The modified result parameter.
+     */
+    Matrix3.multiplyByVector = function(matrix, cartesian, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(cartesian)) {
+            throw new DeveloperError('cartesian is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var vX = cartesian.x;
+        var vY = cartesian.y;
+        var vZ = cartesian.z;
+
+        var x = matrix[0] * vX + matrix[3] * vY + matrix[6] * vZ;
+        var y = matrix[1] * vX + matrix[4] * vY + matrix[7] * vZ;
+        var z = matrix[2] * vX + matrix[5] * vY + matrix[8] * vZ;
+
+        result.x = x;
+        result.y = y;
+        result.z = z;
+        return result;
+    };
+
+    /**
+     * Computes the product of a matrix and a scalar.
+     *
+     * @param {Matrix3} matrix The matrix.
+     * @param {Number} scalar The number to multiply by.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.multiplyByScalar = function(matrix, scalar, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (typeof scalar !== 'number') {
+            throw new DeveloperError('scalar must be a number');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = matrix[0] * scalar;
+        result[1] = matrix[1] * scalar;
+        result[2] = matrix[2] * scalar;
+        result[3] = matrix[3] * scalar;
+        result[4] = matrix[4] * scalar;
+        result[5] = matrix[5] * scalar;
+        result[6] = matrix[6] * scalar;
+        result[7] = matrix[7] * scalar;
+        result[8] = matrix[8] * scalar;
+        return result;
+    };
+
+    /**
+     * Computes the product of a matrix times a (non-uniform) scale, as if the scale were a scale matrix.
+     *
+     * @param {Matrix3} matrix The matrix on the left-hand side.
+     * @param {Cartesian3} scale The non-uniform scale on the right-hand side.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     *
+     *
+     * @example
+     * // Instead of Cesium.Matrix3.multiply(m, Cesium.Matrix3.fromScale(scale), m);
+     * Cesium.Matrix3.multiplyByScale(m, scale, m);
+     *
+     * @see Matrix3.fromScale
+     * @see Matrix3.multiplyByUniformScale
+     */
+    Matrix3.multiplyByScale = function(matrix, scale, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(scale)) {
+            throw new DeveloperError('scale is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = matrix[0] * scale.x;
+        result[1] = matrix[1] * scale.x;
+        result[2] = matrix[2] * scale.x;
+        result[3] = matrix[3] * scale.y;
+        result[4] = matrix[4] * scale.y;
+        result[5] = matrix[5] * scale.y;
+        result[6] = matrix[6] * scale.z;
+        result[7] = matrix[7] * scale.z;
+        result[8] = matrix[8] * scale.z;
+        return result;
+    };
+
+    /**
+     * Creates a negated copy of the provided matrix.
+     *
+     * @param {Matrix3} matrix The matrix to negate.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.negate = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = -matrix[0];
+        result[1] = -matrix[1];
+        result[2] = -matrix[2];
+        result[3] = -matrix[3];
+        result[4] = -matrix[4];
+        result[5] = -matrix[5];
+        result[6] = -matrix[6];
+        result[7] = -matrix[7];
+        result[8] = -matrix[8];
+        return result;
+    };
+
+    /**
+     * Computes the transpose of the provided matrix.
+     *
+     * @param {Matrix3} matrix The matrix to transpose.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.transpose = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var column0Row0 = matrix[0];
+        var column0Row1 = matrix[3];
+        var column0Row2 = matrix[6];
+        var column1Row0 = matrix[1];
+        var column1Row1 = matrix[4];
+        var column1Row2 = matrix[7];
+        var column2Row0 = matrix[2];
+        var column2Row1 = matrix[5];
+        var column2Row2 = matrix[8];
+
+        result[0] = column0Row0;
+        result[1] = column0Row1;
+        result[2] = column0Row2;
+        result[3] = column1Row0;
+        result[4] = column1Row1;
+        result[5] = column1Row2;
+        result[6] = column2Row0;
+        result[7] = column2Row1;
+        result[8] = column2Row2;
+        return result;
+    };
+
+    function computeFrobeniusNorm(matrix) {
+        var norm = 0.0;
+        for (var i = 0; i < 9; ++i) {
+            var temp = matrix[i];
+            norm += temp * temp;
+        }
+
+        return Math.sqrt(norm);
+    }
+
+    var rowVal = [1, 0, 0];
+    var colVal = [2, 2, 1];
+
+    function offDiagonalFrobeniusNorm(matrix) {
+        // Computes the "off-diagonal" Frobenius norm.
+        // Assumes matrix is symmetric.
+
+        var norm = 0.0;
+        for (var i = 0; i < 3; ++i) {
+            var temp = matrix[Matrix3.getElementIndex(colVal[i], rowVal[i])];
+            norm += 2.0 * temp * temp;
+        }
+
+        return Math.sqrt(norm);
+    }
+
+    function shurDecomposition(matrix, result) {
+        // This routine was created based upon Matrix Computations, 3rd ed., by Golub and Van Loan,
+        // section 8.4.2 The 2by2 Symmetric Schur Decomposition.
+        //
+        // The routine takes a matrix, which is assumed to be symmetric, and
+        // finds the largest off-diagonal term, and then creates
+        // a matrix (result) which can be used to help reduce it
+
+        var tolerance = CesiumMath.EPSILON15;
+
+        var maxDiagonal = 0.0;
+        var rotAxis = 1;
+
+        // find pivot (rotAxis) based on max diagonal of matrix
+        for (var i = 0; i < 3; ++i) {
+            var temp = Math.abs(matrix[Matrix3.getElementIndex(colVal[i], rowVal[i])]);
+            if (temp > maxDiagonal) {
+                rotAxis = i;
+                maxDiagonal = temp;
+            }
+        }
+
+        var c = 1.0;
+        var s = 0.0;
+
+        var p = rowVal[rotAxis];
+        var q = colVal[rotAxis];
+
+        if (Math.abs(matrix[Matrix3.getElementIndex(q, p)]) > tolerance) {
+            var qq = matrix[Matrix3.getElementIndex(q, q)];
+            var pp = matrix[Matrix3.getElementIndex(p, p)];
+            var qp = matrix[Matrix3.getElementIndex(q, p)];
+
+            var tau = (qq - pp) / 2.0 / qp;
+            var t;
+
+            if (tau < 0.0) {
+                t = -1.0 / (-tau + Math.sqrt(1.0 + tau * tau));
+            } else {
+                t = 1.0 / (tau + Math.sqrt(1.0 + tau * tau));
+            }
+
+            c = 1.0 / Math.sqrt(1.0 + t * t);
+            s = t * c;
+        }
+
+        result = Matrix3.clone(Matrix3.IDENTITY, result);
+
+        result[Matrix3.getElementIndex(p, p)] = result[Matrix3.getElementIndex(q, q)] = c;
+        result[Matrix3.getElementIndex(q, p)] = s;
+        result[Matrix3.getElementIndex(p, q)] = -s;
+
+        return result;
+    }
+
+    var jMatrix = new Matrix3();
+    var jMatrixTranspose = new Matrix3();
+
+    /**
+     * Computes the eigenvectors and eigenvalues of a symmetric matrix.
+     * <p>
+     * Returns a diagonal matrix and unitary matrix such that:
+     * <code>matrix = unitary matrix * diagonal matrix * transpose(unitary matrix)</code>
+     * </p>
+     * <p>
+     * The values along the diagonal of the diagonal matrix are the eigenvalues. The columns
+     * of the unitary matrix are the corresponding eigenvectors.
+     * </p>
+     *
+     * @param {Matrix3} matrix The matrix to decompose into diagonal and unitary matrix. Expected to be symmetric.
+     * @param {Object} [result] An object with unitary and diagonal properties which are matrices onto which to store the result.
+     * @returns {Object} An object with unitary and diagonal properties which are the unitary and diagonal matrices, respectively.
+     *
+     * @example
+     * var a = //... symetric matrix
+     * var result = {
+     *     unitary : new Cesium.Matrix3(),
+     *     diagonal : new Cesium.Matrix3()
+     * };
+     * Cesium.Matrix3.computeEigenDecomposition(a, result);
+     *
+     * var unitaryTranspose = Cesium.Matrix3.transpose(result.unitary, new Cesium.Matrix3());
+     * var b = Cesium.Matrix3.multiply(result.unitary, result.diagonal, new Cesium.Matrix3());
+     * Cesium.Matrix3.multiply(b, unitaryTranspose, b); // b is now equal to a
+     *
+     * var lambda = Cesium.Matrix3.getColumn(result.diagonal, 0, new Cesium.Cartesian3()).x;  // first eigenvalue
+     * var v = Cesium.Matrix3.getColumn(result.unitary, 0, new Cesium.Cartesian3());          // first eigenvector
+     * var c = Cesium.Cartesian3.multiplyByScalar(v, lambda, new Cesium.Cartesian3());        // equal to Cesium.Matrix3.multiplyByVector(a, v)
+     */
+    Matrix3.computeEigenDecomposition = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required.');
+        }
+        //>>includeEnd('debug');
+
+        // This routine was created based upon Matrix Computations, 3rd ed., by Golub and Van Loan,
+        // section 8.4.3 The Classical Jacobi Algorithm
+
+        var tolerance = CesiumMath.EPSILON20;
+        var maxSweeps = 10;
+
+        var count = 0;
+        var sweep = 0;
+
+        if (!defined(result)) {
+            result = {};
+        }
+
+        var unitaryMatrix = result.unitary = Matrix3.clone(Matrix3.IDENTITY, result.unitary);
+        var diagMatrix = result.diagonal = Matrix3.clone(matrix, result.diagonal);
+
+        var epsilon = tolerance * computeFrobeniusNorm(diagMatrix);
+
+        while (sweep < maxSweeps && offDiagonalFrobeniusNorm(diagMatrix) > epsilon) {
+            shurDecomposition(diagMatrix, jMatrix);
+            Matrix3.transpose(jMatrix, jMatrixTranspose);
+            Matrix3.multiply(diagMatrix, jMatrix, diagMatrix);
+            Matrix3.multiply(jMatrixTranspose, diagMatrix, diagMatrix);
+            Matrix3.multiply(unitaryMatrix, jMatrix, unitaryMatrix);
+
+            if (++count > 2) {
+                ++sweep;
+                count = 0;
+            }
+        }
+
+        return result;
+    };
+
+    /**
+     * Computes a matrix, which contains the absolute (unsigned) values of the provided matrix's elements.
+     *
+     * @param {Matrix3} matrix The matrix with signed elements.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     */
+    Matrix3.abs = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = Math.abs(matrix[0]);
+        result[1] = Math.abs(matrix[1]);
+        result[2] = Math.abs(matrix[2]);
+        result[3] = Math.abs(matrix[3]);
+        result[4] = Math.abs(matrix[4]);
+        result[5] = Math.abs(matrix[5]);
+        result[6] = Math.abs(matrix[6]);
+        result[7] = Math.abs(matrix[7]);
+        result[8] = Math.abs(matrix[8]);
+
+        return result;
+    };
+
+    /**
+     * Computes the determinant of the provided matrix.
+     *
+     * @param {Matrix3} matrix The matrix to use.
+     * @returns {Number} The value of the determinant of the matrix.
+     */
+    Matrix3.determinant = function(matrix) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        //>>includeEnd('debug');
+
+        var m11 = matrix[0];
+        var m21 = matrix[3];
+        var m31 = matrix[6];
+        var m12 = matrix[1];
+        var m22 = matrix[4];
+        var m32 = matrix[7];
+        var m13 = matrix[2];
+        var m23 = matrix[5];
+        var m33 = matrix[8];
+
+        return m11 * (m22 * m33 - m23 * m32) + m12 * (m23 * m31 - m21 * m33) + m13 * (m21 * m32 - m22 * m31);
+    };
+
+    /**
+     * Computes the inverse of the provided matrix.
+     *
+     * @param {Matrix3} matrix The matrix to invert.
+     * @param {Matrix3} result The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter.
+     *
+     * @exception {DeveloperError} matrix is not invertible.
+     */
+    Matrix3.inverse = function(matrix, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(matrix)) {
+            throw new DeveloperError('matrix is required');
+        }
+        if (!defined(result)) {
+            throw new DeveloperError('result is required');
+        }
+        //>>includeEnd('debug');
+
+        var m11 = matrix[0];
+        var m21 = matrix[1];
+        var m31 = matrix[2];
+        var m12 = matrix[3];
+        var m22 = matrix[4];
+        var m32 = matrix[5];
+        var m13 = matrix[6];
+        var m23 = matrix[7];
+        var m33 = matrix[8];
+
+        var determinant = Matrix3.determinant(matrix);
+
+        //>>includeStart('debug', pragmas.debug);
+        if (Math.abs(determinant) <= CesiumMath.EPSILON15) {
+            throw new DeveloperError('matrix is not invertible');
+        }
+        //>>includeEnd('debug');
+
+        result[0] = m22 * m33 - m23 * m32;
+        result[1] = m23 * m31 - m21 * m33;
+        result[2] = m21 * m32 - m22 * m31;
+        result[3] = m13 * m32 - m12 * m33;
+        result[4] = m11 * m33 - m13 * m31;
+        result[5] = m12 * m31 - m11 * m32;
+        result[6] = m12 * m23 - m13 * m22;
+        result[7] = m13 * m21 - m11 * m23;
+        result[8] = m11 * m22 - m12 * m21;
+
+       var scale = 1.0 / determinant;
+       return Matrix3.multiplyByScalar(result, scale, result);
+    };
+
+    /**
+     * Compares the provided matrices componentwise and returns
+     * <code>true</code> if they are equal, <code>false</code> otherwise.
+     *
+     * @param {Matrix3} [left] The first matrix.
+     * @param {Matrix3} [right] The second matrix.
+     * @returns {Boolean} <code>true</code> if left and right are equal, <code>false</code> otherwise.
+     */
+    Matrix3.equals = function(left, right) {
+        return (left === right) ||
+               (defined(left) &&
+                defined(right) &&
+                left[0] === right[0] &&
+                left[1] === right[1] &&
+                left[2] === right[2] &&
+                left[3] === right[3] &&
+                left[4] === right[4] &&
+                left[5] === right[5] &&
+                left[6] === right[6] &&
+                left[7] === right[7] &&
+                left[8] === right[8]);
+    };
+
+    /**
+     * Compares the provided matrices componentwise and returns
+     * <code>true</code> if they are within the provided epsilon,
+     * <code>false</code> otherwise.
+     *
+     * @param {Matrix3} [left] The first matrix.
+     * @param {Matrix3} [right] The second matrix.
+     * @param {Number} epsilon The epsilon to use for equality testing.
+     * @returns {Boolean} <code>true</code> if left and right are within the provided epsilon, <code>false</code> otherwise.
+     */
+    Matrix3.equalsEpsilon = function(left, right, epsilon) {
+        //>>includeStart('debug', pragmas.debug);
+        if (typeof epsilon !== 'number') {
+            throw new DeveloperError('epsilon must be a number');
+        }
+        //>>includeEnd('debug');
+
+        return (left === right) ||
+                (defined(left) &&
+                defined(right) &&
+                Math.abs(left[0] - right[0]) <= epsilon &&
+                Math.abs(left[1] - right[1]) <= epsilon &&
+                Math.abs(left[2] - right[2]) <= epsilon &&
+                Math.abs(left[3] - right[3]) <= epsilon &&
+                Math.abs(left[4] - right[4]) <= epsilon &&
+                Math.abs(left[5] - right[5]) <= epsilon &&
+                Math.abs(left[6] - right[6]) <= epsilon &&
+                Math.abs(left[7] - right[7]) <= epsilon &&
+                Math.abs(left[8] - right[8]) <= epsilon);
+    };
+
+    /**
+     * An immutable Matrix3 instance initialized to the identity matrix.
+     *
+     * @type {Matrix3}
+     * @constant
+     */
+    Matrix3.IDENTITY = freezeObject(new Matrix3(1.0, 0.0, 0.0,
+                                                0.0, 1.0, 0.0,
+                                                0.0, 0.0, 1.0));
+
+    /**
+     * An immutable Matrix3 instance initialized to the zero matrix.
+     *
+     * @type {Matrix3}
+     * @constant
+     */
+    Matrix3.ZERO = freezeObject(new Matrix3(0.0, 0.0, 0.0,
+                                            0.0, 0.0, 0.0,
+                                            0.0, 0.0, 0.0));
+
+    /**
+     * The index into Matrix3 for column 0, row 0.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN0ROW0 = 0;
+
+    /**
+     * The index into Matrix3 for column 0, row 1.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN0ROW1 = 1;
+
+    /**
+     * The index into Matrix3 for column 0, row 2.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN0ROW2 = 2;
+
+    /**
+     * The index into Matrix3 for column 1, row 0.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN1ROW0 = 3;
+
+    /**
+     * The index into Matrix3 for column 1, row 1.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN1ROW1 = 4;
+
+    /**
+     * The index into Matrix3 for column 1, row 2.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN1ROW2 = 5;
+
+    /**
+     * The index into Matrix3 for column 2, row 0.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN2ROW0 = 6;
+
+    /**
+     * The index into Matrix3 for column 2, row 1.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN2ROW1 = 7;
+
+    /**
+     * The index into Matrix3 for column 2, row 2.
+     *
+     * @type {Number}
+     * @constant
+     */
+    Matrix3.COLUMN2ROW2 = 8;
+
+    defineProperties(Matrix3.prototype, {
+        /**
+         * Gets the number of items in the collection.
+         * @memberof Matrix3.prototype
+         *
+         * @type {Number}
+         */
+        length : {
+            get : function() {
+                return Matrix3.packedLength;
+            }
+        }
+    });
+
+    /**
+     * Duplicates the provided Matrix3 instance.
+     *
+     * @param {Matrix3} [result] The object onto which to store the result.
+     * @returns {Matrix3} The modified result parameter or a new Matrix3 instance if one was not provided.
+     */
+    Matrix3.prototype.clone = function(result) {
+        return Matrix3.clone(this, result);
+    };
+
+    /**
+     * Compares this matrix to the provided matrix componentwise and returns
+     * <code>true</code> if they are equal, <code>false</code> otherwise.
+     *
+     * @param {Matrix3} [right] The right hand side matrix.
+     * @returns {Boolean} <code>true</code> if they are equal, <code>false</code> otherwise.
+     */
+    Matrix3.prototype.equals = function(right) {
+        return Matrix3.equals(this, right);
+    };
+
+    /**
+     * @private
+     */
+    Matrix3.equalsArray = function(matrix, array, offset) {
+        return matrix[0] === array[offset] &&
+               matrix[1] === array[offset + 1] &&
+               matrix[2] === array[offset + 2] &&
+               matrix[3] === array[offset + 3] &&
+               matrix[4] === array[offset + 4] &&
+               matrix[5] === array[offset + 5] &&
+               matrix[6] === array[offset + 6] &&
+               matrix[7] === array[offset + 7] &&
+               matrix[8] === array[offset + 8];
+    };
+
+    /**
+     * Compares this matrix to the provided matrix componentwise and returns
+     * <code>true</code> if they are within the provided epsilon,
+     * <code>false</code> otherwise.
+     *
+     * @param {Matrix3} [right] The right hand side matrix.
+     * @param {Number} epsilon The epsilon to use for equality testing.
+     * @returns {Boolean} <code>true</code> if they are within the provided epsilon, <code>false</code> otherwise.
+     */
+    Matrix3.prototype.equalsEpsilon = function(right, epsilon) {
+        return Matrix3.equalsEpsilon(this, right, epsilon);
+    };
+
+    /**
+     * Creates a string representing this Matrix with each row being
+     * on a separate line and in the format '(column0, column1, column2)'.
+     *
+     * @returns {String} A string representing the provided Matrix with each row being on a separate line and in the format '(column0, column1, column2)'.
+     */
+    Matrix3.prototype.toString = function() {
+        return '(' + this[0] + ', ' + this[3] + ', ' + this[6] + ')\n' +
+               '(' + this[1] + ', ' + this[4] + ', ' + this[7] + ')\n' +
+               '(' + this[2] + ', ' + this[5] + ', ' + this[8] + ')';
+    };
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+    /**
+     * A vertex format defines what attributes make up a vertex.  A VertexFormat can be provided
+     * to a {@link Geometry} to request that certain properties be computed, e.g., just position,
+     * position and normal, etc.
+     *
+     * @param {Object} [options] An object with boolean properties corresponding to VertexFormat properties as shown in the code example.
+     *
+     * @alias VertexFormat
+     * @constructor
+     *
+     * @example
+     * // Create a vertex format with position and 2D texture coordinate attributes.
+     * var format = new Cesium.VertexFormat({
+     *   position : true,
+     *   st : true
+     * });
+     *
+     * @see Geometry#attributes
+     * @see Packable
+     */
+    function VertexFormat(options) {
+        options = defaultValue(options, defaultValue.EMPTY_OBJECT);
+
+        /**
+         * When <code>true</code>, the vertex has a 3D position attribute.
+         * <p>
+         * 64-bit floating-point (for precision).  3 components per attribute.
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.position = defaultValue(options.position, false);
+
+        /**
+         * When <code>true</code>, the vertex has a normal attribute (normalized), which is commonly used for lighting.
+         * <p>
+         * 32-bit floating-point.  3 components per attribute.
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.normal = defaultValue(options.normal, false);
+
+        /**
+         * When <code>true</code>, the vertex has a 2D texture coordinate attribute.
+         * <p>
+         * 32-bit floating-point.  2 components per attribute
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.st = defaultValue(options.st, false);
+
+        /**
+         * When <code>true</code>, the vertex has a binormal attribute (normalized), which is used for tangent-space effects like bump mapping.
+         * <p>
+         * 32-bit floating-point.  3 components per attribute.
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.binormal = defaultValue(options.binormal, false);
+
+        /**
+         * When <code>true</code>, the vertex has a tangent attribute (normalized), which is used for tangent-space effects like bump mapping.
+         * <p>
+         * 32-bit floating-point.  3 components per attribute.
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.tangent = defaultValue(options.tangent, false);
+
+        /**
+         * When <code>true</code>, the vertex has an RGB color attribute.
+         * <p>
+         * 8-bit unsigned byte.  3 components per attribute.
+         * </p>
+         *
+         * @type Boolean
+         *
+         * @default false
+         */
+        this.color = defaultValue(options.color, false);
+    }
+
+    /**
+     * An immutable vertex format with only a position attribute.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     */
+    VertexFormat.POSITION_ONLY = freezeObject(new VertexFormat({
+        position : true
+    }));
+
+    /**
+     * An immutable vertex format with position and normal attributes.
+     * This is compatible with per-instance color appearances like {@link PerInstanceColorAppearance}.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#normal
+     */
+    VertexFormat.POSITION_AND_NORMAL = freezeObject(new VertexFormat({
+        position : true,
+        normal : true
+    }));
+
+    /**
+     * An immutable vertex format with position, normal, and st attributes.
+     * This is compatible with {@link MaterialAppearance} when {@link MaterialAppearance#materialSupport}
+     * is <code>TEXTURED/code>.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#normal
+     * @see VertexFormat#st
+     */
+    VertexFormat.POSITION_NORMAL_AND_ST = freezeObject(new VertexFormat({
+        position : true,
+        normal : true,
+        st : true
+    }));
+
+    /**
+     * An immutable vertex format with position and st attributes.
+     * This is compatible with {@link EllipsoidSurfaceAppearance}.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#st
+     */
+    VertexFormat.POSITION_AND_ST = freezeObject(new VertexFormat({
+        position : true,
+        st : true
+    }));
+
+    /**
+     * An immutable vertex format with position and color attributes.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#color
+     */
+    VertexFormat.POSITION_AND_COLOR = freezeObject(new VertexFormat({
+        position : true,
+        color : true
+    }));
+
+    /**
+     * An immutable vertex format with well-known attributes: position, normal, st, binormal, and tangent.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#normal
+     * @see VertexFormat#st
+     * @see VertexFormat#binormal
+     * @see VertexFormat#tangent
+     */
+    VertexFormat.ALL = freezeObject(new VertexFormat({
+        position : true,
+        normal : true,
+        st : true,
+        binormal : true,
+        tangent  : true
+    }));
+
+    /**
+     * An immutable vertex format with position, normal, and st attributes.
+     * This is compatible with most appearances and materials; however
+     * normal and st attributes are not always required.  When this is
+     * known in advance, another <code>VertexFormat</code> should be used.
+     *
+     * @type {VertexFormat}
+     * @constant
+     *
+     * @see VertexFormat#position
+     * @see VertexFormat#normal
+     */
+    VertexFormat.DEFAULT = VertexFormat.POSITION_NORMAL_AND_ST;
+
+    /**
+     * The number of elements used to pack the object into an array.
+     * @type {Number}
+     */
+    VertexFormat.packedLength = 6;
+
+    /**
+     * Stores the provided instance into the provided array.
+     *
+     * @param {VertexFormat} value The value to pack.
+     * @param {Number[]} array The array to pack into.
+     * @param {Number} [startingIndex=0] The index into the array at which to start packing the elements.
+     *
+     * @returns {Number[]} The array that was packed into
+     */
+    VertexFormat.pack = function(value, array, startingIndex) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(value)) {
+            throw new DeveloperError('value is required');
+        }
+        if (!defined(array)) {
+            throw new DeveloperError('array is required');
+        }
+        //>>includeEnd('debug');
+
+        startingIndex = defaultValue(startingIndex, 0);
+
+        array[startingIndex++] = value.position ? 1.0 : 0.0;
+        array[startingIndex++] = value.normal ? 1.0 : 0.0;
+        array[startingIndex++] = value.st ? 1.0 : 0.0;
+        array[startingIndex++] = value.binormal ? 1.0 : 0.0;
+        array[startingIndex++] = value.tangent ? 1.0 : 0.0;
+        array[startingIndex++] = value.color ? 1.0 : 0.0;
+
+        return array;
+    };
+
+    /**
+     * Retrieves an instance from a packed array.
+     *
+     * @param {Number[]} array The packed array.
+     * @param {Number} [startingIndex=0] The starting index of the element to be unpacked.
+     * @param {VertexFormat} [result] The object into which to store the result.
+     * @returns {VertexFormat} The modified result parameter or a new VertexFormat instance if one was not provided.
+     */
+    VertexFormat.unpack = function(array, startingIndex, result) {
+        //>>includeStart('debug', pragmas.debug);
+        if (!defined(array)) {
+            throw new DeveloperError('array is required');
+        }
+        //>>includeEnd('debug');
+
+        startingIndex = defaultValue(startingIndex, 0);
+
+        if (!defined(result)) {
+            result = new VertexFormat();
+        }
+
+        result.position = array[startingIndex++] === 1.0;
+        result.normal   = array[startingIndex++] === 1.0;
+        result.st       = array[startingIndex++] === 1.0;
+        result.binormal = array[startingIndex++] === 1.0;
+        result.tangent  = array[startingIndex++] === 1.0;
+        result.color    = array[startingIndex++] === 1.0;
+        return result;
+    };
+
+    /**
+     * Duplicates a VertexFormat instance.
+     *
+     * @param {VertexFormat} cartesian The vertex format to duplicate.
+     * @param {VertexFormat} [result] The object onto which to store the result.
+     * @returns {VertexFormat} The modified result parameter or a new VertexFormat instance if one was not provided. (Returns undefined if vertexFormat is undefined)
+     */
+    VertexFormat.clone = function(vertexFormat, result) {
+        if (!defined(vertexFormat)) {
+            return undefined;
+        }
+        if (!defined(result)) {
+            result = new VertexFormat();
+        }
+
+        result.position = vertexFormat.position;
+        result.normal = vertexFormat.normal;
+        result.st = vertexFormat.st;
+        result.binormal = vertexFormat.binormal;
+        result.tangent = vertexFormat.tangent;
+        result.color = vertexFormat.color;
+        return result;
+    };
+
+
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ * A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
+ * @alias Quaternion
+ * @constructor
+ *
+ * @param {Number} [x=0.0] The X component.
+ * @param {Number} [y=0.0] The Y component.
+ * @param {Number} [z=0.0] The Z component.
+ * @param {Number} [w=0.0] The W component.
+ *
+ * @see PackableForInterpolation
+ */
+function Quaternion(x, y, z, w) {
+    /**
+     * The X component.
+     * @type {Number}
+     * @default 0.0
+     */
+    this.x = defaultValue(x, 0.0);
+
+    /**
+     * The Y component.
+     * @type {Number}
+     * @default 0.0
+     */
+    this.y = defaultValue(y, 0.0);
+
+    /**
+     * The Z component.
+     * @type {Number}
+     * @default 0.0
+     */
+    this.z = defaultValue(z, 0.0);
+
+    /**
+     * The W component.
+     * @type {Number}
+     * @default 0.0
+     */
+    this.w = defaultValue(w, 0.0);
+}
+
+var fromAxisAngleScratch = new Cartesian3();
+
+/**
+ * Computes a quaternion representing a rotation around an axis.
+ *
+ * @param {Cartesian3} axis The axis of rotation.
+ * @param {Number} angle The angle in radians to rotate around the axis.
+ * @param {Quaternion} [result] The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided.
+ */
+Quaternion.fromAxisAngle = function (axis, angle, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(axis)) {
+        throw new DeveloperError('axis is required.');
+    }
+    if (typeof angle !== 'number') {
+        throw new DeveloperError('angle is required and must be a number.');
+    }
+    //>>includeEnd('debug');
+
+    var halfAngle = angle / 2.0;
+    var s = Math.sin(halfAngle);
+    fromAxisAngleScratch = Cartesian3.normalize(axis, fromAxisAngleScratch);
+
+    var x = fromAxisAngleScratch.x * s;
+    var y = fromAxisAngleScratch.y * s;
+    var z = fromAxisAngleScratch.z * s;
+    var w = Math.cos(halfAngle);
+    if (!defined(result)) {
+        return new Quaternion(x, y, z, w);
+    }
+    result.x = x;
+    result.y = y;
+    result.z = z;
+    result.w = w;
+    return result;
+};
+
+var fromRotationMatrixNext = [1, 2, 0];
+var fromRotationMatrixQuat = new Array(3);
+/**
+ * Computes a Quaternion from the provided Matrix3 instance.
+ *
+ * @param {Matrix3} matrix The rotation matrix.
+ * @param {Quaternion} [result] The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided.
+ *
+ * @see Matrix3.fromQuaternion
+ */
+Quaternion.fromRotationMatrix = function (matrix, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(matrix)) {
+        throw new DeveloperError('matrix is required.');
+    }
+    //>>includeEnd('debug');
+
+    var root;
+    var x;
+    var y;
+    var z;
+    var w;
+
+    var m00 = matrix[Matrix3.COLUMN0ROW0];
+    var m11 = matrix[Matrix3.COLUMN1ROW1];
+    var m22 = matrix[Matrix3.COLUMN2ROW2];
+    var trace = m00 + m11 + m22;
+
+    if (trace > 0.0) {
+        // |w| > 1/2, may as well choose w > 1/2
+        root = Math.sqrt(trace + 1.0); // 2w
+        w = 0.5 * root;
+        root = 0.5 / root; // 1/(4w)
+
+        x = (matrix[Matrix3.COLUMN1ROW2] - matrix[Matrix3.COLUMN2ROW1]) * root;
+        y = (matrix[Matrix3.COLUMN2ROW0] - matrix[Matrix3.COLUMN0ROW2]) * root;
+        z = (matrix[Matrix3.COLUMN0ROW1] - matrix[Matrix3.COLUMN1ROW0]) * root;
+    } else {
+        // |w| <= 1/2
+        var next = fromRotationMatrixNext;
+
+        var i = 0;
+        if (m11 > m00) {
+            i = 1;
+        }
+        if (m22 > m00 && m22 > m11) {
+            i = 2;
+        }
+        var j = next[i];
+        var k = next[j];
+
+        root = Math.sqrt(matrix[Matrix3.getElementIndex(i, i)] - matrix[Matrix3.getElementIndex(j, j)] - matrix[Matrix3.getElementIndex(k, k)] + 1.0);
+
+        var quat = fromRotationMatrixQuat;
+        quat[i] = 0.5 * root;
+        root = 0.5 / root;
+        w = (matrix[Matrix3.getElementIndex(k, j)] - matrix[Matrix3.getElementIndex(j, k)]) * root;
+        quat[j] = (matrix[Matrix3.getElementIndex(j, i)] + matrix[Matrix3.getElementIndex(i, j)]) * root;
+        quat[k] = (matrix[Matrix3.getElementIndex(k, i)] + matrix[Matrix3.getElementIndex(i, k)]) * root;
+
+        x = -quat[0];
+        y = -quat[1];
+        z = -quat[2];
+    }
+
+    if (!defined(result)) {
+        return new Quaternion(x, y, z, w);
+    }
+    result.x = x;
+    result.y = y;
+    result.z = z;
+    result.w = w;
+    return result;
+};
+
+var scratchHPRQuaternion = new Quaternion();
+
+/**
+ * Computes a rotation from the given heading, pitch and roll angles. Heading is the rotation about the
+ * negative z axis. Pitch is the rotation about the negative y axis. Roll is the rotation about
+ * the positive x axis.
+ *
+ * @param {Number} heading The heading angle in radians.
+ * @param {Number} pitch The pitch angle in radians.
+ * @param {Number} roll The roll angle in radians.
+ * @param {Quaternion} [result] The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if none was provided.
+ */
+Quaternion.fromHeadingPitchRoll = function (heading, pitch, roll, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(heading)) {
+        throw new DeveloperError('heading is required.');
+    }
+    if (!defined(pitch)) {
+        throw new DeveloperError('pitch is required.');
+    }
+    if (!defined(roll)) {
+        throw new DeveloperError('roll is required.');
+    }
+    //>>includeEnd('debug');
+
+    var rollQuaternion = Quaternion.fromAxisAngle(Cartesian3.UNIT_X, roll, scratchHPRQuaternion);
+    var pitchQuaternion = Quaternion.fromAxisAngle(Cartesian3.UNIT_Y, -pitch, result);
+    result = Quaternion.multiply(pitchQuaternion, rollQuaternion, pitchQuaternion);
+    var headingQuaternion = Quaternion.fromAxisAngle(Cartesian3.UNIT_Z, -heading, scratchHPRQuaternion);
+    return Quaternion.multiply(headingQuaternion, result, result);
+};
+
+var sampledQuaternionAxis = new Cartesian3();
+var sampledQuaternionRotation = new Cartesian3();
+var sampledQuaternionTempQuaternion = new Quaternion();
+var sampledQuaternionQuaternion0 = new Quaternion();
+var sampledQuaternionQuaternion0Conjugate = new Quaternion();
+
+/**
+ * The number of elements used to pack the object into an array.
+ * @type {Number}
+ */
+Quaternion.packedLength = 4;
+
+/**
+ * Stores the provided instance into the provided array.
+ *
+ * @param {Quaternion} value The value to pack.
+ * @param {Number[]} array The array to pack into.
+ * @param {Number} [startingIndex=0] The index into the array at which to start packing the elements.
+ *
+ * @returns {Number[]} The array that was packed into
+ */
+Quaternion.pack = function (value, array, startingIndex) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(value)) {
+        throw new DeveloperError('value is required');
+    }
+
+    if (!defined(array)) {
+        throw new DeveloperError('array is required');
+    }
+    //>>includeEnd('debug');
+
+    startingIndex = defaultValue(startingIndex, 0);
+
+    array[startingIndex++] = value.x;
+    array[startingIndex++] = value.y;
+    array[startingIndex++] = value.z;
+    array[startingIndex] = value.w;
+
+    return array;
+};
+
+/**
+ * Retrieves an instance from a packed array.
+ *
+ * @param {Number[]} array The packed array.
+ * @param {Number} [startingIndex=0] The starting index of the element to be unpacked.
+ * @param {Quaternion} [result] The object into which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided.
+ */
+Quaternion.unpack = function (array, startingIndex, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(array)) {
+        throw new DeveloperError('array is required');
+    }
+    //>>includeEnd('debug');
+
+    startingIndex = defaultValue(startingIndex, 0);
+
+    if (!defined(result)) {
+        result = new Quaternion();
+    }
+    result.x = array[startingIndex];
+    result.y = array[startingIndex + 1];
+    result.z = array[startingIndex + 2];
+    result.w = array[startingIndex + 3];
+    return result;
+};
+
+/**
+ * The number of elements used to store the object into an array in its interpolatable form.
+ * @type {Number}
+ */
+Quaternion.packedInterpolationLength = 3;
+
+/**
+ * Converts a packed array into a form suitable for interpolation.
+ *
+ * @param {Number[]} packedArray The packed array.
+ * @param {Number} [startingIndex=0] The index of the first element to be converted.
+ * @param {Number} [lastIndex=packedArray.length] The index of the last element to be converted.
+ * @param {Number[]} result The object into which to store the result.
+ */
+Quaternion.convertPackedArrayForInterpolation = function (packedArray, startingIndex, lastIndex, result) {
+    Quaternion.unpack(packedArray, lastIndex * 4, sampledQuaternionQuaternion0Conjugate);
+    Quaternion.conjugate(sampledQuaternionQuaternion0Conjugate, sampledQuaternionQuaternion0Conjugate);
+
+    for (var i = 0, len = lastIndex - startingIndex + 1; i < len; i++) {
+        var offset = i * 3;
+        Quaternion.unpack(packedArray, (startingIndex + i) * 4, sampledQuaternionTempQuaternion);
+
+        Quaternion.multiply(sampledQuaternionTempQuaternion, sampledQuaternionQuaternion0Conjugate, sampledQuaternionTempQuaternion);
+
+        if (sampledQuaternionTempQuaternion.w < 0) {
+            Quaternion.negate(sampledQuaternionTempQuaternion, sampledQuaternionTempQuaternion);
+        }
+
+        Quaternion.computeAxis(sampledQuaternionTempQuaternion, sampledQuaternionAxis);
+        var angle = Quaternion.computeAngle(sampledQuaternionTempQuaternion);
+        result[offset] = sampledQuaternionAxis.x * angle;
+        result[offset + 1] = sampledQuaternionAxis.y * angle;
+        result[offset + 2] = sampledQuaternionAxis.z * angle;
+    }
+};
+
+/**
+ * Retrieves an instance from a packed array converted with {@link convertPackedArrayForInterpolation}.
+ *
+ * @param {Number[]} array The array previously packed for interpolation.
+ * @param {Number[]} sourceArray The original packed array.
+ * @param {Number} [startingIndex=0] The startingIndex used to convert the array.
+ * @param {Number} [lastIndex=packedArray.length] The lastIndex used to convert the array.
+ * @param {Quaternion} [result] The object into which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided.
+ */
+Quaternion.unpackInterpolationResult = function (array, sourceArray, firstIndex, lastIndex, result) {
+    if (!defined(result)) {
+        result = new Quaternion();
+    }
+    Cartesian3.fromArray(array, 0, sampledQuaternionRotation);
+    var magnitude = Cartesian3.magnitude(sampledQuaternionRotation);
+
+    Quaternion.unpack(sourceArray, lastIndex * 4, sampledQuaternionQuaternion0);
+
+    if (magnitude === 0) {
+        Quaternion.clone(Quaternion.IDENTITY, sampledQuaternionTempQuaternion);
+    } else {
+        Quaternion.fromAxisAngle(sampledQuaternionRotation, magnitude, sampledQuaternionTempQuaternion);
+    }
+
+    return Quaternion.multiply(sampledQuaternionTempQuaternion, sampledQuaternionQuaternion0, result);
+};
+
+/**
+ * Duplicates a Quaternion instance.
+ *
+ * @param {Quaternion} quaternion The quaternion to duplicate.
+ * @param {Quaternion} [result] The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided. (Returns undefined if quaternion is undefined)
+ */
+Quaternion.clone = function (quaternion, result) {
+    if (!defined(quaternion)) {
+        return undefined;
+    }
+
+    if (!defined(result)) {
+        return new Quaternion(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
+    }
+
+    result.x = quaternion.x;
+    result.y = quaternion.y;
+    result.z = quaternion.z;
+    result.w = quaternion.w;
+    return result;
+};
+
+/**
+ * Computes the conjugate of the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to conjugate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.conjugate = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = -quaternion.x;
+    result.y = -quaternion.y;
+    result.z = -quaternion.z;
+    result.w = quaternion.w;
+    return result;
+};
+
+/**
+ * Computes magnitude squared for the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to conjugate.
+ * @returns {Number} The magnitude squared.
+ */
+Quaternion.magnitudeSquared = function (quaternion) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    //>>includeEnd('debug');
+
+    return quaternion.x * quaternion.x + quaternion.y * quaternion.y + quaternion.z * quaternion.z + quaternion.w * quaternion.w;
+};
+
+/**
+ * Computes magnitude for the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to conjugate.
+ * @returns {Number} The magnitude.
+ */
+Quaternion.magnitude = function (quaternion) {
+    return Math.sqrt(Quaternion.magnitudeSquared(quaternion));
+};
+
+/**
+ * Computes the normalized form of the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to normalize.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.normalize = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var inverseMagnitude = 1.0 / Quaternion.magnitude(quaternion);
+    var x = quaternion.x * inverseMagnitude;
+    var y = quaternion.y * inverseMagnitude;
+    var z = quaternion.z * inverseMagnitude;
+    var w = quaternion.w * inverseMagnitude;
+
+    result.x = x;
+    result.y = y;
+    result.z = z;
+    result.w = w;
+    return result;
+};
+
+/**
+ * Computes the inverse of the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to normalize.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.inverse = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var magnitudeSquared = Quaternion.magnitudeSquared(quaternion);
+    result = Quaternion.conjugate(quaternion, result);
+    return Quaternion.multiplyByScalar(result, 1.0 / magnitudeSquared, result);
+};
+
+/**
+ * Computes the componentwise sum of two quaternions.
+ *
+ * @param {Quaternion} left The first quaternion.
+ * @param {Quaternion} right The second quaternion.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.add = function (left, right, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(left)) {
+        throw new DeveloperError('left is required');
+    }
+    if (!defined(right)) {
+        throw new DeveloperError('right is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = left.x + right.x;
+    result.y = left.y + right.y;
+    result.z = left.z + right.z;
+    result.w = left.w + right.w;
+    return result;
+};
+
+/**
+ * Computes the componentwise difference of two quaternions.
+ *
+ * @param {Quaternion} left The first quaternion.
+ * @param {Quaternion} right The second quaternion.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.subtract = function (left, right, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(left)) {
+        throw new DeveloperError('left is required');
+    }
+    if (!defined(right)) {
+        throw new DeveloperError('right is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = left.x - right.x;
+    result.y = left.y - right.y;
+    result.z = left.z - right.z;
+    result.w = left.w - right.w;
+    return result;
+};
+
+/**
+ * Negates the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to be negated.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.negate = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = -quaternion.x;
+    result.y = -quaternion.y;
+    result.z = -quaternion.z;
+    result.w = -quaternion.w;
+    return result;
+};
+
+/**
+ * Computes the dot (scalar) product of two quaternions.
+ *
+ * @param {Quaternion} left The first quaternion.
+ * @param {Quaternion} right The second quaternion.
+ * @returns {Number} The dot product.
+ */
+Quaternion.dot = function (left, right) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(left)) {
+        throw new DeveloperError('left is required');
+    }
+    if (!defined(right)) {
+        throw new DeveloperError('right is required');
+    }
+    //>>includeEnd('debug');
+
+    return left.x * right.x + left.y * right.y + left.z * right.z + left.w * right.w;
+};
+
+/**
+ * Computes the product of two quaternions.
+ *
+ * @param {Quaternion} left The first quaternion.
+ * @param {Quaternion} right The second quaternion.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.multiply = function (left, right, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(left)) {
+        throw new DeveloperError('left is required');
+    }
+    if (!defined(right)) {
+        throw new DeveloperError('right is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var leftX = left.x;
+    var leftY = left.y;
+    var leftZ = left.z;
+    var leftW = left.w;
+
+    var rightX = right.x;
+    var rightY = right.y;
+    var rightZ = right.z;
+    var rightW = right.w;
+
+    var x = leftW * rightX + leftX * rightW + leftY * rightZ - leftZ * rightY;
+    var y = leftW * rightY - leftX * rightZ + leftY * rightW + leftZ * rightX;
+    var z = leftW * rightZ + leftX * rightY - leftY * rightX + leftZ * rightW;
+    var w = leftW * rightW - leftX * rightX - leftY * rightY - leftZ * rightZ;
+
+    result.x = x;
+    result.y = y;
+    result.z = z;
+    result.w = w;
+    return result;
+};
+
+/**
+ * Multiplies the provided quaternion componentwise by the provided scalar.
+ *
+ * @param {Quaternion} quaternion The quaternion to be scaled.
+ * @param {Number} scalar The scalar to multiply with.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.multiplyByScalar = function (quaternion, scalar, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    if (typeof scalar !== 'number') {
+        throw new DeveloperError('scalar is required and must be a number.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = quaternion.x * scalar;
+    result.y = quaternion.y * scalar;
+    result.z = quaternion.z * scalar;
+    result.w = quaternion.w * scalar;
+    return result;
+};
+
+/**
+ * Divides the provided quaternion componentwise by the provided scalar.
+ *
+ * @param {Quaternion} quaternion The quaternion to be divided.
+ * @param {Number} scalar The scalar to divide by.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.divideByScalar = function (quaternion, scalar, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    if (typeof scalar !== 'number') {
+        throw new DeveloperError('scalar is required and must be a number.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    result.x = quaternion.x / scalar;
+    result.y = quaternion.y / scalar;
+    result.z = quaternion.z / scalar;
+    result.w = quaternion.w / scalar;
+    return result;
+};
+
+/**
+ * Computes the axis of rotation of the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to use.
+ * @param {Cartesian3} result The object onto which to store the result.
+ * @returns {Cartesian3} The modified result parameter.
+ */
+Quaternion.computeAxis = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var w = quaternion.w;
+    if (Math.abs(w - 1.0) < CesiumMath.EPSILON6) {
+        result.x = result.y = result.z = 0;
+        return result;
+    }
+
+    var scalar = 1.0 / Math.sqrt(1.0 - (w * w));
+
+    result.x = quaternion.x * scalar;
+    result.y = quaternion.y * scalar;
+    result.z = quaternion.z * scalar;
+    return result;
+};
+
+/**
+ * Computes the angle of rotation of the provided quaternion.
+ *
+ * @param {Quaternion} quaternion The quaternion to use.
+ * @returns {Number} The angle of rotation.
+ */
+Quaternion.computeAngle = function (quaternion) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required');
+    }
+    //>>includeEnd('debug');
+
+    if (Math.abs(quaternion.w - 1.0) < CesiumMath.EPSILON6) {
+        return 0.0;
+    }
+    return 2.0 * Math.acos(quaternion.w);
+};
+
+var lerpScratch = new Quaternion();
+/**
+ * Computes the linear interpolation or extrapolation at t using the provided quaternions.
+ *
+ * @param {Quaternion} start The value corresponding to t at 0.0.
+ * @param {Quaternion} end The value corresponding to t at 1.0.
+ * @param {Number} t The point along t at which to interpolate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.lerp = function (start, end, t, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(start)) {
+        throw new DeveloperError('start is required.');
+    }
+    if (!defined(end)) {
+        throw new DeveloperError('end is required.');
+    }
+    if (typeof t !== 'number') {
+        throw new DeveloperError('t is required and must be a number.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    lerpScratch = Quaternion.multiplyByScalar(end, t, lerpScratch);
+    result = Quaternion.multiplyByScalar(start, 1.0 - t, result);
+    return Quaternion.add(lerpScratch, result, result);
+};
+
+var slerpEndNegated = new Quaternion();
+var slerpScaledP = new Quaternion();
+var slerpScaledR = new Quaternion();
+/**
+ * Computes the spherical linear interpolation or extrapolation at t using the provided quaternions.
+ *
+ * @param {Quaternion} start The value corresponding to t at 0.0.
+ * @param {Quaternion} end The value corresponding to t at 1.0.
+ * @param {Number} t The point along t at which to interpolate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ *
+ * @see Quaternion#fastSlerp
+ */
+Quaternion.slerp = function (start, end, t, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(start)) {
+        throw new DeveloperError('start is required.');
+    }
+    if (!defined(end)) {
+        throw new DeveloperError('end is required.');
+    }
+    if (typeof t !== 'number') {
+        throw new DeveloperError('t is required and must be a number.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var dot = Quaternion.dot(start, end);
+
+    // The angle between start must be acute. Since q and -q represent
+    // the same rotation, negate q to get the acute angle.
+    var r = end;
+    if (dot < 0.0) {
+        dot = -dot;
+        r = slerpEndNegated = Quaternion.negate(end, slerpEndNegated);
+    }
+
+    // dot > 0, as the dot product approaches 1, the angle between the
+    // quaternions vanishes. use linear interpolation.
+    if (1.0 - dot < CesiumMath.EPSILON6) {
+        return Quaternion.lerp(start, r, t, result);
+    }
+
+    var theta = Math.acos(dot);
+    slerpScaledP = Quaternion.multiplyByScalar(start, Math.sin((1 - t) * theta), slerpScaledP);
+    slerpScaledR = Quaternion.multiplyByScalar(r, Math.sin(t * theta), slerpScaledR);
+    result = Quaternion.add(slerpScaledP, slerpScaledR, result);
+    return Quaternion.multiplyByScalar(result, 1.0 / Math.sin(theta), result);
+};
+
+/**
+ * The logarithmic quaternion function.
+ *
+ * @param {Quaternion} quaternion The unit quaternion.
+ * @param {Cartesian3} result The object onto which to store the result.
+ * @returns {Cartesian3} The modified result parameter.
+ */
+Quaternion.log = function (quaternion, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(quaternion)) {
+        throw new DeveloperError('quaternion is required.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var theta = CesiumMath.acosClamped(quaternion.w);
+    var thetaOverSinTheta = 0.0;
+
+    if (theta !== 0.0) {
+        thetaOverSinTheta = theta / Math.sin(theta);
+    }
+
+    return Cartesian3.multiplyByScalar(quaternion, thetaOverSinTheta, result);
+};
+
+/**
+ * The exponential quaternion function.
+ *
+ * @param {Cartesian3} cartesian The cartesian.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ */
+Quaternion.exp = function (cartesian, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(cartesian)) {
+        throw new DeveloperError('cartesian is required.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var theta = Cartesian3.magnitude(cartesian);
+    var sinThetaOverTheta = 0.0;
+
+    if (theta !== 0.0) {
+        sinThetaOverTheta = Math.sin(theta) / theta;
+    }
+
+    result.x = cartesian.x * sinThetaOverTheta;
+    result.y = cartesian.y * sinThetaOverTheta;
+    result.z = cartesian.z * sinThetaOverTheta;
+    result.w = Math.cos(theta);
+
+    return result;
+};
+
+var squadScratchCartesian0 = new Cartesian3();
+var squadScratchCartesian1 = new Cartesian3();
+var squadScratchQuaternion0 = new Quaternion();
+var squadScratchQuaternion1 = new Quaternion();
+
+/**
+ * Computes an inner quadrangle point.
+ * <p>This will compute quaternions that ensure a squad curve is C<sup>1</sup>.</p>
+ *
+ * @param {Quaternion} q0 The first quaternion.
+ * @param {Quaternion} q1 The second quaternion.
+ * @param {Quaternion} q2 The third quaternion.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ *
+ * @see Quaternion#squad
+ */
+Quaternion.computeInnerQuadrangle = function (q0, q1, q2, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(q0) || !defined(q1) || !defined(q2)) {
+        throw new DeveloperError('q0, q1, and q2 are required.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var qInv = Quaternion.conjugate(q1, squadScratchQuaternion0);
+    Quaternion.multiply(qInv, q2, squadScratchQuaternion1);
+    var cart0 = Quaternion.log(squadScratchQuaternion1, squadScratchCartesian0);
+
+    Quaternion.multiply(qInv, q0, squadScratchQuaternion1);
+    var cart1 = Quaternion.log(squadScratchQuaternion1, squadScratchCartesian1);
+
+    Cartesian3.add(cart0, cart1, cart0);
+    Cartesian3.multiplyByScalar(cart0, 0.25, cart0);
+    Cartesian3.negate(cart0, cart0);
+    Quaternion.exp(cart0, squadScratchQuaternion0);
+
+    return Quaternion.multiply(q1, squadScratchQuaternion0, result);
+};
+
+/**
+ * Computes the spherical quadrangle interpolation between quaternions.
+ *
+ * @param {Quaternion} q0 The first quaternion.
+ * @param {Quaternion} q1 The second quaternion.
+ * @param {Quaternion} s0 The first inner quadrangle.
+ * @param {Quaternion} s1 The second inner quadrangle.
+ * @param {Number} t The time in [0,1] used to interpolate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ *
+ *
+ * @example
+ * // 1. compute the squad interpolation between two quaternions on a curve
+ * var s0 = Cesium.Quaternion.computeInnerQuadrangle(quaternions[i - 1], quaternions[i], quaternions[i + 1], new Cesium.Quaternion());
+ * var s1 = Cesium.Quaternion.computeInnerQuadrangle(quaternions[i], quaternions[i + 1], quaternions[i + 2], new Cesium.Quaternion());
+ * var q = Cesium.Quaternion.squad(quaternions[i], quaternions[i + 1], s0, s1, t, new Cesium.Quaternion());
+ *
+ * // 2. compute the squad interpolation as above but where the first quaternion is a end point.
+ * var s1 = Cesium.Quaternion.computeInnerQuadrangle(quaternions[0], quaternions[1], quaternions[2], new Cesium.Quaternion());
+ * var q = Cesium.Quaternion.squad(quaternions[0], quaternions[1], quaternions[0], s1, t, new Cesium.Quaternion());
+ *
+ * @see Quaternion#computeInnerQuadrangle
+ */
+Quaternion.squad = function (q0, q1, s0, s1, t, result) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(q0) || !defined(q1) || !defined(s0) || !defined(s1)) {
+        throw new DeveloperError('q0, q1, s0, and s1 are required.');
+    }
+    if (typeof t !== 'number') {
+        throw new DeveloperError('t is required and must be a number.');
+    }
+    if (!defined(result)) {
+        throw new DeveloperError('result is required');
+    }
+    //>>includeEnd('debug');
+
+    var slerp0 = Quaternion.slerp(q0, q1, t, squadScratchQuaternion0);
+    var slerp1 = Quaternion.slerp(s0, s1, t, squadScratchQuaternion1);
+    return Quaternion.slerp(slerp0, slerp1, 2.0 * t * (1.0 - t), result);
+};
+
+//var fastSlerpScratchQuaternion = new Quaternion();
+//var opmu = 1.90110745351730037;
+//var u = FeatureDetection.supportsTypedArrays() ? new Float32Array(8) : [];
+//var v = FeatureDetection.supportsTypedArrays() ? new Float32Array(8) : [];
+//var bT = FeatureDetection.supportsTypedArrays() ? new Float32Array(8) : [];
+//var bD = FeatureDetection.supportsTypedArrays() ? new Float32Array(8) : [];
+//
+//for (var i = 0; i < 7; ++i) {
+//    var s = i + 1.0;
+//    var t = 2.0 * s + 1.0;
+//    u[i] = 1.0 / (s * t);
+//    v[i] = s / t;
+//}
+//
+//u[7] = opmu / (8.0 * 17.0);
+//v[7] = opmu * 8.0 / 17.0;
+
+/**
+ * Computes the spherical linear interpolation or extrapolation at t using the provided quaternions.
+ * This implementation is faster than {@link Quaternion#slerp}, but is only accurate up to 10<sup>-6</sup>.
+ *
+ * @param {Quaternion} start The value corresponding to t at 0.0.
+ * @param {Quaternion} end The value corresponding to t at 1.0.
+ * @param {Number} t The point along t at which to interpolate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter.
+ *
+ * @see Quaternion#slerp
+ */
+//Quaternion.fastSlerp = function (start, end, t, result) {
+//    //>>includeStart('debug', pragmas.debug);
+//    if (!defined(start)) {
+//        throw new DeveloperError('start is required.');
+//    }
+//    if (!defined(end)) {
+//        throw new DeveloperError('end is required.');
+//    }
+//    if (typeof t !== 'number') {
+//        throw new DeveloperError('t is required and must be a number.');
+//    }
+//    if (!defined(result)) {
+//        throw new DeveloperError('result is required');
+//    }
+//    //>>includeEnd('debug');
+//
+//    var x = Quaternion.dot(start, end);
+//
+//    var sign;
+//    if (x >= 0) {
+//        sign = 1.0;
+//    } else {
+//        sign = -1.0;
+//        x = -x;
+//    }
+//
+//    var xm1 = x - 1.0;
+//    var d = 1.0 - t;
+//    var sqrT = t * t;
+//    var sqrD = d * d;
+//
+//    for (var i = 7; i >= 0; --i) {
+//        bT[i] = (u[i] * sqrT - v[i]) * xm1;
+//        bD[i] = (u[i] * sqrD - v[i]) * xm1;
+//    }
+//
+//    var cT = sign * t * (
+//            1.0 + bT[0] * (1.0 + bT[1] * (1.0 + bT[2] * (1.0 + bT[3] * (
+//            1.0 + bT[4] * (1.0 + bT[5] * (1.0 + bT[6] * (1.0 + bT[7]))))))));
+//    var cD = d * (
+//            1.0 + bD[0] * (1.0 + bD[1] * (1.0 + bD[2] * (1.0 + bD[3] * (
+//            1.0 + bD[4] * (1.0 + bD[5] * (1.0 + bD[6] * (1.0 + bD[7]))))))));
+//
+//    var temp = Quaternion.multiplyByScalar(start, cD, fastSlerpScratchQuaternion);
+//    Quaternion.multiplyByScalar(end, cT, result);
+//    return Quaternion.add(temp, result, result);
+//};
+
+/**
+ * Computes the spherical quadrangle interpolation between quaternions.
+ * An implementation that is faster than {@link Quaternion#squad}, but less accurate.
+ *
+ * @param {Quaternion} q0 The first quaternion.
+ * @param {Quaternion} q1 The second quaternion.
+ * @param {Quaternion} s0 The first inner quadrangle.
+ * @param {Quaternion} s1 The second inner quadrangle.
+ * @param {Number} t The time in [0,1] used to interpolate.
+ * @param {Quaternion} result The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new instance if none was provided.
+ *
+ * @see Quaternion#squad
+ */
+//Quaternion.fastSquad = function (q0, q1, s0, s1, t, result) {
+//    //>>includeStart('debug', pragmas.debug);
+//    if (!defined(q0) || !defined(q1) || !defined(s0) || !defined(s1)) {
+//        throw new DeveloperError('q0, q1, s0, and s1 are required.');
+//    }
+//    if (typeof t !== 'number') {
+//        throw new DeveloperError('t is required and must be a number.');
+//    }
+//    if (!defined(result)) {
+//        throw new DeveloperError('result is required');
+//    }
+//    //>>includeEnd('debug');
+//
+//    var slerp0 = Quaternion.fastSlerp(q0, q1, t, squadScratchQuaternion0);
+//    var slerp1 = Quaternion.fastSlerp(s0, s1, t, squadScratchQuaternion1);
+//    return Quaternion.fastSlerp(slerp0, slerp1, 2.0 * t * (1.0 - t), result);
+//};
+
+/**
+ * Compares the provided quaternions componentwise and returns
+ * <code>true</code> if they are equal, <code>false</code> otherwise.
+ *
+ * @param {Quaternion} [left] The first quaternion.
+ * @param {Quaternion} [right] The second quaternion.
+ * @returns {Boolean} <code>true</code> if left and right are equal, <code>false</code> otherwise.
+ */
+Quaternion.equals = function (left, right) {
+    return (left === right) ||
+            ((defined(left)) &&
+                    (defined(right)) &&
+                    (left.x === right.x) &&
+                    (left.y === right.y) &&
+                    (left.z === right.z) &&
+                    (left.w === right.w));
+};
+
+/**
+ * Compares the provided quaternions componentwise and returns
+ * <code>true</code> if they are within the provided epsilon,
+ * <code>false</code> otherwise.
+ *
+ * @param {Quaternion} [left] The first quaternion.
+ * @param {Quaternion} [right] The second quaternion.
+ * @param {Number} epsilon The epsilon to use for equality testing.
+ * @returns {Boolean} <code>true</code> if left and right are within the provided epsilon, <code>false</code> otherwise.
+ */
+Quaternion.equalsEpsilon = function (left, right, epsilon) {
+    //>>includeStart('debug', pragmas.debug);
+    if (typeof epsilon !== 'number') {
+        throw new DeveloperError('epsilon is required and must be a number.');
+    }
+    //>>includeEnd('debug');
+
+    return (left === right) ||
+            ((defined(left)) &&
+                    (defined(right)) &&
+                    (Math.abs(left.x - right.x) <= epsilon) &&
+                    (Math.abs(left.y - right.y) <= epsilon) &&
+                    (Math.abs(left.z - right.z) <= epsilon) &&
+                    (Math.abs(left.w - right.w) <= epsilon));
+};
+
+/**
+ * An immutable Quaternion instance initialized to (0.0, 0.0, 0.0, 0.0).
+ *
+ * @type {Quaternion}
+ * @constant
+ */
+Quaternion.ZERO = freezeObject(new Quaternion(0.0, 0.0, 0.0, 0.0));
+
+/**
+ * An immutable Quaternion instance initialized to (0.0, 0.0, 0.0, 1.0).
+ *
+ * @type {Quaternion}
+ * @constant
+ */
+Quaternion.IDENTITY = freezeObject(new Quaternion(0.0, 0.0, 0.0, 1.0));
+
+/**
+ * Duplicates this Quaternion instance.
+ *
+ * @param {Quaternion} [result] The object onto which to store the result.
+ * @returns {Quaternion} The modified result parameter or a new Quaternion instance if one was not provided.
+ */
+Quaternion.prototype.clone = function (result) {
+    return Quaternion.clone(this, result);
+};
+
+/**
+ * Compares this and the provided quaternion componentwise and returns
+ * <code>true</code> if they are equal, <code>false</code> otherwise.
+ *
+ * @param {Quaternion} [right] The right hand side quaternion.
+ * @returns {Boolean} <code>true</code> if left and right are equal, <code>false</code> otherwise.
+ */
+Quaternion.prototype.equals = function (right) {
+    return Quaternion.equals(this, right);
+};
+
+/**
+ * Compares this and the provided quaternion componentwise and returns
+ * <code>true</code> if they are within the provided epsilon,
+ * <code>false</code> otherwise.
+ *
+ * @param {Quaternion} [right] The right hand side quaternion.
+ * @param {Number} epsilon The epsilon to use for equality testing.
+ * @returns {Boolean} <code>true</code> if left and right are within the provided epsilon, <code>false</code> otherwise.
+ */
+Quaternion.prototype.equalsEpsilon = function (right, epsilon) {
+    return Quaternion.equalsEpsilon(this, right, epsilon);
+};
+
+/**
+ * Returns a string representing this quaternion in the format (x, y, z, w).
+ *
+ * @returns {String} A string representing this Quaternion.
+ */
+Quaternion.prototype.toString = function () {
+    return '(' + this.x + ', ' + this.y + ', ' + this.z + ', ' + this.w + ')';
+};
+
+
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+var IndexDatatype = {};
+IndexDatatype.createTypedArray = function (numberOfVertices, indicesLengthOrArray) {
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(numberOfVertices)) {
+        throw new DeveloperError('numberOfVertices is required.');
+    }
+    //>>includeEnd('debug');
+
+    if (numberOfVertices >= CesiumMath.SIXTY_FOUR_KILOBYTES) {
+        return new Uint32Array(indicesLengthOrArray);
+    }
+
+    return new Uint16Array(indicesLengthOrArray);
+};
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+    var EllipseGeometryLibrary = {};
+
+    var rotAxis = new Cartesian3();
+    var tempVec = new Cartesian3();
+    var unitQuat = new Quaternion();
+    var rotMtx = new Matrix3();
+
+    EllipseGeometryLibrary.pointOnEllipsoid=function(theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, result) {
+        var azimuth = theta + rotation;
+
+        Cartesian3.multiplyByScalar(eastVec, Math.cos(azimuth), rotAxis);
+        Cartesian3.multiplyByScalar(northVec, Math.sin(azimuth), tempVec);
+        Cartesian3.add(rotAxis, tempVec, rotAxis);
+
+        var cosThetaSquared = Math.cos(theta);
+        cosThetaSquared = cosThetaSquared * cosThetaSquared;
+
+        var sinThetaSquared = Math.sin(theta);
+        sinThetaSquared = sinThetaSquared * sinThetaSquared;
+
+        var radius = ab / Math.sqrt(bSqr * cosThetaSquared + aSqr * sinThetaSquared);
+        var angle = radius / mag;
+
+        // Create the quaternion to rotate the position vector to the boundary of the ellipse.
+        Quaternion.fromAxisAngle(rotAxis, angle, unitQuat);
+        Matrix3.fromQuaternion(unitQuat, rotMtx);
+
+        Matrix3.multiplyByVector(rotMtx, unitPos, result);
+        Cartesian3.normalize(result, result);
+        Cartesian3.multiplyByScalar(result, mag, result);
+        return result;
+    }
+
+    var scratchCartesian1 = new Cartesian3();
+    var scratchCartesian2 = new Cartesian3();
+    var scratchCartesian3 = new Cartesian3();
+    var scratchNormal = new Cartesian3();
+    /**
+     * Returns the positions raised to the given heights
+     * @private
+     */
+    EllipseGeometryLibrary.raisePositionsToHeight = function(positions, options, extrude) {
+        var ellipsoid = options.ellipsoid;
+        var height = options.height;
+        var extrudedHeight = options.extrudedHeight;
+        var size = (extrude) ? positions.length / 3 * 2 : positions.length / 3;
+
+        var finalPositions = new Float64Array(size * 3);
+
+        var length = positions.length;
+        var bottomOffset = (extrude) ? length : 0;
+        for (var i = 0; i < length; i += 3) {
+            var i1 = i + 1;
+            var i2 = i + 2;
+            
+            var position = Cartesian3.fromArray(positions, i, scratchCartesian1);
+            ellipsoid.scaleToGeodeticSurface(position, position);
+
+            var extrudedPosition = Cartesian3.clone(position, scratchCartesian2);
+            var normal = ellipsoid.geodeticSurfaceNormal(position, scratchNormal);
+            var scaledNormal = Cartesian3.multiplyByScalar(normal, height, scratchCartesian3);
+            Cartesian3.add(position, scaledNormal, position);
+
+            if (extrude) {
+                Cartesian3.multiplyByScalar(normal, extrudedHeight, scaledNormal);
+                Cartesian3.add(extrudedPosition, scaledNormal, extrudedPosition);
+
+                finalPositions[i + bottomOffset] = extrudedPosition.x;
+                finalPositions[i1 + bottomOffset] = extrudedPosition.y;
+                finalPositions[i2 + bottomOffset] = extrudedPosition.z;
+            }
+
+            finalPositions[i] = position.x;
+            finalPositions[i1] = position.y;
+            finalPositions[i2] = position.z;
+        }
+
+        return finalPositions;
+    };
+
+    var unitPosScratch = new Cartesian3();
+    var eastVecScratch = new Cartesian3();
+    var northVecScratch = new Cartesian3();
+    /**
+     * Returns an array of positions that make up the ellipse.
+     * @private
+     */
+    EllipseGeometryLibrary.computeEllipsePositions = function(options, addFillPositions, addEdgePositions) {
+        var semiMinorAxis = options.semiMinorAxis;
+        var semiMajorAxis = options.semiMajorAxis;
+        var rotation = options.rotation;
+        var center = options.center;
+
+        // Computing the arc-length of the ellipse is too expensive to be practical. Estimating it using the
+        // arc length of the sphere is too inaccurate and creates sharp edges when either the semi-major or
+        // semi-minor axis is much bigger than the other. Instead, scale the angle delta to make
+        // the distance along the ellipse boundary more closely match the granularity.
+        var granularity = options.granularity * 8.0;
+
+        var aSqr = semiMinorAxis * semiMinorAxis;
+        var bSqr = semiMajorAxis * semiMajorAxis;
+        var ab = semiMajorAxis * semiMinorAxis;
+
+        var mag = Cartesian3.magnitude(center);
+
+        var unitPos = Cartesian3.normalize(center, unitPosScratch);
+        var eastVec = Cartesian3.cross(Cartesian3.UNIT_Z, center, eastVecScratch);
+        eastVec = Cartesian3.normalize(eastVec, eastVec);
+        var northVec = Cartesian3.cross(unitPos, eastVec, northVecScratch);
+
+        // The number of points in the first quadrant
+        var numPts = 1 + Math.ceil(CesiumMath.PI_OVER_TWO / granularity);
+
+        var deltaTheta = CesiumMath.PI_OVER_TWO / (numPts - 1);
+        var theta = CesiumMath.PI_OVER_TWO - numPts * deltaTheta;
+        if (theta < 0.0) {
+            numPts -= Math.ceil(Math.abs(theta) / deltaTheta);
+        }
+
+        // If the number of points were three, the ellipse
+        // would be tessellated like below:
+        //
+        //         *---*
+        //       / | \ | \
+        //     *---*---*---*
+        //   / | \ | \ | \ | \
+        //  / .*---*---*---*. \
+        // * ` | \ | \ | \ | `*
+        //  \`.*---*---*---*.`/
+        //   \ | \ | \ | \ | /
+        //     *---*---*---*
+        //       \ | \ | /
+        //         *---*
+        // The first and last column have one position and fan to connect to the adjacent column.
+        // Each other vertical column contains an even number of positions.
+        var size = 2 * (numPts * (numPts + 2));
+        var positions = (addFillPositions) ? new Array(size * 3) : undefined;
+        var positionIndex = 0;
+        var position = scratchCartesian1;
+        var reflectedPosition = scratchCartesian2;
+
+        var outerPositionsLength = (numPts * 4) * 3;
+        var outerRightIndex = outerPositionsLength - 1;
+        var outerLeftIndex = 0;
+        var outerPositions = (addEdgePositions) ? new Array(outerPositionsLength) : undefined;
+
+        var i;
+        var j;
+        var numInterior;
+        var t;
+        var interiorPosition;
+
+        // Compute points in the 'eastern' half of the ellipse
+        theta = CesiumMath.PI_OVER_TWO;
+        position = this.pointOnEllipsoid(theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, position);
+        if (addFillPositions) {
+            positions[positionIndex++] = position.x;
+            positions[positionIndex++] = position.y;
+            positions[positionIndex++] = position.z;
+        }
+        if (addEdgePositions) {
+            outerPositions[outerRightIndex--] = position.z;
+            outerPositions[outerRightIndex--] = position.y;
+            outerPositions[outerRightIndex--] = position.x;
+        }
+        theta = CesiumMath.PI_OVER_TWO -  deltaTheta;
+        for (i = 1; i < numPts + 1; ++i) {
+            position = this.pointOnEllipsoid(theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, position);
+            reflectedPosition = this.pointOnEllipsoid(Math.PI - theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, reflectedPosition);
+
+            if (addFillPositions) {
+                positions[positionIndex++] = position.x;
+                positions[positionIndex++] = position.y;
+                positions[positionIndex++] = position.z;
+
+                numInterior = 2 * i + 2;
+                for (j = 1; j < numInterior - 1; ++j) {
+                    t = j / (numInterior - 1);
+                    interiorPosition = Cartesian3.lerp(position, reflectedPosition, t, scratchCartesian3);
+                    positions[positionIndex++] = interiorPosition.x;
+                    positions[positionIndex++] = interiorPosition.y;
+                    positions[positionIndex++] = interiorPosition.z;
+                }
+
+                positions[positionIndex++] = reflectedPosition.x;
+                positions[positionIndex++] = reflectedPosition.y;
+                positions[positionIndex++] = reflectedPosition.z;
+            }
+
+            if (addEdgePositions) {
+                outerPositions[outerRightIndex--] = position.z;
+                outerPositions[outerRightIndex--] = position.y;
+                outerPositions[outerRightIndex--] = position.x;
+                outerPositions[outerLeftIndex++] = reflectedPosition.x;
+                outerPositions[outerLeftIndex++] = reflectedPosition.y;
+                outerPositions[outerLeftIndex++] = reflectedPosition.z;
+            }
+
+            theta = CesiumMath.PI_OVER_TWO - (i + 1) * deltaTheta;
+        }
+
+        // Compute points in the 'western' half of the ellipse
+        for (i = numPts; i > 1; --i) {
+            theta = CesiumMath.PI_OVER_TWO - (i - 1) * deltaTheta;
+
+            position = this.pointOnEllipsoid(-theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, position);
+            reflectedPosition = this.pointOnEllipsoid(theta + Math.PI, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, reflectedPosition);
+
+            if (addFillPositions) {
+                positions[positionIndex++] = position.x;
+                positions[positionIndex++] = position.y;
+                positions[positionIndex++] = position.z;
+
+                numInterior = 2 * (i - 1) + 2;
+                for (j = 1; j < numInterior - 1; ++j) {
+                    t = j / (numInterior - 1);
+                    interiorPosition = Cartesian3.lerp(position, reflectedPosition, t, scratchCartesian3);
+                    positions[positionIndex++] = interiorPosition.x;
+                    positions[positionIndex++] = interiorPosition.y;
+                    positions[positionIndex++] = interiorPosition.z;
+                }
+
+                positions[positionIndex++] = reflectedPosition.x;
+                positions[positionIndex++] = reflectedPosition.y;
+                positions[positionIndex++] = reflectedPosition.z;
+            }
+
+            if (addEdgePositions) {
+                outerPositions[outerRightIndex--] = position.z;
+                outerPositions[outerRightIndex--] = position.y;
+                outerPositions[outerRightIndex--] = position.x;
+                outerPositions[outerLeftIndex++] = reflectedPosition.x;
+                outerPositions[outerLeftIndex++] = reflectedPosition.y;
+                outerPositions[outerLeftIndex++] = reflectedPosition.z;
+            }
+        }
+
+        theta = CesiumMath.PI_OVER_TWO;
+        position = this.pointOnEllipsoid(-theta, rotation, northVec, eastVec, aSqr, ab, bSqr, mag, unitPos, position);
+
+        var r = {};
+        if (addFillPositions) {
+            positions[positionIndex++] = position.x;
+            positions[positionIndex++] = position.y;
+            positions[positionIndex++] = position.z;
+            r.positions = positions;
+            r.numPts = numPts;
+        }
+        if (addEdgePositions) {
+            outerPositions[outerRightIndex--] = position.z;
+            outerPositions[outerRightIndex--] = position.y;
+            outerPositions[outerRightIndex--] = position.x;
+            r.outerPositions = outerPositions;
+        }
+
+        return r;
+    };
+
+
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//'use strict';
+var EllipseGeometry = EllipseGeometry || {};
+var Matrix3 = Matrix3 || {};
+//var Quaternnion = Quaternion || {};
+//var VertexFormat = VertexFormat || {};
+
+function EllipseGeometry(options) {
+    options = defaultValue(options, defaultValue.EMPTY_OBJECT);
+
+    var center = options.center;
+    //var ellipsoid = defaultValue(options.ellipsoid, vincenty.Ellipsoid.WGS84);
+    var ellipsoid = vincenty.Ellipsoid.WGS84;
+    var semiMajorAxis = options.semiMajorAxis;
+    var semiMinorAxis = options.semiMinorAxis;
+    var granularity = defaultValue(options.granularity, CesiumMath.RADIANS_PER_DEGREE);
+    granularity /= 2;
+    var height = defaultValue(options.height, 0.0);
+    var extrudedHeight = options.extrudedHeight;
+    var extrude = (defined(extrudedHeight) && Math.abs(height - extrudedHeight) > 1.0);
+    var vertexFormat = defaultValue(options.vertexFormat, VertexFormat.DEFAULT);
+
+    //>>includeStart('debug', pragmas.debug);
+    if (!defined(center)) {
+        throw new DeveloperError('center is required.');
+    }
+    if (!defined(semiMajorAxis)) {
+        throw new DeveloperError('semiMajorAxis is required.');
+    }
+    if (!defined(semiMinorAxis)) {
+        throw new DeveloperError('semiMinorAxis is required.');
+    }
+    if (semiMajorAxis < semiMinorAxis) {
+        throw new DeveloperError('semiMajorAxis must be greater than or equal to the semiMinorAxis.');
+    }
+    if (granularity <= 0.0) {
+        throw new DeveloperError('granularity must be greater than zero.');
+    }
+    //>>includeEnd('debug');
+
+    this._center = Cartesian3.clone(center);
+    this._semiMajorAxis = semiMajorAxis;
+    this._semiMinorAxis = semiMinorAxis;
+    //this._ellipsoid = vincenty.Ellipsoid.clone(ellipsoid);
+    this._ellipsoid = ellipsoid;
+    this._rotation = defaultValue(options.rotation, 0.0);
+    this._stRotation = defaultValue(options.stRotation, 0.0);
+    this._height = height;
+    this._granularity = granularity;
+    this._vertexFormat = VertexFormat.clone(vertexFormat);
+    this._extrudedHeight = defaultValue(extrudedHeight, height);
+    this._extrude = extrude;
+    this._workerName = 'createEllipseGeometry';
+
+    //this._rectangle = computeRectangle(this._center, this._ellipsoid, semiMajorAxis, semiMinorAxis, this._rotation);
+}
+/**
+ * Computes the geometric representation of a ellipse on an ellipsoid, including its vertices, indices, and a bounding sphere.
+ *
+ * @param {EllipseGeometry} ellipseGeometry A description of the ellipse.
+ * @returns {Geometry|undefined} The computed vertices and indices.
+ */
+EllipseGeometry.createGeometry = function (ellipseGeometry) {
+    if ((ellipseGeometry._semiMajorAxis <= 0.0) || (ellipseGeometry._semiMinorAxis <= 0.0)) {
+        return;
+    }
+
+    ellipseGeometry._center = ellipseGeometry._ellipsoid.scaleToGeodeticSurface(ellipseGeometry._center, ellipseGeometry._center);
+    var options = {
+        center: ellipseGeometry._center,
+        semiMajorAxis: ellipseGeometry._semiMajorAxis,
+        semiMinorAxis: ellipseGeometry._semiMinorAxis,
+        ellipsoid: ellipseGeometry._ellipsoid,
+        rotation: ellipseGeometry._rotation,
+        height: ellipseGeometry._height,
+        extrudedHeight: ellipseGeometry._extrudedHeight,
+        granularity: ellipseGeometry._granularity,
+        vertexFormat: ellipseGeometry._vertexFormat,
+        stRotation: ellipseGeometry._stRotation
+    };
+    var geometry;
+    if (ellipseGeometry._extrude) {
+        options.extrudedHeight = Math.min(ellipseGeometry._extrudedHeight, ellipseGeometry._height);
+        options.height = Math.max(ellipseGeometry._extrudedHeight, ellipseGeometry._height);
+        geometry = computeExtrudedEllipse(options);
+    } else {
+        geometry = EllipseGeometry.computeEllipse(options);
+    }
+
+//    return new Geometry({
+//        attributes: geometry.attributes,
+//        indices: geometry.indices,
+//        primitiveType: PrimitiveType.TRIANGLES,
+//        boundingSphere: geometry.boundingSphere
+//    });
+    return geometry;
+};
+
+var boundingSphereCenter = new Cartesian3();
+
+EllipseGeometry.computeEllipse = function (options) {
+    var center = options.center;
+    //boundingSphereCenter = Cartesian3.multiplyByScalar(options.ellipsoid.geodeticSurfaceNormal(center, boundingSphereCenter), options.height, boundingSphereCenter);
+    //boundingSphereCenter = Cartesian3.add(center, boundingSphereCenter, boundingSphereCenter);
+    //var boundingSphere = new BoundingSphere(boundingSphereCenter, options.semiMajorAxis);
+    var boundingSphere = null;
+    //var cep = EllipseGeometryLibrary.computeEllipsePositions(options, true, false);
+    var cep = EllipseGeometryLibrary.computeEllipsePositions(options, false, true);
+    var positions = cep.positions;
+    var outerPositions= cep.outerPositions;
+//    var numPts = cep.numPts;
+//    var attributes = computeTopBottomAttributes(positions, options, false);
+//    var attributes = null;
+//    var indices = EllipseGeometry.topIndices(numPts);
+//    indices = IndexDatatype.createTypedArray(positions.length / 3, indices);
+//    return {
+//        boundingSphere: boundingSphere,
+//        attributes: attributes,
+//        indices: indices
+//    };
+    return outerPositions;
+    //return positions;
+};
+
+EllipseGeometry.topIndices = function (numPts) {
+    // numTriangles in half = 3 + 8 + 12 + ... = -1 + 4 + (4 + 4) + (4 + 4 + 4) + ... = -1 + 4 * (1 + 2 + 3 + ...)
+    //              = -1 + 4 * ((n * ( n + 1)) / 2)
+    // total triangles = 2 * numTrangles in half
+    // indices = total triangles * 3;
+    // Substitute numPts for n above
+
+    var indices = new Array(12 * (numPts * (numPts + 1)) - 6);
+    var indicesIndex = 0;
+    var prevIndex;
+    var numInterior;
+    var positionIndex;
+    var i;
+    var j;
+    // Indices triangles to the 'right' of the north vector
+
+    prevIndex = 0;
+    positionIndex = 1;
+    for (i = 0; i < 3; i++) {
+        indices[indicesIndex++] = positionIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+    }
+
+    for (i = 2; i < numPts + 1; ++i) {
+        positionIndex = i * (i + 1) - 1;
+        prevIndex = (i - 1) * i - 1;
+
+        indices[indicesIndex++] = positionIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+
+        numInterior = 2 * i;
+        for (j = 0; j < numInterior - 1; ++j) {
+
+            indices[indicesIndex++] = positionIndex;
+            indices[indicesIndex++] = prevIndex++;
+            indices[indicesIndex++] = prevIndex;
+
+            indices[indicesIndex++] = positionIndex++;
+            indices[indicesIndex++] = prevIndex;
+            indices[indicesIndex++] = positionIndex;
+        }
+
+        indices[indicesIndex++] = positionIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+    }
+
+    // Indices for center column of triangles
+    numInterior = numPts * 2;
+    ++positionIndex;
+    ++prevIndex;
+    for (i = 0; i < numInterior - 1; ++i) {
+        indices[indicesIndex++] = positionIndex;
+        indices[indicesIndex++] = prevIndex++;
+        indices[indicesIndex++] = prevIndex;
+
+        indices[indicesIndex++] = positionIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+    }
+
+    indices[indicesIndex++] = positionIndex;
+    indices[indicesIndex++] = prevIndex++;
+    indices[indicesIndex++] = prevIndex;
+
+    indices[indicesIndex++] = positionIndex++;
+    indices[indicesIndex++] = prevIndex++;
+    indices[indicesIndex++] = prevIndex;
+
+    // Reverse the process creating indices to the 'left' of the north vector
+    ++prevIndex;
+    for (i = numPts - 1; i > 1; --i) {
+        indices[indicesIndex++] = prevIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+
+        numInterior = 2 * i;
+        for (j = 0; j < numInterior - 1; ++j) {
+            indices[indicesIndex++] = positionIndex;
+            indices[indicesIndex++] = prevIndex++;
+            indices[indicesIndex++] = prevIndex;
+
+            indices[indicesIndex++] = positionIndex++;
+            indices[indicesIndex++] = prevIndex;
+            indices[indicesIndex++] = positionIndex;
+        }
+
+        indices[indicesIndex++] = prevIndex++;
+        indices[indicesIndex++] = prevIndex++;
+        indices[indicesIndex++] = positionIndex++;
+    }
+
+    for (i = 0; i < 3; i++) {
+        indices[indicesIndex++] = prevIndex++;
+        indices[indicesIndex++] = prevIndex;
+        indices[indicesIndex++] = positionIndex;
+    }
+    return indices;
+};
+
