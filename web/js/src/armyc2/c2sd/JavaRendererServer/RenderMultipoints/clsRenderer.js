@@ -917,6 +917,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                         AM[1]=r;
                         AM.push(b);
                     }
+                    else if(AM.length===3)                    
+                        AM[1]=AM[0];
+                    
                 }
                 if (AN === null || AN === undefined)
                     AN = new Array();
