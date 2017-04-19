@@ -19,8 +19,13 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
     //decimal lat/lon accuracy by decimal place
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
+    //accuracy multiplier
+    var _decimalAccMult = 10000000;
             
-   
+    function toFixedPrecision(n)
+    {
+        return Math.round(n * _decimalAccMult) / _decimalAccMult;
+    }
     
     //private functions
             
@@ -288,15 +293,25 @@ sec.web.renderer.MultiPointHandlerSVG = (function () {
                         east = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(east);
                         west = sec.web.renderer.MultiPointHandler.NormalizeCoordToGECoord(west);
                     }
-                    geoCoordTL.setLocation(geoCoordTL.getX().toFixed(_decimalAccuracy), geoCoordTL.getY().toFixed(_decimalAccuracy));
-                    geoCoordBR.setLocation(geoCoordBR.getX().toFixed(_decimalAccuracy), geoCoordBR.getY().toFixed(_decimalAccuracy));
-                    geoCoordTR.setLocation(geoCoordTR.getX().toFixed(_decimalAccuracy), geoCoordTR.getY().toFixed(_decimalAccuracy));
-                    geoCoordBL.setLocation(geoCoordBL.getX().toFixed(_decimalAccuracy), geoCoordBL.getY().toFixed(_decimalAccuracy));
+                    /*geoCoordTL.setLocation(toFixedPrecision(geoCoordTL.getX()), toFixedPrecision(geoCoordTL.getY()));
+                    geoCoordBR.setLocation(toFixedPrecision(geoCoordBR.getX()), toFixedPrecision(geoCoordBR.getY()));
+                    geoCoordTR.setLocation(toFixedPrecision(geoCoordTR.getX()), toFixedPrecision(geoCoordTR.getY()));
+                    geoCoordBL.setLocation(toFixedPrecision(geoCoordBL.getX()), toFixedPrecision(geoCoordBL.getY()));
 
-                    north.setLocation(north.getX().toFixed(_decimalAccuracy), north.getY().toFixed(_decimalAccuracy));
-                    south.setLocation(south.getX().toFixed(_decimalAccuracy), south.getY().toFixed(_decimalAccuracy));
-                    east.setLocation(east.getX().toFixed(_decimalAccuracy), east.getY().toFixed(_decimalAccuracy));
-                    west.setLocation(west.getX().toFixed(_decimalAccuracy), west.getY().toFixed(_decimalAccuracy));
+                    north.setLocation(toFixedPrecision(north.getX()), toFixedPrecision(north.getY()));
+                    south.setLocation(toFixedPrecision(south.getX()), toFixedPrecision(south.getY()));
+                    east.setLocation(toFixedPrecision(east.getX()), toFixedPrecision(east.getY()));
+                    west.setLocation(toFixedPrecision(west.getX()), toFixedPrecision(west.getY()));//*/
+
+                    geoCoordTL.setLocation(geoCoordTL.getX(), geoCoordTL.getY());
+                    geoCoordBR.setLocation(geoCoordBR.getX(), geoCoordBR.getY());
+                    geoCoordTR.setLocation(geoCoordTR.getX(), geoCoordTR.getY());
+                    geoCoordBL.setLocation(geoCoordBL.getX(), geoCoordBL.getY());
+
+                    north.setLocation(north.getX(), north.getY());
+                    south.setLocation(south.getX(), south.getY());
+                    east.setLocation(east.getX(), east.getY());
+                    west.setLocation(west.getX(), west.getY());//*/
                 }
                 else//nothing to draw
                 {

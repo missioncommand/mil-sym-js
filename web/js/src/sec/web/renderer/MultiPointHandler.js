@@ -24,14 +24,22 @@ sec.web.renderer.MultiPointHandler = (function () {
     //decimal lat/lon accuracy by decimal place
     //7DP ~= 11.132mm (en.wikipedia.org/wiki/Decimal_degrees)
     var _decimalAccuracy = 7;
+    //accuracy multiplier
+    var _decimalAccMult = 10000000;
 
     var _maxWidthInPixels = 1600;   //was 1000
     var _minWidthInPixels = 160;    //was 100
-
+    
     //constructor code
 
 
     //private functions
+
+    
+    function toFixedPrecision(n)
+    {
+        return Math.round(n * _decimalAccMult) / _decimalAccMult;
+    }
     /**\
      * 
      * @param {String} symbolID
@@ -2185,8 +2193,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         var geoCoord = ipc.PixelsToGeo(coord);
                         if (normalize)
                             geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-                        var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-                        var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                        var latitude = toFixedPrecision(geoCoord.getY());
+                        var longitude = toFixedPrecision(geoCoord.getX());//*/
                         kml += (longitude);
                         kml += (",");
                         kml += (latitude);
@@ -2219,7 +2227,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         {
                             var coord = shape.get(j);
                             var geoCoord = ipc.PixelsToGeo(coord);
-                            var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                            var longitude = toFixedPrecision(geoCoord.getX());
                             if (lastLongitude !== null)
                             {
                                 if (Math.abs(longitude - lastLongitude) > 180)
@@ -2237,8 +2245,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                         var coord = shape.get(j);
                         //var coord = shape[j];
                         var geoCoord = ipc.PixelsToGeo(coord);
-                        var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-                        var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                        var latitude = toFixedPrecision(geoCoord.getY());
+                        var longitude = toFixedPrecision(geoCoord.getX());
                         //fix for fill crossing DTL   
                         if (normalize)
                         {
@@ -2371,8 +2379,8 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var geoCoord = ipc.PixelsToGeo(coord);
                     if (normalize)
                         geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-                    var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-                    var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                    var latitude = toFixedPrecision(geoCoord.getY());
+                    var longitude = toFixedPrecision(geoCoord.getX());
                     coord = new armyc2.c2sd.graphics2d.Point2D();
 
                     //fix for fill crossing DTL
@@ -2477,8 +2485,12 @@ sec.web.renderer.MultiPointHandler = (function () {
                     var geoCoord = ipc.PixelsToGeo(coord);
                     if (normalize)
                         geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-                    var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-                    var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+                    
+                    /*var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
+                    var longitude = geoCoord.getX().toFixed(_decimalAccuracy);*/
+
+                    var latitude = toFixedPrecision(geoCoord.getY());
+                    var longitude = toFixedPrecision(geoCoord.getX());
 
                     latitude = parseFloat(latitude);
                     longitude = parseFloat(longitude);
@@ -2511,8 +2523,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             var geoCoord = ipc.PixelsToGeo(coord);
             if (normalize)
                 geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-            var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-            var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+            var latitude = toFixedPrecision(geoCoord.getY());
+            var longitude = toFixedPrecision(geoCoord.getX());
             var angle = Math.round(shapeInfo.getModifierStringAngle());
             var text = shapeInfo.getModifierString();
             var kmlScale = RendererSettings.getKMLLabelScale();
@@ -2556,8 +2568,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             var geoCoord = ipc.PixelsToGeo(coord);
             if (normalize)
                 geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-            var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-            var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+            var latitude = toFixedPrecision(geoCoord.getY());
+            var longitude = toFixedPrecision(geoCoord.getX());
             var angle = shapeInfo.getModifierStringAngle();
             coord.setLocation(longitude, latitude);
             shapeInfo.setGlyphPosition(coord);
@@ -2600,8 +2612,8 @@ sec.web.renderer.MultiPointHandler = (function () {
             var geoCoord = ipc.PixelsToGeo(coord);
             if (normalize)
                 geoCoord = this.NormalizeCoordToGECoord(geoCoord);
-            var latitude = geoCoord.getY().toFixed(_decimalAccuracy);
-            var longitude = geoCoord.getX().toFixed(_decimalAccuracy);
+            var latitude = toFixedPrecision(geoCoord.getY());
+            var longitude = toFixedPrecision(geoCoord.getX());
             latitude = parseFloat(latitude);
             longitude = parseFloat(longitude);
             var angle = shapeInfo.getModifierStringAngle();
