@@ -2954,26 +2954,54 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                         case 23410000:
                             armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(circlePoints);
                             pt3 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[3]);
-                            dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
-                            armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            
+                            if(!converter)
+                            {
+                                dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            }
+                            else
+                            {
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble2(pt0, pt1, 100,
+                                    circlePoints, converter);                                
+                            }
+                            
                             for (j = 0; j < 100; j++) {
                                 pLinePoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(circlePoints[j]);
                             }
                             pLinePoints[99].style = 5;
-                            dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt2);
-                            armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            
+                            if(!converter)
+                            {
+                                dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt2);
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            }
+                            else
+                            {
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble2(pt0, pt2, 100,
+                                    circlePoints, converter);                                
+                            }
+                            
                             for (j = 0; j < 100; j++) {
                                 pLinePoints[100 + j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(circlePoints[j]);
                             }
                             pLinePoints[199].style = 5;
-                            dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt3);
-                            armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            
+                            if(!converter)
+                            {
+                                dRadius = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt3);
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble(pt0, dRadius, 100, circlePoints, 0);
+                            }
+                            else
+                            {
+                                armyc2.c2sd.JavaLineArray.lineutility.CalcCircleDouble2(pt0, pt3, 100,
+                                    circlePoints, converter);                                
+                            }
+                            
                             for (j = 0; j < 100; j++) {
                                 pLinePoints[200 + j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(circlePoints[j]);
                             }
-                            //acCounter = 300;
                             acCounter = vblCounter;
-                            //armyc2.c2sd.JavaLineArray.arraysupport.FillPoints(pLinePoints, vblCounter, points);
                             break;
                         case 25211000:
                             d = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);

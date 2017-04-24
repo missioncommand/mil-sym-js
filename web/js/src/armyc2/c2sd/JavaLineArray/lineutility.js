@@ -1614,28 +1614,28 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         else
                             M = 1.5707963267948966;
                     }
-                    if(converter)
+                    if (converter)
                     {
-                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
-                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
-                        var reverseM=false;
-                        pt02d=converter.PixelsToGeo(pt02d);
-                        pt12d=converter.PixelsToGeo(pt12d);
-                        M=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt02d,pt12d);
-                        M*=(Math.PI/180);
-                        if(M<0)
-                            M+=Math.PI;
+                        var pt02d = new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x, pResultLinePoints[0].y);
+                        var pt12d = new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x, pResultLinePoints[1].y);
+                        var reverseM = false;
+                        pt02d = converter.PixelsToGeo(pt02d);
+                        pt12d = converter.PixelsToGeo(pt12d);
+                        M = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.GetAzimuth(pt02d, pt12d);
+                        M *= (Math.PI / 180);
+                        if (M < 0)
+                            M += Math.PI;
                     }
                     length = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(a, e);
-                    if(converter)
+                    if (converter)
                     {
-                        var pt02d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
-                        var pt12d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x,pResultLinePoints[1].y);
-                        pt02d=converter.PixelsToGeo(pt02d);
-                        pt12d=converter.PixelsToGeo(pt12d);
-                        length=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt02d,pt12d,null,null);
+                        var pt02d = new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x, pResultLinePoints[0].y);
+                        var pt12d = new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[1].x, pResultLinePoints[1].y);
+                        pt02d = converter.PixelsToGeo(pt02d);
+                        pt12d = converter.PixelsToGeo(pt12d);
+                        length = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pt02d, pt12d, null, null);
                     }
-                    
+
                     switch (linetype) {
                         case 23157000:
                             startangle = M - 1.5707963267948966;
@@ -1700,7 +1700,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     pArcLinePoints = new Array(numarcpts);
                     armyc2.c2sd.JavaLineArray.lineutility.InitializePOINT2Array(pArcLinePoints);
                     increment = (endangle - startangle) / (numarcpts - 1);
-                                        
+
                     if (dRadius !== 0 && length !== 0)
                     {
                         C.x = Math.floor((e.x - (dRadius / length) * (a.x - e.x)));
@@ -1713,16 +1713,16 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                     if (converter)
                     {
-                        var C2d=new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x,pResultLinePoints[0].y);
-                        C2d=converter.PixelsToGeo(C2d);    
-                        var az=0,ptGeo=null,ptPixels=null;
+                        var C2d = new armyc2.c2sd.graphics2d.Point2D(pResultLinePoints[0].x, pResultLinePoints[0].y);
+                        C2d = converter.PixelsToGeo(C2d);
+                        var az = 0, ptGeo = null, ptPixels = null;
                         for (j = 0; j < numarcpts; j++) {
-                            az=startangle*180/Math.PI+j*increment*180/Math.PI;
-                            ptGeo=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(C2d,length,az);
-                            ptGeo=new armyc2.c2sd.graphics2d.Point2D(ptGeo.x,ptGeo.y);
-                            ptPixels=converter.GeoToPixels(ptGeo);
+                            az = startangle * 180 / Math.PI + j * increment * 180 / Math.PI;
+                            ptGeo = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(C2d, length, az);
+                            ptGeo = new armyc2.c2sd.graphics2d.Point2D(ptGeo.x, ptGeo.y);
+                            ptPixels = converter.GeoToPixels(ptGeo);
                             pArcLinePoints[j].x = ptPixels.x;
-                            pArcLinePoints[j].y = ptPixels.y;                            
+                            pArcLinePoints[j].y = ptPixels.y;
                         }
                     }
                     else
@@ -1765,6 +1765,44 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     }
                 }
                 return pResultLinePoints;
+            },
+            CalcCircleDouble2: function (Center, pt1, numpts, CirclePoints, converter)
+            {
+                try
+                {
+                    var j = 0;
+                    var increment = (Math.PI * 2) / (numpts - 1);
+                    var ptCenter2d = new armyc2.c2sd.graphics2d.Point2D(Center.x, Center.y);
+                    ptCenter2d = converter.PixelsToGeo(ptCenter2d);
+                    var pt12d = new armyc2.c2sd.graphics2d.Point2D(pt1.x, pt1.y);
+                    pt12d = converter.PixelsToGeo(pt12d);
+                    Center = new armyc2.c2sd.JavaLineArray.POINT2(ptCenter2d.getX(), ptCenter2d.getY());
+                    pt1 = new armyc2.c2sd.JavaLineArray.POINT2(pt12d.getX(), pt12d.getY());
+                    var dist = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(Center, pt1, null, null);
+
+                    var az = 0;
+                    var startangle = 0, endAngle = Math.PI * 2;
+                    var ptGeo = null, ptPixels = null;
+                    var ptGeo2d = null;
+                    for (j = 0; j < numpts - 1; j++) {
+                        az = startangle * 180 / Math.PI + j * increment * 180 / Math.PI;
+                        //ptGeo=mdlGeodesic.geodesic_coordinate(C2d,length,az);
+                        ptGeo = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(Center, dist, az);
+                        ptGeo2d = new armyc2.c2sd.graphics2d.Point2D(ptGeo.x, ptGeo.y);
+                        ptGeo2d = converter.GeoToPixels(ptGeo2d);
+                        ptPixels = new armyc2.c2sd.JavaLineArray.POINT2(ptGeo2d.getX(), ptGeo2d.getY());
+                        CirclePoints[j].x = ptPixels.x;
+                        CirclePoints[j].y = ptPixels.y;
+                    }
+                    CirclePoints[numpts - 1] = new armyc2.c2sd.JavaLineArray.POINT2(CirclePoints[0]);
+                }
+                catch (exc) {
+                    if (Clazz.instanceOf(exc)) {
+                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.lineutility._className, "ArcArrayDouble", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside CalcCircleDouble2", exc));
+                    } else {
+                        throw exc;
+                    }
+                }
             },
             CalcCircleDouble: function (Center, radius, numpts, CirclePoints, styl) {
                 try {
@@ -2363,7 +2401,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                     var x = 0;
                     var y = 0;
                     //add converter stuff
-                    var temp2d=null,d=0,theta=0;
+                    var temp2d = null, d = 0, theta = 0;
                     var a12 = new armyc2.c2sd.JavaLineArray.ref();
                     var a21 = new armyc2.c2sd.JavaLineArray.ref();
                     //end section
@@ -2371,26 +2409,26 @@ armyc2.c2sd.JavaLineArray.lineutility =
                         var pdCenter;
                         dRotate = lAngle * 3.141592653589793 / 180;
                         pdCenter = armyc2.c2sd.JavaLineArray.lineutility.CalcCenterPointDouble(pLinePoints, vblCounter);
-                        if(converter)
+                        if (converter)
                         {
-                            pdCenter=new armyc2.c2sd.graphics2d.Point2D(pdCenter.x,pdCenter.y);
-                            pdCenter=converter.PixelsToGeo(pdCenter);                            
-                            if(ptCenter)
-                                pdCenter=ptCenter;
+                            pdCenter = new armyc2.c2sd.graphics2d.Point2D(pdCenter.x, pdCenter.y);
+                            pdCenter = converter.PixelsToGeo(pdCenter);
+                            if (ptCenter)
+                                pdCenter = ptCenter;
                         }
-                        for (j = 0; j < vblCounter; j++) 
+                        for (j = 0; j < vblCounter; j++)
                         {
-                            if(converter)
-                            {                                
-                                temp2d=new armyc2.c2sd.graphics2d.Point2D(pLinePoints[j].x,pLinePoints[j].y);
-                                temp2d=converter.PixelsToGeo(temp2d);                            
-                                d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pdCenter,temp2d,a12,a21);
-                                theta=a12.value[0]+lAngle;
-                                temp2d=armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pdCenter,d,theta);
-                                temp2d=new armyc2.c2sd.graphics2d.Point2D(temp2d.x,temp2d.y);
-                                temp2d=converter.GeoToPixels(temp2d);                            
-                                pLinePoints[j].x=temp2d.x;
-                                pLinePoints[j].y=temp2d.y;
+                            if (converter)
+                            {
+                                temp2d = new armyc2.c2sd.graphics2d.Point2D(pLinePoints[j].x, pLinePoints[j].y);
+                                temp2d = converter.PixelsToGeo(temp2d);
+                                d = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_distance(pdCenter, temp2d, a12, a21);
+                                theta = a12.value[0] + lAngle;
+                                temp2d = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pdCenter, d, theta);
+                                temp2d = new armyc2.c2sd.graphics2d.Point2D(temp2d.x, temp2d.y);
+                                temp2d = converter.GeoToPixels(temp2d);
+                                pLinePoints[j].x = temp2d.x;
+                                pLinePoints[j].y = temp2d.y;
                             }
                             else
                             {
@@ -2407,7 +2445,7 @@ armyc2.c2sd.JavaLineArray.lineutility =
                                 y = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.sin(dTheta);
                                 x = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pLinePoints[j], pdCenter) * Math.cos(dTheta);
                                 pLinePoints[j].y = pdCenter.y + y;
-                                pLinePoints[j].x = pdCenter.x + x;                            
+                                pLinePoints[j].x = pdCenter.x + x;
                             }
                         }
                         return;
@@ -2685,12 +2723,12 @@ armyc2.c2sd.JavaLineArray.lineutility =
                 return newshape;
             },
             /*
-            *overloads:
-            *(POINT2)
-            *(x,y)
-            *(x,y,style)
-            *(x,y,segment,style)
-            */
+             *overloads:
+             *(POINT2)
+             *(x,y)
+             *(x,y,style)
+             *(x,y,segment,style)
+             */
             setPOINT2: function (x, y, param1, param2) {
                 return new armyc2.c2sd.JavaLineArray.POINT2(x, y, param1, param2);
             },
