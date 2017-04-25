@@ -142,11 +142,19 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityGE = {
             var dist = 0;
             var patternLength = 0;
             var numSegments = 0;
+            
+            //add 3 lines for high resolution devices
+            var dashMultiplier=armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getDeviceDPI()/96.0;
+            for(j=0;j<dash.length;j++)
+                dash[j]*=dashMultiplier;
+            //end section
+            
             for (j = 0; j < dash.length; j++)
                 patternLength += dash[j];
 
             var sum = Clazz.newArray(dash.length, 0);
             var remainder = 0;
+            
             var linetype = tg.get_LineType();
             for (j = 0; j < sum.length; j++) {
                 for (k = 0; k <= j; k++) {
