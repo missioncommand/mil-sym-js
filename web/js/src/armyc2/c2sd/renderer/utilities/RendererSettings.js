@@ -60,7 +60,8 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _DrawCountryCode = true,
     _SPFontSize = 60,
     _UnitFontSize = 50,
-    _PixelSize = 35;
+    _PixelSize = 35,
+    _DPI = 90;
     
     try
     {
@@ -178,6 +179,20 @@ return{
      */
     getUseLineInterpolation: function (){
         return _UseLineInterpolation;
+    },
+    /**
+     * set device DPI (default 90)
+     * @param {Number} value
+     */
+    setDeviceDPI: function (value){
+        _DPI = value;
+    },
+    /**
+     * returns user defined device DPI (default 90)
+     * @returns {Number}
+     */
+    getDeviceDPI: function (){
+        return _DPI;
     },
     /**
      * Collapse Modifiers for fire support areas when the symbol isn't large enough to show all
