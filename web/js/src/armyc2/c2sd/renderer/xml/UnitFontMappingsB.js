@@ -3,9488 +3,9487 @@ var armyc2 = armyc2 || {};
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.xml = armyc2.c2sd.renderer.xml || {};
-
 armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
   "UNITFONTMAPPINGS": {
     "SYMBOL": [
       {
-        "SYMBOLID": "S***------*****",
-        "DESCRIPTION": "Warfighting Symbology"
+        "ID": "S***------*****",
+        "D": "Warfighting Symbology"
       },
       {
-        "SYMBOLID": "S*P*------*****",
-        "DESCRIPTION": "Space Track"
+        "ID": "S*P*------*****",
+        "D": "Space Track"
       },
       {
-        "SYMBOLID": "S*P*S-----*****",
-        "DESCRIPTION": "Satellite",
-        "MAPPING1U": "1000",
-        "MAPPING1F": "1000",
-        "MAPPING1N": "1000",
-        "MAPPING1H": "1000"
+        "ID": "S*P*S-----*****",
+        "D": "Satellite",
+        "M1U": "1000",
+        "M1F": "1000",
+        "M1N": "1000",
+        "M1H": "1000"
       },
       {
-        "SYMBOLID": "S*P*V-----*****",
-        "DESCRIPTION": "Crewed Space Vehicle",
-        "MAPPING1U": "1001",
-        "MAPPING1F": "1001",
-        "MAPPING1N": "1001",
-        "MAPPING1H": "1001"
+        "ID": "S*P*V-----*****",
+        "D": "Crewed Space Vehicle",
+        "M1U": "1001",
+        "M1F": "1001",
+        "M1N": "1001",
+        "M1H": "1001"
       },
       {
-        "SYMBOLID": "S*P*T-----*****",
-        "DESCRIPTION": "Space Station",
-        "MAPPING1U": "1002",
-        "MAPPING1F": "1002",
-        "MAPPING1N": "1002",
-        "MAPPING1H": "1002",
-        "MAPPING2": "1003",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "S*P*T-----*****",
+        "D": "Space Station",
+        "M1U": "1002",
+        "M1F": "1002",
+        "M1N": "1002",
+        "M1H": "1002",
+        "M2": "1003",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*P*L-----*****",
-        "DESCRIPTION": "Space Launch Vehicle",
-        "MAPPING1U": "1004",
-        "MAPPING1F": "1004",
-        "MAPPING1N": "1004",
-        "MAPPING1H": "1004"
+        "ID": "S*P*L-----*****",
+        "D": "Space Launch Vehicle",
+        "M1U": "1004",
+        "M1F": "1004",
+        "M1N": "1004",
+        "M1H": "1004"
       },
       {
-        "SYMBOLID": "S*A*------*****",
-        "DESCRIPTION": "Air Track"
+        "ID": "S*A*------*****",
+        "D": "Air Track"
       },
       {
-        "SYMBOLID": "S*A*M-----*****",
-        "DESCRIPTION": "Military",
-        "MAPPING1U": "1005",
-        "MAPPING1F": "1005",
-        "MAPPING1N": "1005",
-        "MAPPING1H": "1005"
+        "ID": "S*A*M-----*****",
+        "D": "Military",
+        "M1U": "1005",
+        "M1F": "1005",
+        "M1N": "1005",
+        "M1H": "1005"
       },
       {
-        "SYMBOLID": "S*A*MF----*****",
-        "DESCRIPTION": "Fixed Wing",
-        "MAPPING1U": "1006",
-        "MAPPING1F": "1006",
-        "MAPPING1N": "1006",
-        "MAPPING1H": "1006"
+        "ID": "S*A*MF----*****",
+        "D": "Fixed Wing",
+        "M1U": "1006",
+        "M1F": "1006",
+        "M1N": "1006",
+        "M1H": "1006"
       },
       {
-        "SYMBOLID": "S*A*MFB---*****",
-        "DESCRIPTION": "Fixed Wing Bomber",
-        "MAPPING1U": "1007",
-        "MAPPING1F": "1007",
-        "MAPPING1N": "1007",
-        "MAPPING1H": "1007"
+        "ID": "S*A*MFB---*****",
+        "D": "Fixed Wing Bomber",
+        "M1U": "1007",
+        "M1F": "1007",
+        "M1N": "1007",
+        "M1H": "1007"
       },
       {
-        "SYMBOLID": "S*A*MFF---*****",
-        "DESCRIPTION": "Fixed Wing Fighter",
-        "MAPPING1U": "1008",
-        "MAPPING1F": "1008",
-        "MAPPING1N": "1008",
-        "MAPPING1H": "1008"
+        "ID": "S*A*MFF---*****",
+        "D": "Fixed Wing Fighter",
+        "M1U": "1008",
+        "M1F": "1008",
+        "M1N": "1008",
+        "M1H": "1008"
       },
       {
-        "SYMBOLID": "S*A*MFFI--*****",
-        "DESCRIPTION": "Fixed Wing Interceptor",
-        "MAPPING1U": "1009",
-        "MAPPING1F": "1009",
-        "MAPPING1N": "1009",
-        "MAPPING1H": "1009"
+        "ID": "S*A*MFFI--*****",
+        "D": "Fixed Wing Interceptor",
+        "M1U": "1009",
+        "M1F": "1009",
+        "M1N": "1009",
+        "M1H": "1009"
       },
       {
-        "SYMBOLID": "S*A*MFT---*****",
-        "DESCRIPTION": "Fixed Wing Trainer",
-        "MAPPING1U": "1010",
-        "MAPPING1F": "1010",
-        "MAPPING1N": "1010",
-        "MAPPING1H": "1010"
+        "ID": "S*A*MFT---*****",
+        "D": "Fixed Wing Trainer",
+        "M1U": "1010",
+        "M1F": "1010",
+        "M1N": "1010",
+        "M1H": "1010"
       },
       {
-        "SYMBOLID": "S*A*MFA---*****",
-        "DESCRIPTION": "Attack/Strike",
-        "MAPPING1U": "1011",
-        "MAPPING1F": "1011",
-        "MAPPING1N": "1011",
-        "MAPPING1H": "1011"
+        "ID": "S*A*MFA---*****",
+        "D": "Attack/Strike",
+        "M1U": "1011",
+        "M1F": "1011",
+        "M1N": "1011",
+        "M1H": "1011"
       },
       {
-        "SYMBOLID": "S*A*MFL---*****",
-        "DESCRIPTION": "Fixed Wing VSTOL",
-        "MAPPING1U": "1012",
-        "MAPPING1F": "1012",
-        "MAPPING1N": "1012",
-        "MAPPING1H": "1012"
+        "ID": "S*A*MFL---*****",
+        "D": "Fixed Wing VSTOL",
+        "M1U": "1012",
+        "M1F": "1012",
+        "M1N": "1012",
+        "M1H": "1012"
       },
       {
-        "SYMBOLID": "S*A*MFK---*****",
-        "DESCRIPTION": "Fixed Wing Tanker",
-        "MAPPING1U": "1013",
-        "MAPPING1F": "1013",
-        "MAPPING1N": "1013",
-        "MAPPING1H": "1013"
+        "ID": "S*A*MFK---*****",
+        "D": "Fixed Wing Tanker",
+        "M1U": "1013",
+        "M1F": "1013",
+        "M1N": "1013",
+        "M1H": "1013"
       },
       {
-        "SYMBOLID": "S*A*MFKB--*****",
-        "DESCRIPTION": "Fixed Wing Tanker Boom-Only",
-        "MAPPING1U": "1014",
-        "MAPPING1F": "1014",
-        "MAPPING1N": "1014",
-        "MAPPING1H": "1014"
+        "ID": "S*A*MFKB--*****",
+        "D": "Fixed Wing Tanker Boom-Only",
+        "M1U": "1014",
+        "M1F": "1014",
+        "M1N": "1014",
+        "M1H": "1014"
       },
       {
-        "SYMBOLID": "S*A*MFKD--*****",
-        "DESCRIPTION": "Fixed Wing Tanker Drouge-Only",
-        "MAPPING1U": "1015",
-        "MAPPING1F": "1015",
-        "MAPPING1N": "1015",
-        "MAPPING1H": "1015"
+        "ID": "S*A*MFKD--*****",
+        "D": "Fixed Wing Tanker Drouge-Only",
+        "M1U": "1015",
+        "M1F": "1015",
+        "M1N": "1015",
+        "M1H": "1015"
       },
       {
-        "SYMBOLID": "S*A*MFC---*****",
-        "DESCRIPTION": "Fixed Wing Cargo Airlift (Transport)",
-        "MAPPING1U": "1016",
-        "MAPPING1F": "1016",
-        "MAPPING1N": "1016",
-        "MAPPING1H": "1016"
+        "ID": "S*A*MFC---*****",
+        "D": "Fixed Wing Cargo Airlift (Transport)",
+        "M1U": "1016",
+        "M1F": "1016",
+        "M1N": "1016",
+        "M1H": "1016"
       },
       {
-        "SYMBOLID": "S*A*MFCL--*****",
-        "DESCRIPTION": "Fixed Wing Cargo Airlift (Light)",
-        "MAPPING1U": "1017",
-        "MAPPING1F": "1017",
-        "MAPPING1N": "1017",
-        "MAPPING1H": "1017"
+        "ID": "S*A*MFCL--*****",
+        "D": "Fixed Wing Cargo Airlift (Light)",
+        "M1U": "1017",
+        "M1F": "1017",
+        "M1N": "1017",
+        "M1H": "1017"
       },
       {
-        "SYMBOLID": "S*A*MFCM--*****",
-        "DESCRIPTION": "Fixed Wing Cargo Airlift (Medium)",
-        "MAPPING1U": "1018",
-        "MAPPING1F": "1018",
-        "MAPPING1N": "1018",
-        "MAPPING1H": "1018"
+        "ID": "S*A*MFCM--*****",
+        "D": "Fixed Wing Cargo Airlift (Medium)",
+        "M1U": "1018",
+        "M1F": "1018",
+        "M1N": "1018",
+        "M1H": "1018"
       },
       {
-        "SYMBOLID": "S*A*MFCH--*****",
-        "DESCRIPTION": "Fixed Wing Cargo Airlift (Heavy)",
-        "MAPPING1U": "1019",
-        "MAPPING1F": "1019",
-        "MAPPING1N": "1019",
-        "MAPPING1H": "1019"
+        "ID": "S*A*MFCH--*****",
+        "D": "Fixed Wing Cargo Airlift (Heavy)",
+        "M1U": "1019",
+        "M1F": "1019",
+        "M1N": "1019",
+        "M1H": "1019"
       },
       {
-        "SYMBOLID": "S*A*MFJ---*****",
-        "DESCRIPTION": "Fixed Wing ECM/Jammer",
-        "MAPPING1U": "1020",
-        "MAPPING1F": "1020",
-        "MAPPING1N": "1020",
-        "MAPPING1H": "1020"
+        "ID": "S*A*MFJ---*****",
+        "D": "Fixed Wing ECM/Jammer",
+        "M1U": "1020",
+        "M1F": "1020",
+        "M1N": "1020",
+        "M1H": "1020"
       },
       {
-        "SYMBOLID": "S*A*MFO---*****",
-        "DESCRIPTION": "Fixed Wing MEDEVAC",
-        "MAPPING1U": "1021",
-        "MAPPING1F": "1021",
-        "MAPPING1N": "1021",
-        "MAPPING1H": "1021"
+        "ID": "S*A*MFO---*****",
+        "D": "Fixed Wing MEDEVAC",
+        "M1U": "1021",
+        "M1F": "1021",
+        "M1N": "1021",
+        "M1H": "1021"
       },
       {
-        "SYMBOLID": "S*A*MFR---*****",
-        "DESCRIPTION": "Fixed Wing Reconnaissance",
-        "MAPPING1U": "1022",
-        "MAPPING1F": "1022",
-        "MAPPING1N": "1022",
-        "MAPPING1H": "1022"
+        "ID": "S*A*MFR---*****",
+        "D": "Fixed Wing Reconnaissance",
+        "M1U": "1022",
+        "M1F": "1022",
+        "M1N": "1022",
+        "M1H": "1022"
       },
       {
-        "SYMBOLID": "S*A*MFRW--*****",
-        "DESCRIPTION": "Fixed Wing Airborne Early Warning (AEW)",
-        "MAPPING1U": "1023",
-        "MAPPING1F": "1023",
-        "MAPPING1N": "1023",
-        "MAPPING1H": "1023"
+        "ID": "S*A*MFRW--*****",
+        "D": "Fixed Wing Airborne Early Warning (AEW)",
+        "M1U": "1023",
+        "M1F": "1023",
+        "M1N": "1023",
+        "M1H": "1023"
       },
       {
-        "SYMBOLID": "S*A*MFRZ--*****",
-        "DESCRIPTION": "Fixed Wing Electronic Surveillance Measures",
-        "MAPPING1U": "1024",
-        "MAPPING1F": "1024",
-        "MAPPING1N": "1024",
-        "MAPPING1H": "1024"
+        "ID": "S*A*MFRZ--*****",
+        "D": "Fixed Wing Electronic Surveillance Measures",
+        "M1U": "1024",
+        "M1F": "1024",
+        "M1N": "1024",
+        "M1H": "1024"
       },
       {
-        "SYMBOLID": "S*A*MFRX--*****",
-        "DESCRIPTION": "Fixed Wing Photographic",
-        "MAPPING1U": "1025",
-        "MAPPING1F": "1025",
-        "MAPPING1N": "1025",
-        "MAPPING1H": "1025"
+        "ID": "S*A*MFRX--*****",
+        "D": "Fixed Wing Photographic",
+        "M1U": "1025",
+        "M1F": "1025",
+        "M1N": "1025",
+        "M1H": "1025"
       },
       {
-        "SYMBOLID": "S*A*MFP---*****",
-        "DESCRIPTION": "Fixed Wing Patrol",
-        "MAPPING1U": "1026",
-        "MAPPING1F": "1026",
-        "MAPPING1N": "1026",
-        "MAPPING1H": "1026"
+        "ID": "S*A*MFP---*****",
+        "D": "Fixed Wing Patrol",
+        "M1U": "1026",
+        "M1F": "1026",
+        "M1N": "1026",
+        "M1H": "1026"
       },
       {
-        "SYMBOLID": "S*A*MFPN--*****",
-        "DESCRIPTION": "Patrol Antisurface Warfare (ASUW)",
-        "MAPPING1U": "1027",
-        "MAPPING1F": "1027",
-        "MAPPING1N": "1027",
-        "MAPPING1H": "1027"
+        "ID": "S*A*MFPN--*****",
+        "D": "Patrol Antisurface Warfare (ASUW)",
+        "M1U": "1027",
+        "M1F": "1027",
+        "M1N": "1027",
+        "M1H": "1027"
       },
       {
-        "SYMBOLID": "S*A*MFPM--*****",
-        "DESCRIPTION": "Fixed Wing Mine Countermeasures",
-        "MAPPING1U": "1028",
-        "MAPPING1F": "1028",
-        "MAPPING1N": "1028",
-        "MAPPING1H": "1028"
+        "ID": "S*A*MFPM--*****",
+        "D": "Fixed Wing Mine Countermeasures",
+        "M1U": "1028",
+        "M1F": "1028",
+        "M1N": "1028",
+        "M1H": "1028"
       },
       {
-        "SYMBOLID": "S*A*MFU---*****",
-        "DESCRIPTION": "Fixed Wing Utility",
-        "MAPPING1U": "1029",
-        "MAPPING1F": "1029",
-        "MAPPING1N": "1029",
-        "MAPPING1H": "1029"
+        "ID": "S*A*MFU---*****",
+        "D": "Fixed Wing Utility",
+        "M1U": "1029",
+        "M1F": "1029",
+        "M1N": "1029",
+        "M1H": "1029"
       },
       {
-        "SYMBOLID": "S*A*MFUL--*****",
-        "DESCRIPTION": "Fixed Wing Utility (Light)",
-        "MAPPING1U": "1030",
-        "MAPPING1F": "1030",
-        "MAPPING1N": "1030",
-        "MAPPING1H": "1030"
+        "ID": "S*A*MFUL--*****",
+        "D": "Fixed Wing Utility (Light)",
+        "M1U": "1030",
+        "M1F": "1030",
+        "M1N": "1030",
+        "M1H": "1030"
       },
       {
-        "SYMBOLID": "S*A*MFUM--*****",
-        "DESCRIPTION": "Fixed Wing Utility (Medium)",
-        "MAPPING1U": "1031",
-        "MAPPING1F": "1031",
-        "MAPPING1N": "1031",
-        "MAPPING1H": "1031"
+        "ID": "S*A*MFUM--*****",
+        "D": "Fixed Wing Utility (Medium)",
+        "M1U": "1031",
+        "M1F": "1031",
+        "M1N": "1031",
+        "M1H": "1031"
       },
       {
-        "SYMBOLID": "S*A*MFUH--*****",
-        "DESCRIPTION": "Fixed Wing Utility (Heavy)",
-        "MAPPING1U": "1032",
-        "MAPPING1F": "1032",
-        "MAPPING1N": "1032",
-        "MAPPING1H": "1032"
+        "ID": "S*A*MFUH--*****",
+        "D": "Fixed Wing Utility (Heavy)",
+        "M1U": "1032",
+        "M1F": "1032",
+        "M1N": "1032",
+        "M1H": "1032"
       },
       {
-        "SYMBOLID": "S*A*MFY---*****",
-        "DESCRIPTION": "Fixed Wing Communications (C3I)",
-        "MAPPING1U": "1033",
-        "MAPPING1F": "1033",
-        "MAPPING1N": "1033",
-        "MAPPING1H": "1033"
+        "ID": "S*A*MFY---*****",
+        "D": "Fixed Wing Communications (C3I)",
+        "M1U": "1033",
+        "M1F": "1033",
+        "M1N": "1033",
+        "M1H": "1033"
       },
       {
-        "SYMBOLID": "S*A*MFH---*****",
-        "DESCRIPTION": "Fixed Wing Combat Search and Rescue (CSAR)",
-        "MAPPING1U": "1034",
-        "MAPPING1F": "1034",
-        "MAPPING1N": "1034",
-        "MAPPING1H": "1034"
+        "ID": "S*A*MFH---*****",
+        "D": "Fixed Wing Combat Search and Rescue (CSAR)",
+        "M1U": "1034",
+        "M1F": "1034",
+        "M1N": "1034",
+        "M1H": "1034"
       },
       {
-        "SYMBOLID": "S*A*MFD---*****",
-        "DESCRIPTION": "Fixed Wing Airborne Command Post (C2)",
-        "MAPPING1U": "1035",
-        "MAPPING1F": "1035",
-        "MAPPING1N": "1035",
-        "MAPPING1H": "1035"
+        "ID": "S*A*MFD---*****",
+        "D": "Fixed Wing Airborne Command Post (C2)",
+        "M1U": "1035",
+        "M1F": "1035",
+        "M1N": "1035",
+        "M1H": "1035"
       },
       {
-        "SYMBOLID": "S*A*MFQ---*****",
-        "DESCRIPTION": "Drone (RPV/UAV) Fixed Wing",
-        "MAPPING1U": "1036",
-        "MAPPING1F": "1036",
-        "MAPPING1N": "1036",
-        "MAPPING1H": "1036"
+        "ID": "S*A*MFQ---*****",
+        "D": "Drone (RPV/UAV) Fixed Wing",
+        "M1U": "1036",
+        "M1F": "1036",
+        "M1N": "1036",
+        "M1H": "1036"
       },
       {
-        "SYMBOLID": "S*A*MFQA--*****",
-        "DESCRIPTION": "Drone Attack",
-        "MAPPING1U": "1037",
-        "MAPPING1F": "1037",
-        "MAPPING1N": "1037",
-        "MAPPING1H": "1037"
+        "ID": "S*A*MFQA--*****",
+        "D": "Drone Attack",
+        "M1U": "1037",
+        "M1F": "1037",
+        "M1N": "1037",
+        "M1H": "1037"
       },
       {
-        "SYMBOLID": "S*A*MFQB--*****",
-        "DESCRIPTION": "Drone Bomber",
-        "MAPPING1U": "1038",
-        "MAPPING1F": "1038",
-        "MAPPING1N": "1038",
-        "MAPPING1H": "1038"
+        "ID": "S*A*MFQB--*****",
+        "D": "Drone Bomber",
+        "M1U": "1038",
+        "M1F": "1038",
+        "M1N": "1038",
+        "M1H": "1038"
       },
       {
-        "SYMBOLID": "S*A*MFQC--*****",
-        "DESCRIPTION": "Drone Cargo",
-        "MAPPING1U": "1039",
-        "MAPPING1F": "1039",
-        "MAPPING1N": "1039",
-        "MAPPING1H": "1039"
+        "ID": "S*A*MFQC--*****",
+        "D": "Drone Cargo",
+        "M1U": "1039",
+        "M1F": "1039",
+        "M1N": "1039",
+        "M1H": "1039"
       },
       {
-        "SYMBOLID": "S*A*MFQD--*****",
-        "DESCRIPTION": "Drone (RPV/UAV) Airborne Command Post",
-        "MAPPING1U": "1040",
-        "MAPPING1F": "1040",
-        "MAPPING1N": "1040",
-        "MAPPING1H": "1040"
+        "ID": "S*A*MFQD--*****",
+        "D": "Drone (RPV/UAV) Airborne Command Post",
+        "M1U": "1040",
+        "M1F": "1040",
+        "M1N": "1040",
+        "M1H": "1040"
       },
       {
-        "SYMBOLID": "S*A*MFQF--*****",
-        "DESCRIPTION": "Drone Fighter",
-        "MAPPING1U": "1041",
-        "MAPPING1F": "1041",
-        "MAPPING1N": "1041",
-        "MAPPING1H": "1041"
+        "ID": "S*A*MFQF--*****",
+        "D": "Drone Fighter",
+        "M1U": "1041",
+        "M1F": "1041",
+        "M1N": "1041",
+        "M1H": "1041"
       },
       {
-        "SYMBOLID": "S*A*MFQH--*****",
-        "DESCRIPTION": "Search & Rescue (CSAR)",
-        "MAPPING1U": "1042",
-        "MAPPING1F": "1042",
-        "MAPPING1N": "1042",
-        "MAPPING1H": "1042"
+        "ID": "S*A*MFQH--*****",
+        "D": "Search & Rescue (CSAR)",
+        "M1U": "1042",
+        "M1F": "1042",
+        "M1N": "1042",
+        "M1H": "1042"
       },
       {
-        "SYMBOLID": "S*A*MFQJ--*****",
-        "DESCRIPTION": "Drone Electronic Countermeasures (Jammer)",
-        "MAPPING1U": "1043",
-        "MAPPING1F": "1043",
-        "MAPPING1N": "1043",
-        "MAPPING1H": "1043"
+        "ID": "S*A*MFQJ--*****",
+        "D": "Drone Electronic Countermeasures (Jammer)",
+        "M1U": "1043",
+        "M1F": "1043",
+        "M1N": "1043",
+        "M1H": "1043"
       },
       {
-        "SYMBOLID": "S*A*MFQK--*****",
-        "DESCRIPTION": "Drone Tanker",
-        "MAPPING1U": "1044",
-        "MAPPING1F": "1044",
-        "MAPPING1N": "1044",
-        "MAPPING1H": "1044"
+        "ID": "S*A*MFQK--*****",
+        "D": "Drone Tanker",
+        "M1U": "1044",
+        "M1F": "1044",
+        "M1N": "1044",
+        "M1H": "1044"
       },
       {
-        "SYMBOLID": "S*A*MFQL--*****",
-        "DESCRIPTION": "Drone Vstol",
-        "MAPPING1U": "1045",
-        "MAPPING1F": "1045",
-        "MAPPING1N": "1045",
-        "MAPPING1H": "1045"
+        "ID": "S*A*MFQL--*****",
+        "D": "Drone Vstol",
+        "M1U": "1045",
+        "M1F": "1045",
+        "M1N": "1045",
+        "M1H": "1045"
       },
       {
-        "SYMBOLID": "S*A*MFQM--*****",
-        "DESCRIPTION": "Drone Special Operations Forces (SOF)",
-        "MAPPING1U": "1046",
-        "MAPPING1F": "1046",
-        "MAPPING1N": "1046",
-        "MAPPING1H": "1046"
+        "ID": "S*A*MFQM--*****",
+        "D": "Drone Special Operations Forces (SOF)",
+        "M1U": "1046",
+        "M1F": "1046",
+        "M1N": "1046",
+        "M1H": "1046"
       },
       {
-        "SYMBOLID": "S*A*MFQI--*****",
-        "DESCRIPTION": "Drone Mine Countermeasures",
-        "MAPPING1U": "1047",
-        "MAPPING1F": "1047",
-        "MAPPING1N": "1047",
-        "MAPPING1H": "1047"
+        "ID": "S*A*MFQI--*****",
+        "D": "Drone Mine Countermeasures",
+        "M1U": "1047",
+        "M1F": "1047",
+        "M1N": "1047",
+        "M1H": "1047"
       },
       {
-        "SYMBOLID": "S*A*MFQN--*****",
-        "DESCRIPTION": "Drone Anti-Surface Warfare (ASUW)",
-        "MAPPING1U": "1048",
-        "MAPPING1F": "1048",
-        "MAPPING1N": "1048",
-        "MAPPING1H": "1048"
+        "ID": "S*A*MFQN--*****",
+        "D": "Drone Anti-Surface Warfare (ASUW)",
+        "M1U": "1048",
+        "M1F": "1048",
+        "M1N": "1048",
+        "M1H": "1048"
       },
       {
-        "SYMBOLID": "S*A*MFQP--*****",
-        "DESCRIPTION": "Drone Patrol",
-        "MAPPING1U": "1049",
-        "MAPPING1F": "1049",
-        "MAPPING1N": "1049",
-        "MAPPING1H": "1049"
+        "ID": "S*A*MFQP--*****",
+        "D": "Drone Patrol",
+        "M1U": "1049",
+        "M1F": "1049",
+        "M1N": "1049",
+        "M1H": "1049"
       },
       {
-        "SYMBOLID": "S*A*MFQR--*****",
-        "DESCRIPTION": "Drone Reconnaissance",
-        "MAPPING1U": "1050",
-        "MAPPING1F": "1050",
-        "MAPPING1N": "1050",
-        "MAPPING1H": "1050"
+        "ID": "S*A*MFQR--*****",
+        "D": "Drone Reconnaissance",
+        "M1U": "1050",
+        "M1F": "1050",
+        "M1N": "1050",
+        "M1H": "1050"
       },
       {
-        "SYMBOLID": "S*A*MFQRW-*****",
-        "DESCRIPTION": "Drone Airborne Early Warning (AEW)",
-        "MAPPING1U": "1051",
-        "MAPPING1F": "1051",
-        "MAPPING1N": "1051",
-        "MAPPING1H": "1051"
+        "ID": "S*A*MFQRW-*****",
+        "D": "Drone Airborne Early Warning (AEW)",
+        "M1U": "1051",
+        "M1F": "1051",
+        "M1N": "1051",
+        "M1H": "1051"
       },
       {
-        "SYMBOLID": "S*A*MFQRZ-*****",
-        "DESCRIPTION": "Drone Electronic Surveillance Measures",
-        "MAPPING1U": "1052",
-        "MAPPING1F": "1052",
-        "MAPPING1N": "1052",
-        "MAPPING1H": "1052"
+        "ID": "S*A*MFQRZ-*****",
+        "D": "Drone Electronic Surveillance Measures",
+        "M1U": "1052",
+        "M1F": "1052",
+        "M1N": "1052",
+        "M1H": "1052"
       },
       {
-        "SYMBOLID": "S*A*MFQRX-*****",
-        "DESCRIPTION": "Drone Photographic",
-        "MAPPING1U": "1053",
-        "MAPPING1F": "1053",
-        "MAPPING1N": "1053",
-        "MAPPING1H": "1053"
+        "ID": "S*A*MFQRX-*****",
+        "D": "Drone Photographic",
+        "M1U": "1053",
+        "M1F": "1053",
+        "M1N": "1053",
+        "M1H": "1053"
       },
       {
-        "SYMBOLID": "S*A*MFQS--*****",
-        "DESCRIPTION": "Drone Anti-Submarine Warfare (ASW)",
-        "MAPPING1U": "1054",
-        "MAPPING1F": "1054",
-        "MAPPING1N": "1054",
-        "MAPPING1H": "1054"
+        "ID": "S*A*MFQS--*****",
+        "D": "Drone Anti-Submarine Warfare (ASW)",
+        "M1U": "1054",
+        "M1F": "1054",
+        "M1N": "1054",
+        "M1H": "1054"
       },
       {
-        "SYMBOLID": "S*A*MFQT--*****",
-        "DESCRIPTION": "Drone Trainer",
-        "MAPPING1U": "1055",
-        "MAPPING1F": "1055",
-        "MAPPING1N": "1055",
-        "MAPPING1H": "1055"
+        "ID": "S*A*MFQT--*****",
+        "D": "Drone Trainer",
+        "M1U": "1055",
+        "M1F": "1055",
+        "M1N": "1055",
+        "M1H": "1055"
       },
       {
-        "SYMBOLID": "S*A*MFQU--*****",
-        "DESCRIPTION": "Drone Utility Fixed Wing",
-        "MAPPING1U": "1056",
-        "MAPPING1F": "1056",
-        "MAPPING1N": "1056",
-        "MAPPING1H": "1056"
+        "ID": "S*A*MFQU--*****",
+        "D": "Drone Utility Fixed Wing",
+        "M1U": "1056",
+        "M1F": "1056",
+        "M1N": "1056",
+        "M1H": "1056"
       },
       {
-        "SYMBOLID": "S*A*MFQY--*****",
-        "DESCRIPTION": "Drone Communications (C3I)",
-        "MAPPING1U": "1057",
-        "MAPPING1F": "1057",
-        "MAPPING1N": "1057",
-        "MAPPING1H": "1057"
+        "ID": "S*A*MFQY--*****",
+        "D": "Drone Communications (C3I)",
+        "M1U": "1057",
+        "M1F": "1057",
+        "M1N": "1057",
+        "M1H": "1057"
       },
       {
-        "SYMBOLID": "S*A*MFQO--*****",
-        "DESCRIPTION": "Drone Medevac",
-        "MAPPING1U": "1058",
-        "MAPPING1F": "1058",
-        "MAPPING1N": "1058",
-        "MAPPING1H": "1058"
+        "ID": "S*A*MFQO--*****",
+        "D": "Drone Medevac",
+        "M1U": "1058",
+        "M1F": "1058",
+        "M1N": "1058",
+        "M1H": "1058"
       },
       {
-        "SYMBOLID": "S*A*MFS---*****",
-        "DESCRIPTION": "Antisubmarine Warfare (ASW) Carrier Based",
-        "MAPPING1U": "1059",
-        "MAPPING1F": "1059",
-        "MAPPING1N": "1059",
-        "MAPPING1H": "1059"
+        "ID": "S*A*MFS---*****",
+        "D": "Antisubmarine Warfare (ASW) Carrier Based",
+        "M1U": "1059",
+        "M1F": "1059",
+        "M1N": "1059",
+        "M1H": "1059"
       },
       {
-        "SYMBOLID": "S*A*MFM---*****",
-        "DESCRIPTION": "Fixed Wing Special Operations Forces (SOF)",
-        "MAPPING1U": "1060",
-        "MAPPING1F": "1060",
-        "MAPPING1N": "1060",
-        "MAPPING1H": "1060"
+        "ID": "S*A*MFM---*****",
+        "D": "Fixed Wing Special Operations Forces (SOF)",
+        "M1U": "1060",
+        "M1F": "1060",
+        "M1N": "1060",
+        "M1H": "1060"
       },
       {
-        "SYMBOLID": "S*A*MH----*****",
-        "DESCRIPTION": "Rotary Wing",
-        "MAPPING1U": "1061",
-        "MAPPING1F": "1061",
-        "MAPPING1N": "1061",
-        "MAPPING1H": "1061"
+        "ID": "S*A*MH----*****",
+        "D": "Rotary Wing",
+        "M1U": "1061",
+        "M1F": "1061",
+        "M1N": "1061",
+        "M1H": "1061"
       },
       {
-        "SYMBOLID": "S*A*MHA---*****",
-        "DESCRIPTION": "Rotary Wing Attack",
-        "MAPPING1U": "1062",
-        "MAPPING1F": "1062",
-        "MAPPING1N": "1062",
-        "MAPPING1H": "1062"
+        "ID": "S*A*MHA---*****",
+        "D": "Rotary Wing Attack",
+        "M1U": "1062",
+        "M1F": "1062",
+        "M1N": "1062",
+        "M1H": "1062"
       },
       {
-        "SYMBOLID": "S*A*MHS---*****",
-        "DESCRIPTION": "Antisubmarine Warfare/MPA ROTARY WING",
-        "MAPPING1U": "1063",
-        "MAPPING1F": "1063",
-        "MAPPING1N": "1063",
-        "MAPPING1H": "1063"
+        "ID": "S*A*MHS---*****",
+        "D": "Antisubmarine Warfare/MPA ROTARY WING",
+        "M1U": "1063",
+        "M1F": "1063",
+        "M1N": "1063",
+        "M1H": "1063"
       },
       {
-        "SYMBOLID": "S*A*MHU---*****",
-        "DESCRIPTION": "Rotary Wing Utility",
-        "MAPPING1U": "1064",
-        "MAPPING1F": "1064",
-        "MAPPING1N": "1064",
-        "MAPPING1H": "1064"
+        "ID": "S*A*MHU---*****",
+        "D": "Rotary Wing Utility",
+        "M1U": "1064",
+        "M1F": "1064",
+        "M1N": "1064",
+        "M1H": "1064"
       },
       {
-        "SYMBOLID": "S*A*MHUL--*****",
-        "DESCRIPTION": "Rotary Wing Utility (Light)",
-        "MAPPING1U": "1065",
-        "MAPPING1F": "1065",
-        "MAPPING1N": "1065",
-        "MAPPING1H": "1065"
+        "ID": "S*A*MHUL--*****",
+        "D": "Rotary Wing Utility (Light)",
+        "M1U": "1065",
+        "M1F": "1065",
+        "M1N": "1065",
+        "M1H": "1065"
       },
       {
-        "SYMBOLID": "S*A*MHUM--*****",
-        "DESCRIPTION": "Rotary Wing Utility (Medium)",
-        "MAPPING1U": "1066",
-        "MAPPING1F": "1066",
-        "MAPPING1N": "1066",
-        "MAPPING1H": "1066"
+        "ID": "S*A*MHUM--*****",
+        "D": "Rotary Wing Utility (Medium)",
+        "M1U": "1066",
+        "M1F": "1066",
+        "M1N": "1066",
+        "M1H": "1066"
       },
       {
-        "SYMBOLID": "S*A*MHUH--*****",
-        "DESCRIPTION": "Rotary Wing Utility (Heavy)",
-        "MAPPING1U": "1067",
-        "MAPPING1F": "1067",
-        "MAPPING1N": "1067",
-        "MAPPING1H": "1067"
+        "ID": "S*A*MHUH--*****",
+        "D": "Rotary Wing Utility (Heavy)",
+        "M1U": "1067",
+        "M1F": "1067",
+        "M1N": "1067",
+        "M1H": "1067"
       },
       {
-        "SYMBOLID": "S*A*MHI---*****",
-        "DESCRIPTION": "Rotary Wing Mine Countermeasures",
-        "MAPPING1U": "1068",
-        "MAPPING1F": "1068",
-        "MAPPING1N": "1068",
-        "MAPPING1H": "1068"
+        "ID": "S*A*MHI---*****",
+        "D": "Rotary Wing Mine Countermeasures",
+        "M1U": "1068",
+        "M1F": "1068",
+        "M1N": "1068",
+        "M1H": "1068"
       },
       {
-        "SYMBOLID": "S*A*MHH---*****",
-        "DESCRIPTION": "Rotary Wing Combat Search and Rescue(Military)",
-        "MAPPING1U": "1069",
-        "MAPPING1F": "1069",
-        "MAPPING1N": "1069",
-        "MAPPING1H": "1069"
+        "ID": "S*A*MHH---*****",
+        "D": "Rotary Wing Combat Search and Rescue(Military)",
+        "M1U": "1069",
+        "M1F": "1069",
+        "M1N": "1069",
+        "M1H": "1069"
       },
       {
-        "SYMBOLID": "S*A*MHR---*****",
-        "DESCRIPTION": "Rotary Wing Reconnaissance",
-        "MAPPING1U": "1070",
-        "MAPPING1F": "1070",
-        "MAPPING1N": "1070",
-        "MAPPING1H": "1070"
+        "ID": "S*A*MHR---*****",
+        "D": "Rotary Wing Reconnaissance",
+        "M1U": "1070",
+        "M1F": "1070",
+        "M1N": "1070",
+        "M1H": "1070"
       },
       {
-        "SYMBOLID": "S*A*MHQ---*****",
-        "DESCRIPTION": "Drone (RPV/UAV) Rotary Wing",
-        "MAPPING1U": "1071",
-        "MAPPING1F": "1071",
-        "MAPPING1N": "1071",
-        "MAPPING1H": "1071"
+        "ID": "S*A*MHQ---*****",
+        "D": "Drone (RPV/UAV) Rotary Wing",
+        "M1U": "1071",
+        "M1F": "1071",
+        "M1N": "1071",
+        "M1H": "1071"
       },
       {
-        "SYMBOLID": "S*A*MHC---*****",
-        "DESCRIPTION": "Rotary Wing Cargo AirLift (Transport)",
-        "MAPPING1U": "1072",
-        "MAPPING1F": "1072",
-        "MAPPING1N": "1072",
-        "MAPPING1H": "1072"
-      },
-      {
-        "SYMBOLID": "S*A*MHCL--*****",
-        "DESCRIPTION": "Rotary Wing Cargo Airlift (Light)",
-        "MAPPING1U": "1073",
-        "MAPPING1F": "1073",
-        "MAPPING1N": "1073",
-        "MAPPING1H": "1073"
-      },
-      {
-        "SYMBOLID": "S*A*MHCM--*****",
-        "DESCRIPTION": "Rotary Wing Cargo AirLift (Medium)",
-        "MAPPING1U": "1074",
-        "MAPPING1F": "1074",
-        "MAPPING1N": "1074",
-        "MAPPING1H": "1074"
-      },
-      {
-        "SYMBOLID": "S*A*MHCH--*****",
-        "DESCRIPTION": "Rotary Wing Cargo Airlift (Heavy)",
-        "MAPPING1U": "1075",
-        "MAPPING1F": "1075",
-        "MAPPING1N": "1075",
-        "MAPPING1H": "1075"
-      },
-      {
-        "SYMBOLID": "S*A*MHT---*****",
-        "DESCRIPTION": "Rotary Wing Trainer",
-        "MAPPING1U": "1076",
-        "MAPPING1F": "1076",
-        "MAPPING1N": "1076",
-        "MAPPING1H": "1076"
-      },
-      {
-        "SYMBOLID": "S*A*MHO---*****",
-        "DESCRIPTION": "Rotary Wing MEDEVAC",
-        "MAPPING1U": "1077",
-        "MAPPING1F": "1077",
-        "MAPPING1N": "1077",
-        "MAPPING1H": "1077"
-      },
-      {
-        "SYMBOLID": "S*A*MHM---*****",
-        "DESCRIPTION": "Rotary Wing Special Operations Forces",
-        "MAPPING1U": "1078",
-        "MAPPING1F": "1078",
-        "MAPPING1N": "1078",
-        "MAPPING1H": "1078"
-      },
-      {
-        "SYMBOLID": "S*A*MHD---*****",
-        "DESCRIPTION": "Rotary Wing Airborne Command Post",
-        "MAPPING1U": "1079",
-        "MAPPING1F": "1079",
-        "MAPPING1N": "1079",
-        "MAPPING1H": "1079"
-      },
-      {
-        "SYMBOLID": "S*A*MHK---*****",
-        "DESCRIPTION": "Rotary Wing Tanker",
-        "MAPPING1U": "1080",
-        "MAPPING1F": "1080",
-        "MAPPING1N": "1080",
-        "MAPPING1H": "1080"
-      },
-      {
-        "SYMBOLID": "S*A*MHJ---*****",
-        "DESCRIPTION": "Rotary Wing ECM/Jammer(TANKER)",
-        "MAPPING1U": "1081",
-        "MAPPING1F": "1081",
-        "MAPPING1N": "1081",
-        "MAPPING1H": "1081"
-      },
-      {
-        "SYMBOLID": "S*A*ML----*****",
-        "DESCRIPTION": "Military Aircraft Lighter Than Air",
-        "MAPPING1U": "1082",
-        "MAPPING1F": "1082",
-        "MAPPING1N": "1082",
-        "MAPPING1H": "1082"
-      },
-      {
-        "SYMBOLID": "S*A*W-----*****",
-        "DESCRIPTION": "Air Track Weapon",
-        "MAPPING1U": "1083",
-        "MAPPING1F": "1083",
-        "MAPPING1N": "1083",
-        "MAPPING1H": "1083",
-        "MAPPING2": "1084",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WM----*****",
-        "DESCRIPTION": "Missile In Flight",
-        "MAPPING1U": "1083",
-        "MAPPING1F": "1083",
-        "MAPPING1N": "1083",
-        "MAPPING1H": "1083",
-        "MAPPING2": "1084",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMS---*****",
-        "DESCRIPTION": "Surface Launched Missile",
-        "MAPPING1U": "1085",
-        "MAPPING1F": "1085",
-        "MAPPING1N": "1085",
-        "MAPPING1H": "1085",
-        "MAPPING2": "1084",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMSS--*****",
-        "DESCRIPTION": "Surface to Surface Missile (SSM)",
-        "MAPPING1U": "1086",
-        "MAPPING1F": "1086",
-        "MAPPING1N": "1086",
-        "MAPPING1H": "1086",
-        "MAPPING2": "1084",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMSA--*****",
-        "DESCRIPTION": "Surface To Air Missile (SAM)",
-        "MAPPING1U": "1087",
-        "MAPPING1F": "1087",
-        "MAPPING1N": "1087",
-        "MAPPING1H": "1087",
-        "MAPPING2": "1084",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMSU--*****",
-        "DESCRIPTION": "Surface to Subsurface Missile",
-        "MAPPING1U": "1088",
-        "MAPPING1F": "1088",
-        "MAPPING1N": "1088",
-        "MAPPING1H": "1088",
-        "MAPPING2": "401",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMSB--*****",
-        "DESCRIPTION": "Anti-Ballistic Missile (ABM)",
-        "MAPPING1U": "1089",
-        "MAPPING1F": "1089",
-        "MAPPING1N": "1089",
-        "MAPPING1H": "1089",
-        "MAPPING2": "401",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMA---*****",
-        "DESCRIPTION": "Air Launched Missile",
-        "MAPPING1U": "1090",
-        "MAPPING1F": "1090",
-        "MAPPING1N": "1090",
-        "MAPPING1H": "1090",
-        "MAPPING2": "400",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMAS--*****",
-        "DESCRIPTION": "Air To Surface Missile (ASM)",
-        "MAPPING1U": "1091",
-        "MAPPING1F": "1091",
-        "MAPPING1N": "1091",
-        "MAPPING1H": "1091",
-        "MAPPING2": "400",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMAA--*****",
-        "DESCRIPTION": "Air To Air Missile (AAM)",
-        "MAPPING1U": "1093",
-        "MAPPING1F": "1093",
-        "MAPPING1N": "1093",
-        "MAPPING1H": "1093",
-        "MAPPING2": "400",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMAP--*****",
-        "DESCRIPTION": "Air to Space Missile",
-        "MAPPING1U": "1094",
-        "MAPPING1F": "1094",
-        "MAPPING1N": "1094",
-        "MAPPING1H": "1094",
-        "MAPPING2": "401",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMU---*****",
-        "DESCRIPTION": "Subsurface To Surface Missile (S/SSM)",
-        "MAPPING1U": "1095",
-        "MAPPING1F": "1095",
-        "MAPPING1N": "1095",
-        "MAPPING1H": "1095",
-        "MAPPING2": "401",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMCM--*****",
-        "DESCRIPTION": "Cruise Missile",
-        "MAPPING1U": "1096",
-        "MAPPING1F": "1096",
-        "MAPPING1N": "1096",
-        "MAPPING1H": "1096",
-        "MAPPING2": "400",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WMB---*****",
-        "DESCRIPTION": "Ballistic Missile",
-        "MAPPING1U": "1097",
-        "MAPPING1F": "1097",
-        "MAPPING1N": "1097",
-        "MAPPING1H": "1097",
-        "MAPPING2": "400",
-        "MAPPING2COLOR": "#FFFF00"
-      },
-      {
-        "SYMBOLID": "S*A*WD----*****",
-        "DESCRIPTION": "Decoy",
-        "MAPPING1U": "1099",
-        "MAPPING1F": "1099",
-        "MAPPING1N": "1099",
-        "MAPPING1H": "1099"
-      },
-      {
-        "SYMBOLID": "S*A*WB----*****",
-        "DESCRIPTION": "Bomb",
-        "MAPPING1U": "1098",
-        "MAPPING1F": "1098",
-        "MAPPING1N": "1098",
-        "MAPPING1H": "1098"
-      },
-      {
-        "SYMBOLID": "S*A*C-----*****",
-        "DESCRIPTION": "Civil Aircraft",
-        "MAPPING1U": "1100",
-        "MAPPING1F": "1100",
-        "MAPPING1N": "1100",
-        "MAPPING1H": "1100"
-      },
-      {
-        "SYMBOLID": "S*A*CF----*****",
-        "DESCRIPTION": "Civil Fixed Wing",
-        "MAPPING1U": "1101",
-        "MAPPING1F": "1101",
-        "MAPPING1N": "1101",
-        "MAPPING1H": "1101",
-        "MAPPING2": "402",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*A*CH----*****",
-        "DESCRIPTION": "Civil Rotary Wing",
-        "MAPPING1U": "1102",
-        "MAPPING1F": "1102",
-        "MAPPING1N": "1102",
-        "MAPPING1H": "1102",
-        "MAPPING2": "403",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*A*CL----*****",
-        "DESCRIPTION": "Civil Aircraft Lighter Than Air",
-        "MAPPING1U": "1103",
-        "MAPPING1F": "1103",
-        "MAPPING1N": "1103",
-        "MAPPING1H": "1103",
-        "MAPPING2": "404",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*------*****",
-        "DESCRIPTION": "Ground Track"
-      },
-      {
-        "SYMBOLID": "S*G*U-----*****",
-        "DESCRIPTION": "Unit"
-      },
-      {
-        "SYMBOLID": "S*G*UC----*****",
-        "DESCRIPTION": "Combat",
-        "MAPPING1U": "1104",
-        "MAPPING1F": "1104",
-        "MAPPING1N": "1104",
-        "MAPPING1H": "1104"
-      },
-      {
-        "SYMBOLID": "S*G*UCD---*****",
-        "DESCRIPTION": "Air Defense",
-        "MAPPING1U": "1105",
-        "MAPPING1F": "1106",
-        "MAPPING1N": "1107",
-        "MAPPING1H": "1108"
-      },
-      {
-        "SYMBOLID": "S*G*UCDS--*****",
-        "DESCRIPTION": "Short Range",
-        "MAPPING1U": "1109",
-        "MAPPING1F": "1110",
-        "MAPPING1N": "1111",
-        "MAPPING1H": "1112"
-      },
-      {
-        "SYMBOLID": "S*G*UCDSC-*****",
-        "DESCRIPTION": "Chaparral",
-        "MAPPING1U": "1113",
-        "MAPPING1F": "1114",
-        "MAPPING1N": "1115",
-        "MAPPING1H": "1116"
-      },
-      {
-        "SYMBOLID": "S*G*UCDSS-*****",
-        "DESCRIPTION": "Stinger",
-        "MAPPING1U": "1117",
-        "MAPPING1F": "1118",
-        "MAPPING1N": "1119",
-        "MAPPING1H": "1120"
-      },
-      {
-        "SYMBOLID": "S*G*UCDSV-*****",
-        "DESCRIPTION": "Vulcan",
-        "MAPPING1U": "1121",
-        "MAPPING1F": "1122",
-        "MAPPING1N": "1123",
-        "MAPPING1H": "1124"
-      },
-      {
-        "SYMBOLID": "S*G*UCDM--*****",
-        "DESCRIPTION": "Air Defense Missile",
-        "MAPPING1U": "1125",
-        "MAPPING1F": "1126",
-        "MAPPING1N": "1127",
-        "MAPPING1H": "1128"
-      },
-      {
-        "SYMBOLID": "S*G*UCDML-*****",
-        "DESCRIPTION": "Air Defense Missile Light",
-        "MAPPING1U": "1129",
-        "MAPPING1F": "1130",
-        "MAPPING1N": "1131",
-        "MAPPING1H": "1132"
-      },
-      {
-        "SYMBOLID": "S*G*UCDMLA*****",
-        "DESCRIPTION": "Air Defense Missile Motorized (Avenger)",
-        "MAPPING1U": "1133",
-        "MAPPING1F": "1134",
-        "MAPPING1N": "1135",
-        "MAPPING1H": "1136"
-      },
-      {
-        "SYMBOLID": "S*G*UCDMM-*****",
-        "DESCRIPTION": "Air Defense Missile Medium",
-        "MAPPING1U": "1137",
-        "MAPPING1F": "1138",
-        "MAPPING1N": "1139",
-        "MAPPING1H": "1140"
-      },
-      {
-        "SYMBOLID": "S*G*UCDMH-*****",
-        "DESCRIPTION": "Air Defense Missile Heavy",
-        "MAPPING1U": "1141",
-        "MAPPING1F": "1142",
-        "MAPPING1N": "1143",
-        "MAPPING1H": "1144"
-      },
-      {
-        "SYMBOLID": "S*G*UCDH--*****",
-        "DESCRIPTION": "H/MAD",
-        "MAPPING1U": "1145",
-        "MAPPING1F": "1146",
-        "MAPPING1N": "1147",
-        "MAPPING1H": "1148"
-      },
-      {
-        "SYMBOLID": "S*G*UCDHH-*****",
-        "DESCRIPTION": "Hawk",
-        "MAPPING1U": "1149",
-        "MAPPING1F": "1150",
-        "MAPPING1N": "1151",
-        "MAPPING1H": "1152"
-      },
-      {
-        "SYMBOLID": "S*G*UCDHP-*****",
-        "DESCRIPTION": "Patriot",
-        "MAPPING1U": "1153",
-        "MAPPING1F": "1154",
-        "MAPPING1N": "1155",
-        "MAPPING1H": "1156"
-      },
-      {
-        "SYMBOLID": "S*G*UCDG--*****",
-        "DESCRIPTION": "Gun Unit",
-        "MAPPING1U": "1157",
-        "MAPPING1F": "1158",
-        "MAPPING1N": "1159",
-        "MAPPING1H": "1160"
-      },
-      {
-        "SYMBOLID": "S*G*UCDC--*****",
-        "DESCRIPTION": "Air Defense Composite",
-        "MAPPING1U": "1161",
-        "MAPPING1F": "1162",
-        "MAPPING1N": "1163",
-        "MAPPING1H": "1164"
-      },
-      {
-        "SYMBOLID": "S*G*UCDT--*****",
-        "DESCRIPTION": "Targeting Unit",
-        "MAPPING1U": "1165",
-        "MAPPING1F": "1166",
-        "MAPPING1N": "1167",
-        "MAPPING1H": "1168"
-      },
-      {
-        "SYMBOLID": "S*G*UCDO--*****",
-        "DESCRIPTION": "Theater Missile Defense Unit",
-        "MAPPING1U": "1169",
-        "MAPPING1F": "1170",
-        "MAPPING1N": "1171",
-        "MAPPING1H": "1172"
-      },
-      {
-        "SYMBOLID": "S*G*UCA---*****",
-        "DESCRIPTION": "Armor",
-        "MAPPING1U": "1173",
-        "MAPPING1F": "1173",
-        "MAPPING1N": "1173",
-        "MAPPING1H": "1173"
-      },
-      {
-        "SYMBOLID": "S*G*UCAT--*****",
-        "DESCRIPTION": "Armor Track",
-        "MAPPING1U": "1173",
-        "MAPPING1F": "1173",
-        "MAPPING1N": "1173",
-        "MAPPING1H": "1173"
-      },
-      {
-        "SYMBOLID": "S*G*UCATA-*****",
-        "DESCRIPTION": "Armor Track Airborne",
-        "MAPPING1U": "1174",
-        "MAPPING1F": "1174",
-        "MAPPING1N": "1174",
-        "MAPPING1H": "1174"
-      },
-      {
-        "SYMBOLID": "S*G*UCATW-*****",
-        "DESCRIPTION": "Armor Track Amphibious",
-        "MAPPING1U": "1175",
-        "MAPPING1F": "1176",
-        "MAPPING1N": "1177",
-        "MAPPING1H": "1178"
-      },
-      {
-        "SYMBOLID": "S*G*UCATWR*****",
-        "DESCRIPTION": "Armor Track Amphibious Recovery",
-        "MAPPING1U": "1179",
-        "MAPPING1F": "1180",
-        "MAPPING1N": "1181",
-        "MAPPING1H": "1182"
-      },
-      {
-        "SYMBOLID": "S*G*UCATL-*****",
-        "DESCRIPTION": "Armor Track, Light",
-        "MAPPING1U": "1183",
-        "MAPPING1F": "1183",
-        "MAPPING1N": "1183",
-        "MAPPING1H": "1183"
-      },
-      {
-        "SYMBOLID": "S*G*UCATM-*****",
-        "DESCRIPTION": "Armor Track, Medium",
-        "MAPPING1U": "1184",
-        "MAPPING1F": "1184",
-        "MAPPING1N": "1184",
-        "MAPPING1H": "1184"
-      },
-      {
-        "SYMBOLID": "S*G*UCATH-*****",
-        "DESCRIPTION": "Armor Track, Heavy",
-        "MAPPING1U": "1185",
-        "MAPPING1F": "1185",
-        "MAPPING1N": "1185",
-        "MAPPING1H": "1185"
-      },
-      {
-        "SYMBOLID": "S*G*UCATR-*****",
-        "DESCRIPTION": "Armor Track, Recovery",
-        "MAPPING1U": "1186",
-        "MAPPING1F": "1186",
-        "MAPPING1N": "1186",
-        "MAPPING1H": "1186"
-      },
-      {
-        "SYMBOLID": "S*G*UCAW--*****",
-        "DESCRIPTION": "Armor, Wheeled",
-        "MAPPING1U": "1187",
-        "MAPPING1F": "1187",
-        "MAPPING1N": "1187",
-        "MAPPING1H": "1187"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWS-*****",
-        "DESCRIPTION": "Armor, Wheeled Air Assault",
-        "MAPPING1U": "1188",
-        "MAPPING1F": "1188",
-        "MAPPING1N": "1188",
-        "MAPPING1H": "1188"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWA-*****",
-        "DESCRIPTION": "Armor, Wheeled Airborne",
-        "MAPPING1U": "1189",
-        "MAPPING1F": "1189",
-        "MAPPING1N": "1189",
-        "MAPPING1H": "1189"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWW-*****",
-        "DESCRIPTION": "Armor, Wheeled Amphibious",
-        "MAPPING1U": "1190",
-        "MAPPING1F": "1191",
-        "MAPPING1N": "1192",
-        "MAPPING1H": "1193"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWWR*****",
-        "DESCRIPTION": "Armor, Wheeled Amphibious Recovery",
-        "MAPPING1U": "1194",
-        "MAPPING1F": "1195",
-        "MAPPING1N": "1196",
-        "MAPPING1H": "1197"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWL-*****",
-        "DESCRIPTION": "Armor, Wheeled Light",
-        "MAPPING1U": "1198",
-        "MAPPING1F": "1198",
-        "MAPPING1N": "1198",
-        "MAPPING1H": "1198"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWM-*****",
-        "DESCRIPTION": "Armor, Wheeled Medium",
-        "MAPPING1U": "1199",
-        "MAPPING1F": "1199",
-        "MAPPING1N": "1199",
-        "MAPPING1H": "1199"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWH-*****",
-        "DESCRIPTION": "Armor, Wheeled Heavy",
-        "MAPPING1U": "1200",
-        "MAPPING1F": "1200",
-        "MAPPING1N": "1200",
-        "MAPPING1H": "1200"
-      },
-      {
-        "SYMBOLID": "S*G*UCAWR-*****",
-        "DESCRIPTION": "Armor, Wheeled Recovery",
-        "MAPPING1U": "1201",
-        "MAPPING1F": "1201",
-        "MAPPING1N": "1201",
-        "MAPPING1H": "1201"
-      },
-      {
-        "SYMBOLID": "S*G*UCAA--*****",
-        "DESCRIPTION": "Anti Armor",
-        "MAPPING1U": "1202",
-        "MAPPING1F": "1203",
-        "MAPPING1N": "1204",
-        "MAPPING1H": "1205"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAD-*****",
-        "DESCRIPTION": "Anti Armor Dismounted",
-        "MAPPING1U": "1202",
-        "MAPPING1F": "1203",
-        "MAPPING1N": "1204",
-        "MAPPING1H": "1205"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAL-*****",
-        "DESCRIPTION": "Anti Armor Light",
-        "MAPPING1U": "1206",
-        "MAPPING1F": "1207",
-        "MAPPING1N": "1208",
-        "MAPPING1H": "1209"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAM-*****",
-        "DESCRIPTION": "Anti Armor Airborne",
-        "MAPPING1U": "1210",
-        "MAPPING1F": "1211",
-        "MAPPING1N": "1212",
-        "MAPPING1H": "1213"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAS-*****",
-        "DESCRIPTION": "Anti Armor Air Assault",
-        "MAPPING1U": "1214",
-        "MAPPING1F": "1215",
-        "MAPPING1N": "1216",
-        "MAPPING1H": "1217"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAU-*****",
-        "DESCRIPTION": "Anti Armor Mountain",
-        "MAPPING1U": "1218",
-        "MAPPING1F": "1219",
-        "MAPPING1N": "1220",
-        "MAPPING1H": "1221"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAC-*****",
-        "DESCRIPTION": "Anti Armor Arctic",
-        "MAPPING1U": "1222",
-        "MAPPING1F": "1223",
-        "MAPPING1N": "1224",
-        "MAPPING1H": "1225"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAA-*****",
-        "DESCRIPTION": "Anti Armor Armored",
-        "MAPPING1U": "1226",
-        "MAPPING1F": "1227",
-        "MAPPING1N": "1228",
-        "MAPPING1H": "1229"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAAT*****",
-        "DESCRIPTION": "Anti Armor Armored Tracked",
-        "MAPPING1U": "1226",
-        "MAPPING1F": "1227",
-        "MAPPING1N": "1228",
-        "MAPPING1H": "1229"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAAW*****",
-        "DESCRIPTION": "Anti Armor Armored Wheeled",
-        "MAPPING1U": "1230",
-        "MAPPING1F": "1231",
-        "MAPPING1N": "1232",
-        "MAPPING1H": "1233"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAAS*****",
-        "DESCRIPTION": "Anti Armor Armored Air Assault",
-        "MAPPING1U": "1234",
-        "MAPPING1F": "1235",
-        "MAPPING1N": "1236",
-        "MAPPING1H": "1237"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAO-*****",
-        "DESCRIPTION": "Anti Armor Motorized",
-        "MAPPING1U": "1238",
-        "MAPPING1F": "1239",
-        "MAPPING1N": "1240",
-        "MAPPING1H": "1241"
-      },
-      {
-        "SYMBOLID": "S*G*UCAAOS*****",
-        "DESCRIPTION": "Anti Armor Motorized Air Assault",
-        "MAPPING1U": "1242",
-        "MAPPING1F": "1243",
-        "MAPPING1N": "1244",
-        "MAPPING1H": "1245"
-      },
-      {
-        "SYMBOLID": "S*G*UCV---*****",
-        "DESCRIPTION": "Aviation",
-        "MAPPING1U": "1246",
-        "MAPPING1F": "1246",
-        "MAPPING1N": "1246",
-        "MAPPING1H": "1246"
-      },
-      {
-        "SYMBOLID": "S*G*UCVF--*****",
-        "DESCRIPTION": "Aviation Fixed Wing",
-        "MAPPING1U": "1247",
-        "MAPPING1F": "1247",
-        "MAPPING1N": "1247",
-        "MAPPING1H": "1247"
-      },
-      {
-        "SYMBOLID": "S*G*UCVFU-*****",
-        "DESCRIPTION": "Utility Fixed Wing",
-        "MAPPING1U": "1248",
-        "MAPPING1F": "1248",
-        "MAPPING1N": "1248",
-        "MAPPING1H": "1248"
-      },
-      {
-        "SYMBOLID": "S*G*UCVFA-*****",
-        "DESCRIPTION": "Fixed Wing Attack",
-        "MAPPING1U": "1249",
-        "MAPPING1F": "1249",
-        "MAPPING1N": "1249",
-        "MAPPING1H": "1249"
-      },
-      {
-        "SYMBOLID": "S*G*UCVFR-*****",
-        "DESCRIPTION": "Recon Fixed Wing",
-        "MAPPING1U": "1250",
-        "MAPPING1F": "1250",
-        "MAPPING1N": "1250",
-        "MAPPING1H": "1250"
-      },
-      {
-        "SYMBOLID": "S*G*UCVR--*****",
-        "DESCRIPTION": "Aviation Rotary Wing",
-        "MAPPING1U": "1251",
-        "MAPPING1F": "1251",
-        "MAPPING1N": "1251",
-        "MAPPING1H": "1251"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRA-*****",
-        "DESCRIPTION": "Attack Rotary Wing",
-        "MAPPING1U": "1252",
-        "MAPPING1F": "1252",
-        "MAPPING1N": "1252",
-        "MAPPING1H": "1252"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRS-*****",
-        "DESCRIPTION": "Scout Rotary Wing",
-        "MAPPING1U": "1253",
-        "MAPPING1F": "1253",
-        "MAPPING1N": "1253",
-        "MAPPING1H": "1253"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRW-*****",
-        "DESCRIPTION": "Antisubmarine Warfare Rotary Wing",
-        "MAPPING1U": "1254",
-        "MAPPING1F": "1254",
-        "MAPPING1N": "1254",
-        "MAPPING1H": "1254"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRU-*****",
-        "DESCRIPTION": "Utility Rotary Wing",
-        "MAPPING1U": "1255",
-        "MAPPING1F": "1255",
-        "MAPPING1N": "1255",
-        "MAPPING1H": "1255"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRUL*****",
-        "DESCRIPTION": "Light Utility Rotary Wing",
-        "MAPPING1U": "1256",
-        "MAPPING1F": "1256",
-        "MAPPING1N": "1256",
-        "MAPPING1H": "1256"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRUM*****",
-        "DESCRIPTION": "Medium Utility Rotary Wing",
-        "MAPPING1U": "1257",
-        "MAPPING1F": "1257",
-        "MAPPING1N": "1257",
-        "MAPPING1H": "1257"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRUH*****",
-        "DESCRIPTION": "Heavy Utility Rotary Wing",
-        "MAPPING1U": "1258",
-        "MAPPING1F": "1258",
-        "MAPPING1N": "1258",
-        "MAPPING1H": "1258"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRUC*****",
-        "DESCRIPTION": "C2 Rotary Wing",
-        "MAPPING1U": "1259",
-        "MAPPING1F": "1259",
-        "MAPPING1N": "1259",
-        "MAPPING1H": "1259"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRUE*****",
-        "DESCRIPTION": "Medevac Rotary Wing",
-        "MAPPING1U": "1260",
-        "MAPPING1F": "1260",
-        "MAPPING1N": "1260",
-        "MAPPING1H": "1260"
-      },
-      {
-        "SYMBOLID": "S*G*UCVRM-*****",
-        "DESCRIPTION": "Mine Countermeasure Rotary Wing",
-        "MAPPING1U": "1261",
-        "MAPPING1F": "1261",
-        "MAPPING1N": "1261",
-        "MAPPING1H": "1261"
-      },
-      {
-        "SYMBOLID": "S*G*UCVS--*****",
-        "DESCRIPTION": "Search and Rescue",
-        "MAPPING1U": "1262",
-        "MAPPING1F": "1262",
-        "MAPPING1N": "1262",
-        "MAPPING1H": "1262"
-      },
-      {
-        "SYMBOLID": "S*G*UCVC--*****",
-        "DESCRIPTION": "Aviation Composite",
-        "MAPPING1U": "1263",
-        "MAPPING1F": "1263",
-        "MAPPING1N": "1263",
-        "MAPPING1H": "1263"
-      },
-      {
-        "SYMBOLID": "S*G*UCVV--*****",
-        "DESCRIPTION": "Vertical/Short Takeoff And Landing (V/Stol)",
-        "MAPPING1U": "1264",
-        "MAPPING1F": "1264",
-        "MAPPING1N": "1264",
-        "MAPPING1H": "1264"
-      },
-      {
-        "SYMBOLID": "S*G*UCVU--*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle",
-        "MAPPING1U": "1265",
-        "MAPPING1F": "1265",
-        "MAPPING1N": "1265",
-        "MAPPING1H": "1265"
-      },
-      {
-        "SYMBOLID": "S*G*UCVUF-*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle Fixed Wing",
-        "MAPPING1U": "1266",
-        "MAPPING1F": "1266",
-        "MAPPING1N": "1266",
-        "MAPPING1H": "1266"
-      },
-      {
-        "SYMBOLID": "S*G*UCVUR-*****",
-        "DESCRIPTION": "Unmanned Aerial Vehicle Rotary Wing",
-        "MAPPING1U": "1267",
-        "MAPPING1F": "1267",
-        "MAPPING1N": "1267",
-        "MAPPING1H": "1267"
-      },
-      {
-        "SYMBOLID": "S*G*UCI---*****",
-        "DESCRIPTION": "Infantry",
-        "MAPPING1U": "1268",
-        "MAPPING1F": "1269",
-        "MAPPING1N": "1270",
-        "MAPPING1H": "1271"
-      },
-      {
-        "SYMBOLID": "S*G*UCIL--*****",
-        "DESCRIPTION": "Infantry Light",
-        "MAPPING1U": "1272",
-        "MAPPING1F": "1273",
-        "MAPPING1N": "1274",
-        "MAPPING1H": "1275"
-      },
-      {
-        "SYMBOLID": "S*G*UCIM--*****",
-        "DESCRIPTION": "Infantry Motorized",
-        "MAPPING1U": "1276",
-        "MAPPING1F": "1277",
-        "MAPPING1N": "1278",
-        "MAPPING1H": "1279"
-      },
-      {
-        "SYMBOLID": "S*G*UCIO--*****",
-        "DESCRIPTION": "Infantry Mountain",
-        "MAPPING1U": "1280",
-        "MAPPING1F": "1281",
-        "MAPPING1N": "1282",
-        "MAPPING1H": "1283"
-      },
-      {
-        "SYMBOLID": "S*G*UCIA--*****",
-        "DESCRIPTION": "Infantry Airborne",
-        "MAPPING1U": "1284",
-        "MAPPING1F": "1285",
-        "MAPPING1N": "1286",
-        "MAPPING1H": "1287"
-      },
-      {
-        "SYMBOLID": "S*G*UCIS--*****",
-        "DESCRIPTION": "Infantry Air Assault",
-        "MAPPING1U": "1288",
-        "MAPPING1F": "1289",
-        "MAPPING1N": "1290",
-        "MAPPING1H": "1291"
-      },
-      {
-        "SYMBOLID": "S*G*UCIZ--*****",
-        "DESCRIPTION": "Infantry Mechanized",
-        "MAPPING1U": "1292",
-        "MAPPING1F": "1293",
-        "MAPPING1N": "1294",
-        "MAPPING1H": "1295"
-      },
-      {
-        "SYMBOLID": "S*G*UCIN--*****",
-        "DESCRIPTION": "Infantry Naval",
-        "MAPPING1U": "1296",
-        "MAPPING1F": "1297",
-        "MAPPING1N": "1298",
-        "MAPPING1H": "1299"
-      },
-      {
-        "SYMBOLID": "S*G*UCII--*****",
-        "DESCRIPTION": "Infantry Fighting Vehicle",
-        "MAPPING1U": "1300",
-        "MAPPING1F": "1301",
-        "MAPPING1N": "1302",
-        "MAPPING1H": "1303"
-      },
-      {
-        "SYMBOLID": "S*G*UCIC--*****",
-        "DESCRIPTION": "Infantry Arctic",
-        "MAPPING1U": "604",
-        "MAPPING1F": "605",
-        "MAPPING1N": "606",
-        "MAPPING1H": "607",
-        "MAPPING2": "1092"
-      },
-      {
-        "SYMBOLID": "S*G*UCE---*****",
-        "DESCRIPTION": "Engineer",
-        "MAPPING1U": "1304",
-        "MAPPING1F": "1304",
-        "MAPPING1N": "1304",
-        "MAPPING1H": "1304"
-      },
-      {
-        "SYMBOLID": "S*G*UCEC--*****",
-        "DESCRIPTION": "Engineer Combat",
-        "MAPPING1U": "1305",
-        "MAPPING1F": "1305",
-        "MAPPING1N": "1305",
-        "MAPPING1H": "1305"
-      },
-      {
-        "SYMBOLID": "S*G*UCECS-*****",
-        "DESCRIPTION": "Engineer Combat Air Assault",
-        "MAPPING1U": "1306",
-        "MAPPING1F": "1306",
-        "MAPPING1N": "1306",
-        "MAPPING1H": "1306"
-      },
-      {
-        "SYMBOLID": "S*G*UCECA-*****",
-        "DESCRIPTION": "Engineer Combat Airborne",
-        "MAPPING1U": "1307",
-        "MAPPING1F": "1307",
-        "MAPPING1N": "1307",
-        "MAPPING1H": "1307"
-      },
-      {
-        "SYMBOLID": "S*G*UCECC-*****",
-        "DESCRIPTION": "Engineer Combat Arctic",
-        "MAPPING1U": "1308",
-        "MAPPING1F": "1308",
-        "MAPPING1N": "1308",
-        "MAPPING1H": "1308"
-      },
-      {
-        "SYMBOLID": "S*G*UCECL-*****",
-        "DESCRIPTION": "Engineer Combat Light (Sapper)",
-        "MAPPING1U": "1309",
-        "MAPPING1F": "1309",
-        "MAPPING1N": "1309",
-        "MAPPING1H": "1309"
-      },
-      {
-        "SYMBOLID": "S*G*UCECM-*****",
-        "DESCRIPTION": "Engineer Combat Medium",
-        "MAPPING1U": "1310",
-        "MAPPING1F": "1310",
-        "MAPPING1N": "1310",
-        "MAPPING1H": "1310"
-      },
-      {
-        "SYMBOLID": "S*G*UCECH-*****",
-        "DESCRIPTION": "Engineer Combat Heavy",
-        "MAPPING1U": "1311",
-        "MAPPING1F": "1311",
-        "MAPPING1N": "1311",
-        "MAPPING1H": "1311"
-      },
-      {
-        "SYMBOLID": "S*G*UCECT-*****",
-        "DESCRIPTION": "Engineer Combat Mechanized (Track)",
-        "MAPPING1U": "1312",
-        "MAPPING1F": "1312",
-        "MAPPING1N": "1312",
-        "MAPPING1H": "1312"
-      },
-      {
-        "SYMBOLID": "S*G*UCECW-*****",
-        "DESCRIPTION": "Engineer Combat Motorized",
-        "MAPPING1U": "1313",
-        "MAPPING1F": "1314",
-        "MAPPING1N": "1315",
-        "MAPPING1H": "1316"
-      },
-      {
-        "SYMBOLID": "S*G*UCECO-*****",
-        "DESCRIPTION": "Engineer Combat Mountain",
-        "MAPPING1U": "1317",
-        "MAPPING1F": "1317",
-        "MAPPING1N": "1317",
-        "MAPPING1H": "1317"
-      },
-      {
-        "SYMBOLID": "S*G*UCECR-*****",
-        "DESCRIPTION": "Engineer Combat Recon",
-        "MAPPING1U": "1318",
-        "MAPPING1F": "1319",
-        "MAPPING1N": "1320",
-        "MAPPING1H": "1321"
-      },
-      {
-        "SYMBOLID": "S*G*UCEN--*****",
-        "DESCRIPTION": "Engineer Construction",
-        "MAPPING1U": "1322",
-        "MAPPING1F": "1322",
-        "MAPPING1N": "1322",
-        "MAPPING1H": "1322"
-      },
-      {
-        "SYMBOLID": "S*G*UCENN-*****",
-        "DESCRIPTION": "Engineer Naval Construction",
-        "MAPPING1U": "1323",
-        "MAPPING1F": "1323",
-        "MAPPING1N": "1323",
-        "MAPPING1H": "1323"
-      },
-      {
-        "SYMBOLID": "S*G*UCF---*****",
-        "DESCRIPTION": "Field Artillery",
-        "MAPPING1U": "1324",
-        "MAPPING1F": "1324",
-        "MAPPING1N": "1324",
-        "MAPPING1H": "1324"
-      },
-      {
-        "SYMBOLID": "S*G*UCFH--*****",
-        "DESCRIPTION": "Howitzer/Gun",
-        "MAPPING1U": "1324",
-        "MAPPING1F": "1324",
-        "MAPPING1N": "1324",
-        "MAPPING1H": "1324"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHE-*****",
-        "DESCRIPTION": "Self-Propelled",
-        "MAPPING1U": "1325",
-        "MAPPING1F": "1325",
-        "MAPPING1N": "1325",
-        "MAPPING1H": "1325"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHS-*****",
-        "DESCRIPTION": "Howitzer/Gun Air Assault",
-        "MAPPING1U": "1326",
-        "MAPPING1F": "1326",
-        "MAPPING1N": "1326",
-        "MAPPING1H": "1326"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHA-*****",
-        "DESCRIPTION": "Howitzer/Gun Airborne",
-        "MAPPING1U": "1327",
-        "MAPPING1F": "1327",
-        "MAPPING1N": "1327",
-        "MAPPING1H": "1327"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHC-*****",
-        "DESCRIPTION": "Arctic",
-        "MAPPING1U": "1328",
-        "MAPPING1F": "1328",
-        "MAPPING1N": "1328",
-        "MAPPING1H": "1328"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHO-*****",
-        "DESCRIPTION": "Howitzer/Gun Mountain",
-        "MAPPING1U": "1329",
-        "MAPPING1F": "1329",
-        "MAPPING1N": "1329",
-        "MAPPING1H": "1329"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHL-*****",
-        "DESCRIPTION": "Howitzer/Gun Light",
-        "MAPPING1U": "1330",
-        "MAPPING1F": "1330",
-        "MAPPING1N": "1330",
-        "MAPPING1H": "1330"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHM-*****",
-        "DESCRIPTION": "Howitzer/Gun Medium",
-        "MAPPING1U": "1331",
-        "MAPPING1F": "1331",
-        "MAPPING1N": "1331",
-        "MAPPING1H": "1331"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHH-*****",
-        "DESCRIPTION": "Heavy",
-        "MAPPING1U": "1332",
-        "MAPPING1F": "1332",
-        "MAPPING1N": "1332",
-        "MAPPING1H": "1332"
-      },
-      {
-        "SYMBOLID": "S*G*UCFHX-*****",
-        "DESCRIPTION": "Amphibious",
-        "MAPPING1U": "1333",
-        "MAPPING1F": "1334",
-        "MAPPING1N": "1335",
-        "MAPPING1H": "1336"
-      },
-      {
-        "SYMBOLID": "S*G*UCFR--*****",
-        "DESCRIPTION": "Rocket",
-        "MAPPING1U": "1337",
-        "MAPPING1F": "1337",
-        "MAPPING1N": "1337",
-        "MAPPING1H": "1337"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRS-*****",
-        "DESCRIPTION": "Rocket Single Rocket Launcher",
-        "MAPPING1U": "1338",
-        "MAPPING1F": "1338",
-        "MAPPING1N": "1338",
-        "MAPPING1H": "1338"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRSS*****",
-        "DESCRIPTION": "Single Rocket Self-Propelled",
-        "MAPPING1U": "1339",
-        "MAPPING1F": "1339",
-        "MAPPING1N": "1339",
-        "MAPPING1H": "1339"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRSR*****",
-        "DESCRIPTION": "Single Rocket Truck",
-        "MAPPING1U": "1340",
-        "MAPPING1F": "1340",
-        "MAPPING1N": "1340",
-        "MAPPING1H": "1340"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRST*****",
-        "DESCRIPTION": "Single Rocket Towed",
-        "MAPPING1U": "1341",
-        "MAPPING1F": "1341",
-        "MAPPING1N": "1341",
-        "MAPPING1H": "1341"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRM-*****",
-        "DESCRIPTION": "Multi Rocket Launcher",
-        "MAPPING1U": "1342",
-        "MAPPING1F": "1342",
-        "MAPPING1N": "1342",
-        "MAPPING1H": "1342"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRMS*****",
-        "DESCRIPTION": "Multi Rocket Self-Propelled",
-        "MAPPING1U": "1343",
-        "MAPPING1F": "1343",
-        "MAPPING1N": "1343",
-        "MAPPING1H": "1343"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRMR*****",
-        "DESCRIPTION": "Multi Rocket Truck",
-        "MAPPING1U": "1344",
-        "MAPPING1F": "1344",
-        "MAPPING1N": "1344",
-        "MAPPING1H": "1344"
-      },
-      {
-        "SYMBOLID": "S*G*UCFRMT*****",
-        "DESCRIPTION": "Multi Rocket Towed",
-        "MAPPING1U": "1345",
-        "MAPPING1F": "1345",
-        "MAPPING1N": "1345",
-        "MAPPING1H": "1345"
-      },
-      {
-        "SYMBOLID": "S*G*UCFT--*****",
-        "DESCRIPTION": "Target Acquisition",
-        "MAPPING1U": "1346",
-        "MAPPING1F": "1346",
-        "MAPPING1N": "1346",
-        "MAPPING1H": "1346"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTR-*****",
-        "DESCRIPTION": "Target Acquisition Radar",
-        "MAPPING1U": "1347",
-        "MAPPING1F": "1347",
-        "MAPPING1N": "1347",
-        "MAPPING1H": "1347"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTS-*****",
-        "DESCRIPTION": "Sound",
-        "MAPPING1U": "1348",
-        "MAPPING1F": "1349",
-        "MAPPING1N": "1350",
-        "MAPPING1H": "1351",
-        "MAPPING2": "405",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTF-*****",
-        "DESCRIPTION": "Flash (Optical)",
-        "MAPPING1U": "1352",
-        "MAPPING1F": "1352",
-        "MAPPING1N": "1352",
-        "MAPPING1H": "1352"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTC-*****",
-        "DESCRIPTION": "Colt/Fist",
-        "MAPPING1U": "1353",
-        "MAPPING1F": "1354",
-        "MAPPING1N": "1355",
-        "MAPPING1H": "1356"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTCD*****",
-        "DESCRIPTION": "Dismounted Colt/Fist",
-        "MAPPING1U": "1357",
-        "MAPPING1F": "1358",
-        "MAPPING1N": "1359",
-        "MAPPING1H": "1360"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTCM*****",
-        "DESCRIPTION": "Tracked Colt/Fist",
-        "MAPPING1U": "1361",
-        "MAPPING1F": "1362",
-        "MAPPING1N": "1363",
-        "MAPPING1H": "1364"
-      },
-      {
-        "SYMBOLID": "S*G*UCFTA-*****",
-        "DESCRIPTION": "Anglico",
-        "MAPPING1U": "1365",
-        "MAPPING1F": "1366",
-        "MAPPING1N": "1367",
-        "MAPPING1H": "1368"
-      },
-      {
-        "SYMBOLID": "S*G*UCFM--*****",
-        "DESCRIPTION": "Field Artillery Mortar",
-        "MAPPING1U": "1369",
-        "MAPPING1F": "1369",
-        "MAPPING1N": "1369",
-        "MAPPING1H": "1369"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMS-*****",
-        "DESCRIPTION": "Self-Propelled (SP) Tracked Mortar",
-        "MAPPING1U": "1370",
-        "MAPPING1F": "1370",
-        "MAPPING1N": "1370",
-        "MAPPING1H": "1370"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMW-*****",
-        "DESCRIPTION": "SP Wheeled Mortar",
-        "MAPPING1U": "1371",
-        "MAPPING1F": "1371",
-        "MAPPING1N": "1371",
-        "MAPPING1H": "1371"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMT-*****",
-        "DESCRIPTION": "Towed Mortar",
-        "MAPPING1U": "1372",
-        "MAPPING1F": "1372",
-        "MAPPING1N": "1372",
-        "MAPPING1H": "1372"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMTA*****",
-        "DESCRIPTION": "Towed Airborne Mortar",
-        "MAPPING1U": "1373",
-        "MAPPING1F": "1373",
-        "MAPPING1N": "1373",
-        "MAPPING1H": "1373"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMTS*****",
-        "DESCRIPTION": "Towed Air Assault Mortar",
-        "MAPPING1U": "1374",
-        "MAPPING1F": "1374",
-        "MAPPING1N": "1374",
-        "MAPPING1H": "1374"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMTC*****",
-        "DESCRIPTION": "Towed Arctic Mortar",
-        "MAPPING1U": "1375",
-        "MAPPING1F": "1375",
-        "MAPPING1N": "1375",
-        "MAPPING1H": "1375"
-      },
-      {
-        "SYMBOLID": "S*G*UCFMTO*****",
-        "DESCRIPTION": "Towed Mountain Mortar",
-        "MAPPING1U": "1376",
-        "MAPPING1F": "1376",
-        "MAPPING1N": "1376",
-        "MAPPING1H": "1376"
-      },
-      {
-        "SYMBOLID": "S*G*UCFML-*****",
-        "DESCRIPTION": "Amphibious Mortar",
-        "MAPPING1U": "1377",
-        "MAPPING1F": "1378",
-        "MAPPING1N": "1379",
-        "MAPPING1H": "1380"
-      },
-      {
-        "SYMBOLID": "S*G*UCFS--*****",
-        "DESCRIPTION": "Artillery Survey",
-        "MAPPING1U": "1381",
-        "MAPPING1F": "1381",
-        "MAPPING1N": "1381",
-        "MAPPING1H": "1381",
-        "MAPPING2": "1382",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFSS-*****",
-        "DESCRIPTION": "Artillery Survey Air Assault",
-        "MAPPING1U": "1383",
-        "MAPPING1F": "1383",
-        "MAPPING1N": "1383",
-        "MAPPING1H": "1383",
-        "MAPPING2": "1384",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFSA-*****",
-        "DESCRIPTION": "Artillery Survey Airborne",
-        "MAPPING1U": "1385",
-        "MAPPING1F": "1385",
-        "MAPPING1N": "1385",
-        "MAPPING1H": "1385",
-        "MAPPING2": "1386",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFSL-*****",
-        "DESCRIPTION": "Artillery Survey Light",
-        "MAPPING1U": "1387",
-        "MAPPING1F": "1387",
-        "MAPPING1N": "1387",
-        "MAPPING1H": "1387",
-        "MAPPING2": "1388",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFSO-*****",
-        "DESCRIPTION": "Artillery Survey Mountain",
-        "MAPPING1U": "1389",
-        "MAPPING1F": "1389",
-        "MAPPING1N": "1389",
-        "MAPPING1H": "1389",
-        "MAPPING2": "1390",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UCFO--*****",
-        "DESCRIPTION": "Field Artillery Meteorological",
-        "MAPPING1U": "1391",
-        "MAPPING1F": "1391",
-        "MAPPING1N": "1391",
-        "MAPPING1H": "1391"
-      },
-      {
-        "SYMBOLID": "S*G*UCFOS-*****",
-        "DESCRIPTION": "Air Assault Meteorological",
-        "MAPPING1U": "1392",
-        "MAPPING1F": "1392",
-        "MAPPING1N": "1392",
-        "MAPPING1H": "1392"
-      },
-      {
-        "SYMBOLID": "S*G*UCFOA-*****",
-        "DESCRIPTION": "Airborne Meteorological",
-        "MAPPING1U": "1393",
-        "MAPPING1F": "1393",
-        "MAPPING1N": "1393",
-        "MAPPING1H": "1393"
-      },
-      {
-        "SYMBOLID": "S*G*UCFOL-*****",
-        "DESCRIPTION": "Light Meteorological",
-        "MAPPING1U": "1394",
-        "MAPPING1F": "1394",
-        "MAPPING1N": "1394",
-        "MAPPING1H": "1394"
-      },
-      {
-        "SYMBOLID": "S*G*UCFOO-*****",
-        "DESCRIPTION": "Mountain Meteorological",
-        "MAPPING1U": "1395",
-        "MAPPING1F": "1395",
-        "MAPPING1N": "1395",
-        "MAPPING1H": "1395"
-      },
-      {
-        "SYMBOLID": "S*G*UCR---*****",
-        "DESCRIPTION": "Combat Reconnaissance",
-        "MAPPING1U": "1396",
-        "MAPPING1F": "1397",
-        "MAPPING1N": "1398",
-        "MAPPING1H": "1399"
-      },
-      {
-        "SYMBOLID": "S*G*UCRH--*****",
-        "DESCRIPTION": "Reconnaissance Horse",
-        "MAPPING1U": "1400",
-        "MAPPING1F": "1400",
-        "MAPPING1N": "1400",
-        "MAPPING1H": "1400"
-      },
-      {
-        "SYMBOLID": "S*G*UCRV--*****",
-        "DESCRIPTION": "Reconnaissance Cavalry",
-        "MAPPING1U": "1401",
-        "MAPPING1F": "1402",
-        "MAPPING1N": "1403",
-        "MAPPING1H": "1404"
-      },
-      {
-        "SYMBOLID": "S*G*UCRVA-*****",
-        "DESCRIPTION": "Reconnaissance Cavalry Armored",
-        "MAPPING1U": "1405",
-        "MAPPING1F": "1406",
-        "MAPPING1N": "1407",
-        "MAPPING1H": "1408"
-      },
-      {
-        "SYMBOLID": "S*G*UCRVM-*****",
-        "DESCRIPTION": "Reconnaissance Cavalry Motorized",
-        "MAPPING1U": "1409",
-        "MAPPING1F": "1410",
-        "MAPPING1N": "1411",
-        "MAPPING1H": "1412"
-      },
-      {
-        "SYMBOLID": "S*G*UCRVG-*****",
-        "DESCRIPTION": "Reconnaissance Cavalry Ground",
-        "MAPPING1U": "1413",
-        "MAPPING1F": "1414",
-        "MAPPING1N": "1415",
-        "MAPPING1H": "1416"
-      },
-      {
-        "SYMBOLID": "S*G*UCRVO-*****",
-        "DESCRIPTION": "Reconnaissance Cavalry Air",
-        "MAPPING1U": "1417",
-        "MAPPING1F": "1418",
-        "MAPPING1N": "1419",
-        "MAPPING1H": "1420"
-      },
-      {
-        "SYMBOLID": "S*G*UCRC--*****",
-        "DESCRIPTION": "Reconnaissance Arctic",
-        "MAPPING1U": "1421",
-        "MAPPING1F": "1422",
-        "MAPPING1N": "1423",
-        "MAPPING1H": "1424"
-      },
-      {
-        "SYMBOLID": "S*G*UCRS--*****",
-        "DESCRIPTION": "Reconnaissance Air Assault",
-        "MAPPING1U": "1425",
-        "MAPPING1F": "1426",
-        "MAPPING1N": "1427",
-        "MAPPING1H": "1428"
-      },
-      {
-        "SYMBOLID": "S*G*UCRA--*****",
-        "DESCRIPTION": "Reconnaissance Airborne",
-        "MAPPING1U": "1429",
-        "MAPPING1F": "1430",
-        "MAPPING1N": "1431",
-        "MAPPING1H": "1432"
-      },
-      {
-        "SYMBOLID": "S*G*UCRO--*****",
-        "DESCRIPTION": "Reconnaissance Mountain",
-        "MAPPING1U": "1433",
-        "MAPPING1F": "1434",
-        "MAPPING1N": "1435",
-        "MAPPING1H": "1436"
-      },
-      {
-        "SYMBOLID": "S*G*UCRL--*****",
-        "DESCRIPTION": "Reconnaissance Light",
-        "MAPPING1U": "1437",
-        "MAPPING1F": "1438",
-        "MAPPING1N": "1439",
-        "MAPPING1H": "1440"
-      },
-      {
-        "SYMBOLID": "S*G*UCRR--*****",
-        "DESCRIPTION": "Reconnaissance Marine",
-        "MAPPING1U": "1441",
-        "MAPPING1F": "1442",
-        "MAPPING1N": "1443",
-        "MAPPING1H": "1444"
-      },
-      {
-        "SYMBOLID": "S*G*UCRRD-*****",
-        "DESCRIPTION": "Reconnaissance Marine Division",
-        "MAPPING1U": "1445",
-        "MAPPING1F": "1446",
-        "MAPPING1N": "1447",
-        "MAPPING1H": "1448"
-      },
-      {
-        "SYMBOLID": "S*G*UCRRF-*****",
-        "DESCRIPTION": "Reconnaissance Marine Force",
-        "MAPPING1U": "1449",
-        "MAPPING1F": "1450",
-        "MAPPING1N": "1451",
-        "MAPPING1H": "1452"
-      },
-      {
-        "SYMBOLID": "S*G*UCRRL-*****",
-        "DESCRIPTION": "Reconnaissance Marine Light Armored (LAR)",
-        "MAPPING1U": "1453",
-        "MAPPING1F": "1454",
-        "MAPPING1N": "1455",
-        "MAPPING1H": "1456"
-      },
-      {
-        "SYMBOLID": "S*G*UCRX--*****",
-        "DESCRIPTION": "Reconnaissance Long Range Surveillance (LRS)",
-        "MAPPING1U": "1457",
-        "MAPPING1F": "1458",
-        "MAPPING1N": "1459",
-        "MAPPING1H": "1460"
-      },
-      {
-        "SYMBOLID": "S*G*UCM---*****",
-        "DESCRIPTION": "Missile (Surf-Surf)",
-        "MAPPING1U": "1461",
-        "MAPPING1F": "1461",
-        "MAPPING1N": "1461",
-        "MAPPING1H": "1461"
-      },
-      {
-        "SYMBOLID": "S*G*UCMT--*****",
-        "DESCRIPTION": "Missile (Surf-Surf) Tactical",
-        "MAPPING1U": "1462",
-        "MAPPING1F": "1462",
-        "MAPPING1N": "1462",
-        "MAPPING1H": "1462"
-      },
-      {
-        "SYMBOLID": "S*G*UCMS--*****",
-        "DESCRIPTION": "Missile (Surf-Surf) Strategic",
-        "MAPPING1U": "1463",
-        "MAPPING1F": "1463",
-        "MAPPING1N": "1463",
-        "MAPPING1H": "1463"
-      },
-      {
-        "SYMBOLID": "S*G*UCS---*****",
-        "DESCRIPTION": "Internal Security Forces",
-        "MAPPING1U": "1464",
-        "MAPPING1F": "1464",
-        "MAPPING1N": "1464",
-        "MAPPING1H": "1464"
-      },
-      {
-        "SYMBOLID": "S*G*UCSW--*****",
-        "DESCRIPTION": "Internal Security Forces Riverine",
-        "MAPPING1U": "1465",
-        "MAPPING1F": "1466",
-        "MAPPING1N": "1467",
-        "MAPPING1H": "1468"
-      },
-      {
-        "SYMBOLID": "S*G*UCSG--*****",
-        "DESCRIPTION": "Internal Security Forces Ground",
-        "MAPPING1U": "1469",
-        "MAPPING1F": "1469",
-        "MAPPING1N": "1469",
-        "MAPPING1H": "1469"
-      },
-      {
-        "SYMBOLID": "S*G*UCSGD-*****",
-        "DESCRIPTION": "Internal Security Forces Dismounted",
-        "MAPPING1U": "1470",
-        "MAPPING1F": "1471",
-        "MAPPING1N": "1472",
-        "MAPPING1H": "1473"
-      },
-      {
-        "SYMBOLID": "S*G*UCSGM-*****",
-        "DESCRIPTION": "Internal Security Forces Motorized",
-        "MAPPING1U": "1474",
-        "MAPPING1F": "1475",
-        "MAPPING1N": "1476",
-        "MAPPING1H": "1477"
-      },
-      {
-        "SYMBOLID": "S*G*UCSGA-*****",
-        "DESCRIPTION": "Internal Security Forces Mechanized",
-        "MAPPING1U": "1478",
-        "MAPPING1F": "1478",
-        "MAPPING1N": "1478",
-        "MAPPING1H": "1478"
-      },
-      {
-        "SYMBOLID": "S*G*UCSM--*****",
-        "DESCRIPTION": "Internal Security Forces Wheeled Mechanized",
-        "MAPPING1U": "1479",
-        "MAPPING1F": "1479",
-        "MAPPING1N": "1479",
-        "MAPPING1H": "1479"
-      },
-      {
-        "SYMBOLID": "S*G*UCSR--*****",
-        "DESCRIPTION": "Internal Security Forces Railroad",
-        "MAPPING1U": "1480",
-        "MAPPING1F": "1480",
-        "MAPPING1N": "1480",
-        "MAPPING1H": "1480"
-      },
-      {
-        "SYMBOLID": "S*G*UCSA--*****",
-        "DESCRIPTION": "Internal Security Forces Aviation",
-        "MAPPING1U": "1481",
-        "MAPPING1F": "1481",
-        "MAPPING1N": "1481",
-        "MAPPING1H": "1481"
-      },
-      {
-        "SYMBOLID": "S*G*UCL---*****",
-        "DESCRIPTION": "Surveillance Unit",
-        "MAPPING1U": "1890",
-        "MAPPING1F": "1890",
-        "MAPPING1N": "1890",
-        "MAPPING1H": "1890"
-      },
-      {
-        "SYMBOLID": "S*G*UU----*****",
-        "DESCRIPTION": "Combat Support",
-        "MAPPING1U": "1482",
-        "MAPPING1F": "1482",
-        "MAPPING1N": "1482",
-        "MAPPING1H": "1482"
-      },
-      {
-        "SYMBOLID": "S*G*UUA---*****",
-        "DESCRIPTION": "Combat Support NBC",
-        "MAPPING1U": "1483",
-        "MAPPING1F": "1483",
-        "MAPPING1N": "1483",
-        "MAPPING1H": "1483"
-      },
-      {
-        "SYMBOLID": "S*G*UUAC--*****",
-        "DESCRIPTION": "Combat Support Chemical",
-        "MAPPING1U": "1484",
-        "MAPPING1F": "1484",
-        "MAPPING1N": "1484",
-        "MAPPING1H": "1484"
-      },
-      {
-        "SYMBOLID": "S*G*UUACC-*****",
-        "DESCRIPTION": "Smoke/Decon",
-        "MAPPING1U": "1485",
-        "MAPPING1F": "1485",
-        "MAPPING1N": "1485",
-        "MAPPING1H": "1485"
-      },
-      {
-        "SYMBOLID": "S*G*UUACCK*****",
-        "DESCRIPTION": "Mechanized Smoke/Decon",
-        "MAPPING1U": "1486",
-        "MAPPING1F": "1486",
-        "MAPPING1N": "1486",
-        "MAPPING1H": "1486"
-      },
-      {
-        "SYMBOLID": "S*G*UUACCM*****",
-        "DESCRIPTION": "Motorized Smoke/Decon",
-        "MAPPING1U": "1487",
-        "MAPPING1F": "1488",
-        "MAPPING1N": "1489",
-        "MAPPING1H": "1490"
-      },
-      {
-        "SYMBOLID": "S*G*UUACS-*****",
-        "DESCRIPTION": "Smoke",
-        "MAPPING1U": "1491",
-        "MAPPING1F": "1491",
-        "MAPPING1N": "1491",
-        "MAPPING1H": "1491"
-      },
-      {
-        "SYMBOLID": "S*G*UUACSM*****",
-        "DESCRIPTION": "Motorized Smoke",
-        "MAPPING1U": "1492",
-        "MAPPING1F": "1493",
-        "MAPPING1N": "1494",
-        "MAPPING1H": "1495"
-      },
-      {
-        "SYMBOLID": "S*G*UUACSA*****",
-        "DESCRIPTION": "Armor Smoke",
-        "MAPPING1U": "1496",
-        "MAPPING1F": "1496",
-        "MAPPING1N": "1496",
-        "MAPPING1H": "1496"
-      },
-      {
-        "SYMBOLID": "S*G*UUACR-*****",
-        "DESCRIPTION": "Chemical Recon",
-        "MAPPING1U": "1497",
-        "MAPPING1F": "1498",
-        "MAPPING1N": "1499",
-        "MAPPING1H": "1500"
-      },
-      {
-        "SYMBOLID": "S*G*UUACRW*****",
-        "DESCRIPTION": "Chemical Wheeled Armored Vehicle",
-        "MAPPING1U": "1501",
-        "MAPPING1F": "1502",
-        "MAPPING1N": "1503",
-        "MAPPING1H": "1504"
-      },
-      {
-        "SYMBOLID": "S*G*UUACRS*****",
-        "DESCRIPTION": "Chemical Wheeled Armored Vehicle Reconnaissance Surveillance",
-        "MAPPING1U": "1505",
-        "MAPPING1F": "1506",
-        "MAPPING1N": "1507",
-        "MAPPING1H": "1508"
-      },
-      {
-        "SYMBOLID": "S*G*UUAN--*****",
-        "DESCRIPTION": "Combat Support NBC Nuclear",
-        "MAPPING1U": "1509",
-        "MAPPING1F": "1509",
-        "MAPPING1N": "1509",
-        "MAPPING1H": "1509"
-      },
-      {
-        "SYMBOLID": "S*G*UUAB--*****",
-        "DESCRIPTION": "Combat Support NBC Biological",
-        "MAPPING1U": "1510",
-        "MAPPING1F": "1510",
-        "MAPPING1N": "1510",
-        "MAPPING1H": "1510"
-      },
-      {
-        "SYMBOLID": "S*G*UUABR-*****",
-        "DESCRIPTION": "Recon Equipped",
-        "MAPPING1U": "1511",
-        "MAPPING1F": "1512",
-        "MAPPING1N": "1513",
-        "MAPPING1H": "1514"
-      },
-      {
-        "SYMBOLID": "S*G*UUAD--*****",
-        "DESCRIPTION": "NBC Decontamination",
-        "MAPPING1U": "1515",
-        "MAPPING1F": "1515",
-        "MAPPING1N": "1515",
-        "MAPPING1H": "1515"
-      },
-      {
-        "SYMBOLID": "S*G*UUM---*****",
-        "DESCRIPTION": "Military Intelligence",
-        "MAPPING1U": "1516",
-        "MAPPING1F": "1516",
-        "MAPPING1N": "1516",
-        "MAPPING1H": "1516"
-      },
-      {
-        "SYMBOLID": "S*G*UUMA--*****",
-        "DESCRIPTION": "Aerial Exploitation",
-        "MAPPING1U": "1517",
-        "MAPPING1F": "1517",
-        "MAPPING1N": "1517",
-        "MAPPING1H": "1517"
-      },
-      {
-        "SYMBOLID": "S*G*UUMS--*****",
-        "DESCRIPTION": "Signal Intelligence (SIGINT)",
-        "MAPPING1U": "1518",
-        "MAPPING1F": "1518",
-        "MAPPING1N": "1518",
-        "MAPPING1H": "1518"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSE-*****",
-        "DESCRIPTION": "Electronic Warfare",
-        "MAPPING1U": "1519",
-        "MAPPING1F": "1519",
-        "MAPPING1N": "1519",
-        "MAPPING1H": "1519"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSEA*****",
-        "DESCRIPTION": "Armored Wheeled Vehicle",
-        "MAPPING1U": "600",
-        "MAPPING1F": "601",
-        "MAPPING1N": "602",
-        "MAPPING1H": "603",
-        "MAPPING2": "1520",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSED*****",
-        "DESCRIPTION": "Direction Finding",
-        "MAPPING1U": "1521",
-        "MAPPING1F": "1521",
-        "MAPPING1N": "1521",
-        "MAPPING1H": "1521"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSEI*****",
-        "DESCRIPTION": "Intercept",
-        "MAPPING1U": "1522",
-        "MAPPING1F": "1522",
-        "MAPPING1N": "1522",
-        "MAPPING1H": "1522"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSEJ*****",
-        "DESCRIPTION": "Jamming",
-        "MAPPING1U": "1523",
-        "MAPPING1F": "1524",
-        "MAPPING1N": "1525",
-        "MAPPING1H": "1526"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSET*****",
-        "DESCRIPTION": "Theater",
-        "MAPPING1U": "1527",
-        "MAPPING1F": "1528",
-        "MAPPING1N": "1529",
-        "MAPPING1H": "1530"
-      },
-      {
-        "SYMBOLID": "S*G*UUMSEC*****",
-        "DESCRIPTION": "Corps",
-        "MAPPING1U": "1531",
-        "MAPPING1F": "1532",
-        "MAPPING1N": "1533",
-        "MAPPING1H": "1534"
-      },
-      {
-        "SYMBOLID": "S*G*UUMC--*****",
-        "DESCRIPTION": "Counter Intelligence",
-        "MAPPING1U": "1535",
-        "MAPPING1F": "1535",
-        "MAPPING1N": "1535",
-        "MAPPING1H": "1535"
-      },
-      {
-        "SYMBOLID": "S*G*UUMR--*****",
-        "DESCRIPTION": "Counter Intelligence Surveillance",
-        "MAPPING1U": "1536",
-        "MAPPING1F": "1536",
-        "MAPPING1N": "1536",
-        "MAPPING1H": "1536"
-      },
-      {
-        "SYMBOLID": "S*G*UUMRG-*****",
-        "DESCRIPTION": "Ground Surveillance Radar",
-        "MAPPING1U": "1537",
-        "MAPPING1F": "1537",
-        "MAPPING1N": "1537",
-        "MAPPING1H": "1537"
-      },
-      {
-        "SYMBOLID": "S*G*UUMRS-*****",
-        "DESCRIPTION": "Surveillance Sensor",
-        "MAPPING1U": "1538",
-        "MAPPING1F": "1539",
-        "MAPPING1N": "1540",
-        "MAPPING1H": "1541",
-        "MAPPING2": "1542",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UUMRSS*****",
-        "DESCRIPTION": "Sensor SCM",
-        "MAPPING1U": "1543",
-        "MAPPING1F": "1544",
-        "MAPPING1N": "1545",
-        "MAPPING1H": "1546",
-        "MAPPING2": "1542",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UUMRX-*****",
-        "DESCRIPTION": "Ground Station Module",
-        "MAPPING1U": "1547",
-        "MAPPING1F": "1547",
-        "MAPPING1N": "1547",
-        "MAPPING1H": "1547"
-      },
-      {
-        "SYMBOLID": "S*G*UUMMO-*****",
-        "DESCRIPTION": "Surveillance Meteorological",
-        "MAPPING1U": "1548",
-        "MAPPING1F": "1548",
-        "MAPPING1N": "1548",
-        "MAPPING1H": "1548"
-      },
-      {
-        "SYMBOLID": "S*G*UUMO--*****",
-        "DESCRIPTION": "Military Intelligence Operations",
-        "MAPPING1U": "1549",
-        "MAPPING1F": "1549",
-        "MAPPING1N": "1549",
-        "MAPPING1H": "1549"
-      },
-      {
-        "SYMBOLID": "S*G*UUMT--*****",
-        "DESCRIPTION": "Tactical Exploit",
-        "MAPPING1U": "1550",
-        "MAPPING1F": "1550",
-        "MAPPING1N": "1550",
-        "MAPPING1H": "1550"
-      },
-      {
-        "SYMBOLID": "S*G*UUMQ--*****",
-        "DESCRIPTION": "Interrogation",
-        "MAPPING1U": "1551",
-        "MAPPING1F": "1551",
-        "MAPPING1N": "1551",
-        "MAPPING1H": "1551"
-      },
-      {
-        "SYMBOLID": "S*G*UUMJ--*****",
-        "DESCRIPTION": "Joint Intelligence Center",
-        "MAPPING1U": "1552",
-        "MAPPING1F": "1552",
-        "MAPPING1N": "1552",
-        "MAPPING1H": "1552"
-      },
-      {
-        "SYMBOLID": "S*G*UUL---*****",
-        "DESCRIPTION": "Law Enforcement Unit",
-        "MAPPING1U": "1553",
-        "MAPPING1F": "1553",
-        "MAPPING1N": "1553",
-        "MAPPING1H": "1553"
-      },
-      {
-        "SYMBOLID": "S*G*UULS--*****",
-        "DESCRIPTION": "Shore Patrol",
-        "MAPPING1U": "1554",
-        "MAPPING1F": "1554",
-        "MAPPING1N": "1554",
-        "MAPPING1H": "1554"
-      },
-      {
-        "SYMBOLID": "S*G*UULM--*****",
-        "DESCRIPTION": "Military Police",
-        "MAPPING1U": "1555",
-        "MAPPING1F": "1555",
-        "MAPPING1N": "1555",
-        "MAPPING1H": "1555"
-      },
-      {
-        "SYMBOLID": "S*G*UULC--*****",
-        "DESCRIPTION": "Civilian Law Enforcement",
-        "MAPPING1U": "1556",
-        "MAPPING1F": "1556",
-        "MAPPING1N": "1556",
-        "MAPPING1H": "1556"
-      },
-      {
-        "SYMBOLID": "S*G*UULF--*****",
-        "DESCRIPTION": "Security Police (Air)",
-        "MAPPING1U": "1557",
-        "MAPPING1F": "1557",
-        "MAPPING1N": "1557",
-        "MAPPING1H": "1557"
-      },
-      {
-        "SYMBOLID": "S*G*UULD--*****",
-        "DESCRIPTION": "Central Intelligence Division (CID)",
-        "MAPPING1U": "1558",
-        "MAPPING1F": "1558",
-        "MAPPING1N": "1558",
-        "MAPPING1H": "1558"
-      },
-      {
-        "SYMBOLID": "S*G*UUS---*****",
-        "DESCRIPTION": "Signal Unit",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562"
-      },
-      {
-        "SYMBOLID": "S*G*UUSA--*****",
-        "DESCRIPTION": "Area",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1563",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSC--*****",
-        "DESCRIPTION": "Communication Configured Package",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1564",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSCL-*****",
-        "DESCRIPTION": "Large Communication Configured Package (LCCP)",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1565",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSO--*****",
-        "DESCRIPTION": "Command Operations",
-        "MAPPING1U": "1559",
-        "MAPPING2": "1566",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSF--*****",
-        "DESCRIPTION": "Forward Communications",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1567",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSM--*****",
-        "DESCRIPTION": "Multiple Subscriber Element",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1568",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSMS-*****",
-        "DESCRIPTION": "Small Extension Node",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1569",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSML-*****",
-        "DESCRIPTION": "Large Extension Node",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1570",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSMN-*****",
-        "DESCRIPTION": "Node Center",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1571",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSR--*****",
-        "DESCRIPTION": "Radio Unit",
-        "MAPPING1U": "1572",
-        "MAPPING1F": "1573",
-        "MAPPING1N": "1574",
-        "MAPPING1H": "1575"
-      },
-      {
-        "SYMBOLID": "S*G*UUSRS-*****",
-        "DESCRIPTION": "Tactical Satellite",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1576",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSRT-*****",
-        "DESCRIPTION": "Teletype Center",
-        "MAPPING1U": "1577",
-        "MAPPING1F": "1578",
-        "MAPPING1N": "1579",
-        "MAPPING1H": "1580"
-      },
-      {
-        "SYMBOLID": "S*G*UUSRW-*****",
-        "DESCRIPTION": "Relay",
-        "MAPPING1U": "1581",
-        "MAPPING1F": "1582",
-        "MAPPING1N": "1583",
-        "MAPPING1H": "1584"
-      },
-      {
-        "SYMBOLID": "S*G*UUSS--*****",
-        "DESCRIPTION": "Signal Support",
-        "MAPPING1U": "1559",
-        "MAPPING1F": "1560",
-        "MAPPING1N": "1561",
-        "MAPPING1H": "1562",
-        "MAPPING2": "1585",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUSW--*****",
-        "DESCRIPTION": "Telephone Switch",
-        "MAPPING1U": "1586",
-        "MAPPING1F": "1587",
-        "MAPPING1N": "1588",
-        "MAPPING1H": "1589"
-      },
-      {
-        "SYMBOLID": "S*G*UUSX--*****",
-        "DESCRIPTION": "Electronic Ranging",
-        "MAPPING1U": "1590",
-        "MAPPING1F": "1590",
-        "MAPPING1N": "1590",
-        "MAPPING1H": "1590",
-        "MAPPING2": "1591",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*UUI---*****",
-        "DESCRIPTION": "Information Warfare Unit",
-        "MAPPING1U": "1592",
-        "MAPPING1F": "1592",
-        "MAPPING1N": "1592",
-        "MAPPING1H": "1592"
-      },
-      {
-        "SYMBOLID": "S*G*UUP---*****",
-        "DESCRIPTION": "Landing Support",
-        "MAPPING1U": "612",
-        "MAPPING1F": "613",
-        "MAPPING1N": "614",
-        "MAPPING1H": "615",
-        "MAPPING2": "1593",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UUE---*****",
-        "DESCRIPTION": "Explosive Ordnance Disposal",
-        "MAPPING1U": "1594",
-        "MAPPING1F": "1594",
-        "MAPPING1N": "1594",
-        "MAPPING1H": "1594"
-      },
-      {
-        "SYMBOLID": "S*G*US----*****",
-        "DESCRIPTION": "Combat Service Support",
-        "MAPPING1U": "1595",
-        "MAPPING1F": "1595",
-        "MAPPING1N": "1595",
-        "MAPPING1H": "1595"
-      },
-      {
-        "SYMBOLID": "S*G*USA---*****",
-        "DESCRIPTION": "Administrative (ADMIN)",
-        "MAPPING1U": "1596",
-        "MAPPING1F": "1596",
-        "MAPPING1N": "1596",
-        "MAPPING1H": "1596"
-      },
-      {
-        "SYMBOLID": "S*G*USAT--*****",
-        "DESCRIPTION": "Admin Theater",
-        "MAPPING1U": "1597",
-        "MAPPING1F": "1598",
-        "MAPPING1N": "1599",
-        "MAPPING1H": "1600"
-      },
-      {
-        "SYMBOLID": "S*G*USAC--*****",
-        "DESCRIPTION": "Admin Corps",
-        "MAPPING1U": "1601",
-        "MAPPING1F": "1602",
-        "MAPPING1N": "1603",
-        "MAPPING1H": "1604"
-      },
-      {
-        "SYMBOLID": "S*G*USAJ--*****",
-        "DESCRIPTION": "Judge Advocate General (JAG)",
-        "MAPPING1U": "1605",
-        "MAPPING1F": "1605",
-        "MAPPING1N": "1605",
-        "MAPPING1H": "1605"
-      },
-      {
-        "SYMBOLID": "S*G*USAJT-*****",
-        "DESCRIPTION": "JAG Theater",
-        "MAPPING1U": "1606",
-        "MAPPING1F": "1607",
-        "MAPPING1N": "1608",
-        "MAPPING1H": "1609"
-      },
-      {
-        "SYMBOLID": "S*G*USAJC-*****",
-        "DESCRIPTION": "JAG Corps",
-        "MAPPING1U": "1610",
-        "MAPPING1F": "1611",
-        "MAPPING1N": "1612",
-        "MAPPING1H": "1613"
-      },
-      {
-        "SYMBOLID": "S*G*USAO--*****",
-        "DESCRIPTION": "Postal",
-        "MAPPING1U": "1614",
-        "MAPPING1F": "1614",
-        "MAPPING1N": "1614",
-        "MAPPING1H": "1614"
-      },
-      {
-        "SYMBOLID": "S*G*USAOT-*****",
-        "DESCRIPTION": "Postal Theater",
-        "MAPPING1U": "1615",
-        "MAPPING1F": "1616",
-        "MAPPING1N": "1617",
-        "MAPPING1H": "1618"
-      },
-      {
-        "SYMBOLID": "S*G*USAOC-*****",
-        "DESCRIPTION": "Postal Corps",
-        "MAPPING1U": "1619",
-        "MAPPING1F": "1620",
-        "MAPPING1N": "1621",
-        "MAPPING1H": "1622"
-      },
-      {
-        "SYMBOLID": "S*G*USAF--*****",
-        "DESCRIPTION": "Finance",
-        "MAPPING1U": "1623",
-        "MAPPING1F": "1623",
-        "MAPPING1N": "1623",
-        "MAPPING1H": "1623"
-      },
-      {
-        "SYMBOLID": "S*G*USAFT-*****",
-        "DESCRIPTION": "Finance Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1623",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAFC-*****",
-        "DESCRIPTION": "Finance Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1623",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAS--*****",
-        "DESCRIPTION": "Personnel Services",
-        "MAPPING1U": "1624",
-        "MAPPING1F": "1624",
-        "MAPPING1N": "1624",
-        "MAPPING1H": "1624"
-      },
-      {
-        "SYMBOLID": "S*G*USAST-*****",
-        "DESCRIPTION": "Personnel Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1624",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USASC-*****",
-        "DESCRIPTION": "Personnel Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1624",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAM--*****",
-        "DESCRIPTION": "Mortuary/Graves Registry",
-        "MAPPING1U": "1625",
-        "MAPPING1F": "1625",
-        "MAPPING1N": "1625",
-        "MAPPING1H": "1625"
-      },
-      {
-        "SYMBOLID": "S*G*USAMT-*****",
-        "DESCRIPTION": "Mortuary/Graves Registry Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1625",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAMC-*****",
-        "DESCRIPTION": "Mortuary/Graves Registry Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1625",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAR--*****",
-        "DESCRIPTION": "Religious/Chaplain",
-        "MAPPING1U": "1626",
-        "MAPPING1F": "1626",
-        "MAPPING1N": "1626",
-        "MAPPING1H": "1626"
-      },
-      {
-        "SYMBOLID": "S*G*USART-*****",
-        "DESCRIPTION": "Religious/Chaplain Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1626",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USARC-*****",
-        "DESCRIPTION": "Religious/Chaplain Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1626",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAP--*****",
-        "DESCRIPTION": "Public Affairs",
-        "MAPPING1U": "1627",
-        "MAPPING1F": "1627",
-        "MAPPING1N": "1627",
-        "MAPPING1H": "1627"
-      },
-      {
-        "SYMBOLID": "S*G*USAPT-*****",
-        "DESCRIPTION": "Public Affairs Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1627",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAPC-*****",
-        "DESCRIPTION": "Public Affairs Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1627",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAPB-*****",
-        "DESCRIPTION": "Public Affairs Broadcast",
-        "MAPPING1U": "1628",
-        "MAPPING1F": "1628",
-        "MAPPING1N": "1628",
-        "MAPPING1H": "1628"
-      },
-      {
-        "SYMBOLID": "S*G*USAPBT*****",
-        "DESCRIPTION": "Public Affairs Broadcast Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1628",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAPBC*****",
-        "DESCRIPTION": "Public Affairs Broadcast Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1628",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAPM-*****",
-        "DESCRIPTION": "Public Affairs Joint Information Bureau (JIB)",
-        "MAPPING1U": "1630",
-        "MAPPING1F": "1630",
-        "MAPPING1N": "1630",
-        "MAPPING1H": "1630"
-      },
-      {
-        "SYMBOLID": "S*G*USAPMT*****",
-        "DESCRIPTION": "Public Affairs JIB Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1630",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAPMC*****",
-        "DESCRIPTION": "Public Affairs JIB Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1630",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAX--*****",
-        "DESCRIPTION": "Replacement Holding Unit (RHU)",
-        "MAPPING1U": "1631",
-        "MAPPING1F": "1631",
-        "MAPPING1N": "1631",
-        "MAPPING1H": "1631"
-      },
-      {
-        "SYMBOLID": "S*G*USAXT-*****",
-        "DESCRIPTION": "RHU Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1631",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAXC-*****",
-        "DESCRIPTION": "RHU Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1631",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAL--*****",
-        "DESCRIPTION": "Labor",
-        "MAPPING1U": "1633",
-        "MAPPING1F": "1633",
-        "MAPPING1N": "1633",
-        "MAPPING1H": "1633"
-      },
-      {
-        "SYMBOLID": "S*G*USALT-*****",
-        "DESCRIPTION": "Labor Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1633",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USALC-*****",
-        "DESCRIPTION": "Labor Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1633",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAW--*****",
-        "DESCRIPTION": "Morale, Welfare, Recreation (MWR)",
-        "MAPPING1U": "1634",
-        "MAPPING1F": "1634",
-        "MAPPING1N": "1634",
-        "MAPPING1H": "1634"
-      },
-      {
-        "SYMBOLID": "S*G*USAWT-*****",
-        "DESCRIPTION": "MWR Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1634",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAWC-*****",
-        "DESCRIPTION": "MWR Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1634",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAQ--*****",
-        "DESCRIPTION": "Quartermaster (Supply)",
-        "MAPPING1U": "1636",
-        "MAPPING1F": "1636",
-        "MAPPING1N": "1636",
-        "MAPPING1H": "1636"
-      },
-      {
-        "SYMBOLID": "S*G*USAQT-*****",
-        "DESCRIPTION": "Quartermaster (Supply) Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1636",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USAQC-*****",
-        "DESCRIPTION": "Quartermaster (Supply) Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1636",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USM---*****",
-        "DESCRIPTION": "Medical",
-        "MAPPING1U": "1637",
-        "MAPPING1F": "1638",
-        "MAPPING1N": "1639",
-        "MAPPING1H": "1640"
-      },
-      {
-        "SYMBOLID": "S*G*USMT--*****",
-        "DESCRIPTION": "Medical Theater",
-        "MAPPING1U": "1641",
-        "MAPPING1F": "1642",
-        "MAPPING1N": "1643",
-        "MAPPING1H": "1644"
-      },
-      {
-        "SYMBOLID": "S*G*USMC--*****",
-        "DESCRIPTION": "Medical Corps",
-        "MAPPING1U": "1645",
-        "MAPPING1F": "1646",
-        "MAPPING1N": "1647",
-        "MAPPING1H": "1648"
-      },
-      {
-        "SYMBOLID": "S*G*USMM--*****",
-        "DESCRIPTION": "Medical Treatment Facility",
-        "MAPPING1U": "1637",
-        "MAPPING1F": "1638",
-        "MAPPING1N": "1639",
-        "MAPPING1H": "1640",
-        "MAPPING2": "1649",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMMT-*****",
-        "DESCRIPTION": "Medical Treatment Facility Theater",
-        "MAPPING1U": "1641",
-        "MAPPING1F": "1642",
-        "MAPPING1N": "1643",
-        "MAPPING1H": "1644",
-        "MAPPING2": "1649",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMMC-*****",
-        "DESCRIPTION": "Medical Treatment Facility Corps",
-        "MAPPING1U": "1645",
-        "MAPPING1F": "1646",
-        "MAPPING1N": "1647",
-        "MAPPING1H": "1648",
-        "MAPPING2": "1649",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMV--*****",
-        "DESCRIPTION": "Medical Veterinary",
-        "MAPPING1U": "1637",
-        "MAPPING1F": "1638",
-        "MAPPING1N": "1639",
-        "MAPPING1H": "1640",
-        "MAPPING2": "1650",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMVT-*****",
-        "DESCRIPTION": "Medical Veterinary Theater",
-        "MAPPING1U": "1641",
-        "MAPPING1F": "1642",
-        "MAPPING1N": "1643",
-        "MAPPING1H": "1644",
-        "MAPPING2": "1650",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMVC-*****",
-        "DESCRIPTION": "Medical Veterinary Corps",
-        "MAPPING1U": "1645",
-        "MAPPING1F": "1646",
-        "MAPPING1N": "1647",
-        "MAPPING1H": "1648",
-        "MAPPING2": "1650",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMD--*****",
-        "DESCRIPTION": "Medical Dental",
-        "MAPPING1U": "1637",
-        "MAPPING1F": "1638",
-        "MAPPING1N": "1639",
-        "MAPPING1H": "1640",
-        "MAPPING2": "1651",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMDT-*****",
-        "DESCRIPTION": "Medical Dental Theater",
-        "MAPPING1U": "1641",
-        "MAPPING1F": "1642",
-        "MAPPING1N": "1643",
-        "MAPPING1H": "1644",
-        "MAPPING2": "1651",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMDC-*****",
-        "DESCRIPTION": "Medical Dental Corps",
-        "MAPPING1U": "1645",
-        "MAPPING1F": "1646",
-        "MAPPING1N": "1647",
-        "MAPPING1H": "1648",
-        "MAPPING2": "1651",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMP--*****",
-        "DESCRIPTION": "Medical Psychological",
-        "MAPPING1U": "1637",
-        "MAPPING1F": "1638",
-        "MAPPING1N": "1639",
-        "MAPPING1H": "1640",
-        "MAPPING2": "1652",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMPT-*****",
-        "DESCRIPTION": "Medical Psychological Theater",
-        "MAPPING1U": "1641",
-        "MAPPING1F": "1642",
-        "MAPPING1N": "1643",
-        "MAPPING1H": "1644",
-        "MAPPING2": "1652",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USMPC-*****",
-        "DESCRIPTION": "Medical Psychological Corps",
-        "MAPPING1U": "1645",
-        "MAPPING1F": "1646",
-        "MAPPING1N": "1647",
-        "MAPPING1H": "1648",
-        "MAPPING2": "1652",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS---*****",
-        "DESCRIPTION": "Supply",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656"
-      },
-      {
-        "SYMBOLID": "S*G*USST--*****",
-        "DESCRIPTION": "Supply Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660"
-      },
-      {
-        "SYMBOLID": "S*G*USSC--*****",
-        "DESCRIPTION": "Supply Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664"
-      },
-      {
-        "SYMBOLID": "S*G*USS1--*****",
-        "DESCRIPTION": "Supply Class I",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1665",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS1T-*****",
-        "DESCRIPTION": "Supply Class I Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1665",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS1C-*****",
-        "DESCRIPTION": "Supply Class I Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1665",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS2--*****",
-        "DESCRIPTION": "Supply Class II",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1666",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS2T-*****",
-        "DESCRIPTION": "Supply Class II Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1666",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS2C-*****",
-        "DESCRIPTION": "Supply Class II Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1666",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3--*****",
-        "DESCRIPTION": "Supply Class III",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1667",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3T-*****",
-        "DESCRIPTION": "Supply Class III Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1667",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3C-*****",
-        "DESCRIPTION": "Supply Class III Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1667",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3A-*****",
-        "DESCRIPTION": "Supply Class III Aviation",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1668",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3AT*****",
-        "DESCRIPTION": "Supply Class III Aviation Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1668",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS3AC*****",
-        "DESCRIPTION": "Supply Class III Aviation Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1668",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS4--*****",
-        "DESCRIPTION": "Supply Class IV",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1669",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS4T-*****",
-        "DESCRIPTION": "Supply Class IV Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1669",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS4C-*****",
-        "DESCRIPTION": "Supply Class IV Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1669",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS5--*****",
-        "DESCRIPTION": "Supply Class V",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1670",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS5T-*****",
-        "DESCRIPTION": "Supply Class V Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1670",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS5C-*****",
-        "DESCRIPTION": "Supply Class V Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1670",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS6--*****",
-        "DESCRIPTION": "Supply Class VI",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1671",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS6T-*****",
-        "DESCRIPTION": "Supply Class VI Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1671",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS6C-*****",
-        "DESCRIPTION": "Supply Class VI Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1671",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS7--*****",
-        "DESCRIPTION": "Supply Class VII",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1672",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS7T-*****",
-        "DESCRIPTION": "Supply Class VII Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1672",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS7C-*****",
-        "DESCRIPTION": "Supply Class VII Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1672",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS8--*****",
-        "DESCRIPTION": "Supply Class VIII",
-        "MAPPING1U": "1673",
-        "MAPPING1F": "1674",
-        "MAPPING1N": "1675",
-        "MAPPING1H": "1676"
-      },
-      {
-        "SYMBOLID": "S*G*USS8T-*****",
-        "DESCRIPTION": "Supply Class VIII Theater",
-        "MAPPING1U": "1677",
-        "MAPPING1F": "1678",
-        "MAPPING1N": "1679",
-        "MAPPING1H": "1680"
-      },
-      {
-        "SYMBOLID": "S*G*USS8C-*****",
-        "DESCRIPTION": "Supply Class VIII Corps",
-        "MAPPING1U": "1681",
-        "MAPPING1F": "1682",
-        "MAPPING1N": "1683",
-        "MAPPING1H": "1684"
-      },
-      {
-        "SYMBOLID": "S*G*USS9--*****",
-        "DESCRIPTION": "Supply Class IX",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1685",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS9T-*****",
-        "DESCRIPTION": "Supply Class IX Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1685",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USS9C-*****",
-        "DESCRIPTION": "Supply Class IX Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1685",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSX--*****",
-        "DESCRIPTION": "Supply Class X",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1686",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSXT-*****",
-        "DESCRIPTION": "Supply Class X Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1686",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSXC-*****",
-        "DESCRIPTION": "Supply Class X Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1686",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSL--*****",
-        "DESCRIPTION": "Supply Laundry/Bath",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1687",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSLT-*****",
-        "DESCRIPTION": "Supply Laundry/Bath Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1687",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSLC-*****",
-        "DESCRIPTION": "Supply Laundry/Bath Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1687",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSW--*****",
-        "DESCRIPTION": "Supply Water",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1688",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSWT-*****",
-        "DESCRIPTION": "Supply Water Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1688",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSWC-*****",
-        "DESCRIPTION": "Supply Water Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1688",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSWP-*****",
-        "DESCRIPTION": "Supply Water Purification",
-        "MAPPING1U": "1653",
-        "MAPPING1F": "1654",
-        "MAPPING1N": "1655",
-        "MAPPING1H": "1656",
-        "MAPPING2": "1689",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSWPT*****",
-        "DESCRIPTION": "Supply Water Purification Theater",
-        "MAPPING1U": "1657",
-        "MAPPING1F": "1658",
-        "MAPPING1N": "1659",
-        "MAPPING1H": "1660",
-        "MAPPING2": "1689",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USSWPC*****",
-        "DESCRIPTION": "Supply Water Purification Corps",
-        "MAPPING1U": "1661",
-        "MAPPING1F": "1662",
-        "MAPPING1N": "1663",
-        "MAPPING1H": "1664",
-        "MAPPING2": "1689",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UST---*****",
-        "DESCRIPTION": "Transportation",
-        "MAPPING1U": "1690",
-        "MAPPING1F": "1690",
-        "MAPPING1N": "1690",
-        "MAPPING1H": "1690"
-      },
-      {
-        "SYMBOLID": "S*G*USTT--*****",
-        "DESCRIPTION": "Transportation Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1690",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTC--*****",
-        "DESCRIPTION": "Transportation Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1690",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTM--*****",
-        "DESCRIPTION": "Movement Control Center (MCC)",
-        "MAPPING1U": "1691",
-        "MAPPING1F": "1691",
-        "MAPPING1N": "1691",
-        "MAPPING1H": "1691"
-      },
-      {
-        "SYMBOLID": "S*G*USTMT-*****",
-        "DESCRIPTION": "MCC Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1691",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTMC-*****",
-        "DESCRIPTION": "MCC Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1691",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTR--*****",
-        "DESCRIPTION": "Railhead",
-        "MAPPING1U": "1692",
-        "MAPPING1F": "1692",
-        "MAPPING1N": "1692",
-        "MAPPING1H": "1692"
-      },
-      {
-        "SYMBOLID": "S*G*USTRT-*****",
-        "DESCRIPTION": "Railhead Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1692",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTRC-*****",
-        "DESCRIPTION": "Railhead Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1692",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTS--*****",
-        "DESCRIPTION": "SPOD/SPOE",
-        "MAPPING1U": "1693",
-        "MAPPING1F": "1693",
-        "MAPPING1N": "1693",
-        "MAPPING1H": "1693"
-      },
-      {
-        "SYMBOLID": "S*G*USTST-*****",
-        "DESCRIPTION": "SPOD/SPOE Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1693",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTSC-*****",
-        "DESCRIPTION": "SPOD/SPOE Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1693",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTA--*****",
-        "DESCRIPTION": "APOD/APOE",
-        "MAPPING1U": "1694",
-        "MAPPING1F": "1694",
-        "MAPPING1N": "1694",
-        "MAPPING1H": "1694"
-      },
-      {
-        "SYMBOLID": "S*G*USTAT-*****",
-        "DESCRIPTION": "APOD/APOE Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1694",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTAC-*****",
-        "DESCRIPTION": "APOD/APOE Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1694",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTI--*****",
-        "DESCRIPTION": "Missile",
-        "MAPPING1U": "1695",
-        "MAPPING1F": "1695",
-        "MAPPING1N": "1695",
-        "MAPPING1H": "1695"
-      },
-      {
-        "SYMBOLID": "S*G*USTIT-*****",
-        "DESCRIPTION": "Missile Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1695",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USTIC-*****",
-        "DESCRIPTION": "Missile Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1695",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USX---*****",
-        "DESCRIPTION": "Maintenance",
-        "MAPPING1U": "1696",
-        "MAPPING1F": "1696",
-        "MAPPING1N": "1696",
-        "MAPPING1H": "1696"
-      },
-      {
-        "SYMBOLID": "S*G*USXT--*****",
-        "DESCRIPTION": "Maintenance Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1696",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXC--*****",
-        "DESCRIPTION": "Maintenance Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1696",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXH--*****",
-        "DESCRIPTION": "Maintenance Heavy",
-        "MAPPING1U": "1697",
-        "MAPPING1F": "1697",
-        "MAPPING1N": "1697",
-        "MAPPING1H": "1697"
-      },
-      {
-        "SYMBOLID": "S*G*USXHT-*****",
-        "DESCRIPTION": "Maintenance Heavy Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1697",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXHC-*****",
-        "DESCRIPTION": "Maintenance Heavy Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1697",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXR--*****",
-        "DESCRIPTION": "Maintenance Recovery",
-        "MAPPING1U": "1698",
-        "MAPPING1F": "1698",
-        "MAPPING1N": "1698",
-        "MAPPING1H": "1698"
-      },
-      {
-        "SYMBOLID": "S*G*USXRT-*****",
-        "DESCRIPTION": "Maintenance Recovery Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1698",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXRC-*****",
-        "DESCRIPTION": "Maintenance Recovery Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1698",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXO--*****",
-        "DESCRIPTION": "Ordnance",
-        "MAPPING1U": "1699",
-        "MAPPING1F": "1699",
-        "MAPPING1N": "1699",
-        "MAPPING1H": "1699"
-      },
-      {
-        "SYMBOLID": "S*G*USXOT-*****",
-        "DESCRIPTION": "Ordnance Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1699",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXOC-*****",
-        "DESCRIPTION": "Ordnance Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1699",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXOM-*****",
-        "DESCRIPTION": "Ordnance Missile",
-        "MAPPING1U": "1700",
-        "MAPPING1F": "1700",
-        "MAPPING1N": "1700",
-        "MAPPING1H": "1700"
-      },
-      {
-        "SYMBOLID": "S*G*USXOMT*****",
-        "DESCRIPTION": "Ordnance Missile Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1700",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXOMC*****",
-        "DESCRIPTION": "Ordnance Missile Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1700",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXE--*****",
-        "DESCRIPTION": "Electro-Optical",
-        "MAPPING1U": "1701",
-        "MAPPING1F": "1701",
-        "MAPPING1N": "1701",
-        "MAPPING1H": "1701"
-      },
-      {
-        "SYMBOLID": "S*G*USXET-*****",
-        "DESCRIPTION": "Electro-Optical Theater",
-        "MAPPING1U": "640",
-        "MAPPING1F": "641",
-        "MAPPING1N": "642",
-        "MAPPING1H": "643",
-        "MAPPING2": "1701",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*USXEC-*****",
-        "DESCRIPTION": "Electro-Optical Corps",
-        "MAPPING1U": "648",
-        "MAPPING1F": "649",
-        "MAPPING1N": "650",
-        "MAPPING1H": "651",
-        "MAPPING2": "1701",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*UH----*****",
-        "DESCRIPTION": "Special C2 Headquarters Component"
-      },
-      {
-        "SYMBOLID": "S*G*E-----*****",
-        "DESCRIPTION": "Ground Track Equipment"
-      },
-      {
-        "SYMBOLID": "S*G*EW----*****",
-        "DESCRIPTION": "Weapon"
-      },
-      {
-        "SYMBOLID": "S*G*EWM---*****",
-        "DESCRIPTION": "Missile Launcher",
-        "MAPPING1U": "1702",
-        "MAPPING1F": "1702",
-        "MAPPING1N": "1702",
-        "MAPPING1H": "1702"
-      },
-      {
-        "SYMBOLID": "S*G*EWMA--*****",
-        "DESCRIPTION": "Air Defense (AD) Missile Launcher",
-        "MAPPING1U": "1703",
-        "MAPPING1F": "1703",
-        "MAPPING1N": "1703",
-        "MAPPING1H": "1703"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAS-*****",
-        "DESCRIPTION": "Short Range AD Missile Launcher",
-        "MAPPING1U": "1704",
-        "MAPPING1F": "1704",
-        "MAPPING1N": "1704",
-        "MAPPING1H": "1704"
-      },
-      {
-        "SYMBOLID": "S*G*EWMASR*****",
-        "DESCRIPTION": "Short Range Transporter Launcher and Radar (TLAR)",
-        "MAPPING1U": "1705",
-        "MAPPING1F": "1705",
-        "MAPPING1N": "1705",
-        "MAPPING1H": "1705"
-      },
-      {
-        "SYMBOLID": "S*G*EWMASE*****",
-        "DESCRIPTION": "Short Range Transporter Erector Launcher and Radar (TELAR)",
-        "MAPPING1U": "1706",
-        "MAPPING1F": "1706",
-        "MAPPING1N": "1706",
-        "MAPPING1H": "1706"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAI-*****",
-        "DESCRIPTION": "Intermediate Range AD Missile Launcher",
-        "MAPPING1U": "1707",
-        "MAPPING1F": "1707",
-        "MAPPING1N": "1707",
-        "MAPPING1H": "1707"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAIR*****",
-        "DESCRIPTION": "Intermediate Transporter Launcher and Radar (TLAR)",
-        "MAPPING1U": "1708",
-        "MAPPING1F": "1708",
-        "MAPPING1N": "1708",
-        "MAPPING1H": "1708"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAIE*****",
-        "DESCRIPTION": "Intermediate Transporter Erector Launcher and Radar (TELAR)",
-        "MAPPING1U": "1709",
-        "MAPPING1F": "1709",
-        "MAPPING1N": "1709",
-        "MAPPING1H": "1709"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAL-*****",
-        "DESCRIPTION": "Long Range AD Missile Launcher",
-        "MAPPING1U": "1710",
-        "MAPPING1F": "1710",
-        "MAPPING1N": "1710",
-        "MAPPING1H": "1710"
-      },
-      {
-        "SYMBOLID": "S*G*EWMALR*****",
-        "DESCRIPTION": "Long Range Transporter Launcher and Radar (TLAR)",
-        "MAPPING1U": "1711",
-        "MAPPING1F": "1711",
-        "MAPPING1N": "1711",
-        "MAPPING1H": "1711"
-      },
-      {
-        "SYMBOLID": "S*G*EWMALE*****",
-        "DESCRIPTION": "Long Range Transporter Erector Launcher and Radar (TELAR)",
-        "MAPPING1U": "1712",
-        "MAPPING1F": "1712",
-        "MAPPING1N": "1712",
-        "MAPPING1H": "1712"
-      },
-      {
-        "SYMBOLID": "S*G*EWMAT-*****",
-        "DESCRIPTION": "AD Missile Launcher Theater",
-        "MAPPING1U": "1713",
-        "MAPPING1F": "1713",
-        "MAPPING1N": "1713",
-        "MAPPING1H": "1713"
-      },
-      {
-        "SYMBOLID": "S*G*EWMATR*****",
-        "DESCRIPTION": "Theater Transporter Launcher and Radar (TLAR)",
-        "MAPPING1U": "1714",
-        "MAPPING1F": "1714",
-        "MAPPING1N": "1714",
-        "MAPPING1H": "1714"
-      },
-      {
-        "SYMBOLID": "S*G*EWMATE*****",
-        "DESCRIPTION": "Theater Transporter Erector Launcher and Radar (TELAR)",
-        "MAPPING1U": "1715",
-        "MAPPING1F": "1715",
-        "MAPPING1N": "1715",
-        "MAPPING1H": "1715"
-      },
-      {
-        "SYMBOLID": "S*G*EWMS--*****",
-        "DESCRIPTION": "Surf-Surf (SS) Missile Launcher",
-        "MAPPING1U": "1716",
-        "MAPPING1F": "1716",
-        "MAPPING1N": "1716",
-        "MAPPING1H": "1716"
-      },
-      {
-        "SYMBOLID": "S*G*EWMSS-*****",
-        "DESCRIPTION": "Short Range SS Missile Launcher",
-        "MAPPING1U": "1717",
-        "MAPPING1F": "1717",
-        "MAPPING1N": "1717",
-        "MAPPING1H": "1717"
-      },
-      {
-        "SYMBOLID": "S*G*EWMSI-*****",
-        "DESCRIPTION": "Intermediate Range SS Missile Launcher",
-        "MAPPING1U": "1718",
-        "MAPPING1F": "1718",
-        "MAPPING1N": "1718",
-        "MAPPING1H": "1718"
-      },
-      {
-        "SYMBOLID": "S*G*EWMSL-*****",
-        "DESCRIPTION": "Long Range SS Missile Launcher",
-        "MAPPING1U": "1719",
-        "MAPPING1F": "1719",
-        "MAPPING1N": "1719",
-        "MAPPING1H": "1719"
-      },
-      {
-        "SYMBOLID": "S*G*EWMT--*****",
-        "DESCRIPTION": "Missile Launcher Antitank (AT)",
-        "MAPPING1U": "1720",
-        "MAPPING1F": "1720",
-        "MAPPING1N": "1720",
-        "MAPPING1H": "1720"
-      },
-      {
-        "SYMBOLID": "S*G*EWMTL-*****",
-        "DESCRIPTION": "Missile Launcher AT Light",
-        "MAPPING1U": "1721",
-        "MAPPING1F": "1721",
-        "MAPPING1N": "1721",
-        "MAPPING1H": "1721"
-      },
-      {
-        "SYMBOLID": "S*G*EWMTM-*****",
-        "DESCRIPTION": "Missile Launcher AT Medium",
-        "MAPPING1U": "1722",
-        "MAPPING1F": "1722",
-        "MAPPING1N": "1722",
-        "MAPPING1H": "1722"
-      },
-      {
-        "SYMBOLID": "S*G*EWMTH-*****",
-        "DESCRIPTION": "Missile Launcher AT Heavy",
-        "MAPPING1U": "1723",
-        "MAPPING1F": "1723",
-        "MAPPING1N": "1723",
-        "MAPPING1H": "1723"
-      },
-      {
-        "SYMBOLID": "S*G*EWS---*****",
-        "DESCRIPTION": "Weapon Single Rocket Launcher",
-        "MAPPING1U": "1724",
-        "MAPPING1F": "1724",
-        "MAPPING1N": "1724",
-        "MAPPING1H": "1724"
-      },
-      {
-        "SYMBOLID": "S*G*EWSL--*****",
-        "DESCRIPTION": "Single Rocket Launcher Light",
-        "MAPPING1U": "1725",
-        "MAPPING1F": "1725",
-        "MAPPING1N": "1725",
-        "MAPPING1H": "1725"
-      },
-      {
-        "SYMBOLID": "S*G*EWSM--*****",
-        "DESCRIPTION": "Single Rocket Launcher Medium",
-        "MAPPING1U": "1726",
-        "MAPPING1F": "1726",
-        "MAPPING1N": "1726",
-        "MAPPING1H": "1726"
-      },
-      {
-        "SYMBOLID": "S*G*EWSH--*****",
-        "DESCRIPTION": "Single Rocket Launcher Heavy",
-        "MAPPING1U": "1727",
-        "MAPPING1F": "1727",
-        "MAPPING1N": "1727",
-        "MAPPING1H": "1727"
-      },
-      {
-        "SYMBOLID": "S*G*EWX---*****",
-        "DESCRIPTION": "Multiple Rocket Launcher",
-        "MAPPING1U": "1728",
-        "MAPPING1F": "1728",
-        "MAPPING1N": "1728",
-        "MAPPING1H": "1728"
-      },
-      {
-        "SYMBOLID": "S*G*EWXL--*****",
-        "DESCRIPTION": "Multiple Rocket Launcher Light",
-        "MAPPING1U": "1729",
-        "MAPPING1F": "1729",
-        "MAPPING1N": "1729",
-        "MAPPING1H": "1729"
-      },
-      {
-        "SYMBOLID": "S*G*EWXM--*****",
-        "DESCRIPTION": "Multiple Rocket Launcher Medium",
-        "MAPPING1U": "1730",
-        "MAPPING1F": "1730",
-        "MAPPING1N": "1730",
-        "MAPPING1H": "1730"
-      },
-      {
-        "SYMBOLID": "S*G*EWXH--*****",
-        "DESCRIPTION": "Multiple Rocket Launcher Heavy",
-        "MAPPING1U": "1731",
-        "MAPPING1F": "1731",
-        "MAPPING1N": "1731",
-        "MAPPING1H": "1731"
-      },
-      {
-        "SYMBOLID": "S*G*EWT---*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher",
-        "MAPPING1U": "1732",
-        "MAPPING1F": "1732",
-        "MAPPING1N": "1732",
-        "MAPPING1H": "1732"
-      },
-      {
-        "SYMBOLID": "S*G*EWTL--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Light",
-        "MAPPING1U": "1733",
-        "MAPPING1F": "1733",
-        "MAPPING1N": "1733",
-        "MAPPING1H": "1733"
-      },
-      {
-        "SYMBOLID": "S*G*EWTM--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Medium",
-        "MAPPING1U": "1734",
-        "MAPPING1F": "1734",
-        "MAPPING1N": "1734",
-        "MAPPING1H": "1734"
-      },
-      {
-        "SYMBOLID": "S*G*EWTH--*****",
-        "DESCRIPTION": "Anti-Tank Rocket Launcher Heavy",
-        "MAPPING1U": "1735",
-        "MAPPING1F": "1735",
-        "MAPPING1N": "1735",
-        "MAPPING1H": "1735"
-      },
-      {
-        "SYMBOLID": "S*G*EWR---*****",
-        "DESCRIPTION": "Rifle/Automatic Weapon",
-        "MAPPING1U": "1736",
-        "MAPPING1F": "1736",
-        "MAPPING1N": "1736",
-        "MAPPING1H": "1736"
-      },
-      {
-        "SYMBOLID": "S*G*EWRR--*****",
-        "DESCRIPTION": "Rifle",
-        "MAPPING1U": "1737",
-        "MAPPING1F": "1737",
-        "MAPPING1N": "1737",
-        "MAPPING1H": "1737"
-      },
-      {
-        "SYMBOLID": "S*G*EWRL--*****",
-        "DESCRIPTION": "Light Machine Gun",
-        "MAPPING1U": "1738",
-        "MAPPING1F": "1738",
-        "MAPPING1N": "1738",
-        "MAPPING1H": "1738"
-      },
-      {
-        "SYMBOLID": "S*G*EWRH--*****",
-        "DESCRIPTION": "Heavy Machine Gun",
-        "MAPPING1U": "1739",
-        "MAPPING1F": "1739",
-        "MAPPING1N": "1739",
-        "MAPPING1H": "1739"
-      },
-      {
-        "SYMBOLID": "S*G*EWZ---*****",
-        "DESCRIPTION": "Grenade Launcher",
-        "MAPPING1U": "1740",
-        "MAPPING1F": "1740",
-        "MAPPING1N": "1740",
-        "MAPPING1H": "1740"
-      },
-      {
-        "SYMBOLID": "S*G*EWZL--*****",
-        "DESCRIPTION": "Grenade Launcher Light",
-        "MAPPING1U": "1741",
-        "MAPPING1F": "1741",
-        "MAPPING1N": "1741",
-        "MAPPING1H": "1741"
-      },
-      {
-        "SYMBOLID": "S*G*EWZM--*****",
-        "DESCRIPTION": "Grenade Launcher Medium",
-        "MAPPING1U": "1742",
-        "MAPPING1F": "1742",
-        "MAPPING1N": "1742",
-        "MAPPING1H": "1742"
-      },
-      {
-        "SYMBOLID": "S*G*EWZH--*****",
-        "DESCRIPTION": "Grenade Launcher Heavy",
-        "MAPPING1U": "1743",
-        "MAPPING1F": "1743",
-        "MAPPING1N": "1743",
-        "MAPPING1H": "1743"
-      },
-      {
-        "SYMBOLID": "S*G*EWO---*****",
-        "DESCRIPTION": "Weapon Mortar",
-        "MAPPING1U": "1744",
-        "MAPPING1F": "1744",
-        "MAPPING1N": "1744",
-        "MAPPING1H": "1744"
-      },
-      {
-        "SYMBOLID": "S*G*EWOL--*****",
-        "DESCRIPTION": "Mortar Light",
-        "MAPPING1U": "1745",
-        "MAPPING1F": "1745",
-        "MAPPING1N": "1745",
-        "MAPPING1H": "1745"
-      },
-      {
-        "SYMBOLID": "S*G*EWOM--*****",
-        "DESCRIPTION": "Mortar Medium",
-        "MAPPING1U": "1746",
-        "MAPPING1F": "1746",
-        "MAPPING1N": "1746",
-        "MAPPING1H": "1746"
-      },
-      {
-        "SYMBOLID": "S*G*EWOH--*****",
-        "DESCRIPTION": "Mortar Heavy",
-        "MAPPING1U": "1747",
-        "MAPPING1F": "1747",
-        "MAPPING1N": "1747",
-        "MAPPING1H": "1747"
-      },
-      {
-        "SYMBOLID": "S*G*EWH---*****",
-        "DESCRIPTION": "Howitzer",
-        "MAPPING1U": "1748",
-        "MAPPING1F": "1748",
-        "MAPPING1N": "1748",
-        "MAPPING1H": "1748"
-      },
-      {
-        "SYMBOLID": "S*G*EWHL--*****",
-        "DESCRIPTION": "Howitzer Light",
-        "MAPPING1U": "1749",
-        "MAPPING1F": "1749",
-        "MAPPING1N": "1749",
-        "MAPPING1H": "1749"
-      },
-      {
-        "SYMBOLID": "S*G*EWHLS-*****",
-        "DESCRIPTION": "Howitzer Light Self-Propelled",
-        "MAPPING1U": "1750",
-        "MAPPING1F": "1750",
-        "MAPPING1N": "1750",
-        "MAPPING1H": "1750"
-      },
-      {
-        "SYMBOLID": "S*G*EWHM--*****",
-        "DESCRIPTION": "Howitzer Medium",
-        "MAPPING1U": "1751",
-        "MAPPING1F": "1751",
-        "MAPPING1N": "1751",
-        "MAPPING1H": "1751"
-      },
-      {
-        "SYMBOLID": "S*G*EWHMS-*****",
-        "DESCRIPTION": "Howitzer Medium Self-Propelled",
-        "MAPPING1U": "1752",
-        "MAPPING1F": "1752",
-        "MAPPING1N": "1752",
-        "MAPPING1H": "1752"
-      },
-      {
-        "SYMBOLID": "S*G*EWHH--*****",
-        "DESCRIPTION": "Howitzer Heavy",
-        "MAPPING1U": "1753",
-        "MAPPING1F": "1753",
-        "MAPPING1N": "1753",
-        "MAPPING1H": "1753"
-      },
-      {
-        "SYMBOLID": "S*G*EWHHS-*****",
-        "DESCRIPTION": "Howitzer Heavy Self-Propelled",
-        "MAPPING1U": "1754",
-        "MAPPING1F": "1754",
-        "MAPPING1N": "1754",
-        "MAPPING1H": "1754"
-      },
-      {
-        "SYMBOLID": "S*G*EWG---*****",
-        "DESCRIPTION": "Anti-Tank Gun",
-        "MAPPING1U": "1755",
-        "MAPPING1F": "1755",
-        "MAPPING1N": "1755",
-        "MAPPING1H": "1755"
-      },
-      {
-        "SYMBOLID": "S*G*EWGL--*****",
-        "DESCRIPTION": "Anti-Tank Gun Light",
-        "MAPPING1U": "1756",
-        "MAPPING1F": "1756",
-        "MAPPING1N": "1756",
-        "MAPPING1H": "1756"
-      },
-      {
-        "SYMBOLID": "S*G*EWGM--*****",
-        "DESCRIPTION": "Anti-Tank Gun Medium",
-        "MAPPING1U": "1757",
-        "MAPPING1F": "1757",
-        "MAPPING1N": "1757",
-        "MAPPING1H": "1757"
-      },
-      {
-        "SYMBOLID": "S*G*EWGH--*****",
-        "DESCRIPTION": "Anti-Tank Gun Heavy",
-        "MAPPING1U": "1758",
-        "MAPPING1F": "1758",
-        "MAPPING1N": "1758",
-        "MAPPING1H": "1758"
-      },
-      {
-        "SYMBOLID": "S*G*EWGR--*****",
-        "DESCRIPTION": "Anti-Tank Gun Recoilless",
-        "MAPPING1U": "1759",
-        "MAPPING1F": "1759",
-        "MAPPING1N": "1759",
-        "MAPPING1H": "1759"
-      },
-      {
-        "SYMBOLID": "S*G*EWD---*****",
-        "DESCRIPTION": "Direct Fire Gun",
-        "MAPPING1U": "1760",
-        "MAPPING1F": "1760",
-        "MAPPING1N": "1760",
-        "MAPPING1H": "1760"
-      },
-      {
-        "SYMBOLID": "S*G*EWDL--*****",
-        "DESCRIPTION": "Direct Fire Gun Light",
-        "MAPPING1U": "1761",
-        "MAPPING1F": "1761",
-        "MAPPING1N": "1761",
-        "MAPPING1H": "1761"
-      },
-      {
-        "SYMBOLID": "S*G*EWDLS-*****",
-        "DESCRIPTION": "Direct Fire Gun Light Self-Propelled",
-        "MAPPING1U": "1762",
-        "MAPPING1F": "1762",
-        "MAPPING1N": "1762",
-        "MAPPING1H": "1762"
-      },
-      {
-        "SYMBOLID": "S*G*EWDM--*****",
-        "DESCRIPTION": "Direct Fire Gun Medium",
-        "MAPPING1U": "1763",
-        "MAPPING1F": "1763",
-        "MAPPING1N": "1763",
-        "MAPPING1H": "1763"
-      },
-      {
-        "SYMBOLID": "S*G*EWDMS-*****",
-        "DESCRIPTION": "Direct Fire Gun Medium Self-Propelled",
-        "MAPPING1U": "1764",
-        "MAPPING1F": "1764",
-        "MAPPING1N": "1764",
-        "MAPPING1H": "1764"
-      },
-      {
-        "SYMBOLID": "S*G*EWDH--*****",
-        "DESCRIPTION": "Direct Fire Gun Heavy",
-        "MAPPING1U": "1765",
-        "MAPPING1F": "1765",
-        "MAPPING1N": "1765",
-        "MAPPING1H": "1765"
-      },
-      {
-        "SYMBOLID": "S*G*EWDHS-*****",
-        "DESCRIPTION": "Direct Fire Gun Heavy Self-Propelled",
-        "MAPPING1U": "1766",
-        "MAPPING1F": "1766",
-        "MAPPING1N": "1766",
-        "MAPPING1H": "1766"
-      },
-      {
-        "SYMBOLID": "S*G*EWA---*****",
-        "DESCRIPTION": "Air Defense Gun",
-        "MAPPING1U": "1767",
-        "MAPPING1F": "1767",
-        "MAPPING1N": "1767",
-        "MAPPING1H": "1767"
-      },
-      {
-        "SYMBOLID": "S*G*EWAL--*****",
-        "DESCRIPTION": "Air Defense Gun Light",
-        "MAPPING1U": "1768",
-        "MAPPING1F": "1768",
-        "MAPPING1N": "1768",
-        "MAPPING1H": "1768"
-      },
-      {
-        "SYMBOLID": "S*G*EWAM--*****",
-        "DESCRIPTION": "Air Defense Gun Medium",
-        "MAPPING1U": "1769",
-        "MAPPING1F": "1769",
-        "MAPPING1N": "1769",
-        "MAPPING1H": "1769"
-      },
-      {
-        "SYMBOLID": "S*G*EWAH--*****",
-        "DESCRIPTION": "Air Defense Gun Heavy",
-        "MAPPING1U": "1770",
-        "MAPPING1F": "1770",
-        "MAPPING1N": "1770",
-        "MAPPING1H": "1770"
-      },
-      {
-        "SYMBOLID": "S*G*EV----*****",
-        "DESCRIPTION": "Ground Vehicle",
-        "MAPPING1U": "1771",
-        "MAPPING1F": "1771",
-        "MAPPING1N": "1771",
-        "MAPPING1H": "1771"
-      },
-      {
-        "SYMBOLID": "S*G*EVA---*****",
-        "DESCRIPTION": "Armored Vehicle",
-        "MAPPING1U": "1772",
-        "MAPPING1F": "1772",
-        "MAPPING1N": "1772",
-        "MAPPING1H": "1772"
-      },
-      {
-        "SYMBOLID": "S*G*EVAT--*****",
-        "DESCRIPTION": "Tank",
-        "MAPPING1U": "1773",
-        "MAPPING1F": "1773",
-        "MAPPING1N": "1773",
-        "MAPPING1H": "1773"
-      },
-      {
-        "SYMBOLID": "S*G*EVATL-*****",
-        "DESCRIPTION": "Tank Light",
-        "MAPPING1U": "1774",
-        "MAPPING1F": "1774",
-        "MAPPING1N": "1774",
-        "MAPPING1H": "1774"
-      },
-      {
-        "SYMBOLID": "S*G*EVATLR*****",
-        "DESCRIPTION": "Tank Light Recovery",
-        "MAPPING1U": "1775",
-        "MAPPING1F": "1775",
-        "MAPPING1N": "1775",
-        "MAPPING1H": "1775"
-      },
-      {
-        "SYMBOLID": "S*G*EVATM-*****",
-        "DESCRIPTION": "Tank Medium",
-        "MAPPING1U": "1776",
-        "MAPPING1F": "1776",
-        "MAPPING1N": "1776",
-        "MAPPING1H": "1776"
-      },
-      {
-        "SYMBOLID": "S*G*EVATMR*****",
-        "DESCRIPTION": "Tank Medium Recovery",
-        "MAPPING1U": "1777",
-        "MAPPING1F": "1777",
-        "MAPPING1N": "1777",
-        "MAPPING1H": "1777"
-      },
-      {
-        "SYMBOLID": "S*G*EVATH-*****",
-        "DESCRIPTION": "Tank Heavy",
-        "MAPPING1U": "1778",
-        "MAPPING1F": "1778",
-        "MAPPING1N": "1778",
-        "MAPPING1H": "1778"
-      },
-      {
-        "SYMBOLID": "S*G*EVATHR*****",
-        "DESCRIPTION": "Tank Heavy Recovery",
-        "MAPPING1U": "1779",
-        "MAPPING1F": "1779",
-        "MAPPING1N": "1779",
-        "MAPPING1H": "1779"
-      },
-      {
-        "SYMBOLID": "S*G*EVAA--*****",
-        "DESCRIPTION": "Armored Personnel Carrier",
-        "MAPPING1U": "1780",
-        "MAPPING1F": "1780",
-        "MAPPING1N": "1780",
-        "MAPPING1H": "1780"
-      },
-      {
-        "SYMBOLID": "S*G*EVAAR-*****",
-        "DESCRIPTION": "Armored Personnel Carrier Recovery",
-        "MAPPING1U": "1781",
-        "MAPPING1F": "1781",
-        "MAPPING1N": "1781",
-        "MAPPING1H": "1781"
-      },
-      {
-        "SYMBOLID": "S*G*EVAI--*****",
-        "DESCRIPTION": "Armored Infantry",
-        "MAPPING1U": "1782",
-        "MAPPING1F": "1782",
-        "MAPPING1N": "1782",
-        "MAPPING1H": "1782"
-      },
-      {
-        "SYMBOLID": "S*G*EVAC--*****",
-        "DESCRIPTION": "C2V/ACV",
-        "MAPPING1U": "1783",
-        "MAPPING1F": "1783",
-        "MAPPING1N": "1783",
-        "MAPPING1H": "1783"
-      },
-      {
-        "SYMBOLID": "S*G*EVAS--*****",
-        "DESCRIPTION": "Combat Service Support Vehicle",
-        "MAPPING1U": "1784",
-        "MAPPING1F": "1784",
-        "MAPPING1N": "1784",
-        "MAPPING1H": "1784"
-      },
-      {
-        "SYMBOLID": "S*G*EVAL--*****",
-        "DESCRIPTION": "Light Armored Vehicle",
-        "MAPPING1U": "1785",
-        "MAPPING1F": "1785",
-        "MAPPING1N": "1785",
-        "MAPPING1H": "1785"
-      },
-      {
-        "SYMBOLID": "S*G*EVU---*****",
-        "DESCRIPTION": "Utility Vehicle",
-        "MAPPING1U": "1786",
-        "MAPPING1F": "1786",
-        "MAPPING1N": "1786",
-        "MAPPING1H": "1786"
-      },
-      {
-        "SYMBOLID": "S*G*EVUB--*****",
-        "DESCRIPTION": "Bus",
-        "MAPPING1U": "1787",
-        "MAPPING1F": "1787",
-        "MAPPING1N": "1787",
-        "MAPPING1H": "1787"
-      },
-      {
-        "SYMBOLID": "S*G*EVUS--*****",
-        "DESCRIPTION": "Semi",
-        "MAPPING1U": "1788",
-        "MAPPING1F": "1788",
-        "MAPPING1N": "1788",
-        "MAPPING1H": "1788"
-      },
-      {
-        "SYMBOLID": "S*G*EVUSL-*****",
-        "DESCRIPTION": "Semi Light",
-        "MAPPING1U": "1789",
-        "MAPPING1F": "1789",
-        "MAPPING1N": "1789",
-        "MAPPING1H": "1789"
-      },
-      {
-        "SYMBOLID": "S*G*EVUSM-*****",
-        "DESCRIPTION": "Semi Medium",
-        "MAPPING1U": "1790",
-        "MAPPING1F": "1790",
-        "MAPPING1N": "1790",
-        "MAPPING1H": "1790"
-      },
-      {
-        "SYMBOLID": "S*G*EVUSH-*****",
-        "DESCRIPTION": "Semi Heavy",
-        "MAPPING1U": "1791",
-        "MAPPING1F": "1791",
-        "MAPPING1N": "1791",
-        "MAPPING1H": "1791"
-      },
-      {
-        "SYMBOLID": "S*G*EVUL--*****",
-        "DESCRIPTION": "Limited Cross-Country Truck",
-        "MAPPING1U": "1792",
-        "MAPPING1F": "1792",
-        "MAPPING1N": "1792",
-        "MAPPING1H": "1792"
-      },
-      {
-        "SYMBOLID": "S*G*EVUX--*****",
-        "DESCRIPTION": "Cross-Country Truck",
-        "MAPPING1U": "1793",
-        "MAPPING1F": "1793",
-        "MAPPING1N": "1793",
-        "MAPPING1H": "1793"
-      },
-      {
-        "SYMBOLID": "S*G*EVUR--*****",
-        "DESCRIPTION": "Water Craft",
-        "MAPPING1U": "1794",
-        "MAPPING1F": "1794",
-        "MAPPING1N": "1794",
-        "MAPPING1H": "1794"
-      },
-      {
-        "SYMBOLID": "S*G*EVUT--*****",
-        "DESCRIPTION": "Tow Truck",
-        "MAPPING1U": "1795",
-        "MAPPING1F": "1795",
-        "MAPPING1N": "1795",
-        "MAPPING1H": "1795"
-      },
-      {
-        "SYMBOLID": "S*G*EVUTL-*****",
-        "DESCRIPTION": "Tow Truck Light",
-        "MAPPING1U": "1796",
-        "MAPPING1F": "1796",
-        "MAPPING1N": "1796",
-        "MAPPING1H": "1796"
-      },
-      {
-        "SYMBOLID": "S*G*EVUTH-*****",
-        "DESCRIPTION": "Tow Truck Heavy",
-        "MAPPING1U": "1797",
-        "MAPPING1F": "1797",
-        "MAPPING1N": "1797",
-        "MAPPING1H": "1797"
-      },
-      {
-        "SYMBOLID": "S*G*EVUA--*****",
-        "DESCRIPTION": "Ambulance",
-        "MAPPING1U": "1798",
-        "MAPPING1F": "1798",
-        "MAPPING1N": "1798",
-        "MAPPING1H": "1798"
-      },
-      {
-        "SYMBOLID": "S*G*EVUAA-*****",
-        "DESCRIPTION": "Ambulance Armored",
-        "MAPPING1U": "1799",
-        "MAPPING1F": "1799",
-        "MAPPING1N": "1799",
-        "MAPPING1H": "1799"
-      },
-      {
-        "SYMBOLID": "S*G*EVE---*****",
-        "DESCRIPTION": "Engineer Vehicle",
-        "MAPPING1U": "1800",
-        "MAPPING1F": "1800",
-        "MAPPING1N": "1800",
-        "MAPPING1H": "1800"
-      },
-      {
-        "SYMBOLID": "S*G*EVEB--*****",
-        "DESCRIPTION": "Engineer Vehicle Bridge",
-        "MAPPING1U": "1894",
-        "MAPPING1F": "1894",
-        "MAPPING1N": "1894",
-        "MAPPING1H": "1894"
-      },
-      {
-        "SYMBOLID": "S*G*EVEE--*****",
-        "DESCRIPTION": "Earthmover",
-        "MAPPING1U": "1801",
-        "MAPPING1F": "1801",
-        "MAPPING1N": "1801",
-        "MAPPING1H": "1801"
-      },
-      {
-        "SYMBOLID": "S*G*EVEC--*****",
-        "DESCRIPTION": "Construction Vehicle",
-        "MAPPING1U": "1802",
-        "MAPPING1F": "1802",
-        "MAPPING1N": "1802",
-        "MAPPING1H": "1802"
-      },
-      {
-        "SYMBOLID": "S*G*EVEM--*****",
-        "DESCRIPTION": "Mine Laying Vehicle",
-        "MAPPING1U": "1803",
-        "MAPPING1F": "1803",
-        "MAPPING1N": "1803",
-        "MAPPING1H": "1803"
-      },
-      {
-        "SYMBOLID": "S*G*EVEMV-*****",
-        "DESCRIPTION": "Armored Carrier with Volcano",
-        "MAPPING1U": "1804",
-        "MAPPING1F": "1804",
-        "MAPPING1N": "1804",
-        "MAPPING1H": "1804"
-      },
-      {
-        "SYMBOLID": "S*G*EVEML-*****",
-        "DESCRIPTION": "Truck Mounted with Volcano",
-        "MAPPING1U": "1805",
-        "MAPPING1F": "1805",
-        "MAPPING1N": "1805",
-        "MAPPING1H": "1805"
-      },
-      {
-        "SYMBOLID": "S*G*EVEA--*****",
-        "DESCRIPTION": "Mine Clearing Vehicle",
-        "MAPPING1U": "1806",
-        "MAPPING1F": "1806",
-        "MAPPING1N": "1806",
-        "MAPPING1H": "1806"
-      },
-      {
-        "SYMBOLID": "S*G*EVEAA-*****",
-        "DESCRIPTION": "Armored Mounted Mine Clearing Vehicle",
-        "MAPPING1U": "1807",
-        "MAPPING1F": "1807",
-        "MAPPING1N": "1807",
-        "MAPPING1H": "1807"
-      },
-      {
-        "SYMBOLID": "S*G*EVEAT-*****",
-        "DESCRIPTION": "Trailer Mounted Mine Clearing Vehicle",
-        "MAPPING1U": "1808",
-        "MAPPING1F": "1808",
-        "MAPPING1N": "1808",
-        "MAPPING1H": "1808"
-      },
-      {
-        "SYMBOLID": "S*G*EVED--*****",
-        "DESCRIPTION": "Dozer",
-        "MAPPING1U": "1809",
-        "MAPPING1F": "1809",
-        "MAPPING1N": "1809",
-        "MAPPING1H": "1809"
-      },
-      {
-        "SYMBOLID": "S*G*EVEDA-*****",
-        "DESCRIPTION": "Armored Dozer",
-        "MAPPING1U": "1810",
-        "MAPPING1F": "1810",
-        "MAPPING1N": "1810",
-        "MAPPING1H": "1810"
-      },
-      {
-        "SYMBOLID": "S*G*EVES--*****",
-        "DESCRIPTION": "Armored Assault",
-        "MAPPING1U": "1811",
-        "MAPPING1F": "1811",
-        "MAPPING1N": "1811",
-        "MAPPING1H": "1811"
-      },
-      {
-        "SYMBOLID": "S*G*EVER--*****",
-        "DESCRIPTION": "Armored Engineer Recon Vehicle (AERV)",
-        "MAPPING1U": "1812",
-        "MAPPING1F": "1812",
-        "MAPPING1N": "1812",
-        "MAPPING1H": "1812"
-      },
-      {
-        "SYMBOLID": "S*G*EVEH--*****",
-        "DESCRIPTION": "Backhoe",
-        "MAPPING1U": "1813",
-        "MAPPING1F": "1813",
-        "MAPPING1N": "1813",
-        "MAPPING1H": "1813"
-      },
-      {
-        "SYMBOLID": "S*G*EVEF--*****",
-        "DESCRIPTION": "Ferry Transporter",
-        "MAPPING1U": "1814",
-        "MAPPING1F": "1814",
-        "MAPPING1N": "1814",
-        "MAPPING1H": "1814"
-      },
-      {
-        "SYMBOLID": "S*G*EVT---*****",
-        "DESCRIPTION": "Train Locomotive",
-        "MAPPING1U": "1815",
-        "MAPPING1F": "1815",
-        "MAPPING1N": "1815",
-        "MAPPING1H": "1815"
-      },
-      {
-        "SYMBOLID": "S*G*EVC---*****",
-        "DESCRIPTION": "Civilian Vehicle",
-        "MAPPING1U": "1816",
-        "MAPPING1F": "1816",
-        "MAPPING1N": "1816",
-        "MAPPING1H": "1816"
-      },
-      {
-        "SYMBOLID": "S*G*EVCA--*****",
-        "DESCRIPTION": "Civilian Automobile",
-        "MAPPING1U": "1817",
-        "MAPPING1F": "1817",
-        "MAPPING1N": "1817",
-        "MAPPING1H": "1817",
-        "MAPPING2": "1818",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCAL-*****",
-        "DESCRIPTION": "Civilian Compact Automobile",
-        "MAPPING1U": "1819",
-        "MAPPING1F": "1819",
-        "MAPPING1N": "1819",
-        "MAPPING1H": "1819",
-        "MAPPING2": "1820",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCAM-*****",
-        "DESCRIPTION": "Civilian Midsize Automobile",
-        "MAPPING1U": "1821",
-        "MAPPING1F": "1821",
-        "MAPPING1N": "1821",
-        "MAPPING1H": "1821",
-        "MAPPING2": "1822",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCAH-*****",
-        "DESCRIPTION": "Civilian Automobile Sedan",
-        "MAPPING1U": "1823",
-        "MAPPING1F": "1823",
-        "MAPPING1N": "1823",
-        "MAPPING1H": "1823",
-        "MAPPING2": "1824",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCO--*****",
-        "DESCRIPTION": "Civilian Open-Bed Truck",
-        "MAPPING1U": "1825",
-        "MAPPING1F": "1825",
-        "MAPPING1N": "1825",
-        "MAPPING1H": "1825",
-        "MAPPING2": "1826",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCOL-*****",
-        "DESCRIPTION": "Civilian Pickup Truck",
-        "MAPPING1U": "1827",
-        "MAPPING1F": "1827",
-        "MAPPING1N": "1827",
-        "MAPPING1H": "1827",
-        "MAPPING2": "1828",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCOM-*****",
-        "DESCRIPTION": "Civilian Small Open-Bed Truck",
-        "MAPPING1U": "1829",
-        "MAPPING1F": "1829",
-        "MAPPING1N": "1829",
-        "MAPPING1H": "1829",
-        "MAPPING2": "1830",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCOH-*****",
-        "DESCRIPTION": "Civilian Large Open-Bed Truck",
-        "MAPPING1U": "1831",
-        "MAPPING1F": "1831",
-        "MAPPING1N": "1831",
-        "MAPPING1H": "1831",
-        "MAPPING2": "1832",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCM--*****",
-        "DESCRIPTION": "Civilian Multi-Passenger Vehicle",
-        "MAPPING1U": "1833",
-        "MAPPING1F": "1833",
-        "MAPPING1N": "1833",
-        "MAPPING1H": "1833",
-        "MAPPING2": "1834",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCML-*****",
-        "DESCRIPTION": "Civilian Multi-Passenger Van",
-        "MAPPING1U": "1835",
-        "MAPPING1F": "1835",
-        "MAPPING1N": "1835",
-        "MAPPING1H": "1835",
-        "MAPPING2": "1836",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCMM-*****",
-        "DESCRIPTION": "Civilian Small Bus",
-        "MAPPING1U": "1837",
-        "MAPPING1F": "1837",
-        "MAPPING1N": "1837",
-        "MAPPING1H": "1837",
-        "MAPPING2": "1838",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCMH-*****",
-        "DESCRIPTION": "Civilian Large Bus",
-        "MAPPING1U": "1839",
-        "MAPPING1F": "1839",
-        "MAPPING1N": "1839",
-        "MAPPING1H": "1839",
-        "MAPPING2": "1840",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCU--*****",
-        "DESCRIPTION": "Civilian Utility Vehicle",
-        "MAPPING1U": "1841",
-        "MAPPING1F": "1841",
-        "MAPPING1N": "1841",
-        "MAPPING1H": "1841",
-        "MAPPING2": "1842",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCUL-*****",
-        "DESCRIPTION": "Civilian Sport Utility Vehicle (SUV)",
-        "MAPPING1U": "1843",
-        "MAPPING1F": "1843",
-        "MAPPING1N": "1843",
-        "MAPPING1H": "1843",
-        "MAPPING2": "1844",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCUM-*****",
-        "DESCRIPTION": "Civilian Utility Small Box Truck",
-        "MAPPING1U": "1845",
-        "MAPPING1F": "1845",
-        "MAPPING1N": "1845",
-        "MAPPING1H": "1845",
-        "MAPPING2": "1846",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCUH-*****",
-        "DESCRIPTION": "Civilian Utility Large Box Truck",
-        "MAPPING1U": "1847",
-        "MAPPING1F": "1847",
-        "MAPPING1N": "1847",
-        "MAPPING1H": "1847",
-        "MAPPING2": "1848",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCJ--*****",
-        "DESCRIPTION": "Civilian Jeep Type Vehicle",
-        "MAPPING1U": "1849",
-        "MAPPING1F": "1849",
-        "MAPPING1N": "1849",
-        "MAPPING1H": "1849",
-        "MAPPING2": "1850",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCJL-*****",
-        "DESCRIPTION": "Civilian Small/Light Jeep Type Vehicle",
-        "MAPPING1U": "1851",
-        "MAPPING1F": "1851",
-        "MAPPING1N": "1851",
-        "MAPPING1H": "1851",
-        "MAPPING2": "1852",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCJM-*****",
-        "DESCRIPTION": "Civilian Medium Jeep Type Vehicle",
-        "MAPPING1U": "1853",
-        "MAPPING1F": "1853",
-        "MAPPING1N": "1853",
-        "MAPPING1H": "1853",
-        "MAPPING2": "1854",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCJH-*****",
-        "DESCRIPTION": "Civilian Large/Heavy Jeep Type Vehicle",
-        "MAPPING1U": "1855",
-        "MAPPING1F": "1855",
-        "MAPPING1N": "1855",
-        "MAPPING1H": "1855",
-        "MAPPING2": "1856",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCT--*****",
-        "DESCRIPTION": "Civilian Tractor Trailer Truck With Box Trailer",
-        "MAPPING1U": "1857",
-        "MAPPING1F": "1857",
-        "MAPPING1N": "1857",
-        "MAPPING1H": "1857",
-        "MAPPING2": "1858",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCTL-*****",
-        "DESCRIPTION": "Civilian Small/Light Box Trailer",
-        "MAPPING1U": "1859",
-        "MAPPING1F": "1859",
-        "MAPPING1N": "1859",
-        "MAPPING1H": "1859",
-        "MAPPING2": "1860",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCTM-*****",
-        "DESCRIPTION": "Civilian Medium Box Trailer",
-        "MAPPING1U": "1861",
-        "MAPPING1F": "1861",
-        "MAPPING1N": "1861",
-        "MAPPING1H": "1861",
-        "MAPPING2": "1862",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCTH-*****",
-        "DESCRIPTION": "Civilian Large/Heavy Box Trailer",
-        "MAPPING1U": "1863",
-        "MAPPING1F": "1863",
-        "MAPPING1N": "1863",
-        "MAPPING1H": "1863",
-        "MAPPING2": "1864",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCF--*****",
-        "DESCRIPTION": "Civilian Tractor Trailer Truck With Flatbed Trailer",
-        "MAPPING1U": "1865",
-        "MAPPING1F": "1865",
-        "MAPPING1N": "1865",
-        "MAPPING1H": "1865",
-        "MAPPING2": "1866",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCFL-*****",
-        "DESCRIPTION": "Civilian Small/Light Flatbed Trailer",
-        "MAPPING1U": "1867",
-        "MAPPING1F": "1867",
-        "MAPPING1N": "1867",
-        "MAPPING1H": "1867",
-        "MAPPING2": "1868",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCFM-*****",
-        "DESCRIPTION": "Civilian Medium Flatbed Trailer",
-        "MAPPING1U": "1869",
-        "MAPPING1F": "1869",
-        "MAPPING1N": "1869",
-        "MAPPING1H": "1869",
-        "MAPPING2": "1870",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVCFH-*****",
-        "DESCRIPTION": "Civilian Large/Heavy Flatbed Trailer",
-        "MAPPING1U": "1871",
-        "MAPPING1F": "1871",
-        "MAPPING1N": "1871",
-        "MAPPING1H": "1871",
-        "MAPPING2": "1872",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*G*EVS---*****",
-        "DESCRIPTION": "Missile Support",
-        "MAPPING1U": "1874",
-        "MAPPING1F": "1874",
-        "MAPPING1N": "1874",
-        "MAPPING1H": "1874"
-      },
-      {
-        "SYMBOLID": "S*G*EVST--*****",
-        "DESCRIPTION": "Transloader",
-        "MAPPING1U": "1875",
-        "MAPPING1F": "1875",
-        "MAPPING1N": "1875",
-        "MAPPING1H": "1875"
-      },
-      {
-        "SYMBOLID": "S*G*EVSR--*****",
-        "DESCRIPTION": "Transporter",
-		"MAPPING1U": "1876",
-        "MAPPING1F": "1876",
-        "MAPPING1N": "1876",
-        "MAPPING1H": "1876"
-      },
-      {
-        "SYMBOLID": "S*G*EVSC--*****",
-        "DESCRIPTION": "Crane/Loading Device",
-        "MAPPING1U": "1877",
-        "MAPPING1F": "1877",
-        "MAPPING1N": "1877",
-        "MAPPING1H": "1877"
-      },
-      {
-        "SYMBOLID": "S*G*EVSP--*****",
-        "DESCRIPTION": "Propellant Transporter",
-        "MAPPING1U": "1878",
-        "MAPPING1F": "1878",
-        "MAPPING1N": "1878",
-        "MAPPING1H": "1878"
-      },
-      {
-        "SYMBOLID": "S*G*EVSW--*****",
-        "DESCRIPTION": "Warhead Transporter",
-        "MAPPING1U": "1879",
-        "MAPPING1F": "1879",
-        "MAPPING1N": "1879",
-        "MAPPING1H": "1879"
-      },
-      {
-        "SYMBOLID": "S*G*EVM---*****",
-        "DESCRIPTION": "Pack Animal (S)",
-        "MAPPING1U": "1873",
-        "MAPPING1F": "1873",
-        "MAPPING1N": "1873",
-        "MAPPING1H": "1873"
-      },
-      {
-        "SYMBOLID": "S*G*ES----*****",
-        "DESCRIPTION": "Equipment Sensor",
-        "MAPPING1U": "1880",
-        "MAPPING1F": "1880",
-        "MAPPING1N": "1880",
-        "MAPPING1H": "1880"
-      },
-      {
-        "SYMBOLID": "S*G*ESR---*****",
-        "DESCRIPTION": "Sensor Radar",
-        "MAPPING1U": "1881",
-        "MAPPING1F": "1881",
-        "MAPPING1N": "1881",
-        "MAPPING1H": "1881"
-      },
-      {
-        "SYMBOLID": "S*G*ESE---*****",
-        "DESCRIPTION": "Emplaced Sensor",
-        "MAPPING1U": "1882",
-        "MAPPING1F": "1882",
-        "MAPPING1N": "1882",
-        "MAPPING1H": "1882"
-      },
-      {
-        "SYMBOLID": "S*G*EX----*****",
-        "DESCRIPTION": "Special"
-      },
-      {
-        "SYMBOLID": "S*G*EXL---*****",
-        "DESCRIPTION": "Laser",
-        "MAPPING1U": "1884",
-        "MAPPING1F": "1884",
-        "MAPPING1N": "1884",
-        "MAPPING1H": "1884"
-      },
-      {
-        "SYMBOLID": "S*G*EXN---*****",
-        "DESCRIPTION": "NBC Equipment",
-        "MAPPING1U": "1885",
-        "MAPPING1F": "1885",
-        "MAPPING1N": "1885",
-        "MAPPING1H": "1885"
-      },
-      {
-        "SYMBOLID": "S*G*EXF---*****",
-        "DESCRIPTION": "Flame Thrower",
-        "MAPPING1U": "1886",
-        "MAPPING1F": "1886",
-        "MAPPING1N": "1886",
-        "MAPPING1H": "1886"
-      },
-      {
-        "SYMBOLID": "S*G*EXM---*****",
-        "DESCRIPTION": "Land Mines",
-        "MAPPING1U": "1887",
-        "MAPPING1F": "1887",
-        "MAPPING1N": "1887",
-        "MAPPING1H": "1887"
-      },
-      {
-        "SYMBOLID": "S*G*EXMC--*****",
-        "DESCRIPTION": "Claymore",
-        "MAPPING1U": "1888",
-        "MAPPING1F": "1888",
-        "MAPPING1N": "1888",
-        "MAPPING1H": "1888"
-      },
-      {
-        "SYMBOLID": "S*G*EXML--*****",
-        "DESCRIPTION": "Less Than Lethal",
-        "MAPPING1U": "1889",
-        "MAPPING1F": "1889",
-        "MAPPING1N": "1889",
-        "MAPPING1H": "1889"
-      },
-      {
-        "SYMBOLID": "S*G*EXI---*****",
-        "DESCRIPTION": "Improvised Explosive Device (IED)",
-        "MAPPING1U": "1883",
-        "MAPPING1F": "1883",
-        "MAPPING1N": "1883",
-        "MAPPING1H": "1883"
-      },
-      {
-        "SYMBOLID": "IH8CK6F75V69VCF",
-        "DESCRIPTION": "BLANK"
-      },
-      {
-        "SYMBOLID": "S*G*EXI---MO***",
-        "DESCRIPTION": "Vehicle Borne Improvised Explosive Device"
-      },
-      {
-        "SYMBOLID": "S*G*I-----*****",
-        "DESCRIPTION": "Installation"
-      },
-      {
-        "SYMBOLID": "S*G*IR----*****",
-        "DESCRIPTION": "Raw Material Production/Storage",
-        "MAPPING1U": "1897",
-        "MAPPING1F": "1897",
-        "MAPPING1N": "1897",
-        "MAPPING1H": "1897"
-      },
-      {
-        "SYMBOLID": "S*G*IRM---*****",
-        "DESCRIPTION": "Raw Material Production/Storage Mine",
-        "MAPPING1U": "1898",
-        "MAPPING1F": "1898",
-        "MAPPING1N": "1898",
-        "MAPPING1H": "1898"
-      },
-      {
-        "SYMBOLID": "S*G*IRP---*****",
-        "DESCRIPTION": "Petroleum/Gas/Oil",
-        "MAPPING1U": "1899",
-        "MAPPING1F": "1899",
-        "MAPPING1N": "1899",
-        "MAPPING1H": "1899"
-      },
-      {
-        "SYMBOLID": "S*G*IRN---*****",
-        "DESCRIPTION": "NBC",
-        "MAPPING1U": "1900",
-        "MAPPING1F": "1900",
-        "MAPPING1N": "1900",
-        "MAPPING1H": "1900"
-      },
-      {
-        "SYMBOLID": "S*G*IRNB--*****",
-        "DESCRIPTION": "Production/Storage NBC Biological",
-        "MAPPING1U": "1901",
-        "MAPPING1F": "1901",
-        "MAPPING1N": "1901",
-        "MAPPING1H": "1901"
-      },
-      {
-        "SYMBOLID": "S*G*IRNC--*****",
-        "DESCRIPTION": "Production/Storage NBC Chemical",
-        "MAPPING1U": "1902",
-        "MAPPING1F": "1902",
-        "MAPPING1N": "1902",
-        "MAPPING1H": "1902"
-      },
-      {
-        "SYMBOLID": "S*G*IRNN--*****",
-        "DESCRIPTION": "Production/Storage NBC Nuclear",
-        "MAPPING1U": "1903",
-        "MAPPING1F": "1903",
-        "MAPPING1N": "1903",
-        "MAPPING1H": "1903"
-      },
-      {
-        "SYMBOLID": "S*G*IP----*****",
-        "DESCRIPTION": "Processing Facility",
-        "MAPPING1U": "1904",
-        "MAPPING1F": "1904",
-        "MAPPING1N": "1904",
-        "MAPPING1H": "1904"
-      },
-      {
-        "SYMBOLID": "S*G*IPD---*****",
-        "DESCRIPTION": "Processing Facility Decontamination",
-        "MAPPING1U": "1905",
-        "MAPPING1F": "1905",
-        "MAPPING1N": "1905",
-        "MAPPING1H": "1905"
-      },
-      {
-        "SYMBOLID": "S*G*IE----*****",
-        "DESCRIPTION": "Equipment Manufacture",
-        "MAPPING1U": "1906",
-        "MAPPING1F": "1906",
-        "MAPPING1N": "1906",
-        "MAPPING1H": "1906"
-      },
-      {
-        "SYMBOLID": "S*G*IU----*****",
-        "DESCRIPTION": "Service, Reasearch, Utility Facility",
-        "MAPPING1U": "1907",
-        "MAPPING1F": "1907",
-        "MAPPING1N": "1907",
-        "MAPPING1H": "1907"
-      },
-      {
-        "SYMBOLID": "S*G*IUR---*****",
-        "DESCRIPTION": "Technological Research Facility",
-        "MAPPING1U": "1908",
-        "MAPPING1F": "1908",
-        "MAPPING1N": "1908",
-        "MAPPING1H": "1908"
-      },
-      {
-        "SYMBOLID": "S*G*IUT---*****",
-        "DESCRIPTION": "Telecommunications Facility",
-        "MAPPING1U": "1909",
-        "MAPPING1F": "1909",
-        "MAPPING1N": "1909",
-        "MAPPING1H": "1909"
-      },
-      {
-        "SYMBOLID": "S*G*IUE---*****",
-        "DESCRIPTION": "Electric Power Facility",
-        "MAPPING1U": "1910",
-        "MAPPING1F": "1910",
-        "MAPPING1N": "1910",
-        "MAPPING1H": "1910"
-      },
-      {
-        "SYMBOLID": "S*G*IUEN--*****",
-        "DESCRIPTION": "Nuclear Plant",
-        "MAPPING1U": "1911",
-        "MAPPING1F": "1911",
-        "MAPPING1N": "1911",
-        "MAPPING1H": "1911"
-      },
-      {
-        "SYMBOLID": "S*G*IUED--*****",
-        "DESCRIPTION": "Dam",
-        "MAPPING1U": "1912",
-        "MAPPING1F": "1912",
-        "MAPPING1N": "1912",
-        "MAPPING1H": "1912"
-      },
-      {
-        "SYMBOLID": "S*G*IUEF--*****",
-        "DESCRIPTION": "Fossil Fuel",
-        "MAPPING1U": "1913",
-        "MAPPING1F": "1913",
-        "MAPPING1N": "1913",
-        "MAPPING1H": "1913"
-      },
-      {
-        "SYMBOLID": "S*G*IUP---*****",
-        "DESCRIPTION": "Public Water Services",
-        "MAPPING1U": "1914",
-        "MAPPING1F": "1914",
-        "MAPPING1N": "1914",
-        "MAPPING1H": "1914"
-      },
-      {
-        "SYMBOLID": "S*G*IM----*****",
-        "DESCRIPTION": "Military Materiel Facility"
-      },
-      {
-        "SYMBOLID": "S*G*IMF---*****",
-        "DESCRIPTION": "Nuclear Energy",
-        "MAPPING1U": "1915",
-        "MAPPING1F": "1915",
-        "MAPPING1N": "1915",
-        "MAPPING1H": "1915"
-      },
-      {
-        "SYMBOLID": "S*G*IMFA--*****",
-        "DESCRIPTION": "Atomic Energy Reactor",
-        "MAPPING1U": "1916",
-        "MAPPING1F": "1916",
-        "MAPPING1N": "1916",
-        "MAPPING1H": "1916"
-      },
-      {
-        "SYMBOLID": "S*G*IMFP--*****",
-        "DESCRIPTION": "Nuclear Material Production",
-        "MAPPING1U": "1917",
-        "MAPPING1F": "1917",
-        "MAPPING1N": "1917",
-        "MAPPING1H": "1917"
-      },
-      {
-        "SYMBOLID": "S*G*IMFPW-*****",
-        "DESCRIPTION": "Weapons Grade",
-        "MAPPING1U": "1918",
-        "MAPPING1F": "1918",
-        "MAPPING1N": "1918",
-        "MAPPING1H": "1918"
-      },
-      {
-        "SYMBOLID": "S*G*IMFS--*****",
-        "DESCRIPTION": "Nuclear Material Storage",
-        "MAPPING1U": "1919",
-        "MAPPING1F": "1919",
-        "MAPPING1N": "1919",
-        "MAPPING1H": "1919"
-      },
-      {
-        "SYMBOLID": "S*G*IMA---*****",
-        "DESCRIPTION": "Aircraft Production & Assembly",
-        "MAPPING1U": "1920",
-        "MAPPING1F": "1920",
-        "MAPPING1N": "1920",
-        "MAPPING1H": "1920"
-      },
-      {
-        "SYMBOLID": "S*G*IME---*****",
-        "DESCRIPTION": "Ammunition And Explosives Production",
-        "MAPPING1U": "1921",
-        "MAPPING1F": "1921",
-        "MAPPING1N": "1921",
-        "MAPPING1H": "1921"
-      },
-      {
-        "SYMBOLID": "S*G*IMG---*****",
-        "DESCRIPTION": "Armament Production",
-        "MAPPING1U": "1922",
-        "MAPPING1F": "1922",
-        "MAPPING1N": "1922",
-        "MAPPING1H": "1922"
-      },
-      {
-        "SYMBOLID": "S*G*IMV---*****",
-        "DESCRIPTION": "Military Vehicle Production",
-        "MAPPING1U": "1923",
-        "MAPPING1F": "1923",
-        "MAPPING1N": "1923",
-        "MAPPING1H": "1923"
-      },
-      {
-        "SYMBOLID": "S*G*IMN---*****",
-        "DESCRIPTION": "Engineering Equipment Production",
-        "MAPPING1U": "1924",
-        "MAPPING1F": "1924",
-        "MAPPING1N": "1924",
-        "MAPPING1H": "1924"
-      },
-      {
-        "SYMBOLID": "S*G*IMNB--*****",
-        "DESCRIPTION": "Engineering Equipment Production Bridge",
-        "MAPPING1U": "1925",
-        "MAPPING1F": "1925",
-        "MAPPING1N": "1925",
-        "MAPPING1H": "1925"
-      },
-      {
-        "SYMBOLID": "S*G*IMC---*****",
-        "DESCRIPTION": "Chemical & Biological Warfare Production",
-        "MAPPING1U": "1926",
-        "MAPPING1F": "1926",
-        "MAPPING1N": "1926",
-        "MAPPING1H": "1926"
-      },
-      {
-        "SYMBOLID": "S*G*IMS---*****",
-        "DESCRIPTION": "Ship Construction",
-        "MAPPING1U": "1927",
-        "MAPPING1F": "1927",
-        "MAPPING1N": "1927",
-        "MAPPING1H": "1927"
-      },
-      {
-        "SYMBOLID": "S*G*IMM---*****",
-        "DESCRIPTION": "Missile & Space System Production",
-        "MAPPING1U": "1928",
-        "MAPPING1F": "1928",
-        "MAPPING1N": "1928",
-        "MAPPING1H": "1928"
-      },
-      {
-        "SYMBOLID": "S*G*IG----*****",
-        "DESCRIPTION": "Government Leadership",
-        "MAPPING1U": "1929",
-        "MAPPING1F": "1929",
-        "MAPPING1N": "1929",
-        "MAPPING1H": "1929"
-      },
-      {
-        "SYMBOLID": "S*G*IB----*****",
-        "DESCRIPTION": "Military Base/Facility",
-        "MAPPING1U": "1930",
-        "MAPPING1F": "1930",
-        "MAPPING1N": "1930",
-        "MAPPING1H": "1930"
-      },
-      {
-        "SYMBOLID": "S*G*IBA---*****",
-        "DESCRIPTION": "Airport/Airbase",
-        "MAPPING1U": "1931",
-        "MAPPING1F": "1931",
-        "MAPPING1N": "1931",
-        "MAPPING1H": "1931"
-      },
-      {
-        "SYMBOLID": "S*G*IBN---*****",
-        "DESCRIPTION": "Seaport/Naval Base",
-        "MAPPING1U": "1932",
-        "MAPPING1F": "1932",
-        "MAPPING1N": "1932",
-        "MAPPING1H": "1932"
-      },
-      {
-        "SYMBOLID": "S*G*IT----*****",
-        "DESCRIPTION": "Transport Facility",
-        "MAPPING1U": "1933",
-        "MAPPING1F": "1933",
-        "MAPPING1N": "1933",
-        "MAPPING1H": "1933"
-      },
-      {
-        "SYMBOLID": "S*G*IX----*****",
-        "DESCRIPTION": "Medical Facility",
-        "MAPPING1U": "660",
-        "MAPPING1F": "661",
-        "MAPPING1N": "662",
-        "MAPPING1H": "663"
-      },
-      {
-        "SYMBOLID": "S*G*IXH---*****",
-        "DESCRIPTION": "Hospital",
-        "MAPPING1U": "660",
-        "MAPPING1F": "661",
-        "MAPPING1N": "662",
-        "MAPPING1H": "663",
-        "MAPPING2": "1935",
-        "MAPPING2COLOR": "#000000"
-      },
-      {
-        "SYMBOLID": "S*G*IC----*****",
-        "DESCRIPTION": "Tented Camp",
-        "MAPPING1U": "1891",
-        "MAPPING1F": "1891",
-        "MAPPING1N": "1891",
-        "MAPPING1H": "1891"
-      },
-      {
-        "SYMBOLID": "S*G*ICD---*****",
-        "DESCRIPTION": "Tented Camp, Displaced Persons/Refugees",
-        "MAPPING1U": "1892",
-        "MAPPING1F": "1892",
-        "MAPPING1N": "1892",
-        "MAPPING1H": "1892"
-      },
-      {
-        "SYMBOLID": "S*G*ICT---*****",
-        "DESCRIPTION": "Tented Training Camp",
-        "MAPPING1U": "1893",
-        "MAPPING1F": "1893",
-        "MAPPING1N": "1893",
-        "MAPPING1H": "1893"
-      },
-      {
-        "SYMBOLID": "S*G*IW----*****",
-        "DESCRIPTION": "Warehouse/Storage Facility",
-        "MAPPING1U": "1895",
-        "MAPPING1F": "1895",
-        "MAPPING1N": "1895",
-        "MAPPING1H": "1895"
-      },
-      {
-        "SYMBOLID": "S*S*------*****",
-        "DESCRIPTION": "Sea Surface Track"
-      },
-      {
-        "SYMBOLID": "S*S*C-----*****",
-        "DESCRIPTION": "Sea Surface Track Combatant",
-        "MAPPING1U": "1936",
-        "MAPPING1F": "1936",
-        "MAPPING1N": "1936",
-        "MAPPING1H": "1936",
-        "MAPPING2": "1937",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*CL----*****",
-        "DESCRIPTION": "Line",
-        "MAPPING1U": "1938",
-        "MAPPING1F": "1938",
-        "MAPPING1N": "1938",
-        "MAPPING1H": "1938"
-      },
-      {
-        "SYMBOLID": "S*S*CLCV--*****",
-        "DESCRIPTION": "Carrier",
-        "MAPPING1U": "1939",
-        "MAPPING1F": "1939",
-        "MAPPING1N": "1939",
-        "MAPPING1H": "1939"
-      },
-      {
-        "SYMBOLID": "S*S*CLBB--*****",
-        "DESCRIPTION": "Battleship",
-        "MAPPING1U": "1940",
-        "MAPPING1F": "1940",
-        "MAPPING1N": "1940",
-        "MAPPING1H": "1940"
-      },
-      {
-        "SYMBOLID": "S*S*CLCC--*****",
-        "DESCRIPTION": "Cruiser",
-        "MAPPING1U": "1941",
-        "MAPPING1F": "1941",
-        "MAPPING1N": "1941",
-        "MAPPING1H": "1941"
-      },
-      {
-        "SYMBOLID": "S*S*CLDD--*****",
-        "DESCRIPTION": "Destroyer",
-        "MAPPING1U": "1942",
-        "MAPPING1F": "1942",
-        "MAPPING1N": "1942",
-        "MAPPING1H": "1942"
-      },
-      {
-        "SYMBOLID": "S*S*CLFF--*****",
-        "DESCRIPTION": "Frigate/Corvette",
-        "MAPPING1U": "1943",
-        "MAPPING1F": "1943",
-        "MAPPING1N": "1943",
-        "MAPPING1H": "1943"
-      },
-      {
-        "SYMBOLID": "S*S*CLLL--*****",
-        "DESCRIPTION": "Littoral Combatant",
-        "MAPPING1U": "1944",
-        "MAPPING1F": "1944",
-        "MAPPING1N": "1944",
-        "MAPPING1H": "1944"
-      },
-      {
-        "SYMBOLID": "S*S*CLLLAS*****",
-        "DESCRIPTION": "Antisubmarine Warfare Mission Package",
-        "MAPPING1U": "1945",
-        "MAPPING1F": "1945",
-        "MAPPING1N": "1945",
-        "MAPPING1H": "1945"
-      },
-      {
-        "SYMBOLID": "S*S*CLLLMI*****",
-        "DESCRIPTION": "Mine Warfare Mission Package",
-        "MAPPING1U": "1946",
-        "MAPPING1F": "1946",
-        "MAPPING1N": "1946",
-        "MAPPING1H": "1946"
-      },
-      {
-        "SYMBOLID": "S*S*CLLLSU*****",
-        "DESCRIPTION": "Surface Warfare (SUW) Mission Package",
-        "MAPPING1U": "1947",
-        "MAPPING1F": "1947",
-        "MAPPING1N": "1947",
-        "MAPPING1H": "1947"
-      },
-      {
-        "SYMBOLID": "S*S*CA----*****",
-        "DESCRIPTION": "Amphibious Warfare Ship",
-        "MAPPING1U": "1948",
-        "MAPPING1F": "1948",
-        "MAPPING1N": "1948",
-        "MAPPING1H": "1948"
-      },
-      {
-        "SYMBOLID": "S*S*CALA--*****",
-        "DESCRIPTION": "Assault Vessel",
-        "MAPPING1U": "1949",
-        "MAPPING1F": "1949",
-        "MAPPING1N": "1949",
-        "MAPPING1H": "1949"
-      },
-      {
-        "SYMBOLID": "S*S*CALS--*****",
-        "DESCRIPTION": "Landing Ship",
-        "MAPPING1U": "1950",
-        "MAPPING1F": "1950",
-        "MAPPING1N": "1950",
-        "MAPPING1H": "1950"
-      },
-      {
-        "SYMBOLID": "S*S*CALSM-*****",
-        "DESCRIPTION": "Landing Ship Medium",
-        "MAPPING1U": "1951",
-        "MAPPING1F": "1951",
-        "MAPPING1N": "1951",
-        "MAPPING1H": "1951"
-      },
-      {
-        "SYMBOLID": "S*S*CALST-*****",
-        "DESCRIPTION": "Landing Ship Tank",
-        "MAPPING1U": "1952",
-        "MAPPING1F": "1952",
-        "MAPPING1N": "1952",
-        "MAPPING1H": "1952"
-      },
-      {
-        "SYMBOLID": "S*S*CALC--*****",
-        "DESCRIPTION": "Landing Craft",
-        "MAPPING1U": "1953",
-        "MAPPING1F": "1953",
-        "MAPPING1N": "1953",
-        "MAPPING1H": "1953"
-      },
-      {
-        "SYMBOLID": "S*S*CM----*****",
-        "DESCRIPTION": "Mine Warfare Vessel",
-        "MAPPING1U": "1954",
-        "MAPPING1F": "1954",
-        "MAPPING1N": "1954",
-        "MAPPING1H": "1954"
-      },
-      {
-        "SYMBOLID": "S*S*CMML--*****",
-        "DESCRIPTION": "Minelayer",
-        "MAPPING1U": "1955",
-        "MAPPING1F": "1955",
-        "MAPPING1N": "1955",
-        "MAPPING1H": "1955"
-      },
-      {
-        "SYMBOLID": "S*S*CMMS--*****",
-        "DESCRIPTION": "Minesweeper",
-        "MAPPING1U": "1956",
-        "MAPPING1F": "1956",
-        "MAPPING1N": "1956",
-        "MAPPING1H": "1956"
-      },
-      {
-        "SYMBOLID": "S*S*CMMH--*****",
-        "DESCRIPTION": "Minehunter",
-        "MAPPING1U": "1957",
-        "MAPPING1F": "1957",
-        "MAPPING1N": "1957",
-        "MAPPING1H": "1957"
-      },
-      {
-        "SYMBOLID": "S*S*CMMA--*****",
-        "DESCRIPTION": "MCM Support",
-        "MAPPING1U": "1958",
-        "MAPPING1F": "1958",
-        "MAPPING1N": "1958",
-        "MAPPING1H": "1958"
-      },
-      {
-        "SYMBOLID": "S*S*CP----*****",
-        "DESCRIPTION": "Sea Surface Combatant Patrol",
-        "MAPPING1U": "1959",
-        "MAPPING1F": "1959",
-        "MAPPING1N": "1959",
-        "MAPPING1H": "1959"
-      },
-      {
-        "SYMBOLID": "S*S*CPSB--*****",
-        "DESCRIPTION": "Antisubmarine Warfare",
-        "MAPPING1U": "1960",
-        "MAPPING1F": "1960",
-        "MAPPING1N": "1960",
-        "MAPPING1H": "1960"
-      },
-      {
-        "SYMBOLID": "S*S*CPSU--*****",
-        "DESCRIPTION": "Antisurface Warfare",
-        "MAPPING1U": "1961",
-        "MAPPING1F": "1961",
-        "MAPPING1N": "1961",
-        "MAPPING1H": "1961"
-      },
-      {
-        "SYMBOLID": "S*S*CPSUM-*****",
-        "DESCRIPTION": "Anti-Ship Missile",
-        "MAPPING1U": "1962",
-        "MAPPING1F": "1962",
-        "MAPPING1N": "1962",
-        "MAPPING1H": "1962"
-      },
-      {
-        "SYMBOLID": "S*S*CPSUT-*****",
-        "DESCRIPTION": "Torpedo(Antisurface Warfare)",
-        "MAPPING1U": "1963",
-        "MAPPING1F": "1963",
-        "MAPPING1N": "1963",
-        "MAPPING1H": "1963"
-      },
-      {
-        "SYMBOLID": "S*S*CPSUG-*****",
-        "DESCRIPTION": "Antisurface Warfare Gun",
-        "MAPPING1U": "1964",
-        "MAPPING1F": "1964",
-        "MAPPING1N": "1964",
-        "MAPPING1H": "1964"
-      },
-      {
-        "SYMBOLID": "S*S*CH----*****",
-        "DESCRIPTION": "Combatant Hovercraft",
-        "MAPPING1U": "1965",
-        "MAPPING1F": "1965",
-        "MAPPING1N": "1965",
-        "MAPPING1H": "1965"
-      },
-      {
-        "SYMBOLID": "S*S*S-----*****",
-        "DESCRIPTION": "Sea Surface Station",
-        "MAPPING1U": "1966",
-        "MAPPING1F": "1966",
-        "MAPPING1N": "1966",
-        "MAPPING1H": "1966"
-      },
-      {
-        "SYMBOLID": "S*S*SP----*****",
-        "DESCRIPTION": "Picket",
-        "MAPPING1U": "1967",
-        "MAPPING1F": "1967",
-        "MAPPING1N": "1967",
-        "MAPPING1H": "1967"
-      },
-      {
-        "SYMBOLID": "S*S*SA----*****",
-        "DESCRIPTION": "ASW Ship",
-        "MAPPING1U": "1968",
-        "MAPPING1F": "1968",
-        "MAPPING1N": "1968",
-        "MAPPING1H": "1968"
-      },
-      {
-        "SYMBOLID": "S*S*G-----*****",
-        "DESCRIPTION": "Navy Group",
-        "MAPPING1U": "1969",
-        "MAPPING1F": "1969",
-        "MAPPING1N": "1969",
-        "MAPPING1H": "1969"
-      },
-      {
-        "SYMBOLID": "S*S*GT----*****",
-        "DESCRIPTION": "Navy Task Force",
-        "MAPPING1U": "1970",
-        "MAPPING1F": "1970",
-        "MAPPING1N": "1970",
-        "MAPPING1H": "1970"
-      },
-      {
-        "SYMBOLID": "S*S*GG----*****",
-        "DESCRIPTION": "Navy Task Group",
-        "MAPPING1U": "1971",
-        "MAPPING1F": "1971",
-        "MAPPING1N": "1971",
-        "MAPPING1H": "1971"
-      },
-      {
-        "SYMBOLID": "S*S*GU----*****",
-        "DESCRIPTION": "Navy Task Unit",
-        "MAPPING1U": "1972",
-        "MAPPING1F": "1972",
-        "MAPPING1N": "1972",
-        "MAPPING1H": "1972"
-      },
-      {
-        "SYMBOLID": "S*S*GC----*****",
-        "DESCRIPTION": "Convoy",
-        "MAPPING1U": "1973",
-        "MAPPING1F": "1973",
-        "MAPPING1N": "1973",
-        "MAPPING1H": "1973"
-      },
-      {
-        "SYMBOLID": "S*S*CD----*****",
-        "DESCRIPTION": "Surface Decoy",
-        "MAPPING1U": "1974",
-        "MAPPING1F": "1974",
-        "MAPPING1N": "1974",
-        "MAPPING1H": "1974"
-      },
-      {
-        "SYMBOLID": "S*S*CU----*****",
-        "DESCRIPTION": "Unmanned Surface Vehicle (USV)",
-        "MAPPING1U": "1975",
-        "MAPPING1F": "1975",
-        "MAPPING1N": "1975",
-        "MAPPING1H": "1975"
-      },
-      {
-        "SYMBOLID": "S*S*CUM---*****",
-        "DESCRIPTION": "USV Mine Countermeasures",
-        "MAPPING1U": "1976",
-        "MAPPING1F": "1976",
-        "MAPPING1N": "1976",
-        "MAPPING1H": "1976"
-      },
-      {
-        "SYMBOLID": "S*S*CUS---*****",
-        "DESCRIPTION": "USV Antisubmarine Warfare",
-        "MAPPING1U": "1977",
-        "MAPPING1F": "1977",
-        "MAPPING1N": "1977",
-        "MAPPING1H": "1977"
-      },
-      {
-        "SYMBOLID": "S*S*CUN---*****",
-        "DESCRIPTION": "USV Antisurface Warfare",
-        "MAPPING1U": "1978",
-        "MAPPING1F": "1978",
-        "MAPPING1N": "1978",
-        "MAPPING1H": "1978"
-      },
-      {
-        "SYMBOLID": "S*S*CUR---*****",
-        "DESCRIPTION": "USV Remote Multimission Vehicle",
-        "MAPPING1U": "1979",
-        "MAPPING1F": "1979",
-        "MAPPING1N": "1979",
-        "MAPPING1H": "1979"
-      },
-      {
-        "SYMBOLID": "S*S*N-----*****",
-        "DESCRIPTION": "Noncombatant",
-        "MAPPING1U": "1980",
-        "MAPPING1F": "1980",
-        "MAPPING1N": "1980",
-        "MAPPING1H": "1980"
-      },
-      {
-        "SYMBOLID": "S*S*NR----*****",
-        "DESCRIPTION": "Underway Replenishment",
-        "MAPPING1U": "1981",
-        "MAPPING1F": "1981",
-        "MAPPING1N": "1981",
-        "MAPPING1H": "1981"
-      },
-      {
-        "SYMBOLID": "S*S*NF----*****",
-        "DESCRIPTION": "Fleet Support",
-        "MAPPING1U": "1982",
-        "MAPPING1F": "1982",
-        "MAPPING1N": "1982",
-        "MAPPING1H": "1982"
-      },
-      {
-        "SYMBOLID": "S*S*NI----*****",
-        "DESCRIPTION": "Intelligence",
-        "MAPPING1U": "1983",
-        "MAPPING1F": "1983",
-        "MAPPING1N": "1983",
-        "MAPPING1H": "1983"
-      },
-      {
-        "SYMBOLID": "S*S*NS----*****",
-        "DESCRIPTION": "Service & Support Harbor",
-        "MAPPING1U": "1984",
-        "MAPPING1F": "1984",
-        "MAPPING1N": "1984",
-        "MAPPING1H": "1984"
-      },
-      {
-        "SYMBOLID": "S*S*NM----*****",
-        "DESCRIPTION": "Hospital Ship",
-        "MAPPING1U": "1985",
-        "MAPPING1F": "1985",
-        "MAPPING1N": "1985",
-        "MAPPING1H": "1985"
-      },
-      {
-        "SYMBOLID": "S*S*NH----*****",
-        "DESCRIPTION": "Noncombatant Hovercraft",
-        "MAPPING1U": "1986",
-        "MAPPING1F": "1986",
-        "MAPPING1N": "1986",
-        "MAPPING1H": "1986",
-        "MAPPING2": "1987",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*NN----*****",
-        "DESCRIPTION": "Noncombatant Station",
-        "MAPPING1U": "1988",
-        "MAPPING1F": "1988",
-        "MAPPING1N": "1988",
-        "MAPPING1H": "1988"
-      },
-      {
-        "SYMBOLID": "S*S*NNR---*****",
-        "DESCRIPTION": "Rescue",
-        "MAPPING1U": "1989",
-        "MAPPING1F": "1989",
-        "MAPPING1N": "1989",
-        "MAPPING1H": "1989"
-      },
-      {
-        "SYMBOLID": "S*S*X-----*****",
-        "DESCRIPTION": "Non-Military"
-      },
-      {
-        "SYMBOLID": "S*S*XM----*****",
-        "DESCRIPTION": "Merchant",
-        "MAPPING1U": "1990",
-        "MAPPING1F": "1990",
-        "MAPPING1N": "1990",
-        "MAPPING1H": "1990",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XMC---*****",
-        "DESCRIPTION": "Subsurface Non-military Cargo",
-        "MAPPING1U": "1992",
-        "MAPPING1F": "1992",
-        "MAPPING1N": "1992",
-        "MAPPING1H": "1992",
+        "ID": "S*A*MHC---*****",
+        "D": "Rotary Wing Cargo AirLift (Transport)",
+        "M1U": "1072",
+        "M1F": "1072",
+        "M1N": "1072",
+        "M1H": "1072"
+      },
+      {
+        "ID": "S*A*MHCL--*****",
+        "D": "Rotary Wing Cargo Airlift (Light)",
+        "M1U": "1073",
+        "M1F": "1073",
+        "M1N": "1073",
+        "M1H": "1073"
+      },
+      {
+        "ID": "S*A*MHCM--*****",
+        "D": "Rotary Wing Cargo AirLift (Medium)",
+        "M1U": "1074",
+        "M1F": "1074",
+        "M1N": "1074",
+        "M1H": "1074"
+      },
+      {
+        "ID": "S*A*MHCH--*****",
+        "D": "Rotary Wing Cargo Airlift (Heavy)",
+        "M1U": "1075",
+        "M1F": "1075",
+        "M1N": "1075",
+        "M1H": "1075"
+      },
+      {
+        "ID": "S*A*MHT---*****",
+        "D": "Rotary Wing Trainer",
+        "M1U": "1076",
+        "M1F": "1076",
+        "M1N": "1076",
+        "M1H": "1076"
+      },
+      {
+        "ID": "S*A*MHO---*****",
+        "D": "Rotary Wing MEDEVAC",
+        "M1U": "1077",
+        "M1F": "1077",
+        "M1N": "1077",
+        "M1H": "1077"
+      },
+      {
+        "ID": "S*A*MHM---*****",
+        "D": "Rotary Wing Special Operations Forces",
+        "M1U": "1078",
+        "M1F": "1078",
+        "M1N": "1078",
+        "M1H": "1078"
+      },
+      {
+        "ID": "S*A*MHD---*****",
+        "D": "Rotary Wing Airborne Command Post",
+        "M1U": "1079",
+        "M1F": "1079",
+        "M1N": "1079",
+        "M1H": "1079"
+      },
+      {
+        "ID": "S*A*MHK---*****",
+        "D": "Rotary Wing Tanker",
+        "M1U": "1080",
+        "M1F": "1080",
+        "M1N": "1080",
+        "M1H": "1080"
+      },
+      {
+        "ID": "S*A*MHJ---*****",
+        "D": "Rotary Wing ECM/Jammer(TANKER)",
+        "M1U": "1081",
+        "M1F": "1081",
+        "M1N": "1081",
+        "M1H": "1081"
+      },
+      {
+        "ID": "S*A*ML----*****",
+        "D": "Military Aircraft Lighter Than Air",
+        "M1U": "1082",
+        "M1F": "1082",
+        "M1N": "1082",
+        "M1H": "1082"
+      },
+      {
+        "ID": "S*A*W-----*****",
+        "D": "Air Track Weapon",
+        "M1U": "1083",
+        "M1F": "1083",
+        "M1N": "1083",
+        "M1H": "1083",
+        "M2": "1084",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WM----*****",
+        "D": "Missile In Flight",
+        "M1U": "1083",
+        "M1F": "1083",
+        "M1N": "1083",
+        "M1H": "1083",
+        "M2": "1084",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMS---*****",
+        "D": "Surface Launched Missile",
+        "M1U": "1085",
+        "M1F": "1085",
+        "M1N": "1085",
+        "M1H": "1085",
+        "M2": "1084",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMSS--*****",
+        "D": "Surface to Surface Missile (SSM)",
+        "M1U": "1086",
+        "M1F": "1086",
+        "M1N": "1086",
+        "M1H": "1086",
+        "M2": "1084",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMSA--*****",
+        "D": "Surface To Air Missile (SAM)",
+        "M1U": "1087",
+        "M1F": "1087",
+        "M1N": "1087",
+        "M1H": "1087",
+        "M2": "1084",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMSU--*****",
+        "D": "Surface to Subsurface Missile",
+        "M1U": "1088",
+        "M1F": "1088",
+        "M1N": "1088",
+        "M1H": "1088",
+        "M2": "401",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMSB--*****",
+        "D": "Anti-Ballistic Missile (ABM)",
+        "M1U": "1089",
+        "M1F": "1089",
+        "M1N": "1089",
+        "M1H": "1089",
+        "M2": "401",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMA---*****",
+        "D": "Air Launched Missile",
+        "M1U": "1090",
+        "M1F": "1090",
+        "M1N": "1090",
+        "M1H": "1090",
+        "M2": "400",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMAS--*****",
+        "D": "Air To Surface Missile (ASM)",
+        "M1U": "1091",
+        "M1F": "1091",
+        "M1N": "1091",
+        "M1H": "1091",
+        "M2": "400",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMAA--*****",
+        "D": "Air To Air Missile (AAM)",
+        "M1U": "1093",
+        "M1F": "1093",
+        "M1N": "1093",
+        "M1H": "1093",
+        "M2": "400",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMAP--*****",
+        "D": "Air to Space Missile",
+        "M1U": "1094",
+        "M1F": "1094",
+        "M1N": "1094",
+        "M1H": "1094",
+        "M2": "401",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMU---*****",
+        "D": "Subsurface To Surface Missile (S/SSM)",
+        "M1U": "1095",
+        "M1F": "1095",
+        "M1N": "1095",
+        "M1H": "1095",
+        "M2": "401",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMCM--*****",
+        "D": "Cruise Missile",
+        "M1U": "1096",
+        "M1F": "1096",
+        "M1N": "1096",
+        "M1H": "1096",
+        "M2": "400",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WMB---*****",
+        "D": "Ballistic Missile",
+        "M1U": "1097",
+        "M1F": "1097",
+        "M1N": "1097",
+        "M1H": "1097",
+        "M2": "400",
+        "M2C": "#FFFF00"
+      },
+      {
+        "ID": "S*A*WD----*****",
+        "D": "Decoy",
+        "M1U": "1099",
+        "M1F": "1099",
+        "M1N": "1099",
+        "M1H": "1099"
+      },
+      {
+        "ID": "S*A*WB----*****",
+        "D": "Bomb",
+        "M1U": "1098",
+        "M1F": "1098",
+        "M1N": "1098",
+        "M1H": "1098"
+      },
+      {
+        "ID": "S*A*C-----*****",
+        "D": "Civil Aircraft",
+        "M1U": "1100",
+        "M1F": "1100",
+        "M1N": "1100",
+        "M1H": "1100"
+      },
+      {
+        "ID": "S*A*CF----*****",
+        "D": "Civil Fixed Wing",
+        "M1U": "1101",
+        "M1F": "1101",
+        "M1N": "1101",
+        "M1H": "1101",
+        "M2": "402",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*A*CH----*****",
+        "D": "Civil Rotary Wing",
+        "M1U": "1102",
+        "M1F": "1102",
+        "M1N": "1102",
+        "M1H": "1102",
+        "M2": "403",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*A*CL----*****",
+        "D": "Civil Aircraft Lighter Than Air",
+        "M1U": "1103",
+        "M1F": "1103",
+        "M1N": "1103",
+        "M1H": "1103",
+        "M2": "404",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*------*****",
+        "D": "Ground Track"
+      },
+      {
+        "ID": "S*G*U-----*****",
+        "D": "Unit"
+      },
+      {
+        "ID": "S*G*UC----*****",
+        "D": "Combat",
+        "M1U": "1104",
+        "M1F": "1104",
+        "M1N": "1104",
+        "M1H": "1104"
+      },
+      {
+        "ID": "S*G*UCD---*****",
+        "D": "Air Defense",
+        "M1U": "1105",
+        "M1F": "1106",
+        "M1N": "1107",
+        "M1H": "1108"
+      },
+      {
+        "ID": "S*G*UCDS--*****",
+        "D": "Short Range",
+        "M1U": "1109",
+        "M1F": "1110",
+        "M1N": "1111",
+        "M1H": "1112"
+      },
+      {
+        "ID": "S*G*UCDSC-*****",
+        "D": "Chaparral",
+        "M1U": "1113",
+        "M1F": "1114",
+        "M1N": "1115",
+        "M1H": "1116"
+      },
+      {
+        "ID": "S*G*UCDSS-*****",
+        "D": "Stinger",
+        "M1U": "1117",
+        "M1F": "1118",
+        "M1N": "1119",
+        "M1H": "1120"
+      },
+      {
+        "ID": "S*G*UCDSV-*****",
+        "D": "Vulcan",
+        "M1U": "1121",
+        "M1F": "1122",
+        "M1N": "1123",
+        "M1H": "1124"
+      },
+      {
+        "ID": "S*G*UCDM--*****",
+        "D": "Air Defense Missile",
+        "M1U": "1125",
+        "M1F": "1126",
+        "M1N": "1127",
+        "M1H": "1128"
+      },
+      {
+        "ID": "S*G*UCDML-*****",
+        "D": "Air Defense Missile Light",
+        "M1U": "1129",
+        "M1F": "1130",
+        "M1N": "1131",
+        "M1H": "1132"
+      },
+      {
+        "ID": "S*G*UCDMLA*****",
+        "D": "Air Defense Missile Motorized (Avenger)",
+        "M1U": "1133",
+        "M1F": "1134",
+        "M1N": "1135",
+        "M1H": "1136"
+      },
+      {
+        "ID": "S*G*UCDMM-*****",
+        "D": "Air Defense Missile Medium",
+        "M1U": "1137",
+        "M1F": "1138",
+        "M1N": "1139",
+        "M1H": "1140"
+      },
+      {
+        "ID": "S*G*UCDMH-*****",
+        "D": "Air Defense Missile Heavy",
+        "M1U": "1141",
+        "M1F": "1142",
+        "M1N": "1143",
+        "M1H": "1144"
+      },
+      {
+        "ID": "S*G*UCDH--*****",
+        "D": "H/MAD",
+        "M1U": "1145",
+        "M1F": "1146",
+        "M1N": "1147",
+        "M1H": "1148"
+      },
+      {
+        "ID": "S*G*UCDHH-*****",
+        "D": "Hawk",
+        "M1U": "1149",
+        "M1F": "1150",
+        "M1N": "1151",
+        "M1H": "1152"
+      },
+      {
+        "ID": "S*G*UCDHP-*****",
+        "D": "Patriot",
+        "M1U": "1153",
+        "M1F": "1154",
+        "M1N": "1155",
+        "M1H": "1156"
+      },
+      {
+        "ID": "S*G*UCDG--*****",
+        "D": "Gun Unit",
+        "M1U": "1157",
+        "M1F": "1158",
+        "M1N": "1159",
+        "M1H": "1160"
+      },
+      {
+        "ID": "S*G*UCDC--*****",
+        "D": "Air Defense Composite",
+        "M1U": "1161",
+        "M1F": "1162",
+        "M1N": "1163",
+        "M1H": "1164"
+      },
+      {
+        "ID": "S*G*UCDT--*****",
+        "D": "Targeting Unit",
+        "M1U": "1165",
+        "M1F": "1166",
+        "M1N": "1167",
+        "M1H": "1168"
+      },
+      {
+        "ID": "S*G*UCDO--*****",
+        "D": "Theater Missile Defense Unit",
+        "M1U": "1169",
+        "M1F": "1170",
+        "M1N": "1171",
+        "M1H": "1172"
+      },
+      {
+        "ID": "S*G*UCA---*****",
+        "D": "Armor",
+        "M1U": "1173",
+        "M1F": "1173",
+        "M1N": "1173",
+        "M1H": "1173"
+      },
+      {
+        "ID": "S*G*UCAT--*****",
+        "D": "Armor Track",
+        "M1U": "1173",
+        "M1F": "1173",
+        "M1N": "1173",
+        "M1H": "1173"
+      },
+      {
+        "ID": "S*G*UCATA-*****",
+        "D": "Armor Track Airborne",
+        "M1U": "1174",
+        "M1F": "1174",
+        "M1N": "1174",
+        "M1H": "1174"
+      },
+      {
+        "ID": "S*G*UCATW-*****",
+        "D": "Armor Track Amphibious",
+        "M1U": "1175",
+        "M1F": "1176",
+        "M1N": "1177",
+        "M1H": "1178"
+      },
+      {
+        "ID": "S*G*UCATWR*****",
+        "D": "Armor Track Amphibious Recovery",
+        "M1U": "1179",
+        "M1F": "1180",
+        "M1N": "1181",
+        "M1H": "1182"
+      },
+      {
+        "ID": "S*G*UCATL-*****",
+        "D": "Armor Track, Light",
+        "M1U": "1183",
+        "M1F": "1183",
+        "M1N": "1183",
+        "M1H": "1183"
+      },
+      {
+        "ID": "S*G*UCATM-*****",
+        "D": "Armor Track, Medium",
+        "M1U": "1184",
+        "M1F": "1184",
+        "M1N": "1184",
+        "M1H": "1184"
+      },
+      {
+        "ID": "S*G*UCATH-*****",
+        "D": "Armor Track, Heavy",
+        "M1U": "1185",
+        "M1F": "1185",
+        "M1N": "1185",
+        "M1H": "1185"
+      },
+      {
+        "ID": "S*G*UCATR-*****",
+        "D": "Armor Track, Recovery",
+        "M1U": "1186",
+        "M1F": "1186",
+        "M1N": "1186",
+        "M1H": "1186"
+      },
+      {
+        "ID": "S*G*UCAW--*****",
+        "D": "Armor, Wheeled",
+        "M1U": "1187",
+        "M1F": "1187",
+        "M1N": "1187",
+        "M1H": "1187"
+      },
+      {
+        "ID": "S*G*UCAWS-*****",
+        "D": "Armor, Wheeled Air Assault",
+        "M1U": "1188",
+        "M1F": "1188",
+        "M1N": "1188",
+        "M1H": "1188"
+      },
+      {
+        "ID": "S*G*UCAWA-*****",
+        "D": "Armor, Wheeled Airborne",
+        "M1U": "1189",
+        "M1F": "1189",
+        "M1N": "1189",
+        "M1H": "1189"
+      },
+      {
+        "ID": "S*G*UCAWW-*****",
+        "D": "Armor, Wheeled Amphibious",
+        "M1U": "1190",
+        "M1F": "1191",
+        "M1N": "1192",
+        "M1H": "1193"
+      },
+      {
+        "ID": "S*G*UCAWWR*****",
+        "D": "Armor, Wheeled Amphibious Recovery",
+        "M1U": "1194",
+        "M1F": "1195",
+        "M1N": "1196",
+        "M1H": "1197"
+      },
+      {
+        "ID": "S*G*UCAWL-*****",
+        "D": "Armor, Wheeled Light",
+        "M1U": "1198",
+        "M1F": "1198",
+        "M1N": "1198",
+        "M1H": "1198"
+      },
+      {
+        "ID": "S*G*UCAWM-*****",
+        "D": "Armor, Wheeled Medium",
+        "M1U": "1199",
+        "M1F": "1199",
+        "M1N": "1199",
+        "M1H": "1199"
+      },
+      {
+        "ID": "S*G*UCAWH-*****",
+        "D": "Armor, Wheeled Heavy",
+        "M1U": "1200",
+        "M1F": "1200",
+        "M1N": "1200",
+        "M1H": "1200"
+      },
+      {
+        "ID": "S*G*UCAWR-*****",
+        "D": "Armor, Wheeled Recovery",
+        "M1U": "1201",
+        "M1F": "1201",
+        "M1N": "1201",
+        "M1H": "1201"
+      },
+      {
+        "ID": "S*G*UCAA--*****",
+        "D": "Anti Armor",
+        "M1U": "1202",
+        "M1F": "1203",
+        "M1N": "1204",
+        "M1H": "1205"
+      },
+      {
+        "ID": "S*G*UCAAD-*****",
+        "D": "Anti Armor Dismounted",
+        "M1U": "1202",
+        "M1F": "1203",
+        "M1N": "1204",
+        "M1H": "1205"
+      },
+      {
+        "ID": "S*G*UCAAL-*****",
+        "D": "Anti Armor Light",
+        "M1U": "1206",
+        "M1F": "1207",
+        "M1N": "1208",
+        "M1H": "1209"
+      },
+      {
+        "ID": "S*G*UCAAM-*****",
+        "D": "Anti Armor Airborne",
+        "M1U": "1210",
+        "M1F": "1211",
+        "M1N": "1212",
+        "M1H": "1213"
+      },
+      {
+        "ID": "S*G*UCAAS-*****",
+        "D": "Anti Armor Air Assault",
+        "M1U": "1214",
+        "M1F": "1215",
+        "M1N": "1216",
+        "M1H": "1217"
+      },
+      {
+        "ID": "S*G*UCAAU-*****",
+        "D": "Anti Armor Mountain",
+        "M1U": "1218",
+        "M1F": "1219",
+        "M1N": "1220",
+        "M1H": "1221"
+      },
+      {
+        "ID": "S*G*UCAAC-*****",
+        "D": "Anti Armor Arctic",
+        "M1U": "1222",
+        "M1F": "1223",
+        "M1N": "1224",
+        "M1H": "1225"
+      },
+      {
+        "ID": "S*G*UCAAA-*****",
+        "D": "Anti Armor Armored",
+        "M1U": "1226",
+        "M1F": "1227",
+        "M1N": "1228",
+        "M1H": "1229"
+      },
+      {
+        "ID": "S*G*UCAAAT*****",
+        "D": "Anti Armor Armored Tracked",
+        "M1U": "1226",
+        "M1F": "1227",
+        "M1N": "1228",
+        "M1H": "1229"
+      },
+      {
+        "ID": "S*G*UCAAAW*****",
+        "D": "Anti Armor Armored Wheeled",
+        "M1U": "1230",
+        "M1F": "1231",
+        "M1N": "1232",
+        "M1H": "1233"
+      },
+      {
+        "ID": "S*G*UCAAAS*****",
+        "D": "Anti Armor Armored Air Assault",
+        "M1U": "1234",
+        "M1F": "1235",
+        "M1N": "1236",
+        "M1H": "1237"
+      },
+      {
+        "ID": "S*G*UCAAO-*****",
+        "D": "Anti Armor Motorized",
+        "M1U": "1238",
+        "M1F": "1239",
+        "M1N": "1240",
+        "M1H": "1241"
+      },
+      {
+        "ID": "S*G*UCAAOS*****",
+        "D": "Anti Armor Motorized Air Assault",
+        "M1U": "1242",
+        "M1F": "1243",
+        "M1N": "1244",
+        "M1H": "1245"
+      },
+      {
+        "ID": "S*G*UCV---*****",
+        "D": "Aviation",
+        "M1U": "1246",
+        "M1F": "1246",
+        "M1N": "1246",
+        "M1H": "1246"
+      },
+      {
+        "ID": "S*G*UCVF--*****",
+        "D": "Aviation Fixed Wing",
+        "M1U": "1247",
+        "M1F": "1247",
+        "M1N": "1247",
+        "M1H": "1247"
+      },
+      {
+        "ID": "S*G*UCVFU-*****",
+        "D": "Utility Fixed Wing",
+        "M1U": "1248",
+        "M1F": "1248",
+        "M1N": "1248",
+        "M1H": "1248"
+      },
+      {
+        "ID": "S*G*UCVFA-*****",
+        "D": "Fixed Wing Attack",
+        "M1U": "1249",
+        "M1F": "1249",
+        "M1N": "1249",
+        "M1H": "1249"
+      },
+      {
+        "ID": "S*G*UCVFR-*****",
+        "D": "Recon Fixed Wing",
+        "M1U": "1250",
+        "M1F": "1250",
+        "M1N": "1250",
+        "M1H": "1250"
+      },
+      {
+        "ID": "S*G*UCVR--*****",
+        "D": "Aviation Rotary Wing",
+        "M1U": "1251",
+        "M1F": "1251",
+        "M1N": "1251",
+        "M1H": "1251"
+      },
+      {
+        "ID": "S*G*UCVRA-*****",
+        "D": "Attack Rotary Wing",
+        "M1U": "1252",
+        "M1F": "1252",
+        "M1N": "1252",
+        "M1H": "1252"
+      },
+      {
+        "ID": "S*G*UCVRS-*****",
+        "D": "Scout Rotary Wing",
+        "M1U": "1253",
+        "M1F": "1253",
+        "M1N": "1253",
+        "M1H": "1253"
+      },
+      {
+        "ID": "S*G*UCVRW-*****",
+        "D": "Antisubmarine Warfare Rotary Wing",
+        "M1U": "1254",
+        "M1F": "1254",
+        "M1N": "1254",
+        "M1H": "1254"
+      },
+      {
+        "ID": "S*G*UCVRU-*****",
+        "D": "Utility Rotary Wing",
+        "M1U": "1255",
+        "M1F": "1255",
+        "M1N": "1255",
+        "M1H": "1255"
+      },
+      {
+        "ID": "S*G*UCVRUL*****",
+        "D": "Light Utility Rotary Wing",
+        "M1U": "1256",
+        "M1F": "1256",
+        "M1N": "1256",
+        "M1H": "1256"
+      },
+      {
+        "ID": "S*G*UCVRUM*****",
+        "D": "Medium Utility Rotary Wing",
+        "M1U": "1257",
+        "M1F": "1257",
+        "M1N": "1257",
+        "M1H": "1257"
+      },
+      {
+        "ID": "S*G*UCVRUH*****",
+        "D": "Heavy Utility Rotary Wing",
+        "M1U": "1258",
+        "M1F": "1258",
+        "M1N": "1258",
+        "M1H": "1258"
+      },
+      {
+        "ID": "S*G*UCVRUC*****",
+        "D": "C2 Rotary Wing",
+        "M1U": "1259",
+        "M1F": "1259",
+        "M1N": "1259",
+        "M1H": "1259"
+      },
+      {
+        "ID": "S*G*UCVRUE*****",
+        "D": "Medevac Rotary Wing",
+        "M1U": "1260",
+        "M1F": "1260",
+        "M1N": "1260",
+        "M1H": "1260"
+      },
+      {
+        "ID": "S*G*UCVRM-*****",
+        "D": "Mine Countermeasure Rotary Wing",
+        "M1U": "1261",
+        "M1F": "1261",
+        "M1N": "1261",
+        "M1H": "1261"
+      },
+      {
+        "ID": "S*G*UCVS--*****",
+        "D": "Search and Rescue",
+        "M1U": "1262",
+        "M1F": "1262",
+        "M1N": "1262",
+        "M1H": "1262"
+      },
+      {
+        "ID": "S*G*UCVC--*****",
+        "D": "Aviation Composite",
+        "M1U": "1263",
+        "M1F": "1263",
+        "M1N": "1263",
+        "M1H": "1263"
+      },
+      {
+        "ID": "S*G*UCVV--*****",
+        "D": "Vertical/Short Takeoff And Landing (V/Stol)",
+        "M1U": "1264",
+        "M1F": "1264",
+        "M1N": "1264",
+        "M1H": "1264"
+      },
+      {
+        "ID": "S*G*UCVU--*****",
+        "D": "Unmanned Aerial Vehicle",
+        "M1U": "1265",
+        "M1F": "1265",
+        "M1N": "1265",
+        "M1H": "1265"
+      },
+      {
+        "ID": "S*G*UCVUF-*****",
+        "D": "Unmanned Aerial Vehicle Fixed Wing",
+        "M1U": "1266",
+        "M1F": "1266",
+        "M1N": "1266",
+        "M1H": "1266"
+      },
+      {
+        "ID": "S*G*UCVUR-*****",
+        "D": "Unmanned Aerial Vehicle Rotary Wing",
+        "M1U": "1267",
+        "M1F": "1267",
+        "M1N": "1267",
+        "M1H": "1267"
+      },
+      {
+        "ID": "S*G*UCI---*****",
+        "D": "Infantry",
+        "M1U": "1268",
+        "M1F": "1269",
+        "M1N": "1270",
+        "M1H": "1271"
+      },
+      {
+        "ID": "S*G*UCIL--*****",
+        "D": "Infantry Light",
+        "M1U": "1272",
+        "M1F": "1273",
+        "M1N": "1274",
+        "M1H": "1275"
+      },
+      {
+        "ID": "S*G*UCIM--*****",
+        "D": "Infantry Motorized",
+        "M1U": "1276",
+        "M1F": "1277",
+        "M1N": "1278",
+        "M1H": "1279"
+      },
+      {
+        "ID": "S*G*UCIO--*****",
+        "D": "Infantry Mountain",
+        "M1U": "1280",
+        "M1F": "1281",
+        "M1N": "1282",
+        "M1H": "1283"
+      },
+      {
+        "ID": "S*G*UCIA--*****",
+        "D": "Infantry Airborne",
+        "M1U": "1284",
+        "M1F": "1285",
+        "M1N": "1286",
+        "M1H": "1287"
+      },
+      {
+        "ID": "S*G*UCIS--*****",
+        "D": "Infantry Air Assault",
+        "M1U": "1288",
+        "M1F": "1289",
+        "M1N": "1290",
+        "M1H": "1291"
+      },
+      {
+        "ID": "S*G*UCIZ--*****",
+        "D": "Infantry Mechanized",
+        "M1U": "1292",
+        "M1F": "1293",
+        "M1N": "1294",
+        "M1H": "1295"
+      },
+      {
+        "ID": "S*G*UCIN--*****",
+        "D": "Infantry Naval",
+        "M1U": "1296",
+        "M1F": "1297",
+        "M1N": "1298",
+        "M1H": "1299"
+      },
+      {
+        "ID": "S*G*UCII--*****",
+        "D": "Infantry Fighting Vehicle",
+        "M1U": "1300",
+        "M1F": "1301",
+        "M1N": "1302",
+        "M1H": "1303"
+      },
+      {
+        "ID": "S*G*UCIC--*****",
+        "D": "Infantry Arctic",
+        "M1U": "604",
+        "M1F": "605",
+        "M1N": "606",
+        "M1H": "607",
+        "M2": "1092"
+      },
+      {
+        "ID": "S*G*UCE---*****",
+        "D": "Engineer",
+        "M1U": "1304",
+        "M1F": "1304",
+        "M1N": "1304",
+        "M1H": "1304"
+      },
+      {
+        "ID": "S*G*UCEC--*****",
+        "D": "Engineer Combat",
+        "M1U": "1305",
+        "M1F": "1305",
+        "M1N": "1305",
+        "M1H": "1305"
+      },
+      {
+        "ID": "S*G*UCECS-*****",
+        "D": "Engineer Combat Air Assault",
+        "M1U": "1306",
+        "M1F": "1306",
+        "M1N": "1306",
+        "M1H": "1306"
+      },
+      {
+        "ID": "S*G*UCECA-*****",
+        "D": "Engineer Combat Airborne",
+        "M1U": "1307",
+        "M1F": "1307",
+        "M1N": "1307",
+        "M1H": "1307"
+      },
+      {
+        "ID": "S*G*UCECC-*****",
+        "D": "Engineer Combat Arctic",
+        "M1U": "1308",
+        "M1F": "1308",
+        "M1N": "1308",
+        "M1H": "1308"
+      },
+      {
+        "ID": "S*G*UCECL-*****",
+        "D": "Engineer Combat Light (Sapper)",
+        "M1U": "1309",
+        "M1F": "1309",
+        "M1N": "1309",
+        "M1H": "1309"
+      },
+      {
+        "ID": "S*G*UCECM-*****",
+        "D": "Engineer Combat Medium",
+        "M1U": "1310",
+        "M1F": "1310",
+        "M1N": "1310",
+        "M1H": "1310"
+      },
+      {
+        "ID": "S*G*UCECH-*****",
+        "D": "Engineer Combat Heavy",
+        "M1U": "1311",
+        "M1F": "1311",
+        "M1N": "1311",
+        "M1H": "1311"
+      },
+      {
+        "ID": "S*G*UCECT-*****",
+        "D": "Engineer Combat Mechanized (Track)",
+        "M1U": "1312",
+        "M1F": "1312",
+        "M1N": "1312",
+        "M1H": "1312"
+      },
+      {
+        "ID": "S*G*UCECW-*****",
+        "D": "Engineer Combat Motorized",
+        "M1U": "1313",
+        "M1F": "1314",
+        "M1N": "1315",
+        "M1H": "1316"
+      },
+      {
+        "ID": "S*G*UCECO-*****",
+        "D": "Engineer Combat Mountain",
+        "M1U": "1317",
+        "M1F": "1317",
+        "M1N": "1317",
+        "M1H": "1317"
+      },
+      {
+        "ID": "S*G*UCECR-*****",
+        "D": "Engineer Combat Recon",
+        "M1U": "1318",
+        "M1F": "1319",
+        "M1N": "1320",
+        "M1H": "1321"
+      },
+      {
+        "ID": "S*G*UCEN--*****",
+        "D": "Engineer Construction",
+        "M1U": "1322",
+        "M1F": "1322",
+        "M1N": "1322",
+        "M1H": "1322"
+      },
+      {
+        "ID": "S*G*UCENN-*****",
+        "D": "Engineer Naval Construction",
+        "M1U": "1323",
+        "M1F": "1323",
+        "M1N": "1323",
+        "M1H": "1323"
+      },
+      {
+        "ID": "S*G*UCF---*****",
+        "D": "Field Artillery",
+        "M1U": "1324",
+        "M1F": "1324",
+        "M1N": "1324",
+        "M1H": "1324"
+      },
+      {
+        "ID": "S*G*UCFH--*****",
+        "D": "Howitzer/Gun",
+        "M1U": "1324",
+        "M1F": "1324",
+        "M1N": "1324",
+        "M1H": "1324"
+      },
+      {
+        "ID": "S*G*UCFHE-*****",
+        "D": "Self-Propelled",
+        "M1U": "1325",
+        "M1F": "1325",
+        "M1N": "1325",
+        "M1H": "1325"
+      },
+      {
+        "ID": "S*G*UCFHS-*****",
+        "D": "Howitzer/Gun Air Assault",
+        "M1U": "1326",
+        "M1F": "1326",
+        "M1N": "1326",
+        "M1H": "1326"
+      },
+      {
+        "ID": "S*G*UCFHA-*****",
+        "D": "Howitzer/Gun Airborne",
+        "M1U": "1327",
+        "M1F": "1327",
+        "M1N": "1327",
+        "M1H": "1327"
+      },
+      {
+        "ID": "S*G*UCFHC-*****",
+        "D": "Arctic",
+        "M1U": "1328",
+        "M1F": "1328",
+        "M1N": "1328",
+        "M1H": "1328"
+      },
+      {
+        "ID": "S*G*UCFHO-*****",
+        "D": "Howitzer/Gun Mountain",
+        "M1U": "1329",
+        "M1F": "1329",
+        "M1N": "1329",
+        "M1H": "1329"
+      },
+      {
+        "ID": "S*G*UCFHL-*****",
+        "D": "Howitzer/Gun Light",
+        "M1U": "1330",
+        "M1F": "1330",
+        "M1N": "1330",
+        "M1H": "1330"
+      },
+      {
+        "ID": "S*G*UCFHM-*****",
+        "D": "Howitzer/Gun Medium",
+        "M1U": "1331",
+        "M1F": "1331",
+        "M1N": "1331",
+        "M1H": "1331"
+      },
+      {
+        "ID": "S*G*UCFHH-*****",
+        "D": "Heavy",
+        "M1U": "1332",
+        "M1F": "1332",
+        "M1N": "1332",
+        "M1H": "1332"
+      },
+      {
+        "ID": "S*G*UCFHX-*****",
+        "D": "Amphibious",
+        "M1U": "1333",
+        "M1F": "1334",
+        "M1N": "1335",
+        "M1H": "1336"
+      },
+      {
+        "ID": "S*G*UCFR--*****",
+        "D": "Rocket",
+        "M1U": "1337",
+        "M1F": "1337",
+        "M1N": "1337",
+        "M1H": "1337"
+      },
+      {
+        "ID": "S*G*UCFRS-*****",
+        "D": "Rocket Single Rocket Launcher",
+        "M1U": "1338",
+        "M1F": "1338",
+        "M1N": "1338",
+        "M1H": "1338"
+      },
+      {
+        "ID": "S*G*UCFRSS*****",
+        "D": "Single Rocket Self-Propelled",
+        "M1U": "1339",
+        "M1F": "1339",
+        "M1N": "1339",
+        "M1H": "1339"
+      },
+      {
+        "ID": "S*G*UCFRSR*****",
+        "D": "Single Rocket Truck",
+        "M1U": "1340",
+        "M1F": "1340",
+        "M1N": "1340",
+        "M1H": "1340"
+      },
+      {
+        "ID": "S*G*UCFRST*****",
+        "D": "Single Rocket Towed",
+        "M1U": "1341",
+        "M1F": "1341",
+        "M1N": "1341",
+        "M1H": "1341"
+      },
+      {
+        "ID": "S*G*UCFRM-*****",
+        "D": "Multi Rocket Launcher",
+        "M1U": "1342",
+        "M1F": "1342",
+        "M1N": "1342",
+        "M1H": "1342"
+      },
+      {
+        "ID": "S*G*UCFRMS*****",
+        "D": "Multi Rocket Self-Propelled",
+        "M1U": "1343",
+        "M1F": "1343",
+        "M1N": "1343",
+        "M1H": "1343"
+      },
+      {
+        "ID": "S*G*UCFRMR*****",
+        "D": "Multi Rocket Truck",
+        "M1U": "1344",
+        "M1F": "1344",
+        "M1N": "1344",
+        "M1H": "1344"
+      },
+      {
+        "ID": "S*G*UCFRMT*****",
+        "D": "Multi Rocket Towed",
+        "M1U": "1345",
+        "M1F": "1345",
+        "M1N": "1345",
+        "M1H": "1345"
+      },
+      {
+        "ID": "S*G*UCFT--*****",
+        "D": "Target Acquisition",
+        "M1U": "1346",
+        "M1F": "1346",
+        "M1N": "1346",
+        "M1H": "1346"
+      },
+      {
+        "ID": "S*G*UCFTR-*****",
+        "D": "Target Acquisition Radar",
+        "M1U": "1347",
+        "M1F": "1347",
+        "M1N": "1347",
+        "M1H": "1347"
+      },
+      {
+        "ID": "S*G*UCFTS-*****",
+        "D": "Sound",
+        "M1U": "1348",
+        "M1F": "1349",
+        "M1N": "1350",
+        "M1H": "1351",
+        "M2": "405",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFTF-*****",
+        "D": "Flash (Optical)",
+        "M1U": "1352",
+        "M1F": "1352",
+        "M1N": "1352",
+        "M1H": "1352"
+      },
+      {
+        "ID": "S*G*UCFTC-*****",
+        "D": "Colt/Fist",
+        "M1U": "1353",
+        "M1F": "1354",
+        "M1N": "1355",
+        "M1H": "1356"
+      },
+      {
+        "ID": "S*G*UCFTCD*****",
+        "D": "Dismounted Colt/Fist",
+        "M1U": "1357",
+        "M1F": "1358",
+        "M1N": "1359",
+        "M1H": "1360"
+      },
+      {
+        "ID": "S*G*UCFTCM*****",
+        "D": "Tracked Colt/Fist",
+        "M1U": "1361",
+        "M1F": "1362",
+        "M1N": "1363",
+        "M1H": "1364"
+      },
+      {
+        "ID": "S*G*UCFTA-*****",
+        "D": "Anglico",
+        "M1U": "1365",
+        "M1F": "1366",
+        "M1N": "1367",
+        "M1H": "1368"
+      },
+      {
+        "ID": "S*G*UCFM--*****",
+        "D": "Field Artillery Mortar",
+        "M1U": "1369",
+        "M1F": "1369",
+        "M1N": "1369",
+        "M1H": "1369"
+      },
+      {
+        "ID": "S*G*UCFMS-*****",
+        "D": "Self-Propelled (SP) Tracked Mortar",
+        "M1U": "1370",
+        "M1F": "1370",
+        "M1N": "1370",
+        "M1H": "1370"
+      },
+      {
+        "ID": "S*G*UCFMW-*****",
+        "D": "SP Wheeled Mortar",
+        "M1U": "1371",
+        "M1F": "1371",
+        "M1N": "1371",
+        "M1H": "1371"
+      },
+      {
+        "ID": "S*G*UCFMT-*****",
+        "D": "Towed Mortar",
+        "M1U": "1372",
+        "M1F": "1372",
+        "M1N": "1372",
+        "M1H": "1372"
+      },
+      {
+        "ID": "S*G*UCFMTA*****",
+        "D": "Towed Airborne Mortar",
+        "M1U": "1373",
+        "M1F": "1373",
+        "M1N": "1373",
+        "M1H": "1373"
+      },
+      {
+        "ID": "S*G*UCFMTS*****",
+        "D": "Towed Air Assault Mortar",
+        "M1U": "1374",
+        "M1F": "1374",
+        "M1N": "1374",
+        "M1H": "1374"
+      },
+      {
+        "ID": "S*G*UCFMTC*****",
+        "D": "Towed Arctic Mortar",
+        "M1U": "1375",
+        "M1F": "1375",
+        "M1N": "1375",
+        "M1H": "1375"
+      },
+      {
+        "ID": "S*G*UCFMTO*****",
+        "D": "Towed Mountain Mortar",
+        "M1U": "1376",
+        "M1F": "1376",
+        "M1N": "1376",
+        "M1H": "1376"
+      },
+      {
+        "ID": "S*G*UCFML-*****",
+        "D": "Amphibious Mortar",
+        "M1U": "1377",
+        "M1F": "1378",
+        "M1N": "1379",
+        "M1H": "1380"
+      },
+      {
+        "ID": "S*G*UCFS--*****",
+        "D": "Artillery Survey",
+        "M1U": "1381",
+        "M1F": "1381",
+        "M1N": "1381",
+        "M1H": "1381",
+        "M2": "1382",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFSS-*****",
+        "D": "Artillery Survey Air Assault",
+        "M1U": "1383",
+        "M1F": "1383",
+        "M1N": "1383",
+        "M1H": "1383",
+        "M2": "1384",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFSA-*****",
+        "D": "Artillery Survey Airborne",
+        "M1U": "1385",
+        "M1F": "1385",
+        "M1N": "1385",
+        "M1H": "1385",
+        "M2": "1386",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFSL-*****",
+        "D": "Artillery Survey Light",
+        "M1U": "1387",
+        "M1F": "1387",
+        "M1N": "1387",
+        "M1H": "1387",
+        "M2": "1388",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFSO-*****",
+        "D": "Artillery Survey Mountain",
+        "M1U": "1389",
+        "M1F": "1389",
+        "M1N": "1389",
+        "M1H": "1389",
+        "M2": "1390",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UCFO--*****",
+        "D": "Field Artillery Meteorological",
+        "M1U": "1391",
+        "M1F": "1391",
+        "M1N": "1391",
+        "M1H": "1391"
+      },
+      {
+        "ID": "S*G*UCFOS-*****",
+        "D": "Air Assault Meteorological",
+        "M1U": "1392",
+        "M1F": "1392",
+        "M1N": "1392",
+        "M1H": "1392"
+      },
+      {
+        "ID": "S*G*UCFOA-*****",
+        "D": "Airborne Meteorological",
+        "M1U": "1393",
+        "M1F": "1393",
+        "M1N": "1393",
+        "M1H": "1393"
+      },
+      {
+        "ID": "S*G*UCFOL-*****",
+        "D": "Light Meteorological",
+        "M1U": "1394",
+        "M1F": "1394",
+        "M1N": "1394",
+        "M1H": "1394"
+      },
+      {
+        "ID": "S*G*UCFOO-*****",
+        "D": "Mountain Meteorological",
+        "M1U": "1395",
+        "M1F": "1395",
+        "M1N": "1395",
+        "M1H": "1395"
+      },
+      {
+        "ID": "S*G*UCR---*****",
+        "D": "Combat Reconnaissance",
+        "M1U": "1396",
+        "M1F": "1397",
+        "M1N": "1398",
+        "M1H": "1399"
+      },
+      {
+        "ID": "S*G*UCRH--*****",
+        "D": "Reconnaissance Horse",
+        "M1U": "1400",
+        "M1F": "1400",
+        "M1N": "1400",
+        "M1H": "1400"
+      },
+      {
+        "ID": "S*G*UCRV--*****",
+        "D": "Reconnaissance Cavalry",
+        "M1U": "1401",
+        "M1F": "1402",
+        "M1N": "1403",
+        "M1H": "1404"
+      },
+      {
+        "ID": "S*G*UCRVA-*****",
+        "D": "Reconnaissance Cavalry Armored",
+        "M1U": "1405",
+        "M1F": "1406",
+        "M1N": "1407",
+        "M1H": "1408"
+      },
+      {
+        "ID": "S*G*UCRVM-*****",
+        "D": "Reconnaissance Cavalry Motorized",
+        "M1U": "1409",
+        "M1F": "1410",
+        "M1N": "1411",
+        "M1H": "1412"
+      },
+      {
+        "ID": "S*G*UCRVG-*****",
+        "D": "Reconnaissance Cavalry Ground",
+        "M1U": "1413",
+        "M1F": "1414",
+        "M1N": "1415",
+        "M1H": "1416"
+      },
+      {
+        "ID": "S*G*UCRVO-*****",
+        "D": "Reconnaissance Cavalry Air",
+        "M1U": "1417",
+        "M1F": "1418",
+        "M1N": "1419",
+        "M1H": "1420"
+      },
+      {
+        "ID": "S*G*UCRC--*****",
+        "D": "Reconnaissance Arctic",
+        "M1U": "1421",
+        "M1F": "1422",
+        "M1N": "1423",
+        "M1H": "1424"
+      },
+      {
+        "ID": "S*G*UCRS--*****",
+        "D": "Reconnaissance Air Assault",
+        "M1U": "1425",
+        "M1F": "1426",
+        "M1N": "1427",
+        "M1H": "1428"
+      },
+      {
+        "ID": "S*G*UCRA--*****",
+        "D": "Reconnaissance Airborne",
+        "M1U": "1429",
+        "M1F": "1430",
+        "M1N": "1431",
+        "M1H": "1432"
+      },
+      {
+        "ID": "S*G*UCRO--*****",
+        "D": "Reconnaissance Mountain",
+        "M1U": "1433",
+        "M1F": "1434",
+        "M1N": "1435",
+        "M1H": "1436"
+      },
+      {
+        "ID": "S*G*UCRL--*****",
+        "D": "Reconnaissance Light",
+        "M1U": "1437",
+        "M1F": "1438",
+        "M1N": "1439",
+        "M1H": "1440"
+      },
+      {
+        "ID": "S*G*UCRR--*****",
+        "D": "Reconnaissance Marine",
+        "M1U": "1441",
+        "M1F": "1442",
+        "M1N": "1443",
+        "M1H": "1444"
+      },
+      {
+        "ID": "S*G*UCRRD-*****",
+        "D": "Reconnaissance Marine Division",
+        "M1U": "1445",
+        "M1F": "1446",
+        "M1N": "1447",
+        "M1H": "1448"
+      },
+      {
+        "ID": "S*G*UCRRF-*****",
+        "D": "Reconnaissance Marine Force",
+        "M1U": "1449",
+        "M1F": "1450",
+        "M1N": "1451",
+        "M1H": "1452"
+      },
+      {
+        "ID": "S*G*UCRRL-*****",
+        "D": "Reconnaissance Marine Light Armored (LAR)",
+        "M1U": "1453",
+        "M1F": "1454",
+        "M1N": "1455",
+        "M1H": "1456"
+      },
+      {
+        "ID": "S*G*UCRX--*****",
+        "D": "Reconnaissance Long Range Surveillance (LRS)",
+        "M1U": "1457",
+        "M1F": "1458",
+        "M1N": "1459",
+        "M1H": "1460"
+      },
+      {
+        "ID": "S*G*UCM---*****",
+        "D": "Missile (Surf-Surf)",
+        "M1U": "1461",
+        "M1F": "1461",
+        "M1N": "1461",
+        "M1H": "1461"
+      },
+      {
+        "ID": "S*G*UCMT--*****",
+        "D": "Missile (Surf-Surf) Tactical",
+        "M1U": "1462",
+        "M1F": "1462",
+        "M1N": "1462",
+        "M1H": "1462"
+      },
+      {
+        "ID": "S*G*UCMS--*****",
+        "D": "Missile (Surf-Surf) Strategic",
+        "M1U": "1463",
+        "M1F": "1463",
+        "M1N": "1463",
+        "M1H": "1463"
+      },
+      {
+        "ID": "S*G*UCS---*****",
+        "D": "Internal Security Forces",
+        "M1U": "1464",
+        "M1F": "1464",
+        "M1N": "1464",
+        "M1H": "1464"
+      },
+      {
+        "ID": "S*G*UCSW--*****",
+        "D": "Internal Security Forces Riverine",
+        "M1U": "1465",
+        "M1F": "1466",
+        "M1N": "1467",
+        "M1H": "1468"
+      },
+      {
+        "ID": "S*G*UCSG--*****",
+        "D": "Internal Security Forces Ground",
+        "M1U": "1469",
+        "M1F": "1469",
+        "M1N": "1469",
+        "M1H": "1469"
+      },
+      {
+        "ID": "S*G*UCSGD-*****",
+        "D": "Internal Security Forces Dismounted",
+        "M1U": "1470",
+        "M1F": "1471",
+        "M1N": "1472",
+        "M1H": "1473"
+      },
+      {
+        "ID": "S*G*UCSGM-*****",
+        "D": "Internal Security Forces Motorized",
+        "M1U": "1474",
+        "M1F": "1475",
+        "M1N": "1476",
+        "M1H": "1477"
+      },
+      {
+        "ID": "S*G*UCSGA-*****",
+        "D": "Internal Security Forces Mechanized",
+        "M1U": "1478",
+        "M1F": "1478",
+        "M1N": "1478",
+        "M1H": "1478"
+      },
+      {
+        "ID": "S*G*UCSM--*****",
+        "D": "Internal Security Forces Wheeled Mechanized",
+        "M1U": "1479",
+        "M1F": "1479",
+        "M1N": "1479",
+        "M1H": "1479"
+      },
+      {
+        "ID": "S*G*UCSR--*****",
+        "D": "Internal Security Forces Railroad",
+        "M1U": "1480",
+        "M1F": "1480",
+        "M1N": "1480",
+        "M1H": "1480"
+      },
+      {
+        "ID": "S*G*UCSA--*****",
+        "D": "Internal Security Forces Aviation",
+        "M1U": "1481",
+        "M1F": "1481",
+        "M1N": "1481",
+        "M1H": "1481"
+      },
+      {
+        "ID": "S*G*UCL---*****",
+        "D": "Surveillance Unit",
+        "M1U": "1890",
+        "M1F": "1890",
+        "M1N": "1890",
+        "M1H": "1890"
+      },
+      {
+        "ID": "S*G*UU----*****",
+        "D": "Combat Support",
+        "M1U": "1482",
+        "M1F": "1482",
+        "M1N": "1482",
+        "M1H": "1482"
+      },
+      {
+        "ID": "S*G*UUA---*****",
+        "D": "Combat Support NBC",
+        "M1U": "1483",
+        "M1F": "1483",
+        "M1N": "1483",
+        "M1H": "1483"
+      },
+      {
+        "ID": "S*G*UUAC--*****",
+        "D": "Combat Support Chemical",
+        "M1U": "1484",
+        "M1F": "1484",
+        "M1N": "1484",
+        "M1H": "1484"
+      },
+      {
+        "ID": "S*G*UUACC-*****",
+        "D": "Smoke/Decon",
+        "M1U": "1485",
+        "M1F": "1485",
+        "M1N": "1485",
+        "M1H": "1485"
+      },
+      {
+        "ID": "S*G*UUACCK*****",
+        "D": "Mechanized Smoke/Decon",
+        "M1U": "1486",
+        "M1F": "1486",
+        "M1N": "1486",
+        "M1H": "1486"
+      },
+      {
+        "ID": "S*G*UUACCM*****",
+        "D": "Motorized Smoke/Decon",
+        "M1U": "1487",
+        "M1F": "1488",
+        "M1N": "1489",
+        "M1H": "1490"
+      },
+      {
+        "ID": "S*G*UUACS-*****",
+        "D": "Smoke",
+        "M1U": "1491",
+        "M1F": "1491",
+        "M1N": "1491",
+        "M1H": "1491"
+      },
+      {
+        "ID": "S*G*UUACSM*****",
+        "D": "Motorized Smoke",
+        "M1U": "1492",
+        "M1F": "1493",
+        "M1N": "1494",
+        "M1H": "1495"
+      },
+      {
+        "ID": "S*G*UUACSA*****",
+        "D": "Armor Smoke",
+        "M1U": "1496",
+        "M1F": "1496",
+        "M1N": "1496",
+        "M1H": "1496"
+      },
+      {
+        "ID": "S*G*UUACR-*****",
+        "D": "Chemical Recon",
+        "M1U": "1497",
+        "M1F": "1498",
+        "M1N": "1499",
+        "M1H": "1500"
+      },
+      {
+        "ID": "S*G*UUACRW*****",
+        "D": "Chemical Wheeled Armored Vehicle",
+        "M1U": "1501",
+        "M1F": "1502",
+        "M1N": "1503",
+        "M1H": "1504"
+      },
+      {
+        "ID": "S*G*UUACRS*****",
+        "D": "Chemical Wheeled Armored Vehicle Reconnaissance Surveillance",
+        "M1U": "1505",
+        "M1F": "1506",
+        "M1N": "1507",
+        "M1H": "1508"
+      },
+      {
+        "ID": "S*G*UUAN--*****",
+        "D": "Combat Support NBC Nuclear",
+        "M1U": "1509",
+        "M1F": "1509",
+        "M1N": "1509",
+        "M1H": "1509"
+      },
+      {
+        "ID": "S*G*UUAB--*****",
+        "D": "Combat Support NBC Biological",
+        "M1U": "1510",
+        "M1F": "1510",
+        "M1N": "1510",
+        "M1H": "1510"
+      },
+      {
+        "ID": "S*G*UUABR-*****",
+        "D": "Recon Equipped",
+        "M1U": "1511",
+        "M1F": "1512",
+        "M1N": "1513",
+        "M1H": "1514"
+      },
+      {
+        "ID": "S*G*UUAD--*****",
+        "D": "NBC Decontamination",
+        "M1U": "1515",
+        "M1F": "1515",
+        "M1N": "1515",
+        "M1H": "1515"
+      },
+      {
+        "ID": "S*G*UUM---*****",
+        "D": "Military Intelligence",
+        "M1U": "1516",
+        "M1F": "1516",
+        "M1N": "1516",
+        "M1H": "1516"
+      },
+      {
+        "ID": "S*G*UUMA--*****",
+        "D": "Aerial Exploitation",
+        "M1U": "1517",
+        "M1F": "1517",
+        "M1N": "1517",
+        "M1H": "1517"
+      },
+      {
+        "ID": "S*G*UUMS--*****",
+        "D": "Signal Intelligence (SIGINT)",
+        "M1U": "1518",
+        "M1F": "1518",
+        "M1N": "1518",
+        "M1H": "1518"
+      },
+      {
+        "ID": "S*G*UUMSE-*****",
+        "D": "Electronic Warfare",
+        "M1U": "1519",
+        "M1F": "1519",
+        "M1N": "1519",
+        "M1H": "1519"
+      },
+      {
+        "ID": "S*G*UUMSEA*****",
+        "D": "Armored Wheeled Vehicle",
+        "M1U": "600",
+        "M1F": "601",
+        "M1N": "602",
+        "M1H": "603",
+        "M2": "1520",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUMSED*****",
+        "D": "Direction Finding",
+        "M1U": "1521",
+        "M1F": "1521",
+        "M1N": "1521",
+        "M1H": "1521"
+      },
+      {
+        "ID": "S*G*UUMSEI*****",
+        "D": "Intercept",
+        "M1U": "1522",
+        "M1F": "1522",
+        "M1N": "1522",
+        "M1H": "1522"
+      },
+      {
+        "ID": "S*G*UUMSEJ*****",
+        "D": "Jamming",
+        "M1U": "1523",
+        "M1F": "1524",
+        "M1N": "1525",
+        "M1H": "1526"
+      },
+      {
+        "ID": "S*G*UUMSET*****",
+        "D": "Theater",
+        "M1U": "1527",
+        "M1F": "1528",
+        "M1N": "1529",
+        "M1H": "1530"
+      },
+      {
+        "ID": "S*G*UUMSEC*****",
+        "D": "Corps",
+        "M1U": "1531",
+        "M1F": "1532",
+        "M1N": "1533",
+        "M1H": "1534"
+      },
+      {
+        "ID": "S*G*UUMC--*****",
+        "D": "Counter Intelligence",
+        "M1U": "1535",
+        "M1F": "1535",
+        "M1N": "1535",
+        "M1H": "1535"
+      },
+      {
+        "ID": "S*G*UUMR--*****",
+        "D": "Counter Intelligence Surveillance",
+        "M1U": "1536",
+        "M1F": "1536",
+        "M1N": "1536",
+        "M1H": "1536"
+      },
+      {
+        "ID": "S*G*UUMRG-*****",
+        "D": "Ground Surveillance Radar",
+        "M1U": "1537",
+        "M1F": "1537",
+        "M1N": "1537",
+        "M1H": "1537"
+      },
+      {
+        "ID": "S*G*UUMRS-*****",
+        "D": "Surveillance Sensor",
+        "M1U": "1538",
+        "M1F": "1539",
+        "M1N": "1540",
+        "M1H": "1541",
+        "M2": "1542",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UUMRSS*****",
+        "D": "Sensor SCM",
+        "M1U": "1543",
+        "M1F": "1544",
+        "M1N": "1545",
+        "M1H": "1546",
+        "M2": "1542",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UUMRX-*****",
+        "D": "Ground Station Module",
+        "M1U": "1547",
+        "M1F": "1547",
+        "M1N": "1547",
+        "M1H": "1547"
+      },
+      {
+        "ID": "S*G*UUMMO-*****",
+        "D": "Surveillance Meteorological",
+        "M1U": "1548",
+        "M1F": "1548",
+        "M1N": "1548",
+        "M1H": "1548"
+      },
+      {
+        "ID": "S*G*UUMO--*****",
+        "D": "Military Intelligence Operations",
+        "M1U": "1549",
+        "M1F": "1549",
+        "M1N": "1549",
+        "M1H": "1549"
+      },
+      {
+        "ID": "S*G*UUMT--*****",
+        "D": "Tactical Exploit",
+        "M1U": "1550",
+        "M1F": "1550",
+        "M1N": "1550",
+        "M1H": "1550"
+      },
+      {
+        "ID": "S*G*UUMQ--*****",
+        "D": "Interrogation",
+        "M1U": "1551",
+        "M1F": "1551",
+        "M1N": "1551",
+        "M1H": "1551"
+      },
+      {
+        "ID": "S*G*UUMJ--*****",
+        "D": "Joint Intelligence Center",
+        "M1U": "1552",
+        "M1F": "1552",
+        "M1N": "1552",
+        "M1H": "1552"
+      },
+      {
+        "ID": "S*G*UUL---*****",
+        "D": "Law Enforcement Unit",
+        "M1U": "1553",
+        "M1F": "1553",
+        "M1N": "1553",
+        "M1H": "1553"
+      },
+      {
+        "ID": "S*G*UULS--*****",
+        "D": "Shore Patrol",
+        "M1U": "1554",
+        "M1F": "1554",
+        "M1N": "1554",
+        "M1H": "1554"
+      },
+      {
+        "ID": "S*G*UULM--*****",
+        "D": "Military Police",
+        "M1U": "1555",
+        "M1F": "1555",
+        "M1N": "1555",
+        "M1H": "1555"
+      },
+      {
+        "ID": "S*G*UULC--*****",
+        "D": "Civilian Law Enforcement",
+        "M1U": "1556",
+        "M1F": "1556",
+        "M1N": "1556",
+        "M1H": "1556"
+      },
+      {
+        "ID": "S*G*UULF--*****",
+        "D": "Security Police (Air)",
+        "M1U": "1557",
+        "M1F": "1557",
+        "M1N": "1557",
+        "M1H": "1557"
+      },
+      {
+        "ID": "S*G*UULD--*****",
+        "D": "Central Intelligence Division (CID)",
+        "M1U": "1558",
+        "M1F": "1558",
+        "M1N": "1558",
+        "M1H": "1558"
+      },
+      {
+        "ID": "S*G*UUS---*****",
+        "D": "Signal Unit",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562"
+      },
+      {
+        "ID": "S*G*UUSA--*****",
+        "D": "Area",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1563",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSC--*****",
+        "D": "Communication Configured Package",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1564",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSCL-*****",
+        "D": "Large Communication Configured Package (LCCP)",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1565",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSO--*****",
+        "D": "Command Operations",
+        "M1U": "1559",
+        "M2": "1566",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSF--*****",
+        "D": "Forward Communications",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1567",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSM--*****",
+        "D": "Multiple Subscriber Element",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1568",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSMS-*****",
+        "D": "Small Extension Node",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1569",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSML-*****",
+        "D": "Large Extension Node",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1570",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSMN-*****",
+        "D": "Node Center",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1571",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSR--*****",
+        "D": "Radio Unit",
+        "M1U": "1572",
+        "M1F": "1573",
+        "M1N": "1574",
+        "M1H": "1575"
+      },
+      {
+        "ID": "S*G*UUSRS-*****",
+        "D": "Tactical Satellite",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1576",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSRT-*****",
+        "D": "Teletype Center",
+        "M1U": "1577",
+        "M1F": "1578",
+        "M1N": "1579",
+        "M1H": "1580"
+      },
+      {
+        "ID": "S*G*UUSRW-*****",
+        "D": "Relay",
+        "M1U": "1581",
+        "M1F": "1582",
+        "M1N": "1583",
+        "M1H": "1584"
+      },
+      {
+        "ID": "S*G*UUSS--*****",
+        "D": "Signal Support",
+        "M1U": "1559",
+        "M1F": "1560",
+        "M1N": "1561",
+        "M1H": "1562",
+        "M2": "1585",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUSW--*****",
+        "D": "Telephone Switch",
+        "M1U": "1586",
+        "M1F": "1587",
+        "M1N": "1588",
+        "M1H": "1589"
+      },
+      {
+        "ID": "S*G*UUSX--*****",
+        "D": "Electronic Ranging",
+        "M1U": "1590",
+        "M1F": "1590",
+        "M1N": "1590",
+        "M1H": "1590",
+        "M2": "1591",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*UUI---*****",
+        "D": "Information Warfare Unit",
+        "M1U": "1592",
+        "M1F": "1592",
+        "M1N": "1592",
+        "M1H": "1592"
+      },
+      {
+        "ID": "S*G*UUP---*****",
+        "D": "Landing Support",
+        "M1U": "612",
+        "M1F": "613",
+        "M1N": "614",
+        "M1H": "615",
+        "M2": "1593",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UUE---*****",
+        "D": "Explosive Ordnance Disposal",
+        "M1U": "1594",
+        "M1F": "1594",
+        "M1N": "1594",
+        "M1H": "1594"
+      },
+      {
+        "ID": "S*G*US----*****",
+        "D": "Combat Service Support",
+        "M1U": "1595",
+        "M1F": "1595",
+        "M1N": "1595",
+        "M1H": "1595"
+      },
+      {
+        "ID": "S*G*USA---*****",
+        "D": "Administrative (ADMIN)",
+        "M1U": "1596",
+        "M1F": "1596",
+        "M1N": "1596",
+        "M1H": "1596"
+      },
+      {
+        "ID": "S*G*USAT--*****",
+        "D": "Admin Theater",
+        "M1U": "1597",
+        "M1F": "1598",
+        "M1N": "1599",
+        "M1H": "1600"
+      },
+      {
+        "ID": "S*G*USAC--*****",
+        "D": "Admin Corps",
+        "M1U": "1601",
+        "M1F": "1602",
+        "M1N": "1603",
+        "M1H": "1604"
+      },
+      {
+        "ID": "S*G*USAJ--*****",
+        "D": "Judge Advocate General (JAG)",
+        "M1U": "1605",
+        "M1F": "1605",
+        "M1N": "1605",
+        "M1H": "1605"
+      },
+      {
+        "ID": "S*G*USAJT-*****",
+        "D": "JAG Theater",
+        "M1U": "1606",
+        "M1F": "1607",
+        "M1N": "1608",
+        "M1H": "1609"
+      },
+      {
+        "ID": "S*G*USAJC-*****",
+        "D": "JAG Corps",
+        "M1U": "1610",
+        "M1F": "1611",
+        "M1N": "1612",
+        "M1H": "1613"
+      },
+      {
+        "ID": "S*G*USAO--*****",
+        "D": "Postal",
+        "M1U": "1614",
+        "M1F": "1614",
+        "M1N": "1614",
+        "M1H": "1614"
+      },
+      {
+        "ID": "S*G*USAOT-*****",
+        "D": "Postal Theater",
+        "M1U": "1615",
+        "M1F": "1616",
+        "M1N": "1617",
+        "M1H": "1618"
+      },
+      {
+        "ID": "S*G*USAOC-*****",
+        "D": "Postal Corps",
+        "M1U": "1619",
+        "M1F": "1620",
+        "M1N": "1621",
+        "M1H": "1622"
+      },
+      {
+        "ID": "S*G*USAF--*****",
+        "D": "Finance",
+        "M1U": "1623",
+        "M1F": "1623",
+        "M1N": "1623",
+        "M1H": "1623"
+      },
+      {
+        "ID": "S*G*USAFT-*****",
+        "D": "Finance Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1623",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAFC-*****",
+        "D": "Finance Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1623",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAS--*****",
+        "D": "Personnel Services",
+        "M1U": "1624",
+        "M1F": "1624",
+        "M1N": "1624",
+        "M1H": "1624"
+      },
+      {
+        "ID": "S*G*USAST-*****",
+        "D": "Personnel Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1624",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USASC-*****",
+        "D": "Personnel Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1624",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAM--*****",
+        "D": "Mortuary/Graves Registry",
+        "M1U": "1625",
+        "M1F": "1625",
+        "M1N": "1625",
+        "M1H": "1625"
+      },
+      {
+        "ID": "S*G*USAMT-*****",
+        "D": "Mortuary/Graves Registry Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1625",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAMC-*****",
+        "D": "Mortuary/Graves Registry Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1625",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAR--*****",
+        "D": "Religious/Chaplain",
+        "M1U": "1626",
+        "M1F": "1626",
+        "M1N": "1626",
+        "M1H": "1626"
+      },
+      {
+        "ID": "S*G*USART-*****",
+        "D": "Religious/Chaplain Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1626",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USARC-*****",
+        "D": "Religious/Chaplain Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1626",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAP--*****",
+        "D": "Public Affairs",
+        "M1U": "1627",
+        "M1F": "1627",
+        "M1N": "1627",
+        "M1H": "1627"
+      },
+      {
+        "ID": "S*G*USAPT-*****",
+        "D": "Public Affairs Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1627",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAPC-*****",
+        "D": "Public Affairs Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1627",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAPB-*****",
+        "D": "Public Affairs Broadcast",
+        "M1U": "1628",
+        "M1F": "1628",
+        "M1N": "1628",
+        "M1H": "1628"
+      },
+      {
+        "ID": "S*G*USAPBT*****",
+        "D": "Public Affairs Broadcast Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1628",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAPBC*****",
+        "D": "Public Affairs Broadcast Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1628",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAPM-*****",
+        "D": "Public Affairs Joint Information Bureau (JIB)",
+        "M1U": "1630",
+        "M1F": "1630",
+        "M1N": "1630",
+        "M1H": "1630"
+      },
+      {
+        "ID": "S*G*USAPMT*****",
+        "D": "Public Affairs JIB Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1630",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAPMC*****",
+        "D": "Public Affairs JIB Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1630",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAX--*****",
+        "D": "Replacement Holding Unit (RHU)",
+        "M1U": "1631",
+        "M1F": "1631",
+        "M1N": "1631",
+        "M1H": "1631"
+      },
+      {
+        "ID": "S*G*USAXT-*****",
+        "D": "RHU Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1631",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAXC-*****",
+        "D": "RHU Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1631",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAL--*****",
+        "D": "Labor",
+        "M1U": "1633",
+        "M1F": "1633",
+        "M1N": "1633",
+        "M1H": "1633"
+      },
+      {
+        "ID": "S*G*USALT-*****",
+        "D": "Labor Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1633",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USALC-*****",
+        "D": "Labor Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1633",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAW--*****",
+        "D": "Morale, Welfare, Recreation (MWR)",
+        "M1U": "1634",
+        "M1F": "1634",
+        "M1N": "1634",
+        "M1H": "1634"
+      },
+      {
+        "ID": "S*G*USAWT-*****",
+        "D": "MWR Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1634",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAWC-*****",
+        "D": "MWR Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1634",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAQ--*****",
+        "D": "Quartermaster (Supply)",
+        "M1U": "1636",
+        "M1F": "1636",
+        "M1N": "1636",
+        "M1H": "1636"
+      },
+      {
+        "ID": "S*G*USAQT-*****",
+        "D": "Quartermaster (Supply) Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1636",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USAQC-*****",
+        "D": "Quartermaster (Supply) Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1636",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USM---*****",
+        "D": "Medical",
+        "M1U": "1637",
+        "M1F": "1638",
+        "M1N": "1639",
+        "M1H": "1640"
+      },
+      {
+        "ID": "S*G*USMT--*****",
+        "D": "Medical Theater",
+        "M1U": "1641",
+        "M1F": "1642",
+        "M1N": "1643",
+        "M1H": "1644"
+      },
+      {
+        "ID": "S*G*USMC--*****",
+        "D": "Medical Corps",
+        "M1U": "1645",
+        "M1F": "1646",
+        "M1N": "1647",
+        "M1H": "1648"
+      },
+      {
+        "ID": "S*G*USMM--*****",
+        "D": "Medical Treatment Facility",
+        "M1U": "1637",
+        "M1F": "1638",
+        "M1N": "1639",
+        "M1H": "1640",
+        "M2": "1649",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMMT-*****",
+        "D": "Medical Treatment Facility Theater",
+        "M1U": "1641",
+        "M1F": "1642",
+        "M1N": "1643",
+        "M1H": "1644",
+        "M2": "1649",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMMC-*****",
+        "D": "Medical Treatment Facility Corps",
+        "M1U": "1645",
+        "M1F": "1646",
+        "M1N": "1647",
+        "M1H": "1648",
+        "M2": "1649",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMV--*****",
+        "D": "Medical Veterinary",
+        "M1U": "1637",
+        "M1F": "1638",
+        "M1N": "1639",
+        "M1H": "1640",
+        "M2": "1650",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMVT-*****",
+        "D": "Medical Veterinary Theater",
+        "M1U": "1641",
+        "M1F": "1642",
+        "M1N": "1643",
+        "M1H": "1644",
+        "M2": "1650",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMVC-*****",
+        "D": "Medical Veterinary Corps",
+        "M1U": "1645",
+        "M1F": "1646",
+        "M1N": "1647",
+        "M1H": "1648",
+        "M2": "1650",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMD--*****",
+        "D": "Medical Dental",
+        "M1U": "1637",
+        "M1F": "1638",
+        "M1N": "1639",
+        "M1H": "1640",
+        "M2": "1651",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMDT-*****",
+        "D": "Medical Dental Theater",
+        "M1U": "1641",
+        "M1F": "1642",
+        "M1N": "1643",
+        "M1H": "1644",
+        "M2": "1651",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMDC-*****",
+        "D": "Medical Dental Corps",
+        "M1U": "1645",
+        "M1F": "1646",
+        "M1N": "1647",
+        "M1H": "1648",
+        "M2": "1651",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMP--*****",
+        "D": "Medical Psychological",
+        "M1U": "1637",
+        "M1F": "1638",
+        "M1N": "1639",
+        "M1H": "1640",
+        "M2": "1652",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMPT-*****",
+        "D": "Medical Psychological Theater",
+        "M1U": "1641",
+        "M1F": "1642",
+        "M1N": "1643",
+        "M1H": "1644",
+        "M2": "1652",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USMPC-*****",
+        "D": "Medical Psychological Corps",
+        "M1U": "1645",
+        "M1F": "1646",
+        "M1N": "1647",
+        "M1H": "1648",
+        "M2": "1652",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS---*****",
+        "D": "Supply",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656"
+      },
+      {
+        "ID": "S*G*USST--*****",
+        "D": "Supply Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660"
+      },
+      {
+        "ID": "S*G*USSC--*****",
+        "D": "Supply Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664"
+      },
+      {
+        "ID": "S*G*USS1--*****",
+        "D": "Supply Class I",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1665",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS1T-*****",
+        "D": "Supply Class I Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1665",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS1C-*****",
+        "D": "Supply Class I Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1665",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS2--*****",
+        "D": "Supply Class II",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1666",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS2T-*****",
+        "D": "Supply Class II Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1666",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS2C-*****",
+        "D": "Supply Class II Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1666",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3--*****",
+        "D": "Supply Class III",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1667",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3T-*****",
+        "D": "Supply Class III Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1667",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3C-*****",
+        "D": "Supply Class III Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1667",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3A-*****",
+        "D": "Supply Class III Aviation",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1668",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3AT*****",
+        "D": "Supply Class III Aviation Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1668",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS3AC*****",
+        "D": "Supply Class III Aviation Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1668",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS4--*****",
+        "D": "Supply Class IV",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1669",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS4T-*****",
+        "D": "Supply Class IV Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1669",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS4C-*****",
+        "D": "Supply Class IV Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1669",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS5--*****",
+        "D": "Supply Class V",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1670",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS5T-*****",
+        "D": "Supply Class V Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1670",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS5C-*****",
+        "D": "Supply Class V Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1670",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS6--*****",
+        "D": "Supply Class VI",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1671",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS6T-*****",
+        "D": "Supply Class VI Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1671",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS6C-*****",
+        "D": "Supply Class VI Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1671",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS7--*****",
+        "D": "Supply Class VII",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1672",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS7T-*****",
+        "D": "Supply Class VII Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1672",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS7C-*****",
+        "D": "Supply Class VII Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1672",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS8--*****",
+        "D": "Supply Class VIII",
+        "M1U": "1673",
+        "M1F": "1674",
+        "M1N": "1675",
+        "M1H": "1676"
+      },
+      {
+        "ID": "S*G*USS8T-*****",
+        "D": "Supply Class VIII Theater",
+        "M1U": "1677",
+        "M1F": "1678",
+        "M1N": "1679",
+        "M1H": "1680"
+      },
+      {
+        "ID": "S*G*USS8C-*****",
+        "D": "Supply Class VIII Corps",
+        "M1U": "1681",
+        "M1F": "1682",
+        "M1N": "1683",
+        "M1H": "1684"
+      },
+      {
+        "ID": "S*G*USS9--*****",
+        "D": "Supply Class IX",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1685",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS9T-*****",
+        "D": "Supply Class IX Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1685",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USS9C-*****",
+        "D": "Supply Class IX Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1685",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSX--*****",
+        "D": "Supply Class X",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1686",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSXT-*****",
+        "D": "Supply Class X Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1686",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSXC-*****",
+        "D": "Supply Class X Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1686",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSL--*****",
+        "D": "Supply Laundry/Bath",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1687",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSLT-*****",
+        "D": "Supply Laundry/Bath Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1687",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSLC-*****",
+        "D": "Supply Laundry/Bath Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1687",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSW--*****",
+        "D": "Supply Water",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1688",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSWT-*****",
+        "D": "Supply Water Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1688",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSWC-*****",
+        "D": "Supply Water Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1688",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSWP-*****",
+        "D": "Supply Water Purification",
+        "M1U": "1653",
+        "M1F": "1654",
+        "M1N": "1655",
+        "M1H": "1656",
+        "M2": "1689",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSWPT*****",
+        "D": "Supply Water Purification Theater",
+        "M1U": "1657",
+        "M1F": "1658",
+        "M1N": "1659",
+        "M1H": "1660",
+        "M2": "1689",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USSWPC*****",
+        "D": "Supply Water Purification Corps",
+        "M1U": "1661",
+        "M1F": "1662",
+        "M1N": "1663",
+        "M1H": "1664",
+        "M2": "1689",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UST---*****",
+        "D": "Transportation",
+        "M1U": "1690",
+        "M1F": "1690",
+        "M1N": "1690",
+        "M1H": "1690"
+      },
+      {
+        "ID": "S*G*USTT--*****",
+        "D": "Transportation Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1690",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTC--*****",
+        "D": "Transportation Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1690",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTM--*****",
+        "D": "Movement Control Center (MCC)",
+        "M1U": "1691",
+        "M1F": "1691",
+        "M1N": "1691",
+        "M1H": "1691"
+      },
+      {
+        "ID": "S*G*USTMT-*****",
+        "D": "MCC Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1691",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTMC-*****",
+        "D": "MCC Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1691",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTR--*****",
+        "D": "Railhead",
+        "M1U": "1692",
+        "M1F": "1692",
+        "M1N": "1692",
+        "M1H": "1692"
+      },
+      {
+        "ID": "S*G*USTRT-*****",
+        "D": "Railhead Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1692",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTRC-*****",
+        "D": "Railhead Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1692",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTS--*****",
+        "D": "SPOD/SPOE",
+        "M1U": "1693",
+        "M1F": "1693",
+        "M1N": "1693",
+        "M1H": "1693"
+      },
+      {
+        "ID": "S*G*USTST-*****",
+        "D": "SPOD/SPOE Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1693",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTSC-*****",
+        "D": "SPOD/SPOE Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1693",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTA--*****",
+        "D": "APOD/APOE",
+        "M1U": "1694",
+        "M1F": "1694",
+        "M1N": "1694",
+        "M1H": "1694"
+      },
+      {
+        "ID": "S*G*USTAT-*****",
+        "D": "APOD/APOE Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1694",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTAC-*****",
+        "D": "APOD/APOE Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1694",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTI--*****",
+        "D": "Missile",
+        "M1U": "1695",
+        "M1F": "1695",
+        "M1N": "1695",
+        "M1H": "1695"
+      },
+      {
+        "ID": "S*G*USTIT-*****",
+        "D": "Missile Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1695",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USTIC-*****",
+        "D": "Missile Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1695",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USX---*****",
+        "D": "Maintenance",
+        "M1U": "1696",
+        "M1F": "1696",
+        "M1N": "1696",
+        "M1H": "1696"
+      },
+      {
+        "ID": "S*G*USXT--*****",
+        "D": "Maintenance Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1696",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXC--*****",
+        "D": "Maintenance Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1696",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXH--*****",
+        "D": "Maintenance Heavy",
+        "M1U": "1697",
+        "M1F": "1697",
+        "M1N": "1697",
+        "M1H": "1697"
+      },
+      {
+        "ID": "S*G*USXHT-*****",
+        "D": "Maintenance Heavy Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1697",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXHC-*****",
+        "D": "Maintenance Heavy Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1697",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXR--*****",
+        "D": "Maintenance Recovery",
+        "M1U": "1698",
+        "M1F": "1698",
+        "M1N": "1698",
+        "M1H": "1698"
+      },
+      {
+        "ID": "S*G*USXRT-*****",
+        "D": "Maintenance Recovery Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1698",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXRC-*****",
+        "D": "Maintenance Recovery Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1698",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXO--*****",
+        "D": "Ordnance",
+        "M1U": "1699",
+        "M1F": "1699",
+        "M1N": "1699",
+        "M1H": "1699"
+      },
+      {
+        "ID": "S*G*USXOT-*****",
+        "D": "Ordnance Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1699",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXOC-*****",
+        "D": "Ordnance Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1699",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXOM-*****",
+        "D": "Ordnance Missile",
+        "M1U": "1700",
+        "M1F": "1700",
+        "M1N": "1700",
+        "M1H": "1700"
+      },
+      {
+        "ID": "S*G*USXOMT*****",
+        "D": "Ordnance Missile Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1700",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXOMC*****",
+        "D": "Ordnance Missile Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1700",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXE--*****",
+        "D": "Electro-Optical",
+        "M1U": "1701",
+        "M1F": "1701",
+        "M1N": "1701",
+        "M1H": "1701"
+      },
+      {
+        "ID": "S*G*USXET-*****",
+        "D": "Electro-Optical Theater",
+        "M1U": "640",
+        "M1F": "641",
+        "M1N": "642",
+        "M1H": "643",
+        "M2": "1701",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*USXEC-*****",
+        "D": "Electro-Optical Corps",
+        "M1U": "648",
+        "M1F": "649",
+        "M1N": "650",
+        "M1H": "651",
+        "M2": "1701",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*UH----*****",
+        "D": "Special C2 Headquarters Component"
+      },
+      {
+        "ID": "S*G*E-----*****",
+        "D": "Ground Track Equipment"
+      },
+      {
+        "ID": "S*G*EW----*****",
+        "D": "Weapon"
+      },
+      {
+        "ID": "S*G*EWM---*****",
+        "D": "Missile Launcher",
+        "M1U": "1702",
+        "M1F": "1702",
+        "M1N": "1702",
+        "M1H": "1702"
+      },
+      {
+        "ID": "S*G*EWMA--*****",
+        "D": "Air Defense (AD) Missile Launcher",
+        "M1U": "1703",
+        "M1F": "1703",
+        "M1N": "1703",
+        "M1H": "1703"
+      },
+      {
+        "ID": "S*G*EWMAS-*****",
+        "D": "Short Range AD Missile Launcher",
+        "M1U": "1704",
+        "M1F": "1704",
+        "M1N": "1704",
+        "M1H": "1704"
+      },
+      {
+        "ID": "S*G*EWMASR*****",
+        "D": "Short Range Transporter Launcher and Radar (TLAR)",
+        "M1U": "1705",
+        "M1F": "1705",
+        "M1N": "1705",
+        "M1H": "1705"
+      },
+      {
+        "ID": "S*G*EWMASE*****",
+        "D": "Short Range Transporter Erector Launcher and Radar (TELAR)",
+        "M1U": "1706",
+        "M1F": "1706",
+        "M1N": "1706",
+        "M1H": "1706"
+      },
+      {
+        "ID": "S*G*EWMAI-*****",
+        "D": "Intermediate Range AD Missile Launcher",
+        "M1U": "1707",
+        "M1F": "1707",
+        "M1N": "1707",
+        "M1H": "1707"
+      },
+      {
+        "ID": "S*G*EWMAIR*****",
+        "D": "Intermediate Transporter Launcher and Radar (TLAR)",
+        "M1U": "1708",
+        "M1F": "1708",
+        "M1N": "1708",
+        "M1H": "1708"
+      },
+      {
+        "ID": "S*G*EWMAIE*****",
+        "D": "Intermediate Transporter Erector Launcher and Radar (TELAR)",
+        "M1U": "1709",
+        "M1F": "1709",
+        "M1N": "1709",
+        "M1H": "1709"
+      },
+      {
+        "ID": "S*G*EWMAL-*****",
+        "D": "Long Range AD Missile Launcher",
+        "M1U": "1710",
+        "M1F": "1710",
+        "M1N": "1710",
+        "M1H": "1710"
+      },
+      {
+        "ID": "S*G*EWMALR*****",
+        "D": "Long Range Transporter Launcher and Radar (TLAR)",
+        "M1U": "1711",
+        "M1F": "1711",
+        "M1N": "1711",
+        "M1H": "1711"
+      },
+      {
+        "ID": "S*G*EWMALE*****",
+        "D": "Long Range Transporter Erector Launcher and Radar (TELAR)",
+        "M1U": "1712",
+        "M1F": "1712",
+        "M1N": "1712",
+        "M1H": "1712"
+      },
+      {
+        "ID": "S*G*EWMAT-*****",
+        "D": "AD Missile Launcher Theater",
+        "M1U": "1713",
+        "M1F": "1713",
+        "M1N": "1713",
+        "M1H": "1713"
+      },
+      {
+        "ID": "S*G*EWMATR*****",
+        "D": "Theater Transporter Launcher and Radar (TLAR)",
+        "M1U": "1714",
+        "M1F": "1714",
+        "M1N": "1714",
+        "M1H": "1714"
+      },
+      {
+        "ID": "S*G*EWMATE*****",
+        "D": "Theater Transporter Erector Launcher and Radar (TELAR)",
+        "M1U": "1715",
+        "M1F": "1715",
+        "M1N": "1715",
+        "M1H": "1715"
+      },
+      {
+        "ID": "S*G*EWMS--*****",
+        "D": "Surf-Surf (SS) Missile Launcher",
+        "M1U": "1716",
+        "M1F": "1716",
+        "M1N": "1716",
+        "M1H": "1716"
+      },
+      {
+        "ID": "S*G*EWMSS-*****",
+        "D": "Short Range SS Missile Launcher",
+        "M1U": "1717",
+        "M1F": "1717",
+        "M1N": "1717",
+        "M1H": "1717"
+      },
+      {
+        "ID": "S*G*EWMSI-*****",
+        "D": "Intermediate Range SS Missile Launcher",
+        "M1U": "1718",
+        "M1F": "1718",
+        "M1N": "1718",
+        "M1H": "1718"
+      },
+      {
+        "ID": "S*G*EWMSL-*****",
+        "D": "Long Range SS Missile Launcher",
+        "M1U": "1719",
+        "M1F": "1719",
+        "M1N": "1719",
+        "M1H": "1719"
+      },
+      {
+        "ID": "S*G*EWMT--*****",
+        "D": "Missile Launcher Antitank (AT)",
+        "M1U": "1720",
+        "M1F": "1720",
+        "M1N": "1720",
+        "M1H": "1720"
+      },
+      {
+        "ID": "S*G*EWMTL-*****",
+        "D": "Missile Launcher AT Light",
+        "M1U": "1721",
+        "M1F": "1721",
+        "M1N": "1721",
+        "M1H": "1721"
+      },
+      {
+        "ID": "S*G*EWMTM-*****",
+        "D": "Missile Launcher AT Medium",
+        "M1U": "1722",
+        "M1F": "1722",
+        "M1N": "1722",
+        "M1H": "1722"
+      },
+      {
+        "ID": "S*G*EWMTH-*****",
+        "D": "Missile Launcher AT Heavy",
+        "M1U": "1723",
+        "M1F": "1723",
+        "M1N": "1723",
+        "M1H": "1723"
+      },
+      {
+        "ID": "S*G*EWS---*****",
+        "D": "Weapon Single Rocket Launcher",
+        "M1U": "1724",
+        "M1F": "1724",
+        "M1N": "1724",
+        "M1H": "1724"
+      },
+      {
+        "ID": "S*G*EWSL--*****",
+        "D": "Single Rocket Launcher Light",
+        "M1U": "1725",
+        "M1F": "1725",
+        "M1N": "1725",
+        "M1H": "1725"
+      },
+      {
+        "ID": "S*G*EWSM--*****",
+        "D": "Single Rocket Launcher Medium",
+        "M1U": "1726",
+        "M1F": "1726",
+        "M1N": "1726",
+        "M1H": "1726"
+      },
+      {
+        "ID": "S*G*EWSH--*****",
+        "D": "Single Rocket Launcher Heavy",
+        "M1U": "1727",
+        "M1F": "1727",
+        "M1N": "1727",
+        "M1H": "1727"
+      },
+      {
+        "ID": "S*G*EWX---*****",
+        "D": "Multiple Rocket Launcher",
+        "M1U": "1728",
+        "M1F": "1728",
+        "M1N": "1728",
+        "M1H": "1728"
+      },
+      {
+        "ID": "S*G*EWXL--*****",
+        "D": "Multiple Rocket Launcher Light",
+        "M1U": "1729",
+        "M1F": "1729",
+        "M1N": "1729",
+        "M1H": "1729"
+      },
+      {
+        "ID": "S*G*EWXM--*****",
+        "D": "Multiple Rocket Launcher Medium",
+        "M1U": "1730",
+        "M1F": "1730",
+        "M1N": "1730",
+        "M1H": "1730"
+      },
+      {
+        "ID": "S*G*EWXH--*****",
+        "D": "Multiple Rocket Launcher Heavy",
+        "M1U": "1731",
+        "M1F": "1731",
+        "M1N": "1731",
+        "M1H": "1731"
+      },
+      {
+        "ID": "S*G*EWT---*****",
+        "D": "Anti-Tank Rocket Launcher",
+        "M1U": "1732",
+        "M1F": "1732",
+        "M1N": "1732",
+        "M1H": "1732"
+      },
+      {
+        "ID": "S*G*EWTL--*****",
+        "D": "Anti-Tank Rocket Launcher Light",
+        "M1U": "1733",
+        "M1F": "1733",
+        "M1N": "1733",
+        "M1H": "1733"
+      },
+      {
+        "ID": "S*G*EWTM--*****",
+        "D": "Anti-Tank Rocket Launcher Medium",
+        "M1U": "1734",
+        "M1F": "1734",
+        "M1N": "1734",
+        "M1H": "1734"
+      },
+      {
+        "ID": "S*G*EWTH--*****",
+        "D": "Anti-Tank Rocket Launcher Heavy",
+        "M1U": "1735",
+        "M1F": "1735",
+        "M1N": "1735",
+        "M1H": "1735"
+      },
+      {
+        "ID": "S*G*EWR---*****",
+        "D": "Rifle/Automatic Weapon",
+        "M1U": "1736",
+        "M1F": "1736",
+        "M1N": "1736",
+        "M1H": "1736"
+      },
+      {
+        "ID": "S*G*EWRR--*****",
+        "D": "Rifle",
+        "M1U": "1737",
+        "M1F": "1737",
+        "M1N": "1737",
+        "M1H": "1737"
+      },
+      {
+        "ID": "S*G*EWRL--*****",
+        "D": "Light Machine Gun",
+        "M1U": "1738",
+        "M1F": "1738",
+        "M1N": "1738",
+        "M1H": "1738"
+      },
+      {
+        "ID": "S*G*EWRH--*****",
+        "D": "Heavy Machine Gun",
+        "M1U": "1739",
+        "M1F": "1739",
+        "M1N": "1739",
+        "M1H": "1739"
+      },
+      {
+        "ID": "S*G*EWZ---*****",
+        "D": "Grenade Launcher",
+        "M1U": "1740",
+        "M1F": "1740",
+        "M1N": "1740",
+        "M1H": "1740"
+      },
+      {
+        "ID": "S*G*EWZL--*****",
+        "D": "Grenade Launcher Light",
+        "M1U": "1741",
+        "M1F": "1741",
+        "M1N": "1741",
+        "M1H": "1741"
+      },
+      {
+        "ID": "S*G*EWZM--*****",
+        "D": "Grenade Launcher Medium",
+        "M1U": "1742",
+        "M1F": "1742",
+        "M1N": "1742",
+        "M1H": "1742"
+      },
+      {
+        "ID": "S*G*EWZH--*****",
+        "D": "Grenade Launcher Heavy",
+        "M1U": "1743",
+        "M1F": "1743",
+        "M1N": "1743",
+        "M1H": "1743"
+      },
+      {
+        "ID": "S*G*EWO---*****",
+        "D": "Weapon Mortar",
+        "M1U": "1744",
+        "M1F": "1744",
+        "M1N": "1744",
+        "M1H": "1744"
+      },
+      {
+        "ID": "S*G*EWOL--*****",
+        "D": "Mortar Light",
+        "M1U": "1745",
+        "M1F": "1745",
+        "M1N": "1745",
+        "M1H": "1745"
+      },
+      {
+        "ID": "S*G*EWOM--*****",
+        "D": "Mortar Medium",
+        "M1U": "1746",
+        "M1F": "1746",
+        "M1N": "1746",
+        "M1H": "1746"
+      },
+      {
+        "ID": "S*G*EWOH--*****",
+        "D": "Mortar Heavy",
+        "M1U": "1747",
+        "M1F": "1747",
+        "M1N": "1747",
+        "M1H": "1747"
+      },
+      {
+        "ID": "S*G*EWH---*****",
+        "D": "Howitzer",
+        "M1U": "1748",
+        "M1F": "1748",
+        "M1N": "1748",
+        "M1H": "1748"
+      },
+      {
+        "ID": "S*G*EWHL--*****",
+        "D": "Howitzer Light",
+        "M1U": "1749",
+        "M1F": "1749",
+        "M1N": "1749",
+        "M1H": "1749"
+      },
+      {
+        "ID": "S*G*EWHLS-*****",
+        "D": "Howitzer Light Self-Propelled",
+        "M1U": "1750",
+        "M1F": "1750",
+        "M1N": "1750",
+        "M1H": "1750"
+      },
+      {
+        "ID": "S*G*EWHM--*****",
+        "D": "Howitzer Medium",
+        "M1U": "1751",
+        "M1F": "1751",
+        "M1N": "1751",
+        "M1H": "1751"
+      },
+      {
+        "ID": "S*G*EWHMS-*****",
+        "D": "Howitzer Medium Self-Propelled",
+        "M1U": "1752",
+        "M1F": "1752",
+        "M1N": "1752",
+        "M1H": "1752"
+      },
+      {
+        "ID": "S*G*EWHH--*****",
+        "D": "Howitzer Heavy",
+        "M1U": "1753",
+        "M1F": "1753",
+        "M1N": "1753",
+        "M1H": "1753"
+      },
+      {
+        "ID": "S*G*EWHHS-*****",
+        "D": "Howitzer Heavy Self-Propelled",
+        "M1U": "1754",
+        "M1F": "1754",
+        "M1N": "1754",
+        "M1H": "1754"
+      },
+      {
+        "ID": "S*G*EWG---*****",
+        "D": "Anti-Tank Gun",
+        "M1U": "1755",
+        "M1F": "1755",
+        "M1N": "1755",
+        "M1H": "1755"
+      },
+      {
+        "ID": "S*G*EWGL--*****",
+        "D": "Anti-Tank Gun Light",
+        "M1U": "1756",
+        "M1F": "1756",
+        "M1N": "1756",
+        "M1H": "1756"
+      },
+      {
+        "ID": "S*G*EWGM--*****",
+        "D": "Anti-Tank Gun Medium",
+        "M1U": "1757",
+        "M1F": "1757",
+        "M1N": "1757",
+        "M1H": "1757"
+      },
+      {
+        "ID": "S*G*EWGH--*****",
+        "D": "Anti-Tank Gun Heavy",
+        "M1U": "1758",
+        "M1F": "1758",
+        "M1N": "1758",
+        "M1H": "1758"
+      },
+      {
+        "ID": "S*G*EWGR--*****",
+        "D": "Anti-Tank Gun Recoilless",
+        "M1U": "1759",
+        "M1F": "1759",
+        "M1N": "1759",
+        "M1H": "1759"
+      },
+      {
+        "ID": "S*G*EWD---*****",
+        "D": "Direct Fire Gun",
+        "M1U": "1760",
+        "M1F": "1760",
+        "M1N": "1760",
+        "M1H": "1760"
+      },
+      {
+        "ID": "S*G*EWDL--*****",
+        "D": "Direct Fire Gun Light",
+        "M1U": "1761",
+        "M1F": "1761",
+        "M1N": "1761",
+        "M1H": "1761"
+      },
+      {
+        "ID": "S*G*EWDLS-*****",
+        "D": "Direct Fire Gun Light Self-Propelled",
+        "M1U": "1762",
+        "M1F": "1762",
+        "M1N": "1762",
+        "M1H": "1762"
+      },
+      {
+        "ID": "S*G*EWDM--*****",
+        "D": "Direct Fire Gun Medium",
+        "M1U": "1763",
+        "M1F": "1763",
+        "M1N": "1763",
+        "M1H": "1763"
+      },
+      {
+        "ID": "S*G*EWDMS-*****",
+        "D": "Direct Fire Gun Medium Self-Propelled",
+        "M1U": "1764",
+        "M1F": "1764",
+        "M1N": "1764",
+        "M1H": "1764"
+      },
+      {
+        "ID": "S*G*EWDH--*****",
+        "D": "Direct Fire Gun Heavy",
+        "M1U": "1765",
+        "M1F": "1765",
+        "M1N": "1765",
+        "M1H": "1765"
+      },
+      {
+        "ID": "S*G*EWDHS-*****",
+        "D": "Direct Fire Gun Heavy Self-Propelled",
+        "M1U": "1766",
+        "M1F": "1766",
+        "M1N": "1766",
+        "M1H": "1766"
+      },
+      {
+        "ID": "S*G*EWA---*****",
+        "D": "Air Defense Gun",
+        "M1U": "1767",
+        "M1F": "1767",
+        "M1N": "1767",
+        "M1H": "1767"
+      },
+      {
+        "ID": "S*G*EWAL--*****",
+        "D": "Air Defense Gun Light",
+        "M1U": "1768",
+        "M1F": "1768",
+        "M1N": "1768",
+        "M1H": "1768"
+      },
+      {
+        "ID": "S*G*EWAM--*****",
+        "D": "Air Defense Gun Medium",
+        "M1U": "1769",
+        "M1F": "1769",
+        "M1N": "1769",
+        "M1H": "1769"
+      },
+      {
+        "ID": "S*G*EWAH--*****",
+        "D": "Air Defense Gun Heavy",
+        "M1U": "1770",
+        "M1F": "1770",
+        "M1N": "1770",
+        "M1H": "1770"
+      },
+      {
+        "ID": "S*G*EV----*****",
+        "D": "Ground Vehicle",
+        "M1U": "1771",
+        "M1F": "1771",
+        "M1N": "1771",
+        "M1H": "1771"
+      },
+      {
+        "ID": "S*G*EVA---*****",
+        "D": "Armored Vehicle",
+        "M1U": "1772",
+        "M1F": "1772",
+        "M1N": "1772",
+        "M1H": "1772"
+      },
+      {
+        "ID": "S*G*EVAT--*****",
+        "D": "Tank",
+        "M1U": "1773",
+        "M1F": "1773",
+        "M1N": "1773",
+        "M1H": "1773"
+      },
+      {
+        "ID": "S*G*EVATL-*****",
+        "D": "Tank Light",
+        "M1U": "1774",
+        "M1F": "1774",
+        "M1N": "1774",
+        "M1H": "1774"
+      },
+      {
+        "ID": "S*G*EVATLR*****",
+        "D": "Tank Light Recovery",
+        "M1U": "1775",
+        "M1F": "1775",
+        "M1N": "1775",
+        "M1H": "1775"
+      },
+      {
+        "ID": "S*G*EVATM-*****",
+        "D": "Tank Medium",
+        "M1U": "1776",
+        "M1F": "1776",
+        "M1N": "1776",
+        "M1H": "1776"
+      },
+      {
+        "ID": "S*G*EVATMR*****",
+        "D": "Tank Medium Recovery",
+        "M1U": "1777",
+        "M1F": "1777",
+        "M1N": "1777",
+        "M1H": "1777"
+      },
+      {
+        "ID": "S*G*EVATH-*****",
+        "D": "Tank Heavy",
+        "M1U": "1778",
+        "M1F": "1778",
+        "M1N": "1778",
+        "M1H": "1778"
+      },
+      {
+        "ID": "S*G*EVATHR*****",
+        "D": "Tank Heavy Recovery",
+        "M1U": "1779",
+        "M1F": "1779",
+        "M1N": "1779",
+        "M1H": "1779"
+      },
+      {
+        "ID": "S*G*EVAA--*****",
+        "D": "Armored Personnel Carrier",
+        "M1U": "1780",
+        "M1F": "1780",
+        "M1N": "1780",
+        "M1H": "1780"
+      },
+      {
+        "ID": "S*G*EVAAR-*****",
+        "D": "Armored Personnel Carrier Recovery",
+        "M1U": "1781",
+        "M1F": "1781",
+        "M1N": "1781",
+        "M1H": "1781"
+      },
+      {
+        "ID": "S*G*EVAI--*****",
+        "D": "Armored Infantry",
+        "M1U": "1782",
+        "M1F": "1782",
+        "M1N": "1782",
+        "M1H": "1782"
+      },
+      {
+        "ID": "S*G*EVAC--*****",
+        "D": "C2V/ACV",
+        "M1U": "1783",
+        "M1F": "1783",
+        "M1N": "1783",
+        "M1H": "1783"
+      },
+      {
+        "ID": "S*G*EVAS--*****",
+        "D": "Combat Service Support Vehicle",
+        "M1U": "1784",
+        "M1F": "1784",
+        "M1N": "1784",
+        "M1H": "1784"
+      },
+      {
+        "ID": "S*G*EVAL--*****",
+        "D": "Light Armored Vehicle",
+        "M1U": "1785",
+        "M1F": "1785",
+        "M1N": "1785",
+        "M1H": "1785"
+      },
+      {
+        "ID": "S*G*EVU---*****",
+        "D": "Utility Vehicle",
+        "M1U": "1786",
+        "M1F": "1786",
+        "M1N": "1786",
+        "M1H": "1786"
+      },
+      {
+        "ID": "S*G*EVUB--*****",
+        "D": "Bus",
+        "M1U": "1787",
+        "M1F": "1787",
+        "M1N": "1787",
+        "M1H": "1787"
+      },
+      {
+        "ID": "S*G*EVUS--*****",
+        "D": "Semi",
+        "M1U": "1788",
+        "M1F": "1788",
+        "M1N": "1788",
+        "M1H": "1788"
+      },
+      {
+        "ID": "S*G*EVUSL-*****",
+        "D": "Semi Light",
+        "M1U": "1789",
+        "M1F": "1789",
+        "M1N": "1789",
+        "M1H": "1789"
+      },
+      {
+        "ID": "S*G*EVUSM-*****",
+        "D": "Semi Medium",
+        "M1U": "1790",
+        "M1F": "1790",
+        "M1N": "1790",
+        "M1H": "1790"
+      },
+      {
+        "ID": "S*G*EVUSH-*****",
+        "D": "Semi Heavy",
+        "M1U": "1791",
+        "M1F": "1791",
+        "M1N": "1791",
+        "M1H": "1791"
+      },
+      {
+        "ID": "S*G*EVUL--*****",
+        "D": "Limited Cross-Country Truck",
+        "M1U": "1792",
+        "M1F": "1792",
+        "M1N": "1792",
+        "M1H": "1792"
+      },
+      {
+        "ID": "S*G*EVUX--*****",
+        "D": "Cross-Country Truck",
+        "M1U": "1793",
+        "M1F": "1793",
+        "M1N": "1793",
+        "M1H": "1793"
+      },
+      {
+        "ID": "S*G*EVUR--*****",
+        "D": "Water Craft",
+        "M1U": "1794",
+        "M1F": "1794",
+        "M1N": "1794",
+        "M1H": "1794"
+      },
+      {
+        "ID": "S*G*EVUT--*****",
+        "D": "Tow Truck",
+        "M1U": "1795",
+        "M1F": "1795",
+        "M1N": "1795",
+        "M1H": "1795"
+      },
+      {
+        "ID": "S*G*EVUTL-*****",
+        "D": "Tow Truck Light",
+        "M1U": "1796",
+        "M1F": "1796",
+        "M1N": "1796",
+        "M1H": "1796"
+      },
+      {
+        "ID": "S*G*EVUTH-*****",
+        "D": "Tow Truck Heavy",
+        "M1U": "1797",
+        "M1F": "1797",
+        "M1N": "1797",
+        "M1H": "1797"
+      },
+      {
+        "ID": "S*G*EVUA--*****",
+        "D": "Ambulance",
+        "M1U": "1798",
+        "M1F": "1798",
+        "M1N": "1798",
+        "M1H": "1798"
+      },
+      {
+        "ID": "S*G*EVUAA-*****",
+        "D": "Ambulance Armored",
+        "M1U": "1799",
+        "M1F": "1799",
+        "M1N": "1799",
+        "M1H": "1799"
+      },
+      {
+        "ID": "S*G*EVE---*****",
+        "D": "Engineer Vehicle",
+        "M1U": "1800",
+        "M1F": "1800",
+        "M1N": "1800",
+        "M1H": "1800"
+      },
+      {
+        "ID": "S*G*EVEB--*****",
+        "D": "Engineer Vehicle Bridge",
+        "M1U": "1894",
+        "M1F": "1894",
+        "M1N": "1894",
+        "M1H": "1894"
+      },
+      {
+        "ID": "S*G*EVEE--*****",
+        "D": "Earthmover",
+        "M1U": "1801",
+        "M1F": "1801",
+        "M1N": "1801",
+        "M1H": "1801"
+      },
+      {
+        "ID": "S*G*EVEC--*****",
+        "D": "Construction Vehicle",
+        "M1U": "1802",
+        "M1F": "1802",
+        "M1N": "1802",
+        "M1H": "1802"
+      },
+      {
+        "ID": "S*G*EVEM--*****",
+        "D": "Mine Laying Vehicle",
+        "M1U": "1803",
+        "M1F": "1803",
+        "M1N": "1803",
+        "M1H": "1803"
+      },
+      {
+        "ID": "S*G*EVEMV-*****",
+        "D": "Armored Carrier with Volcano",
+        "M1U": "1804",
+        "M1F": "1804",
+        "M1N": "1804",
+        "M1H": "1804"
+      },
+      {
+        "ID": "S*G*EVEML-*****",
+        "D": "Truck Mounted with Volcano",
+        "M1U": "1805",
+        "M1F": "1805",
+        "M1N": "1805",
+        "M1H": "1805"
+      },
+      {
+        "ID": "S*G*EVEA--*****",
+        "D": "Mine Clearing Vehicle",
+        "M1U": "1806",
+        "M1F": "1806",
+        "M1N": "1806",
+        "M1H": "1806"
+      },
+      {
+        "ID": "S*G*EVEAA-*****",
+        "D": "Armored Mounted Mine Clearing Vehicle",
+        "M1U": "1807",
+        "M1F": "1807",
+        "M1N": "1807",
+        "M1H": "1807"
+      },
+      {
+        "ID": "S*G*EVEAT-*****",
+        "D": "Trailer Mounted Mine Clearing Vehicle",
+        "M1U": "1808",
+        "M1F": "1808",
+        "M1N": "1808",
+        "M1H": "1808"
+      },
+      {
+        "ID": "S*G*EVED--*****",
+        "D": "Dozer",
+        "M1U": "1809",
+        "M1F": "1809",
+        "M1N": "1809",
+        "M1H": "1809"
+      },
+      {
+        "ID": "S*G*EVEDA-*****",
+        "D": "Armored Dozer",
+        "M1U": "1810",
+        "M1F": "1810",
+        "M1N": "1810",
+        "M1H": "1810"
+      },
+      {
+        "ID": "S*G*EVES--*****",
+        "D": "Armored Assault",
+        "M1U": "1811",
+        "M1F": "1811",
+        "M1N": "1811",
+        "M1H": "1811"
+      },
+      {
+        "ID": "S*G*EVER--*****",
+        "D": "Armored Engineer Recon Vehicle (AERV)",
+        "M1U": "1812",
+        "M1F": "1812",
+        "M1N": "1812",
+        "M1H": "1812"
+      },
+      {
+        "ID": "S*G*EVEH--*****",
+        "D": "Backhoe",
+        "M1U": "1813",
+        "M1F": "1813",
+        "M1N": "1813",
+        "M1H": "1813"
+      },
+      {
+        "ID": "S*G*EVEF--*****",
+        "D": "Ferry Transporter",
+        "M1U": "1814",
+        "M1F": "1814",
+        "M1N": "1814",
+        "M1H": "1814"
+      },
+      {
+        "ID": "S*G*EVT---*****",
+        "D": "Train Locomotive",
+        "M1U": "1815",
+        "M1F": "1815",
+        "M1N": "1815",
+        "M1H": "1815"
+      },
+      {
+        "ID": "S*G*EVC---*****",
+        "D": "Civilian Vehicle",
+        "M1U": "1816",
+        "M1F": "1816",
+        "M1N": "1816",
+        "M1H": "1816"
+      },
+      {
+        "ID": "S*G*EVCA--*****",
+        "D": "Civilian Automobile",
+        "M1U": "1817",
+        "M1F": "1817",
+        "M1N": "1817",
+        "M1H": "1817",
+        "M2": "1818",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCAL-*****",
+        "D": "Civilian Compact Automobile",
+        "M1U": "1819",
+        "M1F": "1819",
+        "M1N": "1819",
+        "M1H": "1819",
+        "M2": "1820",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCAM-*****",
+        "D": "Civilian Midsize Automobile",
+        "M1U": "1821",
+        "M1F": "1821",
+        "M1N": "1821",
+        "M1H": "1821",
+        "M2": "1822",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCAH-*****",
+        "D": "Civilian Automobile Sedan",
+        "M1U": "1823",
+        "M1F": "1823",
+        "M1N": "1823",
+        "M1H": "1823",
+        "M2": "1824",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCO--*****",
+        "D": "Civilian Open-Bed Truck",
+        "M1U": "1825",
+        "M1F": "1825",
+        "M1N": "1825",
+        "M1H": "1825",
+        "M2": "1826",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCOL-*****",
+        "D": "Civilian Pickup Truck",
+        "M1U": "1827",
+        "M1F": "1827",
+        "M1N": "1827",
+        "M1H": "1827",
+        "M2": "1828",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCOM-*****",
+        "D": "Civilian Small Open-Bed Truck",
+        "M1U": "1829",
+        "M1F": "1829",
+        "M1N": "1829",
+        "M1H": "1829",
+        "M2": "1830",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCOH-*****",
+        "D": "Civilian Large Open-Bed Truck",
+        "M1U": "1831",
+        "M1F": "1831",
+        "M1N": "1831",
+        "M1H": "1831",
+        "M2": "1832",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCM--*****",
+        "D": "Civilian Multi-Passenger Vehicle",
+        "M1U": "1833",
+        "M1F": "1833",
+        "M1N": "1833",
+        "M1H": "1833",
+        "M2": "1834",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCML-*****",
+        "D": "Civilian Multi-Passenger Van",
+        "M1U": "1835",
+        "M1F": "1835",
+        "M1N": "1835",
+        "M1H": "1835",
+        "M2": "1836",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCMM-*****",
+        "D": "Civilian Small Bus",
+        "M1U": "1837",
+        "M1F": "1837",
+        "M1N": "1837",
+        "M1H": "1837",
+        "M2": "1838",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCMH-*****",
+        "D": "Civilian Large Bus",
+        "M1U": "1839",
+        "M1F": "1839",
+        "M1N": "1839",
+        "M1H": "1839",
+        "M2": "1840",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCU--*****",
+        "D": "Civilian Utility Vehicle",
+        "M1U": "1841",
+        "M1F": "1841",
+        "M1N": "1841",
+        "M1H": "1841",
+        "M2": "1842",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCUL-*****",
+        "D": "Civilian Sport Utility Vehicle (SUV)",
+        "M1U": "1843",
+        "M1F": "1843",
+        "M1N": "1843",
+        "M1H": "1843",
+        "M2": "1844",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCUM-*****",
+        "D": "Civilian Utility Small Box Truck",
+        "M1U": "1845",
+        "M1F": "1845",
+        "M1N": "1845",
+        "M1H": "1845",
+        "M2": "1846",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCUH-*****",
+        "D": "Civilian Utility Large Box Truck",
+        "M1U": "1847",
+        "M1F": "1847",
+        "M1N": "1847",
+        "M1H": "1847",
+        "M2": "1848",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCJ--*****",
+        "D": "Civilian Jeep Type Vehicle",
+        "M1U": "1849",
+        "M1F": "1849",
+        "M1N": "1849",
+        "M1H": "1849",
+        "M2": "1850",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCJL-*****",
+        "D": "Civilian Small/Light Jeep Type Vehicle",
+        "M1U": "1851",
+        "M1F": "1851",
+        "M1N": "1851",
+        "M1H": "1851",
+        "M2": "1852",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCJM-*****",
+        "D": "Civilian Medium Jeep Type Vehicle",
+        "M1U": "1853",
+        "M1F": "1853",
+        "M1N": "1853",
+        "M1H": "1853",
+        "M2": "1854",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCJH-*****",
+        "D": "Civilian Large/Heavy Jeep Type Vehicle",
+        "M1U": "1855",
+        "M1F": "1855",
+        "M1N": "1855",
+        "M1H": "1855",
+        "M2": "1856",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCT--*****",
+        "D": "Civilian Tractor Trailer Truck With Box Trailer",
+        "M1U": "1857",
+        "M1F": "1857",
+        "M1N": "1857",
+        "M1H": "1857",
+        "M2": "1858",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCTL-*****",
+        "D": "Civilian Small/Light Box Trailer",
+        "M1U": "1859",
+        "M1F": "1859",
+        "M1N": "1859",
+        "M1H": "1859",
+        "M2": "1860",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCTM-*****",
+        "D": "Civilian Medium Box Trailer",
+        "M1U": "1861",
+        "M1F": "1861",
+        "M1N": "1861",
+        "M1H": "1861",
+        "M2": "1862",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCTH-*****",
+        "D": "Civilian Large/Heavy Box Trailer",
+        "M1U": "1863",
+        "M1F": "1863",
+        "M1N": "1863",
+        "M1H": "1863",
+        "M2": "1864",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCF--*****",
+        "D": "Civilian Tractor Trailer Truck With Flatbed Trailer",
+        "M1U": "1865",
+        "M1F": "1865",
+        "M1N": "1865",
+        "M1H": "1865",
+        "M2": "1866",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCFL-*****",
+        "D": "Civilian Small/Light Flatbed Trailer",
+        "M1U": "1867",
+        "M1F": "1867",
+        "M1N": "1867",
+        "M1H": "1867",
+        "M2": "1868",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCFM-*****",
+        "D": "Civilian Medium Flatbed Trailer",
+        "M1U": "1869",
+        "M1F": "1869",
+        "M1N": "1869",
+        "M1H": "1869",
+        "M2": "1870",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVCFH-*****",
+        "D": "Civilian Large/Heavy Flatbed Trailer",
+        "M1U": "1871",
+        "M1F": "1871",
+        "M1N": "1871",
+        "M1H": "1871",
+        "M2": "1872",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*G*EVS---*****",
+        "D": "Missile Support",
+        "M1U": "1874",
+        "M1F": "1874",
+        "M1N": "1874",
+        "M1H": "1874"
+      },
+      {
+        "ID": "S*G*EVST--*****",
+        "D": "Transloader",
+        "M1U": "1875",
+        "M1F": "1875",
+        "M1N": "1875",
+        "M1H": "1875"
+      },
+      {
+        "ID": "S*G*EVSR--*****",
+        "D": "Transporter",
+		"M1U": "1876",
+        "M1F": "1876",
+        "M1N": "1876",
+        "M1H": "1876"
+      },
+      {
+        "ID": "S*G*EVSC--*****",
+        "D": "Crane/Loading Device",
+        "M1U": "1877",
+        "M1F": "1877",
+        "M1N": "1877",
+        "M1H": "1877"
+      },
+      {
+        "ID": "S*G*EVSP--*****",
+        "D": "Propellant Transporter",
+        "M1U": "1878",
+        "M1F": "1878",
+        "M1N": "1878",
+        "M1H": "1878"
+      },
+      {
+        "ID": "S*G*EVSW--*****",
+        "D": "Warhead Transporter",
+        "M1U": "1879",
+        "M1F": "1879",
+        "M1N": "1879",
+        "M1H": "1879"
+      },
+      {
+        "ID": "S*G*EVM---*****",
+        "D": "Pack Animal (S)",
+        "M1U": "1873",
+        "M1F": "1873",
+        "M1N": "1873",
+        "M1H": "1873"
+      },
+      {
+        "ID": "S*G*ES----*****",
+        "D": "Equipment Sensor",
+        "M1U": "1880",
+        "M1F": "1880",
+        "M1N": "1880",
+        "M1H": "1880"
+      },
+      {
+        "ID": "S*G*ESR---*****",
+        "D": "Sensor Radar",
+        "M1U": "1881",
+        "M1F": "1881",
+        "M1N": "1881",
+        "M1H": "1881"
+      },
+      {
+        "ID": "S*G*ESE---*****",
+        "D": "Emplaced Sensor",
+        "M1U": "1882",
+        "M1F": "1882",
+        "M1N": "1882",
+        "M1H": "1882"
+      },
+      {
+        "ID": "S*G*EX----*****",
+        "D": "Special"
+      },
+      {
+        "ID": "S*G*EXL---*****",
+        "D": "Laser",
+        "M1U": "1884",
+        "M1F": "1884",
+        "M1N": "1884",
+        "M1H": "1884"
+      },
+      {
+        "ID": "S*G*EXN---*****",
+        "D": "NBC Equipment",
+        "M1U": "1885",
+        "M1F": "1885",
+        "M1N": "1885",
+        "M1H": "1885"
+      },
+      {
+        "ID": "S*G*EXF---*****",
+        "D": "Flame Thrower",
+        "M1U": "1886",
+        "M1F": "1886",
+        "M1N": "1886",
+        "M1H": "1886"
+      },
+      {
+        "ID": "S*G*EXM---*****",
+        "D": "Land Mines",
+        "M1U": "1887",
+        "M1F": "1887",
+        "M1N": "1887",
+        "M1H": "1887"
+      },
+      {
+        "ID": "S*G*EXMC--*****",
+        "D": "Claymore",
+        "M1U": "1888",
+        "M1F": "1888",
+        "M1N": "1888",
+        "M1H": "1888"
+      },
+      {
+        "ID": "S*G*EXML--*****",
+        "D": "Less Than Lethal",
+        "M1U": "1889",
+        "M1F": "1889",
+        "M1N": "1889",
+        "M1H": "1889"
+      },
+      {
+        "ID": "S*G*EXI---*****",
+        "D": "Improvised Explosive Device (IED)",
+        "M1U": "1883",
+        "M1F": "1883",
+        "M1N": "1883",
+        "M1H": "1883"
+      },
+      {
+        "ID": "IH8CK6F75V69VCF",
+        "D": "BLANK"
+      },
+      {
+        "ID": "S*G*EXI---MO***",
+        "D": "Vehicle Borne Improvised Explosive Device"
+      },
+      {
+        "ID": "S*G*I-----*****",
+        "D": "Installation"
+      },
+      {
+        "ID": "S*G*IR----*****",
+        "D": "Raw Material Production/Storage",
+        "M1U": "1897",
+        "M1F": "1897",
+        "M1N": "1897",
+        "M1H": "1897"
+      },
+      {
+        "ID": "S*G*IRM---*****",
+        "D": "Raw Material Production/Storage Mine",
+        "M1U": "1898",
+        "M1F": "1898",
+        "M1N": "1898",
+        "M1H": "1898"
+      },
+      {
+        "ID": "S*G*IRP---*****",
+        "D": "Petroleum/Gas/Oil",
+        "M1U": "1899",
+        "M1F": "1899",
+        "M1N": "1899",
+        "M1H": "1899"
+      },
+      {
+        "ID": "S*G*IRN---*****",
+        "D": "NBC",
+        "M1U": "1900",
+        "M1F": "1900",
+        "M1N": "1900",
+        "M1H": "1900"
+      },
+      {
+        "ID": "S*G*IRNB--*****",
+        "D": "Production/Storage NBC Biological",
+        "M1U": "1901",
+        "M1F": "1901",
+        "M1N": "1901",
+        "M1H": "1901"
+      },
+      {
+        "ID": "S*G*IRNC--*****",
+        "D": "Production/Storage NBC Chemical",
+        "M1U": "1902",
+        "M1F": "1902",
+        "M1N": "1902",
+        "M1H": "1902"
+      },
+      {
+        "ID": "S*G*IRNN--*****",
+        "D": "Production/Storage NBC Nuclear",
+        "M1U": "1903",
+        "M1F": "1903",
+        "M1N": "1903",
+        "M1H": "1903"
+      },
+      {
+        "ID": "S*G*IP----*****",
+        "D": "Processing Facility",
+        "M1U": "1904",
+        "M1F": "1904",
+        "M1N": "1904",
+        "M1H": "1904"
+      },
+      {
+        "ID": "S*G*IPD---*****",
+        "D": "Processing Facility Decontamination",
+        "M1U": "1905",
+        "M1F": "1905",
+        "M1N": "1905",
+        "M1H": "1905"
+      },
+      {
+        "ID": "S*G*IE----*****",
+        "D": "Equipment Manufacture",
+        "M1U": "1906",
+        "M1F": "1906",
+        "M1N": "1906",
+        "M1H": "1906"
+      },
+      {
+        "ID": "S*G*IU----*****",
+        "D": "Service, Reasearch, Utility Facility",
+        "M1U": "1907",
+        "M1F": "1907",
+        "M1N": "1907",
+        "M1H": "1907"
+      },
+      {
+        "ID": "S*G*IUR---*****",
+        "D": "Technological Research Facility",
+        "M1U": "1908",
+        "M1F": "1908",
+        "M1N": "1908",
+        "M1H": "1908"
+      },
+      {
+        "ID": "S*G*IUT---*****",
+        "D": "Telecommunications Facility",
+        "M1U": "1909",
+        "M1F": "1909",
+        "M1N": "1909",
+        "M1H": "1909"
+      },
+      {
+        "ID": "S*G*IUE---*****",
+        "D": "Electric Power Facility",
+        "M1U": "1910",
+        "M1F": "1910",
+        "M1N": "1910",
+        "M1H": "1910"
+      },
+      {
+        "ID": "S*G*IUEN--*****",
+        "D": "Nuclear Plant",
+        "M1U": "1911",
+        "M1F": "1911",
+        "M1N": "1911",
+        "M1H": "1911"
+      },
+      {
+        "ID": "S*G*IUED--*****",
+        "D": "Dam",
+        "M1U": "1912",
+        "M1F": "1912",
+        "M1N": "1912",
+        "M1H": "1912"
+      },
+      {
+        "ID": "S*G*IUEF--*****",
+        "D": "Fossil Fuel",
+        "M1U": "1913",
+        "M1F": "1913",
+        "M1N": "1913",
+        "M1H": "1913"
+      },
+      {
+        "ID": "S*G*IUP---*****",
+        "D": "Public Water Services",
+        "M1U": "1914",
+        "M1F": "1914",
+        "M1N": "1914",
+        "M1H": "1914"
+      },
+      {
+        "ID": "S*G*IM----*****",
+        "D": "Military Materiel Facility"
+      },
+      {
+        "ID": "S*G*IMF---*****",
+        "D": "Nuclear Energy",
+        "M1U": "1915",
+        "M1F": "1915",
+        "M1N": "1915",
+        "M1H": "1915"
+      },
+      {
+        "ID": "S*G*IMFA--*****",
+        "D": "Atomic Energy Reactor",
+        "M1U": "1916",
+        "M1F": "1916",
+        "M1N": "1916",
+        "M1H": "1916"
+      },
+      {
+        "ID": "S*G*IMFP--*****",
+        "D": "Nuclear Material Production",
+        "M1U": "1917",
+        "M1F": "1917",
+        "M1N": "1917",
+        "M1H": "1917"
+      },
+      {
+        "ID": "S*G*IMFPW-*****",
+        "D": "Weapons Grade",
+        "M1U": "1918",
+        "M1F": "1918",
+        "M1N": "1918",
+        "M1H": "1918"
+      },
+      {
+        "ID": "S*G*IMFS--*****",
+        "D": "Nuclear Material Storage",
+        "M1U": "1919",
+        "M1F": "1919",
+        "M1N": "1919",
+        "M1H": "1919"
+      },
+      {
+        "ID": "S*G*IMA---*****",
+        "D": "Aircraft Production & Assembly",
+        "M1U": "1920",
+        "M1F": "1920",
+        "M1N": "1920",
+        "M1H": "1920"
+      },
+      {
+        "ID": "S*G*IME---*****",
+        "D": "Ammunition And Explosives Production",
+        "M1U": "1921",
+        "M1F": "1921",
+        "M1N": "1921",
+        "M1H": "1921"
+      },
+      {
+        "ID": "S*G*IMG---*****",
+        "D": "Armament Production",
+        "M1U": "1922",
+        "M1F": "1922",
+        "M1N": "1922",
+        "M1H": "1922"
+      },
+      {
+        "ID": "S*G*IMV---*****",
+        "D": "Military Vehicle Production",
+        "M1U": "1923",
+        "M1F": "1923",
+        "M1N": "1923",
+        "M1H": "1923"
+      },
+      {
+        "ID": "S*G*IMN---*****",
+        "D": "Engineering Equipment Production",
+        "M1U": "1924",
+        "M1F": "1924",
+        "M1N": "1924",
+        "M1H": "1924"
+      },
+      {
+        "ID": "S*G*IMNB--*****",
+        "D": "Engineering Equipment Production Bridge",
+        "M1U": "1925",
+        "M1F": "1925",
+        "M1N": "1925",
+        "M1H": "1925"
+      },
+      {
+        "ID": "S*G*IMC---*****",
+        "D": "Chemical & Biological Warfare Production",
+        "M1U": "1926",
+        "M1F": "1926",
+        "M1N": "1926",
+        "M1H": "1926"
+      },
+      {
+        "ID": "S*G*IMS---*****",
+        "D": "Ship Construction",
+        "M1U": "1927",
+        "M1F": "1927",
+        "M1N": "1927",
+        "M1H": "1927"
+      },
+      {
+        "ID": "S*G*IMM---*****",
+        "D": "Missile & Space System Production",
+        "M1U": "1928",
+        "M1F": "1928",
+        "M1N": "1928",
+        "M1H": "1928"
+      },
+      {
+        "ID": "S*G*IG----*****",
+        "D": "Government Leadership",
+        "M1U": "1929",
+        "M1F": "1929",
+        "M1N": "1929",
+        "M1H": "1929"
+      },
+      {
+        "ID": "S*G*IB----*****",
+        "D": "Military Base/Facility",
+        "M1U": "1930",
+        "M1F": "1930",
+        "M1N": "1930",
+        "M1H": "1930"
+      },
+      {
+        "ID": "S*G*IBA---*****",
+        "D": "Airport/Airbase",
+        "M1U": "1931",
+        "M1F": "1931",
+        "M1N": "1931",
+        "M1H": "1931"
+      },
+      {
+        "ID": "S*G*IBN---*****",
+        "D": "Seaport/Naval Base",
+        "M1U": "1932",
+        "M1F": "1932",
+        "M1N": "1932",
+        "M1H": "1932"
+      },
+      {
+        "ID": "S*G*IT----*****",
+        "D": "Transport Facility",
+        "M1U": "1933",
+        "M1F": "1933",
+        "M1N": "1933",
+        "M1H": "1933"
+      },
+      {
+        "ID": "S*G*IX----*****",
+        "D": "Medical Facility",
+        "M1U": "660",
+        "M1F": "661",
+        "M1N": "662",
+        "M1H": "663"
+      },
+      {
+        "ID": "S*G*IXH---*****",
+        "D": "Hospital",
+        "M1U": "660",
+        "M1F": "661",
+        "M1N": "662",
+        "M1H": "663",
+        "M2": "1935",
+        "M2C": "#000000"
+      },
+      {
+        "ID": "S*G*IC----*****",
+        "D": "Tented Camp",
+        "M1U": "1891",
+        "M1F": "1891",
+        "M1N": "1891",
+        "M1H": "1891"
+      },
+      {
+        "ID": "S*G*ICD---*****",
+        "D": "Tented Camp, Displaced Persons/Refugees",
+        "M1U": "1892",
+        "M1F": "1892",
+        "M1N": "1892",
+        "M1H": "1892"
+      },
+      {
+        "ID": "S*G*ICT---*****",
+        "D": "Tented Training Camp",
+        "M1U": "1893",
+        "M1F": "1893",
+        "M1N": "1893",
+        "M1H": "1893"
+      },
+      {
+        "ID": "S*G*IW----*****",
+        "D": "Warehouse/Storage Facility",
+        "M1U": "1895",
+        "M1F": "1895",
+        "M1N": "1895",
+        "M1H": "1895"
+      },
+      {
+        "ID": "S*S*------*****",
+        "D": "Sea Surface Track"
+      },
+      {
+        "ID": "S*S*C-----*****",
+        "D": "Sea Surface Track Combatant",
+        "M1U": "1936",
+        "M1F": "1936",
+        "M1N": "1936",
+        "M1H": "1936",
+        "M2": "1937",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*CL----*****",
+        "D": "Line",
+        "M1U": "1938",
+        "M1F": "1938",
+        "M1N": "1938",
+        "M1H": "1938"
+      },
+      {
+        "ID": "S*S*CLCV--*****",
+        "D": "Carrier",
+        "M1U": "1939",
+        "M1F": "1939",
+        "M1N": "1939",
+        "M1H": "1939"
+      },
+      {
+        "ID": "S*S*CLBB--*****",
+        "D": "Battleship",
+        "M1U": "1940",
+        "M1F": "1940",
+        "M1N": "1940",
+        "M1H": "1940"
+      },
+      {
+        "ID": "S*S*CLCC--*****",
+        "D": "Cruiser",
+        "M1U": "1941",
+        "M1F": "1941",
+        "M1N": "1941",
+        "M1H": "1941"
+      },
+      {
+        "ID": "S*S*CLDD--*****",
+        "D": "Destroyer",
+        "M1U": "1942",
+        "M1F": "1942",
+        "M1N": "1942",
+        "M1H": "1942"
+      },
+      {
+        "ID": "S*S*CLFF--*****",
+        "D": "Frigate/Corvette",
+        "M1U": "1943",
+        "M1F": "1943",
+        "M1N": "1943",
+        "M1H": "1943"
+      },
+      {
+        "ID": "S*S*CLLL--*****",
+        "D": "Littoral Combatant",
+        "M1U": "1944",
+        "M1F": "1944",
+        "M1N": "1944",
+        "M1H": "1944"
+      },
+      {
+        "ID": "S*S*CLLLAS*****",
+        "D": "Antisubmarine Warfare Mission Package",
+        "M1U": "1945",
+        "M1F": "1945",
+        "M1N": "1945",
+        "M1H": "1945"
+      },
+      {
+        "ID": "S*S*CLLLMI*****",
+        "D": "Mine Warfare Mission Package",
+        "M1U": "1946",
+        "M1F": "1946",
+        "M1N": "1946",
+        "M1H": "1946"
+      },
+      {
+        "ID": "S*S*CLLLSU*****",
+        "D": "Surface Warfare (SUW) Mission Package",
+        "M1U": "1947",
+        "M1F": "1947",
+        "M1N": "1947",
+        "M1H": "1947"
+      },
+      {
+        "ID": "S*S*CA----*****",
+        "D": "Amphibious Warfare Ship",
+        "M1U": "1948",
+        "M1F": "1948",
+        "M1N": "1948",
+        "M1H": "1948"
+      },
+      {
+        "ID": "S*S*CALA--*****",
+        "D": "Assault Vessel",
+        "M1U": "1949",
+        "M1F": "1949",
+        "M1N": "1949",
+        "M1H": "1949"
+      },
+      {
+        "ID": "S*S*CALS--*****",
+        "D": "Landing Ship",
+        "M1U": "1950",
+        "M1F": "1950",
+        "M1N": "1950",
+        "M1H": "1950"
+      },
+      {
+        "ID": "S*S*CALSM-*****",
+        "D": "Landing Ship Medium",
+        "M1U": "1951",
+        "M1F": "1951",
+        "M1N": "1951",
+        "M1H": "1951"
+      },
+      {
+        "ID": "S*S*CALST-*****",
+        "D": "Landing Ship Tank",
+        "M1U": "1952",
+        "M1F": "1952",
+        "M1N": "1952",
+        "M1H": "1952"
+      },
+      {
+        "ID": "S*S*CALC--*****",
+        "D": "Landing Craft",
+        "M1U": "1953",
+        "M1F": "1953",
+        "M1N": "1953",
+        "M1H": "1953"
+      },
+      {
+        "ID": "S*S*CM----*****",
+        "D": "Mine Warfare Vessel",
+        "M1U": "1954",
+        "M1F": "1954",
+        "M1N": "1954",
+        "M1H": "1954"
+      },
+      {
+        "ID": "S*S*CMML--*****",
+        "D": "Minelayer",
+        "M1U": "1955",
+        "M1F": "1955",
+        "M1N": "1955",
+        "M1H": "1955"
+      },
+      {
+        "ID": "S*S*CMMS--*****",
+        "D": "Minesweeper",
+        "M1U": "1956",
+        "M1F": "1956",
+        "M1N": "1956",
+        "M1H": "1956"
+      },
+      {
+        "ID": "S*S*CMMH--*****",
+        "D": "Minehunter",
+        "M1U": "1957",
+        "M1F": "1957",
+        "M1N": "1957",
+        "M1H": "1957"
+      },
+      {
+        "ID": "S*S*CMMA--*****",
+        "D": "MCM Support",
+        "M1U": "1958",
+        "M1F": "1958",
+        "M1N": "1958",
+        "M1H": "1958"
+      },
+      {
+        "ID": "S*S*CP----*****",
+        "D": "Sea Surface Combatant Patrol",
+        "M1U": "1959",
+        "M1F": "1959",
+        "M1N": "1959",
+        "M1H": "1959"
+      },
+      {
+        "ID": "S*S*CPSB--*****",
+        "D": "Antisubmarine Warfare",
+        "M1U": "1960",
+        "M1F": "1960",
+        "M1N": "1960",
+        "M1H": "1960"
+      },
+      {
+        "ID": "S*S*CPSU--*****",
+        "D": "Antisurface Warfare",
+        "M1U": "1961",
+        "M1F": "1961",
+        "M1N": "1961",
+        "M1H": "1961"
+      },
+      {
+        "ID": "S*S*CPSUM-*****",
+        "D": "Anti-Ship Missile",
+        "M1U": "1962",
+        "M1F": "1962",
+        "M1N": "1962",
+        "M1H": "1962"
+      },
+      {
+        "ID": "S*S*CPSUT-*****",
+        "D": "Torpedo(Antisurface Warfare)",
+        "M1U": "1963",
+        "M1F": "1963",
+        "M1N": "1963",
+        "M1H": "1963"
+      },
+      {
+        "ID": "S*S*CPSUG-*****",
+        "D": "Antisurface Warfare Gun",
+        "M1U": "1964",
+        "M1F": "1964",
+        "M1N": "1964",
+        "M1H": "1964"
+      },
+      {
+        "ID": "S*S*CH----*****",
+        "D": "Combatant Hovercraft",
+        "M1U": "1965",
+        "M1F": "1965",
+        "M1N": "1965",
+        "M1H": "1965"
+      },
+      {
+        "ID": "S*S*S-----*****",
+        "D": "Sea Surface Station",
+        "M1U": "1966",
+        "M1F": "1966",
+        "M1N": "1966",
+        "M1H": "1966"
+      },
+      {
+        "ID": "S*S*SP----*****",
+        "D": "Picket",
+        "M1U": "1967",
+        "M1F": "1967",
+        "M1N": "1967",
+        "M1H": "1967"
+      },
+      {
+        "ID": "S*S*SA----*****",
+        "D": "ASW Ship",
+        "M1U": "1968",
+        "M1F": "1968",
+        "M1N": "1968",
+        "M1H": "1968"
+      },
+      {
+        "ID": "S*S*G-----*****",
+        "D": "Navy Group",
+        "M1U": "1969",
+        "M1F": "1969",
+        "M1N": "1969",
+        "M1H": "1969"
+      },
+      {
+        "ID": "S*S*GT----*****",
+        "D": "Navy Task Force",
+        "M1U": "1970",
+        "M1F": "1970",
+        "M1N": "1970",
+        "M1H": "1970"
+      },
+      {
+        "ID": "S*S*GG----*****",
+        "D": "Navy Task Group",
+        "M1U": "1971",
+        "M1F": "1971",
+        "M1N": "1971",
+        "M1H": "1971"
+      },
+      {
+        "ID": "S*S*GU----*****",
+        "D": "Navy Task Unit",
+        "M1U": "1972",
+        "M1F": "1972",
+        "M1N": "1972",
+        "M1H": "1972"
+      },
+      {
+        "ID": "S*S*GC----*****",
+        "D": "Convoy",
+        "M1U": "1973",
+        "M1F": "1973",
+        "M1N": "1973",
+        "M1H": "1973"
+      },
+      {
+        "ID": "S*S*CD----*****",
+        "D": "Surface Decoy",
+        "M1U": "1974",
+        "M1F": "1974",
+        "M1N": "1974",
+        "M1H": "1974"
+      },
+      {
+        "ID": "S*S*CU----*****",
+        "D": "Unmanned Surface Vehicle (USV)",
+        "M1U": "1975",
+        "M1F": "1975",
+        "M1N": "1975",
+        "M1H": "1975"
+      },
+      {
+        "ID": "S*S*CUM---*****",
+        "D": "USV Mine Countermeasures",
+        "M1U": "1976",
+        "M1F": "1976",
+        "M1N": "1976",
+        "M1H": "1976"
+      },
+      {
+        "ID": "S*S*CUS---*****",
+        "D": "USV Antisubmarine Warfare",
+        "M1U": "1977",
+        "M1F": "1977",
+        "M1N": "1977",
+        "M1H": "1977"
+      },
+      {
+        "ID": "S*S*CUN---*****",
+        "D": "USV Antisurface Warfare",
+        "M1U": "1978",
+        "M1F": "1978",
+        "M1N": "1978",
+        "M1H": "1978"
+      },
+      {
+        "ID": "S*S*CUR---*****",
+        "D": "USV Remote Multimission Vehicle",
+        "M1U": "1979",
+        "M1F": "1979",
+        "M1N": "1979",
+        "M1H": "1979"
+      },
+      {
+        "ID": "S*S*N-----*****",
+        "D": "Noncombatant",
+        "M1U": "1980",
+        "M1F": "1980",
+        "M1N": "1980",
+        "M1H": "1980"
+      },
+      {
+        "ID": "S*S*NR----*****",
+        "D": "Underway Replenishment",
+        "M1U": "1981",
+        "M1F": "1981",
+        "M1N": "1981",
+        "M1H": "1981"
+      },
+      {
+        "ID": "S*S*NF----*****",
+        "D": "Fleet Support",
+        "M1U": "1982",
+        "M1F": "1982",
+        "M1N": "1982",
+        "M1H": "1982"
+      },
+      {
+        "ID": "S*S*NI----*****",
+        "D": "Intelligence",
+        "M1U": "1983",
+        "M1F": "1983",
+        "M1N": "1983",
+        "M1H": "1983"
+      },
+      {
+        "ID": "S*S*NS----*****",
+        "D": "Service & Support Harbor",
+        "M1U": "1984",
+        "M1F": "1984",
+        "M1N": "1984",
+        "M1H": "1984"
+      },
+      {
+        "ID": "S*S*NM----*****",
+        "D": "Hospital Ship",
+        "M1U": "1985",
+        "M1F": "1985",
+        "M1N": "1985",
+        "M1H": "1985"
+      },
+      {
+        "ID": "S*S*NH----*****",
+        "D": "Noncombatant Hovercraft",
+        "M1U": "1986",
+        "M1F": "1986",
+        "M1N": "1986",
+        "M1H": "1986",
+        "M2": "1987",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*NN----*****",
+        "D": "Noncombatant Station",
+        "M1U": "1988",
+        "M1F": "1988",
+        "M1N": "1988",
+        "M1H": "1988"
+      },
+      {
+        "ID": "S*S*NNR---*****",
+        "D": "Rescue",
+        "M1U": "1989",
+        "M1F": "1989",
+        "M1N": "1989",
+        "M1H": "1989"
+      },
+      {
+        "ID": "S*S*X-----*****",
+        "D": "Non-Military"
+      },
+      {
+        "ID": "S*S*XM----*****",
+        "D": "Merchant",
+        "M1U": "1990",
+        "M1F": "1990",
+        "M1N": "1990",
+        "M1H": "1990",
+        "M2": "1991",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XMC---*****",
+        "D": "Subsurface Non-military Cargo",
+        "M1U": "1992",
+        "M1F": "1992",
+        "M1N": "1992",
+        "M1H": "1992",
         "MAPPING1COLOR": "#000000",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
+        "M2": "1991",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*S*XMR---*****",
-        "DESCRIPTION": "Roll On/Roll Off",
-        "MAPPING1U": "1993",
-        "MAPPING1F": "1993",
-        "MAPPING1N": "1993",
-        "MAPPING1H": "1993",
+        "ID": "S*S*XMR---*****",
+        "D": "Roll On/Roll Off",
+        "M1U": "1993",
+        "M1F": "1993",
+        "M1N": "1993",
+        "M1H": "1993",
         "MAPPING1COLOR": "#000000",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
+        "M2": "1991",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*S*XMO---*****",
-        "DESCRIPTION": "Oiler/Tanker",
-        "MAPPING1U": "1994",
-        "MAPPING1F": "1994",
-        "MAPPING1N": "1994",
-        "MAPPING1H": "1994",
+        "ID": "S*S*XMO---*****",
+        "D": "Oiler/Tanker",
+        "M1U": "1994",
+        "M1F": "1994",
+        "M1N": "1994",
+        "M1H": "1994",
         "MAPPING1COLOR": "#000000",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
+        "M2": "1991",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*S*XMTU--*****",
-        "DESCRIPTION": "Tug",
-        "MAPPING1U": "1995",
-        "MAPPING1F": "1995",
-        "MAPPING1N": "1995",
-        "MAPPING1H": "1995",
+        "ID": "S*S*XMTU--*****",
+        "D": "Tug",
+        "M1U": "1995",
+        "M1F": "1995",
+        "M1N": "1995",
+        "M1H": "1995",
         "MAPPING1COLOR": "#000000",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
+        "M2": "1991",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*S*XMF---*****",
-        "DESCRIPTION": "Ferry",
-        "MAPPING1U": "1996",
-        "MAPPING1F": "1996",
-        "MAPPING1N": "1996",
-        "MAPPING1H": "1996",
+        "ID": "S*S*XMF---*****",
+        "D": "Ferry",
+        "M1U": "1996",
+        "M1F": "1996",
+        "M1N": "1996",
+        "M1H": "1996",
         "MAPPING1COLOR": "#000000",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XMP---*****",
-        "DESCRIPTION": "Passenger",
-        "MAPPING1U": "1997",
-        "MAPPING1F": "1997",
-        "MAPPING1N": "1997",
-        "MAPPING1H": "1997",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XMH---*****",
-        "DESCRIPTION": "Hazardous Materials (HAZMAT)",
-        "MAPPING1U": "1998",
-        "MAPPING1F": "1998",
-        "MAPPING1N": "1998",
-        "MAPPING1H": "1998",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XMTO--*****",
-        "DESCRIPTION": "Towing Vessel",
-        "MAPPING1U": "1999",
-        "MAPPING1F": "1999",
-        "MAPPING1N": "1999",
-        "MAPPING1H": "1999",
-        "MAPPING2": "1991",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XF----*****",
-        "DESCRIPTION": "Fishing",
-        "MAPPING1U": "2000",
-        "MAPPING1F": "2000",
-        "MAPPING1N": "2000",
-        "MAPPING1H": "2000",
-        "MAPPING2": "2001",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XFDF--*****",
-        "DESCRIPTION": "Drifter",
-        "MAPPING1U": "2002",
-        "MAPPING1F": "2002",
-        "MAPPING1N": "2002",
-        "MAPPING1H": "2002",
-        "MAPPING2": "2001",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XFDR--*****",
-        "DESCRIPTION": "Dredge",
-        "MAPPING1U": "2003",
-        "MAPPING1F": "2003",
-        "MAPPING1N": "2003",
-        "MAPPING1H": "2003",
-        "MAPPING2": "2001",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XFTR--*****",
-        "DESCRIPTION": "Trawler",
-        "MAPPING1U": "2004",
-        "MAPPING1F": "2004",
-        "MAPPING1N": "2004",
-        "MAPPING1H": "2004",
-        "MAPPING2": "2001",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XR----*****",
-        "DESCRIPTION": "Leisure Craft",
-        "MAPPING1U": "2005",
-        "MAPPING1F": "2005",
-        "MAPPING1N": "2005",
-        "MAPPING1H": "2005",
-        "MAPPING2": "2006",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XL----*****",
-        "DESCRIPTION": "Law Enforcement Vessel",
-        "MAPPING1U": "2007",
-        "MAPPING1F": "2007",
-        "MAPPING1N": "2007",
-        "MAPPING1H": "2007",
-        "MAPPING2": "2008",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*S*XH----*****",
-        "DESCRIPTION": "Non-military Hovercraft",
-        "MAPPING1U": "2009",
-        "MAPPING1F": "2009",
-        "MAPPING1N": "2009",
-        "MAPPING1H": "2009",
-        "MAPPING2": "2010",
-        "MAPPING2COLOR": "#FFFFFF"
+        "M2": "1991",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XMP---*****",
+        "D": "Passenger",
+        "M1U": "1997",
+        "M1F": "1997",
+        "M1N": "1997",
+        "M1H": "1997",
+        "M2": "1991",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XMH---*****",
+        "D": "Hazardous Materials (HAZMAT)",
+        "M1U": "1998",
+        "M1F": "1998",
+        "M1N": "1998",
+        "M1H": "1998",
+        "M2": "1991",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XMTO--*****",
+        "D": "Towing Vessel",
+        "M1U": "1999",
+        "M1F": "1999",
+        "M1N": "1999",
+        "M1H": "1999",
+        "M2": "1991",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XF----*****",
+        "D": "Fishing",
+        "M1U": "2000",
+        "M1F": "2000",
+        "M1N": "2000",
+        "M1H": "2000",
+        "M2": "2001",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XFDF--*****",
+        "D": "Drifter",
+        "M1U": "2002",
+        "M1F": "2002",
+        "M1N": "2002",
+        "M1H": "2002",
+        "M2": "2001",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XFDR--*****",
+        "D": "Dredge",
+        "M1U": "2003",
+        "M1F": "2003",
+        "M1N": "2003",
+        "M1H": "2003",
+        "M2": "2001",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XFTR--*****",
+        "D": "Trawler",
+        "M1U": "2004",
+        "M1F": "2004",
+        "M1N": "2004",
+        "M1H": "2004",
+        "M2": "2001",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XR----*****",
+        "D": "Leisure Craft",
+        "M1U": "2005",
+        "M1F": "2005",
+        "M1N": "2005",
+        "M1H": "2005",
+        "M2": "2006",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XL----*****",
+        "D": "Law Enforcement Vessel",
+        "M1U": "2007",
+        "M1F": "2007",
+        "M1N": "2007",
+        "M1H": "2007",
+        "M2": "2008",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*S*XH----*****",
+        "D": "Non-military Hovercraft",
+        "M1U": "2009",
+        "M1F": "2009",
+        "M1N": "2009",
+        "M1H": "2009",
+        "M2": "2010",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*S*O-----*****",
-        "DESCRIPTION": "Own Track"
-      },
-      {
-        "SYMBOLID": "S*U*------*****",
-        "DESCRIPTION": "Subsurface Track"
-      },
-      {
-        "SYMBOLID": "S*U*S-----*****",
-        "DESCRIPTION": "Submarine",
-        "MAPPING1U": "2017",
-        "MAPPING1F": "2017",
-        "MAPPING1N": "2017",
-        "MAPPING1H": "2017"
-      },
-      {
-        "SYMBOLID": "S*U*SN----*****",
-        "DESCRIPTION": "Nuclear Propulsion",
-        "MAPPING1U": "2022",
-        "MAPPING1F": "2022",
-        "MAPPING1N": "2022",
-        "MAPPING1H": "2022"
-      },
-      {
-        "SYMBOLID": "S*U*SNF---*****",
-        "DESCRIPTION": "Submarine Nuclear Surfaced",
-        "MAPPING1U": "2023",
-        "MAPPING1F": "2023",
-        "MAPPING1N": "2023",
-        "MAPPING1H": "2023"
-      },
-      {
-        "SYMBOLID": "S*U*SNA---*****",
-        "DESCRIPTION": "Submarine Nuclear Attack (SSN)",
-        "MAPPING1U": "2024",
-        "MAPPING1F": "2024",
-        "MAPPING1N": "2024",
-        "MAPPING1H": "2024",
-        "MAPPING2": "2025",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SNM---*****",
-        "DESCRIPTION": "Submarine Nuclear Missile Type Unknown",
-        "MAPPING1U": "2026",
-        "MAPPING1F": "2026",
-        "MAPPING1N": "2026",
-        "MAPPING1H": "2026",
-        "MAPPING2": "2027",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SNG---*****",
-        "DESCRIPTION": "Submarine Nuclear Guided Missile (SSGN)",
-        "MAPPING1U": "2028",
-        "MAPPING1F": "2028",
-        "MAPPING1N": "2028",
-        "MAPPING1H": "2028",
-        "MAPPING2": "2029",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SNB---*****",
-        "DESCRIPTION": "Ballistic Missile Submarine (SSB)",
-        "MAPPING1U": "2030",
-        "MAPPING1F": "2030",
-        "MAPPING1N": "2030",
-        "MAPPING1H": "2030",
-        "MAPPING2": "2031",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SC----*****",
-        "DESCRIPTION": "Conventional Propulsion",
-        "MAPPING1U": "2032",
-        "MAPPING1F": "2032",
-        "MAPPING1N": "2032",
-        "MAPPING1H": "2032"
-      },
-      {
-        "SYMBOLID": "S*U*SCF---*****",
-        "DESCRIPTION": "Conventional Propulsion Surfaced",
-        "MAPPING1U": "2033",
-        "MAPPING1F": "2033",
-        "MAPPING1N": "2033",
-        "MAPPING1H": "2033"
-      },
-      {
-        "SYMBOLID": "S*U*SCA---*****",
-        "DESCRIPTION": "Attack Submarine (SS)",
-        "MAPPING1U": "2034",
-        "MAPPING1F": "2034",
-        "MAPPING1N": "2034",
-        "MAPPING1H": "2034",
-        "MAPPING2": "2035",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SCM---*****",
-        "DESCRIPTION": "Conventional Propulsion Missile Submarine (TYPE UNKNOWN)",
-        "MAPPING1U": "2036",
-        "MAPPING1F": "2036",
-        "MAPPING1N": "2036",
-        "MAPPING1H": "2036",
-        "MAPPING2": "2037",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SCG---*****",
-        "DESCRIPTION": "Guided Missile Submarine (SSG)",
-        "MAPPING1U": "2038",
-        "MAPPING1F": "2038",
-        "MAPPING1N": "2038",
-        "MAPPING1H": "2038",
-        "MAPPING2": "2039",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SCB---*****",
-        "DESCRIPTION": "Conventional Propulsion Ballistic Missile (SSB)",
-        "MAPPING1U": "2040",
-        "MAPPING1F": "2040",
-        "MAPPING1N": "2040",
-        "MAPPING1H": "2040",
-        "MAPPING2": "2041",
-        "MAPPING2COLOR": "#FFFFFF"
-      },
-      {
-        "SYMBOLID": "S*U*SO----*****",
-        "DESCRIPTION": "Other Submersible",
-        "MAPPING1U": "2042",
-        "MAPPING1F": "2042",
-        "MAPPING1N": "2042",
-        "MAPPING1H": "2042"
-      },
-      {
-        "SYMBOLID": "S*U*SOF---*****",
-        "DESCRIPTION": "Other Submersible Surfaced",
-        "MAPPING1U": "2043",
-        "MAPPING1F": "2043",
-        "MAPPING1N": "2043",
-        "MAPPING1H": "2043"
-      },
-      {
-        "SYMBOLID": "S*U*SU----*****",
-        "DESCRIPTION": "Unmanned Underwater Vehicle (UUV)",
-        "MAPPING1U": "2046",
-        "MAPPING1F": "2046",
-        "MAPPING1N": "2046",
-        "MAPPING1H": "2046"
-      },
-      {
-        "SYMBOLID": "S*U*SUM---*****",
-        "DESCRIPTION": "UUV Mine Warfare",
-        "MAPPING1U": "2047",
-        "MAPPING1F": "2047",
-        "MAPPING1N": "2047",
-        "MAPPING1H": "2047"
-      },
-      {
-        "SYMBOLID": "S*U*SUS---*****",
-        "DESCRIPTION": "UUV Antisubmarine Warfare",
-        "MAPPING1U": "2048",
-        "MAPPING1F": "2048",
-        "MAPPING1N": "2048",
-        "MAPPING1H": "2048"
-      },
-      {
-        "SYMBOLID": "S*U*SUN---*****",
-        "DESCRIPTION": "UUV Antisurface Warfare",
-        "MAPPING1U": "2049",
-        "MAPPING1F": "2049",
-        "MAPPING1N": "2049",
-        "MAPPING1H": "2049"
-      },
-      {
-        "SYMBOLID": "S*U*SS----*****",
-        "DESCRIPTION": "Submarine Station",
-        "MAPPING1U": "2044",
-        "MAPPING1F": "2044",
-        "MAPPING1N": "2044",
-        "MAPPING1H": "2044"
-      },
-      {
-        "SYMBOLID": "S*U*SSA---*****",
-        "DESCRIPTION": "ASW Submarine",
-        "MAPPING1U": "2045",
-        "MAPPING1F": "2045",
-        "MAPPING1N": "2045",
-        "MAPPING1H": "2045"
-      },
-      {
-        "SYMBOLID": "S*U*SF----*****",
-        "DESCRIPTION": "Submarine Station Surfaced",
-        "MAPPING1U": "2018",
-        "MAPPING1F": "2018",
-        "MAPPING1N": "2018",
-        "MAPPING1H": "2018"
-      },
-      {
-        "SYMBOLID": "S*U*W-----*****",
-        "DESCRIPTION": "Underwater Weapon",
-        "MAPPING1U": "2056",
-        "MAPPING1F": "2056",
-        "MAPPING1N": "2056",
-        "MAPPING1H": "2056"
-      },
-      {
-        "SYMBOLID": "S*U*WT----*****",
-        "DESCRIPTION": "Torpedo",
-        "MAPPING1U": "2057",
-        "MAPPING1F": "2057",
-        "MAPPING1N": "2057",
-        "MAPPING1H": "2057"
-      },
-      {
-        "SYMBOLID": "S*U*WM----*****",
-        "DESCRIPTION": "Sea Mine",
-        "MAPPING1U": "2058",
-        "MAPPING1F": "2058",
-        "MAPPING1N": "2058",
-        "MAPPING1H": "2058"
-      },
-      {
-        "SYMBOLID": "S*U*WMD---*****",
-        "DESCRIPTION": "Sea Mine Dealt",
-        "MAPPING1U": "2060",
-        "MAPPING1F": "2060",
-        "MAPPING1N": "2060",
-        "MAPPING1H": "2060"
+        "ID": "S*S*O-----*****",
+        "D": "Own Track"
+      },
+      {
+        "ID": "S*U*------*****",
+        "D": "Subsurface Track"
+      },
+      {
+        "ID": "S*U*S-----*****",
+        "D": "Submarine",
+        "M1U": "2017",
+        "M1F": "2017",
+        "M1N": "2017",
+        "M1H": "2017"
+      },
+      {
+        "ID": "S*U*SN----*****",
+        "D": "Nuclear Propulsion",
+        "M1U": "2022",
+        "M1F": "2022",
+        "M1N": "2022",
+        "M1H": "2022"
+      },
+      {
+        "ID": "S*U*SNF---*****",
+        "D": "Submarine Nuclear Surfaced",
+        "M1U": "2023",
+        "M1F": "2023",
+        "M1N": "2023",
+        "M1H": "2023"
+      },
+      {
+        "ID": "S*U*SNA---*****",
+        "D": "Submarine Nuclear Attack (SSN)",
+        "M1U": "2024",
+        "M1F": "2024",
+        "M1N": "2024",
+        "M1H": "2024",
+        "M2": "2025",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SNM---*****",
+        "D": "Submarine Nuclear Missile Type Unknown",
+        "M1U": "2026",
+        "M1F": "2026",
+        "M1N": "2026",
+        "M1H": "2026",
+        "M2": "2027",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SNG---*****",
+        "D": "Submarine Nuclear Guided Missile (SSGN)",
+        "M1U": "2028",
+        "M1F": "2028",
+        "M1N": "2028",
+        "M1H": "2028",
+        "M2": "2029",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SNB---*****",
+        "D": "Ballistic Missile Submarine (SSB)",
+        "M1U": "2030",
+        "M1F": "2030",
+        "M1N": "2030",
+        "M1H": "2030",
+        "M2": "2031",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SC----*****",
+        "D": "Conventional Propulsion",
+        "M1U": "2032",
+        "M1F": "2032",
+        "M1N": "2032",
+        "M1H": "2032"
+      },
+      {
+        "ID": "S*U*SCF---*****",
+        "D": "Conventional Propulsion Surfaced",
+        "M1U": "2033",
+        "M1F": "2033",
+        "M1N": "2033",
+        "M1H": "2033"
+      },
+      {
+        "ID": "S*U*SCA---*****",
+        "D": "Attack Submarine (SS)",
+        "M1U": "2034",
+        "M1F": "2034",
+        "M1N": "2034",
+        "M1H": "2034",
+        "M2": "2035",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SCM---*****",
+        "D": "Conventional Propulsion Missile Submarine (TYPE UNKNOWN)",
+        "M1U": "2036",
+        "M1F": "2036",
+        "M1N": "2036",
+        "M1H": "2036",
+        "M2": "2037",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SCG---*****",
+        "D": "Guided Missile Submarine (SSG)",
+        "M1U": "2038",
+        "M1F": "2038",
+        "M1N": "2038",
+        "M1H": "2038",
+        "M2": "2039",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SCB---*****",
+        "D": "Conventional Propulsion Ballistic Missile (SSB)",
+        "M1U": "2040",
+        "M1F": "2040",
+        "M1N": "2040",
+        "M1H": "2040",
+        "M2": "2041",
+        "M2C": "#FFFFFF"
+      },
+      {
+        "ID": "S*U*SO----*****",
+        "D": "Other Submersible",
+        "M1U": "2042",
+        "M1F": "2042",
+        "M1N": "2042",
+        "M1H": "2042"
+      },
+      {
+        "ID": "S*U*SOF---*****",
+        "D": "Other Submersible Surfaced",
+        "M1U": "2043",
+        "M1F": "2043",
+        "M1N": "2043",
+        "M1H": "2043"
+      },
+      {
+        "ID": "S*U*SU----*****",
+        "D": "Unmanned Underwater Vehicle (UUV)",
+        "M1U": "2046",
+        "M1F": "2046",
+        "M1N": "2046",
+        "M1H": "2046"
+      },
+      {
+        "ID": "S*U*SUM---*****",
+        "D": "UUV Mine Warfare",
+        "M1U": "2047",
+        "M1F": "2047",
+        "M1N": "2047",
+        "M1H": "2047"
+      },
+      {
+        "ID": "S*U*SUS---*****",
+        "D": "UUV Antisubmarine Warfare",
+        "M1U": "2048",
+        "M1F": "2048",
+        "M1N": "2048",
+        "M1H": "2048"
+      },
+      {
+        "ID": "S*U*SUN---*****",
+        "D": "UUV Antisurface Warfare",
+        "M1U": "2049",
+        "M1F": "2049",
+        "M1N": "2049",
+        "M1H": "2049"
+      },
+      {
+        "ID": "S*U*SS----*****",
+        "D": "Submarine Station",
+        "M1U": "2044",
+        "M1F": "2044",
+        "M1N": "2044",
+        "M1H": "2044"
+      },
+      {
+        "ID": "S*U*SSA---*****",
+        "D": "ASW Submarine",
+        "M1U": "2045",
+        "M1F": "2045",
+        "M1N": "2045",
+        "M1H": "2045"
+      },
+      {
+        "ID": "S*U*SF----*****",
+        "D": "Submarine Station Surfaced",
+        "M1U": "2018",
+        "M1F": "2018",
+        "M1N": "2018",
+        "M1H": "2018"
+      },
+      {
+        "ID": "S*U*W-----*****",
+        "D": "Underwater Weapon",
+        "M1U": "2056",
+        "M1F": "2056",
+        "M1N": "2056",
+        "M1H": "2056"
+      },
+      {
+        "ID": "S*U*WT----*****",
+        "D": "Torpedo",
+        "M1U": "2057",
+        "M1F": "2057",
+        "M1N": "2057",
+        "M1H": "2057"
+      },
+      {
+        "ID": "S*U*WM----*****",
+        "D": "Sea Mine",
+        "M1U": "2058",
+        "M1F": "2058",
+        "M1N": "2058",
+        "M1H": "2058"
+      },
+      {
+        "ID": "S*U*WMD---*****",
+        "D": "Sea Mine Dealt",
+        "M1U": "2060",
+        "M1F": "2060",
+        "M1N": "2060",
+        "M1H": "2060"
       },
       {
-        "SYMBOLID": "S*U*WMG---*****",
-        "DESCRIPTION": "Sea Mine (Ground)",
-        "MAPPING1U": "2061",
-        "MAPPING1F": "2061",
-        "MAPPING1N": "2061",
-        "MAPPING1H": "2061"
+        "ID": "S*U*WMG---*****",
+        "D": "Sea Mine (Ground)",
+        "M1U": "2061",
+        "M1F": "2061",
+        "M1N": "2061",
+        "M1H": "2061"
       },
       {
-        "SYMBOLID": "S*U*WMGD--*****",
-        "DESCRIPTION": "Sea Mine (Ground) Dealt",
-        "MAPPING1U": "2063",
-        "MAPPING1F": "2063",
-        "MAPPING1N": "2063",
-        "MAPPING1H": "2063"
+        "ID": "S*U*WMGD--*****",
+        "D": "Sea Mine (Ground) Dealt",
+        "M1U": "2063",
+        "M1F": "2063",
+        "M1N": "2063",
+        "M1H": "2063"
       },
       {
-        "SYMBOLID": "S*U*WMM---*****",
-        "DESCRIPTION": "Sea Mine (Moored)",
-        "MAPPING1U": "2072",
-        "MAPPING1F": "2072",
-        "MAPPING1N": "2072",
-        "MAPPING1H": "2072"
+        "ID": "S*U*WMM---*****",
+        "D": "Sea Mine (Moored)",
+        "M1U": "2072",
+        "M1F": "2072",
+        "M1N": "2072",
+        "M1H": "2072"
       },
       {
-        "SYMBOLID": "S*U*WMMD--*****",
-        "DESCRIPTION": "Sea Mine (Moored) Dealt",
-        "MAPPING1U": "2074",
-        "MAPPING1F": "2074",
-        "MAPPING1N": "2074",
-        "MAPPING1H": "2074"
+        "ID": "S*U*WMMD--*****",
+        "D": "Sea Mine (Moored) Dealt",
+        "M1U": "2074",
+        "M1F": "2074",
+        "M1N": "2074",
+        "M1H": "2074"
       },
       {
-        "SYMBOLID": "S*U*WMF---*****",
-        "DESCRIPTION": "Sea Mine (Floating)",
-        "MAPPING1U": "2083",
-        "MAPPING1F": "2083",
-        "MAPPING1N": "2083",
-        "MAPPING1H": "2083"
+        "ID": "S*U*WMF---*****",
+        "D": "Sea Mine (Floating)",
+        "M1U": "2083",
+        "M1F": "2083",
+        "M1N": "2083",
+        "M1H": "2083"
       },
       {
-        "SYMBOLID": "S*U*WMFD--*****",
-        "DESCRIPTION": "Sea Mine (Floating) Dealt",
-        "MAPPING1U": "2085",
-        "MAPPING1F": "2085",
-        "MAPPING1N": "2085",
-        "MAPPING1H": "2085"
+        "ID": "S*U*WMFD--*****",
+        "D": "Sea Mine (Floating) Dealt",
+        "M1U": "2085",
+        "M1F": "2085",
+        "M1N": "2085",
+        "M1H": "2085"
       },
       {
-        "SYMBOLID": "S*U*WMO---*****",
-        "DESCRIPTION": "Sea Mine (Other Position)",
-        "MAPPING1U": "2093",
-        "MAPPING1F": "2093",
-        "MAPPING1N": "2093",
-        "MAPPING1H": "2093"
+        "ID": "S*U*WMO---*****",
+        "D": "Sea Mine (Other Position)",
+        "M1U": "2093",
+        "M1F": "2093",
+        "M1N": "2093",
+        "M1H": "2093"
       },
       {
-        "SYMBOLID": "S*U*WMOD--*****",
-        "DESCRIPTION": "Sea Mine (Other Position) Dealt",
-        "MAPPING1U": "2095",
-        "MAPPING1F": "2095",
-        "MAPPING1N": "2095",
-        "MAPPING1H": "2095"
+        "ID": "S*U*WMOD--*****",
+        "D": "Sea Mine (Other Position) Dealt",
+        "M1U": "2095",
+        "M1F": "2095",
+        "M1N": "2095",
+        "M1H": "2095"
       },
       {
-        "SYMBOLID": "S*U*WD----*****",
-        "DESCRIPTION": "Underwater Decoy",
-        "MAPPING1U": "2113",
-        "MAPPING1F": "2113",
-        "MAPPING1N": "2113",
-        "MAPPING1H": "2113"
+        "ID": "S*U*WD----*****",
+        "D": "Underwater Decoy",
+        "M1U": "2113",
+        "M1F": "2113",
+        "M1N": "2113",
+        "M1H": "2113"
       },
       {
-        "SYMBOLID": "S*U*WDM---*****",
-        "DESCRIPTION": "Sea Mine Decoy",
-        "MAPPING1U": "2114",
-        "MAPPING1F": "2114",
-        "MAPPING1N": "2114",
-        "MAPPING1H": "2114"
+        "ID": "S*U*WDM---*****",
+        "D": "Sea Mine Decoy",
+        "M1U": "2114",
+        "M1F": "2114",
+        "M1N": "2114",
+        "M1H": "2114"
       },
       {
-        "SYMBOLID": "S*U*N-----*****",
-        "DESCRIPTION": "Non-Submarine"
-      },
-      {
-        "SYMBOLID": "S*U*ND----*****",
-        "DESCRIPTION": "Diver",
-        "MAPPING1U": "2120",
-        "MAPPING1F": "2120",
-        "MAPPING1N": "2120",
-        "MAPPING1H": "2120"
-      },
-      {
-        "SYMBOLID": "S*U*X-----*****",
-        "DESCRIPTION": "Unexploded Ordnance Area (Subsurface)",
-        "MAPPING2": "2126",
-        "MAPPING2COLOR": "#FF0000"
+        "ID": "S*U*N-----*****",
+        "D": "Non-Submarine"
+      },
+      {
+        "ID": "S*U*ND----*****",
+        "D": "Diver",
+        "M1U": "2120",
+        "M1F": "2120",
+        "M1N": "2120",
+        "M1H": "2120"
+      },
+      {
+        "ID": "S*U*X-----*****",
+        "D": "Unexploded Ordnance Area (Subsurface)",
+        "M2": "2126",
+        "M2C": "#FF0000"
       },
-      {
-        "SYMBOLID": "S*F*------*****",
-        "DESCRIPTION": "Special Operations Forces (SOF) Unit",
-        "MAPPING1U": "2131",
-        "MAPPING1F": "2131",
-        "MAPPING1N": "2131",
-        "MAPPING1H": "2131"
+      {
+        "ID": "S*F*------*****",
+        "D": "Special Operations Forces (SOF) Unit",
+        "M1U": "2131",
+        "M1F": "2131",
+        "M1N": "2131",
+        "M1H": "2131"
       },
-      {
-        "SYMBOLID": "S*F*A-----*****",
-        "DESCRIPTION": "SOF Unit Aviation",
-        "MAPPING1U": "2132",
-        "MAPPING1F": "2132",
-        "MAPPING1N": "2132",
-        "MAPPING1H": "2132"
+      {
+        "ID": "S*F*A-----*****",
+        "D": "SOF Unit Aviation",
+        "M1U": "2132",
+        "M1F": "2132",
+        "M1N": "2132",
+        "M1H": "2132"
       },
-      {
-        "SYMBOLID": "S*F*AF----*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing",
-        "MAPPING1U": "2133",
-        "MAPPING1F": "2133",
-        "MAPPING1N": "2133",
-        "MAPPING1H": "2133"
+      {
+        "ID": "S*F*AF----*****",
+        "D": "SOF Unit Fixed Wing",
+        "M1U": "2133",
+        "M1F": "2133",
+        "M1N": "2133",
+        "M1H": "2133"
       },
-      {
-        "SYMBOLID": "S*F*AFA---*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Attack",
-        "MAPPING1U": "2134",
-        "MAPPING1F": "2134",
-        "MAPPING1N": "2134",
-        "MAPPING1H": "2134"
+      {
+        "ID": "S*F*AFA---*****",
+        "D": "SOF Unit Fixed Wing Attack",
+        "M1U": "2134",
+        "M1F": "2134",
+        "M1N": "2134",
+        "M1H": "2134"
       },
-      {
-        "SYMBOLID": "S*F*AFK---*****",
-        "DESCRIPTION": "SOF Unit Refuel",
-        "MAPPING1U": "2135",
-        "MAPPING1F": "2135",
-        "MAPPING1N": "2135",
-        "MAPPING1H": "2135"
+      {
+        "ID": "S*F*AFK---*****",
+        "D": "SOF Unit Refuel",
+        "M1U": "2135",
+        "M1F": "2135",
+        "M1N": "2135",
+        "M1H": "2135"
       },
-      {
-        "SYMBOLID": "S*F*AFU---*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Utility",
-        "MAPPING1U": "2136",
-        "MAPPING1F": "2136",
-        "MAPPING1N": "2136",
-        "MAPPING1H": "2136"
+      {
+        "ID": "S*F*AFU---*****",
+        "D": "SOF Unit Fixed Wing Utility",
+        "M1U": "2136",
+        "M1F": "2136",
+        "M1N": "2136",
+        "M1H": "2136"
       },
-      {
-        "SYMBOLID": "S*F*AFUL--*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Utility (Light)",
-        "MAPPING1U": "2137",
-        "MAPPING1F": "2137",
-        "MAPPING1N": "2137",
-        "MAPPING1H": "2137"
+      {
+        "ID": "S*F*AFUL--*****",
+        "D": "SOF Unit Fixed Wing Utility (Light)",
+        "M1U": "2137",
+        "M1F": "2137",
+        "M1N": "2137",
+        "M1H": "2137"
       },
-      {
-        "SYMBOLID": "S*F*AFUM--*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Utility (Medium)",
-        "MAPPING1U": "2138",
-        "MAPPING1F": "2138",
-        "MAPPING1N": "2138",
-        "MAPPING1H": "2138"
+      {
+        "ID": "S*F*AFUM--*****",
+        "D": "SOF Unit Fixed Wing Utility (Medium)",
+        "M1U": "2138",
+        "M1F": "2138",
+        "M1N": "2138",
+        "M1H": "2138"
       },
-      {
-        "SYMBOLID": "S*F*AFUH--*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Utility (Heavy)",
-        "MAPPING1U": "2139",
-        "MAPPING1F": "2139",
-        "MAPPING1N": "2139",
-        "MAPPING1H": "2139"
+      {
+        "ID": "S*F*AFUH--*****",
+        "D": "SOF Unit Fixed Wing Utility (Heavy)",
+        "M1U": "2139",
+        "M1F": "2139",
+        "M1N": "2139",
+        "M1H": "2139"
       },
-      {
-        "SYMBOLID": "S*F*AV----*****",
-        "DESCRIPTION": "SOF Unit V/STOL",
-        "MAPPING1U": "2140",
-        "MAPPING1F": "2140",
-        "MAPPING1N": "2140",
-        "MAPPING1H": "2140"
+      {
+        "ID": "S*F*AV----*****",
+        "D": "SOF Unit V/STOL",
+        "M1U": "2140",
+        "M1F": "2140",
+        "M1N": "2140",
+        "M1H": "2140"
       },
-      {
-        "SYMBOLID": "S*F*AH----*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing",
-        "MAPPING1U": "2141",
-        "MAPPING1F": "2141",
-        "MAPPING1N": "2141",
-        "MAPPING1H": "2141"
-      },
-      {
-        "SYMBOLID": "S*F*AHH---*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Combat Search & Rescue",
-        "MAPPING1U": "2142",
-        "MAPPING1F": "2142",
-        "MAPPING1N": "2142",
-        "MAPPING1H": "2142"
-      },
-      {
-        "SYMBOLID": "S*F*AHA---*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Attack",
-        "MAPPING1U": "2143",
-        "MAPPING1F": "2143",
-        "MAPPING1N": "2143",
-        "MAPPING1H": "2143"
-      },
-      {
-        "SYMBOLID": "S*F*AHU---*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Utility",
-        "MAPPING1U": "2144",
-        "MAPPING1F": "2144",
-        "MAPPING1N": "2144",
-        "MAPPING1H": "2144"
-      },
-      {
-        "SYMBOLID": "S*F*AHUL--*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Utility (Light)",
-        "MAPPING1U": "2145",
-        "MAPPING1F": "2145",
-        "MAPPING1N": "2145",
-        "MAPPING1H": "2145"
-      },
-      {
-        "SYMBOLID": "S*F*AHUM--*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Utility (Medium)",
-        "MAPPING1U": "2146",
-        "MAPPING1F": "2146",
-        "MAPPING1N": "2146",
-        "MAPPING1H": "2146"
-      },
-      {
-        "SYMBOLID": "S*F*AHUH--*****",
-        "DESCRIPTION": "SOF Unit Rotary Wing Utility (Heavy)",
-        "MAPPING1U": "2147",
-        "MAPPING1F": "2147",
-        "MAPPING1N": "2147",
-        "MAPPING1H": "2147"
-      },
-      {
-        "SYMBOLID": "S*F*N-----*****",
-        "DESCRIPTION": "SOF Unit SOF Unit Naval",
-        "MAPPING1U": "2148",
-        "MAPPING1F": "2148",
-        "MAPPING1N": "2148",
-        "MAPPING1H": "2148"
-      },
-      {
-        "SYMBOLID": "S*F*NS----*****",
-        "DESCRIPTION": "SOF Unit Seal",
-        "MAPPING1U": "2149",
-        "MAPPING1F": "2149",
-        "MAPPING1N": "2149",
-        "MAPPING1H": "2149"
-      },
-      {
-        "SYMBOLID": "S*F*NU----*****",
-        "DESCRIPTION": "SOF Unit Underwater Demolition Team",
-        "MAPPING1U": "2150",
-        "MAPPING1F": "2150",
-        "MAPPING1N": "2150",
-        "MAPPING1H": "2150"
+      {
+        "ID": "S*F*AH----*****",
+        "D": "SOF Unit Rotary Wing",
+        "M1U": "2141",
+        "M1F": "2141",
+        "M1N": "2141",
+        "M1H": "2141"
+      },
+      {
+        "ID": "S*F*AHH---*****",
+        "D": "SOF Unit Rotary Wing Combat Search & Rescue",
+        "M1U": "2142",
+        "M1F": "2142",
+        "M1N": "2142",
+        "M1H": "2142"
+      },
+      {
+        "ID": "S*F*AHA---*****",
+        "D": "SOF Unit Rotary Wing Attack",
+        "M1U": "2143",
+        "M1F": "2143",
+        "M1N": "2143",
+        "M1H": "2143"
+      },
+      {
+        "ID": "S*F*AHU---*****",
+        "D": "SOF Unit Rotary Wing Utility",
+        "M1U": "2144",
+        "M1F": "2144",
+        "M1N": "2144",
+        "M1H": "2144"
+      },
+      {
+        "ID": "S*F*AHUL--*****",
+        "D": "SOF Unit Rotary Wing Utility (Light)",
+        "M1U": "2145",
+        "M1F": "2145",
+        "M1N": "2145",
+        "M1H": "2145"
+      },
+      {
+        "ID": "S*F*AHUM--*****",
+        "D": "SOF Unit Rotary Wing Utility (Medium)",
+        "M1U": "2146",
+        "M1F": "2146",
+        "M1N": "2146",
+        "M1H": "2146"
+      },
+      {
+        "ID": "S*F*AHUH--*****",
+        "D": "SOF Unit Rotary Wing Utility (Heavy)",
+        "M1U": "2147",
+        "M1F": "2147",
+        "M1N": "2147",
+        "M1H": "2147"
+      },
+      {
+        "ID": "S*F*N-----*****",
+        "D": "SOF Unit SOF Unit Naval",
+        "M1U": "2148",
+        "M1F": "2148",
+        "M1N": "2148",
+        "M1H": "2148"
+      },
+      {
+        "ID": "S*F*NS----*****",
+        "D": "SOF Unit Seal",
+        "M1U": "2149",
+        "M1F": "2149",
+        "M1N": "2149",
+        "M1H": "2149"
+      },
+      {
+        "ID": "S*F*NU----*****",
+        "D": "SOF Unit Underwater Demolition Team",
+        "M1U": "2150",
+        "M1F": "2150",
+        "M1N": "2150",
+        "M1H": "2150"
       },
-      {
-        "SYMBOLID": "S*F*NB----*****",
-        "DESCRIPTION": "SOF Unit Special Boat",
-        "MAPPING1U": "2151",
-        "MAPPING1F": "2151",
-        "MAPPING1N": "2151",
-        "MAPPING1H": "2151",
-        "MAPPING2": "2152",
-        "MAPPING2COLOR": "#FFFFFF"
+      {
+        "ID": "S*F*NB----*****",
+        "D": "SOF Unit Special Boat",
+        "M1U": "2151",
+        "M1F": "2151",
+        "M1N": "2151",
+        "M1H": "2151",
+        "M2": "2152",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*F*NN----*****",
-        "DESCRIPTION": "SOF Unit Special SSNR",
-        "MAPPING1U": "2153",
-        "MAPPING1F": "2153",
-        "MAPPING1N": "2153",
-        "MAPPING1H": "2153"
+        "ID": "S*F*NN----*****",
+        "D": "SOF Unit Special SSNR",
+        "M1U": "2153",
+        "M1F": "2153",
+        "M1N": "2153",
+        "M1H": "2153"
       },
       {
-        "SYMBOLID": "S*F*G-----*****",
-        "DESCRIPTION": "SOF Unit Ground",
-        "MAPPING1U": "604",
-        "MAPPING1F": "605",
-        "MAPPING1N": "606",
-        "MAPPING1H": "607",
-        "MAPPING2": "2154",
-        "MAPPING2COLOR": "#000000"
+        "ID": "S*F*G-----*****",
+        "D": "SOF Unit Ground",
+        "M1U": "604",
+        "M1F": "605",
+        "M1N": "606",
+        "M1H": "607",
+        "M2": "2154",
+        "M2C": "#000000"
       },
       {
-        "SYMBOLID": "S*F*GS----*****",
-        "DESCRIPTION": "SOF Unit Special Forces",
-        "MAPPING1U": "2158",
-        "MAPPING1F": "2158",
-        "MAPPING1N": "2158",
-        "MAPPING1H": "2158"
+        "ID": "S*F*GS----*****",
+        "D": "SOF Unit Special Forces",
+        "M1U": "2158",
+        "M1F": "2158",
+        "M1N": "2158",
+        "M1H": "2158"
       },
       {
-        "SYMBOLID": "S*F*GR----*****",
-        "DESCRIPTION": "SOF Unit Ranger",
-        "MAPPING1U": "604",
-        "MAPPING1F": "605",
-        "MAPPING1N": "606",
-        "MAPPING1H": "607",
-        "MAPPING2": "2159",
-        "MAPPING2COLOR": "#000000"
+        "ID": "S*F*GR----*****",
+        "D": "SOF Unit Ranger",
+        "M1U": "604",
+        "M1F": "605",
+        "M1N": "606",
+        "M1H": "607",
+        "M2": "2159",
+        "M2C": "#000000"
       },
       {
-        "SYMBOLID": "S*F*GP----*****",
-        "DESCRIPTION": "SOF Unit Psychological Operations (PSYOP)",
-        "MAPPING1U": "2161",
-        "MAPPING1F": "2161",
-        "MAPPING1N": "2161",
-        "MAPPING1H": "2161",
-        "MAPPING2": "2162",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "S*F*GP----*****",
+        "D": "SOF Unit Psychological Operations (PSYOP)",
+        "M1U": "2161",
+        "M1F": "2161",
+        "M1N": "2161",
+        "M1H": "2161",
+        "M2": "2162",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*F*GPA---*****",
-        "DESCRIPTION": "SOF Unit Fixed Wing Aviation (PSYOP)",
-        "MAPPING1U": "2163",
-        "MAPPING1F": "2163",
-        "MAPPING1N": "2163",
-        "MAPPING1H": "2163",
-        "MAPPING2": "2164",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "S*F*GPA---*****",
+        "D": "SOF Unit Fixed Wing Aviation (PSYOP)",
+        "M1U": "2163",
+        "M1F": "2163",
+        "M1N": "2163",
+        "M1H": "2163",
+        "M2": "2164",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "S*F*GC----*****",
-        "DESCRIPTION": "SOF Unit Civil Affairs",
-        "MAPPING1U": "2165",
-        "MAPPING1F": "2165",
-        "MAPPING1N": "2165",
-        "MAPPING1H": "2165"
+        "ID": "S*F*GC----*****",
+        "D": "SOF Unit Civil Affairs",
+        "M1U": "2165",
+        "M1F": "2165",
+        "M1N": "2165",
+        "M1H": "2165"
       },
       {
-        "SYMBOLID": "S*F*B-----*****",
-        "DESCRIPTION": "SOF Unit Support",
-        "MAPPING1U": "2166",
-        "MAPPING1F": "2166",
-        "MAPPING1N": "2166",
-        "MAPPING1H": "2166"
+        "ID": "S*F*B-----*****",
+        "D": "SOF Unit Support",
+        "M1U": "2166",
+        "M1F": "2166",
+        "M1N": "2166",
+        "M1H": "2166"
       },
       {
-        "SYMBOLID": "S*Z*------*****",
-        "DESCRIPTION": "Unknown Battle Dimension",
-        "MAPPING1U": "999",
-        "MAPPING1F": "999",
-        "MAPPING1N": "999",
-        "MAPPING1H": "999"
+        "ID": "S*Z*------*****",
+        "D": "Unknown Battle Dimension",
+        "M1U": "999",
+        "M1F": "999",
+        "M1N": "999",
+        "M1H": "999"
       },
       {
-        "SYMBOLID": "I*-*------*****",
-        "DESCRIPTION": "Signals Intelligence"
+        "ID": "I*-*------*****",
+        "D": "Signals Intelligence"
       },
       {
-        "SYMBOLID": "I*P*------*****",
-        "DESCRIPTION": "Space Track"
+        "ID": "I*P*------*****",
+        "D": "Space Track"
       },
       {
-        "SYMBOLID": "I*P*S-----*****",
-        "DESCRIPTION": "Signal Intercept"
+        "ID": "I*P*S-----*****",
+        "D": "Signal Intercept"
       },
       {
-        "SYMBOLID": "I*P*SC----*****",
-        "DESCRIPTION": "Communications"
+        "ID": "I*P*SC----*****",
+        "D": "Communications"
       },
       {
-        "SYMBOLID": "I*P*SCD---*****",
-        "DESCRIPTION": "Satellite Down-Link",
-        "MAPPING1U": "3000",
-        "MAPPING1F": "3000",
-        "MAPPING1N": "3000",
-        "MAPPING1H": "3000"
+        "ID": "I*P*SCD---*****",
+        "D": "Satellite Down-Link",
+        "M1U": "3000",
+        "M1F": "3000",
+        "M1N": "3000",
+        "M1H": "3000"
       },
       {
-        "SYMBOLID": "I*P*SR----*****",
-        "DESCRIPTION": "Radar(Signal Intercept)"
+        "ID": "I*P*SR----*****",
+        "D": "Radar(Signal Intercept)"
       },
       {
-        "SYMBOLID": "I*P*SRD---*****",
-        "DESCRIPTION": "Data Transmission(SPACE TRACK)",
-        "MAPPING1U": "3001",
-        "MAPPING1F": "3001",
-        "MAPPING1N": "3001",
-        "MAPPING1H": "3001"
+        "ID": "I*P*SRD---*****",
+        "D": "Data Transmission(SPACE TRACK)",
+        "M1U": "3001",
+        "M1F": "3001",
+        "M1N": "3001",
+        "M1H": "3001"
       },
       {
-        "SYMBOLID": "I*P*SRE---*****",
-        "DESCRIPTION": "Earth Surveillance",
-        "MAPPING1U": "3002",
-        "MAPPING1F": "3002",
-        "MAPPING1N": "3002",
-        "MAPPING1H": "3002"
+        "ID": "I*P*SRE---*****",
+        "D": "Earth Surveillance",
+        "M1U": "3002",
+        "M1F": "3002",
+        "M1N": "3002",
+        "M1H": "3002"
       },
       {
-        "SYMBOLID": "I*P*SRI---*****",
-        "DESCRIPTION": "IFF (Transponder)(SPACE TRACK)",
-        "MAPPING1U": "3003",
-        "MAPPING1F": "3003",
-        "MAPPING1N": "3003",
-        "MAPPING1H": "3003"
+        "ID": "I*P*SRI---*****",
+        "D": "IFF (Transponder)(SPACE TRACK)",
+        "M1U": "3003",
+        "M1F": "3003",
+        "M1N": "3003",
+        "M1H": "3003"
       },
       {
-        "SYMBOLID": "I*P*SRM---*****",
-        "DESCRIPTION": "Multi-function(SPACE TRACK)",
-        "MAPPING1U": "3004",
-        "MAPPING1F": "3004",
-        "MAPPING1N": "3004",
-        "MAPPING1H": "3004"
+        "ID": "I*P*SRM---*****",
+        "D": "Multi-function(SPACE TRACK)",
+        "M1U": "3004",
+        "M1F": "3004",
+        "M1N": "3004",
+        "M1H": "3004"
       },
       {
-        "SYMBOLID": "I*P*SRT---*****",
-        "DESCRIPTION": "Target Acquisition(Space Track)",
-        "MAPPING1U": "3005",
-        "MAPPING1F": "3005",
-        "MAPPING1N": "3005",
-        "MAPPING1H": "3005"
+        "ID": "I*P*SRT---*****",
+        "D": "Target Acquisition(Space Track)",
+        "M1U": "3005",
+        "M1F": "3005",
+        "M1N": "3005",
+        "M1H": "3005"
       },
       {
-        "SYMBOLID": "I*P*SRS---*****",
-        "DESCRIPTION": "Space",
-        "MAPPING1U": "3006",
-        "MAPPING1F": "3006",
-        "MAPPING1N": "3006",
-        "MAPPING1H": "3006"
+        "ID": "I*P*SRS---*****",
+        "D": "Space",
+        "M1U": "3006",
+        "M1F": "3006",
+        "M1N": "3006",
+        "M1H": "3006"
       },
       {
-        "SYMBOLID": "I*P*SRU---*****",
-        "DESCRIPTION": "Unknown(Space Track)",
-        "MAPPING1U": "3007",
-        "MAPPING1F": "3007",
-        "MAPPING1N": "3007",
-        "MAPPING1H": "3007"
+        "ID": "I*P*SRU---*****",
+        "D": "Unknown(Space Track)",
+        "M1U": "3007",
+        "M1F": "3007",
+        "M1N": "3007",
+        "M1H": "3007"
       },
       {
-        "SYMBOLID": "I*A*------*****",
-        "DESCRIPTION": "Air Track"
+        "ID": "I*A*------*****",
+        "D": "Air Track"
       },
       {
-        "SYMBOLID": "I*A*S-----*****",
-        "DESCRIPTION": "Signal Intercept"
+        "ID": "I*A*S-----*****",
+        "D": "Signal Intercept"
       },
       {
-        "SYMBOLID": "I*A*SC----*****",
-        "DESCRIPTION": "Communications"
+        "ID": "I*A*SC----*****",
+        "D": "Communications"
       },
       {
-        "SYMBOLID": "I*A*SCC---*****",
-        "DESCRIPTION": "Cellular/Mobile(AIR TRACK)",
-        "MAPPING1U": "3008",
-        "MAPPING1F": "3008",
-        "MAPPING1N": "3008",
-        "MAPPING1H": "3008"
+        "ID": "I*A*SCC---*****",
+        "D": "Cellular/Mobile(AIR TRACK)",
+        "M1U": "3008",
+        "M1F": "3008",
+        "M1N": "3008",
+        "M1H": "3008"
       },
       {
-        "SYMBOLID": "I*A*SCO---*****",
-        "DESCRIPTION": "Omni-Line-Of-Sight (LOS)(AIR TRACK)",
-        "MAPPING1U": "3009",
-        "MAPPING1F": "3009",
-        "MAPPING1N": "3009",
-        "MAPPING1H": "3009"
+        "ID": "I*A*SCO---*****",
+        "D": "Omni-Line-Of-Sight (LOS)(AIR TRACK)",
+        "M1U": "3009",
+        "M1F": "3009",
+        "M1N": "3009",
+        "M1H": "3009"
       },
       {
-        "SYMBOLID": "I*A*SCP---*****",
-        "DESCRIPTION": "Point-To-Point Line-Of-Sight (LOS)(Air Track)",
-        "MAPPING1U": "3010",
-        "MAPPING1F": "3010",
-        "MAPPING1N": "3010",
-        "MAPPING1H": "3010"
+        "ID": "I*A*SCP---*****",
+        "D": "Point-To-Point Line-Of-Sight (LOS)(Air Track)",
+        "M1U": "3010",
+        "M1F": "3010",
+        "M1N": "3010",
+        "M1H": "3010"
       },
       {
-        "SYMBOLID": "I*A*SCS---*****",
-        "DESCRIPTION": "Satellite Up-Link(Air Track)",
-        "MAPPING1U": "3011",
-        "MAPPING1F": "3011",
-        "MAPPING1N": "3011",
-        "MAPPING1H": "3011"
+        "ID": "I*A*SCS---*****",
+        "D": "Satellite Up-Link(Air Track)",
+        "M1U": "3011",
+        "M1F": "3011",
+        "M1N": "3011",
+        "M1H": "3011"
       },
       {
-        "SYMBOLID": "I*A*SR----*****",
-        "DESCRIPTION": "Radar"
+        "ID": "I*A*SR----*****",
+        "D": "Radar"
       },
       {
-        "SYMBOLID": "I*A*SRAI--*****",
-        "DESCRIPTION": "Airborne Intercept",
-        "MAPPING1U": "3012",
-        "MAPPING1F": "3012",
-        "MAPPING1N": "3012",
-        "MAPPING1H": "3012"
+        "ID": "I*A*SRAI--*****",
+        "D": "Airborne Intercept",
+        "M1U": "3012",
+        "M1F": "3012",
+        "M1N": "3012",
+        "M1H": "3012"
       },
       {
-        "SYMBOLID": "I*A*SRAS--*****",
-        "DESCRIPTION": "Airborne Search and Bombing",
-        "MAPPING1U": "3013",
-        "MAPPING1F": "3013",
-        "MAPPING1N": "3013",
-        "MAPPING1H": "3013"
+        "ID": "I*A*SRAS--*****",
+        "D": "Airborne Search and Bombing",
+        "M1U": "3013",
+        "M1F": "3013",
+        "M1N": "3013",
+        "M1H": "3013"
       },
       {
-        "SYMBOLID": "I*A*SRC---*****",
-        "DESCRIPTION": "Controlled Intercept(AIR TRACK)",
-        "MAPPING1U": "3014",
-        "MAPPING1F": "3014",
-        "MAPPING1N": "3014",
-        "MAPPING1H": "3014"
+        "ID": "I*A*SRC---*****",
+        "D": "Controlled Intercept(AIR TRACK)",
+        "M1U": "3014",
+        "M1F": "3014",
+        "M1N": "3014",
+        "M1H": "3014"
       },
       {
-        "SYMBOLID": "I*A*SRD---*****",
-        "DESCRIPTION": "Data Transmission(AIR TRACK)",
-        "MAPPING1U": "3015",
-        "MAPPING1F": "3015",
-        "MAPPING1N": "3015",
-        "MAPPING1H": "3015"
+        "ID": "I*A*SRD---*****",
+        "D": "Data Transmission(AIR TRACK)",
+        "M1U": "3015",
+        "M1F": "3015",
+        "M1N": "3015",
+        "M1H": "3015"
       },
       {
-        "SYMBOLID": "I*A*SRE---*****",
-        "DESCRIPTION": "Early Warning(AIR TRACK)",
-        "MAPPING1U": "3016",
-        "MAPPING1F": "3016",
-        "MAPPING1N": "3016",
-        "MAPPING1H": "3016"
+        "ID": "I*A*SRE---*****",
+        "D": "Early Warning(AIR TRACK)",
+        "M1U": "3016",
+        "M1F": "3016",
+        "M1N": "3016",
+        "M1H": "3016"
       },
       {
-        "SYMBOLID": "I*A*SRF---*****",
-        "DESCRIPTION": "Fire Control(AIR TRACK)",
-        "MAPPING1U": "3017",
-        "MAPPING1F": "3017",
-        "MAPPING1N": "3017",
-        "MAPPING1H": "3017"
+        "ID": "I*A*SRF---*****",
+        "D": "Fire Control(AIR TRACK)",
+        "M1U": "3017",
+        "M1F": "3017",
+        "M1N": "3017",
+        "M1H": "3017"
       },
       {
-        "SYMBOLID": "I*A*SRI---*****",
-        "DESCRIPTION": "IFF (Transponder)(AIR TRACK)",
-        "MAPPING1U": "3018",
-        "MAPPING1F": "3018",
-        "MAPPING1N": "3018",
-        "MAPPING1H": "3018"
+        "ID": "I*A*SRI---*****",
+        "D": "IFF (Transponder)(AIR TRACK)",
+        "M1U": "3018",
+        "M1F": "3018",
+        "M1N": "3018",
+        "M1H": "3018"
       },
       {
-        "SYMBOLID": "I*A*SRMA--*****",
-        "DESCRIPTION": "Missile Acquisition(AIR TRACK)",
-        "MAPPING1U": "3019",
-        "MAPPING1F": "3019",
-        "MAPPING1N": "3019",
-        "MAPPING1H": "3019"
+        "ID": "I*A*SRMA--*****",
+        "D": "Missile Acquisition(AIR TRACK)",
+        "M1U": "3019",
+        "M1F": "3019",
+        "M1N": "3019",
+        "M1H": "3019"
       },
       {
-        "SYMBOLID": "I*A*SRMD--*****",
-        "DESCRIPTION": "Missile Downlink",
-        "MAPPING1U": "3020",
-        "MAPPING1F": "3020",
-        "MAPPING1N": "3020",
-        "MAPPING1H": "3020"
+        "ID": "I*A*SRMD--*****",
+        "D": "Missile Downlink",
+        "M1U": "3020",
+        "M1F": "3020",
+        "M1N": "3020",
+        "M1H": "3020"
       },
       {
-        "SYMBOLID": "I*A*SRMG--*****",
-        "DESCRIPTION": "Missile Guidance(AIR TRACK)",
-        "MAPPING1U": "3021",
-        "MAPPING1F": "3021",
-        "MAPPING1N": "3021",
-        "MAPPING1H": "3021"
+        "ID": "I*A*SRMG--*****",
+        "D": "Missile Guidance(AIR TRACK)",
+        "M1U": "3021",
+        "M1F": "3021",
+        "M1N": "3021",
+        "M1H": "3021"
       },
       {
-        "SYMBOLID": "I*A*SRMT--*****",
-        "DESCRIPTION": "Missile Tracking(AIR TRACK)",
-        "MAPPING1U": "3022",
-        "MAPPING1F": "3022",
-        "MAPPING1N": "3022",
-        "MAPPING1H": "3022"
+        "ID": "I*A*SRMT--*****",
+        "D": "Missile Tracking(AIR TRACK)",
+        "M1U": "3022",
+        "M1F": "3022",
+        "M1N": "3022",
+        "M1H": "3022"
       },
       {
-        "SYMBOLID": "I*A*SRMF--*****",
-        "DESCRIPTION": "Multi-Function(AIR TRACK)",
-        "MAPPING1U": "3023",
-        "MAPPING1F": "3023",
-        "MAPPING1N": "3023",
-        "MAPPING1H": "3023"
+        "ID": "I*A*SRMF--*****",
+        "D": "Multi-Function(AIR TRACK)",
+        "M1U": "3023",
+        "M1F": "3023",
+        "M1N": "3023",
+        "M1H": "3023"
       },
       {
-        "SYMBOLID": "I*A*SRTI--*****",
-        "DESCRIPTION": "Target Illuminator(Air Track)",
-        "MAPPING1U": "3024",
-        "MAPPING1F": "3024",
-        "MAPPING1N": "3024",
-        "MAPPING1H": "3024"
+        "ID": "I*A*SRTI--*****",
+        "D": "Target Illuminator(Air Track)",
+        "M1U": "3024",
+        "M1F": "3024",
+        "M1N": "3024",
+        "M1H": "3024"
       },
       {
-        "SYMBOLID": "I*A*SRTA--*****",
-        "DESCRIPTION": "Target Acquisition(Air Track)",
-        "MAPPING1U": "3025",
-        "MAPPING1F": "3025",
-        "MAPPING1N": "3025",
-        "MAPPING1H": "3025"
+        "ID": "I*A*SRTA--*****",
+        "D": "Target Acquisition(Air Track)",
+        "M1U": "3025",
+        "M1F": "3025",
+        "M1N": "3025",
+        "M1H": "3025"
       },
       {
-        "SYMBOLID": "I*A*SRTT--*****",
-        "DESCRIPTION": "Target Tracking(Air Track)",
-        "MAPPING1U": "3026",
-        "MAPPING1F": "3026",
-        "MAPPING1N": "3026",
-        "MAPPING1H": "3026"
+        "ID": "I*A*SRTT--*****",
+        "D": "Target Tracking(Air Track)",
+        "M1U": "3026",
+        "M1F": "3026",
+        "M1N": "3026",
+        "M1H": "3026"
       },
       {
-        "SYMBOLID": "I*A*SRU---*****",
-        "DESCRIPTION": "Unknown(Air Track)",
-        "MAPPING1U": "3027",
-        "MAPPING1F": "3027",
-        "MAPPING1N": "3027",
-        "MAPPING1H": "3027"
+        "ID": "I*A*SRU---*****",
+        "D": "Unknown(Air Track)",
+        "M1U": "3027",
+        "M1F": "3027",
+        "M1N": "3027",
+        "M1H": "3027"
       },
       {
-        "SYMBOLID": "I*G*------*****",
-        "DESCRIPTION": "Ground Track"
+        "ID": "I*G*------*****",
+        "D": "Ground Track"
       },
       {
-        "SYMBOLID": "I*G*S-----*****",
-        "DESCRIPTION": "Signal Intercept"
+        "ID": "I*G*S-----*****",
+        "D": "Signal Intercept"
       },
       {
-        "SYMBOLID": "I*G*SC----*****",
-        "DESCRIPTION": "Communications"
+        "ID": "I*G*SC----*****",
+        "D": "Communications"
       },
       {
-        "SYMBOLID": "I*G*SCC---*****",
-        "DESCRIPTION": "Cellular/Mobile(GROUND TRACK)",
-        "MAPPING1U": "3028",
-        "MAPPING1F": "3028",
-        "MAPPING1N": "3028",
-        "MAPPING1H": "3028"
+        "ID": "I*G*SCC---*****",
+        "D": "Cellular/Mobile(GROUND TRACK)",
+        "M1U": "3028",
+        "M1F": "3028",
+        "M1N": "3028",
+        "M1H": "3028"
       },
       {
-        "SYMBOLID": "I*G*SCO---*****",
-        "DESCRIPTION": "Omni-Line-Of-Sight (LOS)(GROUND TRACK)",
-        "MAPPING1U": "3029",
-        "MAPPING1F": "3029",
-        "MAPPING1N": "3029",
-        "MAPPING1H": "3029"
+        "ID": "I*G*SCO---*****",
+        "D": "Omni-Line-Of-Sight (LOS)(GROUND TRACK)",
+        "M1U": "3029",
+        "M1F": "3029",
+        "M1N": "3029",
+        "M1H": "3029"
       },
       {
-        "SYMBOLID": "I*G*SCP---*****",
-        "DESCRIPTION": "Point-To-Point Line-Of-Sight (LOS)(Ground Track)",
-        "MAPPING1U": "3030",
-        "MAPPING1F": "3030",
-        "MAPPING1N": "3030",
-        "MAPPING1H": "3030"
+        "ID": "I*G*SCP---*****",
+        "D": "Point-To-Point Line-Of-Sight (LOS)(Ground Track)",
+        "M1U": "3030",
+        "M1F": "3030",
+        "M1N": "3030",
+        "M1H": "3030"
       },
       {
-        "SYMBOLID": "I*G*SCS---*****",
-        "DESCRIPTION": "Satellite Up-Link(Ground Track)",
-        "MAPPING1U": "3031",
-        "MAPPING1F": "3031",
-        "MAPPING1N": "3031",
-        "MAPPING1H": "3031"
+        "ID": "I*G*SCS---*****",
+        "D": "Satellite Up-Link(Ground Track)",
+        "M1U": "3031",
+        "M1F": "3031",
+        "M1N": "3031",
+        "M1H": "3031"
       },
       {
-        "SYMBOLID": "I*G*SCT---*****",
-        "DESCRIPTION": "Tropospheric Scatter",
-        "MAPPING1U": "3032",
-        "MAPPING1F": "3032",
-        "MAPPING1N": "3032",
-        "MAPPING1H": "3032"
+        "ID": "I*G*SCT---*****",
+        "D": "Tropospheric Scatter",
+        "M1U": "3032",
+        "M1F": "3032",
+        "M1N": "3032",
+        "M1H": "3032"
       },
       {
-        "SYMBOLID": "I*G*SR----*****",
-        "DESCRIPTION": "Radar(Signals Intelligence)"
+        "ID": "I*G*SR----*****",
+        "D": "Radar(Signals Intelligence)"
       },
       {
-        "SYMBOLID": "I*G*SRAT--*****",
-        "DESCRIPTION": "Air Traffic Control(GROUND TRACK)",
-        "MAPPING1U": "3033",
-        "MAPPING1F": "3033",
-        "MAPPING1N": "3033",
-        "MAPPING1H": "3033"
+        "ID": "I*G*SRAT--*****",
+        "D": "Air Traffic Control(GROUND TRACK)",
+        "M1U": "3033",
+        "M1F": "3033",
+        "M1N": "3033",
+        "M1H": "3033"
       },
       {
-        "SYMBOLID": "I*G*SRAA--*****",
-        "DESCRIPTION": "Anti-Aircraft(GROUND TRACK)",
-        "MAPPING1U": "3034",
-        "MAPPING1F": "3034",
-        "MAPPING1N": "3034",
-        "MAPPING1H": "3034"
+        "ID": "I*G*SRAA--*****",
+        "D": "Anti-Aircraft(GROUND TRACK)",
+        "M1U": "3034",
+        "M1F": "3034",
+        "M1N": "3034",
+        "M1H": "3034"
       },
       {
-        "SYMBOLID": "I*G*SRB---*****",
-        "DESCRIPTION": "Battlefield Surveillance",
-        "MAPPING1U": "3035",
-        "MAPPING1F": "3035",
-        "MAPPING1N": "3035",
-        "MAPPING1H": "3035"
+        "ID": "I*G*SRB---*****",
+        "D": "Battlefield Surveillance",
+        "M1U": "3035",
+        "M1F": "3035",
+        "M1N": "3035",
+        "M1H": "3035"
       },
       {
-        "SYMBOLID": "I*G*SRCS--*****",
-        "DESCRIPTION": "Coastal Surveillance",
-        "MAPPING1U": "3036",
-        "MAPPING1F": "3036",
-        "MAPPING1N": "3036",
-        "MAPPING1H": "3036"
+        "ID": "I*G*SRCS--*****",
+        "D": "Coastal Surveillance",
+        "M1U": "3036",
+        "M1F": "3036",
+        "M1N": "3036",
+        "M1H": "3036"
       },
       {
-        "SYMBOLID": "I*G*SRCA--*****",
-        "DESCRIPTION": "Controlled Approach(GROUND TRACK)",
-        "MAPPING1U": "3037",
-        "MAPPING1F": "3037",
-        "MAPPING1N": "3037",
-        "MAPPING1H": "3037"
+        "ID": "I*G*SRCA--*****",
+        "D": "Controlled Approach(GROUND TRACK)",
+        "M1U": "3037",
+        "M1F": "3037",
+        "M1N": "3037",
+        "M1H": "3037"
       },
       {
-        "SYMBOLID": "I*G*SRD---*****",
-        "DESCRIPTION": "Data Transmission(GROUND TRACK)",
-        "MAPPING1U": "3038",
-        "MAPPING1F": "3038",
-        "MAPPING1N": "3038",
-        "MAPPING1H": "3038"
+        "ID": "I*G*SRD---*****",
+        "D": "Data Transmission(GROUND TRACK)",
+        "M1U": "3038",
+        "M1F": "3038",
+        "M1N": "3038",
+        "M1H": "3038"
       },
       {
-        "SYMBOLID": "I*G*SRE---*****",
-        "DESCRIPTION": "Early Warning(GROUND TRACK)",
-        "MAPPING1U": "3039",
-        "MAPPING1F": "3039",
-        "MAPPING1N": "3039",
-        "MAPPING1H": "3039"
+        "ID": "I*G*SRE---*****",
+        "D": "Early Warning(GROUND TRACK)",
+        "M1U": "3039",
+        "M1F": "3039",
+        "M1N": "3039",
+        "M1H": "3039"
       },
       {
-        "SYMBOLID": "I*G*SRF---*****",
-        "DESCRIPTION": "Fire Control(GROUND TRACK)",
-        "MAPPING1U": "3040",
-        "MAPPING1F": "3040",
-        "MAPPING1N": "3040",
-        "MAPPING1H": "3040"
+        "ID": "I*G*SRF---*****",
+        "D": "Fire Control(GROUND TRACK)",
+        "M1U": "3040",
+        "M1F": "3040",
+        "M1N": "3040",
+        "M1H": "3040"
       },
       {
-        "SYMBOLID": "I*G*SRH---*****",
-        "DESCRIPTION": "Height Finding(GROUND TRACK)",
-        "MAPPING1U": "3041",
-        "MAPPING1F": "3041",
-        "MAPPING1N": "3041",
-        "MAPPING1H": "3041"
+        "ID": "I*G*SRH---*****",
+        "D": "Height Finding(GROUND TRACK)",
+        "M1U": "3041",
+        "M1F": "3041",
+        "M1N": "3041",
+        "M1H": "3041"
       },
       {
-        "SYMBOLID": "I*G*SRI---*****",
-        "DESCRIPTION": "Indentification Friend/Foe (Interrogator)(GROUND TRACK)",
-        "MAPPING1U": "3042",
-        "MAPPING1F": "3042",
-        "MAPPING1N": "3042",
-        "MAPPING1H": "3042"
+        "ID": "I*G*SRI---*****",
+        "D": "Indentification Friend/Foe (Interrogator)(GROUND TRACK)",
+        "M1U": "3042",
+        "M1F": "3042",
+        "M1N": "3042",
+        "M1H": "3042"
       },
       {
-        "SYMBOLID": "I*G*SRMM--*****",
-        "DESCRIPTION": "Meteorological (Military)(GROUND TRACK)",
-        "MAPPING1U": "3043",
-        "MAPPING1F": "3043",
-        "MAPPING1N": "3043",
-        "MAPPING1H": "3043"
+        "ID": "I*G*SRMM--*****",
+        "D": "Meteorological (Military)(GROUND TRACK)",
+        "M1U": "3043",
+        "M1F": "3043",
+        "M1N": "3043",
+        "M1H": "3043"
       },
       {
-        "SYMBOLID": "I*G*SRMA--*****",
-        "DESCRIPTION": "Missile Acquisition(GROUND TRACK)",
-        "MAPPING1U": "3044",
-        "MAPPING1F": "3044",
-        "MAPPING1N": "3044",
-        "MAPPING1H": "3044"
+        "ID": "I*G*SRMA--*****",
+        "D": "Missile Acquisition(GROUND TRACK)",
+        "M1U": "3044",
+        "M1F": "3044",
+        "M1N": "3044",
+        "M1H": "3044"
       },
       {
-        "SYMBOLID": "I*G*SRMG--*****",
-        "DESCRIPTION": "Missile Guidance(GROUND TRACK)",
-        "MAPPING1U": "3045",
-        "MAPPING1F": "3045",
-        "MAPPING1N": "3045",
-        "MAPPING1H": "3045"
+        "ID": "I*G*SRMG--*****",
+        "D": "Missile Guidance(GROUND TRACK)",
+        "M1U": "3045",
+        "M1F": "3045",
+        "M1N": "3045",
+        "M1H": "3045"
       },
       {
-        "SYMBOLID": "I*G*SRMT--*****",
-        "DESCRIPTION": "Missile Tracking(GROUND TRACK)",
-        "MAPPING1U": "3046",
-        "MAPPING1F": "3046",
-        "MAPPING1N": "3046",
-        "MAPPING1H": "3046"
+        "ID": "I*G*SRMT--*****",
+        "D": "Missile Tracking(GROUND TRACK)",
+        "M1U": "3046",
+        "M1F": "3046",
+        "M1N": "3046",
+        "M1H": "3046"
       },
       {
-        "SYMBOLID": "I*G*SRMF--*****",
-        "DESCRIPTION": "Multi-Function(GROUND TRACK)",
-        "MAPPING1U": "3047",
-        "MAPPING1F": "3047",
-        "MAPPING1N": "3047",
-        "MAPPING1H": "3047"
+        "ID": "I*G*SRMF--*****",
+        "D": "Multi-Function(GROUND TRACK)",
+        "M1U": "3047",
+        "M1F": "3047",
+        "M1N": "3047",
+        "M1H": "3047"
       },
       {
-        "SYMBOLID": "I*G*SRS---*****",
-        "DESCRIPTION": "Shell Tracking",
-        "MAPPING1U": "3048",
-        "MAPPING1F": "3048",
-        "MAPPING1N": "3048",
-        "MAPPING1H": "3048"
+        "ID": "I*G*SRS---*****",
+        "D": "Shell Tracking",
+        "M1U": "3048",
+        "M1F": "3048",
+        "M1N": "3048",
+        "M1H": "3048"
       },
       {
-        "SYMBOLID": "I*G*SRTA--*****",
-        "DESCRIPTION": "Target Acquisition(Radar)",
-        "MAPPING1U": "3049",
-        "MAPPING1F": "3049",
-        "MAPPING1N": "3049",
-        "MAPPING1H": "3049"
+        "ID": "I*G*SRTA--*****",
+        "D": "Target Acquisition(Radar)",
+        "M1U": "3049",
+        "M1F": "3049",
+        "M1N": "3049",
+        "M1H": "3049"
       },
       {
-        "SYMBOLID": "I*G*SRTI--*****",
-        "DESCRIPTION": "Target Illuminator(Ground Track)",
-        "MAPPING1U": "3050",
-        "MAPPING1F": "3050",
-        "MAPPING1N": "3050",
-        "MAPPING1H": "3050"
+        "ID": "I*G*SRTI--*****",
+        "D": "Target Illuminator(Ground Track)",
+        "M1U": "3050",
+        "M1F": "3050",
+        "M1N": "3050",
+        "M1H": "3050"
       },
       {
-        "SYMBOLID": "I*G*SRTT--*****",
-        "DESCRIPTION": "Target Tracking(Ground Track)",
-        "MAPPING1U": "3051",
-        "MAPPING1F": "3051",
-        "MAPPING1N": "3051",
-        "MAPPING1H": "3051"
+        "ID": "I*G*SRTT--*****",
+        "D": "Target Tracking(Ground Track)",
+        "M1U": "3051",
+        "M1F": "3051",
+        "M1N": "3051",
+        "M1H": "3051"
       },
       {
-        "SYMBOLID": "I*G*SRU---*****",
-        "DESCRIPTION": "Unknown(Ground Track)",
-        "MAPPING1U": "3052",
-        "MAPPING1F": "3052",
-        "MAPPING1N": "3052",
-        "MAPPING1H": "3052"
+        "ID": "I*G*SRU---*****",
+        "D": "Unknown(Ground Track)",
+        "M1U": "3052",
+        "M1F": "3052",
+        "M1N": "3052",
+        "M1H": "3052"
       },
       {
-        "SYMBOLID": "I*S*------*****",
-        "DESCRIPTION": "Sea Surface Track"
+        "ID": "I*S*------*****",
+        "D": "Sea Surface Track"
       },
       {
-        "SYMBOLID": "I*S*S-----*****",
-        "DESCRIPTION": "Signal Intercept"
+        "ID": "I*S*S-----*****",
+        "D": "Signal Intercept"
       },
       {
-        "SYMBOLID": "I*S*SC----*****",
-        "DESCRIPTION": "Communications"
+        "ID": "I*S*SC----*****",
+        "D": "Communications"
       },
       {
-        "SYMBOLID": "I*S*SCC---*****",
-        "DESCRIPTION": "Cellular/Mobile(SEA SURFACE TRACK)",
-        "MAPPING1U": "3053",
-        "MAPPING1F": "3053",
-        "MAPPING1N": "3053",
-        "MAPPING1H": "3053"
+        "ID": "I*S*SCC---*****",
+        "D": "Cellular/Mobile(SEA SURFACE TRACK)",
+        "M1U": "3053",
+        "M1F": "3053",
+        "M1N": "3053",
+        "M1H": "3053"
       },
       {
-        "SYMBOLID": "I*S*SCO---*****",
-        "DESCRIPTION": "Omni-Line-Of-Sight (LOS)(SEA SURFACE TRACK)",
-        "MAPPING1U": "3054",
-        "MAPPING1F": "3054",
-        "MAPPING1N": "3054",
-        "MAPPING1H": "3054"
+        "ID": "I*S*SCO---*****",
+        "D": "Omni-Line-Of-Sight (LOS)(SEA SURFACE TRACK)",
+        "M1U": "3054",
+        "M1F": "3054",
+        "M1N": "3054",
+        "M1H": "3054"
       },
       {
-        "SYMBOLID": "I*S*SCP---*****",
-        "DESCRIPTION": "Point-To-Point Line-Of-Sight (LOS)(Sea Surface Track)",
-        "MAPPING1U": "3055",
-        "MAPPING1F": "3055",
-        "MAPPING1N": "3055",
-        "MAPPING1H": "3055"
+        "ID": "I*S*SCP---*****",
+        "D": "Point-To-Point Line-Of-Sight (LOS)(Sea Surface Track)",
+        "M1U": "3055",
+        "M1F": "3055",
+        "M1N": "3055",
+        "M1H": "3055"
       },
       {
-        "SYMBOLID": "I*S*SCS---*****",
-        "DESCRIPTION": "Satellite Up-Link(Sea Surface Track)",
-        "MAPPING1U": "3056",
-        "MAPPING1F": "3056",
-        "MAPPING1N": "3056",
-        "MAPPING1H": "3056"
+        "ID": "I*S*SCS---*****",
+        "D": "Satellite Up-Link(Sea Surface Track)",
+        "M1U": "3056",
+        "M1F": "3056",
+        "M1N": "3056",
+        "M1H": "3056"
       },
       {
-        "SYMBOLID": "I*S*SR----*****",
-        "DESCRIPTION": "Radar(Sea Surface Track)"
+        "ID": "I*S*SR----*****",
+        "D": "Radar(Sea Surface Track)"
       },
       {
-        "SYMBOLID": "I*S*SRAT--*****",
-        "DESCRIPTION": "Air Traffic Control(SEA SURFACE TRACK)",
-        "MAPPING1U": "3057",
-        "MAPPING1F": "3057",
-        "MAPPING1N": "3057",
-        "MAPPING1H": "3057"
+        "ID": "I*S*SRAT--*****",
+        "D": "Air Traffic Control(SEA SURFACE TRACK)",
+        "M1U": "3057",
+        "M1F": "3057",
+        "M1N": "3057",
+        "M1H": "3057"
       },
       {
-        "SYMBOLID": "I*S*SRAA--*****",
-        "DESCRIPTION": "Anti-Aircraft(SEA SURFACE TRACK)",
-        "MAPPING1U": "3058",
-        "MAPPING1F": "3058",
-        "MAPPING1N": "3058",
-        "MAPPING1H": "3058"
+        "ID": "I*S*SRAA--*****",
+        "D": "Anti-Aircraft(SEA SURFACE TRACK)",
+        "M1U": "3058",
+        "M1F": "3058",
+        "M1N": "3058",
+        "M1H": "3058"
       },
       {
-        "SYMBOLID": "I*S*SRCA--*****",
-        "DESCRIPTION": "Controlled Approach(SEA SURFACE TRACK)",
-        "MAPPING1U": "3059",
-        "MAPPING1F": "3059",
-        "MAPPING1N": "3059",
-        "MAPPING1H": "3059"
+        "ID": "I*S*SRCA--*****",
+        "D": "Controlled Approach(SEA SURFACE TRACK)",
+        "M1U": "3059",
+        "M1F": "3059",
+        "M1N": "3059",
+        "M1H": "3059"
       },
       {
-        "SYMBOLID": "I*S*SRCI--*****",
-        "DESCRIPTION": "Controlled Intercept(SEA SURFACE TRACK)",
-        "MAPPING1U": "3060",
-        "MAPPING1F": "3060",
-        "MAPPING1N": "3060",
-        "MAPPING1H": "3060"
+        "ID": "I*S*SRCI--*****",
+        "D": "Controlled Intercept(SEA SURFACE TRACK)",
+        "M1U": "3060",
+        "M1F": "3060",
+        "M1N": "3060",
+        "M1H": "3060"
       },
       {
-        "SYMBOLID": "I*S*SRD---*****",
-        "DESCRIPTION": "Data Transmission(SEA SURFACE TRACK)",
-        "MAPPING1U": "3061",
-        "MAPPING1F": "3061",
-        "MAPPING1N": "3061",
-        "MAPPING1H": "3061"
+        "ID": "I*S*SRD---*****",
+        "D": "Data Transmission(SEA SURFACE TRACK)",
+        "M1U": "3061",
+        "M1F": "3061",
+        "M1N": "3061",
+        "M1H": "3061"
       },
       {
-        "SYMBOLID": "I*S*SRE---*****",
-        "DESCRIPTION": "Early Warning(SEA SURFACE TRACK)",
-        "MAPPING1U": "3062",
-        "MAPPING1F": "3062",
-        "MAPPING1N": "3062",
-        "MAPPING1H": "3062"
+        "ID": "I*S*SRE---*****",
+        "D": "Early Warning(SEA SURFACE TRACK)",
+        "M1U": "3062",
+        "M1F": "3062",
+        "M1N": "3062",
+        "M1H": "3062"
       },
       {
-        "SYMBOLID": "I*S*SRF---*****",
-        "DESCRIPTION": "Fire Control(SEA SURFACE TRACK)",
-        "MAPPING1U": "3063",
-        "MAPPING1F": "3063",
-        "MAPPING1N": "3063",
-        "MAPPING1H": "3063"
+        "ID": "I*S*SRF---*****",
+        "D": "Fire Control(SEA SURFACE TRACK)",
+        "M1U": "3063",
+        "M1F": "3063",
+        "M1N": "3063",
+        "M1H": "3063"
       },
       {
-        "SYMBOLID": "I*S*SRH---*****",
-        "DESCRIPTION": "Height Finding(SEA SURFACE TRACK)",
-        "MAPPING1U": "3064",
-        "MAPPING1F": "3064",
-        "MAPPING1N": "3064",
-        "MAPPING1H": "3064"
+        "ID": "I*S*SRH---*****",
+        "D": "Height Finding(SEA SURFACE TRACK)",
+        "M1U": "3064",
+        "M1F": "3064",
+        "M1N": "3064",
+        "M1H": "3064"
       },
       {
-        "SYMBOLID": "I*S*SRI---*****",
-        "DESCRIPTION": "Indentification Friend/Foe (Interrogator)(SEA SURFACE TRACK)",
-        "MAPPING1U": "3065",
-        "MAPPING1F": "3065",
-        "MAPPING1N": "3065",
-        "MAPPING1H": "3065"
+        "ID": "I*S*SRI---*****",
+        "D": "Indentification Friend/Foe (Interrogator)(SEA SURFACE TRACK)",
+        "M1U": "3065",
+        "M1F": "3065",
+        "M1N": "3065",
+        "M1H": "3065"
       },
       {
-        "SYMBOLID": "I*S*SRMM--*****",
-        "DESCRIPTION": "Meteorological (Military)(SEA SURFACE TRACK)",
-        "MAPPING1U": "3066",
-        "MAPPING1F": "3066",
-        "MAPPING1N": "3066",
-        "MAPPING1H": "3066"
+        "ID": "I*S*SRMM--*****",
+        "D": "Meteorological (Military)(SEA SURFACE TRACK)",
+        "M1U": "3066",
+        "M1F": "3066",
+        "M1N": "3066",
+        "M1H": "3066"
       },
       {
-        "SYMBOLID": "I*S*SRMA--*****",
-        "DESCRIPTION": "Missile Acquisition(SEA SURFACE TRACK)",
-        "MAPPING1U": "3067",
-        "MAPPING1F": "3067",
-        "MAPPING1N": "3067",
-        "MAPPING1H": "3067"
+        "ID": "I*S*SRMA--*****",
+        "D": "Missile Acquisition(SEA SURFACE TRACK)",
+        "M1U": "3067",
+        "M1F": "3067",
+        "M1N": "3067",
+        "M1H": "3067"
       },
       {
-        "SYMBOLID": "I*S*SRMG--*****",
-        "DESCRIPTION": "Missile Guidance(SEA SURFACE TRACK)",
-        "MAPPING1U": "3068",
-        "MAPPING1F": "3068",
-        "MAPPING1N": "3068",
-        "MAPPING1H": "3068"
+        "ID": "I*S*SRMG--*****",
+        "D": "Missile Guidance(SEA SURFACE TRACK)",
+        "M1U": "3068",
+        "M1F": "3068",
+        "M1N": "3068",
+        "M1H": "3068"
       },
       {
-        "SYMBOLID": "I*S*SRMT--*****",
-        "DESCRIPTION": "Missile Tracking(SEA SURFACE TRACK)",
-        "MAPPING1U": "3069",
-        "MAPPING1F": "3069",
-        "MAPPING1N": "3069",
-        "MAPPING1H": "3069"
+        "ID": "I*S*SRMT--*****",
+        "D": "Missile Tracking(SEA SURFACE TRACK)",
+        "M1U": "3069",
+        "M1F": "3069",
+        "M1N": "3069",
+        "M1H": "3069"
       },
       {
-        "SYMBOLID": "I*S*SRMF--*****",
-        "DESCRIPTION": "Multi-Function(SEA SURFACE TRACK)",
-        "MAPPING1U": "3070",
-        "MAPPING1F": "3070",
-        "MAPPING1N": "3070",
-        "MAPPING1H": "3070"
+        "ID": "I*S*SRMF--*****",
+        "D": "Multi-Function(SEA SURFACE TRACK)",
+        "M1U": "3070",
+        "M1F": "3070",
+        "M1N": "3070",
+        "M1H": "3070"
       },
       {
-        "SYMBOLID": "I*S*SRS---*****",
-        "DESCRIPTION": "Surface Search(Sea Surface Track)",
-        "MAPPING1U": "3071",
-        "MAPPING1F": "3071",
-        "MAPPING1N": "3071",
-        "MAPPING1H": "3071"
+        "ID": "I*S*SRS---*****",
+        "D": "Surface Search(Sea Surface Track)",
+        "M1U": "3071",
+        "M1F": "3071",
+        "M1N": "3071",
+        "M1H": "3071"
       },
       {
-        "SYMBOLID": "I*S*SRTA--*****",
-        "DESCRIPTION": "Target Acquisition(Sea Surface Track)",
-        "MAPPING1U": "3072",
-        "MAPPING1F": "3072",
-        "MAPPING1N": "3072",
-        "MAPPING1H": "3072"
+        "ID": "I*S*SRTA--*****",
+        "D": "Target Acquisition(Sea Surface Track)",
+        "M1U": "3072",
+        "M1F": "3072",
+        "M1N": "3072",
+        "M1H": "3072"
       },
       {
-        "SYMBOLID": "I*S*SRTI--*****",
-        "DESCRIPTION": "Target Illuminator(Sea Surface Track)",
-        "MAPPING1U": "3073",
-        "MAPPING1F": "3073",
-        "MAPPING1N": "3073",
-        "MAPPING1H": "3073"
+        "ID": "I*S*SRTI--*****",
+        "D": "Target Illuminator(Sea Surface Track)",
+        "M1U": "3073",
+        "M1F": "3073",
+        "M1N": "3073",
+        "M1H": "3073"
       },
       {
-        "SYMBOLID": "I*S*SRTT--*****",
-        "DESCRIPTION": "Target Tracking(Sea Surface Track)",
-        "MAPPING1U": "3074",
-        "MAPPING1F": "3074",
-        "MAPPING1N": "3074",
-        "MAPPING1H": "3074"
+        "ID": "I*S*SRTT--*****",
+        "D": "Target Tracking(Sea Surface Track)",
+        "M1U": "3074",
+        "M1F": "3074",
+        "M1N": "3074",
+        "M1H": "3074"
       },
       {
-        "SYMBOLID": "I*S*SRU---*****",
-        "DESCRIPTION": "Unknown(Sea Surface Track)",
-        "MAPPING1U": "3075",
-        "MAPPING1F": "3075",
-        "MAPPING1N": "3075",
-        "MAPPING1H": "3075"
+        "ID": "I*S*SRU---*****",
+        "D": "Unknown(Sea Surface Track)",
+        "M1U": "3075",
+        "M1F": "3075",
+        "M1N": "3075",
+        "M1H": "3075"
       },
       {
-        "SYMBOLID": "I*U*------*****",
-        "DESCRIPTION": "Subsurface Track"
+        "ID": "I*U*------*****",
+        "D": "Subsurface Track"
       },
       {
-        "SYMBOLID": "I*U*S-----*****",
-        "DESCRIPTION": "Signal Intercept"
+        "ID": "I*U*S-----*****",
+        "D": "Signal Intercept"
       },
       {
-        "SYMBOLID": "I*U*SC----*****",
-        "DESCRIPTION": "Communications"
+        "ID": "I*U*SC----*****",
+        "D": "Communications"
       },
       {
-        "SYMBOLID": "I*U*SCO---*****",
-        "DESCRIPTION": "Omni-Line-Of-Sight (LOS)(SUBSURFACE TRACK)",
-        "MAPPING1U": "3076",
-        "MAPPING1F": "3076",
-        "MAPPING1N": "3076",
-        "MAPPING1H": "3076"
+        "ID": "I*U*SCO---*****",
+        "D": "Omni-Line-Of-Sight (LOS)(SUBSURFACE TRACK)",
+        "M1U": "3076",
+        "M1F": "3076",
+        "M1N": "3076",
+        "M1H": "3076"
       },
       {
-        "SYMBOLID": "I*U*SCP---*****",
-        "DESCRIPTION": "Point-To-Point Line-Of-Sight (LOS)(Subsurface Track)",
-        "MAPPING1U": "3077",
-        "MAPPING1F": "3077",
-        "MAPPING1N": "3077",
-        "MAPPING1H": "3077"
+        "ID": "I*U*SCP---*****",
+        "D": "Point-To-Point Line-Of-Sight (LOS)(Subsurface Track)",
+        "M1U": "3077",
+        "M1F": "3077",
+        "M1N": "3077",
+        "M1H": "3077"
       },
       {
-        "SYMBOLID": "I*U*SCS---*****",
-        "DESCRIPTION": "Satellite Up-Link(Subsurface Track)",
-        "MAPPING1U": "3078",
-        "MAPPING1F": "3078",
-        "MAPPING1N": "3078",
-        "MAPPING1H": "3078"
+        "ID": "I*U*SCS---*****",
+        "D": "Satellite Up-Link(Subsurface Track)",
+        "M1U": "3078",
+        "M1F": "3078",
+        "M1N": "3078",
+        "M1H": "3078"
       },
       {
-        "SYMBOLID": "I*U*SR----*****",
-        "DESCRIPTION": "Radar(Subsurface Track)"
+        "ID": "I*U*SR----*****",
+        "D": "Radar(Subsurface Track)"
       },
       {
-        "SYMBOLID": "I*U*SRD---*****",
-        "DESCRIPTION": "Data Transmission(SUBSURFACE TRACK)",
-        "MAPPING1U": "3079",
-        "MAPPING1F": "3079",
-        "MAPPING1N": "3079",
-        "MAPPING1H": "3079"
+        "ID": "I*U*SRD---*****",
+        "D": "Data Transmission(SUBSURFACE TRACK)",
+        "M1U": "3079",
+        "M1F": "3079",
+        "M1N": "3079",
+        "M1H": "3079"
       },
       {
-        "SYMBOLID": "I*U*SRE---*****",
-        "DESCRIPTION": "Early Warning(SUBSURFACE TRACK)",
-        "MAPPING1U": "3080",
-        "MAPPING1F": "3080",
-        "MAPPING1N": "3080",
-        "MAPPING1H": "3080"
+        "ID": "I*U*SRE---*****",
+        "D": "Early Warning(SUBSURFACE TRACK)",
+        "M1U": "3080",
+        "M1F": "3080",
+        "M1N": "3080",
+        "M1H": "3080"
       },
       {
-        "SYMBOLID": "I*U*SRM---*****",
-        "DESCRIPTION": "Multi-Function(Subsurface Track)",
-        "MAPPING1U": "3081",
-        "MAPPING1F": "3081",
-        "MAPPING1N": "3081",
-        "MAPPING1H": "3081"
+        "ID": "I*U*SRM---*****",
+        "D": "Multi-Function(Subsurface Track)",
+        "M1U": "3081",
+        "M1F": "3081",
+        "M1N": "3081",
+        "M1H": "3081"
       },
       {
-        "SYMBOLID": "I*U*SRS---*****",
-        "DESCRIPTION": "Surface Search(Subsurface Track)",
-        "MAPPING1U": "3082",
-        "MAPPING1F": "3082",
-        "MAPPING1N": "3082",
-        "MAPPING1H": "3082"
+        "ID": "I*U*SRS---*****",
+        "D": "Surface Search(Subsurface Track)",
+        "M1U": "3082",
+        "M1F": "3082",
+        "M1N": "3082",
+        "M1H": "3082"
       },
       {
-        "SYMBOLID": "I*U*SRT---*****",
-        "DESCRIPTION": "Target Acquisition(Subsurface Track)",
-        "MAPPING1U": "3083",
-        "MAPPING1F": "3083",
-        "MAPPING1N": "3083",
-        "MAPPING1H": "3083"
+        "ID": "I*U*SRT---*****",
+        "D": "Target Acquisition(Subsurface Track)",
+        "M1U": "3083",
+        "M1F": "3083",
+        "M1N": "3083",
+        "M1H": "3083"
       },
       {
-        "SYMBOLID": "I*U*SRU---*****",
-        "DESCRIPTION": "Unknown(Subsurface Track)",
-        "MAPPING1U": "3084",
-        "MAPPING1F": "3084",
-        "MAPPING1N": "3084",
-        "MAPPING1H": "3084"
+        "ID": "I*U*SRU---*****",
+        "D": "Unknown(Subsurface Track)",
+        "M1U": "3084",
+        "M1F": "3084",
+        "M1N": "3084",
+        "M1H": "3084"
       },
       {
-        "SYMBOLID": "O*-*------*****",
-        "DESCRIPTION": "Stability Operations"
+        "ID": "O*-*------*****",
+        "D": "Stability Operations"
       },
       {
-        "SYMBOLID": "O*V*------*****",
-        "DESCRIPTION": "Violent Activities"
+        "ID": "O*V*------*****",
+        "D": "Violent Activities"
       },
       {
-        "SYMBOLID": "O*V*A-----*****",
-        "DESCRIPTION": "Arson/Fire",
-        "MAPPING1U": "3999",
-        "MAPPING1F": "3999",
-        "MAPPING1N": "3999",
-        "MAPPING1H": "3999"
+        "ID": "O*V*A-----*****",
+        "D": "Arson/Fire",
+        "M1U": "3999",
+        "M1F": "3999",
+        "M1N": "3999",
+        "M1H": "3999"
       },
       {
-        "SYMBOLID": "O*V*M-----*****",
-        "DESCRIPTION": "Killing (General)",
-        "MAPPING1U": "4001",
-        "MAPPING1F": "4002",
-        "MAPPING1N": "4003",
-        "MAPPING1H": "4004"
+        "ID": "O*V*M-----*****",
+        "D": "Killing (General)",
+        "M1U": "4001",
+        "M1F": "4002",
+        "M1N": "4003",
+        "M1H": "4004"
       },
       {
-        "SYMBOLID": "O*V*MA----*****",
-        "DESCRIPTION": "Murder",
-        "MAPPING1U": "4005",
-        "MAPPING1F": "4006",
-        "MAPPING1N": "4007",
-        "MAPPING1H": "4008"
+        "ID": "O*V*MA----*****",
+        "D": "Murder",
+        "M1U": "4005",
+        "M1F": "4006",
+        "M1N": "4007",
+        "M1H": "4008"
       },
       {
-        "SYMBOLID": "O*V*MB----*****",
-        "DESCRIPTION": "Execution",
-        "MAPPING1U": "4009",
-        "MAPPING1F": "4010",
-        "MAPPING1N": "4011",
-        "MAPPING1H": "4012"
+        "ID": "O*V*MB----*****",
+        "D": "Execution",
+        "M1U": "4009",
+        "M1F": "4010",
+        "M1N": "4011",
+        "M1H": "4012"
       },
       {
-        "SYMBOLID": "O*V*MC----*****",
-        "DESCRIPTION": "Assassination",
-        "MAPPING1U": "4013",
-        "MAPPING1F": "4014",
-        "MAPPING1N": "4015",
-        "MAPPING1H": "4016"
+        "ID": "O*V*MC----*****",
+        "D": "Assassination",
+        "M1U": "4013",
+        "M1F": "4014",
+        "M1N": "4015",
+        "M1H": "4016"
       },
       {
-        "SYMBOLID": "O*V*B-----*****",
-        "DESCRIPTION": "Bomb/Bombing",
-        "MAPPING1U": "4017",
-        "MAPPING1F": "4017",
-        "MAPPING1N": "4017",
-        "MAPPING1H": "4017"
+        "ID": "O*V*B-----*****",
+        "D": "Bomb/Bombing",
+        "M1U": "4017",
+        "M1F": "4017",
+        "M1N": "4017",
+        "M1H": "4017"
       },
       {
-        "SYMBOLID": "O*V*Y-----*****",
-        "DESCRIPTION": "Booby Trap",
-        "MAPPING1U": "4018",
-        "MAPPING1F": "4018",
-        "MAPPING1N": "4018",
-        "MAPPING1H": "4018"
+        "ID": "O*V*Y-----*****",
+        "D": "Booby Trap",
+        "M1U": "4018",
+        "M1F": "4018",
+        "M1N": "4018",
+        "M1H": "4018"
       },
       {
-        "SYMBOLID": "O*V*D-----*****",
-        "DESCRIPTION": "Drive-By Shooting",
-        "MAPPING1U": "4019",
-        "MAPPING1F": "4019",
-        "MAPPING1N": "4019",
-        "MAPPING1H": "4019"
+        "ID": "O*V*D-----*****",
+        "D": "Drive-By Shooting",
+        "M1U": "4019",
+        "M1F": "4019",
+        "M1N": "4019",
+        "M1H": "4019"
       },
       {
-        "SYMBOLID": "O*V*S-----*****",
-        "DESCRIPTION": "Sniping",
-        "MAPPING1U": "4020",
-        "MAPPING1F": "4020",
-        "MAPPING1N": "4020",
-        "MAPPING1H": "4020"
+        "ID": "O*V*S-----*****",
+        "D": "Sniping",
+        "M1U": "4020",
+        "M1F": "4020",
+        "M1N": "4020",
+        "M1H": "4020"
       },
       {
-        "SYMBOLID": "O*V*P-----*****",
-        "DESCRIPTION": "Poisoning",
-        "MAPPING1U": "4021",
-        "MAPPING1F": "4021",
-        "MAPPING1N": "4021",
-        "MAPPING1H": "4021"
+        "ID": "O*V*P-----*****",
+        "D": "Poisoning",
+        "M1U": "4021",
+        "M1F": "4021",
+        "M1N": "4021",
+        "M1H": "4021"
       },
       {
-        "SYMBOLID": "O*V*E-----*****",
-        "DESCRIPTION": "Explosion",
-        "MAPPING1U": "4022",
-        "MAPPING1F": "4022",
-        "MAPPING1N": "4022",
-        "MAPPING1H": "4022",
-        "MAPPING2": "406",
-        "MAPPING2COLOR": "#FFFF00"
+        "ID": "O*V*E-----*****",
+        "D": "Explosion",
+        "M1U": "4022",
+        "M1F": "4022",
+        "M1N": "4022",
+        "M1H": "4022",
+        "M2": "406",
+        "M2C": "#FFFF00"
       },
       {
-        "SYMBOLID": "O*V*EI----*****",
-        "DESCRIPTION": "IED Explosion",
-        "MAPPING1U": "4023",
-        "MAPPING1F": "4023",
-        "MAPPING1N": "4023",
-        "MAPPING1H": "4023"
+        "ID": "O*V*EI----*****",
+        "D": "IED Explosion",
+        "M1U": "4023",
+        "M1F": "4023",
+        "M1N": "4023",
+        "M1H": "4023"
       },
       {
-        "SYMBOLID": "O*V*EG----*****",
-        "DESCRIPTION": "Explosion, Grenade",
-        "MAPPING1U": "4508",
-        "MAPPING1F": "4508",
-        "MAPPING1N": "4508",
-        "MAPPING1H": "4508"
+        "ID": "O*V*EG----*****",
+        "D": "Explosion, Grenade",
+        "M1U": "4508",
+        "M1F": "4508",
+        "M1N": "4508",
+        "M1H": "4508"
       },
       {
-        "SYMBOLID": "O*V*EN----*****",
-        "DESCRIPTION": "Explosion, Incendiary",
-        "MAPPING1U": "4509",
-        "MAPPING1F": "4509",
-        "MAPPING1N": "4509",
-        "MAPPING1H": "4509"
+        "ID": "O*V*EN----*****",
+        "D": "Explosion, Incendiary",
+        "M1U": "4509",
+        "M1F": "4509",
+        "M1N": "4509",
+        "M1H": "4509"
       },
       {
-        "SYMBOLID": "O*V*EM----*****",
-        "DESCRIPTION": "Explosion, Mine",
-        "MAPPING1U": "4510",
-        "MAPPING1F": "4510",
-        "MAPPING1N": "4510",
-        "MAPPING1H": "4510"
+        "ID": "O*V*EM----*****",
+        "D": "Explosion, Mine",
+        "M1U": "4510",
+        "M1F": "4510",
+        "M1N": "4510",
+        "M1H": "4510"
       },
       {
-        "SYMBOLID": "O*V*EO----*****",
-        "DESCRIPTION": "Explosion, Mortar Fire",
-        "MAPPING1U": "4511",
-        "MAPPING1F": "4511",
-        "MAPPING1N": "4511",
-        "MAPPING1H": "4511"
+        "ID": "O*V*EO----*****",
+        "D": "Explosion, Mortar Fire",
+        "M1U": "4511",
+        "M1F": "4511",
+        "M1N": "4511",
+        "M1H": "4511"
       },
       {
-        "SYMBOLID": "O*V*ER----*****",
-        "DESCRIPTION": "Explosion, Rocket",
-        "MAPPING1U": "4512",
-        "MAPPING1F": "4512",
-        "MAPPING1N": "4512",
-        "MAPPING1H": "4512"
+        "ID": "O*V*ER----*****",
+        "D": "Explosion, Rocket",
+        "M1U": "4512",
+        "M1F": "4512",
+        "M1N": "4512",
+        "M1H": "4512"
       },
       {
-        "SYMBOLID": "O*V*EV----*****",
-        "DESCRIPTION": "Explosion, Wheeled Vehicle",
-        "MAPPING1U": "4513",
-        "MAPPING1F": "4513",
-        "MAPPING1N": "4513",
-        "MAPPING1H": "4513"
+        "ID": "O*V*EV----*****",
+        "D": "Explosion, Wheeled Vehicle",
+        "M1U": "4513",
+        "M1F": "4513",
+        "M1N": "4513",
+        "M1H": "4513"
       },
       {
-        "SYMBOLID": "O*L*------*****",
-        "DESCRIPTION": "Locations"
+        "ID": "O*L*------*****",
+        "D": "Locations"
       },
       {
-        "SYMBOLID": "O*L*B-----*****",
-        "DESCRIPTION": "Black List Location",
-        "MAPPING1U": "4024",
-        "MAPPING1F": "4024",
-        "MAPPING1N": "4024",
-        "MAPPING1H": "4024"
+        "ID": "O*L*B-----*****",
+        "D": "Black List Location",
+        "M1U": "4024",
+        "M1F": "4024",
+        "M1N": "4024",
+        "M1H": "4024"
       },
       {
-        "SYMBOLID": "O*L*G-----*****",
-        "DESCRIPTION": "Gray List Location",
-        "MAPPING1U": "4025",
-        "MAPPING1F": "4025",
-        "MAPPING1N": "4025",
-        "MAPPING1H": "4025"
+        "ID": "O*L*G-----*****",
+        "D": "Gray List Location",
+        "M1U": "4025",
+        "M1F": "4025",
+        "M1N": "4025",
+        "M1H": "4025"
       },
       {
-        "SYMBOLID": "O*L*W-----*****",
-        "DESCRIPTION": "White List Location",
-        "MAPPING1U": "4026",
-        "MAPPING1F": "4026",
-        "MAPPING1N": "4026",
-        "MAPPING1H": "4026"
+        "ID": "O*L*W-----*****",
+        "D": "White List Location",
+        "M1U": "4026",
+        "M1F": "4026",
+        "M1N": "4026",
+        "M1H": "4026"
       },
       {
-        "SYMBOLID": "O*L*M-----*****",
-        "DESCRIPTION": "Mass Grave Location",
-        "MAPPING1U": "4027",
-        "MAPPING1F": "4027",
-        "MAPPING1N": "4027",
-        "MAPPING1H": "4027"
+        "ID": "O*L*M-----*****",
+        "D": "Mass Grave Location",
+        "M1U": "4027",
+        "M1F": "4027",
+        "M1N": "4027",
+        "M1H": "4027"
       },
       {
-        "SYMBOLID": "O*L*E-----*****",
-        "DESCRIPTION": "Drug Lab",
-        "MAPPING1U": "4505",
-        "MAPPING1F": "4505",
-        "MAPPING1N": "4505",
-        "MAPPING1H": "4505"
+        "ID": "O*L*E-----*****",
+        "D": "Drug Lab",
+        "M1U": "4505",
+        "M1F": "4505",
+        "M1N": "4505",
+        "M1H": "4505"
       },
       {
-        "SYMBOLID": "O*L*H-----*****",
-        "DESCRIPTION": "House/Residence",
-        "MAPPING1U": "4521",
-        "MAPPING1F": "4521",
-        "MAPPING1N": "4521",
-        "MAPPING1H": "4521"
+        "ID": "O*L*H-----*****",
+        "D": "House/Residence",
+        "M1U": "4521",
+        "M1F": "4521",
+        "M1N": "4521",
+        "M1H": "4521"
       },
       {
-        "SYMBOLID": "O*L*N-----*****",
-        "DESCRIPTION": "Cave Entrance",
-        "MAPPING1U": "4503",
-        "MAPPING1F": "4503",
-        "MAPPING1N": "4503",
-        "MAPPING1H": "4503"
+        "ID": "O*L*N-----*****",
+        "D": "Cave Entrance",
+        "M1U": "4503",
+        "M1F": "4503",
+        "M1N": "4503",
+        "M1H": "4503"
       },
       {
-        "SYMBOLID": "O*L*F-----*****",
-        "DESCRIPTION": "Polling Place",
-        "MAPPING1U": "4522",
-        "MAPPING1F": "4522",
-        "MAPPING1N": "4522",
-        "MAPPING1H": "4522"
+        "ID": "O*L*F-----*****",
+        "D": "Polling Place",
+        "M1U": "4522",
+        "M1F": "4522",
+        "M1N": "4522",
+        "M1H": "4522"
       },
       {
-        "SYMBOLID": "O*O*------*****",
-        "DESCRIPTION": "Operations"
+        "ID": "O*O*------*****",
+        "D": "Operations"
       },
       {
-        "SYMBOLID": "O*O*P-----*****",
-        "DESCRIPTION": "Patrolling",
-        "MAPPING1U": "4028",
-        "MAPPING1F": "4028",
-        "MAPPING1N": "4028",
-        "MAPPING1H": "4028"
+        "ID": "O*O*P-----*****",
+        "D": "Patrolling",
+        "M1U": "4028",
+        "M1F": "4028",
+        "M1N": "4028",
+        "M1H": "4028"
       },
       {
-        "SYMBOLID": "O*O*R-----*****",
-        "DESCRIPTION": "Recruitment"
+        "ID": "O*O*R-----*****",
+        "D": "Recruitment"
       },
       {
-        "SYMBOLID": "O*O*RW----*****",
-        "DESCRIPTION": "Recruitment (Willing)",
-        "MAPPING1U": "4029",
-        "MAPPING1F": "4029",
-        "MAPPING1N": "4029",
-        "MAPPING1H": "4029"
+        "ID": "O*O*RW----*****",
+        "D": "Recruitment (Willing)",
+        "M1U": "4029",
+        "M1F": "4029",
+        "M1N": "4029",
+        "M1H": "4029"
       },
       {
-        "SYMBOLID": "O*O*RC----*****",
-        "DESCRIPTION": "Recruitment (Coerced/Impressed)",
-        "MAPPING1U": "4030",
-        "MAPPING1F": "4030",
-        "MAPPING1N": "4030",
-        "MAPPING1H": "4030"
+        "ID": "O*O*RC----*****",
+        "D": "Recruitment (Coerced/Impressed)",
+        "M1U": "4030",
+        "M1F": "4030",
+        "M1N": "4030",
+        "M1H": "4030"
       },
       {
-        "SYMBOLID": "O*O*D-----*****",
-        "DESCRIPTION": "Demonstration",
-        "MAPPING1U": "4031",
-        "MAPPING1F": "4031",
-        "MAPPING1N": "4031",
-        "MAPPING1H": "4031"
+        "ID": "O*O*D-----*****",
+        "D": "Demonstration",
+        "M1U": "4031",
+        "M1F": "4031",
+        "M1N": "4031",
+        "M1H": "4031"
       },
       {
-        "SYMBOLID": "O*O*M-----*****",
-        "DESCRIPTION": "Mine Laying",
-        "MAPPING1U": "4032",
-        "MAPPING1F": "4032",
-        "MAPPING1N": "4032",
-        "MAPPING1H": "4032"
+        "ID": "O*O*M-----*****",
+        "D": "Mine Laying",
+        "M1U": "4032",
+        "M1F": "4032",
+        "M1N": "4032",
+        "M1H": "4032"
       },
       {
-        "SYMBOLID": "O*O*Y-----*****",
-        "DESCRIPTION": "Psychological Operations (Psyop)",
-        "MAPPING1U": "4033",
-        "MAPPING1F": "4033",
-        "MAPPING1N": "4033",
-        "MAPPING1H": "4033",
-        "MAPPING2": "4034",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*Y-----*****",
+        "D": "Psychological Operations (Psyop)",
+        "M1U": "4033",
+        "M1F": "4033",
+        "M1N": "4033",
+        "M1H": "4033",
+        "M2": "4034",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*YT----*****",
-        "DESCRIPTION": "Psyop (TV and Radio Propaganda)",
-        "MAPPING1U": "4035",
-        "MAPPING1F": "4036",
-        "MAPPING1N": "4037",
-        "MAPPING1H": "4038",
-        "MAPPING2": "4039",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*YT----*****",
+        "D": "Psyop (TV and Radio Propaganda)",
+        "M1U": "4035",
+        "M1F": "4036",
+        "M1N": "4037",
+        "M1H": "4038",
+        "M2": "4039",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*YW----*****",
-        "DESCRIPTION": "Psyop (Written Propaganda)",
-        "MAPPING1U": "4043",
-        "MAPPING1F": "4043",
-        "MAPPING1N": "4043",
-        "MAPPING1H": "4043",
-        "MAPPING2": "4045",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*YW----*****",
+        "D": "Psyop (Written Propaganda)",
+        "M1U": "4043",
+        "M1F": "4043",
+        "M1N": "4043",
+        "M1H": "4043",
+        "M2": "4045",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*YH----*****",
-        "DESCRIPTION": "House-to-House Propaganda",
-        "MAPPING1U": "4044",
-        "MAPPING1F": "4044",
-        "MAPPING1N": "4044",
-        "MAPPING1H": "4044",
-        "MAPPING2": "4045",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*YH----*****",
+        "D": "House-to-House Propaganda",
+        "M1U": "4044",
+        "M1F": "4044",
+        "M1N": "4044",
+        "M1H": "4044",
+        "M2": "4045",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*F-----*****",
-        "DESCRIPTION": "Foraging/Searching",
-        "MAPPING1U": "4046",
-        "MAPPING1F": "4046",
-        "MAPPING1N": "4046",
-        "MAPPING1H": "4046"
+        "ID": "O*O*F-----*****",
+        "D": "Foraging/Searching",
+        "M1U": "4046",
+        "M1F": "4046",
+        "M1N": "4046",
+        "M1H": "4046"
       },
       {
-        "SYMBOLID": "O*O*S-----*****",
-        "DESCRIPTION": "Spy",
-        "MAPPING1U": "4047",
-        "MAPPING1F": "4047",
-        "MAPPING1N": "4047",
-        "MAPPING1H": "4047"
+        "ID": "O*O*S-----*****",
+        "D": "Spy",
+        "M1U": "4047",
+        "M1F": "4047",
+        "M1N": "4047",
+        "M1H": "4047"
       },
       {
-        "SYMBOLID": "O*O*O-----*****",
-        "DESCRIPTION": "Food Distribution",
-        "MAPPING1U": "4048",
-        "MAPPING1F": "4049",
-        "MAPPING1N": "4050",
-        "MAPPING1H": "4051"
+        "ID": "O*O*O-----*****",
+        "D": "Food Distribution",
+        "M1U": "4048",
+        "M1F": "4049",
+        "M1N": "4050",
+        "M1H": "4051"
       },
       {
-        "SYMBOLID": "O*O*E-----*****",
-        "DESCRIPTION": "Extortion",
-        "MAPPING1U": "4052",
-        "MAPPING1F": "4052",
-        "MAPPING1N": "4052",
-        "MAPPING1H": "4052"
+        "ID": "O*O*E-----*****",
+        "D": "Extortion",
+        "M1U": "4052",
+        "M1F": "4052",
+        "M1N": "4052",
+        "M1H": "4052"
       },
       {
-        "SYMBOLID": "O*O*H-----*****",
-        "DESCRIPTION": "Hijacking"
+        "ID": "O*O*H-----*****",
+        "D": "Hijacking"
       },
       {
-        "SYMBOLID": "O*O*HT----*****",
-        "DESCRIPTION": "Hijacking (Vehicle)",
-        "MAPPING1U": "4053",
-        "MAPPING1F": "4053",
-        "MAPPING1N": "4053",
-        "MAPPING1H": "4053"
+        "ID": "O*O*HT----*****",
+        "D": "Hijacking (Vehicle)",
+        "M1U": "4053",
+        "M1F": "4053",
+        "M1N": "4053",
+        "M1H": "4053"
       },
       {
-        "SYMBOLID": "O*O*HA----*****",
-        "DESCRIPTION": "Hijacking (Airplane)",
-        "MAPPING1U": "4054",
-        "MAPPING1F": "4054",
-        "MAPPING1N": "4054",
-        "MAPPING1H": "4054",
-        "MAPPING2": "4055",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*HA----*****",
+        "D": "Hijacking (Airplane)",
+        "M1U": "4054",
+        "M1F": "4054",
+        "M1N": "4054",
+        "M1H": "4054",
+        "M2": "4055",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*HV----*****",
-        "DESCRIPTION": "Hijacking (Boat)",
-        "MAPPING1U": "4056",
-        "MAPPING1F": "4056",
-        "MAPPING1N": "4056",
-        "MAPPING1H": "4056",
-        "MAPPING2": "4057",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*HV----*****",
+        "D": "Hijacking (Boat)",
+        "M1U": "4056",
+        "M1F": "4056",
+        "M1N": "4056",
+        "M1H": "4056",
+        "M2": "4057",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*K-----*****",
-        "DESCRIPTION": "Kidnapping",
-        "MAPPING1U": "4058",
-        "MAPPING1F": "4058",
-        "MAPPING1N": "4058",
-        "MAPPING1H": "4058"
+        "ID": "O*O*K-----*****",
+        "D": "Kidnapping",
+        "M1U": "4058",
+        "M1F": "4058",
+        "M1N": "4058",
+        "M1H": "4058"
       },
       {
-        "SYMBOLID": "O*O*KA----*****",
-        "DESCRIPTION": "Attempted Kidnapping",
-        "MAPPING1U": "4059",
-        "MAPPING1F": "4059",
-        "MAPPING1N": "4059",
-        "MAPPING1H": "4059"
+        "ID": "O*O*KA----*****",
+        "D": "Attempted Kidnapping",
+        "M1U": "4059",
+        "M1F": "4059",
+        "M1N": "4059",
+        "M1H": "4059"
       },
       {
-        "SYMBOLID": "O*O*A-----*****",
-        "DESCRIPTION": "Arrest",
-        "MAPPING1U": "4060",
-        "MAPPING1F": "4060",
-        "MAPPING1N": "4060",
-        "MAPPING1H": "4060"
+        "ID": "O*O*A-----*****",
+        "D": "Arrest",
+        "M1U": "4060",
+        "M1F": "4060",
+        "M1N": "4060",
+        "M1H": "4060"
       },
       {
-        "SYMBOLID": "O*O*U-----*****",
-        "DESCRIPTION": "Drug Operation",
-        "MAPPING1U": "4061",
-        "MAPPING1F": "4061",
-        "MAPPING1N": "4061",
-        "MAPPING1H": "4061"
+        "ID": "O*O*U-----*****",
+        "D": "Drug Operation",
+        "M1U": "4061",
+        "M1F": "4061",
+        "M1N": "4061",
+        "M1H": "4061"
       },
       {
-        "SYMBOLID": "O*O*UT----*****",
-        "DESCRIPTION": "Drug Trafficking",
-        "MAPPING1U": "4506",
-        "MAPPING1F": "4506",
-        "MAPPING1N": "4506",
-        "MAPPING1H": "4506"
+        "ID": "O*O*UT----*****",
+        "D": "Drug Trafficking",
+        "M1U": "4506",
+        "M1F": "4506",
+        "M1N": "4506",
+        "M1H": "4506"
       },
       {
-        "SYMBOLID": "O*O*N-----*****",
-        "DESCRIPTION": "Raid on a House",
-        "MAPPING1U": "4500",
-        "MAPPING1F": "4500",
-        "MAPPING1N": "4500",
-        "MAPPING1H": "4500"
+        "ID": "O*O*N-----*****",
+        "D": "Raid on a House",
+        "M1U": "4500",
+        "M1F": "4500",
+        "M1N": "4500",
+        "M1H": "4500"
       },
       {
-        "SYMBOLID": "O*O*2-----*****",
-        "DESCRIPTION": "Burglary",
-        "MAPPING1U": "4502",
-        "MAPPING1F": "4502",
-        "MAPPING1N": "4502",
-        "MAPPING1H": "4502"
+        "ID": "O*O*2-----*****",
+        "D": "Burglary",
+        "M1U": "4502",
+        "M1F": "4502",
+        "M1N": "4502",
+        "M1H": "4502"
       },
       {
-        "SYMBOLID": "O*O*V-----*****",
-        "DESCRIPTION": "Home Eviction",
-        "MAPPING1U": "4514",
-        "MAPPING1F": "4514",
-        "MAPPING1N": "4514",
-        "MAPPING1H": "4514"
+        "ID": "O*O*V-----*****",
+        "D": "Home Eviction",
+        "M1U": "4514",
+        "M1F": "4514",
+        "M1N": "4514",
+        "M1H": "4514"
       },
       {
-        "SYMBOLID": "O*O*I-----*****",
-        "DESCRIPTION": "Black Marketing",
-        "MAPPING1U": "4516",
-        "MAPPING1F": "4516",
-        "MAPPING1N": "4516",
-        "MAPPING1H": "4516"
+        "ID": "O*O*I-----*****",
+        "D": "Black Marketing",
+        "M1U": "4516",
+        "M1F": "4516",
+        "M1N": "4516",
+        "M1H": "4516"
       },
       {
-        "SYMBOLID": "O*O*J-----*****",
-        "DESCRIPTION": "Jail Break",
-        "MAPPING1U": "4518",
-        "MAPPING1F": "4518",
-        "MAPPING1N": "4518",
-        "MAPPING1H": "4518",
-        "MAPPING2": "4519",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "O*O*J-----*****",
+        "D": "Jail Break",
+        "M1U": "4518",
+        "M1F": "4518",
+        "M1N": "4518",
+        "M1H": "4518",
+        "M2": "4519",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "O*O*B-----*****",
-        "DESCRIPTION": "Robbery",
-        "MAPPING1U": "4524",
-        "MAPPING1F": "4524",
-        "MAPPING1N": "4524",
-        "MAPPING1H": "4524"
+        "ID": "O*O*B-----*****",
+        "D": "Robbery",
+        "M1U": "4524",
+        "M1F": "4524",
+        "M1N": "4524",
+        "M1H": "4524"
       },
       {
-        "SYMBOLID": "O*O*G-----*****",
-        "DESCRIPTION": "Sabotage",
-        "MAPPING1U": "4526",
-        "MAPPING1F": "4526",
-        "MAPPING1N": "4526",
-        "MAPPING1H": "4526"
+        "ID": "O*O*G-----*****",
+        "D": "Sabotage",
+        "M1U": "4526",
+        "M1F": "4526",
+        "M1N": "4526",
+        "M1H": "4526"
       },
       {
-        "SYMBOLID": "O*O*X-----*****",
-        "DESCRIPTION": "Smuggling",
-        "MAPPING1U": "4527",
-        "MAPPING1F": "4527",
-        "MAPPING1N": "4527",
-        "MAPPING1H": "4527"
+        "ID": "O*O*X-----*****",
+        "D": "Smuggling",
+        "M1U": "4527",
+        "M1F": "4527",
+        "M1N": "4527",
+        "M1H": "4527"
       },
       {
-        "SYMBOLID": "O*O*W-----*****",
-        "DESCRIPTION": "Rock Throwing",
-        "MAPPING1U": "4525",
-        "MAPPING1F": "4525",
-        "MAPPING1N": "4525",
-        "MAPPING1H": "4525"
+        "ID": "O*O*W-----*****",
+        "D": "Rock Throwing",
+        "M1U": "4525",
+        "M1F": "4525",
+        "M1N": "4525",
+        "M1H": "4525"
       },
       {
-        "SYMBOLID": "O*O*Z-----*****",
-        "DESCRIPTION": "Suspicious Activity",
-        "MAPPING1U": "4529",
-        "MAPPING1F": "4529",
-        "MAPPING1N": "4529",
-        "MAPPING1H": "4529"
+        "ID": "O*O*Z-----*****",
+        "D": "Suspicious Activity",
+        "M1U": "4529",
+        "M1F": "4529",
+        "M1N": "4529",
+        "M1H": "4529"
       },
       {
-        "SYMBOLID": "O*O*T-----*****",
-        "DESCRIPTION": "Theft",
-        "MAPPING1U": "4531",
-        "MAPPING1F": "4531",
-        "MAPPING1N": "4531",
-        "MAPPING1H": "4531"
+        "ID": "O*O*T-----*****",
+        "D": "Theft",
+        "M1U": "4531",
+        "M1F": "4531",
+        "M1N": "4531",
+        "M1H": "4531"
       },
       {
-        "SYMBOLID": "O*O*TV----*****",
-        "DESCRIPTION": "Wheeled Vehicle Theft",
-        "MAPPING1U": "4533",
-        "MAPPING1F": "4533",
-        "MAPPING1N": "4533",
-        "MAPPING1H": "4533"
+        "ID": "O*O*TV----*****",
+        "D": "Wheeled Vehicle Theft",
+        "M1U": "4533",
+        "M1F": "4533",
+        "M1N": "4533",
+        "M1H": "4533"
       },
       {
-        "SYMBOLID": "O*O*Q-----*****",
-        "DESCRIPTION": "Warrant Served",
-        "MAPPING1U": "4532",
-        "MAPPING1F": "4532",
-        "MAPPING1N": "4532",
-        "MAPPING1H": "4532"
+        "ID": "O*O*Q-----*****",
+        "D": "Warrant Served",
+        "M1U": "4532",
+        "M1F": "4532",
+        "M1N": "4532",
+        "M1H": "4532"
       },
       {
-        "SYMBOLID": "O*I*------*****",
-        "DESCRIPTION": "Items"
+        "ID": "O*I*------*****",
+        "D": "Items"
       },
       {
-        "SYMBOLID": "O*I*R-----*****",
-        "DESCRIPTION": "Refugees",
-        "MAPPING1U": "4066",
-        "MAPPING1F": "4066",
-        "MAPPING1N": "4066",
-        "MAPPING1H": "4066"
+        "ID": "O*I*R-----*****",
+        "D": "Refugees",
+        "M1U": "4066",
+        "M1F": "4066",
+        "M1N": "4066",
+        "M1H": "4066"
       },
       {
-        "SYMBOLID": "O*I*S-----*****",
-        "DESCRIPTION": "Safe House",
-        "MAPPING1U": "4067",
-        "MAPPING1F": "4067",
-        "MAPPING1N": "4067",
-        "MAPPING1H": "4067"
+        "ID": "O*I*S-----*****",
+        "D": "Safe House",
+        "M1U": "4067",
+        "M1F": "4067",
+        "M1N": "4067",
+        "M1H": "4067"
       },
       {
-        "SYMBOLID": "O*I*G-----*****",
-        "DESCRIPTION": "Graffiti",
-        "MAPPING1U": "4068",
-        "MAPPING1F": "4068",
-        "MAPPING1N": "4068",
-        "MAPPING1H": "4068"
+        "ID": "O*I*G-----*****",
+        "D": "Graffiti",
+        "M1U": "4068",
+        "M1F": "4068",
+        "M1N": "4068",
+        "M1H": "4068"
       },
       {
-        "SYMBOLID": "O*I*V-----*****",
-        "DESCRIPTION": "Vandalism/Loot/Ransack/Plunder/Sack",
-        "MAPPING1U": "4069",
-        "MAPPING1F": "4069",
-        "MAPPING1N": "4069",
-        "MAPPING1H": "4069"
+        "ID": "O*I*V-----*****",
+        "D": "Vandalism/Loot/Ransack/Plunder/Sack",
+        "M1U": "4069",
+        "M1F": "4069",
+        "M1N": "4069",
+        "M1H": "4069"
       },
       {
-        "SYMBOLID": "O*I*I-----*****",
-        "DESCRIPTION": "Known Insurgent Vehicle",
-        "MAPPING1U": "4070",
-        "MAPPING1F": "4070",
-        "MAPPING1N": "4070",
-        "MAPPING1H": "4070"
+        "ID": "O*I*I-----*****",
+        "D": "Known Insurgent Vehicle",
+        "M1U": "4070",
+        "M1F": "4070",
+        "M1N": "4070",
+        "M1H": "4070"
       },
       {
-        "SYMBOLID": "O*I*D-----*****",
-        "DESCRIPTION": "Drug Vehicle",
-        "MAPPING1U": "4071",
-        "MAPPING1F": "4071",
-        "MAPPING1N": "4071",
-        "MAPPING1H": "4071"
+        "ID": "O*I*D-----*****",
+        "D": "Drug Vehicle",
+        "M1U": "4071",
+        "M1F": "4071",
+        "M1N": "4071",
+        "M1H": "4071"
       },
       {
-        "SYMBOLID": "O*I*F-----*****",
-        "DESCRIPTION": "Internal Security Force",
-        "MAPPING1U": "4072",
-        "MAPPING1F": "4072",
-        "MAPPING1N": "4072",
-        "MAPPING1H": "4072"
+        "ID": "O*I*F-----*****",
+        "D": "Internal Security Force",
+        "M1U": "4072",
+        "M1F": "4072",
+        "M1N": "4072",
+        "M1H": "4072"
       },
       {
-        "SYMBOLID": "O*I*M-----*****",
-        "DESCRIPTION": "Meeting",
-        "MAPPING1U": "4520",
-        "MAPPING1F": "4520",
-        "MAPPING1N": "4520",
-        "MAPPING1H": "4520"
+        "ID": "O*I*M-----*****",
+        "D": "Meeting",
+        "M1U": "4520",
+        "M1F": "4520",
+        "M1N": "4520",
+        "M1H": "4520"
       },
       {
-        "SYMBOLID": "O*I*T-----*****",
-        "DESCRIPTION": "Tent",
-        "MAPPING1U": "4530",
-        "MAPPING1F": "4530",
-        "MAPPING1N": "4530",
-        "MAPPING1H": "4530"
+        "ID": "O*I*T-----*****",
+        "D": "Tent",
+        "M1U": "4530",
+        "M1F": "4530",
+        "M1N": "4530",
+        "M1H": "4530"
       },
       {
-        "SYMBOLID": "O*P*------*****",
-        "DESCRIPTION": "Individual",
-        "MAPPING1U": "4073",
-        "MAPPING1F": "4073",
-        "MAPPING1N": "4073",
-        "MAPPING1H": "4073"
+        "ID": "O*P*------*****",
+        "D": "Individual",
+        "M1U": "4073",
+        "M1F": "4073",
+        "M1N": "4073",
+        "M1H": "4073"
       },
       {
-        "SYMBOLID": "O*P*A-----*****",
-        "DESCRIPTION": "Leader",
-        "MAPPING1U": "4074",
-        "MAPPING1F": "4074",
-        "MAPPING1N": "4074",
-        "MAPPING1H": "4074"
+        "ID": "O*P*A-----*****",
+        "D": "Leader",
+        "M1U": "4074",
+        "M1F": "4074",
+        "M1N": "4074",
+        "M1H": "4074"
       },
       {
-        "SYMBOLID": "O*P*AR----*****",
-        "DESCRIPTION": "Religious Leader",
-        "MAPPING1U": "4523",
-        "MAPPING1F": "4523",
-        "MAPPING1N": "4523",
-        "MAPPING1H": "4523"
+        "ID": "O*P*AR----*****",
+        "D": "Religious Leader",
+        "M1U": "4523",
+        "M1F": "4523",
+        "M1N": "4523",
+        "M1H": "4523"
       },
       {
-        "SYMBOLID": "O*P*B-----*****",
-        "DESCRIPTION": "Targeted Individual",
-        "MAPPING1U": "4075",
-        "MAPPING1F": "4075",
-        "MAPPING1N": "4075",
-        "MAPPING1H": "4075"
+        "ID": "O*P*B-----*****",
+        "D": "Targeted Individual",
+        "M1U": "4075",
+        "M1F": "4075",
+        "M1N": "4075",
+        "M1H": "4075"
       },
       {
-        "SYMBOLID": "O*P*C-----*****",
-        "DESCRIPTION": "Terrorist",
-        "MAPPING1U": "4076",
-        "MAPPING1F": "4076",
-        "MAPPING1N": "4076",
-        "MAPPING1H": "4076"
+        "ID": "O*P*C-----*****",
+        "D": "Terrorist",
+        "M1U": "4076",
+        "M1F": "4076",
+        "M1N": "4076",
+        "M1H": "4076"
       },
       {
-        "SYMBOLID": "O*P*F-----*****",
-        "DESCRIPTION": "IED Suicide Bomber",
-        "MAPPING1U": "4501",
-        "MAPPING1F": "4501",
-        "MAPPING1N": "4501",
-        "MAPPING1H": "4501"
+        "ID": "O*P*F-----*****",
+        "D": "IED Suicide Bomber",
+        "M1U": "4501",
+        "M1F": "4501",
+        "M1N": "4501",
+        "M1H": "4501"
       },
       {
-        "SYMBOLID": "O*P*D-----*****",
-        "DESCRIPTION": "Dead Body",
-        "MAPPING1U": "4504",
-        "MAPPING1F": "4504",
-        "MAPPING1N": "4504",
-        "MAPPING1H": "4504"
+        "ID": "O*P*D-----*****",
+        "D": "Dead Body",
+        "M1U": "4504",
+        "M1F": "4504",
+        "M1N": "4504",
+        "M1H": "4504"
       },
       {
-        "SYMBOLID": "O*P*G-----*****",
-        "DESCRIPTION": "Exfiltrating Individual",
-        "MAPPING1U": "4507",
-        "MAPPING1F": "4507",
-        "MAPPING1N": "4507",
-        "MAPPING1H": "4507"
+        "ID": "O*P*G-----*****",
+        "D": "Exfiltrating Individual",
+        "M1U": "4507",
+        "M1F": "4507",
+        "M1N": "4507",
+        "M1H": "4507"
       },
       {
-        "SYMBOLID": "O*P*H-----*****",
-        "DESCRIPTION": "Infiltrating Individual",
-        "MAPPING1U": "4517",
-        "MAPPING1F": "4517",
-        "MAPPING1N": "4517",
-        "MAPPING1H": "4517"
+        "ID": "O*P*H-----*****",
+        "D": "Infiltrating Individual",
+        "M1U": "4517",
+        "M1F": "4517",
+        "M1N": "4517",
+        "M1H": "4517"
       },
       {
-        "SYMBOLID": "O*P*E-----*****",
-        "DESCRIPTION": "Speaker",
-        "MAPPING1U": "4528",
-        "MAPPING1F": "4528",
-        "MAPPING1N": "4528",
-        "MAPPING1H": "4528"
+        "ID": "O*P*E-----*****",
+        "D": "Speaker",
+        "M1U": "4528",
+        "M1F": "4528",
+        "M1N": "4528",
+        "M1H": "4528"
       },
       {
-        "SYMBOLID": "O*G*------*****",
-        "DESCRIPTION": "Non-Military Group or Organization",
-        "MAPPING1U": "4077",
-        "MAPPING1F": "4077",
-        "MAPPING1N": "4077",
-        "MAPPING1H": "4077"
+        "ID": "O*G*------*****",
+        "D": "Non-Military Group or Organization",
+        "M1U": "4077",
+        "M1F": "4077",
+        "M1N": "4077",
+        "M1H": "4077"
       },
       {
-        "SYMBOLID": "O*G*B-----*****",
-        "DESCRIPTION": "Non-Governmental Organizations (NGO)",
-        "MAPPING1U": "4079",
-        "MAPPING1F": "4079",
-        "MAPPING1N": "4079",
-        "MAPPING1H": "4079"
+        "ID": "O*G*B-----*****",
+        "D": "Non-Governmental Organizations (NGO)",
+        "M1U": "4079",
+        "M1F": "4079",
+        "M1N": "4079",
+        "M1H": "4079"
       },
       {
-        "SYMBOLID": "O*G*C-----*****",
-        "DESCRIPTION": "Terrorist Organization",
-        "MAPPING1U": "4080",
-        "MAPPING1F": "4080",
-        "MAPPING1N": "4080",
-        "MAPPING1H": "4080"
+        "ID": "O*G*C-----*****",
+        "D": "Terrorist Organization",
+        "M1U": "4080",
+        "M1F": "4080",
+        "M1N": "4080",
+        "M1H": "4080"
       },
       {
-        "SYMBOLID": "O*G*D-----*****",
-        "DESCRIPTION": "Religious Organization",
-        "MAPPING1U": "4081",
-        "MAPPING1F": "4081",
-        "MAPPING1N": "4081",
-        "MAPPING1H": "4081"
+        "ID": "O*G*D-----*****",
+        "D": "Religious Organization",
+        "M1U": "4081",
+        "M1F": "4081",
+        "M1N": "4081",
+        "M1H": "4081"
       },
       {
-        "SYMBOLID": "O*G*E-----*****",
-        "DESCRIPTION": "Foreign Fighter",
-        "MAPPING1U": "4082",
-        "MAPPING1F": "4082",
-        "MAPPING1N": "4082",
-        "MAPPING1H": "4082"
+        "ID": "O*G*E-----*****",
+        "D": "Foreign Fighter",
+        "M1U": "4082",
+        "M1F": "4082",
+        "M1N": "4082",
+        "M1H": "4082"
       },
       {
-        "SYMBOLID": "O*G*F-----*****",
-        "DESCRIPTION": "GANG",
-        "MAPPING1U": "4083",
-        "MAPPING1F": "4083",
-        "MAPPING1N": "4083",
-        "MAPPING1H": "4083"
+        "ID": "O*G*F-----*****",
+        "D": "GANG",
+        "M1U": "4083",
+        "M1F": "4083",
+        "M1N": "4083",
+        "M1H": "4083"
       },
       {
-        "SYMBOLID": "O*R*------*****",
-        "DESCRIPTION": "Rape",
-        "MAPPING1U": "4084",
-        "MAPPING1F": "4084",
-        "MAPPING1N": "4084",
-        "MAPPING1H": "4084"
+        "ID": "O*R*------*****",
+        "D": "Rape",
+        "M1U": "4084",
+        "M1F": "4084",
+        "M1N": "4084",
+        "M1H": "4084"
       },
       {
-        "SYMBOLID": "O*R*A-----*****",
-        "DESCRIPTION": "Attempted Rape",
-        "MAPPING1U": "4085",
-        "MAPPING1F": "4085",
-        "MAPPING1N": "4085",
-        "MAPPING1H": "4085"
+        "ID": "O*R*A-----*****",
+        "D": "Attempted Rape",
+        "M1U": "4085",
+        "M1F": "4085",
+        "M1N": "4085",
+        "M1H": "4085"
       },
       {
-        "SYMBOLID": "O*E*------*****",
-        "DESCRIPTION": "Events"
+        "ID": "O*E*------*****",
+        "D": "Events"
       },
       {
-        "SYMBOLID": "O*E*A-----*****",
-        "DESCRIPTION": "Elections",
-        "MAPPING1U": "9004",
-        "MAPPING1F": "9004",
-        "MAPPING1N": "9004",
-        "MAPPING1H": "9004"
+        "ID": "O*E*A-----*****",
+        "D": "Elections",
+        "M1U": "9004",
+        "M1F": "9004",
+        "M1N": "9004",
+        "M1H": "9004"
       },
       {
-        "SYMBOLID": "O*E*B-----*****",
-        "DESCRIPTION": "Speech",
-        "MAPPING1U": "9005",
-        "MAPPING1F": "9005",
-        "MAPPING1N": "9005",
-        "MAPPING1H": "9005"
+        "ID": "O*E*B-----*****",
+        "D": "Speech",
+        "M1U": "9005",
+        "M1F": "9005",
+        "M1N": "9005",
+        "M1H": "9005"
       },
       {
-        "SYMBOLID": "O*E*C-----*****",
-        "DESCRIPTION": "Sermon",
-        "MAPPING1U": "9006",
-        "MAPPING1F": "9006",
-        "MAPPING1N": "9006",
-        "MAPPING1H": "9006"
+        "ID": "O*E*C-----*****",
+        "D": "Sermon",
+        "M1U": "9006",
+        "M1F": "9006",
+        "M1N": "9006",
+        "M1H": "9006"
       },
       {
-        "SYMBOLID": "O*E*D-----*****",
-        "DESCRIPTION": "Meeting",
-        "MAPPING1U": "9007",
-        "MAPPING1F": "9007",
-        "MAPPING1N": "9007",
-        "MAPPING1H": "9007"
+        "ID": "O*E*D-----*****",
+        "D": "Meeting",
+        "M1U": "9007",
+        "M1F": "9007",
+        "M1N": "9007",
+        "M1H": "9007"
       },
       {
-        "SYMBOLID": "O*E*E-----*****",
-        "DESCRIPTION": "Demonstration(Events)",
-        "MAPPING1U": "9008",
-        "MAPPING1F": "9008",
-        "MAPPING1N": "9008",
-        "MAPPING1H": "9008"
+        "ID": "O*E*E-----*****",
+        "D": "Demonstration(Events)",
+        "M1U": "9008",
+        "M1F": "9008",
+        "M1N": "9008",
+        "M1H": "9008"
       },
       {
-        "SYMBOLID": "O*E*F-----*****",
-        "DESCRIPTION": "Riot",
-        "MAPPING1U": "9009",
-        "MAPPING1F": "9009",
-        "MAPPING1N": "9009",
-        "MAPPING1H": "9009"
+        "ID": "O*E*F-----*****",
+        "D": "Riot",
+        "M1U": "9009",
+        "M1F": "9009",
+        "M1N": "9009",
+        "M1H": "9009"
       },
       {
-        "SYMBOLID": "O*E*G-----*****",
-        "DESCRIPTION": "Gang Activity",
-        "MAPPING1U": "9010",
-        "MAPPING1F": "9010",
-        "MAPPING1N": "9010",
-        "MAPPING1H": "9010"
+        "ID": "O*E*G-----*****",
+        "D": "Gang Activity",
+        "M1U": "9010",
+        "M1F": "9010",
+        "M1N": "9010",
+        "M1H": "9010"
       },
       {
-        "SYMBOLID": "O*E*H-----*****",
-        "DESCRIPTION": "Jail Break/Escape Custody",
-        "MAPPING1U": "9011",
-        "MAPPING1F": "9011",
-        "MAPPING1N": "9011",
-        "MAPPING1H": "9011"
+        "ID": "O*E*H-----*****",
+        "D": "Jail Break/Escape Custody",
+        "M1U": "9011",
+        "M1F": "9011",
+        "M1N": "9011",
+        "M1H": "9011"
       },
       {
-        "SYMBOLID": "O*E*I-----*****",
-        "DESCRIPTION": "Rock Throwing",
-        "MAPPING1U": "9012",
-        "MAPPING1F": "9012",
-        "MAPPING1N": "9012",
-        "MAPPING1H": "9012"
+        "ID": "O*E*I-----*****",
+        "D": "Rock Throwing",
+        "M1U": "9012",
+        "M1F": "9012",
+        "M1N": "9012",
+        "M1H": "9012"
       },
       {
-        "SYMBOLID": "O*E*J-----*****",
-        "DESCRIPTION": "Illegal Selling/Purchasing/Distributing/Black Market",
-        "MAPPING1U": "9013",
-        "MAPPING1F": "9013",
-        "MAPPING1N": "9013",
-        "MAPPING1H": "9013"
+        "ID": "O*E*J-----*****",
+        "D": "Illegal Selling/Purchasing/Distributing/Black Market",
+        "M1U": "9013",
+        "M1F": "9013",
+        "M1N": "9013",
+        "M1H": "9013"
       },
       {
-        "SYMBOLID": "O*E*K-----*****",
-        "DESCRIPTION": "Surveillance",
-        "MAPPING1U": "9014",
-        "MAPPING1F": "9014",
-        "MAPPING1N": "9014",
-        "MAPPING1H": "9014"
+        "ID": "O*E*K-----*****",
+        "D": "Surveillance",
+        "M1U": "9014",
+        "M1F": "9014",
+        "M1N": "9014",
+        "M1H": "9014"
       },
       {
-        "SYMBOLID": "O*E*L-----*****",
-        "DESCRIPTION": "Lights",
-        "MAPPING1U": "9015",
-        "MAPPING1F": "9015",
-        "MAPPING1N": "9015",
-        "MAPPING1H": "9015"
+        "ID": "O*E*L-----*****",
+        "D": "Lights",
+        "M1U": "9015",
+        "M1F": "9015",
+        "M1N": "9015",
+        "M1H": "9015"
       },
       {
-        "SYMBOLID": "O*E*M-----*****",
-        "DESCRIPTION": "Border Crossing",
-        "MAPPING1U": "9016",
-        "MAPPING1F": "9016",
-        "MAPPING1N": "9016",
-        "MAPPING1H": "9016"
+        "ID": "O*E*M-----*****",
+        "D": "Border Crossing",
+        "M1U": "9016",
+        "M1F": "9016",
+        "M1N": "9016",
+        "M1H": "9016"
       },
       {
-        "SYMBOLID": "O*E*N-----*****",
-        "DESCRIPTION": "Border Activity",
-        "MAPPING1U": "9017",
-        "MAPPING1F": "9017",
-        "MAPPING1N": "9017",
-        "MAPPING1H": "9017"
+        "ID": "O*E*N-----*****",
+        "D": "Border Activity",
+        "M1U": "9017",
+        "M1F": "9017",
+        "M1N": "9017",
+        "M1H": "9017"
       },
       {
-        "SYMBOLID": "O*E*O-----*****",
-        "DESCRIPTION": "Smuggling",
-        "MAPPING1U": "9018",
-        "MAPPING1F": "9018",
-        "MAPPING1N": "9018",
-        "MAPPING1H": "9018"
+        "ID": "O*E*O-----*****",
+        "D": "Smuggling",
+        "M1U": "9018",
+        "M1F": "9018",
+        "M1N": "9018",
+        "M1H": "9018"
       },
       {
-        "SYMBOLID": "O*E*P-----*****",
-        "DESCRIPTION": "Exfiltration",
-        "MAPPING1U": "9019",
-        "MAPPING1F": "9019",
-        "MAPPING1N": "9019",
-        "MAPPING1H": "9019"
+        "ID": "O*E*P-----*****",
+        "D": "Exfiltration",
+        "M1U": "9019",
+        "M1F": "9019",
+        "M1N": "9019",
+        "M1H": "9019"
       },
       {
-        "SYMBOLID": "O*E*Q-----*****",
-        "DESCRIPTION": "Infiltration",
-        "MAPPING1U": "9020",
-        "MAPPING1F": "9020",
-        "MAPPING1N": "9020",
-        "MAPPING1H": "9020"
+        "ID": "O*E*Q-----*****",
+        "D": "Infiltration",
+        "M1U": "9020",
+        "M1F": "9020",
+        "M1N": "9020",
+        "M1H": "9020"
       },
       {
-        "SYMBOLID": "O*E*R-----*****",
-        "DESCRIPTION": "Auto Theft",
-        "MAPPING1U": "9021",
-        "MAPPING1F": "9021",
-        "MAPPING1N": "9021",
-        "MAPPING1H": "9021"
+        "ID": "O*E*R-----*****",
+        "D": "Auto Theft",
+        "M1U": "9021",
+        "M1F": "9021",
+        "M1N": "9021",
+        "M1H": "9021"
       },
       {
-        "SYMBOLID": "O*E*S-----*****",
-        "DESCRIPTION": "Auto Accident",
-        "MAPPING1U": "9022",
-        "MAPPING1F": "9022",
-        "MAPPING1N": "9022",
-        "MAPPING1H": "9022"
+        "ID": "O*E*S-----*****",
+        "D": "Auto Accident",
+        "M1U": "9022",
+        "M1F": "9022",
+        "M1N": "9022",
+        "M1H": "9022"
       },
       {
-        "SYMBOLID": "O*E*T-----*****",
-        "DESCRIPTION": "Looting",
-        "MAPPING1U": "9023",
-        "MAPPING1F": "9023",
-        "MAPPING1N": "9023",
-        "MAPPING1H": "9023"
+        "ID": "O*E*T-----*****",
+        "D": "Looting",
+        "M1U": "9023",
+        "M1F": "9023",
+        "M1N": "9023",
+        "M1H": "9023"
       },
       {
-        "SYMBOLID": "O*E*U-----*****",
-        "DESCRIPTION": "Theft",
-        "MAPPING1U": "9024",
-        "MAPPING1F": "9024",
-        "MAPPING1N": "9024",
-        "MAPPING1H": "9024"
+        "ID": "O*E*U-----*****",
+        "D": "Theft",
+        "M1U": "9024",
+        "M1F": "9024",
+        "M1N": "9024",
+        "M1H": "9024"
       },
       {
-        "SYMBOLID": "O*E*V-----*****",
-        "DESCRIPTION": "Robbery",
-        "MAPPING1U": "9025",
-        "MAPPING1F": "9025",
-        "MAPPING1N": "9025",
-        "MAPPING1H": "9025"
+        "ID": "O*E*V-----*****",
+        "D": "Robbery",
+        "M1U": "9025",
+        "M1F": "9025",
+        "M1N": "9025",
+        "M1H": "9025"
       },
       {
-        "SYMBOLID": "O*E*X-----*****",
-        "DESCRIPTION": "Shooting (Non Deadly)",
-        "MAPPING1U": "9027",
-        "MAPPING1F": "9027",
-        "MAPPING1N": "9027",
-        "MAPPING1H": "9027"
+        "ID": "O*E*X-----*****",
+        "D": "Shooting (Non Deadly)",
+        "M1U": "9027",
+        "M1F": "9027",
+        "M1N": "9027",
+        "M1H": "9027"
       },
       {
-        "SYMBOLID": "O*E*W-----*****",
-        "DESCRIPTION": "Home Eviction",
-        "MAPPING1U": "9026",
-        "MAPPING1F": "9026",
-        "MAPPING1N": "9026",
-        "MAPPING1H": "9026"
+        "ID": "O*E*W-----*****",
+        "D": "Home Eviction",
+        "M1U": "9026",
+        "M1F": "9026",
+        "M1N": "9026",
+        "M1H": "9026"
       },
       {
-        "SYMBOLID": "O*E*Y-----*****",
-        "DESCRIPTION": "Raid",
-        "MAPPING1U": "9028",
-        "MAPPING1F": "9028",
-        "MAPPING1N": "9028",
-        "MAPPING1H": "9028"
+        "ID": "O*E*Y-----*****",
+        "D": "Raid",
+        "M1U": "9028",
+        "M1F": "9028",
+        "M1N": "9028",
+        "M1H": "9028"
       },
       {
-        "SYMBOLID": "O*E*Z-----*****",
-        "DESCRIPTION": "Sabotage",
-        "MAPPING1U": "9029",
-        "MAPPING1F": "9029",
-        "MAPPING1N": "9029",
-        "MAPPING1H": "9029"
+        "ID": "O*E*Z-----*****",
+        "D": "Sabotage",
+        "M1U": "9029",
+        "M1F": "9029",
+        "M1N": "9029",
+        "M1H": "9029"
       },
       {
-        "SYMBOLID": "O*E*AA----*****",
-        "DESCRIPTION": "Warrant Served",
-        "MAPPING1U": "9030",
-        "MAPPING1F": "9030",
-        "MAPPING1N": "9030",
-        "MAPPING1H": "9030"
+        "ID": "O*E*AA----*****",
+        "D": "Warrant Served",
+        "M1U": "9030",
+        "M1F": "9030",
+        "M1N": "9030",
+        "M1H": "9030"
       },
       {
-        "SYMBOLID": "O*E*AB----*****",
-        "DESCRIPTION": "Rape",
-        "MAPPING1U": "9031",
-        "MAPPING1F": "9031",
-        "MAPPING1N": "9031",
-        "MAPPING1H": "9031"
+        "ID": "O*E*AB----*****",
+        "D": "Rape",
+        "M1U": "9031",
+        "M1F": "9031",
+        "M1N": "9031",
+        "M1H": "9031"
       },
       {
-        "SYMBOLID": "O*E*AC----*****",
-        "DESCRIPTION": "Attempted Rape",
-        "MAPPING1U": "9032",
-        "MAPPING1F": "9032",
-        "MAPPING1N": "9032",
-        "MAPPING1H": "9032"
+        "ID": "O*E*AC----*****",
+        "D": "Attempted Rape",
+        "M1U": "9032",
+        "M1F": "9032",
+        "M1N": "9032",
+        "M1H": "9032"
       },
       {
-        "SYMBOLID": "O*E*AD----*****",
-        "DESCRIPTION": "Attack(Events)"
+        "ID": "O*E*AD----*****",
+        "D": "Attack(Events)"
       },
       {
-        "SYMBOLID": "O*E*ADA---*****",
-        "DESCRIPTION": "Attack on NGO",
-        "MAPPING1U": "9033",
-        "MAPPING1F": "9033",
-        "MAPPING1N": "9033",
-        "MAPPING1H": "9033"
+        "ID": "O*E*ADA---*****",
+        "D": "Attack on NGO",
+        "M1U": "9033",
+        "M1F": "9033",
+        "M1N": "9033",
+        "M1H": "9033"
       },
       {
-        "SYMBOLID": "O*E*ADB---*****",
-        "DESCRIPTION": "Terrorist Attack",
-        "MAPPING1U": "9034",
-        "MAPPING1F": "9034",
-        "MAPPING1N": "9034",
-        "MAPPING1H": "9034"
+        "ID": "O*E*ADB---*****",
+        "D": "Terrorist Attack",
+        "M1U": "9034",
+        "M1F": "9034",
+        "M1N": "9034",
+        "M1H": "9034"
       },
       {
-        "SYMBOLID": "O*E*ADC---*****",
-        "DESCRIPTION": "Grenade Attack",
-        "MAPPING1U": "9035",
-        "MAPPING1F": "9035",
-        "MAPPING1N": "9035",
-        "MAPPING1H": "9035"
+        "ID": "O*E*ADC---*****",
+        "D": "Grenade Attack",
+        "M1U": "9035",
+        "M1F": "9035",
+        "M1N": "9035",
+        "M1H": "9035"
       },
       {
-        "SYMBOLID": "O*E*ADD---*****",
-        "DESCRIPTION": "Rocket Attack",
-        "MAPPING1U": "9036",
-        "MAPPING1F": "9036",
-        "MAPPING1N": "9036",
-        "MAPPING1H": "9036"
+        "ID": "O*E*ADD---*****",
+        "D": "Rocket Attack",
+        "M1U": "9036",
+        "M1F": "9036",
+        "M1N": "9036",
+        "M1H": "9036"
       },
       {
-        "SYMBOLID": "O*E*AE----*****",
-        "DESCRIPTION": "Explosions"
+        "ID": "O*E*AE----*****",
+        "D": "Explosions"
       },
       {
-        "SYMBOLID": "O*E*AEA---*****",
-        "DESCRIPTION": "Explosion (general)",
-        "MAPPING1U": "9037",
-        "MAPPING1F": "9037",
-        "MAPPING1N": "9037",
-        "MAPPING1H": "9037"
+        "ID": "O*E*AEA---*****",
+        "D": "Explosion (general)",
+        "M1U": "9037",
+        "M1F": "9037",
+        "M1N": "9037",
+        "M1H": "9037"
       },
       {
-        "SYMBOLID": "O*E*AEB---*****",
-        "DESCRIPTION": "Explosion, Mine",
-        "MAPPING1U": "9038",
-        "MAPPING1F": "9038",
-        "MAPPING1N": "9038",
-        "MAPPING1H": "9038"
+        "ID": "O*E*AEB---*****",
+        "D": "Explosion, Mine",
+        "M1U": "9038",
+        "M1F": "9038",
+        "M1N": "9038",
+        "M1H": "9038"
       },
       {
-        "SYMBOLID": "O*E*AEC---*****",
-        "DESCRIPTION": "Explosion, Grenade",
-        "MAPPING1U": "9039",
-        "MAPPING1F": "9039",
-        "MAPPING1N": "9039",
-        "MAPPING1H": "9039"
+        "ID": "O*E*AEC---*****",
+        "D": "Explosion, Grenade",
+        "M1U": "9039",
+        "M1F": "9039",
+        "M1N": "9039",
+        "M1H": "9039"
       },
       {
-        "SYMBOLID": "O*E*AED---*****",
-        "DESCRIPTION": "Explosion, Bomb",
-        "MAPPING1U": "9040",
-        "MAPPING1F": "9040",
-        "MAPPING1N": "9040",
-        "MAPPING1H": "9040"
+        "ID": "O*E*AED---*****",
+        "D": "Explosion, Bomb",
+        "M1U": "9040",
+        "M1F": "9040",
+        "M1N": "9040",
+        "M1H": "9040"
       },
       {
-        "SYMBOLID": "O*E*AEE---*****",
-        "DESCRIPTION": "Explosion, Mortar Fire",
-        "MAPPING1U": "9041",
-        "MAPPING1F": "9041",
-        "MAPPING1N": "9041",
-        "MAPPING1H": "9041"
+        "ID": "O*E*AEE---*****",
+        "D": "Explosion, Mortar Fire",
+        "M1U": "9041",
+        "M1F": "9041",
+        "M1N": "9041",
+        "M1H": "9041"
       },
       {
-        "SYMBOLID": "O*E*AEF---*****",
-        "DESCRIPTION": "Explosion, Incendiary",
-        "MAPPING1U": "9042",
-        "MAPPING1F": "9042",
-        "MAPPING1N": "9042",
-        "MAPPING1H": "9042"
+        "ID": "O*E*AEF---*****",
+        "D": "Explosion, Incendiary",
+        "M1U": "9042",
+        "M1F": "9042",
+        "M1N": "9042",
+        "M1H": "9042"
       },
       {
-        "SYMBOLID": "O*E*AEG---*****",
-        "DESCRIPTION": "Explosion, Rocket",
-        "MAPPING1U": "9043",
-        "MAPPING1F": "9043",
-        "MAPPING1N": "9043",
-        "MAPPING1H": "9043"
+        "ID": "O*E*AEG---*****",
+        "D": "Explosion, Rocket",
+        "M1U": "9043",
+        "M1F": "9043",
+        "M1N": "9043",
+        "M1H": "9043"
       },
       {
-        "SYMBOLID": "O*E*AEH---*****",
-        "DESCRIPTION": "Explosion, Improvised Explosive Device (IED)",
-        "MAPPING1U": "9044",
-        "MAPPING1F": "9044",
-        "MAPPING1N": "9044",
-        "MAPPING1H": "9044"
+        "ID": "O*E*AEH---*****",
+        "D": "Explosion, Improvised Explosive Device (IED)",
+        "M1U": "9044",
+        "M1F": "9044",
+        "M1N": "9044",
+        "M1H": "9044"
       },
       {
-        "SYMBOLID": "O*E*AEI---*****",
-        "DESCRIPTION": "Explosion, Car Bomb",
-        "MAPPING1U": "9045",
-        "MAPPING1F": "9045",
-        "MAPPING1N": "9045",
-        "MAPPING1H": "9045"
+        "ID": "O*E*AEI---*****",
+        "D": "Explosion, Car Bomb",
+        "M1U": "9045",
+        "M1F": "9045",
+        "M1N": "9045",
+        "M1H": "9045"
       },
       {
-        "SYMBOLID": "O*E*AEJ---*****",
-        "DESCRIPTION": "Suicide Bombing",
-        "MAPPING1U": "9046",
-        "MAPPING1F": "9046",
-        "MAPPING1N": "9046",
-        "MAPPING1H": "9046"
+        "ID": "O*E*AEJ---*****",
+        "D": "Suicide Bombing",
+        "M1U": "9046",
+        "M1F": "9046",
+        "M1N": "9046",
+        "M1H": "9046"
       },
       {
-        "SYMBOLID": "O*E*AF----*****",
-        "DESCRIPTION": "Fighting/Contact"
+        "ID": "O*E*AF----*****",
+        "D": "Fighting/Contact"
       },
       {
-        "SYMBOLID": "O*E*AFA---*****",
-        "DESCRIPTION": "Fighting (General)",
-        "MAPPING1U": "9047",
-        "MAPPING1F": "9047",
-        "MAPPING1N": "9047",
-        "MAPPING1H": "9047"
+        "ID": "O*E*AFA---*****",
+        "D": "Fighting (General)",
+        "M1U": "9047",
+        "M1F": "9047",
+        "M1N": "9047",
+        "M1H": "9047"
       },
       {
-        "SYMBOLID": "O*E*AFB---*****",
-        "DESCRIPTION": "Coalition vs. Enemy",
-        "MAPPING1U": "9048",
-        "MAPPING1F": "9048",
-        "MAPPING1N": "9048",
-        "MAPPING1H": "9048"
+        "ID": "O*E*AFB---*****",
+        "D": "Coalition vs. Enemy",
+        "M1U": "9048",
+        "M1F": "9048",
+        "M1N": "9048",
+        "M1H": "9048"
       },
       {
-        "SYMBOLID": "O*E*AFC---*****",
-        "DESCRIPTION": "Coalition vs. Coalition",
-        "MAPPING1U": "9049",
-        "MAPPING1F": "9049",
-        "MAPPING1N": "9049",
-        "MAPPING1H": "9049"
+        "ID": "O*E*AFC---*****",
+        "D": "Coalition vs. Coalition",
+        "M1U": "9049",
+        "M1F": "9049",
+        "M1N": "9049",
+        "M1H": "9049"
       },
       {
-        "SYMBOLID": "O*E*AG----*****",
-        "DESCRIPTION": "Drug Possession",
-        "MAPPING1U": "9050",
-        "MAPPING1F": "9050",
-        "MAPPING1N": "9050",
-        "MAPPING1H": "9050"
+        "ID": "O*E*AG----*****",
+        "D": "Drug Possession",
+        "M1U": "9050",
+        "M1F": "9050",
+        "M1N": "9050",
+        "M1H": "9050"
       },
       {
-        "SYMBOLID": "O*E*AH----*****",
-        "DESCRIPTION": "Drug Trafficking",
-        "MAPPING1U": "9051",
-        "MAPPING1F": "9051",
-        "MAPPING1N": "9051",
-        "MAPPING1H": "9051"
+        "ID": "O*E*AH----*****",
+        "D": "Drug Trafficking",
+        "M1U": "9051",
+        "M1F": "9051",
+        "M1N": "9051",
+        "M1H": "9051"
       },
       {
-        "SYMBOLID": "O*E*AI----*****",
-        "DESCRIPTION": "Suspicious Activity",
-        "MAPPING1U": "9052",
-        "MAPPING1F": "9052",
-        "MAPPING1N": "9052",
-        "MAPPING1H": "9052"
+        "ID": "O*E*AI----*****",
+        "D": "Suspicious Activity",
+        "M1U": "9052",
+        "M1F": "9052",
+        "M1N": "9052",
+        "M1H": "9052"
       },
       {
-        "SYMBOLID": "O*E*AJ----*****",
-        "DESCRIPTION": "Activity",
-        "MAPPING1U": "9053",
-        "MAPPING1F": "9053",
-        "MAPPING1N": "9053",
-        "MAPPING1H": "9053"
+        "ID": "O*E*AJ----*****",
+        "D": "Activity",
+        "M1U": "9053",
+        "M1F": "9053",
+        "M1N": "9053",
+        "M1H": "9053"
       },
       {
-        "SYMBOLID": "O*E*AK----*****",
-        "DESCRIPTION": "Threat",
-        "MAPPING1U": "9054",
-        "MAPPING1F": "9054",
-        "MAPPING1N": "9054",
-        "MAPPING1H": "9054"
+        "ID": "O*E*AK----*****",
+        "D": "Threat",
+        "M1U": "9054",
+        "M1F": "9054",
+        "M1N": "9054",
+        "M1H": "9054"
       },
       {
-        "SYMBOLID": "O*E*AL----*****",
-        "DESCRIPTION": "Crater",
-        "MAPPING1U": "9055",
-        "MAPPING1F": "9055",
-        "MAPPING1N": "9055",
-        "MAPPING1H": "9055"
+        "ID": "O*E*AL----*****",
+        "D": "Crater",
+        "M1U": "9055",
+        "M1F": "9055",
+        "M1N": "9055",
+        "M1H": "9055"
       },
       {
-        "SYMBOLID": "O*E*AM----*****",
-        "DESCRIPTION": "Pothole",
-        "MAPPING1U": "9056",
-        "MAPPING1F": "9057",
-        "MAPPING1N": "9058",
-        "MAPPING1H": "9059"
+        "ID": "O*E*AM----*****",
+        "D": "Pothole",
+        "M1U": "9056",
+        "M1F": "9057",
+        "M1N": "9058",
+        "M1H": "9059"
       },
       {
-        "SYMBOLID": "O*E*AN----*****",
-        "DESCRIPTION": "Escalation of Force",
-        "MAPPING1U": "9060",
-        "MAPPING1F": "9061",
-        "MAPPING1N": "9062",
-        "MAPPING1H": "9063"
+        "ID": "O*E*AN----*****",
+        "D": "Escalation of Force",
+        "M1U": "9060",
+        "M1F": "9061",
+        "M1N": "9062",
+        "M1H": "9063"
       },
       {
-        "SYMBOLID": "O*E*AO----*****",
-        "DESCRIPTION": "Submunitions",
-        "MAPPING1U": "9064",
-        "MAPPING1F": "9064",
-        "MAPPING1N": "9064",
-        "MAPPING1H": "9064"
+        "ID": "O*E*AO----*****",
+        "D": "Submunitions",
+        "M1U": "9064",
+        "M1F": "9064",
+        "M1N": "9064",
+        "M1H": "9064"
       },
       {
-        "SYMBOLID": "O*E*AP----*****",
-        "DESCRIPTION": "Confiscation",
-        "MAPPING1U": "9065",
-        "MAPPING1F": "9066",
-        "MAPPING1N": "9067",
-        "MAPPING1H": "9068"
+        "ID": "O*E*AP----*****",
+        "D": "Confiscation",
+        "M1U": "9065",
+        "M1F": "9066",
+        "M1N": "9067",
+        "M1H": "9068"
       },
       {
-        "SYMBOLID": "O*E*AQ----*****",
-        "DESCRIPTION": "Counter Insurgency",
-        "MAPPING1U": "9069",
-        "MAPPING1F": "9070",
-        "MAPPING1N": "9071",
-        "MAPPING1H": "9072"
+        "ID": "O*E*AQ----*****",
+        "D": "Counter Insurgency",
+        "M1U": "9069",
+        "M1F": "9070",
+        "M1N": "9071",
+        "M1H": "9072"
       },
       {
-        "SYMBOLID": "O*E*AR----*****",
-        "DESCRIPTION": "Counter Terrorism",
-        "MAPPING1U": "9073",
-        "MAPPING1F": "9074",
-        "MAPPING1N": "9075",
-        "MAPPING1H": "9076"
+        "ID": "O*E*AR----*****",
+        "D": "Counter Terrorism",
+        "M1U": "9073",
+        "M1F": "9074",
+        "M1N": "9075",
+        "M1H": "9076"
       },
       {
-        "SYMBOLID": "O*E*AS----*****",
-        "DESCRIPTION": "Humanitarian Assistance",
-        "MAPPING1U": "9077",
-        "MAPPING1F": "9078",
-        "MAPPING1N": "9079",
-        "MAPPING1H": "9080"
+        "ID": "O*E*AS----*****",
+        "D": "Humanitarian Assistance",
+        "M1U": "9077",
+        "M1F": "9078",
+        "M1N": "9079",
+        "M1H": "9080"
       },
       {
-        "SYMBOLID": "O*E*AT----*****",
-        "DESCRIPTION": "Tests of Security",
-        "MAPPING1U": "9081",
-        "MAPPING1F": "9082",
-        "MAPPING1N": "9083",
-        "MAPPING1H": "9084"
+        "ID": "O*E*AT----*****",
+        "D": "Tests of Security",
+        "M1U": "9081",
+        "M1F": "9082",
+        "M1N": "9083",
+        "M1H": "9084"
       },
       {
-        "SYMBOLID": "O*E*AU----*****",
-        "DESCRIPTION": "AWOL",
-        "MAPPING1U": "9085",
-        "MAPPING1F": "9085",
-        "MAPPING1N": "9085",
-        "MAPPING1H": "9085"
+        "ID": "O*E*AU----*****",
+        "D": "AWOL",
+        "M1U": "9085",
+        "M1F": "9085",
+        "M1N": "9085",
+        "M1H": "9085"
       },
       {
-        "SYMBOLID": "O*E*AV----*****",
-        "DESCRIPTION": "Curfew",
-        "MAPPING1U": "9086",
-        "MAPPING1F": "9086",
-        "MAPPING1N": "9086",
-        "MAPPING1H": "9086"
+        "ID": "O*E*AV----*****",
+        "D": "Curfew",
+        "M1U": "9086",
+        "M1F": "9086",
+        "M1N": "9086",
+        "M1H": "9086"
       },
       {
-        "SYMBOLID": "O*E*AW----*****",
-        "DESCRIPTION": "DUI",
-        "MAPPING1U": "9087",
-        "MAPPING1F": "9087",
-        "MAPPING1N": "9087",
-        "MAPPING1H": "9087"
+        "ID": "O*E*AW----*****",
+        "D": "DUI",
+        "M1U": "9087",
+        "M1F": "9087",
+        "M1N": "9087",
+        "M1H": "9087"
       },
       {
-        "SYMBOLID": "O*E*AX----*****",
-        "DESCRIPTION": "Prostitution",
-        "MAPPING1U": "9088",
-        "MAPPING1F": "9088",
-        "MAPPING1N": "9088",
-        "MAPPING1H": "9088"
+        "ID": "O*E*AX----*****",
+        "D": "Prostitution",
+        "M1U": "9088",
+        "M1F": "9088",
+        "M1N": "9088",
+        "M1H": "9088"
       },
       {
-        "SYMBOLID": "O*Y*------*****",
-        "DESCRIPTION": "Organization/Groups"
+        "ID": "O*Y*------*****",
+        "D": "Organization/Groups"
       },
       {
-        "SYMBOLID": "O*Y*A-----*****",
-        "DESCRIPTION": "Organization (General)",
-        "MAPPING1U": "9089",
-        "MAPPING1F": "9089",
-        "MAPPING1N": "9089",
-        "MAPPING1H": "9089"
+        "ID": "O*Y*A-----*****",
+        "D": "Organization (General)",
+        "M1U": "9089",
+        "M1F": "9089",
+        "M1N": "9089",
+        "M1H": "9089"
       },
       {
-        "SYMBOLID": "O*Y*B-----*****",
-        "DESCRIPTION": "NGO Organization",
-        "MAPPING1U": "9090",
-        "MAPPING1F": "9090",
-        "MAPPING1N": "9090",
-        "MAPPING1H": "9090"
+        "ID": "O*Y*B-----*****",
+        "D": "NGO Organization",
+        "M1U": "9090",
+        "M1F": "9090",
+        "M1N": "9090",
+        "M1H": "9090"
       },
       {
-        "SYMBOLID": "O*Y*C-----*****",
-        "DESCRIPTION": "Displaced Persons, Refugees",
-        "MAPPING1U": "9091",
-        "MAPPING1F": "9091",
-        "MAPPING1N": "9091",
-        "MAPPING1H": "9091"
+        "ID": "O*Y*C-----*****",
+        "D": "Displaced Persons, Refugees",
+        "M1U": "9091",
+        "M1F": "9091",
+        "M1N": "9091",
+        "M1H": "9091"
       },
       {
-        "SYMBOLID": "O*Y*D-----*****",
-        "DESCRIPTION": "Terrorist Organization",
-        "MAPPING1U": "9092",
-        "MAPPING1F": "9092",
-        "MAPPING1N": "9092",
-        "MAPPING1H": "9092"
+        "ID": "O*Y*D-----*****",
+        "D": "Terrorist Organization",
+        "M1U": "9092",
+        "M1F": "9092",
+        "M1N": "9092",
+        "M1H": "9092"
       },
       {
-        "SYMBOLID": "O*Y*E-----*****",
-        "DESCRIPTION": "Religious Organization",
-        "MAPPING1U": "9093",
-        "MAPPING1F": "9093",
-        "MAPPING1N": "9093",
-        "MAPPING1H": "9093"
+        "ID": "O*Y*E-----*****",
+        "D": "Religious Organization",
+        "M1U": "9093",
+        "M1F": "9093",
+        "M1N": "9093",
+        "M1H": "9093"
       },
       {
-        "SYMBOLID": "O*Y*F-----*****",
-        "DESCRIPTION": "Group Tribe Cell",
-        "MAPPING1U": "9094",
-        "MAPPING1F": "9094",
-        "MAPPING1N": "9094",
-        "MAPPING1H": "9094"
+        "ID": "O*Y*F-----*****",
+        "D": "Group Tribe Cell",
+        "M1U": "9094",
+        "M1F": "9094",
+        "M1N": "9094",
+        "M1H": "9094"
       },
       {
-        "SYMBOLID": "O*Y*G-----*****",
-        "DESCRIPTION": "Foreign Fighters",
-        "MAPPING1U": "9095",
-        "MAPPING1F": "9095",
-        "MAPPING1N": "9095",
-        "MAPPING1H": "9095"
+        "ID": "O*Y*G-----*****",
+        "D": "Foreign Fighters",
+        "M1U": "9095",
+        "M1F": "9095",
+        "M1N": "9095",
+        "M1H": "9095"
       },
       {
-        "SYMBOLID": "O*Y*R-----*****",
-        "DESCRIPTION": "Red Cross"
+        "ID": "O*Y*R-----*****",
+        "D": "Red Cross"
       },
       {
-        "SYMBOLID": "O*Y*SP----*****",
-        "DESCRIPTION": "State Police"
+        "ID": "O*Y*SP----*****",
+        "D": "State Police"
       },
       {
-        "SYMBOLID": "O*Y*LP----*****",
-        "DESCRIPTION": "Local Police"
+        "ID": "O*Y*LP----*****",
+        "D": "Local Police"
       },
       {
-        "SYMBOLID": "O*Y*SH----*****",
-        "DESCRIPTION": "Shelter"
+        "ID": "O*Y*SH----*****",
+        "D": "Shelter"
       },
       {
-        "SYMBOLID": "O*Y*FM----*****",
-        "DESCRIPTION": "FEMA"
+        "ID": "O*Y*FM----*****",
+        "D": "FEMA"
       },
       {
-        "SYMBOLID": "O*Y*SA----*****",
-        "DESCRIPTION": "Staging Area"
+        "ID": "O*Y*SA----*****",
+        "D": "Staging Area"
       },
       {
-        "SYMBOLID": "O*Y*EP----*****",
-        "DESCRIPTION": "Evacuation Point"
+        "ID": "O*Y*EP----*****",
+        "D": "Evacuation Point"
       },
       {
-        "SYMBOLID": "O*Y*PD----*****",
-        "DESCRIPTION": "Person in Distress"
+        "ID": "O*Y*PD----*****",
+        "D": "Person in Distress"
       },
       {
-        "SYMBOLID": "O*S*------*****",
-        "DESCRIPTION": "Structures"
+        "ID": "O*S*------*****",
+        "D": "Structures"
       },
       {
-        "SYMBOLID": "O*S*A-----*****",
-        "DESCRIPTION": "Compound/Post/Fort",
-        "MAPPING1U": "9103",
-        "MAPPING1F": "9103",
-        "MAPPING1N": "9103",
-        "MAPPING1H": "9103"
+        "ID": "O*S*A-----*****",
+        "D": "Compound/Post/Fort",
+        "M1U": "9103",
+        "M1F": "9103",
+        "M1N": "9103",
+        "M1H": "9103"
       },
       {
-        "SYMBOLID": "O*S*B-----*****",
-        "DESCRIPTION": "House/Residence",
-        "MAPPING1U": "9104",
-        "MAPPING1F": "9104",
-        "MAPPING1N": "9104",
-        "MAPPING1H": "9104"
+        "ID": "O*S*B-----*****",
+        "D": "House/Residence",
+        "M1U": "9104",
+        "M1F": "9104",
+        "M1N": "9104",
+        "M1H": "9104"
       },
       {
-        "SYMBOLID": "O*S*C-----*****",
-        "DESCRIPTION": "Safe House(Structures)",
-        "MAPPING1U": "9105",
-        "MAPPING1F": "9105",
-        "MAPPING1N": "9105",
-        "MAPPING1H": "9105"
+        "ID": "O*S*C-----*****",
+        "D": "Safe House(Structures)",
+        "M1U": "9105",
+        "M1F": "9105",
+        "M1N": "9105",
+        "M1H": "9105"
       },
       {
-        "SYMBOLID": "O*S*D-----*****",
-        "DESCRIPTION": "Church",
-        "MAPPING1U": "9106",
-        "MAPPING1F": "9106",
-        "MAPPING1N": "9106",
-        "MAPPING1H": "9106"
+        "ID": "O*S*D-----*****",
+        "D": "Church",
+        "M1U": "9106",
+        "M1F": "9106",
+        "M1N": "9106",
+        "M1H": "9106"
       },
       {
-        "SYMBOLID": "O*S*E-----*****",
-        "DESCRIPTION": "Mosque",
-        "MAPPING1U": "9107",
-        "MAPPING1F": "9107",
-        "MAPPING1N": "9107",
-        "MAPPING1H": "9107"
+        "ID": "O*S*E-----*****",
+        "D": "Mosque",
+        "M1U": "9107",
+        "M1F": "9107",
+        "M1N": "9107",
+        "M1H": "9107"
       },
       {
-        "SYMBOLID": "O*S*F-----*****",
-        "DESCRIPTION": "Synagogue",
-        "MAPPING1U": "9108",
-        "MAPPING1F": "9108",
-        "MAPPING1N": "9108",
-        "MAPPING1H": "9108"
+        "ID": "O*S*F-----*****",
+        "D": "Synagogue",
+        "M1U": "9108",
+        "M1F": "9108",
+        "M1N": "9108",
+        "M1H": "9108"
       },
       {
-        "SYMBOLID": "O*S*G-----*****",
-        "DESCRIPTION": "Warehouse/Storage Facility",
-        "MAPPING1U": "9109",
-        "MAPPING1F": "9109",
-        "MAPPING1N": "9109",
-        "MAPPING1H": "9109"
+        "ID": "O*S*G-----*****",
+        "D": "Warehouse/Storage Facility",
+        "M1U": "9109",
+        "M1F": "9109",
+        "M1N": "9109",
+        "M1H": "9109"
       },
       {
-        "SYMBOLID": "O*S*H-----*****",
-        "DESCRIPTION": "Bunker/Underground Facility",
-        "MAPPING1U": "9110",
-        "MAPPING1F": "9110",
-        "MAPPING1N": "9110",
-        "MAPPING1H": "9110"
+        "ID": "O*S*H-----*****",
+        "D": "Bunker/Underground Facility",
+        "M1U": "9110",
+        "M1F": "9110",
+        "M1N": "9110",
+        "M1H": "9110"
       },
       {
-        "SYMBOLID": "O*S*I-----*****",
-        "DESCRIPTION": "Tents",
-        "MAPPING1U": "9111",
-        "MAPPING1F": "9111",
-        "MAPPING1N": "9111",
-        "MAPPING1H": "9111"
+        "ID": "O*S*I-----*****",
+        "D": "Tents",
+        "M1U": "9111",
+        "M1F": "9111",
+        "M1N": "9111",
+        "M1H": "9111"
       },
       {
-        "SYMBOLID": "O*S*J-----*****",
-        "DESCRIPTION": "Cave",
-        "MAPPING1U": "9112",
-        "MAPPING1F": "9112",
-        "MAPPING1N": "9112",
-        "MAPPING1H": "9112"
+        "ID": "O*S*J-----*****",
+        "D": "Cave",
+        "M1U": "9112",
+        "M1F": "9112",
+        "M1N": "9112",
+        "M1H": "9112"
       },
       {
-        "SYMBOLID": "O*S*K-----*****",
-        "DESCRIPTION": "Camps"
+        "ID": "O*S*K-----*****",
+        "D": "Camps"
       },
       {
-        "SYMBOLID": "O*S*KA----*****",
-        "DESCRIPTION": "Camp (General)",
-        "MAPPING1U": "9114",
-        "MAPPING1F": "9114",
-        "MAPPING1N": "9114",
-        "MAPPING1H": "9114"
+        "ID": "O*S*KA----*****",
+        "D": "Camp (General)",
+        "M1U": "9114",
+        "M1F": "9114",
+        "M1N": "9114",
+        "M1H": "9114"
       },
       {
-        "SYMBOLID": "O*S*KB----*****",
-        "DESCRIPTION": "Displaced Persons/Refugees Camp",
-        "MAPPING1U": "9115",
-        "MAPPING1F": "9115",
-        "MAPPING1N": "9115",
-        "MAPPING1H": "9115"
+        "ID": "O*S*KB----*****",
+        "D": "Displaced Persons/Refugees Camp",
+        "M1U": "9115",
+        "M1F": "9115",
+        "M1N": "9115",
+        "M1H": "9115"
       },
       {
-        "SYMBOLID": "O*S*KC----*****",
-        "DESCRIPTION": "Training Camp",
-        "MAPPING1U": "9116",
-        "MAPPING1F": "9116",
-        "MAPPING1N": "9116",
-        "MAPPING1H": "9116"
+        "ID": "O*S*KC----*****",
+        "D": "Training Camp",
+        "M1U": "9116",
+        "M1F": "9116",
+        "M1N": "9116",
+        "M1H": "9116"
       },
       {
-        "SYMBOLID": "O*S*L-----*****",
-        "DESCRIPTION": "Prison/Detention Facility",
-        "MAPPING1U": "9117",
-        "MAPPING1F": "9117",
-        "MAPPING1N": "9117",
-        "MAPPING1H": "9117"
+        "ID": "O*S*L-----*****",
+        "D": "Prison/Detention Facility",
+        "M1U": "9117",
+        "M1F": "9117",
+        "M1N": "9117",
+        "M1H": "9117"
       },
       {
-        "SYMBOLID": "O*S*M-----*****",
-        "DESCRIPTION": "Police Station",
-        "MAPPING1U": "9118",
-        "MAPPING1F": "9118",
-        "MAPPING1N": "9118",
-        "MAPPING1H": "9118"
+        "ID": "O*S*M-----*****",
+        "D": "Police Station",
+        "M1U": "9118",
+        "M1F": "9118",
+        "M1N": "9118",
+        "M1H": "9118"
       },
       {
-        "SYMBOLID": "O*S*N-----*****",
-        "DESCRIPTION": "Palace/Presidential Residence",
-        "MAPPING1U": "9119",
-        "MAPPING1F": "9119",
-        "MAPPING1N": "9119",
-        "MAPPING1H": "9119"
+        "ID": "O*S*N-----*****",
+        "D": "Palace/Presidential Residence",
+        "M1U": "9119",
+        "M1F": "9119",
+        "M1N": "9119",
+        "M1H": "9119"
       },
       {
-        "SYMBOLID": "O*Q*------*****",
-        "DESCRIPTION": "Equipment/Weapons"
+        "ID": "O*Q*------*****",
+        "D": "Equipment/Weapons"
       },
       {
-        "SYMBOLID": "O*Q*A-----*****",
-        "DESCRIPTION": "Weapons Found",
-        "MAPPING1U": "9121",
-        "MAPPING1F": "9121",
-        "MAPPING1N": "9121",
-        "MAPPING1H": "9121"
+        "ID": "O*Q*A-----*****",
+        "D": "Weapons Found",
+        "M1U": "9121",
+        "M1F": "9121",
+        "M1N": "9121",
+        "M1H": "9121"
       },
       {
-        "SYMBOLID": "O*Q*B-----*****",
-        "DESCRIPTION": "Weapons Cache",
-        "MAPPING1U": "9122",
-        "MAPPING1F": "9122",
-        "MAPPING1N": "9122",
-        "MAPPING1H": "9122"
+        "ID": "O*Q*B-----*****",
+        "D": "Weapons Cache",
+        "M1U": "9122",
+        "M1F": "9122",
+        "M1N": "9122",
+        "M1H": "9122"
       },
       {
-        "SYMBOLID": "O*Q*C-----*****",
-        "DESCRIPTION": "Weapons Confiscated",
-        "MAPPING1U": "9123",
-        "MAPPING1F": "9123",
-        "MAPPING1N": "9123",
-        "MAPPING1H": "9123"
+        "ID": "O*Q*C-----*****",
+        "D": "Weapons Confiscated",
+        "M1U": "9123",
+        "M1F": "9123",
+        "M1N": "9123",
+        "M1H": "9123"
       },
       {
-        "SYMBOLID": "O*Q*D-----*****",
-        "DESCRIPTION": "Weapons Sale",
-        "MAPPING1U": "9124",
-        "MAPPING1F": "9124",
-        "MAPPING1N": "9124",
-        "MAPPING1H": "9124"
+        "ID": "O*Q*D-----*****",
+        "D": "Weapons Sale",
+        "M1U": "9124",
+        "M1F": "9124",
+        "M1N": "9124",
+        "M1H": "9124"
       },
       {
-        "SYMBOLID": "O*Q*E-----*****",
-        "DESCRIPTION": "Weapons Market",
-        "MAPPING1U": "9125",
-        "MAPPING1F": "9125",
-        "MAPPING1N": "9125",
-        "MAPPING1H": "9125"
+        "ID": "O*Q*E-----*****",
+        "D": "Weapons Market",
+        "M1U": "9125",
+        "M1F": "9125",
+        "M1N": "9125",
+        "M1H": "9125"
       },
       {
-        "SYMBOLID": "O*Q*F-----*****",
-        "DESCRIPTION": "Chem/Bio Weapons Cache",
-        "MAPPING1U": "9126",
-        "MAPPING1F": "9126",
-        "MAPPING1N": "9126",
-        "MAPPING1H": "9126"
+        "ID": "O*Q*F-----*****",
+        "D": "Chem/Bio Weapons Cache",
+        "M1U": "9126",
+        "M1F": "9126",
+        "M1N": "9126",
+        "M1H": "9126"
       },
       {
-        "SYMBOLID": "O*Q*G-----*****",
-        "DESCRIPTION": "Improvised Explosive Device (IED)",
-        "MAPPING1U": "9127",
-        "MAPPING1F": "9127",
-        "MAPPING1N": "9127",
-        "MAPPING1H": "9127"
+        "ID": "O*Q*G-----*****",
+        "D": "Improvised Explosive Device (IED)",
+        "M1U": "9127",
+        "M1F": "9127",
+        "M1N": "9127",
+        "M1H": "9127"
       },
       {
-        "SYMBOLID": "O*Q*H-----*****",
-        "DESCRIPTION": "Unexploded Ordnance (UXO)",
-        "MAPPING1U": "9128",
-        "MAPPING1F": "9128",
-        "MAPPING1N": "9128",
-        "MAPPING1H": "9128"
+        "ID": "O*Q*H-----*****",
+        "D": "Unexploded Ordnance (UXO)",
+        "M1U": "9128",
+        "M1F": "9128",
+        "M1N": "9128",
+        "M1H": "9128"
       },
       {
-        "SYMBOLID": "O*Q*I-----*****",
-        "DESCRIPTION": "Horses",
-        "MAPPING1U": "9129",
-        "MAPPING1F": "9129",
-        "MAPPING1N": "9129",
-        "MAPPING1H": "9129"
+        "ID": "O*Q*I-----*****",
+        "D": "Horses",
+        "M1U": "9129",
+        "M1F": "9129",
+        "M1N": "9129",
+        "M1H": "9129"
       },
       {
-        "SYMBOLID": "O*Q*J-----*****",
-        "DESCRIPTION": "Camels",
-        "MAPPING1U": "9130",
-        "MAPPING1F": "9130",
-        "MAPPING1N": "9130",
-        "MAPPING1H": "9130"
+        "ID": "O*Q*J-----*****",
+        "D": "Camels",
+        "M1U": "9130",
+        "M1F": "9130",
+        "M1N": "9130",
+        "M1H": "9130"
       },
       {
-        "SYMBOLID": "O*Q*K-----*****",
-        "DESCRIPTION": "Donkeys",
-        "MAPPING1U": "9131",
-        "MAPPING1F": "9131",
-        "MAPPING1N": "9131",
-        "MAPPING1H": "9131"
+        "ID": "O*Q*K-----*****",
+        "D": "Donkeys",
+        "M1U": "9131",
+        "M1F": "9131",
+        "M1N": "9131",
+        "M1H": "9131"
       },
       {
-        "SYMBOLID": "E*-*------*****",
-        "DESCRIPTION": "Emergency Management Symbols"
+        "ID": "E*-*------*****",
+        "D": "Emergency Management Symbols"
       },
       {
-        "SYMBOLID": "E*I*------*****",
-        "DESCRIPTION": "Incident"
+        "ID": "E*I*------*****",
+        "D": "Incident"
       },
       {
-        "SYMBOLID": "E*I*A-----*****",
-        "DESCRIPTION": "Civil Disturbance Incident",
-        "MAPPING1U": "5000",
-        "MAPPING1F": "5000",
-        "MAPPING1N": "5000",
-        "MAPPING1H": "5000"
+        "ID": "E*I*A-----*****",
+        "D": "Civil Disturbance Incident",
+        "M1U": "5000",
+        "M1F": "5000",
+        "M1N": "5000",
+        "M1H": "5000"
       },
       {
-        "SYMBOLID": "E*I*AC----*****",
-        "DESCRIPTION": "Civil Rioting",
-        "MAPPING1U": "5001",
-        "MAPPING1F": "5001",
-        "MAPPING1N": "5001",
-        "MAPPING1H": "5001"
+        "ID": "E*I*AC----*****",
+        "D": "Civil Rioting",
+        "M1U": "5001",
+        "M1F": "5001",
+        "M1N": "5001",
+        "M1H": "5001"
       },
       {
-        "SYMBOLID": "E*I*B-----*****",
-        "DESCRIPTION": "Criminal Activity Incident",
-        "MAPPING1U": "5002",
-        "MAPPING1F": "5002",
-        "MAPPING1N": "5002",
-        "MAPPING1H": "5002"
+        "ID": "E*I*B-----*****",
+        "D": "Criminal Activity Incident",
+        "M1U": "5002",
+        "M1F": "5002",
+        "M1N": "5002",
+        "M1H": "5002"
       },
       {
-        "SYMBOLID": "E*I*BC----*****",
-        "DESCRIPTION": "Explosion (Bomb)",
-        "MAPPING1U": "5004",
-        "MAPPING1F": "5004",
-        "MAPPING1N": "5004",
-        "MAPPING1H": "5004"
+        "ID": "E*I*BC----*****",
+        "D": "Explosion (Bomb)",
+        "M1U": "5004",
+        "M1F": "5004",
+        "M1N": "5004",
+        "M1H": "5004"
       },
       {
-        "SYMBOLID": "E*I*BD----*****",
-        "DESCRIPTION": "Looting",
-        "MAPPING1U": "5005",
-        "MAPPING1F": "5005",
-        "MAPPING1N": "5005",
-        "MAPPING1H": "5005"
+        "ID": "E*I*BD----*****",
+        "D": "Looting",
+        "M1U": "5005",
+        "M1F": "5005",
+        "M1N": "5005",
+        "M1H": "5005"
       },
       {
-        "SYMBOLID": "E*I*C-----*****",
-        "DESCRIPTION": "Fire Incident"
+        "ID": "E*I*C-----*****",
+        "D": "Fire Incident"
       },
       {
-        "SYMBOLID": "E*I*D-----*****",
-        "DESCRIPTION": "Hazardous Materiel Incident"
+        "ID": "E*I*D-----*****",
+        "D": "Hazardous Materiel Incident"
       },
       {
-        "SYMBOLID": "E*I*E-----*****",
-        "DESCRIPTION": "Air Incident"
+        "ID": "E*I*E-----*****",
+        "D": "Air Incident"
       },
       {
-        "SYMBOLID": "E*I*F-----*****",
-        "DESCRIPTION": "Marine Incident"
+        "ID": "E*I*F-----*****",
+        "D": "Marine Incident"
       },
       {
-        "SYMBOLID": "E*I*G-----*****",
-        "DESCRIPTION": "Rail Incident"
+        "ID": "E*I*G-----*****",
+        "D": "Rail Incident"
       },
       {
-        "SYMBOLID": "E*I*H-----*****",
-        "DESCRIPTION": "Vehicle Incident"
+        "ID": "E*I*H-----*****",
+        "D": "Vehicle Incident"
       },
       {
-        "SYMBOLID": "E*I*HA----*****",
-        "DESCRIPTION": "Vehicle Accident",
-        "MAPPING1U": "5061",
-        "MAPPING1F": "5061",
-        "MAPPING1N": "5061",
-        "MAPPING1H": "5061"
+        "ID": "E*I*HA----*****",
+        "D": "Vehicle Accident",
+        "M1U": "5061",
+        "M1F": "5061",
+        "M1N": "5061",
+        "M1H": "5061"
       },
       {
-        "SYMBOLID": "E*N*------*****",
-        "DESCRIPTION": "Natural Events"
+        "ID": "E*N*------*****",
+        "D": "Natural Events"
       },
       {
-        "SYMBOLID": "E*O*------*****",
-        "DESCRIPTION": "Operations"
+        "ID": "E*O*------*****",
+        "D": "Operations"
       },
       {
-        "SYMBOLID": "E*O*D-----*****",
-        "DESCRIPTION": "Law Enforcement Operation"
+        "ID": "E*O*D-----*****",
+        "D": "Law Enforcement Operation"
       },
       {
-        "SYMBOLID": "E*O*DJ----*****",
-        "DESCRIPTION": "Police"
+        "ID": "E*O*DJ----*****",
+        "D": "Police"
       },
       {
-        "SYMBOLID": "E*O*DJC---*****",
-        "DESCRIPTION": "Police Installation",
-        "MAPPING1U": "5251",
-        "MAPPING1F": "5251",
-        "MAPPING1N": "5251",
-        "MAPPING1H": "5251"
+        "ID": "E*O*DJC---*****",
+        "D": "Police Installation",
+        "M1U": "5251",
+        "M1F": "5251",
+        "M1N": "5251",
+        "M1H": "5251"
       },
       {
-        "SYMBOLID": "E*O*DK----*****",
-        "DESCRIPTION": "Prison",
-        "MAPPING1U": "5252",
-        "MAPPING1F": "5252",
-        "MAPPING1N": "5252",
-        "MAPPING1H": "5252",
-        "MAPPING2": "5253",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "E*O*DK----*****",
+        "D": "Prison",
+        "M1U": "5252",
+        "M1F": "5252",
+        "M1N": "5252",
+        "M1H": "5252",
+        "M2": "5253",
+        "M2C": "#FFFFFF"
       },
       {
-        "SYMBOLID": "E*F*------*****",
-        "DESCRIPTION": "Infrastructure"
+        "ID": "E*F*------*****",
+        "D": "Infrastructure"
       },
       {
-        "SYMBOLID": "E*F*I-----*****",
-        "DESCRIPTION": "Public Venues Infrastructure"
+        "ID": "E*F*I-----*****",
+        "D": "Public Venues Infrastructure"
       },
       {
-        "SYMBOLID": "E*F*ID----*****",
-        "DESCRIPTION": "Religious Institution",
-        "MAPPING1U": "5349",
-        "MAPPING1F": "5349",
-        "MAPPING1N": "5349",
-        "MAPPING1H": "5349",
-        "MAPPING2": "5350",
-        "MAPPING2COLOR": "#FFFFFF"
+        "ID": "E*F*ID----*****",
+        "D": "Religious Institution",
+        "M1U": "5349",
+        "M1F": "5349",
+        "M1N": "5349",
+        "M1H": "5349",
+        "M2": "5350",
+        "M2C": "#FFFFFF"
       }
     ]
   }

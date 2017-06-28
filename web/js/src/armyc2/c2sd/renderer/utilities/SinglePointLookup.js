@@ -70,12 +70,12 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.mappingP = symbol["MAPPINGP"] || ""; //MAPPINGP
-                        data.mappingA = symbol["MAPPINGA"] || ""; //MAPPINGA
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.width = parseInt(symbol["WIDTH"] || ""); //WIDTH
-                        data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                        data.mappingP = symbol["MP"] || ""; //MAPPINGP
+                        data.mappingA = symbol["MA"] || ""; //MAPPINGA
+                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.width = parseInt(symbol["W"] || ""); //WIDTH
+                        data.height = parseInt(symbol["H"] || ""); //HEIGHT
 						
 						if(data.mappingP !== "")
 							data.mappingP = (parseInt(data.mappingP) + 57000);
@@ -102,12 +102,12 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.mappingP = symbol["MAPPINGP"] || ""; //MAPPINGP
-                        data.mappingA = symbol["MAPPINGA"] || ""; //MAPPINGA
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.width = parseInt(symbol["WIDTH"] || ""); //WIDTH
-                        data.height = parseInt(symbol["HEIGHT"] || ""); //HEIGHT
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                        data.mappingP = symbol["MP"] || ""; //MAPPINGP
+                        data.mappingA = symbol["MA"] || ""; //MAPPINGA
+                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.width = parseInt(symbol["W"] || ""); //WIDTH
+                        data.height = parseInt(symbol["H"] || ""); //HEIGHT
 						
 						if(data.mappingP !== "")
 							data.mappingP = (parseInt(data.mappingP) + 57000);

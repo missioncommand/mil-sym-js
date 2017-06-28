@@ -638,12 +638,12 @@ sec.web.renderer.MultiPointHandlerCanvas = (function () {
             feature.properties = {};
             feature.properties.label = "";
             var geometry = {};
-            if (shapeInfo.getLineColor() !== null) {
+            if (shapeInfo.getLineColor()) {
                 lineColor = shapeInfo.getLineColor();
                 alpha = lineColor.getAlpha() / 255;
                 lineColor = lineColor.toHexString(false);
             }
-            if (shapeInfo.getFillColor() !== null) {
+            if (shapeInfo.getFillColor()) {
                 fillColor = shapeInfo.getFillColor();
                 if(fillColor.getAlpha() === 0 && fillTexture)
                 {

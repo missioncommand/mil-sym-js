@@ -131,13 +131,13 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        //data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
-                        data.minPoints = parseInt(symbol["MINPOINTS"] || "", 10); //MINPOINTS
-                        data.maxPoints = parseInt(symbol["MAXPOINTS"] || "", 10); //MAXPOINTS
-                        data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
-                        data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                        //data.geometry = symbol["G"] || ""; //GEOMETRY
+                        data.minPoints = parseInt(symbol["MNP"] || "", 10); //MINPOINTS
+                        data.maxPoints = parseInt(symbol["MXP"] || "", 10); //MAXPOINTS
+                        data.drawCategory = parseInt(symbol["DC"] || "", 10); //DRAWCATEGORY
+                        data.modifiers = symbol["M"] || ""; //MODIFIERS
+                        data.description = symbol["D"] || ""; //DESCRIPTION
                     } 
                     if((symbolMapB[data.symbolID])===undefined)
                     {
@@ -158,13 +158,13 @@ armyc2.c2sd.renderer.utilities.SymbolDefTable = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
                         //data.geometry = symbol["GEOMETRY"] || ""; //GEOMETRY
-                        data.minPoints = parseInt(symbol["MINPOINTS"] || "", 10); //MINPOINTS
-                        data.maxPoints = parseInt(symbol["MAXPOINTS"] || "", 10); //MAXPOINTS
-                        data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
-                        data.modifiers = symbol["MODIFIERS"] || ""; //MODIFIERS
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
+                        data.minPoints = parseInt(symbol["MNP"] || "", 10); //MINPOINTS
+                        data.maxPoints = parseInt(symbol["MXP"] || "", 10); //MAXPOINTS
+                        data.drawCategory = parseInt(symbol["DC"] || "", 10); //DRAWCATEGORY
+                        data.modifiers = symbol["M"] || ""; //MODIFIERS
+                        data.description = symbol["D"] || ""; //DESCRIPTION
                     } 
                     if((symbolMapC[data.symbolID])===undefined)
                     {

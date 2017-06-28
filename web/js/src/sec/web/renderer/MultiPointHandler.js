@@ -2144,7 +2144,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             //kml += ("<Style id=\"" + lineStyleId + "\">");
             kml += ("<Style>");
             lineColor = shapeInfo.getLineColor();
-            if (lineColor !== null) {
+            if (lineColor) {
                 googleLineColor = shapeInfo.getLineColor().toKMLHexString();
                 stroke = shapeInfo.getStroke();
                 if (stroke !== null) {
@@ -2158,7 +2158,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 kml += ("</LineStyle>");
             }
             fillColor = shapeInfo.getFillColor();
-            if (fillColor !== null) {
+            if (fillColor) {
                 googleFillColor = shapeInfo.getFillColor().toKMLHexString();
                 kml += ("<PolyStyle>");
                 kml += ("<color>" + googleFillColor + "</color>");
@@ -2436,7 +2436,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             feature.properties = {};
             feature.properties.label = "";
             var geometry = {};
-            if (shapeInfo.getLineColor() !== null) {
+            if (shapeInfo.getLineColor()) {
                 lineColor = shapeInfo.getLineColor();
                 feature.properties.strokeColor = lineColor.toHexString(false);
                 alpha = lineColor.getAlpha();
@@ -2447,7 +2447,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                 feature.properties.lineOpacity = alpha / 255;
                 geometry["type"] = "MultiLineString";
             }
-            if (shapeInfo.getFillColor() !== null) {
+            if (shapeInfo.getFillColor()) {
                 fillColor = shapeInfo.getFillColor();
                 feature.properties.fillColor = fillColor.toHexString(false);
                 alpha = fillColor.getAlpha();

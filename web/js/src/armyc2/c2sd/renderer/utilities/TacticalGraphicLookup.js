@@ -13,2054 +13,2054 @@ armyc2.c2sd.renderer.utilities.TacticalGraphicLookup = (function () {
   "TACTICALGRAPHICS": {
     "SYMBOL": [
       {
-        "SYMBOLID": "G*T*B-----****X",
-        "MAPPING": "2001",
-        "DESCRIPTION": "Tactical Graphics_ Tasks_Block"
+        "ID": "G*T*B-----****X",
+        "M": "2001",
+        "D": "Tactical Graphics_ Tasks_Block"
       },
       {
-        "SYMBOLID": "G*T*H-----****X",
-        "MAPPING": "2002",
-        "DESCRIPTION": "Tactical Graphics_ Tasks_Breach"
+        "ID": "G*T*H-----****X",
+        "M": "2002",
+        "D": "Tactical Graphics_ Tasks_Breach"
       },
       {
-        "SYMBOLID": "G*T*Y-----****X",
-        "MAPPING": "2003",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Bypass"
+        "ID": "G*T*Y-----****X",
+        "M": "2003",
+        "D": "Tactical Graphics_Tasks_Bypass"
       },
       {
-        "SYMBOLID": "G*T*C-----****X",
-        "MAPPING": "2004",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Canalize"
+        "ID": "G*T*C-----****X",
+        "M": "2004",
+        "D": "Tactical Graphics_Tasks_Canalize"
       },
       {
-        "SYMBOLID": "G*T*X-----****X",
-        "MAPPING": "2005",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Clear"
+        "ID": "G*T*X-----****X",
+        "M": "2005",
+        "D": "Tactical Graphics_Tasks_Clear"
       },
       {
-        "SYMBOLID": "G*T*J-----****X",
-        "MAPPING": "2006",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Contain"
+        "ID": "G*T*J-----****X",
+        "M": "2006",
+        "D": "Tactical Graphics_Tasks_Contain"
       },
       {
-        "SYMBOLID": "G*T*K-----****X",
-        "MAPPING": "2007",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Counterattach (CATK)"
+        "ID": "G*T*K-----****X",
+        "M": "2007",
+        "D": "Tactical Graphics_Tasks_Counterattach (CATK)"
       },
       {
-        "SYMBOLID": "G*T*KF----****X",
-        "MAPPING": "2008",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Counterattack (CATK)_Counterattack By Fire"
+        "ID": "G*T*KF----****X",
+        "M": "2008",
+        "D": "Tactical Graphics_Tasks_Counterattack (CATK)_Counterattack By Fire"
       },
       {
-        "SYMBOLID": "G*T*L-----****X",
-        "MAPPING": "2009",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Delay"
+        "ID": "G*T*L-----****X",
+        "M": "2009",
+        "D": "Tactical Graphics_Tasks_Delay"
       },
       {
-        "SYMBOLID": "G*T*T-----****X",
-        "MAPPING": "2011",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Disrupt "
+        "ID": "G*T*T-----****X",
+        "M": "2011",
+        "D": "Tactical Graphics_Tasks_Disrupt "
       },
       {
-        "SYMBOLID": "G*T*F-----****X",
-        "MAPPING": "2012",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Fix"
+        "ID": "G*T*F-----****X",
+        "M": "2012",
+        "D": "Tactical Graphics_Tasks_Fix"
       },
       {
-        "SYMBOLID": "G*T*A-----****X",
-        "MAPPING": "2013",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Follow And Assume"
+        "ID": "G*T*A-----****X",
+        "M": "2013",
+        "D": "Tactical Graphics_Tasks_Follow And Assume"
       },
       {
-        "SYMBOLID": "G*T*AS----****X",
-        "MAPPING": "2014",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Follow And Assume_Follow And Support "
+        "ID": "G*T*AS----****X",
+        "M": "2014",
+        "D": "Tactical Graphics_Tasks_Follow And Assume_Follow And Support "
       },
       {
-        "SYMBOLID": "G*T*E-----****X",
-        "MAPPING": "2016",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Isolate"
+        "ID": "G*T*E-----****X",
+        "M": "2016",
+        "D": "Tactical Graphics_Tasks_Isolate"
       },
       {
-        "SYMBOLID": "G*T*O-----****X",
-        "MAPPING": "2018",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Occupy"
+        "ID": "G*T*O-----****X",
+        "M": "2018",
+        "D": "Tactical Graphics_Tasks_Occupy"
       },
       {
-        "SYMBOLID": "G*T*P-----****X",
-        "MAPPING": "2019",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Penetrate"
+        "ID": "G*T*P-----****X",
+        "M": "2019",
+        "D": "Tactical Graphics_Tasks_Penetrate"
       },
       {
-        "SYMBOLID": "G*T*R-----****X",
-        "MAPPING": "2020",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Relief In Place (RIP)"
+        "ID": "G*T*R-----****X",
+        "M": "2020",
+        "D": "Tactical Graphics_Tasks_Relief In Place (RIP)"
       },
       {
-        "SYMBOLID": "G*T*Q-----****X",
-        "MAPPING": "2021",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Retain"
+        "ID": "G*T*Q-----****X",
+        "M": "2021",
+        "D": "Tactical Graphics_Tasks_Retain"
       },
       {
-        "SYMBOLID": "G*T*M-----****X",
-        "MAPPING": "2022",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Retirement"
+        "ID": "G*T*M-----****X",
+        "M": "2022",
+        "D": "Tactical Graphics_Tasks_Retirement"
       },
       {
-        "SYMBOLID": "G*T*S-----****X",
-        "MAPPING": "2023",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Secure"
+        "ID": "G*T*S-----****X",
+        "M": "2023",
+        "D": "Tactical Graphics_Tasks_Secure"
       },
       {
-        "SYMBOLID": "G*T*US----****X",
-        "MAPPING": "2024",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Security_Screen"
+        "ID": "G*T*US----****X",
+        "M": "2024",
+        "D": "Tactical Graphics_Tasks_Security_Screen"
       },
       {
-        "SYMBOLID": "G*T*UG----****X",
-        "MAPPING": "2025",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Security_Guard"
+        "ID": "G*T*UG----****X",
+        "M": "2025",
+        "D": "Tactical Graphics_Tasks_Security_Guard"
       },
       {
-        "SYMBOLID": "G*T*UC----****X",
-        "MAPPING": "2026",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Security_Cover"
+        "ID": "G*T*UC----****X",
+        "M": "2026",
+        "D": "Tactical Graphics_Tasks_Security_Cover"
       },
       {
-        "SYMBOLID": "G*T*Z-----****X",
-        "MAPPING": "2027",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Seize"
+        "ID": "G*T*Z-----****X",
+        "M": "2027",
+        "D": "Tactical Graphics_Tasks_Seize"
       },
       {
-        "SYMBOLID": "G*T*W-----****X",
-        "MAPPING": "2028",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Withdraw"
+        "ID": "G*T*W-----****X",
+        "M": "2028",
+        "D": "Tactical Graphics_Tasks_Withdraw"
       },
       {
-        "SYMBOLID": "G*T*WP----****X",
-        "MAPPING": "2029",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Withdraw_Withdraw Under Pressure "
+        "ID": "G*T*WP----****X",
+        "M": "2029",
+        "D": "Tactical Graphics_Tasks_Withdraw_Withdraw Under Pressure "
       },
       {
-        "SYMBOLID": "G*T*V-----****X",
-        "MAPPING": "2016",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Cordon_and_Search "
+        "ID": "G*T*V-----****X",
+        "M": "2016",
+        "D": "Tactical Graphics_Tasks_Cordon_and_Search "
       },
       {
-        "SYMBOLID": "G*T*2-----****X",
-        "MAPPING": "2016",
-        "DESCRIPTION": "Tactical Graphics_Tasks_Cordon_and_Knock "
+        "ID": "G*T*2-----****X",
+        "M": "2016",
+        "D": "Tactical Graphics_Tasks_Cordon_and_Knock "
       },
       {
-        "SYMBOLID": "G*G*GLB---****X",
-        "MAPPING": "2030",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Boundaries "
+        "ID": "G*G*GLB---****X",
+        "M": "2030",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Boundaries "
       },
       {
-        "SYMBOLID": "G*G*GLF---****X",
-        "MAPPING": "2031",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Forward Line Of Own Troops (Flot)"
+        "ID": "G*G*GLF---****X",
+        "M": "2031",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Forward Line Of Own Troops (Flot)"
       },
       {
-        "SYMBOLID": "G*G*GLC---****X",
-        "MAPPING": "2032",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Line Of Contact "
+        "ID": "G*G*GLC---****X",
+        "M": "2032",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Line Of Contact "
       },
       {
-        "SYMBOLID": "G*G*GLP---****X",
-        "MAPPING": "2033",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Phase Line "
+        "ID": "G*G*GLP---****X",
+        "M": "2033",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Phase Line "
       },
       {
-        "SYMBOLID": "G*G*GLL---****X",
-        "MAPPING": "2034",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Light Line "
+        "ID": "G*G*GLL---****X",
+        "M": "2034",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Light Line "
       },
       {
-        "SYMBOLID": "G*G*GAG---****X",
-        "MAPPING": "2035",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_General Area"
+        "ID": "G*G*GAG---****X",
+        "M": "2035",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_General Area"
       },
       {
-        "SYMBOLID": "G*G*GAA---****X",
-        "MAPPING": "2036",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Assembly Area"
+        "ID": "G*G*GAA---****X",
+        "M": "2036",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Assembly Area"
       },
       {
-        "SYMBOLID": "G*G*GAE---****X",
-        "MAPPING": "2037",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Engagement Area"
+        "ID": "G*G*GAE---****X",
+        "M": "2037",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Engagement Area"
       },
       {
-        "SYMBOLID": "G*G*GAF---****X",
-        "MAPPING": "2038",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Fortified Area"
+        "ID": "G*G*GAF---****X",
+        "M": "2038",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Lines_Fortified Area"
       },
       {
-        "SYMBOLID": "G*G*GAD---****X",
-        "MAPPING": "2039",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Drop Zone "
+        "ID": "G*G*GAD---****X",
+        "M": "2039",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Drop Zone "
       },
       {
-        "SYMBOLID": "G*G*GAX---****X",
-        "MAPPING": "2040",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Area_Extraction Zone (EZ)"
+        "ID": "G*G*GAX---****X",
+        "M": "2040",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Area_Extraction Zone (EZ)"
       },
       {
-        "SYMBOLID": "G*G*GAL---****X",
-        "MAPPING": "2041",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Landing Zone (LZ)"
+        "ID": "G*G*GAL---****X",
+        "M": "2041",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Landing Zone (LZ)"
       },
       {
-        "SYMBOLID": "G*G*GAP---****X",
-        "MAPPING": "2042",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Pickup Zone (PZ)"
+        "ID": "G*G*GAP---****X",
+        "M": "2042",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Pickup Zone (PZ)"
       },
       {
-        "SYMBOLID": "G*G*GAS---****X",
-        "MAPPING": "2043",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Search Area/Reconnaissance Area"
+        "ID": "G*G*GAS---****X",
+        "M": "2043",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Search Area/Reconnaissance Area"
       },
       {
-        "SYMBOLID": "G*G*GAY---****X",
-        "MAPPING": "2044",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Limited Access Area"
+        "ID": "G*G*GAY---****X",
+        "M": "2044",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Limited Access Area"
       },
       {
-        "SYMBOLID": "G*G*GAZ---****X",
-        "MAPPING": "2045",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Airfield Zone "
+        "ID": "G*G*GAZ---****X",
+        "M": "2045",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_General_Areas_Airfield Zone "
       },
       {
-        "SYMBOLID": "G*G*ALC---****X",
-        "MAPPING": "2046",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Air Corridor "
+        "ID": "G*G*ALC---****X",
+        "M": "2046",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Air Corridor "
       },
       {
-        "SYMBOLID": "G*G*ALM---****X",
-        "MAPPING": "2047",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Minimum Risk Route (MRR) "
+        "ID": "G*G*ALM---****X",
+        "M": "2047",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Minimum Risk Route (MRR) "
       },
       {
-        "SYMBOLID": "G*G*ALS---****X",
-        "MAPPING": "2048",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Standard-Use Army Aircraft Flight Route (SAAFR) "
+        "ID": "G*G*ALS---****X",
+        "M": "2048",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Standard-Use Army Aircraft Flight Route (SAAFR) "
       },
       {
-        "SYMBOLID": "G*G*ALU---****X",
-        "MAPPING": "2049",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Unmanned Aerial Vehicle (UAV) Route "
+        "ID": "G*G*ALU---****X",
+        "M": "2049",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Unmanned Aerial Vehicle (UAV) Route "
       },
       {
-        "SYMBOLID": "G*G*ALL---****X",
-        "MAPPING": "2050",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Low Level Transit Route (LLTR)"
+        "ID": "G*G*ALL---****X",
+        "M": "2050",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Lines_Low Level Transit Route (LLTR)"
       },
       {
-        "SYMBOLID": "G*G*AAR---****X",
-        "MAPPING": "2051",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Restricted Operations Zone (ROZ)"
+        "ID": "G*G*AAR---****X",
+        "M": "2051",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Restricted Operations Zone (ROZ)"
       },
       {
-        "SYMBOLID": "G*G*AAF---2525C",
-        "MAPPING": "2052",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)"
+        "ID": "G*G*AAF---2525C",
+        "M": "2052",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_SHORT-RANGE_AIR_DEFENSE_ENGAGEMENT_ZONE (SHORADEZ)"
       },
       {
-        "SYMBOLID": "G*G*AAF---****X",
-        "MAPPING": "2053",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)"
+        "ID": "G*G*AAF---****X",
+        "M": "2053",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Forward Area Ari Defense Zone (FAADEZ)"
       },
       {
-        "SYMBOLID": "G*G*AAH---****X",
-        "MAPPING": "2054",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_High Density Airpspace Control Zone (Hidacz) "
+        "ID": "G*G*AAH---****X",
+        "M": "2054",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_High Density Airpspace Control Zone (Hidacz) "
       },
       {
-        "SYMBOLID": "G*G*AAM---****X",
-        "MAPPING": "2055",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ) "
+        "ID": "G*G*AAM---****X",
+        "M": "2055",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ) "
       },
       {
-        "SYMBOLID": "G*G*AAML--****X",
-        "MAPPING": "2056",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Enagement Zone (MEZ) Low Altitude Mez "
+        "ID": "G*G*AAML--****X",
+        "M": "2056",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Enagement Zone (MEZ) Low Altitude Mez "
       },
       {
-        "SYMBOLID": "G*G*AAMH--****X",
-        "MAPPING": "2057",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)_High Altitude MEZ"
+        "ID": "G*G*AAMH--****X",
+        "M": "2057",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Missile Engagement Zone (MEZ)_High Altitude MEZ"
       },
       {
-        "SYMBOLID": "G*G*AAW---****X",
-        "MAPPING": "2058",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Weapoins Free Zone "
+        "ID": "G*G*AAW---****X",
+        "M": "2058",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Aviation_Areas_Weapoins Free Zone "
       },
       {
-        "SYMBOLID": "G*G*PD----****X",
-        "MAPPING": "2059",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy (Deception) (Decoy) "
+        "ID": "G*G*PD----****X",
+        "M": "2059",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy (Deception) (Decoy) "
       },
       {
-        "SYMBOLID": "G*G*PA----****X",
-        "MAPPING": "2060",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Axis Of Advance For Feint "
+        "ID": "G*G*PA----****X",
+        "M": "2060",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Axis Of Advance For Feint "
       },
       {
-        "SYMBOLID": "G*G*PF----****X",
-        "MAPPING": "2061",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Direction Of Attack For Feint "
+        "ID": "G*G*PF----****X",
+        "M": "2061",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Direction Of Attack For Feint "
       },
       {
-        "SYMBOLID": "G*G*PM----****X",
-        "MAPPING": "2062",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area"
+        "ID": "G*G*PM----****X",
+        "M": "2062",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area"
       },
       {
-        "SYMBOLID": "G*G*PY----****X",
-        "MAPPING": "2063",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area, Fenced "
+        "ID": "G*G*PY----****X",
+        "M": "2063",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Decoy Mined Area, Fenced "
       },
       {
-        "SYMBOLID": "G*G*PC----****X",
-        "MAPPING": "2064",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy Minefield - Dynamic "
+        "ID": "G*G*PC----****X",
+        "M": "2064",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Deception_Dummy Minefield - Dynamic "
       },
       {
-        "SYMBOLID": "G*G*DLF---****X",
-        "MAPPING": "2065",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Forward Edge Of Battle Area (FEBA) "
+        "ID": "G*G*DLF---****X",
+        "M": "2065",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Forward Edge Of Battle Area (FEBA) "
       },
       {
-        "SYMBOLID": "G*G*DLP---****X",
-        "MAPPING": "2066",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Principal Direction Of Fire (PDF)"
+        "ID": "G*G*DLP---****X",
+        "M": "2066",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Defense_Lines_Principal Direction Of Fire (PDF)"
       },
       {
-        "SYMBOLID": "G*G*DAB---****X",
-        "MAPPING": "2067",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position"
+        "ID": "G*G*DAB---****X",
+        "M": "2067",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position"
       },
       {
-        "SYMBOLID": "G*G*DABP--****X",
-        "MAPPING": "2068",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position_Prepared But Not Occupied "
+        "ID": "G*G*DABP--****X",
+        "M": "2068",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Defense_Areas_Battle Position_Prepared But Not Occupied "
       },
       {
-        "SYMBOLID": "G*G*DAE---****X",
-        "MAPPING": "2069",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Defense_Area_Engagement Area"
+        "ID": "G*G*DAE---****X",
+        "M": "2069",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Defense_Area_Engagement Area"
       },
       {
-        "SYMBOLID": "G*G*OLAV--****X",
-        "MAPPING": "2070",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Aviation"
+        "ID": "G*G*OLAV--****X",
+        "M": "2070",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Aviation"
       },
       {
-        "SYMBOLID": "G*G*OLAA--****X",
-        "MAPPING": "2071",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Airborne "
+        "ID": "G*G*OLAA--****X",
+        "M": "2071",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Airborne "
       },
       {
-        "SYMBOLID": "G*G*OLAR--****X",
-        "MAPPING": "2072",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Attack, Rotory Wing "
+        "ID": "G*G*OLAR--****X",
+        "M": "2072",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Friendly Attack, Rotory Wing "
       },
       {
-        "SYMBOLID": "G*G*OLAGM-****X",
-        "MAPPING": "2073",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Main Attack "
+        "ID": "G*G*OLAGM-****X",
+        "M": "2073",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Main Attack "
       },
       {
-        "SYMBOLID": "G*G*OLAGS-****X",
-        "MAPPING": "2074",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Support Attack"
+        "ID": "G*G*OLAGS-****X",
+        "M": "2074",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Axis Of Advance_Ground_Support Attack"
       },
       {
-        "SYMBOLID": "G*G*OLKA--****X",
-        "MAPPING": "2075",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Aviation "
+        "ID": "G*G*OLKA--****X",
+        "M": "2075",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Aviation "
       },
       {
-        "SYMBOLID": "G*G*OLKGM-****X",
-        "MAPPING": "2076",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_Main Attack"
+        "ID": "G*G*OLKGM-****X",
+        "M": "2076",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_Main Attack"
       },
       {
-        "SYMBOLID": "G*G*OLKGS-****X",
-        "MAPPING": "2077",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_ Supporting Attack"
+        "ID": "G*G*OLKGS-****X",
+        "M": "2077",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Direction Of Attack_Ground_ Supporting Attack"
       },
       {
-        "SYMBOLID": "G*G*OLF---****X",
-        "MAPPING": "2078",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Final Coordination Line "
+        "ID": "G*G*OLF---****X",
+        "M": "2078",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Final Coordination Line "
       },
       {
-        "SYMBOLID": "G*G*OLI---****X",
-        "MAPPING": "2079",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Infiltration Line "
+        "ID": "G*G*OLI---****X",
+        "M": "2079",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Infiltration Line "
       },
       {
-        "SYMBOLID": "G*G*OLL---****X",
-        "MAPPING": "2080",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Limit Of Advance "
+        "ID": "G*G*OLL---****X",
+        "M": "2080",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Limit Of Advance "
       },
       {
-        "SYMBOLID": "G*G*OLT---****X",
-        "MAPPING": "2081",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure "
+        "ID": "G*G*OLT---****X",
+        "M": "2081",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure "
       },
       {
-        "SYMBOLID": "G*G*OLC---****X",
-        "MAPPING": "2082",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure/Line Of Contact (LD.LC)"
+        "ID": "G*G*OLC---****X",
+        "M": "2082",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Line Of Departure/Line Of Contact (LD.LC)"
       },
       {
-        "SYMBOLID": "G*G*OLP---****X",
-        "MAPPING": "2083",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Probable Line Of Deployment (PLD) "
+        "ID": "G*G*OLP---****X",
+        "M": "2083",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Lines_Probable Line Of Deployment (PLD) "
       },
       {
-        "SYMBOLID": "G*G*OAA---****X",
-        "MAPPING": "2084",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Assault Position"
+        "ID": "G*G*OAA---****X",
+        "M": "2084",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Assault Position"
       },
       {
-        "SYMBOLID": "G*G*OAK---****X",
-        "MAPPING": "2085",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack Position"
+        "ID": "G*G*OAK---****X",
+        "M": "2085",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack Position"
       },
       {
-        "SYMBOLID": "G*G*OAF---****X",
-        "MAPPING": "2086",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack By Fire Position "
+        "ID": "G*G*OAF---****X",
+        "M": "2086",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Attack By Fire Position "
       },
       {
-        "SYMBOLID": "G*G*OAS---****X",
-        "MAPPING": "2087",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Support By Fire Position "
+        "ID": "G*G*OAS---****X",
+        "M": "2087",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Support By Fire Position "
       },
       {
-        "SYMBOLID": "G*G*OAO---****X",
-        "MAPPING": "2088",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Objective "
+        "ID": "G*G*OAO---****X",
+        "M": "2088",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Objective "
       },
       {
-        "SYMBOLID": "G*G*OAP---****X",
-        "MAPPING": "2089",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Penetration BoX"
+        "ID": "G*G*OAP---****X",
+        "M": "2089",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Offense_Areas_Penetration BoX"
       },
       {
-        "SYMBOLID": "G*G*SLA---****X",
-        "MAPPING": "2090",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Ambush"
+        "ID": "G*G*SLA---****X",
+        "M": "2090",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Ambush"
       },
       {
-        "SYMBOLID": "G*G*SLH---****X",
-        "MAPPING": "2091",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Holding Line "
+        "ID": "G*G*SLH---****X",
+        "M": "2091",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Holding Line "
       },
       {
-        "SYMBOLID": "G*G*SLR---****X",
-        "MAPPING": "2092",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Release Line "
+        "ID": "G*G*SLR---****X",
+        "M": "2092",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Line_Release Line "
       },
       {
-        "SYMBOLID": "G*G*SLB---****X",
-        "MAPPING": "2093",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Bridgehead"
+        "ID": "G*G*SLB---****X",
+        "M": "2093",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Bridgehead"
       },
       {
-        "SYMBOLID": "G*G*SAO---****X",
-        "MAPPING": "2094",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Area Of Operations (AO)"
+        "ID": "G*G*SAO---****X",
+        "M": "2094",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Area Of Operations (AO)"
       },
       {
-        "SYMBOLID": "G*G*SAA---****X",
-        "MAPPING": "2095",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Airhead "
+        "ID": "G*G*SAA---****X",
+        "M": "2095",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Airhead "
       },
       {
-        "SYMBOLID": "G*G*SAE---****X",
-        "MAPPING": "2096",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Encirclement "
+        "ID": "G*G*SAE---****X",
+        "M": "2096",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Encirclement "
       },
       {
-        "SYMBOLID": "G*G*SAN---****X",
-        "MAPPING": "2097",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Named Area Of Interest (NAI)"
+        "ID": "G*G*SAN---****X",
+        "M": "2097",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Named Area Of Interest (NAI)"
       },
       {
-        "SYMBOLID": "G*G*SAT---****X",
-        "MAPPING": "2098",
-        "DESCRIPTION": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Targeted Area Of Interest (TAI) "
+        "ID": "G*G*SAT---****X",
+        "M": "2098",
+        "D": "Tactical Graphics_Command And Control And General Maneuver_Special_Area_Targeted Area Of Interest (TAI) "
       },
       {
-        "SYMBOLID": "G*M*OGB---****X",
-        "MAPPING": "2099",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Belt "
+        "ID": "G*M*OGB---****X",
+        "M": "2099",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Belt "
       },
       {
-        "SYMBOLID": "G*M*OGL---****X",
-        "MAPPING": "2100",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Line "
+        "ID": "G*M*OGL---****X",
+        "M": "2100",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Line "
       },
       {
-        "SYMBOLID": "G*M*OGZ---****X",
-        "MAPPING": "2101",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Zone"
+        "ID": "G*M*OGZ---****X",
+        "M": "2101",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Zone"
       },
       {
-        "SYMBOLID": "G*M*OGF---****X",
-        "MAPPING": "2102",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Free Area"
+        "ID": "G*M*OGF---****X",
+        "M": "2102",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Free Area"
       },
       {
-        "SYMBOLID": "G*M*OGR---****X",
-        "MAPPING": "2103",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Restricted Area"
+        "ID": "G*M*OGR---****X",
+        "M": "2103",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_General_Obstacle Restricted Area"
       },
       {
-        "SYMBOLID": "G*M*OS----****X",
-        "MAPPING": "2104",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Abatis "
+        "ID": "G*M*OS----****X",
+        "M": "2104",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Abatis "
       },
       {
-        "SYMBOLID": "G*M*OADU--****X",
-        "MAPPING": "2105",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Under Construction"
+        "ID": "G*M*OADU--****X",
+        "M": "2105",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Under Construction"
       },
       {
-        "SYMBOLID": "G*M*OADC--****X",
-        "MAPPING": "2106",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Complete "
+        "ID": "G*M*OADC--****X",
+        "M": "2106",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch_Complete "
       },
       {
-        "SYMBOLID": "G*M*OAR---****X",
-        "MAPPING": "2107",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch Reinforced With Antitank Mines "
+        "ID": "G*M*OAR---****X",
+        "M": "2107",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Ditch Reinforced With Antitank Mines "
       },
       {
-        "SYMBOLID": "G*M*OAW---****X",
-        "MAPPING": "2108",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Wall"
+        "ID": "G*M*OAW---****X",
+        "M": "2108",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Antitank Obstacles_Antitank Wall"
       },
       {
-        "SYMBOLID": "G*M*OMC---****X",
-        "MAPPING": "2109",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Mines_Mine Cluster "
+        "ID": "G*M*OMC---****X",
+        "M": "2109",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Mines_Mine Cluster "
       },
       {
-        "SYMBOLID": "G*M*OFD---****X",
-        "MAPPING": "2110",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Dynamic Depiction"
+        "ID": "G*M*OFD---****X",
+        "M": "2110",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Dynamic Depiction"
       },
       {
-        "SYMBOLID": "G*M*OFG---****X",
-        "MAPPING": "2111",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Gap"
+        "ID": "G*M*OFG---****X",
+        "M": "2111",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Gap"
       },
       {
-        "SYMBOLID": "G*M*OFA---****X",
-        "MAPPING": "2112",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Minded Area"
+        "ID": "G*M*OFA---****X",
+        "M": "2112",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Minefields_Minded Area"
       },
       {
-        "SYMBOLID": "G*M*OEB---****X",
-        "MAPPING": "2113",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Block"
+        "ID": "G*M*OEB---****X",
+        "M": "2113",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Block"
       },
       {
-        "SYMBOLID": "G*M*OEF---****X",
-        "MAPPING": "2114",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_FiX"
+        "ID": "G*M*OEF---****X",
+        "M": "2114",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_FiX"
       },
       {
-        "SYMBOLID": "G*M*OET---****X",
-        "MAPPING": "2115",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Turn"
+        "ID": "G*M*OET---****X",
+        "M": "2115",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Turn"
       },
       {
-        "SYMBOLID": "G*M*OED---****X",
-        "MAPPING": "2116",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Disrupt "
+        "ID": "G*M*OED---****X",
+        "M": "2116",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Obstacle Effect_Disrupt "
       },
       {
-        "SYMBOLID": "G*M*OU----****X",
-        "MAPPING": "2117",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Unexploed Ordinance Area (UXO)"
+        "ID": "G*M*OU----****X",
+        "M": "2117",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Unexploed Ordinance Area (UXO)"
       },
       {
-        "SYMBOLID": "G*M*ORP---****X",
-        "MAPPING": "2118",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Planned "
+        "ID": "G*M*ORP---****X",
+        "M": "2118",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Planned "
       },
       {
-        "SYMBOLID": "G*M*ORS---****X",
-        "MAPPING": "2119",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 1 (Safe)"
+        "ID": "G*M*ORS---****X",
+        "M": "2119",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 1 (Safe)"
       },
       {
-        "SYMBOLID": "G*M*ORA---****X",
-        "MAPPING": "2120",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 2 (Armed-But Passable) "
+        "ID": "G*M*ORA---****X",
+        "M": "2120",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Explosives, State Of Readiness 2 (Armed-But Passable) "
       },
       {
-        "SYMBOLID": "G*M*ORC---****X",
-        "MAPPING": "2121",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Roadblock Complete (Executed)"
+        "ID": "G*M*ORC---****X",
+        "M": "2121",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Roadblocks, Craters, And Blown Bridges_Roadblock Complete (Executed)"
       },
       {
-        "SYMBOLID": "G*M*OT----****X",
-        "MAPPING": "2122",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Trip Wire"
+        "ID": "G*M*OT----****X",
+        "M": "2122",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Trip Wire"
       },
       {
-        "SYMBOLID": "G*M*OWU---****X",
-        "MAPPING": "2123",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle Unspecified "
+        "ID": "G*M*OWU---****X",
+        "M": "2123",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle Unspecified "
       },
       {
-        "SYMBOLID": "G*M*OWS---****X",
-        "MAPPING": "2124",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_ Single Fence "
+        "ID": "G*M*OWS---****X",
+        "M": "2124",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_ Single Fence "
       },
       {
-        "SYMBOLID": "G*M*OWD---****X",
-        "MAPPING": "2125",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Fence"
+        "ID": "G*M*OWD---****X",
+        "M": "2125",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Fence"
       },
       {
-        "SYMBOLID": "G*M*OWA---****X",
-        "MAPPING": "2126",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Apron Fence "
+        "ID": "G*M*OWA---****X",
+        "M": "2126",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Apron Fence "
       },
       {
-        "SYMBOLID": "G*M*OWL---****X",
-        "MAPPING": "2127",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Low Wire Fence "
+        "ID": "G*M*OWL---****X",
+        "M": "2127",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Low Wire Fence "
       },
       {
-        "SYMBOLID": "G*M*OWH---****X",
-        "MAPPING": "2128",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_High Wire Fence "
+        "ID": "G*M*OWH---****X",
+        "M": "2128",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_High Wire Fence "
       },
       {
-        "SYMBOLID": "G*M*OWCS--****X",
-        "MAPPING": "2129",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Single Concertina "
+        "ID": "G*M*OWCS--****X",
+        "M": "2129",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Single Concertina "
       },
       {
-        "SYMBOLID": "G*M*OWCD--****X",
-        "MAPPING": "2130",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Strand Concertina "
+        "ID": "G*M*OWCD--****X",
+        "M": "2130",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Double Strand Concertina "
       },
       {
-        "SYMBOLID": "G*M*OWCT--****X",
-        "MAPPING": "2131",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Triple Strand Concertina "
+        "ID": "G*M*OWCT--****X",
+        "M": "2131",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Wire Obsticle_Triple Strand Concertina "
       },
       {
-        "SYMBOLID": "G*M*OHO---****X",
-        "MAPPING": "2133",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacles_Aviation Overhead Wire "
+        "ID": "G*M*OHO---****X",
+        "M": "2133",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacles_Aviation Overhead Wire "
       },
       {
-        "SYMBOLID": "G*M*BDE---****X",
-        "MAPPING": "2134",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Easy"
+        "ID": "G*M*BDE---****X",
+        "M": "2134",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Easy"
       },
       {
-        "SYMBOLID": "G*M*BDD---****X",
-        "MAPPING": "2135",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Difficult "
+        "ID": "G*M*BDD---****X",
+        "M": "2135",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Difficult "
       },
       {
-        "SYMBOLID": "G*M*BDI---****X",
-        "MAPPING": "2136",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Impossible "
+        "ID": "G*M*BDI---****X",
+        "M": "2136",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Obstacle Bypass Difficulty_Bypass Impossible "
       },
       {
-        "SYMBOLID": "G*M*BCA---****X",
-        "MAPPING": "2137",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Assault Crossing Area"
+        "ID": "G*M*BCA---****X",
+        "M": "2137",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Assault Crossing Area"
       },
       {
-        "SYMBOLID": "G*M*BCB---****X",
-        "MAPPING": "2138",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Bridge Or Gap "
+        "ID": "G*M*BCB---****X",
+        "M": "2138",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Bridge Or Gap "
       },
       {
-        "SYMBOLID": "G*M*BCF---****X",
-        "MAPPING": "2139",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ferry"
+        "ID": "G*M*BCF---****X",
+        "M": "2139",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ferry"
       },
       {
-        "SYMBOLID": "G*M*BCE---****X",
-        "MAPPING": "2140",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Easy"
+        "ID": "G*M*BCE---****X",
+        "M": "2140",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Easy"
       },
       {
-        "SYMBOLID": "G*M*BCD---****X",
-        "MAPPING": "2141",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Difficult "
+        "ID": "G*M*BCD---****X",
+        "M": "2141",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Ford Difficult "
       },
       {
-        "SYMBOLID": "G*M*BCL---****X",
-        "MAPPING": "2142",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Lane "
+        "ID": "G*M*BCL---****X",
+        "M": "2142",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Lane "
       },
       {
-        "SYMBOLID": "G*M*BCR---****X",
-        "MAPPING": "2143",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Raft Site"
+        "ID": "G*M*BCR---****X",
+        "M": "2143",
+        "D": "Tactical Graphics_Mobility/Survivability_Obstacle Bypass_Crossing Site/Water Crossing_Raft Site"
       },
       {
-        "SYMBOLID": "G*M*SL----****X",
-        "MAPPING": "2144",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Surivability_Fortified Line "
+        "ID": "G*M*SL----****X",
+        "M": "2144",
+        "D": "Tactical Graphics_Mobility/Survivability_Surivability_Fortified Line "
       },
       {
-        "SYMBOLID": "G*M*SW----****X",
-        "MAPPING": "2145",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Surivability_Foxhole, Emplacement Or Weapon Site "
+        "ID": "G*M*SW----****X",
+        "M": "2145",
+        "D": "Tactical Graphics_Mobility/Survivability_Surivability_Foxhole, Emplacement Or Weapon Site "
       },
       {
-        "SYMBOLID": "G*M*SP----****X",
-        "MAPPING": "2146",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Surivability_Strong Point"
+        "ID": "G*M*SP----****X",
+        "M": "2146",
+        "D": "Tactical Graphics_Mobility/Survivability_Surivability_Strong Point"
       },
       {
-        "SYMBOLID": "G*M*NM----****X",
-        "MAPPING": "2147",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Minimum Safe Distrance Zones "
+        "ID": "G*M*NM----****X",
+        "M": "2147",
+        "D": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Minimum Safe Distrance Zones "
       },
       {
-        "SYMBOLID": "G*M*NR----****X",
-        "MAPPING": "2148",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Radio Active Area"
+        "ID": "G*M*NR----****X",
+        "M": "2148",
+        "D": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Radio Active Area"
       },
       {
-        "SYMBOLID": "G*M*NB----****X",
-        "MAPPING": "2149",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Biologically Contaminated Area"
+        "ID": "G*M*NB----****X",
+        "M": "2149",
+        "D": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Biologically Contaminated Area"
       },
       {
-        "SYMBOLID": "G*M*NC----****X",
-        "MAPPING": "2150",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Chemically Contaminated Area"
+        "ID": "G*M*NC----****X",
+        "M": "2150",
+        "D": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Chemically Contaminated Area"
       },
       {
-        "SYMBOLID": "G*M*NL----****X",
-        "MAPPING": "2151",
-        "DESCRIPTION": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Dose Rate Contour Lines "
+        "ID": "G*M*NL----****X",
+        "M": "2151",
+        "D": "Tactical Graphics_Mobility/Survivability_Nuclear, Biological And Chemical_Dose Rate Contour Lines "
       },
       {
-        "SYMBOLID": "G*F*LT----****X",
-        "MAPPING": "2152",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Linear Target "
+        "ID": "G*F*LT----****X",
+        "M": "2152",
+        "D": "Tactical Graphics_Fire Support_Lines_Linear Target "
       },
       {
-        "SYMBOLID": "G*F*LTS---****X",
-        "MAPPING": "2153",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Linear Smoke Target"
+        "ID": "G*F*LTS---****X",
+        "M": "2153",
+        "D": "Tactical Graphics_Fire Support_Lines_Linear Smoke Target"
       },
       {
-        "SYMBOLID": "G*F*LTF---****X",
-        "MAPPING": "2154",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Final Protective Fire (FPF)"
+        "ID": "G*F*LTF---****X",
+        "M": "2154",
+        "D": "Tactical Graphics_Fire Support_Lines_Final Protective Fire (FPF)"
       },
       {
-        "SYMBOLID": "G*F*LCF---****X",
-        "MAPPING": "2155",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Fire Support Coordination Line (FSCL) "
+        "ID": "G*F*LCF---****X",
+        "M": "2155",
+        "D": "Tactical Graphics_Fire Support_Lines_Fire Support Coordination Line (FSCL) "
       },
       {
-        "SYMBOLID": "G*F*LCC---****X",
-        "MAPPING": "2156",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Coordinated Fire Line (CFL) "
+        "ID": "G*F*LCC---****X",
+        "M": "2156",
+        "D": "Tactical Graphics_Fire Support_Lines_Coordinated Fire Line (CFL) "
       },
       {
-        "SYMBOLID": "G*F*LCN---****X",
-        "MAPPING": "2157",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_No-Fire Line (NFL) "
+        "ID": "G*F*LCN---****X",
+        "M": "2157",
+        "D": "Tactical Graphics_Fire Support_Lines_No-Fire Line (NFL) "
       },
       {
-        "SYMBOLID": "G*F*LCR---****X",
-        "MAPPING": "2158",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Restrictive Fire Line (RFL) "
+        "ID": "G*F*LCR---****X",
+        "M": "2158",
+        "D": "Tactical Graphics_Fire Support_Lines_Restrictive Fire Line (RFL) "
       },
       {
-        "SYMBOLID": "G*F*LCM---****X",
-        "MAPPING": "2159",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Lines_Munition Flight Path (MFP) "
+        "ID": "G*F*LCM---****X",
+        "M": "2159",
+        "D": "Tactical Graphics_Fire Support_Lines_Munition Flight Path (MFP) "
       },
       {
-        "SYMBOLID": "G*F*AT----****X",
-        "MAPPING": "2160",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Area Target "
+        "ID": "G*F*AT----****X",
+        "M": "2160",
+        "D": "Tactical Graphics_Fire Support_Areas_Area Target "
       },
       {
-        "SYMBOLID": "G*F*ATR---****X",
-        "MAPPING": "2161",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Area Target_Rectangular "
+        "ID": "G*F*ATR---****X",
+        "M": "2161",
+        "D": "Tactical Graphics_Fire Support_Areas_Area Target_Rectangular "
       },
       {
-        "SYMBOLID": "G*F*ATC---****X",
-        "MAPPING": "2162",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Area Target_Circular"
+        "ID": "G*F*ATC---****X",
+        "M": "2162",
+        "D": "Tactical Graphics_Fire Support_Areas_Area Target_Circular"
       },
       {
-        "SYMBOLID": "G*F*ATG---****X",
-        "MAPPING": "2163",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Series Or Group Of Targets "
+        "ID": "G*F*ATG---****X",
+        "M": "2163",
+        "D": "Tactical Graphics_Fire Support_Areas_Series Or Group Of Targets "
       },
       {
-        "SYMBOLID": "G*F*ATS---****X",
-        "MAPPING": "2164",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Smoke "
+        "ID": "G*F*ATS---****X",
+        "M": "2164",
+        "D": "Tactical Graphics_Fire Support_Areas_Smoke "
       },
       {
-        "SYMBOLID": "G*F*ATB---****X",
-        "MAPPING": "2165",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_Bomb Area"
+        "ID": "G*F*ATB---****X",
+        "M": "2165",
+        "D": "Tactical Graphics_Fire Support_Areas_Bomb Area"
       },
       {
-        "SYMBOLID": "G*F*ACSI--****X",
-        "MAPPING": "2166",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FSA_Irregular"
+        "ID": "G*F*ACSI--****X",
+        "M": "2166",
+        "D": "Tactical Graphics_Fire Support_Areas_FSA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACSR--****X",
-        "MAPPING": "2167",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FSA_Rectangular"
+        "ID": "G*F*ACSR--****X",
+        "M": "2167",
+        "D": "Tactical Graphics_Fire Support_Areas_FSA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACSC--****X",
-        "MAPPING": "2168",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FSA_Circular"
+        "ID": "G*F*ACSC--****X",
+        "M": "2168",
+        "D": "Tactical Graphics_Fire Support_Areas_FSA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACAI--****X",
-        "MAPPING": "2169",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_ACA_Irregular"
+        "ID": "G*F*ACAI--****X",
+        "M": "2169",
+        "D": "Tactical Graphics_Fire Support_Areas_ACA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACAR--****X",
-        "MAPPING": "2170",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_ACA_Rectangular"
+        "ID": "G*F*ACAR--****X",
+        "M": "2170",
+        "D": "Tactical Graphics_Fire Support_Areas_ACA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACAC--****X",
-        "MAPPING": "2171",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_ACA_Circular"
+        "ID": "G*F*ACAC--****X",
+        "M": "2171",
+        "D": "Tactical Graphics_Fire Support_Areas_ACA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACFI--****X",
-        "MAPPING": "2172",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FFA_Irregular"
+        "ID": "G*F*ACFI--****X",
+        "M": "2172",
+        "D": "Tactical Graphics_Fire Support_Areas_FFA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACFR--****X",
-        "MAPPING": "2173",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FFA_Rectangular"
+        "ID": "G*F*ACFR--****X",
+        "M": "2173",
+        "D": "Tactical Graphics_Fire Support_Areas_FFA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACFC--****X",
-        "MAPPING": "2174",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_FFA_Circular"
+        "ID": "G*F*ACFC--****X",
+        "M": "2174",
+        "D": "Tactical Graphics_Fire Support_Areas_FFA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACNI--****X",
-        "MAPPING": "2175",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_NFA_Irregular"
+        "ID": "G*F*ACNI--****X",
+        "M": "2175",
+        "D": "Tactical Graphics_Fire Support_Areas_NFA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACNR--****X",
-        "MAPPING": "2176",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_NFA_Rectangular"
+        "ID": "G*F*ACNR--****X",
+        "M": "2176",
+        "D": "Tactical Graphics_Fire Support_Areas_NFA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACNC--****X",
-        "MAPPING": "2177",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_NFA_Circular"
+        "ID": "G*F*ACNC--****X",
+        "M": "2177",
+        "D": "Tactical Graphics_Fire Support_Areas_NFA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACRI--****X",
-        "MAPPING": "2178",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_RFA_Irregular"
+        "ID": "G*F*ACRI--****X",
+        "M": "2178",
+        "D": "Tactical Graphics_Fire Support_Areas_RFA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACRR--****X",
-        "MAPPING": "2179",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_RFA_Rectangular"
+        "ID": "G*F*ACRR--****X",
+        "M": "2179",
+        "D": "Tactical Graphics_Fire Support_Areas_RFA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACRC--****X",
-        "MAPPING": "2180",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_RFA_Circular"
+        "ID": "G*F*ACRC--****X",
+        "M": "2180",
+        "D": "Tactical Graphics_Fire Support_Areas_RFA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACPR--****X",
-        "MAPPING": "2181",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_PAA_Rectangular "
+        "ID": "G*F*ACPR--****X",
+        "M": "2181",
+        "D": "Tactical Graphics_Fire Support_Areas_PAA_Rectangular "
       },
       {
-        "SYMBOLID": "G*F*ACPC--****X",
-        "MAPPING": "2182",
-        "DESCRIPTION": "Tactical Graphics_Fire Support_Areas_PAA_Circular "
+        "ID": "G*F*ACPC--****X",
+        "M": "2182",
+        "D": "Tactical Graphics_Fire Support_Areas_PAA_Circular "
       },
       {
-        "SYMBOLID": "G*F*AZII--****X",
-        "MAPPING": "2183",
-        "DESCRIPTION": "ATI_Irregular"
+        "ID": "G*F*AZII--****X",
+        "M": "2183",
+        "D": "ATI_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZIR--****X",
-        "MAPPING": "2184",
-        "DESCRIPTION": "ATI_Rectangular"
+        "ID": "G*F*AZIR--****X",
+        "M": "2184",
+        "D": "ATI_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZIC--****X",
-        "MAPPING": "2185",
-        "DESCRIPTION": "ATI_Circular"
+        "ID": "G*F*AZIC--****X",
+        "M": "2185",
+        "D": "ATI_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZXI--****X",
-        "MAPPING": "2186",
-        "DESCRIPTION": "CFFZ_Irregular"
+        "ID": "G*F*AZXI--****X",
+        "M": "2186",
+        "D": "CFFZ_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZXR--****X",
-        "MAPPING": "2187",
-        "DESCRIPTION": "CFFZ_Rectangular"
+        "ID": "G*F*AZXR--****X",
+        "M": "2187",
+        "D": "CFFZ_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZXC--****X",
-        "MAPPING": "2188",
-        "DESCRIPTION": "CFFZ_Circular"
+        "ID": "G*F*AZXC--****X",
+        "M": "2188",
+        "D": "CFFZ_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZSI--****X",
-        "MAPPING": "2189",
-        "DESCRIPTION": "Sensor_Irregular"
+        "ID": "G*F*AZSI--****X",
+        "M": "2189",
+        "D": "Sensor_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACEI--****X",
-        "MAPPING": "2189",
-        "DESCRIPTION": "Sensor_Irregular"
+        "ID": "G*F*ACEI--****X",
+        "M": "2189",
+        "D": "Sensor_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZSR--****X",
-        "MAPPING": "2190",
-        "DESCRIPTION": "Sensor_Rectangular"
+        "ID": "G*F*AZSR--****X",
+        "M": "2190",
+        "D": "Sensor_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACER--****X",
-        "MAPPING": "2190",
-        "DESCRIPTION": "Sensor_Rectangular"
+        "ID": "G*F*ACER--****X",
+        "M": "2190",
+        "D": "Sensor_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZSC--****X",
-        "MAPPING": "2191",
-        "DESCRIPTION": "Sensor_Circular"
+        "ID": "G*F*AZSC--****X",
+        "M": "2191",
+        "D": "Sensor_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACEC--****X",
-        "MAPPING": "2191",
-        "DESCRIPTION": "Sensor_Circular"
+        "ID": "G*F*ACEC--****X",
+        "M": "2191",
+        "D": "Sensor_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZCI--****X",
-        "MAPPING": "2192",
-        "DESCRIPTION": "Censor_Irregular"
+        "ID": "G*F*AZCI--****X",
+        "M": "2192",
+        "D": "Censor_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZCR--****X",
-        "MAPPING": "2193",
-        "DESCRIPTION": "Censor_Rectangular"
+        "ID": "G*F*AZCR--****X",
+        "M": "2193",
+        "D": "Censor_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZCC--****X",
-        "MAPPING": "2194",
-        "DESCRIPTION": "Censor_Circular"
+        "ID": "G*F*AZCC--****X",
+        "M": "2194",
+        "D": "Censor_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZDI--****X",
-        "MAPPING": "2195",
-        "DESCRIPTION": "DA_Irregular"
+        "ID": "G*F*AZDI--****X",
+        "M": "2195",
+        "D": "DA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACDI--****X",
-        "MAPPING": "2195",
-        "DESCRIPTION": "DA_Irregular"
+        "ID": "G*F*ACDI--****X",
+        "M": "2195",
+        "D": "DA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZDR--****X",
-        "MAPPING": "2196",
-        "DESCRIPTION": "DA_Rectangular"
+        "ID": "G*F*AZDR--****X",
+        "M": "2196",
+        "D": "DA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACDR--****X",
-        "MAPPING": "2196",
-        "DESCRIPTION": "DA_Rectangular"
+        "ID": "G*F*ACDR--****X",
+        "M": "2196",
+        "D": "DA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZDC--****X",
-        "MAPPING": "2197",
-        "DESCRIPTION": "DA_Circular"
+        "ID": "G*F*AZDC--****X",
+        "M": "2197",
+        "D": "DA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACDC--****X",
-        "MAPPING": "2197",
-        "DESCRIPTION": "DA_Circular"
+        "ID": "G*F*ACDC--****X",
+        "M": "2197",
+        "D": "DA_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZFI--****X",
-        "MAPPING": "2217",
-        "DESCRIPTION": "CFZ_Irregular"
+        "ID": "G*F*AZFI--****X",
+        "M": "2217",
+        "D": "CFZ_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZFR--****X",
-        "MAPPING": "2218",
-        "DESCRIPTION": "CFZ_Rectangular"
+        "ID": "G*F*AZFR--****X",
+        "M": "2218",
+        "D": "CFZ_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZFC--****X",
-        "MAPPING": "1052",
-        "DESCRIPTION": "CFZ_Circular"
+        "ID": "G*F*AZFC--****X",
+        "M": "1052",
+        "D": "CFZ_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZZI--****X",
-        "MAPPING": "2198",
-        "DESCRIPTION": "ZOR_Irregular"
+        "ID": "G*F*AZZI--****X",
+        "M": "2198",
+        "D": "ZOR_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACZI--****X",
-        "MAPPING": "2198",
-        "DESCRIPTION": "ZOR_Irregular"
+        "ID": "G*F*ACZI--****X",
+        "M": "2198",
+        "D": "ZOR_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZZR--****X",
-        "MAPPING": "2199",
-        "DESCRIPTION": "ZOR_Rectangular"
+        "ID": "G*F*AZZR--****X",
+        "M": "2199",
+        "D": "ZOR_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACZR--****X",
-        "MAPPING": "2199",
-        "DESCRIPTION": "ZOR_Rectangular"
+        "ID": "G*F*ACZR--****X",
+        "M": "2199",
+        "D": "ZOR_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZZC--****X",
-        "MAPPING": "2200",
-        "DESCRIPTION": "ZOR_Circular"
+        "ID": "G*F*AZZC--****X",
+        "M": "2200",
+        "D": "ZOR_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACZC--****X",
-        "MAPPING": "2200",
-        "DESCRIPTION": "ZOR_Circular"
+        "ID": "G*F*ACZC--****X",
+        "M": "2200",
+        "D": "ZOR_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZBI--****X",
-        "MAPPING": "2201",
-        "DESCRIPTION": "TBA_Irregular"
+        "ID": "G*F*AZBI--****X",
+        "M": "2201",
+        "D": "TBA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACBI--****X",
-        "MAPPING": "2201",
-        "DESCRIPTION": "TBA_Irregular"
+        "ID": "G*F*ACBI--****X",
+        "M": "2201",
+        "D": "TBA_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZBR--****X",
-        "MAPPING": "2202",
-        "DESCRIPTION": "TBA_Rectangular"
+        "ID": "G*F*AZBR--****X",
+        "M": "2202",
+        "D": "TBA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACBR--****X",
-        "MAPPING": "2202",
-        "DESCRIPTION": "TBA_Rectangular"
+        "ID": "G*F*ACBR--****X",
+        "M": "2202",
+        "D": "TBA_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZBC--****X",
-        "MAPPING": "2203",
-        "DESCRIPTION": "TBA_Circular"
+        "ID": "G*F*AZBC--****X",
+        "M": "2203",
+        "D": "TBA_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACBC--****X",
-        "MAPPING": "2203",
-        "DESCRIPTION": "TBA_Circular"
+        "ID": "G*F*ACBC--****X",
+        "M": "2203",
+        "D": "TBA_Circular"
       },
       {
-        "SYMBOLID": "G*F*AZVI--****X",
-        "MAPPING": "2204",
-        "DESCRIPTION": "TVAR_Irregular"
+        "ID": "G*F*AZVI--****X",
+        "M": "2204",
+        "D": "TVAR_Irregular"
       },
       {
-        "SYMBOLID": "G*F*ACVI--****X",
-        "MAPPING": "2204",
-        "DESCRIPTION": "TVAR_Irregular"
+        "ID": "G*F*ACVI--****X",
+        "M": "2204",
+        "D": "TVAR_Irregular"
       },
       {
-        "SYMBOLID": "G*F*AZVR--****X",
-        "MAPPING": "2205",
-        "DESCRIPTION": "TVAR_Rectangular"
+        "ID": "G*F*AZVR--****X",
+        "M": "2205",
+        "D": "TVAR_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*ACVR--****X",
-        "MAPPING": "2205",
-        "DESCRIPTION": "TVAR_Rectangular"
+        "ID": "G*F*ACVR--****X",
+        "M": "2205",
+        "D": "TVAR_Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AZVC--****X",
-        "MAPPING": "2206",
-        "DESCRIPTION": "TVAR_Circular"
+        "ID": "G*F*AZVC--****X",
+        "M": "2206",
+        "D": "TVAR_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACVC--****X",
-        "MAPPING": "2206",
-        "DESCRIPTION": "TVAR_Circular"
+        "ID": "G*F*ACVC--****X",
+        "M": "2206",
+        "D": "TVAR_Circular"
       },
       {
-        "SYMBOLID": "G*F*ACT---****X",
-        "MAPPING": "2210",
-        "DESCRIPTION": "TGMF"
+        "ID": "G*F*ACT---****X",
+        "M": "2210",
+        "D": "TGMF"
       },
       {
-        "SYMBOLID": "G*F*AXC---****X",
-        "MAPPING": "2207",
-        "DESCRIPTION": "Range_Fan"
+        "ID": "G*F*AXC---****X",
+        "M": "2207",
+        "D": "Range_Fan"
       },
       {
-        "SYMBOLID": "G*F*AXS---****X",
-        "MAPPING": "2208",
-        "DESCRIPTION": "Sector_Range_Fan"
+        "ID": "G*F*AXS---****X",
+        "M": "2208",
+        "D": "Sector_Range_Fan"
       },
       {
-        "SYMBOLID": "G*F*AKBC--****X",
-        "MAPPING": "2219",
-        "DESCRIPTION": "BKB Circular"
+        "ID": "G*F*AKBC--****X",
+        "M": "2219",
+        "D": "BKB Circular"
       },
       {
-        "SYMBOLID": "G*F*AKBI--****X",
-        "MAPPING": "2220",
-        "DESCRIPTION": "BKB Irregular"
+        "ID": "G*F*AKBI--****X",
+        "M": "2220",
+        "D": "BKB Irregular"
       },
       {
-        "SYMBOLID": "G*F*AKBR--****X",
-        "MAPPING": "2221",
-        "DESCRIPTION": "BKB Rectangular"
+        "ID": "G*F*AKBR--****X",
+        "M": "2221",
+        "D": "BKB Rectangular"
       },
       {
-        "SYMBOLID": "G*F*AKPC--****X",
-        "MAPPING": "2222",
-        "DESCRIPTION": "PKB Circular"
+        "ID": "G*F*AKPC--****X",
+        "M": "2222",
+        "D": "PKB Circular"
       },
       {
-        "SYMBOLID": "G*F*AKPI--****X",
-        "MAPPING": "2223",
-        "DESCRIPTION": "PKB Irregular"
+        "ID": "G*F*AKPI--****X",
+        "M": "2223",
+        "D": "PKB Irregular"
       },
       {
-        "SYMBOLID": "G*F*AKPR--****X",
-        "MAPPING": "2224",
-        "DESCRIPTION": "PKB Rectangular"
+        "ID": "G*F*AKPR--****X",
+        "M": "2224",
+        "D": "PKB Rectangular"
       },
       {
-        "SYMBOLID": "G*S*LCM---****X",
-        "MAPPING": "2226",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Convoys_Moving Convoy"
+        "ID": "G*S*LCM---****X",
+        "M": "2226",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Convoys_Moving Convoy"
       },
       {
-        "SYMBOLID": "G*S*LCH---****X",
-        "MAPPING": "2227",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Convoys_Halted Convoy"
+        "ID": "G*S*LCH---****X",
+        "M": "2227",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Convoys_Halted Convoy"
       },
       {
-        "SYMBOLID": "G*S*LRM---****X",
-        "MAPPING": "2228",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Main Supply Route"
+        "ID": "G*S*LRM---****X",
+        "M": "2228",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Main Supply Route"
       },
       {
-        "SYMBOLID": "G*S*LRA---****X",
-        "MAPPING": "2229",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternate Supply Route "
+        "ID": "G*S*LRA---****X",
+        "M": "2229",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternate Supply Route "
       },
       {
-        "SYMBOLID": "G*S*LRO---****X",
-        "MAPPING": "2230",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_One-Way Traffic"
+        "ID": "G*S*LRO---****X",
+        "M": "2230",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_One-Way Traffic"
       },
       {
-        "SYMBOLID": "G*S*LRT---****X",
-        "MAPPING": "2231",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternating Traffic "
+        "ID": "G*S*LRT---****X",
+        "M": "2231",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Alternating Traffic "
       },
       {
-        "SYMBOLID": "G*S*LRW---****X",
-        "MAPPING": "2232",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Two-Way Traffic "
+        "ID": "G*S*LRW---****X",
+        "M": "2232",
+        "D": "Tactical Graphics_Combat Service Support_Lines_Supply Routes_Two-Way Traffic "
       },
       {
-        "SYMBOLID": "G*S*AD----****X",
-        "MAPPING": "2233",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Detainee Holding Area"
+        "ID": "G*S*AD----****X",
+        "M": "2233",
+        "D": "Tactical Graphics_Combat Service Support_Area_Detainee Holding Area"
       },
       {
-        "SYMBOLID": "G*S*AE----****X",
-        "MAPPING": "2234",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Enemy Prisoner Of War (EPW) Holding Area "
+        "ID": "G*S*AE----****X",
+        "M": "2234",
+        "D": "Tactical Graphics_Combat Service Support_Area_Enemy Prisoner Of War (EPW) Holding Area "
       },
       {
-        "SYMBOLID": "G*S*AR----****X",
-        "MAPPING": "2235",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Forward Arming And Refueling Area (FARP) "
+        "ID": "G*S*AR----****X",
+        "M": "2235",
+        "D": "Tactical Graphics_Combat Service Support_Area_Forward Arming And Refueling Area (FARP) "
       },
       {
-        "SYMBOLID": "G*S*AH----****X",
-        "MAPPING": "2236",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Refugee Holding Area"
+        "ID": "G*S*AH----****X",
+        "M": "2236",
+        "D": "Tactical Graphics_Combat Service Support_Area_Refugee Holding Area"
       },
       {
-        "SYMBOLID": "G*S*ASB---****X",
-        "MAPPING": "2237",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Support Areas_Brigade (BSA)"
+        "ID": "G*S*ASB---****X",
+        "M": "2237",
+        "D": "Tactical Graphics_Combat Service Support_Area_Support Areas_Brigade (BSA)"
       },
       {
-        "SYMBOLID": "G*S*ASD---****X",
-        "MAPPING": "2238",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Support Areas_Division (DSA)"
+        "ID": "G*S*ASD---****X",
+        "M": "2238",
+        "D": "Tactical Graphics_Combat Service Support_Area_Support Areas_Division (DSA)"
       },
       {
-        "SYMBOLID": "G*S*ASR---****X",
-        "MAPPING": "2239",
-        "DESCRIPTION": "Tactical Graphics_Combat Service Support_Area_Support Areas_Regimental (RSA)"
+        "ID": "G*S*ASR---****X",
+        "M": "2239",
+        "D": "Tactical Graphics_Combat Service Support_Area_Support Areas_Regimental (RSA)"
       },
       {
-        "SYMBOLID": "G*O*HN----****X",
-        "MAPPING": "2240",
-        "DESCRIPTION": "Tactical Graphics_Other_Hazard_Navigational"
+        "ID": "G*O*HN----****X",
+        "M": "2240",
+        "D": "Tactical Graphics_Other_Hazard_Navigational"
       },
       {
-        "SYMBOLID": "G*O*B-----****X",
-        "MAPPING": "2241",
-        "DESCRIPTION": "Tactical Graphics_Other_Bearing Line"
+        "ID": "G*O*B-----****X",
+        "M": "2241",
+        "D": "Tactical Graphics_Other_Bearing Line"
       },
       {
-        "SYMBOLID": "G*O*BE----****X",
-        "MAPPING": "2242",
-        "DESCRIPTION": "Tactical Graphics_Other_Bearing Line_Electronic"
+        "ID": "G*O*BE----****X",
+        "M": "2242",
+        "D": "Tactical Graphics_Other_Bearing Line_Electronic"
       },
       {
-        "SYMBOLID": "G*O*BA----****X",
-        "MAPPING": "2243",
-        "DESCRIPTION": "Tactical Graphics_Other_Bearing Line_Acoustic"
+        "ID": "G*O*BA----****X",
+        "M": "2243",
+        "D": "Tactical Graphics_Other_Bearing Line_Acoustic"
       },
       {
-        "SYMBOLID": "G*O*BT----****X",
-        "MAPPING": "2244",
-        "DESCRIPTION": "Tactical Graphics_Other_Bearing Line_Torpedo"
+        "ID": "G*O*BT----****X",
+        "M": "2244",
+        "D": "Tactical Graphics_Other_Bearing Line_Torpedo"
       },
       {
-        "SYMBOLID": "G*O*BO----****X",
-        "MAPPING": "2245",
-        "DESCRIPTION": "Tactical Graphics_Other_Bearing Line_Electro-Optical Intercept"
+        "ID": "G*O*BO----****X",
+        "M": "2245",
+        "D": "Tactical Graphics_Other_Bearing Line_Electro-Optical Intercept"
       },
       {
-        "SYMBOLID": "WA-DPFC----L---",
-        "MAPPING": "3000",
-        "DESCRIPTION": "Cold Front"
+        "ID": "WA-DPFC----L---",
+        "M": "3000",
+        "D": "Cold Front"
       },
       {
-        "SYMBOLID": "WA-DPFCU---L---",
-        "MAPPING": "3001",
-        "DESCRIPTION": "Upper Cold Front"
+        "ID": "WA-DPFCU---L---",
+        "M": "3001",
+        "D": "Upper Cold Front"
       },
       {
-        "SYMBOLID": "WA-DPFC-FG-L---",
-        "MAPPING": "3002",
-        "DESCRIPTION": "Cold Frontogenisis"
+        "ID": "WA-DPFC-FG-L---",
+        "M": "3002",
+        "D": "Cold Frontogenisis"
       },
       {
-        "SYMBOLID": "WA-DPFC-FY-L---",
-        "MAPPING": "3003",
-        "DESCRIPTION": "Cold Frontolysis"
+        "ID": "WA-DPFC-FY-L---",
+        "M": "3003",
+        "D": "Cold Frontolysis"
       },
       {
-        "SYMBOLID": "WA-DPFW----L---",
-        "MAPPING": "3004",
-        "DESCRIPTION": "Warm Front"
+        "ID": "WA-DPFW----L---",
+        "M": "3004",
+        "D": "Warm Front"
       },
       {
-        "SYMBOLID": "WA-DPFWU---L---",
-        "MAPPING": "3005",
-        "DESCRIPTION": "Upper Warm Front "
+        "ID": "WA-DPFWU---L---",
+        "M": "3005",
+        "D": "Upper Warm Front "
       },
       {
-        "SYMBOLID": "WA-DPFW-FG-L---",
-        "MAPPING": "3006",
-        "DESCRIPTION": "Warm Frontogenesis "
+        "ID": "WA-DPFW-FG-L---",
+        "M": "3006",
+        "D": "Warm Frontogenesis "
       },
       {
-        "SYMBOLID": "WA-DPFW-FY-L---",
-        "MAPPING": "3007",
-        "DESCRIPTION": "Warm Frontolysis "
+        "ID": "WA-DPFW-FY-L---",
+        "M": "3007",
+        "D": "Warm Frontolysis "
       },
       {
-        "SYMBOLID": "WA-DPFO----L---",
-        "MAPPING": "3008",
-        "DESCRIPTION": "Occluded Front "
+        "ID": "WA-DPFO----L---",
+        "M": "3008",
+        "D": "Occluded Front "
       },
       {
-        "SYMBOLID": "WA-DPFOU---L---",
-        "MAPPING": "3009",
-        "DESCRIPTION": "Upper Occluded Front "
+        "ID": "WA-DPFOU---L---",
+        "M": "3009",
+        "D": "Upper Occluded Front "
       },
       {
-        "SYMBOLID": "WA-DPFO-FY-L---",
-        "MAPPING": "3010",
-        "DESCRIPTION": "Occluded Frontolysis "
+        "ID": "WA-DPFO-FY-L---",
+        "M": "3010",
+        "D": "Occluded Frontolysis "
       },
       {
-        "SYMBOLID": "WA-DPFS----L---",
-        "MAPPING": "3011",
-        "DESCRIPTION": "Stationary Front"
+        "ID": "WA-DPFS----L---",
+        "M": "3011",
+        "D": "Stationary Front"
       },
       {
-        "SYMBOLID": "WA-DPFSU---L---",
-        "MAPPING": "3012",
-        "DESCRIPTION": "Upper Stationary Front"
+        "ID": "WA-DPFSU---L---",
+        "M": "3012",
+        "D": "Upper Stationary Front"
       },
       {
-        "SYMBOLID": "WA-DPFS-FG-L---",
-        "MAPPING": "3013",
-        "DESCRIPTION": "Stationary Frontogenesis"
+        "ID": "WA-DPFS-FG-L---",
+        "M": "3013",
+        "D": "Stationary Frontogenesis"
       },
       {
-        "SYMBOLID": "WA-DPFS-FY-L---",
-        "MAPPING": "3014",
-        "DESCRIPTION": "Stationary Frontolysis"
+        "ID": "WA-DPFS-FY-L---",
+        "M": "3014",
+        "D": "Stationary Frontolysis"
       },
       {
-        "SYMBOLID": "WA-DPXT----L---",
-        "MAPPING": "3015",
-        "DESCRIPTION": "Trough Axis"
+        "ID": "WA-DPXT----L---",
+        "M": "3015",
+        "D": "Trough Axis"
       },
       {
-        "SYMBOLID": "WA-DPXR----L---",
-        "MAPPING": "3016",
-        "DESCRIPTION": "Ridge Line "
+        "ID": "WA-DPXR----L---",
+        "M": "3016",
+        "D": "Ridge Line "
       },
       {
-        "SYMBOLID": "WA-DPXSQ---L---",
-        "MAPPING": "3017",
-        "DESCRIPTION": "Squall Line "
+        "ID": "WA-DPXSQ---L---",
+        "M": "3017",
+        "D": "Squall Line "
       },
       {
-        "SYMBOLID": "WA-DPXIL---L---",
-        "MAPPING": "3018",
-        "DESCRIPTION": "Instability Line "
+        "ID": "WA-DPXIL---L---",
+        "M": "3018",
+        "D": "Instability Line "
       },
       {
-        "SYMBOLID": "WA-DPXSH---L---",
-        "MAPPING": "3019",
-        "DESCRIPTION": "Shear Line "
+        "ID": "WA-DPXSH---L---",
+        "M": "3019",
+        "D": "Shear Line "
       },
       {
-        "SYMBOLID": "WA-DPXITCZ-L---",
-        "MAPPING": "3020",
-        "DESCRIPTION": "Inter-Tropical Convergance Zone "
+        "ID": "WA-DPXITCZ-L---",
+        "M": "3020",
+        "D": "Inter-Tropical Convergance Zone "
       },
       {
-        "SYMBOLID": "WA-DPXCV---L---",
-        "MAPPING": "3021",
-        "DESCRIPTION": "Convergance Line "
+        "ID": "WA-DPXCV---L---",
+        "M": "3021",
+        "D": "Convergance Line "
       },
       {
-        "SYMBOLID": "WA-DPXITD--L---",
-        "MAPPING": "3022",
-        "DESCRIPTION": "Inter-Tropical Discontinuity "
+        "ID": "WA-DPXITD--L---",
+        "M": "3022",
+        "D": "Inter-Tropical Discontinuity "
       },
       {
-        "SYMBOLID": "WAS-WP----P----",
-        "MAPPING": "3023",
-        "DESCRIPTION": "Wind Plot"
+        "ID": "WAS-WP----P----",
+        "M": "3023",
+        "D": "Wind Plot"
       },
       {
-        "SYMBOLID": "WA-DWJ-----L---",
-        "MAPPING": "3030",
-        "DESCRIPTION": "Jet Stream Line"
+        "ID": "WA-DWJ-----L---",
+        "M": "3030",
+        "D": "Jet Stream Line"
       },
       {
-        "SYMBOLID": "WA-DWS-----L---",
-        "MAPPING": "3031",
-        "DESCRIPTION": "Stream Line"
+        "ID": "WA-DWS-----L---",
+        "M": "3031",
+        "D": "Stream Line"
       },
       {
-        "SYMBOLID": "WA-DWSTSWA--A--",
-        "MAPPING": "3032",
-        "DESCRIPTION": "Tropical Storm Wind Areas"
+        "ID": "WA-DWSTSWA--A--",
+        "M": "3032",
+        "D": "Tropical Storm Wind Areas"
       },
       {
-        "SYMBOLID": "WA-DBAIF----A--",
-        "MAPPING": "3034",
-        "DESCRIPTION": "IFR"
+        "ID": "WA-DBAIF----A--",
+        "M": "3034",
+        "D": "IFR"
       },
       {
-        "SYMBOLID": "WA-DBAMV----A--",
-        "MAPPING": "3035",
-        "DESCRIPTION": "MVFR "
+        "ID": "WA-DBAMV----A--",
+        "M": "3035",
+        "D": "MVFR "
       },
       {
-        "SYMBOLID": "WA-DBATB----A--",
-        "MAPPING": "3036",
-        "DESCRIPTION": "Weather Turbulence"
+        "ID": "WA-DBATB----A--",
+        "M": "3036",
+        "D": "Weather Turbulence"
       },
       {
-        "SYMBOLID": "WA-DBAI-----A--",
-        "MAPPING": "3037",
-        "DESCRIPTION": "Weather Icing"
+        "ID": "WA-DBAI-----A--",
+        "M": "3037",
+        "D": "Weather Icing"
       },
       {
-        "SYMBOLID": "WA-DBALPNC--A--",
-        "MAPPING": "3038",
-        "DESCRIPTION": "Precipitation Non-Convective "
+        "ID": "WA-DBALPNC--A--",
+        "M": "3038",
+        "D": "Precipitation Non-Convective "
       },
       {
-        "SYMBOLID": "WA-DBALPC---A--",
-        "MAPPING": "3039",
-        "DESCRIPTION": "Precipitation Convective"
+        "ID": "WA-DBALPC---A--",
+        "M": "3039",
+        "D": "Precipitation Convective"
       },
       {
-        "SYMBOLID": "WA-DBAFP----A--",
-        "MAPPING": "3040",
-        "DESCRIPTION": "Frozen Precipitation"
+        "ID": "WA-DBAFP----A--",
+        "M": "3040",
+        "D": "Frozen Precipitation"
       },
       {
-        "SYMBOLID": "WA-DBAT-----A--",
-        "MAPPING": "3041",
-        "DESCRIPTION": "Weather Thunderstorm "
+        "ID": "WA-DBAT-----A--",
+        "M": "3041",
+        "D": "Weather Thunderstorm "
       },
       {
-        "SYMBOLID": "WA-DBAFG----A--",
-        "MAPPING": "3042",
-        "DESCRIPTION": "Weather Fog"
+        "ID": "WA-DBAFG----A--",
+        "M": "3042",
+        "D": "Weather Fog"
       },
       {
-        "SYMBOLID": "WA-DBAD-----A--",
-        "MAPPING": "3043",
-        "DESCRIPTION": "Weather Sand"
+        "ID": "WA-DBAD-----A--",
+        "M": "3043",
+        "D": "Weather Sand"
       },
       {
-        "SYMBOLID": "WA-DBAFF----A--",
-        "MAPPING": "3044",
-        "DESCRIPTION": "Weather Freeform "
+        "ID": "WA-DBAFF----A--",
+        "M": "3044",
+        "D": "Weather Freeform "
       },
       {
-        "SYMBOLID": "WA-DIPIB---L---",
-        "MAPPING": "3045",
-        "DESCRIPTION": "Isobar Surface"
+        "ID": "WA-DIPIB---L---",
+        "M": "3045",
+        "D": "Isobar Surface"
       },
       {
-        "SYMBOLID": "WA-DIPCO---L---",
-        "MAPPING": "3046",
-        "DESCRIPTION": "Upper Air"
+        "ID": "WA-DIPCO---L---",
+        "M": "3046",
+        "D": "Upper Air"
       },
       {
-        "SYMBOLID": "WA-DIPIS---L---",
-        "MAPPING": "3047",
-        "DESCRIPTION": "Isotherm "
+        "ID": "WA-DIPIS---L---",
+        "M": "3047",
+        "D": "Isotherm "
       },
       {
-        "SYMBOLID": "WA-DIPIT---L---",
-        "MAPPING": "3048",
-        "DESCRIPTION": "Isotach"
+        "ID": "WA-DIPIT---L---",
+        "M": "3048",
+        "D": "Isotach"
       },
       {
-        "SYMBOLID": "WA-DIPID---L---",
-        "MAPPING": "3049",
-        "DESCRIPTION": "Isodrosotherm"
+        "ID": "WA-DIPID---L---",
+        "M": "3049",
+        "D": "Isodrosotherm"
       },
       {
-        "SYMBOLID": "WA-DIPTH---L---",
-        "MAPPING": "3050",
-        "DESCRIPTION": "Isopleths "
+        "ID": "WA-DIPTH---L---",
+        "M": "3050",
+        "D": "Isopleths "
       },
       {
-        "SYMBOLID": "WA-DIPFF---L---",
-        "MAPPING": "3051",
-        "DESCRIPTION": "Operator Freeform "
+        "ID": "WA-DIPFF---L---",
+        "M": "3051",
+        "D": "Operator Freeform "
       },
       {
-        "SYMBOLID": "WO-DILOV---L---",
-        "MAPPING": "3052",
-        "DESCRIPTION": "Limit of Visual Observation"
+        "ID": "WO-DILOV---L---",
+        "M": "3052",
+        "D": "Limit of Visual Observation"
       },
       {
-        "SYMBOLID": "WO-DILUC---L---",
-        "MAPPING": "3053",
-        "DESCRIPTION": "Limit of Undercast"
+        "ID": "WO-DILUC---L---",
+        "M": "3053",
+        "D": "Limit of Undercast"
       },
       {
-        "SYMBOLID": "WO-DILOR---L---",
-        "MAPPING": "3054",
-        "DESCRIPTION": "Limit of Radar Observation"
+        "ID": "WO-DILOR---L---",
+        "M": "3054",
+        "D": "Limit of Radar Observation"
       },
       {
-        "SYMBOLID": "WO-DILIEO--L---",
-        "MAPPING": "3055",
-        "DESCRIPTION": "Observed Ice Edge "
+        "ID": "WO-DILIEO--L---",
+        "M": "3055",
+        "D": "Observed Ice Edge "
       },
       {
-        "SYMBOLID": "WO-DILIEE--L---",
-        "MAPPING": "3056",
-        "DESCRIPTION": "Estimated Ice Edge"
+        "ID": "WO-DILIEE--L---",
+        "M": "3056",
+        "D": "Estimated Ice Edge"
       },
       {
-        "SYMBOLID": "WO-DILIER--L---",
-        "MAPPING": "3057",
-        "DESCRIPTION": "Ice Edge From Radar "
+        "ID": "WO-DILIER--L---",
+        "M": "3057",
+        "D": "Ice Edge From Radar "
       },
       {
-        "SYMBOLID": "WO-DIOC----L---",
-        "MAPPING": "3058",
-        "DESCRIPTION": "Cracks"
+        "ID": "WO-DIOC----L---",
+        "M": "3058",
+        "D": "Cracks"
       },
       {
-        "SYMBOLID": "WO-DIOCS---L---",
-        "MAPPING": "3059",
-        "DESCRIPTION": "Cracks Specific-Location "
+        "ID": "WO-DIOCS---L---",
+        "M": "3059",
+        "D": "Cracks Specific-Location "
       },
       {
-        "SYMBOLID": "WO-DIOL----L---",
-        "MAPPING": "3060",
-        "DESCRIPTION": "Ice Openings-Lead"
+        "ID": "WO-DIOL----L---",
+        "M": "3060",
+        "D": "Ice Openings-Lead"
       },
       {
-        "SYMBOLID": "WO-DIOLF---L---",
-        "MAPPING": "3061",
-        "DESCRIPTION": "Frozen Lead "
+        "ID": "WO-DIOLF---L---",
+        "M": "3061",
+        "D": "Frozen Lead "
       },
       {
-        "SYMBOLID": "WO-DHDDL---L---",
-        "MAPPING": "3062",
-        "DESCRIPTION": "Depth Curve"
+        "ID": "WO-DHDDL---L---",
+        "M": "3062",
+        "D": "Depth Curve"
       },
       {
-        "SYMBOLID": "WO-DHDDC---L---",
-        "MAPPING": "3063",
-        "DESCRIPTION": "Depth Contour"
+        "ID": "WO-DHDDC---L---",
+        "M": "3063",
+        "D": "Depth Contour"
       },
       {
-        "SYMBOLID": "WO-DHDDA----A--",
-        "MAPPING": "3064",
-        "DESCRIPTION": "Depth Area "
+        "ID": "WO-DHDDA----A--",
+        "M": "3064",
+        "D": "Depth Area "
       },
       {
-        "SYMBOLID": "WO-DHCC----L---",
-        "MAPPING": "3065",
-        "DESCRIPTION": "Coastline "
+        "ID": "WO-DHCC----L---",
+        "M": "3065",
+        "D": "Coastline "
       },
       {
-        "SYMBOLID": "WO-DHCI-----A--",
-        "MAPPING": "3066",
-        "DESCRIPTION": "Island "
+        "ID": "WO-DHCI-----A--",
+        "M": "3066",
+        "D": "Island "
       },
       {
-        "SYMBOLID": "WO-DHCB-----A--",
-        "MAPPING": "3067",
-        "DESCRIPTION": "Beach"
+        "ID": "WO-DHCB-----A--",
+        "M": "3067",
+        "D": "Beach"
       },
       {
-        "SYMBOLID": "WO-DHCW-----A--",
-        "MAPPING": "3068",
-        "DESCRIPTION": "Water "
+        "ID": "WO-DHCW-----A--",
+        "M": "3068",
+        "D": "Water "
       },
       {
-        "SYMBOLID": "WO-DHCF----L---",
-        "MAPPING": "3069",
-        "DESCRIPTION": "Foreshore Line"
+        "ID": "WO-DHCF----L---",
+        "M": "3069",
+        "D": "Foreshore Line"
       },
       {
-        "SYMBOLID": "WO-DHCF-----A--",
-        "MAPPING": "3070",
-        "DESCRIPTION": "Foreshore Area "
+        "ID": "WO-DHCF-----A--",
+        "M": "3070",
+        "D": "Foreshore Area "
       },
       {
-        "SYMBOLID": "WO-DHPBA---L---",
-        "MAPPING": "3071",
-        "DESCRIPTION": "Anchorage Line "
+        "ID": "WO-DHPBA---L---",
+        "M": "3071",
+        "D": "Anchorage Line "
       },
       {
-        "SYMBOLID": "WO-DHPBA----A--",
-        "MAPPING": "3072",
-        "DESCRIPTION": "Anchorage Area"
+        "ID": "WO-DHPBA----A--",
+        "M": "3072",
+        "D": "Anchorage Area"
       },
       {
-        "SYMBOLID": "WO-DHPBP---L---",
-        "MAPPING": "3073",
-        "DESCRIPTION": "Pier "
+        "ID": "WO-DHPBP---L---",
+        "M": "3073",
+        "D": "Pier "
       },
       {
-        "SYMBOLID": "WOS-HPFF----A--",
-        "MAPPING": "3074",
-        "DESCRIPTION": "Wiers"
+        "ID": "WOS-HPFF----A--",
+        "M": "3074",
+        "D": "Wiers"
       },
       {
-        "SYMBOLID": "WO-DHPMD----A--",
-        "MAPPING": "3075",
-        "DESCRIPTION": "Drydock"
+        "ID": "WO-DHPMD----A--",
+        "M": "3075",
+        "D": "Drydock"
       },
       {
-        "SYMBOLID": "WO-DHPMO---L---",
-        "MAPPING": "3076",
-        "DESCRIPTION": "Offshore Loading Facility Line"
+        "ID": "WO-DHPMO---L---",
+        "M": "3076",
+        "D": "Offshore Loading Facility Line"
       },
       {
-        "SYMBOLID": "WO-DHPMO----A--",
-        "MAPPING": "3077",
-        "DESCRIPTION": "Offshore Loading Facility Area "
+        "ID": "WO-DHPMO----A--",
+        "M": "3077",
+        "D": "Offshore Loading Facility Area "
       },
       {
-        "SYMBOLID": "WO-DHPMRA--L---",
-        "MAPPING": "3078",
-        "DESCRIPTION": "Ramp Above Water"
+        "ID": "WO-DHPMRA--L---",
+        "M": "3078",
+        "D": "Ramp Above Water"
       },
       {
-        "SYMBOLID": "WO-DHPMRB--L---",
-        "MAPPING": "3079",
-        "DESCRIPTION": "Ramp Below Water "
+        "ID": "WO-DHPMRB--L---",
+        "M": "3079",
+        "D": "Ramp Below Water "
       },
       {
-        "SYMBOLID": "WO-DHPSPA--L---",
-        "MAPPING": "3080",
-        "DESCRIPTION": "Jetty Above Water "
+        "ID": "WO-DHPSPA--L---",
+        "M": "3080",
+        "D": "Jetty Above Water "
       },
       {
-        "SYMBOLID": "WO-DHPSPB--L---",
-        "MAPPING": "3081",
-        "DESCRIPTION": "Jetty Below Water"
+        "ID": "WO-DHPSPB--L---",
+        "M": "3081",
+        "D": "Jetty Below Water"
       },
       {
-        "SYMBOLID": "WO-DHPSPS--L---",
-        "MAPPING": "3082",
-        "DESCRIPTION": "Seawall "
+        "ID": "WO-DHPSPS--L---",
+        "M": "3082",
+        "D": "Seawall "
       },
       {
-        "SYMBOLID": "WO-DHABP----A--",
-        "MAPPING": "3083",
-        "DESCRIPTION": "Perches "
+        "ID": "WO-DHABP----A--",
+        "M": "3083",
+        "D": "Perches "
       },
       {
-        "SYMBOLID": "WO-DHALLA--L---",
-        "MAPPING": "3084",
-        "DESCRIPTION": "Leading Line"
+        "ID": "WO-DHALLA--L---",
+        "M": "3084",
+        "D": "Leading Line"
       },
       {
-        "SYMBOLID": "WO-DHHD-----A--",
-        "MAPPING": "3085",
-        "DESCRIPTION": "Underwater Hazard"
+        "ID": "WO-DHHD-----A--",
+        "M": "3085",
+        "D": "Underwater Hazard"
       },
       {
-        "SYMBOLID": "WO-DHHDF----A--",
-        "MAPPING": "3200",
-        "DESCRIPTION": "Foul Ground"
+        "ID": "WO-DHHDF----A--",
+        "M": "3200",
+        "D": "Foul Ground"
       },
       {
-        "SYMBOLID": "WO-DHHDK----A--",
-        "MAPPING": "3201",
-        "DESCRIPTION": "Kelp"
+        "ID": "WO-DHHDK----A--",
+        "M": "3201",
+        "D": "Kelp"
       },
       {
-        "SYMBOLID": "WO-DHHDB---L---",
-        "MAPPING": "3086",
-        "DESCRIPTION": "Breaker "
+        "ID": "WO-DHHDB---L---",
+        "M": "3086",
+        "D": "Breaker "
       },
       {
-        "SYMBOLID": "WOS-HHDR---L---",
-        "MAPPING": "3087",
-        "DESCRIPTION": "Reef"
+        "ID": "WOS-HHDR---L---",
+        "M": "3087",
+        "D": "Reef"
       },
       {
-        "SYMBOLID": "WO-DHHDD----A--",
-        "MAPPING": "3089",
-        "DESCRIPTION": "Discolored Water "
+        "ID": "WO-DHHDD----A--",
+        "M": "3089",
+        "D": "Discolored Water "
       },
       {
-        "SYMBOLID": "WO-DTCCCFE-L---",
-        "MAPPING": "3090",
-        "DESCRIPTION": "Ebb Tide "
+        "ID": "WO-DTCCCFE-L---",
+        "M": "3090",
+        "D": "Ebb Tide "
       },
       {
-        "SYMBOLID": "WO-DTCCCFF-L---",
-        "MAPPING": "3091",
-        "DESCRIPTION": "Flood Tide"
+        "ID": "WO-DTCCCFF-L---",
+        "M": "3091",
+        "D": "Flood Tide"
       },
       {
-        "SYMBOLID": "WO-DOBVA----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 1-2"
+        "ID": "WO-DOBVA----A--",
+        "M": "3092",
+        "D": "VDR Level 1-2"
       },
       {
-        "SYMBOLID": "WO-DOBVB----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 2-3 "
+        "ID": "WO-DOBVB----A--",
+        "M": "3092",
+        "D": "VDR Level 2-3 "
       },
       {
-        "SYMBOLID": "WO-DOBVC----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 3-4"
+        "ID": "WO-DOBVC----A--",
+        "M": "3092",
+        "D": "VDR Level 3-4"
       },
       {
-        "SYMBOLID": "WO-DOBVD----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 4-5 "
+        "ID": "WO-DOBVD----A--",
+        "M": "3092",
+        "D": "VDR Level 4-5 "
       },
       {
-        "SYMBOLID": "WO-DOBVE----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 5-6"
+        "ID": "WO-DOBVE----A--",
+        "M": "3092",
+        "D": "VDR Level 5-6"
       },
       {
-        "SYMBOLID": "WO-DOBVF----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 6-7 "
+        "ID": "WO-DOBVF----A--",
+        "M": "3092",
+        "D": "VDR Level 6-7 "
       },
       {
-        "SYMBOLID": "WO-DOBVG----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 7-8"
+        "ID": "WO-DOBVG----A--",
+        "M": "3092",
+        "D": "VDR Level 7-8"
       },
       {
-        "SYMBOLID": "WO-DOBVH----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 8-9"
+        "ID": "WO-DOBVH----A--",
+        "M": "3092",
+        "D": "VDR Level 8-9"
       },
       {
-        "SYMBOLID": "WO-DOBVI----A--",
-        "MAPPING": "3092",
-        "DESCRIPTION": "VDR Level 9-10"
+        "ID": "WO-DOBVI----A--",
+        "M": "3092",
+        "D": "VDR Level 9-10"
       },
       {
-        "SYMBOLID": "WO-DBSF-----A--",
-        "MAPPING": "3093",
-        "DESCRIPTION": "Beach Slope Flat "
+        "ID": "WO-DBSF-----A--",
+        "M": "3093",
+        "D": "Beach Slope Flat "
       },
       {
-        "SYMBOLID": "WO-DBSG-----A--",
-        "MAPPING": "3094",
-        "DESCRIPTION": "Beach Slope Gentle"
+        "ID": "WO-DBSG-----A--",
+        "M": "3094",
+        "D": "Beach Slope Gentle"
       },
       {
-        "SYMBOLID": "WO-DBSM-----A--",
-        "MAPPING": "3095",
-        "DESCRIPTION": "Beach Slope Moderate"
+        "ID": "WO-DBSM-----A--",
+        "M": "3095",
+        "D": "Beach Slope Moderate"
       },
       {
-        "SYMBOLID": "WO-DBST-----A--",
-        "MAPPING": "3096",
-        "DESCRIPTION": "Beach Slope Steep"
+        "ID": "WO-DBST-----A--",
+        "M": "3096",
+        "D": "Beach Slope Steep"
       },
       {
-        "SYMBOLID": "WO-DGMSR----A--",
-        "MAPPING": "3097",
-        "DESCRIPTION": "Solid Rock "
+        "ID": "WO-DGMSR----A--",
+        "M": "3097",
+        "D": "Solid Rock "
       },
       {
-        "SYMBOLID": "WO-DGMSC----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Clay"
+        "ID": "WO-DGMSC----A--",
+        "M": "3098",
+        "D": "Clay"
       },
       {
-        "SYMBOLID": "WO-DGMSSVS--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Very Course Sand"
+        "ID": "WO-DGMSSVS--A--",
+        "M": "3098",
+        "D": "Very Course Sand"
       },
       {
-        "SYMBOLID": "WO-DGMSSC---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Coarse Sand"
+        "ID": "WO-DGMSSC---A--",
+        "M": "3098",
+        "D": "Coarse Sand"
       },
       {
-        "SYMBOLID": "WO-DGMSSM---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Medium Sand"
+        "ID": "WO-DGMSSM---A--",
+        "M": "3098",
+        "D": "Medium Sand"
       },
       {
-        "SYMBOLID": "WO-DGMSSF---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Fine Sand "
+        "ID": "WO-DGMSSF---A--",
+        "M": "3098",
+        "D": "Fine Sand "
       },
       {
-        "SYMBOLID": "WO-DGMSSVF--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Very Fine Sand"
+        "ID": "WO-DGMSSVF--A--",
+        "M": "3098",
+        "D": "Very Fine Sand"
       },
       {
-        "SYMBOLID": "WO-DGMSIVF--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Very Fine Silt "
+        "ID": "WO-DGMSIVF--A--",
+        "M": "3098",
+        "D": "Very Fine Silt "
       },
       {
-        "SYMBOLID": "WO-DGMSIF---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Fine Silt"
+        "ID": "WO-DGMSIF---A--",
+        "M": "3098",
+        "D": "Fine Silt"
       },
       {
-        "SYMBOLID": "WO-DGMSIM---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Medium Silt "
+        "ID": "WO-DGMSIM---A--",
+        "M": "3098",
+        "D": "Medium Silt "
       },
       {
-        "SYMBOLID": "WO-DGMSIC---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Coarse Silt"
+        "ID": "WO-DGMSIC---A--",
+        "M": "3098",
+        "D": "Coarse Silt"
       },
       {
-        "SYMBOLID": "WO-DGMSB----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Boulders"
+        "ID": "WO-DGMSB----A--",
+        "M": "3098",
+        "D": "Boulders"
       },
       {
-        "SYMBOLID": "WO-DGMS-CO--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Oyster Shells"
+        "ID": "WO-DGMS-CO--A--",
+        "M": "3098",
+        "D": "Oyster Shells"
       },
       {
-        "SYMBOLID": "WO-DGMS-PH--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Pebbles Shells "
+        "ID": "WO-DGMS-PH--A--",
+        "M": "3098",
+        "D": "Pebbles Shells "
       },
       {
-        "SYMBOLID": "WO-DGMS-SH--A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Sand and Shells"
+        "ID": "WO-DGMS-SH--A--",
+        "M": "3098",
+        "D": "Sand and Shells"
       },
       {
-        "SYMBOLID": "WO-DGML-----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Sediments Land"
+        "ID": "WO-DGML-----A--",
+        "M": "3098",
+        "D": "Bottom Sediments Land"
       },
       {
-        "SYMBOLID": "WO-DGMN-----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Sediments Land"
+        "ID": "WO-DGMN-----A--",
+        "M": "3098",
+        "D": "Bottom Sediments Land"
       },
       {
-        "SYMBOLID": "WO-DGMRS----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Roughness Smooth"
+        "ID": "WO-DGMRS----A--",
+        "M": "3098",
+        "D": "Bottom Roughness Smooth"
       },
       {
-        "SYMBOLID": "WO-DGMRM----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Roughness Moderate"
+        "ID": "WO-DGMRM----A--",
+        "M": "3098",
+        "D": "Bottom Roughness Moderate"
       },
       {
-        "SYMBOLID": "WO-DGMRR----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Roughness Rough"
+        "ID": "WO-DGMRR----A--",
+        "M": "3098",
+        "D": "Bottom Roughness Rough"
       },
       {
-        "SYMBOLID": "WO-DGMCL----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Clutter Low"
+        "ID": "WO-DGMCL----A--",
+        "M": "3098",
+        "D": "Clutter Low"
       },
       {
-        "SYMBOLID": "WO-DGMCM----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Clutter Medium"
+        "ID": "WO-DGMCM----A--",
+        "M": "3098",
+        "D": "Clutter Medium"
       },
       {
-        "SYMBOLID": "WO-DGMCH----A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Clutter High"
+        "ID": "WO-DGMCH----A--",
+        "M": "3098",
+        "D": "Clutter High"
       },
       {
-        "SYMBOLID": "WO-DGMIBA---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Impact Burial 0"
+        "ID": "WO-DGMIBA---A--",
+        "M": "3098",
+        "D": "Impact Burial 0"
       },
       {
-        "SYMBOLID": "WO-DGMIBB---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Impact Burial 10"
+        "ID": "WO-DGMIBB---A--",
+        "M": "3098",
+        "D": "Impact Burial 10"
       },
       {
-        "SYMBOLID": "WO-DGMIBC---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Impact Burial 20"
+        "ID": "WO-DGMIBC---A--",
+        "M": "3098",
+        "D": "Impact Burial 20"
       },
       {
-        "SYMBOLID": "WO-DGMIBD---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Impact Burial 75"
+        "ID": "WO-DGMIBD---A--",
+        "M": "3098",
+        "D": "Impact Burial 75"
       },
       {
-        "SYMBOLID": "WO-DGMIBE---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Impact Burial 100"
+        "ID": "WO-DGMIBE---A--",
+        "M": "3098",
+        "D": "Impact Burial 100"
       },
       {
-        "SYMBOLID": "WO-DGMBCA---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Category A"
+        "ID": "WO-DGMBCA---A--",
+        "M": "3098",
+        "D": "Bottom Category A"
       },
       {
-        "SYMBOLID": "WO-DGMBCB---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Category B"
+        "ID": "WO-DGMBCB---A--",
+        "M": "3098",
+        "D": "Bottom Category B"
       },
       {
-        "SYMBOLID": "WO-DGMBCC---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Category C"
+        "ID": "WO-DGMBCC---A--",
+        "M": "3098",
+        "D": "Bottom Category C"
       },
       {
-        "SYMBOLID": "WO-DGMBTA---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type A1"
+        "ID": "WO-DGMBTA---A--",
+        "M": "3098",
+        "D": "Bottom Type A1"
       },
       {
-        "SYMBOLID": "WO-DGMBTB---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type A2"
+        "ID": "WO-DGMBTB---A--",
+        "M": "3098",
+        "D": "Bottom Type A2"
       },
       {
-        "SYMBOLID": "WO-DGMBTC---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type A3"
+        "ID": "WO-DGMBTC---A--",
+        "M": "3098",
+        "D": "Bottom Type A3"
       },
       {
-        "SYMBOLID": "WO-DGMBTD---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type B1"
+        "ID": "WO-DGMBTD---A--",
+        "M": "3098",
+        "D": "Bottom Type B1"
       },
       {
-        "SYMBOLID": "WO-DGMBTE---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type B2"
+        "ID": "WO-DGMBTE---A--",
+        "M": "3098",
+        "D": "Bottom Type B2"
       },
       {
-        "SYMBOLID": "WO-DGMBTF---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type B3"
+        "ID": "WO-DGMBTF---A--",
+        "M": "3098",
+        "D": "Bottom Type B3"
       },
       {
-        "SYMBOLID": "WO-DGMBTG---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type C1"
+        "ID": "WO-DGMBTG---A--",
+        "M": "3098",
+        "D": "Bottom Type C1"
       },
       {
-        "SYMBOLID": "WO-DGMBTH---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type C2"
+        "ID": "WO-DGMBTH---A--",
+        "M": "3098",
+        "D": "Bottom Type C2"
       },
       {
-        "SYMBOLID": "WO-DGMBTI---A--",
-        "MAPPING": "3098",
-        "DESCRIPTION": "Bottom Type C3"
+        "ID": "WO-DGMBTI---A--",
+        "M": "3098",
+        "D": "Bottom Type C3"
       },
       {
-        "SYMBOLID": "WO-DL-ML---L---",
-        "MAPPING": "3099",
-        "DESCRIPTION": "Maritime Limit"
+        "ID": "WO-DL-ML---L---",
+        "M": "3099",
+        "D": "Maritime Limit"
       },
       {
-        "SYMBOLID": "WO-DL-MA----A--",
-        "MAPPING": "3100",
-        "DESCRIPTION": "Maritime Area"
+        "ID": "WO-DL-MA----A--",
+        "M": "3100",
+        "D": "Maritime Area"
       },
       {
-        "SYMBOLID": "WO-DL-RA---L---",
-        "MAPPING": "3101",
-        "DESCRIPTION": "Restricted Area"
+        "ID": "WO-DL-RA---L---",
+        "M": "3101",
+        "D": "Restricted Area"
       },
       {
-        "SYMBOLID": "WO-DL-SA----A--",
-        "MAPPING": "3102",
-        "DESCRIPTION": "Swept Area"
+        "ID": "WO-DL-SA----A--",
+        "M": "3102",
+        "D": "Swept Area"
       },
       {
-        "SYMBOLID": "WO-DL-TA----A--",
-        "MAPPING": "3103",
-        "DESCRIPTION": "Training Area"
+        "ID": "WO-DL-TA----A--",
+        "M": "3103",
+        "D": "Training Area"
       },
       {
-        "SYMBOLID": "WO-DL-O-----A--",
-        "MAPPING": "3104",
-        "DESCRIPTION": "Operator Defined"
+        "ID": "WO-DL-O-----A--",
+        "M": "3104",
+        "D": "Operator Defined"
       },
       {
-        "SYMBOLID": "WO-DMCA----L---",
-        "MAPPING": "3105",
-        "DESCRIPTION": "Cable"
+        "ID": "WO-DMCA----L---",
+        "M": "3105",
+        "D": "Cable"
       },
       {
-        "SYMBOLID": "WO-DMCC-----A--",
-        "MAPPING": "3106",
-        "DESCRIPTION": "Submerged Crib"
+        "ID": "WO-DMCC-----A--",
+        "M": "3106",
+        "D": "Submerged Crib"
       },
       {
-        "SYMBOLID": "WO-DMCD----L---",
-        "MAPPING": "3107",
-        "DESCRIPTION": "Canal"
+        "ID": "WO-DMCD----L---",
+        "M": "3107",
+        "D": "Canal"
       },
       {
-        "SYMBOLID": "WO-DMOA-----A--",
-        "MAPPING": "3108",
-        "DESCRIPTION": "Oil Rig Field "
+        "ID": "WO-DMOA-----A--",
+        "M": "3108",
+        "D": "Oil Rig Field "
       },
       {
-        "SYMBOLID": "WO-DMPA----L---",
-        "MAPPING": "3109",
-        "DESCRIPTION": "Pipe"
+        "ID": "WO-DMPA----L---",
+        "M": "3109",
+        "D": "Pipe"
       },
       {
-        "SYMBOLID": "CYLINDER-------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Cylinder"
+        "ID": "CYLINDER-------",
+        "M": "900",
+        "D": "Cylinder"
       },
       {
-        "SYMBOLID": "ORBIT----------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Orbit"
+        "ID": "ORBIT----------",
+        "M": "900",
+        "D": "Orbit"
       },
       {
-        "SYMBOLID": "ROUTE----------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Route"
+        "ID": "ROUTE----------",
+        "M": "900",
+        "D": "Route"
       },
       {
-        "SYMBOLID": "POLYGON--------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Polygon"
+        "ID": "POLYGON--------",
+        "M": "900",
+        "D": "Polygon"
       },
       {
-        "SYMBOLID": "RADARC---------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Radarc"
+        "ID": "RADARC---------",
+        "M": "900",
+        "D": "Radarc"
       },
       {
-        "SYMBOLID": "POLYARC--------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Polyarc"
+        "ID": "POLYARC--------",
+        "M": "900",
+        "D": "Polyarc"
       },
       {
-        "SYMBOLID": "CAKE-----------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Cake"
+        "ID": "CAKE-----------",
+        "M": "900",
+        "D": "Cake"
       },
       {
-        "SYMBOLID": "TRACK----------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Track"
+        "ID": "TRACK----------",
+        "M": "900",
+        "D": "Track"
       },
       {
-        "SYMBOLID": "CURTAIN--------",
-        "MAPPING": "900",
-        "DESCRIPTION": "Curtain"
+        "ID": "CURTAIN--------",
+        "M": "900",
+        "D": "Curtain"
       }
     ]
   }
@@ -2090,9 +2090,9 @@ return{
                 if (symbol !== null) {
 
                     data = {};
-                    data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                    data.mapping = symbol["MAPPING"] || ""; //MAPPING
-                    data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
+                    data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                    data.mapping = symbol["M"] || ""; //MAPPING
+                    data.description = symbol["D"] || ""; //DESCRIPTION
 					
 					if(data.mapping !== "")
 							data.mapping = (parseInt(data.mapping) + 57000) + "";

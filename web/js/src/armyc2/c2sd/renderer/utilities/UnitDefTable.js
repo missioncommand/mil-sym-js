@@ -40,10 +40,10 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
-                        data.hierarchy = symbol["HIERARCHY"] || ""; //HIERARCHY
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.drawCategory = parseInt(symbol["DC"] || "", 10); //DRAWCATEGORY
+                        data.hierarchy = symbol["H"] || ""; //HIERARCHY
                         //data.alphahierarchy = symbols[i].children[4].textContent; //ALPHAHIERARCHY
                         //data.path = symbols[i].children[5].textContent; //PATH
 
@@ -67,10 +67,10 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
                     if (symbol !== null) {
 
                         data = {};
-                        data.symbolID = symbol["SYMBOLID"] || ""; //SYMBOLID
-                        data.description = symbol["DESCRIPTION"] || ""; //DESCRIPTION
-                        data.drawCategory = parseInt(symbol["DRAWCATEGORY"] || "", 10); //DRAWCATEGORY
-                        data.hierarchy = symbol["HIERARCHY"] || ""; //HIERARCHY
+                        data.symbolID = symbol["ID"] || ""; //SYMBOLID
+                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.drawCategory = parseInt(symbol["DC"] || "", 10); //DRAWCATEGORY
+                        data.hierarchy = symbol["H"] || ""; //HIERARCHY
                         //data.alphahierarchy = symbols[i].children[4].textContent; //ALPHAHIERARCHY
                         //data.path = symbols[i].children[5].textContent; //PATH
 
