@@ -37,7 +37,7 @@ armyc2.c2sd.renderer.SinglePointSVGRenderer = (function () {
         _document = document;
 		
                 
-    var _statusColorMap = {"C":"#00FF00","D":"#FFFF00","X":"#FF0000","F":"#0000FF"},
+    var _statusColorMap = {"C":"#00FF00","D":"#FFFF00","X":"#FF0000","F":"#0000FF"},//fully capable,damaged,destroyed,full to capacity
         //_unitTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","J":"J","K":"K","L":"L","M":"M","N":"N","P":"P","R2":"R2","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","Z":"Z","AC":"AC","AD":"AD","AE":"AE","AF":"AF","CN":"CN"},
         //_tgTextModifierKeys = {"B":"B","C":"C","F":"F","G":"G","H":"H","H1":"H1","H2":"H2","N":"N","T":"T","T1":"T1","V":"V","W":"W","W1":"W1","X":"X","Y":"Y","AM":"AM","AN":"AN","Length":"Length","Width":"Width","Radius":"Radius","Angle":"Angle"};
         _unitTextModifierKeys = ["B","C","F","G","H","H1","H2","J","K","L","M","N","P","R2","T","T1","V","W","W1","X","Y","Z","AC","AD","AE","AF","CN"],
@@ -374,6 +374,7 @@ return{
         var svgElements = null;
         var svgElementInfo = null;
         var svgElementsDOM = [];
+        var svgElementsOCMSlash = [];
         
         if(hasDisplayModifiers===true)
             svgElementInfo = this.processUnitDisplayModifiers(si, symbolID, modifiers, fontInfo);
@@ -386,6 +387,11 @@ return{
             centerPoint = svgElementInfo.centerPoint;
             svgElements = svgElementInfo.svgElements;
             imageBounds = svgElementInfo.imageBounds;
+
+            if(svgElementInfo.hasOCMSlash)
+            {
+                svgElementsOCMSlash.push(svgElements.pop());
+            }
 
             if(svgElementInfo.hasDOMArrow)
             {
@@ -408,7 +414,7 @@ return{
             
             if(svgElementInfo !== null)
             {
-                svgTextElements = svgElementInfo.svgElements;
+                var svgTextElements = svgElementInfo.svgElements;
                 if(svgTextElements !== null && svgTextElements.length > 0)
                 {
                     imageBounds.union(svgElementInfo.modifierBounds);
@@ -418,7 +424,7 @@ return{
         }
         var returnSVG = "";
         var showCenter = false;
-        if(svgElements.length > 0 || svgElementsDOM.length > 0)
+        if(svgElements.length > 0 || svgElementsDOM.length > 0 || svgElementsOCMSlash.length > 0)
         {
             var domSE = [];
             for(var k = 0; k < svgElements.length; k++)
@@ -432,6 +438,11 @@ return{
             {
                 returnSVG += svgElementsDOM[0];
                 returnSVG += svgElementsDOM[1];
+            }
+
+            if(svgElementsOCMSlash.length > 0)
+            {
+                returnSVG += svgElementsOCMSlash[0];
             }
             
             //make group with translation
@@ -577,12 +588,13 @@ return{
      * @param {String} symbolID
      * @param {type} modifiers
      * @param {object} fontInfo
-     * @returns {Object} {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow}
+     * @returns {Object} {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow, hasOCMSlash:hasOCMSlash}
      */
     processUnitDisplayModifiers: function(si, symbolID, modifiers,fontInfo){
         
 //        if(_bufferDisplayModifiers===null)
 //                    _bufferDisplayModifiers = this.createBuffer(250,250);
+
         var render = true;
         if(modifiers["RENDER"] !== undefined)
             render = modifiers["RENDER"];
@@ -598,6 +610,7 @@ return{
             ctx = null,
             offsetX = 0,
             offsetY = 0,
+            hasOCMSlash = false,
             symStd = modifiers[MilStdAttributes.SymbologyStandard];
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
@@ -1351,8 +1364,10 @@ return{
                     tempShape = null;
                 }
 
-                if(ociBounds !== null)
+                //if bar, draw below direction of movement
+                if(ociBounds !== null && RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_BAR)
                 {
+
                     var statusColor = null;
                     var status = symbolID.charAt(3);
                     if(status===("C"))//Fully Capable
@@ -1363,20 +1378,13 @@ return{
                         statusColor = '#FF0000';
                     else if(status===("F"))//full to capacity(hospital)
                         statusColor = '#0000FF';
-
-                    /*ctx.lineWidth = 2;
-                    ctx.strokeStyle = '#000000';
-                    ociShape.stroke(ctx);
-                    ctx.fillStyle = statusColor;
-                    ociShape.fill(ctx);//*/
-                    
+                
                     svgElements.push(ociShape.toSVGElement('#000000',1,statusColor));
 
                     ociBounds = null;
                     ociShape = null;
                 }
 
-                
                 if(domBounds !== null)
                 {
                     /*ctx.lineWidth = 2;
@@ -1402,6 +1410,16 @@ return{
                     svgElements.push(arrowPath.toSVGElement(null,null,'#000000'));
 
                 }
+
+                //if slash, draw above direction of movement
+                if(ociBounds !== null && RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_SLASH)
+                {
+                    hasOCMSlash = true;
+                    svgElements.push(ociShape.toSVGElement('#000000',2));
+
+                    ociBounds = null;
+                    ociShape = null;
+                }
             }
             // </editor-fold>
             
@@ -1416,7 +1434,7 @@ return{
             
             //return ;
             if(svgElements !== null && svgElements.length > 0)
-                return {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow};
+                return {svgElements:svgElements, centerPoint:centerPoint, symbolBounds:symbolBounds, imageBounds:imageBounds, hasDOMArrow:hasDOMArrow, hasOCMSlash:hasOCMSlash};
             else
                 return null;
                 
@@ -1435,29 +1453,55 @@ return{
                 pixelSize = symbolBounds.getHeight();
 
             status = symbolID.charAt(3);
-            
-				
-			if(_statusColorMap[status] !== undefined)
-				statusColor = _statusColorMap[status];
-			else
-				statusColor = null;
-
-            if(statusColor !== null)
+            if(RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_BAR)
             {
-                if(pixelSize > 0)
-                barSize = Math.round(pixelSize/5);
+      
+                if(_statusColorMap[status] !== undefined)
+                    statusColor = _statusColorMap[status];
+                else
+                    statusColor = null;
 
-                if(barSize < 2)
-                    barSize = 2;
-                
-                offsetY += Math.round(symbolBounds.getY() + symbolBounds.getHeight());
-                        
-                bar = new SO.Rectangle(symbolBounds.getX()+1, offsetY, Math.round(symbolBounds.getWidth())-2,barSize);
+                if(statusColor !== null)
+                {
+                    if(pixelSize > 0)
+                    barSize = Math.round(pixelSize/5);
 
+                    if(barSize < 2)
+                        barSize = 2;
+                    
+                    offsetY += Math.round(symbolBounds.getY() + symbolBounds.getHeight());
+                            
+                    bar = new SO.Rectangle(symbolBounds.getX()+1, offsetY, Math.round(symbolBounds.getWidth())-2,barSize);
+                }
+                return bar;
             }
-            
-            return bar;
-            
+            else if(status === 'D' || status === 'X')//slashes
+            {
+                var fillCode = UnitFontLookup.getFillCode(symbolID,RendererSettings.Symbology_2525C)
+                var widthRatio = UnitFontLookup.getUnitRatioWidth(fillCode);
+                var heightRatio = UnitFontLookup.getUnitRatioHeight(fillCode);
+                
+                var slashHeight = symbolBounds.getHeight() / heightRatio * 1.47;
+                var slashWidth = symbolBounds.getWidth() / widthRatio * 0.85;
+                var centerX = symbolBounds.getCenterX();
+                var centerY = symbolBounds.getCenterY();
+
+                var path = new SO.Path();
+                if(status === 'D')//Damaged /
+                {
+                    path.moveTo(centerX - (slashWidth/2),centerY+(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY-(slashHeight/2));
+                }
+                else if(status === 'X')//Destroyed X
+                {
+                    path.moveTo(centerX - (slashWidth/2),centerY+(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY-(slashHeight/2));
+                    path.moveTo(centerX - (slashWidth/2),centerY-(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY+(slashHeight/2));
+                }
+                return path;
+            }
+            return null;
             // </editor-fold>
     },
     

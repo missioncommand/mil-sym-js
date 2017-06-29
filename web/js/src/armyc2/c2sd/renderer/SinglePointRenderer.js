@@ -491,6 +491,7 @@ return{
             ctx = null,
             offsetX = 0,
             offsetY = 0,
+            hasOCMSlash = false,
             symStd = modifiers[MilStdAttributes.SymbologyStandard];
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
@@ -1511,7 +1512,8 @@ return{
                     tempShape = null;
                 }
 
-                if(ociBounds !== null)
+                //if bar, draw below direction of movement
+                if(ociBounds !== null && RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_BAR)
                 {
                     var statusColor = null;
                     var status = symbolID.charAt(3);
@@ -1566,6 +1568,18 @@ return{
                     domBounds = null;
                     domPoints = null;
                 }
+
+                //if slash, draw above direction of movement
+                if(ociBounds !== null && RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_SLASH)
+                {
+                    hasOCMSlash = true;
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = '#000000';
+                    ociShape.stroke(ctx);
+
+                    ociBounds = null;
+                    ociShape = null;
+                }
             }
             // </editor-fold>
             
@@ -1600,36 +1614,64 @@ return{
                 pixelSize = symbolBounds.getHeight();
 
             status = symbolID.charAt(3);
-            
-				
-			if(_statusColorMap[status] !== undefined)
-				statusColor = _statusColorMap[status];
-			else
-				statusColor = null;
-
-            if(statusColor !== null)
+            if(RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_BAR)
             {
-                if(pixelSize > 0)
-                barSize = Math.round(pixelSize/5);
+                if(_statusColorMap[status] !== undefined)
+                    statusColor = _statusColorMap[status];
+                else
+                    statusColor = null;
 
-                if(barSize < 2)
-                    barSize = 2;
+                if(statusColor !== null)
+                {
+                    if(pixelSize > 0)
+                    barSize = Math.round(pixelSize/5);
+
+                    if(barSize < 2)
+                        barSize = 2;
+                    
+                    offsetY += Math.round(symbolBounds.getY() + symbolBounds.getHeight());
+                            
+                    bar = new SO.Rectangle(symbolBounds.getX()+1, offsetY, Math.round(symbolBounds.getWidth())-2,barSize);
+                    /*ctx.lineColor = '#000000';
+                    ctx.lineWidth = 1;
+                    ctx.fillColor = statusColor;
+                    bar.fill(ctx);
+                    bar.grow(1);
+                    bar.stroke(ctx);
+                    
+                    imageBounds.union(bar.getBounds());//*/
+                }
                 
-                offsetY += Math.round(symbolBounds.getY() + symbolBounds.getHeight());
-                        
-                bar = new SO.Rectangle(symbolBounds.getX()+1, offsetY, Math.round(symbolBounds.getWidth())-2,barSize);
-                /*ctx.lineColor = '#000000';
-                ctx.lineWidth = 1;
-                ctx.fillColor = statusColor;
-                bar.fill(ctx);
-                bar.grow(1);
-                bar.stroke(ctx);
-                
-                imageBounds.union(bar.getBounds());//*/
+                return bar;
             }
-            
-            return bar;
-            
+            else if(status === 'D' || status === 'X')//slashes
+            {
+                var fillCode = UnitFontLookup.getFillCode(symbolID,RendererSettings.Symbology_2525C)
+                var widthRatio = UnitFontLookup.getUnitRatioWidth(fillCode);
+                var heightRatio = UnitFontLookup.getUnitRatioHeight(fillCode);
+                
+                var slashHeight = symbolBounds.getHeight() / heightRatio * 1.47;
+                var slashWidth = symbolBounds.getWidth() / widthRatio * 0.85;
+                var centerX = symbolBounds.getCenterX();
+                var centerY = symbolBounds.getCenterY();
+
+                var path = new SO.Path();
+                if(status === 'D')//Damaged /
+                {
+                    path.moveTo(centerX - (slashWidth/2),centerY+(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY-(slashHeight/2));
+                }
+                else if(status === 'X')//Destroyed X
+                {
+                    path.moveTo(centerX - (slashWidth/2),centerY+(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY-(slashHeight/2));
+                    path.moveTo(centerX - (slashWidth/2),centerY-(slashHeight/2));
+                    path.lineTo(centerX + (slashWidth/2),centerY+(slashHeight/2));
+                }
+                return path;
+            }	
+
+            return null;
             // </editor-fold>
     },
     

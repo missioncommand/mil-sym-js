@@ -34,7 +34,7 @@ armyc2.c2sd.renderer.so.Path = function () {
     }
 
     /**
-     * @return {_rectangle} description
+     * @return {SO.Rectangle} description
      */
     armyc2.c2sd.renderer.so.Path.prototype.getBounds = function(){
         if(this._rectangle)

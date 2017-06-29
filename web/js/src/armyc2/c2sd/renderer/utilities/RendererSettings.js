@@ -6,8 +6,8 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 	
-    var _Version = "0.3.23";
-//outline approach.  none, filled rectangle, outline (default),
+    var _Version = "0.3.25";
+    //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
     _UseLineInterpolation = true,
@@ -35,14 +35,16 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _UseCesium2DScaleModifiers = false,
 
     //modifier the scale returned from getReasonableScale()
-    _3DMinScaleMultiplier = 1.0;
-    _3DMaxScaleMultiplier = 1.0;
+    _3DMinScaleMultiplier = 1.0,
+    _3DMaxScaleMultiplier = 1.0,
     
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
      * end of the staff
      */
     _CenterOnHQStaff = true,
+    
+    _OCMType = 1,//alternate operational condition modifier is default
     
     
     _ModifierFontName = "Arial, sans-serif",
@@ -105,7 +107,6 @@ return{
 
     /**
      * 2525Bch2 and USAS 11-12 symbology
-     * @deprecated use Symbology_2525B
      */
     Symbology_2525B : 0,
     /**
@@ -117,10 +118,30 @@ return{
      * 2525C, which includes 2525Bch2 & USAS 13/14
      */
     Symbology_2525C : 1,
+
+    OperationalConditionModifierType_SLASH : 0,
+    OperationalConditionModifierType_BAR : 1,
     
     getVersion: function()
     {
         return _Version;
+    },
+
+    /**
+     * Set operational condition modifiers to be rendered as bars(1) or slashes(0)
+     * @param {Number} operationalConditionModifierType like RendererSettings.OperationalConditionModifierType_BAR
+     */
+    setOperationalConditionModifierType: function(operationalConditionModifierType)
+    {
+        _OCMType = operationalConditionModifierType;
+    },
+
+    /**
+     * @return {Number}
+     */
+    getOperationalConditionModifierType: function()
+    {
+        return _OCMType;
     },
     
     /**
@@ -413,7 +434,7 @@ return{
     /**
      * True to draw as modifier label in the "E/F" location.
      * False to draw at the top right corner of the symbol
-     * @returns {unresolved}
+     * @returns {Boolean}
      */
     getDrawAffiliationModifierAsLabel: function (){
             return _DrawAffiliationModifierAsLabel;
