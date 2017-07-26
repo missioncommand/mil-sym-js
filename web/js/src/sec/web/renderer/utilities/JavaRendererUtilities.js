@@ -267,8 +267,9 @@ sec.web.renderer.utilities.JavaRendererUtilities = {};
     
             
     sec.web.renderer.utilities.JavaRendererUtilities.isNumber = function (text){
-        var re = new RegExp("((-|\\+)?[0-9]+(\\.[0-9]+)?)+");
-        return(re.test(text));
+        //var re = new RegExp("((-|\\+)?[0-9]+(\\.[0-9]+)?)+");
+        //return(re.test(text));
+        return armyc2.c2sd.renderer.utilities.SymbolUtilities.isNumber(text);
     };
     
     /**

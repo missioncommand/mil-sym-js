@@ -980,7 +980,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     {
                         hexTextColor = "#FF000000";
                     }
-                    jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
+                    jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor,symStd);
 
                     //generate image fill kml if we have symbolfillids or symbollineids
                     if (mSymbol.getModifierMap()["symbolFillIds"] !== undefined || mSymbol.getModifierMap()["symbolLineIds"] !== undefined)
@@ -1413,7 +1413,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     {
                         hexTextColor = "#FF000000";
                     }
-                    jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor);
+                    jsonContent = sec.web.renderer.MultiPointHandler.KMLize(id, name, description, symbolCode, shapes, modifiers, ipc, normalize, hexTextColor,symStd);
 
                     if (mSymbol.getModifierMap()["symbolFillIds"] || mSymbol.getModifierMap["symbolLineIds"])
                     {
@@ -1943,7 +1943,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             return true;
         },
-        KMLize: function (id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor)
+        KMLize: function (id, name, description, symbolCode, shapes, modifiers, ipc, normalize, textColor, symStd)
         {
             /*
              if(shapes instanceof java.util.ArrayList)
@@ -1963,7 +1963,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             {
                 var len = shapes.size();
                 for (var i = 0; i < len; i++) {
-                    var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(description, symbolCode, shapes.get(i), ipc, normalize);
+                    var shapesToAdd = sec.web.renderer.MultiPointHandler.ShapeToKMLString(description, symbolCode, shapes.get(i), ipc, normalize, symStd);
                     kml += shapesToAdd;
                 }
                 //var len2 = modifiers.length;
@@ -2083,9 +2083,10 @@ sec.web.renderer.MultiPointHandler = (function () {
             }
             return featureCollection;
         },
-        IsOnePointSymbolCode: function (symbolCode)
+        IsOnePointSymbolCode: function (symbolCode, symStd)
         {
-            var symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+            if(!symStd)
+                symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             var basicCode = SymbolUtilities.getBasicSymbolIDStrict(symbolCode);
             var sd = null;
             if (SymbolDefTable.hasSymbolDef(basicCode, symStd))
@@ -2123,7 +2124,7 @@ sec.web.renderer.MultiPointHandler = (function () {
             var normalize = sec.web.renderer.MultiPointHandler.crossesIDL(geoCoords);
             return normalize;
         },
-        ShapeToKMLString: function (description, symbolCode, shapeInfo, ipc, normalize)
+        ShapeToKMLString: function (description, symbolCode, shapeInfo, ipc, normalize, symStd)
         {
             var kml = "",
                     lineColor = null,
@@ -2221,7 +2222,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                     //for linestrings but they did not fix the smae issue for fills. If Google fixes the issue
                     //for fills then this section will need to be commented or it will induce an error.
                     var lastLongitude = null;
-                    if (normalize === false && this.IsOnePointSymbolCode(symbolCode))
+                    if (normalize === false && this.IsOnePointSymbolCode(symbolCode, symStd))
                     {
                         for (var j = 0; j < shape.size(); j++)
                         {
