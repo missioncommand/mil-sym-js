@@ -77,7 +77,7 @@ function testRender()
         //var symbolCode = "GHGPGAA-------X"; //assembly area
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
-        
+        altitudeMode = "clampToGround";
         //var bbox = "66.25,30.60,66.28,30.65";
         var bbox = "66.25,30.60,66.28,30.65";
         //var bbox = "-180.0,-90.0,180.0,90.0";
@@ -154,7 +154,8 @@ function testRender()
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 modifiers[mtg.AM_DISTANCE] = [100];
-                modifiers["FILLCOLOR"] = "BBFF0000";
+                //modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 8;
                 break;
             case 7://BS Rectangle
                 symbolCode = "BS_RECTANGLE---";//
@@ -162,7 +163,8 @@ function testRender()
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 //modifiers[mtg.AM_DISTANCE] = [100, 200];
-                modifiers["FILLCOLOR"] = "BBFF0000";
+                //modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 8;
                 break;
             case 8://Swept Area
                 symbolCode = "WO-DL-SA----A--"; //swept area
@@ -186,9 +188,9 @@ function testRender()
                 scale = 50000.0;
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
-                modifiers[mtg.AM_DISTANCE] = [500];
-                //modifiers["FILLCOLOR"] = "BBFF0000";
-                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 3;
+                modifiers[mtg.AM_DISTANCE] = [500,100];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 2;
                 break;
             case 11://PBS Square
                 symbolCode = "PBS_SQUARE-----"; //pbs square
@@ -196,10 +198,45 @@ function testRender()
                 scale = 50000.0;
                 modifiers = {};
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
-                modifiers[mtg.AM_DISTANCE] = [500];
-                //modifiers["FILLCOLOR"] = "BBFF0000";
-                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 3;
+                modifiers[mtg.AM_DISTANCE] = [500,100];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 8;
                 break;
+            case 12://PBS Ellipse
+                symbolCode = "PBS_ELLIPSE----"; //pbs circle
+                controlPoints = "66.26700036208742,30.62755038706961";
+                scale = 50000.0;
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [500,500,100];
+                modifiers[mtg.AN_AZIMUTH] = [0];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 2;
+                break;
+            case 13://PBS Rectangle
+                symbolCode = "PBS_RECTANGLE--"; //pbs square
+                controlPoints = "66.26700036208742,30.62755038706961";
+                scale = 50000.0;
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [500,2000, 100];
+                modifiers[mtg.AN_AZIMUTH] = [0];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.PatternFillType] = 8;
+                break;
+            case 14://RADARC
+                symbolCode = "RADARC---------";
+                format = formatKML;
+                altitudeMode = "absolute";
+                controlPoints = "66.26700036208742,30.62755038706961";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [300,1000];
+                modifiers[mtg.AN_AZIMUTH] = [315,45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [500,1000];
             default:
                 break;
         } 
@@ -218,8 +255,16 @@ function testRender()
 		var json = null;
 		if(format == formatKML)
 		{
-			//RenderSymbol for 3D Google Earth.  KML format recommended.
-			json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, "clampToGround",scale, bbox, modifiers,format);
+            if(symNum === 14 )
+            {
+                rendererMP.Render3dSymbol("Name", "ID", symbolCode, "3D air space graphic", "FFFF0000", "BBFF0000", controlPoints, modifiers) 
+            }
+            else
+            {
+                //RenderSymbol for 3D Google Earth.  KML format recommended.
+                json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, altitudeMode,scale, bbox, modifiers,format);
+            }
+			
 		}
 		else
 		{
@@ -310,6 +355,9 @@ Draw Canvas/SVG Test:
       <option value=9>BIO Area</option>
       <option value=10>PBS Circle</option>
       <option value=11>PBS Square</option>
+      <option value=12>PBS Ellipse</option>
+      <option value=13>PBS Rectangle</option>
+      <option value=14>RADARC</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
