@@ -233,10 +233,12 @@ function testRender()
                 scale = 50000.0;
                 //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
                 var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
-                modifiers = {};
+                /*modifiers = {};
                 modifiers[mtg.AM_DISTANCE] = [300,1000];
                 modifiers[mtg.AN_AZIMUTH] = [315,45];
-                modifiers[mtg.X_ALTITUDE_DEPTH] = [500,1000];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [500,1000];*/
+                //modifiers = "[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}]";
+                modifiers = [{radius:100.0,innerRadius:50.0,minAlt:0.0,maxAlt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}];
             default:
                 break;
         } 
