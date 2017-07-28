@@ -15,6 +15,7 @@
 var worker = new Worker('MPWorker.js');
 var startTime = null;
 var stopTime = null;
+var gjf = 1;
 //function for formatting KML so it can be rendered properly on the HTML page
 function formatKMLForHTML(kml)
 {
@@ -206,6 +207,13 @@ function testRender(batch)
         {
             data.fontInfo = getFontInfo("arial",14,"bold");
         }
+        if(format === formatGeoJSON)
+        {
+            if(batch)
+                modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat] = gjf;
+            else
+                data.modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat] = gjf;
+        }
         if(batch)//if batch, fill batch array with symbol properties
         {
             try
@@ -270,6 +278,8 @@ function testRender(batch)
 			}
 			else if(format === formatGeoJSON)
 			{
+                if(gjf === 1)
+                    result = JSON.stringify(result);
 				document.getElementById("contentSpan").innerHTML += "JSON Format:<br/>";
 				if (result === null || result === "")
 					document.getElementById("contentSpan").innerHTML += "json empty";
