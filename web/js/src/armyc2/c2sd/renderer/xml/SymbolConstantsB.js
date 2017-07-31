@@ -7152,9 +7152,9 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
       },
       {
         "ID": "WO-DHPMO---L---",
-        "G": "point",
-        "DC": "8",
-        "MXP": "1",
+        "G": "line",
+        "DC": "1",
+        "MXP": "10000",
         "MNP": "1",
         "D": "Offshore Loading Facility 2",
         "H": "3.X.2.2.3.3.4",

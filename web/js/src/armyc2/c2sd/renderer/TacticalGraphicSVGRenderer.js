@@ -30,7 +30,11 @@ return{
         var id = symbolID;
         if(armyc2.c2sd.renderer.utilities.SymbolUtilities.isWeather(symbolID)===true)
         {
-            color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfWeather(symbolID).toHexString(false);
+            color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getFillColorOfWeather(symbolID);
+            if(color)
+                color = color.toHexString(false);
+            if(color === null)
+                color = armyc2.c2sd.renderer.utilities.SymbolUtilities.getLineColorOfWeather(symbolID).toHexString(false);
         }//*/
         else if(color===null)
         {

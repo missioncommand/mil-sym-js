@@ -1169,8 +1169,6 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WA-DBALPNC--A--") || // 
         symbolID === ("WA-DBALPC---A--") || // 
         symbolID === ("WA-DIPID---L---") || // 
-        symbolID === ("WO-DHCF----L---") || // 
-        symbolID === ("WO-DHCF-----A--") || //
         symbolID === ("WO-DGMSIM---A--") || //
         symbolID === ("WO-DGMRS----A--") ||
         symbolID === ("WO-DGMCL----A--") ||
@@ -1210,6 +1208,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
             //Color.GREEN;// 0x00ff00;	// Green
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#00FF00");
+        }
+        else if(symbolID === ("WO-DHCF----L---") || // FORESHORE LINE
+            symbolID === ("WO-DHCF-----A--")) // FORESHORE AREA
+        {
+            retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#ADFF2F");
         }
         else if(symbolID === ("WOS-HDS---P----")|| // Soundings
             symbolID === ("WOS-HHDF--P----")||//foul ground
@@ -1486,13 +1489,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
             return new armyc2.c2sd.renderer.utilities.Color(0,0,255);
         }
-        else if ((symbolID === "WO-DHHD-----A--") ||//cyan
-            symbolID === "WO-DHHDD----A--")  //discolored water (cyan)
+        else if ((symbolID === "WO-DHHD-----A--") ||//DeepSkyBlue
+            symbolID === "WO-DHHDD----A--"  ||//discolored water (DeepSkyBlue)
+            symbolID === "WO-DHDDA----A--")//Depth Area
         {
-            return new armyc2.c2sd.renderer.utilities.Color(0,255,255);   
+            return new armyc2.c2sd.renderer.utilities.Color(0,191,255);   
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
             return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
+        else if(symbolID === ("WO-DHCF----L---") || // FORESHORE LINE
+            symbolID === ("WO-DHCF-----A--")) // FORESHORE AREA
+        {
+            return new armyc2.c2sd.renderer.utilities.Color(173,255,47);
+        }
         else return null;
     };
     
