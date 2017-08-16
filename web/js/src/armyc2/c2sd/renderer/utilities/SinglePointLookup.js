@@ -73,7 +73,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.symbolID = symbol["ID"] || ""; //SYMBOLID
                         data.mappingP = symbol["MP"] || ""; //MAPPINGP
                         data.mappingA = symbol["MA"] || ""; //MAPPINGA
-                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.description = "";//symbol["D"] || ""; //DESCRIPTION
                         data.width = parseInt(symbol["W"] || ""); //WIDTH
                         data.height = parseInt(symbol["H"] || ""); //HEIGHT
 						
@@ -105,7 +105,7 @@ armyc2.c2sd.renderer.utilities.SinglePointLookup = (function () {
                         data.symbolID = symbol["ID"] || ""; //SYMBOLID
                         data.mappingP = symbol["MP"] || ""; //MAPPINGP
                         data.mappingA = symbol["MA"] || ""; //MAPPINGA
-                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.description = "";//symbol["D"] || ""; //DESCRIPTION
                         data.width = parseInt(symbol["W"] || ""); //WIDTH
                         data.height = parseInt(symbol["H"] || ""); //HEIGHT
 						

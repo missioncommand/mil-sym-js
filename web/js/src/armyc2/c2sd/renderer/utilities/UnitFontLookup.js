@@ -82,7 +82,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
 
                         data = {};
                         data.symbolID = symbol["ID"] || ""; //SYMBOLID
-                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.description = "";//symbol["D"] || ""; //DESCRIPTION
                         data.mapping1U = symbol["M1U"] || null; //MAPPING1U
                         data.mapping1F = symbol["M1F"] || null; //MAPPING1F
                         data.mapping1N = symbol["M1N"] || null; //MAPPING1N
@@ -133,7 +133,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
 
                         data = {};
                         data.symbolID = symbol["ID"] || ""; //SYMBOLID
-                        data.description = symbol["D"] || ""; //DESCRIPTION
+                        data.description = "";//symbol["D"] || ""; //DESCRIPTION
                         data.mapping1U = symbol["M1U"] || null; //MAPPING1U
                         data.mapping1F = symbol["M1F"] || null; //MAPPING1F
                         data.mapping1N = symbol["M1N"] || null; //MAPPING1N

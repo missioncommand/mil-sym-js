@@ -8,15 +8,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
     "SYMBOL": [
       {
         "ID": "S***------*****",
-        "D": "Warfighting Symbology"
       },
       {
         "ID": "S*P*------*****",
-        "D": "Space Track"
       },
       {
         "ID": "S*P*S-----*****",
-        "D": "Satellite",
         "M1U": "1000",
         "M1F": "1000",
         "M1N": "1000",
@@ -24,7 +21,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*P*V-----*****",
-        "D": "Crewed Space Vehicle",
         "M1U": "1001",
         "M1F": "1001",
         "M1N": "1001",
@@ -32,7 +28,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*P*T-----*****",
-        "D": "Space Station",
         "M1U": "1002",
         "M1F": "1002",
         "M1N": "1002",
@@ -42,7 +37,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*P*L-----*****",
-        "D": "Space Launch Vehicle",
         "M1U": "1004",
         "M1F": "1004",
         "M1N": "1004",
@@ -50,11 +44,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*------*****",
-        "D": "Air Track"
       },
       {
         "ID": "S*A*M-----*****",
-        "D": "Military",
         "M1U": "1005",
         "M1F": "1005",
         "M1N": "1005",
@@ -62,7 +54,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MF----*****",
-        "D": "Fixed Wing",
         "M1U": "1006",
         "M1F": "1006",
         "M1N": "1006",
@@ -70,7 +61,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFB---*****",
-        "D": "Fixed Wing Bomber",
         "M1U": "1007",
         "M1F": "1007",
         "M1N": "1007",
@@ -78,7 +68,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFF---*****",
-        "D": "Fixed Wing Fighter",
         "M1U": "1008",
         "M1F": "1008",
         "M1N": "1008",
@@ -86,7 +75,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFFI--*****",
-        "D": "Fixed Wing Interceptor",
         "M1U": "1009",
         "M1F": "1009",
         "M1N": "1009",
@@ -94,7 +82,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFT---*****",
-        "D": "Fixed Wing Trainer",
         "M1U": "1010",
         "M1F": "1010",
         "M1N": "1010",
@@ -102,7 +89,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFA---*****",
-        "D": "Attack/Strike",
         "M1U": "1011",
         "M1F": "1011",
         "M1N": "1011",
@@ -110,7 +96,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFL---*****",
-        "D": "Fixed Wing VSTOL",
         "M1U": "1012",
         "M1F": "1012",
         "M1N": "1012",
@@ -118,7 +103,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFK---*****",
-        "D": "Fixed Wing Tanker",
         "M1U": "1013",
         "M1F": "1013",
         "M1N": "1013",
@@ -126,7 +110,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFKB--*****",
-        "D": "Fixed Wing Tanker Boom-Only",
         "M1U": "1014",
         "M1F": "1014",
         "M1N": "1014",
@@ -134,7 +117,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFKD--*****",
-        "D": "Fixed Wing Tanker Drouge-Only",
         "M1U": "1015",
         "M1F": "1015",
         "M1N": "1015",
@@ -142,7 +124,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFC---*****",
-        "D": "Fixed Wing Cargo Airlift (Transport)",
         "M1U": "1016",
         "M1F": "1016",
         "M1N": "1016",
@@ -150,7 +131,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFCL--*****",
-        "D": "Fixed Wing Cargo Airlift (Light)",
         "M1U": "1017",
         "M1F": "1017",
         "M1N": "1017",
@@ -158,7 +138,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFCM--*****",
-        "D": "Fixed Wing Cargo Airlift (Medium)",
         "M1U": "1018",
         "M1F": "1018",
         "M1N": "1018",
@@ -166,7 +145,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFCH--*****",
-        "D": "Fixed Wing Cargo Airlift (Heavy)",
         "M1U": "1019",
         "M1F": "1019",
         "M1N": "1019",
@@ -174,7 +152,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFJ---*****",
-        "D": "Fixed Wing ECM/Jammer",
         "M1U": "1020",
         "M1F": "1020",
         "M1N": "1020",
@@ -182,7 +159,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFO---*****",
-        "D": "Fixed Wing MEDEVAC",
         "M1U": "1021",
         "M1F": "1021",
         "M1N": "1021",
@@ -190,7 +166,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFR---*****",
-        "D": "Fixed Wing Reconnaissance",
         "M1U": "1022",
         "M1F": "1022",
         "M1N": "1022",
@@ -198,7 +173,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFRW--*****",
-        "D": "Fixed Wing Airborne Early Warning (AEW)",
         "M1U": "1023",
         "M1F": "1023",
         "M1N": "1023",
@@ -206,7 +180,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFRZ--*****",
-        "D": "Fixed Wing Electronic Surveillance Measures",
         "M1U": "1024",
         "M1F": "1024",
         "M1N": "1024",
@@ -214,7 +187,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFRX--*****",
-        "D": "Fixed Wing Photographic",
         "M1U": "1025",
         "M1F": "1025",
         "M1N": "1025",
@@ -222,7 +194,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFP---*****",
-        "D": "Fixed Wing Patrol",
         "M1U": "1026",
         "M1F": "1026",
         "M1N": "1026",
@@ -230,7 +201,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFPN--*****",
-        "D": "Patrol Antisurface Warfare (ASUW)",
         "M1U": "1027",
         "M1F": "1027",
         "M1N": "1027",
@@ -238,7 +208,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFPM--*****",
-        "D": "Fixed Wing Mine Countermeasures",
         "M1U": "1028",
         "M1F": "1028",
         "M1N": "1028",
@@ -246,7 +215,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFU---*****",
-        "D": "Fixed Wing Utility",
         "M1U": "1029",
         "M1F": "1029",
         "M1N": "1029",
@@ -254,7 +222,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFUL--*****",
-        "D": "Fixed Wing Utility (Light)",
         "M1U": "1030",
         "M1F": "1030",
         "M1N": "1030",
@@ -262,7 +229,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFUM--*****",
-        "D": "Fixed Wing Utility (Medium)",
         "M1U": "1031",
         "M1F": "1031",
         "M1N": "1031",
@@ -270,7 +236,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFUH--*****",
-        "D": "Fixed Wing Utility (Heavy)",
         "M1U": "1032",
         "M1F": "1032",
         "M1N": "1032",
@@ -278,7 +243,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFY---*****",
-        "D": "Fixed Wing Communications (C3I)",
         "M1U": "1033",
         "M1F": "1033",
         "M1N": "1033",
@@ -286,7 +250,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFH---*****",
-        "D": "Fixed Wing Combat Search and Rescue (CSAR)",
         "M1U": "1034",
         "M1F": "1034",
         "M1N": "1034",
@@ -294,7 +257,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFD---*****",
-        "D": "Fixed Wing Airborne Command Post (C2)",
         "M1U": "1035",
         "M1F": "1035",
         "M1N": "1035",
@@ -302,7 +264,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQ---*****",
-        "D": "Drone (RPV/UAV) Fixed Wing",
         "M1U": "1036",
         "M1F": "1036",
         "M1N": "1036",
@@ -310,7 +271,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQA--*****",
-        "D": "Drone Attack",
         "M1U": "1037",
         "M1F": "1037",
         "M1N": "1037",
@@ -318,7 +278,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQB--*****",
-        "D": "Drone Bomber",
         "M1U": "1038",
         "M1F": "1038",
         "M1N": "1038",
@@ -326,7 +285,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQC--*****",
-        "D": "Drone Cargo",
         "M1U": "1039",
         "M1F": "1039",
         "M1N": "1039",
@@ -334,7 +292,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQD--*****",
-        "D": "Drone (RPV/UAV) Airborne Command Post",
         "M1U": "1040",
         "M1F": "1040",
         "M1N": "1040",
@@ -342,7 +299,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQF--*****",
-        "D": "Drone Fighter",
         "M1U": "1041",
         "M1F": "1041",
         "M1N": "1041",
@@ -350,7 +306,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQH--*****",
-        "D": "Search & Rescue (CSAR)",
         "M1U": "1042",
         "M1F": "1042",
         "M1N": "1042",
@@ -358,7 +313,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQJ--*****",
-        "D": "Drone Electronic Countermeasures (Jammer)",
         "M1U": "1043",
         "M1F": "1043",
         "M1N": "1043",
@@ -366,7 +320,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQK--*****",
-        "D": "Drone Tanker",
         "M1U": "1044",
         "M1F": "1044",
         "M1N": "1044",
@@ -374,7 +327,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQL--*****",
-        "D": "Drone Vstol",
         "M1U": "1045",
         "M1F": "1045",
         "M1N": "1045",
@@ -382,7 +334,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQM--*****",
-        "D": "Drone Special Operations Forces (SOF)",
         "M1U": "1046",
         "M1F": "1046",
         "M1N": "1046",
@@ -390,7 +341,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQI--*****",
-        "D": "Drone Mine Countermeasures",
         "M1U": "1047",
         "M1F": "1047",
         "M1N": "1047",
@@ -398,7 +348,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQN--*****",
-        "D": "Drone Anti-Surface Warfare (ASUW)",
         "M1U": "1048",
         "M1F": "1048",
         "M1N": "1048",
@@ -406,7 +355,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQP--*****",
-        "D": "Drone Patrol",
         "M1U": "1049",
         "M1F": "1049",
         "M1N": "1049",
@@ -414,7 +362,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQR--*****",
-        "D": "Drone Reconnaissance",
         "M1U": "1050",
         "M1F": "1050",
         "M1N": "1050",
@@ -422,7 +369,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQRW-*****",
-        "D": "Drone Airborne Early Warning (AEW)",
         "M1U": "1051",
         "M1F": "1051",
         "M1N": "1051",
@@ -430,7 +376,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQRZ-*****",
-        "D": "Drone Electronic Surveillance Measures",
         "M1U": "1052",
         "M1F": "1052",
         "M1N": "1052",
@@ -438,7 +383,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQRX-*****",
-        "D": "Drone Photographic",
         "M1U": "1053",
         "M1F": "1053",
         "M1N": "1053",
@@ -446,7 +390,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQS--*****",
-        "D": "Drone Anti-Submarine Warfare (ASW)",
         "M1U": "1054",
         "M1F": "1054",
         "M1N": "1054",
@@ -454,7 +397,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQT--*****",
-        "D": "Drone Trainer",
         "M1U": "1055",
         "M1F": "1055",
         "M1N": "1055",
@@ -462,7 +404,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQU--*****",
-        "D": "Drone Utility Fixed Wing",
         "M1U": "1056",
         "M1F": "1056",
         "M1N": "1056",
@@ -470,7 +411,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQY--*****",
-        "D": "Drone Communications (C3I)",
         "M1U": "1057",
         "M1F": "1057",
         "M1N": "1057",
@@ -478,7 +418,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFQO--*****",
-        "D": "Drone Medevac",
         "M1U": "1058",
         "M1F": "1058",
         "M1N": "1058",
@@ -486,7 +425,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFS---*****",
-        "D": "Antisubmarine Warfare (ASW) Carrier Based",
         "M1U": "1059",
         "M1F": "1059",
         "M1N": "1059",
@@ -494,7 +432,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MFM---*****",
-        "D": "Fixed Wing Special Operations Forces (SOF)",
         "M1U": "1060",
         "M1F": "1060",
         "M1N": "1060",
@@ -502,7 +439,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MH----*****",
-        "D": "Rotary Wing",
         "M1U": "1061",
         "M1F": "1061",
         "M1N": "1061",
@@ -510,7 +446,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHA---*****",
-        "D": "Rotary Wing Attack",
         "M1U": "1062",
         "M1F": "1062",
         "M1N": "1062",
@@ -518,7 +453,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHS---*****",
-        "D": "Antisubmarine Warfare/MPA ROTARY WING",
         "M1U": "1063",
         "M1F": "1063",
         "M1N": "1063",
@@ -526,7 +460,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHU---*****",
-        "D": "Rotary Wing Utility",
         "M1U": "1064",
         "M1F": "1064",
         "M1N": "1064",
@@ -534,7 +467,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHUL--*****",
-        "D": "Rotary Wing Utility (Light)",
         "M1U": "1065",
         "M1F": "1065",
         "M1N": "1065",
@@ -542,7 +474,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHUM--*****",
-        "D": "Rotary Wing Utility (Medium)",
         "M1U": "1066",
         "M1F": "1066",
         "M1N": "1066",
@@ -550,7 +481,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHUH--*****",
-        "D": "Rotary Wing Utility (Heavy)",
         "M1U": "1067",
         "M1F": "1067",
         "M1N": "1067",
@@ -558,7 +488,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHI---*****",
-        "D": "Rotary Wing Mine Countermeasures",
         "M1U": "1068",
         "M1F": "1068",
         "M1N": "1068",
@@ -566,7 +495,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHH---*****",
-        "D": "Rotary Wing Combat Search and Rescue(Military)",
         "M1U": "1069",
         "M1F": "1069",
         "M1N": "1069",
@@ -574,7 +502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHR---*****",
-        "D": "Rotary Wing Reconnaissance",
         "M1U": "1070",
         "M1F": "1070",
         "M1N": "1070",
@@ -582,7 +509,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHQ---*****",
-        "D": "Drone (RPV/UAV) Rotary Wing",
         "M1U": "1071",
         "M1F": "1071",
         "M1N": "1071",
@@ -590,7 +516,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHC---*****",
-        "D": "Rotary Wing Cargo AirLift (Transport)",
         "M1U": "1072",
         "M1F": "1072",
         "M1N": "1072",
@@ -598,7 +523,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHCL--*****",
-        "D": "Rotary Wing Cargo Airlift (Light)",
         "M1U": "1073",
         "M1F": "1073",
         "M1N": "1073",
@@ -606,7 +530,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHCM--*****",
-        "D": "Rotary Wing Cargo AirLift (Medium)",
         "M1U": "1074",
         "M1F": "1074",
         "M1N": "1074",
@@ -614,7 +537,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHCH--*****",
-        "D": "Rotary Wing Cargo Airlift (Heavy)",
         "M1U": "1075",
         "M1F": "1075",
         "M1N": "1075",
@@ -622,7 +544,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHT---*****",
-        "D": "Rotary Wing Trainer",
         "M1U": "1076",
         "M1F": "1076",
         "M1N": "1076",
@@ -630,7 +551,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHO---*****",
-        "D": "Rotary Wing MEDEVAC",
         "M1U": "1077",
         "M1F": "1077",
         "M1N": "1077",
@@ -638,7 +558,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHM---*****",
-        "D": "Rotary Wing Special Operations Forces",
         "M1U": "1078",
         "M1F": "1078",
         "M1N": "1078",
@@ -646,7 +565,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHD---*****",
-        "D": "Rotary Wing Airborne Command Post",
         "M1U": "1079",
         "M1F": "1079",
         "M1N": "1079",
@@ -654,7 +572,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHK---*****",
-        "D": "Rotary Wing Tanker",
         "M1U": "1080",
         "M1F": "1080",
         "M1N": "1080",
@@ -662,7 +579,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*MHJ---*****",
-        "D": "Rotary Wing ECM/Jammer(TANKER)",
         "M1U": "1081",
         "M1F": "1081",
         "M1N": "1081",
@@ -670,7 +586,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*ML----*****",
-        "D": "Military Aircraft Lighter Than Air",
         "M1U": "1082",
         "M1F": "1082",
         "M1N": "1082",
@@ -678,7 +593,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*W-----*****",
-        "D": "Air Track Weapon",
         "M1U": "1083",
         "M1F": "1083",
         "M1N": "1083",
@@ -688,7 +602,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WM----*****",
-        "D": "Missile In Flight",
         "M1U": "1083",
         "M1F": "1083",
         "M1N": "1083",
@@ -698,7 +611,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMS---*****",
-        "D": "Surface Launched Missile",
         "M1U": "1085",
         "M1F": "1085",
         "M1N": "1085",
@@ -708,7 +620,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMSS--*****",
-        "D": "Surface to Surface Missile (SSM)",
         "M1U": "1086",
         "M1F": "1086",
         "M1N": "1086",
@@ -718,7 +629,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMSA--*****",
-        "D": "Surface To Air Missile (SAM)",
         "M1U": "1087",
         "M1F": "1087",
         "M1N": "1087",
@@ -728,7 +638,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMSU--*****",
-        "D": "Surface to Subsurface Missile",
         "M1U": "1088",
         "M1F": "1088",
         "M1N": "1088",
@@ -738,7 +647,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMSB--*****",
-        "D": "Anti-Ballistic Missile (ABM)",
         "M1U": "1089",
         "M1F": "1089",
         "M1N": "1089",
@@ -748,7 +656,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMA---*****",
-        "D": "Air Launched Missile",
         "M1U": "1090",
         "M1F": "1090",
         "M1N": "1090",
@@ -758,7 +665,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMAS--*****",
-        "D": "Air To Surface Missile (ASM)",
         "M1U": "1091",
         "M1F": "1091",
         "M1N": "1091",
@@ -768,7 +674,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMAA--*****",
-        "D": "Air To Air Missile (AAM)",
         "M1U": "1093",
         "M1F": "1093",
         "M1N": "1093",
@@ -778,7 +683,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMAP--*****",
-        "D": "Air to Space Missile",
         "M1U": "1094",
         "M1F": "1094",
         "M1N": "1094",
@@ -788,7 +692,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMU---*****",
-        "D": "Subsurface To Surface Missile (S/SSM)",
         "M1U": "1095",
         "M1F": "1095",
         "M1N": "1095",
@@ -798,7 +701,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMCM--*****",
-        "D": "Cruise Missile",
         "M1U": "1096",
         "M1F": "1096",
         "M1N": "1096",
@@ -808,7 +710,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WMB---*****",
-        "D": "Ballistic Missile",
         "M1U": "1097",
         "M1F": "1097",
         "M1N": "1097",
@@ -818,7 +719,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WD----*****",
-        "D": "Decoy",
         "M1U": "1099",
         "M1F": "1099",
         "M1N": "1099",
@@ -826,7 +726,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*WB----*****",
-        "D": "Bomb",
         "M1U": "1098",
         "M1F": "1098",
         "M1N": "1098",
@@ -834,7 +733,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*C-----*****",
-        "D": "Civil Aircraft",
         "M1U": "1100",
         "M1F": "1100",
         "M1N": "1100",
@@ -842,7 +740,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*CF----*****",
-        "D": "Civil Fixed Wing",
         "M1U": "1101",
         "M1F": "1101",
         "M1N": "1101",
@@ -852,7 +749,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*CH----*****",
-        "D": "Civil Rotary Wing",
         "M1U": "1102",
         "M1F": "1102",
         "M1N": "1102",
@@ -862,7 +758,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*A*CL----*****",
-        "D": "Civil Aircraft Lighter Than Air",
         "M1U": "1103",
         "M1F": "1103",
         "M1N": "1103",
@@ -872,15 +767,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*------*****",
-        "D": "Ground Track"
       },
       {
         "ID": "S*G*U-----*****",
-        "D": "Unit"
       },
       {
         "ID": "S*G*UC----*****",
-        "D": "Combat",
         "M1U": "1104",
         "M1F": "1104",
         "M1N": "1104",
@@ -888,7 +780,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCD---*****",
-        "D": "Air Defense",
         "M1U": "1105",
         "M1F": "1106",
         "M1N": "1107",
@@ -896,7 +787,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDS--*****",
-        "D": "Short Range",
         "M1U": "1109",
         "M1F": "1110",
         "M1N": "1111",
@@ -904,7 +794,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDSC-*****",
-        "D": "Chaparral",
         "M1U": "1113",
         "M1F": "1114",
         "M1N": "1115",
@@ -912,7 +801,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDSS-*****",
-        "D": "Stinger",
         "M1U": "1117",
         "M1F": "1118",
         "M1N": "1119",
@@ -920,7 +808,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDSV-*****",
-        "D": "Vulcan",
         "M1U": "1121",
         "M1F": "1122",
         "M1N": "1123",
@@ -928,7 +815,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDM--*****",
-        "D": "Air Defense Missile",
         "M1U": "1125",
         "M1F": "1126",
         "M1N": "1127",
@@ -936,7 +822,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDML-*****",
-        "D": "Air Defense Missile Light",
         "M1U": "1129",
         "M1F": "1130",
         "M1N": "1131",
@@ -944,7 +829,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDMLA*****",
-        "D": "Air Defense Missile Motorized (Avenger)",
         "M1U": "1133",
         "M1F": "1134",
         "M1N": "1135",
@@ -952,7 +836,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDMM-*****",
-        "D": "Air Defense Missile Medium",
         "M1U": "1137",
         "M1F": "1138",
         "M1N": "1139",
@@ -960,7 +843,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDMH-*****",
-        "D": "Air Defense Missile Heavy",
         "M1U": "1141",
         "M1F": "1142",
         "M1N": "1143",
@@ -968,7 +850,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDH--*****",
-        "D": "H/MAD",
         "M1U": "1145",
         "M1F": "1146",
         "M1N": "1147",
@@ -976,7 +857,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDHH-*****",
-        "D": "Hawk",
         "M1U": "1149",
         "M1F": "1150",
         "M1N": "1151",
@@ -984,7 +864,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDHP-*****",
-        "D": "Patriot",
         "M1U": "1153",
         "M1F": "1154",
         "M1N": "1155",
@@ -992,7 +871,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDG--*****",
-        "D": "Gun Unit",
         "M1U": "1157",
         "M1F": "1158",
         "M1N": "1159",
@@ -1000,7 +878,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDC--*****",
-        "D": "Air Defense Composite",
         "M1U": "1161",
         "M1F": "1162",
         "M1N": "1163",
@@ -1008,7 +885,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDT--*****",
-        "D": "Targeting Unit",
         "M1U": "1165",
         "M1F": "1166",
         "M1N": "1167",
@@ -1016,7 +892,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCDO--*****",
-        "D": "Theater Missile Defense Unit",
         "M1U": "1169",
         "M1F": "1170",
         "M1N": "1171",
@@ -1024,7 +899,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCA---*****",
-        "D": "Armor",
         "M1U": "1173",
         "M1F": "1173",
         "M1N": "1173",
@@ -1032,7 +906,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAT--*****",
-        "D": "Armor Track",
         "M1U": "1173",
         "M1F": "1173",
         "M1N": "1173",
@@ -1040,7 +913,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATA-*****",
-        "D": "Armor Track Airborne",
         "M1U": "1174",
         "M1F": "1174",
         "M1N": "1174",
@@ -1048,7 +920,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATW-*****",
-        "D": "Armor Track Amphibious",
         "M1U": "1175",
         "M1F": "1176",
         "M1N": "1177",
@@ -1056,7 +927,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATWR*****",
-        "D": "Armor Track Amphibious Recovery",
         "M1U": "1179",
         "M1F": "1180",
         "M1N": "1181",
@@ -1064,7 +934,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATL-*****",
-        "D": "Armor Track, Light",
         "M1U": "1183",
         "M1F": "1183",
         "M1N": "1183",
@@ -1072,7 +941,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATM-*****",
-        "D": "Armor Track, Medium",
         "M1U": "1184",
         "M1F": "1184",
         "M1N": "1184",
@@ -1080,7 +948,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATH-*****",
-        "D": "Armor Track, Heavy",
         "M1U": "1185",
         "M1F": "1185",
         "M1N": "1185",
@@ -1088,7 +955,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCATR-*****",
-        "D": "Armor Track, Recovery",
         "M1U": "1186",
         "M1F": "1186",
         "M1N": "1186",
@@ -1096,7 +962,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAW--*****",
-        "D": "Armor, Wheeled",
         "M1U": "1187",
         "M1F": "1187",
         "M1N": "1187",
@@ -1104,7 +969,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWS-*****",
-        "D": "Armor, Wheeled Air Assault",
         "M1U": "1188",
         "M1F": "1188",
         "M1N": "1188",
@@ -1112,7 +976,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWA-*****",
-        "D": "Armor, Wheeled Airborne",
         "M1U": "1189",
         "M1F": "1189",
         "M1N": "1189",
@@ -1120,7 +983,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWW-*****",
-        "D": "Armor, Wheeled Amphibious",
         "M1U": "1190",
         "M1F": "1191",
         "M1N": "1192",
@@ -1128,7 +990,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWWR*****",
-        "D": "Armor, Wheeled Amphibious Recovery",
         "M1U": "1194",
         "M1F": "1195",
         "M1N": "1196",
@@ -1136,7 +997,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWL-*****",
-        "D": "Armor, Wheeled Light",
         "M1U": "1198",
         "M1F": "1198",
         "M1N": "1198",
@@ -1144,7 +1004,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWM-*****",
-        "D": "Armor, Wheeled Medium",
         "M1U": "1199",
         "M1F": "1199",
         "M1N": "1199",
@@ -1152,7 +1011,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWH-*****",
-        "D": "Armor, Wheeled Heavy",
         "M1U": "1200",
         "M1F": "1200",
         "M1N": "1200",
@@ -1160,7 +1018,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAWR-*****",
-        "D": "Armor, Wheeled Recovery",
         "M1U": "1201",
         "M1F": "1201",
         "M1N": "1201",
@@ -1168,7 +1025,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAA--*****",
-        "D": "Anti Armor",
         "M1U": "1202",
         "M1F": "1203",
         "M1N": "1204",
@@ -1176,7 +1032,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAD-*****",
-        "D": "Anti Armor Dismounted",
         "M1U": "1202",
         "M1F": "1203",
         "M1N": "1204",
@@ -1184,7 +1039,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAL-*****",
-        "D": "Anti Armor Light",
         "M1U": "1206",
         "M1F": "1207",
         "M1N": "1208",
@@ -1192,7 +1046,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAM-*****",
-        "D": "Anti Armor Airborne",
         "M1U": "1210",
         "M1F": "1211",
         "M1N": "1212",
@@ -1200,7 +1053,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAS-*****",
-        "D": "Anti Armor Air Assault",
         "M1U": "1214",
         "M1F": "1215",
         "M1N": "1216",
@@ -1208,7 +1060,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAU-*****",
-        "D": "Anti Armor Mountain",
         "M1U": "1218",
         "M1F": "1219",
         "M1N": "1220",
@@ -1216,7 +1067,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAC-*****",
-        "D": "Anti Armor Arctic",
         "M1U": "1222",
         "M1F": "1223",
         "M1N": "1224",
@@ -1224,7 +1074,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAA-*****",
-        "D": "Anti Armor Armored",
         "M1U": "1226",
         "M1F": "1227",
         "M1N": "1228",
@@ -1232,7 +1081,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAAT*****",
-        "D": "Anti Armor Armored Tracked",
         "M1U": "1226",
         "M1F": "1227",
         "M1N": "1228",
@@ -1240,7 +1088,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAAW*****",
-        "D": "Anti Armor Armored Wheeled",
         "M1U": "1230",
         "M1F": "1231",
         "M1N": "1232",
@@ -1248,7 +1095,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAAS*****",
-        "D": "Anti Armor Armored Air Assault",
         "M1U": "1234",
         "M1F": "1235",
         "M1N": "1236",
@@ -1256,7 +1102,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAO-*****",
-        "D": "Anti Armor Motorized",
         "M1U": "1238",
         "M1F": "1239",
         "M1N": "1240",
@@ -1264,7 +1109,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCAAOS*****",
-        "D": "Anti Armor Motorized Air Assault",
         "M1U": "1242",
         "M1F": "1243",
         "M1N": "1244",
@@ -1272,7 +1116,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCV---*****",
-        "D": "Aviation",
         "M1U": "1246",
         "M1F": "1246",
         "M1N": "1246",
@@ -1280,7 +1123,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVF--*****",
-        "D": "Aviation Fixed Wing",
         "M1U": "1247",
         "M1F": "1247",
         "M1N": "1247",
@@ -1288,7 +1130,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVFU-*****",
-        "D": "Utility Fixed Wing",
         "M1U": "1248",
         "M1F": "1248",
         "M1N": "1248",
@@ -1296,7 +1137,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVFA-*****",
-        "D": "Fixed Wing Attack",
         "M1U": "1249",
         "M1F": "1249",
         "M1N": "1249",
@@ -1304,7 +1144,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVFR-*****",
-        "D": "Recon Fixed Wing",
         "M1U": "1250",
         "M1F": "1250",
         "M1N": "1250",
@@ -1312,7 +1151,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVR--*****",
-        "D": "Aviation Rotary Wing",
         "M1U": "1251",
         "M1F": "1251",
         "M1N": "1251",
@@ -1320,7 +1158,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRA-*****",
-        "D": "Attack Rotary Wing",
         "M1U": "1252",
         "M1F": "1252",
         "M1N": "1252",
@@ -1328,7 +1165,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRS-*****",
-        "D": "Scout Rotary Wing",
         "M1U": "1253",
         "M1F": "1253",
         "M1N": "1253",
@@ -1336,7 +1172,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRW-*****",
-        "D": "Antisubmarine Warfare Rotary Wing",
         "M1U": "1254",
         "M1F": "1254",
         "M1N": "1254",
@@ -1344,7 +1179,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRU-*****",
-        "D": "Utility Rotary Wing",
         "M1U": "1255",
         "M1F": "1255",
         "M1N": "1255",
@@ -1352,7 +1186,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRUL*****",
-        "D": "Light Utility Rotary Wing",
         "M1U": "1256",
         "M1F": "1256",
         "M1N": "1256",
@@ -1360,7 +1193,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRUM*****",
-        "D": "Medium Utility Rotary Wing",
         "M1U": "1257",
         "M1F": "1257",
         "M1N": "1257",
@@ -1368,7 +1200,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRUH*****",
-        "D": "Heavy Utility Rotary Wing",
         "M1U": "1258",
         "M1F": "1258",
         "M1N": "1258",
@@ -1376,7 +1207,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRUC*****",
-        "D": "C2 Rotary Wing",
         "M1U": "1259",
         "M1F": "1259",
         "M1N": "1259",
@@ -1384,7 +1214,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRUE*****",
-        "D": "Medevac Rotary Wing",
         "M1U": "1260",
         "M1F": "1260",
         "M1N": "1260",
@@ -1392,7 +1221,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVRM-*****",
-        "D": "Mine Countermeasure Rotary Wing",
         "M1U": "1261",
         "M1F": "1261",
         "M1N": "1261",
@@ -1400,7 +1228,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVS--*****",
-        "D": "Search and Rescue",
         "M1U": "1262",
         "M1F": "1262",
         "M1N": "1262",
@@ -1408,7 +1235,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVC--*****",
-        "D": "Aviation Composite",
         "M1U": "1263",
         "M1F": "1263",
         "M1N": "1263",
@@ -1416,7 +1242,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVV--*****",
-        "D": "Vertical/Short Takeoff And Landing (V/Stol)",
         "M1U": "1264",
         "M1F": "1264",
         "M1N": "1264",
@@ -1424,7 +1249,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVU--*****",
-        "D": "Unmanned Aerial Vehicle",
         "M1U": "1265",
         "M1F": "1265",
         "M1N": "1265",
@@ -1432,7 +1256,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVUF-*****",
-        "D": "Unmanned Aerial Vehicle Fixed Wing",
         "M1U": "1266",
         "M1F": "1266",
         "M1N": "1266",
@@ -1440,7 +1263,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCVUR-*****",
-        "D": "Unmanned Aerial Vehicle Rotary Wing",
         "M1U": "1267",
         "M1F": "1267",
         "M1N": "1267",
@@ -1448,7 +1270,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCI---*****",
-        "D": "Infantry",
         "M1U": "1268",
         "M1F": "1269",
         "M1N": "1270",
@@ -1456,7 +1277,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIL--*****",
-        "D": "Infantry Light",
         "M1U": "1272",
         "M1F": "1273",
         "M1N": "1274",
@@ -1464,7 +1284,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIM--*****",
-        "D": "Infantry Motorized",
         "M1U": "1276",
         "M1F": "1277",
         "M1N": "1278",
@@ -1472,7 +1291,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIO--*****",
-        "D": "Infantry Mountain",
         "M1U": "1280",
         "M1F": "1281",
         "M1N": "1282",
@@ -1480,7 +1298,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIA--*****",
-        "D": "Infantry Airborne",
         "M1U": "1284",
         "M1F": "1285",
         "M1N": "1286",
@@ -1488,7 +1305,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIS--*****",
-        "D": "Infantry Air Assault",
         "M1U": "1288",
         "M1F": "1289",
         "M1N": "1290",
@@ -1496,7 +1312,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIZ--*****",
-        "D": "Infantry Mechanized",
         "M1U": "1292",
         "M1F": "1293",
         "M1N": "1294",
@@ -1504,7 +1319,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIN--*****",
-        "D": "Infantry Naval",
         "M1U": "1296",
         "M1F": "1297",
         "M1N": "1298",
@@ -1512,7 +1326,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCII--*****",
-        "D": "Infantry Fighting Vehicle",
         "M1U": "1300",
         "M1F": "1301",
         "M1N": "1302",
@@ -1520,7 +1333,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCIC--*****",
-        "D": "Infantry Arctic",
         "M1U": "604",
         "M1F": "605",
         "M1N": "606",
@@ -1529,7 +1341,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCE---*****",
-        "D": "Engineer",
         "M1U": "1304",
         "M1F": "1304",
         "M1N": "1304",
@@ -1537,7 +1348,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCEC--*****",
-        "D": "Engineer Combat",
         "M1U": "1305",
         "M1F": "1305",
         "M1N": "1305",
@@ -1545,7 +1355,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECS-*****",
-        "D": "Engineer Combat Air Assault",
         "M1U": "1306",
         "M1F": "1306",
         "M1N": "1306",
@@ -1553,7 +1362,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECA-*****",
-        "D": "Engineer Combat Airborne",
         "M1U": "1307",
         "M1F": "1307",
         "M1N": "1307",
@@ -1561,7 +1369,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECC-*****",
-        "D": "Engineer Combat Arctic",
         "M1U": "1308",
         "M1F": "1308",
         "M1N": "1308",
@@ -1569,7 +1376,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECL-*****",
-        "D": "Engineer Combat Light (Sapper)",
         "M1U": "1309",
         "M1F": "1309",
         "M1N": "1309",
@@ -1577,7 +1383,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECM-*****",
-        "D": "Engineer Combat Medium",
         "M1U": "1310",
         "M1F": "1310",
         "M1N": "1310",
@@ -1585,7 +1390,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECH-*****",
-        "D": "Engineer Combat Heavy",
         "M1U": "1311",
         "M1F": "1311",
         "M1N": "1311",
@@ -1593,7 +1397,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECT-*****",
-        "D": "Engineer Combat Mechanized (Track)",
         "M1U": "1312",
         "M1F": "1312",
         "M1N": "1312",
@@ -1601,7 +1404,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECW-*****",
-        "D": "Engineer Combat Motorized",
         "M1U": "1313",
         "M1F": "1314",
         "M1N": "1315",
@@ -1609,7 +1411,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECO-*****",
-        "D": "Engineer Combat Mountain",
         "M1U": "1317",
         "M1F": "1317",
         "M1N": "1317",
@@ -1617,7 +1418,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCECR-*****",
-        "D": "Engineer Combat Recon",
         "M1U": "1318",
         "M1F": "1319",
         "M1N": "1320",
@@ -1625,7 +1425,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCEN--*****",
-        "D": "Engineer Construction",
         "M1U": "1322",
         "M1F": "1322",
         "M1N": "1322",
@@ -1633,7 +1432,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCENN-*****",
-        "D": "Engineer Naval Construction",
         "M1U": "1323",
         "M1F": "1323",
         "M1N": "1323",
@@ -1641,7 +1439,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCF---*****",
-        "D": "Field Artillery",
         "M1U": "1324",
         "M1F": "1324",
         "M1N": "1324",
@@ -1649,7 +1446,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFH--*****",
-        "D": "Howitzer/Gun",
         "M1U": "1324",
         "M1F": "1324",
         "M1N": "1324",
@@ -1657,7 +1453,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHE-*****",
-        "D": "Self-Propelled",
         "M1U": "1325",
         "M1F": "1325",
         "M1N": "1325",
@@ -1665,7 +1460,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHS-*****",
-        "D": "Howitzer/Gun Air Assault",
         "M1U": "1326",
         "M1F": "1326",
         "M1N": "1326",
@@ -1673,7 +1467,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHA-*****",
-        "D": "Howitzer/Gun Airborne",
         "M1U": "1327",
         "M1F": "1327",
         "M1N": "1327",
@@ -1681,7 +1474,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHC-*****",
-        "D": "Arctic",
         "M1U": "1328",
         "M1F": "1328",
         "M1N": "1328",
@@ -1689,7 +1481,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHO-*****",
-        "D": "Howitzer/Gun Mountain",
         "M1U": "1329",
         "M1F": "1329",
         "M1N": "1329",
@@ -1697,7 +1488,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHL-*****",
-        "D": "Howitzer/Gun Light",
         "M1U": "1330",
         "M1F": "1330",
         "M1N": "1330",
@@ -1705,7 +1495,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHM-*****",
-        "D": "Howitzer/Gun Medium",
         "M1U": "1331",
         "M1F": "1331",
         "M1N": "1331",
@@ -1713,7 +1502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHH-*****",
-        "D": "Heavy",
         "M1U": "1332",
         "M1F": "1332",
         "M1N": "1332",
@@ -1721,7 +1509,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFHX-*****",
-        "D": "Amphibious",
         "M1U": "1333",
         "M1F": "1334",
         "M1N": "1335",
@@ -1729,7 +1516,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFR--*****",
-        "D": "Rocket",
         "M1U": "1337",
         "M1F": "1337",
         "M1N": "1337",
@@ -1737,7 +1523,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRS-*****",
-        "D": "Rocket Single Rocket Launcher",
         "M1U": "1338",
         "M1F": "1338",
         "M1N": "1338",
@@ -1745,7 +1530,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRSS*****",
-        "D": "Single Rocket Self-Propelled",
         "M1U": "1339",
         "M1F": "1339",
         "M1N": "1339",
@@ -1753,7 +1537,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRSR*****",
-        "D": "Single Rocket Truck",
         "M1U": "1340",
         "M1F": "1340",
         "M1N": "1340",
@@ -1761,7 +1544,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRST*****",
-        "D": "Single Rocket Towed",
         "M1U": "1341",
         "M1F": "1341",
         "M1N": "1341",
@@ -1769,7 +1551,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRM-*****",
-        "D": "Multi Rocket Launcher",
         "M1U": "1342",
         "M1F": "1342",
         "M1N": "1342",
@@ -1777,7 +1558,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRMS*****",
-        "D": "Multi Rocket Self-Propelled",
         "M1U": "1343",
         "M1F": "1343",
         "M1N": "1343",
@@ -1785,7 +1565,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRMR*****",
-        "D": "Multi Rocket Truck",
         "M1U": "1344",
         "M1F": "1344",
         "M1N": "1344",
@@ -1793,7 +1572,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFRMT*****",
-        "D": "Multi Rocket Towed",
         "M1U": "1345",
         "M1F": "1345",
         "M1N": "1345",
@@ -1801,7 +1579,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFT--*****",
-        "D": "Target Acquisition",
         "M1U": "1346",
         "M1F": "1346",
         "M1N": "1346",
@@ -1809,7 +1586,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTR-*****",
-        "D": "Target Acquisition Radar",
         "M1U": "1347",
         "M1F": "1347",
         "M1N": "1347",
@@ -1817,7 +1593,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTS-*****",
-        "D": "Sound",
         "M1U": "1348",
         "M1F": "1349",
         "M1N": "1350",
@@ -1827,7 +1602,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTF-*****",
-        "D": "Flash (Optical)",
         "M1U": "1352",
         "M1F": "1352",
         "M1N": "1352",
@@ -1835,7 +1609,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTC-*****",
-        "D": "Colt/Fist",
         "M1U": "1353",
         "M1F": "1354",
         "M1N": "1355",
@@ -1843,7 +1616,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTCD*****",
-        "D": "Dismounted Colt/Fist",
         "M1U": "1357",
         "M1F": "1358",
         "M1N": "1359",
@@ -1851,7 +1623,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTCM*****",
-        "D": "Tracked Colt/Fist",
         "M1U": "1361",
         "M1F": "1362",
         "M1N": "1363",
@@ -1859,7 +1630,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFTA-*****",
-        "D": "Anglico",
         "M1U": "1365",
         "M1F": "1366",
         "M1N": "1367",
@@ -1867,7 +1637,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFM--*****",
-        "D": "Field Artillery Mortar",
         "M1U": "1369",
         "M1F": "1369",
         "M1N": "1369",
@@ -1875,7 +1644,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMS-*****",
-        "D": "Self-Propelled (SP) Tracked Mortar",
         "M1U": "1370",
         "M1F": "1370",
         "M1N": "1370",
@@ -1883,7 +1651,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMW-*****",
-        "D": "SP Wheeled Mortar",
         "M1U": "1371",
         "M1F": "1371",
         "M1N": "1371",
@@ -1891,7 +1658,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMT-*****",
-        "D": "Towed Mortar",
         "M1U": "1372",
         "M1F": "1372",
         "M1N": "1372",
@@ -1899,7 +1665,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMTA*****",
-        "D": "Towed Airborne Mortar",
         "M1U": "1373",
         "M1F": "1373",
         "M1N": "1373",
@@ -1907,7 +1672,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMTS*****",
-        "D": "Towed Air Assault Mortar",
         "M1U": "1374",
         "M1F": "1374",
         "M1N": "1374",
@@ -1915,7 +1679,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMTC*****",
-        "D": "Towed Arctic Mortar",
         "M1U": "1375",
         "M1F": "1375",
         "M1N": "1375",
@@ -1923,7 +1686,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFMTO*****",
-        "D": "Towed Mountain Mortar",
         "M1U": "1376",
         "M1F": "1376",
         "M1N": "1376",
@@ -1931,7 +1693,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFML-*****",
-        "D": "Amphibious Mortar",
         "M1U": "1377",
         "M1F": "1378",
         "M1N": "1379",
@@ -1939,7 +1700,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFS--*****",
-        "D": "Artillery Survey",
         "M1U": "1381",
         "M1F": "1381",
         "M1N": "1381",
@@ -1949,7 +1709,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFSS-*****",
-        "D": "Artillery Survey Air Assault",
         "M1U": "1383",
         "M1F": "1383",
         "M1N": "1383",
@@ -1959,7 +1718,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFSA-*****",
-        "D": "Artillery Survey Airborne",
         "M1U": "1385",
         "M1F": "1385",
         "M1N": "1385",
@@ -1969,7 +1727,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFSL-*****",
-        "D": "Artillery Survey Light",
         "M1U": "1387",
         "M1F": "1387",
         "M1N": "1387",
@@ -1979,7 +1736,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFSO-*****",
-        "D": "Artillery Survey Mountain",
         "M1U": "1389",
         "M1F": "1389",
         "M1N": "1389",
@@ -1989,7 +1745,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFO--*****",
-        "D": "Field Artillery Meteorological",
         "M1U": "1391",
         "M1F": "1391",
         "M1N": "1391",
@@ -1997,7 +1752,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFOS-*****",
-        "D": "Air Assault Meteorological",
         "M1U": "1392",
         "M1F": "1392",
         "M1N": "1392",
@@ -2005,7 +1759,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFOA-*****",
-        "D": "Airborne Meteorological",
         "M1U": "1393",
         "M1F": "1393",
         "M1N": "1393",
@@ -2013,7 +1766,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFOL-*****",
-        "D": "Light Meteorological",
         "M1U": "1394",
         "M1F": "1394",
         "M1N": "1394",
@@ -2021,7 +1773,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCFOO-*****",
-        "D": "Mountain Meteorological",
         "M1U": "1395",
         "M1F": "1395",
         "M1N": "1395",
@@ -2029,7 +1780,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCR---*****",
-        "D": "Combat Reconnaissance",
         "M1U": "1396",
         "M1F": "1397",
         "M1N": "1398",
@@ -2037,7 +1787,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRH--*****",
-        "D": "Reconnaissance Horse",
         "M1U": "1400",
         "M1F": "1400",
         "M1N": "1400",
@@ -2045,7 +1794,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRV--*****",
-        "D": "Reconnaissance Cavalry",
         "M1U": "1401",
         "M1F": "1402",
         "M1N": "1403",
@@ -2053,7 +1801,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRVA-*****",
-        "D": "Reconnaissance Cavalry Armored",
         "M1U": "1405",
         "M1F": "1406",
         "M1N": "1407",
@@ -2061,7 +1808,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRVM-*****",
-        "D": "Reconnaissance Cavalry Motorized",
         "M1U": "1409",
         "M1F": "1410",
         "M1N": "1411",
@@ -2069,7 +1815,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRVG-*****",
-        "D": "Reconnaissance Cavalry Ground",
         "M1U": "1413",
         "M1F": "1414",
         "M1N": "1415",
@@ -2077,7 +1822,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRVO-*****",
-        "D": "Reconnaissance Cavalry Air",
         "M1U": "1417",
         "M1F": "1418",
         "M1N": "1419",
@@ -2085,7 +1829,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRC--*****",
-        "D": "Reconnaissance Arctic",
         "M1U": "1421",
         "M1F": "1422",
         "M1N": "1423",
@@ -2093,7 +1836,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRS--*****",
-        "D": "Reconnaissance Air Assault",
         "M1U": "1425",
         "M1F": "1426",
         "M1N": "1427",
@@ -2101,7 +1843,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRA--*****",
-        "D": "Reconnaissance Airborne",
         "M1U": "1429",
         "M1F": "1430",
         "M1N": "1431",
@@ -2109,7 +1850,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRO--*****",
-        "D": "Reconnaissance Mountain",
         "M1U": "1433",
         "M1F": "1434",
         "M1N": "1435",
@@ -2117,7 +1857,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRL--*****",
-        "D": "Reconnaissance Light",
         "M1U": "1437",
         "M1F": "1438",
         "M1N": "1439",
@@ -2125,7 +1864,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRR--*****",
-        "D": "Reconnaissance Marine",
         "M1U": "1441",
         "M1F": "1442",
         "M1N": "1443",
@@ -2133,7 +1871,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRRD-*****",
-        "D": "Reconnaissance Marine Division",
         "M1U": "1445",
         "M1F": "1446",
         "M1N": "1447",
@@ -2141,7 +1878,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRRF-*****",
-        "D": "Reconnaissance Marine Force",
         "M1U": "1449",
         "M1F": "1450",
         "M1N": "1451",
@@ -2149,7 +1885,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRRL-*****",
-        "D": "Reconnaissance Marine Light Armored (LAR)",
         "M1U": "1453",
         "M1F": "1454",
         "M1N": "1455",
@@ -2157,7 +1892,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCRX--*****",
-        "D": "Reconnaissance Long Range Surveillance (LRS)",
         "M1U": "1457",
         "M1F": "1458",
         "M1N": "1459",
@@ -2165,7 +1899,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCM---*****",
-        "D": "Missile (Surf-Surf)",
         "M1U": "1461",
         "M1F": "1461",
         "M1N": "1461",
@@ -2173,7 +1906,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCMT--*****",
-        "D": "Missile (Surf-Surf) Tactical",
         "M1U": "1462",
         "M1F": "1462",
         "M1N": "1462",
@@ -2181,7 +1913,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCMS--*****",
-        "D": "Missile (Surf-Surf) Strategic",
         "M1U": "1463",
         "M1F": "1463",
         "M1N": "1463",
@@ -2189,7 +1920,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCS---*****",
-        "D": "Internal Security Forces",
         "M1U": "1464",
         "M1F": "1464",
         "M1N": "1464",
@@ -2197,7 +1927,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSW--*****",
-        "D": "Internal Security Forces Riverine",
         "M1U": "1465",
         "M1F": "1466",
         "M1N": "1467",
@@ -2205,7 +1934,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSG--*****",
-        "D": "Internal Security Forces Ground",
         "M1U": "1469",
         "M1F": "1469",
         "M1N": "1469",
@@ -2213,7 +1941,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSGD-*****",
-        "D": "Internal Security Forces Dismounted",
         "M1U": "1470",
         "M1F": "1471",
         "M1N": "1472",
@@ -2221,7 +1948,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSGM-*****",
-        "D": "Internal Security Forces Motorized",
         "M1U": "1474",
         "M1F": "1475",
         "M1N": "1476",
@@ -2229,7 +1955,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSGA-*****",
-        "D": "Internal Security Forces Mechanized",
         "M1U": "1478",
         "M1F": "1478",
         "M1N": "1478",
@@ -2237,7 +1962,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSM--*****",
-        "D": "Internal Security Forces Wheeled Mechanized",
         "M1U": "1479",
         "M1F": "1479",
         "M1N": "1479",
@@ -2245,7 +1969,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSR--*****",
-        "D": "Internal Security Forces Railroad",
         "M1U": "1480",
         "M1F": "1480",
         "M1N": "1480",
@@ -2253,7 +1976,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCSA--*****",
-        "D": "Internal Security Forces Aviation",
         "M1U": "1481",
         "M1F": "1481",
         "M1N": "1481",
@@ -2261,7 +1983,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UCL---*****",
-        "D": "Surveillance Unit",
         "M1U": "1890",
         "M1F": "1890",
         "M1N": "1890",
@@ -2269,7 +1990,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UU----*****",
-        "D": "Combat Support",
         "M1U": "1482",
         "M1F": "1482",
         "M1N": "1482",
@@ -2277,7 +1997,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUA---*****",
-        "D": "Combat Support NBC",
         "M1U": "1483",
         "M1F": "1483",
         "M1N": "1483",
@@ -2285,7 +2004,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUAC--*****",
-        "D": "Combat Support Chemical",
         "M1U": "1484",
         "M1F": "1484",
         "M1N": "1484",
@@ -2293,7 +2011,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACC-*****",
-        "D": "Smoke/Decon",
         "M1U": "1485",
         "M1F": "1485",
         "M1N": "1485",
@@ -2301,7 +2018,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACCK*****",
-        "D": "Mechanized Smoke/Decon",
         "M1U": "1486",
         "M1F": "1486",
         "M1N": "1486",
@@ -2309,7 +2025,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACCM*****",
-        "D": "Motorized Smoke/Decon",
         "M1U": "1487",
         "M1F": "1488",
         "M1N": "1489",
@@ -2317,7 +2032,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACS-*****",
-        "D": "Smoke",
         "M1U": "1491",
         "M1F": "1491",
         "M1N": "1491",
@@ -2325,7 +2039,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACSM*****",
-        "D": "Motorized Smoke",
         "M1U": "1492",
         "M1F": "1493",
         "M1N": "1494",
@@ -2333,7 +2046,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACSA*****",
-        "D": "Armor Smoke",
         "M1U": "1496",
         "M1F": "1496",
         "M1N": "1496",
@@ -2341,7 +2053,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACR-*****",
-        "D": "Chemical Recon",
         "M1U": "1497",
         "M1F": "1498",
         "M1N": "1499",
@@ -2349,7 +2060,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACRW*****",
-        "D": "Chemical Wheeled Armored Vehicle",
         "M1U": "1501",
         "M1F": "1502",
         "M1N": "1503",
@@ -2357,7 +2067,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUACRS*****",
-        "D": "Chemical Wheeled Armored Vehicle Reconnaissance Surveillance",
         "M1U": "1505",
         "M1F": "1506",
         "M1N": "1507",
@@ -2365,7 +2074,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUAN--*****",
-        "D": "Combat Support NBC Nuclear",
         "M1U": "1509",
         "M1F": "1509",
         "M1N": "1509",
@@ -2373,7 +2081,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUAB--*****",
-        "D": "Combat Support NBC Biological",
         "M1U": "1510",
         "M1F": "1510",
         "M1N": "1510",
@@ -2381,7 +2088,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUABR-*****",
-        "D": "Recon Equipped",
         "M1U": "1511",
         "M1F": "1512",
         "M1N": "1513",
@@ -2389,7 +2095,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUAD--*****",
-        "D": "NBC Decontamination",
         "M1U": "1515",
         "M1F": "1515",
         "M1N": "1515",
@@ -2397,7 +2102,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUM---*****",
-        "D": "Military Intelligence",
         "M1U": "1516",
         "M1F": "1516",
         "M1N": "1516",
@@ -2405,7 +2109,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMA--*****",
-        "D": "Aerial Exploitation",
         "M1U": "1517",
         "M1F": "1517",
         "M1N": "1517",
@@ -2413,7 +2116,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMS--*****",
-        "D": "Signal Intelligence (SIGINT)",
         "M1U": "1518",
         "M1F": "1518",
         "M1N": "1518",
@@ -2421,7 +2123,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSE-*****",
-        "D": "Electronic Warfare",
         "M1U": "1519",
         "M1F": "1519",
         "M1N": "1519",
@@ -2429,7 +2130,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSEA*****",
-        "D": "Armored Wheeled Vehicle",
         "M1U": "600",
         "M1F": "601",
         "M1N": "602",
@@ -2439,7 +2139,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSED*****",
-        "D": "Direction Finding",
         "M1U": "1521",
         "M1F": "1521",
         "M1N": "1521",
@@ -2447,7 +2146,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSEI*****",
-        "D": "Intercept",
         "M1U": "1522",
         "M1F": "1522",
         "M1N": "1522",
@@ -2455,7 +2153,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSEJ*****",
-        "D": "Jamming",
         "M1U": "1523",
         "M1F": "1524",
         "M1N": "1525",
@@ -2463,7 +2160,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSET*****",
-        "D": "Theater",
         "M1U": "1527",
         "M1F": "1528",
         "M1N": "1529",
@@ -2471,7 +2167,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMSEC*****",
-        "D": "Corps",
         "M1U": "1531",
         "M1F": "1532",
         "M1N": "1533",
@@ -2479,7 +2174,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMC--*****",
-        "D": "Counter Intelligence",
         "M1U": "1535",
         "M1F": "1535",
         "M1N": "1535",
@@ -2487,7 +2181,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMR--*****",
-        "D": "Counter Intelligence Surveillance",
         "M1U": "1536",
         "M1F": "1536",
         "M1N": "1536",
@@ -2495,7 +2188,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMRG-*****",
-        "D": "Ground Surveillance Radar",
         "M1U": "1537",
         "M1F": "1537",
         "M1N": "1537",
@@ -2503,7 +2195,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMRS-*****",
-        "D": "Surveillance Sensor",
         "M1U": "1538",
         "M1F": "1539",
         "M1N": "1540",
@@ -2513,7 +2204,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMRSS*****",
-        "D": "Sensor SCM",
         "M1U": "1543",
         "M1F": "1544",
         "M1N": "1545",
@@ -2523,7 +2213,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMRX-*****",
-        "D": "Ground Station Module",
         "M1U": "1547",
         "M1F": "1547",
         "M1N": "1547",
@@ -2531,7 +2220,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMMO-*****",
-        "D": "Surveillance Meteorological",
         "M1U": "1548",
         "M1F": "1548",
         "M1N": "1548",
@@ -2539,7 +2227,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMO--*****",
-        "D": "Military Intelligence Operations",
         "M1U": "1549",
         "M1F": "1549",
         "M1N": "1549",
@@ -2547,7 +2234,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMT--*****",
-        "D": "Tactical Exploit",
         "M1U": "1550",
         "M1F": "1550",
         "M1N": "1550",
@@ -2555,7 +2241,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMQ--*****",
-        "D": "Interrogation",
         "M1U": "1551",
         "M1F": "1551",
         "M1N": "1551",
@@ -2563,7 +2248,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUMJ--*****",
-        "D": "Joint Intelligence Center",
         "M1U": "1552",
         "M1F": "1552",
         "M1N": "1552",
@@ -2571,7 +2255,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUL---*****",
-        "D": "Law Enforcement Unit",
         "M1U": "1553",
         "M1F": "1553",
         "M1N": "1553",
@@ -2579,7 +2262,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UULS--*****",
-        "D": "Shore Patrol",
         "M1U": "1554",
         "M1F": "1554",
         "M1N": "1554",
@@ -2587,7 +2269,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UULM--*****",
-        "D": "Military Police",
         "M1U": "1555",
         "M1F": "1555",
         "M1N": "1555",
@@ -2595,7 +2276,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UULC--*****",
-        "D": "Civilian Law Enforcement",
         "M1U": "1556",
         "M1F": "1556",
         "M1N": "1556",
@@ -2603,7 +2283,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UULF--*****",
-        "D": "Security Police (Air)",
         "M1U": "1557",
         "M1F": "1557",
         "M1N": "1557",
@@ -2611,7 +2290,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UULD--*****",
-        "D": "Central Intelligence Division (CID)",
         "M1U": "1558",
         "M1F": "1558",
         "M1N": "1558",
@@ -2619,7 +2297,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUS---*****",
-        "D": "Signal Unit",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2627,7 +2304,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSA--*****",
-        "D": "Area",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2637,7 +2313,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSC--*****",
-        "D": "Communication Configured Package",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2647,7 +2322,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSCL-*****",
-        "D": "Large Communication Configured Package (LCCP)",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2657,14 +2331,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSO--*****",
-        "D": "Command Operations",
         "M1U": "1559",
         "M2": "1566",
         "M2C": "#000000"
       },
       {
         "ID": "S*G*UUSF--*****",
-        "D": "Forward Communications",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2674,7 +2346,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSM--*****",
-        "D": "Multiple Subscriber Element",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2684,7 +2355,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSMS-*****",
-        "D": "Small Extension Node",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2694,7 +2364,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSML-*****",
-        "D": "Large Extension Node",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2704,7 +2373,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSMN-*****",
-        "D": "Node Center",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2714,7 +2382,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSR--*****",
-        "D": "Radio Unit",
         "M1U": "1572",
         "M1F": "1573",
         "M1N": "1574",
@@ -2722,7 +2389,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSRS-*****",
-        "D": "Tactical Satellite",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2732,7 +2398,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSRT-*****",
-        "D": "Teletype Center",
         "M1U": "1577",
         "M1F": "1578",
         "M1N": "1579",
@@ -2740,7 +2405,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSRW-*****",
-        "D": "Relay",
         "M1U": "1581",
         "M1F": "1582",
         "M1N": "1583",
@@ -2748,7 +2412,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSS--*****",
-        "D": "Signal Support",
         "M1U": "1559",
         "M1F": "1560",
         "M1N": "1561",
@@ -2758,7 +2421,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSW--*****",
-        "D": "Telephone Switch",
         "M1U": "1586",
         "M1F": "1587",
         "M1N": "1588",
@@ -2766,7 +2428,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUSX--*****",
-        "D": "Electronic Ranging",
         "M1U": "1590",
         "M1F": "1590",
         "M1N": "1590",
@@ -2776,7 +2437,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUI---*****",
-        "D": "Information Warfare Unit",
         "M1U": "1592",
         "M1F": "1592",
         "M1N": "1592",
@@ -2784,7 +2444,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUP---*****",
-        "D": "Landing Support",
         "M1U": "612",
         "M1F": "613",
         "M1N": "614",
@@ -2794,7 +2453,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UUE---*****",
-        "D": "Explosive Ordnance Disposal",
         "M1U": "1594",
         "M1F": "1594",
         "M1N": "1594",
@@ -2802,7 +2460,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*US----*****",
-        "D": "Combat Service Support",
         "M1U": "1595",
         "M1F": "1595",
         "M1N": "1595",
@@ -2810,7 +2467,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USA---*****",
-        "D": "Administrative (ADMIN)",
         "M1U": "1596",
         "M1F": "1596",
         "M1N": "1596",
@@ -2818,7 +2474,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAT--*****",
-        "D": "Admin Theater",
         "M1U": "1597",
         "M1F": "1598",
         "M1N": "1599",
@@ -2826,7 +2481,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAC--*****",
-        "D": "Admin Corps",
         "M1U": "1601",
         "M1F": "1602",
         "M1N": "1603",
@@ -2834,7 +2488,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAJ--*****",
-        "D": "Judge Advocate General (JAG)",
         "M1U": "1605",
         "M1F": "1605",
         "M1N": "1605",
@@ -2842,7 +2495,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAJT-*****",
-        "D": "JAG Theater",
         "M1U": "1606",
         "M1F": "1607",
         "M1N": "1608",
@@ -2850,7 +2502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAJC-*****",
-        "D": "JAG Corps",
         "M1U": "1610",
         "M1F": "1611",
         "M1N": "1612",
@@ -2858,7 +2509,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAO--*****",
-        "D": "Postal",
         "M1U": "1614",
         "M1F": "1614",
         "M1N": "1614",
@@ -2866,7 +2516,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAOT-*****",
-        "D": "Postal Theater",
         "M1U": "1615",
         "M1F": "1616",
         "M1N": "1617",
@@ -2874,7 +2523,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAOC-*****",
-        "D": "Postal Corps",
         "M1U": "1619",
         "M1F": "1620",
         "M1N": "1621",
@@ -2882,7 +2530,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAF--*****",
-        "D": "Finance",
         "M1U": "1623",
         "M1F": "1623",
         "M1N": "1623",
@@ -2890,7 +2537,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAFT-*****",
-        "D": "Finance Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -2900,7 +2546,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAFC-*****",
-        "D": "Finance Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -2910,7 +2555,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAS--*****",
-        "D": "Personnel Services",
         "M1U": "1624",
         "M1F": "1624",
         "M1N": "1624",
@@ -2918,7 +2562,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAST-*****",
-        "D": "Personnel Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -2928,7 +2571,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USASC-*****",
-        "D": "Personnel Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -2938,7 +2580,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAM--*****",
-        "D": "Mortuary/Graves Registry",
         "M1U": "1625",
         "M1F": "1625",
         "M1N": "1625",
@@ -2946,7 +2587,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAMT-*****",
-        "D": "Mortuary/Graves Registry Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -2956,7 +2596,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAMC-*****",
-        "D": "Mortuary/Graves Registry Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -2966,7 +2605,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAR--*****",
-        "D": "Religious/Chaplain",
         "M1U": "1626",
         "M1F": "1626",
         "M1N": "1626",
@@ -2974,7 +2612,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USART-*****",
-        "D": "Religious/Chaplain Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -2984,7 +2621,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USARC-*****",
-        "D": "Religious/Chaplain Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -2994,7 +2630,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAP--*****",
-        "D": "Public Affairs",
         "M1U": "1627",
         "M1F": "1627",
         "M1N": "1627",
@@ -3002,7 +2637,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPT-*****",
-        "D": "Public Affairs Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3012,7 +2646,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPC-*****",
-        "D": "Public Affairs Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3022,7 +2655,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPB-*****",
-        "D": "Public Affairs Broadcast",
         "M1U": "1628",
         "M1F": "1628",
         "M1N": "1628",
@@ -3030,7 +2662,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPBT*****",
-        "D": "Public Affairs Broadcast Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3040,7 +2671,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPBC*****",
-        "D": "Public Affairs Broadcast Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3050,7 +2680,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPM-*****",
-        "D": "Public Affairs Joint Information Bureau (JIB)",
         "M1U": "1630",
         "M1F": "1630",
         "M1N": "1630",
@@ -3058,7 +2687,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPMT*****",
-        "D": "Public Affairs JIB Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3068,7 +2696,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAPMC*****",
-        "D": "Public Affairs JIB Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3078,7 +2705,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAX--*****",
-        "D": "Replacement Holding Unit (RHU)",
         "M1U": "1631",
         "M1F": "1631",
         "M1N": "1631",
@@ -3086,7 +2712,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAXT-*****",
-        "D": "RHU Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3096,7 +2721,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAXC-*****",
-        "D": "RHU Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3106,7 +2730,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAL--*****",
-        "D": "Labor",
         "M1U": "1633",
         "M1F": "1633",
         "M1N": "1633",
@@ -3114,7 +2737,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USALT-*****",
-        "D": "Labor Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3124,7 +2746,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USALC-*****",
-        "D": "Labor Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3134,7 +2755,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAW--*****",
-        "D": "Morale, Welfare, Recreation (MWR)",
         "M1U": "1634",
         "M1F": "1634",
         "M1N": "1634",
@@ -3142,7 +2762,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAWT-*****",
-        "D": "MWR Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3152,7 +2771,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAWC-*****",
-        "D": "MWR Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3162,7 +2780,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAQ--*****",
-        "D": "Quartermaster (Supply)",
         "M1U": "1636",
         "M1F": "1636",
         "M1N": "1636",
@@ -3170,7 +2787,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAQT-*****",
-        "D": "Quartermaster (Supply) Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3180,7 +2796,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USAQC-*****",
-        "D": "Quartermaster (Supply) Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3190,7 +2805,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USM---*****",
-        "D": "Medical",
         "M1U": "1637",
         "M1F": "1638",
         "M1N": "1639",
@@ -3198,7 +2812,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMT--*****",
-        "D": "Medical Theater",
         "M1U": "1641",
         "M1F": "1642",
         "M1N": "1643",
@@ -3206,7 +2819,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMC--*****",
-        "D": "Medical Corps",
         "M1U": "1645",
         "M1F": "1646",
         "M1N": "1647",
@@ -3214,7 +2826,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMM--*****",
-        "D": "Medical Treatment Facility",
         "M1U": "1637",
         "M1F": "1638",
         "M1N": "1639",
@@ -3224,7 +2835,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMMT-*****",
-        "D": "Medical Treatment Facility Theater",
         "M1U": "1641",
         "M1F": "1642",
         "M1N": "1643",
@@ -3234,7 +2844,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMMC-*****",
-        "D": "Medical Treatment Facility Corps",
         "M1U": "1645",
         "M1F": "1646",
         "M1N": "1647",
@@ -3244,7 +2853,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMV--*****",
-        "D": "Medical Veterinary",
         "M1U": "1637",
         "M1F": "1638",
         "M1N": "1639",
@@ -3254,7 +2862,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMVT-*****",
-        "D": "Medical Veterinary Theater",
         "M1U": "1641",
         "M1F": "1642",
         "M1N": "1643",
@@ -3264,7 +2871,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMVC-*****",
-        "D": "Medical Veterinary Corps",
         "M1U": "1645",
         "M1F": "1646",
         "M1N": "1647",
@@ -3274,7 +2880,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMD--*****",
-        "D": "Medical Dental",
         "M1U": "1637",
         "M1F": "1638",
         "M1N": "1639",
@@ -3284,7 +2889,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMDT-*****",
-        "D": "Medical Dental Theater",
         "M1U": "1641",
         "M1F": "1642",
         "M1N": "1643",
@@ -3294,7 +2898,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMDC-*****",
-        "D": "Medical Dental Corps",
         "M1U": "1645",
         "M1F": "1646",
         "M1N": "1647",
@@ -3304,7 +2907,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMP--*****",
-        "D": "Medical Psychological",
         "M1U": "1637",
         "M1F": "1638",
         "M1N": "1639",
@@ -3314,7 +2916,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMPT-*****",
-        "D": "Medical Psychological Theater",
         "M1U": "1641",
         "M1F": "1642",
         "M1N": "1643",
@@ -3324,7 +2925,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USMPC-*****",
-        "D": "Medical Psychological Corps",
         "M1U": "1645",
         "M1F": "1646",
         "M1N": "1647",
@@ -3334,7 +2934,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS---*****",
-        "D": "Supply",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3342,7 +2941,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USST--*****",
-        "D": "Supply Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3350,7 +2948,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSC--*****",
-        "D": "Supply Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3358,7 +2955,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS1--*****",
-        "D": "Supply Class I",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3368,7 +2964,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS1T-*****",
-        "D": "Supply Class I Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3378,7 +2973,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS1C-*****",
-        "D": "Supply Class I Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3388,7 +2982,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS2--*****",
-        "D": "Supply Class II",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3398,7 +2991,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS2T-*****",
-        "D": "Supply Class II Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3408,7 +3000,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS2C-*****",
-        "D": "Supply Class II Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3418,7 +3009,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3--*****",
-        "D": "Supply Class III",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3428,7 +3018,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3T-*****",
-        "D": "Supply Class III Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3438,7 +3027,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3C-*****",
-        "D": "Supply Class III Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3448,7 +3036,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3A-*****",
-        "D": "Supply Class III Aviation",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3458,7 +3045,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3AT*****",
-        "D": "Supply Class III Aviation Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3468,7 +3054,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS3AC*****",
-        "D": "Supply Class III Aviation Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3478,7 +3063,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS4--*****",
-        "D": "Supply Class IV",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3488,7 +3072,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS4T-*****",
-        "D": "Supply Class IV Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3498,7 +3081,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS4C-*****",
-        "D": "Supply Class IV Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3508,7 +3090,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS5--*****",
-        "D": "Supply Class V",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3518,7 +3099,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS5T-*****",
-        "D": "Supply Class V Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3528,7 +3108,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS5C-*****",
-        "D": "Supply Class V Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3538,7 +3117,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS6--*****",
-        "D": "Supply Class VI",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3548,7 +3126,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS6T-*****",
-        "D": "Supply Class VI Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3558,7 +3135,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS6C-*****",
-        "D": "Supply Class VI Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3568,7 +3144,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS7--*****",
-        "D": "Supply Class VII",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3578,7 +3153,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS7T-*****",
-        "D": "Supply Class VII Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3588,7 +3162,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS7C-*****",
-        "D": "Supply Class VII Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3598,7 +3171,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS8--*****",
-        "D": "Supply Class VIII",
         "M1U": "1673",
         "M1F": "1674",
         "M1N": "1675",
@@ -3606,7 +3178,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS8T-*****",
-        "D": "Supply Class VIII Theater",
         "M1U": "1677",
         "M1F": "1678",
         "M1N": "1679",
@@ -3614,7 +3185,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS8C-*****",
-        "D": "Supply Class VIII Corps",
         "M1U": "1681",
         "M1F": "1682",
         "M1N": "1683",
@@ -3622,7 +3192,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS9--*****",
-        "D": "Supply Class IX",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3632,7 +3201,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS9T-*****",
-        "D": "Supply Class IX Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3642,7 +3210,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USS9C-*****",
-        "D": "Supply Class IX Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3652,7 +3219,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSX--*****",
-        "D": "Supply Class X",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3662,7 +3228,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSXT-*****",
-        "D": "Supply Class X Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3672,7 +3237,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSXC-*****",
-        "D": "Supply Class X Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3682,7 +3246,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSL--*****",
-        "D": "Supply Laundry/Bath",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3692,7 +3255,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSLT-*****",
-        "D": "Supply Laundry/Bath Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3702,7 +3264,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSLC-*****",
-        "D": "Supply Laundry/Bath Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3712,7 +3273,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSW--*****",
-        "D": "Supply Water",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3722,7 +3282,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSWT-*****",
-        "D": "Supply Water Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3732,7 +3291,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSWC-*****",
-        "D": "Supply Water Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3742,7 +3300,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSWP-*****",
-        "D": "Supply Water Purification",
         "M1U": "1653",
         "M1F": "1654",
         "M1N": "1655",
@@ -3752,7 +3309,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSWPT*****",
-        "D": "Supply Water Purification Theater",
         "M1U": "1657",
         "M1F": "1658",
         "M1N": "1659",
@@ -3762,7 +3318,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USSWPC*****",
-        "D": "Supply Water Purification Corps",
         "M1U": "1661",
         "M1F": "1662",
         "M1N": "1663",
@@ -3772,7 +3327,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UST---*****",
-        "D": "Transportation",
         "M1U": "1690",
         "M1F": "1690",
         "M1N": "1690",
@@ -3780,7 +3334,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTT--*****",
-        "D": "Transportation Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3790,7 +3343,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTC--*****",
-        "D": "Transportation Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3800,7 +3352,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTM--*****",
-        "D": "Movement Control Center (MCC)",
         "M1U": "1691",
         "M1F": "1691",
         "M1N": "1691",
@@ -3808,7 +3359,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTMT-*****",
-        "D": "MCC Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3818,7 +3368,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTMC-*****",
-        "D": "MCC Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3828,7 +3377,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTR--*****",
-        "D": "Railhead",
         "M1U": "1692",
         "M1F": "1692",
         "M1N": "1692",
@@ -3836,7 +3384,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTRT-*****",
-        "D": "Railhead Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3846,7 +3393,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTRC-*****",
-        "D": "Railhead Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3856,7 +3402,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTS--*****",
-        "D": "SPOD/SPOE",
         "M1U": "1693",
         "M1F": "1693",
         "M1N": "1693",
@@ -3864,7 +3409,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTST-*****",
-        "D": "SPOD/SPOE Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3874,7 +3418,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTSC-*****",
-        "D": "SPOD/SPOE Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3884,7 +3427,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTA--*****",
-        "D": "APOD/APOE",
         "M1U": "1694",
         "M1F": "1694",
         "M1N": "1694",
@@ -3892,7 +3434,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTAT-*****",
-        "D": "APOD/APOE Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3902,7 +3443,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTAC-*****",
-        "D": "APOD/APOE Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3912,7 +3452,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTI--*****",
-        "D": "Missile",
         "M1U": "1695",
         "M1F": "1695",
         "M1N": "1695",
@@ -3920,7 +3459,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTIT-*****",
-        "D": "Missile Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3930,7 +3468,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USTIC-*****",
-        "D": "Missile Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3940,7 +3477,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USX---*****",
-        "D": "Maintenance",
         "M1U": "1696",
         "M1F": "1696",
         "M1N": "1696",
@@ -3948,7 +3484,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXT--*****",
-        "D": "Maintenance Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3958,7 +3493,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXC--*****",
-        "D": "Maintenance Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3968,7 +3502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXH--*****",
-        "D": "Maintenance Heavy",
         "M1U": "1697",
         "M1F": "1697",
         "M1N": "1697",
@@ -3976,7 +3509,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXHT-*****",
-        "D": "Maintenance Heavy Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -3986,7 +3518,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXHC-*****",
-        "D": "Maintenance Heavy Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -3996,7 +3527,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXR--*****",
-        "D": "Maintenance Recovery",
         "M1U": "1698",
         "M1F": "1698",
         "M1N": "1698",
@@ -4004,7 +3534,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXRT-*****",
-        "D": "Maintenance Recovery Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -4014,7 +3543,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXRC-*****",
-        "D": "Maintenance Recovery Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -4024,7 +3552,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXO--*****",
-        "D": "Ordnance",
         "M1U": "1699",
         "M1F": "1699",
         "M1N": "1699",
@@ -4032,7 +3559,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXOT-*****",
-        "D": "Ordnance Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -4042,7 +3568,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXOC-*****",
-        "D": "Ordnance Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -4052,7 +3577,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXOM-*****",
-        "D": "Ordnance Missile",
         "M1U": "1700",
         "M1F": "1700",
         "M1N": "1700",
@@ -4060,7 +3584,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXOMT*****",
-        "D": "Ordnance Missile Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -4070,7 +3593,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXOMC*****",
-        "D": "Ordnance Missile Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -4080,7 +3602,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXE--*****",
-        "D": "Electro-Optical",
         "M1U": "1701",
         "M1F": "1701",
         "M1N": "1701",
@@ -4088,7 +3609,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXET-*****",
-        "D": "Electro-Optical Theater",
         "M1U": "640",
         "M1F": "641",
         "M1N": "642",
@@ -4098,7 +3618,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*USXEC-*****",
-        "D": "Electro-Optical Corps",
         "M1U": "648",
         "M1F": "649",
         "M1N": "650",
@@ -4108,19 +3627,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*UH----*****",
-        "D": "Special C2 Headquarters Component"
       },
       {
         "ID": "S*G*E-----*****",
-        "D": "Ground Track Equipment"
       },
       {
         "ID": "S*G*EW----*****",
-        "D": "Weapon"
       },
       {
         "ID": "S*G*EWM---*****",
-        "D": "Missile Launcher",
         "M1U": "1702",
         "M1F": "1702",
         "M1N": "1702",
@@ -4128,7 +3643,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMA--*****",
-        "D": "Air Defense (AD) Missile Launcher",
         "M1U": "1703",
         "M1F": "1703",
         "M1N": "1703",
@@ -4136,7 +3650,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAS-*****",
-        "D": "Short Range AD Missile Launcher",
         "M1U": "1704",
         "M1F": "1704",
         "M1N": "1704",
@@ -4144,7 +3657,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMASR*****",
-        "D": "Short Range Transporter Launcher and Radar (TLAR)",
         "M1U": "1705",
         "M1F": "1705",
         "M1N": "1705",
@@ -4152,7 +3664,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMASE*****",
-        "D": "Short Range Transporter Erector Launcher and Radar (TELAR)",
         "M1U": "1706",
         "M1F": "1706",
         "M1N": "1706",
@@ -4160,7 +3671,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAI-*****",
-        "D": "Intermediate Range AD Missile Launcher",
         "M1U": "1707",
         "M1F": "1707",
         "M1N": "1707",
@@ -4168,7 +3678,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAIR*****",
-        "D": "Intermediate Transporter Launcher and Radar (TLAR)",
         "M1U": "1708",
         "M1F": "1708",
         "M1N": "1708",
@@ -4176,7 +3685,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAIE*****",
-        "D": "Intermediate Transporter Erector Launcher and Radar (TELAR)",
         "M1U": "1709",
         "M1F": "1709",
         "M1N": "1709",
@@ -4184,7 +3692,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAL-*****",
-        "D": "Long Range AD Missile Launcher",
         "M1U": "1710",
         "M1F": "1710",
         "M1N": "1710",
@@ -4192,7 +3699,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMALR*****",
-        "D": "Long Range Transporter Launcher and Radar (TLAR)",
         "M1U": "1711",
         "M1F": "1711",
         "M1N": "1711",
@@ -4200,7 +3706,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMALE*****",
-        "D": "Long Range Transporter Erector Launcher and Radar (TELAR)",
         "M1U": "1712",
         "M1F": "1712",
         "M1N": "1712",
@@ -4208,7 +3713,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMAT-*****",
-        "D": "AD Missile Launcher Theater",
         "M1U": "1713",
         "M1F": "1713",
         "M1N": "1713",
@@ -4216,7 +3720,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMATR*****",
-        "D": "Theater Transporter Launcher and Radar (TLAR)",
         "M1U": "1714",
         "M1F": "1714",
         "M1N": "1714",
@@ -4224,7 +3727,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMATE*****",
-        "D": "Theater Transporter Erector Launcher and Radar (TELAR)",
         "M1U": "1715",
         "M1F": "1715",
         "M1N": "1715",
@@ -4232,7 +3734,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMS--*****",
-        "D": "Surf-Surf (SS) Missile Launcher",
         "M1U": "1716",
         "M1F": "1716",
         "M1N": "1716",
@@ -4240,7 +3741,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMSS-*****",
-        "D": "Short Range SS Missile Launcher",
         "M1U": "1717",
         "M1F": "1717",
         "M1N": "1717",
@@ -4248,7 +3748,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMSI-*****",
-        "D": "Intermediate Range SS Missile Launcher",
         "M1U": "1718",
         "M1F": "1718",
         "M1N": "1718",
@@ -4256,7 +3755,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMSL-*****",
-        "D": "Long Range SS Missile Launcher",
         "M1U": "1719",
         "M1F": "1719",
         "M1N": "1719",
@@ -4264,7 +3762,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMT--*****",
-        "D": "Missile Launcher Antitank (AT)",
         "M1U": "1720",
         "M1F": "1720",
         "M1N": "1720",
@@ -4272,7 +3769,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMTL-*****",
-        "D": "Missile Launcher AT Light",
         "M1U": "1721",
         "M1F": "1721",
         "M1N": "1721",
@@ -4280,7 +3776,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMTM-*****",
-        "D": "Missile Launcher AT Medium",
         "M1U": "1722",
         "M1F": "1722",
         "M1N": "1722",
@@ -4288,7 +3783,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWMTH-*****",
-        "D": "Missile Launcher AT Heavy",
         "M1U": "1723",
         "M1F": "1723",
         "M1N": "1723",
@@ -4296,7 +3790,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWS---*****",
-        "D": "Weapon Single Rocket Launcher",
         "M1U": "1724",
         "M1F": "1724",
         "M1N": "1724",
@@ -4304,7 +3797,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWSL--*****",
-        "D": "Single Rocket Launcher Light",
         "M1U": "1725",
         "M1F": "1725",
         "M1N": "1725",
@@ -4312,7 +3804,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWSM--*****",
-        "D": "Single Rocket Launcher Medium",
         "M1U": "1726",
         "M1F": "1726",
         "M1N": "1726",
@@ -4320,7 +3811,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWSH--*****",
-        "D": "Single Rocket Launcher Heavy",
         "M1U": "1727",
         "M1F": "1727",
         "M1N": "1727",
@@ -4328,7 +3818,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWX---*****",
-        "D": "Multiple Rocket Launcher",
         "M1U": "1728",
         "M1F": "1728",
         "M1N": "1728",
@@ -4336,7 +3825,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWXL--*****",
-        "D": "Multiple Rocket Launcher Light",
         "M1U": "1729",
         "M1F": "1729",
         "M1N": "1729",
@@ -4344,7 +3832,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWXM--*****",
-        "D": "Multiple Rocket Launcher Medium",
         "M1U": "1730",
         "M1F": "1730",
         "M1N": "1730",
@@ -4352,7 +3839,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWXH--*****",
-        "D": "Multiple Rocket Launcher Heavy",
         "M1U": "1731",
         "M1F": "1731",
         "M1N": "1731",
@@ -4360,7 +3846,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWT---*****",
-        "D": "Anti-Tank Rocket Launcher",
         "M1U": "1732",
         "M1F": "1732",
         "M1N": "1732",
@@ -4368,7 +3853,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWTL--*****",
-        "D": "Anti-Tank Rocket Launcher Light",
         "M1U": "1733",
         "M1F": "1733",
         "M1N": "1733",
@@ -4376,7 +3860,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWTM--*****",
-        "D": "Anti-Tank Rocket Launcher Medium",
         "M1U": "1734",
         "M1F": "1734",
         "M1N": "1734",
@@ -4384,7 +3867,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWTH--*****",
-        "D": "Anti-Tank Rocket Launcher Heavy",
         "M1U": "1735",
         "M1F": "1735",
         "M1N": "1735",
@@ -4392,7 +3874,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWR---*****",
-        "D": "Rifle/Automatic Weapon",
         "M1U": "1736",
         "M1F": "1736",
         "M1N": "1736",
@@ -4400,7 +3881,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWRR--*****",
-        "D": "Rifle",
         "M1U": "1737",
         "M1F": "1737",
         "M1N": "1737",
@@ -4408,7 +3888,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWRL--*****",
-        "D": "Light Machine Gun",
         "M1U": "1738",
         "M1F": "1738",
         "M1N": "1738",
@@ -4416,7 +3895,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWRH--*****",
-        "D": "Heavy Machine Gun",
         "M1U": "1739",
         "M1F": "1739",
         "M1N": "1739",
@@ -4424,7 +3902,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWZ---*****",
-        "D": "Grenade Launcher",
         "M1U": "1740",
         "M1F": "1740",
         "M1N": "1740",
@@ -4432,7 +3909,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWZL--*****",
-        "D": "Grenade Launcher Light",
         "M1U": "1741",
         "M1F": "1741",
         "M1N": "1741",
@@ -4440,7 +3916,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWZM--*****",
-        "D": "Grenade Launcher Medium",
         "M1U": "1742",
         "M1F": "1742",
         "M1N": "1742",
@@ -4448,7 +3923,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWZH--*****",
-        "D": "Grenade Launcher Heavy",
         "M1U": "1743",
         "M1F": "1743",
         "M1N": "1743",
@@ -4456,7 +3930,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWO---*****",
-        "D": "Weapon Mortar",
         "M1U": "1744",
         "M1F": "1744",
         "M1N": "1744",
@@ -4464,7 +3937,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWOL--*****",
-        "D": "Mortar Light",
         "M1U": "1745",
         "M1F": "1745",
         "M1N": "1745",
@@ -4472,7 +3944,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWOM--*****",
-        "D": "Mortar Medium",
         "M1U": "1746",
         "M1F": "1746",
         "M1N": "1746",
@@ -4480,7 +3951,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWOH--*****",
-        "D": "Mortar Heavy",
         "M1U": "1747",
         "M1F": "1747",
         "M1N": "1747",
@@ -4488,7 +3958,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWH---*****",
-        "D": "Howitzer",
         "M1U": "1748",
         "M1F": "1748",
         "M1N": "1748",
@@ -4496,7 +3965,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHL--*****",
-        "D": "Howitzer Light",
         "M1U": "1749",
         "M1F": "1749",
         "M1N": "1749",
@@ -4504,7 +3972,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHLS-*****",
-        "D": "Howitzer Light Self-Propelled",
         "M1U": "1750",
         "M1F": "1750",
         "M1N": "1750",
@@ -4512,7 +3979,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHM--*****",
-        "D": "Howitzer Medium",
         "M1U": "1751",
         "M1F": "1751",
         "M1N": "1751",
@@ -4520,7 +3986,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHMS-*****",
-        "D": "Howitzer Medium Self-Propelled",
         "M1U": "1752",
         "M1F": "1752",
         "M1N": "1752",
@@ -4528,7 +3993,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHH--*****",
-        "D": "Howitzer Heavy",
         "M1U": "1753",
         "M1F": "1753",
         "M1N": "1753",
@@ -4536,7 +4000,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWHHS-*****",
-        "D": "Howitzer Heavy Self-Propelled",
         "M1U": "1754",
         "M1F": "1754",
         "M1N": "1754",
@@ -4544,7 +4007,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWG---*****",
-        "D": "Anti-Tank Gun",
         "M1U": "1755",
         "M1F": "1755",
         "M1N": "1755",
@@ -4552,7 +4014,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWGL--*****",
-        "D": "Anti-Tank Gun Light",
         "M1U": "1756",
         "M1F": "1756",
         "M1N": "1756",
@@ -4560,7 +4021,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWGM--*****",
-        "D": "Anti-Tank Gun Medium",
         "M1U": "1757",
         "M1F": "1757",
         "M1N": "1757",
@@ -4568,7 +4028,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWGH--*****",
-        "D": "Anti-Tank Gun Heavy",
         "M1U": "1758",
         "M1F": "1758",
         "M1N": "1758",
@@ -4576,7 +4035,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWGR--*****",
-        "D": "Anti-Tank Gun Recoilless",
         "M1U": "1759",
         "M1F": "1759",
         "M1N": "1759",
@@ -4584,7 +4042,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWD---*****",
-        "D": "Direct Fire Gun",
         "M1U": "1760",
         "M1F": "1760",
         "M1N": "1760",
@@ -4592,7 +4049,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDL--*****",
-        "D": "Direct Fire Gun Light",
         "M1U": "1761",
         "M1F": "1761",
         "M1N": "1761",
@@ -4600,7 +4056,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDLS-*****",
-        "D": "Direct Fire Gun Light Self-Propelled",
         "M1U": "1762",
         "M1F": "1762",
         "M1N": "1762",
@@ -4608,7 +4063,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDM--*****",
-        "D": "Direct Fire Gun Medium",
         "M1U": "1763",
         "M1F": "1763",
         "M1N": "1763",
@@ -4616,7 +4070,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDMS-*****",
-        "D": "Direct Fire Gun Medium Self-Propelled",
         "M1U": "1764",
         "M1F": "1764",
         "M1N": "1764",
@@ -4624,7 +4077,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDH--*****",
-        "D": "Direct Fire Gun Heavy",
         "M1U": "1765",
         "M1F": "1765",
         "M1N": "1765",
@@ -4632,7 +4084,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWDHS-*****",
-        "D": "Direct Fire Gun Heavy Self-Propelled",
         "M1U": "1766",
         "M1F": "1766",
         "M1N": "1766",
@@ -4640,7 +4091,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWA---*****",
-        "D": "Air Defense Gun",
         "M1U": "1767",
         "M1F": "1767",
         "M1N": "1767",
@@ -4648,7 +4098,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWAL--*****",
-        "D": "Air Defense Gun Light",
         "M1U": "1768",
         "M1F": "1768",
         "M1N": "1768",
@@ -4656,7 +4105,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWAM--*****",
-        "D": "Air Defense Gun Medium",
         "M1U": "1769",
         "M1F": "1769",
         "M1N": "1769",
@@ -4664,7 +4112,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EWAH--*****",
-        "D": "Air Defense Gun Heavy",
         "M1U": "1770",
         "M1F": "1770",
         "M1N": "1770",
@@ -4672,7 +4119,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EV----*****",
-        "D": "Ground Vehicle",
         "M1U": "1771",
         "M1F": "1771",
         "M1N": "1771",
@@ -4680,7 +4126,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVA---*****",
-        "D": "Armored Vehicle",
         "M1U": "1772",
         "M1F": "1772",
         "M1N": "1772",
@@ -4688,7 +4133,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAT--*****",
-        "D": "Tank",
         "M1U": "1773",
         "M1F": "1773",
         "M1N": "1773",
@@ -4696,7 +4140,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATL-*****",
-        "D": "Tank Light",
         "M1U": "1774",
         "M1F": "1774",
         "M1N": "1774",
@@ -4704,7 +4147,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATLR*****",
-        "D": "Tank Light Recovery",
         "M1U": "1775",
         "M1F": "1775",
         "M1N": "1775",
@@ -4712,7 +4154,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATM-*****",
-        "D": "Tank Medium",
         "M1U": "1776",
         "M1F": "1776",
         "M1N": "1776",
@@ -4720,7 +4161,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATMR*****",
-        "D": "Tank Medium Recovery",
         "M1U": "1777",
         "M1F": "1777",
         "M1N": "1777",
@@ -4728,7 +4168,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATH-*****",
-        "D": "Tank Heavy",
         "M1U": "1778",
         "M1F": "1778",
         "M1N": "1778",
@@ -4736,7 +4175,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVATHR*****",
-        "D": "Tank Heavy Recovery",
         "M1U": "1779",
         "M1F": "1779",
         "M1N": "1779",
@@ -4744,7 +4182,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAA--*****",
-        "D": "Armored Personnel Carrier",
         "M1U": "1780",
         "M1F": "1780",
         "M1N": "1780",
@@ -4752,7 +4189,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAAR-*****",
-        "D": "Armored Personnel Carrier Recovery",
         "M1U": "1781",
         "M1F": "1781",
         "M1N": "1781",
@@ -4760,7 +4196,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAI--*****",
-        "D": "Armored Infantry",
         "M1U": "1782",
         "M1F": "1782",
         "M1N": "1782",
@@ -4768,7 +4203,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAC--*****",
-        "D": "C2V/ACV",
         "M1U": "1783",
         "M1F": "1783",
         "M1N": "1783",
@@ -4776,7 +4210,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAS--*****",
-        "D": "Combat Service Support Vehicle",
         "M1U": "1784",
         "M1F": "1784",
         "M1N": "1784",
@@ -4784,7 +4217,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVAL--*****",
-        "D": "Light Armored Vehicle",
         "M1U": "1785",
         "M1F": "1785",
         "M1N": "1785",
@@ -4792,7 +4224,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVU---*****",
-        "D": "Utility Vehicle",
         "M1U": "1786",
         "M1F": "1786",
         "M1N": "1786",
@@ -4800,7 +4231,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUB--*****",
-        "D": "Bus",
         "M1U": "1787",
         "M1F": "1787",
         "M1N": "1787",
@@ -4808,7 +4238,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUS--*****",
-        "D": "Semi",
         "M1U": "1788",
         "M1F": "1788",
         "M1N": "1788",
@@ -4816,7 +4245,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUSL-*****",
-        "D": "Semi Light",
         "M1U": "1789",
         "M1F": "1789",
         "M1N": "1789",
@@ -4824,7 +4252,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUSM-*****",
-        "D": "Semi Medium",
         "M1U": "1790",
         "M1F": "1790",
         "M1N": "1790",
@@ -4832,7 +4259,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUSH-*****",
-        "D": "Semi Heavy",
         "M1U": "1791",
         "M1F": "1791",
         "M1N": "1791",
@@ -4840,7 +4266,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUL--*****",
-        "D": "Limited Cross-Country Truck",
         "M1U": "1792",
         "M1F": "1792",
         "M1N": "1792",
@@ -4848,7 +4273,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUX--*****",
-        "D": "Cross-Country Truck",
         "M1U": "1793",
         "M1F": "1793",
         "M1N": "1793",
@@ -4856,7 +4280,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUR--*****",
-        "D": "Water Craft",
         "M1U": "1794",
         "M1F": "1794",
         "M1N": "1794",
@@ -4864,7 +4287,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUT--*****",
-        "D": "Tow Truck",
         "M1U": "1795",
         "M1F": "1795",
         "M1N": "1795",
@@ -4872,7 +4294,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUTL-*****",
-        "D": "Tow Truck Light",
         "M1U": "1796",
         "M1F": "1796",
         "M1N": "1796",
@@ -4880,7 +4301,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUTH-*****",
-        "D": "Tow Truck Heavy",
         "M1U": "1797",
         "M1F": "1797",
         "M1N": "1797",
@@ -4888,7 +4308,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUA--*****",
-        "D": "Ambulance",
         "M1U": "1798",
         "M1F": "1798",
         "M1N": "1798",
@@ -4896,7 +4315,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVUAA-*****",
-        "D": "Ambulance Armored",
         "M1U": "1799",
         "M1F": "1799",
         "M1N": "1799",
@@ -4904,7 +4322,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVE---*****",
-        "D": "Engineer Vehicle",
         "M1U": "1800",
         "M1F": "1800",
         "M1N": "1800",
@@ -4912,7 +4329,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEB--*****",
-        "D": "Engineer Vehicle Bridge",
         "M1U": "1894",
         "M1F": "1894",
         "M1N": "1894",
@@ -4920,7 +4336,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEE--*****",
-        "D": "Earthmover",
         "M1U": "1801",
         "M1F": "1801",
         "M1N": "1801",
@@ -4928,7 +4343,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEC--*****",
-        "D": "Construction Vehicle",
         "M1U": "1802",
         "M1F": "1802",
         "M1N": "1802",
@@ -4936,7 +4350,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEM--*****",
-        "D": "Mine Laying Vehicle",
         "M1U": "1803",
         "M1F": "1803",
         "M1N": "1803",
@@ -4944,7 +4357,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEMV-*****",
-        "D": "Armored Carrier with Volcano",
         "M1U": "1804",
         "M1F": "1804",
         "M1N": "1804",
@@ -4952,7 +4364,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEML-*****",
-        "D": "Truck Mounted with Volcano",
         "M1U": "1805",
         "M1F": "1805",
         "M1N": "1805",
@@ -4960,7 +4371,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEA--*****",
-        "D": "Mine Clearing Vehicle",
         "M1U": "1806",
         "M1F": "1806",
         "M1N": "1806",
@@ -4968,7 +4378,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEAA-*****",
-        "D": "Armored Mounted Mine Clearing Vehicle",
         "M1U": "1807",
         "M1F": "1807",
         "M1N": "1807",
@@ -4976,7 +4385,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEAT-*****",
-        "D": "Trailer Mounted Mine Clearing Vehicle",
         "M1U": "1808",
         "M1F": "1808",
         "M1N": "1808",
@@ -4984,7 +4392,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVED--*****",
-        "D": "Dozer",
         "M1U": "1809",
         "M1F": "1809",
         "M1N": "1809",
@@ -4992,7 +4399,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEDA-*****",
-        "D": "Armored Dozer",
         "M1U": "1810",
         "M1F": "1810",
         "M1N": "1810",
@@ -5000,7 +4406,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVES--*****",
-        "D": "Armored Assault",
         "M1U": "1811",
         "M1F": "1811",
         "M1N": "1811",
@@ -5008,7 +4413,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVER--*****",
-        "D": "Armored Engineer Recon Vehicle (AERV)",
         "M1U": "1812",
         "M1F": "1812",
         "M1N": "1812",
@@ -5016,7 +4420,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEH--*****",
-        "D": "Backhoe",
         "M1U": "1813",
         "M1F": "1813",
         "M1N": "1813",
@@ -5024,7 +4427,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVEF--*****",
-        "D": "Ferry Transporter",
         "M1U": "1814",
         "M1F": "1814",
         "M1N": "1814",
@@ -5032,7 +4434,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVT---*****",
-        "D": "Train Locomotive",
         "M1U": "1815",
         "M1F": "1815",
         "M1N": "1815",
@@ -5040,7 +4441,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVC---*****",
-        "D": "Civilian Vehicle",
         "M1U": "1816",
         "M1F": "1816",
         "M1N": "1816",
@@ -5048,7 +4448,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCA--*****",
-        "D": "Civilian Automobile",
         "M1U": "1817",
         "M1F": "1817",
         "M1N": "1817",
@@ -5058,7 +4457,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCAL-*****",
-        "D": "Civilian Compact Automobile",
         "M1U": "1819",
         "M1F": "1819",
         "M1N": "1819",
@@ -5068,7 +4466,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCAM-*****",
-        "D": "Civilian Midsize Automobile",
         "M1U": "1821",
         "M1F": "1821",
         "M1N": "1821",
@@ -5078,7 +4475,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCAH-*****",
-        "D": "Civilian Automobile Sedan",
         "M1U": "1823",
         "M1F": "1823",
         "M1N": "1823",
@@ -5088,7 +4484,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCO--*****",
-        "D": "Civilian Open-Bed Truck",
         "M1U": "1825",
         "M1F": "1825",
         "M1N": "1825",
@@ -5098,7 +4493,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCOL-*****",
-        "D": "Civilian Pickup Truck",
         "M1U": "1827",
         "M1F": "1827",
         "M1N": "1827",
@@ -5108,7 +4502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCOM-*****",
-        "D": "Civilian Small Open-Bed Truck",
         "M1U": "1829",
         "M1F": "1829",
         "M1N": "1829",
@@ -5118,7 +4511,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCOH-*****",
-        "D": "Civilian Large Open-Bed Truck",
         "M1U": "1831",
         "M1F": "1831",
         "M1N": "1831",
@@ -5128,7 +4520,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCM--*****",
-        "D": "Civilian Multi-Passenger Vehicle",
         "M1U": "1833",
         "M1F": "1833",
         "M1N": "1833",
@@ -5138,7 +4529,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCML-*****",
-        "D": "Civilian Multi-Passenger Van",
         "M1U": "1835",
         "M1F": "1835",
         "M1N": "1835",
@@ -5148,7 +4538,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCMM-*****",
-        "D": "Civilian Small Bus",
         "M1U": "1837",
         "M1F": "1837",
         "M1N": "1837",
@@ -5158,7 +4547,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCMH-*****",
-        "D": "Civilian Large Bus",
         "M1U": "1839",
         "M1F": "1839",
         "M1N": "1839",
@@ -5168,7 +4556,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCU--*****",
-        "D": "Civilian Utility Vehicle",
         "M1U": "1841",
         "M1F": "1841",
         "M1N": "1841",
@@ -5178,7 +4565,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCUL-*****",
-        "D": "Civilian Sport Utility Vehicle (SUV)",
         "M1U": "1843",
         "M1F": "1843",
         "M1N": "1843",
@@ -5188,7 +4574,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCUM-*****",
-        "D": "Civilian Utility Small Box Truck",
         "M1U": "1845",
         "M1F": "1845",
         "M1N": "1845",
@@ -5198,7 +4583,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCUH-*****",
-        "D": "Civilian Utility Large Box Truck",
         "M1U": "1847",
         "M1F": "1847",
         "M1N": "1847",
@@ -5208,7 +4592,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCJ--*****",
-        "D": "Civilian Jeep Type Vehicle",
         "M1U": "1849",
         "M1F": "1849",
         "M1N": "1849",
@@ -5218,7 +4601,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCJL-*****",
-        "D": "Civilian Small/Light Jeep Type Vehicle",
         "M1U": "1851",
         "M1F": "1851",
         "M1N": "1851",
@@ -5228,7 +4610,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCJM-*****",
-        "D": "Civilian Medium Jeep Type Vehicle",
         "M1U": "1853",
         "M1F": "1853",
         "M1N": "1853",
@@ -5238,7 +4619,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCJH-*****",
-        "D": "Civilian Large/Heavy Jeep Type Vehicle",
         "M1U": "1855",
         "M1F": "1855",
         "M1N": "1855",
@@ -5248,7 +4628,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCT--*****",
-        "D": "Civilian Tractor Trailer Truck With Box Trailer",
         "M1U": "1857",
         "M1F": "1857",
         "M1N": "1857",
@@ -5258,7 +4637,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCTL-*****",
-        "D": "Civilian Small/Light Box Trailer",
         "M1U": "1859",
         "M1F": "1859",
         "M1N": "1859",
@@ -5268,7 +4646,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCTM-*****",
-        "D": "Civilian Medium Box Trailer",
         "M1U": "1861",
         "M1F": "1861",
         "M1N": "1861",
@@ -5278,7 +4655,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCTH-*****",
-        "D": "Civilian Large/Heavy Box Trailer",
         "M1U": "1863",
         "M1F": "1863",
         "M1N": "1863",
@@ -5288,7 +4664,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCF--*****",
-        "D": "Civilian Tractor Trailer Truck With Flatbed Trailer",
         "M1U": "1865",
         "M1F": "1865",
         "M1N": "1865",
@@ -5298,7 +4673,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCFL-*****",
-        "D": "Civilian Small/Light Flatbed Trailer",
         "M1U": "1867",
         "M1F": "1867",
         "M1N": "1867",
@@ -5308,7 +4682,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCFM-*****",
-        "D": "Civilian Medium Flatbed Trailer",
         "M1U": "1869",
         "M1F": "1869",
         "M1N": "1869",
@@ -5318,7 +4691,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVCFH-*****",
-        "D": "Civilian Large/Heavy Flatbed Trailer",
         "M1U": "1871",
         "M1F": "1871",
         "M1N": "1871",
@@ -5328,7 +4700,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVS---*****",
-        "D": "Missile Support",
         "M1U": "1874",
         "M1F": "1874",
         "M1N": "1874",
@@ -5336,7 +4707,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVST--*****",
-        "D": "Transloader",
         "M1U": "1875",
         "M1F": "1875",
         "M1N": "1875",
@@ -5344,7 +4714,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVSR--*****",
-        "D": "Transporter",
 		"M1U": "1876",
         "M1F": "1876",
         "M1N": "1876",
@@ -5352,7 +4721,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVSC--*****",
-        "D": "Crane/Loading Device",
         "M1U": "1877",
         "M1F": "1877",
         "M1N": "1877",
@@ -5360,7 +4728,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVSP--*****",
-        "D": "Propellant Transporter",
         "M1U": "1878",
         "M1F": "1878",
         "M1N": "1878",
@@ -5368,7 +4735,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVSW--*****",
-        "D": "Warhead Transporter",
         "M1U": "1879",
         "M1F": "1879",
         "M1N": "1879",
@@ -5376,7 +4742,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EVM---*****",
-        "D": "Pack Animal (S)",
         "M1U": "1873",
         "M1F": "1873",
         "M1N": "1873",
@@ -5384,7 +4749,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*ES----*****",
-        "D": "Equipment Sensor",
         "M1U": "1880",
         "M1F": "1880",
         "M1N": "1880",
@@ -5392,7 +4756,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*ESR---*****",
-        "D": "Sensor Radar",
         "M1U": "1881",
         "M1F": "1881",
         "M1N": "1881",
@@ -5400,7 +4763,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*ESE---*****",
-        "D": "Emplaced Sensor",
         "M1U": "1882",
         "M1F": "1882",
         "M1N": "1882",
@@ -5408,11 +4770,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EX----*****",
-        "D": "Special"
       },
       {
         "ID": "S*G*EXL---*****",
-        "D": "Laser",
         "M1U": "1884",
         "M1F": "1884",
         "M1N": "1884",
@@ -5420,7 +4780,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXN---*****",
-        "D": "NBC Equipment",
         "M1U": "1885",
         "M1F": "1885",
         "M1N": "1885",
@@ -5428,7 +4787,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXF---*****",
-        "D": "Flame Thrower",
         "M1U": "1886",
         "M1F": "1886",
         "M1N": "1886",
@@ -5436,7 +4794,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXM---*****",
-        "D": "Land Mines",
         "M1U": "1887",
         "M1F": "1887",
         "M1N": "1887",
@@ -5444,7 +4801,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXMC--*****",
-        "D": "Claymore",
         "M1U": "1888",
         "M1F": "1888",
         "M1N": "1888",
@@ -5452,7 +4808,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXML--*****",
-        "D": "Less Than Lethal",
         "M1U": "1889",
         "M1F": "1889",
         "M1N": "1889",
@@ -5460,7 +4815,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*EXI---*****",
-        "D": "Improvised Explosive Device (IED)",
         "M1U": "1883",
         "M1F": "1883",
         "M1N": "1883",
@@ -5468,19 +4822,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "IH8CK6F75V69VCF",
-        "D": "BLANK"
       },
       {
         "ID": "S*G*EXI---MO***",
-        "D": "Vehicle Borne Improvised Explosive Device"
       },
       {
         "ID": "S*G*I-----*****",
-        "D": "Installation"
       },
       {
         "ID": "S*G*IR----*****",
-        "D": "Raw Material Production/Storage",
         "M1U": "1897",
         "M1F": "1897",
         "M1N": "1897",
@@ -5488,7 +4838,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRM---*****",
-        "D": "Raw Material Production/Storage Mine",
         "M1U": "1898",
         "M1F": "1898",
         "M1N": "1898",
@@ -5496,7 +4845,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRP---*****",
-        "D": "Petroleum/Gas/Oil",
         "M1U": "1899",
         "M1F": "1899",
         "M1N": "1899",
@@ -5504,7 +4852,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRN---*****",
-        "D": "NBC",
         "M1U": "1900",
         "M1F": "1900",
         "M1N": "1900",
@@ -5512,7 +4859,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRNB--*****",
-        "D": "Production/Storage NBC Biological",
         "M1U": "1901",
         "M1F": "1901",
         "M1N": "1901",
@@ -5520,7 +4866,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRNC--*****",
-        "D": "Production/Storage NBC Chemical",
         "M1U": "1902",
         "M1F": "1902",
         "M1N": "1902",
@@ -5528,7 +4873,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IRNN--*****",
-        "D": "Production/Storage NBC Nuclear",
         "M1U": "1903",
         "M1F": "1903",
         "M1N": "1903",
@@ -5536,7 +4880,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IP----*****",
-        "D": "Processing Facility",
         "M1U": "1904",
         "M1F": "1904",
         "M1N": "1904",
@@ -5544,7 +4887,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IPD---*****",
-        "D": "Processing Facility Decontamination",
         "M1U": "1905",
         "M1F": "1905",
         "M1N": "1905",
@@ -5552,7 +4894,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IE----*****",
-        "D": "Equipment Manufacture",
         "M1U": "1906",
         "M1F": "1906",
         "M1N": "1906",
@@ -5560,7 +4901,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IU----*****",
-        "D": "Service, Reasearch, Utility Facility",
         "M1U": "1907",
         "M1F": "1907",
         "M1N": "1907",
@@ -5568,7 +4908,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUR---*****",
-        "D": "Technological Research Facility",
         "M1U": "1908",
         "M1F": "1908",
         "M1N": "1908",
@@ -5576,7 +4915,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUT---*****",
-        "D": "Telecommunications Facility",
         "M1U": "1909",
         "M1F": "1909",
         "M1N": "1909",
@@ -5584,7 +4922,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUE---*****",
-        "D": "Electric Power Facility",
         "M1U": "1910",
         "M1F": "1910",
         "M1N": "1910",
@@ -5592,7 +4929,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUEN--*****",
-        "D": "Nuclear Plant",
         "M1U": "1911",
         "M1F": "1911",
         "M1N": "1911",
@@ -5600,7 +4936,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUED--*****",
-        "D": "Dam",
         "M1U": "1912",
         "M1F": "1912",
         "M1N": "1912",
@@ -5608,7 +4943,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUEF--*****",
-        "D": "Fossil Fuel",
         "M1U": "1913",
         "M1F": "1913",
         "M1N": "1913",
@@ -5616,7 +4950,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IUP---*****",
-        "D": "Public Water Services",
         "M1U": "1914",
         "M1F": "1914",
         "M1N": "1914",
@@ -5624,11 +4957,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IM----*****",
-        "D": "Military Materiel Facility"
       },
       {
         "ID": "S*G*IMF---*****",
-        "D": "Nuclear Energy",
         "M1U": "1915",
         "M1F": "1915",
         "M1N": "1915",
@@ -5636,7 +4967,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMFA--*****",
-        "D": "Atomic Energy Reactor",
         "M1U": "1916",
         "M1F": "1916",
         "M1N": "1916",
@@ -5644,7 +4974,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMFP--*****",
-        "D": "Nuclear Material Production",
         "M1U": "1917",
         "M1F": "1917",
         "M1N": "1917",
@@ -5652,7 +4981,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMFPW-*****",
-        "D": "Weapons Grade",
         "M1U": "1918",
         "M1F": "1918",
         "M1N": "1918",
@@ -5660,7 +4988,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMFS--*****",
-        "D": "Nuclear Material Storage",
         "M1U": "1919",
         "M1F": "1919",
         "M1N": "1919",
@@ -5668,7 +4995,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMA---*****",
-        "D": "Aircraft Production & Assembly",
         "M1U": "1920",
         "M1F": "1920",
         "M1N": "1920",
@@ -5676,7 +5002,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IME---*****",
-        "D": "Ammunition And Explosives Production",
         "M1U": "1921",
         "M1F": "1921",
         "M1N": "1921",
@@ -5684,7 +5009,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMG---*****",
-        "D": "Armament Production",
         "M1U": "1922",
         "M1F": "1922",
         "M1N": "1922",
@@ -5692,7 +5016,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMV---*****",
-        "D": "Military Vehicle Production",
         "M1U": "1923",
         "M1F": "1923",
         "M1N": "1923",
@@ -5700,7 +5023,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMN---*****",
-        "D": "Engineering Equipment Production",
         "M1U": "1924",
         "M1F": "1924",
         "M1N": "1924",
@@ -5708,7 +5030,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMNB--*****",
-        "D": "Engineering Equipment Production Bridge",
         "M1U": "1925",
         "M1F": "1925",
         "M1N": "1925",
@@ -5716,7 +5037,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMC---*****",
-        "D": "Chemical & Biological Warfare Production",
         "M1U": "1926",
         "M1F": "1926",
         "M1N": "1926",
@@ -5724,7 +5044,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMS---*****",
-        "D": "Ship Construction",
         "M1U": "1927",
         "M1F": "1927",
         "M1N": "1927",
@@ -5732,7 +5051,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IMM---*****",
-        "D": "Missile & Space System Production",
         "M1U": "1928",
         "M1F": "1928",
         "M1N": "1928",
@@ -5740,7 +5058,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IG----*****",
-        "D": "Government Leadership",
         "M1U": "1929",
         "M1F": "1929",
         "M1N": "1929",
@@ -5748,7 +5065,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IB----*****",
-        "D": "Military Base/Facility",
         "M1U": "1930",
         "M1F": "1930",
         "M1N": "1930",
@@ -5756,7 +5072,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IBA---*****",
-        "D": "Airport/Airbase",
         "M1U": "1931",
         "M1F": "1931",
         "M1N": "1931",
@@ -5764,7 +5079,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IBN---*****",
-        "D": "Seaport/Naval Base",
         "M1U": "1932",
         "M1F": "1932",
         "M1N": "1932",
@@ -5772,7 +5086,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IT----*****",
-        "D": "Transport Facility",
         "M1U": "1933",
         "M1F": "1933",
         "M1N": "1933",
@@ -5780,7 +5093,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IX----*****",
-        "D": "Medical Facility",
         "M1U": "660",
         "M1F": "661",
         "M1N": "662",
@@ -5788,7 +5100,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IXH---*****",
-        "D": "Hospital",
         "M1U": "660",
         "M1F": "661",
         "M1N": "662",
@@ -5798,7 +5109,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IC----*****",
-        "D": "Tented Camp",
         "M1U": "1891",
         "M1F": "1891",
         "M1N": "1891",
@@ -5806,7 +5116,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*ICD---*****",
-        "D": "Tented Camp, Displaced Persons/Refugees",
         "M1U": "1892",
         "M1F": "1892",
         "M1N": "1892",
@@ -5814,7 +5123,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*ICT---*****",
-        "D": "Tented Training Camp",
         "M1U": "1893",
         "M1F": "1893",
         "M1N": "1893",
@@ -5822,7 +5130,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*G*IW----*****",
-        "D": "Warehouse/Storage Facility",
         "M1U": "1895",
         "M1F": "1895",
         "M1N": "1895",
@@ -5830,11 +5137,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*------*****",
-        "D": "Sea Surface Track"
       },
       {
         "ID": "S*S*C-----*****",
-        "D": "Sea Surface Track Combatant",
         "M1U": "1936",
         "M1F": "1936",
         "M1N": "1936",
@@ -5844,7 +5149,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CL----*****",
-        "D": "Line",
         "M1U": "1938",
         "M1F": "1938",
         "M1N": "1938",
@@ -5852,7 +5156,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLCV--*****",
-        "D": "Carrier",
         "M1U": "1939",
         "M1F": "1939",
         "M1N": "1939",
@@ -5860,7 +5163,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLBB--*****",
-        "D": "Battleship",
         "M1U": "1940",
         "M1F": "1940",
         "M1N": "1940",
@@ -5868,7 +5170,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLCC--*****",
-        "D": "Cruiser",
         "M1U": "1941",
         "M1F": "1941",
         "M1N": "1941",
@@ -5876,7 +5177,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLDD--*****",
-        "D": "Destroyer",
         "M1U": "1942",
         "M1F": "1942",
         "M1N": "1942",
@@ -5884,7 +5184,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLFF--*****",
-        "D": "Frigate/Corvette",
         "M1U": "1943",
         "M1F": "1943",
         "M1N": "1943",
@@ -5892,7 +5191,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLLL--*****",
-        "D": "Littoral Combatant",
         "M1U": "1944",
         "M1F": "1944",
         "M1N": "1944",
@@ -5900,7 +5198,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLLLAS*****",
-        "D": "Antisubmarine Warfare Mission Package",
         "M1U": "1945",
         "M1F": "1945",
         "M1N": "1945",
@@ -5908,7 +5205,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLLLMI*****",
-        "D": "Mine Warfare Mission Package",
         "M1U": "1946",
         "M1F": "1946",
         "M1N": "1946",
@@ -5916,7 +5212,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CLLLSU*****",
-        "D": "Surface Warfare (SUW) Mission Package",
         "M1U": "1947",
         "M1F": "1947",
         "M1N": "1947",
@@ -5924,7 +5219,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CA----*****",
-        "D": "Amphibious Warfare Ship",
         "M1U": "1948",
         "M1F": "1948",
         "M1N": "1948",
@@ -5932,7 +5226,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CALA--*****",
-        "D": "Assault Vessel",
         "M1U": "1949",
         "M1F": "1949",
         "M1N": "1949",
@@ -5940,7 +5233,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CALS--*****",
-        "D": "Landing Ship",
         "M1U": "1950",
         "M1F": "1950",
         "M1N": "1950",
@@ -5948,7 +5240,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CALSM-*****",
-        "D": "Landing Ship Medium",
         "M1U": "1951",
         "M1F": "1951",
         "M1N": "1951",
@@ -5956,7 +5247,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CALST-*****",
-        "D": "Landing Ship Tank",
         "M1U": "1952",
         "M1F": "1952",
         "M1N": "1952",
@@ -5964,7 +5254,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CALC--*****",
-        "D": "Landing Craft",
         "M1U": "1953",
         "M1F": "1953",
         "M1N": "1953",
@@ -5972,7 +5261,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CM----*****",
-        "D": "Mine Warfare Vessel",
         "M1U": "1954",
         "M1F": "1954",
         "M1N": "1954",
@@ -5980,7 +5268,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CMML--*****",
-        "D": "Minelayer",
         "M1U": "1955",
         "M1F": "1955",
         "M1N": "1955",
@@ -5988,7 +5275,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CMMS--*****",
-        "D": "Minesweeper",
         "M1U": "1956",
         "M1F": "1956",
         "M1N": "1956",
@@ -5996,7 +5282,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CMMH--*****",
-        "D": "Minehunter",
         "M1U": "1957",
         "M1F": "1957",
         "M1N": "1957",
@@ -6004,7 +5289,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CMMA--*****",
-        "D": "MCM Support",
         "M1U": "1958",
         "M1F": "1958",
         "M1N": "1958",
@@ -6012,7 +5296,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CP----*****",
-        "D": "Sea Surface Combatant Patrol",
         "M1U": "1959",
         "M1F": "1959",
         "M1N": "1959",
@@ -6020,7 +5303,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CPSB--*****",
-        "D": "Antisubmarine Warfare",
         "M1U": "1960",
         "M1F": "1960",
         "M1N": "1960",
@@ -6028,7 +5310,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CPSU--*****",
-        "D": "Antisurface Warfare",
         "M1U": "1961",
         "M1F": "1961",
         "M1N": "1961",
@@ -6036,7 +5317,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CPSUM-*****",
-        "D": "Anti-Ship Missile",
         "M1U": "1962",
         "M1F": "1962",
         "M1N": "1962",
@@ -6044,7 +5324,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CPSUT-*****",
-        "D": "Torpedo(Antisurface Warfare)",
         "M1U": "1963",
         "M1F": "1963",
         "M1N": "1963",
@@ -6052,7 +5331,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CPSUG-*****",
-        "D": "Antisurface Warfare Gun",
         "M1U": "1964",
         "M1F": "1964",
         "M1N": "1964",
@@ -6060,7 +5338,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CH----*****",
-        "D": "Combatant Hovercraft",
         "M1U": "1965",
         "M1F": "1965",
         "M1N": "1965",
@@ -6068,7 +5345,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*S-----*****",
-        "D": "Sea Surface Station",
         "M1U": "1966",
         "M1F": "1966",
         "M1N": "1966",
@@ -6076,7 +5352,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*SP----*****",
-        "D": "Picket",
         "M1U": "1967",
         "M1F": "1967",
         "M1N": "1967",
@@ -6084,7 +5359,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*SA----*****",
-        "D": "ASW Ship",
         "M1U": "1968",
         "M1F": "1968",
         "M1N": "1968",
@@ -6092,7 +5366,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*G-----*****",
-        "D": "Navy Group",
         "M1U": "1969",
         "M1F": "1969",
         "M1N": "1969",
@@ -6100,7 +5373,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*GT----*****",
-        "D": "Navy Task Force",
         "M1U": "1970",
         "M1F": "1970",
         "M1N": "1970",
@@ -6108,7 +5380,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*GG----*****",
-        "D": "Navy Task Group",
         "M1U": "1971",
         "M1F": "1971",
         "M1N": "1971",
@@ -6116,7 +5387,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*GU----*****",
-        "D": "Navy Task Unit",
         "M1U": "1972",
         "M1F": "1972",
         "M1N": "1972",
@@ -6124,7 +5394,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*GC----*****",
-        "D": "Convoy",
         "M1U": "1973",
         "M1F": "1973",
         "M1N": "1973",
@@ -6132,7 +5401,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CD----*****",
-        "D": "Surface Decoy",
         "M1U": "1974",
         "M1F": "1974",
         "M1N": "1974",
@@ -6140,7 +5408,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CU----*****",
-        "D": "Unmanned Surface Vehicle (USV)",
         "M1U": "1975",
         "M1F": "1975",
         "M1N": "1975",
@@ -6148,7 +5415,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CUM---*****",
-        "D": "USV Mine Countermeasures",
         "M1U": "1976",
         "M1F": "1976",
         "M1N": "1976",
@@ -6156,7 +5422,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CUS---*****",
-        "D": "USV Antisubmarine Warfare",
         "M1U": "1977",
         "M1F": "1977",
         "M1N": "1977",
@@ -6164,7 +5429,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CUN---*****",
-        "D": "USV Antisurface Warfare",
         "M1U": "1978",
         "M1F": "1978",
         "M1N": "1978",
@@ -6172,7 +5436,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*CUR---*****",
-        "D": "USV Remote Multimission Vehicle",
         "M1U": "1979",
         "M1F": "1979",
         "M1N": "1979",
@@ -6180,7 +5443,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*N-----*****",
-        "D": "Noncombatant",
         "M1U": "1980",
         "M1F": "1980",
         "M1N": "1980",
@@ -6188,7 +5450,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NR----*****",
-        "D": "Underway Replenishment",
         "M1U": "1981",
         "M1F": "1981",
         "M1N": "1981",
@@ -6196,7 +5457,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NF----*****",
-        "D": "Fleet Support",
         "M1U": "1982",
         "M1F": "1982",
         "M1N": "1982",
@@ -6204,7 +5464,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NI----*****",
-        "D": "Intelligence",
         "M1U": "1983",
         "M1F": "1983",
         "M1N": "1983",
@@ -6212,7 +5471,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NS----*****",
-        "D": "Service & Support Harbor",
         "M1U": "1984",
         "M1F": "1984",
         "M1N": "1984",
@@ -6220,7 +5478,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NM----*****",
-        "D": "Hospital Ship",
         "M1U": "1985",
         "M1F": "1985",
         "M1N": "1985",
@@ -6228,7 +5485,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NH----*****",
-        "D": "Noncombatant Hovercraft",
         "M1U": "1986",
         "M1F": "1986",
         "M1N": "1986",
@@ -6238,7 +5494,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NN----*****",
-        "D": "Noncombatant Station",
         "M1U": "1988",
         "M1F": "1988",
         "M1N": "1988",
@@ -6246,7 +5501,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*NNR---*****",
-        "D": "Rescue",
         "M1U": "1989",
         "M1F": "1989",
         "M1N": "1989",
@@ -6254,11 +5508,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*X-----*****",
-        "D": "Non-Military"
       },
       {
         "ID": "S*S*XM----*****",
-        "D": "Merchant",
         "M1U": "1990",
         "M1F": "1990",
         "M1N": "1990",
@@ -6268,7 +5520,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMC---*****",
-        "D": "Subsurface Non-military Cargo",
         "M1U": "1992",
         "M1F": "1992",
         "M1N": "1992",
@@ -6279,7 +5530,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMR---*****",
-        "D": "Roll On/Roll Off",
         "M1U": "1993",
         "M1F": "1993",
         "M1N": "1993",
@@ -6290,7 +5540,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMO---*****",
-        "D": "Oiler/Tanker",
         "M1U": "1994",
         "M1F": "1994",
         "M1N": "1994",
@@ -6301,7 +5550,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMTU--*****",
-        "D": "Tug",
         "M1U": "1995",
         "M1F": "1995",
         "M1N": "1995",
@@ -6312,7 +5560,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMF---*****",
-        "D": "Ferry",
         "M1U": "1996",
         "M1F": "1996",
         "M1N": "1996",
@@ -6323,7 +5570,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMP---*****",
-        "D": "Passenger",
         "M1U": "1997",
         "M1F": "1997",
         "M1N": "1997",
@@ -6333,7 +5579,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMH---*****",
-        "D": "Hazardous Materials (HAZMAT)",
         "M1U": "1998",
         "M1F": "1998",
         "M1N": "1998",
@@ -6343,7 +5588,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XMTO--*****",
-        "D": "Towing Vessel",
         "M1U": "1999",
         "M1F": "1999",
         "M1N": "1999",
@@ -6353,7 +5597,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XF----*****",
-        "D": "Fishing",
         "M1U": "2000",
         "M1F": "2000",
         "M1N": "2000",
@@ -6363,7 +5606,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XFDF--*****",
-        "D": "Drifter",
         "M1U": "2002",
         "M1F": "2002",
         "M1N": "2002",
@@ -6373,7 +5615,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XFDR--*****",
-        "D": "Dredge",
         "M1U": "2003",
         "M1F": "2003",
         "M1N": "2003",
@@ -6383,7 +5624,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XFTR--*****",
-        "D": "Trawler",
         "M1U": "2004",
         "M1F": "2004",
         "M1N": "2004",
@@ -6393,7 +5633,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XR----*****",
-        "D": "Leisure Craft",
         "M1U": "2005",
         "M1F": "2005",
         "M1N": "2005",
@@ -6403,7 +5642,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XL----*****",
-        "D": "Law Enforcement Vessel",
         "M1U": "2007",
         "M1F": "2007",
         "M1N": "2007",
@@ -6413,7 +5651,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*XH----*****",
-        "D": "Non-military Hovercraft",
         "M1U": "2009",
         "M1F": "2009",
         "M1N": "2009",
@@ -6423,15 +5660,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*S*O-----*****",
-        "D": "Own Track"
       },
       {
         "ID": "S*U*------*****",
-        "D": "Subsurface Track"
       },
       {
         "ID": "S*U*S-----*****",
-        "D": "Submarine",
         "M1U": "2017",
         "M1F": "2017",
         "M1N": "2017",
@@ -6439,7 +5673,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SN----*****",
-        "D": "Nuclear Propulsion",
         "M1U": "2022",
         "M1F": "2022",
         "M1N": "2022",
@@ -6447,7 +5680,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SNF---*****",
-        "D": "Submarine Nuclear Surfaced",
         "M1U": "2023",
         "M1F": "2023",
         "M1N": "2023",
@@ -6455,7 +5687,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SNA---*****",
-        "D": "Submarine Nuclear Attack (SSN)",
         "M1U": "2024",
         "M1F": "2024",
         "M1N": "2024",
@@ -6465,7 +5696,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SNM---*****",
-        "D": "Submarine Nuclear Missile Type Unknown",
         "M1U": "2026",
         "M1F": "2026",
         "M1N": "2026",
@@ -6475,7 +5705,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SNG---*****",
-        "D": "Submarine Nuclear Guided Missile (SSGN)",
         "M1U": "2028",
         "M1F": "2028",
         "M1N": "2028",
@@ -6485,7 +5714,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SNB---*****",
-        "D": "Ballistic Missile Submarine (SSB)",
         "M1U": "2030",
         "M1F": "2030",
         "M1N": "2030",
@@ -6495,7 +5723,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SC----*****",
-        "D": "Conventional Propulsion",
         "M1U": "2032",
         "M1F": "2032",
         "M1N": "2032",
@@ -6503,7 +5730,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SCF---*****",
-        "D": "Conventional Propulsion Surfaced",
         "M1U": "2033",
         "M1F": "2033",
         "M1N": "2033",
@@ -6511,7 +5737,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SCA---*****",
-        "D": "Attack Submarine (SS)",
         "M1U": "2034",
         "M1F": "2034",
         "M1N": "2034",
@@ -6521,7 +5746,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SCM---*****",
-        "D": "Conventional Propulsion Missile Submarine (TYPE UNKNOWN)",
         "M1U": "2036",
         "M1F": "2036",
         "M1N": "2036",
@@ -6531,7 +5755,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SCG---*****",
-        "D": "Guided Missile Submarine (SSG)",
         "M1U": "2038",
         "M1F": "2038",
         "M1N": "2038",
@@ -6541,7 +5764,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SCB---*****",
-        "D": "Conventional Propulsion Ballistic Missile (SSB)",
         "M1U": "2040",
         "M1F": "2040",
         "M1N": "2040",
@@ -6551,7 +5773,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SO----*****",
-        "D": "Other Submersible",
         "M1U": "2042",
         "M1F": "2042",
         "M1N": "2042",
@@ -6559,7 +5780,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SOF---*****",
-        "D": "Other Submersible Surfaced",
         "M1U": "2043",
         "M1F": "2043",
         "M1N": "2043",
@@ -6567,7 +5787,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SU----*****",
-        "D": "Unmanned Underwater Vehicle (UUV)",
         "M1U": "2046",
         "M1F": "2046",
         "M1N": "2046",
@@ -6575,7 +5794,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SUM---*****",
-        "D": "UUV Mine Warfare",
         "M1U": "2047",
         "M1F": "2047",
         "M1N": "2047",
@@ -6583,7 +5801,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SUS---*****",
-        "D": "UUV Antisubmarine Warfare",
         "M1U": "2048",
         "M1F": "2048",
         "M1N": "2048",
@@ -6591,7 +5808,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SUN---*****",
-        "D": "UUV Antisurface Warfare",
         "M1U": "2049",
         "M1F": "2049",
         "M1N": "2049",
@@ -6599,7 +5815,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SS----*****",
-        "D": "Submarine Station",
         "M1U": "2044",
         "M1F": "2044",
         "M1N": "2044",
@@ -6607,7 +5822,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SSA---*****",
-        "D": "ASW Submarine",
         "M1U": "2045",
         "M1F": "2045",
         "M1N": "2045",
@@ -6615,7 +5829,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*SF----*****",
-        "D": "Submarine Station Surfaced",
         "M1U": "2018",
         "M1F": "2018",
         "M1N": "2018",
@@ -6623,7 +5836,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*W-----*****",
-        "D": "Underwater Weapon",
         "M1U": "2056",
         "M1F": "2056",
         "M1N": "2056",
@@ -6631,7 +5843,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WT----*****",
-        "D": "Torpedo",
         "M1U": "2057",
         "M1F": "2057",
         "M1N": "2057",
@@ -6639,7 +5850,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WM----*****",
-        "D": "Sea Mine",
         "M1U": "2058",
         "M1F": "2058",
         "M1N": "2058",
@@ -6647,7 +5857,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMD---*****",
-        "D": "Sea Mine Dealt",
         "M1U": "2060",
         "M1F": "2060",
         "M1N": "2060",
@@ -6655,7 +5864,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMG---*****",
-        "D": "Sea Mine (Ground)",
         "M1U": "2061",
         "M1F": "2061",
         "M1N": "2061",
@@ -6663,7 +5871,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMGD--*****",
-        "D": "Sea Mine (Ground) Dealt",
         "M1U": "2063",
         "M1F": "2063",
         "M1N": "2063",
@@ -6671,7 +5878,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMM---*****",
-        "D": "Sea Mine (Moored)",
         "M1U": "2072",
         "M1F": "2072",
         "M1N": "2072",
@@ -6679,7 +5885,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMMD--*****",
-        "D": "Sea Mine (Moored) Dealt",
         "M1U": "2074",
         "M1F": "2074",
         "M1N": "2074",
@@ -6687,7 +5892,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMF---*****",
-        "D": "Sea Mine (Floating)",
         "M1U": "2083",
         "M1F": "2083",
         "M1N": "2083",
@@ -6695,7 +5899,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMFD--*****",
-        "D": "Sea Mine (Floating) Dealt",
         "M1U": "2085",
         "M1F": "2085",
         "M1N": "2085",
@@ -6703,7 +5906,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMO---*****",
-        "D": "Sea Mine (Other Position)",
         "M1U": "2093",
         "M1F": "2093",
         "M1N": "2093",
@@ -6711,7 +5913,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WMOD--*****",
-        "D": "Sea Mine (Other Position) Dealt",
         "M1U": "2095",
         "M1F": "2095",
         "M1N": "2095",
@@ -6719,7 +5920,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WD----*****",
-        "D": "Underwater Decoy",
         "M1U": "2113",
         "M1F": "2113",
         "M1N": "2113",
@@ -6727,7 +5927,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*WDM---*****",
-        "D": "Sea Mine Decoy",
         "M1U": "2114",
         "M1F": "2114",
         "M1N": "2114",
@@ -6735,11 +5934,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*N-----*****",
-        "D": "Non-Submarine"
       },
       {
         "ID": "S*U*ND----*****",
-        "D": "Diver",
         "M1U": "2120",
         "M1F": "2120",
         "M1N": "2120",
@@ -6747,13 +5944,11 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*U*X-----*****",
-        "D": "Unexploded Ordnance Area (Subsurface)",
         "M2": "2126",
         "M2C": "#FF0000"
       },
       {
         "ID": "S*F*------*****",
-        "D": "Special Operations Forces (SOF) Unit",
         "M1U": "2131",
         "M1F": "2131",
         "M1N": "2131",
@@ -6761,7 +5956,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*A-----*****",
-        "D": "SOF Unit Aviation",
         "M1U": "2132",
         "M1F": "2132",
         "M1N": "2132",
@@ -6769,7 +5963,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AF----*****",
-        "D": "SOF Unit Fixed Wing",
         "M1U": "2133",
         "M1F": "2133",
         "M1N": "2133",
@@ -6777,7 +5970,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFA---*****",
-        "D": "SOF Unit Fixed Wing Attack",
         "M1U": "2134",
         "M1F": "2134",
         "M1N": "2134",
@@ -6785,7 +5977,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFK---*****",
-        "D": "SOF Unit Refuel",
         "M1U": "2135",
         "M1F": "2135",
         "M1N": "2135",
@@ -6793,7 +5984,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFU---*****",
-        "D": "SOF Unit Fixed Wing Utility",
         "M1U": "2136",
         "M1F": "2136",
         "M1N": "2136",
@@ -6801,7 +5991,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFUL--*****",
-        "D": "SOF Unit Fixed Wing Utility (Light)",
         "M1U": "2137",
         "M1F": "2137",
         "M1N": "2137",
@@ -6809,7 +5998,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFUM--*****",
-        "D": "SOF Unit Fixed Wing Utility (Medium)",
         "M1U": "2138",
         "M1F": "2138",
         "M1N": "2138",
@@ -6817,7 +6005,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AFUH--*****",
-        "D": "SOF Unit Fixed Wing Utility (Heavy)",
         "M1U": "2139",
         "M1F": "2139",
         "M1N": "2139",
@@ -6825,7 +6012,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AV----*****",
-        "D": "SOF Unit V/STOL",
         "M1U": "2140",
         "M1F": "2140",
         "M1N": "2140",
@@ -6833,7 +6019,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AH----*****",
-        "D": "SOF Unit Rotary Wing",
         "M1U": "2141",
         "M1F": "2141",
         "M1N": "2141",
@@ -6841,7 +6026,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHH---*****",
-        "D": "SOF Unit Rotary Wing Combat Search & Rescue",
         "M1U": "2142",
         "M1F": "2142",
         "M1N": "2142",
@@ -6849,7 +6033,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHA---*****",
-        "D": "SOF Unit Rotary Wing Attack",
         "M1U": "2143",
         "M1F": "2143",
         "M1N": "2143",
@@ -6857,7 +6040,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHU---*****",
-        "D": "SOF Unit Rotary Wing Utility",
         "M1U": "2144",
         "M1F": "2144",
         "M1N": "2144",
@@ -6865,7 +6047,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHUL--*****",
-        "D": "SOF Unit Rotary Wing Utility (Light)",
         "M1U": "2145",
         "M1F": "2145",
         "M1N": "2145",
@@ -6873,7 +6054,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHUM--*****",
-        "D": "SOF Unit Rotary Wing Utility (Medium)",
         "M1U": "2146",
         "M1F": "2146",
         "M1N": "2146",
@@ -6881,7 +6061,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*AHUH--*****",
-        "D": "SOF Unit Rotary Wing Utility (Heavy)",
         "M1U": "2147",
         "M1F": "2147",
         "M1N": "2147",
@@ -6889,7 +6068,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*N-----*****",
-        "D": "SOF Unit SOF Unit Naval",
         "M1U": "2148",
         "M1F": "2148",
         "M1N": "2148",
@@ -6897,7 +6075,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*NS----*****",
-        "D": "SOF Unit Seal",
         "M1U": "2149",
         "M1F": "2149",
         "M1N": "2149",
@@ -6905,7 +6082,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*NU----*****",
-        "D": "SOF Unit Underwater Demolition Team",
         "M1U": "2150",
         "M1F": "2150",
         "M1N": "2150",
@@ -6913,7 +6089,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*NB----*****",
-        "D": "SOF Unit Special Boat",
         "M1U": "2151",
         "M1F": "2151",
         "M1N": "2151",
@@ -6923,7 +6098,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*NN----*****",
-        "D": "SOF Unit Special SSNR",
         "M1U": "2153",
         "M1F": "2153",
         "M1N": "2153",
@@ -6931,7 +6105,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*G-----*****",
-        "D": "SOF Unit Ground",
         "M1U": "604",
         "M1F": "605",
         "M1N": "606",
@@ -6941,7 +6114,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*GS----*****",
-        "D": "SOF Unit Special Forces",
         "M1U": "2158",
         "M1F": "2158",
         "M1N": "2158",
@@ -6949,7 +6121,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*GR----*****",
-        "D": "SOF Unit Ranger",
         "M1U": "604",
         "M1F": "605",
         "M1N": "606",
@@ -6959,7 +6130,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*GP----*****",
-        "D": "SOF Unit Psychological Operations (PSYOP)",
         "M1U": "2161",
         "M1F": "2161",
         "M1N": "2161",
@@ -6969,7 +6139,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*GPA---*****",
-        "D": "SOF Unit Fixed Wing Aviation (PSYOP)",
         "M1U": "2163",
         "M1F": "2163",
         "M1N": "2163",
@@ -6979,7 +6148,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*GC----*****",
-        "D": "SOF Unit Civil Affairs",
         "M1U": "2165",
         "M1F": "2165",
         "M1N": "2165",
@@ -6987,7 +6155,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*F*B-----*****",
-        "D": "SOF Unit Support",
         "M1U": "2166",
         "M1F": "2166",
         "M1N": "2166",
@@ -6995,7 +6162,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "S*Z*------*****",
-        "D": "Unknown Battle Dimension",
         "M1U": "999",
         "M1F": "999",
         "M1N": "999",
@@ -7003,23 +6169,18 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*-*------*****",
-        "D": "Signals Intelligence"
       },
       {
         "ID": "I*P*------*****",
-        "D": "Space Track"
       },
       {
         "ID": "I*P*S-----*****",
-        "D": "Signal Intercept"
       },
       {
         "ID": "I*P*SC----*****",
-        "D": "Communications"
       },
       {
         "ID": "I*P*SCD---*****",
-        "D": "Satellite Down-Link",
         "M1U": "3000",
         "M1F": "3000",
         "M1N": "3000",
@@ -7027,11 +6188,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SR----*****",
-        "D": "Radar(Signal Intercept)"
       },
       {
         "ID": "I*P*SRD---*****",
-        "D": "Data Transmission(SPACE TRACK)",
         "M1U": "3001",
         "M1F": "3001",
         "M1N": "3001",
@@ -7039,7 +6198,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRE---*****",
-        "D": "Earth Surveillance",
         "M1U": "3002",
         "M1F": "3002",
         "M1N": "3002",
@@ -7047,7 +6205,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRI---*****",
-        "D": "IFF (Transponder)(SPACE TRACK)",
         "M1U": "3003",
         "M1F": "3003",
         "M1N": "3003",
@@ -7055,7 +6212,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRM---*****",
-        "D": "Multi-function(SPACE TRACK)",
         "M1U": "3004",
         "M1F": "3004",
         "M1N": "3004",
@@ -7063,7 +6219,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRT---*****",
-        "D": "Target Acquisition(Space Track)",
         "M1U": "3005",
         "M1F": "3005",
         "M1N": "3005",
@@ -7071,7 +6226,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRS---*****",
-        "D": "Space",
         "M1U": "3006",
         "M1F": "3006",
         "M1N": "3006",
@@ -7079,7 +6233,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*P*SRU---*****",
-        "D": "Unknown(Space Track)",
         "M1U": "3007",
         "M1F": "3007",
         "M1N": "3007",
@@ -7087,19 +6240,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*------*****",
-        "D": "Air Track"
       },
       {
         "ID": "I*A*S-----*****",
-        "D": "Signal Intercept"
       },
       {
         "ID": "I*A*SC----*****",
-        "D": "Communications"
       },
       {
         "ID": "I*A*SCC---*****",
-        "D": "Cellular/Mobile(AIR TRACK)",
         "M1U": "3008",
         "M1F": "3008",
         "M1N": "3008",
@@ -7107,7 +6256,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SCO---*****",
-        "D": "Omni-Line-Of-Sight (LOS)(AIR TRACK)",
         "M1U": "3009",
         "M1F": "3009",
         "M1N": "3009",
@@ -7115,7 +6263,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SCP---*****",
-        "D": "Point-To-Point Line-Of-Sight (LOS)(Air Track)",
         "M1U": "3010",
         "M1F": "3010",
         "M1N": "3010",
@@ -7123,7 +6270,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SCS---*****",
-        "D": "Satellite Up-Link(Air Track)",
         "M1U": "3011",
         "M1F": "3011",
         "M1N": "3011",
@@ -7131,11 +6277,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SR----*****",
-        "D": "Radar"
       },
       {
         "ID": "I*A*SRAI--*****",
-        "D": "Airborne Intercept",
         "M1U": "3012",
         "M1F": "3012",
         "M1N": "3012",
@@ -7143,7 +6287,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRAS--*****",
-        "D": "Airborne Search and Bombing",
         "M1U": "3013",
         "M1F": "3013",
         "M1N": "3013",
@@ -7151,7 +6294,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRC---*****",
-        "D": "Controlled Intercept(AIR TRACK)",
         "M1U": "3014",
         "M1F": "3014",
         "M1N": "3014",
@@ -7159,7 +6301,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRD---*****",
-        "D": "Data Transmission(AIR TRACK)",
         "M1U": "3015",
         "M1F": "3015",
         "M1N": "3015",
@@ -7167,7 +6308,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRE---*****",
-        "D": "Early Warning(AIR TRACK)",
         "M1U": "3016",
         "M1F": "3016",
         "M1N": "3016",
@@ -7175,7 +6315,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRF---*****",
-        "D": "Fire Control(AIR TRACK)",
         "M1U": "3017",
         "M1F": "3017",
         "M1N": "3017",
@@ -7183,7 +6322,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRI---*****",
-        "D": "IFF (Transponder)(AIR TRACK)",
         "M1U": "3018",
         "M1F": "3018",
         "M1N": "3018",
@@ -7191,7 +6329,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRMA--*****",
-        "D": "Missile Acquisition(AIR TRACK)",
         "M1U": "3019",
         "M1F": "3019",
         "M1N": "3019",
@@ -7199,7 +6336,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRMD--*****",
-        "D": "Missile Downlink",
         "M1U": "3020",
         "M1F": "3020",
         "M1N": "3020",
@@ -7207,7 +6343,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRMG--*****",
-        "D": "Missile Guidance(AIR TRACK)",
         "M1U": "3021",
         "M1F": "3021",
         "M1N": "3021",
@@ -7215,7 +6350,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRMT--*****",
-        "D": "Missile Tracking(AIR TRACK)",
         "M1U": "3022",
         "M1F": "3022",
         "M1N": "3022",
@@ -7223,7 +6357,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRMF--*****",
-        "D": "Multi-Function(AIR TRACK)",
         "M1U": "3023",
         "M1F": "3023",
         "M1N": "3023",
@@ -7231,7 +6364,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRTI--*****",
-        "D": "Target Illuminator(Air Track)",
         "M1U": "3024",
         "M1F": "3024",
         "M1N": "3024",
@@ -7239,7 +6371,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRTA--*****",
-        "D": "Target Acquisition(Air Track)",
         "M1U": "3025",
         "M1F": "3025",
         "M1N": "3025",
@@ -7247,7 +6378,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRTT--*****",
-        "D": "Target Tracking(Air Track)",
         "M1U": "3026",
         "M1F": "3026",
         "M1N": "3026",
@@ -7255,7 +6385,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*A*SRU---*****",
-        "D": "Unknown(Air Track)",
         "M1U": "3027",
         "M1F": "3027",
         "M1N": "3027",
@@ -7263,19 +6392,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*------*****",
-        "D": "Ground Track"
       },
       {
         "ID": "I*G*S-----*****",
-        "D": "Signal Intercept"
       },
       {
         "ID": "I*G*SC----*****",
-        "D": "Communications"
       },
       {
         "ID": "I*G*SCC---*****",
-        "D": "Cellular/Mobile(GROUND TRACK)",
         "M1U": "3028",
         "M1F": "3028",
         "M1N": "3028",
@@ -7283,7 +6408,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SCO---*****",
-        "D": "Omni-Line-Of-Sight (LOS)(GROUND TRACK)",
         "M1U": "3029",
         "M1F": "3029",
         "M1N": "3029",
@@ -7291,7 +6415,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SCP---*****",
-        "D": "Point-To-Point Line-Of-Sight (LOS)(Ground Track)",
         "M1U": "3030",
         "M1F": "3030",
         "M1N": "3030",
@@ -7299,7 +6422,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SCS---*****",
-        "D": "Satellite Up-Link(Ground Track)",
         "M1U": "3031",
         "M1F": "3031",
         "M1N": "3031",
@@ -7307,7 +6429,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SCT---*****",
-        "D": "Tropospheric Scatter",
         "M1U": "3032",
         "M1F": "3032",
         "M1N": "3032",
@@ -7315,11 +6436,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SR----*****",
-        "D": "Radar(Signals Intelligence)"
       },
       {
         "ID": "I*G*SRAT--*****",
-        "D": "Air Traffic Control(GROUND TRACK)",
         "M1U": "3033",
         "M1F": "3033",
         "M1N": "3033",
@@ -7327,7 +6446,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRAA--*****",
-        "D": "Anti-Aircraft(GROUND TRACK)",
         "M1U": "3034",
         "M1F": "3034",
         "M1N": "3034",
@@ -7335,7 +6453,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRB---*****",
-        "D": "Battlefield Surveillance",
         "M1U": "3035",
         "M1F": "3035",
         "M1N": "3035",
@@ -7343,7 +6460,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRCS--*****",
-        "D": "Coastal Surveillance",
         "M1U": "3036",
         "M1F": "3036",
         "M1N": "3036",
@@ -7351,7 +6467,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRCA--*****",
-        "D": "Controlled Approach(GROUND TRACK)",
         "M1U": "3037",
         "M1F": "3037",
         "M1N": "3037",
@@ -7359,7 +6474,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRD---*****",
-        "D": "Data Transmission(GROUND TRACK)",
         "M1U": "3038",
         "M1F": "3038",
         "M1N": "3038",
@@ -7367,7 +6481,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRE---*****",
-        "D": "Early Warning(GROUND TRACK)",
         "M1U": "3039",
         "M1F": "3039",
         "M1N": "3039",
@@ -7375,7 +6488,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRF---*****",
-        "D": "Fire Control(GROUND TRACK)",
         "M1U": "3040",
         "M1F": "3040",
         "M1N": "3040",
@@ -7383,7 +6495,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRH---*****",
-        "D": "Height Finding(GROUND TRACK)",
         "M1U": "3041",
         "M1F": "3041",
         "M1N": "3041",
@@ -7391,7 +6502,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRI---*****",
-        "D": "Indentification Friend/Foe (Interrogator)(GROUND TRACK)",
         "M1U": "3042",
         "M1F": "3042",
         "M1N": "3042",
@@ -7399,7 +6509,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRMM--*****",
-        "D": "Meteorological (Military)(GROUND TRACK)",
         "M1U": "3043",
         "M1F": "3043",
         "M1N": "3043",
@@ -7407,7 +6516,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRMA--*****",
-        "D": "Missile Acquisition(GROUND TRACK)",
         "M1U": "3044",
         "M1F": "3044",
         "M1N": "3044",
@@ -7415,7 +6523,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRMG--*****",
-        "D": "Missile Guidance(GROUND TRACK)",
         "M1U": "3045",
         "M1F": "3045",
         "M1N": "3045",
@@ -7423,7 +6530,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRMT--*****",
-        "D": "Missile Tracking(GROUND TRACK)",
         "M1U": "3046",
         "M1F": "3046",
         "M1N": "3046",
@@ -7431,7 +6537,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRMF--*****",
-        "D": "Multi-Function(GROUND TRACK)",
         "M1U": "3047",
         "M1F": "3047",
         "M1N": "3047",
@@ -7439,7 +6544,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRS---*****",
-        "D": "Shell Tracking",
         "M1U": "3048",
         "M1F": "3048",
         "M1N": "3048",
@@ -7447,7 +6551,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRTA--*****",
-        "D": "Target Acquisition(Radar)",
         "M1U": "3049",
         "M1F": "3049",
         "M1N": "3049",
@@ -7455,7 +6558,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRTI--*****",
-        "D": "Target Illuminator(Ground Track)",
         "M1U": "3050",
         "M1F": "3050",
         "M1N": "3050",
@@ -7463,7 +6565,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRTT--*****",
-        "D": "Target Tracking(Ground Track)",
         "M1U": "3051",
         "M1F": "3051",
         "M1N": "3051",
@@ -7471,7 +6572,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*G*SRU---*****",
-        "D": "Unknown(Ground Track)",
         "M1U": "3052",
         "M1F": "3052",
         "M1N": "3052",
@@ -7479,19 +6579,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*------*****",
-        "D": "Sea Surface Track"
       },
       {
         "ID": "I*S*S-----*****",
-        "D": "Signal Intercept"
       },
       {
         "ID": "I*S*SC----*****",
-        "D": "Communications"
       },
       {
         "ID": "I*S*SCC---*****",
-        "D": "Cellular/Mobile(SEA SURFACE TRACK)",
         "M1U": "3053",
         "M1F": "3053",
         "M1N": "3053",
@@ -7499,7 +6595,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SCO---*****",
-        "D": "Omni-Line-Of-Sight (LOS)(SEA SURFACE TRACK)",
         "M1U": "3054",
         "M1F": "3054",
         "M1N": "3054",
@@ -7507,7 +6602,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SCP---*****",
-        "D": "Point-To-Point Line-Of-Sight (LOS)(Sea Surface Track)",
         "M1U": "3055",
         "M1F": "3055",
         "M1N": "3055",
@@ -7515,7 +6609,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SCS---*****",
-        "D": "Satellite Up-Link(Sea Surface Track)",
         "M1U": "3056",
         "M1F": "3056",
         "M1N": "3056",
@@ -7523,11 +6616,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SR----*****",
-        "D": "Radar(Sea Surface Track)"
       },
       {
         "ID": "I*S*SRAT--*****",
-        "D": "Air Traffic Control(SEA SURFACE TRACK)",
         "M1U": "3057",
         "M1F": "3057",
         "M1N": "3057",
@@ -7535,7 +6626,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRAA--*****",
-        "D": "Anti-Aircraft(SEA SURFACE TRACK)",
         "M1U": "3058",
         "M1F": "3058",
         "M1N": "3058",
@@ -7543,7 +6633,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRCA--*****",
-        "D": "Controlled Approach(SEA SURFACE TRACK)",
         "M1U": "3059",
         "M1F": "3059",
         "M1N": "3059",
@@ -7551,7 +6640,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRCI--*****",
-        "D": "Controlled Intercept(SEA SURFACE TRACK)",
         "M1U": "3060",
         "M1F": "3060",
         "M1N": "3060",
@@ -7559,7 +6647,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRD---*****",
-        "D": "Data Transmission(SEA SURFACE TRACK)",
         "M1U": "3061",
         "M1F": "3061",
         "M1N": "3061",
@@ -7567,7 +6654,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRE---*****",
-        "D": "Early Warning(SEA SURFACE TRACK)",
         "M1U": "3062",
         "M1F": "3062",
         "M1N": "3062",
@@ -7575,7 +6661,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRF---*****",
-        "D": "Fire Control(SEA SURFACE TRACK)",
         "M1U": "3063",
         "M1F": "3063",
         "M1N": "3063",
@@ -7583,7 +6668,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRH---*****",
-        "D": "Height Finding(SEA SURFACE TRACK)",
         "M1U": "3064",
         "M1F": "3064",
         "M1N": "3064",
@@ -7591,7 +6675,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRI---*****",
-        "D": "Indentification Friend/Foe (Interrogator)(SEA SURFACE TRACK)",
         "M1U": "3065",
         "M1F": "3065",
         "M1N": "3065",
@@ -7599,7 +6682,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRMM--*****",
-        "D": "Meteorological (Military)(SEA SURFACE TRACK)",
         "M1U": "3066",
         "M1F": "3066",
         "M1N": "3066",
@@ -7607,7 +6689,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRMA--*****",
-        "D": "Missile Acquisition(SEA SURFACE TRACK)",
         "M1U": "3067",
         "M1F": "3067",
         "M1N": "3067",
@@ -7615,7 +6696,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRMG--*****",
-        "D": "Missile Guidance(SEA SURFACE TRACK)",
         "M1U": "3068",
         "M1F": "3068",
         "M1N": "3068",
@@ -7623,7 +6703,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRMT--*****",
-        "D": "Missile Tracking(SEA SURFACE TRACK)",
         "M1U": "3069",
         "M1F": "3069",
         "M1N": "3069",
@@ -7631,7 +6710,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRMF--*****",
-        "D": "Multi-Function(SEA SURFACE TRACK)",
         "M1U": "3070",
         "M1F": "3070",
         "M1N": "3070",
@@ -7639,7 +6717,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRS---*****",
-        "D": "Surface Search(Sea Surface Track)",
         "M1U": "3071",
         "M1F": "3071",
         "M1N": "3071",
@@ -7647,7 +6724,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRTA--*****",
-        "D": "Target Acquisition(Sea Surface Track)",
         "M1U": "3072",
         "M1F": "3072",
         "M1N": "3072",
@@ -7655,7 +6731,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRTI--*****",
-        "D": "Target Illuminator(Sea Surface Track)",
         "M1U": "3073",
         "M1F": "3073",
         "M1N": "3073",
@@ -7663,7 +6738,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRTT--*****",
-        "D": "Target Tracking(Sea Surface Track)",
         "M1U": "3074",
         "M1F": "3074",
         "M1N": "3074",
@@ -7671,7 +6745,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*S*SRU---*****",
-        "D": "Unknown(Sea Surface Track)",
         "M1U": "3075",
         "M1F": "3075",
         "M1N": "3075",
@@ -7679,19 +6752,15 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*------*****",
-        "D": "Subsurface Track"
       },
       {
         "ID": "I*U*S-----*****",
-        "D": "Signal Intercept"
       },
       {
         "ID": "I*U*SC----*****",
-        "D": "Communications"
       },
       {
         "ID": "I*U*SCO---*****",
-        "D": "Omni-Line-Of-Sight (LOS)(SUBSURFACE TRACK)",
         "M1U": "3076",
         "M1F": "3076",
         "M1N": "3076",
@@ -7699,7 +6768,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SCP---*****",
-        "D": "Point-To-Point Line-Of-Sight (LOS)(Subsurface Track)",
         "M1U": "3077",
         "M1F": "3077",
         "M1N": "3077",
@@ -7707,7 +6775,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SCS---*****",
-        "D": "Satellite Up-Link(Subsurface Track)",
         "M1U": "3078",
         "M1F": "3078",
         "M1N": "3078",
@@ -7715,11 +6782,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SR----*****",
-        "D": "Radar(Subsurface Track)"
       },
       {
         "ID": "I*U*SRD---*****",
-        "D": "Data Transmission(SUBSURFACE TRACK)",
         "M1U": "3079",
         "M1F": "3079",
         "M1N": "3079",
@@ -7727,7 +6792,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SRE---*****",
-        "D": "Early Warning(SUBSURFACE TRACK)",
         "M1U": "3080",
         "M1F": "3080",
         "M1N": "3080",
@@ -7735,7 +6799,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SRM---*****",
-        "D": "Multi-Function(Subsurface Track)",
         "M1U": "3081",
         "M1F": "3081",
         "M1N": "3081",
@@ -7743,7 +6806,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SRS---*****",
-        "D": "Surface Search(Subsurface Track)",
         "M1U": "3082",
         "M1F": "3082",
         "M1N": "3082",
@@ -7751,7 +6813,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SRT---*****",
-        "D": "Target Acquisition(Subsurface Track)",
         "M1U": "3083",
         "M1F": "3083",
         "M1N": "3083",
@@ -7759,7 +6820,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "I*U*SRU---*****",
-        "D": "Unknown(Subsurface Track)",
         "M1U": "3084",
         "M1F": "3084",
         "M1N": "3084",
@@ -7767,15 +6827,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*-*------*****",
-        "D": "Stability Operations"
       },
       {
         "ID": "O*V*------*****",
-        "D": "Violent Activities"
       },
       {
         "ID": "O*V*A-----*****",
-        "D": "Arson/Fire",
         "M1U": "3999",
         "M1F": "3999",
         "M1N": "3999",
@@ -7783,7 +6840,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*M-----*****",
-        "D": "Killing (General)",
         "M1U": "4001",
         "M1F": "4002",
         "M1N": "4003",
@@ -7791,7 +6847,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*MA----*****",
-        "D": "Murder",
         "M1U": "4005",
         "M1F": "4006",
         "M1N": "4007",
@@ -7799,7 +6854,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*MB----*****",
-        "D": "Execution",
         "M1U": "4009",
         "M1F": "4010",
         "M1N": "4011",
@@ -7807,7 +6861,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*MC----*****",
-        "D": "Assassination",
         "M1U": "4013",
         "M1F": "4014",
         "M1N": "4015",
@@ -7815,7 +6868,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*B-----*****",
-        "D": "Bomb/Bombing",
         "M1U": "4017",
         "M1F": "4017",
         "M1N": "4017",
@@ -7823,7 +6875,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*Y-----*****",
-        "D": "Booby Trap",
         "M1U": "4018",
         "M1F": "4018",
         "M1N": "4018",
@@ -7831,7 +6882,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*D-----*****",
-        "D": "Drive-By Shooting",
         "M1U": "4019",
         "M1F": "4019",
         "M1N": "4019",
@@ -7839,7 +6889,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*S-----*****",
-        "D": "Sniping",
         "M1U": "4020",
         "M1F": "4020",
         "M1N": "4020",
@@ -7847,7 +6896,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*P-----*****",
-        "D": "Poisoning",
         "M1U": "4021",
         "M1F": "4021",
         "M1N": "4021",
@@ -7855,7 +6903,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*E-----*****",
-        "D": "Explosion",
         "M1U": "4022",
         "M1F": "4022",
         "M1N": "4022",
@@ -7865,7 +6912,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EI----*****",
-        "D": "IED Explosion",
         "M1U": "4023",
         "M1F": "4023",
         "M1N": "4023",
@@ -7873,7 +6919,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EG----*****",
-        "D": "Explosion, Grenade",
         "M1U": "4508",
         "M1F": "4508",
         "M1N": "4508",
@@ -7881,7 +6926,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EN----*****",
-        "D": "Explosion, Incendiary",
         "M1U": "4509",
         "M1F": "4509",
         "M1N": "4509",
@@ -7889,7 +6933,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EM----*****",
-        "D": "Explosion, Mine",
         "M1U": "4510",
         "M1F": "4510",
         "M1N": "4510",
@@ -7897,7 +6940,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EO----*****",
-        "D": "Explosion, Mortar Fire",
         "M1U": "4511",
         "M1F": "4511",
         "M1N": "4511",
@@ -7905,7 +6947,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*ER----*****",
-        "D": "Explosion, Rocket",
         "M1U": "4512",
         "M1F": "4512",
         "M1N": "4512",
@@ -7913,7 +6954,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*V*EV----*****",
-        "D": "Explosion, Wheeled Vehicle",
         "M1U": "4513",
         "M1F": "4513",
         "M1N": "4513",
@@ -7921,11 +6961,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*------*****",
-        "D": "Locations"
       },
       {
         "ID": "O*L*B-----*****",
-        "D": "Black List Location",
         "M1U": "4024",
         "M1F": "4024",
         "M1N": "4024",
@@ -7933,7 +6971,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*G-----*****",
-        "D": "Gray List Location",
         "M1U": "4025",
         "M1F": "4025",
         "M1N": "4025",
@@ -7941,7 +6978,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*W-----*****",
-        "D": "White List Location",
         "M1U": "4026",
         "M1F": "4026",
         "M1N": "4026",
@@ -7949,7 +6985,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*M-----*****",
-        "D": "Mass Grave Location",
         "M1U": "4027",
         "M1F": "4027",
         "M1N": "4027",
@@ -7957,7 +6992,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*E-----*****",
-        "D": "Drug Lab",
         "M1U": "4505",
         "M1F": "4505",
         "M1N": "4505",
@@ -7965,7 +6999,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*H-----*****",
-        "D": "House/Residence",
         "M1U": "4521",
         "M1F": "4521",
         "M1N": "4521",
@@ -7973,7 +7006,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*N-----*****",
-        "D": "Cave Entrance",
         "M1U": "4503",
         "M1F": "4503",
         "M1N": "4503",
@@ -7981,7 +7013,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*L*F-----*****",
-        "D": "Polling Place",
         "M1U": "4522",
         "M1F": "4522",
         "M1N": "4522",
@@ -7989,11 +7020,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*------*****",
-        "D": "Operations"
       },
       {
         "ID": "O*O*P-----*****",
-        "D": "Patrolling",
         "M1U": "4028",
         "M1F": "4028",
         "M1N": "4028",
@@ -8001,11 +7030,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*R-----*****",
-        "D": "Recruitment"
       },
       {
         "ID": "O*O*RW----*****",
-        "D": "Recruitment (Willing)",
         "M1U": "4029",
         "M1F": "4029",
         "M1N": "4029",
@@ -8013,7 +7040,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*RC----*****",
-        "D": "Recruitment (Coerced/Impressed)",
         "M1U": "4030",
         "M1F": "4030",
         "M1N": "4030",
@@ -8021,7 +7047,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*D-----*****",
-        "D": "Demonstration",
         "M1U": "4031",
         "M1F": "4031",
         "M1N": "4031",
@@ -8029,7 +7054,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*M-----*****",
-        "D": "Mine Laying",
         "M1U": "4032",
         "M1F": "4032",
         "M1N": "4032",
@@ -8037,7 +7061,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*Y-----*****",
-        "D": "Psychological Operations (Psyop)",
         "M1U": "4033",
         "M1F": "4033",
         "M1N": "4033",
@@ -8047,7 +7070,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*YT----*****",
-        "D": "Psyop (TV and Radio Propaganda)",
         "M1U": "4035",
         "M1F": "4036",
         "M1N": "4037",
@@ -8057,7 +7079,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*YW----*****",
-        "D": "Psyop (Written Propaganda)",
         "M1U": "4043",
         "M1F": "4043",
         "M1N": "4043",
@@ -8067,7 +7088,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*YH----*****",
-        "D": "House-to-House Propaganda",
         "M1U": "4044",
         "M1F": "4044",
         "M1N": "4044",
@@ -8077,7 +7097,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*F-----*****",
-        "D": "Foraging/Searching",
         "M1U": "4046",
         "M1F": "4046",
         "M1N": "4046",
@@ -8085,7 +7104,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*S-----*****",
-        "D": "Spy",
         "M1U": "4047",
         "M1F": "4047",
         "M1N": "4047",
@@ -8093,7 +7111,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*O-----*****",
-        "D": "Food Distribution",
         "M1U": "4048",
         "M1F": "4049",
         "M1N": "4050",
@@ -8101,7 +7118,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*E-----*****",
-        "D": "Extortion",
         "M1U": "4052",
         "M1F": "4052",
         "M1N": "4052",
@@ -8109,11 +7125,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*H-----*****",
-        "D": "Hijacking"
       },
       {
         "ID": "O*O*HT----*****",
-        "D": "Hijacking (Vehicle)",
         "M1U": "4053",
         "M1F": "4053",
         "M1N": "4053",
@@ -8121,7 +7135,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*HA----*****",
-        "D": "Hijacking (Airplane)",
         "M1U": "4054",
         "M1F": "4054",
         "M1N": "4054",
@@ -8131,7 +7144,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*HV----*****",
-        "D": "Hijacking (Boat)",
         "M1U": "4056",
         "M1F": "4056",
         "M1N": "4056",
@@ -8141,7 +7153,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*K-----*****",
-        "D": "Kidnapping",
         "M1U": "4058",
         "M1F": "4058",
         "M1N": "4058",
@@ -8149,7 +7160,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*KA----*****",
-        "D": "Attempted Kidnapping",
         "M1U": "4059",
         "M1F": "4059",
         "M1N": "4059",
@@ -8157,7 +7167,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*A-----*****",
-        "D": "Arrest",
         "M1U": "4060",
         "M1F": "4060",
         "M1N": "4060",
@@ -8165,7 +7174,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*U-----*****",
-        "D": "Drug Operation",
         "M1U": "4061",
         "M1F": "4061",
         "M1N": "4061",
@@ -8173,7 +7181,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*UT----*****",
-        "D": "Drug Trafficking",
         "M1U": "4506",
         "M1F": "4506",
         "M1N": "4506",
@@ -8181,7 +7188,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*N-----*****",
-        "D": "Raid on a House",
         "M1U": "4500",
         "M1F": "4500",
         "M1N": "4500",
@@ -8189,7 +7195,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*2-----*****",
-        "D": "Burglary",
         "M1U": "4502",
         "M1F": "4502",
         "M1N": "4502",
@@ -8197,7 +7202,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*V-----*****",
-        "D": "Home Eviction",
         "M1U": "4514",
         "M1F": "4514",
         "M1N": "4514",
@@ -8205,7 +7209,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*I-----*****",
-        "D": "Black Marketing",
         "M1U": "4516",
         "M1F": "4516",
         "M1N": "4516",
@@ -8213,7 +7216,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*J-----*****",
-        "D": "Jail Break",
         "M1U": "4518",
         "M1F": "4518",
         "M1N": "4518",
@@ -8223,7 +7225,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*B-----*****",
-        "D": "Robbery",
         "M1U": "4524",
         "M1F": "4524",
         "M1N": "4524",
@@ -8231,7 +7232,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*G-----*****",
-        "D": "Sabotage",
         "M1U": "4526",
         "M1F": "4526",
         "M1N": "4526",
@@ -8239,7 +7239,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*X-----*****",
-        "D": "Smuggling",
         "M1U": "4527",
         "M1F": "4527",
         "M1N": "4527",
@@ -8247,7 +7246,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*W-----*****",
-        "D": "Rock Throwing",
         "M1U": "4525",
         "M1F": "4525",
         "M1N": "4525",
@@ -8255,7 +7253,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*Z-----*****",
-        "D": "Suspicious Activity",
         "M1U": "4529",
         "M1F": "4529",
         "M1N": "4529",
@@ -8263,7 +7260,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*T-----*****",
-        "D": "Theft",
         "M1U": "4531",
         "M1F": "4531",
         "M1N": "4531",
@@ -8271,7 +7267,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*TV----*****",
-        "D": "Wheeled Vehicle Theft",
         "M1U": "4533",
         "M1F": "4533",
         "M1N": "4533",
@@ -8279,7 +7274,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*O*Q-----*****",
-        "D": "Warrant Served",
         "M1U": "4532",
         "M1F": "4532",
         "M1N": "4532",
@@ -8287,11 +7281,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*------*****",
-        "D": "Items"
       },
       {
         "ID": "O*I*R-----*****",
-        "D": "Refugees",
         "M1U": "4066",
         "M1F": "4066",
         "M1N": "4066",
@@ -8299,7 +7291,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*S-----*****",
-        "D": "Safe House",
         "M1U": "4067",
         "M1F": "4067",
         "M1N": "4067",
@@ -8307,7 +7298,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*G-----*****",
-        "D": "Graffiti",
         "M1U": "4068",
         "M1F": "4068",
         "M1N": "4068",
@@ -8315,7 +7305,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*V-----*****",
-        "D": "Vandalism/Loot/Ransack/Plunder/Sack",
         "M1U": "4069",
         "M1F": "4069",
         "M1N": "4069",
@@ -8323,7 +7312,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*I-----*****",
-        "D": "Known Insurgent Vehicle",
         "M1U": "4070",
         "M1F": "4070",
         "M1N": "4070",
@@ -8331,7 +7319,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*D-----*****",
-        "D": "Drug Vehicle",
         "M1U": "4071",
         "M1F": "4071",
         "M1N": "4071",
@@ -8339,7 +7326,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*F-----*****",
-        "D": "Internal Security Force",
         "M1U": "4072",
         "M1F": "4072",
         "M1N": "4072",
@@ -8347,7 +7333,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*M-----*****",
-        "D": "Meeting",
         "M1U": "4520",
         "M1F": "4520",
         "M1N": "4520",
@@ -8355,7 +7340,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*I*T-----*****",
-        "D": "Tent",
         "M1U": "4530",
         "M1F": "4530",
         "M1N": "4530",
@@ -8363,7 +7347,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*------*****",
-        "D": "Individual",
         "M1U": "4073",
         "M1F": "4073",
         "M1N": "4073",
@@ -8371,7 +7354,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*A-----*****",
-        "D": "Leader",
         "M1U": "4074",
         "M1F": "4074",
         "M1N": "4074",
@@ -8379,7 +7361,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*AR----*****",
-        "D": "Religious Leader",
         "M1U": "4523",
         "M1F": "4523",
         "M1N": "4523",
@@ -8387,7 +7368,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*B-----*****",
-        "D": "Targeted Individual",
         "M1U": "4075",
         "M1F": "4075",
         "M1N": "4075",
@@ -8395,7 +7375,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*C-----*****",
-        "D": "Terrorist",
         "M1U": "4076",
         "M1F": "4076",
         "M1N": "4076",
@@ -8403,7 +7382,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*F-----*****",
-        "D": "IED Suicide Bomber",
         "M1U": "4501",
         "M1F": "4501",
         "M1N": "4501",
@@ -8411,7 +7389,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*D-----*****",
-        "D": "Dead Body",
         "M1U": "4504",
         "M1F": "4504",
         "M1N": "4504",
@@ -8419,7 +7396,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*G-----*****",
-        "D": "Exfiltrating Individual",
         "M1U": "4507",
         "M1F": "4507",
         "M1N": "4507",
@@ -8427,7 +7403,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*H-----*****",
-        "D": "Infiltrating Individual",
         "M1U": "4517",
         "M1F": "4517",
         "M1N": "4517",
@@ -8435,7 +7410,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*P*E-----*****",
-        "D": "Speaker",
         "M1U": "4528",
         "M1F": "4528",
         "M1N": "4528",
@@ -8443,7 +7417,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*------*****",
-        "D": "Non-Military Group or Organization",
         "M1U": "4077",
         "M1F": "4077",
         "M1N": "4077",
@@ -8451,7 +7424,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*B-----*****",
-        "D": "Non-Governmental Organizations (NGO)",
         "M1U": "4079",
         "M1F": "4079",
         "M1N": "4079",
@@ -8459,7 +7431,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*C-----*****",
-        "D": "Terrorist Organization",
         "M1U": "4080",
         "M1F": "4080",
         "M1N": "4080",
@@ -8467,7 +7438,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*D-----*****",
-        "D": "Religious Organization",
         "M1U": "4081",
         "M1F": "4081",
         "M1N": "4081",
@@ -8475,7 +7445,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*E-----*****",
-        "D": "Foreign Fighter",
         "M1U": "4082",
         "M1F": "4082",
         "M1N": "4082",
@@ -8483,7 +7452,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*G*F-----*****",
-        "D": "GANG",
         "M1U": "4083",
         "M1F": "4083",
         "M1N": "4083",
@@ -8491,7 +7459,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*R*------*****",
-        "D": "Rape",
         "M1U": "4084",
         "M1F": "4084",
         "M1N": "4084",
@@ -8499,7 +7466,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*R*A-----*****",
-        "D": "Attempted Rape",
         "M1U": "4085",
         "M1F": "4085",
         "M1N": "4085",
@@ -8507,11 +7473,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*------*****",
-        "D": "Events"
       },
       {
         "ID": "O*E*A-----*****",
-        "D": "Elections",
         "M1U": "9004",
         "M1F": "9004",
         "M1N": "9004",
@@ -8519,7 +7483,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*B-----*****",
-        "D": "Speech",
         "M1U": "9005",
         "M1F": "9005",
         "M1N": "9005",
@@ -8527,7 +7490,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*C-----*****",
-        "D": "Sermon",
         "M1U": "9006",
         "M1F": "9006",
         "M1N": "9006",
@@ -8535,7 +7497,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*D-----*****",
-        "D": "Meeting",
         "M1U": "9007",
         "M1F": "9007",
         "M1N": "9007",
@@ -8543,7 +7504,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*E-----*****",
-        "D": "Demonstration(Events)",
         "M1U": "9008",
         "M1F": "9008",
         "M1N": "9008",
@@ -8551,7 +7511,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*F-----*****",
-        "D": "Riot",
         "M1U": "9009",
         "M1F": "9009",
         "M1N": "9009",
@@ -8559,7 +7518,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*G-----*****",
-        "D": "Gang Activity",
         "M1U": "9010",
         "M1F": "9010",
         "M1N": "9010",
@@ -8567,7 +7525,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*H-----*****",
-        "D": "Jail Break/Escape Custody",
         "M1U": "9011",
         "M1F": "9011",
         "M1N": "9011",
@@ -8575,7 +7532,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*I-----*****",
-        "D": "Rock Throwing",
         "M1U": "9012",
         "M1F": "9012",
         "M1N": "9012",
@@ -8583,7 +7539,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*J-----*****",
-        "D": "Illegal Selling/Purchasing/Distributing/Black Market",
         "M1U": "9013",
         "M1F": "9013",
         "M1N": "9013",
@@ -8591,7 +7546,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*K-----*****",
-        "D": "Surveillance",
         "M1U": "9014",
         "M1F": "9014",
         "M1N": "9014",
@@ -8599,7 +7553,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*L-----*****",
-        "D": "Lights",
         "M1U": "9015",
         "M1F": "9015",
         "M1N": "9015",
@@ -8607,7 +7560,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*M-----*****",
-        "D": "Border Crossing",
         "M1U": "9016",
         "M1F": "9016",
         "M1N": "9016",
@@ -8615,7 +7567,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*N-----*****",
-        "D": "Border Activity",
         "M1U": "9017",
         "M1F": "9017",
         "M1N": "9017",
@@ -8623,7 +7574,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*O-----*****",
-        "D": "Smuggling",
         "M1U": "9018",
         "M1F": "9018",
         "M1N": "9018",
@@ -8631,7 +7581,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*P-----*****",
-        "D": "Exfiltration",
         "M1U": "9019",
         "M1F": "9019",
         "M1N": "9019",
@@ -8639,7 +7588,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*Q-----*****",
-        "D": "Infiltration",
         "M1U": "9020",
         "M1F": "9020",
         "M1N": "9020",
@@ -8647,7 +7595,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*R-----*****",
-        "D": "Auto Theft",
         "M1U": "9021",
         "M1F": "9021",
         "M1N": "9021",
@@ -8655,7 +7602,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*S-----*****",
-        "D": "Auto Accident",
         "M1U": "9022",
         "M1F": "9022",
         "M1N": "9022",
@@ -8663,7 +7609,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*T-----*****",
-        "D": "Looting",
         "M1U": "9023",
         "M1F": "9023",
         "M1N": "9023",
@@ -8671,7 +7616,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*U-----*****",
-        "D": "Theft",
         "M1U": "9024",
         "M1F": "9024",
         "M1N": "9024",
@@ -8679,7 +7623,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*V-----*****",
-        "D": "Robbery",
         "M1U": "9025",
         "M1F": "9025",
         "M1N": "9025",
@@ -8687,7 +7630,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*X-----*****",
-        "D": "Shooting (Non Deadly)",
         "M1U": "9027",
         "M1F": "9027",
         "M1N": "9027",
@@ -8695,7 +7637,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*W-----*****",
-        "D": "Home Eviction",
         "M1U": "9026",
         "M1F": "9026",
         "M1N": "9026",
@@ -8703,7 +7644,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*Y-----*****",
-        "D": "Raid",
         "M1U": "9028",
         "M1F": "9028",
         "M1N": "9028",
@@ -8711,7 +7651,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*Z-----*****",
-        "D": "Sabotage",
         "M1U": "9029",
         "M1F": "9029",
         "M1N": "9029",
@@ -8719,7 +7658,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AA----*****",
-        "D": "Warrant Served",
         "M1U": "9030",
         "M1F": "9030",
         "M1N": "9030",
@@ -8727,7 +7665,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AB----*****",
-        "D": "Rape",
         "M1U": "9031",
         "M1F": "9031",
         "M1N": "9031",
@@ -8735,7 +7672,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AC----*****",
-        "D": "Attempted Rape",
         "M1U": "9032",
         "M1F": "9032",
         "M1N": "9032",
@@ -8743,11 +7679,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AD----*****",
-        "D": "Attack(Events)"
       },
       {
         "ID": "O*E*ADA---*****",
-        "D": "Attack on NGO",
         "M1U": "9033",
         "M1F": "9033",
         "M1N": "9033",
@@ -8755,7 +7689,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*ADB---*****",
-        "D": "Terrorist Attack",
         "M1U": "9034",
         "M1F": "9034",
         "M1N": "9034",
@@ -8763,7 +7696,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*ADC---*****",
-        "D": "Grenade Attack",
         "M1U": "9035",
         "M1F": "9035",
         "M1N": "9035",
@@ -8771,7 +7703,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*ADD---*****",
-        "D": "Rocket Attack",
         "M1U": "9036",
         "M1F": "9036",
         "M1N": "9036",
@@ -8779,11 +7710,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AE----*****",
-        "D": "Explosions"
       },
       {
         "ID": "O*E*AEA---*****",
-        "D": "Explosion (general)",
         "M1U": "9037",
         "M1F": "9037",
         "M1N": "9037",
@@ -8791,7 +7720,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEB---*****",
-        "D": "Explosion, Mine",
         "M1U": "9038",
         "M1F": "9038",
         "M1N": "9038",
@@ -8799,7 +7727,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEC---*****",
-        "D": "Explosion, Grenade",
         "M1U": "9039",
         "M1F": "9039",
         "M1N": "9039",
@@ -8807,7 +7734,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AED---*****",
-        "D": "Explosion, Bomb",
         "M1U": "9040",
         "M1F": "9040",
         "M1N": "9040",
@@ -8815,7 +7741,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEE---*****",
-        "D": "Explosion, Mortar Fire",
         "M1U": "9041",
         "M1F": "9041",
         "M1N": "9041",
@@ -8823,7 +7748,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEF---*****",
-        "D": "Explosion, Incendiary",
         "M1U": "9042",
         "M1F": "9042",
         "M1N": "9042",
@@ -8831,7 +7755,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEG---*****",
-        "D": "Explosion, Rocket",
         "M1U": "9043",
         "M1F": "9043",
         "M1N": "9043",
@@ -8839,7 +7762,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEH---*****",
-        "D": "Explosion, Improvised Explosive Device (IED)",
         "M1U": "9044",
         "M1F": "9044",
         "M1N": "9044",
@@ -8847,7 +7769,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEI---*****",
-        "D": "Explosion, Car Bomb",
         "M1U": "9045",
         "M1F": "9045",
         "M1N": "9045",
@@ -8855,7 +7776,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AEJ---*****",
-        "D": "Suicide Bombing",
         "M1U": "9046",
         "M1F": "9046",
         "M1N": "9046",
@@ -8863,11 +7783,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AF----*****",
-        "D": "Fighting/Contact"
       },
       {
         "ID": "O*E*AFA---*****",
-        "D": "Fighting (General)",
         "M1U": "9047",
         "M1F": "9047",
         "M1N": "9047",
@@ -8875,7 +7793,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AFB---*****",
-        "D": "Coalition vs. Enemy",
         "M1U": "9048",
         "M1F": "9048",
         "M1N": "9048",
@@ -8883,7 +7800,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AFC---*****",
-        "D": "Coalition vs. Coalition",
         "M1U": "9049",
         "M1F": "9049",
         "M1N": "9049",
@@ -8891,7 +7807,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AG----*****",
-        "D": "Drug Possession",
         "M1U": "9050",
         "M1F": "9050",
         "M1N": "9050",
@@ -8899,7 +7814,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AH----*****",
-        "D": "Drug Trafficking",
         "M1U": "9051",
         "M1F": "9051",
         "M1N": "9051",
@@ -8907,7 +7821,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AI----*****",
-        "D": "Suspicious Activity",
         "M1U": "9052",
         "M1F": "9052",
         "M1N": "9052",
@@ -8915,7 +7828,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AJ----*****",
-        "D": "Activity",
         "M1U": "9053",
         "M1F": "9053",
         "M1N": "9053",
@@ -8923,7 +7835,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AK----*****",
-        "D": "Threat",
         "M1U": "9054",
         "M1F": "9054",
         "M1N": "9054",
@@ -8931,7 +7842,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AL----*****",
-        "D": "Crater",
         "M1U": "9055",
         "M1F": "9055",
         "M1N": "9055",
@@ -8939,7 +7849,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AM----*****",
-        "D": "Pothole",
         "M1U": "9056",
         "M1F": "9057",
         "M1N": "9058",
@@ -8947,7 +7856,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AN----*****",
-        "D": "Escalation of Force",
         "M1U": "9060",
         "M1F": "9061",
         "M1N": "9062",
@@ -8955,7 +7863,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AO----*****",
-        "D": "Submunitions",
         "M1U": "9064",
         "M1F": "9064",
         "M1N": "9064",
@@ -8963,7 +7870,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AP----*****",
-        "D": "Confiscation",
         "M1U": "9065",
         "M1F": "9066",
         "M1N": "9067",
@@ -8971,7 +7877,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AQ----*****",
-        "D": "Counter Insurgency",
         "M1U": "9069",
         "M1F": "9070",
         "M1N": "9071",
@@ -8979,7 +7884,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AR----*****",
-        "D": "Counter Terrorism",
         "M1U": "9073",
         "M1F": "9074",
         "M1N": "9075",
@@ -8987,7 +7891,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AS----*****",
-        "D": "Humanitarian Assistance",
         "M1U": "9077",
         "M1F": "9078",
         "M1N": "9079",
@@ -8995,7 +7898,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AT----*****",
-        "D": "Tests of Security",
         "M1U": "9081",
         "M1F": "9082",
         "M1N": "9083",
@@ -9003,7 +7905,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AU----*****",
-        "D": "AWOL",
         "M1U": "9085",
         "M1F": "9085",
         "M1N": "9085",
@@ -9011,7 +7912,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AV----*****",
-        "D": "Curfew",
         "M1U": "9086",
         "M1F": "9086",
         "M1N": "9086",
@@ -9019,7 +7919,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AW----*****",
-        "D": "DUI",
         "M1U": "9087",
         "M1F": "9087",
         "M1N": "9087",
@@ -9027,7 +7926,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*E*AX----*****",
-        "D": "Prostitution",
         "M1U": "9088",
         "M1F": "9088",
         "M1N": "9088",
@@ -9035,11 +7933,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*------*****",
-        "D": "Organization/Groups"
       },
       {
         "ID": "O*Y*A-----*****",
-        "D": "Organization (General)",
         "M1U": "9089",
         "M1F": "9089",
         "M1N": "9089",
@@ -9047,7 +7943,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*B-----*****",
-        "D": "NGO Organization",
         "M1U": "9090",
         "M1F": "9090",
         "M1N": "9090",
@@ -9055,7 +7950,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*C-----*****",
-        "D": "Displaced Persons, Refugees",
         "M1U": "9091",
         "M1F": "9091",
         "M1N": "9091",
@@ -9063,7 +7957,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*D-----*****",
-        "D": "Terrorist Organization",
         "M1U": "9092",
         "M1F": "9092",
         "M1N": "9092",
@@ -9071,7 +7964,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*E-----*****",
-        "D": "Religious Organization",
         "M1U": "9093",
         "M1F": "9093",
         "M1N": "9093",
@@ -9079,7 +7971,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*F-----*****",
-        "D": "Group Tribe Cell",
         "M1U": "9094",
         "M1F": "9094",
         "M1N": "9094",
@@ -9087,7 +7978,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*G-----*****",
-        "D": "Foreign Fighters",
         "M1U": "9095",
         "M1F": "9095",
         "M1N": "9095",
@@ -9095,43 +7985,33 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Y*R-----*****",
-        "D": "Red Cross"
       },
       {
         "ID": "O*Y*SP----*****",
-        "D": "State Police"
       },
       {
         "ID": "O*Y*LP----*****",
-        "D": "Local Police"
       },
       {
         "ID": "O*Y*SH----*****",
-        "D": "Shelter"
       },
       {
         "ID": "O*Y*FM----*****",
-        "D": "FEMA"
       },
       {
         "ID": "O*Y*SA----*****",
-        "D": "Staging Area"
       },
       {
         "ID": "O*Y*EP----*****",
-        "D": "Evacuation Point"
       },
       {
         "ID": "O*Y*PD----*****",
-        "D": "Person in Distress"
       },
       {
         "ID": "O*S*------*****",
-        "D": "Structures"
       },
       {
         "ID": "O*S*A-----*****",
-        "D": "Compound/Post/Fort",
         "M1U": "9103",
         "M1F": "9103",
         "M1N": "9103",
@@ -9139,7 +8019,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*B-----*****",
-        "D": "House/Residence",
         "M1U": "9104",
         "M1F": "9104",
         "M1N": "9104",
@@ -9147,7 +8026,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*C-----*****",
-        "D": "Safe House(Structures)",
         "M1U": "9105",
         "M1F": "9105",
         "M1N": "9105",
@@ -9155,7 +8033,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*D-----*****",
-        "D": "Church",
         "M1U": "9106",
         "M1F": "9106",
         "M1N": "9106",
@@ -9163,7 +8040,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*E-----*****",
-        "D": "Mosque",
         "M1U": "9107",
         "M1F": "9107",
         "M1N": "9107",
@@ -9171,7 +8047,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*F-----*****",
-        "D": "Synagogue",
         "M1U": "9108",
         "M1F": "9108",
         "M1N": "9108",
@@ -9179,7 +8054,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*G-----*****",
-        "D": "Warehouse/Storage Facility",
         "M1U": "9109",
         "M1F": "9109",
         "M1N": "9109",
@@ -9187,7 +8061,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*H-----*****",
-        "D": "Bunker/Underground Facility",
         "M1U": "9110",
         "M1F": "9110",
         "M1N": "9110",
@@ -9195,7 +8068,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*I-----*****",
-        "D": "Tents",
         "M1U": "9111",
         "M1F": "9111",
         "M1N": "9111",
@@ -9203,7 +8075,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*J-----*****",
-        "D": "Cave",
         "M1U": "9112",
         "M1F": "9112",
         "M1N": "9112",
@@ -9211,11 +8082,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*K-----*****",
-        "D": "Camps"
       },
       {
         "ID": "O*S*KA----*****",
-        "D": "Camp (General)",
         "M1U": "9114",
         "M1F": "9114",
         "M1N": "9114",
@@ -9223,7 +8092,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*KB----*****",
-        "D": "Displaced Persons/Refugees Camp",
         "M1U": "9115",
         "M1F": "9115",
         "M1N": "9115",
@@ -9231,7 +8099,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*KC----*****",
-        "D": "Training Camp",
         "M1U": "9116",
         "M1F": "9116",
         "M1N": "9116",
@@ -9239,7 +8106,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*L-----*****",
-        "D": "Prison/Detention Facility",
         "M1U": "9117",
         "M1F": "9117",
         "M1N": "9117",
@@ -9247,7 +8113,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*M-----*****",
-        "D": "Police Station",
         "M1U": "9118",
         "M1F": "9118",
         "M1N": "9118",
@@ -9255,7 +8120,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*S*N-----*****",
-        "D": "Palace/Presidential Residence",
         "M1U": "9119",
         "M1F": "9119",
         "M1N": "9119",
@@ -9263,11 +8127,9 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*------*****",
-        "D": "Equipment/Weapons"
       },
       {
         "ID": "O*Q*A-----*****",
-        "D": "Weapons Found",
         "M1U": "9121",
         "M1F": "9121",
         "M1N": "9121",
@@ -9275,7 +8137,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*B-----*****",
-        "D": "Weapons Cache",
         "M1U": "9122",
         "M1F": "9122",
         "M1N": "9122",
@@ -9283,7 +8144,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*C-----*****",
-        "D": "Weapons Confiscated",
         "M1U": "9123",
         "M1F": "9123",
         "M1N": "9123",
@@ -9291,7 +8151,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*D-----*****",
-        "D": "Weapons Sale",
         "M1U": "9124",
         "M1F": "9124",
         "M1N": "9124",
@@ -9299,7 +8158,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*E-----*****",
-        "D": "Weapons Market",
         "M1U": "9125",
         "M1F": "9125",
         "M1N": "9125",
@@ -9307,7 +8165,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*F-----*****",
-        "D": "Chem/Bio Weapons Cache",
         "M1U": "9126",
         "M1F": "9126",
         "M1N": "9126",
@@ -9315,7 +8172,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*G-----*****",
-        "D": "Improvised Explosive Device (IED)",
         "M1U": "9127",
         "M1F": "9127",
         "M1N": "9127",
@@ -9323,7 +8179,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*H-----*****",
-        "D": "Unexploded Ordnance (UXO)",
         "M1U": "9128",
         "M1F": "9128",
         "M1N": "9128",
@@ -9331,7 +8186,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*I-----*****",
-        "D": "Horses",
         "M1U": "9129",
         "M1F": "9129",
         "M1N": "9129",
@@ -9339,7 +8193,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*J-----*****",
-        "D": "Camels",
         "M1U": "9130",
         "M1F": "9130",
         "M1N": "9130",
@@ -9347,7 +8200,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "O*Q*K-----*****",
-        "D": "Donkeys",
         "M1U": "9131",
         "M1F": "9131",
         "M1N": "9131",
@@ -9355,15 +8207,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*-*------*****",
-        "D": "Emergency Management Symbols"
       },
       {
         "ID": "E*I*------*****",
-        "D": "Incident"
       },
       {
         "ID": "E*I*A-----*****",
-        "D": "Civil Disturbance Incident",
         "M1U": "5000",
         "M1F": "5000",
         "M1N": "5000",
@@ -9371,7 +8220,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*I*AC----*****",
-        "D": "Civil Rioting",
         "M1U": "5001",
         "M1F": "5001",
         "M1N": "5001",
@@ -9379,7 +8227,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*I*B-----*****",
-        "D": "Criminal Activity Incident",
         "M1U": "5002",
         "M1F": "5002",
         "M1N": "5002",
@@ -9387,7 +8234,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*I*BC----*****",
-        "D": "Explosion (Bomb)",
         "M1U": "5004",
         "M1F": "5004",
         "M1N": "5004",
@@ -9395,7 +8241,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*I*BD----*****",
-        "D": "Looting",
         "M1U": "5005",
         "M1F": "5005",
         "M1N": "5005",
@@ -9403,31 +8248,24 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*I*C-----*****",
-        "D": "Fire Incident"
       },
       {
         "ID": "E*I*D-----*****",
-        "D": "Hazardous Materiel Incident"
       },
       {
         "ID": "E*I*E-----*****",
-        "D": "Air Incident"
       },
       {
         "ID": "E*I*F-----*****",
-        "D": "Marine Incident"
       },
       {
         "ID": "E*I*G-----*****",
-        "D": "Rail Incident"
       },
       {
         "ID": "E*I*H-----*****",
-        "D": "Vehicle Incident"
       },
       {
         "ID": "E*I*HA----*****",
-        "D": "Vehicle Accident",
         "M1U": "5061",
         "M1F": "5061",
         "M1N": "5061",
@@ -9435,23 +8273,18 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*N*------*****",
-        "D": "Natural Events"
       },
       {
         "ID": "E*O*------*****",
-        "D": "Operations"
       },
       {
         "ID": "E*O*D-----*****",
-        "D": "Law Enforcement Operation"
       },
       {
         "ID": "E*O*DJ----*****",
-        "D": "Police"
       },
       {
         "ID": "E*O*DJC---*****",
-        "D": "Police Installation",
         "M1U": "5251",
         "M1F": "5251",
         "M1N": "5251",
@@ -9459,7 +8292,6 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*O*DK----*****",
-        "D": "Prison",
         "M1U": "5252",
         "M1F": "5252",
         "M1N": "5252",
@@ -9469,15 +8301,12 @@ armyc2.c2sd.renderer.xml.UnitFontMappingsB = {
       },
       {
         "ID": "E*F*------*****",
-        "D": "Infrastructure"
       },
       {
         "ID": "E*F*I-----*****",
-        "D": "Public Venues Infrastructure"
       },
       {
         "ID": "E*F*ID----*****",
-        "D": "Religious Institution",
         "M1U": "5349",
         "M1F": "5349",
         "M1N": "5349",

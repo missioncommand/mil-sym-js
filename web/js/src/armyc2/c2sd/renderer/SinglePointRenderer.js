@@ -1855,7 +1855,8 @@ return{
                 y = ((y * 0.5) + (labelHeight * 0.5));
 
                 y = y - ((labelHeight + bufferText));
-                y = bounds.y + y;
+                //y = bounds.y + y;
+                y = Math.round(bounds.y + y);
             }
             
             tiTemp.setLocation(x,y);
@@ -1883,7 +1884,8 @@ return{
                 y = ((y * 0.5) + (labelHeight * 0.5));
 
                 y = y - ((labelHeight + bufferText));
-                y = bounds.y + y;
+                //y = bounds.y + y;
+                y = Math.round(bounds.y + y);
             }
             
             tiTemp.setLocation(x,y);
@@ -2110,7 +2112,8 @@ return{
                 y = ((y * 0.5) + (labelHeight * 0.5));
 
                 y = y - ((labelHeight + bufferText)*2);
-                y = bounds.y + y;
+                //y = bounds.y + y;
+                y = Math.round(bounds.y + y);
             }
             
             tiTemp.setLocation(x,y);
@@ -2169,7 +2172,8 @@ return{
                 y = ((y * 0.5) + (labelHeight * 0.5));
 
                 y = y - ((labelHeight + bufferText)*2);
-                y = bounds.y + y;
+                //y = bounds.y + y;
+                y = Math.round(bounds.y + y);
             }
             
             tiTemp.setLocation(x,y);

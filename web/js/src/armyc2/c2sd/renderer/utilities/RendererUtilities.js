@@ -692,6 +692,13 @@ return{
                 letter = String.fromCharCode(i);
                 widths[letter] = _ctx.measureText(letter).width;
             }
+            //fromCharCode(177)
+            letter = String.fromCharCode(177);//RD
+            widths[letter] = _ctx.measureText(letter).width;
+            letter = String.fromCharCode(216);//Ø
+            widths[letter] = _ctx.measureText(letter).width;
+            letter = String.fromCharCode(8226);//dot
+            widths[letter] = _ctx.measureText(letter).width;
             
             fullFontMeasurements[font] = {widths:widths,height:height,descent:descent,fullHeight:fullHeight}; 
             pastTextMeasurements[font] = {height:height,fullHeight:fullHeight,descent:descent};

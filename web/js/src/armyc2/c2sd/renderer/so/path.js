@@ -282,6 +282,8 @@ armyc2.c2sd.renderer.so.Path = function () {
         var newX = r * Math.cos(ea) + x;
         var newY = r * Math.sin(ea) + y;
         this._endPoint = new so.Point(newX,newY);
+        this.moveTo(newX,newY);
+        
     };
     /**
      * Closes the current subpath by drawing a straight line back to the coordinates of the last moveTo.
