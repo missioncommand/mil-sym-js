@@ -3841,9 +3841,10 @@ return{
         y1 = Math.round(center.getY());
         
         pt1 = new SO.Point(x1,y1);
-        
+        var scheme = symbolID.charAt(0);
         if(SymbolUtilities.isNBC(symbolID) ||
-            (SymbolUtilities.isWarfighting(symbolID) && symbolID.charAt(2)===("G")))
+            (scheme === 'S' && symbolID.charAt(2)===("G")) || 
+            scheme === 'O' || scheme === 'E')
         {
             y1 = bounds.getY() + bounds.getHeight();
             pt1 = new SO.Point(x1,y1);
