@@ -188,7 +188,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                             }
                         }
                     }
-                    tg.set_H2(Double.toString(maxWidthMeters));
+                    tg.set_H2(Double.toString(maxWidthMeters) + "m");
                     X = milStd.getModifiers_AM_AN_X("XN");
                     if (X !== null && X.size() > 0)
                         tg.set_H(Double.toString((X.get(0)).doubleValue()));
@@ -730,7 +730,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                             }
                         }
                     }
-                    tg.set_H2(Double.toString(maxWidthMeters));
+                    tg.set_H2(Double.toString(maxWidthMeters) + "m");
                     X = milStd.getModifiers_AM_AN_X(modifiersTG.X_ALTITUDE_DEPTH);
                     if (X !== null && X.length > 0)
                     {
