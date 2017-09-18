@@ -239,6 +239,19 @@ function testRender()
                 modifiers[mtg.X_ALTITUDE_DEPTH] = [500,1000];*/
                 //modifiers = "[{radius1:50.0,radius2:100.0,minalt:0.0,maxalt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}]";
                 modifiers = [{radius:100.0,innerRadius:50.0,minAlt:0.0,maxAlt:100.0,rightAzimuth:90.0,leftAzimuth:0.0}];
+            case 15://Air Corridor
+                symbolCode = "G*GPALC---****X"; //air corridor
+                format = formatGeoCanvas;
+                altitudeMode = "clampToGround";
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [1000];
+                modifiers[mtg.AN_AZIMUTH] = [315,45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [50,400];
             default:
                 break;
         } 
@@ -360,6 +373,7 @@ Draw Canvas/SVG Test:
       <option value=12>PBS Ellipse</option>
       <option value=13>PBS Rectangle</option>
       <option value=14>RADARC</option>
+      <option value=15>Air Corridor</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
