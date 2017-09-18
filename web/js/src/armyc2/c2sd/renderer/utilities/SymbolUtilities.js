@@ -2387,7 +2387,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 blRetVal = true;
             }
             else if(strSymbolID.charAt(2)=='F' &&
-                    strSymbolID.substring(4, 6).equals("BA")==false)
+                    strSymbolID.substring(4, 6) !== "BA")
             {
                 blRetVal = true;
             }
