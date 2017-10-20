@@ -2381,19 +2381,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
          var blRetVal = false;
         if(strSymbolID.charAt(0)==='E')
         {
-            if(strSymbolID.charAt(2)=='O' &&
-                    strSymbolID.charAt(4)=='D' && strSymbolID.charAt(6)=='C')
+            if(strSymbolID.charAt(2)==='O' &&
+                    strSymbolID.charAt(4)==='D' && (strSymbolID.charAt(6)==='C' || strSymbolID.charAt(5)==='K'))
             {
                 blRetVal = true;
             }
-            else if(strSymbolID.charAt(2)=='F' &&
+            else if(strSymbolID.charAt(2)==='F' &&
                     strSymbolID.substring(4, 6) !== "BA")
             {
                 blRetVal = true;
             }
-            else if(strSymbolID.charAt(2)=='O')
+            else if(strSymbolID.charAt(2)==='O')
             {
-                if(strSymbolID.charAt(4)=='A')
+                if(strSymbolID.charAt(4)==='A')
                 {
                     switch(strSymbolID.charAt(5))
                     {
