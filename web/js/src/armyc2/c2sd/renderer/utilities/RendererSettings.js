@@ -5,13 +5,13 @@ armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
-	
+
     var _Version = "0.3.28";
     //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
     _UseLineInterpolation = true,
-    _AutoCollapseModifiers = true,   
+    _AutoCollapseModifiers = true,
     /**
      * Value from 0 to 255. The closer to 0 the lighter the text color has to be
      * to have the outline be black. Default value is 160.
@@ -20,33 +20,33 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 
     //if TextBackgroundMethod_OUTLINE is set, This value determines the width of that outline.
     _TextOutlineWidth = 1,
-    
+
     //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline should not exceed 1 pixel).
     _TextBackgroundMethod = 2,
-    
+
     //label foreground color, uses line color of symbol if null.
     _ColorLabelForeground = null,//armyc2.c2sd.renderer.utilities.Color.BLACK;//"000000", //Color.BLACK;
     //label background color, used if TextBackGroundMethod = TextBackgroundMethod_COLORFILL && not null
     _ColorLabelBackground = null,//armyc2.c2sd.renderer.utilities.Color.BLACK;//null,//"#FFFFFF",
-       
+
     _SymbolOutlineWidth = 3,
-    
+
     _UseCesium2DScaleModifiers = false,
 
     //modifier the scale returned from getReasonableScale()
     _3DMinScaleMultiplier = 1.0,
     _3DMaxScaleMultiplier = 1.0,
-    
+
     /**
      * If true (default), when HQ Staff is present, location will be indicated by the free
      * end of the staff
      */
     _CenterOnHQStaff = true,
-    
+
     _OCMType = 1,//alternate operational condition modifier is default
-    
-    
+
+
     _ModifierFontName = "Arial, sans-serif",
     _ModifierFontSize = 10,
     _ModifierFontStyle = "bold",
@@ -56,7 +56,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _MPModifierFontSize = 12,
     _MPModifierFontStyle = "bold",
 	_KMLLabelScale = 1.0,
-    
+
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
     _DrawCountryCode = true,
@@ -64,7 +64,9 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _UnitFontSize = 50,
     _PixelSize = 35,
     _DPI = 90;
-    
+    //acevedo - 11/6/2017 - adding option to render only 2 ENY labels.
+	_TwoENYLabelOnly = true;
+
     try
     {
         if(document)
@@ -75,12 +77,12 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     }
     catch(err)
     {
-        
+
     }
 
 return{
-    
-    
+
+
     /**
      * There will be no background for text
      * NOTE: not supported
@@ -98,7 +100,7 @@ return{
      * Outline width of 4 is recommended.
      */
     TextBackgroundMethod_OUTLINE : 2,
-    
+
      /**
      * Was quick in Java.  Some gains in IE 10+ if outline width is set to 1.
      * NOTE: only implemented for Units
@@ -121,7 +123,7 @@ return{
 
     OperationalConditionModifierType_SLASH : 0,
     OperationalConditionModifierType_BAR : 1,
-    
+
     getVersion: function()
     {
         return _Version;
@@ -143,7 +145,7 @@ return{
     {
         return _OCMType;
     },
-    
+
     /**
      * None, outline (default), or filled background.
      * If set to OUTLINE, TextOutlineWidth changed to default of 4.
@@ -164,7 +166,7 @@ return{
     {
         return _TextBackgroundMethod;
     },
-    
+
     /**
      * Controls what symbols are supported.
      * Set this before loading the renderer.
@@ -182,15 +184,15 @@ return{
         return _SymbologyStandard;
     },
     /**
-     * For lines symbols with "decorations" like FLOT or LOC, when points are 
-     * too close together, we will start dropping points until we get enough 
+     * For lines symbols with "decorations" like FLOT or LOC, when points are
+     * too close together, we will start dropping points until we get enough
      * space between 2 points to draw the decoration.  Without this, when points
      * are too close together, you run the chance that the decorated line will
      * look like a plain line because there was no room between points to
      * draw the decoration.
      * @param {Boolean} value
      * @returns {undefined}
-     */        
+     */
     setUseLineInterpolation: function (value){
         _UseLineInterpolation = value;
     },
@@ -247,9 +249,9 @@ return{
     /**
      * for SVG and Canvas output, if your images look stretched or scaled down,
      * try altering there values.  Smaller values will result in a bigger image.
-     * Larger values will result in a smaller image.  For example, if you're 
-     * getting images half the size of the space that they take on the map and are 
-     * getting stretched to fill it, try 0.5 as a starting point. 
+     * Larger values will result in a smaller image.  For example, if you're
+     * getting images half the size of the space that they take on the map and are
+     * getting stretched to fill it, try 0.5 as a starting point.
      * @param {Number} value (default 1.0)
      */
     set3DMinScaleMultiplier: function (value){
@@ -264,9 +266,9 @@ return{
     /**
      * for SVG and Canvas output, if your images look stretched or scaled down,
      * try altering there values.  Smaller values will result in a bigger image.
-     * Larger values will result in a smaller image.  For example, if you're 
-     * getting images half the size of the space that they take on the map and are 
-     * getting stretched to fill it, try 0.5 as a starting point. 
+     * Larger values will result in a smaller image.  For example, if you're
+     * getting images half the size of the space that they take on the map and are
+     * getting stretched to fill it, try 0.5 as a starting point.
      * @param {Number} value (default 1.0)
      */
     set3DMaxScaleMultiplier: function (value){
@@ -383,7 +385,7 @@ return{
      * This applies to Single Point Tactical Graphics.
      * Setting this will determine the default value for milStdSymbols when created.
      * 0 for no outline,
-     * 1 for outline thickness of 1 pixel, 
+     * 1 for outline thickness of 1 pixel,
      * 2 for outline thickness of 2 pixels,
      * greater than 2 is not currently recommended.
      * @param {type} width
@@ -391,7 +393,7 @@ return{
      */
     setSinglePointSymbolOutlineWidth: function (width){
         _SymbolOutlineWidth = width;
-        
+
         if(width > 0)
             _SymbolOutlineWidth = (width*2) + 1;
         else
@@ -454,7 +456,7 @@ return{
             return _DrawCountryCode;
     },
     /**
-     * 
+     *
      * @param {String} name like "Arial" or "Arial, sans-serif" so a backup is
      * available in case 'Arial' is not present.
      * @param {Number} size like 12
@@ -473,40 +475,40 @@ return{
             _ModifierFontStyle = 'bold';
         }
         _ModifierFont = style + " " + size + "pt " + name;
-        
+
         armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont, fontInfo);
     },
     /**
-     * 
+     *
      * @returns {String} like "bold 12pt Arial"
      */
     getModifierFont: function(){
         return _ModifierFont;
     },
     /**
-     * 
+     *
      * @returns {String}
      */
     getModifierFontName: function(){
         return _ModifierFontName;
     },
     /**
-     * 
+     *
      * @returns {Number}
      */
     getModifierFontSize: function(){
         return _ModifierFontSize;
     },
     /**
-     * 
+     *
      * @returns {String}
      */
     getModifierFontStyle: function(){
         return _ModifierFontStyle;
     },
-    
+
         /**
-     * 
+     *
      * @param {String} name like "Arial" or "Arial, sans-serif" so a backup is
      * available in case 'Arial' is not present.
      * @param {Number} size like 12
@@ -538,49 +540,79 @@ return{
         armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont, fontInfo);
     },
     /**
-     * 
+     *
      * @returns {String} like "bold 12pt Arial"
      */
     getMPModifierFont: function(){
         return _MPModifierFont;
     },
     /**
-     * 
+     *
      * @returns {String}
      */
     getMPModifierFontName: function(){
         return _MPModifierFontName;
     },
     /**
-     * 
+     *
      * @returns {Number}
      */
     getMPModifierFontSize: function(){
         return _MPModifierFontSize;
     },
     /**
-     * 
+     *
      * @returns {String}
      */
     getMPModifierFontStyle: function(){
         return _MPModifierFontStyle;
     },
-	
+
 	getKMLLabelScale: function(){
 		return _KMLLabelScale;
 	},
-    
+
     getFontInfo: function (){
         return {name: _ModifierFontName, size:_ModifierFontSize, style:_ModifierFontStyle, measurements:armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_ModifierFont)};
     },
-    
+
     getMPFontInfo: function (){
         return {name: _MPModifierFontName, size:_MPModifierFontSize, style:_MPModifierFontStyle, measurements:armyc2.c2sd.renderer.utilities.RendererUtilities.measureFont(_MPModifierFont)};
     },
-	
-    getInstance: function(){
-            return armyc2.c2sd.renderer.utilities.RendererSettings;
-    }
-    
+
+    /**
+	   *
+     * Get a boolean indicating between the use of ENY labels in all segments (false) or
+ 	   * to only set 2 labels one at the north and the other one at the south of the graphic (true).
+     * @returns {boolean}
+   */
+	getTwoENYLabelOnly: function(){
+			return _TwoENYLabelOnly;
+	},
+
+  /**
+ 	 * Set a boolean indicating between the use of ENY labels in all segments (false) or
+ 	 * to only set 2 labels one at the north and the other one at the south of the graphic (true).
+ 	 * @param {boolean} TwoENYLabelOnly
+ 	 */
+  setTwoENYLabelOnly( TwoENYLabelOnly )
+ 	{
+ 		_TwoENYLabelOnly = TwoENYLabelOnly;
+ 	},
+
+    /**
+   	 * get a boolean indicating between the use of ENY labels in all segments (false) or
+   	 * to only set 2 labels one at the north and the other one at the south of the graphic (true).
+   	 * @returns {boolean} _TwoENYLabelOnly
+   	 */
+    getTwoENYLabelOnly(  )
+   	{
+   		return _TwoENYLabelOnly;
+   	},
+
+  getInstance: function(){
+          return armyc2.c2sd.renderer.utilities.RendererSettings;
+  }
+
 };
 }());

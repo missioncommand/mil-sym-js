@@ -1143,6 +1143,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithENY = function (tg, g2d) {
         var middleSegment = Math.floor(tg.Pixels.size() / 2) - 1;
         var middleSegment2 = tg.Pixels.size() - 2;
         var startIndex = 0;
+
         var j = 0;
         var linetype = tg.get_LineType();
         var affiliation = tg.get_Affiliation();
@@ -1177,21 +1178,64 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithENY = function (tg, g2d) {
         var dist = 0;
         var pt0 = null;
         var pt1 = null;
-        for (j = startIndex; j < tg.Pixels.size() - 1; j++) {
-            pt0 = tg.Pixels.get(j);
-            pt1 = tg.Pixels.get(j + 1);
-            dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
-            if (dist > 1.5 * stringWidth) {
-                foundLongSegment = true;
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, 0, pt0, pt1, new Boolean(true));
+        var northestPtIndex = null;
+    		var southestPtIndex = null;
+    		var northestPt = null;
+    		var southestPt = null;
+
+        //acevedo - 11/6/2017 - adding option to render only 2 ENY labels.
+        if (armyc2.c2sd.renderer.utilities.RendererSettings.getInstance().getTwoENYLabelOnly() === false) {
+            for (j = startIndex; j < tg.Pixels.size() - 1; j++) {
+                pt0 = tg.Pixels.get(j);
+                pt1 = tg.Pixels.get(j + 1);
+                dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
+                if (dist > 1.5 * stringWidth) {
+                    foundLongSegment = true;
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, 0, pt0, pt1, new Boolean(true));
+                }
+            }
+            if (foundLongSegment === false) {
+                if (middleSegment !== startIndex)
+                    armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label, 2, 0, middleSegment, middleSegment + 1, new Boolean(true));
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label, 2, 0, middleSegment2, middleSegment2 + 1, new Boolean(true));
             }
         }
-        if (foundLongSegment === false) {
+        else {
+            // 2 ENY labels
+            for (j = startIndex; j < tg.Pixels.size() - 1; j++) {
+                pt0 = tg.Pixels.get(j);
+
+    			if (northestPt === null)
+    			{
+    				northestPt = pt0;
+    				northestPtIndex = j;
+    			}
+    			if (southestPt === null)
+    			{
+    				southestPt = pt0;
+    				southestPtIndex = j;
+    			}
+    			if (pt0.y >= northestPt.y)
+    			{
+    				northestPt = pt0
+    				northestPtIndex = j;
+    			}
+
+    			if (pt0.y <= southestPt.y)
+    			{
+    				southestPt = pt0;
+    				southestPtIndex = j;
+    			}
+            }//for
+
+    		middleSegment = northestPtIndex;
+    		middleSegment2 = southestPtIndex;
             if (middleSegment !== startIndex)
-                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label, 2, 0, middleSegment, middleSegment + 1, new Boolean(true));
-            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label, 2, 0, middleSegment2, middleSegment2 + 1, new Boolean(true));
-        }
-    } catch (exc) {
+                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label , 2, 0, middleSegment, middleSegment + 1, new Boolean(true));
+            armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label , 2, 0, middleSegment2, middleSegment2 + 1, new Boolean(true));
+        }//else
+    }
+    catch (exc) {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "areasWithENY", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside areasWithENY", exc));
         } else {
@@ -2605,7 +2649,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function (tg) {
             var y2=tg.Pixels.get(1).y;
             var deltax=x2-x1;
             var deltay=y2-y1;
-            height=Math.sqrt(deltax*deltax+deltay*deltay);        
+            height=Math.sqrt(deltax*deltax+deltay*deltay);
     }
     catch (exc)
     {
@@ -2641,7 +2685,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
             default:
                 break;
         }
-        
+
         var ptUl = new armyc2.c2sd.JavaLineArray.POINT2(), ptUr = new armyc2.c2sd.JavaLineArray.POINT2(), ptLr = new armyc2.c2sd.JavaLineArray.POINT2(), ptLl = new armyc2.c2sd.JavaLineArray.POINT2();
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ptUl, ptUr, ptLr, ptLl);
         var sz = tg.get_Font().getSize();
@@ -2653,7 +2697,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function (tg) {
             heightMBR=Math.abs(ptLr.y-ptUr.y)/2;
         else
             heightMBR=change1Height;
-        
+
         var heightModifiers = 0;
         var modifiers = tg.modifiers;
         var modifier = null;
@@ -3484,7 +3528,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             case 22223000:
                 pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(middleSegment));
                 dist=pt0.style/tg.get_Font().getSize();
-                dist /= 2;                
+                dist /= 2;
                 if (tg.getSymbologyStandard() === 1) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "SAAFR " + tg.get_Name(), 2, 0, middleSegment, middleSegment + 1, new Boolean(false));
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), 2, -4 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
@@ -3504,7 +3548,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
             case 22221000:
                 pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(middleSegment));
                 dist=pt0.style/tg.get_Font().getSize();
-                dist /= 2;                
+                dist /= 2;
                 if (tg.getSymbologyStandard() === 1) {
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + " " + tg.get_Name(), 2, 0, middleSegment, middleSegment + 1, new Boolean(false));
                     armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "Max Alt: " + tg.get_H1(), 2, -4 * csFactor-dist, middleSegment, middleSegment + 1, new Boolean(false));
@@ -3736,7 +3780,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function (tg, g2d, 
                         if (pt0.x > pt1.x)
                             pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth / 2); //was stringWidth
                         else
-                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth); //was stringWidth                            
+                            pt1 = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0, pt1, stringWidth); //was stringWidth
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, label + " " + tg.get_Name(), 2, -0.7 * csFactor, pt0, pt1, false);
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG(), 2, 0.7 * csFactor, pt0, pt1, false);
                         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2(tg, tg.get_DTG1(), 2, 1.7 * csFactor, pt0, pt1, false);
@@ -3920,7 +3964,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
     //diagnostic
     var left=0,right=0;
     //end section
-    
+
     var numSectors = az.length / 2;
     if (numSectors < 1) {
         return false;
@@ -3942,9 +3986,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         }
     }
     //diagnostic
-    try 
+    try
     {
-        for (var k = 0; k < az.length/2; k++) 
+        for (var k = 0; k < az.length/2; k++)
         {
             left = Double.parseDouble(az[2*k]);
             right = Double.parseDouble(az[2*k+1]);
@@ -3952,7 +3996,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
             AN.add(right);
         }
     }
-    catch (exc) 
+    catch (exc)
     {
         if (Clazz.instanceOf(exc)) {
             armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "addSectorModifiers", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifiers", exc));
@@ -3961,7 +4005,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         }
     }
     //end section
-    
+
     var n = tg.Pixels.size();
     //pt0 and pt1 are points for the location indicator
     var pt0 = tg.Pixels.get(n - 5);
@@ -3990,7 +4034,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         }
         radius = (AM.get(k) + AM.get(k + 1)) / 2;
         pt2 = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, az12);
-        //need locModifier in geo pixels                
+        //need locModifier in geo pixels
         pt22d = new armyc2.c2sd.graphics2d.Point2D(pt2.x, pt2.y);
         pt22d = converter.GeoToPixels(pt22d);
         pt2.x = pt22d.getX();
@@ -4000,13 +4044,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         if(tg.get_HideOptionalLabels())
             continue;
         ptLeft = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, AN.get(2*k));
-        //need ptLeft in geo pixels                
+        //need ptLeft in geo pixels
         pt22d = new armyc2.c2sd.graphics2d.Point2D(ptLeft.x, ptLeft.y);
         pt22d = converter.GeoToPixels(pt22d);
         ptLeft.x = pt22d.getX();
         ptLeft.y = pt22d.getY();
         ptRight = armyc2.c2sd.JavaTacticalRenderer.mdlGeodesic.geodesic_coordinate(pt0, radius, AN.get(2*k+1));
-        //need ptRight in geo pixels                
+        //need ptRight in geo pixels
         pt22d = new armyc2.c2sd.graphics2d.Point2D(ptRight.x, ptRight.y);
         pt22d = converter.GeoToPixels(pt22d);
         ptRight.x = pt22d.getX();
@@ -4035,10 +4079,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function (tg, co
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + AM.get(k+1), 3, -1, pt0, pt0);
         ptLeft=locAZModifier.get(2*k);
         ptRight=locAZModifier.get(2*k+1);
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k], 3, 0, ptLeft, ptLeft);                        
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k+1], 3, 0, ptRight, ptRight);                        
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k], 3, 0, ptLeft, ptLeft);
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, az[2*k+1], 3, 0, ptRight, ptRight);
     }
-    //end section    
+    //end section
     return true;
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
@@ -4499,15 +4543,15 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function (tg) {
                             //armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "RG " + am[j], 3, -1, pt0, pt0);
                             if(j===0)
                                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MIN RG " + am[j], 3, -1, pt0, pt0);
-                            else                            
-                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MAX RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);                                
-                            
-                        }                            
+                            else
+                                armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier(tg, "MAX RG " + "(" + j.toString() + ") " + am[j], 3, -1, pt0, pt0);
+
+                        }
                     }
                 }// end if set range fan text
                 break;
             case 243112000:
-//                if (tg.get_H1() !== null && tg.get_H1().equals("") === false) 
+//                if (tg.get_H1() !== null && tg.get_H1().equals("") === false)
 //                {
 //                    H1 = tg.get_H1().split(",");
 //                    for (j = 0; j < H1.length; j++) {
@@ -4791,7 +4835,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
                         segShape.moveTo(pt0);
                     else
                         shape.moveTo(pt0);
-                    //if (lineTooShort || tg.get_Client().equals("ge")) 
+                    //if (lineTooShort || tg.get_Client().equals("ge"))
                     if (tg.get_Client().equals("ge") || armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort(tg, g2d, j) === true)
                     {
                         if (segShape !== null) {
@@ -4865,7 +4909,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function (tg,
                     }
                     if (segShape !== null)
                         shapes.add(segShape);
-                }     
+                }
                 if(!shape.getShape().getPathIterator().getPoints().isEmpty())
                     shapes.add(shape);
                 break;
@@ -4952,7 +4996,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function (tg, g2d
             if (s === null || s.equals("")) {
                 continue;
             }
-            //stringWidth = metrics.stringWidth(s)+1;            
+            //stringWidth = metrics.stringWidth(s)+1;
             //stringHeight = font.getSize();
             var bounds = metrics.getTextBounds(s);
             stringWidth = bounds.width / 1.5;
@@ -5303,7 +5347,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
         var nSymbol = Integer.parseInt(symbolSet);
         //default values for modifiers AP and V
         var country = "US"; //country AS modifier
-        var v = "MORTAR"; //type            
+        var v = "MORTAR"; //type
         var ap = "QC 1968"; //target designator    AP modifier
         var pt0 = null, pt1 = null;
         var csFactor = 1.0;
@@ -5356,7 +5400,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2RevD = function (tg, sha
                 else
                 {
                     pt0 = pts.get(1); //was n-4
-                    pt1 = pts.get(2); //was n-3                     
+                    pt1 = pts.get(2); //was n-3
                 }
                 armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_N(), 2, 0, pt0, pt1, false);
                 if (n === 4)
@@ -5470,10 +5514,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
     }
     try {
         var country = "US"; //country AS modifier
-        var v = "MORTAR"; //type            
+        var v = "MORTAR"; //type
         var ap = "QC 1968"; //target designator    AP modifier
         //assume we are using tg.get_Location() for the Y modifier
-        //uncomment 3 lines after the methods become available           
+        //uncomment 3 lines after the methods become available
         //country=tg.get_AS();
         //v=tg.get_V();
         //ap=tg.get_AP();
@@ -5623,7 +5667,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
         var index = 0;
         var nextIndex = 0;
         var size = tg.Pixels.size();
-        //switch adds the new modifiers or calls the old function if the modifiers did not change        
+        //switch adds the new modifiers or calls the old function if the modifiers did not change
         switch (nCode) {
             case 200401:
                 ptUr = new armyc2.c2sd.JavaLineArray.POINT2();
@@ -5694,7 +5738,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
             case 152200:
             case 141700:
                 break;
-            case 140400:    //feba has labels at end    
+            case 140400:    //feba has labels at end
             case 140401:
                 label = Modifier2.getRevDLabel(nCode);
                 Modifier2.AddIntegralAreaModifier(tg, label, toEnd, 0, pt0, pt1, false);
@@ -5718,7 +5762,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
                 break;
             case 151401:    //airaoa
             case 151402:    //rotary
-                if (tg.Pixels.size() === 3) //one segment           
+                if (tg.Pixels.size() === 3) //one segment
                 {
                     midPt = lineutility.MidPointDouble(pt0, pt1, 0);
                     Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 0, midPt, midPt, false);
@@ -5745,7 +5789,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function (tg,
             case 151406:
             case 151407:
             case 151408:
-                if (tg.Pixels.size() === 3) //one segment           
+                if (tg.Pixels.size() === 3) //one segment
                 {
                     midPt = lineutility.MidPointDouble(pt0, pt1, 0);
                     Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), aboveMiddle, 0, midPt, midPt, false);
