@@ -55,7 +55,7 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _MPModifierFontName = "Arial, sans-serif",
     _MPModifierFontSize = 12,
     _MPModifierFontStyle = "bold",
-	_KMLLabelScale = 1.0,
+	   _KMLLabelScale = 1.0,
 
     _scaleEchelon = false,
     _DrawAffiliationModifierAsLabel = true,
@@ -64,8 +64,8 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _UnitFontSize = 50,
     _PixelSize = 35,
     _DPI = 90;
-    //acevedo - 11/6/2017 - adding option to render only 2 ENY labels.
-	_TwoENYLabelOnly = true;
+    //acevedo - 11/29/2017 - adding option to render only 2  labels.
+	   _TwoLabelOnly = true;
 
     try
     {
@@ -586,8 +586,8 @@ return{
  	   * to only set 2 labels one at the north and the other one at the south of the graphic (true).
      * @returns {boolean}
    */
-	getTwoENYLabelOnly: function(){
-			return _TwoENYLabelOnly;
+	getTwoLabelOnly: function(){
+			return _TwoLabelOnly;
 	},
 
   /**
@@ -595,20 +595,10 @@ return{
  	 * to only set 2 labels one at the north and the other one at the south of the graphic (true).
  	 * @param {boolean} TwoENYLabelOnly
  	 */
-  setTwoENYLabelOnly( TwoENYLabelOnly )
+    setTwoLabelOnly: function ( TwoLabelOnly )
  	{
- 		_TwoENYLabelOnly = TwoENYLabelOnly;
+ 		_TwoLabelOnly = TwoLabelOnly;
  	},
-
-    /**
-   	 * get a boolean indicating between the use of ENY labels in all segments (false) or
-   	 * to only set 2 labels one at the north and the other one at the south of the graphic (true).
-   	 * @returns {boolean} _TwoENYLabelOnly
-   	 */
-    getTwoENYLabelOnly(  )
-   	{
-   		return _TwoENYLabelOnly;
-   	},
 
   getInstance: function(){
           return armyc2.c2sd.renderer.utilities.RendererSettings;
