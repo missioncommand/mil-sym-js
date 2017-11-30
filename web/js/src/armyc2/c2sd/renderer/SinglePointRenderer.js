@@ -492,7 +492,11 @@ return{
             offsetX = 0,
             offsetY = 0,
             hasOCMSlash = false,
-            symStd = modifiers[MilStdAttributes.SymbologyStandard];
+            symStd = modifiers[MilStdAttributes.SymbologyStandard],
+            lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
+            if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                lineColor = modifiers[MilStdAttributes.LineColor];
+
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
@@ -521,7 +525,8 @@ return{
                     width = Math.round(symbolBounds.getWidth())-1;
                     bottomY = y+height+2;
             
-                if(symbolID.charAt(10)===("M")){
+                if(symbolID.charAt(10)===("M") && 
+                    SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.R_MOBILITY_INDICATOR)){
                 
                     wheelSize = width / 7;
                     rrHeight = width / 7;
@@ -837,7 +842,8 @@ return{
                     
                 }
                 //Draw Towed Array Sonar
-                else if(symbolID.charAt(10)===("N")){
+                else if(symbolID.charAt(10)===("N") && 
+                        SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AG_AUX_EQUIP_INDICATOR)){
                     var offsetY = 1;
                     centerX = symbolBounds.getCenterX();
                     var squareOffset = Math.round(wheelSize/2);
@@ -1001,7 +1007,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Task Force">
             var tfBounds = null,
                 tfRectangle = null;
-            if(SymbolUtilities.isTaskForce(symbolID))
+            if(SymbolUtilities.isTaskForce(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.D_TASK_FORCE_INDICATOR))
             {
                 if(echelonBounds !== null)
                 {
@@ -1039,8 +1046,9 @@ return{
                 fdiTop = null,
                 fdiLeft = null,
                 fdiRight = null;
-            if(SymbolUtilities.isFeintDummy(symbolID) ||
-                    SymbolUtilities.isFeintDummyInstallation(symbolID))
+            if((SymbolUtilities.isFeintDummy(symbolID) ||
+                    SymbolUtilities.isFeintDummyInstallation(symbolID)) && 
+                        SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AB_FEINT_DUMMY_INDICATOR))
             {
                 //create feint indicator /\
                 fdiLeft = new SO.Point(symbolBounds.getX(),symbolBounds.getY());
@@ -1082,7 +1090,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Installation">
             var instRectangle = null,
                 instBounds = null;
-            if(SymbolUtilities.hasInstallationModifier(symbolID))
+            if(SymbolUtilities.hasInstallationModifier(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AC_INSTALLATION))
             {//the actual installation symbols have the modifier
                 //built in.  everything else, we have to draw it.
                 //
@@ -1191,7 +1200,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
             var domPoints = null,
                 domBounds = null;
-            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined)
+            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined &&
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
             {
                 var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
 
@@ -1216,7 +1226,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build HQ Staff">
             var hqBounds = null;
             //Draw HQ Staff
-            if(SymbolUtilities.isHQ(symbolID))
+            if(SymbolUtilities.isHQ(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.S_HQ_STAFF_OR_OFFSET_INDICATOR))
             {
                 var pt1HQ = null,
                     pt2HQ = null,
@@ -1371,14 +1382,14 @@ return{
                     ctx.moveTo(pt1HQ.getX(),pt1HQ.getY());
                     ctx.lineTo(pt2HQ.getX(),pt2HQ.getY());
                     ctx.lineWidth = 2;
-                    ctx.strokStyle = '#000000';
+                    ctx.strokStyle = lineColor;
                     ctx.stroke();
                 }
 
                 if(tfBounds !== null)
                 {
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = "#000000";
+                    ctx.strokeStyle = lineColor;
 
                     ctx.strokeRect(tfRectangle.getX(), tfRectangle.getY(),
                                     tfRectangle.getWidth(), tfRectangle.getHeight());
@@ -1396,7 +1407,7 @@ return{
                 if(instBounds !== null)
                 {
                     ctx.lineWidth = 2;
-                    ctx.fillStyle = "#000000";
+                    ctx.fillStyle = lineColor;
                     ctx.fillRect(instRectangle.getX(), instRectangle.getY(),
                                     instRectangle.getWidth(), instRectangle.getHeight());
                     /*ctx.beginPath();
@@ -1460,7 +1471,7 @@ return{
                     }
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
+                    ctx.strokeStyle = lineColor;
                     ctx.lineWidth = 2;
                     ctx.beginPath();
                     ctx.moveTo(fdiLeft.getX(),fdiLeft.getY());
@@ -1480,8 +1491,8 @@ return{
                     if(symbolID.charAt(10)===("M"))
                     {
                         ctx.lineWidth = 2;
-                        ctx.strokeStyle = "#000000";
-                        ctx.fillStyle = "#000000";
+                        ctx.strokeStyle = lineColor;
+                        ctx.fillStyle = lineColor;
                     }
                     else //NS or NL
                     {
@@ -1489,8 +1500,8 @@ return{
                         /*if(ctx.webkitImageSmoothingEnabled)
                             ctx.webkitImageSmoothingEnabled = false;//*/
                         ctx.lineWidth = 1;
-                        ctx.strokeStyle = "#000000";
-                        ctx.fillStyle = "#000000";
+                        ctx.strokeStyle = lineColor;
+                        ctx.fillStyle = lineColor;
                     }
 
                     var size = shapes.length;
@@ -1548,7 +1559,7 @@ return{
                     ctx.lineWidth = 2;
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
+                    ctx.strokeStyle = lineColor;
                     ctx.beginPath();
                     ctx.moveTo(domPoints[0].getX(),domPoints[0].getY());
                     if(domPoints[1] !== null)
@@ -1558,7 +1569,7 @@ return{
                     ctx.stroke();
 
                     ctx.beginPath();
-                    ctx.fillStyle = "#000000";
+                    ctx.fillStyle = lineColor;
                     ctx.moveTo(domPoints[3].getX(),domPoints[3].getY());
                     ctx.lineTo(domPoints[4].getX(),domPoints[4].getY());
                     ctx.lineTo(domPoints[5].getX(),domPoints[5].getY());
@@ -1574,7 +1585,7 @@ return{
                 {
                     hasOCMSlash = true;
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = '#000000';
+                    ctx.strokeStyle = lineColor;
                     ociShape.stroke(ctx);
 
                     ociBounds = null;
@@ -1826,8 +1837,10 @@ return{
             var xm = null,
                 ym = null;
                     
-            if(modifiers.X) 
+            if(modifiers.X && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.X_ALTITUDE_DEPTH)) 
                 xm = modifiers.X;
+            else
+                xm = null;
             if(modifiers.Y) 
                 ym = modifiers.Y;
 
@@ -1863,7 +1876,8 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.G)
+        if(modifiers.G && 
+            SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.G_STAFF_COMMENTS))
         {
             modifierValue = modifiers.G;
             
@@ -1896,9 +1910,21 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.V)
+        if(modifiers.V || modifiers.AD || modifiers.AE)
         {
-            modifierValue = modifiers.V;
+            var vm = "";
+            var adm = "";
+            var aem = "";
+
+            if(modifiers.V && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.V_EQUIP_TYPE))
+                vm = modifiers.V;
+            if(modifiers.AD && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AD_PLATFORM_TYPE))
+                adm = modifiers.AD;
+            if(modifiers.AE && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AE_EQUIPMENT_TEARDOWN_TIME))
+                aem = modifiers.AE;
+
+            modifierValue = vm + " " + adm + " " + aem;
+            modifierValue = modifierValue.trim();
             
             tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
@@ -1916,9 +1942,17 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.H)
+        if(modifiers.H || modifiers.AF)
         {
-            modifierValue = modifiers.H;
+            var hm = "";
+            var afm = "";
+            if(modifiers.H)
+                hm = modifiers.H;
+            if(modifiers.AF && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AF_COMMON_IDENTIFIER))
+                afm = modifiers.AF;
+
+            modifierValue = hm + " " + afm;
+            modifierValue = modifierValue.trim();
 
             tiTemp = new TextInfo(modifierValue,0,0,textInfoContext, textInfoContextFont);
             labelBounds = tiTemp.getTextBounds();
@@ -1970,7 +2004,7 @@ return{
         {
             modifierValue = "";
             
-            if(modifiers[ModifiersUnits.M_HIGHER_FORMATION])
+            if(modifiers[ModifiersUnits.M_HIGHER_FORMATION] && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.M_HIGHER_FORMATION))
                 modifierValue += modifiers[ModifiersUnits.M_HIGHER_FORMATION];
             if(modifiers[ModifiersUnits.CC_COUNTRY_CODE])
             {
@@ -2003,7 +2037,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.Z)
+        if(modifiers.Z && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Z_SPEED))
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
@@ -2043,13 +2077,13 @@ return{
         
             if(modifiers.J) 
                 jm = modifiers[ModifiersUnits.J_EVALUATION_RATING];
-            if(modifiers.K) 
+            if(modifiers.K && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.K_COMBAT_EFFECTIVENESS)) 
                 km = modifiers[ModifiersUnits.K_COMBAT_EFFECTIVENESS];
-            if(modifiers.L) 
+            if(modifiers.L && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.L_SIGNATURE_EQUIP)) 
                 lm = modifiers[ModifiersUnits.L_SIGNATURE_EQUIP];
-            if(modifiers.N) 
+            if(modifiers.N && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.N_HOSTILE)) 
                 nm = modifiers[ModifiersUnits.N_HOSTILE];
-            if(modifiers.P) 
+            if(modifiers.P && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.P_IFF_SIF)) 
                 pm = modifiers[ModifiersUnits.P_IFF_SIF];
             
             modifierValue = "";
@@ -2120,7 +2154,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.F || modifiers.E)
+        if((modifiers.F && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.F_REINFORCED_REDUCED)) || modifiers.E)
         {
             modifierValue = null;
             var E = null,
@@ -2128,7 +2162,7 @@ return{
         
             if(modifiers.E) 
                 E = modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER];
-            if(modifiers.F) 
+            if(modifiers.F && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.F_REINFORCED_REDUCED)) 
                 F = modifiers[ModifiersUnits.F_REINFORCED_REDUCED];
 
             if(E !== null && E!==(""))
@@ -2184,7 +2218,7 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.AA)
+        if(modifiers.AA && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AA_SPECIAL_C2_HQ))
         {
             modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
             
@@ -2220,7 +2254,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.SCC)
+        if(modifiers.SCC && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
         {
             modifierValue = modifiers[ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE];
             

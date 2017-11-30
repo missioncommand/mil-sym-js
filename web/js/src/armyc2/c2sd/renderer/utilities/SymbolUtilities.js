@@ -656,9 +656,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else if(unitModifier===(ModifiersUnits.P_IFF_SIF))
         {
-            return (this.isUnit(symbolID) ||
-                    this.isEquipment(symbolID) ||
-                    (this.hasInstallationModifier(symbolID) && this.isEMS(symbolID)===false) ||
+            return (symbolID.charAt(0) === 'S' ||
                     this.isSTBOPS(symbolID));
         }
         else if(unitModifier===(ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
@@ -755,10 +753,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else if(unitModifier===(ModifiersUnits.AO_ENGAGEMENT_BAR))
         {
-            return ((this.isEquipment(symbolID) ||
-                    this.isUnit(symbolID) ||
-                    this.hasInstallationModifier(symbolID)) &&
-                    this.isEMS(symbolID)===false);
+            return (symbolID.charAt(0) === 'S');
         }
         //out of order because used less often
         else if(unitModifier===(ModifiersUnits.A_SYMBOL_ICON))

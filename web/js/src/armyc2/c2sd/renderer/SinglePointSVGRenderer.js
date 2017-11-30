@@ -406,6 +406,7 @@ return{
         
         // <editor-fold defaultstate="collapsed" desc="Process Text Modifiers">
         
+        var AASVGE = null;
         if(hasTextModifiers===true)
         {   //processUnitModifiers: function(si, symbolID, modifiers, fontInfo)
             si = new SVGInfo("",centerPoint,symbolBounds,imageBounds);
@@ -415,6 +416,9 @@ return{
             if(svgElementInfo !== null)
             {
                 var svgTextElements = svgElementInfo.svgElements;
+                if(modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ] && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AA_SPECIAL_C2_HQ))
+                    AASVGE = svgTextElements.pop();
+                    
                 if(svgTextElements !== null && svgTextElements.length > 0)
                 {
                     imageBounds.union(svgElementInfo.modifierBounds);
@@ -443,6 +447,11 @@ return{
             if(svgElementsOCMSlash.length > 0)
             {
                 returnSVG += svgElementsOCMSlash[0];
+            }
+
+            if(AASVGE)
+            {
+                returnSVG += AASVGE;
             }
             
             //make group with translation
@@ -611,7 +620,10 @@ return{
             offsetX = 0,
             offsetY = 0,
             hasOCMSlash = false,
-            symStd = modifiers[MilStdAttributes.SymbologyStandard];
+            symStd = modifiers[MilStdAttributes.SymbologyStandard],
+            lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
+            if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                lineColor = modifiers[MilStdAttributes.LineColor];
             
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
@@ -640,7 +652,8 @@ return{
                     width = Math.round(symbolBounds.getWidth())-1;
                     bottomY = y+height+2;
             
-                if(symbolID.charAt(10)===("M")){
+                if(symbolID.charAt(10)===("M") && 
+                    SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.R_MOBILITY_INDICATOR)){
                 
                     wheelSize = width / 7;
                     rrHeight = width / 7;
@@ -805,7 +818,8 @@ return{
                     
                 }
                 //Draw Towed Array Sonar
-                else if(symbolID.charAt(10)===("N")){
+                else if(symbolID.charAt(10)===("N") && 
+                        SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AG_AUX_EQUIP_INDICATOR)){
                     var offsetY = 1;
                     centerX = symbolBounds.getCenterX();
                     var squareOffset = Math.round(wheelSize/2);
@@ -959,7 +973,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Task Force">
             var tfBounds = null,
                 tfRectangle = null;
-            if(SymbolUtilities.isTaskForce(symbolID))
+            if(SymbolUtilities.isTaskForce(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.D_TASK_FORCE_INDICATOR))
             {
                 if(echelonBounds !== null)
                 {
@@ -997,8 +1012,9 @@ return{
                 fdiTop = null,
                 fdiLeft = null,
                 fdiRight = null;
-            if(SymbolUtilities.isFeintDummy(symbolID) ||
-                    SymbolUtilities.isFeintDummyInstallation(symbolID))
+            if((SymbolUtilities.isFeintDummy(symbolID) ||
+                    SymbolUtilities.isFeintDummyInstallation(symbolID)) && 
+                        SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AB_FEINT_DUMMY_INDICATOR))
             {
                 //create feint indicator /\
                 fdiLeft = new SO.Point(symbolBounds.getX(),symbolBounds.getY());
@@ -1040,7 +1056,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Installation">
             var instRectangle = null,
                 instBounds = null;
-            if(SymbolUtilities.hasInstallationModifier(symbolID))
+            if(SymbolUtilities.hasInstallationModifier(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AC_INSTALLATION))
             {//the actual installation symbols have the modifier
                 //built in.  everything else, we have to draw it.
                 //
@@ -1150,7 +1167,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
             var domPoints = null,
                 domBounds = null;
-            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined)
+            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined &&
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
             {
                 var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
 
@@ -1175,7 +1193,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build HQ Staff">
             var hqBounds = null;
             //Draw HQ Staff
-            if(SymbolUtilities.isHQ(symbolID))
+            if(SymbolUtilities.isHQ(symbolID) && 
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.S_HQ_STAFF_OR_OFFSET_INDICATOR))
             {
                 var pt1HQ = null,
                     pt2HQ = null,
@@ -1265,17 +1284,17 @@ return{
                 if(hqBounds !== null)
                 {
                     var hq = new SO.Line(pt1HQ.getX(),pt1HQ.getY(),pt2HQ.getX(),pt2HQ.getY());
-                    svgElements.push(hq.toSVGElement('#000000',2));
+                    svgElements.push(hq.toSVGElement(lineColor,2));
                 }
 
                 if(tfBounds !== null)
                 {
-                    svgElements.push(tfRectangle.toSVGElement('#000000',2));
+                    svgElements.push(tfRectangle.toSVGElement(lineColor,2));
                 }
 
                 if(instBounds !== null)
                 {
-                    svgElements.push(instRectangle.toSVGElement(null,null,'#000000'));
+                    svgElements.push(instRectangle.toSVGElement(null,null,lineColor));
                 }
 
                 if(echelonBounds !== null)
@@ -1322,7 +1341,7 @@ return{
                     fdiPath.lineTo(fdiTop.getX(),fdiTop.getY());
                     fdiPath.lineTo(fdiRight.getX(),fdiRight.getY());
                     
-                    svgElements.push(fdiPath.toSVGElement('#000000',2,null));
+                    svgElements.push(fdiPath.toSVGElement(lineColor,2,null));
                     
                     //ctx.lineCap = "butt";
                     //ctx.lineJoin = "miter";
@@ -1350,12 +1369,12 @@ return{
                         tempShape = shapes[i];
                         if(tempShape.getShapeType()!==SO.ShapeTypes.RECTANGLE)
                         {
-                            svgElements.push(tempShape.toSVGElement('#000000',2,null));
+                            svgElements.push(tempShape.toSVGElement(lineColor,2,null));
                             //tempShape.stroke(ctx);
                         }
                         else
                         {
-                            svgElements.push(tempShape.toSVGElement(null,null,'#000000'));
+                            svgElements.push(tempShape.toSVGElement(null,null,lineColor));
                             //tempShape.fill(ctx);
                         }
                     }
@@ -1379,7 +1398,13 @@ return{
                     else if(status===("F"))//full to capacity(hospital)
                         statusColor = '#0000FF';
                 
-                    svgElements.push(ociShape.toSVGElement('#000000',1,statusColor));
+                    //svgElements.push(ociShape.toSVGElement('#000000',1,statusColor));
+
+                    //2nd approach seems to help with border fuzziness
+                    svgElements.push(ociShape.toSVGElement(null,null,'#000000'));
+                    ociShape.grow(-1,-1);
+                    svgElements.push(ociShape.toSVGElement(null,null,statusColor));
+                    
 
                     ociBounds = null;
                     ociShape = null;
@@ -1399,7 +1424,7 @@ return{
                     if(domPoints[2] !== null)
                         linePath.lineTo(domPoints[2].getX(),domPoints[2].getY());
                         
-                    svgElements.push(linePath.toSVGElement('#000000',2,null));
+                    svgElements.push(linePath.toSVGElement(lineColor,2,null));
                     
                     var arrowPath = new SO.Path();
                     arrowPath.moveTo(domPoints[3].getX(),domPoints[3].getY());
@@ -1407,7 +1432,7 @@ return{
                     arrowPath.lineTo(domPoints[5].getX(),domPoints[5].getY());
                     arrowPath.closePath();
                     
-                    svgElements.push(arrowPath.toSVGElement(null,null,'#000000'));
+                    svgElements.push(arrowPath.toSVGElement(null,null,lineColor));
 
                 }
 
@@ -1415,7 +1440,7 @@ return{
                 if(ociBounds !== null && RendererSettings.getOperationalConditionModifierType() === RendererSettings.OperationalConditionModifierType_SLASH)
                 {
                     hasOCMSlash = true;
-                    svgElements.push(ociShape.toSVGElement('#000000',2));
+                    svgElements.push(ociShape.toSVGElement(lineColor,2));
 
                     ociBounds = null;
                     ociShape = null;
@@ -1653,8 +1678,10 @@ return{
             var xm = null,
                 ym = null;
                     
-            if(modifiers.X) 
+            if(modifiers.X && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.X_ALTITUDE_DEPTH)) 
                 xm = modifiers.X;
+            else
+                xm = null;
             if(modifiers.Y) 
                 ym = modifiers.Y;
 
@@ -1689,7 +1716,8 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.G)
+        if(modifiers.G && 
+            SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.G_STAFF_COMMENTS))
         {
             modifierValue = modifiers.G;
             
@@ -1721,46 +1749,72 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.V)
+        if(modifiers.V || modifiers.AD || modifiers.AE)
         {
-            modifierValue = modifiers.V;
-            
-            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
-            labelBounds = tiTemp.getBounds();
-            labelWidth = labelBounds.getWidth();
-            
-          
-            x = bounds.x - bufferXL;
+            var vm = "";
+            var adm = "";
+            var aem = "";
 
-            y = (bounds.height );//checkpoint, get box above the point
-            y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
-            y = bounds.y + y;
+            if(modifiers.V && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.V_EQUIP_TYPE))
+                vm = modifiers.V;
+            if(modifiers.AD && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AD_PLATFORM_TYPE))
+                adm = modifiers.AD;
+            if(modifiers.AE && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AE_EQUIPMENT_TEARDOWN_TIME))
+                aem = modifiers.AE;
+
+            modifierValue = vm + " " + adm + " " + aem;
+            modifierValue = modifierValue.trim();
             
+            if(modifierValue !== "")
+            {
+                tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,"end");
+                labelBounds = tiTemp.getBounds();
+                labelWidth = labelBounds.getWidth();
+                
             
-            tiTemp.setLocation(x,y);
-            tiArray.push(tiTemp);
+                x = bounds.x - bufferXL;
+
+                y = (bounds.height );//checkpoint, get box above the point
+                y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
+                y = bounds.y + y;
+                
+                
+                tiTemp.setLocation(x,y);
+                tiArray.push(tiTemp);
+            }
         }
         
-        if(modifiers.H)
+        if(modifiers.H || modifiers.AF)
         {
-            modifierValue = modifiers.H;
+            var hm = "";
+            var afm = "";
+            if(modifiers.H)
+                hm = modifiers.H;
+            if(modifiers.AF && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AF_COMMON_IDENTIFIER))
+                afm = modifiers.AF;
 
-            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
-            labelBounds = tiTemp.getBounds();
-            labelWidth = labelBounds.getWidth();
-            
-            x = bounds.x + bounds.width + bufferXR;
+            modifierValue = hm + " " + afm;
+            modifierValue = modifierValue.trim();
+
+            if(modifierValue !== "")
+            {
+                tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+                labelBounds = tiTemp.getBounds();
+                labelWidth = labelBounds.getWidth();
                 
-            y = (bounds.height );
-            y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
-            y = bounds.y + y;
-            
-            tiTemp.setLocation(x,y);
-            tiArray.push(tiTemp);
-            
-            //Concession for cpof name label
-            if((x + labelWidth + 3) > cpofNameX)
-                cpofNameX = x + labelWidth + 3;
+                x = bounds.x + bounds.width + bufferXR;
+                    
+                y = (bounds.height );
+                y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
+                y = bounds.y + y;
+                
+                tiTemp.setLocation(x,y);
+                tiArray.push(tiTemp);
+                
+                //Concession for cpof name label
+                if((x + labelWidth + 3) > cpofNameX)
+                    cpofNameX = x + labelWidth + 3;
+            }
         }
         
         if(modifiers.T)
@@ -1795,7 +1849,7 @@ return{
         {
             modifierValue = "";
             
-            if(modifiers[ModifiersUnits.M_HIGHER_FORMATION])
+            if(modifiers[ModifiersUnits.M_HIGHER_FORMATION] && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.M_HIGHER_FORMATION))
                 modifierValue += modifiers[ModifiersUnits.M_HIGHER_FORMATION];
             if(modifiers[ModifiersUnits.CC_COUNTRY_CODE])
             {
@@ -1804,31 +1858,34 @@ return{
                 modifierValue += modifiers[ModifiersUnits.CC_COUNTRY_CODE];
             }
             
-            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
-            labelBounds = tiTemp.getBounds();
-            labelWidth = labelBounds.getWidth();
-            
-            x = bounds.x + bounds.width + bufferXR;
-            if(!byLabelHeight)
-                y = bounds.y + bounds.height;
-            else
+            if(modifierValue !== "")
             {
-                y = (bounds.height );
-                y = ((y * 0.5) + (labelHeight * 0.5));
+                tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+                labelBounds = tiTemp.getBounds();
+                labelWidth = labelBounds.getWidth();
+                
+                x = bounds.x + bounds.width + bufferXR;
+                if(!byLabelHeight)
+                    y = bounds.y + bounds.height;
+                else
+                {
+                    y = (bounds.height );
+                    y = ((y * 0.5) + (labelHeight * 0.5));
 
-                y =  y + ((labelHeight + bufferText));
-                y = bounds.y + y;
+                    y =  y + ((labelHeight + bufferText));
+                    y = bounds.y + y;
+                }
+                
+                tiTemp.setLocation(x,y);
+                tiArray.push(tiTemp);
+                
+                //Concession for cpof name label
+                if((x + labelWidth + 3) > cpofNameX)
+                    cpofNameX = x + labelWidth + 3;
             }
-            
-            tiTemp.setLocation(x,y);
-            tiArray.push(tiTemp);
-            
-            //Concession for cpof name label
-            if((x + labelWidth + 3) > cpofNameX)
-                cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.Z)
+        if(modifiers.Z && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Z_SPEED))
         {
             modifierValue = modifiers[ModifiersUnits.Z_SPEED];
             
@@ -1868,13 +1925,13 @@ return{
         
             if(modifiers.J) 
                 jm = modifiers[ModifiersUnits.J_EVALUATION_RATING];
-            if(modifiers.K) 
+            if(modifiers.K && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.K_COMBAT_EFFECTIVENESS)) 
                 km = modifiers[ModifiersUnits.K_COMBAT_EFFECTIVENESS];
-            if(modifiers.L) 
+            if(modifiers.L && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.L_SIGNATURE_EQUIP)) 
                 lm = modifiers[ModifiersUnits.L_SIGNATURE_EQUIP];
-            if(modifiers.N) 
+            if(modifiers.N && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.N_HOSTILE)) 
                 nm = modifiers[ModifiersUnits.N_HOSTILE];
-            if(modifiers.P) 
+            if(modifiers.P && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.P_IFF_SIF)) 
                 pm = modifiers[ModifiersUnits.P_IFF_SIF];
             
             modifierValue = "";
@@ -1892,28 +1949,31 @@ return{
             if(modifierValue.charAt(0)===" ")
                 modifierValue = modifierValue.substring(1);
             
-            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
-            labelBounds = tiTemp.getBounds();
-            labelWidth = labelBounds.getWidth();
-            
-            x = bounds.x + bounds.width + bufferXR;
-            if(!byLabelHeight)
-                y = Math.round(bounds.y + bounds.height + labelHeight + bufferText);
-            else
+            if(modifierValue !== "")
             {
-                y = (bounds.height );
-                y = ((y * 0.5) + (labelHeight * 0.5));
+                tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+                labelBounds = tiTemp.getBounds();
+                labelWidth = labelBounds.getWidth();
+                
+                x = bounds.x + bounds.width + bufferXR;
+                if(!byLabelHeight)
+                    y = Math.round(bounds.y + bounds.height + labelHeight + bufferText);
+                else
+                {
+                    y = (bounds.height );
+                    y = ((y * 0.5) + (labelHeight * 0.5));
 
-                y = y + ((labelHeight + bufferText)*2);
-                y = Math.round(bounds.y + y);
+                    y = y + ((labelHeight + bufferText)*2);
+                    y = Math.round(bounds.y + y);
+                }
+                
+                tiTemp.setLocation(x,y);
+                tiArray.push(tiTemp);
+                
+                //Concession for cpof name label
+                if((x + labelWidth + 3) > cpofNameX)
+                    cpofNameX = x + labelWidth + 3;
             }
-            
-            tiTemp.setLocation(x,y);
-            tiArray.push(tiTemp);
-            
-            //Concession for cpof name label
-            if((x + labelWidth + 3) > cpofNameX)
-                cpofNameX = x + labelWidth + 3;
         }
         
         if(modifiers.W)
@@ -1944,7 +2004,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.F || modifiers.E)
+        if((modifiers.F && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.F_REINFORCED_REDUCED)) || modifiers.E)
         {
             modifierValue = null;
             var E = null,
@@ -1952,7 +2012,7 @@ return{
         
             if(modifiers.E) 
                 E = modifiers[ModifiersUnits.E_FRAME_SHAPE_MODIFIER];
-            if(modifiers.F) 
+            if(modifiers.F && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.F_REINFORCED_REDUCED)) 
                 F = modifiers[ModifiersUnits.F_REINFORCED_REDUCED];
 
             if(E !== null && E!==(""))
@@ -2007,24 +2067,6 @@ return{
                 cpofNameX = x + labelWidth + 3;
         }
         
-        if(modifiers.AA)
-        {
-            modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
-            
-            tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
-            labelBounds = tiTemp.getBounds();
-            labelWidth = labelBounds.getWidth();
-            
-            x = (symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5);
-                
-            y = (symbolBounds.height );//checkpoint, get box above the point
-            y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
-            y = symbolBounds.y + y;
-            
-            tiTemp.setLocation(x,y);
-            tiArray.push(tiTemp);
-        }
-        
         if(modifiers.CN)
         {
             modifierValue = modifiers[ModifiersUnits.CN_CPOF_NAME_LABEL];
@@ -2043,7 +2085,7 @@ return{
             tiArray.push(tiTemp);
         }
         
-        if(modifiers.SCC)
+        if(modifiers.SCC && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE))
         {
             modifierValue = modifiers[ModifiersUnits.SCC_SONAR_CLASSIFICATION_CONFIDENCE];
             
@@ -2073,7 +2115,27 @@ return{
             }
 
         }
-        
+
+        if(modifiers.AA && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AA_SPECIAL_C2_HQ))
+        {
+            modifierValue = modifiers[ModifiersUnits.AA_SPECIAL_C2_HQ];
+            if(modifierValue !== "")
+            {
+                tiTemp = new SVGTextInfo(modifierValue,null,fontInfo,null);
+                labelBounds = tiTemp.getBounds();
+                labelWidth = labelBounds.getWidth();
+                
+                x = (symbolBounds.x + (symbolBounds.width * 0.5)) - (labelWidth * 0.5);
+                    
+                y = (symbolBounds.height );//checkpoint, get box above the point
+                y = ((y * 0.5) + ((labelHeight - descent) * 0.5));
+                y = symbolBounds.y + y;
+                
+                tiTemp.setLocation(x,y);
+                tiArray.push(tiTemp);
+            }
+        }
+    
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="Shift Points and Draw">
@@ -3504,9 +3566,10 @@ return{
         y1 = Math.round(center.getY());
         
         pt1 = new SO.Point(x1,y1);
-        
+        var scheme = symbolID.charAt(0);
         if(SymbolUtilities.isNBC(symbolID) ||
-            (SymbolUtilities.isWarfighting(symbolID) && symbolID.charAt(2)===("G")))
+            (scheme === 'S' && symbolID.charAt(2)===("G")) || 
+            scheme === 'O' || scheme === 'E')
         {
             y1 = bounds.getY() + bounds.getHeight();
             pt1 = new SO.Point(x1,y1);
