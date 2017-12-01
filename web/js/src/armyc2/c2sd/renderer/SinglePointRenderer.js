@@ -3447,10 +3447,14 @@ return{
                 //draw DOM arrow
                 if(domBounds !== null)
                 {
+                    var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
+                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                        lineColor = modifiers[MilStdAttributes.LineColor];
+
                     ctx.lineWidth = 2;
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
-                    ctx.strokeStyle = "#000000";
+                    ctx.strokeStyle = lineColor;
                     ctx.beginPath();
                     ctx.moveTo(domPoints[0].getX(),domPoints[0].getY());
                     if(domPoints[1] !== null)
@@ -3460,7 +3464,7 @@ return{
                     ctx.stroke();
 
                     ctx.beginPath();
-                    ctx.fillStyle = "#000000";
+                    ctx.fillStyle = lineColor;
                     ctx.moveTo(domPoints[3].getX(),domPoints[3].getY());
                     ctx.lineTo(domPoints[4].getX(),domPoints[4].getY());
                     ctx.lineTo(domPoints[5].getX(),domPoints[5].getY());

@@ -3183,6 +3183,9 @@ return{
                 var hasDOMArrow = false;
                 if(domBounds !== null)
                 {
+                    var lineColor = SymbolUtilities.getLineColorOfAffiliation(symbolID).toHexString(false);
+                    if(modifiers[MilStdAttributes.LineColor] !== undefined)
+                        lineColor = modifiers[MilStdAttributes.LineColor];
                     /*ctx.lineWidth = 2;
                     ctx.lineCap = "butt";
                     ctx.lineJoin = "miter";
@@ -3195,7 +3198,7 @@ return{
                     if(domPoints[2] !== null)
                         linePath.lineTo(domPoints[2].getX(),domPoints[2].getY());
                         
-                    svgElements.push(linePath.toSVGElement('#000000',2,null));
+                    svgElements.push(linePath.toSVGElement(lineColor,2,null));
                     
                     var arrowPath = new SO.Path();
                     arrowPath.moveTo(domPoints[3].getX(),domPoints[3].getY());
@@ -3203,7 +3206,7 @@ return{
                     arrowPath.lineTo(domPoints[5].getX(),domPoints[5].getY());
                     arrowPath.closePath();
                     
-                    svgElements.push(arrowPath.toSVGElement(null,null,'#000000'));
+                    svgElements.push(arrowPath.toSVGElement(null,null,lineColor));
                     hasDOMArrow = true;
                 }
             }
