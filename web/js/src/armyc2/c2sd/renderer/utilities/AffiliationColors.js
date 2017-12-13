@@ -32,4 +32,3 @@ armyc2.c2sd.renderer.utilities.AffiliationColors.WeatherPurpleDark =  new armyc2
 armyc2.c2sd.renderer.utilities.AffiliationColors.WeatherPurpleLight =  new armyc2.c2sd.renderer.utilities.Color (226, 159, 255);
 armyc2.c2sd.renderer.utilities.AffiliationColors.WeatherBrownDark =  new armyc2.c2sd.renderer.utilities.Color (128, 98, 16);
 armyc2.c2sd.renderer.utilities.AffiliationColors.WeatherBrownLight =  new armyc2.c2sd.renderer.utilities.Color (210, 176, 106);
-
