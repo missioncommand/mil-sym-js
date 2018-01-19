@@ -3163,7 +3163,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
             northestPt = null,
             southestPt = null,
             middleSegment2 = 0;
-          for (j = 0; j < tg.Pixels.size() - 1; j++) {
+          for (j = 0; j < tg.Pixels.size() ; j++) {
             pt0 = tg.Pixels.get(j);
 
             if (northestPt === null) {
@@ -3186,6 +3186,17 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           } //for
           middleSegment = northestPtIndex;
           middleSegment2 = southestPtIndex;
+
+          if (middleSegment  == tg.Pixels.size() -1) {
+          	middleSegment-=1;
+          }
+          if (middleSegment2  == tg.Pixels.size() -1) {
+          	middleSegment2-=1;
+          }
+          if (middleSegment == middleSegment2) {
+          	middleSegment2-=1;
+          }
+
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -3.5 * factor * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, "ALT", 2, -1.5 * factor * csFactor, middleSegment, middleSegment + 1, new Boolean(true));
 
@@ -3230,7 +3241,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
             northestPt = null,
             southestPt = null,
             middleSegment2 = 0;
-          for (j = 0; j < tg.Pixels.size() - 1; j++) {
+          for (j = 0; j < tg.Pixels.size(); j++) {
             pt0 = tg.Pixels.get(j);
 
             if (northestPt === null) {
@@ -3253,6 +3264,17 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           } //for
           middleSegment = northestPtIndex;
           middleSegment2 = southestPtIndex;
+
+          if (middleSegment  == tg.Pixels.size() -1) {
+          	middleSegment-=1;
+          }
+          if (middleSegment2  == tg.Pixels.size() -1) {
+          	middleSegment2-=1;
+          }
+          if (middleSegment == middleSegment2) {
+          	middleSegment2-=1;
+          }
+
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           if (middleSegment !== middleSegment2)
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment2, middleSegment2 + 1, new Boolean(false));
@@ -3294,7 +3316,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
             northestPt = null,
             southestPt = null,
             middleSegment2 = 0;
-          for (j = 0; j < tg.Pixels.size() - 1; j++) {
+          for (j = 0; j < tg.Pixels.size(); j++) {
             pt0 = tg.Pixels.get(j);
 
             if (northestPt === null) {
@@ -3317,6 +3339,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           } //for
           middleSegment = northestPtIndex;
           middleSegment2 = southestPtIndex;
+
+          if (middleSegment  == tg.Pixels.size() -1) {
+          	middleSegment-=1;
+          }
+          if (middleSegment2  == tg.Pixels.size() -1) {
+          	middleSegment2-=1;
+          }
+          if (middleSegment == middleSegment2) {
+          	middleSegment2-=1;
+          }
+
+
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           if (middleSegment !== middleSegment2)
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment2, middleSegment2 + 1, new Boolean(false));
@@ -3385,7 +3419,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
             northestPt = null,
             southestPt = null,
             middleSegment2 = 0;
-          for (j = 0; j < tg.Pixels.size() - 1; j++) {
+          for (j = 0; j < tg.Pixels.size(); j++) {
             pt0 = tg.Pixels.get(j);
 
             if (northestPt === null) {
@@ -3408,6 +3442,18 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           } //for
           middleSegment = northestPtIndex;
           middleSegment2 = southestPtIndex;
+
+          if (middleSegment  == tg.Pixels.size() -1) {
+          	middleSegment-=1;
+          }
+          if (middleSegment2  == tg.Pixels.size() -1) {
+          	middleSegment2-=1;
+          }
+          if (middleSegment == middleSegment2) {
+          	middleSegment2-=1;
+          }
+
+
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           if (middleSegment !== middleSegment2)
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment2, middleSegment2 + 1, new Boolean(false));

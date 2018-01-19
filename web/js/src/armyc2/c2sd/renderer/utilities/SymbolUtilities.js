@@ -9,15 +9,17 @@ armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
 armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
-    
+
+armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings = armyc2.c2sd.renderer.utilities.RendererSettings.getInstance();
+
     /**
-     * 
+     *
      * @param {String} symbolID 15 character code
      * @returns {String} basic symbolID
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolID = function (symbolID, symStd) {
         //try {
-        
+
             var basic = symbolID;
             if(symbolID && symbolID.length === 15)
             {
@@ -25,7 +27,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 if(scheme === 'S' || scheme === 'O' || scheme === 'E')
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
-                    
+
                     var i = symStd || 0;
                     for(; i < 2; i++)
                     {
@@ -53,14 +55,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                                     basic = temp;
                                     i=3;
                                 }
-                            }    
+                            }
                         }
                     }
                 }
                 else if (scheme === 'G') //tactical graphic
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "****X";
-                } 
+                }
                 else if(scheme === 'I')
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "--***";
@@ -82,7 +84,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getBasicSymbolIDStrict = function (symbolID) {
         //try {
-        
+
             var basic = symbolID;
             if(symbolID && symbolID.length === 15)
             {
@@ -90,7 +92,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 if (scheme === 'G') //tactical graphic
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "****X";
-                } 
+                }
                 else if (scheme !== 'W' && scheme !== 'B' && scheme !== 'P')//weather or basic/buffered shape/parametered basic shape
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
@@ -103,10 +105,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     /**
      * @param {String} symbolID
      * @returns {String}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.reconcileSymbolID = function(symbolID, isMultiPoint)
     {
-        
+
         if(isMultiPoint !== true)
             isMultiPoint = false;
         var sb = "";
@@ -226,7 +228,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * Returns true if the SymbolID has a valid Status (4th character)
      * @param {String} SymbolID
      * @returns {Boolean}
-     */            
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidStatus = function (SymbolID){
         if(SymbolID !== null && SymbolID.length>=10)
         {
@@ -276,7 +278,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * Returns true if the SymbolID has a valid Affiliation (2nd character)
      * @param {String} SymbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidAffiliation = function (SymbolID){
         if(SymbolID !== null && SymbolID.length>=10)
         {
@@ -306,7 +308,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * Returns true if the SymbolID has a valid Coding Scheme (1st character)
      * @param {type} symbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidCodingScheme = function (symbolID){
         if(symbolID !== null && symbolID.length>0)
            {
@@ -335,7 +337,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * "Category" for tactical graphics
      * @param {String} SymbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidBattleDimension = function (SymbolID){
         if(SymbolID !== null && SymbolID.length>=10)
         {
@@ -416,7 +418,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else
             return false;
     };
-    
+
     /**
      * Takes a single character or a string and will test for non-letter characters.
      * @param {type} str
@@ -438,13 +440,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         return returnVal;
     };
-    
+
     /**
-     * Returns true if the characters in the country code positions of the 
+     * Returns true if the characters in the country code positions of the
      * SymbolID are letters.
      * @param {String} symbolID
      * @returns {Boolean}
-     */            
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.hasValidCountryCode = function (symbolID)
     {
         if(this.isLetter(symbolID.substring(12,14)))
@@ -452,7 +454,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else
             return false;
     };
-    
+
     /**
      * converts a Javascript Date object into a properly formated String for
      * W or W1
@@ -471,7 +473,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         year,
         strYear, //##
         months;
-        
+
         if(date instanceof Date)
         {
             day = date.getDate();
@@ -492,7 +494,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         return strDate;
     };
-    
+
     /**
      * usage: formatNumberLength(30,4);
      * returns: "0030"
@@ -509,7 +511,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return r;
     };
     /**
-     * Takes the timezone offset and returns the apropriate 
+     * Takes the timezone offset and returns the apropriate
      * time zone letter string.
      * @param {Number} hour hour,time zone offset (int, -12 to 12)
      * @returns {String}
@@ -571,7 +573,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     };
 
     /**
-     * 
+     *
      * @param {String} symbolID
      * @param {String} modifier from the constants ModifiersUnits or ModifiersTG
      * @param {int} symStd 0=2525B, 1=2525C.  Constants available in RendererSettings.
@@ -594,7 +596,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return returnVal;
     };
     /**
-     * 
+     *
      * @param {String} symbolID
      * @param {String} unitModifier
      * @returns {Boolean}
@@ -656,7 +658,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else if(unitModifier===(ModifiersUnits.P_IFF_SIF))
         {
-            return (symbolID.charAt(0) === 'S' ||
+            return (this.isUnit(symbolID) ||
+                    this.isEquipment(symbolID) ||
+                    (this.hasInstallationModifier(symbolID) && this.isEMS(symbolID)===false) ||
                     this.isSTBOPS(symbolID));
         }
         else if(unitModifier===(ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
@@ -753,7 +757,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else if(unitModifier===(ModifiersUnits.AO_ENGAGEMENT_BAR))
         {
-            return (symbolID.charAt(0) === 'S');
+            return ((this.isEquipment(symbolID) ||
+                    this.isUnit(symbolID) ||
+                    this.hasInstallationModifier(symbolID)) &&
+                    this.isEMS(symbolID)===false);
         }
         //out of order because used less often
         else if(unitModifier===(ModifiersUnits.A_SYMBOL_ICON))
@@ -781,19 +788,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                    return true;
                }
            }
-           
+
            return false;
         }
         else
             return false;
     };
     /**
-     * 
+     *
      * @param {String} symbolID
      * @param {String} tgModifier like armyc2.c2sd.renderer.utilities.ModifiersTG.AN_AZIMUTH
      * @param {Number} symStd like armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.canSymbolHaveModifier = function(symbolID, tgModifier, symStd){
         if(symStd === undefined)
         {
@@ -802,7 +809,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var basic = null,
         sd = null,//symbolDef
         returnVal = false;
-        
+
 
         var ModifiersTG = armyc2.c2sd.renderer.utilities.ModifiersTG;
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
@@ -817,7 +824,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 {
                     case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
                     case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
-                    case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
+                    case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE:
                         returnVal = true;
                         break;
                     case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE:
@@ -879,18 +886,21 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             }
             else if(this.isObstacle(symbolID))
             {
-                retColor = armyc2.c2sd.renderer.utilities.Color.GREEN;	// Green
+                //retColor = armyc2.c2sd.renderer.utilities.Color.GREEN;	// Green
+                retColor =  armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getNeutralGraphicLineColor();
             }
             else if(this.isEMSNaturalEvent(symbolID))
             {
-                retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;	// Black
+                //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;	// Black
+                retColor =  armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicLineColor();
             }
-            else if ((this.isNBC(symbolID)) && 
+            else if ((this.isNBC(symbolID)) &&
                     (basicSymbolID===("G*M*NR----****X") || //Radioactive Area
                     basicSymbolID===("G*M*NC----****X") || //Chemically Contaminated Area
                     basicSymbolID===("G*M*NB----****X"))) //Biologically Contaminated Area
             {
-                retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0xffff00;
+                //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0xffff00;
+                retColor =  armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicLineColor();
             }
             else
             {
@@ -900,7 +910,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("D") ||
                         switchChar===("M"))
                     {
-                        retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0x000000;	// Black
+                        //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0x000000;	// Black
+                        retColor =  armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicLineColor();
                     }
                     else if(switchChar===("H") ||
                         switchChar===("S") ||
@@ -910,19 +921,21 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
                         if (this.getBasicSymbolIDStrict(symbolID)===("G*G*GLC---****X"))	// Line of Contact
                         {
-                            retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0x000000;	// Black
+                            //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//0x000000;	// Black
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicLineColor();
                         }
                         else
                         {
-                            retColor = armyc2.c2sd.renderer.utilities.Color.RED;//0xff0000;	// Red
+                            //retColor = armyc2.c2sd.renderer.utilities.Color.RED;//0xff0000;	// Red
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getHostileGraphicLineColor();
                         }
 
                     }
                     else if(switchChar===("N") ||
                             switchChar===("L"))	// Neutral:
                     {
-                            retColor = armyc2.c2sd.renderer.utilities.Color.GREEN;//0x00ff00;	// Green
-
+                            //retColor = armyc2.c2sd.renderer.utilities.Color.GREEN;//0x00ff00;	// Green
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getNeutralGraphicLineColor();
                     }
                     else if(switchChar===("U") ||
                         switchChar===("P") ||
@@ -930,11 +943,21 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("G") ||
                         switchChar===("W"))
                     {
-                        retColor = armyc2.c2sd.renderer.utilities.Color.YELLOW;//0xffff00;	// Yellow
+                        if (symbolID.substring(0, 8).equals("WOS-HDS-"))
+                        {
+                            retColor =  armyc2.c2sd.renderer.utilities.Color.GRAY;//0x808080;	// Gray
+                        }
+                        else
+                        {
+                            //retColor = Color.YELLOW;//0xffff00;	// Yellow
+                            retColor =  armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownGraphicLineColor();
+                        }
+                        //retColor = armyc2.c2sd.renderer.utilities.Color.YELLOW;//0xffff00;	// Yellow
                     }
                     else
                     {
-                        retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//null;//0;//Color.Empty;
+                        //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;//null;//0;//Color.Empty;
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicLineColor();
                     }	// End default
 
             }	// End else
@@ -943,7 +966,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
             //stopped doing check because all warfighting
             //should have black for line color.
-            retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;
+            //retColor = armyc2.c2sd.renderer.utilities.Color.BLACK;
+            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyUnitLineColor();
 
         }	// End else
 
@@ -954,12 +978,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * of the symbol and whether it is a unit or not.
      * @param {String} symbolID
      * @returns {armyc2.c2sd.renderer.utilities.Color} hex color like #FFFFFF
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getFillColorOfAffiliation = function(symbolID) {
         var retColor = null,
         basicSymbolID = this.getBasicSymbolIDStrict(symbolID);
         var AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors;
-        
+
         var switchChar;
         // We can't get the fill color if there is no symbol id, since that also means there is no affiliation
         if((symbolID === null) || (symbolID===("")))
@@ -973,6 +997,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             basicSymbolID===("G*M*NEC---****X"))//chemical
         {
                 retColor = AffiliationColors.UnknownUnitFillColor;//  Color.yellow;
+                retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownUnitFillColor();
         }
         else if(this.isTacticalGraphic(symbolID) && !this.isTGSPWithFill(symbolID))
         {
@@ -981,7 +1006,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 basicSymbolID===("G*M*NEB---****X") ||//biological
                 basicSymbolID===("G*M*NEC---****X"))//chemical
                 {
-                    retColor = armyc2.c2sd.renderer.utilities.Color.yellow;
+                    //retColor = armyc2.c2sd.renderer.utilities.Color.yellow;
+                    retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownUnitFillColor();
                 }
                 else
                 {
@@ -991,7 +1017,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("D") ||
                         switchChar===("M"))
                     {
-                            retColor = AffiliationColors.FriendlyGraphicFillColor;//0x00ffff;	// Cyan
+                            //retColor = AffiliationColors.FriendlyGraphicFillColor;//0x00ffff;	// Cyan
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyGraphicFillColor();
 
                     }
                     else if(switchChar===("H") ||
@@ -999,13 +1026,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                         switchChar===("J") ||
                         switchChar===("K"))
                     {
-                            retColor = AffiliationColors.HostileGraphicFillColor;//0xfa8072;	// Salmon
+                            //retColor = AffiliationColors.HostileGraphicFillColor;//0xfa8072;	// Salmon
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getHostileGraphicFillColor();
 
                     }
                     else if(switchChar===("N") ||
                             switchChar===("L"))
                     {
-                            retColor = AffiliationColors.NeutralGraphicFillColor;//0x7fff00;	// Light Green
+                            //retColor = AffiliationColors.NeutralGraphicFillColor;//0x7fff00;	// Light Green
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getNeutralGraphicFillColor();
 
                     }
                     else if(switchChar===("U") ||
@@ -1017,9 +1046,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FFFACD");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
                     }
                     else
-
                     {
-                            retColor = AffiliationColors.UnknownGraphicFillColor;
+                            //retColor = AffiliationColors.UnknownGraphicFillColor;
+                            retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownGraphicFillColor();
                     }
                 }
         }	// End if(this.IsTacticalGraphic(this._strSymbolID))
@@ -1031,7 +1060,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     switchChar===("D") ||
                     switchChar===("M"))
                 {
-                        retColor = AffiliationColors.FriendlyUnitFillColor;//0x00ffff;	// Cyan
+                        //retColor = AffiliationColors.FriendlyUnitFillColor;//0x00ffff;	// Cyan
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getFriendlyUnitFillColor();
 
                 }
                 else if(switchChar===("H") ||
@@ -1039,14 +1069,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     switchChar===("J") ||
                     switchChar===("K"))
                 {
-                        retColor = AffiliationColors.HostileUnitFillColor;//0xfa8072;	// Salmon
+                        //retColor = AffiliationColors.HostileUnitFillColor;//0xfa8072;	// Salmon
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getHostileUnitFillColor();
 
                 }
                 else if(switchChar===("N") ||
                         switchChar===("L"))
                 {
-                        retColor = AffiliationColors.NeutralUnitFillColor;//0x7fff00;	// Light Green
-
+                        //retColor = AffiliationColors.NeutralUnitFillColor;//0x7fff00;	// Light Green
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getNeutralUnitFillColor();
                 }
                 else if(switchChar===("U") ||
                     switchChar===("P") ||
@@ -1054,22 +1085,23 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     switchChar===("G") ||
                     switchChar===("W"))
                 {
-                        retColor = AffiliationColors.UnknownUnitFillColor;//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
+                        //retColor = AffiliationColors.UnknownUnitFillColor;//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,250, 205); //0xfffacd;	// LemonChiffon 255 250 205
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownUnitFillColor();
                 }
                 else
-
                 {
-                        retColor = AffiliationColors.UnknownUnitFillColor;//null;
+                        //retColor = AffiliationColors.UnknownUnitFillColor;//null;
+                        retColor = armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings.getUnknownUnitFillColor();
                 }
 
 
         }	// End else
-        
+
 
         return retColor;
     };
     /**
-     * 
+     *
      * @param {String} symbolID
      * @returns {armyc2.c2sd.renderer.utilities.Color} hex color like #FFFFFF
      */
@@ -1108,11 +1140,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolID.substring(0,7) === ("WA-DPFW")  ||//warm front
             //symbolID.substring(0,7) === ("WA-DPFS")//stationary front (actually, it's red & blue)
             symbolID === ("WA-DBAIF----A--") || // INSTRUMENT FLIGHT RULE (IFR)
-            symbolID === ("WA-DBAFP----A--") || // 
-            symbolID === ("WA-DBAT-----A--") || // 
-            symbolID === ("WA-DIPIS---L---") || // 
-            symbolID === ("WA-DIPTH---L---") || // 
-            symbolID === ("WA-DWJ-----L---") || // Jet Stream  
+            symbolID === ("WA-DBAFP----A--") || //
+            symbolID === ("WA-DBAT-----A--") || //
+            symbolID === ("WA-DIPIS---L---") || //
+            symbolID === ("WA-DIPTH---L---") || //
+            symbolID === ("WA-DWJ-----L---") || // Jet Stream
             symbolID === ("WO-DGMSB----A--") || //
             symbolID === ("WO-DGMRR----A--") ||
             symbolID === ("WO-DGMCH----A--") ||
@@ -1161,14 +1193,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#A52A2A");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(165,42,42);  //165 42 42 //0xa52a2a;	// Brown
         }
         else if(
-        symbolID === ("WA-DBALPNC--A--") || // 
-        symbolID === ("WA-DBALPC---A--") || // 
-        symbolID === ("WA-DIPID---L---") || // 
+        symbolID === ("WA-DBALPNC--A--") || //
+        symbolID === ("WA-DBALPC---A--") || //
+        symbolID === ("WA-DIPID---L---") || //
         symbolID === ("WO-DGMSIM---A--") || //
         symbolID === ("WO-DGMRS----A--") ||
         symbolID === ("WO-DGMCL----A--") ||
         symbolID === ("WO-DGMIBB---A--") ||
-        symbolID === ("WO-DGMBCA---A--") || 
+        symbolID === ("WO-DGMBCA---A--") ||
         symbolID === ("WAS-WSR-LIP----") || // Rain - Intermittent Light
         symbolID === ("WAS-WSR-LCP----") || // Rain - Continuous Light
         symbolID === ("WAS-WSR-MIP----") || // Rain - Intermittent Moderate
@@ -1236,13 +1268,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(
                     symbolID === ("WO-DBSM-----A--") ||
                     symbolID === ("WO-DBSF-----A--") ||
-                    symbolID === ("WO-DGMN-----A--")) // 
+                    symbolID === ("WO-DGMN-----A--")) //
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(230,230,230);//230,230,230;	// light gray
         }
         else if(
                     symbolID === ("WO-DBSG-----A--") ||
-                    symbolID === "WO-DBST-----A--") // 
+                    symbolID === "WO-DBST-----A--") //
         {
                 retColor = new armyc2.c2sd.renderer.utilities.Color(169,169,169);//169,169,169;	// dark gray
         }
@@ -1274,7 +1306,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         symbolID === ("WO-DL-MA----A--") ||
         symbolID === ("WO-DL-SA----A--") ||
         symbolID === ("WO-DL-TA----A--") ||
-        symbolID === ("WO-DGMSR----A--")) 
+        symbolID === ("WO-DGMSR----A--"))
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF00FF");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,0,255);//magenta
         }
@@ -1286,7 +1318,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         else if(
         symbolID === ("WA-DPXITCZ-L---") || // inter-tropical convergance zone oragne?
         symbolID === ("WO-DL-O-----A--") ||
-        symbolID === ("WA-DPXCV---L---")) // 
+        symbolID === ("WA-DPXCV---L---")) //
         {
             retColor = armyc2.c2sd.renderer.utilities.Color.getColorFromHexString("#FF7F00");//armyc2.c2sd.renderer.utilities.Color.rgbToHexString(255,127,0);//bright orange
         }
@@ -1456,7 +1488,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return retColor;
     };
     /**
-     * 
+     *
      * @param {String} symbolID
      * @returns {armyc2.c2sd.renderer.utilities.Color} hex color like #FFFFFF
      */
@@ -1488,7 +1520,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolID === "WO-DHHDD----A--"  ||//discolored water (DeepSkyBlue)
             symbolID === "WO-DHDDA----A--")//Depth Area
         {
-            return new armyc2.c2sd.renderer.utilities.Color(0,191,255);   
+            return new armyc2.c2sd.renderer.utilities.Color(0,191,255);
         }
         else if(symbolID === ("WO-DHPMD----A--"))//drydock
             return new armyc2.c2sd.renderer.utilities.Color(188,153,58);
@@ -1499,7 +1531,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
         else return null;
     };
-    
+
     /**
     *
     * @param hexValue - String representing hex value
@@ -1549,13 +1581,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             }
         }
         else
-        {       
+        {
                 //ErrorLogger.LogMessage("SymbolUtilties", "getColorFromHexString", "Bad hex value: " + hexOriginal, Level.WARNING);
         }
         return null;
     };
 
-    
+
 
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isBasicShape = function (strSymbolID){
         //var scheme = symbolID.charAt(0);
@@ -1572,14 +1604,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean} true if symbol starts with "G", or is a weather graphic, or an EMS natural event
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTacticalGraphic = function (strSymbolID){
-       
-        if(strSymbolID && 
-                ((strSymbolID.charAt(0)===('G')) || (strSymbolID.charAt(0)===('W')) 
+
+        if(strSymbolID &&
+                ((strSymbolID.charAt(0)===('G')) || (strSymbolID.charAt(0)===('W'))
                 || this.isEMSNaturalEvent(strSymbolID)))
         {
           return true;
         }
-      
+
         return false;
     };
     /**
@@ -1588,7 +1620,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean} True if code starts with "O", "S", or "I". (or "E" in 2525C)
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isWarfighting = function (strSymbolID){
-        
+
         if(!strSymbolID) // Error handling
         {
           return false;
@@ -1603,7 +1635,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return false;
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
@@ -1619,7 +1651,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {String} text
      * @returns {Boolean}
      */
@@ -1640,14 +1672,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMCSSpecificTacticalGraphic = function (sd){
-        
-        
-        if(sd !== undefined && sd !== null && 
+
+
+        if(sd !== undefined && sd !== null &&
                 sd.hierarchy !== undefined && sd.basicSymbolID !== undefined)
         {
             var hierarchy = sd.hierarchy;
             var basicSymbolID = sd.symbolID;
-        
+
             if(hierarchy.substring(0,5)===("2.X.7") || //Engineering Overlay graphics (ESRI----)
                 hierarchy.substring(0,9)===("2.X.5.2.3") || //Route Critical Points
                 basicSymbolID.substring(0,4)===("G*R*") || //Route Critical Points
@@ -1685,7 +1717,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * for needed modifiers.
      * @param {String} symbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dGraphic = function(symbolID)  {
         var symbolId = symbolID.substring(4, 10);
 
@@ -1696,7 +1728,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             symbolId === "AKPR--" || // Kill box rectangular
             symbolId === "AKPI--" || // Kill box irregular
             symbolId === "ALC---" || // Air corridor
-            symbolId === "ALM---" || // 
+            symbolId === "ALM---" || //
             symbolId === "ALS---" || // SAAFR
             symbolId === "ALU---" || // UAV
             symbolId === "ALL---" || // Low level transit route
@@ -1715,10 +1747,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {String} symbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.is3dAirspace = function(symbolID)  {
 
         if(symbolID===("CYLINDER-------") ||
@@ -1739,7 +1771,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {symbolDef} sd
      * @returns {Boolean}
      */
@@ -1758,12 +1790,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
              return false;
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMOOTW = function (strSymbolID){
-        
+
         if(strSymbolID.charAt(0) === ('O'))
         {
           return true;
@@ -1774,12 +1806,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isSTBOPS = function (strSymbolID){
-        
+
         if(strSymbolID.substring(0, 1) === ('O'))
         {
           return true;
@@ -1790,18 +1822,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isEvent = function(strSymbolID)
     {
-        
+
         var arr = null;
         var category = strSymbolID.charAt(2);
         var strBasicSymbolID = this.getBasicSymbolIDStrict(strSymbolID);
-        if(this.isMOOTW(strSymbolID) || 
-                (this.isEMS(strSymbolID) && 
+        if(this.isMOOTW(strSymbolID) ||
+                (this.isEMS(strSymbolID) &&
                       (category === 'I' || category === 'N' || category === 'O')))
             return true;
         else
@@ -1816,18 +1848,18 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                 }
             }
         }
-        
+
         return false;
-    }; 
-                
+    };
+
     /**
      * Determines if the symbol id passed in contains a flag for one of the
      * various HQ options Pos 11 of the symbol code
      * @param {String} strSymbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isHQ = function (strSymbolID){
-        
+
         var hq = strSymbolID.charAt(10);
         var blRetVal = false;
         if(hq !== '-' && hq !== '*')
@@ -1840,16 +1872,16 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
             blRetVal = (strSymbolID.charAt(0) === 'S' && strSymbolID.substring(4,6) === "UH");
         }
-        
+
         return blRetVal;
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
-     */        
+     */
    armyc2.c2sd.renderer.utilities.SymbolUtilities.isTaskForce = function(strSymbolID){
-        
+
         var tf = strSymbolID.charAt(10);
         // Return whether or not task force is included in the symbol id.
         var blRetVal = (tf===('B')
@@ -1858,12 +1890,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return blRetVal;
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isFeintDummy = function(strSymbolID){
-        
+
         var fd = strSymbolID.charAt(10);
         // Return whether or not task force is included in the symbol id.
         var blRetVal = (fd===('C')
@@ -1871,7 +1903,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                                 || fd===('F') || fd===('G'));
         return blRetVal;
     };
-            
+
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMobility = function(strSymbolID){
 
         var mobility = strSymbolID.substring(10, 12);
@@ -1897,12 +1929,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isObstacle = function(strSymbolID){
-        
+
           // An Obstacle is denoted by the symbol code "G*M*O"
           // So see if it is a tactical graphic then check to see
           // if we have the M and then the O in the correct position.
@@ -1910,25 +1942,25 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return blRetVal;
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isNBC = function (strSymbolID){
-       
+
         //var temp = this.getBasicSymbolIDStrict(strSymbolID),
-        //var blRetVal = (temp.substring(0, 5) === ("G*M*N"));         
+        //var blRetVal = (temp.substring(0, 5) === ("G*M*N"));
         var blRetVal = ((strSymbolID.charAt(0) === ('G')) && ((strSymbolID.charAt(2) === ('M')) && (strSymbolID.charAt(4) === ('N'))));
         return blRetVal;
 
     };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isDeconPoint = function (strSymbolID){
-        
+
           var blRetVal = ((this.isNBC(strSymbolID)) && (strSymbolID.substring(4, 6) === ("ND")));
           return blRetVal;
      };
@@ -1948,7 +1980,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
     * code.
     * @param {String} echelon
     * @returns {String}
-    */             
+    */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getEchelonText = function(echelon){
 
         var text = null;
@@ -2011,27 +2043,27 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return text;
     };
     /**
-     * 
+     *
      * @param {string} strSymbolID
      * @returns {boolean}
-     */        
+     */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isUnit = function (strSymbolID){
-        
-          var blRetVal = ((strSymbolID.charAt(0) === ('S')) && 
+
+          var blRetVal = ((strSymbolID.charAt(0) === ('S')) &&
                                 (strSymbolID.charAt(2) === ('G')) &&
                                 (strSymbolID.charAt(4) === ('U')));
           return blRetVal;
-        
+
     };
     /**
-     * 
-     * 
-     * @param {string} strSymbolID 
-     * @param {number} symStd 
-     * @returns {boolean} 
+     *
+     *
+     * @param {string} strSymbolID
+     * @param {number} symStd
+     * @returns {boolean}
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGWithControlPoints = function (strSymbolID, symStd){
-        
+
         if(symStd!==undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
@@ -2040,7 +2072,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var temp = this.getBasicSymbolIDStrict(strSymbolID);
         var sd = armyc2.c2sd.renderer.utilities.SymbolDefTable.GetSymbolDef(temp,symStd);
 
-        if (sd !== null && 
+        if (sd !== null &&
                 sd.getDrawCategory() === armyc2.c2sd.renderer.utilities.SymbolDefTable.DRAW_CATEGORY_ROUTE)
         {
             return true;
@@ -2049,7 +2081,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         {
           return false;//blRetVal;
         }
-        
+
     };
     /**
      * There's a handful of single point tactical graphics with unique
@@ -2059,7 +2091,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isTGSPWithSpecialModifierLayout = function (strSymbolID){
         var temp = this.getBasicSymbolIDStrict(strSymbolID);
-      
+
         var blRetVal = (temp === ("G*G*GPH---****X"))//Harbor(General) - center
         || (temp === ("G*G*GPPC--****X")) //Contact Point - center
         || (temp === ("G*G*GPPD--****X"))//Decisions Point - center
@@ -2132,9 +2164,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           || (temp === ("G*F*PCL---****X"))//Launch Point
           || (temp === ("G*M*BCP---****X"))//Engineer Regulating Point
           || (temp === ("G*O*ES----****X"))//Emergency Distress Call
-              
+
           //star
-          || (temp.substring(0,9)===("G*G*GPPD-"))//Decision Point    
+          || (temp.substring(0,9)===("G*G*GPPD-"))//Decision Point
 
           //circle
           || (temp === ("G*G*GPPO--****X"))//Coordination Point
@@ -2144,7 +2176,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
           //circle with squiggly
           || (temp.substring(0,8)===("G*G*GPUY"))//SONOBUOY and those that fall under it
-              
+
           //reference point
           || ((temp.substring(0,7)===("G*G*GPR") && temp.charAt(7) !== 'I'))
 
@@ -2157,7 +2189,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return blRetVal;
      };
     /**
-     * 
+     *
      * @param {String} strSymbolID
      * @returns {Boolean}
      */
@@ -2180,7 +2212,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return true;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {String}
       */
@@ -2237,7 +2269,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return null;
      };
      /**
-      * 
+      *
       * @param {String} symbolID
       * @returns {Boolean}
       */
@@ -2254,7 +2286,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
              return false;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2271,13 +2303,13 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
        return false;
      };
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isSonobuoy = function (strSymbolID){
-        
+
         var basic = this.getBasicSymbolIDStrict(strSymbolID);
         var blRetVal = (basic.substring(0, 8)==="G*G*GPUY");
         return blRetVal;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2288,7 +2320,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2302,8 +2334,8 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
       * @returns {Boolean}
       */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEquipment = function (strSymbolID){
-       
-        var blRetVal = ((strSymbolID.charAt(0) === ('S')) && 
+
+        var blRetVal = ((strSymbolID.charAt(0) === ('S')) &&
         (strSymbolID.charAt(2) === ('G')) &&
         (strSymbolID.charAt(4) === ('E')));
          // || isEMSEquipment(strSymbolID); //uncomment when supporting 2525C
@@ -2311,14 +2343,14 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSEquipment = function (strSymbolID){
         var basicCode = this.getBasicSymbolIDStrict(strSymbolID),
         blRetVal = false;
-       
+
         if(strSymbolID.charAt(0)==='E')
         {
             if(basicCode === ("E*O*AB----*****") || //equipment
@@ -2329,7 +2361,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     basicCode === ("E*O*CC----*****") ||//fire hydrant
                     basicCode === ("E*O*DB----*****") ||//law enforcement operation equipment
                     //equipment for different service departments
-                    (basicCode.substring(0,5) === ("E*O*D") && basicCode.indexOf("B---*****")>0) || 
+                    (basicCode.substring(0,5) === ("E*O*D") && basicCode.indexOf("B---*****")>0) ||
                     //different sensor types
                     (basicCode.substring(0,5) === ("E*O*E") && basicCode.indexOf("----*****")>0) ||
                     basicCode === ("E*F*BA----*****") ||//ATM
@@ -2344,7 +2376,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2352,7 +2384,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return (strSymbolID[0]==='E');
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2360,15 +2392,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='N');
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.isEMSIncident = function (strSymbolID){
-          return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='I'); 
+          return (strSymbolID.charAt(0)==='E' && strSymbolID.charAt(2)==='I');
      };
           /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2436,12 +2468,12 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     }
                 }
             }
-        } 
-        
+        }
+
         return blRetVal;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2458,7 +2490,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return blRetVal;
     };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2467,7 +2499,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return blRetVal;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2477,7 +2509,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         return blRetVal;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {Boolean}
       */
@@ -2487,16 +2519,16 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
           return blRetVal;
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {String}
       */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.getAffiliation = function (strSymbolID){
-        
+
             return strSymbolID.charAt(1);
      };
      /**
-      * 
+      *
       * @param {String} strSymbolID
       * @returns {String}
       */
@@ -2512,15 +2544,15 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
             return strSymbolID.charAt(11);
      };
      /**
-      * 
+      *
       * @param {String} symbolID
       * @param {Number} symStd
       * @returns {String}
-      */        
+      */
      armyc2.c2sd.renderer.utilities.SymbolUtilities.getUnitAffiliationModifier = function (symbolID, symStd){
         var textChar = null,
         affiliation = null;
-		
+
         if(symStd===undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
@@ -2562,7 +2594,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         }
 
         //check sea mine symbols
-        if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C) 
+        if(symStd===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C)
         {
             if(symbolID.charAt(4)==='W' && symbolID.charAt(0)==='S' && symbolID.charAt(5)==='M')//&& symbolID.substring(4,6)=="WM")
             {//various sea mine exercises
@@ -2580,9 +2612,9 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
 
         return textChar;
      };
- 
+
      /**
-      * 
+      *
       * @param {String} symbolID
       * @param {Number} symStd
       * @returns {Boolean}
@@ -2591,24 +2623,24 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var sd = null,
             returnVal = false,
             basic = this.getBasicSymbolIDStrict(symbolID);
-            
+
         if(symStd === undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
-        
+
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
         basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
             var dc = sd.drawCategory;
-        
+
             switch(dc)
             {
                 case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:  //width
                 case SymbolDefTable.DRAW_CATEGORY_SECTOR_PARAMETERED_AUTOSHAPE:
-                case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE: 
+                case SymbolDefTable.DRAW_CATEGORY_TWO_POINT_RECT_PARAMETERED_AUTOSHAPE:
                     returnVal = true;
                     break;
 				case SymbolDefTable.DRAW_CATEGORY_LINE:
@@ -2619,11 +2651,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     returnVal = false;
             }
         }
-        
+
         return returnVal;
      };
      /**
-      * 
+      *
       * @param {type} symbolID
       * @param {type} symStd
       * @returns {armyc2.c2sd.renderer.utilities.SymbolUtilities.hasAMmodifierRadius.returnVal|Boolean}
@@ -2632,19 +2664,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var sd = null,
             returnVal = false,
             basic = this.getBasicSymbolIDStrict(symbolID);
-            
+
         if(symStd === undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
-        
+
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
         basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
             var dc = sd.drawCategory;
-        
+
             switch(dc)
             {
                 case SymbolDefTable.DRAW_CATEGORY_CIRCULAR_PARAMETERED_AUTOSHAPE://radius
@@ -2655,11 +2687,11 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     returnVal = false;
             }
         }
-        
+
         return returnVal;
      };
      /**
-      * 
+      *
       * @param {type} symbolID
       * @param {type} symStd
       * @returns {armyc2.c2sd.renderer.utilities.SymbolUtilities.hasANmodifier.returnVal|Boolean}
@@ -2668,19 +2700,19 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
         var sd = null,
             returnVal = false,
             basic = this.getBasicSymbolIDStrict(symbolID);
-            
+
         if(symStd === undefined)
         {
             symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
         }
-        
+
         var SymbolDefTable = armyc2.c2sd.renderer.utilities.SymbolDefTable;
         basic = this.getBasicSymbolIDStrict(symbolID);
         sd = SymbolDefTable.getSymbolDef(basic, symStd);
         if(sd !== null)
         {
             var dc = sd.drawCategory;
-        
+
             switch(dc)
             {
                 case SymbolDefTable.DRAW_CATEGORY_RECTANGULAR_PARAMETERED_AUTOSHAPE:
@@ -2691,7 +2723,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
                     returnVal = false;
             }
         }
-        
+
         return returnVal;
      };
 
@@ -2704,7 +2736,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities = {};
      * @deprecated use armyc2.c2sd.renderer.utilities.SymbolDefTable.isMultiPoint
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isMultiPoint = function (symbolID, symStd) {
-        
+
         return armyc2.c2sd.renderer.utilities.SymbolDefTable.isMultiPoint(symbolID, symStd);
-        
+
     };

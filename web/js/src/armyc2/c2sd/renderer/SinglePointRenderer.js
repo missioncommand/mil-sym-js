@@ -501,8 +501,7 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
             var shapes = new Array();
-            if(symbolID.charAt(10)===("M") && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.R_MOBILITY_INDICATOR) || 
-                symbolID.charAt(10)===("N") && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AG_AUX_EQUIP_INDICATOR))
+            if(symbolID.charAt(10)===("M") || symbolID.charAt(10)===("N"))
             {
                 
                 //Draw Mobility

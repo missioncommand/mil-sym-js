@@ -65,7 +65,82 @@ armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
     _PixelSize = 35,
     _DPI = 90;
     //acevedo - 11/29/2017 - adding option to render only 2  labels.
-	   _TwoLabelOnly = true;
+	   _TwoLabelOnly = true,
+
+     //acevedo - 12/8/17 - allow the setting of affiliation colors.
+    _friendlyUnitFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyUnitFillColor,
+    /// <summary>
+    /// Friendly Unit Fill Color.
+    /// </summary>
+    _hostileUnitFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.HostileUnitFillColor,//new Color(255,130,132);//Color.RED;
+    /// <summary>
+    /// Hostile Unit Fill Color.
+    /// </summary>
+    _neutralUnitFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralUnitFillColor,//new Color(144,238,144);//Color.GREEN;//new Color(0,255,0);//new Color(144,238,144);//light green//Color.GREEN;new Color(0,226,0);
+    /// <summary>
+    /// Neutral Unit Fill Color.
+    /// </summary>
+   _unknownUnitFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownUnitFillColor,// new Color(255,255,128);//Color.YELLOW;
+    /// <summary>
+    /// UnknownUn Graphic Fill Color.
+    /// </summary>
+    _friendlyGraphicFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyGraphicFillColor,//Crystal Blue //Color.CYAN;
+    /// <summary>
+    /// Friendly Graphic Fill Color.
+    /// </summary>
+     _hostileGraphicFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.HostileGraphicFillColor,//salmon
+    /// <summary>
+    /// Hostile Graphic Fill Color.
+    /// </summary>
+     _neutralGraphicFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralGraphicFillColor,//Bamboo Green //new Color(144,238,144);//light green
+    /// <summary>
+    /// Neutral Graphic Fill Color.
+    /// </summary>
+     _unknownGraphicFillColor = armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownGraphicFillColor,//light yellow  new Color(255,255,224);//light yellow
+    /// <summary>
+    /// Unknown Unit Line Color.
+    /// </summary>
+     _friendlyUnitLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyUnitLineColor,
+    /// <summary>
+    /// Friendly Unit Line Color.
+    /// </summary>
+     _hostileUnitLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.HostileUnitLineColor,
+    /// <summary>
+    /// Hostile Unit Line Color.
+    /// </summary>
+     _neutralUnitLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralUnitLineColor,
+    /// <summary>
+    /// Neutral Unit Line Color.
+    /// </summary>
+     _unknownUnitLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownUnitLineColor,
+    /// <summary>
+    /// Unknown Graphic Line Color.
+    /// </summary>
+     _friendlyGraphicLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyGraphicLineColor,
+    /// <summary>
+    /// Friend Graphic Line Color.
+    /// </summary>
+     _hostileGraphicLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.HostileGraphicLineColor,
+    /// <summary>
+    /// Hostile Graphic Line Color.
+    /// </summary>
+     _neutralGraphicLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralGraphicLineColor,
+    /// <summary>
+    /// Neutral Graphic Line Color.
+    /// </summary>
+     _unknownGraphicLineColor = armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownGraphicLineColor;
+
+    /*private   Color WeatherRed = new Color(198,16,33);//0xC61021;// 198,16,33
+    private   Color WeatherBlue = new Color(0,0,255);//0x0000FF;// 0,0,255
+
+    private   Color WeatherPurpleDark = new Color(128,0,128);//0x800080;// 128,0,128 Plum Red
+    private   Color WeatherPurpleLight = new Color(226,159,255);//0xE29FFF;// 226,159,255 Light Orchid
+
+    private   Color WeatherBrownDark = new Color(128,98,16);//0x806210;// 128,98,16 Safari
+    private   Color WeatherBrownLight = new Color(210,176,106);//0xD2B06A;// 210,176,106 Khaki
+    */
+
+
 
     try
     {
@@ -599,6 +674,376 @@ return{
  	{
  		_TwoLabelOnly = TwoLabelOnly;
  	},
+
+   /**
+    * get the preferred fill affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getFriendlyUnitFillColor: function ()
+    {
+      return _friendlyUnitFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for units
+    *
+    * @param friendlyUnitFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setFriendlyUnitFillColor: function(friendlyUnitFillColor)
+    {
+      if (friendlyUnitFillColor != null)
+      _friendlyUnitFillColor = friendlyUnitFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getHostileUnitFillColor: function() {
+      return _hostileUnitFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for units
+    *
+    * @param hostileUnitFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setHostileUnitFillColor:function (  hostileUnitFillColor) {
+      if (hostileUnitFillColor != null)
+      _hostileUnitFillColor = hostileUnitFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+     getNeutralUnitFillColor:function () {
+      return _neutralUnitFillColor;
+   },
+   /**
+    * Set the preferred line affiliation color for units
+    *
+    * @param neutralUnitFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+     setNeutralUnitFillColor:function ( neutralUnitFillColor) {
+      if (neutralUnitFillColor != null)
+      _neutralUnitFillColor = neutralUnitFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+     getUnknownUnitFillColor:function () {
+      return _unknownUnitFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for units
+    *
+    * @param unknownUnitFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+     setUnknownUnitFillColor:function ( unknownUnitFillColor) {
+      if (unknownUnitFillColor != null)
+      _unknownUnitFillColor = unknownUnitFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+     getHostileGraphicFillColor:function () {
+      return _hostileGraphicFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for graphics
+    *
+    * @param hostileGraphicFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setHostileGraphicFillColor:function ( hostileGraphicFillColor) {
+      if (hostileGraphicFillColor != null)
+      _hostileGraphicFillColor = hostileGraphicFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+     getFriendlyGraphicFillColor:function () {
+      return _friendlyGraphicFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for graphics
+    *
+    * @param friendlyGraphicFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+     setFriendlyGraphicFillColor:function ( friendlyGraphicFillColor) {
+      if (friendlyGraphicFillColor != null)
+      _friendlyGraphicFillColor = friendlyGraphicFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+     getNeutralGraphicFillColor:function () {
+      return _neutralGraphicFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for graphics
+    *
+    * @param neutralGraphicFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setNeutralGraphicFillColor:function ( neutralGraphicFillColor) {
+      if (neutralGraphicFillColor != null)
+      _neutralGraphicFillColor = neutralGraphicFillColor;
+   },
+   /**
+    * get the preferred fill affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getUnknownGraphicFillColor:function () {
+      return _unknownGraphicFillColor;
+   },
+   /**
+    * Set the preferred fill affiliation color for graphics
+    *
+    * @param unknownGraphicFillColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setUnknownGraphicFillColor:function ( unknownGraphicFillColor) {
+      if (unknownGraphicFillColor != null)
+      _unknownGraphicFillColor = unknownGraphicFillColor;
+   },
+   /**
+    * get the preferred line affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getFriendlyUnitLineColor:function () {
+      return _friendlyUnitLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for units
+    *
+    * @param friendlyUnitLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setFriendlyUnitLineColor:function ( friendlyUnitLineColor) {
+      if (friendlyUnitLineColor != null)
+      this._friendlyUnitLineColor = friendlyUnitLineColor;
+   },
+   /**
+    * get the preferred line   affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getHostileUnitLineColor:function () {
+      return _hostileUnitLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for units
+    *
+    * @param hostileUnitLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setHostileUnitLineColor:function ( hostileUnitLineColor) {
+      if (hostileUnitLineColor != null)
+      this._hostileUnitLineColor = hostileUnitLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getNeutralUnitLineColor:function () {
+      return _neutralUnitLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for units
+    *
+    * @param neutralUnitLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setNeutralUnitLineColor:function ( neutralUnitLineColor) {
+      if (neutralUnitLineColor != null)
+      this._neutralUnitLineColor = neutralUnitLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for units.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getUnknownUnitLineColor:function () {
+      return _unknownUnitLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for units
+    *
+    * @param unknownUnitLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setUnknownUnitLineColor:function ( unknownUnitLineColor) {
+      if (unknownUnitLineColor != null)
+      this._unknownUnitLineColor = unknownUnitLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getFriendlyGraphicLineColor:function () {
+      return _friendlyGraphicLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for graphics
+    *
+    * @param friendlyGraphicLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setFriendlyGraphicLineColor:function ( friendlyGraphicLineColor) {
+      if (friendlyGraphicLineColor != null)
+      this._friendlyGraphicLineColor = friendlyGraphicLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getHostileGraphicLineColor:function () {
+      return _hostileGraphicLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for graphics
+    *
+    * @param hostileGraphicLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setHostileGraphicLineColor:function ( hostileGraphicLineColor) {
+      if (hostileGraphicLineColor != null)
+      this._hostileGraphicLineColor = hostileGraphicLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getNeutralGraphicLineColor:function () {
+      return _neutralGraphicLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for graphics
+    *
+    * @param neutralGraphicLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setNeutralGraphicLineColor:function ( neutralGraphicLineColor) {
+      if (neutralGraphicLineColor != null)
+      this._neutralGraphicLineColor = neutralGraphicLineColor;
+   },
+   /**
+    * get the preferred line affiliation color for graphics.
+    *
+    * @return Color like  Color(255, 255, 255)
+    *
+    * */
+    getUnknownGraphicLineColor:function () {
+      return _unknownGraphicLineColor;
+   },
+   /**
+    * Set the preferred line affiliation color for graphics
+    *
+    * @param unknownGraphicLineColor Color like  Color(255, 255, 255)
+    *
+    * */
+    setUnknownGraphicLineColor:function ( unknownGraphicLineColor) {
+      if (unknownGraphicLineColor != null)
+      this._unknownGraphicLineColor = unknownGraphicLineColor;
+   },
+
+   /**
+    * Set the preferred line and fill affiliation color for tactical graphics.
+    *
+    * @param friendlyGraphicLineColor Color
+    * @param hostileGraphicLineColor Color
+    * @param neutralGraphicLineColor Color
+    * @param unknownGraphicLineColor Color
+    * @param friendlyGraphicFillColor Color
+    * @param hostileGraphicFillColor Color
+    * @param neutralGraphicFillColor Color
+    * @param unknownGraphicFillColor Color
+    */
+    setGraphicPreferredAffiliationColors: function (  friendlyGraphicLineColor,
+                                                      hostileGraphicLineColor,
+                                                      neutralGraphicLineColor,
+                                                      unknownGraphicLineColor,
+                                                      friendlyGraphicFillColor,
+                                                      hostileGraphicFillColor,
+                                                      neutralGraphicFillColor,
+                                                      unknownGraphicFillColor) {
+
+
+         setFriendlyGraphicLineColor(friendlyGraphicLineColor);
+         setHostileGraphicLineColor(hostileGraphicLineColor);
+         setNeutralGraphicLineColor(neutralGraphicLineColor);
+         setUnknownGraphicLineColor(unknownGraphicLineColor);
+         setFriendlyGraphicFillColor(friendlyGraphicFillColor);
+         setHostileGraphicFillColor(hostileGraphicFillColor);
+         setNeutralGraphicFillColor(neutralGraphicFillColor);
+         setUnknownGraphicFillColor(unknownGraphicFillColor);
+   },
+
+   /**
+    * Set the preferred line and fill affiliation color for units and tactical graphics.
+    *
+    * @param friendlyUnitLineColor Color like  Color(255, 255, 255). Set to null to ignore setting
+    * @param hostileUnitLineColor Color
+    * @param neutralUnitLineColor Color
+    * @param unknownUnitLineColor Color
+    * @param friendlyUnitFillColor Color
+    * @param hostileUnitFillColor Color
+    * @param neutralUnitFillColor Color
+    * @param unknownUnitFillColor Color
+    */
+    setUnitPreferredAffiliationColors: function (     friendlyUnitLineColor,
+                                                      hostileUnitLineColor,
+                                                      neutralUnitLineColor,
+                                                      unknownUnitLineColor,
+                                                      friendlyUnitFillColor,
+                                                      hostileUnitFillColor,
+                                                      neutralUnitFillColor,
+                                                      unknownUnitFillColor) {
+
+      setFriendlyUnitLineColor(friendlyUnitLineColor);
+      setHostileUnitLineColor(hostileUnitLineColor);
+      setNeutralUnitLineColor(neutralUnitLineColor);
+      setUnknownUnitLineColor(unknownUnitLineColor);
+      setFriendlyUnitFillColor(friendlyUnitFillColor);
+      setHostileUnitFillColor(hostileUnitFillColor);
+      setNeutralUnitFillColor(neutralUnitFillColor);
+      setUnknownUnitFillColor(unknownUnitFillColor);
+   },
 
   getInstance: function(){
           return armyc2.c2sd.renderer.utilities.RendererSettings;
