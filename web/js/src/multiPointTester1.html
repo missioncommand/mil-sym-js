@@ -252,6 +252,9 @@ function testRender()
                 modifiers[mtg.AM_DISTANCE] = [1000];
                 modifiers[mtg.AN_AZIMUTH] = [315,45];
                 modifiers[mtg.X_ALTITUDE_DEPTH] = [50,400];
+            case 16://Delay
+                symbolCode = "GFTPL-----****X";
+                controlPoints = "66.26700036208742,30.62755038706961 66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
             default:
                 break;
         } 
@@ -374,6 +377,7 @@ Draw Canvas/SVG Test:
       <option value=13>PBS Rectangle</option>
       <option value=14>RADARC</option>
       <option value=15>Air Corridor</option>
+      <option value=16>Delay</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
