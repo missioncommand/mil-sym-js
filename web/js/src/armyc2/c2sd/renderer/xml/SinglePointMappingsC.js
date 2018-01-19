@@ -2141,6 +2141,12 @@ armyc2.c2sd.renderer.xml.SinglePointMappingsC =  {
         "H": "8"
       },
       {
+        "ID": "WO-DIDID--P----",
+        "MP": "5134",
+        "W": "20",
+        "H": "8"
+      },
+      {
         "ID": "WOS-II----P----",
         "MP": "5135",
         "W": "25",
