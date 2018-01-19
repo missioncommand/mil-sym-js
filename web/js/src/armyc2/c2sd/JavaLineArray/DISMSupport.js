@@ -2753,47 +2753,45 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                 }
                 return;
             },
-            ReverseDelayArc: function(points) {
-                try {
-                    var m = new armyc2.c2sd.JavaLineArray.ref();
-                    var bolVertical = armyc2.c2sd.JavaLineArray.lineutility.CalcTrueSlopeDouble2(points[0], points[1], m);
-                    if (bolVertical === true) {
-                        if (points[0].x < points[1].x) {
-                            if (points[2].y < points[1].y) {
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        } else {
-                            if (points[2].y < points[1].y) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                    } else {
-                        if (points[1].y < points[0].y) {
-                            if (points[1].x < points[2].x) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        } else {
-                            if (points[1].x < points[2].x) {
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        }
-                    }
-                } catch (exc) {
-                    if (Clazz.instanceOf(exc)) {
-                        armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaLineArray.DISMSupport._className, "ReverseDelayArc", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetDelayArc", exc));
-                    } else {
-                        throw exc;
-                    }
+            ReverseDelayArc: function(points) 
+            {
+                var pt1 = points[0];
+                var pt2 = points[1];
+                var pt3 = points[2];
+
+                var lineAngle = this.getAngleBetweenPoints(pt1.x, pt1.y, pt2.x, pt2.y);
+                var curveAngle = this.getAngleBetweenPoints(pt2.x, pt2.y, pt3.x, pt3.y);
+
+                var upperBound = curveAngle + 180;
+                return !this.isInRange(curveAngle, upperBound, lineAngle);
+            },
+            isInRange: function(min, max, targetAngle) 
+            {
+                targetAngle = this.normalizeAngle(targetAngle);
+                min = this.normalizeAngle(min);
+                max = this.normalizeAngle(max);
+        
+                if (min < max) {
+                    return min <= targetAngle && targetAngle <= max;
                 }
-                return false;
+                return min <= targetAngle || targetAngle <= max;
+        
+            },
+            getAngleBetweenPoints: function(x1, y1, x2, y2) 
+            {
+                var radians = (Math.atan2(y2 - y1, x2 - x1));
+                return radians * (180/Math.PI);
+            },
+        
+            /**
+             * Returns an angle from 0 to 360
+             *
+             * @param angle the angle to normalize
+             * @return an angle in range from 0 to 360
+             */
+            normalizeAngle: function(angle) 
+            {
+                return (3600000 + angle) % 360;
             },
             DrawEndpieceDeltasDouble: function(point, iDelta1, iDelta2, iDelta3, iDelta4, deltapoints) {
                 try {
