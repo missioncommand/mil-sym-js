@@ -501,7 +501,8 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build Mobility Modifiers">
             var mobilityBounds = null;
             var shapes = new Array();
-            if(symbolID.charAt(10)===("M") || symbolID.charAt(10)===("N"))
+            if(symbolID.charAt(10)===("M") && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.R_MOBILITY_INDICATOR) || 
+                symbolID.charAt(10)===("N") && SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.AG_AUX_EQUIP_INDICATOR))
             {
                 
                 //Draw Mobility
@@ -1200,7 +1201,7 @@ return{
             // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
             var domPoints = null,
                 domBounds = null;
-            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] !== undefined &&
+            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] &&
                 SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
             {
                 var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
@@ -1745,7 +1746,8 @@ return{
 			textBackgroundColor = null;
     
         //make room for echelon & mobility.
-        if(modifiers.Q)
+        if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] &&
+            SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
         {
             //if no DOM, we can just use the image bounds
             bounds = new SO.Rectangle(imageBounds.getX(), symbolBounds.getY(),
@@ -1802,7 +1804,7 @@ return{
         
         //            int y0 = 0;//W    E/F
         //            int y1 = 0;//X/Y  G
-        //            int y2 = 0;//V    H 
+        //            int y2 = 0;//V/AD/AE    H/AF
         //            int y3 = 0;//T    M CC
         //            int y4 = 0;//Z    J/K/L/N/P
         //
@@ -3296,7 +3298,7 @@ return{
             else if(basicID ===("WAS-PLT---P----"))//tropopause Low
             {
                 strText = "X?";
-                if(modifiers.X !== undefined)
+                if(modifiers.X)
                     strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
 
                 ti = new TextInfo(strText,0,0,textInfoContext);
@@ -3323,7 +3325,7 @@ return{
             else if(basicID ===("WAS-PHT---P----"))//tropopause High
             {
                 strText = "X?";
-                if(modifiers.X !== undefined)
+                if(modifiers.X)
                     strText = modifiers[ModifiersTG.X_ALTITUDE_DEPTH];
 
                 ti = new TextInfo(strText,0,0,textInfoContext);
@@ -3345,7 +3347,7 @@ return{
         // <editor-fold defaultstate="collapsed" desc="DOM Arrow">
         var domPoints = null,
             domBounds = null;
-        if(modifiers[ModifiersTG.Q_DIRECTION_OF_MOVEMENT] !== undefined &&
+        if(modifiers[ModifiersTG.Q_DIRECTION_OF_MOVEMENT] &&
             (basicID ===("G*M*NZ----****X") ||//ground zero
                 basicID ===("G*M*NEB---****X") ||//biological
                 basicID ===("G*M*NEC---****X")))//chemical)
