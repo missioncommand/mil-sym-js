@@ -2049,9 +2049,10 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings = armyc2.c2sd.re
      */
     armyc2.c2sd.renderer.utilities.SymbolUtilities.isUnit = function (strSymbolID){
 
-          var blRetVal = ((strSymbolID.charAt(0) === ('S')) &&
+          var blRetVal = (((strSymbolID.charAt(0) === ('S')) &&
                                 (strSymbolID.charAt(2) === ('G')) &&
-                                (strSymbolID.charAt(4) === ('U')));
+                                (strSymbolID.charAt(4) === ('U'))) ||
+                                this.isSOF(strSymbolID));
           return blRetVal;
 
     };
