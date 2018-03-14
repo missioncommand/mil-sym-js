@@ -6,10 +6,10 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 armyc2.c2sd.renderer.utilities.AffiliationColors = armyc2.c2sd.renderer.utilities.AffiliationColors || {};
 
 
-armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyUnitFillColor = armyc2.c2sd.renderer.utilities.Color.CYAN;
-armyc2.c2sd.renderer.utilities.AffiliationColors.HostileUnitFillColor = armyc2.c2sd.renderer.utilities.Color.RED;
-armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralUnitFillColor = armyc2.c2sd.renderer.utilities.Color.GREEN;
-armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownUnitFillColor = armyc2.c2sd.renderer.utilities.Color.YELLOW;
+armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyUnitFillColor = new armyc2.c2sd.renderer.utilities.Color (128, 224, 255);
+armyc2.c2sd.renderer.utilities.AffiliationColors.HostileUnitFillColor = new armyc2.c2sd.renderer.utilities.Color (255, 128, 128);
+armyc2.c2sd.renderer.utilities.AffiliationColors.NeutralUnitFillColor = new armyc2.c2sd.renderer.utilities.Color (170, 255, 170);
+armyc2.c2sd.renderer.utilities.AffiliationColors.UnknownUnitFillColor = new armyc2.c2sd.renderer.utilities.Color (255, 255, 128);
 
 armyc2.c2sd.renderer.utilities.AffiliationColors.FriendlyGraphicFillColor =  new armyc2.c2sd.renderer.utilities.Color (128, 224, 255);
 armyc2.c2sd.renderer.utilities.AffiliationColors.HostileGraphicFillColor =  new armyc2.c2sd.renderer.utilities.Color (255, 128, 128);
