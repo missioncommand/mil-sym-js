@@ -140,7 +140,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
             else
                 symbolMap = symbolMapC;
             
-            if(symbolMap[symbolID] !== undefined)
+            if(symbolMap && symbolMap[symbolID] !== undefined)
             {
                 return symbolMap[symbolID];
             }
@@ -167,7 +167,7 @@ armyc2.c2sd.renderer.utilities.UnitDefTable = (function () {
             else
                 symbolMap = symbolMapC;
             
-            if(symbolMap[symbolID] !== undefined)
+            if(symbolMap && symbolMap[symbolID] !== undefined)
             {
                 return true;
             }

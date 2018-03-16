@@ -28,36 +28,31 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings = armyc2.c2sd.re
                 {
                     basic = scheme + '*' + basic.charAt(2) + '*' + basic.substring(4, 10) + "*****";
 
-                    var i = symStd || 0;
-                    for(; i < 2; i++)
+                    var std = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
+                    if(symStd !== undefined)
+                        std = symStd;
+
+                    var has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basic, std);
+                    var temp = null;
+                    if(!has)
                     {
-                        var has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(basic, i);
-                        var temp = null;
+                        temp = basic.substr(0,10) + "H****";
+                        has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, std);
                         if(has)
                         {
-                            i=3;
+                            basic = temp;
                         }
                         else
                         {
-                            temp = basic.substr(0,10) + "H****";
-                            has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, i);
+                            temp = basic.substr(0,10) + "MO***";
+                            has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, std);
                             if(has)
                             {
                                 basic = temp;
-                                i=3;
-                            }
-                            else
-                            {
-                                temp = basic.substr(0,10) + "MO***";
-                                has = armyc2.c2sd.renderer.utilities.UnitDefTable.hasUnitDef(temp, i);
-                                if(has)
-                                {
-                                    basic = temp;
-                                    i=3;
-                                }
                             }
                         }
                     }
+                    
                 }
                 else if (scheme === 'G') //tactical graphic
                 {
