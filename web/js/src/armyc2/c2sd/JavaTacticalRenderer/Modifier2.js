@@ -4335,7 +4335,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
         case 21400000:
           pt0 = tg.Pixels.get(1);
           pt1 = tg.Pixels.get(2);
-          armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, -0.125 * csFactor, pt0, pt1, new Boolean(true));
+          armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 6, -0.125 * csFactor, pt0, pt1, new Boolean(true));
           break;
         case 211700000:
         case 21500000:
@@ -5207,6 +5207,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
           //end section
           break;
         case 2: //breach
+        case 6:
           dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
           if (converter !== null && dist > 100 && lineType !== 22121000) {
             var pt1Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt0.x), Math.floor(pt0.y)));
@@ -5251,6 +5252,23 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
           glyphPosition = new armyc2.c2sd.graphics2d.Point(pt3.x, pt3.y);
           justify = armyc2.c2sd.renderer.utilities.ShapeInfo.justify_center;
           modifierPosition = new armyc2.c2sd.graphics2d.Point2D(midPt.x, midPt.y);
+
+          if(modifier.type === 6)//armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddlePerpendicular
+          {
+            // Need to negate the original rotation
+            if(x1 > x2)
+            {
+              theta += Math.PI;
+            }
+            // Adjust the label rotation based on the y values
+            if(y1 > y2)
+            {
+              theta += Math.PI;
+            }
+            // Rotate by 90 degrees. This is how we rotate the label perpendicular to the line
+            theta -= Math.PI / 2;
+          }
+
           break;
         case 3: //screen, cover, guard, area
           theta = 0;
@@ -6184,4 +6202,5 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddle = 2;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.area = 3;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.screen = 4;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveEnd = 5;
+armyc2.c2sd.JavaTacticalRenderer.Modifier2.aboveMiddlePerpendicular = 6;
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.fillAlphaCanObscureText = 50;
