@@ -74,6 +74,7 @@ function testRender()
         modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.GeoJSONFormat]=0;
         //AMBUSH EXAMPLE
         var symbolCode = "GHGPSLA-------X";//ambush
+		//var symbolCode = "G*TPH-----****X";//breach
         //var symbolCode = "GHGPGAA-------X"; //assembly area
         //var controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
         var controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
@@ -255,6 +256,23 @@ function testRender()
             case 16://Delay
                 symbolCode = "GFTPL-----****X";
                 controlPoints = "66.26700036208742,30.62755038706961 66.25654247497746,30.64632704801704 66.27555681517738,30.64727776502703";
+			case 17://Breach
+				symbolCode = "GFTPH-----****X";//breach
+                //controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+				controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                break;
+			case 18://Free Fire Area
+                symbolCode = "GFFAACFI------X"; //free fire area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                modifiers[msa.TextColor] = "00FF00";
+                modifiers[msa.LineColor] = "0000FF";
+                break;
             default:
                 break;
         } 
@@ -378,6 +396,8 @@ Draw Canvas/SVG Test:
       <option value=14>RADARC</option>
       <option value=15>Air Corridor</option>
       <option value=16>Delay</option>
+	  <option value=17>Breach</option>
+	  <option value=18>FFAI</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>

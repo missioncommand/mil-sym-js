@@ -172,6 +172,42 @@
                 ctx.lineWidth=1;
                 symbolBoundsTGMP.stroke(ctx);
             }
+			
+			///////////////////////////////////////
+			
+			modifiers = new Object(); 
+            //S*G*USAT--*****//OUOPYT----*B***}
+            //modifiers[msa.LineColor]="#FFFF00";
+            //WA-DPFCU---L---  //Upper Cold Front (Blue)
+            //"GHGPSLA---****X" // ambush
+            var mods = {};
+            mods[msa.Icon] = false;
+            mods[msa.PixelSize] = 40;//
+            mods[msa.SymbologyStandard] = 1;
+            //mods[msa.Alpha] = 55;
+            mods["T"] = "foo";
+            var iiTest = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPGPPC----**X",mods);//
+			//var iiTest = armyc2.c2sd.renderer.MilStdIconRenderer.Render("GHGPGPPO--****X",mods)
+
+            ctx.drawImage(iiTest.getImage(), Math.ceil(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + iiTGMP.getImageBounds().getWidth() + 40), 0);
+
+            if(showDrawAreas)
+            {
+                //symbol bounds
+                var symbolBoundsTest = iiTest.getSymbolBounds();
+                symbolBoundsTest.shift(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + iiTGMP.getImageBounds().getWidth() + 40,0);
+                ctx.strokeStyle="#0000FF";
+                ctx.lineWidth=1;
+                symbolBoundsTest.stroke(ctx);
+				
+				var symbolBoundsTest2 = new armyc2.c2sd.renderer.so.Rectangle(0,0,iiTest.getImage().width, iiTest.getImage().height);
+                symbolBoundsTest2.shift(ii.getImageBounds().getWidth() + iiTG.getImageBounds().getWidth() + iiTGMP.getImageBounds().getWidth() + 40,0);
+                ctx.strokeStyle="#00FF00";
+                ctx.lineWidth=1;
+                symbolBoundsTest2.stroke(ctx);
+            }
+			
+			
 			/*
 			ctx.strokeStyle="#FFFFFF"
 			ctx.fillStyle="#000000"
