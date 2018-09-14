@@ -2802,6 +2802,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
       dash = " - ";
     if (tg.get_Client().equals("cpof3d"))
       csFactor = 0.9;
+  	
     switch (tg.get_LineType()) {
       case 2237000:
       case 24313000:
@@ -2999,6 +3000,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
     var index = 0;
     var nextIndex = 0;
     var size = tg.Pixels.size();
+	var dAngle0;
+	var dAngle1;
+	var stringHeight;
     switch (linetype) {
       case 10000000:
       case 15000000:
@@ -3028,7 +3032,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
             for (j = 1; j < tg.Pixels.size() - 1; j++) {
               armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, tg.Pixels.get(j), tg.Pixels.get(j), false);
             }
-          } else //t1 is set inadvertantly or for other graphics
+          } else //t1 is set inadvertently or for other graphics
           {
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, pt0, pt1, false);
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 1, T1LineFactor, ptLast, ptNextToLast, false);
@@ -3086,11 +3090,15 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
       case 212210000:
       case 212230000:
       case 212220000:
-        stringWidth = Math.floor((1.5 * metrics.stringWidth(label)));
+        stringHeight = parseInt(0.5 * metrics.getHeight());
+		dAngle0 = Math.atan2(tg.Pixels.get(0).y - tg.Pixels.get(1).y, tg.Pixels.get(0).x - tg.Pixels.get(1).x);
+		dAngle1 = Math.atan2(tg.Pixels.get(0).y - tg.Pixels.get(2).y, tg.Pixels.get(0).x - tg.Pixels.get(2).x);
         pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0));
-        pt0.x += 2 * stringWidth; //was 4
+        pt0.x -= 30 * Math.cos(dAngle0);
+		pt0.y -= 30 * Math.sin(dAngle0) + stringHeight;
         pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(tg.Pixels.get(0));
-        pt1.x -= 2 * stringWidth; //was 4
+        pt1.x -= 30 * Math.cos(dAngle1);
+		pt1.y -= 30 * Math.sin(dAngle1) + stringHeight;
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt0, pt0, new Boolean(true));
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, 0, pt1, pt1, new Boolean(true));
         break;

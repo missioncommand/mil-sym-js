@@ -265,6 +265,7 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                 var counter = 0;
                 try {
                     var dAngle0;
+					var dAngle1;
                     var dDeltaX0;
                     var dDeltaY0;
                     var dDeltaX1;
@@ -279,7 +280,6 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                     var savepoints = new Array(3);
                     var pts = new Array(2);
                     var ptsJaggyLine = new Array(4);
-                    var goLeftThenRight = false;
                     var sign = 1;
                     var pt0 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(points[0]);
                     var pt1 = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(points[1]);
@@ -301,8 +301,7 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                         sign = -1;
                     if (linetype === 22139000)
                         t = 0;
-                    if (points[1].x <= points[2].x)
-                        goLeftThenRight = true;
+
                     for (j = 0; j < 3; j++) {
                         savepoints[j] = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(points[j]);
                         savepoints[j].style = 0;
@@ -323,15 +322,18 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                         if (iDelta < armyc2.c2sd.JavaLineArray.DISMSupport.minLength) {
                             iDelta = armyc2.c2sd.JavaLineArray.DISMSupport.minLength;
                         }
-                        if (goLeftThenRight)
-                            savepoints[0].x -= 30 * t;
-                        else
-                            savepoints[0].x += 30 * t;
+						
+						dAngle0 = Math.atan2(savepoints[0].y - savepoints[1].y, savepoints[0].x - savepoints[1].x);
+						dAngle1 = Math.atan2(savepoints[0].y - savepoints[2].y, savepoints[0].x - savepoints[2].x);
+                        // left side: draw letter in from the jaggy line
+						savepoints[0].x -= 30 * Math.cos(dAngle0);  //was 20
+						savepoints[0].y -= 30 * Math.sin(dAngle0);
+						
                         iLetterOffset = 0;
                         ptsJaggyLine[0].x = savepoints[0].x - iLetterOffset * 2;
                         ptsJaggyLine[0].y = savepoints[0].y;
                         ptsJaggyLine[0].x -= iLetterOffset;
-                        dAngle0 = Math.atan2(ptsJaggyLine[0].y - savepoints[1].y, ptsJaggyLine[0].x - savepoints[1].x);
+                        
                         pts[0].x = (ptsJaggyLine[0].x + savepoints[1].x) / 2;
                         pts[0].y = (ptsJaggyLine[0].y + savepoints[1].y) / 2;
                         dDeltaX0 = Math.cos(dAngle0 + sign * armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;
@@ -368,18 +370,19 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                             points[counter].style = 10;
                             counter++;
                         }
-                        if (goLeftThenRight)
-                            savepoints[0].x += 60 * t;
-                        else
-                            savepoints[0].x -= 60 * t;
+						
+						// right side: draw letter and jaggy line
+                        savepoints[0].x += 30 * (Math.cos(dAngle0) - Math.cos(dAngle1));  //was 20
+						savepoints[0].y += 30 * (Math.sin(dAngle0) - Math.sin(dAngle1));
+						
                         ptsJaggyLine[0].x = savepoints[0].x + iLetterOffset * 2;
                         ptsJaggyLine[0].y = savepoints[0].y;
                         ptsJaggyLine[0].x += iLetterOffset;
-                        dAngle0 = Math.atan2(ptsJaggyLine[0].y - savepoints[2].y, ptsJaggyLine[0].x - savepoints[2].x);
+                        
                         pts[0].x = (ptsJaggyLine[0].x + savepoints[2].x) / 2;
                         pts[0].y = (ptsJaggyLine[0].y + savepoints[2].y) / 2;
-                        dDeltaX0 = Math.cos(dAngle0 - sign * armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;
-                        dDeltaY0 = Math.sin(dAngle0 - sign * armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;
+                        dDeltaX0 = Math.cos(dAngle1 - sign*armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI  / 4) * iDelta;   //was -
+						dDeltaY0 = Math.sin(dAngle1 - sign*armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI  / 4) * iDelta;   //was -
                         ptsJaggyLine[1].x = pts[0].x - dDeltaX0;
                         ptsJaggyLine[1].y = pts[0].y - dDeltaY0;
                         ptsJaggyLine[2].x = pts[0].x + dDeltaX0;
@@ -390,8 +393,9 @@ armyc2.c2sd.JavaLineArray.DISMSupport =
                             counter++;
                         }
                         points[counter - 1].style = 5;
-                        dDeltaX1 = Math.cos(dAngle0 + sign * armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;
-                        dDeltaY1 = Math.sin(dAngle0 + sign * armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;
+						// draw arrow at end of line
+                        dDeltaX1 = Math.cos(dAngle1 + sign*armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;   //was +
+						dDeltaY1 = Math.sin(dAngle1 + sign*armyc2.c2sd.JavaLineArray.DISMSupport.CONST_PI / 4) * iDelta;   //was +
                         ptsJaggyLine[0].x = savepoints[2].x + dDeltaX0;
                         ptsJaggyLine[0].y = savepoints[2].y + dDeltaY0;
                         ptsJaggyLine[1] = savepoints[2];
