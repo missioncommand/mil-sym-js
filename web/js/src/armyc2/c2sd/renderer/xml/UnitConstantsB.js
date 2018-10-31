@@ -1675,12 +1675,6 @@ armyc2.c2sd.renderer.xml.UnitConstantsB = {
         "H": "1.X.3.1.1.10.5",
       },
       {
-        "ID": "S*G*UCL---*****",
-        "D": "Surveillance Unit",
-        "DC": "8",
-        "H": "1.X.3.1.1.11",
-      },
-      {
         "ID": "S*G*UU----*****",
         "D": "Combat Support",
         "DC": "8",
@@ -4445,12 +4439,6 @@ armyc2.c2sd.renderer.xml.UnitConstantsB = {
         "D": "USV Antisurface Warfare",
         "DC": "8",
         "H": "1.X.4.1.9.3",
-      },
-      {
-        "ID": "S*S*CUR---*****",
-        "D": "USV Remote Multimission Vehicle",
-        "DC": "8",
-        "H": "1.X.4.1.9.4",
       },
       {
         "ID": "S*S*N-----*****",
