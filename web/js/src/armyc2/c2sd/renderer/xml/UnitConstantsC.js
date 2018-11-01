@@ -4381,24 +4381,6 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "H": "1.X.4.1.5",
       },
       {
-        "ID": "S*S*S-----*****",
-        "D": "Sea Surface Station",
-        "DC": "8",
-        "H": "1.X.4.1.6",
-      },
-      {
-        "ID": "S*S*SP----*****",
-        "D": "Picket",
-        "DC": "8",
-        "H": "1.X.4.1.6.1",
-      },
-      {
-        "ID": "S*S*SA----*****",
-        "D": "ASW Ship",
-        "DC": "8",
-        "H": "1.X.4.1.6.2",
-      },
-      {
         "ID": "S*S*G-----*****",
         "D": "Navy Group",
         "DC": "8",
@@ -4505,18 +4487,6 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "D": "Noncombatant Hovercraft",
         "DC": "8",
         "H": "1.X.4.2.6",
-      },
-      {
-        "ID": "S*S*NN----*****",
-        "D": "Noncombatant Station",
-        "DC": "8",
-        "H": "1.X.4.2.7",
-      },
-      {
-        "ID": "S*S*NNR---*****",
-        "D": "Rescue",
-        "DC": "8",
-        "H": "1.X.4.2.7.1",
       },
       {
         "ID": "S*S*X-----*****",
