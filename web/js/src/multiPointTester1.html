@@ -273,6 +273,22 @@ function testRender()
                 modifiers[msa.TextColor] = "00FF00";
                 modifiers[msa.LineColor] = "0000FF";
                 break;
+			case 19://Turn
+                symbolCode = "GFMPOET---****X";//turn
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                modifiers = {};
+                modifiers[msa.SymbologyStandard] = 0;//2525B
+//				modifiers[msa.SymbologyStandard] = 1;//2525C
+                break;
+			case 20://Turn
+                symbolCode = "GFMPOET---****X";//turn
+                controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
+				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                modifiers = {};
+                //modifiers[msa.SymbologyStandard] = 0;//2525B
+				modifiers[msa.SymbologyStandard] = 1;//2525C
+                break;
             default:
                 break;
         } 
@@ -284,6 +300,10 @@ function testRender()
         var symStd = ms2525C;
 		rendererMP.setDefaultSymbologyStandard(symStd);
 		
+		var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+		if(modifiers[msa.SymbologyStandard] !== null)
+			symStd = modifiers[msa.SymbologyStandard]
+			
 		//RenderSymbol2D recommended for 2D maps.  KML or JSON format will work.  
 		//KML is being worked on more due to google earth in bcweb.  We are not actively using JSON for anything.
 		//ID, Name and Description are optional when using JSON format.
@@ -298,14 +318,14 @@ function testRender()
             else
             {
                 //RenderSymbol for 3D Google Earth.  KML format recommended.
-                json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, altitudeMode,scale, bbox, modifiers,format);
+                json = rendererMP.RenderSymbol("ID","Name","Description", symbolCode, controlPoints, altitudeMode,scale, bbox, modifiers,format, symStd);
             }
 			
 		}
 		else
 		{
 			//RenderSymbol2D for 2D maps, JSON Recommended for simpler output.
-			json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format);
+			json = rendererMP.RenderSymbol2D("ID","Name","Description", symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, modifiers,format, symStd);
 		}
 		var stop = Date.now();
 		var timeAmbush = (stop-start)/1000;
@@ -398,6 +418,8 @@ Draw Canvas/SVG Test:
       <option value=16>Delay</option>
 	  <option value=17>Breach</option>
 	  <option value=18>FFAI</option>
+	  <option value=19>Turn 2525B</option>
+	  <option value=20>Turn 2525C</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
