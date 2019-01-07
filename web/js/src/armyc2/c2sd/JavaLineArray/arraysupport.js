@@ -2772,6 +2772,13 @@ armyc2.c2sd.JavaLineArray.arraysupport =
                             acCounter = 29;
                             break;
                         case 23173000:
+							if(rev > 0)
+							{
+								//2525C or higher switch first and last point.  Order changed in 2525C
+								var swapPt = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(pLinePoints[0]);
+								pLinePoints[0] = pLinePoints[1];
+								pLinePoints[1] = swapPt;
+							}//*/
                             armyc2.c2sd.JavaLineArray.arraysupport.GetIsolatePointsDouble(pLinePoints, lineType);
                             acCounter = 29;
                             break;
