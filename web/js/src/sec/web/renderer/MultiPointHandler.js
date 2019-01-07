@@ -626,7 +626,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          */
         RenderSymbol: function (id, name, description, symbolCode, controlPoints, scale, bbox, symbolModifiers, format, symStd, converter, fontInfo)
         {
-            if (!symStd)
+            if (symStd == null || symStd === undefined)
             {
                 symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             }
@@ -1228,7 +1228,7 @@ sec.web.renderer.MultiPointHandler = (function () {
          */
         RenderSymbol2D: function (id, name, description, symbolCode, controlPoints, pixelWidth, pixelHeight, bbox, symbolModifiers, format, symStd, fontInfo, converter)
         {
-            if (!symStd)
+            if (symStd == null || symStd === undefined)
             {
                 symStd = armyc2.c2sd.renderer.utilities.RendererSettings.getSymbologyStandard();
             }
