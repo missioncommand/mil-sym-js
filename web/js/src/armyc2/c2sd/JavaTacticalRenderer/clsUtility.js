@@ -1180,16 +1180,14 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
     },
     WriteFile: function (str) {
         try {
-            var bufferedWriter = new java.io.BufferedWriter(new java.io.FileWriter("Test.txt"));
+			//sourceClass, sourceMethod, message, level
+			armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("JavaTacticalRenderer.clsUtility","WriteFile",str,800);
+            /*var bufferedWriter = new java.io.BufferedWriter(new java.io.FileWriter("Test.txt"));
             bufferedWriter.write(str);
             bufferedWriter.close();
-            bufferedWriter = null;
+            bufferedWriter = null;//*/
         } catch (exc) {
-            if (Clazz.instanceOf(exc)) {
-                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.clsUtility._className, "WriteFile", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside WriteFile", exc));
-            } else {
-                throw exc;
-            }
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.clsUtility._className, "WriteFile", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside WriteFile", exc));
         }
     },
     CalcIntersectPt: function (pt1, m1, pt2, m2, ptIntersect) {

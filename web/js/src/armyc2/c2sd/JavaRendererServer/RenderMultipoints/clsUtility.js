@@ -362,11 +362,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             pt2 = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility.PointToPOINT2 (pt);
             pt2.style = ptLatLong.style;
         } catch (e) {
-            if (Clazz.instanceOf (e)) {
-                armyc2.c2sd.JavaTacticalRenderer.clsUtility.WriteFile ("Error in clsUtility.PointLatLongToPixels");
-            } else {
-                throw e;
-            }
+            armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility._className,"PointLatLongToPixels",e);
         }
         return pt2;
     },     
