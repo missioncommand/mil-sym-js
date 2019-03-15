@@ -219,6 +219,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/FillPatterns.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+			<fileset file="web/js/src/armyc2/c2sd/renderer/utilities/GeoPixelConversion3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/point.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/so/rectangle.js" />
@@ -434,6 +435,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+			<fileset file="web/js/src/armyc2/c2sd/renderer/utilities/GeoPixelConversion3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />
@@ -671,6 +673,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdAttributes.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+			<fileset file="web/js/src/armyc2/c2sd/renderer/utilities/GeoPixelConversion3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererUtilities.js" />
@@ -905,6 +908,7 @@
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/MilStdSymbol.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/ModifiersTG.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConversion.js" />
+			<fileset file="web/js/src/armyc2/c2sd/renderer/utilities/GeoPixelConversion3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/PointConverter3D.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/RendererSettings.js" />
             <fileset file="web/js/src/armyc2/c2sd/renderer/utilities/SymbolUtilities.js" />

@@ -96,6 +96,9 @@ function testRender()
 		//var format = formatKML;
         //var format = formatGeoCanvas;
         //var format = formatGeoSVG;
+		
+		var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+		var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
         
         var cbFormat = document.getElementById("format");
         var format = parseInt(cbFormat.value);
@@ -267,8 +270,6 @@ function testRender()
                 //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
                 //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
                 scale = 50000.0;
-                var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
-                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
                 modifiers[msa.TextColor] = "00FF00";
                 modifiers[msa.LineColor] = "0000FF";
@@ -278,6 +279,7 @@ function testRender()
                 controlPoints = "66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704 66.26700036208742,30.62755038706961";
 				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
                 modifiers = {};
+				modifiers[mtg.T] = [50,400];
                 modifiers[msa.SymbologyStandard] = 0;//2525B
 //				modifiers[msa.SymbologyStandard] = 1;//2525C
                 break;
@@ -288,6 +290,23 @@ function testRender()
                 modifiers = {};
                 //modifiers[msa.SymbologyStandard] = 0;//2525B
 				modifiers[msa.SymbologyStandard] = 1;//2525C
+                break;
+			case 21://Wire
+                symbolCode = "GUMPOWU---****X";//turn
+                controlPoints = "-93.09246,31.0807 -93.08924,31.0809";
+				//pixelWidth = 1024;
+				//pixelHeight = 1024;
+				pixelWidth = 800;
+				pixelHeight = 800;
+				//var bbox = "-93.0924,31.08079,-93.08921,31.0809";
+				var bbox = "-93.0924,31.07919,-93.08921,31.08241";
+				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                modifiers = {};
+				modifiers[mtg.T] = "Wire1";
+				modifiers[mtg.T1] = "Wire2";
+                //modifiers[msa.SymbologyStandard] = 0;//2525B
+				modifiers[msa.SymbologyStandard] = 1;//2525C
+				//format = formatGeoJSON;
                 break;
             default:
                 break;
@@ -420,6 +439,7 @@ Draw Canvas/SVG Test:
 	  <option value=18>FFAI</option>
 	  <option value=19>Turn 2525B</option>
 	  <option value=20>Turn 2525C</option>
+	  <option value=21>Wire</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
