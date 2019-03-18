@@ -53,7 +53,7 @@ return{
     long2x: function(longitude, scale, longOrigin, latitude, metPerPix) {
         
             var longRem = Math.abs(longitude - longOrigin);
-            var metersPerDeg = armyc2.c2sd.renderer.utilities.GeoPixelConversion3D.GetMetersPerDegAtLat(latitude);
+            var metersPerDeg = this.GetMetersPerDegAtLat(latitude);
             var pixDis = 0;
             if (longRem > 0) {
                 pixDis = (longRem * metersPerDeg) / metPerPix;
@@ -66,7 +66,7 @@ return{
 
     x2long: function(xPosition, scale, longOrigin, latitude, metPerPix) {
         
-            var metersPerDeg = armyc2.c2sd.renderer.utilities.GeoPixelConversion3D.GetMetersPerDegAtLat(latitude);
+            var metersPerDeg = this.GetMetersPerDegAtLat(latitude);
             var longitude = longOrigin;
             if (xPosition !== 0) {
                 longitude = longOrigin + ((xPosition * metPerPix) / metersPerDeg);
@@ -81,7 +81,7 @@ return{
 
     GetMetersPerDegAtLat: function(lat) {
         // Convert latitude to radians
-        lat = Deg2Rad(lat);
+        lat = this.Deg2Rad(lat);
         // Set up "Constants"
         var p1 = 111412.84; // longitude calculation term 1
 
