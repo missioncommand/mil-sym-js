@@ -24,21 +24,33 @@ armyc2.c2sd.renderer.utilities.SymbolDimensions = {};
             case 800://unknown ground
             case 801:
             case 802:
+			case 853://unknown cyber
+			case 854:
+			case 855:
                     rect = new Rectangle(0,0,60.8,60.8);
                     break;
             case 803://FG
             case 804:
             case 805:
+			case 856://FC
+			case 857:
+			case 858:
                     rect = new Rectangle(0,0,62.547,44.52632);//
                     break;
             case 806://HG
             case 807:
             case 808:
+			case 859://HC
+			case 860:
+			case 861:
                     rect = new Rectangle(0,0,62.5,62.5);
                     break;
             case 809://NG
             case 810:
             case 811:
+			case 862://NC
+			case 863:
+			case 864:
                     rect = new Rectangle(0,0,47.6085,47.6085);
                     break;
             case 812://FE

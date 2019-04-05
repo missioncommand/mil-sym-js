@@ -15,6 +15,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
   FillIndexUS = 800,//Sea Surface
   FillIndexUU = 837,//Subsurface
   FillIndexUF = 800,//SOF
+  FillIndexUC = 853,// Cyber
    //FRIENDLY FILL Indexes
   FillIndexFZ = 812,
   FillIndexFP = 843,
@@ -24,6 +25,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
   FillIndexFS = 812,
   FillIndexFU = 831,
   FillIndexFF = 803,
+  FillIndexFC = 856,
    //NEUTRAL FILL Indexes
   FillIndexNZ = 809,
   FillIndexNP = 846,
@@ -33,6 +35,7 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
   FillIndexNS = 809,
   FillIndexNU = 834,
   FillIndexNF = 809,
+  FillIndexNC = 862,
    //HOSTILE FILL Indexes
   FillIndexHZ = 806,
   FillIndexHP = 840,
@@ -41,7 +44,8 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
   FillIndexHGE = 806,
   FillIndexHS = 806,
   FillIndexHU = 828,
-  FillIndexHF = 806;
+  FillIndexHF = 806,
+  FillIndexHC = 859;
   
   //imports
     var SymbolUtilities = armyc2.c2sd.renderer.utilities.SymbolUtilities,
@@ -356,6 +360,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           else
                             returnVal = 843; 
                       }
+					  else if(battleDimension=='C')//Cyber
+					  {
+						  returnVal = FillIndexFC;
+					  }
                       else//if(battleDimension==='Z')//unknown
                       {
                           returnVal = 812;//index in font file
@@ -386,6 +394,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           else
                             returnVal = 840; 
                       }
+					  else if(battleDimension=='C')//Cyber
+					  {
+						  returnVal = FillIndexHC;
+					  }
                       else//if(battleDimension==='Z')//unknown
                       {
                           returnVal = 806;//index in font file
@@ -416,6 +428,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           else
                             returnVal = 846; 
                       }
+					  else if(battleDimension=='C')//Cyber
+					  {
+						  returnVal = FillIndexNC;
+					  }
                       else//if(battleDimension==='Z')//unknown
                       {
                           returnVal = 809;//index in font file
@@ -452,6 +468,10 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                           else
                             returnVal = 849;
                       }
+					  else if(battleDimension=='C')//Cyber
+					  {
+						  returnVal = FillIndexUC;
+					  }
                       else
                           returnVal = FillIndexUG;
                   }
@@ -1011,7 +1031,8 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                     characterIndex === FillIndexUG ||
                     characterIndex === FillIndexUGE ||
                     characterIndex === FillIndexUS ||
-                    characterIndex === FillIndexUF)
+                    characterIndex === FillIndexUF ||
+					characterIndex === FillIndexUC)
             {
                 return 1.44;
             }
@@ -1035,12 +1056,13 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                     characterIndex === FillIndexNG ||
                     characterIndex === FillIndexNGE ||
                     characterIndex === FillIndexNS ||
-                    characterIndex === FillIndexNF)
+                    characterIndex === FillIndexNF ||
+					characterIndex === FillIndexNC)
             {
                 return 1.1;
             }
             else if(characterIndex === FillIndexFG ||
-                    characterIndex === FillIndexFGE)
+					characterIndex === FillIndexFC)
             {
                 return 1.0;
             }
@@ -1062,7 +1084,8 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       characterIndex === FillIndexUU+1 ||
                       characterIndex === FillIndexUU+2 ||
                       characterIndex === FillIndexFG ||
-                      characterIndex === FillIndexFF)
+                      characterIndex === FillIndexFF ||
+					  characterIndex === FillIndexFC)
               {
                   return 1.5;
               }
@@ -1075,7 +1098,8 @@ armyc2.c2sd.renderer.utilities.UnitFontLookup = (function () {
                       characterIndex === FillIndexUG ||
                       characterIndex === FillIndexUGE ||
                       characterIndex === FillIndexUS ||
-                      characterIndex === FillIndexUF)
+                      characterIndex === FillIndexUF ||
+					  characterIndex === FillIndexUC)
               {
                   return 1.44;
               }

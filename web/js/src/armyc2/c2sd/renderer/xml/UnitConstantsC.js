@@ -5256,11 +5256,47 @@ armyc2.c2sd.renderer.xml.UnitConstantsC = {
         "DC": "8",
         "H": "1.X.6.4",
       },
+	  {
+        "ID": "S*C*------*****",
+        "D": "Mission Force (Cyber)",
+        "DC": "0",
+        "H": "1.X.7",
+      },
+	  {
+        "ID": "S*C*MUSCMT*****",
+        "D": "Combat Mission Team",
+        "DC": "8",
+        "H": "1.X.7.1",
+      },
+	  {
+        "ID": "S*C*MUSNMT*****",
+        "D": "National Mission Team",
+        "DC": "8",
+        "H": "1.X.7.2",
+      },
+	  {
+        "ID": "S*C*MUSCPT*****",
+        "D": "Cyber Protection Team",
+        "DC": "8",
+        "H": "1.X.7.3",
+      },
+	  {
+        "ID": "S*C*NSCTA-*****",
+        "D": "Nation State Cyber Threat Actor",
+        "DC": "8",
+        "H": "1.X.7.4",
+      },
+	  {
+        "ID": "S*C*NNSCTA*****",
+        "D": "Non Nation State Cyber Threat Actor",
+        "DC": "8",
+        "H": "1.X.7.5",
+      },
       {
         "ID": "S*Z*------*****",
         "D": "Unknown Battle Dimension",
         "DC": "8",
-        "H": "1.X.7",
+        "H": "1.X.8",
       },
       {
         "ID": "I*-*--------***",
