@@ -3520,9 +3520,20 @@ return{
             pt2 = null,
             pt3 = null;
         
+		var affiliation = symbolID.charAt(1);
         var length = 40;
         if(SymbolUtilities.isNBC(symbolID))
             length = Math.round(bounds.getHeight() / 2);
+		else if((SymbolUtilities.isHQ(symbolID)) && 
+					(affiliation===("F") ||
+					affiliation===("A") ||
+					affiliation===("D") ||
+					affiliation===("M") ||
+					affiliation===("J") ||
+					affiliation===("K") ||
+					affiliation===("N") ||
+					affiliation===("L"))===false)
+			length = Math.round(bounds.getHeight() * 0.7);
         else
             length = bounds.getHeight();
         
@@ -3536,9 +3547,9 @@ return{
         
         pt1 = new SO.Point(x1,y1);
         var scheme = symbolID.charAt(0);
-        if(SymbolUtilities.isNBC(symbolID) ||
+        if(SymbolUtilities.isHQ(symbolID)==false && (SymbolUtilities.isNBC(symbolID) ||
             (scheme === 'S' && symbolID.charAt(2)===("G")) || 
-            scheme === 'O' || scheme === 'E')
+            scheme === 'O' || scheme === 'E'))
         {
             y1 = bounds.getY() + bounds.getHeight();
             pt1 = new SO.Point(x1,y1);
