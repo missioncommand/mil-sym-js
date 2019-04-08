@@ -1197,31 +1197,6 @@ return{
             // </editor-fold>
 
             
-            // <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
-            var domPoints = null,
-                domBounds = null;
-            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] &&
-                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
-            {
-                var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
-
-                var isY = (modifiers[ModifiersUnits.Y_LOCATION] !== undefined);
-
-                domPoints = this.createDOMArrowPoints(symbolID, symbolBounds,centerPoint, q, isY);
-
-                domBounds = new SO.Rectangle(domPoints[0].getX(),domPoints[0].getY(),1,1);
-
-                var temp = null;
-                for(var i = 1; i < 6; i++)
-                {
-                    temp = domPoints[i];
-                    if(temp !== null)
-                        domBounds.unionPoint(temp);
-                }
-                imageBounds.union(domBounds);
-            }
-
-            // </editor-fold>
 
             // <editor-fold defaultstate="collapsed" desc="Build HQ Staff">
             var hqBounds = null;
@@ -1255,13 +1230,42 @@ return{
 
                 //create bounding rectangle for HQ staff.
                 hqBounds = new SO.Rectangle(pt1HQ.getX(),pt1HQ.getY(),2,pt2HQ.getY()-pt1HQ.getY());
+				
                 //adjust the image bounds accordingly.
-                imageBounds.union(hqBounds);
+                //imageBounds.union(hqBounds);
+				imageBounds.shiftBR(0,pt2HQ.getY()-imageBounds.getBottom());
+				
                 //adjust symbol center
                 centerPoint.setLocation(pt2HQ.getX(),pt2HQ.getY());
             }
 
             // </editor-fold>  
+			
+			// <editor-fold defaultstate="collapsed" desc="Build DOM Arrow">
+            var domPoints = null,
+                domBounds = null;
+            if(modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT] &&
+                SymbolUtilities.canUnitHaveModifier(symbolID, ModifiersUnits.Q_DIRECTION_OF_MOVEMENT))
+            {
+                var q = modifiers[ModifiersUnits.Q_DIRECTION_OF_MOVEMENT];
+
+                var isY = (modifiers[ModifiersUnits.Y_LOCATION] !== undefined);
+
+                domPoints = this.createDOMArrowPoints(symbolID, symbolBounds,centerPoint, q, isY);
+
+                domBounds = new SO.Rectangle(domPoints[0].getX(),domPoints[0].getY(),1,1);
+
+                var temp = null;
+                for(var i = 1; i < 6; i++)
+                {
+                    temp = domPoints[i];
+                    if(temp !== null)
+                        domBounds.unionPoint(temp);
+                }
+                imageBounds.union(domBounds);
+            }
+
+            // </editor-fold>
 
             // <editor-fold defaultstate="collapsed" desc="Build Operational Condition Indicator">
             var ociBounds = null;
@@ -3865,9 +3869,20 @@ return{
             pt2 = null,
             pt3 = null;
         
+		var affiliation = symbolID.charAt(1);
         var length = 40;
         if(SymbolUtilities.isNBC(symbolID))
             length = Math.round(bounds.getHeight() / 2);
+        else if((SymbolUtilities.isHQ(symbolID)) && 
+					(affiliation===("F") ||
+					affiliation===("A") ||
+					affiliation===("D") ||
+					affiliation===("M") ||
+					affiliation===("J") ||
+					affiliation===("K") ||
+					affiliation===("N") ||
+					affiliation===("L"))===false)
+			length = Math.round(bounds.getHeight() * 0.7);
         else
             length = bounds.getHeight();
         
@@ -3881,9 +3896,9 @@ return{
         
         pt1 = new SO.Point(x1,y1);
         var scheme = symbolID.charAt(0);
-        if(SymbolUtilities.isNBC(symbolID) ||
+        if(SymbolUtilities.isHQ(symbolID)==false && (SymbolUtilities.isNBC(symbolID) ||
             (scheme === 'S' && symbolID.charAt(2)===("G")) || 
-            scheme === 'O' || scheme === 'E')
+            scheme === 'O' || scheme === 'E'))
         {
             y1 = bounds.getY() + bounds.getHeight();
             pt1 = new SO.Point(x1,y1);
