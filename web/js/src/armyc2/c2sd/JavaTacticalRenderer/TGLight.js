@@ -24,6 +24,7 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight = function () {
     this.y = "";
     this.n = "ENY";
     this.h2 = "";
+    this.h3 = "";
     this.w = "";
     this.w1 = "";
     this.affiliation = null;
@@ -190,6 +191,15 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_H2 = function () {
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_H2 = function (value) {
     this.h2 = value;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_H3 = function () {
+    if (this.visibleModifiers || this.lineType === 24311000)
+        return this.h3;
+    else
+        return "";
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_H3 = function (value) {
+    this.h3 = value;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_DTG = function () {
     if (this.visibleModifiers)
