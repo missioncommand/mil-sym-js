@@ -53,6 +53,13 @@ armyc2.c2sd.renderer.utilities.ModifiersTG = {
      */
     H2_ADDITIONAL_INFO_3 : "H2",
     /**
+     * A text modifier for tactical graphics, content is
+     * implementation specific.
+     * TG: P,L,A,N,B/C
+     * Length: 20
+     */
+    H3_ADDITIONAL_INFO_4 : "H3",
+    /**
      * A text modifier for tactical graphics, letters "ENY" denote hostile symbols.
      * TG: P,L,A,BL,N,B/C
      * Length: 3
@@ -185,6 +192,8 @@ armyc2.c2sd.renderer.utilities.ModifiersTG = {
                 return "Additional Info 2";
             case this.H2_ADDITIONAL_INFO_3:
                 return "Additional Info 3";
+            case this.H3_ADDITIONAL_INFO_4:
+                return "Additional Info 4";
             case this.N_HOSTILE:
                 return "Hostile";
             case this.Q_DIRECTION_OF_MOVEMENT:
