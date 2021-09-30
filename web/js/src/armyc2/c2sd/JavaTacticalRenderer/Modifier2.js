@@ -1230,7 +1230,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
     var dist = 0;
     var lastPt = null;
     var doublesBack = false;
-    var lineType = tg.get_LineType();
+    var linetype = tg.get_LineType();
     middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
     var foundVisibleSegment = new Boolean(false);
     if (clipBounds === null)
@@ -1242,7 +1242,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
       if (dist < 5)
         continue;
       //diagnostic
-      if (j > 0 && lineType === 22121000) //boundary
+      if (j > 0 && linetype === 22121000) //boundary
       {
         if (lastPt === null)
           lastPt = tg.Pixels.get(j - 1);
@@ -1267,7 +1267,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
         if (dist < 5)
           continue;
         //diagnostic
-        if (j > 0 && lineType === 22121000) //boundary
+        if (j > 0 && linetype === 22121000) //boundary
         {
           if (lastPt === null)
             lastPt = tg.Pixels.get(j - 1);
@@ -1326,7 +1326,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
       if (dist < 5)
         continue;
       //diagnostic
-      if (j > 0 && lineType === 22121000) //boundary
+      if (j > 0 && linetype === 22121000) //boundary
       {
         if (lastPt === null)
         ;
@@ -1353,7 +1353,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getvisibleMiddleSegment2 = function(t
         if (dist < 5)
           continue;
         //diagnostic
-        if (j > 0 && lineType === 22121000) //boundary
+        if (j > 0 && linetype === 22121000) //boundary
         {
           if (lastPt === null)
             lastPt = tg.Pixels.get(j - 1);
@@ -5057,7 +5057,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
     var pt3 = null;
     var quadrant = -1;
     var shape2 = null;
-    var lineType = tg.get_LineType();
+    var linetype = tg.get_LineType();
     var sz = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontSize();
     if (sz === 0)
       return;
@@ -5082,7 +5082,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
     for (j = 0; j < tg.modifiers.size(); j++) {
       modifier = tg.modifiers.get(j);
       var lineFactor = modifier.lineFactor;
-      if (modifier.type !== 3 && lineType !== 22123000) {
+      if (modifier.type !== 3 && linetype !== 22123000) {
         lineFactor += 0.25;
       }
       if (isTextFlipped === true)
@@ -5135,7 +5135,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             direction = 3;
           }
 
-          if (lineType === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) { //LC
+          if (linetype === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) { //LC
             direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
           }
 
@@ -5165,7 +5165,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
             direction = 2;
           else
             direction = 3;
-          if (lineType === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {
+          if (linetype === 22123000 || tg.get_Client().equalsIgnoreCase("ge")) {
             direction = armyc2.c2sd.JavaTacticalRenderer.Modifier2.switchDirection(direction);
           }
           pt2 = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt1, pt0, pt1, direction, lineFactor * stringHeight);
@@ -5194,7 +5194,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
         case 2: //breach
         case 6:
           dist = armyc2.c2sd.JavaLineArray.lineutility.CalcDistanceDouble(pt0, pt1);
-          if (converter !== null && dist > 100 && lineType !== 22121000) {
+          if (converter !== null && dist > 100 && linetype !== 22121000) {
             var pt1Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt0.x), Math.floor(pt0.y)));
             var pt2Geo = converter.PixelsToGeo(new armyc2.c2sd.graphics2d.Point(Math.floor(pt1.x), Math.floor(pt1.y)));
             var a12 = new armyc2.c2sd.JavaLineArray.ref();
