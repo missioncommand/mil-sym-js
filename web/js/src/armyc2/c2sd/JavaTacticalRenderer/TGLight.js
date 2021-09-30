@@ -15,7 +15,10 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight = function () {
     this.fillColor = null;
     this.fontBackColor = null;
     this.textColor = null;
+    this.charWidth = 0;
+    this.charHeight = 0;
     this.lineThickness = 0;
+    this.offset = { x: 0, y: 0 };
     this.t = "";
     this.client = "";
     this.t1 = "";
@@ -119,11 +122,29 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_TextColor = function () {
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_TextColor = function (value) {
     this.textColor = value;
 };
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_CharWidth = function () {
+    return this.charWidth;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_CharWidth = function (value) {
+    this.charWidth = value;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_CharHeight = function () {
+    return this.charHeight;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_CharHeight = function (value) {
+    this.charHeight = value;
+};
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_LineThickness = function () {
     return this.lineThickness;
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_LineThickness = function (value) {
     this.lineThickness = value;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_Offset = function () {
+    return { ...this.offset };
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_Offset = function (value) {
+    this.offset = { ...value };
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_Name = function () {
     if (this.visibleModifiers)
@@ -409,6 +430,42 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.get_HideOptionalLabels = func
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.set_HideOptionalLabels = function (value) {
     this._HideOptionalLabels = value;
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.addModifier = function( mod ) {
+    this.modifiers.add( mod );
+    //this.calculate_Offset();
+};
+armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.calculate_Offset = function() {
+    if ( this.charHeight === 0 || this.charWidth === 0 ) {
+        return;
+    }
+
+    let modifierWidth = -1;
+    let lineItems = 0;
+    this.modifiers && this.modifiers.array && this.modifiers.array.forEach( mod => {
+        if ( mod.type === 3 ) {
+            modifierWidth = Math.max( modifierWidth, mod.text.length );
+            lineItems++;
+        }
+    } );
+    if ( modifierWidth !== -1 ) {
+        this.offset = {
+            "y": Math.ceil( ( ( lineItems * this.charHeight ) + ( ( lineItems - 1 ) * this.charHeight * 1.40 ) ) ),
+            "x": Math.ceil( ( modifierWidth * this.charWidth ) )
+        };
+        let bOffset = true;
+        this.modifiers.array.forEach( mod => {
+            // only offset one time, all of these point reference the same object,
+            // so if we offset the points multiple time then we offset the points too much
+            if ( bOffset && mod.type === 3 ) {
+                mod.textPath[0].x -= this.offset.x;
+                mod.textPath[0].y -= this.offset.y;
+                mod.textPath[1].x = mod.textPath[0].x;
+                mod.textPath[1].y = mod.textPath[0].y;                
+                bOffset = false;
+            }
+        } );    
+    }
 };
 
 armyc2.c2sd.JavaTacticalRenderer.TGLight._className = "TGLight";

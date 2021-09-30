@@ -1128,6 +1128,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             var si = null;
             for (j = 0; j < shapes.size(); j++) {
                 shape = shapes.get(j);
+                ( shape._Shape ) === null && console.info( j + ": " + JSON.stringify(shape) );
                 si = armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer.Shape2ToShapeInfo2(shape);
                 shapeInfos.add(si);
             }
