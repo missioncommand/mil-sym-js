@@ -55,7 +55,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetCenterLabel = function(tg) {
   var label = "";
   try {
     const linetype = tg.get_LineType();
-    console.info( "7 => linetype: " + linetype );
+    //console.info( "7 => linetype: " + linetype );
     switch (linetype) {
       case 22223000:
         label = "SAAFR";
@@ -720,7 +720,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetLineTooShort = function(tg, g2d) {
     tg.set_CharHeight( metrics.stringHeight( "A" ) );
     tg.set_CharWidth( metrics.stringWidth( "W" ) );
     const linetype = tg.get_LineType();
-    console.info( "8 => linetype: " + linetype );
+    //console.info( "8 => linetype: " + linetype );
     switch (linetype) {
       case 22121000:
         if (dist < 1.5 * (stringWidthENY * 2 + stringWidthEchelonSymbol))
@@ -768,7 +768,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort = function
     if (totalWidth < t1Width)
       totalWidth = t1Width;
     const linetype = tg.get_LineType();
-    console.info( "9 => linetype: " + linetype );
+    //console.info( "9 => linetype: " + linetype );
     switch (linetype) {
       case 22121000:
         if (dist < 1.25 * (totalWidth))
@@ -1005,7 +1005,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function(tg, pt0,
       p1 = null;
     var last = 1.0;
     const linetype = tg.get_LineType();
-    console.info( "10 => linetype: " + linetype );
+    //console.info( "10 => linetype: " + linetype );
     switch (linetype) {
       case 22121000:
         for (var j = 0; j < tg.Pixels.size() - 1; j++) {
@@ -1056,7 +1056,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function(tg, pt0,
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithTwoLabels = function(tg, label, eny, g2d) {
   try {
     const linetype = tg.get_LineType();
-    console.info( "22 => linetype: " + linetype );
+    //console.info( "22 => linetype: " + linetype );
     switch (linetype) {
       case 2237000:
         if (!tg.get_Affiliation().equalsIgnoreCase("H")) {
@@ -1143,7 +1143,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithENY = function(tg, g2d) {
     tg.set_CharHeight( metrics.stringHeight( "A" ) );
     tg.set_CharWidth( metrics.stringWidth( "W" ) );
     const linetype = tg.get_LineType();
-    console.info( "11 => linetype: " + linetype );
+    //console.info( "11 => linetype: " + linetype );
     var affiliation = tg.get_Affiliation();
     var echelonSymbol = tg.get_EchelonSymbol();
     if (affiliation !== null && affiliation.equals("H"))
@@ -1246,7 +1246,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
     var lastPt = null;
     var doublesBack = false;
     const linetype = tg.get_LineType();
-    console.info( "12 => linetype: " + linetype );
+    //console.info( "12 => linetype: " + linetype );
     middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
     var foundVisibleSegment = new Boolean(false);
     if (clipBounds === null)
@@ -2611,7 +2611,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function(tg) {
   var height = 0;
   try {
     const linetype = tg.get_LineType();
-    console.info( "13 => linetype: " + linetype );
+    //console.info( "13 => linetype: " + linetype );
     switch (linetype) {
       //case 24326101:
       case 24321200:
@@ -2659,7 +2659,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function(tg) {
     if (tg.modifiers === null || tg.modifiers.isEmpty())
       return;
     const linetype = tg.get_LineType();
-    console.info( "26 => linetype: " + linetype );
+    //console.info( "26 => linetype: " + linetype );
     var isClosedPolygon = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(linetype);
     var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(linetype, null);
     if (!isClosedPolygon && !isChange1Area)
@@ -2967,7 +2967,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         origPoints = armyc2.c2sd.JavaLineArray.lineutility.getDeepCopy(tg.Pixels);
         break;
       default:
-        console.info( JSON.stringify( "modifiers not handled tg = " + JSON.stringify( tg ) ) );
+        //console.info( JSON.stringify( "modifiers not handled tg = " + JSON.stringify( tg ) ) );
         return;
     }
     var factor = 1;
@@ -3031,7 +3031,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
     tg.set_CharHeight( metrics.stringHeight( "A" ) );
     tg.set_CharWidth( metrics.stringWidth( "W" ) );
 
-    console.info( "1 => linetype: " + linetype );
+    //console.info( "1 => linetype: " + linetype );
 
     switch (linetype) {
       case 10000000:
@@ -4069,7 +4069,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRFALines = function(tg) {
       lines++;
 
     const linetype = tg.get_LineType();
-    console.info( "2 => linetype: " + linetype );
+    //console.info( "2 => linetype: " + linetype );
 
     switch ( linetype ) {
       case 24352000:
@@ -4094,7 +4094,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.Test = function(tg) {
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function(tg, converter) {
   const linetype = tg.get_LineType();
-  console.info( "16 => linetype: " + linetype );
+  //console.info( "16 => linetype: " + linetype );
   if (linetype !== 243112000) {
     return false;
   }
@@ -4233,7 +4233,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
     if (tg.modifiers === null)
       tg.modifiers = new java.util.ArrayList();
     const linetype = tg.get_LineType();
-    console.info( "3 => linetype: " + linetype );
+    //console.info( "3 => linetype: " + linetype );
     //diagnostic add early exit for lines which do not use this function
     switch (linetype) {
       case 14000000:
@@ -4933,7 +4933,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function(tg, 
     var dist = 0;
     var stroke = null;
     const linetype = tg.get_LineType();
-    console.info( "4 => linetype: " + linetype );
+    //console.info( "4 => linetype: " + linetype );
     switch ( linetype ) {
       case 22121000:
         echelonSymbol = tg.get_EchelonSymbol();
@@ -5101,7 +5101,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
     var quadrant = -1;
     var shape2 = null;
     const linetype = tg.get_LineType();
-    console.info( "5 => linetype: " + linetype );
+    //console.info( "5 => linetype: " + linetype );
     var sz = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontSize();
     if (sz === 0)
       return;
@@ -5377,7 +5377,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
       shape2.setModifierString(s);
       shape2.setModifierStringAngle(theta * 180 / 3.141592653589793);
       shape2.setModifierStringPosition(modifierPosition);
-      console.info( s + " : " + JSON.stringify( modifierPosition ) );
+      //console.info( s + " : " + JSON.stringify( modifierPosition ) );
       shape2.setTextJustify(justify);
       if (shape2 !== null) {
         shapes.add(shape2);
@@ -5745,7 +5745,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function(tg,
       csFactor = 0.9;
     var factor = 1;
     const linetype = tg.get_LineType();
-    console.info( "6 => linetype: " + linetype );
+    //console.info( "6 => linetype: " + linetype );
     var j = 0;
     var k = 0;
     var x = 0;

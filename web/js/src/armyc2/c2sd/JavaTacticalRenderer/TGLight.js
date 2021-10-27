@@ -436,6 +436,7 @@ armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.addModifier = function( mod )
     //this.calculate_Offset();
 };
 armyc2.c2sd.JavaTacticalRenderer.TGLight.prototype.calculate_Offset = function() {
+    //console.info( "calculate_Offset( { width: " + this.charWidth + ", height: " + this.charHeight + " } )"  )
     if ( this.charHeight === 0 || this.charWidth === 0 ) {
         return;
     }
