@@ -54,7 +54,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DoublesBack = function(pt0, pt1, pt2)
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetCenterLabel = function(tg) {
   var label = "";
   try {
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "7 => linetype: " + linetype );
+    switch (linetype) {
       case 22223000:
         label = "SAAFR";
         break;
@@ -467,7 +469,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddOffsetModifier = function(tg, text
           modifier.textPath[1].x += spaces;
         }
       }
-      tg.modifiers.add(modifier);
+      tg.addModifier(modifier);
     }
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
@@ -496,7 +498,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier = function(tg, text, type
     modifier.lineFactor = lineFactor;
     modifier.textPath[0] = ptStart;
     modifier.textPath[1] = ptEnd;
-    tg.modifiers.add(modifier);
+    tg.addModifier(modifier);
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
       armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddModifier", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifier", exc));
@@ -524,7 +526,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifier2 = function(tg, text, typ
     modifier.textPath[1] = pt1;
     modifier.isIntegral = isIntegral;
     modifier.textID = modifierType;
-    tg.modifiers.add(modifier);
+    tg.addModifier(modifier);
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
       armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddModifier", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddModifier", exc));
@@ -554,7 +556,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier = function(tg, te
     if (tg.Pixels.size() > endIndex) {
       modifier.textPath[0] = tg.Pixels.get(startIndex);
       modifier.textPath[1] = tg.Pixels.get(endIndex);
-      tg.modifiers.add(modifier);
+      tg.addModifier(modifier);
     }
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
@@ -582,7 +584,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddAreaModifier = function(tg, text, 
     modifier.lineFactor = lineFactor;
     modifier.textPath[0] = pt0;
     modifier.textPath[1] = pt1;
-    tg.modifiers.add(modifier);
+    tg.addModifier(modifier);
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
       armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddAreaModifier", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddAreaModifier", exc));
@@ -611,7 +613,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier = function(tg
     modifier.textPath[0] = pt0;
     modifier.textPath[1] = pt1;
     modifier.textID = modifierType;
-    tg.modifiers.add(modifier);
+    tg.addModifier(modifier);
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
       armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.Modifier2._className, "AddAreaModifier", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside AddAreaModifier", exc));
@@ -715,7 +717,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetLineTooShort = function(tg, g2d) {
     if (echelonSymbol !== null) {
       stringWidthEchelonSymbol = metrics.stringWidth(echelonSymbol);
     }
-    switch (tg.get_LineType()) {
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
+    const linetype = tg.get_LineType();
+    //console.info( "8 => linetype: " + linetype );
+    switch (linetype) {
       case 22121000:
         if (dist < 1.5 * (stringWidthENY * 2 + stringWidthEchelonSymbol))
           lineTooShort = true;
@@ -761,7 +767,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetBoundarySegmentTooShort = function
       totalWidth = tWidth;
     if (totalWidth < t1Width)
       totalWidth = t1Width;
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "9 => linetype: " + linetype );
+    switch (linetype) {
       case 22121000:
         if (dist < 1.25 * (totalWidth))
           lineTooShort = true;
@@ -996,7 +1004,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function(tg, pt0,
     var p0 = null,
       p1 = null;
     var last = 1.0;
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "10 => linetype: " + linetype );
+    switch (linetype) {
       case 22121000:
         for (var j = 0; j < tg.Pixels.size() - 1; j++) {
           p0 = tg.Pixels.get(j);
@@ -1045,7 +1055,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath = function(tg, pt0,
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithTwoLabels = function(tg, label, eny, g2d) {
   try {
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "22 => linetype: " + linetype );
+    switch (linetype) {
       case 2237000:
         if (!tg.get_Affiliation().equalsIgnoreCase("H")) {
           eny = "";
@@ -1128,7 +1140,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.areasWithENY = function(tg, g2d) {
     var startIndex = 0;
 
     var j = 0;
-    var linetype = tg.get_LineType();
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
+    const linetype = tg.get_LineType();
+    //console.info( "11 => linetype: " + linetype );
     var affiliation = tg.get_Affiliation();
     var echelonSymbol = tg.get_EchelonSymbol();
     if (affiliation !== null && affiliation.equals("H"))
@@ -1230,7 +1245,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getVisibleMiddleSegment = function(tg
     var dist = 0;
     var lastPt = null;
     var doublesBack = false;
-    var linetype = tg.get_LineType();
+    const linetype = tg.get_LineType();
+    //console.info( "12 => linetype: " + linetype );
     middleSegment = Math.floor((tg.Pixels.size() + 1) / 2) - 1;
     var foundVisibleSegment = new Boolean(false);
     if (clipBounds === null)
@@ -1411,7 +1427,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.RemoveModifiers = function(tg, g2d, i
     if (!tg.get_Client().equalsIgnoreCase("cpof2d") && !tg.get_Client().equalsIgnoreCase("cpof3d"))
       return;
     var j = 0;
+    const metrics = g2d.getFontMetrics();
     var mbrPoly = null;
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
     switch (tg.get_LineType()) {
       case 24311000:
       case 24322200:
@@ -1468,7 +1487,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.RemoveModifiers = function(tg, g2d, i
       font = g2d.getFont();
     }
     g2d.setFont(font);
-    var metrics = g2d.getFontMetrics();
     var stringWidth = 0;
     var stringHeight = 0;
     var wfits = true;
@@ -2592,7 +2610,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.RemoveModifiers = function(tg, g2d, i
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.getChange1Height = function(tg) {
   var height = 0;
   try {
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "13 => linetype: " + linetype );
+    switch (linetype) {
       //case 24326101:
       case 24321200:
       case 24323200:
@@ -2638,7 +2658,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers = function(tg) {
       return;
     if (tg.modifiers === null || tg.modifiers.isEmpty())
       return;
-    var linetype = tg.get_LineType();
+    const linetype = tg.get_LineType();
+    //console.info( "26 => linetype: " + linetype );
     var isClosedPolygon = armyc2.c2sd.JavaTacticalRenderer.clsUtility.isClosedPolygon(linetype);
     var isChange1Area = armyc2.c2sd.JavaTacticalRenderer.clsUtility.IsChange1Area(linetype, null);
     if (!isClosedPolygon && !isChange1Area)
@@ -2946,6 +2967,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         origPoints = armyc2.c2sd.JavaLineArray.lineutility.getDeepCopy(tg.Pixels);
         break;
       default:
+        //console.info( JSON.stringify( "modifiers not handled tg = " + JSON.stringify( tg ) ) );
         return;
     }
     var factor = 1;
@@ -3003,9 +3025,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
     var index = 0;
     var nextIndex = 0;
     var size = tg.Pixels.size();
-	var dAngle0;
-	var dAngle1;
-	var stringHeight;
+    var dAngle0;
+    var dAngle1;
+    var stringHeight;
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
+
+    //console.info( "1 => linetype: " + linetype );
+
     switch (linetype) {
       case 10000000:
       case 15000000:
@@ -3360,8 +3387,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           if (middleSegment == middleSegment2) {
           	middleSegment2-=1;
           }
-
-
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           if (middleSegment !== middleSegment2)
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment2, middleSegment2 + 1, new Boolean(false));
@@ -3463,8 +3488,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
           if (middleSegment == middleSegment2) {
           	middleSegment2-=1;
           }
-
-
           armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment, middleSegment + 1, new Boolean(false));
           if (middleSegment !== middleSegment2)
             armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralModifier(tg, label + tg.get_Name(), 2, -1 * csFactor, middleSegment2, middleSegment2 + 1, new Boolean(false));
@@ -3508,8 +3531,10 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
       case 22622000:
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ul, ur, lr, ll);
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 2, 0, ll, lr, new Boolean(false));
-        if (!tg.get_Name().isEmpty())
-          armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "(PL " + tg.get_Name() + ")", 2, 1.1 * (factor * csFactor + csFactor), ll, lr, new Boolean(false));
+        if (!tg.get_Name().isEmpty()){
+          const name = "(PL " + tg.get_Name() + ")";
+          armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, name, 2, 1.1 * (factor * csFactor + csFactor), ll, lr, new Boolean(false));
+        }
         break;
       case 25211000:
       case 25212000:
@@ -3534,13 +3559,13 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label + tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
         break;
       case 24322100:
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, -3 * csFactor, ptCenter, ptCenter, new Boolean(false));
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -2 * csFactor, ptCenter, ptCenter, new Boolean(false));
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), 3, -1 * csFactor, ptCenter, ptCenter, new Boolean(false), "H");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), 3, 0, ptCenter, ptCenter, new Boolean(false), "H1");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Grids: " + tg.get_H2(), 3, 1 * csFactor, ptCenter, ptCenter, new Boolean(false), "H2");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "EFF: " + tg.get_DTG(), 3, 2 * csFactor, ptCenter, ptCenter, new Boolean(false), "W");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 3, 3 * csFactor, ptCenter, ptCenter, new Boolean(false), "W1");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, -7 * csFactor, ptCenter, ptCenter, new Boolean(false));
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -6 * csFactor, ptCenter, ptCenter, new Boolean(false));
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), 3, -5 * csFactor, ptCenter, ptCenter, new Boolean(false), "H");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), 3, -4 * csFactor, ptCenter, ptCenter, new Boolean(false), "H1");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "Grids: " + tg.get_H2(), 3, -3 * csFactor, ptCenter, ptCenter, new Boolean(false), "H2");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "EFF: " + tg.get_DTG() + ( tg.get_DTG1() ? " -" : "" ), 3, -2 * csFactor, ptCenter, ptCenter, new Boolean(false), "W");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "     " + tg.get_DTG1(), 3, 3 * csFactor, ptCenter, ptCenter, new Boolean(false), "W1");
         break;
       case 24323100:
       case 24325100:
@@ -3587,11 +3612,14 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetMBR(tg, ul, ur, lr, ll);
         var ptLeft = ul;
         var ptRight = ur;
-        if (tg.get_Client().equalsIgnoreCase("ge")) {
-          ptLeft.x -= Math.floor(font.getSize() / 2);
-          ptRight.x -= Math.floor(font.getSize() / 2);
+        const useDash = tg.get_DTG() && tg.get_DTG1();
+        if ( tg.get_Client().equalsIgnoreCase("ge") ) {
+          const startTime = useDash ? ( tg.get_DTG() + " -" ) : tg.get_DTG() ? tg.get_DTG() : "";
+          const endTime = tg.get_DTG1() ? tg.get_DTG1() : "";
+          ptLeft.x -= metrics.stringWidth( startTime.length >= endTime.length ? startTime : endTime );
+          ptRight.x -= metrics.stringWidth( startTime.length >= endTime.length ? startTime : endTime );
         }
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), 1, 0.5 * csFactor, ptLeft, ptRight, new Boolean(false), "W");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, useDash ? tg.get_DTG() + " -" : tg.get_DTG() , 1, 0.5 * csFactor, ptLeft, ptRight, new Boolean(false), "W");
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 1, 1.5 * csFactor, ptLeft, ptRight, new Boolean(false), "W1");
         break;
       case 24314000:
@@ -3654,9 +3682,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 3, 1.5 * csFactor, ptCenter, ptCenter, new Boolean(false), "W1");
         break;
       case 23115000:
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -1 * csFactor, ptCenter, ptCenter, new Boolean(true));
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -1.0 * csFactor, ptCenter, ptCenter, new Boolean(true));
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG(), 3, 0, ptCenter, ptCenter, new Boolean(true), "W");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 3, 1 * csFactor, ptCenter, ptCenter, new Boolean(true), "W1");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_DTG1(), 3, 1.0 * csFactor, ptCenter, ptCenter, new Boolean(true), "W1");
         break;
       case 22231000:
       case 22232000:
@@ -3664,12 +3692,12 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
       case 22234000:
       case 22234100:
       case 22234200:
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, -2.5, ptCenter, ptCenter, new Boolean(false), "");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -1.5, ptCenter, ptCenter, new Boolean(false), "T");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), 3, -0.5, ptCenter, ptCenter, new Boolean(false), "H");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), 3, 0.5, ptCenter, ptCenter, new Boolean(false), "H1");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "TIME FROM: " + tg.get_DTG(), 3, 1.5, ptCenter, ptCenter, new Boolean(false), "W");
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "TIME TO: " + tg.get_DTG1(), 3, 2.5, ptCenter, ptCenter, new Boolean(false), "W1");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, -4.0, ptCenter, ptCenter, new Boolean(false), "");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, -3.0, ptCenter, ptCenter, new Boolean(false), "T");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MIN ALT: " + tg.get_H(), 3, -2.0, ptCenter, ptCenter, new Boolean(false), "H");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "MAX ALT: " + tg.get_H1(), 3, 2.2, ptCenter, ptCenter, new Boolean(false), "H1");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "TIME FROM: " + tg.get_DTG(), 3, 3.2, ptCenter, ptCenter, new Boolean(false), "W");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, "TIME TO: " + tg.get_DTG1(), 3, 4.2, ptCenter, ptCenter, new Boolean(false), "W1");
         break;
       case 22223000:
         pt0 = new armyc2.c2sd.JavaLineArray.POINT2(tg.Pixels.get(middleSegment));
@@ -4020,6 +4048,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo = function(tg, g2d, c
         break;
     }
     armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers(tg);
+    tg.calculate_Offset();
     tg.Pixels = origPoints;
   } catch (exc) {
     if (Clazz.instanceOf(exc)) {
@@ -4038,7 +4067,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.getRFALines = function(tg) {
       lines++;
     else if (tg.get_DTG1() !== null && !tg.get_DTG1().isEmpty())
       lines++;
-    switch (tg.get_LineType()) {
+
+    const linetype = tg.get_LineType();
+    //console.info( "2 => linetype: " + linetype );
+
+    switch ( linetype ) {
       case 24352000:
       case 24362000:
         if (tg.get_H1() !== null && !tg.get_H1().isEmpty())
@@ -4060,7 +4093,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.Test = function(tg) {
   return 'test';
 };
 armyc2.c2sd.JavaTacticalRenderer.Modifier2.addSectorModifiers = function(tg, converter) {
-  var linetype = tg.get_LineType();
+  const linetype = tg.get_LineType();
+  //console.info( "16 => linetype: " + linetype );
   if (linetype !== 243112000) {
     return false;
   }
@@ -4198,7 +4232,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
       return;
     if (tg.modifiers === null)
       tg.modifiers = new java.util.ArrayList();
-    var linetype = tg.get_LineType();
+    const linetype = tg.get_LineType();
+    //console.info( "3 => linetype: " + linetype );
     //diagnostic add early exit for lines which do not use this function
     switch (linetype) {
       case 14000000:
@@ -4307,6 +4342,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
     if (tg.get_Client().equals("cpof3d"))
       csFactor = 0.9;
     armyc2.c2sd.JavaTacticalRenderer.Modifier2.shiftModifierPath(tg, pt0, pt1, ptLast, ptNextToLast);
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
     if (tg.getSymbologyStandard() === 1) {
       switch (linetype) {
         case 14000000:
@@ -4423,10 +4460,11 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
       case 24337300:
       case 24338300:
       case 24339300:
+        const useDash = tg.get_DTG() && tg.get_DTG1();
         ptCenter = armyc2.c2sd.JavaLineArray.lineutility.MidPointDouble(tg.Pixels.get(0), tg.Pixels.get(Math.floor(tg.Pixels.size() / 2)), 0);
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, label, 3, -1 * csFactor, ptCenter, ptCenter, new Boolean(false));
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddIntegralAreaModifier(tg, tg.get_Name(), 3, 0, ptCenter, ptCenter, new Boolean(false));
-        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddOffsetModifier(tg, tg.get_DTG(), 1, -1 * csFactor, Math.floor(tg.Pixels.size() / 2), 0, 4, "left");
+        armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddOffsetModifier(tg, useDash ? tg.get_DTG() + " -" : tg.get_DTG(), 1, -1 * csFactor, Math.floor(tg.Pixels.size() / 2), 0, 4, "left");
         armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddOffsetModifier(tg, tg.get_DTG1(), 1, 0, Math.floor(tg.Pixels.size() / 2), 0, 4, "left");
         break;
       case 24323300:
@@ -4666,6 +4704,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiers2 = function(tg) {
         return;
     }
     armyc2.c2sd.JavaTacticalRenderer.Modifier2.scaleModifiers(tg);
+    tg.calculate_Offset();
     tg.Pixels = origPoints;
     g2d.dispose();
     g2d = null;
@@ -4697,6 +4736,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers = function(tg, g2d) 
     var pt1 = null;
     var pt2 = null;
     var quadrant = -1;
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
     for (j = 0; j < tg.modifiers.size(); j++) {
       modifier = tg.modifiers.get(j);
       var lineFactor = modifier.lineFactor;
@@ -4891,7 +4932,9 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.GetIntegralTextShapes = function(tg, 
     var pt1 = null;
     var dist = 0;
     var stroke = null;
-    switch (tg.get_LineType()) {
+    const linetype = tg.get_LineType();
+    //console.info( "4 => linetype: " + linetype );
+    switch ( linetype ) {
       case 22121000:
         echelonSymbol = tg.get_EchelonSymbol();
         shape = new armyc2.c2sd.JavaLineArray.Shape2(armyc2.c2sd.JavaLineArray.Shape2.SHAPE_TYPE_POLYLINE);
@@ -5057,7 +5100,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
     var pt3 = null;
     var quadrant = -1;
     var shape2 = null;
-    var linetype = tg.get_LineType();
+    const linetype = tg.get_LineType();
+    //console.info( "5 => linetype: " + linetype );
     var sz = armyc2.c2sd.renderer.utilities.RendererSettings.getMPModifierFontSize();
     if (sz === 0)
       return;
@@ -5079,6 +5123,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
     var direction = -1;
     var glyphPosition = null;
     var modifierPosition = null;
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
     for (j = 0; j < tg.modifiers.size(); j++) {
       modifier = tg.modifiers.get(j);
       var lineFactor = modifier.lineFactor;
@@ -5091,8 +5137,6 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
       if (s === null || s.equals("")) {
         continue;
       }
-      //stringWidth = metrics.stringWidth(s)+1;
-      //stringHeight = font.getSize();
       var bounds = metrics.getTextBounds(s);
       stringWidth = bounds.width / 1.5;
       stringHeight = bounds.height;
@@ -5266,6 +5310,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
           glyphPosition = new armyc2.c2sd.graphics2d.Point(x, y);
           //end section
           justify = armyc2.c2sd.renderer.utilities.ShapeInfo.justify_center;
+          //console.info( j + ".  { x: " + x1 + ", y: " + y + " }  // x = " + x );
           modifierPosition = new armyc2.c2sd.graphics2d.Point2D(x1, y);
           break;
         case 4:
@@ -5332,6 +5377,7 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.DisplayModifiers2 = function(tg, g2d,
       shape2.setModifierString(s);
       shape2.setModifierStringAngle(theta * 180 / 3.141592653589793);
       shape2.setModifierStringPosition(modifierPosition);
+      //console.info( s + " : " + JSON.stringify( modifierPosition ) );
       shape2.setTextJustify(justify);
       if (shape2 !== null) {
         shapes.add(shape2);
@@ -5688,6 +5734,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function(tg,
     }
     //ok to here
     var metrics = g2d.getFontMetrics();
+    tg.set_CharHeight( metrics.stringHeight( "A" ) );
+    tg.set_CharWidth( metrics.stringWidth( "W" ) );
     var stringWidth = 0;
     var stringWidth2 = 0;
     var dash = "";
@@ -5696,7 +5744,8 @@ armyc2.c2sd.JavaTacticalRenderer.Modifier2.AddModifiersGeo2 = function(tg,
     if (tg.get_Client().equals("cpof3d"))
       csFactor = 0.9;
     var factor = 1;
-    var linetype = tg.get_LineType();
+    const linetype = tg.get_LineType();
+    //console.info( "6 => linetype: " + linetype );
     var j = 0;
     var k = 0;
     var x = 0;
