@@ -98,6 +98,9 @@ function testRender()
 		
         var cbSymbol = document.getElementById("symbol");
         var symNum = parseInt(cbSymbol.value);
+		
+		var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+		var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
         switch(symNum) 
         {
             case 0://Ambush
@@ -115,6 +118,10 @@ function testRender()
                 //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
                 scale = 50000.0;
                 //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+				//modifiers = {"FILLCOLOR":"FFFFFF","LINECOLOR":"00FF00"};
+				modifiers = {};
+				modifiers[msa.FillColor] = "FFFFFF";
+				modifiers[msa.LineColor] = "00FF00";//*/
                 break;
             case 3://Sector Range Fan
                 symbolCode = "GFFPAXS---****X"; //sector range fan
@@ -122,11 +129,33 @@ function testRender()
                 //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
                 scale = 50000.0;
                 //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
-                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
                 modifiers = {};
                 modifiers[mtg.AM_DISTANCE] = [300,1000];
                 modifiers[mtg.AN_AZIMUTH] = [315,45];
                 modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+                break;
+			case 4://Rectangular Target
+                symbolCode = "GFFPATR---****X"; //
+                controlPoints = "66.26700036208742,30.62755038706961";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+                modifiers[mtg.AM_DISTANCE] = [250,250];
+                modifiers[mtg.AN_AZIMUTH] = [45];
+                modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
+                break;
+			case 5://Antitank Ditch Complete
+                symbolCode = "GFMPOADC--****X"; //
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+                //bbox = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //distance (AM), azimuth (AN), and altitudeDepth (X) can all have multiple values so they are enclosed in brackets.
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers = {};
+				modifiers[msa.FillColor] = "FFFFFF";
+				modifiers[msa.LineColor] = "FF0000";
                 break;
             default:
                 break;
@@ -229,6 +258,8 @@ Draw Canvas/SVG Test:
       <option value=1>FLOT</option>
       <option value=2>Assembly Area</option>
       <option value=3>Sector Range Fan</option>
+	  <option value=4>Rectangular Target</option>
+	  <option value=5>Anti-Tank Ditch Complete</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
