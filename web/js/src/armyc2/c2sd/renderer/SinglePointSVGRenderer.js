@@ -541,13 +541,13 @@ return{
                 + '" width="' + pathBounds.getWidth() + '" y="' + pathBounds.Height()
                 + '" fill="' + bgColor + '/>';
         }
-        else if(om === RendererSettings.TextBackgroundMethod_OUTLINE && bgColor && bgwidth)
+        else if(om === RendererSettings.TextBackgroundMethod_OUTLINE && bgColor && bgWidth)
         {
             //stroke-linejoin="miter"//default linejoin
             //stroke-miterlimit//default 4
             //stroke-linejoin="round"
             //stroke-linejoin="bevel"
-            se += path + '"';
+            se += '<path d="' + path +'"'
             se += ' fill="none"';
             
             se += ' stroke="' + bgColor + '"';
@@ -2399,7 +2399,17 @@ return{
                 seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y - 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
                 seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
                 seBGGroup += '<g transform="translate(' + (x - 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
-                
+                if (modifiers[MilStdAttributes.OutlineColor]) {
+                    var highlight = this.processSVGPathBackground(
+                        fill || frame,
+                        modifiers[MilStdAttributes.OutlineColor],
+                        RendererSettings.TextBackgroundMethod_OUTLINE,
+                        modifiers[MilStdAttributes.OutlineWidth],
+                        null,
+                        modifiers[MilStdAttributes.OutlineAlpha]
+                    )
+                    seBGGroup += '<g transform="translate(' + x + ',' + y +') scale(' + ratio + ',-' + ratio +')">' + highlight + '</g>';
+                }
             }
             //then do fill if present
             if(fill !== null &&  fillColor !== null)
