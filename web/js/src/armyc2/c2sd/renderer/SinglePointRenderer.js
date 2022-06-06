@@ -2705,6 +2705,20 @@ return{
                     ctx.strokeText(frame, x, y);
                 }
             }
+			
+			//do highlight if present
+			if(modifiers[MilStdAttributes.OutlineColor])
+			{
+				var hColor = modifiers[MilStdAttributes.OutlineColor];
+				var hWidth = modifiers[MilStdAttributes.OutlineWidth] || symbolOutlineWidth + 2;
+				var hAlpha = modifiers[MilStdAttributes.OutlineAlpha] || 1;
+
+				currentAlpha = hAlpha;
+				ctx.globalAlpha = hAlpha;
+				ctx.lineWidth = hWidth;
+				ctx.strokeStyle = hColor;
+				ctx.strokeText(fill || frame, x, y);
+			}
 
             //then draw frame
             if(frame !== null && frame !== "")

@@ -2400,13 +2400,15 @@ return{
                 seBGGroup += '<g transform="translate(' + (x + 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
                 seBGGroup += '<g transform="translate(' + (x - 1) + ',' + (y + 1) +') scale(' + ratio + ',-' + ratio +')">' + ol + '</g>';
                 if (modifiers[MilStdAttributes.OutlineColor]) {
-                    var highlight = this.processSVGPathBackground(
+                    var highlight = this.processSVGPath(
                         fill || frame,
+						"none",
                         modifiers[MilStdAttributes.OutlineColor],
-                        RendererSettings.TextBackgroundMethod_OUTLINE,
-                        modifiers[MilStdAttributes.OutlineWidth],
+                        (modifiers[MilStdAttributes.OutlineWidth] || 4) * (1/ratio),
                         null,
-                        modifiers[MilStdAttributes.OutlineAlpha]
+						null,
+						null,
+                        (modifiers[MilStdAttributes.OutlineAlpha] || 1)
                     )
                     seBGGroup += '<g transform="translate(' + x + ',' + y +') scale(' + ratio + ',-' + ratio +')">' + highlight + '</g>';
                 }
