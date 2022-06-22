@@ -105,6 +105,10 @@
 			modifiers.KEEPUNITRATIO = keepUnitRatio;
 			modifiers.ICON = drawAsIcon;
             
+			//OutlineTest
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.OutlineColor]="#FF00FF";
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.OutlineWidth]=4;
+			//modifiers[armyc2.c2sd.renderer.utilities.MilStdAttributes.OutlineAlpha]=0.5;
         
             var ii = armyc2.c2sd.renderer.MilStdIconRenderer.Render(symbolID,modifiers);
             var center = ii.getCenterPoint();
@@ -113,6 +117,7 @@
             var ctx = preview.getContext('2d');
             
             //SVG TEST
+			
             var si = armyc2.c2sd.renderer.MilStdSVGRenderer.Render(symbolID,modifiers);
             document.getElementById("contentSpan").innerHTML += si.getSVG();
             var svgImage = document.getElementById("SVGTest");
@@ -258,7 +263,8 @@
 	{
 		//PERFORMANCE TEST///////////////////////////
 		
-		var start = new Date().getTime();
+		var start;
+		var end;
 		var modifiers;
 		//modifiers = populateModifiers();//render time increases with the number of modifiers
 		//modifiers["RENDER"] = false;//dimensions without labels
@@ -281,14 +287,28 @@
 			id = dmID;
 			modifiers = populateModifiers();
 		}
+		start = new Date().getTime();
 		for(var i = 0; i < 1000; i++)
 		{
 			armyc2.c2sd.renderer.MilStdIconRenderer.Render(id,modifiers);
 		}
 
-		var end = new Date().getTime();
+		end = new Date().getTime();
 		var time = end - start;
 		alert('Render 1k symbols: ' + (time/1000));//*/
+		
+		//SVG Speed Test
+		start = new Date().getTime();
+		
+		for(var j = 0; j < 1000; j++)
+		{
+			armyc2.c2sd.renderer.MilStdSVGRenderer.Render(id,modifiers);
+		}
+		
+		end = new Date().getTime();
+		time = end - start;
+		alert('Render 1k SVG symbols (just SVG generation, not in browser rendering): ' + (time/1000));//*/
+		
 	}
 
         function populateListBox(lb, symbolMap)
@@ -380,6 +400,7 @@
             button2.disabled = false;
             button2.innerHTML = "Speed Test";
         }
+		
         
 	function preload()
 	{
