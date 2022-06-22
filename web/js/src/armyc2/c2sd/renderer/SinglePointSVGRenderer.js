@@ -2311,7 +2311,7 @@ return{
                //when SymbolSizeMedium = 80;
                //a pixel size of 35 = scale value of 1.0
                 //pixelSize = pixelSize * 1.4;
-                ratio = pixelSize / 1400;
+                ratio = pixelSize / 1200;//1400;
                                
             }
             else

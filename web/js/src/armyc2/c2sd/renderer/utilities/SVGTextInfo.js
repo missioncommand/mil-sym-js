@@ -63,6 +63,9 @@ armyc2.c2sd.renderer.utilities.SVGTextInfo = function (text, anchorPoint, fontIn
     armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.getBounds = function(){
         return this._bounds;
     };
+	    armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.getTextBounds = function(){
+        return this._bounds;
+    };
     armyc2.c2sd.renderer.utilities.SVGTextInfo.prototype.getOutlineBounds = function()
     {
         var RS = armyc2.c2sd.renderer.utilities.RendererSettings;
