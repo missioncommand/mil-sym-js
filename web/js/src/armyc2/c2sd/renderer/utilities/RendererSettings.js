@@ -846,7 +846,7 @@ return{
     * */
     setFriendlyUnitLineColor:function ( friendlyUnitLineColor) {
       if (friendlyUnitLineColor != null)
-      this._friendlyUnitLineColor = friendlyUnitLineColor;
+      _friendlyUnitLineColor = friendlyUnitLineColor;
    },
    /**
     * get the preferred line   affiliation color for units.
@@ -865,7 +865,7 @@ return{
     * */
     setHostileUnitLineColor:function ( hostileUnitLineColor) {
       if (hostileUnitLineColor != null)
-      this._hostileUnitLineColor = hostileUnitLineColor;
+      _hostileUnitLineColor = hostileUnitLineColor;
    },
    /**
     * get the preferred line affiliation color for units.
@@ -884,7 +884,7 @@ return{
     * */
     setNeutralUnitLineColor:function ( neutralUnitLineColor) {
       if (neutralUnitLineColor != null)
-      this._neutralUnitLineColor = neutralUnitLineColor;
+      _neutralUnitLineColor = neutralUnitLineColor;
    },
    /**
     * get the preferred line affiliation color for units.
@@ -903,7 +903,7 @@ return{
     * */
     setUnknownUnitLineColor:function ( unknownUnitLineColor) {
       if (unknownUnitLineColor != null)
-      this._unknownUnitLineColor = unknownUnitLineColor;
+      _unknownUnitLineColor = unknownUnitLineColor;
    },
    /**
     * get the preferred line affiliation color for graphics.
@@ -922,7 +922,7 @@ return{
     * */
     setFriendlyGraphicLineColor:function ( friendlyGraphicLineColor) {
       if (friendlyGraphicLineColor != null)
-      this._friendlyGraphicLineColor = friendlyGraphicLineColor;
+      _friendlyGraphicLineColor = friendlyGraphicLineColor;
    },
    /**
     * get the preferred line affiliation color for graphics.
@@ -941,7 +941,7 @@ return{
     * */
     setHostileGraphicLineColor:function ( hostileGraphicLineColor) {
       if (hostileGraphicLineColor != null)
-      this._hostileGraphicLineColor = hostileGraphicLineColor;
+      _hostileGraphicLineColor = hostileGraphicLineColor;
    },
    /**
     * get the preferred line affiliation color for graphics.
@@ -960,7 +960,7 @@ return{
     * */
     setNeutralGraphicLineColor:function ( neutralGraphicLineColor) {
       if (neutralGraphicLineColor != null)
-      this._neutralGraphicLineColor = neutralGraphicLineColor;
+      _neutralGraphicLineColor = neutralGraphicLineColor;
    },
    /**
     * get the preferred line affiliation color for graphics.
@@ -979,7 +979,7 @@ return{
     * */
     setUnknownGraphicLineColor:function ( unknownGraphicLineColor) {
       if (unknownGraphicLineColor != null)
-      this._unknownGraphicLineColor = unknownGraphicLineColor;
+      _unknownGraphicLineColor = unknownGraphicLineColor;
    },
 
    /**
