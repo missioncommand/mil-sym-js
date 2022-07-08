@@ -43,7 +43,7 @@ armyc2.c2sd.renderer.utilities.SVGInfo = function (svg, centerPoint, symbolBound
             else//*/
             if(btoa)//btoa should always be available, even in a web worker.
             {
-                uri = btoa(this._svg);
+                uri = btoa(unescape(encodeURIComponent(this._svg)));
                 uri = "data:image/svg+xml;base64," + uri;
             }
             else//if for some reason btoa is not available
