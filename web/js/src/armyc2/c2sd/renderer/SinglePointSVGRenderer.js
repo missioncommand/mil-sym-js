@@ -3711,7 +3711,7 @@ return{
             var sd = SymbolDefTable.getSymbolDef(basic, symStd);
             
             //var len = _tgTextModifierKeys.length;
-            if(sd.modifiers && sd.modifiers !== "")
+            if(sd !== null && sd.modifiers && sd.modifiers !== "")
             {
                 var tgSpecificKeys = sd.modifiers.split(".");//modifiers for this specific symbol
                 var len = tgSpecificKeys.length;
