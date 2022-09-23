@@ -13,6 +13,9 @@
  
  var start = null;
  var stop = null;
+ var start2 = null;
+ var stop2 = null;
+ var loadCount = 0;
  
 function formatKMLForHTML(kml)
 {
@@ -43,9 +46,27 @@ function formatKMLForHTML(kml)
 }
 function cleartext()
 {
-	//alert('clr');
+	//alert('clr');//resultsSpan
+	document.getElementById("resultsSpan").innerHTML = "";
 	document.getElementById("contentSpan").innerHTML = "";
+	loadCount = 0;
 	return;
+}
+function bodyOnLoad()
+{
+	document.getElementById("resultsSpan").innerHTML += "Body onload event";	
+}
+function upCount()
+{
+	loadCount++;
+	if(loadCount >= 1000)
+	{
+		stop2 = new Date().getTime();
+				var time2 = stop2 - start2;
+	
+		document.getElementById("resultsSpan").innerHTML += "<br>Dom done loading image tags with SVGs: " + time2/1000;	
+		//alert("Dom done loading image tags with SVGs: " + time2/1000);				
+	}
 }
 function getFontInfo(name, size, style){
     _ModifierFontName = name;
@@ -120,7 +141,7 @@ function speedTest(modifiersOn)
         //var rendererSPSVG = armyc2.c2sd.renderer.MilStdSVGRenderer;//.Render(symbolID,modifiers);
 
 		var start = Date.now();
-
+		var totalTime = 0;
 		
         var fontInfo = this.getFontInfo("Arial",10,"bold");
 
@@ -155,10 +176,11 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
             cleartext();
             stop = new Date().getTime();
             var time = stop - start;
+			totalTime += time;
             //alert('Render 1k symbols: ' + (time/1000));//*/
-            document.getElementById("contentSpan").innerHTML += 'Render 1k symbols: ' + (time/1000);
+            document.getElementById("resultsSpan").innerHTML += 'Render 1k symbols: ' + (time/1000);
             
-			document.getElementById("contentSpan").innerHTML += "<br/><br/>Unit via Web Worker:   <br/>";
+			document.getElementById("resultsSpan").innerHTML += "<br/>Unit via Web Worker:   <br/>";
 
 			if(e.data.format == "ERROR")
 			{
@@ -170,25 +192,49 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 			}
 			else
 			{
-                
+                var format = document.getElementById("lbFormat").value;
                 //document.getElementById("contentSpan").innerHTML += "<br/>"
                 var total = "";
                 start = new Date().getTime();
-                for(var j = 0; j < 1000; j++)
-                {
-                    
-                    var svg = e.data[j].svg;
-                    total += svg;
-                    
-                    //for testing
-                    //total +=  batch[j].symbolID + "<br/>"  
-                    if(j % 10 === 0 && j !== 0)
-                        total +=  "<br/>"  
-                }
+				var svgTrue = (format === "svg" || format === "both");
+				
+				if(svgTrue)
+				{
+					for(var j = 0; j < 1000; j++)
+					{
+						
+						var svg = e.data[j].svg;
+						//total += svg;
+						total += svg.replace("<svg ","<svg onload=\"upCount()\" ");
+						
+						//for testing
+						//total +=  batch[j].symbolID + "<br/>"  
+						if(j % 10 === 0 && j !== 0)
+							total +=  "<br/>"  
+					}
+				}
+				else
+				{
+					for(var j = 0; j < 1000; j++)
+					{
+						
+						var b64 = e.data[j].base64;
+						//total += "<img src=\"" + b64 + "\">";
+						total += "<img onload=\"upCount()\" src=\"" + b64 + "\">";
+						
+						//for testing
+						//total +=  batch[j].symbolID + "<br/>"  
+						if(j % 10 === 0 && j !== 0)
+							total +=  "<br/>"  
+					}				
+				}
                 
+                start2 = new Date().getTime();
                 document.getElementById("contentSpan").innerHTML += total;
                 stop = new Date().getTime();
                 time = stop - start;
+				
+				totalTime += time;
                 
                 
                 var svgImage = document.getElementById("SVGTest");
@@ -199,7 +245,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
                 else
                     svgImage.src = "data:image/svg+xml;base64," + btoa(e.data[0].svg);
                     
-                document.getElementById("contentSpan").innerHTML += 'Add 1k symbols to the dom: ' + (time/1000);
+                document.getElementById("resultsSpan").innerHTML += 'Add 1k symbols to the dom: ' + (time/1000);
+				document.getElementById("resultsSpan").innerHTML += '<br><b>Total Time: ' + (totalTime/1000) + '</b>';
                 
 			}
 			
@@ -218,7 +265,8 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
         }
         start = new Date().getTime();
         //format can be svg, base64, or both.
-		worker.postMessage({format:"svg",fontInfo:fontInfo,batch:batch});
+		var format = document.getElementById("lbFormat").value;
+		worker.postMessage({format:format,fontInfo:fontInfo,batch:batch});
 		
  /*
 		try
@@ -306,16 +354,27 @@ armyc2.c2sd.renderer.utilities.ErrorLogger.LogMessage("SVGWW.html","testRender",
 
 	</script>
 </head>
-<body>
+<body onload='bodyOnLoad()'>
 
     <button type='button' onclick='testRender()'>Test Single Point SVG</button>
     <button type='button' onclick='speedTest(false)'>Speed test 1k SVG batch</button>
     <button type='button' onclick='speedTest(true)'>Speed test 1k SVG batch with all modifiers</button>
+	<select id = lbFormat>
+		<option>svg</option>
+		<option>base64</option>
+		<option>both</option>
+	</select>
 	<button type='button' onclick='cleartext()'>Clear</button>
+	
     <br/>
+	<span id='resultsSpan'>
+	</span>
+	<br/>
     <img id="SVGTest" src="" alt="svg from datauri" height="100" width="100">
 	
-   <span id='contentSpan'/>
+   <span id='contentSpan'>
+   
+   </span>
    
    
    
