@@ -14069,7 +14069,7 @@ armyc2.c2sd.graphics2d.FontMetrics = function(font) {
     // a slightly larger one at some point when zoomed in.
     
     var textInfoBuffer = null;
-	if(document.createElement)
+	if(document && document.createElement)
 	{
 		textInfoBuffer = document.createElement('canvas');
 	}
