@@ -100,14 +100,14 @@ armyc2.c2sd.renderer.utilities.ModifiersTG = {
     V_EQUIP_TYPE : "V",
     /**
      * A text modifier for units, equipment, and installations that displays DTG format:
-     * DDHHMMSSZMONYYYY or “O/O” for on order (see 5.5.2.6).
+     * DDHHMMSSZMONYYYY or "O/O" for on order (see 5.5.2.6).
      * TG:P,L,A,N,B/C
      * Length: 16
      */
     W_DTG_1 : "W",
     /**
      * A text modifier for units, equipment, and installations that displays DTG format:
-     * DDHHMMSSZMONYYYY or “O/O” for on order (see 5.5.2.6).
+     * DDHHMMSSZMONYYYY or "O/O" for on order (see 5.5.2.6).
      * TG:P,L,A,N,B/C
      * Length: 16
      */

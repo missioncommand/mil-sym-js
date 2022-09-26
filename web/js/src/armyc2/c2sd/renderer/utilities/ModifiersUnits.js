@@ -176,14 +176,14 @@ armyc2.c2sd.renderer.utilities.ModifiersUnits = {
     V_EQUIP_TYPE : "V",
     /**
      * A text modifier for units, equipment, and installations that displays DTG format:
-     * DDHHMMSSZMONYYYY or “O/O” for on order (see 5.5.2.6).
+     * DDHHMMSSZMONYYYY or "O/O" for on order (see 5.5.2.6).
      * Type: U,E,I,SI,SO,EU,EEI,EI
      * Length: 16
      */
     W_DTG_1 : "W",
     /**
      * A text modifier for units, equipment, and installations that displays DTG format:
-     * DDHHMMSSZMONYYYY or “O/O” for on order (see 5.5.2.6).
+     * DDHHMMSSZMONYYYY or "O/O" for on order (see 5.5.2.6).
      * Type: U,E,I,SI,SO,EU,EEI,EI
      * Length: 16
      */
@@ -257,7 +257,7 @@ armyc2.c2sd.renderer.utilities.ModifiersUnits = {
      */
     AE_EQUIPMENT_TEARDOWN_TIME : "AE",
     /**
-     * Example: “Hawk” for Hawk SAM system.
+     * Example: "Hawk" for Hawk SAM system.
      * Type: SI
      * Length: 12
      */

@@ -938,7 +938,7 @@ armyc2.c2sd.renderer.utilities.SymbolUtilities.rendererSettings = armyc2.c2sd.re
                         switchChar===("G") ||
                         switchChar===("W"))
                     {
-                        if (symbolID.substring(0, 8).equals("WOS-HDS-"))
+                        if (symbolID.substring(0, 8) === ("WOS-HDS-"))
                         {
                             retColor =  armyc2.c2sd.renderer.utilities.Color.GRAY;//0x808080;	// Gray
                         }
