@@ -2217,7 +2217,7 @@ return{
         }
         
         //Check if we need to set 'N' to "ENY"
-        if(symbolID.charAt(1).toUpperCase()==="H")
+        if(symbolID.charAt(1).toUpperCase()==="H" && typeof modifiers[ModifiersTG.N_HOSTILE] !== 'string')
         {
             modifiers[ModifiersTG.N_HOSTILE] = "ENY";
         }
