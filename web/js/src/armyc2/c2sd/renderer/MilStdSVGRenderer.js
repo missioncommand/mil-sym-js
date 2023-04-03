@@ -69,7 +69,16 @@ armyc2.c2sd.renderer.MilStdSVGRenderer = (function () {
             symStd = modifiers[MilStdAttributes.SymbologyStandard];
         }
 
-        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha, symStd);
+        var outlineColor = null;
+        var symbolOutlineWidth = RendererSettings.getSinglePointSymbolOutlineWidth();
+        if(modifiers[MilStdAttributes.OutlineWidth] !== undefined && modifiers[MilStdAttributes.OutlineWidth] > 0)
+        {
+            symbolOutlineWidth = modifiers[MilStdAttributes.OutlineWidth];
+        }
+        if(symbolOutlineWidth > 0)
+            outlineColor = RendererUtilities.getIdealOutlineColor(lineColor.toHexString(false),true);
+
+        var si = TacticalGraphicSVGRenderer.getSVG(symbolID, size, lineColor, alpha, symStd, symbolOutlineWidth, outlineColor);
         return si;
     }
     

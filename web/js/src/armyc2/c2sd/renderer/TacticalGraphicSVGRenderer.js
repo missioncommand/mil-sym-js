@@ -23,7 +23,7 @@ armyc2.c2sd.renderer.TacticalGraphicSVGRenderer = (function () {
     
 return{    
     
-    getSVG: function(symbolID, size, color, alpha, symStd){
+    getSVG: function(symbolID, size, color, alpha, symStd, outlineWidth, outlineColor){
         var symbolBounds = new armyc2.c2sd.renderer.so.Rectangle(-600,-600,1200,1200);
         var width = 1200;
         var height = 1200;
@@ -51,7 +51,19 @@ return{
             var ratio = size/1200;
 
             var path = TGSVGTable.getSVGPath(charSymbolIndex);
+            var strokePath = TGSVGTable.getSVGPath(charSymbolIndex);
+            if(outlineWidth > 0)
+            {
+                var ow = size / 3;
+                if (ow < 25)
+                    ow = 70;
+                strokePath = processSVGPath(path,null,outlineColor,ow);
+            }
+            else
+                strokePath = "";
+            
             path = processSVGPath(path,color);
+            
             var pixel = new armyc2.c2sd.renderer.so.Point(0,0);
 
 
@@ -74,7 +86,7 @@ return{
                 
             var svg = '<svg width="' + size + 'px" height="' + size + 'px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">'
                       + '<g transform="translate(' + (x) + ',' + (y) +') scale(' + ratio + ',-' + ratio +')" >'
-                        + path + '</g></svg>'; 
+                        + strokePath + path + '</g></svg>'; 
             
 
             var si = new armyc2.c2sd.renderer.utilities.SVGInfo(svg,centerPoint,symbolBounds,imageBounds);
