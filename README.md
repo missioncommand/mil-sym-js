@@ -60,13 +60,13 @@ ant concat sm-bc minify samples
 
 ```
 
-"sm-bc" represents what you rendering capabilities you want.
+"sm-bc" represents what you rendering capabilities you want.  
 
-s: singlepoint canvas support (jquery plugin for singlepoint rendering only available in singlepoint only builds)
+s: singlepoint canvas support (jquery plugin for singlepoint rendering only available in singlepoint only builds)  
 sv: singlepoint svg support  
-sav: singlepoint canvas and svg support
+sav: singlepoint canvas and svg support  
 m: multipoints (KML, GeoJSON, GeoSVG) 
-sm: singlepoint canvas and multipoints (multipoint GeoCanvas support requires both)
+sm: singlepoint canvas and multipoints (multipoint GeoCanvas support requires both)  
 savm: (singlepoint canvas & svg format and all multipoint formats)
 
 b: 2525B support  
