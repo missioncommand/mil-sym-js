@@ -515,8 +515,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtility={
             for (var j = 1; j < tg.Pixels.size (); j++) {
                 ptLast = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j - 1));
                 ptCurrent = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2 (tg.Pixels.get (j));
-                //if (ptCurrent.x === ptLast.x && ptCurrent.y === ptLast.y) {
-                if (Math.abs(ptCurrent.x - ptLast.x)<0.5 && Math.abs(ptCurrent.y - ptLast.y)<0.5) {
+                if (ptCurrent.x === ptLast.x && ptCurrent.y === ptLast.y) {
                     if (tg.Pixels.size () > minSize) 
                     {
                         tg.Pixels.remove (j);
