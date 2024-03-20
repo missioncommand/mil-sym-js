@@ -371,6 +371,12 @@ armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility = {
             if (segments.length === 0)
                 return;
             var factor = 3;
+			
+			// Line of contact looks bad with small channel corners extending out
+            if (linetype === armyc2.c2sd.JavaLineArray.TacticalLines.LC || linetype === armyc2.c2sd.JavaLineArray.TacticalLines.LC_HOSTILE)
+                factor = 1;
+
+			
             armyc2.c2sd.JavaTacticalRenderer.clsUtility.GetSegments(pixels2, segments, factor);
             partitions = new java.util.ArrayList();
             armyc2.c2sd.JavaTacticalRenderer.clsChannelUtility.GetPartitions(segments, partitions);
