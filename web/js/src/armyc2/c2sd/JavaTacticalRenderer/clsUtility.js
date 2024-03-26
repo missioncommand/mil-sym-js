@@ -1642,6 +1642,52 @@ armyc2.c2sd.JavaTacticalRenderer.clsUtility = {
         }
         return;
     },
+    GetLCSegments: function (pixels, segments) {
+        try {
+            var j = 0;
+            var numPoints = 0;
+            var pt0F = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(0, 0);
+            var pt1F = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(0, 0);
+            var pt2F = armyc2.c2sd.JavaLineArray.lineutility.setPOINT2(0, 0);
+            segments[0] = true;
+            numPoints = Math.floor(pixels.length / 2);
+            for (j = 0; j < numPoints - 2; j++) {
+                pt0F.x = pixels[2 * j];
+                pt0F.y = pixels[2 * j + 1];
+                pt1F.x = pixels[2 * j + 2];
+                pt1F.y = pixels[2 * j + 3];
+                pt2F.x = pixels[2 * j + 4];
+                pt2F.y = pixels[2 * j + 5];
+
+                var angle1 = Math.atan2(pt1F.y - pt0F.y, pt1F.x - pt0F.x);
+                var angle2 = Math.atan2(pt1F.y - pt2F.y, pt1F.x - pt2F.x);
+                var angle = angle1-angle2;// * 180/Math.PI;
+                var degrees = angle * 180/Math.PI;
+
+                if(angle < 0)
+                {
+                    degrees = 360 + degrees;
+                }
+
+                if(degrees < 90)
+                {
+                    segments[j + 1] = false;
+                }
+                else
+                {
+                    segments[j + 1] = true;
+                }
+                angles[j+1] = degrees;
+            }
+        } catch (exc) {
+            if (Clazz.instanceOf(exc)) {
+                armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaTacticalRenderer.clsUtility._className, "GetSegments", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside GetSegments", exc));
+            } else {
+                throw exc;
+            }
+        }
+        return;
+    },
     SetLCColor: function (tg, shape) {
         try {
             var affiliation = tg.get_Affiliation();
