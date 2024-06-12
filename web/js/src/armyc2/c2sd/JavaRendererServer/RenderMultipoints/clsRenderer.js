@@ -72,6 +72,7 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
             modifiers.put("H", tg.get_H());
             modifiers.put("H1", tg.get_H1());
             modifiers.put("H2", tg.get_H2());
+            modifiers.put("H3", tg.get_H3());
             modifiers.put("T", tg.get_Name());
             modifiers.put("T1", tg.get_T1());
             modifiers.put("Y", tg.get_Location());
@@ -110,6 +111,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 }
             }
             switch (lineType) {
+                case 22133200:
+                case 22131300:
                 case 22231000:
                 case 22232000:
                 case 22233000:
@@ -235,6 +238,11 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.set_H1(strH1);
             }
             switch (lineType) {
+                case 22133200:
+                case 22131300:
+                case 22131200:
+                case 23162100:
+                case 23162200:
                 case 24326101:
                 case 24321200:
                 case 24323200:
@@ -367,6 +375,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                 tg.set_H1(milStd.getModifier("H1"));
             if (milStd.getModifier("H2") !== null)
                 tg.set_H2(milStd.getModifier("H2"));
+            if (milStd.getModifier("H3") !== null)
+                tg.set_H3(milStd.getModifier("H3"));
             if (milStd.getModifier("T") !== null)
                 tg.set_Name(milStd.getModifier("T"));
             if (milStd.getModifier("T1") !== null)
@@ -625,6 +635,8 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     break;
             }
             switch (lineType) {
+                case 22133200:
+                case 22131300:
                 case 22231000:
                 case 22232000:
                 case 22233000:
@@ -847,6 +859,12 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsRenderer = {
                     break;
             }
             switch (lineType) {
+                case 22133200:
+                case 22131300:
+                case 22133100:
+                case 22131200:
+                case 23162100:
+                case 23162200:
                 case 24326101:
                 case 24321200:
                 case 24323200:
