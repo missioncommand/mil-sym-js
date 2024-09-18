@@ -1345,7 +1345,7 @@ armyc2.c2sd.renderer.xml.SymbolConstantsB = {
         "DC": "3",
         "MXP": "10000",
         "MNP": "3",
-        "M": "A.",
+        "M": "H.",
         "D": "Limited Access Area",
         "H": "2.X.2.1.3.10",
       },
