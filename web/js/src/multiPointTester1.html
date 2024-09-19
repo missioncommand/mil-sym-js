@@ -308,6 +308,58 @@ function testRender()
 				modifiers[msa.SymbologyStandard] = 1;//2525C
 				//format = formatGeoJSON;
                 break;
+			case 22://SAAFR
+                symbolCode = "GFGPALS---****X";//SAAFR
+                controlPoints = "-93.09246,31.0807 -93.08924,31.0809";
+				//pixelWidth = 1024;
+				//pixelHeight = 1024;
+				pixelWidth = 800;
+				pixelHeight = 800;
+				//var bbox = "-93.0924,31.08079,-93.08921,31.0809";
+				var bbox = "-93.0924,31.07919,-93.08921,31.08241";
+				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                modifiers = {};
+				modifiers[mtg.T_UNIQUE_DESIGNATION_1] = "T";
+				
+				modifiers[mtg.AM_DISTANCE] = [50];
+				modifiers[mtg.X_ALTITUDE_DEPTH] = [50,400];
+				modifiers[mtg.W_DTG_1] = "W1W1W1W1W1W1W1";
+				modifiers[mtg.W1_DTG_2] = "W2W2W2W2W2W2W2";
+                //modifiers[msa.SymbologyStandard] = 0;//2525B
+				modifiers[msa.SymbologyStandard] = 1;//2525C
+				//format = formatGeoJSON;
+                break;
+			case 23://Kill Box
+                symbolCode = "GFFPAKBR--****X";//Kill Box
+                controlPoints = "-93.09246,31.0807 -93.08924,31.0809";
+				//pixelWidth = 1024;
+				//pixelHeight = 1024;
+				pixelWidth = 800;
+				pixelHeight = 800;
+				//var bbox = "-93.0924,31.08079,-93.08921,31.0809";
+				var bbox = "-93.0924,31.07919,-93.08921,31.08241";
+				var msa = armyc2.c2sd.renderer.utilities.MilStdAttributes;
+                modifiers = {};
+				modifiers[mtg.T_UNIQUE_DESIGNATION_1] = "T\nR";
+				
+				modifiers[mtg.AM_DISTANCE] = [50];
+				modifiers[mtg.X_ALTITUDE_DEPTH] = [50,400];
+				modifiers[mtg.W_DTG_1] = "W1W1W1W1W1W1W1";
+				modifiers[mtg.W1_DTG_2] = "W2W2W2W2W2W2W2";
+                //modifiers[msa.SymbologyStandard] = 0;//2525B
+				modifiers[msa.SymbologyStandard] = 1;//2525C
+				//format = formatGeoJSON;
+                break;
+			case 24:// Rectangular Target
+                symbolCode = "GHFPATR---****X"; //pbs square
+                controlPoints = "66.26700036208742,30.62755038706961";
+                scale = 50000.0;
+                modifiers = {};
+                var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+                modifiers[mtg.AM_DISTANCE] = [600,3250];
+                modifiers[mtg.AN_AZIMUTH] = [22];
+                modifiers["FILLCOLOR"] = "BBFF0000";
+                break;
             default:
                 break;
         } 
@@ -440,6 +492,9 @@ Draw Canvas/SVG Test:
 	  <option value=19>Turn 2525B</option>
 	  <option value=20>Turn 2525C</option>
 	  <option value=21>Wire</option>
+	  <option value=22>SAAFR</option>
+	  <option value=23>Kill Box</option>
+	  <option value=24>Rectangular Targer</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
