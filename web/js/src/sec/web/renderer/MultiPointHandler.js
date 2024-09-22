@@ -1717,6 +1717,11 @@ sec.web.renderer.MultiPointHandler = (function () {
                 else if (modifiers.additionalInfo3)
                     modifierMap[ModifiersTG.H2_ADDITIONAL_INFO_3] = modifiers.additionalInfo3;
 
+                if (modifiers[ModifiersTG.H3_ADDITIONAL_INFO_4])
+                    modifierMap[ModifiersTG.H3_ADDITIONAL_INFO_4] = modifiers[ModifiersTG.H3_ADDITIONAL_INFO_4];
+                else if (modifiers.additionalInfo3)
+                    modifierMap[ModifiersTG.H3_ADDITIONAL_INFO_4] = modifiers.additionalInfo3;
+
                 if (modifiers[ModifiersTG.N_HOSTILE])
                     modifierMap[ModifiersTG.N_HOSTILE] = modifiers[ModifiersTG.N_HOSTILE];
                 else if (modifiers.hostile)
@@ -1734,8 +1739,8 @@ sec.web.renderer.MultiPointHandler = (function () {
 
                 if (modifiers[ModifiersTG.W_DTG_1])
                     modifierMap[ModifiersTG.W_DTG_1] = modifiers[ModifiersTG.W_DTG_1];
-                else if (modifiers.dateTimeGroup1)
-                    modifierMap[ModifiersTG.W_DTG_1] = modifiers.dateTimeGroup1;
+                else if (modifiers.dateTimeGroup)
+                    modifierMap[ModifiersTG.W_DTG_1] = modifiers.dateTimeGroup;
 
                 if (modifiers[ModifiersTG.W1_DTG_2])
                     modifierMap[ModifiersTG.W1_DTG_2] = modifiers[ModifiersTG.W1_DTG_2];
@@ -2075,7 +2080,7 @@ sec.web.renderer.MultiPointHandler = (function () {
                         featureCollection.features.push(labelsToAdd);
                     }
 
-                }//*/
+                }
             }
             catch (err)
             {

@@ -251,6 +251,7 @@ armyc2.c2sd.JavaLineArray.TacticalLines = function()
     this.RHA = 25340000;
     this.RSA = 25353000;
     this.GENERAL = 22131000;
+    this.GENERAL_CIRCLE = 22131200;
     this.GENERIC = 22131001;
     this.DUMMY_STATIC = 22360000;
     this.DUMMY = 2237000;

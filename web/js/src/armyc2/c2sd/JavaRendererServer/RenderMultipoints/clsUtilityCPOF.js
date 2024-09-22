@@ -135,6 +135,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     radius.value[0] = Double.parseDouble(tg.get_H());   //buffer
                     break;
                 case 15000002:
+                case 22133100:
+                case 22131200:
+                case 23162100:
                 case 24312000:
                 case 24321300:
                 case 24323300:
@@ -168,6 +171,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     if(std===armyc2.c2sd.renderer.utilities.RendererSettings.Symbology_2525C)//value passed in degrees
                         attitude.value[0] = Double.parseDouble(tg.get_H2());
                     break;
+                case 22133200:
+                case 22131300:
+                case 23162200:
                 case 24326101:
                 case 24321200:
                 case 24323200:
@@ -321,6 +327,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                         tg.Pixels.add(pt1);
                     }                    
                     break;
+                case 22131300:
+                case 22133200:
+                case 23162200:
                 case 24326101:
                 case 24321200:
                 case 24323200:
@@ -379,6 +388,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                     break;
                 case 24312000:
                 case 15000002:
+                case 22133100:
+                case 22131200:
+                case 23162100:
                 case 24321300:
                 case 24322300:
                 case 24323300:
@@ -934,13 +946,17 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
             ptTipF = armyc2.c2sd.JavaLineArray.lineutility.ExtendAlongLineDouble(pt0F, pt1F, dist + basex2);//was 20
             ptLeftF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 0, base);//was 10
             ptRightF = armyc2.c2sd.JavaLineArray.lineutility.ExtendDirectedLine(pt0F, ptBaseF, ptBaseF, 1, base);//was 10
-            tg.Pixels.add(pt0F);
-            ptTipF.style = 5;
-            tg.Pixels.add(ptTipF);
-            tg.Pixels.add(ptLeftF);
-            ptTipF.style = 0;
-            tg.Pixels.add(ptTipF);
-            tg.Pixels.add(ptRightF);
+            tg.anchor0F = pt0F;
+            tg.achorTipF = ptTipF;
+            if (tg.h !== "false") {
+                tg.Pixels.add(pt0F);
+                ptTipF.style = 5;
+                tg.Pixels.add(ptTipF);
+                tg.Pixels.add(ptLeftF);
+                ptTipF.style = 0;
+                tg.Pixels.add(ptTipF);
+                tg.Pixels.add(ptRightF);
+            }
         } catch (exc) {
             if (Clazz.instanceOf(exc)) {
                 armyc2.c2sd.renderer.utilities.ErrorLogger.LogException(armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF._className, "RangeFanOrientation", new armyc2.c2sd.renderer.utilities.RendererException("Failed inside RangeFanOrientation", exc));
@@ -1660,6 +1676,9 @@ armyc2.c2sd.JavaRendererServer.RenderMultipoints.clsUtilityCPOF = {
                 return;
             var linetype = tg.get_LineType();
             switch (linetype) {
+                case 22133200:
+                case 22131300:
+                case 23162200:
                 case 24326101:
                 case 24321200:
                 case 24323200:
