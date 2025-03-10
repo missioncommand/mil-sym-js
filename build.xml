@@ -1214,7 +1214,10 @@
     <!--Copy fonts, stylesheet, and samples-->
     <target name="res">
         <copy todir="dist/fonts">
-            <fileset dir="web/js/src/fonts" />
+            <fileset dir="web/js/src/fonts">
+				<include name="*.woff"/>
+				<include name="*.woff2"/>
+			</fileset>
         </copy>
         <copy todir="dist">
             <fileset file="web/js/src/renderer.css" />
