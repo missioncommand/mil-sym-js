@@ -1202,6 +1202,27 @@
         <jsmin destdir="dist" suffix="true">
             <fileset dir="dist" includes="*.js" />
         </jsmin>
+		<delete>
+			<fileset dir="dist">
+				<include name="*-c.js"/>
+				<include name="*-b.js"/>
+				<include name="*-bc.js"/>
+			</fileset>
+		</delete>
+    </target>
+
+    <!--Copy fonts, stylesheet, and samples-->
+    <target name="res">
+        <copy todir="dist/fonts">
+            <fileset dir="web/js/src/fonts" />
+        </copy>
+        <copy todir="dist">
+            <fileset file="web/js/src/renderer.css" />
+        </copy>
+        <copy todir="dist">
+            <fileset file="web/js/src/MPWorker.js" />
+            <fileset file="web/js/src/SPWorker.js" />
+        </copy>
     </target>
     
     <!--Copy fonts, stylesheet, and samples-->

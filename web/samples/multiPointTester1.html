@@ -128,6 +128,18 @@ function testRender()
                 modifiers[mtg.AN_AZIMUTH] = [315,45];
                 modifiers[mtg.X_ALTITUDE_DEPTH] = [0];
                 break;
+			case 4://NAI
+                symbolCode = "G*GPSAN---****X"; //assembly area
+                controlPoints = "66.26700036208742,30.62755038706961 66.27555681517738,30.64727776502703 66.25654247497746,30.64632704801704";
+				var mtg = armyc2.c2sd.renderer.utilities.ModifiersTG;
+				modifiers = {};
+				modifiers[mtg.T_UNIQUE_DESIGNATION_1] = "TEST";
+                //modifiers["T":"BLARGH"];
+                //bbox = "66.26,30.627,66.27,30.63"; //will show clipping at work
+                //var bbox2 = "66.25,30.627,66.27,30.63";//whole symbol will be calculated
+                scale = 50000.0;
+                //modifiers = {"fillColor":"FFFFFF","lineColor":"00FF00"};
+                break;
             default:
                 break;
         } 
@@ -229,6 +241,7 @@ Draw Canvas/SVG Test:
       <option value=1>FLOT</option>
       <option value=2>Assembly Area</option>
       <option value=3>Sector Range Fan</option>
+	  <option value=4>Named Area of Interest</option>
     </select>
     <button type='button' onclick='testRender()'>Test Multipoint</button>
 	<button type='button' onclick='cleartext()'>Clear</button>
