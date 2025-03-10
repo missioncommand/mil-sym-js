@@ -1,0 +1,34 @@
+{
+  "name": "mil-sym-js",
+  "version": "0.3.39.RC1",
+  "description": "JavaScript port of the java-based mil-std rendering libraries used in US Army Mission Command software",
+  "main": "dist/sm-bc.min.js",
+  "scripts": {
+    "build": "ant clean && ant concat sm-bc minify samples",
+    "prepublishOnly": "npm run build",
+    "publish:npm": "npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "military",
+    "symbology",
+    "MIL-STD-2525",
+    "rendering",
+    "visualization"
+  ],
+  "author": "US Army Mission Command",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/missioncommand/mil-sym-js.git"
+  },
+  "homepage": "https://github.com/missioncommand/mil-sym-js",
+  "bugs": {
+    "url": "https://github.com/missioncommand/mil-sym-js/issues"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

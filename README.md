@@ -13,7 +13,7 @@ The MIL-STD-2525 standard defines how to visualize military symbology.  This pro
 Project Structure
 --------------
 mil-sym-js has a namespace structure that resembles the java layout although differs where we needed to implement java functionality that wasn't available in JavaScript:
- 
+
 When using Ant to build, the output to the "dist" folder will include a few html files that show basic usage of the renderer.
 
 Version
@@ -42,7 +42,7 @@ mil-sym-js project uses a handful of open source projects to work properly:
 
 Limitations
 --------------
-  
+
 Rendering of Single Point Symbology to an HTML5 canvas requires the loading of external fonts via CSS.  If this is not possible due to group policies or other reasons, it is recommended to use SVG as your Single Point Symbology rendering format.
 [Single Point HTML5 Canvas Rendering Web Browser Compatibility Tables](https://github.com/missioncommand/mil-sym-js/blob/master/Browser%20Compatibility.md) 
 
@@ -87,6 +87,24 @@ running "ant concat sm-bc minify samples" would result in the following files be
 - sm-bc.js (concatenated renderer code)  
 - sm-bc.min.js (concatenated & minified renderer code)  
 
+NPM Usage
+--------------
+
+This library can be built and published to NPM using the following commands:
+
+```
+# Install dependencies
+npm install
+
+# Build the library using Ant
+npm run build
+
+# Publish to NPM
+npm run publish:npm
+```
+
+The build process will create the dist folder with all necessary files, and the publish process will publish only the dist folder to NPM. The test script verifies that the build process works correctly and produces all the expected files.
+
 License
 ----
 
@@ -97,5 +115,3 @@ http://www.apache.org/licenses/
   [Ant]: http://ant.apache.org/
   [jQuery]: http://jQuery.com
   [MIL-STD-2525]:http://www.everyspec.com/MIL-STD/MIL-STD-2000-2999/MIL-STD-2525_20727/
-  
-    
