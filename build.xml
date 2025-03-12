@@ -1226,6 +1226,8 @@
             <fileset file="web/js/src/MPWorker.js" />
             <fileset file="web/js/src/SPWorker.js" />
         </copy>
+		<copy file="load.js" todir="dist"/>
+		<!-- <copy file="web/samples/singlePointTester2.html" todir="dist"/> -->
     </target>
     
     <!--Copy fonts, stylesheet, and samples-->
