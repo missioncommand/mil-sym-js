@@ -1,4 +1,5 @@
 var org = org || {};
+window.org = org;
 org.gavaghan = org.gavaghan || {};
 org.gavaghan.geodesy = org.gavaghan.geodesy || {};
 org.gavaghan.geodesy.GlobalPosition = function()

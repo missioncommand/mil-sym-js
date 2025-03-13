@@ -1,4 +1,5 @@
 var armyc2 = armyc2 || {};
+window.armyc2 = armyc2;
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.JavaLineArray = armyc2.c2sd.JavaLineArray || {};
 armyc2.c2sd.JavaLineArray.Shape2 = function()
