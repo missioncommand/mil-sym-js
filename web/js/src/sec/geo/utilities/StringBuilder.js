@@ -1,4 +1,5 @@
 var sec = sec || {};
+window.sec = sec;
 sec.geo = sec.geo || {};
 sec.geo.utilities = sec.geo.utilities || {};
 sec.geo.utilities.StringBuilder = function()
