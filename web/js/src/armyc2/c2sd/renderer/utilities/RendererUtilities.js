@@ -133,6 +133,8 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
 	/**
      * Clients should use getTextBounds
      * Not accurate but good to check if the rendering fonts have been loaded
+	 * Can't be used until after the body element has been loaded.
+	 * It will return 0 in this scenario.
      * @param {String} fontName like "Arial" or "Arial, sans-serif" so a backup is
      * available in case 'Arial' is not present.
      * @param {Number} fontSize like 12
@@ -142,7 +144,11 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
      */
      function measureTextQuick(fontName, fontSize, fontStyle, text){
         var doc = document;
+		if(document.body === null)
+			return 0;
         var div = doc.createElement('DIV');
+		if(div !== null)
+		{
             div.innerHTML = text;
             div.style.position = 'absolute';
             div.style.top = '-999px';
@@ -156,6 +162,9 @@ armyc2.c2sd.renderer.utilities.RendererUtilities = (function () {
             doc.body.removeChild(div);
             div = null;
             return size;//*/
+		}
+		else
+			return 0;
     };
 
     /**
