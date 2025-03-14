@@ -1,6 +1,6 @@
 {
   "name": "@io.github.missioncommand/mil-sym-js",
-  "version": "0.3.39",
+  "version": "0.3.40",
   "description": "JavaScript port of the java-based mil-std rendering libraries used in US Army Mission Command software",  
   "main": "dist/sm-bc.min.js",
   "scripts": {
