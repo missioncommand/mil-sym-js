@@ -1,5 +1,4 @@
 var sec = sec || {};
-window.sec = sec;
 sec.geo = sec.geo || {};
 sec.geo.shape = sec.geo.shape || {};
 sec.geo.shape.Orbit = function()

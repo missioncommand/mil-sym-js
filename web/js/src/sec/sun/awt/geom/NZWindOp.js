@@ -1,5 +1,4 @@
 var sec = sec || {};
-window.sec = sec;
 sec.sun = sec.sun || {};
 sec.sun.awt = sec.sun.awt || {};
 sec.sun.awt.geom = sec.sun.awt.geom || {};

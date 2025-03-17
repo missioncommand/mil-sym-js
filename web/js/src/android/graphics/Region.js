@@ -1,5 +1,4 @@
 var android = android || {};
-window.android = android;
 android.graphics = android.graphics || {};
 android.graphics.Region = function() {
     var _gp = new java.awt.geom.GeneralPath();

@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 var java = java || {};
-window.java = java;
 java.util = java.util || {};
 java.util.HashMap = function()
 {

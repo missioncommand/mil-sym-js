@@ -4,7 +4,7 @@
   "description": "JavaScript port of the java-based mil-std rendering libraries used in US Army Mission Command software",  
   "main": "dist/sm-bc.min.js",
   "scripts": {
-    "build": "ant clean && ant concat sm-bc minify res",
+    "build": "ant clean && ant concat allFlavors minify samples",
 	"buildSVG": "ant clean && ant concat savm-bc minify res",
     "prepublishOnly": "npm run build",
     "publish:npm": "npm publish --access=public"

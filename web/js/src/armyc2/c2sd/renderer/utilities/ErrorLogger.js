@@ -12,7 +12,6 @@ if(!(window && window.console)){
 
 //Singleton template, unfortunately, cannot be parsed by netbeans//////////////
 var armyc2 = armyc2 || {};
-window.armyc2 = armyc2;
 /** namespace */
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};

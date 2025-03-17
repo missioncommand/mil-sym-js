@@ -1,5 +1,4 @@
-var sec = sec || {};
-window.sec = sec;
+var sec=sec || {};
 sec.geo=sec.geo || {};
 sec.geo.GeoPath=function()
 {

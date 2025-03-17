@@ -1,5 +1,4 @@
 var armyc2 = armyc2 || {};
-window.armyc2 = armyc2;
 /** namespace */
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};

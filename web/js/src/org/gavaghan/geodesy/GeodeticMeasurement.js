@@ -1,5 +1,4 @@
-var org= org || {};
-window.org = org;
+var org=org || {};
 org.gavaghan=org.gavaghan || {};
 org.gavaghan.geodesy=org.gavaghan.geodesy || {};
 org.gavaghan.geodesy.GeodeticMeasurement=function()

@@ -87,21 +87,8 @@ running "ant concat sm-bc minify samples" would result in the following files be
 - sm-bc.js (concatenated renderer code)  
 - sm-bc.min.js (concatenated & minified renderer code)  
 
-NPM Usage
---------------
 
-This library can be built and published to NPM using the following commands:
 
-```
-# Install dependencies
-npm install
-
-# Build the library using Ant
-npm run build
-
-# Publish to NPM
-npm run publish:npm
-```
 
 The build process will create the dist folder with all necessary files, and the publish process will publish only the dist folder to NPM. The test script verifies that the build process works correctly and produces all the expected files.
 

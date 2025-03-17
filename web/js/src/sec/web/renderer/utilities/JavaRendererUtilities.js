@@ -1,5 +1,4 @@
 var sec = sec || {};
-window.sec = sec;
 /** namespace */
 sec.web = sec.web || {};
 sec.web.renderer = sec.web.renderer || {};

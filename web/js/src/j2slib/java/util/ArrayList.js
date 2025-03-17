@@ -1,5 +1,4 @@
 var java = java || {};
-window.java = java;
 java.util = java.util || {};
 java.util.ArrayList = function()
 {

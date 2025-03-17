@@ -1,5 +1,4 @@
 var armyc2 = armyc2 || {};
-window.armyc2 = armyc2;
 /** namespace */
 armyc2.c2sd = armyc2.c2sd || {};
 armyc2.c2sd.renderer = armyc2.c2sd.renderer || {};
@@ -7,7 +6,7 @@ armyc2.c2sd.renderer.utilities = armyc2.c2sd.renderer.utilities || {};
 /** @class */
 armyc2.c2sd.renderer.utilities.RendererSettings = (function () {
 
-    var _Version = "0.3.40";
+    var _Version = "0.3.39";
     //outline approach.  none, filled rectangle, outline (default),
     //outline quick (outline will not exceed 1 pixels).
     var _SymbologyStandard = 0,
